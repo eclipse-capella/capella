@@ -43,26 +43,26 @@ public interface ConfigurationItemPkg extends ComponentPkg {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Configuration Items</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.epbs.ConfigurationItem}.
+   * Returns the value of the '<em><b>Owned Configuration Items</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.epbs.ConfigurationItem}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Configuration Items</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Configuration Items</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getConfigurationItemPkg_OwnedConfigurationItems()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedConfigurationItems'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Set of configuration items that are stored in the package\r\n[source:Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which ConfigurationItem stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Configuration Items</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getConfigurationItemPkg_OwnedConfigurationItems()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedConfigurationItems'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Set of configuration items that are stored in the package\r\n[source:Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which ConfigurationItem stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<ConfigurationItem> getOwnedConfigurationItems();
 
@@ -73,26 +73,26 @@ public interface ConfigurationItemPkg extends ComponentPkg {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Configuration Item Pkgs</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.epbs.ConfigurationItemPkg}.
+   * Returns the value of the '<em><b>Owned Configuration Item Pkgs</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.epbs.ConfigurationItemPkg}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Configuration Item Pkgs</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Configuration Item Pkgs</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getConfigurationItemPkg_OwnedConfigurationItemPkgs()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedConfigurationItemPkgs'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Set of owned packages containing configuration items\r\n[source:Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which ConfigurationItemPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Configuration Item Pkgs</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getConfigurationItemPkg_OwnedConfigurationItemPkgs()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedConfigurationItemPkgs'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Set of owned packages containing configuration items\r\n[source:Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which ConfigurationItemPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<ConfigurationItemPkg> getOwnedConfigurationItemPkgs();
 

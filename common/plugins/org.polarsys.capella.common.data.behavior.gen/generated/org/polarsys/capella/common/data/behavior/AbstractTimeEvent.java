@@ -39,22 +39,22 @@ public interface AbstractTimeEvent extends AbstractEvent {
 
 
 	/**
-	 * Returns the value of the '<em><b>Is Relative</b></em>' attribute.
+   * Returns the value of the '<em><b>Is Relative</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Is Relative</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Is Relative</em>' attribute.
-	 * @see #setIsRelative(boolean)
-	 * @see org.polarsys.capella.common.data.behavior.BehaviorPackage#getAbstractTimeEvent_IsRelative()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies whether it is relative or absolute time\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TimeEvent::isRelative' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Is Relative</em>' attribute.
+   * @see #setIsRelative(boolean)
+   * @see org.polarsys.capella.common.data.behavior.BehaviorPackage#getAbstractTimeEvent_IsRelative()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies whether it is relative or absolute time\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TimeEvent::isRelative' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	boolean isIsRelative();
 
@@ -62,14 +62,14 @@ public interface AbstractTimeEvent extends AbstractEvent {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.behavior.AbstractTimeEvent#isIsRelative <em>Is Relative</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.behavior.AbstractTimeEvent#isIsRelative <em>Is Relative</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Relative</em>' attribute.
-	 * @see #isIsRelative()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Is Relative</em>' attribute.
+   * @see #isIsRelative()
+   * @generated
+   */
 
 	void setIsRelative(boolean value);
 
@@ -80,22 +80,22 @@ public interface AbstractTimeEvent extends AbstractEvent {
 
 
 	/**
-	 * Returns the value of the '<em><b>When</b></em>' reference.
+   * Returns the value of the '<em><b>When</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>When</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>When</em>' reference.
-	 * @see #setWhen(TimeExpression)
-	 * @see org.polarsys.capella.common.data.behavior.BehaviorPackage#getAbstractTimeEvent_When()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the corresponding time deadline\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TimeEvent::when' explanation='none' constraints='Multiplicity must be [1..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>When</em>' reference.
+   * @see #setWhen(TimeExpression)
+   * @see org.polarsys.capella.common.data.behavior.BehaviorPackage#getAbstractTimeEvent_When()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the corresponding time deadline\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TimeEvent::when' explanation='none' constraints='Multiplicity must be [1..1]'"
+   * @generated
+   */
 
 	TimeExpression getWhen();
 
@@ -103,14 +103,14 @@ public interface AbstractTimeEvent extends AbstractEvent {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.behavior.AbstractTimeEvent#getWhen <em>When</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.behavior.AbstractTimeEvent#getWhen <em>When</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>When</em>' reference.
-	 * @see #getWhen()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>When</em>' reference.
+   * @see #getWhen()
+   * @generated
+   */
 
 	void setWhen(TimeExpression value);
 

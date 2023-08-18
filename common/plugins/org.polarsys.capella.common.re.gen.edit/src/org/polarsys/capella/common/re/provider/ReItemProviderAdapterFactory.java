@@ -57,406 +57,406 @@ import org.polarsys.kitalpha.emde.model.util.EmdeSwitch;
  */
 public class ReItemProviderAdapterFactory extends ReAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
   /**
-	 * This keeps track of the root adapter factory that delegates to this adapter factory.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the root adapter factory that delegates to this adapter factory.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected ComposedAdapterFactory parentAdapterFactory;
 
   /**
-	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-	 * <!-- begin-user-doc -->
+   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
   /**
-	 * This helps manage the child creation extenders.
-	 * <!-- begin-user-doc -->
+   * This helps manage the child creation extenders.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(ReEditPlugin.INSTANCE, RePackage.eNS_URI);
 
   /**
-	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-	 * <!-- begin-user-doc -->
+   * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+   * <!-- begin-user-doc -->
   * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
   /**
-	 * This constructs an instance.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public ReItemProviderAdapterFactory() {
-		supportedTypes.add(IEditingDomainItemProvider.class);
-		supportedTypes.add(IStructuredItemContentProvider.class);
-		supportedTypes.add(ITreeItemContentProvider.class);
-		supportedTypes.add(IItemLabelProvider.class);
-		supportedTypes.add(IItemPropertySource.class);
-	}
+    supportedTypes.add(IEditingDomainItemProvider.class);
+    supportedTypes.add(IStructuredItemContentProvider.class);
+    supportedTypes.add(ITreeItemContentProvider.class);
+    supportedTypes.add(IItemLabelProvider.class);
+    supportedTypes.add(IItemPropertySource.class);
+  }
 
   /**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.common.re.RecCatalog} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.common.re.RecCatalog} instances.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected RecCatalogItemProvider recCatalogItemProvider;
 
   /**
-	 * This creates an adapter for a {@link org.polarsys.capella.common.re.RecCatalog}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.common.re.RecCatalog}.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Adapter createRecCatalogAdapter() {
-		if (recCatalogItemProvider == null) {
-			recCatalogItemProvider = new RecCatalogItemProvider(this);
-		}
+    if (recCatalogItemProvider == null) {
+      recCatalogItemProvider = new RecCatalogItemProvider(this);
+    }
 
-		return recCatalogItemProvider;
-	}
+    return recCatalogItemProvider;
+  }
 
   /**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.common.re.GroupingElementPkg} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.common.re.GroupingElementPkg} instances.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected GroupingElementPkgItemProvider groupingElementPkgItemProvider;
 
   /**
-	 * This creates an adapter for a {@link org.polarsys.capella.common.re.GroupingElementPkg}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.common.re.GroupingElementPkg}.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Adapter createGroupingElementPkgAdapter() {
-		if (groupingElementPkgItemProvider == null) {
-			groupingElementPkgItemProvider = new GroupingElementPkgItemProvider(this);
-		}
+    if (groupingElementPkgItemProvider == null) {
+      groupingElementPkgItemProvider = new GroupingElementPkgItemProvider(this);
+    }
 
-		return groupingElementPkgItemProvider;
-	}
+    return groupingElementPkgItemProvider;
+  }
 
   /**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.common.re.CatalogElementPkg} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.common.re.CatalogElementPkg} instances.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected CatalogElementPkgItemProvider catalogElementPkgItemProvider;
 
   /**
-	 * This creates an adapter for a {@link org.polarsys.capella.common.re.CatalogElementPkg}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.common.re.CatalogElementPkg}.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Adapter createCatalogElementPkgAdapter() {
-		if (catalogElementPkgItemProvider == null) {
-			catalogElementPkgItemProvider = new CatalogElementPkgItemProvider(this);
-		}
+    if (catalogElementPkgItemProvider == null) {
+      catalogElementPkgItemProvider = new CatalogElementPkgItemProvider(this);
+    }
 
-		return catalogElementPkgItemProvider;
-	}
+    return catalogElementPkgItemProvider;
+  }
 
   /**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.common.re.CatalogElementLink} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.common.re.CatalogElementLink} instances.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected CatalogElementLinkItemProvider catalogElementLinkItemProvider;
 
   /**
-	 * This creates an adapter for a {@link org.polarsys.capella.common.re.CatalogElementLink}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.common.re.CatalogElementLink}.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Adapter createCatalogElementLinkAdapter() {
-		if (catalogElementLinkItemProvider == null) {
-			catalogElementLinkItemProvider = new CatalogElementLinkItemProvider(this);
-		}
+    if (catalogElementLinkItemProvider == null) {
+      catalogElementLinkItemProvider = new CatalogElementLinkItemProvider(this);
+    }
 
-		return catalogElementLinkItemProvider;
-	}
+    return catalogElementLinkItemProvider;
+  }
 
   /**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.common.re.CatalogElement} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.common.re.CatalogElement} instances.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected CatalogElementItemProvider catalogElementItemProvider;
 
   /**
-	 * This creates an adapter for a {@link org.polarsys.capella.common.re.CatalogElement}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.common.re.CatalogElement}.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Adapter createCatalogElementAdapter() {
-		if (catalogElementItemProvider == null) {
-			catalogElementItemProvider = new CatalogElementItemProvider(this);
-		}
+    if (catalogElementItemProvider == null) {
+      catalogElementItemProvider = new CatalogElementItemProvider(this);
+    }
 
-		return catalogElementItemProvider;
-	}
+    return catalogElementItemProvider;
+  }
 
   /**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.common.re.CompliancyDefinitionPkg} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.common.re.CompliancyDefinitionPkg} instances.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected CompliancyDefinitionPkgItemProvider compliancyDefinitionPkgItemProvider;
 
   /**
-	 * This creates an adapter for a {@link org.polarsys.capella.common.re.CompliancyDefinitionPkg}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.common.re.CompliancyDefinitionPkg}.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Adapter createCompliancyDefinitionPkgAdapter() {
-		if (compliancyDefinitionPkgItemProvider == null) {
-			compliancyDefinitionPkgItemProvider = new CompliancyDefinitionPkgItemProvider(this);
-		}
+    if (compliancyDefinitionPkgItemProvider == null) {
+      compliancyDefinitionPkgItemProvider = new CompliancyDefinitionPkgItemProvider(this);
+    }
 
-		return compliancyDefinitionPkgItemProvider;
-	}
+    return compliancyDefinitionPkgItemProvider;
+  }
 
   /**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.common.re.CompliancyDefinition} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.common.re.CompliancyDefinition} instances.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected CompliancyDefinitionItemProvider compliancyDefinitionItemProvider;
 
   /**
-	 * This creates an adapter for a {@link org.polarsys.capella.common.re.CompliancyDefinition}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.common.re.CompliancyDefinition}.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Adapter createCompliancyDefinitionAdapter() {
-		if (compliancyDefinitionItemProvider == null) {
-			compliancyDefinitionItemProvider = new CompliancyDefinitionItemProvider(this);
-		}
+    if (compliancyDefinitionItemProvider == null) {
+      compliancyDefinitionItemProvider = new CompliancyDefinitionItemProvider(this);
+    }
 
-		return compliancyDefinitionItemProvider;
-	}
+    return compliancyDefinitionItemProvider;
+  }
 
   /**
-	 * This returns the root adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+   * This returns the root adapter factory that contains this factory.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
 		public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
-	}
+    return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+  }
 
   /**
-	 * This sets the composed adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+   * This sets the composed adapter factory that contains this factory.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
 		public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
-		this.parentAdapterFactory = parentAdapterFactory;
-	}
+    this.parentAdapterFactory = parentAdapterFactory;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public boolean isFactoryForType(Object type) {
-		return supportedTypes.contains(type) || super.isFactoryForType(type);
-	}
+    return supportedTypes.contains(type) || super.isFactoryForType(type);
+  }
 
   /**
-	 * This implementation substitutes the factory itself as the key for the adapter.
-	 * <!-- begin-user-doc -->
+   * This implementation substitutes the factory itself as the key for the adapter.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Adapter adapt(Notifier notifier, Object type) {
-		return super.adapt(notifier, this);
-	}
+    return super.adapt(notifier, this);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Object adapt(Object object, Object type) {
-		if (isFactoryForType(type)) {
-			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
-				return adapter;
-			}
-		}
+    if (isFactoryForType(type)) {
+      Object adapter = super.adapt(object, type);
+      if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+        return adapter;
+      }
+    }
 
-		return null;
-	}
+    return null;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public List<IChildCreationExtender> getChildCreationExtenders() {
-		return childCreationExtenderManager.getChildCreationExtenders();
-	}
+    return childCreationExtenderManager.getChildCreationExtenders();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
   * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
-	}
+    return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
   * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public ResourceLocator getResourceLocator() {
-		return childCreationExtenderManager;
-	}
+    return childCreationExtenderManager;
+  }
 
   /**
-	 * This adds a listener.
-	 * <!-- begin-user-doc -->
+   * This adds a listener.
+   * <!-- begin-user-doc -->
   * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
 		public void addListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.addListener(notifyChangedListener);
-	}
+    changeNotifier.addListener(notifyChangedListener);
+  }
 
   /**
-	 * This removes a listener.
-	 * <!-- begin-user-doc -->
+   * This removes a listener.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
 		public void removeListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.removeListener(notifyChangedListener);
-	}
+    changeNotifier.removeListener(notifyChangedListener);
+  }
 
   /**
-	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-	 * <!-- begin-user-doc -->
+   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
 		public void fireNotifyChanged(Notification notification) {
-		changeNotifier.fireNotifyChanged(notification);
+    changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null) {
-			parentAdapterFactory.fireNotifyChanged(notification);
-		}
-	}
+    if (parentAdapterFactory != null) {
+      parentAdapterFactory.fireNotifyChanged(notification);
+    }
+  }
 
   /**
-	 * This disposes all of the item providers created by this factory. 
-	 * <!-- begin-user-doc -->
+   * This disposes all of the item providers created by this factory. 
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
 		public void dispose() {
-		if (catalogElementPkgItemProvider != null) catalogElementPkgItemProvider.dispose();
-		if (recCatalogItemProvider != null) recCatalogItemProvider.dispose();
-		if (groupingElementPkgItemProvider != null) groupingElementPkgItemProvider.dispose();
-		if (catalogElementLinkItemProvider != null) catalogElementLinkItemProvider.dispose();
-		if (catalogElementItemProvider != null) catalogElementItemProvider.dispose();
-		if (compliancyDefinitionPkgItemProvider != null) compliancyDefinitionPkgItemProvider.dispose();
-		if (compliancyDefinitionItemProvider != null) compliancyDefinitionItemProvider.dispose();
-	}
+    if (catalogElementPkgItemProvider != null) catalogElementPkgItemProvider.dispose();
+    if (recCatalogItemProvider != null) recCatalogItemProvider.dispose();
+    if (groupingElementPkgItemProvider != null) groupingElementPkgItemProvider.dispose();
+    if (catalogElementLinkItemProvider != null) catalogElementLinkItemProvider.dispose();
+    if (catalogElementItemProvider != null) catalogElementItemProvider.dispose();
+    if (compliancyDefinitionPkgItemProvider != null) compliancyDefinitionPkgItemProvider.dispose();
+    if (compliancyDefinitionItemProvider != null) compliancyDefinitionItemProvider.dispose();
+  }
 
   /**
-	 * A child creation extender for the {@link EmdePackage}.
-	 * <!-- begin-user-doc -->
+   * A child creation extender for the {@link EmdePackage}.
+   * <!-- begin-user-doc -->
   * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public static class EmdeChildCreationExtender implements IChildCreationExtender {
     /**
-		 * The switch for creating child descriptors specific to each extended class.
-		 * <!-- begin-user-doc -->
+     * The switch for creating child descriptors specific to each extended class.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-		 * @generated
-		 */
+     * @generated
+     */
     protected static class CreationSwitch extends EmdeSwitch<Object> {
       /**
-			 * The child descriptors being populated.
-			 * <!-- begin-user-doc -->
+       * The child descriptors being populated.
+       * <!-- begin-user-doc -->
        * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
       protected List<Object> newChildDescriptors;
 
       /**
-			 * The domain in which to create the children.
-			 * <!-- begin-user-doc -->
+       * The domain in which to create the children.
+       * <!-- begin-user-doc -->
        * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
       protected EditingDomain editingDomain;
 
       /**
-			 * Creates the a switch for populating child descriptors in the given domain.
-			 * <!-- begin-user-doc -->
+       * Creates the a switch for populating child descriptors in the given domain.
+       * <!-- begin-user-doc -->
        * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
       CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
-				this.newChildDescriptors = newChildDescriptors;
-				this.editingDomain = editingDomain;
-			}
+        this.newChildDescriptors = newChildDescriptors;
+        this.editingDomain = editingDomain;
+      }
 
       /**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
        * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
       @Override
       public Object caseExtensibleElement(ExtensibleElement object) {
-				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/common/re/7.0.0")) { //$NON-NLS-1$
-					return null;				
-				}
-				// end-extension-code
+        // begin-extension-code
+        if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/common/re/7.0.0")) { //$NON-NLS-1$
+          return null;				
+        }
+        // end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -483,39 +483,39 @@ public class ReItemProviderAdapterFactory extends ReAdapterFactory implements Co
 
 
 
-				return null;
-			}
+        return null;
+      }
 
       /**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
        * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
       protected CommandParameter createChildParameter(Object feature, Object child) {
-				return new CommandParameter(null, feature, child);
-			}
+        return new CommandParameter(null, feature, child);
+      }
 
     }
 
     /**
-		 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-		 * @generated
-		 */
+     * @generated
+     */
     public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-			ArrayList<Object> result = new ArrayList<Object>();
-			new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
-			return result;
-		}
+      ArrayList<Object> result = new ArrayList<Object>();
+      new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
+      return result;
+    }
 
     /**
-		 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-		 * @generated
-		 */
+     * @generated
+     */
     public ResourceLocator getResourceLocator() {
-			return ReEditPlugin.INSTANCE;
-		}
+      return ReEditPlugin.INSTANCE;
+    }
   }
 
 }

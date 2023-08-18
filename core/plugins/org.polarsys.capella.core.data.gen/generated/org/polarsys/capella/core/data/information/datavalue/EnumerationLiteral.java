@@ -40,23 +40,23 @@ public interface EnumerationLiteral extends AbstractEnumerationValue {
 
 
 	/**
-	 * Returns the value of the '<em><b>Domain Value</b></em>' containment reference.
+   * Returns the value of the '<em><b>Domain Value</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Domain Value</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Domain Value</em>' containment reference.
-	 * @see #setDomainValue(DataValue)
-	 * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getEnumerationLiteral_DomainValue()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' usage\040guideline='n/a' used\040in\040levels='n/a' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Domain Value</em>' containment reference.
+   * @see #setDomainValue(DataValue)
+   * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getEnumerationLiteral_DomainValue()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' usage\040guideline='n/a' used\040in\040levels='n/a' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	DataValue getDomainValue();
 
@@ -64,14 +64,14 @@ public interface EnumerationLiteral extends AbstractEnumerationValue {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral#getDomainValue <em>Domain Value</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral#getDomainValue <em>Domain Value</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Domain Value</em>' containment reference.
-	 * @see #getDomainValue()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Domain Value</em>' containment reference.
+   * @see #getDomainValue()
+   * @generated
+   */
 
 	void setDomainValue(DataValue value);
 

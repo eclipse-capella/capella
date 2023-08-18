@@ -39,25 +39,25 @@ public interface Execution extends TimeLapse {
 
 
 	/**
-	 * Returns the value of the '<em><b>Covered</b></em>' reference.
+   * Returns the value of the '<em><b>Covered</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Covered</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Covered</em>' reference.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getExecution_Covered()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='covers'"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='covered' featureOwner='InteractionFragment'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the instance role that performs this Execution\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InteractionFragment::covered' explanation='none' constraints='Multiplicity must be [1..1]'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Execution.start.coveredInstanceRoles(self, target);\r\n} or {\r\n\tExecution.finish.coveredInstanceRoles(self, target);'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Covered</em>' reference.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getExecution_Covered()
+   * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='covers'"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='covered' featureOwner='InteractionFragment'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the instance role that performs this Execution\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InteractionFragment::covered' explanation='none' constraints='Multiplicity must be [1..1]'"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Execution.start.coveredInstanceRoles(self, target);\r\n} or {\r\n\tExecution.finish.coveredInstanceRoles(self, target);'"
+   * @generated
+   */
 
 	InstanceRole getCovered();
 

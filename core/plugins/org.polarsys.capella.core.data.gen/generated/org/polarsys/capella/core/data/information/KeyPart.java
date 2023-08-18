@@ -42,26 +42,26 @@ public interface KeyPart extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Property</b></em>' reference.
+   * Returns the value of the '<em><b>Property</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Property</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Property</em>' reference.
-	 * @see #setProperty(Property)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getKeyPart_Property()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='supplier' featureOwner='Dependency'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='property'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Part/Property being declared as the key to access some other element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [1..1]'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Property</em>' reference.
+   * @see #setProperty(Property)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getKeyPart_Property()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='supplier' featureOwner='Dependency'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='property'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Part/Property being declared as the key to access some other element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [1..1]'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	Property getProperty();
 
@@ -69,14 +69,14 @@ public interface KeyPart extends Relationship {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.KeyPart#getProperty <em>Property</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.KeyPart#getProperty <em>Property</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Property</em>' reference.
-	 * @see #getProperty()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Property</em>' reference.
+   * @see #getProperty()
+   * @generated
+   */
 
 	void setProperty(Property value);
 

@@ -24,74 +24,74 @@ import org.eclipse.emf.ecore.EFactory;
  */
 public interface CommunicationFactory extends EFactory {
 	/**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
+   * The singleton instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	CommunicationFactory eINSTANCE = org.polarsys.capella.core.data.information.communication.impl.CommunicationFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Exception</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Exception</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Exception</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Exception</em>'.
+   * @generated
+   */
 	Exception createException();
 
 	/**
-	 * Returns a new object of class '<em>Message</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Message</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Message</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Message</em>'.
+   * @generated
+   */
 	Message createMessage();
 
 	/**
-	 * Returns a new object of class '<em>Message Reference</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Message Reference</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Message Reference</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Message Reference</em>'.
+   * @generated
+   */
 	MessageReference createMessageReference();
 
 	/**
-	 * Returns a new object of class '<em>Signal</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Signal</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Signal</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Signal</em>'.
+   * @generated
+   */
 	Signal createSignal();
 
 	/**
-	 * Returns a new object of class '<em>Signal Instance</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Signal Instance</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Signal Instance</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Signal Instance</em>'.
+   * @generated
+   */
 	SignalInstance createSignalInstance();
 
 	/**
-	 * Returns a new object of class '<em>Link</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Link</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Link</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Link</em>'.
+   * @generated
+   */
 	CommunicationLink createCommunicationLink();
 
 	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
+   * Returns the package supported by this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
+   * @return the package supported by this factory.
+   * @generated
+   */
 	CommunicationPackage getCommunicationPackage();
 
 	/**

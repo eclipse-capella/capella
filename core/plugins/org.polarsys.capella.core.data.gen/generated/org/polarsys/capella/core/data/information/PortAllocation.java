@@ -39,24 +39,24 @@ public interface PortAllocation extends Allocation {
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocated Port</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.Port#getIncomingPortAllocations <em>Incoming Port Allocations</em>}'.
+   * Returns the value of the '<em><b>Allocated Port</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.Port#getIncomingPortAllocations <em>Incoming Port Allocations</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocated Port</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocated Port</em>' reference.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getPortAllocation_AllocatedPort()
-	 * @see org.polarsys.capella.core.data.information.Port#getIncomingPortAllocations
-	 * @model opposite="incomingPortAllocations" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the \"destination\" of the allocation link : the port that is being allocated by another port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Allocated Port</em>' reference.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getPortAllocation_AllocatedPort()
+   * @see org.polarsys.capella.core.data.information.Port#getIncomingPortAllocations
+   * @model opposite="incomingPortAllocations" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the \"destination\" of the allocation link : the port that is being allocated by another port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	Port getAllocatedPort();
 
@@ -67,24 +67,24 @@ public interface PortAllocation extends Allocation {
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocating Port</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.Port#getOutgoingPortAllocations <em>Outgoing Port Allocations</em>}'.
+   * Returns the value of the '<em><b>Allocating Port</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.Port#getOutgoingPortAllocations <em>Outgoing Port Allocations</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocating Port</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocating Port</em>' reference.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getPortAllocation_AllocatingPort()
-	 * @see org.polarsys.capella.core.data.information.Port#getOutgoingPortAllocations
-	 * @model opposite="outgoingPortAllocations" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the \"source\" of the allocation link : the port that is allocating the other port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Allocating Port</em>' reference.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getPortAllocation_AllocatingPort()
+   * @see org.polarsys.capella.core.data.information.Port#getOutgoingPortAllocations
+   * @model opposite="outgoingPortAllocations" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the \"source\" of the allocation link : the port that is allocating the other port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	Port getAllocatingPort();
 

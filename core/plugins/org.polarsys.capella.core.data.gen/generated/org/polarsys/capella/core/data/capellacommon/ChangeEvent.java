@@ -42,24 +42,24 @@ public interface ChangeEvent extends StateEvent {
 
 
 	/**
-	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.capellacommon.ChangeEventKind}.
+   * Returns the value of the '<em><b>Kind</b></em>' attribute.
+   * The literals are from the enumeration {@link org.polarsys.capella.core.data.capellacommon.ChangeEventKind}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Kind</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Kind</em>' attribute.
-	 * @see org.polarsys.capella.core.data.capellacommon.ChangeEventKind
-	 * @see #setKind(ChangeEventKind)
-	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getChangeEvent_Kind()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the type of the state ChangeEvent (see ChangeEventKind)\r\n[source: Capella study]' constraints='none' type='refer to ChangeEventKind definition' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Kind</em>' attribute.
+   * @see org.polarsys.capella.core.data.capellacommon.ChangeEventKind
+   * @see #setKind(ChangeEventKind)
+   * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getChangeEvent_Kind()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the type of the state ChangeEvent (see ChangeEventKind)\r\n[source: Capella study]' constraints='none' type='refer to ChangeEventKind definition' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	ChangeEventKind getKind();
 
@@ -67,15 +67,15 @@ public interface ChangeEvent extends StateEvent {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacommon.ChangeEvent#getKind <em>Kind</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.capellacommon.ChangeEvent#getKind <em>Kind</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Kind</em>' attribute.
-	 * @see org.polarsys.capella.core.data.capellacommon.ChangeEventKind
-	 * @see #getKind()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Kind</em>' attribute.
+   * @see org.polarsys.capella.core.data.capellacommon.ChangeEventKind
+   * @see #getKind()
+   * @generated
+   */
 
 	void setKind(ChangeEventKind value);
 

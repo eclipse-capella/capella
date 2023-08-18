@@ -36,156 +36,156 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 public abstract class AbstractTypedElementImpl extends AbstractNamedElementImpl implements AbstractTypedElement {
 
 	/**
-	 * The cached value of the '{@link #getAbstractType() <em>Abstract Type</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getAbstractType() <em>Abstract Type</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAbstractType()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getAbstractType()
+   * @generated
+   * @ordered
+   */
 	protected AbstractType abstractType;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractTypedElementImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT;
-	}
+    return ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractType getAbstractType() {
 
-		if (abstractType != null && abstractType.eIsProxy()) {
-			InternalEObject oldAbstractType = (InternalEObject)abstractType;
-			abstractType = (AbstractType)eResolveProxy(oldAbstractType);
-			if (abstractType != oldAbstractType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, oldAbstractType, abstractType));
-			}
-		}
-		return abstractType;
-	}
+    if (abstractType != null && abstractType.eIsProxy()) {
+      InternalEObject oldAbstractType = (InternalEObject)abstractType;
+      abstractType = (AbstractType)eResolveProxy(oldAbstractType);
+      if (abstractType != oldAbstractType) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, oldAbstractType, abstractType));
+      }
+    }
+    return abstractType;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractType basicGetAbstractType() {
 
-		return abstractType;
-	}
+    return abstractType;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setAbstractType(AbstractType newAbstractType) {
 
-		AbstractType oldAbstractType = abstractType;
-		abstractType = newAbstractType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, oldAbstractType, abstractType));
+    AbstractType oldAbstractType = abstractType;
+    abstractType = newAbstractType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, oldAbstractType, abstractType));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE:
-				if (resolve) return getAbstractType();
-				return basicGetAbstractType();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE:
+        if (resolve) return getAbstractType();
+        return basicGetAbstractType();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE:
-					setAbstractType((AbstractType)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE:
+          setAbstractType((AbstractType)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE:
-				setAbstractType((AbstractType)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE:
+        setAbstractType((AbstractType)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE:
-				return abstractType != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE:
+        return abstractType != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

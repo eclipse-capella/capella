@@ -38,215 +38,215 @@ import org.polarsys.capella.common.re.RecCatalog;
  */
 public class ReFactoryImpl extends EFactoryImpl implements ReFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static ReFactory init() {
-		try {
-			ReFactory theReFactory = (ReFactory)EPackage.Registry.INSTANCE.getEFactory(RePackage.eNS_URI);
-			if (theReFactory != null) {
-				return theReFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new ReFactoryImpl();
-	}
+    try {
+      ReFactory theReFactory = (ReFactory)EPackage.Registry.INSTANCE.getEFactory(RePackage.eNS_URI);
+      if (theReFactory != null) {
+        return theReFactory;
+      }
+    }
+    catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new ReFactoryImpl();
+  }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ReFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case RePackage.CATALOG_ELEMENT_PKG: return createCatalogElementPkg();
-			case RePackage.REC_CATALOG: return createRecCatalog();
-			case RePackage.GROUPING_ELEMENT_PKG: return createGroupingElementPkg();
-			case RePackage.CATALOG_ELEMENT_LINK: return createCatalogElementLink();
-			case RePackage.CATALOG_ELEMENT: return createCatalogElement();
-			case RePackage.COMPLIANCY_DEFINITION_PKG: return createCompliancyDefinitionPkg();
-			case RePackage.COMPLIANCY_DEFINITION: return createCompliancyDefinition();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eClass.getClassifierID()) {
+      case RePackage.CATALOG_ELEMENT_PKG: return createCatalogElementPkg();
+      case RePackage.REC_CATALOG: return createRecCatalog();
+      case RePackage.GROUPING_ELEMENT_PKG: return createGroupingElementPkg();
+      case RePackage.CATALOG_ELEMENT_LINK: return createCatalogElementLink();
+      case RePackage.CATALOG_ELEMENT: return createCatalogElement();
+      case RePackage.COMPLIANCY_DEFINITION_PKG: return createCompliancyDefinitionPkg();
+      case RePackage.COMPLIANCY_DEFINITION: return createCompliancyDefinition();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID()) {
-			case RePackage.CATALOG_ELEMENT_KIND:
-				return createCatalogElementKindFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eDataType.getClassifierID()) {
+      case RePackage.CATALOG_ELEMENT_KIND:
+        return createCatalogElementKindFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID()) {
-			case RePackage.CATALOG_ELEMENT_KIND:
-				return convertCatalogElementKindToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eDataType.getClassifierID()) {
+      case RePackage.CATALOG_ELEMENT_KIND:
+        return convertCatalogElementKindToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public RecCatalog createRecCatalog() {
-		RecCatalogImpl recCatalog = new RecCatalogImpl();
+    RecCatalogImpl recCatalog = new RecCatalogImpl();
     //begin-capella-code
     //end-capella-code
-		return recCatalog;
-	}
+    return recCatalog;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public GroupingElementPkg createGroupingElementPkg() {
-		GroupingElementPkgImpl groupingElementPkg = new GroupingElementPkgImpl();
+    GroupingElementPkgImpl groupingElementPkg = new GroupingElementPkgImpl();
     //begin-capella-code
     //end-capella-code
-		return groupingElementPkg;
-	}
+    return groupingElementPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public CatalogElementPkg createCatalogElementPkg() {
-		CatalogElementPkgImpl catalogElementPkg = new CatalogElementPkgImpl();
+    CatalogElementPkgImpl catalogElementPkg = new CatalogElementPkgImpl();
     //begin-capella-code
     //end-capella-code
-		return catalogElementPkg;
-	}
+    return catalogElementPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public CatalogElementLink createCatalogElementLink() {
-		CatalogElementLinkImpl catalogElementLink = new CatalogElementLinkImpl();
+    CatalogElementLinkImpl catalogElementLink = new CatalogElementLinkImpl();
     //begin-capella-code
     //end-capella-code
-		return catalogElementLink;
-	}
+    return catalogElementLink;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public CatalogElement createCatalogElement() {
-		CatalogElementImpl catalogElement = new CatalogElementImpl();
+    CatalogElementImpl catalogElement = new CatalogElementImpl();
     //begin-capella-code
     //end-capella-code
-		return catalogElement;
-	}
+    return catalogElement;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public CompliancyDefinitionPkg createCompliancyDefinitionPkg() {
-		CompliancyDefinitionPkgImpl compliancyDefinitionPkg = new CompliancyDefinitionPkgImpl();
+    CompliancyDefinitionPkgImpl compliancyDefinitionPkg = new CompliancyDefinitionPkgImpl();
     //begin-capella-code
     //end-capella-code
-		return compliancyDefinitionPkg;
-	}
+    return compliancyDefinitionPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public CompliancyDefinition createCompliancyDefinition() {
-		CompliancyDefinitionImpl compliancyDefinition = new CompliancyDefinitionImpl();
+    CompliancyDefinitionImpl compliancyDefinition = new CompliancyDefinitionImpl();
     //begin-capella-code
     //end-capella-code
-		return compliancyDefinition;
-	}
+    return compliancyDefinition;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CatalogElementKind createCatalogElementKindFromString(EDataType eDataType, String initialValue) {
-		CatalogElementKind result = CatalogElementKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    CatalogElementKind result = CatalogElementKind.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertCatalogElementKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public RePackage getRePackage() {
-		return (RePackage)getEPackage();
-	}
+    return (RePackage)getEPackage();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
 	@Deprecated
 	public static RePackage getPackage() {
-		return RePackage.eINSTANCE;
-	}
+    return RePackage.eINSTANCE;
+  }
 
 	//begin-capella-code
 	

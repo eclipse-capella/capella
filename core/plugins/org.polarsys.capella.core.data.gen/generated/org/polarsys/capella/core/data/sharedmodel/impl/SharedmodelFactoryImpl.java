@@ -32,97 +32,97 @@ import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
  */
 public class SharedmodelFactoryImpl extends EFactoryImpl implements SharedmodelFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static SharedmodelFactory init() {
-		try {
-			SharedmodelFactory theSharedmodelFactory = (SharedmodelFactory)EPackage.Registry.INSTANCE.getEFactory(SharedmodelPackage.eNS_URI);
-			if (theSharedmodelFactory != null) {
-				return theSharedmodelFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new SharedmodelFactoryImpl();
-	}
+    try {
+      SharedmodelFactory theSharedmodelFactory = (SharedmodelFactory)EPackage.Registry.INSTANCE.getEFactory(SharedmodelPackage.eNS_URI);
+      if (theSharedmodelFactory != null) {
+        return theSharedmodelFactory;
+      }
+    }
+    catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new SharedmodelFactoryImpl();
+  }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public SharedmodelFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case SharedmodelPackage.SHARED_PKG: return createSharedPkg();
-			case SharedmodelPackage.GENERIC_PKG: return createGenericPkg();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eClass.getClassifierID()) {
+      case SharedmodelPackage.SHARED_PKG: return createSharedPkg();
+      case SharedmodelPackage.GENERIC_PKG: return createGenericPkg();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public SharedPkg createSharedPkg() {
-		SharedPkgImpl sharedPkg = new SharedPkgImpl();
+    SharedPkgImpl sharedPkg = new SharedPkgImpl();
     //begin-capella-code
     sharedPkg.setId(IdGenerator.createId());
     //end-capella-code
-		return sharedPkg;
-	}
+    return sharedPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public GenericPkg createGenericPkg() {
-		GenericPkgImpl genericPkg = new GenericPkgImpl();
+    GenericPkgImpl genericPkg = new GenericPkgImpl();
     //begin-capella-code
     genericPkg.setId(IdGenerator.createId());
     //end-capella-code
-		return genericPkg;
-	}
+    return genericPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public SharedmodelPackage getSharedmodelPackage() {
-		return (SharedmodelPackage)getEPackage();
-	}
+    return (SharedmodelPackage)getEPackage();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
 	@Deprecated
 	public static SharedmodelPackage getPackage() {
-		return SharedmodelPackage.eINSTANCE;
-	}
+    return SharedmodelPackage.eINSTANCE;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -132,10 +132,10 @@ public class SharedmodelFactoryImpl extends EFactoryImpl implements SharedmodelF
 	 * @generated
 	 */
 	public SharedPkg createSharedPkg(String name_p) {
-		SharedPkg sharedPkg = createSharedPkg();
-		sharedPkg.setName(name_p);	  
-		return sharedPkg;
-	}
+    SharedPkg sharedPkg = createSharedPkg();
+    sharedPkg.setName(name_p);	  
+    return sharedPkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -145,10 +145,10 @@ public class SharedmodelFactoryImpl extends EFactoryImpl implements SharedmodelF
 	 * @generated
 	 */
 	public GenericPkg createGenericPkg(String name_p) {
-		GenericPkg genericPkg = createGenericPkg();
-		genericPkg.setName(name_p);	  
-		return genericPkg;
-	}
+    GenericPkg genericPkg = createGenericPkg();
+    genericPkg.setName(name_p);	  
+    return genericPkg;
+  }
 
 	//begin-capella-code
 

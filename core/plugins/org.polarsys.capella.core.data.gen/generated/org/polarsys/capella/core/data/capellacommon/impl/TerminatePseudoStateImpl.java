@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.capellacommon.TerminatePseudoState;
  */
 public class TerminatePseudoStateImpl extends PseudostateImpl implements TerminatePseudoState {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected TerminatePseudoStateImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.TERMINATE_PSEUDO_STATE;
-	}
+    return CapellacommonPackage.Literals.TERMINATE_PSEUDO_STATE;
+  }
 
 
 

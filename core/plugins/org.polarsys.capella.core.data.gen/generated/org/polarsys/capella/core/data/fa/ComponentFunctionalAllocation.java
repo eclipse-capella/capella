@@ -41,24 +41,24 @@ public interface ComponentFunctionalAllocation extends AbstractFunctionAllocatio
 
 
 	/**
-	 * Returns the value of the '<em><b>Function</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.AbstractFunction#getComponentFunctionalAllocations <em>Component Functional Allocations</em>}'.
+   * Returns the value of the '<em><b>Function</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.AbstractFunction#getComponentFunctionalAllocations <em>Component Functional Allocations</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Function</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Function</em>' reference.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentFunctionalAllocation_Function()
-	 * @see org.polarsys.capella.core.data.fa.AbstractFunction#getComponentFunctionalAllocations
-	 * @model opposite="componentFunctionalAllocations" required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the function involved in this allocation link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Function</em>' reference.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentFunctionalAllocation_Function()
+   * @see org.polarsys.capella.core.data.fa.AbstractFunction#getComponentFunctionalAllocations
+   * @model opposite="componentFunctionalAllocations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the function involved in this allocation link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	AbstractFunction getFunction();
 
@@ -69,24 +69,24 @@ public interface ComponentFunctionalAllocation extends AbstractFunctionAllocatio
 
 
 	/**
-	 * Returns the value of the '<em><b>Block</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.AbstractFunctionalBlock#getFunctionalAllocations <em>Functional Allocations</em>}'.
+   * Returns the value of the '<em><b>Block</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.AbstractFunctionalBlock#getFunctionalAllocations <em>Functional Allocations</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Block</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Block</em>' reference.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentFunctionalAllocation_Block()
-	 * @see org.polarsys.capella.core.data.fa.AbstractFunctionalBlock#getFunctionalAllocations
-	 * @model opposite="functionalAllocations" required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the block involved in this allocation link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Block</em>' reference.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentFunctionalAllocation_Block()
+   * @see org.polarsys.capella.core.data.fa.AbstractFunctionalBlock#getFunctionalAllocations
+   * @model opposite="functionalAllocations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the block involved in this allocation link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	AbstractFunctionalBlock getBlock();
 

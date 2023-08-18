@@ -60,23 +60,23 @@ public interface SystemComponent extends Component, InvolvedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned System Components</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemComponent}.
+   * Returns the value of the '<em><b>Owned System Components</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemComponent}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned System Components</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned System Components</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_OwnedSystemComponents()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the System Components included in this System Component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned System Components</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_OwnedSystemComponents()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the System Components included in this System Component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<SystemComponent> getOwnedSystemComponents();
 
@@ -84,23 +84,23 @@ public interface SystemComponent extends Component, InvolvedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned System Component Pkgs</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemComponentPkg}.
+   * Returns the value of the '<em><b>Owned System Component Pkgs</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemComponentPkg}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned System Component Pkgs</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned System Component Pkgs</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_OwnedSystemComponentPkgs()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='sub-packages of this System Component' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned System Component Pkgs</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_OwnedSystemComponentPkgs()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='sub-packages of this System Component' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<SystemComponentPkg> getOwnedSystemComponentPkgs();
 
@@ -108,22 +108,22 @@ public interface SystemComponent extends Component, InvolvedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Data Component</b></em>' attribute.
+   * Returns the value of the '<em><b>Data Component</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Data Component</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Data Component</em>' attribute.
-	 * @see #setDataComponent(boolean)
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_DataComponent()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether or not this is a data component\r\n[source: Capella light-light study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Data Component</em>' attribute.
+   * @see #setDataComponent(boolean)
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_DataComponent()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether or not this is a data component\r\n[source: Capella light-light study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	boolean isDataComponent();
 
@@ -131,14 +131,14 @@ public interface SystemComponent extends Component, InvolvedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.ctx.SystemComponent#isDataComponent <em>Data Component</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.ctx.SystemComponent#isDataComponent <em>Data Component</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Data Component</em>' attribute.
-	 * @see #isDataComponent()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Data Component</em>' attribute.
+   * @see #isDataComponent()
+   * @generated
+   */
 
 	void setDataComponent(boolean value);
 
@@ -149,21 +149,21 @@ public interface SystemComponent extends Component, InvolvedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Data Type</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.Classifier}.
+   * Returns the value of the '<em><b>Data Type</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.Classifier}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Data Type</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Data Type</em>' reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_DataType()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='data type(s) associated to this component\r\n[source: Capella light-light study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Data Type</em>' reference list.
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_DataType()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='data type(s) associated to this component\r\n[source: Capella light-light study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	EList<Classifier> getDataType();
 
@@ -174,23 +174,23 @@ public interface SystemComponent extends Component, InvolvedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Involving Capabilities</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.Capability}.
+   * Returns the value of the '<em><b>Involving Capabilities</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.ctx.Capability}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Involving Capabilities</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Involving Capabilities</em>' reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_InvolvingCapabilities()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Capabilities that involve this System Component' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='SystemComponent.capabilityInvolvements(self, capabilityInvolvements);\r\nCapabilityInvolvement.involver(capabilityInvolvements, target);'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Involving Capabilities</em>' reference list.
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_InvolvingCapabilities()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Capabilities that involve this System Component' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='SystemComponent.capabilityInvolvements(self, capabilityInvolvements);\r\nCapabilityInvolvement.involver(capabilityInvolvements, target);'"
+   * @generated
+   */
 
 	EList<Capability> getInvolvingCapabilities();
 
@@ -201,23 +201,23 @@ public interface SystemComponent extends Component, InvolvedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Capability Involvements</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.CapabilityInvolvement}.
+   * Returns the value of the '<em><b>Capability Involvements</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.ctx.CapabilityInvolvement}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Capability Involvements</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Capability Involvements</em>' reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_CapabilityInvolvements()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The Capability Involvement relationships in which this element is referenced' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/capella/derived"
-	 * @generated
-	 */
+   * @return the value of the '<em>Capability Involvements</em>' reference list.
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_CapabilityInvolvements()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The Capability Involvement relationships in which this element is referenced' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/capella/derived"
+   * @generated
+   */
 
 	EList<CapabilityInvolvement> getCapabilityInvolvements();
 
@@ -228,23 +228,23 @@ public interface SystemComponent extends Component, InvolvedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Involving Missions</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.Mission}.
+   * Returns the value of the '<em><b>Involving Missions</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.ctx.Mission}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Involving Missions</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Involving Missions</em>' reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_InvolvingMissions()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Missions that involve this System Component' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='SystemComponent.missionInvolvements(self, missionInvolvements);\r\nMissionInvolvement.involver(missionInvolvements, target);'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Involving Missions</em>' reference list.
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_InvolvingMissions()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Missions that involve this System Component' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='SystemComponent.missionInvolvements(self, missionInvolvements);\r\nMissionInvolvement.involver(missionInvolvements, target);'"
+   * @generated
+   */
 
 	EList<Mission> getInvolvingMissions();
 
@@ -255,23 +255,23 @@ public interface SystemComponent extends Component, InvolvedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Mission Involvements</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.MissionInvolvement}.
+   * Returns the value of the '<em><b>Mission Involvements</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.ctx.MissionInvolvement}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Mission Involvements</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Mission Involvements</em>' reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_MissionInvolvements()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The Mission Involvement relationships in which this element is referenced' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvingInvolvements'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Mission Involvements</em>' reference list.
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_MissionInvolvements()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The Mission Involvement relationships in which this element is referenced' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvingInvolvements'"
+   * @generated
+   */
 
 	EList<MissionInvolvement> getMissionInvolvements();
 
@@ -279,23 +279,23 @@ public interface SystemComponent extends Component, InvolvedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realized Entities</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.Entity}.
+   * Returns the value of the '<em><b>Realized Entities</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.Entity}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realized Entities</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realized Entities</em>' reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_RealizedEntities()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Entities that are realized by this System Component' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='realizingComponents'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realized Entities</em>' reference list.
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_RealizedEntities()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Entities that are realized by this System Component' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='realizingComponents'"
+   * @generated
+   */
 
 	EList<Entity> getRealizedEntities();
 
@@ -303,23 +303,23 @@ public interface SystemComponent extends Component, InvolvedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realizing Logical Components</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.la.LogicalComponent}.
+   * Returns the value of the '<em><b>Realizing Logical Components</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.la.LogicalComponent}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realizing Logical Components</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realizing Logical Components</em>' reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_RealizingLogicalComponents()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Logical Components that realize this System Components' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='realizingComponents'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realizing Logical Components</em>' reference list.
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_RealizingLogicalComponents()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Logical Components that realize this System Components' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='realizingComponents'"
+   * @generated
+   */
 
 	EList<LogicalComponent> getRealizingLogicalComponents();
 
@@ -327,23 +327,23 @@ public interface SystemComponent extends Component, InvolvedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocated System Functions</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemFunction}.
+   * Returns the value of the '<em><b>Allocated System Functions</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemFunction}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocated System Functions</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocated System Functions</em>' reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_AllocatedSystemFunctions()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedFunctions'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Allocated System Functions</em>' reference list.
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_AllocatedSystemFunctions()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedFunctions'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<SystemFunction> getAllocatedSystemFunctions();
 

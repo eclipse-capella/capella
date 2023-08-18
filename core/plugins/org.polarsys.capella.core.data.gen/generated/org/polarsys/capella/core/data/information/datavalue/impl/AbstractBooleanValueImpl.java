@@ -44,48 +44,48 @@ public abstract class AbstractBooleanValueImpl extends DataValueImpl implements 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractBooleanValueImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return DatavaluePackage.Literals.ABSTRACT_BOOLEAN_VALUE;
-	}
+    return DatavaluePackage.Literals.ABSTRACT_BOOLEAN_VALUE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public BooleanType getBooleanType() {
 
-		BooleanType booleanType = basicGetBooleanType();
-		return booleanType != null && booleanType.eIsProxy() ? (BooleanType)eResolveProxy((InternalEObject)booleanType) : booleanType;
-	}
+    BooleanType booleanType = basicGetBooleanType();
+    return booleanType != null && booleanType.eIsProxy() ? (BooleanType)eResolveProxy((InternalEObject)booleanType) : booleanType;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public BooleanType basicGetBooleanType() {
 
@@ -112,48 +112,48 @@ public abstract class AbstractBooleanValueImpl extends DataValueImpl implements 
     // A helper is found, let's use it. 
     EAnnotation annotation = DatavaluePackage.Literals.ABSTRACT_BOOLEAN_VALUE__BOOLEAN_TYPE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, DatavaluePackage.Literals.ABSTRACT_BOOLEAN_VALUE__BOOLEAN_TYPE, annotation);
-		
-		try {
-			return (BooleanType) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (BooleanType) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case DatavaluePackage.ABSTRACT_BOOLEAN_VALUE__BOOLEAN_TYPE:
-				if (resolve) return getBooleanType();
-				return basicGetBooleanType();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case DatavaluePackage.ABSTRACT_BOOLEAN_VALUE__BOOLEAN_TYPE:
+        if (resolve) return getBooleanType();
+        return basicGetBooleanType();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case DatavaluePackage.ABSTRACT_BOOLEAN_VALUE__BOOLEAN_TYPE:
-				return basicGetBooleanType() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case DatavaluePackage.ABSTRACT_BOOLEAN_VALUE__BOOLEAN_TYPE:
+        return basicGetBooleanType() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

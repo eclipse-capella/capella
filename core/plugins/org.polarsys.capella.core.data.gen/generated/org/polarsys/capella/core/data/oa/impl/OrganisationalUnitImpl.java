@@ -44,13 +44,13 @@ import org.polarsys.capella.core.data.oa.OrganisationalUnitComposition;
 public class OrganisationalUnitImpl extends NamedElementImpl implements OrganisationalUnit {
 
 	/**
-	 * The cached value of the '{@link #getOrganisationalUnitCompositions() <em>Organisational Unit Compositions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOrganisationalUnitCompositions() <em>Organisational Unit Compositions</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOrganisationalUnitCompositions()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOrganisationalUnitCompositions()
+   * @generated
+   * @ordered
+   */
 	protected EList<OrganisationalUnitComposition> organisationalUnitCompositions;
 
 
@@ -58,164 +58,164 @@ public class OrganisationalUnitImpl extends NamedElementImpl implements Organisa
 
 
 	/**
-	 * The cached value of the '{@link #getCommunityOfInterestMemberships() <em>Community Of Interest Memberships</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getCommunityOfInterestMemberships() <em>Community Of Interest Memberships</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCommunityOfInterestMemberships()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getCommunityOfInterestMemberships()
+   * @generated
+   * @ordered
+   */
 	protected EList<CommunityOfInterestComposition> communityOfInterestMemberships;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OrganisationalUnitImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OaPackage.Literals.ORGANISATIONAL_UNIT;
-	}
+    return OaPackage.Literals.ORGANISATIONAL_UNIT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<OrganisationalUnitComposition> getOrganisationalUnitCompositions() {
 
-		if (organisationalUnitCompositions == null) {
-			organisationalUnitCompositions = new EObjectContainmentEList.Resolving<OrganisationalUnitComposition>(OrganisationalUnitComposition.class, this, OaPackage.ORGANISATIONAL_UNIT__ORGANISATIONAL_UNIT_COMPOSITIONS);
-		}
-		return organisationalUnitCompositions;
-	}
+    if (organisationalUnitCompositions == null) {
+      organisationalUnitCompositions = new EObjectContainmentEList.Resolving<OrganisationalUnitComposition>(OrganisationalUnitComposition.class, this, OaPackage.ORGANISATIONAL_UNIT__ORGANISATIONAL_UNIT_COMPOSITIONS);
+    }
+    return organisationalUnitCompositions;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CommunityOfInterestComposition> getCommunityOfInterestMemberships() {
 
-		if (communityOfInterestMemberships == null) {
-			communityOfInterestMemberships = new EObjectResolvingEList<CommunityOfInterestComposition>(CommunityOfInterestComposition.class, this, OaPackage.ORGANISATIONAL_UNIT__COMMUNITY_OF_INTEREST_MEMBERSHIPS);
-		}
-		return communityOfInterestMemberships;
-	}
+    if (communityOfInterestMemberships == null) {
+      communityOfInterestMemberships = new EObjectResolvingEList<CommunityOfInterestComposition>(CommunityOfInterestComposition.class, this, OaPackage.ORGANISATIONAL_UNIT__COMMUNITY_OF_INTEREST_MEMBERSHIPS);
+    }
+    return communityOfInterestMemberships;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case OaPackage.ORGANISATIONAL_UNIT__ORGANISATIONAL_UNIT_COMPOSITIONS:
-				return ((InternalEList<?>)getOrganisationalUnitCompositions()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case OaPackage.ORGANISATIONAL_UNIT__ORGANISATIONAL_UNIT_COMPOSITIONS:
+        return ((InternalEList<?>)getOrganisationalUnitCompositions()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OaPackage.ORGANISATIONAL_UNIT__ORGANISATIONAL_UNIT_COMPOSITIONS:
-				return getOrganisationalUnitCompositions();
-			case OaPackage.ORGANISATIONAL_UNIT__COMMUNITY_OF_INTEREST_MEMBERSHIPS:
-				return getCommunityOfInterestMemberships();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case OaPackage.ORGANISATIONAL_UNIT__ORGANISATIONAL_UNIT_COMPOSITIONS:
+        return getOrganisationalUnitCompositions();
+      case OaPackage.ORGANISATIONAL_UNIT__COMMUNITY_OF_INTEREST_MEMBERSHIPS:
+        return getCommunityOfInterestMemberships();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case OaPackage.ORGANISATIONAL_UNIT__ORGANISATIONAL_UNIT_COMPOSITIONS:
-				getOrganisationalUnitCompositions().clear();
-				getOrganisationalUnitCompositions().addAll((Collection<? extends OrganisationalUnitComposition>)newValue);
-				return;
-			case OaPackage.ORGANISATIONAL_UNIT__COMMUNITY_OF_INTEREST_MEMBERSHIPS:
-				getCommunityOfInterestMemberships().clear();
-				getCommunityOfInterestMemberships().addAll((Collection<? extends CommunityOfInterestComposition>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case OaPackage.ORGANISATIONAL_UNIT__ORGANISATIONAL_UNIT_COMPOSITIONS:
+        getOrganisationalUnitCompositions().clear();
+        getOrganisationalUnitCompositions().addAll((Collection<? extends OrganisationalUnitComposition>)newValue);
+        return;
+      case OaPackage.ORGANISATIONAL_UNIT__COMMUNITY_OF_INTEREST_MEMBERSHIPS:
+        getCommunityOfInterestMemberships().clear();
+        getCommunityOfInterestMemberships().addAll((Collection<? extends CommunityOfInterestComposition>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case OaPackage.ORGANISATIONAL_UNIT__ORGANISATIONAL_UNIT_COMPOSITIONS:
-				getOrganisationalUnitCompositions().clear();
-				return;
-			case OaPackage.ORGANISATIONAL_UNIT__COMMUNITY_OF_INTEREST_MEMBERSHIPS:
-				getCommunityOfInterestMemberships().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.ORGANISATIONAL_UNIT__ORGANISATIONAL_UNIT_COMPOSITIONS:
+        getOrganisationalUnitCompositions().clear();
+        return;
+      case OaPackage.ORGANISATIONAL_UNIT__COMMUNITY_OF_INTEREST_MEMBERSHIPS:
+        getCommunityOfInterestMemberships().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OaPackage.ORGANISATIONAL_UNIT__ORGANISATIONAL_UNIT_COMPOSITIONS:
-				return organisationalUnitCompositions != null && !organisationalUnitCompositions.isEmpty();
-			case OaPackage.ORGANISATIONAL_UNIT__COMMUNITY_OF_INTEREST_MEMBERSHIPS:
-				return communityOfInterestMemberships != null && !communityOfInterestMemberships.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.ORGANISATIONAL_UNIT__ORGANISATIONAL_UNIT_COMPOSITIONS:
+        return organisationalUnitCompositions != null && !organisationalUnitCompositions.isEmpty();
+      case OaPackage.ORGANISATIONAL_UNIT__COMMUNITY_OF_INTEREST_MEMBERSHIPS:
+        return communityOfInterestMemberships != null && !communityOfInterestMemberships.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

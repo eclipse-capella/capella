@@ -61,292 +61,292 @@ public class BlockArchitectureItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor systemPropertyDescriptor;
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public BlockArchitectureItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process CsPackage.Literals.BLOCK_ARCHITECTURE__SYSTEM
-			if (systemPropertyDescriptor != null) {
-				Object systemValue = eObject.eGet(CsPackage.Literals.BLOCK_ARCHITECTURE__SYSTEM, true);
-				if (systemValue != null && systemValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) systemValue)) {
-					itemPropertyDescriptors.remove(systemPropertyDescriptor);
-				} else if (systemValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.BLOCK_ARCHITECTURE__SYSTEM) != null) {
-					itemPropertyDescriptors.remove(systemPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(systemPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(systemPropertyDescriptor);
-				}
-			}
-		}		
-	}
+    super.checkChildCreationExtender(object);
+    if (object instanceof EObject) {
+      EObject eObject = (EObject) object;
+      // Process CsPackage.Literals.BLOCK_ARCHITECTURE__SYSTEM
+      if (systemPropertyDescriptor != null) {
+        Object systemValue = eObject.eGet(CsPackage.Literals.BLOCK_ARCHITECTURE__SYSTEM, true);
+        if (systemValue != null && systemValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) systemValue)) {
+          itemPropertyDescriptors.remove(systemPropertyDescriptor);
+        } else if (systemValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.BLOCK_ARCHITECTURE__SYSTEM) != null) {
+          itemPropertyDescriptors.remove(systemPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(systemPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(systemPropertyDescriptor);
+        }
+      }
+    }		
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addProvisionedArchitectureAllocationsPropertyDescriptor(object);
-			addProvisioningArchitectureAllocationsPropertyDescriptor(object);
-			addAllocatedArchitecturesPropertyDescriptor(object);
-			addAllocatingArchitecturesPropertyDescriptor(object);
-			addSystemPropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addProvisionedArchitectureAllocationsPropertyDescriptor(object);
+      addProvisioningArchitectureAllocationsPropertyDescriptor(object);
+      addAllocatedArchitecturesPropertyDescriptor(object);
+      addAllocatingArchitecturesPropertyDescriptor(object);
+      addSystemPropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Provisioned Architecture Allocations feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Provisioned Architecture Allocations feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addProvisionedArchitectureAllocationsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_BlockArchitecture_provisionedArchitectureAllocations_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_BlockArchitecture_provisionedArchitectureAllocations_feature", "_UI_BlockArchitecture_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CsPackage.Literals.BLOCK_ARCHITECTURE__PROVISIONED_ARCHITECTURE_ALLOCATIONS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_BlockArchitecture_provisionedArchitectureAllocations_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_BlockArchitecture_provisionedArchitectureAllocations_feature", "_UI_BlockArchitecture_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CsPackage.Literals.BLOCK_ARCHITECTURE__PROVISIONED_ARCHITECTURE_ALLOCATIONS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Provisioning Architecture Allocations feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Provisioning Architecture Allocations feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addProvisioningArchitectureAllocationsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_BlockArchitecture_provisioningArchitectureAllocations_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_BlockArchitecture_provisioningArchitectureAllocations_feature", "_UI_BlockArchitecture_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CsPackage.Literals.BLOCK_ARCHITECTURE__PROVISIONING_ARCHITECTURE_ALLOCATIONS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_BlockArchitecture_provisioningArchitectureAllocations_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_BlockArchitecture_provisioningArchitectureAllocations_feature", "_UI_BlockArchitecture_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CsPackage.Literals.BLOCK_ARCHITECTURE__PROVISIONING_ARCHITECTURE_ALLOCATIONS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Allocated Architectures feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Allocated Architectures feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addAllocatedArchitecturesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_BlockArchitecture_allocatedArchitectures_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_BlockArchitecture_allocatedArchitectures_feature", "_UI_BlockArchitecture_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CsPackage.Literals.BLOCK_ARCHITECTURE__ALLOCATED_ARCHITECTURES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_BlockArchitecture_allocatedArchitectures_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_BlockArchitecture_allocatedArchitectures_feature", "_UI_BlockArchitecture_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CsPackage.Literals.BLOCK_ARCHITECTURE__ALLOCATED_ARCHITECTURES,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Allocating Architectures feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Allocating Architectures feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addAllocatingArchitecturesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_BlockArchitecture_allocatingArchitectures_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_BlockArchitecture_allocatingArchitectures_feature", "_UI_BlockArchitecture_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CsPackage.Literals.BLOCK_ARCHITECTURE__ALLOCATING_ARCHITECTURES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_BlockArchitecture_allocatingArchitectures_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_BlockArchitecture_allocatingArchitectures_feature", "_UI_BlockArchitecture_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CsPackage.Literals.BLOCK_ARCHITECTURE__ALLOCATING_ARCHITECTURES,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the System feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the System feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addSystemPropertyDescriptor(Object object) {
-		// begin-extension-code
-		systemPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_BlockArchitecture_system_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_BlockArchitecture_system_feature", "_UI_BlockArchitecture_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CsPackage.Literals.BLOCK_ARCHITECTURE__SYSTEM,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(systemPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    systemPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_BlockArchitecture_system_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_BlockArchitecture_system_feature", "_UI_BlockArchitecture_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CsPackage.Literals.BLOCK_ARCHITECTURE__SYSTEM,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(systemPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
+   * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+   * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_REQUIREMENT_PKGS);
-			childrenFeatures.add(CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG);
-			childrenFeatures.add(CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG);
-			childrenFeatures.add(CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_DATA_PKG);
-		}
-		return childrenFeatures;
-	}
+    if (childrenFeatures == null) {
+      super.getChildrenFeatures(object);
+      childrenFeatures.add(CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_REQUIREMENT_PKGS);
+      childrenFeatures.add(CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG);
+      childrenFeatures.add(CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG);
+      childrenFeatures.add(CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_DATA_PKG);
+    }
+    return childrenFeatures;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
+    // Check the type of the specified child object and return the proper feature to use for
+    // adding (see {@link AddCommand}) it as a child.
 
-		return super.getChildFeature(object, child);
-	}
+    return super.getChildFeature(object, child);
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
-		String label = ((BlockArchitecture)object).getName();
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_BlockArchitecture_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+    String label = ((BlockArchitecture)object).getName();
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_BlockArchitecture_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
+    updateChildren(notification);
 
-		switch (notification.getFeatureID(BlockArchitecture.class)) {
-			case CsPackage.BLOCK_ARCHITECTURE__OWNED_REQUIREMENT_PKGS:
-			case CsPackage.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG:
-			case CsPackage.BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG:
-			case CsPackage.BLOCK_ARCHITECTURE__OWNED_DATA_PKG:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
-		}
-		super.notifyChanged(notification);
-	}
+    switch (notification.getFeatureID(BlockArchitecture.class)) {
+      case CsPackage.BLOCK_ARCHITECTURE__OWNED_REQUIREMENT_PKGS:
+      case CsPackage.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG:
+      case CsPackage.BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG:
+      case CsPackage.BLOCK_ARCHITECTURE__OWNED_DATA_PKG:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+        return;
+    }
+    super.notifyChanged(notification);
+  }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
+    super.collectNewChildDescriptors(newChildDescriptors, object);
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -419,17 +419,17 @@ public class BlockArchitectureItemProvider
                 // end-extension-code
 
 
-	}
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 	// end-capella-code
 }

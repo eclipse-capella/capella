@@ -43,24 +43,24 @@ public interface ActivityGroup extends ModelElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Super Group</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.common.data.activity.ActivityGroup#getSubGroups <em>Sub Groups</em>}'.
+   * Returns the value of the '<em><b>Super Group</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.common.data.activity.ActivityGroup#getSubGroups <em>Sub Groups</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Super Group</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Super Group</em>' container reference.
-	 * @see #setSuperGroup(ActivityGroup)
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityGroup_SuperGroup()
-	 * @see org.polarsys.capella.common.data.activity.ActivityGroup#getSubGroups
-	 * @model opposite="subGroups" transient="false"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Group immediately containing the group\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='_todo_ If it is corresponding to UML, this attribute should be derived'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ActivityGroup::superGroup#keyword::none' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Super Group</em>' container reference.
+   * @see #setSuperGroup(ActivityGroup)
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityGroup_SuperGroup()
+   * @see org.polarsys.capella.common.data.activity.ActivityGroup#getSubGroups
+   * @model opposite="subGroups" transient="false"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Group immediately containing the group\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='_todo_ If it is corresponding to UML, this attribute should be derived'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ActivityGroup::superGroup#keyword::none' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	ActivityGroup getSuperGroup();
 
@@ -68,14 +68,14 @@ public interface ActivityGroup extends ModelElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.activity.ActivityGroup#getSuperGroup <em>Super Group</em>}' container reference.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.activity.ActivityGroup#getSuperGroup <em>Super Group</em>}' container reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Super Group</em>' container reference.
-	 * @see #getSuperGroup()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Super Group</em>' container reference.
+   * @see #getSuperGroup()
+   * @generated
+   */
 
 	void setSuperGroup(ActivityGroup value);
 
@@ -86,24 +86,24 @@ public interface ActivityGroup extends ModelElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Sub Groups</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.activity.ActivityGroup}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.common.data.activity.ActivityGroup#getSuperGroup <em>Super Group</em>}'.
+   * Returns the value of the '<em><b>Sub Groups</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.activity.ActivityGroup}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.common.data.activity.ActivityGroup#getSuperGroup <em>Super Group</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Sub Groups</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sub Groups</em>' containment reference list.
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityGroup_SubGroups()
-	 * @see org.polarsys.capella.common.data.activity.ActivityGroup#getSuperGroup
-	 * @model opposite="superGroup" containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Groups immediately contained in the group\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='_todo_ If it is corresponding to UML, this attribute should be derived'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ActivityGroup::subgroup#keyword::none' explanation='none' constraints='Order must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Sub Groups</em>' containment reference list.
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityGroup_SubGroups()
+   * @see org.polarsys.capella.common.data.activity.ActivityGroup#getSuperGroup
+   * @model opposite="superGroup" containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Groups immediately contained in the group\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='_todo_ If it is corresponding to UML, this attribute should be derived'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ActivityGroup::subgroup#keyword::none' explanation='none' constraints='Order must be computed'"
+   * @generated
+   */
 
 	EList<ActivityGroup> getSubGroups();
 
@@ -114,22 +114,22 @@ public interface ActivityGroup extends ModelElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Nodes</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.activity.ActivityNode}.
+   * Returns the value of the '<em><b>Owned Nodes</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.activity.ActivityNode}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Nodes</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Nodes</em>' containment reference list.
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityGroup_OwnedNodes()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Nodes immediately contained in the group. This is a derived union\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='_todo_ If it is corresponding to UML, this attribute should be derived'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ActivityGroup::containedNode#keyword::none' explanation='none' constraints='Order must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Nodes</em>' containment reference list.
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityGroup_OwnedNodes()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Nodes immediately contained in the group. This is a derived union\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='_todo_ If it is corresponding to UML, this attribute should be derived'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ActivityGroup::containedNode#keyword::none' explanation='none' constraints='Order must be computed'"
+   * @generated
+   */
 
 	EList<ActivityNode> getOwnedNodes();
 
@@ -140,22 +140,22 @@ public interface ActivityGroup extends ModelElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Edges</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.activity.ActivityEdge}.
+   * Returns the value of the '<em><b>Owned Edges</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.activity.ActivityEdge}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Edges</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Edges</em>' containment reference list.
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityGroup_OwnedEdges()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Edges immediately contained in the group. This is a derived union\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='_todo_ If it is corresponding to UML, this attribute should be derived'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ActivityGroup::containedEdge#keyword::none' explanation='none' constraints='Order must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Edges</em>' containment reference list.
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityGroup_OwnedEdges()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Edges immediately contained in the group. This is a derived union\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='_todo_ If it is corresponding to UML, this attribute should be derived'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ActivityGroup::containedEdge#keyword::none' explanation='none' constraints='Order must be computed'"
+   * @generated
+   */
 
 	EList<ActivityEdge> getOwnedEdges();
 

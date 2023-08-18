@@ -42,13 +42,13 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecturePkg;
 public class PhysicalArchitecturePkgImpl extends BlockArchitecturePkgImpl implements PhysicalArchitecturePkg {
 
 	/**
-	 * The cached value of the '{@link #getOwnedPhysicalArchitecturePkgs() <em>Owned Physical Architecture Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPhysicalArchitecturePkgs() <em>Owned Physical Architecture Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPhysicalArchitecturePkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPhysicalArchitecturePkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<PhysicalArchitecturePkg> ownedPhysicalArchitecturePkgs;
 
 
@@ -56,166 +56,166 @@ public class PhysicalArchitecturePkgImpl extends BlockArchitecturePkgImpl implem
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedPhysicalArchitectures() <em>Owned Physical Architectures</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPhysicalArchitectures() <em>Owned Physical Architectures</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPhysicalArchitectures()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPhysicalArchitectures()
+   * @generated
+   * @ordered
+   */
 	protected EList<PhysicalArchitecture> ownedPhysicalArchitectures;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalArchitecturePkgImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return PaPackage.Literals.PHYSICAL_ARCHITECTURE_PKG;
-	}
+    return PaPackage.Literals.PHYSICAL_ARCHITECTURE_PKG;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalArchitecturePkg> getOwnedPhysicalArchitecturePkgs() {
 
-		if (ownedPhysicalArchitecturePkgs == null) {
-			ownedPhysicalArchitecturePkgs = new EObjectContainmentEList.Resolving<PhysicalArchitecturePkg>(PhysicalArchitecturePkg.class, this, PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURE_PKGS);
-		}
-		return ownedPhysicalArchitecturePkgs;
-	}
+    if (ownedPhysicalArchitecturePkgs == null) {
+      ownedPhysicalArchitecturePkgs = new EObjectContainmentEList.Resolving<PhysicalArchitecturePkg>(PhysicalArchitecturePkg.class, this, PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURE_PKGS);
+    }
+    return ownedPhysicalArchitecturePkgs;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalArchitecture> getOwnedPhysicalArchitectures() {
 
-		if (ownedPhysicalArchitectures == null) {
-			ownedPhysicalArchitectures = new EObjectContainmentEList.Resolving<PhysicalArchitecture>(PhysicalArchitecture.class, this, PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURES);
-		}
-		return ownedPhysicalArchitectures;
-	}
+    if (ownedPhysicalArchitectures == null) {
+      ownedPhysicalArchitectures = new EObjectContainmentEList.Resolving<PhysicalArchitecture>(PhysicalArchitecture.class, this, PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURES);
+    }
+    return ownedPhysicalArchitectures;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURE_PKGS:
-				return ((InternalEList<?>)getOwnedPhysicalArchitecturePkgs()).basicRemove(otherEnd, msgs);
-			case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURES:
-				return ((InternalEList<?>)getOwnedPhysicalArchitectures()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURE_PKGS:
+        return ((InternalEList<?>)getOwnedPhysicalArchitecturePkgs()).basicRemove(otherEnd, msgs);
+      case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURES:
+        return ((InternalEList<?>)getOwnedPhysicalArchitectures()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURE_PKGS:
-				return getOwnedPhysicalArchitecturePkgs();
-			case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURES:
-				return getOwnedPhysicalArchitectures();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURE_PKGS:
+        return getOwnedPhysicalArchitecturePkgs();
+      case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURES:
+        return getOwnedPhysicalArchitectures();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURE_PKGS:
-				getOwnedPhysicalArchitecturePkgs().clear();
-				getOwnedPhysicalArchitecturePkgs().addAll((Collection<? extends PhysicalArchitecturePkg>)newValue);
-				return;
-			case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURES:
-				getOwnedPhysicalArchitectures().clear();
-				getOwnedPhysicalArchitectures().addAll((Collection<? extends PhysicalArchitecture>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURE_PKGS:
+        getOwnedPhysicalArchitecturePkgs().clear();
+        getOwnedPhysicalArchitecturePkgs().addAll((Collection<? extends PhysicalArchitecturePkg>)newValue);
+        return;
+      case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURES:
+        getOwnedPhysicalArchitectures().clear();
+        getOwnedPhysicalArchitectures().addAll((Collection<? extends PhysicalArchitecture>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURE_PKGS:
-				getOwnedPhysicalArchitecturePkgs().clear();
-				return;
-			case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURES:
-				getOwnedPhysicalArchitectures().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURE_PKGS:
+        getOwnedPhysicalArchitecturePkgs().clear();
+        return;
+      case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURES:
+        getOwnedPhysicalArchitectures().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURE_PKGS:
-				return ownedPhysicalArchitecturePkgs != null && !ownedPhysicalArchitecturePkgs.isEmpty();
-			case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURES:
-				return ownedPhysicalArchitectures != null && !ownedPhysicalArchitectures.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURE_PKGS:
+        return ownedPhysicalArchitecturePkgs != null && !ownedPhysicalArchitecturePkgs.isEmpty();
+      case PaPackage.PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURES:
+        return ownedPhysicalArchitectures != null && !ownedPhysicalArchitectures.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

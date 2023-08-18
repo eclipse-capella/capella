@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.information.InformationPackage;
  */
 public class ExchangeItemInstanceImpl extends AbstractInstanceImpl implements ExchangeItemInstance {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ExchangeItemInstanceImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.EXCHANGE_ITEM_INSTANCE;
-	}
+    return InformationPackage.Literals.EXCHANGE_ITEM_INSTANCE;
+  }
 
 
 

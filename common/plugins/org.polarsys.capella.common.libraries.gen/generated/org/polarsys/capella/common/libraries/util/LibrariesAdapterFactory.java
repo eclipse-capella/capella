@@ -36,208 +36,208 @@ import org.polarsys.kitalpha.emde.model.ExtensibleElement;
  */
 public class LibrariesAdapterFactory extends AdapterFactoryImpl {
 	/**
-	 * The cached model package.
-	 * <!-- begin-user-doc -->
+   * The cached model package.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected static LibrariesPackage modelPackage;
 
 	/**
-	 * Creates an instance of the adapter factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the adapter factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public LibrariesAdapterFactory() {
-		if (modelPackage == null) {
-			modelPackage = LibrariesPackage.eINSTANCE;
-		}
-	}
+    if (modelPackage == null) {
+      modelPackage = LibrariesPackage.eINSTANCE;
+    }
+  }
 
 	/**
-	 * Returns whether this factory is applicable for the type of the object.
-	 * <!-- begin-user-doc -->
+   * Returns whether this factory is applicable for the type of the object.
+   * <!-- begin-user-doc -->
 	 * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
 	 * <!-- end-user-doc -->
-	 * @return whether this factory is applicable for the type of the object.
-	 * @generated
-	 */
+   * @return whether this factory is applicable for the type of the object.
+   * @generated
+   */
 	@Override
 	public boolean isFactoryForType(Object object) {
-		if (object == modelPackage) {
-			return true;
-		}
-		if (object instanceof EObject) {
-			return ((EObject)object).eClass().getEPackage() == modelPackage;
-		}
-		return false;
-	}
+    if (object == modelPackage) {
+      return true;
+    }
+    if (object instanceof EObject) {
+      return ((EObject)object).eClass().getEPackage() == modelPackage;
+    }
+    return false;
+  }
 
 	/**
-	 * The switch that delegates to the <code>createXXX</code> methods.
-	 * <!-- begin-user-doc -->
+   * The switch that delegates to the <code>createXXX</code> methods.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected LibrariesSwitch<Adapter> modelSwitch =
 		new LibrariesSwitch<Adapter>() {
-			@Override
-			public Adapter caseModelInformation(ModelInformation object) {
-				return createModelInformationAdapter();
-			}
-			@Override
-			public Adapter caseLibraryReference(LibraryReference object) {
-				return createLibraryReferenceAdapter();
-			}
-			@Override
-			public Adapter caseModelVersion(ModelVersion object) {
-				return createModelVersionAdapter();
-			}
-			@Override
-			public Adapter caseLibraryAbstractElement(LibraryAbstractElement object) {
-				return createLibraryAbstractElementAdapter();
-			}
-			@Override
-			public Adapter caseElement(Element object) {
-				return createElementAdapter();
-			}
-			@Override
-			public Adapter caseExtensibleElement(ExtensibleElement object) {
-				return createExtensibleElementAdapter();
-			}
-			@Override
-			public Adapter caseElementExtension(ElementExtension object) {
-				return createElementExtensionAdapter();
-			}
-			@Override
-			public Adapter defaultCase(EObject object) {
-				return createEObjectAdapter();
-			}
-		};
+      @Override
+      public Adapter caseModelInformation(ModelInformation object) {
+        return createModelInformationAdapter();
+      }
+      @Override
+      public Adapter caseLibraryReference(LibraryReference object) {
+        return createLibraryReferenceAdapter();
+      }
+      @Override
+      public Adapter caseModelVersion(ModelVersion object) {
+        return createModelVersionAdapter();
+      }
+      @Override
+      public Adapter caseLibraryAbstractElement(LibraryAbstractElement object) {
+        return createLibraryAbstractElementAdapter();
+      }
+      @Override
+      public Adapter caseElement(Element object) {
+        return createElementAdapter();
+      }
+      @Override
+      public Adapter caseExtensibleElement(ExtensibleElement object) {
+        return createExtensibleElementAdapter();
+      }
+      @Override
+      public Adapter caseElementExtension(ElementExtension object) {
+        return createElementExtensionAdapter();
+      }
+      @Override
+      public Adapter defaultCase(EObject object) {
+        return createEObjectAdapter();
+      }
+    };
 
 	/**
-	 * Creates an adapter for the <code>target</code>.
-	 * <!-- begin-user-doc -->
+   * Creates an adapter for the <code>target</code>.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param target the object to adapt.
-	 * @return the adapter for the <code>target</code>.
-	 * @generated
-	 */
+   * @param target the object to adapt.
+   * @return the adapter for the <code>target</code>.
+   * @generated
+   */
 	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject)target);
-	}
+    return modelSwitch.doSwitch((EObject)target);
+  }
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.libraries.ModelInformation <em>Model Information</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.libraries.ModelInformation <em>Model Information</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.common.libraries.ModelInformation
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.common.libraries.ModelInformation
+   * @generated
+   */
 	public Adapter createModelInformationAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.libraries.LibraryReference <em>Library Reference</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.libraries.LibraryReference <em>Library Reference</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.common.libraries.LibraryReference
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.common.libraries.LibraryReference
+   * @generated
+   */
 	public Adapter createLibraryReferenceAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.libraries.ModelVersion <em>Model Version</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.libraries.ModelVersion <em>Model Version</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.common.libraries.ModelVersion
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.common.libraries.ModelVersion
+   * @generated
+   */
 	public Adapter createModelVersionAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.libraries.LibraryAbstractElement <em>Library Abstract Element</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.libraries.LibraryAbstractElement <em>Library Abstract Element</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.common.libraries.LibraryAbstractElement
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.common.libraries.LibraryAbstractElement
+   * @generated
+   */
 	public Adapter createLibraryAbstractElementAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.kitalpha.emde.model.Element <em>Element</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.kitalpha.emde.model.Element <em>Element</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.kitalpha.emde.model.Element
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.kitalpha.emde.model.Element
+   * @generated
+   */
 	public Adapter createElementAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.kitalpha.emde.model.ExtensibleElement <em>Extensible Element</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.kitalpha.emde.model.ExtensibleElement <em>Extensible Element</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.kitalpha.emde.model.ExtensibleElement
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.kitalpha.emde.model.ExtensibleElement
+   * @generated
+   */
 	public Adapter createExtensibleElementAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.kitalpha.emde.model.ElementExtension <em>Element Extension</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.kitalpha.emde.model.ElementExtension <em>Element Extension</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.kitalpha.emde.model.ElementExtension
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.kitalpha.emde.model.ElementExtension
+   * @generated
+   */
 	public Adapter createElementExtensionAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for the default case.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for the default case.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @generated
+   */
 	public Adapter createEObjectAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 } //LibrariesAdapterFactory

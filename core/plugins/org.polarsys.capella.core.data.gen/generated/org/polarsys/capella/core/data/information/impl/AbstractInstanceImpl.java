@@ -47,35 +47,35 @@ public abstract class AbstractInstanceImpl extends PropertyImpl implements Abstr
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractInstanceImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.ABSTRACT_INSTANCE;
-	}
+    return InformationPackage.Literals.ABSTRACT_INSTANCE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<InstanceRole> getRepresentingInstanceRoles() {
 
@@ -102,48 +102,48 @@ public abstract class AbstractInstanceImpl extends PropertyImpl implements Abstr
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<InstanceRole> resultAsList = (Collection<InstanceRole>) result;
-		return new EcoreEList.UnmodifiableEList<InstanceRole>(this, InformationPackage.Literals.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<InstanceRole> resultAsList = (Collection<InstanceRole>) result;
+    return new EcoreEList.UnmodifiableEList<InstanceRole>(this, InformationPackage.Literals.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InformationPackage.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES:
-				return getRepresentingInstanceRoles();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InformationPackage.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES:
+        return getRepresentingInstanceRoles();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InformationPackage.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES:
-				return !getRepresentingInstanceRoles().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES:
+        return !getRepresentingInstanceRoles().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

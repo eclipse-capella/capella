@@ -44,24 +44,24 @@ public interface AssociationPkg extends Structure {
 
 
 	/**
-	 * Returns the value of the '<em><b>Visibility</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.capellacore.VisibilityKind}.
+   * Returns the value of the '<em><b>Visibility</b></em>' attribute.
+   * The literals are from the enumeration {@link org.polarsys.capella.core.data.capellacore.VisibilityKind}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Visibility</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Visibility</em>' attribute.
-	 * @see org.polarsys.capella.core.data.capellacore.VisibilityKind
-	 * @see #setVisibility(VisibilityKind)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getAssociationPkg_Visibility()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Determines where the NamedElement appears within different Namespaces within the overall model, and its\r\naccessibility.\r\n[source: UML superstructure v2.2]' constraints='none' type='refer to VisibilityKind description' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::visibility' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Visibility</em>' attribute.
+   * @see org.polarsys.capella.core.data.capellacore.VisibilityKind
+   * @see #setVisibility(VisibilityKind)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getAssociationPkg_Visibility()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Determines where the NamedElement appears within different Namespaces within the overall model, and its\r\naccessibility.\r\n[source: UML superstructure v2.2]' constraints='none' type='refer to VisibilityKind description' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::visibility' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	VisibilityKind getVisibility();
 
@@ -69,15 +69,15 @@ public interface AssociationPkg extends Structure {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.AssociationPkg#getVisibility <em>Visibility</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.AssociationPkg#getVisibility <em>Visibility</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Visibility</em>' attribute.
-	 * @see org.polarsys.capella.core.data.capellacore.VisibilityKind
-	 * @see #getVisibility()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Visibility</em>' attribute.
+   * @see org.polarsys.capella.core.data.capellacore.VisibilityKind
+   * @see #getVisibility()
+   * @generated
+   */
 
 	void setVisibility(VisibilityKind value);
 
@@ -88,26 +88,26 @@ public interface AssociationPkg extends Structure {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Associations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.Association}.
+   * Returns the value of the '<em><b>Owned Associations</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.Association}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Associations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Associations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getAssociationPkg_OwnedAssociations()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedAssociations'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Associations elements contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Association stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Associations</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getAssociationPkg_OwnedAssociations()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedAssociations'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Associations elements contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Association stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<Association> getOwnedAssociations();
 

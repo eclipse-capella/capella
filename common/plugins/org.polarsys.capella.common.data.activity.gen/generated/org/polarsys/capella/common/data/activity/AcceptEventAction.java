@@ -40,22 +40,22 @@ public interface AcceptEventAction extends AbstractAction {
 
 
 	/**
-	 * Returns the value of the '<em><b>Is Unmarshall</b></em>' attribute.
+   * Returns the value of the '<em><b>Is Unmarshall</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Is Unmarshall</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Is Unmarshall</em>' attribute.
-	 * @see #setIsUnmarshall(boolean)
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getAcceptEventAction_IsUnmarshall()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::AcceptEventAction::isUnmarshall' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Is Unmarshall</em>' attribute.
+   * @see #setIsUnmarshall(boolean)
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getAcceptEventAction_IsUnmarshall()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::AcceptEventAction::isUnmarshall' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	boolean isIsUnmarshall();
 
@@ -63,14 +63,14 @@ public interface AcceptEventAction extends AbstractAction {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.activity.AcceptEventAction#isIsUnmarshall <em>Is Unmarshall</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.activity.AcceptEventAction#isIsUnmarshall <em>Is Unmarshall</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Unmarshall</em>' attribute.
-	 * @see #isIsUnmarshall()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Is Unmarshall</em>' attribute.
+   * @see #isIsUnmarshall()
+   * @generated
+   */
 
 	void setIsUnmarshall(boolean value);
 
@@ -81,22 +81,22 @@ public interface AcceptEventAction extends AbstractAction {
 
 
 	/**
-	 * Returns the value of the '<em><b>Result</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.activity.OutputPin}.
+   * Returns the value of the '<em><b>Result</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.activity.OutputPin}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Result</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Result</em>' containment reference list.
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getAcceptEventAction_Result()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity\r\nmight not be preserved\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::AcceptEventAction::result' explanation='none' constraints='Order must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Result</em>' containment reference list.
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getAcceptEventAction_Result()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity\r\nmight not be preserved\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::AcceptEventAction::result' explanation='none' constraints='Order must be computed'"
+   * @generated
+   */
 
 	EList<OutputPin> getResult();
 

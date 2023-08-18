@@ -41,22 +41,22 @@ public interface AbstractParameterSet extends AbstractNamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Conditions</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractConstraint}.
+   * Returns the value of the '<em><b>Owned Conditions</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractConstraint}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Conditions</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Conditions</em>' containment reference list.
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameterSet_OwnedConditions()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using\r\nthe values provided for those parameters, or the owner of the parameters in an output parameter set to end execution\r\nproviding the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ParameterSet::condition' explanation='none' constraints='Order must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Conditions</em>' containment reference list.
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameterSet_OwnedConditions()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using\r\nthe values provided for those parameters, or the owner of the parameters in an output parameter set to end execution\r\nproviding the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ParameterSet::condition' explanation='none' constraints='Order must be computed'"
+   * @generated
+   */
 
 	EList<AbstractConstraint> getOwnedConditions();
 
@@ -67,22 +67,22 @@ public interface AbstractParameterSet extends AbstractNamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Probability</b></em>' containment reference.
+   * Returns the value of the '<em><b>Probability</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Probability</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Probability</em>' containment reference.
-	 * @see #setProbability(ValueSpecification)
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameterSet_Probability()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the probability the parameter set will be given values at runtime\r\n[source: SysML specification v1.1]' constraints='These must be between zero and one inclusive, and add up to one for output parameter sets of the\r\nsame behavior at the time the probabilities are used.\r\n[source: SysML specification v1.1]' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='If SysML::Activities::Probability stereotype is applied, Capella AbstractParameterSet::probability is equal to SysML::Activities::Probability::probability.' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Probability</em>' containment reference.
+   * @see #setProbability(ValueSpecification)
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameterSet_Probability()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the probability the parameter set will be given values at runtime\r\n[source: SysML specification v1.1]' constraints='These must be between zero and one inclusive, and add up to one for output parameter sets of the\r\nsame behavior at the time the probabilities are used.\r\n[source: SysML specification v1.1]' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='If SysML::Activities::Probability stereotype is applied, Capella AbstractParameterSet::probability is equal to SysML::Activities::Probability::probability.' constraints='none'"
+   * @generated
+   */
 
 	ValueSpecification getProbability();
 
@@ -90,14 +90,14 @@ public interface AbstractParameterSet extends AbstractNamedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameterSet#getProbability <em>Probability</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameterSet#getProbability <em>Probability</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Probability</em>' containment reference.
-	 * @see #getProbability()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Probability</em>' containment reference.
+   * @see #getProbability()
+   * @generated
+   */
 
 	void setProbability(ValueSpecification value);
 
@@ -108,24 +108,24 @@ public interface AbstractParameterSet extends AbstractNamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Parameters</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractParameter}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#getParameterSet <em>Parameter Set</em>}'.
+   * Returns the value of the '<em><b>Parameters</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractParameter}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#getParameterSet <em>Parameter Set</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Parameters</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parameters</em>' reference list.
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameterSet_Parameters()
-	 * @see org.polarsys.capella.common.data.modellingcore.AbstractParameter#getParameterSet
-	 * @model opposite="parameterSet" required="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Parameters in the parameter set.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ParameterSet::parameter' explanation='none' constraints='Order must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Parameters</em>' reference list.
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameterSet_Parameters()
+   * @see org.polarsys.capella.common.data.modellingcore.AbstractParameter#getParameterSet
+   * @model opposite="parameterSet" required="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Parameters in the parameter set.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ParameterSet::parameter' explanation='none' constraints='Order must be computed'"
+   * @generated
+   */
 
 	EList<AbstractParameter> getParameters();
 

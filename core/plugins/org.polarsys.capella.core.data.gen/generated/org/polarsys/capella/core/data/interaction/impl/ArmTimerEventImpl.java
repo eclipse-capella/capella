@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  */
 public class ArmTimerEventImpl extends EventImpl implements ArmTimerEvent {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ArmTimerEventImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.ARM_TIMER_EVENT;
-	}
+    return InteractionPackage.Literals.ARM_TIMER_EVENT;
+  }
 
 
 

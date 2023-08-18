@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  */
 public class ExecutionEventImpl extends EventImpl implements ExecutionEvent {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ExecutionEventImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.EXECUTION_EVENT;
-	}
+    return InteractionPackage.Literals.EXECUTION_EVENT;
+  }
 
 
 

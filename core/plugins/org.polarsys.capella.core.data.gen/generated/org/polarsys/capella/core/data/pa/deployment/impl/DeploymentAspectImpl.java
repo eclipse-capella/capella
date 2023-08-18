@@ -61,13 +61,13 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 public class DeploymentAspectImpl extends NamedElementImpl implements DeploymentAspect {
 
 	/**
-	 * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedTraces()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedTraces()
+   * @generated
+   * @ordered
+   */
 	protected EList<Trace> ownedTraces;
 
 
@@ -83,13 +83,13 @@ public class DeploymentAspectImpl extends NamedElementImpl implements Deployment
 
 
 	/**
-	 * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNamingRules()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getNamingRules()
+   * @generated
+   * @ordered
+   */
 	protected EList<NamingRule> namingRules;
 
 
@@ -97,13 +97,13 @@ public class DeploymentAspectImpl extends NamedElementImpl implements Deployment
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPropertyValuePkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPropertyValuePkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<PropertyValuePkg> ownedPropertyValuePkgs;
 
 
@@ -111,13 +111,13 @@ public class DeploymentAspectImpl extends NamedElementImpl implements Deployment
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedConfigurations() <em>Owned Configurations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedConfigurations() <em>Owned Configurations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedConfigurations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedConfigurations()
+   * @generated
+   * @ordered
+   */
 	protected EList<DeploymentConfiguration> ownedConfigurations;
 
 
@@ -125,66 +125,66 @@ public class DeploymentAspectImpl extends NamedElementImpl implements Deployment
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedDeploymentAspects() <em>Owned Deployment Aspects</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedDeploymentAspects() <em>Owned Deployment Aspects</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedDeploymentAspects()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedDeploymentAspects()
+   * @generated
+   * @ordered
+   */
 	protected EList<DeploymentAspect> ownedDeploymentAspects;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected DeploymentAspectImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return DeploymentPackage.Literals.DEPLOYMENT_ASPECT;
-	}
+    return DeploymentPackage.Literals.DEPLOYMENT_ASPECT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Trace> getOwnedTraces() {
 
-		if (ownedTraces == null) {
-			ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this, DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_TRACES);
-		}
-		return ownedTraces;
-	}
+    if (ownedTraces == null) {
+      ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this, DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_TRACES);
+    }
+    return ownedTraces;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<GenericTrace> getContainedGenericTraces() {
 
@@ -211,27 +211,27 @@ public class DeploymentAspectImpl extends NamedElementImpl implements Deployment
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
-		return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
+    return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<RequirementsTrace> getContainedRequirementsTraces() {
 
@@ -258,228 +258,228 @@ public class DeploymentAspectImpl extends NamedElementImpl implements Deployment
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
-		return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
+    return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<NamingRule> getNamingRules() {
 
-		if (namingRules == null) {
-			namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, DeploymentPackage.DEPLOYMENT_ASPECT__NAMING_RULES);
-		}
-		return namingRules;
-	}
+    if (namingRules == null) {
+      namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, DeploymentPackage.DEPLOYMENT_ASPECT__NAMING_RULES);
+    }
+    return namingRules;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PropertyValuePkg> getOwnedPropertyValuePkgs() {
 
-		if (ownedPropertyValuePkgs == null) {
-			ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this, DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_PROPERTY_VALUE_PKGS);
-		}
-		return ownedPropertyValuePkgs;
-	}
+    if (ownedPropertyValuePkgs == null) {
+      ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this, DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_PROPERTY_VALUE_PKGS);
+    }
+    return ownedPropertyValuePkgs;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<DeploymentConfiguration> getOwnedConfigurations() {
 
-		if (ownedConfigurations == null) {
-			ownedConfigurations = new EObjectContainmentEList.Resolving<DeploymentConfiguration>(DeploymentConfiguration.class, this, DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_CONFIGURATIONS);
-		}
-		return ownedConfigurations;
-	}
+    if (ownedConfigurations == null) {
+      ownedConfigurations = new EObjectContainmentEList.Resolving<DeploymentConfiguration>(DeploymentConfiguration.class, this, DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_CONFIGURATIONS);
+    }
+    return ownedConfigurations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<DeploymentAspect> getOwnedDeploymentAspects() {
 
-		if (ownedDeploymentAspects == null) {
-			ownedDeploymentAspects = new EObjectContainmentEList<DeploymentAspect>(DeploymentAspect.class, this, DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_DEPLOYMENT_ASPECTS);
-		}
-		return ownedDeploymentAspects;
-	}
+    if (ownedDeploymentAspects == null) {
+      ownedDeploymentAspects = new EObjectContainmentEList<DeploymentAspect>(DeploymentAspect.class, this, DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_DEPLOYMENT_ASPECTS);
+    }
+    return ownedDeploymentAspects;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_TRACES:
-				return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
-			case DeploymentPackage.DEPLOYMENT_ASPECT__NAMING_RULES:
-				return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_PROPERTY_VALUE_PKGS:
-				return ((InternalEList<?>)getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_CONFIGURATIONS:
-				return ((InternalEList<?>)getOwnedConfigurations()).basicRemove(otherEnd, msgs);
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_DEPLOYMENT_ASPECTS:
-				return ((InternalEList<?>)getOwnedDeploymentAspects()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_TRACES:
+        return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
+      case DeploymentPackage.DEPLOYMENT_ASPECT__NAMING_RULES:
+        return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_PROPERTY_VALUE_PKGS:
+        return ((InternalEList<?>)getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_CONFIGURATIONS:
+        return ((InternalEList<?>)getOwnedConfigurations()).basicRemove(otherEnd, msgs);
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_DEPLOYMENT_ASPECTS:
+        return ((InternalEList<?>)getOwnedDeploymentAspects()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_TRACES:
-				return getOwnedTraces();
-			case DeploymentPackage.DEPLOYMENT_ASPECT__CONTAINED_GENERIC_TRACES:
-				return getContainedGenericTraces();
-			case DeploymentPackage.DEPLOYMENT_ASPECT__CONTAINED_REQUIREMENTS_TRACES:
-				return getContainedRequirementsTraces();
-			case DeploymentPackage.DEPLOYMENT_ASPECT__NAMING_RULES:
-				return getNamingRules();
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_PROPERTY_VALUE_PKGS:
-				return getOwnedPropertyValuePkgs();
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_CONFIGURATIONS:
-				return getOwnedConfigurations();
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_DEPLOYMENT_ASPECTS:
-				return getOwnedDeploymentAspects();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_TRACES:
+        return getOwnedTraces();
+      case DeploymentPackage.DEPLOYMENT_ASPECT__CONTAINED_GENERIC_TRACES:
+        return getContainedGenericTraces();
+      case DeploymentPackage.DEPLOYMENT_ASPECT__CONTAINED_REQUIREMENTS_TRACES:
+        return getContainedRequirementsTraces();
+      case DeploymentPackage.DEPLOYMENT_ASPECT__NAMING_RULES:
+        return getNamingRules();
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_PROPERTY_VALUE_PKGS:
+        return getOwnedPropertyValuePkgs();
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_CONFIGURATIONS:
+        return getOwnedConfigurations();
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_DEPLOYMENT_ASPECTS:
+        return getOwnedDeploymentAspects();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_TRACES:
-				getOwnedTraces().clear();
-				getOwnedTraces().addAll((Collection<? extends Trace>)newValue);
-				return;
-			case DeploymentPackage.DEPLOYMENT_ASPECT__NAMING_RULES:
-				getNamingRules().clear();
-				getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
-				return;
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_PROPERTY_VALUE_PKGS:
-				getOwnedPropertyValuePkgs().clear();
-				getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
-				return;
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_CONFIGURATIONS:
-				getOwnedConfigurations().clear();
-				getOwnedConfigurations().addAll((Collection<? extends DeploymentConfiguration>)newValue);
-				return;
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_DEPLOYMENT_ASPECTS:
-				getOwnedDeploymentAspects().clear();
-				getOwnedDeploymentAspects().addAll((Collection<? extends DeploymentAspect>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_TRACES:
+        getOwnedTraces().clear();
+        getOwnedTraces().addAll((Collection<? extends Trace>)newValue);
+        return;
+      case DeploymentPackage.DEPLOYMENT_ASPECT__NAMING_RULES:
+        getNamingRules().clear();
+        getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
+        return;
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_PROPERTY_VALUE_PKGS:
+        getOwnedPropertyValuePkgs().clear();
+        getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
+        return;
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_CONFIGURATIONS:
+        getOwnedConfigurations().clear();
+        getOwnedConfigurations().addAll((Collection<? extends DeploymentConfiguration>)newValue);
+        return;
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_DEPLOYMENT_ASPECTS:
+        getOwnedDeploymentAspects().clear();
+        getOwnedDeploymentAspects().addAll((Collection<? extends DeploymentAspect>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_TRACES:
-				getOwnedTraces().clear();
-				return;
-			case DeploymentPackage.DEPLOYMENT_ASPECT__NAMING_RULES:
-				getNamingRules().clear();
-				return;
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_PROPERTY_VALUE_PKGS:
-				getOwnedPropertyValuePkgs().clear();
-				return;
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_CONFIGURATIONS:
-				getOwnedConfigurations().clear();
-				return;
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_DEPLOYMENT_ASPECTS:
-				getOwnedDeploymentAspects().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_TRACES:
+        getOwnedTraces().clear();
+        return;
+      case DeploymentPackage.DEPLOYMENT_ASPECT__NAMING_RULES:
+        getNamingRules().clear();
+        return;
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_PROPERTY_VALUE_PKGS:
+        getOwnedPropertyValuePkgs().clear();
+        return;
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_CONFIGURATIONS:
+        getOwnedConfigurations().clear();
+        return;
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_DEPLOYMENT_ASPECTS:
+        getOwnedDeploymentAspects().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_TRACES:
-				return ownedTraces != null && !ownedTraces.isEmpty();
-			case DeploymentPackage.DEPLOYMENT_ASPECT__CONTAINED_GENERIC_TRACES:
-				return !getContainedGenericTraces().isEmpty();
-			case DeploymentPackage.DEPLOYMENT_ASPECT__CONTAINED_REQUIREMENTS_TRACES:
-				return !getContainedRequirementsTraces().isEmpty();
-			case DeploymentPackage.DEPLOYMENT_ASPECT__NAMING_RULES:
-				return namingRules != null && !namingRules.isEmpty();
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_PROPERTY_VALUE_PKGS:
-				return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_CONFIGURATIONS:
-				return ownedConfigurations != null && !ownedConfigurations.isEmpty();
-			case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_DEPLOYMENT_ASPECTS:
-				return ownedDeploymentAspects != null && !ownedDeploymentAspects.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_TRACES:
+        return ownedTraces != null && !ownedTraces.isEmpty();
+      case DeploymentPackage.DEPLOYMENT_ASPECT__CONTAINED_GENERIC_TRACES:
+        return !getContainedGenericTraces().isEmpty();
+      case DeploymentPackage.DEPLOYMENT_ASPECT__CONTAINED_REQUIREMENTS_TRACES:
+        return !getContainedRequirementsTraces().isEmpty();
+      case DeploymentPackage.DEPLOYMENT_ASPECT__NAMING_RULES:
+        return namingRules != null && !namingRules.isEmpty();
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_PROPERTY_VALUE_PKGS:
+        return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_CONFIGURATIONS:
+        return ownedConfigurations != null && !ownedConfigurations.isEmpty();
+      case DeploymentPackage.DEPLOYMENT_ASPECT__OWNED_DEPLOYMENT_ASPECTS:
+        return ownedDeploymentAspects != null && !ownedDeploymentAspects.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

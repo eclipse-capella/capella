@@ -38,20 +38,20 @@ public interface PhysicalLinkCategory extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Links</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalLink}.
+   * Returns the value of the '<em><b>Links</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalLink}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Links</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Links</em>' reference list.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLinkCategory_Links()
-	 * @model annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Links</em>' reference list.
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLinkCategory_Links()
+   * @model annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   * @generated
+   */
 
 	EList<PhysicalLink> getLinks();
 

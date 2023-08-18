@@ -52,25 +52,25 @@ public interface Port extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Incoming Port Realizations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.PortRealization}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.PortRealization#getRealizedPort <em>Realized Port</em>}'.
+   * Returns the value of the '<em><b>Incoming Port Realizations</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.PortRealization}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.PortRealization#getRealizedPort <em>Realized Port</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Incoming Port Realizations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Incoming Port Realizations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_IncomingPortRealizations()
-	 * @see org.polarsys.capella.core.data.information.PortRealization#getRealizedPort
-	 * @model opposite="realizedPort" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incomingTraces'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='contains the list of port realization link(s) pointing from other (typically lower level) port(s) to this port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Incoming Port Realizations</em>' reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_IncomingPortRealizations()
+   * @see org.polarsys.capella.core.data.information.PortRealization#getRealizedPort
+   * @model opposite="realizedPort" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incomingTraces'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='contains the list of port realization link(s) pointing from other (typically lower level) port(s) to this port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<PortRealization> getIncomingPortRealizations();
 
@@ -81,25 +81,25 @@ public interface Port extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Outgoing Port Realizations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.PortRealization}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.PortRealization#getRealizingPort <em>Realizing Port</em>}'.
+   * Returns the value of the '<em><b>Outgoing Port Realizations</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.PortRealization}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.PortRealization#getRealizingPort <em>Realizing Port</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Outgoing Port Realizations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Outgoing Port Realizations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_OutgoingPortRealizations()
-	 * @see org.polarsys.capella.core.data.information.PortRealization#getRealizingPort
-	 * @model opposite="realizingPort" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingTraces'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of port realization links starting from this port, and pointing to other (typically higher-level) ports.\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Outgoing Port Realizations</em>' reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_OutgoingPortRealizations()
+   * @see org.polarsys.capella.core.data.information.PortRealization#getRealizingPort
+   * @model opposite="realizingPort" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingTraces'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of port realization links starting from this port, and pointing to other (typically higher-level) ports.\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<PortRealization> getOutgoingPortRealizations();
 
@@ -110,23 +110,23 @@ public interface Port extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Protocols</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.StateMachine}.
+   * Returns the value of the '<em><b>Owned Protocols</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.StateMachine}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Protocols</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Protocols</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_OwnedProtocols()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='allows to associate state machines to this port, specifying the communication protocol of incoming data\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='Elements are contained in the nearest possible parent container.' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Protocols</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_OwnedProtocols()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='allows to associate state machines to this port, specifying the communication protocol of incoming data\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='Elements are contained in the nearest possible parent container.' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<StateMachine> getOwnedProtocols();
 
@@ -137,25 +137,25 @@ public interface Port extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Incoming Port Allocations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.PortAllocation}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.PortAllocation#getAllocatedPort <em>Allocated Port</em>}'.
+   * Returns the value of the '<em><b>Incoming Port Allocations</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.PortAllocation}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.PortAllocation#getAllocatedPort <em>Allocated Port</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Incoming Port Allocations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Incoming Port Allocations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_IncomingPortAllocations()
-	 * @see org.polarsys.capella.core.data.information.PortAllocation#getAllocatedPort
-	 * @model opposite="allocatedPort" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incomingTraces'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of allocation links pointing from other model elements, to this port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Incoming Port Allocations</em>' reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_IncomingPortAllocations()
+   * @see org.polarsys.capella.core.data.information.PortAllocation#getAllocatedPort
+   * @model opposite="allocatedPort" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incomingTraces'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of allocation links pointing from other model elements, to this port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<PortAllocation> getIncomingPortAllocations();
 
@@ -166,25 +166,25 @@ public interface Port extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Outgoing Port Allocations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.PortAllocation}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.PortAllocation#getAllocatingPort <em>Allocating Port</em>}'.
+   * Returns the value of the '<em><b>Outgoing Port Allocations</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.PortAllocation}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.PortAllocation#getAllocatingPort <em>Allocating Port</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Outgoing Port Allocations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Outgoing Port Allocations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_OutgoingPortAllocations()
-	 * @see org.polarsys.capella.core.data.information.PortAllocation#getAllocatingPort
-	 * @model opposite="allocatingPort" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingTraces'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of allocations links, starting from this port towards other model elements to which this port needs to be allocated\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Outgoing Port Allocations</em>' reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_OutgoingPortAllocations()
+   * @see org.polarsys.capella.core.data.information.PortAllocation#getAllocatingPort
+   * @model opposite="allocatingPort" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingTraces'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of allocations links, starting from this port towards other model elements to which this port needs to be allocated\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<PortAllocation> getOutgoingPortAllocations();
 
@@ -195,22 +195,22 @@ public interface Port extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Provided Interfaces</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.Interface}.
+   * Returns the value of the '<em><b>Provided Interfaces</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.cs.Interface}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Provided Interfaces</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Provided Interfaces</em>' reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_ProvidedInterfaces()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='lists the Interfaces that are provided through this port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Provided Interfaces</em>' reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_ProvidedInterfaces()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='lists the Interfaces that are provided through this port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<Interface> getProvidedInterfaces();
 
@@ -221,22 +221,22 @@ public interface Port extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Required Interfaces</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.Interface}.
+   * Returns the value of the '<em><b>Required Interfaces</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.cs.Interface}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Required Interfaces</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Required Interfaces</em>' reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_RequiredInterfaces()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='lists the Interfaces that are required by this port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Required Interfaces</em>' reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_RequiredInterfaces()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='lists the Interfaces that are required by this port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<Interface> getRequiredInterfaces();
 
@@ -247,22 +247,22 @@ public interface Port extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Port Realizations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.PortRealization}.
+   * Returns the value of the '<em><b>Owned Port Realizations</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.PortRealization}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Port Realizations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Port Realizations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_OwnedPortRealizations()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the port realizations links that are owned/contained in this Port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='Elements are contained in the nearest possible parent container.' constraints='Some elements on which PortRealization stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Port Realizations</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_OwnedPortRealizations()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the port realizations links that are owned/contained in this Port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='Elements are contained in the nearest possible parent container.' constraints='Some elements on which PortRealization stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	EList<PortRealization> getOwnedPortRealizations();
 
@@ -273,22 +273,22 @@ public interface Port extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Port Allocations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.PortAllocation}.
+   * Returns the value of the '<em><b>Owned Port Allocations</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.PortAllocation}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Port Allocations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Port Allocations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_OwnedPortAllocations()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the port allocation links that are owned/contained in this Port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='Elements are contained in the nearest possible parent container.' constraints='Some elements on which PortAllocation stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Port Allocations</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_OwnedPortAllocations()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the port allocation links that are owned/contained in this Port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='Elements are contained in the nearest possible parent container.' constraints='Some elements on which PortAllocation stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	EList<PortAllocation> getOwnedPortAllocations();
 

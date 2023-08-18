@@ -49,168 +49,168 @@ public class StringReferenceItemProvider extends AbstractStringValueItemProvider
     ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor referencedValuePropertyDescriptor;
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor referencedPropertyPropertyDescriptor;
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public StringReferenceItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_VALUE
-			if (referencedValuePropertyDescriptor != null) {
-				Object referencedValueValue = eObject.eGet(DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_VALUE, true);
-				if (referencedValueValue != null && referencedValueValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) referencedValueValue)) {
-					itemPropertyDescriptors.remove(referencedValuePropertyDescriptor);
-				} else if (referencedValueValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_VALUE) != null) {
-					itemPropertyDescriptors.remove(referencedValuePropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(referencedValuePropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(referencedValuePropertyDescriptor);
-				}
-			}
-			// Process DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_PROPERTY
-			if (referencedPropertyPropertyDescriptor != null) {
-				Object referencedPropertyValue = eObject.eGet(DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_PROPERTY, true);
-				if (referencedPropertyValue != null && referencedPropertyValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) referencedPropertyValue)) {
-					itemPropertyDescriptors.remove(referencedPropertyPropertyDescriptor);
-				} else if (referencedPropertyValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_PROPERTY) != null) {
-					itemPropertyDescriptors.remove(referencedPropertyPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(referencedPropertyPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(referencedPropertyPropertyDescriptor);
-				}
-			}
-		}		
-	}
+    super.checkChildCreationExtender(object);
+    if (object instanceof EObject) {
+      EObject eObject = (EObject) object;
+      // Process DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_VALUE
+      if (referencedValuePropertyDescriptor != null) {
+        Object referencedValueValue = eObject.eGet(DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_VALUE, true);
+        if (referencedValueValue != null && referencedValueValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) referencedValueValue)) {
+          itemPropertyDescriptors.remove(referencedValuePropertyDescriptor);
+        } else if (referencedValueValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_VALUE) != null) {
+          itemPropertyDescriptors.remove(referencedValuePropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(referencedValuePropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(referencedValuePropertyDescriptor);
+        }
+      }
+      // Process DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_PROPERTY
+      if (referencedPropertyPropertyDescriptor != null) {
+        Object referencedPropertyValue = eObject.eGet(DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_PROPERTY, true);
+        if (referencedPropertyValue != null && referencedPropertyValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) referencedPropertyValue)) {
+          itemPropertyDescriptors.remove(referencedPropertyPropertyDescriptor);
+        } else if (referencedPropertyValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_PROPERTY) != null) {
+          itemPropertyDescriptors.remove(referencedPropertyPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(referencedPropertyPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(referencedPropertyPropertyDescriptor);
+        }
+      }
+    }		
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addReferencedValuePropertyDescriptor(object);
-			addReferencedPropertyPropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addReferencedValuePropertyDescriptor(object);
+      addReferencedPropertyPropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Referenced Value feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Referenced Value feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addReferencedValuePropertyDescriptor(Object object) {
-		// begin-extension-code
-		referencedValuePropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_StringReference_referencedValue_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_StringReference_referencedValue_feature", "_UI_StringReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_VALUE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(referencedValuePropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    referencedValuePropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_StringReference_referencedValue_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_StringReference_referencedValue_feature", "_UI_StringReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_VALUE,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(referencedValuePropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Referenced Property feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Referenced Property feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addReferencedPropertyPropertyDescriptor(Object object) {
-		// begin-extension-code
-		referencedPropertyPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_StringReference_referencedProperty_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_StringReference_referencedProperty_feature", "_UI_StringReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_PROPERTY,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(referencedPropertyPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    referencedPropertyPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_StringReference_referencedProperty_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_StringReference_referencedProperty_feature", "_UI_StringReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_PROPERTY,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(referencedPropertyPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This returns StringReference.gif.
-	 * <!-- begin-user-doc -->
+   * This returns StringReference.gif.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/StringReference")); //$NON-NLS-1$
-	}
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/StringReference")); //$NON-NLS-1$
+  }
 
 		/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public String getTextGen(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
-		String label = ((StringReference)object).getName();
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_StringReference_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+    String label = ((StringReference)object).getName();
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_StringReference_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
   /**
    * This returns the label text for the adapted class.
@@ -252,37 +252,37 @@ public class StringReferenceItemProvider extends AbstractStringValueItemProvider
   }
 
 		/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
-		super.notifyChanged(notification);
-	}
+    updateChildren(notification);
+    super.notifyChanged(notification);
+  }
 
 		/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+    super.collectNewChildDescriptors(newChildDescriptors, object);
+  }
 
 		/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 }

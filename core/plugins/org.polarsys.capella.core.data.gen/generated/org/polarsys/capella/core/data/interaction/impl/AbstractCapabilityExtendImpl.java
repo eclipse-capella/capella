@@ -48,13 +48,13 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 public class AbstractCapabilityExtendImpl extends RelationshipImpl implements AbstractCapabilityExtend {
 
 	/**
-	 * The cached value of the '{@link #getExtended() <em>Extended</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getExtended() <em>Extended</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExtended()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getExtended()
+   * @generated
+   * @ordered
+   */
 	protected AbstractCapability extended;
 
 
@@ -66,91 +66,91 @@ public class AbstractCapabilityExtendImpl extends RelationshipImpl implements Ab
 
 
 	/**
-	 * The cached value of the '{@link #getExtensionLocation() <em>Extension Location</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getExtensionLocation() <em>Extension Location</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExtensionLocation()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getExtensionLocation()
+   * @generated
+   * @ordered
+   */
 	protected AbstractCapabilityExtensionPoint extensionLocation;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractCapabilityExtendImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND;
-	}
+    return InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractCapability getExtended() {
 
-		if (extended != null && extended.eIsProxy()) {
-			InternalEObject oldExtended = (InternalEObject)extended;
-			extended = (AbstractCapability)eResolveProxy(oldExtended);
-			if (extended != oldExtended) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED, oldExtended, extended));
-			}
-		}
-		return extended;
-	}
+    if (extended != null && extended.eIsProxy()) {
+      InternalEObject oldExtended = (InternalEObject)extended;
+      extended = (AbstractCapability)eResolveProxy(oldExtended);
+      if (extended != oldExtended) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED, oldExtended, extended));
+      }
+    }
+    return extended;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractCapability basicGetExtended() {
 
-		return extended;
-	}
+    return extended;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setExtended(AbstractCapability newExtended) {
 
-		AbstractCapability oldExtended = extended;
-		extended = newExtended;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED, oldExtended, extended));
+    AbstractCapability oldExtended = extended;
+    extended = newExtended;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED, oldExtended, extended));
 
-	}
+  }
 
 
 
@@ -158,23 +158,23 @@ public class AbstractCapabilityExtendImpl extends RelationshipImpl implements Ab
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractCapability getExtension() {
 
-		AbstractCapability extension = basicGetExtension();
-		return extension != null && extension.eIsProxy() ? (AbstractCapability)eResolveProxy((InternalEObject)extension) : extension;
-	}
+    AbstractCapability extension = basicGetExtension();
+    return extension != null && extension.eIsProxy() ? (AbstractCapability)eResolveProxy((InternalEObject)extension) : extension;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractCapability basicGetExtension() {
 
@@ -201,204 +201,204 @@ public class AbstractCapabilityExtendImpl extends RelationshipImpl implements Ab
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENSION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENSION, annotation);
-		
-		try {
-			return (AbstractCapability) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (AbstractCapability) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractCapabilityExtensionPoint getExtensionLocation() {
 
-		if (extensionLocation != null && extensionLocation.eIsProxy()) {
-			InternalEObject oldExtensionLocation = (InternalEObject)extensionLocation;
-			extensionLocation = (AbstractCapabilityExtensionPoint)eResolveProxy(oldExtensionLocation);
-			if (extensionLocation != oldExtensionLocation) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION, oldExtensionLocation, extensionLocation));
-			}
-		}
-		return extensionLocation;
-	}
+    if (extensionLocation != null && extensionLocation.eIsProxy()) {
+      InternalEObject oldExtensionLocation = (InternalEObject)extensionLocation;
+      extensionLocation = (AbstractCapabilityExtensionPoint)eResolveProxy(oldExtensionLocation);
+      if (extensionLocation != oldExtensionLocation) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION, oldExtensionLocation, extensionLocation));
+      }
+    }
+    return extensionLocation;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractCapabilityExtensionPoint basicGetExtensionLocation() {
 
-		return extensionLocation;
-	}
+    return extensionLocation;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetExtensionLocation(AbstractCapabilityExtensionPoint newExtensionLocation, NotificationChain msgs) {
 
-		AbstractCapabilityExtensionPoint oldExtensionLocation = extensionLocation;
-		extensionLocation = newExtensionLocation;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION, oldExtensionLocation, newExtensionLocation);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    AbstractCapabilityExtensionPoint oldExtensionLocation = extensionLocation;
+    extensionLocation = newExtensionLocation;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION, oldExtensionLocation, newExtensionLocation);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setExtensionLocation(AbstractCapabilityExtensionPoint newExtensionLocation) {
 
-		if (newExtensionLocation != extensionLocation) {
-			NotificationChain msgs = null;
-			if (extensionLocation != null)
-				msgs = ((InternalEObject)extensionLocation).eInverseRemove(this, InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__EXTEND_LINKS, AbstractCapabilityExtensionPoint.class, msgs);
-			if (newExtensionLocation != null)
-				msgs = ((InternalEObject)newExtensionLocation).eInverseAdd(this, InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__EXTEND_LINKS, AbstractCapabilityExtensionPoint.class, msgs);
-			msgs = basicSetExtensionLocation(newExtensionLocation, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION, newExtensionLocation, newExtensionLocation));
+    if (newExtensionLocation != extensionLocation) {
+      NotificationChain msgs = null;
+      if (extensionLocation != null)
+        msgs = ((InternalEObject)extensionLocation).eInverseRemove(this, InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__EXTEND_LINKS, AbstractCapabilityExtensionPoint.class, msgs);
+      if (newExtensionLocation != null)
+        msgs = ((InternalEObject)newExtensionLocation).eInverseAdd(this, InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__EXTEND_LINKS, AbstractCapabilityExtensionPoint.class, msgs);
+      msgs = basicSetExtensionLocation(newExtensionLocation, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION, newExtensionLocation, newExtensionLocation));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION:
-				if (extensionLocation != null)
-					msgs = ((InternalEObject)extensionLocation).eInverseRemove(this, InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__EXTEND_LINKS, AbstractCapabilityExtensionPoint.class, msgs);
-				return basicSetExtensionLocation((AbstractCapabilityExtensionPoint)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION:
+        if (extensionLocation != null)
+          msgs = ((InternalEObject)extensionLocation).eInverseRemove(this, InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__EXTEND_LINKS, AbstractCapabilityExtensionPoint.class, msgs);
+        return basicSetExtensionLocation((AbstractCapabilityExtensionPoint)otherEnd, msgs);
+    }
+    return super.eInverseAdd(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION:
-				return basicSetExtensionLocation(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION:
+        return basicSetExtensionLocation(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED:
-				if (resolve) return getExtended();
-				return basicGetExtended();
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION:
-				if (resolve) return getExtension();
-				return basicGetExtension();
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION:
-				if (resolve) return getExtensionLocation();
-				return basicGetExtensionLocation();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED:
+        if (resolve) return getExtended();
+        return basicGetExtended();
+      case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION:
+        if (resolve) return getExtension();
+        return basicGetExtension();
+      case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION:
+        if (resolve) return getExtensionLocation();
+        return basicGetExtensionLocation();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED:
-					setExtended((AbstractCapability)newValue);
-				return;
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION:
-					setExtensionLocation((AbstractCapabilityExtensionPoint)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED:
+          setExtended((AbstractCapability)newValue);
+        return;
+      case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION:
+          setExtensionLocation((AbstractCapabilityExtensionPoint)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED:
-				setExtended((AbstractCapability)null);
-				return;
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION:
-				setExtensionLocation((AbstractCapabilityExtensionPoint)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED:
+        setExtended((AbstractCapability)null);
+        return;
+      case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION:
+        setExtensionLocation((AbstractCapabilityExtensionPoint)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED:
-				return extended != null;
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION:
-				return basicGetExtension() != null;
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION:
-				return extensionLocation != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED:
+        return extended != null;
+      case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION:
+        return basicGetExtension() != null;
+      case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION:
+        return extensionLocation != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

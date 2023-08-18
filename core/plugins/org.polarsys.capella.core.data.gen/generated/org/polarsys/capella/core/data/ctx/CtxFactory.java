@@ -24,155 +24,155 @@ import org.eclipse.emf.ecore.EFactory;
  */
 public interface CtxFactory extends EFactory {
 	/**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
+   * The singleton instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	CtxFactory eINSTANCE = org.polarsys.capella.core.data.ctx.impl.CtxFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>System Analysis</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>System Analysis</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Analysis</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>System Analysis</em>'.
+   * @generated
+   */
 	SystemAnalysis createSystemAnalysis();
 
 	/**
-	 * Returns a new object of class '<em>System Function</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>System Function</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Function</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>System Function</em>'.
+   * @generated
+   */
 	SystemFunction createSystemFunction();
 
 	/**
-	 * Returns a new object of class '<em>System Function Pkg</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>System Function Pkg</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Function Pkg</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>System Function Pkg</em>'.
+   * @generated
+   */
 	SystemFunctionPkg createSystemFunctionPkg();
 
 	/**
-	 * Returns a new object of class '<em>System Communication Hook</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>System Communication Hook</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Communication Hook</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>System Communication Hook</em>'.
+   * @generated
+   */
 	SystemCommunicationHook createSystemCommunicationHook();
 
 	/**
-	 * Returns a new object of class '<em>System Communication</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>System Communication</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Communication</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>System Communication</em>'.
+   * @generated
+   */
 	SystemCommunication createSystemCommunication();
 
 	/**
-	 * Returns a new object of class '<em>Capability Involvement</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Capability Involvement</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Capability Involvement</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Capability Involvement</em>'.
+   * @generated
+   */
 	CapabilityInvolvement createCapabilityInvolvement();
 
 	/**
-	 * Returns a new object of class '<em>Mission Involvement</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Mission Involvement</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Mission Involvement</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Mission Involvement</em>'.
+   * @generated
+   */
 	MissionInvolvement createMissionInvolvement();
 
 	/**
-	 * Returns a new object of class '<em>Mission</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Mission</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Mission</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Mission</em>'.
+   * @generated
+   */
 	Mission createMission();
 
 	/**
-	 * Returns a new object of class '<em>Mission Pkg</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Mission Pkg</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Mission Pkg</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Mission Pkg</em>'.
+   * @generated
+   */
 	MissionPkg createMissionPkg();
 
 	/**
-	 * Returns a new object of class '<em>Capability</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Capability</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Capability</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Capability</em>'.
+   * @generated
+   */
 	Capability createCapability();
 
 	/**
-	 * Returns a new object of class '<em>Capability Exploitation</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Capability Exploitation</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Capability Exploitation</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Capability Exploitation</em>'.
+   * @generated
+   */
 	CapabilityExploitation createCapabilityExploitation();
 
 	/**
-	 * Returns a new object of class '<em>Capability Pkg</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Capability Pkg</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Capability Pkg</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Capability Pkg</em>'.
+   * @generated
+   */
 	CapabilityPkg createCapabilityPkg();
 
 	/**
-	 * Returns a new object of class '<em>Operational Analysis Realization</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Operational Analysis Realization</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Operational Analysis Realization</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Operational Analysis Realization</em>'.
+   * @generated
+   */
 	OperationalAnalysisRealization createOperationalAnalysisRealization();
 
 	/**
-	 * Returns a new object of class '<em>System Component Pkg</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>System Component Pkg</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Component Pkg</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>System Component Pkg</em>'.
+   * @generated
+   */
 	SystemComponentPkg createSystemComponentPkg();
 
 	/**
-	 * Returns a new object of class '<em>System Component</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>System Component</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Component</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>System Component</em>'.
+   * @generated
+   */
 	SystemComponent createSystemComponent();
 
 	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
+   * Returns the package supported by this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
+   * @return the package supported by this factory.
+   * @generated
+   */
 	CtxPackage getCtxPackage();
 
 	/**

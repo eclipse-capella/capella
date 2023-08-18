@@ -43,23 +43,23 @@ import org.polarsys.capella.common.data.activity.OutputPin;
 public abstract class AcceptEventActionImpl extends AbstractActionImpl implements AcceptEventAction {
 
 	/**
-	 * The default value of the '{@link #isIsUnmarshall() <em>Is Unmarshall</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isIsUnmarshall() <em>Is Unmarshall</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsUnmarshall()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsUnmarshall()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean IS_UNMARSHALL_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsUnmarshall() <em>Is Unmarshall</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isIsUnmarshall() <em>Is Unmarshall</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsUnmarshall()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsUnmarshall()
+   * @generated
+   * @ordered
+   */
 	protected boolean isUnmarshall = IS_UNMARSHALL_EDEFAULT;
 
 
@@ -67,70 +67,70 @@ public abstract class AcceptEventActionImpl extends AbstractActionImpl implement
 
 
 	/**
-	 * The cached value of the '{@link #getResult() <em>Result</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getResult() <em>Result</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getResult()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getResult()
+   * @generated
+   * @ordered
+   */
 	protected EList<OutputPin> result;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AcceptEventActionImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return ActivityPackage.Literals.ACCEPT_EVENT_ACTION;
-	}
+    return ActivityPackage.Literals.ACCEPT_EVENT_ACTION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isIsUnmarshall() {
 
-		return isUnmarshall;
-	}
+    return isUnmarshall;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setIsUnmarshall(boolean newIsUnmarshall) {
 
-		boolean oldIsUnmarshall = isUnmarshall;
-		isUnmarshall = newIsUnmarshall;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ACCEPT_EVENT_ACTION__IS_UNMARSHALL, oldIsUnmarshall, isUnmarshall));
+    boolean oldIsUnmarshall = isUnmarshall;
+    isUnmarshall = newIsUnmarshall;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ACCEPT_EVENT_ACTION__IS_UNMARSHALL, oldIsUnmarshall, isUnmarshall));
 
-	}
+  }
 
 
 
@@ -138,124 +138,124 @@ public abstract class AcceptEventActionImpl extends AbstractActionImpl implement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<OutputPin> getResult() {
 
-		if (result == null) {
-			result = new EObjectContainmentEList.Resolving<OutputPin>(OutputPin.class, this, ActivityPackage.ACCEPT_EVENT_ACTION__RESULT);
-		}
-		return result;
-	}
+    if (result == null) {
+      result = new EObjectContainmentEList.Resolving<OutputPin>(OutputPin.class, this, ActivityPackage.ACCEPT_EVENT_ACTION__RESULT);
+    }
+    return result;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ActivityPackage.ACCEPT_EVENT_ACTION__RESULT:
-				return ((InternalEList<?>)getResult()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case ActivityPackage.ACCEPT_EVENT_ACTION__RESULT:
+        return ((InternalEList<?>)getResult()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ActivityPackage.ACCEPT_EVENT_ACTION__IS_UNMARSHALL:
-				return isIsUnmarshall();
-			case ActivityPackage.ACCEPT_EVENT_ACTION__RESULT:
-				return getResult();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case ActivityPackage.ACCEPT_EVENT_ACTION__IS_UNMARSHALL:
+        return isIsUnmarshall();
+      case ActivityPackage.ACCEPT_EVENT_ACTION__RESULT:
+        return getResult();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ActivityPackage.ACCEPT_EVENT_ACTION__IS_UNMARSHALL:
-					setIsUnmarshall((Boolean)newValue);
-				return;
-			case ActivityPackage.ACCEPT_EVENT_ACTION__RESULT:
-				getResult().clear();
-				getResult().addAll((Collection<? extends OutputPin>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case ActivityPackage.ACCEPT_EVENT_ACTION__IS_UNMARSHALL:
+          setIsUnmarshall((Boolean)newValue);
+        return;
+      case ActivityPackage.ACCEPT_EVENT_ACTION__RESULT:
+        getResult().clear();
+        getResult().addAll((Collection<? extends OutputPin>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.ACCEPT_EVENT_ACTION__IS_UNMARSHALL:
-				setIsUnmarshall(IS_UNMARSHALL_EDEFAULT);
-				return;
-			case ActivityPackage.ACCEPT_EVENT_ACTION__RESULT:
-				getResult().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.ACCEPT_EVENT_ACTION__IS_UNMARSHALL:
+        setIsUnmarshall(IS_UNMARSHALL_EDEFAULT);
+        return;
+      case ActivityPackage.ACCEPT_EVENT_ACTION__RESULT:
+        getResult().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.ACCEPT_EVENT_ACTION__IS_UNMARSHALL:
-				return isUnmarshall != IS_UNMARSHALL_EDEFAULT;
-			case ActivityPackage.ACCEPT_EVENT_ACTION__RESULT:
-				return result != null && !result.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.ACCEPT_EVENT_ACTION__IS_UNMARSHALL:
+        return isUnmarshall != IS_UNMARSHALL_EDEFAULT;
+      case ActivityPackage.ACCEPT_EVENT_ACTION__RESULT:
+        return result != null && !result.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (isUnmarshall: "); //$NON-NLS-1$
-		result.append(isUnmarshall);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (isUnmarshall: "); //$NON-NLS-1$
+    result.append(isUnmarshall);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //AcceptEventActionImpl

@@ -50,48 +50,48 @@ public class StateTransitionRealizationImpl extends AllocationImpl implements St
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected StateTransitionRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION;
-	}
+    return CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public StateTransition getRealizedStateTransition() {
 
-		StateTransition realizedStateTransition = basicGetRealizedStateTransition();
-		return realizedStateTransition != null && realizedStateTransition.eIsProxy() ? (StateTransition)eResolveProxy((InternalEObject)realizedStateTransition) : realizedStateTransition;
-	}
+    StateTransition realizedStateTransition = basicGetRealizedStateTransition();
+    return realizedStateTransition != null && realizedStateTransition.eIsProxy() ? (StateTransition)eResolveProxy((InternalEObject)realizedStateTransition) : realizedStateTransition;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public StateTransition basicGetRealizedStateTransition() {
 
@@ -118,15 +118,15 @@ public class StateTransitionRealizationImpl extends AllocationImpl implements St
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION__REALIZED_STATE_TRANSITION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION__REALIZED_STATE_TRANSITION, annotation);
-		
-		try {
-			return (StateTransition) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (StateTransition) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -134,23 +134,23 @@ public class StateTransitionRealizationImpl extends AllocationImpl implements St
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public StateTransition getRealizingStateTransition() {
 
-		StateTransition realizingStateTransition = basicGetRealizingStateTransition();
-		return realizingStateTransition != null && realizingStateTransition.eIsProxy() ? (StateTransition)eResolveProxy((InternalEObject)realizingStateTransition) : realizingStateTransition;
-	}
+    StateTransition realizingStateTransition = basicGetRealizingStateTransition();
+    return realizingStateTransition != null && realizingStateTransition.eIsProxy() ? (StateTransition)eResolveProxy((InternalEObject)realizingStateTransition) : realizingStateTransition;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public StateTransition basicGetRealizingStateTransition() {
 
@@ -177,53 +177,53 @@ public class StateTransitionRealizationImpl extends AllocationImpl implements St
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION__REALIZING_STATE_TRANSITION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION__REALIZING_STATE_TRANSITION, annotation);
-		
-		try {
-			return (StateTransition) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (StateTransition) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CapellacommonPackage.STATE_TRANSITION_REALIZATION__REALIZED_STATE_TRANSITION:
-				if (resolve) return getRealizedStateTransition();
-				return basicGetRealizedStateTransition();
-			case CapellacommonPackage.STATE_TRANSITION_REALIZATION__REALIZING_STATE_TRANSITION:
-				if (resolve) return getRealizingStateTransition();
-				return basicGetRealizingStateTransition();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.STATE_TRANSITION_REALIZATION__REALIZED_STATE_TRANSITION:
+        if (resolve) return getRealizedStateTransition();
+        return basicGetRealizedStateTransition();
+      case CapellacommonPackage.STATE_TRANSITION_REALIZATION__REALIZING_STATE_TRANSITION:
+        if (resolve) return getRealizingStateTransition();
+        return basicGetRealizingStateTransition();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CapellacommonPackage.STATE_TRANSITION_REALIZATION__REALIZED_STATE_TRANSITION:
-				return basicGetRealizedStateTransition() != null;
-			case CapellacommonPackage.STATE_TRANSITION_REALIZATION__REALIZING_STATE_TRANSITION:
-				return basicGetRealizingStateTransition() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.STATE_TRANSITION_REALIZATION__REALIZED_STATE_TRANSITION:
+        return basicGetRealizedStateTransition() != null;
+      case CapellacommonPackage.STATE_TRANSITION_REALIZATION__REALIZING_STATE_TRANSITION:
+        return basicGetRealizingStateTransition() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

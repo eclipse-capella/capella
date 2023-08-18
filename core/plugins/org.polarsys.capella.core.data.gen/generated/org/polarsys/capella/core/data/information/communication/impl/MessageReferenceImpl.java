@@ -37,156 +37,156 @@ import org.polarsys.capella.core.data.information.communication.MessageReference
 public class MessageReferenceImpl extends RelationshipImpl implements MessageReference {
 
 	/**
-	 * The cached value of the '{@link #getMessage() <em>Message</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getMessage() <em>Message</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMessage()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getMessage()
+   * @generated
+   * @ordered
+   */
 	protected Message message;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected MessageReferenceImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CommunicationPackage.Literals.MESSAGE_REFERENCE;
-	}
+    return CommunicationPackage.Literals.MESSAGE_REFERENCE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Message getMessage() {
 
-		if (message != null && message.eIsProxy()) {
-			InternalEObject oldMessage = (InternalEObject)message;
-			message = (Message)eResolveProxy(oldMessage);
-			if (message != oldMessage) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CommunicationPackage.MESSAGE_REFERENCE__MESSAGE, oldMessage, message));
-			}
-		}
-		return message;
-	}
+    if (message != null && message.eIsProxy()) {
+      InternalEObject oldMessage = (InternalEObject)message;
+      message = (Message)eResolveProxy(oldMessage);
+      if (message != oldMessage) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CommunicationPackage.MESSAGE_REFERENCE__MESSAGE, oldMessage, message));
+      }
+    }
+    return message;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Message basicGetMessage() {
 
-		return message;
-	}
+    return message;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setMessage(Message newMessage) {
 
-		Message oldMessage = message;
-		message = newMessage;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommunicationPackage.MESSAGE_REFERENCE__MESSAGE, oldMessage, message));
+    Message oldMessage = message;
+    message = newMessage;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CommunicationPackage.MESSAGE_REFERENCE__MESSAGE, oldMessage, message));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CommunicationPackage.MESSAGE_REFERENCE__MESSAGE:
-				if (resolve) return getMessage();
-				return basicGetMessage();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CommunicationPackage.MESSAGE_REFERENCE__MESSAGE:
+        if (resolve) return getMessage();
+        return basicGetMessage();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CommunicationPackage.MESSAGE_REFERENCE__MESSAGE:
-					setMessage((Message)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CommunicationPackage.MESSAGE_REFERENCE__MESSAGE:
+          setMessage((Message)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CommunicationPackage.MESSAGE_REFERENCE__MESSAGE:
-				setMessage((Message)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CommunicationPackage.MESSAGE_REFERENCE__MESSAGE:
+        setMessage((Message)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CommunicationPackage.MESSAGE_REFERENCE__MESSAGE:
-				return message != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CommunicationPackage.MESSAGE_REFERENCE__MESSAGE:
+        return message != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

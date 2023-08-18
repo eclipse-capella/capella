@@ -36,156 +36,156 @@ import org.polarsys.capella.common.data.behavior.AbstractBehavior;
 public abstract class CallBehaviorActionImpl extends CallActionImpl implements CallBehaviorAction {
 
 	/**
-	 * The cached value of the '{@link #getBehavior() <em>Behavior</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getBehavior() <em>Behavior</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBehavior()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getBehavior()
+   * @generated
+   * @ordered
+   */
 	protected AbstractBehavior behavior;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CallBehaviorActionImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return ActivityPackage.Literals.CALL_BEHAVIOR_ACTION;
-	}
+    return ActivityPackage.Literals.CALL_BEHAVIOR_ACTION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractBehavior getBehavior() {
 
-		if (behavior != null && behavior.eIsProxy()) {
-			InternalEObject oldBehavior = (InternalEObject)behavior;
-			behavior = (AbstractBehavior)eResolveProxy(oldBehavior);
-			if (behavior != oldBehavior) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR, oldBehavior, behavior));
-			}
-		}
-		return behavior;
-	}
+    if (behavior != null && behavior.eIsProxy()) {
+      InternalEObject oldBehavior = (InternalEObject)behavior;
+      behavior = (AbstractBehavior)eResolveProxy(oldBehavior);
+      if (behavior != oldBehavior) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR, oldBehavior, behavior));
+      }
+    }
+    return behavior;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractBehavior basicGetBehavior() {
 
-		return behavior;
-	}
+    return behavior;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setBehavior(AbstractBehavior newBehavior) {
 
-		AbstractBehavior oldBehavior = behavior;
-		behavior = newBehavior;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR, oldBehavior, behavior));
+    AbstractBehavior oldBehavior = behavior;
+    behavior = newBehavior;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR, oldBehavior, behavior));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ActivityPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR:
-				if (resolve) return getBehavior();
-				return basicGetBehavior();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case ActivityPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR:
+        if (resolve) return getBehavior();
+        return basicGetBehavior();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ActivityPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR:
-					setBehavior((AbstractBehavior)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case ActivityPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR:
+          setBehavior((AbstractBehavior)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR:
-				setBehavior((AbstractBehavior)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR:
+        setBehavior((AbstractBehavior)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR:
-				return behavior != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR:
+        return behavior != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

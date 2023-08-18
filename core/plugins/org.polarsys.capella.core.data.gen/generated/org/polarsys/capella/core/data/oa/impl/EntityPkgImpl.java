@@ -47,13 +47,13 @@ import org.polarsys.capella.core.data.oa.OaPackage;
 public class EntityPkgImpl extends ComponentPkgImpl implements EntityPkg {
 
 	/**
-	 * The cached value of the '{@link #getOwnedEntities() <em>Owned Entities</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedEntities() <em>Owned Entities</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedEntities()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedEntities()
+   * @generated
+   * @ordered
+   */
 	protected EList<Entity> ownedEntities;
 
 
@@ -61,13 +61,13 @@ public class EntityPkgImpl extends ComponentPkgImpl implements EntityPkg {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedEntityPkgs() <em>Owned Entity Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedEntityPkgs() <em>Owned Entity Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedEntityPkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedEntityPkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<EntityPkg> ownedEntityPkgs;
 
 
@@ -75,13 +75,13 @@ public class EntityPkgImpl extends ComponentPkgImpl implements EntityPkg {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedLocations() <em>Owned Locations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedLocations() <em>Owned Locations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedLocations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedLocations()
+   * @generated
+   * @ordered
+   */
 	protected EList<Location> ownedLocations;
 
 
@@ -89,228 +89,228 @@ public class EntityPkgImpl extends ComponentPkgImpl implements EntityPkg {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedCommunicationMeans() <em>Owned Communication Means</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedCommunicationMeans() <em>Owned Communication Means</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedCommunicationMeans()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedCommunicationMeans()
+   * @generated
+   * @ordered
+   */
 	protected EList<CommunicationMean> ownedCommunicationMeans;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected EntityPkgImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OaPackage.Literals.ENTITY_PKG;
-	}
+    return OaPackage.Literals.ENTITY_PKG;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<EntityPkg> getOwnedEntityPkgs() {
 
-		if (ownedEntityPkgs == null) {
-			ownedEntityPkgs = new EObjectContainmentEList.Resolving<EntityPkg>(EntityPkg.class, this, OaPackage.ENTITY_PKG__OWNED_ENTITY_PKGS);
-		}
-		return ownedEntityPkgs;
-	}
+    if (ownedEntityPkgs == null) {
+      ownedEntityPkgs = new EObjectContainmentEList.Resolving<EntityPkg>(EntityPkg.class, this, OaPackage.ENTITY_PKG__OWNED_ENTITY_PKGS);
+    }
+    return ownedEntityPkgs;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Entity> getOwnedEntities() {
 
-		if (ownedEntities == null) {
-			ownedEntities = new EObjectContainmentEList.Resolving<Entity>(Entity.class, this, OaPackage.ENTITY_PKG__OWNED_ENTITIES);
-		}
-		return ownedEntities;
-	}
+    if (ownedEntities == null) {
+      ownedEntities = new EObjectContainmentEList.Resolving<Entity>(Entity.class, this, OaPackage.ENTITY_PKG__OWNED_ENTITIES);
+    }
+    return ownedEntities;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Location> getOwnedLocations() {
 
-		if (ownedLocations == null) {
-			ownedLocations = new EObjectContainmentEList.Resolving<Location>(Location.class, this, OaPackage.ENTITY_PKG__OWNED_LOCATIONS);
-		}
-		return ownedLocations;
-	}
+    if (ownedLocations == null) {
+      ownedLocations = new EObjectContainmentEList.Resolving<Location>(Location.class, this, OaPackage.ENTITY_PKG__OWNED_LOCATIONS);
+    }
+    return ownedLocations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CommunicationMean> getOwnedCommunicationMeans() {
 
-		if (ownedCommunicationMeans == null) {
-			ownedCommunicationMeans = new EObjectContainmentEList.Resolving<CommunicationMean>(CommunicationMean.class, this, OaPackage.ENTITY_PKG__OWNED_COMMUNICATION_MEANS);
-		}
-		return ownedCommunicationMeans;
-	}
+    if (ownedCommunicationMeans == null) {
+      ownedCommunicationMeans = new EObjectContainmentEList.Resolving<CommunicationMean>(CommunicationMean.class, this, OaPackage.ENTITY_PKG__OWNED_COMMUNICATION_MEANS);
+    }
+    return ownedCommunicationMeans;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case OaPackage.ENTITY_PKG__OWNED_ENTITIES:
-				return ((InternalEList<?>)getOwnedEntities()).basicRemove(otherEnd, msgs);
-			case OaPackage.ENTITY_PKG__OWNED_ENTITY_PKGS:
-				return ((InternalEList<?>)getOwnedEntityPkgs()).basicRemove(otherEnd, msgs);
-			case OaPackage.ENTITY_PKG__OWNED_LOCATIONS:
-				return ((InternalEList<?>)getOwnedLocations()).basicRemove(otherEnd, msgs);
-			case OaPackage.ENTITY_PKG__OWNED_COMMUNICATION_MEANS:
-				return ((InternalEList<?>)getOwnedCommunicationMeans()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case OaPackage.ENTITY_PKG__OWNED_ENTITIES:
+        return ((InternalEList<?>)getOwnedEntities()).basicRemove(otherEnd, msgs);
+      case OaPackage.ENTITY_PKG__OWNED_ENTITY_PKGS:
+        return ((InternalEList<?>)getOwnedEntityPkgs()).basicRemove(otherEnd, msgs);
+      case OaPackage.ENTITY_PKG__OWNED_LOCATIONS:
+        return ((InternalEList<?>)getOwnedLocations()).basicRemove(otherEnd, msgs);
+      case OaPackage.ENTITY_PKG__OWNED_COMMUNICATION_MEANS:
+        return ((InternalEList<?>)getOwnedCommunicationMeans()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OaPackage.ENTITY_PKG__OWNED_ENTITIES:
-				return getOwnedEntities();
-			case OaPackage.ENTITY_PKG__OWNED_ENTITY_PKGS:
-				return getOwnedEntityPkgs();
-			case OaPackage.ENTITY_PKG__OWNED_LOCATIONS:
-				return getOwnedLocations();
-			case OaPackage.ENTITY_PKG__OWNED_COMMUNICATION_MEANS:
-				return getOwnedCommunicationMeans();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case OaPackage.ENTITY_PKG__OWNED_ENTITIES:
+        return getOwnedEntities();
+      case OaPackage.ENTITY_PKG__OWNED_ENTITY_PKGS:
+        return getOwnedEntityPkgs();
+      case OaPackage.ENTITY_PKG__OWNED_LOCATIONS:
+        return getOwnedLocations();
+      case OaPackage.ENTITY_PKG__OWNED_COMMUNICATION_MEANS:
+        return getOwnedCommunicationMeans();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case OaPackage.ENTITY_PKG__OWNED_ENTITIES:
-				getOwnedEntities().clear();
-				getOwnedEntities().addAll((Collection<? extends Entity>)newValue);
-				return;
-			case OaPackage.ENTITY_PKG__OWNED_ENTITY_PKGS:
-				getOwnedEntityPkgs().clear();
-				getOwnedEntityPkgs().addAll((Collection<? extends EntityPkg>)newValue);
-				return;
-			case OaPackage.ENTITY_PKG__OWNED_LOCATIONS:
-				getOwnedLocations().clear();
-				getOwnedLocations().addAll((Collection<? extends Location>)newValue);
-				return;
-			case OaPackage.ENTITY_PKG__OWNED_COMMUNICATION_MEANS:
-				getOwnedCommunicationMeans().clear();
-				getOwnedCommunicationMeans().addAll((Collection<? extends CommunicationMean>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case OaPackage.ENTITY_PKG__OWNED_ENTITIES:
+        getOwnedEntities().clear();
+        getOwnedEntities().addAll((Collection<? extends Entity>)newValue);
+        return;
+      case OaPackage.ENTITY_PKG__OWNED_ENTITY_PKGS:
+        getOwnedEntityPkgs().clear();
+        getOwnedEntityPkgs().addAll((Collection<? extends EntityPkg>)newValue);
+        return;
+      case OaPackage.ENTITY_PKG__OWNED_LOCATIONS:
+        getOwnedLocations().clear();
+        getOwnedLocations().addAll((Collection<? extends Location>)newValue);
+        return;
+      case OaPackage.ENTITY_PKG__OWNED_COMMUNICATION_MEANS:
+        getOwnedCommunicationMeans().clear();
+        getOwnedCommunicationMeans().addAll((Collection<? extends CommunicationMean>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case OaPackage.ENTITY_PKG__OWNED_ENTITIES:
-				getOwnedEntities().clear();
-				return;
-			case OaPackage.ENTITY_PKG__OWNED_ENTITY_PKGS:
-				getOwnedEntityPkgs().clear();
-				return;
-			case OaPackage.ENTITY_PKG__OWNED_LOCATIONS:
-				getOwnedLocations().clear();
-				return;
-			case OaPackage.ENTITY_PKG__OWNED_COMMUNICATION_MEANS:
-				getOwnedCommunicationMeans().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.ENTITY_PKG__OWNED_ENTITIES:
+        getOwnedEntities().clear();
+        return;
+      case OaPackage.ENTITY_PKG__OWNED_ENTITY_PKGS:
+        getOwnedEntityPkgs().clear();
+        return;
+      case OaPackage.ENTITY_PKG__OWNED_LOCATIONS:
+        getOwnedLocations().clear();
+        return;
+      case OaPackage.ENTITY_PKG__OWNED_COMMUNICATION_MEANS:
+        getOwnedCommunicationMeans().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OaPackage.ENTITY_PKG__OWNED_ENTITIES:
-				return ownedEntities != null && !ownedEntities.isEmpty();
-			case OaPackage.ENTITY_PKG__OWNED_ENTITY_PKGS:
-				return ownedEntityPkgs != null && !ownedEntityPkgs.isEmpty();
-			case OaPackage.ENTITY_PKG__OWNED_LOCATIONS:
-				return ownedLocations != null && !ownedLocations.isEmpty();
-			case OaPackage.ENTITY_PKG__OWNED_COMMUNICATION_MEANS:
-				return ownedCommunicationMeans != null && !ownedCommunicationMeans.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.ENTITY_PKG__OWNED_ENTITIES:
+        return ownedEntities != null && !ownedEntities.isEmpty();
+      case OaPackage.ENTITY_PKG__OWNED_ENTITY_PKGS:
+        return ownedEntityPkgs != null && !ownedEntityPkgs.isEmpty();
+      case OaPackage.ENTITY_PKG__OWNED_LOCATIONS:
+        return ownedLocations != null && !ownedLocations.isEmpty();
+      case OaPackage.ENTITY_PKG__OWNED_COMMUNICATION_MEANS:
+        return ownedCommunicationMeans != null && !ownedCommunicationMeans.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 } //EntityPkgImpl

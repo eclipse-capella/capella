@@ -39,22 +39,22 @@ public interface AbstractFragment extends TimeLapse {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Gates</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.Gate}.
+   * Returns the value of the '<em><b>Owned Gates</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.interaction.Gate}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Gates</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Gates</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractFragment_OwnedGates()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Gates</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractFragment_OwnedGates()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+   * @generated
+   */
 
 	EList<Gate> getOwnedGates();
 

@@ -38,121 +38,121 @@ import org.polarsys.capella.core.data.oa.OaPackage;
 public abstract class AbstractConceptItemImpl extends ComponentImpl implements AbstractConceptItem {
 
 	/**
-	 * The cached value of the '{@link #getComposingLinks() <em>Composing Links</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getComposingLinks() <em>Composing Links</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getComposingLinks()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getComposingLinks()
+   * @generated
+   * @ordered
+   */
 	protected EList<ItemInConcept> composingLinks;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractConceptItemImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OaPackage.Literals.ABSTRACT_CONCEPT_ITEM;
-	}
+    return OaPackage.Literals.ABSTRACT_CONCEPT_ITEM;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ItemInConcept> getComposingLinks() {
 
-		if (composingLinks == null) {
-			composingLinks = new EObjectResolvingEList<ItemInConcept>(ItemInConcept.class, this, OaPackage.ABSTRACT_CONCEPT_ITEM__COMPOSING_LINKS);
-		}
-		return composingLinks;
-	}
+    if (composingLinks == null) {
+      composingLinks = new EObjectResolvingEList<ItemInConcept>(ItemInConcept.class, this, OaPackage.ABSTRACT_CONCEPT_ITEM__COMPOSING_LINKS);
+    }
+    return composingLinks;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OaPackage.ABSTRACT_CONCEPT_ITEM__COMPOSING_LINKS:
-				return getComposingLinks();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case OaPackage.ABSTRACT_CONCEPT_ITEM__COMPOSING_LINKS:
+        return getComposingLinks();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case OaPackage.ABSTRACT_CONCEPT_ITEM__COMPOSING_LINKS:
-				getComposingLinks().clear();
-				getComposingLinks().addAll((Collection<? extends ItemInConcept>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case OaPackage.ABSTRACT_CONCEPT_ITEM__COMPOSING_LINKS:
+        getComposingLinks().clear();
+        getComposingLinks().addAll((Collection<? extends ItemInConcept>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case OaPackage.ABSTRACT_CONCEPT_ITEM__COMPOSING_LINKS:
-				getComposingLinks().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.ABSTRACT_CONCEPT_ITEM__COMPOSING_LINKS:
+        getComposingLinks().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OaPackage.ABSTRACT_CONCEPT_ITEM__COMPOSING_LINKS:
-				return composingLinks != null && !composingLinks.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.ABSTRACT_CONCEPT_ITEM__COMPOSING_LINKS:
+        return composingLinks != null && !composingLinks.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

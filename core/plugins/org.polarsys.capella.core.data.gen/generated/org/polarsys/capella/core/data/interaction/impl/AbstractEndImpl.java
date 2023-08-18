@@ -45,13 +45,13 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 public abstract class AbstractEndImpl extends InteractionFragmentImpl implements AbstractEnd {
 
 	/**
-	 * The cached value of the '{@link #getEvent() <em>Event</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getEvent() <em>Event</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEvent()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getEvent()
+   * @generated
+   * @ordered
+   */
 	protected Event event;
 
 
@@ -62,78 +62,78 @@ public abstract class AbstractEndImpl extends InteractionFragmentImpl implements
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractEndImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.ABSTRACT_END;
-	}
+    return InteractionPackage.Literals.ABSTRACT_END;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Event getEvent() {
 
-		if (event != null && event.eIsProxy()) {
-			InternalEObject oldEvent = (InternalEObject)event;
-			event = (Event)eResolveProxy(oldEvent);
-			if (event != oldEvent) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.ABSTRACT_END__EVENT, oldEvent, event));
-			}
-		}
-		return event;
-	}
+    if (event != null && event.eIsProxy()) {
+      InternalEObject oldEvent = (InternalEObject)event;
+      event = (Event)eResolveProxy(oldEvent);
+      if (event != oldEvent) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.ABSTRACT_END__EVENT, oldEvent, event));
+      }
+    }
+    return event;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Event basicGetEvent() {
 
-		return event;
-	}
+    return event;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setEvent(Event newEvent) {
 
-		Event oldEvent = event;
-		event = newEvent;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_END__EVENT, oldEvent, event));
+    Event oldEvent = event;
+    event = newEvent;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_END__EVENT, oldEvent, event));
 
-	}
+  }
 
 
 
@@ -141,23 +141,23 @@ public abstract class AbstractEndImpl extends InteractionFragmentImpl implements
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InstanceRole getCovered() {
 
-		InstanceRole covered = basicGetCovered();
-		return covered != null && covered.eIsProxy() ? (InstanceRole)eResolveProxy((InternalEObject)covered) : covered;
-	}
+    InstanceRole covered = basicGetCovered();
+    return covered != null && covered.eIsProxy() ? (InstanceRole)eResolveProxy((InternalEObject)covered) : covered;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InstanceRole basicGetCovered() {
 
@@ -184,85 +184,85 @@ public abstract class AbstractEndImpl extends InteractionFragmentImpl implements
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_END__COVERED.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_END__COVERED, annotation);
-		
-		try {
-			return (InstanceRole) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (InstanceRole) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_END__EVENT:
-				if (resolve) return getEvent();
-				return basicGetEvent();
-			case InteractionPackage.ABSTRACT_END__COVERED:
-				if (resolve) return getCovered();
-				return basicGetCovered();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_END__EVENT:
+        if (resolve) return getEvent();
+        return basicGetEvent();
+      case InteractionPackage.ABSTRACT_END__COVERED:
+        if (resolve) return getCovered();
+        return basicGetCovered();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_END__EVENT:
-					setEvent((Event)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_END__EVENT:
+          setEvent((Event)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_END__EVENT:
-				setEvent((Event)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_END__EVENT:
+        setEvent((Event)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_END__EVENT:
-				return event != null;
-			case InteractionPackage.ABSTRACT_END__COVERED:
-				return basicGetCovered() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_END__EVENT:
+        return event != null;
+      case InteractionPackage.ABSTRACT_END__COVERED:
+        return basicGetCovered() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

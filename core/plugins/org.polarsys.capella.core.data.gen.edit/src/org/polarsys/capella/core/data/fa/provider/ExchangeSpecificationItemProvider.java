@@ -53,469 +53,469 @@ public class ExchangeSpecificationItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor realizedFlowPropertyDescriptor;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor sourcePropertyDescriptor;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor targetPropertyDescriptor;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor containingLinkPropertyDescriptor;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor linkPropertyDescriptor;
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ExchangeSpecificationItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW
-			if (realizedFlowPropertyDescriptor != null) {
-				Object realizedFlowValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW, true);
-				if (realizedFlowValue != null && realizedFlowValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizedFlowValue)) {
-					itemPropertyDescriptors.remove(realizedFlowPropertyDescriptor);
-				} else if (realizedFlowValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW) != null) {
-					itemPropertyDescriptors.remove(realizedFlowPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(realizedFlowPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(realizedFlowPropertyDescriptor);
-				}
-			}
-			// Process ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE
-			if (sourcePropertyDescriptor != null) {
-				Object sourceValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE, true);
-				if (sourceValue != null && sourceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sourceValue)) {
-					itemPropertyDescriptors.remove(sourcePropertyDescriptor);
-				} else if (sourceValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE) != null) {
-					itemPropertyDescriptors.remove(sourcePropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(sourcePropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(sourcePropertyDescriptor);
-				}
-			}
-			// Process ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET
-			if (targetPropertyDescriptor != null) {
-				Object targetValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET, true);
-				if (targetValue != null && targetValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) targetValue)) {
-					itemPropertyDescriptors.remove(targetPropertyDescriptor);
-				} else if (targetValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET) != null) {
-					itemPropertyDescriptors.remove(targetPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(targetPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(targetPropertyDescriptor);
-				}
-			}
-			// Process FaPackage.Literals.EXCHANGE_SPECIFICATION__CONTAINING_LINK
-			if (containingLinkPropertyDescriptor != null) {
-				Object containingLinkValue = eObject.eGet(FaPackage.Literals.EXCHANGE_SPECIFICATION__CONTAINING_LINK, true);
-				if (containingLinkValue != null && containingLinkValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) containingLinkValue)) {
-					itemPropertyDescriptors.remove(containingLinkPropertyDescriptor);
-				} else if (containingLinkValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.EXCHANGE_SPECIFICATION__CONTAINING_LINK) != null) {
-					itemPropertyDescriptors.remove(containingLinkPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(containingLinkPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(containingLinkPropertyDescriptor);
-				}
-			}
-			// Process FaPackage.Literals.EXCHANGE_SPECIFICATION__LINK
-			if (linkPropertyDescriptor != null) {
-				Object linkValue = eObject.eGet(FaPackage.Literals.EXCHANGE_SPECIFICATION__LINK, true);
-				if (linkValue != null && linkValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) linkValue)) {
-					itemPropertyDescriptors.remove(linkPropertyDescriptor);
-				} else if (linkValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.EXCHANGE_SPECIFICATION__LINK) != null) {
-					itemPropertyDescriptors.remove(linkPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(linkPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(linkPropertyDescriptor);
-				}
-			}
-		}		
-	}
+    super.checkChildCreationExtender(object);
+    if (object instanceof EObject) {
+      EObject eObject = (EObject) object;
+      // Process ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW
+      if (realizedFlowPropertyDescriptor != null) {
+        Object realizedFlowValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW, true);
+        if (realizedFlowValue != null && realizedFlowValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizedFlowValue)) {
+          itemPropertyDescriptors.remove(realizedFlowPropertyDescriptor);
+        } else if (realizedFlowValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW) != null) {
+          itemPropertyDescriptors.remove(realizedFlowPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(realizedFlowPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(realizedFlowPropertyDescriptor);
+        }
+      }
+      // Process ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE
+      if (sourcePropertyDescriptor != null) {
+        Object sourceValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE, true);
+        if (sourceValue != null && sourceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sourceValue)) {
+          itemPropertyDescriptors.remove(sourcePropertyDescriptor);
+        } else if (sourceValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE) != null) {
+          itemPropertyDescriptors.remove(sourcePropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(sourcePropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(sourcePropertyDescriptor);
+        }
+      }
+      // Process ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET
+      if (targetPropertyDescriptor != null) {
+        Object targetValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET, true);
+        if (targetValue != null && targetValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) targetValue)) {
+          itemPropertyDescriptors.remove(targetPropertyDescriptor);
+        } else if (targetValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET) != null) {
+          itemPropertyDescriptors.remove(targetPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(targetPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(targetPropertyDescriptor);
+        }
+      }
+      // Process FaPackage.Literals.EXCHANGE_SPECIFICATION__CONTAINING_LINK
+      if (containingLinkPropertyDescriptor != null) {
+        Object containingLinkValue = eObject.eGet(FaPackage.Literals.EXCHANGE_SPECIFICATION__CONTAINING_LINK, true);
+        if (containingLinkValue != null && containingLinkValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) containingLinkValue)) {
+          itemPropertyDescriptors.remove(containingLinkPropertyDescriptor);
+        } else if (containingLinkValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.EXCHANGE_SPECIFICATION__CONTAINING_LINK) != null) {
+          itemPropertyDescriptors.remove(containingLinkPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(containingLinkPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(containingLinkPropertyDescriptor);
+        }
+      }
+      // Process FaPackage.Literals.EXCHANGE_SPECIFICATION__LINK
+      if (linkPropertyDescriptor != null) {
+        Object linkValue = eObject.eGet(FaPackage.Literals.EXCHANGE_SPECIFICATION__LINK, true);
+        if (linkValue != null && linkValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) linkValue)) {
+          itemPropertyDescriptors.remove(linkPropertyDescriptor);
+        } else if (linkValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.EXCHANGE_SPECIFICATION__LINK) != null) {
+          itemPropertyDescriptors.remove(linkPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(linkPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(linkPropertyDescriptor);
+        }
+      }
+    }		
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addRealizedFlowPropertyDescriptor(object);
-			addRealizationsPropertyDescriptor(object);
-			addConvoyedInformationsPropertyDescriptor(object);
-			addSourcePropertyDescriptor(object);
-			addTargetPropertyDescriptor(object);
-			addRealizingActivityFlowsPropertyDescriptor(object);
-			addContainingLinkPropertyDescriptor(object);
-			addLinkPropertyDescriptor(object);
-			addOutgoingExchangeSpecificationRealizationsPropertyDescriptor(object);
-			addIncomingExchangeSpecificationRealizationsPropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addRealizedFlowPropertyDescriptor(object);
+      addRealizationsPropertyDescriptor(object);
+      addConvoyedInformationsPropertyDescriptor(object);
+      addSourcePropertyDescriptor(object);
+      addTargetPropertyDescriptor(object);
+      addRealizingActivityFlowsPropertyDescriptor(object);
+      addContainingLinkPropertyDescriptor(object);
+      addLinkPropertyDescriptor(object);
+      addOutgoingExchangeSpecificationRealizationsPropertyDescriptor(object);
+      addIncomingExchangeSpecificationRealizationsPropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Realized Flow feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Realized Flow feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addRealizedFlowPropertyDescriptor(Object object) {
-		// begin-extension-code
-		realizedFlowPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractRelationship_realizedFlow_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractRelationship_realizedFlow_feature", "_UI_AbstractRelationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(realizedFlowPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    realizedFlowPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_AbstractRelationship_realizedFlow_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_AbstractRelationship_realizedFlow_feature", "_UI_AbstractRelationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(realizedFlowPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Realizations feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Realizations feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addRealizationsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractInformationFlow_realizations_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractInformationFlow_realizations_feature", "_UI_AbstractInformationFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__REALIZATIONS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_AbstractInformationFlow_realizations_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_AbstractInformationFlow_realizations_feature", "_UI_AbstractInformationFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__REALIZATIONS,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Convoyed Informations feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Convoyed Informations feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addConvoyedInformationsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractInformationFlow_convoyedInformations_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractInformationFlow_convoyedInformations_feature", "_UI_AbstractInformationFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__CONVOYED_INFORMATIONS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_AbstractInformationFlow_convoyedInformations_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_AbstractInformationFlow_convoyedInformations_feature", "_UI_AbstractInformationFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__CONVOYED_INFORMATIONS,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Source feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Source feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addSourcePropertyDescriptor(Object object) {
-		// begin-extension-code
-		sourcePropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractInformationFlow_source_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractInformationFlow_source_feature", "_UI_AbstractInformationFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(sourcePropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    sourcePropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_AbstractInformationFlow_source_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_AbstractInformationFlow_source_feature", "_UI_AbstractInformationFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(sourcePropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Target feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Target feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addTargetPropertyDescriptor(Object object) {
-		// begin-extension-code
-		targetPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractInformationFlow_target_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractInformationFlow_target_feature", "_UI_AbstractInformationFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(targetPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    targetPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_AbstractInformationFlow_target_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_AbstractInformationFlow_target_feature", "_UI_AbstractInformationFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(targetPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Realizing Activity Flows feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Realizing Activity Flows feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addRealizingActivityFlowsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ActivityExchange_realizingActivityFlows_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityExchange_realizingActivityFlows_feature", "_UI_ActivityExchange_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ActivityPackage.Literals.ACTIVITY_EXCHANGE__REALIZING_ACTIVITY_FLOWS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ActivityExchange_realizingActivityFlows_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ActivityExchange_realizingActivityFlows_feature", "_UI_ActivityExchange_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ActivityPackage.Literals.ACTIVITY_EXCHANGE__REALIZING_ACTIVITY_FLOWS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Containing Link feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Containing Link feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addContainingLinkPropertyDescriptor(Object object) {
-		// begin-extension-code
-		containingLinkPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ExchangeSpecification_containingLink_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ExchangeSpecification_containingLink_feature", "_UI_ExchangeSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.EXCHANGE_SPECIFICATION__CONTAINING_LINK,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(containingLinkPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    containingLinkPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ExchangeSpecification_containingLink_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ExchangeSpecification_containingLink_feature", "_UI_ExchangeSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.EXCHANGE_SPECIFICATION__CONTAINING_LINK,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(containingLinkPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Link feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Link feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addLinkPropertyDescriptor(Object object) {
-		// begin-extension-code
-		linkPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ExchangeSpecification_link_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ExchangeSpecification_link_feature", "_UI_ExchangeSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.EXCHANGE_SPECIFICATION__LINK,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(linkPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    linkPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ExchangeSpecification_link_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ExchangeSpecification_link_feature", "_UI_ExchangeSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.EXCHANGE_SPECIFICATION__LINK,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(linkPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Outgoing Exchange Specification Realizations feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Outgoing Exchange Specification Realizations feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addOutgoingExchangeSpecificationRealizationsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ExchangeSpecification_outgoingExchangeSpecificationRealizations_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ExchangeSpecification_outgoingExchangeSpecificationRealizations_feature", "_UI_ExchangeSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.EXCHANGE_SPECIFICATION__OUTGOING_EXCHANGE_SPECIFICATION_REALIZATIONS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ExchangeSpecification_outgoingExchangeSpecificationRealizations_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ExchangeSpecification_outgoingExchangeSpecificationRealizations_feature", "_UI_ExchangeSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.EXCHANGE_SPECIFICATION__OUTGOING_EXCHANGE_SPECIFICATION_REALIZATIONS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Incoming Exchange Specification Realizations feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Incoming Exchange Specification Realizations feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addIncomingExchangeSpecificationRealizationsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ExchangeSpecification_incomingExchangeSpecificationRealizations_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ExchangeSpecification_incomingExchangeSpecificationRealizations_feature", "_UI_ExchangeSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.EXCHANGE_SPECIFICATION__INCOMING_EXCHANGE_SPECIFICATION_REALIZATIONS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ExchangeSpecification_incomingExchangeSpecificationRealizations_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ExchangeSpecification_incomingExchangeSpecificationRealizations_feature", "_UI_ExchangeSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.EXCHANGE_SPECIFICATION__INCOMING_EXCHANGE_SPECIFICATION_REALIZATIONS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
-		String label = ((ExchangeSpecification)object).getName();
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_ExchangeSpecification_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+    String label = ((ExchangeSpecification)object).getName();
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_ExchangeSpecification_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
-		super.notifyChanged(notification);
-	}
+    updateChildren(notification);
+    super.notifyChanged(notification);
+  }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+    super.collectNewChildDescriptors(newChildDescriptors, object);
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 	// end-capella-code
 }

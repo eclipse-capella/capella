@@ -51,48 +51,48 @@ public class ComponentFunctionalAllocationImpl extends AllocationImpl implements
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComponentFunctionalAllocationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION;
-	}
+    return FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractFunction getFunction() {
 
-		AbstractFunction function = basicGetFunction();
-		return function != null && function.eIsProxy() ? (AbstractFunction)eResolveProxy((InternalEObject)function) : function;
-	}
+    AbstractFunction function = basicGetFunction();
+    return function != null && function.eIsProxy() ? (AbstractFunction)eResolveProxy((InternalEObject)function) : function;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractFunction basicGetFunction() {
 
@@ -119,15 +119,15 @@ public class ComponentFunctionalAllocationImpl extends AllocationImpl implements
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION__FUNCTION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION__FUNCTION, annotation);
-		
-		try {
-			return (AbstractFunction) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (AbstractFunction) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -135,23 +135,23 @@ public class ComponentFunctionalAllocationImpl extends AllocationImpl implements
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractFunctionalBlock getBlock() {
 
-		AbstractFunctionalBlock block = basicGetBlock();
-		return block != null && block.eIsProxy() ? (AbstractFunctionalBlock)eResolveProxy((InternalEObject)block) : block;
-	}
+    AbstractFunctionalBlock block = basicGetBlock();
+    return block != null && block.eIsProxy() ? (AbstractFunctionalBlock)eResolveProxy((InternalEObject)block) : block;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractFunctionalBlock basicGetBlock() {
 
@@ -178,53 +178,53 @@ public class ComponentFunctionalAllocationImpl extends AllocationImpl implements
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION__BLOCK.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION__BLOCK, annotation);
-		
-		try {
-			return (AbstractFunctionalBlock) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (AbstractFunctionalBlock) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case FaPackage.COMPONENT_FUNCTIONAL_ALLOCATION__FUNCTION:
-				if (resolve) return getFunction();
-				return basicGetFunction();
-			case FaPackage.COMPONENT_FUNCTIONAL_ALLOCATION__BLOCK:
-				if (resolve) return getBlock();
-				return basicGetBlock();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case FaPackage.COMPONENT_FUNCTIONAL_ALLOCATION__FUNCTION:
+        if (resolve) return getFunction();
+        return basicGetFunction();
+      case FaPackage.COMPONENT_FUNCTIONAL_ALLOCATION__BLOCK:
+        if (resolve) return getBlock();
+        return basicGetBlock();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case FaPackage.COMPONENT_FUNCTIONAL_ALLOCATION__FUNCTION:
-				return basicGetFunction() != null;
-			case FaPackage.COMPONENT_FUNCTIONAL_ALLOCATION__BLOCK:
-				return basicGetBlock() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.COMPONENT_FUNCTIONAL_ALLOCATION__FUNCTION:
+        return basicGetFunction() != null;
+      case FaPackage.COMPONENT_FUNCTIONAL_ALLOCATION__BLOCK:
+        return basicGetBlock() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

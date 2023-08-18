@@ -53,35 +53,35 @@ public class FunctionalChainInvolvementFunctionImpl extends FunctionalChainInvol
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionalChainInvolvementFunctionImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION;
-	}
+    return FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionalChainInvolvementLink> getOutgoingInvolvementLinks() {
 
@@ -108,27 +108,27 @@ public class FunctionalChainInvolvementFunctionImpl extends FunctionalChainInvol
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__OUTGOING_INVOLVEMENT_LINKS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__OUTGOING_INVOLVEMENT_LINKS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<FunctionalChainInvolvementLink> resultAsList = (Collection<FunctionalChainInvolvementLink>) result;
-		return new EcoreEList.UnmodifiableEList<FunctionalChainInvolvementLink>(this, FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__OUTGOING_INVOLVEMENT_LINKS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<FunctionalChainInvolvementLink> resultAsList = (Collection<FunctionalChainInvolvementLink>) result;
+    return new EcoreEList.UnmodifiableEList<FunctionalChainInvolvementLink>(this, FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__OUTGOING_INVOLVEMENT_LINKS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionalChainInvolvementLink> getIncomingInvolvementLinks() {
 
@@ -155,52 +155,52 @@ public class FunctionalChainInvolvementFunctionImpl extends FunctionalChainInvol
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__INCOMING_INVOLVEMENT_LINKS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__INCOMING_INVOLVEMENT_LINKS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<FunctionalChainInvolvementLink> resultAsList = (Collection<FunctionalChainInvolvementLink>) result;
-		return new EcoreEList.UnmodifiableEList<FunctionalChainInvolvementLink>(this, FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__INCOMING_INVOLVEMENT_LINKS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<FunctionalChainInvolvementLink> resultAsList = (Collection<FunctionalChainInvolvementLink>) result;
+    return new EcoreEList.UnmodifiableEList<FunctionalChainInvolvementLink>(this, FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__INCOMING_INVOLVEMENT_LINKS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__OUTGOING_INVOLVEMENT_LINKS:
-				return getOutgoingInvolvementLinks();
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__INCOMING_INVOLVEMENT_LINKS:
-				return getIncomingInvolvementLinks();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__OUTGOING_INVOLVEMENT_LINKS:
+        return getOutgoingInvolvementLinks();
+      case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__INCOMING_INVOLVEMENT_LINKS:
+        return getIncomingInvolvementLinks();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__OUTGOING_INVOLVEMENT_LINKS:
-				return !getOutgoingInvolvementLinks().isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__INCOMING_INVOLVEMENT_LINKS:
-				return !getIncomingInvolvementLinks().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__OUTGOING_INVOLVEMENT_LINKS:
+        return !getOutgoingInvolvementLinks().isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__INCOMING_INVOLVEMENT_LINKS:
+        return !getIncomingInvolvementLinks().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

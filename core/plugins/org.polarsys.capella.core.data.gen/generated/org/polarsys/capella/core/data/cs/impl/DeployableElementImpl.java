@@ -48,35 +48,35 @@ public abstract class DeployableElementImpl extends NamedElementImpl implements 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected DeployableElementImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.DEPLOYABLE_ELEMENT;
-	}
+    return CsPackage.Literals.DEPLOYABLE_ELEMENT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractDeploymentLink> getDeployingLinks() {
 
@@ -103,48 +103,48 @@ public abstract class DeployableElementImpl extends NamedElementImpl implements 
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractDeploymentLink> resultAsList = (Collection<AbstractDeploymentLink>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractDeploymentLink>(this, CsPackage.Literals.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractDeploymentLink> resultAsList = (Collection<AbstractDeploymentLink>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractDeploymentLink>(this, CsPackage.Literals.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CsPackage.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS:
-				return getDeployingLinks();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CsPackage.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS:
+        return getDeployingLinks();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CsPackage.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS:
-				return !getDeployingLinks().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS:
+        return !getDeployingLinks().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

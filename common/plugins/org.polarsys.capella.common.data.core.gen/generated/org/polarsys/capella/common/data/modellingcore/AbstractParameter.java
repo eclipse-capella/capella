@@ -46,22 +46,22 @@ public interface AbstractParameter extends AbstractTypedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Is Exception</b></em>' attribute.
+   * Returns the value of the '<em><b>Is Exception</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Is Exception</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Is Exception</em>' attribute.
-	 * @see #setIsException(boolean)
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_IsException()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Tells whether an output parameter may emit a value to the exclusion of the other outputs\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Parameter::isException' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Is Exception</em>' attribute.
+   * @see #setIsException(boolean)
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_IsException()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Tells whether an output parameter may emit a value to the exclusion of the other outputs\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Parameter::isException' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	boolean isIsException();
 
@@ -69,14 +69,14 @@ public interface AbstractParameter extends AbstractTypedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#isIsException <em>Is Exception</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#isIsException <em>Is Exception</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Exception</em>' attribute.
-	 * @see #isIsException()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Is Exception</em>' attribute.
+   * @see #isIsException()
+   * @generated
+   */
 
 	void setIsException(boolean value);
 
@@ -87,22 +87,22 @@ public interface AbstractParameter extends AbstractTypedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Is Stream</b></em>' attribute.
+   * Returns the value of the '<em><b>Is Stream</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Is Stream</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Is Stream</em>' attribute.
-	 * @see #setIsStream(boolean)
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_IsStream()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Tells whether an input parameter may accept values while its behavior is executing, or whether an output parameter\r\npost values while the behavior is executing\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Parameter::isStream' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Is Stream</em>' attribute.
+   * @see #setIsStream(boolean)
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_IsStream()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Tells whether an input parameter may accept values while its behavior is executing, or whether an output parameter\r\npost values while the behavior is executing\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Parameter::isStream' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	boolean isIsStream();
 
@@ -110,14 +110,14 @@ public interface AbstractParameter extends AbstractTypedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#isIsStream <em>Is Stream</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#isIsStream <em>Is Stream</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Stream</em>' attribute.
-	 * @see #isIsStream()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Is Stream</em>' attribute.
+   * @see #isIsStream()
+   * @generated
+   */
 
 	void setIsStream(boolean value);
 
@@ -128,22 +128,22 @@ public interface AbstractParameter extends AbstractTypedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Is Optional</b></em>' attribute.
+   * Returns the value of the '<em><b>Is Optional</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Is Optional</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Is Optional</em>' attribute.
-	 * @see #setIsOptional(boolean)
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_IsOptional()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether the parameter is optional or not\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Capella AbstractParameter::isOptional is true if stereotype SysML::Activities::Optional is applied, false if not applied' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Is Optional</em>' attribute.
+   * @see #setIsOptional(boolean)
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_IsOptional()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether the parameter is optional or not\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Capella AbstractParameter::isOptional is true if stereotype SysML::Activities::Optional is applied, false if not applied' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	boolean isIsOptional();
 
@@ -151,14 +151,14 @@ public interface AbstractParameter extends AbstractTypedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#isIsOptional <em>Is Optional</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#isIsOptional <em>Is Optional</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Optional</em>' attribute.
-	 * @see #isIsOptional()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Is Optional</em>' attribute.
+   * @see #isIsOptional()
+   * @generated
+   */
 
 	void setIsOptional(boolean value);
 
@@ -169,24 +169,24 @@ public interface AbstractParameter extends AbstractTypedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Kind Of Rate</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.polarsys.capella.common.data.modellingcore.RateKind}.
+   * Returns the value of the '<em><b>Kind Of Rate</b></em>' attribute.
+   * The literals are from the enumeration {@link org.polarsys.capella.common.data.modellingcore.RateKind}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Kind Of Rate</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Kind Of Rate</em>' attribute.
-	 * @see org.polarsys.capella.common.data.modellingcore.RateKind
-	 * @see #setKindOfRate(RateKind)
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_KindOfRate()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='refer to RateKind enumeration description\r\n[source: Capella study]' constraints='none' type='refer to RateKind enumeration definition\r\n[source: Capella study]' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Capella AbstractParameter::kindOfRate is Capella RateKind::Continuous if stereotype SysML::Activities::Continuous is applied\r\nCapella AbstractParameter::kindOfRate is Capella RateKind::Discrete if stereotype SysML::Activities::Discrete is applied\r\nIf none is applied, Capella AbstractParameter::kindOfRate is Capella RateKind::Unspecified' constraints='Applied stereotype that inherits from SysML::Activities::Rate stereotype must be either SysML::Activities::Continuous or SysML::Activities::Discrete.\r\nIf none of both stereotypes are applied, kindOfRate is considered Unspecified'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Kind Of Rate</em>' attribute.
+   * @see org.polarsys.capella.common.data.modellingcore.RateKind
+   * @see #setKindOfRate(RateKind)
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_KindOfRate()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='refer to RateKind enumeration description\r\n[source: Capella study]' constraints='none' type='refer to RateKind enumeration definition\r\n[source: Capella study]' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Capella AbstractParameter::kindOfRate is Capella RateKind::Continuous if stereotype SysML::Activities::Continuous is applied\r\nCapella AbstractParameter::kindOfRate is Capella RateKind::Discrete if stereotype SysML::Activities::Discrete is applied\r\nIf none is applied, Capella AbstractParameter::kindOfRate is Capella RateKind::Unspecified' constraints='Applied stereotype that inherits from SysML::Activities::Rate stereotype must be either SysML::Activities::Continuous or SysML::Activities::Discrete.\r\nIf none of both stereotypes are applied, kindOfRate is considered Unspecified'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	RateKind getKindOfRate();
 
@@ -194,15 +194,15 @@ public interface AbstractParameter extends AbstractTypedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#getKindOfRate <em>Kind Of Rate</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#getKindOfRate <em>Kind Of Rate</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Kind Of Rate</em>' attribute.
-	 * @see org.polarsys.capella.common.data.modellingcore.RateKind
-	 * @see #getKindOfRate()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Kind Of Rate</em>' attribute.
+   * @see org.polarsys.capella.common.data.modellingcore.RateKind
+   * @see #getKindOfRate()
+   * @generated
+   */
 
 	void setKindOfRate(RateKind value);
 
@@ -213,24 +213,24 @@ public interface AbstractParameter extends AbstractTypedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Effect</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.polarsys.capella.common.data.modellingcore.ParameterEffectKind}.
+   * Returns the value of the '<em><b>Effect</b></em>' attribute.
+   * The literals are from the enumeration {@link org.polarsys.capella.common.data.modellingcore.ParameterEffectKind}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Effect</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Effect</em>' attribute.
-	 * @see org.polarsys.capella.common.data.modellingcore.ParameterEffectKind
-	 * @see #setEffect(ParameterEffectKind)
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_Effect()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the effect that the owner of the parameter has on values passed in or out of the parameter\r\n[source: UML superstructure v2.2]' constraints='none' type='see ParameterEffectKind definition' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Parameter::effect' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Effect</em>' attribute.
+   * @see org.polarsys.capella.common.data.modellingcore.ParameterEffectKind
+   * @see #setEffect(ParameterEffectKind)
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_Effect()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the effect that the owner of the parameter has on values passed in or out of the parameter\r\n[source: UML superstructure v2.2]' constraints='none' type='see ParameterEffectKind definition' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Parameter::effect' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	ParameterEffectKind getEffect();
 
@@ -238,15 +238,15 @@ public interface AbstractParameter extends AbstractTypedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#getEffect <em>Effect</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#getEffect <em>Effect</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Effect</em>' attribute.
-	 * @see org.polarsys.capella.common.data.modellingcore.ParameterEffectKind
-	 * @see #getEffect()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Effect</em>' attribute.
+   * @see org.polarsys.capella.common.data.modellingcore.ParameterEffectKind
+   * @see #getEffect()
+   * @generated
+   */
 
 	void setEffect(ParameterEffectKind value);
 
@@ -257,23 +257,23 @@ public interface AbstractParameter extends AbstractTypedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Rate</b></em>' containment reference.
+   * Returns the value of the '<em><b>Rate</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Rate</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Rate</em>' containment reference.
-	 * @see #setRate(ValueSpecification)
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_Rate()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the number of objects or values that flow in or out of the parameter per time interval while the behavior or operation is executing\r\n[source: SysML specification v1.1]' constraints='this field only makes sense if the parameter is a streaming one.\r\n[source: SysML specification v1.1]' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='SysML::Activities::Probability does not extend uml::Parameter' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Rate</em>' containment reference.
+   * @see #setRate(ValueSpecification)
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_Rate()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the number of objects or values that flow in or out of the parameter per time interval while the behavior or operation is executing\r\n[source: SysML specification v1.1]' constraints='this field only makes sense if the parameter is a streaming one.\r\n[source: SysML specification v1.1]' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='SysML::Activities::Probability does not extend uml::Parameter' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	ValueSpecification getRate();
 
@@ -281,14 +281,14 @@ public interface AbstractParameter extends AbstractTypedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#getRate <em>Rate</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#getRate <em>Rate</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Rate</em>' containment reference.
-	 * @see #getRate()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Rate</em>' containment reference.
+   * @see #getRate()
+   * @generated
+   */
 
 	void setRate(ValueSpecification value);
 
@@ -299,23 +299,23 @@ public interface AbstractParameter extends AbstractTypedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Probability</b></em>' containment reference.
+   * Returns the value of the '<em><b>Probability</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Probability</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Probability</em>' containment reference.
-	 * @see #setProbability(ValueSpecification)
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_Probability()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Likelihood that values will be output on a parameter set\r\n[source: SysML specification v1.1]' constraints='the probability should be a number between 0 and 1' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='SysML::Activities::Probability does not extend uml::Parameter' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Probability</em>' containment reference.
+   * @see #setProbability(ValueSpecification)
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_Probability()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Likelihood that values will be output on a parameter set\r\n[source: SysML specification v1.1]' constraints='the probability should be a number between 0 and 1' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='SysML::Activities::Probability does not extend uml::Parameter' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	ValueSpecification getProbability();
 
@@ -323,14 +323,14 @@ public interface AbstractParameter extends AbstractTypedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#getProbability <em>Probability</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#getProbability <em>Probability</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Probability</em>' containment reference.
-	 * @see #getProbability()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Probability</em>' containment reference.
+   * @see #getProbability()
+   * @generated
+   */
 
 	void setProbability(ValueSpecification value);
 
@@ -341,24 +341,24 @@ public interface AbstractParameter extends AbstractTypedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Parameter Set</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractParameterSet}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameterSet#getParameters <em>Parameters</em>}'.
+   * Returns the value of the '<em><b>Parameter Set</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractParameterSet}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.common.data.modellingcore.AbstractParameterSet#getParameters <em>Parameters</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Parameter Set</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parameter Set</em>' reference list.
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_ParameterSet()
-	 * @see org.polarsys.capella.common.data.modellingcore.AbstractParameterSet#getParameters
-	 * @model opposite="parameters"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The parameter sets containing the parameter. See AbstractParameterSet\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Parameter::parameterSet' explanation='none' constraints='Order must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Parameter Set</em>' reference list.
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter_ParameterSet()
+   * @see org.polarsys.capella.common.data.modellingcore.AbstractParameterSet#getParameters
+   * @model opposite="parameters"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The parameter sets containing the parameter. See AbstractParameterSet\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Parameter::parameterSet' explanation='none' constraints='Order must be computed'"
+   * @generated
+   */
 
 	EList<AbstractParameterSet> getParameterSet();
 

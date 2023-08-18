@@ -58,26 +58,26 @@ public interface DataPkg extends AbstractDependenciesPkg, AbstractExchangeItemPk
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Data Pkgs</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.DataPkg}.
+   * Returns the value of the '<em><b>Owned Data Pkgs</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.DataPkg}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Data Pkgs</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Data Pkgs</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedDataPkgs()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedDataPkgs'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Sub data packages contained in this data package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which DataPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Data Pkgs</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedDataPkgs()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedDataPkgs'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Sub data packages contained in this data package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which DataPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<DataPkg> getOwnedDataPkgs();
 
@@ -88,26 +88,26 @@ public interface DataPkg extends AbstractDependenciesPkg, AbstractExchangeItemPk
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Classes</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.Class}.
+   * Returns the value of the '<em><b>Owned Classes</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.Class}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Classes</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Classes</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedClasses()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedClasses'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the class elements contained in the package' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Class stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Classes</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedClasses()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedClasses'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the class elements contained in the package' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Class stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<org.polarsys.capella.core.data.information.Class> getOwnedClasses();
 
@@ -118,26 +118,26 @@ public interface DataPkg extends AbstractDependenciesPkg, AbstractExchangeItemPk
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Key Parts</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.KeyPart}.
+   * Returns the value of the '<em><b>Owned Key Parts</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.KeyPart}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Key Parts</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Key Parts</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedKeyParts()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedKeyParts'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='KeyPart elements contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which KeyPart stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Key Parts</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedKeyParts()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedKeyParts'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='KeyPart elements contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which KeyPart stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<KeyPart> getOwnedKeyParts();
 
@@ -148,26 +148,26 @@ public interface DataPkg extends AbstractDependenciesPkg, AbstractExchangeItemPk
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Collections</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.Collection}.
+   * Returns the value of the '<em><b>Owned Collections</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.Collection}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Collections</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Collections</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedCollections()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedCollections'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Collection elements contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Collectionstereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Collections</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedCollections()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedCollections'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Collection elements contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Collectionstereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<Collection> getOwnedCollections();
 
@@ -178,26 +178,26 @@ public interface DataPkg extends AbstractDependenciesPkg, AbstractExchangeItemPk
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Units</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.Unit}.
+   * Returns the value of the '<em><b>Owned Units</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.Unit}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Units</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Units</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedUnits()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedUnits'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Unit elements contained in the package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Unit stereotype or any stereotype that inherits from it is applied'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Units</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedUnits()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedUnits'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Unit elements contained in the package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Unit stereotype or any stereotype that inherits from it is applied'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<Unit> getOwnedUnits();
 
@@ -208,26 +208,26 @@ public interface DataPkg extends AbstractDependenciesPkg, AbstractExchangeItemPk
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Data Types</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.datatype.DataType}.
+   * Returns the value of the '<em><b>Owned Data Types</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.datatype.DataType}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Data Types</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Data Types</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedDataTypes()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedDataTypes'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Data types contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which DataType stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Data Types</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedDataTypes()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedDataTypes'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Data types contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which DataType stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<DataType> getOwnedDataTypes();
 
@@ -238,26 +238,26 @@ public interface DataPkg extends AbstractDependenciesPkg, AbstractExchangeItemPk
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Signals</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.communication.Signal}.
+   * Returns the value of the '<em><b>Owned Signals</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.communication.Signal}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Signals</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Signals</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedSignals()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedSignals'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Signal elements contained in the package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Signal stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Signals</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedSignals()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedSignals'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Signal elements contained in the package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Signal stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<Signal> getOwnedSignals();
 
@@ -268,26 +268,26 @@ public interface DataPkg extends AbstractDependenciesPkg, AbstractExchangeItemPk
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Messages</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.communication.Message}.
+   * Returns the value of the '<em><b>Owned Messages</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.communication.Message}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Messages</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Messages</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedMessages()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedMessages'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Messages contained in this Message package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Message stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Messages</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedMessages()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedMessages'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Messages contained in this Message package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Message stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<Message> getOwnedMessages();
 
@@ -298,26 +298,26 @@ public interface DataPkg extends AbstractDependenciesPkg, AbstractExchangeItemPk
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Exceptions</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.communication.Exception}.
+   * Returns the value of the '<em><b>Owned Exceptions</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.communication.Exception}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Exceptions</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Exceptions</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedExceptions()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedExceptions'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Exception elements contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Excpetion stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Exceptions</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedExceptions()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedExceptions'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Exception elements contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Excpetion stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<org.polarsys.capella.core.data.information.communication.Exception> getOwnedExceptions();
 
@@ -328,25 +328,25 @@ public interface DataPkg extends AbstractDependenciesPkg, AbstractExchangeItemPk
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned State Events</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.StateEvent}.
+   * Returns the value of the '<em><b>Owned State Events</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.StateEvent}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned State Events</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned State Events</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedStateEvents()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedStateEvents'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the StateEvent elements contained in the package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned State Events</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedStateEvents()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedStateEvents'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the StateEvent elements contained in the package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<StateEvent> getOwnedStateEvents();
 

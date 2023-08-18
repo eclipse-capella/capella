@@ -58,525 +58,525 @@ import org.polarsys.capella.core.data.capellacommon.TransitionKind;
  */
 public class CapellacommonFactoryImpl extends EFactoryImpl implements CapellacommonFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static CapellacommonFactory init() {
-		try {
-			CapellacommonFactory theCapellacommonFactory = (CapellacommonFactory)EPackage.Registry.INSTANCE.getEFactory(CapellacommonPackage.eNS_URI);
-			if (theCapellacommonFactory != null) {
-				return theCapellacommonFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new CapellacommonFactoryImpl();
-	}
+    try {
+      CapellacommonFactory theCapellacommonFactory = (CapellacommonFactory)EPackage.Registry.INSTANCE.getEFactory(CapellacommonPackage.eNS_URI);
+      if (theCapellacommonFactory != null) {
+        return theCapellacommonFactory;
+      }
+    }
+    catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new CapellacommonFactoryImpl();
+  }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CapellacommonFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case CapellacommonPackage.GENERIC_TRACE: return createGenericTrace();
-			case CapellacommonPackage.TRANSFO_LINK: return createTransfoLink();
-			case CapellacommonPackage.JUSTIFICATION_LINK: return createJustificationLink();
-			case CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVEMENT: return createCapabilityRealizationInvolvement();
-			case CapellacommonPackage.STATE_MACHINE: return createStateMachine();
-			case CapellacommonPackage.REGION: return createRegion();
-			case CapellacommonPackage.STATE: return createState();
-			case CapellacommonPackage.MODE: return createMode();
-			case CapellacommonPackage.FINAL_STATE: return createFinalState();
-			case CapellacommonPackage.STATE_TRANSITION: return createStateTransition();
-			case CapellacommonPackage.INITIAL_PSEUDO_STATE: return createInitialPseudoState();
-			case CapellacommonPackage.JOIN_PSEUDO_STATE: return createJoinPseudoState();
-			case CapellacommonPackage.FORK_PSEUDO_STATE: return createForkPseudoState();
-			case CapellacommonPackage.CHOICE_PSEUDO_STATE: return createChoicePseudoState();
-			case CapellacommonPackage.TERMINATE_PSEUDO_STATE: return createTerminatePseudoState();
-			case CapellacommonPackage.ABSTRACT_STATE_REALIZATION: return createAbstractStateRealization();
-			case CapellacommonPackage.STATE_TRANSITION_REALIZATION: return createStateTransitionRealization();
-			case CapellacommonPackage.SHALLOW_HISTORY_PSEUDO_STATE: return createShallowHistoryPseudoState();
-			case CapellacommonPackage.DEEP_HISTORY_PSEUDO_STATE: return createDeepHistoryPseudoState();
-			case CapellacommonPackage.ENTRY_POINT_PSEUDO_STATE: return createEntryPointPseudoState();
-			case CapellacommonPackage.EXIT_POINT_PSEUDO_STATE: return createExitPointPseudoState();
-			case CapellacommonPackage.STATE_EVENT_REALIZATION: return createStateEventRealization();
-			case CapellacommonPackage.CHANGE_EVENT: return createChangeEvent();
-			case CapellacommonPackage.TIME_EVENT: return createTimeEvent();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eClass.getClassifierID()) {
+      case CapellacommonPackage.GENERIC_TRACE: return createGenericTrace();
+      case CapellacommonPackage.TRANSFO_LINK: return createTransfoLink();
+      case CapellacommonPackage.JUSTIFICATION_LINK: return createJustificationLink();
+      case CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVEMENT: return createCapabilityRealizationInvolvement();
+      case CapellacommonPackage.STATE_MACHINE: return createStateMachine();
+      case CapellacommonPackage.REGION: return createRegion();
+      case CapellacommonPackage.STATE: return createState();
+      case CapellacommonPackage.MODE: return createMode();
+      case CapellacommonPackage.FINAL_STATE: return createFinalState();
+      case CapellacommonPackage.STATE_TRANSITION: return createStateTransition();
+      case CapellacommonPackage.INITIAL_PSEUDO_STATE: return createInitialPseudoState();
+      case CapellacommonPackage.JOIN_PSEUDO_STATE: return createJoinPseudoState();
+      case CapellacommonPackage.FORK_PSEUDO_STATE: return createForkPseudoState();
+      case CapellacommonPackage.CHOICE_PSEUDO_STATE: return createChoicePseudoState();
+      case CapellacommonPackage.TERMINATE_PSEUDO_STATE: return createTerminatePseudoState();
+      case CapellacommonPackage.ABSTRACT_STATE_REALIZATION: return createAbstractStateRealization();
+      case CapellacommonPackage.STATE_TRANSITION_REALIZATION: return createStateTransitionRealization();
+      case CapellacommonPackage.SHALLOW_HISTORY_PSEUDO_STATE: return createShallowHistoryPseudoState();
+      case CapellacommonPackage.DEEP_HISTORY_PSEUDO_STATE: return createDeepHistoryPseudoState();
+      case CapellacommonPackage.ENTRY_POINT_PSEUDO_STATE: return createEntryPointPseudoState();
+      case CapellacommonPackage.EXIT_POINT_PSEUDO_STATE: return createExitPointPseudoState();
+      case CapellacommonPackage.STATE_EVENT_REALIZATION: return createStateEventRealization();
+      case CapellacommonPackage.CHANGE_EVENT: return createChangeEvent();
+      case CapellacommonPackage.TIME_EVENT: return createTimeEvent();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID()) {
-			case CapellacommonPackage.TRANSITION_KIND:
-				return createTransitionKindFromString(eDataType, initialValue);
-			case CapellacommonPackage.TIME_EVENT_KIND:
-				return createTimeEventKindFromString(eDataType, initialValue);
-			case CapellacommonPackage.CHANGE_EVENT_KIND:
-				return createChangeEventKindFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eDataType.getClassifierID()) {
+      case CapellacommonPackage.TRANSITION_KIND:
+        return createTransitionKindFromString(eDataType, initialValue);
+      case CapellacommonPackage.TIME_EVENT_KIND:
+        return createTimeEventKindFromString(eDataType, initialValue);
+      case CapellacommonPackage.CHANGE_EVENT_KIND:
+        return createChangeEventKindFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID()) {
-			case CapellacommonPackage.TRANSITION_KIND:
-				return convertTransitionKindToString(eDataType, instanceValue);
-			case CapellacommonPackage.TIME_EVENT_KIND:
-				return convertTimeEventKindToString(eDataType, instanceValue);
-			case CapellacommonPackage.CHANGE_EVENT_KIND:
-				return convertChangeEventKindToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eDataType.getClassifierID()) {
+      case CapellacommonPackage.TRANSITION_KIND:
+        return convertTransitionKindToString(eDataType, instanceValue);
+      case CapellacommonPackage.TIME_EVENT_KIND:
+        return convertTimeEventKindToString(eDataType, instanceValue);
+      case CapellacommonPackage.CHANGE_EVENT_KIND:
+        return convertChangeEventKindToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public GenericTrace createGenericTrace() {
-		GenericTraceImpl genericTrace = new GenericTraceImpl();
+    GenericTraceImpl genericTrace = new GenericTraceImpl();
     //begin-capella-code
     genericTrace.setId(IdGenerator.createId());
     //end-capella-code
-		return genericTrace;
-	}
+    return genericTrace;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public TransfoLink createTransfoLink() {
-		TransfoLinkImpl transfoLink = new TransfoLinkImpl();
+    TransfoLinkImpl transfoLink = new TransfoLinkImpl();
     //begin-capella-code
     transfoLink.setId(IdGenerator.createId());
     //end-capella-code
-		return transfoLink;
-	}
+    return transfoLink;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public JustificationLink createJustificationLink() {
-		JustificationLinkImpl justificationLink = new JustificationLinkImpl();
+    JustificationLinkImpl justificationLink = new JustificationLinkImpl();
     //begin-capella-code
     justificationLink.setId(IdGenerator.createId());
     //end-capella-code
-		return justificationLink;
-	}
+    return justificationLink;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public CapabilityRealizationInvolvement createCapabilityRealizationInvolvement() {
-		CapabilityRealizationInvolvementImpl capabilityRealizationInvolvement = new CapabilityRealizationInvolvementImpl();
+    CapabilityRealizationInvolvementImpl capabilityRealizationInvolvement = new CapabilityRealizationInvolvementImpl();
     //begin-capella-code
     capabilityRealizationInvolvement.setId(IdGenerator.createId());
     //end-capella-code
-		return capabilityRealizationInvolvement;
-	}
+    return capabilityRealizationInvolvement;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public StateMachine createStateMachine() {
-		StateMachineImpl stateMachine = new StateMachineImpl();
+    StateMachineImpl stateMachine = new StateMachineImpl();
     //begin-capella-code
     stateMachine.setId(IdGenerator.createId());
     //end-capella-code
-		return stateMachine;
-	}
+    return stateMachine;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Region createRegion() {
-		RegionImpl region = new RegionImpl();
+    RegionImpl region = new RegionImpl();
     //begin-capella-code
     region.setId(IdGenerator.createId());
     //end-capella-code
-		return region;
-	}
+    return region;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public State createState() {
-		StateImpl state = new StateImpl();
+    StateImpl state = new StateImpl();
     //begin-capella-code
     state.setId(IdGenerator.createId());
     //end-capella-code
-		return state;
-	}
+    return state;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Mode createMode() {
-		ModeImpl mode = new ModeImpl();
+    ModeImpl mode = new ModeImpl();
     //begin-capella-code
     mode.setId(IdGenerator.createId());
     //end-capella-code
-		return mode;
-	}
+    return mode;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public FinalState createFinalState() {
-		FinalStateImpl finalState = new FinalStateImpl();
+    FinalStateImpl finalState = new FinalStateImpl();
     //begin-capella-code
     finalState.setId(IdGenerator.createId());
     //end-capella-code
-		return finalState;
-	}
+    return finalState;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public StateTransition createStateTransition() {
-		StateTransitionImpl stateTransition = new StateTransitionImpl();
+    StateTransitionImpl stateTransition = new StateTransitionImpl();
     //begin-capella-code
     stateTransition.setId(IdGenerator.createId());
     //end-capella-code
-		return stateTransition;
-	}
+    return stateTransition;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public InitialPseudoState createInitialPseudoState() {
-		InitialPseudoStateImpl initialPseudoState = new InitialPseudoStateImpl();
+    InitialPseudoStateImpl initialPseudoState = new InitialPseudoStateImpl();
     //begin-capella-code
     initialPseudoState.setId(IdGenerator.createId());
     //end-capella-code
-		return initialPseudoState;
-	}
+    return initialPseudoState;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public JoinPseudoState createJoinPseudoState() {
-		JoinPseudoStateImpl joinPseudoState = new JoinPseudoStateImpl();
+    JoinPseudoStateImpl joinPseudoState = new JoinPseudoStateImpl();
     //begin-capella-code
     joinPseudoState.setId(IdGenerator.createId());
     //end-capella-code
-		return joinPseudoState;
-	}
+    return joinPseudoState;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ForkPseudoState createForkPseudoState() {
-		ForkPseudoStateImpl forkPseudoState = new ForkPseudoStateImpl();
+    ForkPseudoStateImpl forkPseudoState = new ForkPseudoStateImpl();
     //begin-capella-code
     forkPseudoState.setId(IdGenerator.createId());
     //end-capella-code
-		return forkPseudoState;
-	}
+    return forkPseudoState;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ChoicePseudoState createChoicePseudoState() {
-		ChoicePseudoStateImpl choicePseudoState = new ChoicePseudoStateImpl();
+    ChoicePseudoStateImpl choicePseudoState = new ChoicePseudoStateImpl();
     //begin-capella-code
     choicePseudoState.setId(IdGenerator.createId());
     //end-capella-code
-		return choicePseudoState;
-	}
+    return choicePseudoState;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public TerminatePseudoState createTerminatePseudoState() {
-		TerminatePseudoStateImpl terminatePseudoState = new TerminatePseudoStateImpl();
+    TerminatePseudoStateImpl terminatePseudoState = new TerminatePseudoStateImpl();
     //begin-capella-code
     terminatePseudoState.setId(IdGenerator.createId());
     //end-capella-code
-		return terminatePseudoState;
-	}
+    return terminatePseudoState;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public AbstractStateRealization createAbstractStateRealization() {
-		AbstractStateRealizationImpl abstractStateRealization = new AbstractStateRealizationImpl();
+    AbstractStateRealizationImpl abstractStateRealization = new AbstractStateRealizationImpl();
     //begin-capella-code
     abstractStateRealization.setId(IdGenerator.createId());
     //end-capella-code
-		return abstractStateRealization;
-	}
+    return abstractStateRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public StateTransitionRealization createStateTransitionRealization() {
-		StateTransitionRealizationImpl stateTransitionRealization = new StateTransitionRealizationImpl();
+    StateTransitionRealizationImpl stateTransitionRealization = new StateTransitionRealizationImpl();
     //begin-capella-code
     stateTransitionRealization.setId(IdGenerator.createId());
     //end-capella-code
-		return stateTransitionRealization;
-	}
+    return stateTransitionRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ShallowHistoryPseudoState createShallowHistoryPseudoState() {
-		ShallowHistoryPseudoStateImpl shallowHistoryPseudoState = new ShallowHistoryPseudoStateImpl();
+    ShallowHistoryPseudoStateImpl shallowHistoryPseudoState = new ShallowHistoryPseudoStateImpl();
     //begin-capella-code
     shallowHistoryPseudoState.setId(IdGenerator.createId());
     //end-capella-code
-		return shallowHistoryPseudoState;
-	}
+    return shallowHistoryPseudoState;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public DeepHistoryPseudoState createDeepHistoryPseudoState() {
-		DeepHistoryPseudoStateImpl deepHistoryPseudoState = new DeepHistoryPseudoStateImpl();
+    DeepHistoryPseudoStateImpl deepHistoryPseudoState = new DeepHistoryPseudoStateImpl();
     //begin-capella-code
     deepHistoryPseudoState.setId(IdGenerator.createId());
     //end-capella-code
-		return deepHistoryPseudoState;
-	}
+    return deepHistoryPseudoState;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EntryPointPseudoState createEntryPointPseudoState() {
-		EntryPointPseudoStateImpl entryPointPseudoState = new EntryPointPseudoStateImpl();
+    EntryPointPseudoStateImpl entryPointPseudoState = new EntryPointPseudoStateImpl();
     //begin-capella-code
     entryPointPseudoState.setId(IdGenerator.createId());
     //end-capella-code
-		return entryPointPseudoState;
-	}
+    return entryPointPseudoState;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ExitPointPseudoState createExitPointPseudoState() {
-		ExitPointPseudoStateImpl exitPointPseudoState = new ExitPointPseudoStateImpl();
+    ExitPointPseudoStateImpl exitPointPseudoState = new ExitPointPseudoStateImpl();
     //begin-capella-code
     exitPointPseudoState.setId(IdGenerator.createId());
     //end-capella-code
-		return exitPointPseudoState;
-	}
+    return exitPointPseudoState;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public StateEventRealization createStateEventRealization() {
-		StateEventRealizationImpl stateEventRealization = new StateEventRealizationImpl();
+    StateEventRealizationImpl stateEventRealization = new StateEventRealizationImpl();
     //begin-capella-code
     stateEventRealization.setId(IdGenerator.createId());
     //end-capella-code
-		return stateEventRealization;
-	}
+    return stateEventRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ChangeEvent createChangeEvent() {
-		ChangeEventImpl changeEvent = new ChangeEventImpl();
+    ChangeEventImpl changeEvent = new ChangeEventImpl();
     //begin-capella-code
     changeEvent.setId(IdGenerator.createId());
     //end-capella-code
-		return changeEvent;
-	}
+    return changeEvent;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public TimeEvent createTimeEvent() {
-		TimeEventImpl timeEvent = new TimeEventImpl();
+    TimeEventImpl timeEvent = new TimeEventImpl();
     //begin-capella-code
     timeEvent.setId(IdGenerator.createId());
     //end-capella-code
-		return timeEvent;
-	}
+    return timeEvent;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public TransitionKind createTransitionKindFromString(EDataType eDataType, String initialValue) {
-		TransitionKind result = TransitionKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    TransitionKind result = TransitionKind.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertTransitionKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public TimeEventKind createTimeEventKindFromString(EDataType eDataType, String initialValue) {
-		TimeEventKind result = TimeEventKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    TimeEventKind result = TimeEventKind.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertTimeEventKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ChangeEventKind createChangeEventKindFromString(EDataType eDataType, String initialValue) {
-		ChangeEventKind result = ChangeEventKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    ChangeEventKind result = ChangeEventKind.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertChangeEventKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public CapellacommonPackage getCapellacommonPackage() {
-		return (CapellacommonPackage)getEPackage();
-	}
+    return (CapellacommonPackage)getEPackage();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
 	@Deprecated
 	public static CapellacommonPackage getPackage() {
-		return CapellacommonPackage.eINSTANCE;
-	}
+    return CapellacommonPackage.eINSTANCE;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -586,10 +586,10 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public StateMachine createStateMachine(String name_p) {
-		StateMachine stateMachine = createStateMachine();
-		stateMachine.setName(name_p);	  
-		return stateMachine;
-	}
+    StateMachine stateMachine = createStateMachine();
+    stateMachine.setName(name_p);	  
+    return stateMachine;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -599,10 +599,10 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public Region createRegion(String name_p) {
-		Region region = createRegion();
-		region.setName(name_p);	  
-		return region;
-	}
+    Region region = createRegion();
+    region.setName(name_p);	  
+    return region;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -612,10 +612,10 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public State createState(String name_p) {
-		State state = createState();
-		state.setName(name_p);	  
-		return state;
-	}
+    State state = createState();
+    state.setName(name_p);	  
+    return state;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -625,10 +625,10 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public Mode createMode(String name_p) {
-		Mode mode = createMode();
-		mode.setName(name_p);	  
-		return mode;
-	}
+    Mode mode = createMode();
+    mode.setName(name_p);	  
+    return mode;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -638,10 +638,10 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public FinalState createFinalState(String name_p) {
-		FinalState finalState = createFinalState();
-		finalState.setName(name_p);	  
-		return finalState;
-	}
+    FinalState finalState = createFinalState();
+    finalState.setName(name_p);	  
+    return finalState;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -651,10 +651,10 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public StateTransition createStateTransition(String name_p) {
-		StateTransition stateTransition = createStateTransition();
-		stateTransition.setName(name_p);	  
-		return stateTransition;
-	}
+    StateTransition stateTransition = createStateTransition();
+    stateTransition.setName(name_p);	  
+    return stateTransition;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -664,10 +664,10 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public InitialPseudoState createInitialPseudoState(String name_p) {
-		InitialPseudoState initialPseudoState = createInitialPseudoState();
-		initialPseudoState.setName(name_p);	  
-		return initialPseudoState;
-	}
+    InitialPseudoState initialPseudoState = createInitialPseudoState();
+    initialPseudoState.setName(name_p);	  
+    return initialPseudoState;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -677,10 +677,10 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public JoinPseudoState createJoinPseudoState(String name_p) {
-		JoinPseudoState joinPseudoState = createJoinPseudoState();
-		joinPseudoState.setName(name_p);	  
-		return joinPseudoState;
-	}
+    JoinPseudoState joinPseudoState = createJoinPseudoState();
+    joinPseudoState.setName(name_p);	  
+    return joinPseudoState;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -690,10 +690,10 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public ForkPseudoState createForkPseudoState(String name_p) {
-		ForkPseudoState forkPseudoState = createForkPseudoState();
-		forkPseudoState.setName(name_p);	  
-		return forkPseudoState;
-	}
+    ForkPseudoState forkPseudoState = createForkPseudoState();
+    forkPseudoState.setName(name_p);	  
+    return forkPseudoState;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -703,10 +703,10 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public ChoicePseudoState createChoicePseudoState(String name_p) {
-		ChoicePseudoState choicePseudoState = createChoicePseudoState();
-		choicePseudoState.setName(name_p);	  
-		return choicePseudoState;
-	}
+    ChoicePseudoState choicePseudoState = createChoicePseudoState();
+    choicePseudoState.setName(name_p);	  
+    return choicePseudoState;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -716,10 +716,10 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public TerminatePseudoState createTerminatePseudoState(String name_p) {
-		TerminatePseudoState terminatePseudoState = createTerminatePseudoState();
-		terminatePseudoState.setName(name_p);	  
-		return terminatePseudoState;
-	}
+    TerminatePseudoState terminatePseudoState = createTerminatePseudoState();
+    terminatePseudoState.setName(name_p);	  
+    return terminatePseudoState;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -729,10 +729,10 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public ShallowHistoryPseudoState createShallowHistoryPseudoState(String name_p) {
-		ShallowHistoryPseudoState shallowHistoryPseudoState = createShallowHistoryPseudoState();
-		shallowHistoryPseudoState.setName(name_p);	  
-		return shallowHistoryPseudoState;
-	}
+    ShallowHistoryPseudoState shallowHistoryPseudoState = createShallowHistoryPseudoState();
+    shallowHistoryPseudoState.setName(name_p);	  
+    return shallowHistoryPseudoState;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -742,10 +742,10 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public DeepHistoryPseudoState createDeepHistoryPseudoState(String name_p) {
-		DeepHistoryPseudoState deepHistoryPseudoState = createDeepHistoryPseudoState();
-		deepHistoryPseudoState.setName(name_p);	  
-		return deepHistoryPseudoState;
-	}
+    DeepHistoryPseudoState deepHistoryPseudoState = createDeepHistoryPseudoState();
+    deepHistoryPseudoState.setName(name_p);	  
+    return deepHistoryPseudoState;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -755,10 +755,10 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public EntryPointPseudoState createEntryPointPseudoState(String name_p) {
-		EntryPointPseudoState entryPointPseudoState = createEntryPointPseudoState();
-		entryPointPseudoState.setName(name_p);	  
-		return entryPointPseudoState;
-	}
+    EntryPointPseudoState entryPointPseudoState = createEntryPointPseudoState();
+    entryPointPseudoState.setName(name_p);	  
+    return entryPointPseudoState;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -768,10 +768,10 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public ExitPointPseudoState createExitPointPseudoState(String name_p) {
-		ExitPointPseudoState exitPointPseudoState = createExitPointPseudoState();
-		exitPointPseudoState.setName(name_p);	  
-		return exitPointPseudoState;
-	}
+    ExitPointPseudoState exitPointPseudoState = createExitPointPseudoState();
+    exitPointPseudoState.setName(name_p);	  
+    return exitPointPseudoState;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -781,10 +781,10 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public ChangeEvent createChangeEvent(String name_p) {
-		ChangeEvent changeEvent = createChangeEvent();
-		changeEvent.setName(name_p);	  
-		return changeEvent;
-	}
+    ChangeEvent changeEvent = createChangeEvent();
+    changeEvent.setName(name_p);	  
+    return changeEvent;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -794,10 +794,10 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 * @generated
 	 */
 	public TimeEvent createTimeEvent(String name_p) {
-		TimeEvent timeEvent = createTimeEvent();
-		timeEvent.setName(name_p);	  
-		return timeEvent;
-	}
+    TimeEvent timeEvent = createTimeEvent();
+    timeEvent.setName(name_p);	  
+    return timeEvent;
+  }
 
 	//begin-capella-code
 

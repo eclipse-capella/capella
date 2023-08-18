@@ -44,21 +44,21 @@ public interface RequirementsTrace extends Trace {
 
 
 	/**
-	 * Returns the value of the '<em><b>Source</b></em>' reference.
+   * Returns the value of the '<em><b>Source</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Source</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source</em>' reference.
-	 * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirementsTrace_Source()
-	 * @model resolveProxies="false" required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Source</em>' reference.
+   * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirementsTrace_Source()
+   * @model resolveProxies="false" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	TraceableElement getSource();
 
@@ -69,21 +69,21 @@ public interface RequirementsTrace extends Trace {
 
 
 	/**
-	 * Returns the value of the '<em><b>Target</b></em>' reference.
+   * Returns the value of the '<em><b>Target</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Target</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target</em>' reference.
-	 * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirementsTrace_Target()
-	 * @model resolveProxies="false" required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Target</em>' reference.
+   * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirementsTrace_Target()
+   * @model resolveProxies="false" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	TraceableElement getTarget();
 

@@ -62,588 +62,588 @@ public class ScenarioItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor preConditionPropertyDescriptor;
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor postConditionPropertyDescriptor;
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ScenarioItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process InteractionPackage.Literals.SCENARIO__PRE_CONDITION
-			if (preConditionPropertyDescriptor != null) {
-				Object preConditionValue = eObject.eGet(InteractionPackage.Literals.SCENARIO__PRE_CONDITION, true);
-				if (preConditionValue != null && preConditionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) preConditionValue)) {
-					itemPropertyDescriptors.remove(preConditionPropertyDescriptor);
-				} else if (preConditionValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SCENARIO__PRE_CONDITION) != null) {
-					itemPropertyDescriptors.remove(preConditionPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(preConditionPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(preConditionPropertyDescriptor);
-				}
-			}
-			// Process InteractionPackage.Literals.SCENARIO__POST_CONDITION
-			if (postConditionPropertyDescriptor != null) {
-				Object postConditionValue = eObject.eGet(InteractionPackage.Literals.SCENARIO__POST_CONDITION, true);
-				if (postConditionValue != null && postConditionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) postConditionValue)) {
-					itemPropertyDescriptors.remove(postConditionPropertyDescriptor);
-				} else if (postConditionValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SCENARIO__POST_CONDITION) != null) {
-					itemPropertyDescriptors.remove(postConditionPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(postConditionPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(postConditionPropertyDescriptor);
-				}
-			}
-		}		
-	}
+    super.checkChildCreationExtender(object);
+    if (object instanceof EObject) {
+      EObject eObject = (EObject) object;
+      // Process InteractionPackage.Literals.SCENARIO__PRE_CONDITION
+      if (preConditionPropertyDescriptor != null) {
+        Object preConditionValue = eObject.eGet(InteractionPackage.Literals.SCENARIO__PRE_CONDITION, true);
+        if (preConditionValue != null && preConditionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) preConditionValue)) {
+          itemPropertyDescriptors.remove(preConditionPropertyDescriptor);
+        } else if (preConditionValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SCENARIO__PRE_CONDITION) != null) {
+          itemPropertyDescriptors.remove(preConditionPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(preConditionPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(preConditionPropertyDescriptor);
+        }
+      }
+      // Process InteractionPackage.Literals.SCENARIO__POST_CONDITION
+      if (postConditionPropertyDescriptor != null) {
+        Object postConditionValue = eObject.eGet(InteractionPackage.Literals.SCENARIO__POST_CONDITION, true);
+        if (postConditionValue != null && postConditionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) postConditionValue)) {
+          itemPropertyDescriptors.remove(postConditionPropertyDescriptor);
+        } else if (postConditionValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SCENARIO__POST_CONDITION) != null) {
+          itemPropertyDescriptors.remove(postConditionPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(postConditionPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(postConditionPropertyDescriptor);
+        }
+      }
+    }		
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addContainedGenericTracesPropertyDescriptor(object);
-			addContainedRequirementsTracesPropertyDescriptor(object);
-			addIsControlOperatorPropertyDescriptor(object);
-			addOwnedParameterSetPropertyDescriptor(object);
-			addOwnedParameterPropertyDescriptor(object);
-			addKindPropertyDescriptor(object);
-			addMergedPropertyDescriptor(object);
-			addPreConditionPropertyDescriptor(object);
-			addPostConditionPropertyDescriptor(object);
-			addContainedFunctionsPropertyDescriptor(object);
-			addContainedPartsPropertyDescriptor(object);
-			addReferencedScenariosPropertyDescriptor(object);
-			addRealizedScenariosPropertyDescriptor(object);
-			addRealizingScenariosPropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addContainedGenericTracesPropertyDescriptor(object);
+      addContainedRequirementsTracesPropertyDescriptor(object);
+      addIsControlOperatorPropertyDescriptor(object);
+      addOwnedParameterSetPropertyDescriptor(object);
+      addOwnedParameterPropertyDescriptor(object);
+      addKindPropertyDescriptor(object);
+      addMergedPropertyDescriptor(object);
+      addPreConditionPropertyDescriptor(object);
+      addPostConditionPropertyDescriptor(object);
+      addContainedFunctionsPropertyDescriptor(object);
+      addContainedPartsPropertyDescriptor(object);
+      addReferencedScenariosPropertyDescriptor(object);
+      addRealizedScenariosPropertyDescriptor(object);
+      addRealizingScenariosPropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Contained Generic Traces feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Contained Generic Traces feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addContainedGenericTracesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Namespace_containedGenericTraces_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Namespace_containedGenericTraces_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Namespace_containedGenericTraces_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_Namespace_containedGenericTraces_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Contained Requirements Traces feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Contained Requirements Traces feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addContainedRequirementsTracesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Namespace_containedRequirementsTraces_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Namespace_containedRequirementsTraces_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Namespace_containedRequirementsTraces_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_Namespace_containedRequirementsTraces_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Is Control Operator feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Is Control Operator feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addIsControlOperatorPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractBehavior_isControlOperator_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractBehavior_isControlOperator_feature", "_UI_AbstractBehavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 BehaviorPackage.Literals.ABSTRACT_BEHAVIOR__IS_CONTROL_OPERATOR,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_AbstractBehavior_isControlOperator_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_AbstractBehavior_isControlOperator_feature", "_UI_AbstractBehavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         BehaviorPackage.Literals.ABSTRACT_BEHAVIOR__IS_CONTROL_OPERATOR,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Owned Parameter Set feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Owned Parameter Set feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addOwnedParameterSetPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractBehavior_ownedParameterSet_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractBehavior_ownedParameterSet_feature", "_UI_AbstractBehavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 BehaviorPackage.Literals.ABSTRACT_BEHAVIOR__OWNED_PARAMETER_SET,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_AbstractBehavior_ownedParameterSet_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_AbstractBehavior_ownedParameterSet_feature", "_UI_AbstractBehavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         BehaviorPackage.Literals.ABSTRACT_BEHAVIOR__OWNED_PARAMETER_SET,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Owned Parameter feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Owned Parameter feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addOwnedParameterPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractBehavior_ownedParameter_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractBehavior_ownedParameter_feature", "_UI_AbstractBehavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 BehaviorPackage.Literals.ABSTRACT_BEHAVIOR__OWNED_PARAMETER,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_AbstractBehavior_ownedParameter_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_AbstractBehavior_ownedParameter_feature", "_UI_AbstractBehavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         BehaviorPackage.Literals.ABSTRACT_BEHAVIOR__OWNED_PARAMETER,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Pre Condition feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Pre Condition feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addPreConditionPropertyDescriptor(Object object) {
-		// begin-extension-code
-		preConditionPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Scenario_preCondition_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Scenario_preCondition_feature", "_UI_Scenario_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InteractionPackage.Literals.SCENARIO__PRE_CONDITION,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(preConditionPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    preConditionPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Scenario_preCondition_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_Scenario_preCondition_feature", "_UI_Scenario_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         InteractionPackage.Literals.SCENARIO__PRE_CONDITION,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(preConditionPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Post Condition feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Post Condition feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addPostConditionPropertyDescriptor(Object object) {
-		// begin-extension-code
-		postConditionPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Scenario_postCondition_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Scenario_postCondition_feature", "_UI_Scenario_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InteractionPackage.Literals.SCENARIO__POST_CONDITION,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(postConditionPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    postConditionPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Scenario_postCondition_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_Scenario_postCondition_feature", "_UI_Scenario_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         InteractionPackage.Literals.SCENARIO__POST_CONDITION,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(postConditionPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Kind feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Kind feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addKindPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Scenario_kind_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Scenario_kind_feature", "_UI_Scenario_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InteractionPackage.Literals.SCENARIO__KIND,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Scenario_kind_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_Scenario_kind_feature", "_UI_Scenario_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         InteractionPackage.Literals.SCENARIO__KIND,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Merged feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Merged feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addMergedPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Scenario_merged_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Scenario_merged_feature", "_UI_Scenario_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InteractionPackage.Literals.SCENARIO__MERGED,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Scenario_merged_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_Scenario_merged_feature", "_UI_Scenario_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         InteractionPackage.Literals.SCENARIO__MERGED,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Contained Functions feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Contained Functions feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addContainedFunctionsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Scenario_containedFunctions_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Scenario_containedFunctions_feature", "_UI_Scenario_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InteractionPackage.Literals.SCENARIO__CONTAINED_FUNCTIONS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Scenario_containedFunctions_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_Scenario_containedFunctions_feature", "_UI_Scenario_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         InteractionPackage.Literals.SCENARIO__CONTAINED_FUNCTIONS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Contained Parts feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Contained Parts feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addContainedPartsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Scenario_containedParts_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Scenario_containedParts_feature", "_UI_Scenario_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InteractionPackage.Literals.SCENARIO__CONTAINED_PARTS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Scenario_containedParts_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_Scenario_containedParts_feature", "_UI_Scenario_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         InteractionPackage.Literals.SCENARIO__CONTAINED_PARTS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Referenced Scenarios feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Referenced Scenarios feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addReferencedScenariosPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Scenario_referencedScenarios_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Scenario_referencedScenarios_feature", "_UI_Scenario_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InteractionPackage.Literals.SCENARIO__REFERENCED_SCENARIOS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Scenario_referencedScenarios_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_Scenario_referencedScenarios_feature", "_UI_Scenario_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         InteractionPackage.Literals.SCENARIO__REFERENCED_SCENARIOS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Realized Scenarios feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Realized Scenarios feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addRealizedScenariosPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Scenario_realizedScenarios_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Scenario_realizedScenarios_feature", "_UI_Scenario_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InteractionPackage.Literals.SCENARIO__REALIZED_SCENARIOS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Scenario_realizedScenarios_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_Scenario_realizedScenarios_feature", "_UI_Scenario_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         InteractionPackage.Literals.SCENARIO__REALIZED_SCENARIOS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Realizing Scenarios feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Realizing Scenarios feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addRealizingScenariosPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Scenario_realizingScenarios_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Scenario_realizingScenarios_feature", "_UI_Scenario_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InteractionPackage.Literals.SCENARIO__REALIZING_SCENARIOS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Scenario_realizingScenarios_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_Scenario_realizingScenarios_feature", "_UI_Scenario_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         InteractionPackage.Literals.SCENARIO__REALIZING_SCENARIOS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
+   * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+   * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES);
-			childrenFeatures.add(CapellacorePackage.Literals.NAMESPACE__NAMING_RULES);
-			childrenFeatures.add(InteractionPackage.Literals.SCENARIO__OWNED_INSTANCE_ROLES);
-			childrenFeatures.add(InteractionPackage.Literals.SCENARIO__OWNED_MESSAGES);
-			childrenFeatures.add(InteractionPackage.Literals.SCENARIO__OWNED_INTERACTION_FRAGMENTS);
-			childrenFeatures.add(InteractionPackage.Literals.SCENARIO__OWNED_TIME_LAPSES);
-			childrenFeatures.add(InteractionPackage.Literals.SCENARIO__OWNED_EVENTS);
-			childrenFeatures.add(InteractionPackage.Literals.SCENARIO__OWNED_FORMAL_GATES);
-			childrenFeatures.add(InteractionPackage.Literals.SCENARIO__OWNED_SCENARIO_REALIZATION);
-			childrenFeatures.add(InteractionPackage.Literals.SCENARIO__OWNED_CONSTRAINT_DURATIONS);
-		}
-		return childrenFeatures;
-	}
+    if (childrenFeatures == null) {
+      super.getChildrenFeatures(object);
+      childrenFeatures.add(CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES);
+      childrenFeatures.add(CapellacorePackage.Literals.NAMESPACE__NAMING_RULES);
+      childrenFeatures.add(InteractionPackage.Literals.SCENARIO__OWNED_INSTANCE_ROLES);
+      childrenFeatures.add(InteractionPackage.Literals.SCENARIO__OWNED_MESSAGES);
+      childrenFeatures.add(InteractionPackage.Literals.SCENARIO__OWNED_INTERACTION_FRAGMENTS);
+      childrenFeatures.add(InteractionPackage.Literals.SCENARIO__OWNED_TIME_LAPSES);
+      childrenFeatures.add(InteractionPackage.Literals.SCENARIO__OWNED_EVENTS);
+      childrenFeatures.add(InteractionPackage.Literals.SCENARIO__OWNED_FORMAL_GATES);
+      childrenFeatures.add(InteractionPackage.Literals.SCENARIO__OWNED_SCENARIO_REALIZATION);
+      childrenFeatures.add(InteractionPackage.Literals.SCENARIO__OWNED_CONSTRAINT_DURATIONS);
+    }
+    return childrenFeatures;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
+    // Check the type of the specified child object and return the proper feature to use for
+    // adding (see {@link AddCommand}) it as a child.
 
-		return super.getChildFeature(object, child);
-	}
+    return super.getChildFeature(object, child);
+  }
 
 	/**
-	 * This returns Scenario.gif.
-	 * <!-- begin-user-doc -->
+   * This returns Scenario.gif.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Scenario")); //$NON-NLS-1$
-	}
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/Scenario")); //$NON-NLS-1$
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
-		String label = ((Scenario)object).getName();
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_Scenario_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+    String label = ((Scenario)object).getName();
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_Scenario_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
+    updateChildren(notification);
 
-		switch (notification.getFeatureID(Scenario.class)) {
-			case InteractionPackage.SCENARIO__IS_CONTROL_OPERATOR:
-			case InteractionPackage.SCENARIO__KIND:
-			case InteractionPackage.SCENARIO__MERGED:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case InteractionPackage.SCENARIO__OWNED_TRACES:
-			case InteractionPackage.SCENARIO__NAMING_RULES:
-			case InteractionPackage.SCENARIO__OWNED_INSTANCE_ROLES:
-			case InteractionPackage.SCENARIO__OWNED_MESSAGES:
-			case InteractionPackage.SCENARIO__OWNED_INTERACTION_FRAGMENTS:
-			case InteractionPackage.SCENARIO__OWNED_TIME_LAPSES:
-			case InteractionPackage.SCENARIO__OWNED_EVENTS:
-			case InteractionPackage.SCENARIO__OWNED_FORMAL_GATES:
-			case InteractionPackage.SCENARIO__OWNED_SCENARIO_REALIZATION:
-			case InteractionPackage.SCENARIO__OWNED_CONSTRAINT_DURATIONS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
-		}
-		super.notifyChanged(notification);
-	}
+    switch (notification.getFeatureID(Scenario.class)) {
+      case InteractionPackage.SCENARIO__IS_CONTROL_OPERATOR:
+      case InteractionPackage.SCENARIO__KIND:
+      case InteractionPackage.SCENARIO__MERGED:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+        return;
+      case InteractionPackage.SCENARIO__OWNED_TRACES:
+      case InteractionPackage.SCENARIO__NAMING_RULES:
+      case InteractionPackage.SCENARIO__OWNED_INSTANCE_ROLES:
+      case InteractionPackage.SCENARIO__OWNED_MESSAGES:
+      case InteractionPackage.SCENARIO__OWNED_INTERACTION_FRAGMENTS:
+      case InteractionPackage.SCENARIO__OWNED_TIME_LAPSES:
+      case InteractionPackage.SCENARIO__OWNED_EVENTS:
+      case InteractionPackage.SCENARIO__OWNED_FORMAL_GATES:
+      case InteractionPackage.SCENARIO__OWNED_SCENARIO_REALIZATION:
+      case InteractionPackage.SCENARIO__OWNED_CONSTRAINT_DURATIONS:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+        return;
+    }
+    super.notifyChanged(notification);
+  }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
+    super.collectNewChildDescriptors(newChildDescriptors, object);
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -992,40 +992,40 @@ public class ScenarioItemProvider
                 // end-extension-code
 
 
-	}
+  }
 
 	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
+    Object childFeature = feature;
+    Object childObject = child;
 
-		boolean qualify =
-			childFeature == InteractionPackage.Literals.SCENARIO__OWNED_INTERACTION_FRAGMENTS ||
-			childFeature == InteractionPackage.Literals.SCENARIO__OWNED_FORMAL_GATES;
+    boolean qualify =
+      childFeature == InteractionPackage.Literals.SCENARIO__OWNED_INTERACTION_FRAGMENTS ||
+      childFeature == InteractionPackage.Literals.SCENARIO__OWNED_FORMAL_GATES;
 
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2", //$NON-NLS-1$
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
-	}
+    if (qualify) {
+      return getString
+        ("_UI_CreateChild_text2", //$NON-NLS-1$
+         new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+    }
+    return super.getCreateChildText(owner, feature, child, selection);
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 	// end-capella-code
 }

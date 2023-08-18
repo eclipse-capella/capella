@@ -51,48 +51,48 @@ public class StateEventRealizationImpl extends AllocationImpl implements StateEv
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected StateEventRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.STATE_EVENT_REALIZATION;
-	}
+    return CapellacommonPackage.Literals.STATE_EVENT_REALIZATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public StateEvent getRealizedEvent() {
 
-		StateEvent realizedEvent = basicGetRealizedEvent();
-		return realizedEvent != null && realizedEvent.eIsProxy() ? (StateEvent)eResolveProxy((InternalEObject)realizedEvent) : realizedEvent;
-	}
+    StateEvent realizedEvent = basicGetRealizedEvent();
+    return realizedEvent != null && realizedEvent.eIsProxy() ? (StateEvent)eResolveProxy((InternalEObject)realizedEvent) : realizedEvent;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public StateEvent basicGetRealizedEvent() {
 
@@ -119,15 +119,15 @@ public class StateEventRealizationImpl extends AllocationImpl implements StateEv
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacommonPackage.Literals.STATE_EVENT_REALIZATION__REALIZED_EVENT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.STATE_EVENT_REALIZATION__REALIZED_EVENT, annotation);
-		
-		try {
-			return (StateEvent) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (StateEvent) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -135,23 +135,23 @@ public class StateEventRealizationImpl extends AllocationImpl implements StateEv
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public StateEvent getRealizingEvent() {
 
-		StateEvent realizingEvent = basicGetRealizingEvent();
-		return realizingEvent != null && realizingEvent.eIsProxy() ? (StateEvent)eResolveProxy((InternalEObject)realizingEvent) : realizingEvent;
-	}
+    StateEvent realizingEvent = basicGetRealizingEvent();
+    return realizingEvent != null && realizingEvent.eIsProxy() ? (StateEvent)eResolveProxy((InternalEObject)realizingEvent) : realizingEvent;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public StateEvent basicGetRealizingEvent() {
 
@@ -178,53 +178,53 @@ public class StateEventRealizationImpl extends AllocationImpl implements StateEv
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacommonPackage.Literals.STATE_EVENT_REALIZATION__REALIZING_EVENT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.STATE_EVENT_REALIZATION__REALIZING_EVENT, annotation);
-		
-		try {
-			return (StateEvent) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (StateEvent) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CapellacommonPackage.STATE_EVENT_REALIZATION__REALIZED_EVENT:
-				if (resolve) return getRealizedEvent();
-				return basicGetRealizedEvent();
-			case CapellacommonPackage.STATE_EVENT_REALIZATION__REALIZING_EVENT:
-				if (resolve) return getRealizingEvent();
-				return basicGetRealizingEvent();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.STATE_EVENT_REALIZATION__REALIZED_EVENT:
+        if (resolve) return getRealizedEvent();
+        return basicGetRealizedEvent();
+      case CapellacommonPackage.STATE_EVENT_REALIZATION__REALIZING_EVENT:
+        if (resolve) return getRealizingEvent();
+        return basicGetRealizingEvent();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CapellacommonPackage.STATE_EVENT_REALIZATION__REALIZED_EVENT:
-				return basicGetRealizedEvent() != null;
-			case CapellacommonPackage.STATE_EVENT_REALIZATION__REALIZING_EVENT:
-				return basicGetRealizingEvent() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.STATE_EVENT_REALIZATION__REALIZED_EVENT:
+        return basicGetRealizedEvent() != null;
+      case CapellacommonPackage.STATE_EVENT_REALIZATION__REALIZING_EVENT:
+        return basicGetRealizingEvent() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

@@ -46,25 +46,25 @@ public interface Namespace extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Traces</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.Trace}.
+   * Returns the value of the '<em><b>Owned Traces</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.Trace}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Traces</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Traces</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getNamespace_OwnedTraces()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedTraces'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the trace link contained/stored in this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='Some packaged elements of the nearest package on which Trace stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Traces</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getNamespace_OwnedTraces()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedTraces'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the trace link contained/stored in this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='Some packaged elements of the nearest package on which Trace stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<Trace> getOwnedTraces();
 
@@ -75,24 +75,24 @@ public interface Namespace extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Contained Generic Traces</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.GenericTrace}.
+   * Returns the value of the '<em><b>Contained Generic Traces</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.GenericTrace}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contained Generic Traces</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contained Generic Traces</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getNamespace_ContainedGenericTraces()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedTraces'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the set of typed elements which eAttribute type value is the owner type.\r\n[source:Capella study]' constraints='None' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedTraces'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Contained Generic Traces</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getNamespace_ContainedGenericTraces()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedTraces'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the set of typed elements which eAttribute type value is the owner type.\r\n[source:Capella study]' constraints='None' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic feature='ownedTraces'"
+   * @generated
+   */
 
 	EList<GenericTrace> getContainedGenericTraces();
 
@@ -103,24 +103,24 @@ public interface Namespace extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Contained Requirements Traces</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.requirement.RequirementsTrace}.
+   * Returns the value of the '<em><b>Contained Requirements Traces</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.requirement.RequirementsTrace}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contained Requirements Traces</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contained Requirements Traces</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getNamespace_ContainedRequirementsTraces()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedTraces'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the set of typed elements which eAttribute type value is the owner type.\r\n[source:Capella study]' constraints='None' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedTraces'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Contained Requirements Traces</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getNamespace_ContainedRequirementsTraces()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedTraces'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the set of typed elements which eAttribute type value is the owner type.\r\n[source:Capella study]' constraints='None' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic feature='ownedTraces'"
+   * @generated
+   */
 
 	EList<RequirementsTrace> getContainedRequirementsTraces();
 
@@ -131,24 +131,24 @@ public interface Namespace extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Naming Rules</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.NamingRule}.
+   * Returns the value of the '<em><b>Naming Rules</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.NamingRule}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Naming Rules</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Naming Rules</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getNamespace_NamingRules()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedComment' featureOwner='Element'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='namingRules'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifications of constraints on the naming of the element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Element::ownedComment' explanation='none' constraints='uml::Element::ownedComment elements on which NamingRule stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Naming Rules</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getNamespace_NamingRules()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedComment' featureOwner='Element'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='namingRules'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifications of constraints on the naming of the element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Element::ownedComment' explanation='none' constraints='uml::Element::ownedComment elements on which NamingRule stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<NamingRule> getNamingRules();
 

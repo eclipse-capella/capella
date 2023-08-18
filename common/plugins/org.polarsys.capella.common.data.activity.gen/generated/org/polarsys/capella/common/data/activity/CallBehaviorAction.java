@@ -39,21 +39,21 @@ public interface CallBehaviorAction extends CallAction {
 
 
 	/**
-	 * Returns the value of the '<em><b>Behavior</b></em>' reference.
+   * Returns the value of the '<em><b>Behavior</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Behavior</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Behavior</em>' reference.
-	 * @see #setBehavior(AbstractBehavior)
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getCallBehaviorAction_Behavior()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The invoked behavior. It must be capable of accepting and returning control\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='cannot map to uml::CallBehaviorAction::behavior since it just does not match (refers to different things)' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Behavior</em>' reference.
+   * @see #setBehavior(AbstractBehavior)
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getCallBehaviorAction_Behavior()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The invoked behavior. It must be capable of accepting and returning control\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='cannot map to uml::CallBehaviorAction::behavior since it just does not match (refers to different things)' constraints='none'"
+   * @generated
+   */
 
 	AbstractBehavior getBehavior();
 
@@ -61,14 +61,14 @@ public interface CallBehaviorAction extends CallAction {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.activity.CallBehaviorAction#getBehavior <em>Behavior</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.activity.CallBehaviorAction#getBehavior <em>Behavior</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Behavior</em>' reference.
-	 * @see #getBehavior()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Behavior</em>' reference.
+   * @see #getBehavior()
+   * @generated
+   */
 
 	void setBehavior(AbstractBehavior value);
 

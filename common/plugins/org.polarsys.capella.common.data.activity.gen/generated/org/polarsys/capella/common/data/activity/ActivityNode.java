@@ -44,22 +44,22 @@ public interface ActivityNode extends AbstractNamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>In Activity Partition</b></em>' reference.
+   * Returns the value of the '<em><b>In Activity Partition</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>In Activity Partition</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>In Activity Partition</em>' reference.
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityNode_InActivityPartition()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='ownedNodes'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Partitions containing the node\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>In Activity Partition</em>' reference.
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityNode_InActivityPartition()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='ownedNodes'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Partitions containing the node\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	ActivityPartition getInActivityPartition();
 
@@ -70,22 +70,22 @@ public interface ActivityNode extends AbstractNamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>In Interruptible Region</b></em>' reference.
+   * Returns the value of the '<em><b>In Interruptible Region</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>In Interruptible Region</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>In Interruptible Region</em>' reference.
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityNode_InInterruptibleRegion()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='ownedNodes'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Interruptible regions containing the node\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>In Interruptible Region</em>' reference.
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityNode_InInterruptibleRegion()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='ownedNodes'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Interruptible regions containing the node\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	InterruptibleActivityRegion getInInterruptibleRegion();
 
@@ -96,22 +96,22 @@ public interface ActivityNode extends AbstractNamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>In Structured Node</b></em>' reference.
+   * Returns the value of the '<em><b>In Structured Node</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>In Structured Node</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>In Structured Node</em>' reference.
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityNode_InStructuredNode()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='ownedNodes'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Structured activity node containing the node\r\n[source: UML superstructure v2.2]' constraints='node' comment/notes='node'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>In Structured Node</em>' reference.
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityNode_InStructuredNode()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='ownedNodes'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Structured activity node containing the node\r\n[source: UML superstructure v2.2]' constraints='node' comment/notes='node'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	InterruptibleActivityRegion getInStructuredNode();
 
@@ -122,24 +122,24 @@ public interface ActivityNode extends AbstractNamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Outgoing</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.activity.ActivityEdge}.
+   * Returns the value of the '<em><b>Outgoing</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.activity.ActivityEdge}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Outgoing</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Outgoing</em>' reference list.
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityNode_Outgoing()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Edges that have the node as source\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='freeform' viatra.expression='pattern ActivityNode__outgoing(self : ActivityNode, target : ActivityEdge) {\n\tActivityEdge.source(target, self);\n} or {\n\tAbstractAction(self);\n\tAbstractAction.outputs(self, OutputPort);\n\tActivityNode.outgoing(OutputPort, target);\n}'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Outgoing</em>' reference list.
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityNode_Outgoing()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Edges that have the node as source\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='freeform' viatra.expression='pattern ActivityNode__outgoing(self : ActivityNode, target : ActivityEdge) {\n\tActivityEdge.source(target, self);\n} or {\n\tAbstractAction(self);\n\tAbstractAction.outputs(self, OutputPort);\n\tActivityNode.outgoing(OutputPort, target);\n}'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<ActivityEdge> getOutgoing();
 
@@ -150,24 +150,24 @@ public interface ActivityNode extends AbstractNamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Incoming</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.activity.ActivityEdge}.
+   * Returns the value of the '<em><b>Incoming</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.activity.ActivityEdge}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Incoming</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Incoming</em>' reference list.
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityNode_Incoming()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Edges that have the node as target.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='freeform' viatra.expression='pattern ActivityNode__incoming(self : ActivityNode, target : ActivityEdge) {\n\tActivityEdge.target(target, self);\n} or {\n\tAbstractAction(self);\n\tAbstractAction.inputs(self, InputPort);\n\tActivityNode.incoming(InputPort, target);\n}'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Incoming</em>' reference list.
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityNode_Incoming()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Edges that have the node as target.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='freeform' viatra.expression='pattern ActivityNode__incoming(self : ActivityNode, target : ActivityEdge) {\n\tActivityEdge.target(target, self);\n} or {\n\tAbstractAction(self);\n\tAbstractAction.inputs(self, InputPort);\n\tActivityNode.incoming(InputPort, target);\n}'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<ActivityEdge> getIncoming();
 

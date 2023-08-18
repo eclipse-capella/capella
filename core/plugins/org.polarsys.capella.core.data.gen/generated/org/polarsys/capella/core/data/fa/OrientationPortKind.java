@@ -30,257 +30,257 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum OrientationPortKind implements Enumerator {
 	/**
-	 * The '<em><b>UNSET</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>UNSET</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #UNSET_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #UNSET_VALUE
+   * @generated
+   * @ordered
+   */
 	UNSET(0, "UNSET", "UNSET"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>IN</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>IN</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #IN_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #IN_VALUE
+   * @generated
+   * @ordered
+   */
 	IN(1, "IN", "IN"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>OUT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>OUT</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #OUT_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #OUT_VALUE
+   * @generated
+   * @ordered
+   */
 	OUT(2, "OUT", "OUT"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>INOUT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>INOUT</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #INOUT_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #INOUT_VALUE
+   * @generated
+   * @ordered
+   */
 	INOUT(3, "INOUT", "INOUT"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>UNSET</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>UNSET</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>UNSET</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #UNSET
-	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='' constraints=''"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the port orientation is undefined' constraints='none' comment/notes='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #UNSET
+   * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='' constraints=''"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the port orientation is undefined' constraints='none' comment/notes='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int UNSET_VALUE = 0;
 
 	/**
-	 * The '<em><b>IN</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>IN</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>IN</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #IN
-	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='' constraints=''"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the port represents an input of the component it is used in' constraints='none' comment/notes='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #IN
+   * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='' constraints=''"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the port represents an input of the component it is used in' constraints='none' comment/notes='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int IN_VALUE = 1;
 
 	/**
-	 * The '<em><b>OUT</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>OUT</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>OUT</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #OUT
-	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='' constraints=''"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the port represents an output of the component it is used in' constraints='none' comment/notes='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #OUT
+   * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='' constraints=''"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the port represents an output of the component it is used in' constraints='none' comment/notes='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int OUT_VALUE = 2;
 
 	/**
-	 * The '<em><b>INOUT</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>INOUT</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>INOUT</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #INOUT
-	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='' constraints=''"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the port represents both an input and on output of the component it is used in' constraints='none' comment/notes='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #INOUT
+   * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='' constraints=''"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the port represents both an input and on output of the component it is used in' constraints='none' comment/notes='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int INOUT_VALUE = 3;
 
 	/**
-	 * An array of all the '<em><b>Orientation Port Kind</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
+   * An array of all the '<em><b>Orientation Port Kind</b></em>' enumerators.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private static final OrientationPortKind[] VALUES_ARRAY =
 		new OrientationPortKind[] {
-			UNSET,
-			IN,
-			OUT,
-			INOUT,
-		};
+      UNSET,
+      IN,
+      OUT,
+      INOUT,
+    };
 
 	/**
-	 * A public read-only list of all the '<em><b>Orientation Port Kind</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
+   * A public read-only list of all the '<em><b>Orientation Port Kind</b></em>' enumerators.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static final List<OrientationPortKind> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Orientation Port Kind</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
+   * Returns the '<em><b>Orientation Port Kind</b></em>' literal with the specified literal value.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param literal the literal.
-	 * @return the matching enumerator or <code>null</code>.
-	 * @generated
-	 */
+   * @param literal the literal.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
 	public static OrientationPortKind get(String literal) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			OrientationPortKind result = VALUES_ARRAY[i];
-			if (result.toString().equals(literal)) {
-				return result;
-			}
-		}
-		return null;
-	}
+    for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+      OrientationPortKind result = VALUES_ARRAY[i];
+      if (result.toString().equals(literal)) {
+        return result;
+      }
+    }
+    return null;
+  }
 
 	/**
-	 * Returns the '<em><b>Orientation Port Kind</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
+   * Returns the '<em><b>Orientation Port Kind</b></em>' literal with the specified name.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name the name.
-	 * @return the matching enumerator or <code>null</code>.
-	 * @generated
-	 */
+   * @param name the name.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
 	public static OrientationPortKind getByName(String name) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			OrientationPortKind result = VALUES_ARRAY[i];
-			if (result.getName().equals(name)) {
-				return result;
-			}
-		}
-		return null;
-	}
+    for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+      OrientationPortKind result = VALUES_ARRAY[i];
+      if (result.getName().equals(name)) {
+        return result;
+      }
+    }
+    return null;
+  }
 
 	/**
-	 * Returns the '<em><b>Orientation Port Kind</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
+   * Returns the '<em><b>Orientation Port Kind</b></em>' literal with the specified integer value.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the integer value.
-	 * @return the matching enumerator or <code>null</code>.
-	 * @generated
-	 */
+   * @param value the integer value.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
 	public static OrientationPortKind get(int value) {
-		switch (value) {
-			case UNSET_VALUE: return UNSET;
-			case IN_VALUE: return IN;
-			case OUT_VALUE: return OUT;
-			case INOUT_VALUE: return INOUT;
-		}
-		return null;
-	}
+    switch (value) {
+      case UNSET_VALUE: return UNSET;
+      case IN_VALUE: return IN;
+      case OUT_VALUE: return OUT;
+      case INOUT_VALUE: return INOUT;
+    }
+    return null;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
+   * Only this class can construct instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private OrientationPortKind(int value, String name, String literal) {
-		this.value = value;
-		this.name = name;
-		this.literal = literal;
-	}
+    this.value = value;
+    this.name = name;
+    this.literal = literal;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int getValue() {
-	  return value;
-	}
+    return value;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getName() {
-	  return name;
-	}
+    return name;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getLiteral() {
-	  return literal;
-	}
+    return literal;
+  }
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
+   * Returns the literal value of the enumerator, which is its string representation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		return literal;
-	}
+    return literal;
+  }
 	
 } //OrientationPortKind

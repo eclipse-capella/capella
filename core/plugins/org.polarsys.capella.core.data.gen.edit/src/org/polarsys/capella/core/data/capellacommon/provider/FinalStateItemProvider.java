@@ -48,125 +48,125 @@ public class FinalStateItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public FinalStateItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This returns FinalState.gif.
-	 * <!-- begin-user-doc -->
+   * This returns FinalState.gif.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/FinalState")); //$NON-NLS-1$
-	}
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/FinalState")); //$NON-NLS-1$
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
-		String label = ((FinalState)object).getName();
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_FinalState_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+    String label = ((FinalState)object).getName();
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_FinalState_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
-		super.notifyChanged(notification);
-	}
+    updateChildren(notification);
+    super.notifyChanged(notification);
+  }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+    super.collectNewChildDescriptors(newChildDescriptors, object);
+  }
 
 	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
+    Object childFeature = feature;
+    Object childObject = child;
 
-		boolean qualify =
-			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
-			childFeature == CapellacommonPackage.Literals.STATE__STATE_INVARIANT;
+    boolean qualify =
+      childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
+      childFeature == CapellacommonPackage.Literals.STATE__STATE_INVARIANT;
 
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2", //$NON-NLS-1$
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
-	}
+    if (qualify) {
+      return getString
+        ("_UI_CreateChild_text2", //$NON-NLS-1$
+         new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+    }
+    return super.getCreateChildText(owner, feature, child, selection);
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 	// end-capella-code
 }

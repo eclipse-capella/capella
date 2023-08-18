@@ -52,156 +52,156 @@ public class PortAllocationItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor allocatedPortPropertyDescriptor;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor allocatingPortPropertyDescriptor;
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public PortAllocationItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process InformationPackage.Literals.PORT_ALLOCATION__ALLOCATED_PORT
-			if (allocatedPortPropertyDescriptor != null) {
-				Object allocatedPortValue = eObject.eGet(InformationPackage.Literals.PORT_ALLOCATION__ALLOCATED_PORT, true);
-				if (allocatedPortValue != null && allocatedPortValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatedPortValue)) {
-					itemPropertyDescriptors.remove(allocatedPortPropertyDescriptor);
-				} else if (allocatedPortValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.PORT_ALLOCATION__ALLOCATED_PORT) != null) {
-					itemPropertyDescriptors.remove(allocatedPortPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(allocatedPortPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(allocatedPortPropertyDescriptor);
-				}
-			}
-			// Process InformationPackage.Literals.PORT_ALLOCATION__ALLOCATING_PORT
-			if (allocatingPortPropertyDescriptor != null) {
-				Object allocatingPortValue = eObject.eGet(InformationPackage.Literals.PORT_ALLOCATION__ALLOCATING_PORT, true);
-				if (allocatingPortValue != null && allocatingPortValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatingPortValue)) {
-					itemPropertyDescriptors.remove(allocatingPortPropertyDescriptor);
-				} else if (allocatingPortValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.PORT_ALLOCATION__ALLOCATING_PORT) != null) {
-					itemPropertyDescriptors.remove(allocatingPortPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(allocatingPortPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(allocatingPortPropertyDescriptor);
-				}
-			}
-		}		
-	}
+    super.checkChildCreationExtender(object);
+    if (object instanceof EObject) {
+      EObject eObject = (EObject) object;
+      // Process InformationPackage.Literals.PORT_ALLOCATION__ALLOCATED_PORT
+      if (allocatedPortPropertyDescriptor != null) {
+        Object allocatedPortValue = eObject.eGet(InformationPackage.Literals.PORT_ALLOCATION__ALLOCATED_PORT, true);
+        if (allocatedPortValue != null && allocatedPortValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatedPortValue)) {
+          itemPropertyDescriptors.remove(allocatedPortPropertyDescriptor);
+        } else if (allocatedPortValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.PORT_ALLOCATION__ALLOCATED_PORT) != null) {
+          itemPropertyDescriptors.remove(allocatedPortPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(allocatedPortPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(allocatedPortPropertyDescriptor);
+        }
+      }
+      // Process InformationPackage.Literals.PORT_ALLOCATION__ALLOCATING_PORT
+      if (allocatingPortPropertyDescriptor != null) {
+        Object allocatingPortValue = eObject.eGet(InformationPackage.Literals.PORT_ALLOCATION__ALLOCATING_PORT, true);
+        if (allocatingPortValue != null && allocatingPortValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatingPortValue)) {
+          itemPropertyDescriptors.remove(allocatingPortPropertyDescriptor);
+        } else if (allocatingPortValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.PORT_ALLOCATION__ALLOCATING_PORT) != null) {
+          itemPropertyDescriptors.remove(allocatingPortPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(allocatingPortPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(allocatingPortPropertyDescriptor);
+        }
+      }
+    }		
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addAllocatedPortPropertyDescriptor(object);
-			addAllocatingPortPropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addAllocatedPortPropertyDescriptor(object);
+      addAllocatingPortPropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Allocated Port feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Allocated Port feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addAllocatedPortPropertyDescriptor(Object object) {
-		// begin-extension-code
-		allocatedPortPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PortAllocation_allocatedPort_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_PortAllocation_allocatedPort_feature", "_UI_PortAllocation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InformationPackage.Literals.PORT_ALLOCATION__ALLOCATED_PORT,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(allocatedPortPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    allocatedPortPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_PortAllocation_allocatedPort_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_PortAllocation_allocatedPort_feature", "_UI_PortAllocation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         InformationPackage.Literals.PORT_ALLOCATION__ALLOCATED_PORT,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(allocatedPortPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Allocating Port feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Allocating Port feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addAllocatingPortPropertyDescriptor(Object object) {
-		// begin-extension-code
-		allocatingPortPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PortAllocation_allocatingPort_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_PortAllocation_allocatingPort_feature", "_UI_PortAllocation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InformationPackage.Literals.PORT_ALLOCATION__ALLOCATING_PORT,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(allocatingPortPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    allocatingPortPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_PortAllocation_allocatingPort_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_PortAllocation_allocatingPort_feature", "_UI_PortAllocation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         InformationPackage.Literals.PORT_ALLOCATION__ALLOCATING_PORT,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(allocatingPortPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This returns PortAllocation.gif.
-	 * <!-- begin-user-doc -->
+   * This returns PortAllocation.gif.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/PortAllocation")); //$NON-NLS-1$
-	}
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/PortAllocation")); //$NON-NLS-1$
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
         String label = ""; //$NON-NLS-1$
@@ -209,64 +209,64 @@ public class PortAllocationItemProvider
         EObject target = null;
 
  		target = ((AbstractTrace) object).getTargetElement();
-	
-	 	if (null != target) {
-			if (target instanceof AbstractNamedElement) {
-				targetName = ((AbstractNamedElement) target).getName();
-			}
+  
+   	if (null != target) {
+      if (target instanceof AbstractNamedElement) {
+        targetName = ((AbstractNamedElement) target).getName();
+      }
 
-			if (null == targetName || "" == targetName) { //$NON-NLS-1$
-				targetName = "[" + target.eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
-			}
-	 	}
-	 	label = "[" + getString("_UI_PortAllocation_type") + "] to " + targetName; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_PortAllocation_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+      if (null == targetName || "" == targetName) { //$NON-NLS-1$
+        targetName = "[" + target.eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
+      }
+   	}
+   	label = "[" + getString("_UI_PortAllocation_type") + "] to " + targetName; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_PortAllocation_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
-		super.notifyChanged(notification);
-	}
+    updateChildren(notification);
+    super.notifyChanged(notification);
+  }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+    super.collectNewChildDescriptors(newChildDescriptors, object);
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 	// end-capella-code
 }

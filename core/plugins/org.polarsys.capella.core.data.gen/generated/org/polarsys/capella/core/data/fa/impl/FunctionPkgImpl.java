@@ -68,13 +68,13 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 public abstract class FunctionPkgImpl extends NamedElementImpl implements FunctionPkg {
 
 	/**
-	 * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedTraces()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedTraces()
+   * @generated
+   * @ordered
+   */
 	protected EList<Trace> ownedTraces;
 
 
@@ -90,13 +90,13 @@ public abstract class FunctionPkgImpl extends NamedElementImpl implements Functi
 
 
 	/**
-	 * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNamingRules()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getNamingRules()
+   * @generated
+   * @ordered
+   */
 	protected EList<NamingRule> namingRules;
 
 
@@ -104,13 +104,13 @@ public abstract class FunctionPkgImpl extends NamedElementImpl implements Functi
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPropertyValuePkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPropertyValuePkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<PropertyValuePkg> ownedPropertyValuePkgs;
 
 
@@ -118,13 +118,13 @@ public abstract class FunctionPkgImpl extends NamedElementImpl implements Functi
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedFunctionalLinks() <em>Owned Functional Links</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedFunctionalLinks() <em>Owned Functional Links</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedFunctionalLinks()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedFunctionalLinks()
+   * @generated
+   * @ordered
+   */
 	protected EList<ExchangeLink> ownedFunctionalLinks;
 
 
@@ -132,13 +132,13 @@ public abstract class FunctionPkgImpl extends NamedElementImpl implements Functi
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedExchanges() <em>Owned Exchanges</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedExchanges() <em>Owned Exchanges</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedExchanges()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedExchanges()
+   * @generated
+   * @ordered
+   */
 	protected EList<FunctionalExchangeSpecification> ownedExchanges;
 
 
@@ -146,13 +146,13 @@ public abstract class FunctionPkgImpl extends NamedElementImpl implements Functi
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedExchangeSpecificationRealizations() <em>Owned Exchange Specification Realizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedExchangeSpecificationRealizations() <em>Owned Exchange Specification Realizations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedExchangeSpecificationRealizations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedExchangeSpecificationRealizations()
+   * @generated
+   * @ordered
+   */
 	protected EList<ExchangeSpecificationRealization> ownedExchangeSpecificationRealizations;
 
 
@@ -160,13 +160,13 @@ public abstract class FunctionPkgImpl extends NamedElementImpl implements Functi
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedCategories() <em>Owned Categories</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedCategories() <em>Owned Categories</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedCategories()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedCategories()
+   * @generated
+   * @ordered
+   */
 	protected EList<ExchangeCategory> ownedCategories;
 
 
@@ -174,66 +174,66 @@ public abstract class FunctionPkgImpl extends NamedElementImpl implements Functi
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedFunctionSpecifications() <em>Owned Function Specifications</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedFunctionSpecifications() <em>Owned Function Specifications</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedFunctionSpecifications()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedFunctionSpecifications()
+   * @generated
+   * @ordered
+   */
 	protected EList<FunctionSpecification> ownedFunctionSpecifications;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionPkgImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FaPackage.Literals.FUNCTION_PKG;
-	}
+    return FaPackage.Literals.FUNCTION_PKG;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Trace> getOwnedTraces() {
 
-		if (ownedTraces == null) {
-			ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this, FaPackage.FUNCTION_PKG__OWNED_TRACES);
-		}
-		return ownedTraces;
-	}
+    if (ownedTraces == null) {
+      ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this, FaPackage.FUNCTION_PKG__OWNED_TRACES);
+    }
+    return ownedTraces;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<GenericTrace> getContainedGenericTraces() {
 
@@ -260,27 +260,27 @@ public abstract class FunctionPkgImpl extends NamedElementImpl implements Functi
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
-		return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
+    return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<RequirementsTrace> getContainedRequirementsTraces() {
 
@@ -307,321 +307,321 @@ public abstract class FunctionPkgImpl extends NamedElementImpl implements Functi
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
-		return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
+    return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<NamingRule> getNamingRules() {
 
-		if (namingRules == null) {
-			namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, FaPackage.FUNCTION_PKG__NAMING_RULES);
-		}
-		return namingRules;
-	}
+    if (namingRules == null) {
+      namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, FaPackage.FUNCTION_PKG__NAMING_RULES);
+    }
+    return namingRules;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PropertyValuePkg> getOwnedPropertyValuePkgs() {
 
-		if (ownedPropertyValuePkgs == null) {
-			ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this, FaPackage.FUNCTION_PKG__OWNED_PROPERTY_VALUE_PKGS);
-		}
-		return ownedPropertyValuePkgs;
-	}
+    if (ownedPropertyValuePkgs == null) {
+      ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this, FaPackage.FUNCTION_PKG__OWNED_PROPERTY_VALUE_PKGS);
+    }
+    return ownedPropertyValuePkgs;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ExchangeLink> getOwnedFunctionalLinks() {
 
-		if (ownedFunctionalLinks == null) {
-			ownedFunctionalLinks = new EObjectContainmentEList<ExchangeLink>(ExchangeLink.class, this, FaPackage.FUNCTION_PKG__OWNED_FUNCTIONAL_LINKS);
-		}
-		return ownedFunctionalLinks;
-	}
+    if (ownedFunctionalLinks == null) {
+      ownedFunctionalLinks = new EObjectContainmentEList<ExchangeLink>(ExchangeLink.class, this, FaPackage.FUNCTION_PKG__OWNED_FUNCTIONAL_LINKS);
+    }
+    return ownedFunctionalLinks;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionalExchangeSpecification> getOwnedExchanges() {
 
-		if (ownedExchanges == null) {
-			ownedExchanges = new EObjectContainmentEList<FunctionalExchangeSpecification>(FunctionalExchangeSpecification.class, this, FaPackage.FUNCTION_PKG__OWNED_EXCHANGES);
-		}
-		return ownedExchanges;
-	}
+    if (ownedExchanges == null) {
+      ownedExchanges = new EObjectContainmentEList<FunctionalExchangeSpecification>(FunctionalExchangeSpecification.class, this, FaPackage.FUNCTION_PKG__OWNED_EXCHANGES);
+    }
+    return ownedExchanges;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ExchangeSpecificationRealization> getOwnedExchangeSpecificationRealizations() {
 
-		if (ownedExchangeSpecificationRealizations == null) {
-			ownedExchangeSpecificationRealizations = new EObjectContainmentEList<ExchangeSpecificationRealization>(ExchangeSpecificationRealization.class, this, FaPackage.FUNCTION_PKG__OWNED_EXCHANGE_SPECIFICATION_REALIZATIONS);
-		}
-		return ownedExchangeSpecificationRealizations;
-	}
+    if (ownedExchangeSpecificationRealizations == null) {
+      ownedExchangeSpecificationRealizations = new EObjectContainmentEList<ExchangeSpecificationRealization>(ExchangeSpecificationRealization.class, this, FaPackage.FUNCTION_PKG__OWNED_EXCHANGE_SPECIFICATION_REALIZATIONS);
+    }
+    return ownedExchangeSpecificationRealizations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ExchangeCategory> getOwnedCategories() {
 
-		if (ownedCategories == null) {
-			ownedCategories = new EObjectContainmentEList.Resolving<ExchangeCategory>(ExchangeCategory.class, this, FaPackage.FUNCTION_PKG__OWNED_CATEGORIES);
-		}
-		return ownedCategories;
-	}
+    if (ownedCategories == null) {
+      ownedCategories = new EObjectContainmentEList.Resolving<ExchangeCategory>(ExchangeCategory.class, this, FaPackage.FUNCTION_PKG__OWNED_CATEGORIES);
+    }
+    return ownedCategories;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionSpecification> getOwnedFunctionSpecifications() {
 
-		if (ownedFunctionSpecifications == null) {
-			ownedFunctionSpecifications = new EObjectContainmentEList.Resolving<FunctionSpecification>(FunctionSpecification.class, this, FaPackage.FUNCTION_PKG__OWNED_FUNCTION_SPECIFICATIONS);
-		}
-		return ownedFunctionSpecifications;
-	}
+    if (ownedFunctionSpecifications == null) {
+      ownedFunctionSpecifications = new EObjectContainmentEList.Resolving<FunctionSpecification>(FunctionSpecification.class, this, FaPackage.FUNCTION_PKG__OWNED_FUNCTION_SPECIFICATIONS);
+    }
+    return ownedFunctionSpecifications;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_PKG__OWNED_TRACES:
-				return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
-			case FaPackage.FUNCTION_PKG__NAMING_RULES:
-				return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
-			case FaPackage.FUNCTION_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				return ((InternalEList<?>)getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
-			case FaPackage.FUNCTION_PKG__OWNED_FUNCTIONAL_LINKS:
-				return ((InternalEList<?>)getOwnedFunctionalLinks()).basicRemove(otherEnd, msgs);
-			case FaPackage.FUNCTION_PKG__OWNED_EXCHANGES:
-				return ((InternalEList<?>)getOwnedExchanges()).basicRemove(otherEnd, msgs);
-			case FaPackage.FUNCTION_PKG__OWNED_EXCHANGE_SPECIFICATION_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedExchangeSpecificationRealizations()).basicRemove(otherEnd, msgs);
-			case FaPackage.FUNCTION_PKG__OWNED_CATEGORIES:
-				return ((InternalEList<?>)getOwnedCategories()).basicRemove(otherEnd, msgs);
-			case FaPackage.FUNCTION_PKG__OWNED_FUNCTION_SPECIFICATIONS:
-				return ((InternalEList<?>)getOwnedFunctionSpecifications()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_PKG__OWNED_TRACES:
+        return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
+      case FaPackage.FUNCTION_PKG__NAMING_RULES:
+        return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
+      case FaPackage.FUNCTION_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        return ((InternalEList<?>)getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
+      case FaPackage.FUNCTION_PKG__OWNED_FUNCTIONAL_LINKS:
+        return ((InternalEList<?>)getOwnedFunctionalLinks()).basicRemove(otherEnd, msgs);
+      case FaPackage.FUNCTION_PKG__OWNED_EXCHANGES:
+        return ((InternalEList<?>)getOwnedExchanges()).basicRemove(otherEnd, msgs);
+      case FaPackage.FUNCTION_PKG__OWNED_EXCHANGE_SPECIFICATION_REALIZATIONS:
+        return ((InternalEList<?>)getOwnedExchangeSpecificationRealizations()).basicRemove(otherEnd, msgs);
+      case FaPackage.FUNCTION_PKG__OWNED_CATEGORIES:
+        return ((InternalEList<?>)getOwnedCategories()).basicRemove(otherEnd, msgs);
+      case FaPackage.FUNCTION_PKG__OWNED_FUNCTION_SPECIFICATIONS:
+        return ((InternalEList<?>)getOwnedFunctionSpecifications()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_PKG__OWNED_TRACES:
-				return getOwnedTraces();
-			case FaPackage.FUNCTION_PKG__CONTAINED_GENERIC_TRACES:
-				return getContainedGenericTraces();
-			case FaPackage.FUNCTION_PKG__CONTAINED_REQUIREMENTS_TRACES:
-				return getContainedRequirementsTraces();
-			case FaPackage.FUNCTION_PKG__NAMING_RULES:
-				return getNamingRules();
-			case FaPackage.FUNCTION_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				return getOwnedPropertyValuePkgs();
-			case FaPackage.FUNCTION_PKG__OWNED_FUNCTIONAL_LINKS:
-				return getOwnedFunctionalLinks();
-			case FaPackage.FUNCTION_PKG__OWNED_EXCHANGES:
-				return getOwnedExchanges();
-			case FaPackage.FUNCTION_PKG__OWNED_EXCHANGE_SPECIFICATION_REALIZATIONS:
-				return getOwnedExchangeSpecificationRealizations();
-			case FaPackage.FUNCTION_PKG__OWNED_CATEGORIES:
-				return getOwnedCategories();
-			case FaPackage.FUNCTION_PKG__OWNED_FUNCTION_SPECIFICATIONS:
-				return getOwnedFunctionSpecifications();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_PKG__OWNED_TRACES:
+        return getOwnedTraces();
+      case FaPackage.FUNCTION_PKG__CONTAINED_GENERIC_TRACES:
+        return getContainedGenericTraces();
+      case FaPackage.FUNCTION_PKG__CONTAINED_REQUIREMENTS_TRACES:
+        return getContainedRequirementsTraces();
+      case FaPackage.FUNCTION_PKG__NAMING_RULES:
+        return getNamingRules();
+      case FaPackage.FUNCTION_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        return getOwnedPropertyValuePkgs();
+      case FaPackage.FUNCTION_PKG__OWNED_FUNCTIONAL_LINKS:
+        return getOwnedFunctionalLinks();
+      case FaPackage.FUNCTION_PKG__OWNED_EXCHANGES:
+        return getOwnedExchanges();
+      case FaPackage.FUNCTION_PKG__OWNED_EXCHANGE_SPECIFICATION_REALIZATIONS:
+        return getOwnedExchangeSpecificationRealizations();
+      case FaPackage.FUNCTION_PKG__OWNED_CATEGORIES:
+        return getOwnedCategories();
+      case FaPackage.FUNCTION_PKG__OWNED_FUNCTION_SPECIFICATIONS:
+        return getOwnedFunctionSpecifications();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_PKG__OWNED_TRACES:
-				getOwnedTraces().clear();
-				getOwnedTraces().addAll((Collection<? extends Trace>)newValue);
-				return;
-			case FaPackage.FUNCTION_PKG__NAMING_RULES:
-				getNamingRules().clear();
-				getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
-				return;
-			case FaPackage.FUNCTION_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				getOwnedPropertyValuePkgs().clear();
-				getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
-				return;
-			case FaPackage.FUNCTION_PKG__OWNED_FUNCTIONAL_LINKS:
-				getOwnedFunctionalLinks().clear();
-				getOwnedFunctionalLinks().addAll((Collection<? extends ExchangeLink>)newValue);
-				return;
-			case FaPackage.FUNCTION_PKG__OWNED_EXCHANGES:
-				getOwnedExchanges().clear();
-				getOwnedExchanges().addAll((Collection<? extends FunctionalExchangeSpecification>)newValue);
-				return;
-			case FaPackage.FUNCTION_PKG__OWNED_EXCHANGE_SPECIFICATION_REALIZATIONS:
-				getOwnedExchangeSpecificationRealizations().clear();
-				getOwnedExchangeSpecificationRealizations().addAll((Collection<? extends ExchangeSpecificationRealization>)newValue);
-				return;
-			case FaPackage.FUNCTION_PKG__OWNED_CATEGORIES:
-				getOwnedCategories().clear();
-				getOwnedCategories().addAll((Collection<? extends ExchangeCategory>)newValue);
-				return;
-			case FaPackage.FUNCTION_PKG__OWNED_FUNCTION_SPECIFICATIONS:
-				getOwnedFunctionSpecifications().clear();
-				getOwnedFunctionSpecifications().addAll((Collection<? extends FunctionSpecification>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_PKG__OWNED_TRACES:
+        getOwnedTraces().clear();
+        getOwnedTraces().addAll((Collection<? extends Trace>)newValue);
+        return;
+      case FaPackage.FUNCTION_PKG__NAMING_RULES:
+        getNamingRules().clear();
+        getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
+        return;
+      case FaPackage.FUNCTION_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        getOwnedPropertyValuePkgs().clear();
+        getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
+        return;
+      case FaPackage.FUNCTION_PKG__OWNED_FUNCTIONAL_LINKS:
+        getOwnedFunctionalLinks().clear();
+        getOwnedFunctionalLinks().addAll((Collection<? extends ExchangeLink>)newValue);
+        return;
+      case FaPackage.FUNCTION_PKG__OWNED_EXCHANGES:
+        getOwnedExchanges().clear();
+        getOwnedExchanges().addAll((Collection<? extends FunctionalExchangeSpecification>)newValue);
+        return;
+      case FaPackage.FUNCTION_PKG__OWNED_EXCHANGE_SPECIFICATION_REALIZATIONS:
+        getOwnedExchangeSpecificationRealizations().clear();
+        getOwnedExchangeSpecificationRealizations().addAll((Collection<? extends ExchangeSpecificationRealization>)newValue);
+        return;
+      case FaPackage.FUNCTION_PKG__OWNED_CATEGORIES:
+        getOwnedCategories().clear();
+        getOwnedCategories().addAll((Collection<? extends ExchangeCategory>)newValue);
+        return;
+      case FaPackage.FUNCTION_PKG__OWNED_FUNCTION_SPECIFICATIONS:
+        getOwnedFunctionSpecifications().clear();
+        getOwnedFunctionSpecifications().addAll((Collection<? extends FunctionSpecification>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_PKG__OWNED_TRACES:
-				getOwnedTraces().clear();
-				return;
-			case FaPackage.FUNCTION_PKG__NAMING_RULES:
-				getNamingRules().clear();
-				return;
-			case FaPackage.FUNCTION_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				getOwnedPropertyValuePkgs().clear();
-				return;
-			case FaPackage.FUNCTION_PKG__OWNED_FUNCTIONAL_LINKS:
-				getOwnedFunctionalLinks().clear();
-				return;
-			case FaPackage.FUNCTION_PKG__OWNED_EXCHANGES:
-				getOwnedExchanges().clear();
-				return;
-			case FaPackage.FUNCTION_PKG__OWNED_EXCHANGE_SPECIFICATION_REALIZATIONS:
-				getOwnedExchangeSpecificationRealizations().clear();
-				return;
-			case FaPackage.FUNCTION_PKG__OWNED_CATEGORIES:
-				getOwnedCategories().clear();
-				return;
-			case FaPackage.FUNCTION_PKG__OWNED_FUNCTION_SPECIFICATIONS:
-				getOwnedFunctionSpecifications().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_PKG__OWNED_TRACES:
+        getOwnedTraces().clear();
+        return;
+      case FaPackage.FUNCTION_PKG__NAMING_RULES:
+        getNamingRules().clear();
+        return;
+      case FaPackage.FUNCTION_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        getOwnedPropertyValuePkgs().clear();
+        return;
+      case FaPackage.FUNCTION_PKG__OWNED_FUNCTIONAL_LINKS:
+        getOwnedFunctionalLinks().clear();
+        return;
+      case FaPackage.FUNCTION_PKG__OWNED_EXCHANGES:
+        getOwnedExchanges().clear();
+        return;
+      case FaPackage.FUNCTION_PKG__OWNED_EXCHANGE_SPECIFICATION_REALIZATIONS:
+        getOwnedExchangeSpecificationRealizations().clear();
+        return;
+      case FaPackage.FUNCTION_PKG__OWNED_CATEGORIES:
+        getOwnedCategories().clear();
+        return;
+      case FaPackage.FUNCTION_PKG__OWNED_FUNCTION_SPECIFICATIONS:
+        getOwnedFunctionSpecifications().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_PKG__OWNED_TRACES:
-				return ownedTraces != null && !ownedTraces.isEmpty();
-			case FaPackage.FUNCTION_PKG__CONTAINED_GENERIC_TRACES:
-				return !getContainedGenericTraces().isEmpty();
-			case FaPackage.FUNCTION_PKG__CONTAINED_REQUIREMENTS_TRACES:
-				return !getContainedRequirementsTraces().isEmpty();
-			case FaPackage.FUNCTION_PKG__NAMING_RULES:
-				return namingRules != null && !namingRules.isEmpty();
-			case FaPackage.FUNCTION_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
-			case FaPackage.FUNCTION_PKG__OWNED_FUNCTIONAL_LINKS:
-				return ownedFunctionalLinks != null && !ownedFunctionalLinks.isEmpty();
-			case FaPackage.FUNCTION_PKG__OWNED_EXCHANGES:
-				return ownedExchanges != null && !ownedExchanges.isEmpty();
-			case FaPackage.FUNCTION_PKG__OWNED_EXCHANGE_SPECIFICATION_REALIZATIONS:
-				return ownedExchangeSpecificationRealizations != null && !ownedExchangeSpecificationRealizations.isEmpty();
-			case FaPackage.FUNCTION_PKG__OWNED_CATEGORIES:
-				return ownedCategories != null && !ownedCategories.isEmpty();
-			case FaPackage.FUNCTION_PKG__OWNED_FUNCTION_SPECIFICATIONS:
-				return ownedFunctionSpecifications != null && !ownedFunctionSpecifications.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_PKG__OWNED_TRACES:
+        return ownedTraces != null && !ownedTraces.isEmpty();
+      case FaPackage.FUNCTION_PKG__CONTAINED_GENERIC_TRACES:
+        return !getContainedGenericTraces().isEmpty();
+      case FaPackage.FUNCTION_PKG__CONTAINED_REQUIREMENTS_TRACES:
+        return !getContainedRequirementsTraces().isEmpty();
+      case FaPackage.FUNCTION_PKG__NAMING_RULES:
+        return namingRules != null && !namingRules.isEmpty();
+      case FaPackage.FUNCTION_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
+      case FaPackage.FUNCTION_PKG__OWNED_FUNCTIONAL_LINKS:
+        return ownedFunctionalLinks != null && !ownedFunctionalLinks.isEmpty();
+      case FaPackage.FUNCTION_PKG__OWNED_EXCHANGES:
+        return ownedExchanges != null && !ownedExchanges.isEmpty();
+      case FaPackage.FUNCTION_PKG__OWNED_EXCHANGE_SPECIFICATION_REALIZATIONS:
+        return ownedExchangeSpecificationRealizations != null && !ownedExchangeSpecificationRealizations.isEmpty();
+      case FaPackage.FUNCTION_PKG__OWNED_CATEGORIES:
+        return ownedCategories != null && !ownedCategories.isEmpty();
+      case FaPackage.FUNCTION_PKG__OWNED_FUNCTION_SPECIFICATIONS:
+        return ownedFunctionSpecifications != null && !ownedFunctionSpecifications.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

@@ -59,296 +59,296 @@ public class OperationalActivityItemProvider
 		IItemPropertySource {
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public OperationalActivityItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addActivityAllocationsPropertyDescriptor(object);
-			addOwnedSwimlanesPropertyDescriptor(object);
-			addOwnedProcessPropertyDescriptor(object);
-			addAllocatorEntitiesPropertyDescriptor(object);
-			addRealizingSystemFunctionsPropertyDescriptor(object);
-			addAllocatingRolesPropertyDescriptor(object);
-			addContainedOperationalActivitiesPropertyDescriptor(object);
-			addChildrenOperationalActivitiesPropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addActivityAllocationsPropertyDescriptor(object);
+      addOwnedSwimlanesPropertyDescriptor(object);
+      addOwnedProcessPropertyDescriptor(object);
+      addAllocatorEntitiesPropertyDescriptor(object);
+      addRealizingSystemFunctionsPropertyDescriptor(object);
+      addAllocatingRolesPropertyDescriptor(object);
+      addContainedOperationalActivitiesPropertyDescriptor(object);
+      addChildrenOperationalActivitiesPropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Activity Allocations feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Activity Allocations feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addActivityAllocationsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_OperationalActivity_activityAllocations_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_OperationalActivity_activityAllocations_feature", "_UI_OperationalActivity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 OaPackage.Literals.OPERATIONAL_ACTIVITY__ACTIVITY_ALLOCATIONS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_OperationalActivity_activityAllocations_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_OperationalActivity_activityAllocations_feature", "_UI_OperationalActivity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         OaPackage.Literals.OPERATIONAL_ACTIVITY__ACTIVITY_ALLOCATIONS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Owned Swimlanes feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Owned Swimlanes feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addOwnedSwimlanesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_OperationalActivity_ownedSwimlanes_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_OperationalActivity_ownedSwimlanes_feature", "_UI_OperationalActivity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_SWIMLANES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_OperationalActivity_ownedSwimlanes_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_OperationalActivity_ownedSwimlanes_feature", "_UI_OperationalActivity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_SWIMLANES,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Owned Process feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Owned Process feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addOwnedProcessPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_OperationalActivity_ownedProcess_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_OperationalActivity_ownedProcess_feature", "_UI_OperationalActivity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_PROCESS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_OperationalActivity_ownedProcess_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_OperationalActivity_ownedProcess_feature", "_UI_OperationalActivity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_PROCESS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Allocator Entities feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Allocator Entities feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addAllocatorEntitiesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_OperationalActivity_allocatorEntities_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_OperationalActivity_allocatorEntities_feature", "_UI_OperationalActivity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 OaPackage.Literals.OPERATIONAL_ACTIVITY__ALLOCATOR_ENTITIES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_OperationalActivity_allocatorEntities_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_OperationalActivity_allocatorEntities_feature", "_UI_OperationalActivity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         OaPackage.Literals.OPERATIONAL_ACTIVITY__ALLOCATOR_ENTITIES,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Realizing System Functions feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Realizing System Functions feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addRealizingSystemFunctionsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_OperationalActivity_realizingSystemFunctions_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_OperationalActivity_realizingSystemFunctions_feature", "_UI_OperationalActivity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 OaPackage.Literals.OPERATIONAL_ACTIVITY__REALIZING_SYSTEM_FUNCTIONS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_OperationalActivity_realizingSystemFunctions_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_OperationalActivity_realizingSystemFunctions_feature", "_UI_OperationalActivity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         OaPackage.Literals.OPERATIONAL_ACTIVITY__REALIZING_SYSTEM_FUNCTIONS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Allocating Roles feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Allocating Roles feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addAllocatingRolesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_OperationalActivity_allocatingRoles_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_OperationalActivity_allocatingRoles_feature", "_UI_OperationalActivity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 OaPackage.Literals.OPERATIONAL_ACTIVITY__ALLOCATING_ROLES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_OperationalActivity_allocatingRoles_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_OperationalActivity_allocatingRoles_feature", "_UI_OperationalActivity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         OaPackage.Literals.OPERATIONAL_ACTIVITY__ALLOCATING_ROLES,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Contained Operational Activities feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Contained Operational Activities feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addContainedOperationalActivitiesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_OperationalActivity_containedOperationalActivities_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_OperationalActivity_containedOperationalActivities_feature", "_UI_OperationalActivity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 OaPackage.Literals.OPERATIONAL_ACTIVITY__CONTAINED_OPERATIONAL_ACTIVITIES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_OperationalActivity_containedOperationalActivities_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_OperationalActivity_containedOperationalActivities_feature", "_UI_OperationalActivity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         OaPackage.Literals.OPERATIONAL_ACTIVITY__CONTAINED_OPERATIONAL_ACTIVITIES,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Children Operational Activities feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Children Operational Activities feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addChildrenOperationalActivitiesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_OperationalActivity_childrenOperationalActivities_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_OperationalActivity_childrenOperationalActivities_feature", "_UI_OperationalActivity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 OaPackage.Literals.OPERATIONAL_ACTIVITY__CHILDREN_OPERATIONAL_ACTIVITIES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_OperationalActivity_childrenOperationalActivities_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_OperationalActivity_childrenOperationalActivities_feature", "_UI_OperationalActivity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         OaPackage.Literals.OPERATIONAL_ACTIVITY__CHILDREN_OPERATIONAL_ACTIVITIES,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
+   * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+   * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS);
-		}
-		return childrenFeatures;
-	}
+    if (childrenFeatures == null) {
+      super.getChildrenFeatures(object);
+      childrenFeatures.add(OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS);
+    }
+    return childrenFeatures;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
+    // Check the type of the specified child object and return the proper feature to use for
+    // adding (see {@link AddCommand}) it as a child.
 
-		return super.getChildFeature(object, child);
-	}
+    return super.getChildFeature(object, child);
+  }
 
 	/**
-	 * This returns OperationalActivity.gif.
-	 * <!-- begin-user-doc -->
+   * This returns OperationalActivity.gif.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public Object getImageGen(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/OperationalActivity")); //$NON-NLS-1$
-	}
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/OperationalActivity")); //$NON-NLS-1$
+  }
 
   /**
    * This returns OperationalActivity.gif.
@@ -374,58 +374,58 @@ public class OperationalActivityItemProvider
   }
 
 		/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
-		String label = ((OperationalActivity)object).getName();
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_OperationalActivity_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+    String label = ((OperationalActivity)object).getName();
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_OperationalActivity_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 		/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
+    updateChildren(notification);
 
-		switch (notification.getFeatureID(OperationalActivity.class)) {
-			case OaPackage.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
-		}
-		super.notifyChanged(notification);
-	}
+    switch (notification.getFeatureID(OperationalActivity.class)) {
+      case OaPackage.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+        return;
+    }
+    super.notifyChanged(notification);
+  }
 
 		/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
+    super.collectNewChildDescriptors(newChildDescriptors, object);
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -438,51 +438,51 @@ public class OperationalActivityItemProvider
                 // end-extension-code
 
 
-	}
+  }
 
 		/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
+    Object childFeature = feature;
+    Object childObject = child;
 
-		boolean qualify =
-			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
-			childFeature == ActivityPackage.Literals.ABSTRACT_ACTION__LOCAL_PRECONDITION ||
-			childFeature == ActivityPackage.Literals.ABSTRACT_ACTION__LOCAL_POSTCONDITION ||
-			childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE ||
-			childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE ||
-			childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE ||
-			childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE ||
-			childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD ||
-			childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH ||
-			childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD ||
-			childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH ||
-			childFeature == ActivityPackage.Literals.ABSTRACT_ACTION__INPUTS ||
-			childFeature == ActivityPackage.Literals.INVOCATION_ACTION__ARGUMENTS ||
-			childFeature == ActivityPackage.Literals.ABSTRACT_ACTION__OUTPUTS ||
-			childFeature == ActivityPackage.Literals.CALL_ACTION__RESULTS;
+    boolean qualify =
+      childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
+      childFeature == ActivityPackage.Literals.ABSTRACT_ACTION__LOCAL_PRECONDITION ||
+      childFeature == ActivityPackage.Literals.ABSTRACT_ACTION__LOCAL_POSTCONDITION ||
+      childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE ||
+      childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE ||
+      childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE ||
+      childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE ||
+      childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD ||
+      childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH ||
+      childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD ||
+      childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH ||
+      childFeature == ActivityPackage.Literals.ABSTRACT_ACTION__INPUTS ||
+      childFeature == ActivityPackage.Literals.INVOCATION_ACTION__ARGUMENTS ||
+      childFeature == ActivityPackage.Literals.ABSTRACT_ACTION__OUTPUTS ||
+      childFeature == ActivityPackage.Literals.CALL_ACTION__RESULTS;
 
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2", //$NON-NLS-1$
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
-	}
+    if (qualify) {
+      return getString
+        ("_UI_CreateChild_text2", //$NON-NLS-1$
+         new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+    }
+    return super.getCreateChildText(owner, feature, child, selection);
+  }
 
 		/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 }

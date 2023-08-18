@@ -42,24 +42,24 @@ public interface SystemCommunicationHook extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Communication</b></em>' reference.
+   * Returns the value of the '<em><b>Communication</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Communication</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Communication</em>' reference.
-	 * @see #setCommunication(SystemCommunication)
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemCommunicationHook_Communication()
-	 * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='communication'"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='association' featureOwner='Property'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the relationship link to which this endpoint is attached\r\n[source: Capella study]\r\n\r\nReferences the association of which this property is a member, if any.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Property::association' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Communication</em>' reference.
+   * @see #setCommunication(SystemCommunication)
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemCommunicationHook_Communication()
+   * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='communication'"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='association' featureOwner='Property'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the relationship link to which this endpoint is attached\r\n[source: Capella study]\r\n\r\nReferences the association of which this property is a member, if any.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Property::association' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	SystemCommunication getCommunication();
 
@@ -67,14 +67,14 @@ public interface SystemCommunicationHook extends NamedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.ctx.SystemCommunicationHook#getCommunication <em>Communication</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.ctx.SystemCommunicationHook#getCommunication <em>Communication</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Communication</em>' reference.
-	 * @see #getCommunication()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Communication</em>' reference.
+   * @see #getCommunication()
+   * @generated
+   */
 
 	void setCommunication(SystemCommunication value);
 
@@ -85,24 +85,24 @@ public interface SystemCommunicationHook extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' reference.
+   * Returns the value of the '<em><b>Type</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Type</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Type</em>' reference.
-	 * @see #setType(Component)
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemCommunicationHook_Type()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='type' featureOwner='TypedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='type'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the type of the entity to which this endpoint is attached\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TypedElement::type' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Type</em>' reference.
+   * @see #setType(Component)
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemCommunicationHook_Type()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='type' featureOwner='TypedElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='type'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the type of the entity to which this endpoint is attached\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TypedElement::type' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	Component getType();
 
@@ -110,14 +110,14 @@ public interface SystemCommunicationHook extends NamedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.ctx.SystemCommunicationHook#getType <em>Type</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.ctx.SystemCommunicationHook#getType <em>Type</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' reference.
-	 * @see #getType()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Type</em>' reference.
+   * @see #getType()
+   * @generated
+   */
 
 	void setType(Component value);
 

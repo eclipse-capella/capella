@@ -41,23 +41,23 @@ public interface RolePkg extends Structure {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Role Pkgs</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.RolePkg}.
+   * Returns the value of the '<em><b>Owned Role Pkgs</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.RolePkg}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Role Pkgs</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Role Pkgs</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getRolePkg_OwnedRolePkgs()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='sub-(role)packages contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which RolePkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Role Pkgs</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getRolePkg_OwnedRolePkgs()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='sub-(role)packages contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which RolePkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<RolePkg> getOwnedRolePkgs();
 
@@ -68,23 +68,23 @@ public interface RolePkg extends Structure {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Roles</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.Role}.
+   * Returns the value of the '<em><b>Owned Roles</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.Role}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Roles</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Roles</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getRolePkg_OwnedRoles()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Role elements contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Role stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Roles</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getRolePkg_OwnedRoles()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Role elements contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Role stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<Role> getOwnedRoles();
 

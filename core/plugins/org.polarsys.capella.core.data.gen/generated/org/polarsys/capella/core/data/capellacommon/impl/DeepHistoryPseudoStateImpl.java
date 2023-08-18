@@ -27,25 +27,25 @@ import org.polarsys.capella.core.data.capellacommon.DeepHistoryPseudoState;
  */
 public class DeepHistoryPseudoStateImpl extends PseudostateImpl implements DeepHistoryPseudoState {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected DeepHistoryPseudoStateImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.DEEP_HISTORY_PSEUDO_STATE;
-	}
+    return CapellacommonPackage.Literals.DEEP_HISTORY_PSEUDO_STATE;
+  }
 
 
 

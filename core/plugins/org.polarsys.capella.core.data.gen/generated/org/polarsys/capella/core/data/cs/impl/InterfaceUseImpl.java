@@ -50,61 +50,61 @@ public class InterfaceUseImpl extends RelationshipImpl implements InterfaceUse {
 
 
 	/**
-	 * The cached value of the '{@link #getUsedInterface() <em>Used Interface</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getUsedInterface() <em>Used Interface</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUsedInterface()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getUsedInterface()
+   * @generated
+   * @ordered
+   */
 	protected Interface usedInterface;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected InterfaceUseImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.INTERFACE_USE;
-	}
+    return CsPackage.Literals.INTERFACE_USE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Component getInterfaceUser() {
 
-		Component interfaceUser = basicGetInterfaceUser();
-		return interfaceUser != null && interfaceUser.eIsProxy() ? (Component)eResolveProxy((InternalEObject)interfaceUser) : interfaceUser;
-	}
+    Component interfaceUser = basicGetInterfaceUser();
+    return interfaceUser != null && interfaceUser.eIsProxy() ? (Component)eResolveProxy((InternalEObject)interfaceUser) : interfaceUser;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Component basicGetInterfaceUser() {
 
@@ -131,15 +131,15 @@ public class InterfaceUseImpl extends RelationshipImpl implements InterfaceUse {
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.INTERFACE_USE__INTERFACE_USER.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE_USE__INTERFACE_USER, annotation);
-		
-		try {
-			return (Component) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Component) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -147,123 +147,123 @@ public class InterfaceUseImpl extends RelationshipImpl implements InterfaceUse {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Interface getUsedInterface() {
 
-		if (usedInterface != null && usedInterface.eIsProxy()) {
-			InternalEObject oldUsedInterface = (InternalEObject)usedInterface;
-			usedInterface = (Interface)eResolveProxy(oldUsedInterface);
-			if (usedInterface != oldUsedInterface) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CsPackage.INTERFACE_USE__USED_INTERFACE, oldUsedInterface, usedInterface));
-			}
-		}
-		return usedInterface;
-	}
+    if (usedInterface != null && usedInterface.eIsProxy()) {
+      InternalEObject oldUsedInterface = (InternalEObject)usedInterface;
+      usedInterface = (Interface)eResolveProxy(oldUsedInterface);
+      if (usedInterface != oldUsedInterface) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CsPackage.INTERFACE_USE__USED_INTERFACE, oldUsedInterface, usedInterface));
+      }
+    }
+    return usedInterface;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Interface basicGetUsedInterface() {
 
-		return usedInterface;
-	}
+    return usedInterface;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setUsedInterface(Interface newUsedInterface) {
 
-		Interface oldUsedInterface = usedInterface;
-		usedInterface = newUsedInterface;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.INTERFACE_USE__USED_INTERFACE, oldUsedInterface, usedInterface));
+    Interface oldUsedInterface = usedInterface;
+    usedInterface = newUsedInterface;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.INTERFACE_USE__USED_INTERFACE, oldUsedInterface, usedInterface));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CsPackage.INTERFACE_USE__INTERFACE_USER:
-				if (resolve) return getInterfaceUser();
-				return basicGetInterfaceUser();
-			case CsPackage.INTERFACE_USE__USED_INTERFACE:
-				if (resolve) return getUsedInterface();
-				return basicGetUsedInterface();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CsPackage.INTERFACE_USE__INTERFACE_USER:
+        if (resolve) return getInterfaceUser();
+        return basicGetInterfaceUser();
+      case CsPackage.INTERFACE_USE__USED_INTERFACE:
+        if (resolve) return getUsedInterface();
+        return basicGetUsedInterface();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CsPackage.INTERFACE_USE__USED_INTERFACE:
-					setUsedInterface((Interface)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CsPackage.INTERFACE_USE__USED_INTERFACE:
+          setUsedInterface((Interface)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CsPackage.INTERFACE_USE__USED_INTERFACE:
-				setUsedInterface((Interface)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.INTERFACE_USE__USED_INTERFACE:
+        setUsedInterface((Interface)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CsPackage.INTERFACE_USE__INTERFACE_USER:
-				return basicGetInterfaceUser() != null;
-			case CsPackage.INTERFACE_USE__USED_INTERFACE:
-				return usedInterface != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.INTERFACE_USE__INTERFACE_USER:
+        return basicGetInterfaceUser() != null;
+      case CsPackage.INTERFACE_USE__USED_INTERFACE:
+        return usedInterface != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

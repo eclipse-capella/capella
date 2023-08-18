@@ -44,24 +44,24 @@ public interface ExceptionHandler extends ModelElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Protected Node</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.common.data.activity.ExecutableNode#getOwnedHandlers <em>Owned Handlers</em>}'.
+   * Returns the value of the '<em><b>Protected Node</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.common.data.activity.ExecutableNode#getOwnedHandlers <em>Owned Handlers</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Protected Node</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Protected Node</em>' container reference.
-	 * @see #setProtectedNode(ExecutableNode)
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getExceptionHandler_ProtectedNode()
-	 * @see org.polarsys.capella.common.data.activity.ExecutableNode#getOwnedHandlers
-	 * @model opposite="ownedHandlers" required="true" transient="false"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The node protected by the handler. The handler is examined if an exception propagates to the outside of the node\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExceptionHandler::protectedNode' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Protected Node</em>' container reference.
+   * @see #setProtectedNode(ExecutableNode)
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getExceptionHandler_ProtectedNode()
+   * @see org.polarsys.capella.common.data.activity.ExecutableNode#getOwnedHandlers
+   * @model opposite="ownedHandlers" required="true" transient="false"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The node protected by the handler. The handler is examined if an exception propagates to the outside of the node\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExceptionHandler::protectedNode' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	ExecutableNode getProtectedNode();
 
@@ -69,14 +69,14 @@ public interface ExceptionHandler extends ModelElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.activity.ExceptionHandler#getProtectedNode <em>Protected Node</em>}' container reference.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.activity.ExceptionHandler#getProtectedNode <em>Protected Node</em>}' container reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Protected Node</em>' container reference.
-	 * @see #getProtectedNode()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Protected Node</em>' container reference.
+   * @see #getProtectedNode()
+   * @generated
+   */
 
 	void setProtectedNode(ExecutableNode value);
 
@@ -87,22 +87,22 @@ public interface ExceptionHandler extends ModelElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Handler Body</b></em>' reference.
+   * Returns the value of the '<em><b>Handler Body</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Handler Body</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Handler Body</em>' reference.
-	 * @see #setHandlerBody(ExecutableNode)
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getExceptionHandler_HandlerBody()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A node that is executed if the handler satisfies an uncaught exception\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExceptionHandler::handlerBody' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Handler Body</em>' reference.
+   * @see #setHandlerBody(ExecutableNode)
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getExceptionHandler_HandlerBody()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A node that is executed if the handler satisfies an uncaught exception\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExceptionHandler::handlerBody' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	ExecutableNode getHandlerBody();
 
@@ -110,14 +110,14 @@ public interface ExceptionHandler extends ModelElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.activity.ExceptionHandler#getHandlerBody <em>Handler Body</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.activity.ExceptionHandler#getHandlerBody <em>Handler Body</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Handler Body</em>' reference.
-	 * @see #getHandlerBody()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Handler Body</em>' reference.
+   * @see #getHandlerBody()
+   * @generated
+   */
 
 	void setHandlerBody(ExecutableNode value);
 
@@ -128,22 +128,22 @@ public interface ExceptionHandler extends ModelElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Exception Input</b></em>' reference.
+   * Returns the value of the '<em><b>Exception Input</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Exception Input</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exception Input</em>' reference.
-	 * @see #setExceptionInput(ObjectNode)
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getExceptionHandler_ExceptionInput()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='An object node within the handler body. When the handler catches an exception, the exception token is placed in this\r\nnode, causing the body to execute\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExceptionHandler::exceptionInput' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Exception Input</em>' reference.
+   * @see #setExceptionInput(ObjectNode)
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getExceptionHandler_ExceptionInput()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='An object node within the handler body. When the handler catches an exception, the exception token is placed in this\r\nnode, causing the body to execute\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExceptionHandler::exceptionInput' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	ObjectNode getExceptionInput();
 
@@ -151,14 +151,14 @@ public interface ExceptionHandler extends ModelElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.activity.ExceptionHandler#getExceptionInput <em>Exception Input</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.activity.ExceptionHandler#getExceptionInput <em>Exception Input</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Exception Input</em>' reference.
-	 * @see #getExceptionInput()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Exception Input</em>' reference.
+   * @see #getExceptionInput()
+   * @generated
+   */
 
 	void setExceptionInput(ObjectNode value);
 
@@ -169,22 +169,22 @@ public interface ExceptionHandler extends ModelElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Exception Types</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractType}.
+   * Returns the value of the '<em><b>Exception Types</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractType}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Exception Types</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exception Types</em>' reference list.
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getExceptionHandler_ExceptionTypes()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set,\r\nthe handler catches the exception and executes its body\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExceptionHandler::exceptionType' explanation='none' constraints='Order must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Exception Types</em>' reference list.
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getExceptionHandler_ExceptionTypes()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set,\r\nthe handler catches the exception and executes its body\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExceptionHandler::exceptionType' explanation='none' constraints='Order must be computed'"
+   * @generated
+   */
 
 	EList<AbstractType> getExceptionTypes();
 

@@ -40,25 +40,25 @@ public interface TimeLapse extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Start</b></em>' reference.
+   * Returns the value of the '<em><b>Start</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Start</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Start</em>' reference.
-	 * @see #setStart(InteractionFragment)
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getTimeLapse_Start()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='start' featureOwner='ExecutionSpecification'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='start'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the starting point of this Execution\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExecutionSpecification::start' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Start</em>' reference.
+   * @see #setStart(InteractionFragment)
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getTimeLapse_Start()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='start' featureOwner='ExecutionSpecification'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='start'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the starting point of this Execution\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExecutionSpecification::start' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	InteractionFragment getStart();
 
@@ -66,14 +66,14 @@ public interface TimeLapse extends NamedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.TimeLapse#getStart <em>Start</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.TimeLapse#getStart <em>Start</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Start</em>' reference.
-	 * @see #getStart()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Start</em>' reference.
+   * @see #getStart()
+   * @generated
+   */
 
 	void setStart(InteractionFragment value);
 
@@ -84,25 +84,25 @@ public interface TimeLapse extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Finish</b></em>' reference.
+   * Returns the value of the '<em><b>Finish</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Finish</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Finish</em>' reference.
-	 * @see #setFinish(InteractionFragment)
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getTimeLapse_Finish()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='finish' featureOwner='ExecutionSpecification'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='finish'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the ending point of this Execution\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExecutionSpecification::finish' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Finish</em>' reference.
+   * @see #setFinish(InteractionFragment)
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getTimeLapse_Finish()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='finish' featureOwner='ExecutionSpecification'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='finish'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the ending point of this Execution\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExecutionSpecification::finish' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	InteractionFragment getFinish();
 
@@ -110,14 +110,14 @@ public interface TimeLapse extends NamedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.TimeLapse#getFinish <em>Finish</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.TimeLapse#getFinish <em>Finish</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Finish</em>' reference.
-	 * @see #getFinish()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Finish</em>' reference.
+   * @see #getFinish()
+   * @generated
+   */
 
 	void setFinish(InteractionFragment value);
 

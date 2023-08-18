@@ -44,25 +44,25 @@ public interface SharedPkg extends ReuseableStructure, ModelRoot {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Data Pkg</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Data Pkg</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Data Pkg</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Data Pkg</em>' containment reference.
-	 * @see #setOwnedDataPkg(DataPkg)
-	 * @see org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage#getSharedPkg_OwnedDataPkg()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedDataPkg'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the data packages contained in this shared package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which DataPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Data Pkg</em>' containment reference.
+   * @see #setOwnedDataPkg(DataPkg)
+   * @see org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage#getSharedPkg_OwnedDataPkg()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedDataPkg'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the data packages contained in this shared package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which DataPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]'"
+   * @generated
+   */
 
 	DataPkg getOwnedDataPkg();
 
@@ -70,14 +70,14 @@ public interface SharedPkg extends ReuseableStructure, ModelRoot {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.sharedmodel.SharedPkg#getOwnedDataPkg <em>Owned Data Pkg</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.sharedmodel.SharedPkg#getOwnedDataPkg <em>Owned Data Pkg</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Data Pkg</em>' containment reference.
-	 * @see #getOwnedDataPkg()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Data Pkg</em>' containment reference.
+   * @see #getOwnedDataPkg()
+   * @generated
+   */
 
 	void setOwnedDataPkg(DataPkg value);
 
@@ -88,25 +88,25 @@ public interface SharedPkg extends ReuseableStructure, ModelRoot {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Generic Pkg</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Generic Pkg</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Generic Pkg</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Generic Pkg</em>' containment reference.
-	 * @see #setOwnedGenericPkg(GenericPkg)
-	 * @see org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage#getSharedPkg_OwnedGenericPkg()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='genericPkg'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the generic packages contained in this shared package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which GenericPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Generic Pkg</em>' containment reference.
+   * @see #setOwnedGenericPkg(GenericPkg)
+   * @see org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage#getSharedPkg_OwnedGenericPkg()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='genericPkg'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the generic packages contained in this shared package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which GenericPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]'"
+   * @generated
+   */
 
 	GenericPkg getOwnedGenericPkg();
 
@@ -114,14 +114,14 @@ public interface SharedPkg extends ReuseableStructure, ModelRoot {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.sharedmodel.SharedPkg#getOwnedGenericPkg <em>Owned Generic Pkg</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.sharedmodel.SharedPkg#getOwnedGenericPkg <em>Owned Generic Pkg</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Generic Pkg</em>' containment reference.
-	 * @see #getOwnedGenericPkg()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Generic Pkg</em>' containment reference.
+   * @see #getOwnedGenericPkg()
+   * @generated
+   */
 
 	void setOwnedGenericPkg(GenericPkg value);
 

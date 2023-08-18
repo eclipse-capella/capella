@@ -50,26 +50,26 @@ public interface LogicalArchitecture extends ComponentArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Logical Component Pkg</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Logical Component Pkg</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Logical Component Pkg</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Logical Component Pkg</em>' containment reference.
-	 * @see #setOwnedLogicalComponentPkg(LogicalComponentPkg)
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalArchitecture_OwnedLogicalComponentPkg()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedLogicalComponentPkgs'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the package that contains logical components\r\n[source:Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which LogicalComponentPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Logical Component Pkg</em>' containment reference.
+   * @see #setOwnedLogicalComponentPkg(LogicalComponentPkg)
+   * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalArchitecture_OwnedLogicalComponentPkg()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedLogicalComponentPkgs'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the package that contains logical components\r\n[source:Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which LogicalComponentPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	LogicalComponentPkg getOwnedLogicalComponentPkg();
 
@@ -77,14 +77,14 @@ public interface LogicalArchitecture extends ComponentArchitecture {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.la.LogicalArchitecture#getOwnedLogicalComponentPkg <em>Owned Logical Component Pkg</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.la.LogicalArchitecture#getOwnedLogicalComponentPkg <em>Owned Logical Component Pkg</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Logical Component Pkg</em>' containment reference.
-	 * @see #getOwnedLogicalComponentPkg()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Logical Component Pkg</em>' containment reference.
+   * @see #getOwnedLogicalComponentPkg()
+   * @generated
+   */
 
 	void setOwnedLogicalComponentPkg(LogicalComponentPkg value);
 
@@ -95,22 +95,22 @@ public interface LogicalArchitecture extends ComponentArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Contained Capability Realization Pkg</b></em>' reference.
+   * Returns the value of the '<em><b>Contained Capability Realization Pkg</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contained Capability Realization Pkg</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contained Capability Realization Pkg</em>' reference.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalArchitecture_ContainedCapabilityRealizationPkg()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedAbstractCapabilityPkg'"
-	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedAbstractCapabilityPkg'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Contained Capability Realization Pkg</em>' reference.
+   * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalArchitecture_ContainedCapabilityRealizationPkg()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedAbstractCapabilityPkg'"
+   *        annotation="http://www.polarsys.org/capella/semantic feature='ownedAbstractCapabilityPkg'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	CapabilityRealizationPkg getContainedCapabilityRealizationPkg();
 
@@ -121,22 +121,22 @@ public interface LogicalArchitecture extends ComponentArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Contained Logical Function Pkg</b></em>' reference.
+   * Returns the value of the '<em><b>Contained Logical Function Pkg</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contained Logical Function Pkg</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contained Logical Function Pkg</em>' reference.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalArchitecture_ContainedLogicalFunctionPkg()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFunctionPkg'"
-	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedFunctionPkg'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Contained Logical Function Pkg</em>' reference.
+   * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalArchitecture_ContainedLogicalFunctionPkg()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFunctionPkg'"
+   *        annotation="http://www.polarsys.org/capella/semantic feature='ownedFunctionPkg'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	LogicalFunctionPkg getContainedLogicalFunctionPkg();
 
@@ -147,22 +147,22 @@ public interface LogicalArchitecture extends ComponentArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned System Analysis Realizations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.la.SystemAnalysisRealization}.
+   * Returns the value of the '<em><b>Owned System Analysis Realizations</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.la.SystemAnalysisRealization}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned System Analysis Realizations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned System Analysis Realizations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalArchitecture_OwnedSystemAnalysisRealizations()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Set of system analysis realization links that are owned/contained by the logical architecture\r\n[source:Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which ContextArchitectureRealisation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned System Analysis Realizations</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalArchitecture_OwnedSystemAnalysisRealizations()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Set of system analysis realization links that are owned/contained by the logical architecture\r\n[source:Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which ContextArchitectureRealisation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<SystemAnalysisRealization> getOwnedSystemAnalysisRealizations();
 
@@ -173,26 +173,26 @@ public interface LogicalArchitecture extends ComponentArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocated System Analysis Realizations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.la.SystemAnalysisRealization}.
+   * Returns the value of the '<em><b>Allocated System Analysis Realizations</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.la.SystemAnalysisRealization}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocated System Analysis Realizations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocated System Analysis Realizations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalArchitecture_AllocatedSystemAnalysisRealizations()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='allocatedLogicalArchitectureImplementations'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/capella/derived derive='self.ownedPartitions.representedElement.oclIsKindOf(PhysicalComponent) -&gt; oclAsType(PhysicalComponent)' viatra.variant='alias' viatra.expression='provisionedArchitectureAllocations'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the realisation links from system analysis that point to this logical architecture\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Allocated System Analysis Realizations</em>' reference list.
+   * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalArchitecture_AllocatedSystemAnalysisRealizations()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='allocatedLogicalArchitectureImplementations'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/capella/derived derive='self.ownedPartitions.representedElement.oclIsKindOf(PhysicalComponent) -&gt; oclAsType(PhysicalComponent)' viatra.variant='alias' viatra.expression='provisionedArchitectureAllocations'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the realisation links from system analysis that point to this logical architecture\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<SystemAnalysisRealization> getAllocatedSystemAnalysisRealizations();
 
@@ -203,25 +203,25 @@ public interface LogicalArchitecture extends ComponentArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocated System Analyses</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemAnalysis}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.SystemAnalysis#getAllocatingLogicalArchitectures <em>Allocating Logical Architectures</em>}'.
+   * Returns the value of the '<em><b>Allocated System Analyses</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemAnalysis}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.SystemAnalysis#getAllocatingLogicalArchitectures <em>Allocating Logical Architectures</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocated System Analyses</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocated System Analyses</em>' reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalArchitecture_AllocatedSystemAnalyses()
-	 * @see org.polarsys.capella.core.data.ctx.SystemAnalysis#getAllocatingLogicalArchitectures
-	 * @model opposite="allocatingLogicalArchitectures" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedArchitectures'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Allocated System Analyses</em>' reference list.
+   * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalArchitecture_AllocatedSystemAnalyses()
+   * @see org.polarsys.capella.core.data.ctx.SystemAnalysis#getAllocatingLogicalArchitectures
+   * @model opposite="allocatingLogicalArchitectures" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedArchitectures'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<SystemAnalysis> getAllocatedSystemAnalyses();
 
@@ -232,25 +232,25 @@ public interface LogicalArchitecture extends ComponentArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocating Physical Architectures</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalArchitecture}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.pa.PhysicalArchitecture#getAllocatedLogicalArchitectures <em>Allocated Logical Architectures</em>}'.
+   * Returns the value of the '<em><b>Allocating Physical Architectures</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalArchitecture}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.pa.PhysicalArchitecture#getAllocatedLogicalArchitectures <em>Allocated Logical Architectures</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocating Physical Architectures</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocating Physical Architectures</em>' reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalArchitecture_AllocatingPhysicalArchitectures()
-	 * @see org.polarsys.capella.core.data.pa.PhysicalArchitecture#getAllocatedLogicalArchitectures
-	 * @model opposite="allocatedLogicalArchitectures" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatingArchitectures'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Allocating Physical Architectures</em>' reference list.
+   * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalArchitecture_AllocatingPhysicalArchitectures()
+   * @see org.polarsys.capella.core.data.pa.PhysicalArchitecture#getAllocatedLogicalArchitectures
+   * @model opposite="allocatedLogicalArchitectures" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatingArchitectures'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   * @generated
+   */
 
 	EList<PhysicalArchitecture> getAllocatingPhysicalArchitectures();
 

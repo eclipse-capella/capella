@@ -44,13 +44,13 @@ import org.polarsys.capella.core.data.oa.OaPackage;
 public class ConceptImpl extends NamedElementImpl implements Concept {
 
 	/**
-	 * The cached value of the '{@link #getCompliances() <em>Compliances</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getCompliances() <em>Compliances</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCompliances()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getCompliances()
+   * @generated
+   * @ordered
+   */
 	protected EList<ConceptCompliance> compliances;
 
 
@@ -58,164 +58,164 @@ public class ConceptImpl extends NamedElementImpl implements Concept {
 
 
 	/**
-	 * The cached value of the '{@link #getCompositeLinks() <em>Composite Links</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getCompositeLinks() <em>Composite Links</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCompositeLinks()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getCompositeLinks()
+   * @generated
+   * @ordered
+   */
 	protected EList<ItemInConcept> compositeLinks;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ConceptImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OaPackage.Literals.CONCEPT;
-	}
+    return OaPackage.Literals.CONCEPT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ConceptCompliance> getCompliances() {
 
-		if (compliances == null) {
-			compliances = new EObjectResolvingEList<ConceptCompliance>(ConceptCompliance.class, this, OaPackage.CONCEPT__COMPLIANCES);
-		}
-		return compliances;
-	}
+    if (compliances == null) {
+      compliances = new EObjectResolvingEList<ConceptCompliance>(ConceptCompliance.class, this, OaPackage.CONCEPT__COMPLIANCES);
+    }
+    return compliances;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ItemInConcept> getCompositeLinks() {
 
-		if (compositeLinks == null) {
-			compositeLinks = new EObjectContainmentEList.Resolving<ItemInConcept>(ItemInConcept.class, this, OaPackage.CONCEPT__COMPOSITE_LINKS);
-		}
-		return compositeLinks;
-	}
+    if (compositeLinks == null) {
+      compositeLinks = new EObjectContainmentEList.Resolving<ItemInConcept>(ItemInConcept.class, this, OaPackage.CONCEPT__COMPOSITE_LINKS);
+    }
+    return compositeLinks;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case OaPackage.CONCEPT__COMPOSITE_LINKS:
-				return ((InternalEList<?>)getCompositeLinks()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case OaPackage.CONCEPT__COMPOSITE_LINKS:
+        return ((InternalEList<?>)getCompositeLinks()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OaPackage.CONCEPT__COMPLIANCES:
-				return getCompliances();
-			case OaPackage.CONCEPT__COMPOSITE_LINKS:
-				return getCompositeLinks();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case OaPackage.CONCEPT__COMPLIANCES:
+        return getCompliances();
+      case OaPackage.CONCEPT__COMPOSITE_LINKS:
+        return getCompositeLinks();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case OaPackage.CONCEPT__COMPLIANCES:
-				getCompliances().clear();
-				getCompliances().addAll((Collection<? extends ConceptCompliance>)newValue);
-				return;
-			case OaPackage.CONCEPT__COMPOSITE_LINKS:
-				getCompositeLinks().clear();
-				getCompositeLinks().addAll((Collection<? extends ItemInConcept>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case OaPackage.CONCEPT__COMPLIANCES:
+        getCompliances().clear();
+        getCompliances().addAll((Collection<? extends ConceptCompliance>)newValue);
+        return;
+      case OaPackage.CONCEPT__COMPOSITE_LINKS:
+        getCompositeLinks().clear();
+        getCompositeLinks().addAll((Collection<? extends ItemInConcept>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case OaPackage.CONCEPT__COMPLIANCES:
-				getCompliances().clear();
-				return;
-			case OaPackage.CONCEPT__COMPOSITE_LINKS:
-				getCompositeLinks().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.CONCEPT__COMPLIANCES:
+        getCompliances().clear();
+        return;
+      case OaPackage.CONCEPT__COMPOSITE_LINKS:
+        getCompositeLinks().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OaPackage.CONCEPT__COMPLIANCES:
-				return compliances != null && !compliances.isEmpty();
-			case OaPackage.CONCEPT__COMPOSITE_LINKS:
-				return compositeLinks != null && !compositeLinks.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.CONCEPT__COMPLIANCES:
+        return compliances != null && !compliances.isEmpty();
+      case OaPackage.CONCEPT__COMPOSITE_LINKS:
+        return compositeLinks != null && !compositeLinks.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

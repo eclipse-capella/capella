@@ -38,21 +38,21 @@ public interface InputPin extends Pin {
 
 
 	/**
-	 * Returns the value of the '<em><b>Input Evaluation Action</b></em>' reference.
+   * Returns the value of the '<em><b>Input Evaluation Action</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Input Evaluation Action</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Input Evaluation Action</em>' reference.
-	 * @see #setInputEvaluationAction(AbstractAction)
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getInputPin_InputEvaluationAction()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The action used to provide values\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='This association can be filled only if extended metaclass is ActionInputPin'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Input Evaluation Action</em>' reference.
+   * @see #setInputEvaluationAction(AbstractAction)
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getInputPin_InputEvaluationAction()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The action used to provide values\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='This association can be filled only if extended metaclass is ActionInputPin'"
+   * @generated
+   */
 
 	AbstractAction getInputEvaluationAction();
 
@@ -60,14 +60,14 @@ public interface InputPin extends Pin {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.activity.InputPin#getInputEvaluationAction <em>Input Evaluation Action</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.activity.InputPin#getInputEvaluationAction <em>Input Evaluation Action</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Input Evaluation Action</em>' reference.
-	 * @see #getInputEvaluationAction()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Input Evaluation Action</em>' reference.
+   * @see #getInputEvaluationAction()
+   * @generated
+   */
 
 	void setInputEvaluationAction(AbstractAction value);
 

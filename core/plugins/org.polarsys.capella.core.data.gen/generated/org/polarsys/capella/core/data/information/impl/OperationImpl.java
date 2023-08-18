@@ -73,13 +73,13 @@ public abstract class OperationImpl extends FeatureImpl implements Operation {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedParameters() <em>Owned Parameters</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedParameters() <em>Owned Parameters</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedParameters()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedParameters()
+   * @generated
+   * @ordered
+   */
 	protected EList<Parameter> ownedParameters;
 
 
@@ -95,13 +95,13 @@ public abstract class OperationImpl extends FeatureImpl implements Operation {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedOperationAllocation() <em>Owned Operation Allocation</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedOperationAllocation() <em>Owned Operation Allocation</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedOperationAllocation()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedOperationAllocation()
+   * @generated
+   * @ordered
+   */
 	protected EList<OperationAllocation> ownedOperationAllocation;
 
 
@@ -109,13 +109,13 @@ public abstract class OperationImpl extends FeatureImpl implements Operation {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedExchangeItemRealizations() <em>Owned Exchange Item Realizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedExchangeItemRealizations() <em>Owned Exchange Item Realizations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedExchangeItemRealizations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedExchangeItemRealizations()
+   * @generated
+   * @ordered
+   */
 	protected EList<ExchangeItemRealization> ownedExchangeItemRealizations;
 
 
@@ -126,35 +126,35 @@ public abstract class OperationImpl extends FeatureImpl implements Operation {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OperationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.OPERATION;
-	}
+    return InformationPackage.Literals.OPERATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractTypedElement> getAbstractTypedElements() {
 
@@ -181,27 +181,27 @@ public abstract class OperationImpl extends FeatureImpl implements Operation {
     // A helper is found, let's use it. 
     EAnnotation annotation = ModellingcorePackage.Literals.ABSTRACT_TYPE__ABSTRACT_TYPED_ELEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ModellingcorePackage.Literals.ABSTRACT_TYPE__ABSTRACT_TYPED_ELEMENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractTypedElement> resultAsList = (Collection<AbstractTypedElement>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractTypedElement>(this, ModellingcorePackage.Literals.ABSTRACT_TYPE__ABSTRACT_TYPED_ELEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractTypedElement> resultAsList = (Collection<AbstractTypedElement>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractTypedElement>(this, ModellingcorePackage.Literals.ABSTRACT_TYPE__ABSTRACT_TYPED_ELEMENTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<SequenceMessage> getInvokingSequenceMessages() {
 
@@ -228,45 +228,45 @@ public abstract class OperationImpl extends FeatureImpl implements Operation {
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<SequenceMessage> resultAsList = (Collection<SequenceMessage>) result;
-		return new EcoreEList.UnmodifiableEList<SequenceMessage>(this, InformationPackage.Literals.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<SequenceMessage> resultAsList = (Collection<SequenceMessage>) result;
+    return new EcoreEList.UnmodifiableEList<SequenceMessage>(this, InformationPackage.Literals.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Parameter> getOwnedParameters() {
 
-		if (ownedParameters == null) {
-			ownedParameters = new EObjectContainmentEList<Parameter>(Parameter.class, this, InformationPackage.OPERATION__OWNED_PARAMETERS);
-		}
-		return ownedParameters;
-	}
+    if (ownedParameters == null) {
+      ownedParameters = new EObjectContainmentEList<Parameter>(Parameter.class, this, InformationPackage.OPERATION__OWNED_PARAMETERS);
+    }
+    return ownedParameters;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Operation> getAllocatingOperations() {
 
@@ -293,27 +293,27 @@ public abstract class OperationImpl extends FeatureImpl implements Operation {
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.OPERATION__ALLOCATING_OPERATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.OPERATION__ALLOCATING_OPERATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Operation> resultAsList = (Collection<Operation>) result;
-		return new EcoreEList.UnmodifiableEList<Operation>(this, InformationPackage.Literals.OPERATION__ALLOCATING_OPERATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Operation> resultAsList = (Collection<Operation>) result;
+    return new EcoreEList.UnmodifiableEList<Operation>(this, InformationPackage.Literals.OPERATION__ALLOCATING_OPERATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Operation> getAllocatedOperations() {
 
@@ -340,63 +340,63 @@ public abstract class OperationImpl extends FeatureImpl implements Operation {
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.OPERATION__ALLOCATED_OPERATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.OPERATION__ALLOCATED_OPERATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Operation> resultAsList = (Collection<Operation>) result;
-		return new EcoreEList.UnmodifiableEList<Operation>(this, InformationPackage.Literals.OPERATION__ALLOCATED_OPERATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Operation> resultAsList = (Collection<Operation>) result;
+    return new EcoreEList.UnmodifiableEList<Operation>(this, InformationPackage.Literals.OPERATION__ALLOCATED_OPERATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<OperationAllocation> getOwnedOperationAllocation() {
 
-		if (ownedOperationAllocation == null) {
-			ownedOperationAllocation = new EObjectContainmentEList.Resolving<OperationAllocation>(OperationAllocation.class, this, InformationPackage.OPERATION__OWNED_OPERATION_ALLOCATION);
-		}
-		return ownedOperationAllocation;
-	}
+    if (ownedOperationAllocation == null) {
+      ownedOperationAllocation = new EObjectContainmentEList.Resolving<OperationAllocation>(OperationAllocation.class, this, InformationPackage.OPERATION__OWNED_OPERATION_ALLOCATION);
+    }
+    return ownedOperationAllocation;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ExchangeItemRealization> getOwnedExchangeItemRealizations() {
 
-		if (ownedExchangeItemRealizations == null) {
-			ownedExchangeItemRealizations = new EObjectContainmentEList.Resolving<ExchangeItemRealization>(ExchangeItemRealization.class, this, InformationPackage.OPERATION__OWNED_EXCHANGE_ITEM_REALIZATIONS);
-		}
-		return ownedExchangeItemRealizations;
-	}
+    if (ownedExchangeItemRealizations == null) {
+      ownedExchangeItemRealizations = new EObjectContainmentEList.Resolving<ExchangeItemRealization>(ExchangeItemRealization.class, this, InformationPackage.OPERATION__OWNED_EXCHANGE_ITEM_REALIZATIONS);
+    }
+    return ownedExchangeItemRealizations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ExchangeItem> getRealizedExchangeItems() {
 
@@ -423,197 +423,197 @@ public abstract class OperationImpl extends FeatureImpl implements Operation {
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.OPERATION__REALIZED_EXCHANGE_ITEMS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.OPERATION__REALIZED_EXCHANGE_ITEMS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ExchangeItem> resultAsList = (Collection<ExchangeItem>) result;
-		return new EcoreEList.UnmodifiableEList<ExchangeItem>(this, InformationPackage.Literals.OPERATION__REALIZED_EXCHANGE_ITEMS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<ExchangeItem> resultAsList = (Collection<ExchangeItem>) result;
+    return new EcoreEList.UnmodifiableEList<ExchangeItem>(this, InformationPackage.Literals.OPERATION__REALIZED_EXCHANGE_ITEMS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case InformationPackage.OPERATION__OWNED_PARAMETERS:
-				return ((InternalEList<?>)getOwnedParameters()).basicRemove(otherEnd, msgs);
-			case InformationPackage.OPERATION__OWNED_OPERATION_ALLOCATION:
-				return ((InternalEList<?>)getOwnedOperationAllocation()).basicRemove(otherEnd, msgs);
-			case InformationPackage.OPERATION__OWNED_EXCHANGE_ITEM_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedExchangeItemRealizations()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case InformationPackage.OPERATION__OWNED_PARAMETERS:
+        return ((InternalEList<?>)getOwnedParameters()).basicRemove(otherEnd, msgs);
+      case InformationPackage.OPERATION__OWNED_OPERATION_ALLOCATION:
+        return ((InternalEList<?>)getOwnedOperationAllocation()).basicRemove(otherEnd, msgs);
+      case InformationPackage.OPERATION__OWNED_EXCHANGE_ITEM_REALIZATIONS:
+        return ((InternalEList<?>)getOwnedExchangeItemRealizations()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InformationPackage.OPERATION__ABSTRACT_TYPED_ELEMENTS:
-				return getAbstractTypedElements();
-			case InformationPackage.OPERATION__INVOKING_SEQUENCE_MESSAGES:
-				return getInvokingSequenceMessages();
-			case InformationPackage.OPERATION__OWNED_PARAMETERS:
-				return getOwnedParameters();
-			case InformationPackage.OPERATION__ALLOCATING_OPERATIONS:
-				return getAllocatingOperations();
-			case InformationPackage.OPERATION__ALLOCATED_OPERATIONS:
-				return getAllocatedOperations();
-			case InformationPackage.OPERATION__OWNED_OPERATION_ALLOCATION:
-				return getOwnedOperationAllocation();
-			case InformationPackage.OPERATION__OWNED_EXCHANGE_ITEM_REALIZATIONS:
-				return getOwnedExchangeItemRealizations();
-			case InformationPackage.OPERATION__REALIZED_EXCHANGE_ITEMS:
-				return getRealizedExchangeItems();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InformationPackage.OPERATION__ABSTRACT_TYPED_ELEMENTS:
+        return getAbstractTypedElements();
+      case InformationPackage.OPERATION__INVOKING_SEQUENCE_MESSAGES:
+        return getInvokingSequenceMessages();
+      case InformationPackage.OPERATION__OWNED_PARAMETERS:
+        return getOwnedParameters();
+      case InformationPackage.OPERATION__ALLOCATING_OPERATIONS:
+        return getAllocatingOperations();
+      case InformationPackage.OPERATION__ALLOCATED_OPERATIONS:
+        return getAllocatedOperations();
+      case InformationPackage.OPERATION__OWNED_OPERATION_ALLOCATION:
+        return getOwnedOperationAllocation();
+      case InformationPackage.OPERATION__OWNED_EXCHANGE_ITEM_REALIZATIONS:
+        return getOwnedExchangeItemRealizations();
+      case InformationPackage.OPERATION__REALIZED_EXCHANGE_ITEMS:
+        return getRealizedExchangeItems();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InformationPackage.OPERATION__OWNED_PARAMETERS:
-				getOwnedParameters().clear();
-				getOwnedParameters().addAll((Collection<? extends Parameter>)newValue);
-				return;
-			case InformationPackage.OPERATION__OWNED_OPERATION_ALLOCATION:
-				getOwnedOperationAllocation().clear();
-				getOwnedOperationAllocation().addAll((Collection<? extends OperationAllocation>)newValue);
-				return;
-			case InformationPackage.OPERATION__OWNED_EXCHANGE_ITEM_REALIZATIONS:
-				getOwnedExchangeItemRealizations().clear();
-				getOwnedExchangeItemRealizations().addAll((Collection<? extends ExchangeItemRealization>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InformationPackage.OPERATION__OWNED_PARAMETERS:
+        getOwnedParameters().clear();
+        getOwnedParameters().addAll((Collection<? extends Parameter>)newValue);
+        return;
+      case InformationPackage.OPERATION__OWNED_OPERATION_ALLOCATION:
+        getOwnedOperationAllocation().clear();
+        getOwnedOperationAllocation().addAll((Collection<? extends OperationAllocation>)newValue);
+        return;
+      case InformationPackage.OPERATION__OWNED_EXCHANGE_ITEM_REALIZATIONS:
+        getOwnedExchangeItemRealizations().clear();
+        getOwnedExchangeItemRealizations().addAll((Collection<? extends ExchangeItemRealization>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InformationPackage.OPERATION__OWNED_PARAMETERS:
-				getOwnedParameters().clear();
-				return;
-			case InformationPackage.OPERATION__OWNED_OPERATION_ALLOCATION:
-				getOwnedOperationAllocation().clear();
-				return;
-			case InformationPackage.OPERATION__OWNED_EXCHANGE_ITEM_REALIZATIONS:
-				getOwnedExchangeItemRealizations().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.OPERATION__OWNED_PARAMETERS:
+        getOwnedParameters().clear();
+        return;
+      case InformationPackage.OPERATION__OWNED_OPERATION_ALLOCATION:
+        getOwnedOperationAllocation().clear();
+        return;
+      case InformationPackage.OPERATION__OWNED_EXCHANGE_ITEM_REALIZATIONS:
+        getOwnedExchangeItemRealizations().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InformationPackage.OPERATION__ABSTRACT_TYPED_ELEMENTS:
-				return !getAbstractTypedElements().isEmpty();
-			case InformationPackage.OPERATION__INVOKING_SEQUENCE_MESSAGES:
-				return !getInvokingSequenceMessages().isEmpty();
-			case InformationPackage.OPERATION__OWNED_PARAMETERS:
-				return ownedParameters != null && !ownedParameters.isEmpty();
-			case InformationPackage.OPERATION__ALLOCATING_OPERATIONS:
-				return !getAllocatingOperations().isEmpty();
-			case InformationPackage.OPERATION__ALLOCATED_OPERATIONS:
-				return !getAllocatedOperations().isEmpty();
-			case InformationPackage.OPERATION__OWNED_OPERATION_ALLOCATION:
-				return ownedOperationAllocation != null && !ownedOperationAllocation.isEmpty();
-			case InformationPackage.OPERATION__OWNED_EXCHANGE_ITEM_REALIZATIONS:
-				return ownedExchangeItemRealizations != null && !ownedExchangeItemRealizations.isEmpty();
-			case InformationPackage.OPERATION__REALIZED_EXCHANGE_ITEMS:
-				return !getRealizedExchangeItems().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.OPERATION__ABSTRACT_TYPED_ELEMENTS:
+        return !getAbstractTypedElements().isEmpty();
+      case InformationPackage.OPERATION__INVOKING_SEQUENCE_MESSAGES:
+        return !getInvokingSequenceMessages().isEmpty();
+      case InformationPackage.OPERATION__OWNED_PARAMETERS:
+        return ownedParameters != null && !ownedParameters.isEmpty();
+      case InformationPackage.OPERATION__ALLOCATING_OPERATIONS:
+        return !getAllocatingOperations().isEmpty();
+      case InformationPackage.OPERATION__ALLOCATED_OPERATIONS:
+        return !getAllocatedOperations().isEmpty();
+      case InformationPackage.OPERATION__OWNED_OPERATION_ALLOCATION:
+        return ownedOperationAllocation != null && !ownedOperationAllocation.isEmpty();
+      case InformationPackage.OPERATION__OWNED_EXCHANGE_ITEM_REALIZATIONS:
+        return ownedExchangeItemRealizations != null && !ownedExchangeItemRealizations.isEmpty();
+      case InformationPackage.OPERATION__REALIZED_EXCHANGE_ITEMS:
+        return !getRealizedExchangeItems().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractType.class) {
-			switch (derivedFeatureID) {
-				case InformationPackage.OPERATION__ABSTRACT_TYPED_ELEMENTS: return ModellingcorePackage.ABSTRACT_TYPE__ABSTRACT_TYPED_ELEMENTS;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractEvent.class) {
-			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractEventOperation.class) {
-			switch (derivedFeatureID) {
-				case InformationPackage.OPERATION__INVOKING_SEQUENCE_MESSAGES: return InformationPackage.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == AbstractType.class) {
+      switch (derivedFeatureID) {
+        case InformationPackage.OPERATION__ABSTRACT_TYPED_ELEMENTS: return ModellingcorePackage.ABSTRACT_TYPE__ABSTRACT_TYPED_ELEMENTS;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractEvent.class) {
+      switch (derivedFeatureID) {
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractEventOperation.class) {
+      switch (derivedFeatureID) {
+        case InformationPackage.OPERATION__INVOKING_SEQUENCE_MESSAGES: return InformationPackage.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractType.class) {
-			switch (baseFeatureID) {
-				case ModellingcorePackage.ABSTRACT_TYPE__ABSTRACT_TYPED_ELEMENTS: return InformationPackage.OPERATION__ABSTRACT_TYPED_ELEMENTS;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractEvent.class) {
-			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractEventOperation.class) {
-			switch (baseFeatureID) {
-				case InformationPackage.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES: return InformationPackage.OPERATION__INVOKING_SEQUENCE_MESSAGES;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == AbstractType.class) {
+      switch (baseFeatureID) {
+        case ModellingcorePackage.ABSTRACT_TYPE__ABSTRACT_TYPED_ELEMENTS: return InformationPackage.OPERATION__ABSTRACT_TYPED_ELEMENTS;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractEvent.class) {
+      switch (baseFeatureID) {
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractEventOperation.class) {
+      switch (baseFeatureID) {
+        case InformationPackage.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES: return InformationPackage.OPERATION__INVOKING_SEQUENCE_MESSAGES;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 
 } //OperationImpl

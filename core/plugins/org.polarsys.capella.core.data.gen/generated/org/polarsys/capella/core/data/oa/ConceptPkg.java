@@ -40,22 +40,22 @@ public interface ConceptPkg extends Structure {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Concept Pkgs</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.ConceptPkg}.
+   * Returns the value of the '<em><b>Owned Concept Pkgs</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.ConceptPkg}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Concept Pkgs</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Concept Pkgs</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getConceptPkg_OwnedConceptPkgs()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='concept packages contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which ConceptPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Concept Pkgs</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getConceptPkg_OwnedConceptPkgs()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='concept packages contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which ConceptPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<ConceptPkg> getOwnedConceptPkgs();
 
@@ -66,22 +66,22 @@ public interface ConceptPkg extends Structure {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Concepts</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.Concept}.
+   * Returns the value of the '<em><b>Owned Concepts</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.Concept}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Concepts</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Concepts</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getConceptPkg_OwnedConcepts()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Operational concepts contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Concept stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Concepts</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getConceptPkg_OwnedConcepts()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Operational concepts contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Concept stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<Concept> getOwnedConcepts();
 

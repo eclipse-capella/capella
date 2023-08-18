@@ -45,13 +45,13 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 public class AbstractCapabilityIncludeImpl extends RelationshipImpl implements AbstractCapabilityInclude {
 
 	/**
-	 * The cached value of the '{@link #getIncluded() <em>Included</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getIncluded() <em>Included</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIncluded()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getIncluded()
+   * @generated
+   * @ordered
+   */
 	protected AbstractCapability included;
 
 
@@ -62,78 +62,78 @@ public class AbstractCapabilityIncludeImpl extends RelationshipImpl implements A
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractCapabilityIncludeImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.ABSTRACT_CAPABILITY_INCLUDE;
-	}
+    return InteractionPackage.Literals.ABSTRACT_CAPABILITY_INCLUDE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractCapability getIncluded() {
 
-		if (included != null && included.eIsProxy()) {
-			InternalEObject oldIncluded = (InternalEObject)included;
-			included = (AbstractCapability)eResolveProxy(oldIncluded);
-			if (included != oldIncluded) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE__INCLUDED, oldIncluded, included));
-			}
-		}
-		return included;
-	}
+    if (included != null && included.eIsProxy()) {
+      InternalEObject oldIncluded = (InternalEObject)included;
+      included = (AbstractCapability)eResolveProxy(oldIncluded);
+      if (included != oldIncluded) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE__INCLUDED, oldIncluded, included));
+      }
+    }
+    return included;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractCapability basicGetIncluded() {
 
-		return included;
-	}
+    return included;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setIncluded(AbstractCapability newIncluded) {
 
-		AbstractCapability oldIncluded = included;
-		included = newIncluded;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE__INCLUDED, oldIncluded, included));
+    AbstractCapability oldIncluded = included;
+    included = newIncluded;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE__INCLUDED, oldIncluded, included));
 
-	}
+  }
 
 
 
@@ -141,23 +141,23 @@ public class AbstractCapabilityIncludeImpl extends RelationshipImpl implements A
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractCapability getInclusion() {
 
-		AbstractCapability inclusion = basicGetInclusion();
-		return inclusion != null && inclusion.eIsProxy() ? (AbstractCapability)eResolveProxy((InternalEObject)inclusion) : inclusion;
-	}
+    AbstractCapability inclusion = basicGetInclusion();
+    return inclusion != null && inclusion.eIsProxy() ? (AbstractCapability)eResolveProxy((InternalEObject)inclusion) : inclusion;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractCapability basicGetInclusion() {
 
@@ -184,84 +184,84 @@ public class AbstractCapabilityIncludeImpl extends RelationshipImpl implements A
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY_INCLUDE__INCLUSION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY_INCLUDE__INCLUSION, annotation);
-		
-		try {
-			return (AbstractCapability) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (AbstractCapability) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE__INCLUDED:
-				if (resolve) return getIncluded();
-				return basicGetIncluded();
-			case InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE__INCLUSION:
-				if (resolve) return getInclusion();
-				return basicGetInclusion();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE__INCLUDED:
+        if (resolve) return getIncluded();
+        return basicGetIncluded();
+      case InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE__INCLUSION:
+        if (resolve) return getInclusion();
+        return basicGetInclusion();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE__INCLUDED:
-					setIncluded((AbstractCapability)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE__INCLUDED:
+          setIncluded((AbstractCapability)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE__INCLUDED:
-				setIncluded((AbstractCapability)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE__INCLUDED:
+        setIncluded((AbstractCapability)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE__INCLUDED:
-				return included != null;
-			case InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE__INCLUSION:
-				return basicGetInclusion() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE__INCLUDED:
+        return included != null;
+      case InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE__INCLUSION:
+        return basicGetInclusion() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

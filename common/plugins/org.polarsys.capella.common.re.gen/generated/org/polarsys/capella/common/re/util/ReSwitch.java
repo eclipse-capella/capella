@@ -47,388 +47,388 @@ import org.polarsys.kitalpha.emde.model.ExtensibleElement;
  */
 public class ReSwitch<T> extends Switch<T> {
 	/**
-	 * The cached model package
-	 * <!-- begin-user-doc -->
+   * The cached model package
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected static RePackage modelPackage;
 
 	/**
-	 * Creates an instance of the switch.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the switch.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ReSwitch() {
-		if (modelPackage == null) {
-			modelPackage = RePackage.eINSTANCE;
-		}
-	}
+    if (modelPackage == null) {
+      modelPackage = RePackage.eINSTANCE;
+    }
+  }
 
 	/**
-	 * Checks whether this is a switch for the given package.
-	 * <!-- begin-user-doc -->
+   * Checks whether this is a switch for the given package.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param ePackage the package in question.
-	 * @return whether this is a switch for the given package.
-	 * @generated
-	 */
+   * @param ePackage the package in question.
+   * @return whether this is a switch for the given package.
+   * @generated
+   */
 	@Override
 	protected boolean isSwitchFor(EPackage ePackage) {
-		return ePackage == modelPackage;
-	}
+    return ePackage == modelPackage;
+  }
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
+   * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
+   * @return the first non-null result returned by a <code>caseXXX</code> call.
+   * @generated
+   */
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
-		switch (classifierID) {
-			case RePackage.RE_ABSTRACT_ELEMENT: {
-				ReAbstractElement reAbstractElement = (ReAbstractElement)theEObject;
-				T result = caseReAbstractElement(reAbstractElement);
-				if (result == null) result = caseExtensibleElement(reAbstractElement);
-				if (result == null) result = caseElement(reAbstractElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case RePackage.RE_NAMED_ELEMENT: {
-				ReNamedElement reNamedElement = (ReNamedElement)theEObject;
-				T result = caseReNamedElement(reNamedElement);
-				if (result == null) result = caseReAbstractElement(reNamedElement);
-				if (result == null) result = caseExtensibleElement(reNamedElement);
-				if (result == null) result = caseElement(reNamedElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case RePackage.RE_DESCRIPTION_ELEMENT: {
-				ReDescriptionElement reDescriptionElement = (ReDescriptionElement)theEObject;
-				T result = caseReDescriptionElement(reDescriptionElement);
-				if (result == null) result = caseReNamedElement(reDescriptionElement);
-				if (result == null) result = caseReAbstractElement(reDescriptionElement);
-				if (result == null) result = caseExtensibleElement(reDescriptionElement);
-				if (result == null) result = caseElement(reDescriptionElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case RePackage.RE_ELEMENT_CONTAINER: {
-				ReElementContainer reElementContainer = (ReElementContainer)theEObject;
-				T result = caseReElementContainer(reElementContainer);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case RePackage.CATALOG_ELEMENT_PKG: {
-				CatalogElementPkg catalogElementPkg = (CatalogElementPkg)theEObject;
-				T result = caseCatalogElementPkg(catalogElementPkg);
-				if (result == null) result = caseReNamedElement(catalogElementPkg);
-				if (result == null) result = caseReElementContainer(catalogElementPkg);
-				if (result == null) result = caseReAbstractElement(catalogElementPkg);
-				if (result == null) result = caseExtensibleElement(catalogElementPkg);
-				if (result == null) result = caseElement(catalogElementPkg);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case RePackage.REC_CATALOG: {
-				RecCatalog recCatalog = (RecCatalog)theEObject;
-				T result = caseRecCatalog(recCatalog);
-				if (result == null) result = caseCatalogElementPkg(recCatalog);
-				if (result == null) result = caseElementExtension(recCatalog);
-				if (result == null) result = caseReNamedElement(recCatalog);
-				if (result == null) result = caseReElementContainer(recCatalog);
-				if (result == null) result = caseReAbstractElement(recCatalog);
-				if (result == null) result = caseExtensibleElement(recCatalog);
-				if (result == null) result = caseElement(recCatalog);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case RePackage.GROUPING_ELEMENT_PKG: {
-				GroupingElementPkg groupingElementPkg = (GroupingElementPkg)theEObject;
-				T result = caseGroupingElementPkg(groupingElementPkg);
-				if (result == null) result = caseCatalogElementPkg(groupingElementPkg);
-				if (result == null) result = caseElementExtension(groupingElementPkg);
-				if (result == null) result = caseReNamedElement(groupingElementPkg);
-				if (result == null) result = caseReElementContainer(groupingElementPkg);
-				if (result == null) result = caseReAbstractElement(groupingElementPkg);
-				if (result == null) result = caseExtensibleElement(groupingElementPkg);
-				if (result == null) result = caseElement(groupingElementPkg);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case RePackage.CATALOG_ELEMENT_LINK: {
-				CatalogElementLink catalogElementLink = (CatalogElementLink)theEObject;
-				T result = caseCatalogElementLink(catalogElementLink);
-				if (result == null) result = caseReAbstractElement(catalogElementLink);
-				if (result == null) result = caseExtensibleElement(catalogElementLink);
-				if (result == null) result = caseElement(catalogElementLink);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case RePackage.CATALOG_ELEMENT: {
-				CatalogElement catalogElement = (CatalogElement)theEObject;
-				T result = caseCatalogElement(catalogElement);
-				if (result == null) result = caseReDescriptionElement(catalogElement);
-				if (result == null) result = caseReElementContainer(catalogElement);
-				if (result == null) result = caseReNamedElement(catalogElement);
-				if (result == null) result = caseReAbstractElement(catalogElement);
-				if (result == null) result = caseExtensibleElement(catalogElement);
-				if (result == null) result = caseElement(catalogElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case RePackage.COMPLIANCY_DEFINITION_PKG: {
-				CompliancyDefinitionPkg compliancyDefinitionPkg = (CompliancyDefinitionPkg)theEObject;
-				T result = caseCompliancyDefinitionPkg(compliancyDefinitionPkg);
-				if (result == null) result = caseReNamedElement(compliancyDefinitionPkg);
-				if (result == null) result = caseReAbstractElement(compliancyDefinitionPkg);
-				if (result == null) result = caseExtensibleElement(compliancyDefinitionPkg);
-				if (result == null) result = caseElement(compliancyDefinitionPkg);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case RePackage.COMPLIANCY_DEFINITION: {
-				CompliancyDefinition compliancyDefinition = (CompliancyDefinition)theEObject;
-				T result = caseCompliancyDefinition(compliancyDefinition);
-				if (result == null) result = caseReDescriptionElement(compliancyDefinition);
-				if (result == null) result = caseReNamedElement(compliancyDefinition);
-				if (result == null) result = caseReAbstractElement(compliancyDefinition);
-				if (result == null) result = caseExtensibleElement(compliancyDefinition);
-				if (result == null) result = caseElement(compliancyDefinition);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			default: return defaultCase(theEObject);
-		}
-	}
+    switch (classifierID) {
+      case RePackage.RE_ABSTRACT_ELEMENT: {
+        ReAbstractElement reAbstractElement = (ReAbstractElement)theEObject;
+        T result = caseReAbstractElement(reAbstractElement);
+        if (result == null) result = caseExtensibleElement(reAbstractElement);
+        if (result == null) result = caseElement(reAbstractElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RePackage.RE_NAMED_ELEMENT: {
+        ReNamedElement reNamedElement = (ReNamedElement)theEObject;
+        T result = caseReNamedElement(reNamedElement);
+        if (result == null) result = caseReAbstractElement(reNamedElement);
+        if (result == null) result = caseExtensibleElement(reNamedElement);
+        if (result == null) result = caseElement(reNamedElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RePackage.RE_DESCRIPTION_ELEMENT: {
+        ReDescriptionElement reDescriptionElement = (ReDescriptionElement)theEObject;
+        T result = caseReDescriptionElement(reDescriptionElement);
+        if (result == null) result = caseReNamedElement(reDescriptionElement);
+        if (result == null) result = caseReAbstractElement(reDescriptionElement);
+        if (result == null) result = caseExtensibleElement(reDescriptionElement);
+        if (result == null) result = caseElement(reDescriptionElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RePackage.RE_ELEMENT_CONTAINER: {
+        ReElementContainer reElementContainer = (ReElementContainer)theEObject;
+        T result = caseReElementContainer(reElementContainer);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RePackage.CATALOG_ELEMENT_PKG: {
+        CatalogElementPkg catalogElementPkg = (CatalogElementPkg)theEObject;
+        T result = caseCatalogElementPkg(catalogElementPkg);
+        if (result == null) result = caseReNamedElement(catalogElementPkg);
+        if (result == null) result = caseReElementContainer(catalogElementPkg);
+        if (result == null) result = caseReAbstractElement(catalogElementPkg);
+        if (result == null) result = caseExtensibleElement(catalogElementPkg);
+        if (result == null) result = caseElement(catalogElementPkg);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RePackage.REC_CATALOG: {
+        RecCatalog recCatalog = (RecCatalog)theEObject;
+        T result = caseRecCatalog(recCatalog);
+        if (result == null) result = caseCatalogElementPkg(recCatalog);
+        if (result == null) result = caseElementExtension(recCatalog);
+        if (result == null) result = caseReNamedElement(recCatalog);
+        if (result == null) result = caseReElementContainer(recCatalog);
+        if (result == null) result = caseReAbstractElement(recCatalog);
+        if (result == null) result = caseExtensibleElement(recCatalog);
+        if (result == null) result = caseElement(recCatalog);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RePackage.GROUPING_ELEMENT_PKG: {
+        GroupingElementPkg groupingElementPkg = (GroupingElementPkg)theEObject;
+        T result = caseGroupingElementPkg(groupingElementPkg);
+        if (result == null) result = caseCatalogElementPkg(groupingElementPkg);
+        if (result == null) result = caseElementExtension(groupingElementPkg);
+        if (result == null) result = caseReNamedElement(groupingElementPkg);
+        if (result == null) result = caseReElementContainer(groupingElementPkg);
+        if (result == null) result = caseReAbstractElement(groupingElementPkg);
+        if (result == null) result = caseExtensibleElement(groupingElementPkg);
+        if (result == null) result = caseElement(groupingElementPkg);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RePackage.CATALOG_ELEMENT_LINK: {
+        CatalogElementLink catalogElementLink = (CatalogElementLink)theEObject;
+        T result = caseCatalogElementLink(catalogElementLink);
+        if (result == null) result = caseReAbstractElement(catalogElementLink);
+        if (result == null) result = caseExtensibleElement(catalogElementLink);
+        if (result == null) result = caseElement(catalogElementLink);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RePackage.CATALOG_ELEMENT: {
+        CatalogElement catalogElement = (CatalogElement)theEObject;
+        T result = caseCatalogElement(catalogElement);
+        if (result == null) result = caseReDescriptionElement(catalogElement);
+        if (result == null) result = caseReElementContainer(catalogElement);
+        if (result == null) result = caseReNamedElement(catalogElement);
+        if (result == null) result = caseReAbstractElement(catalogElement);
+        if (result == null) result = caseExtensibleElement(catalogElement);
+        if (result == null) result = caseElement(catalogElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RePackage.COMPLIANCY_DEFINITION_PKG: {
+        CompliancyDefinitionPkg compliancyDefinitionPkg = (CompliancyDefinitionPkg)theEObject;
+        T result = caseCompliancyDefinitionPkg(compliancyDefinitionPkg);
+        if (result == null) result = caseReNamedElement(compliancyDefinitionPkg);
+        if (result == null) result = caseReAbstractElement(compliancyDefinitionPkg);
+        if (result == null) result = caseExtensibleElement(compliancyDefinitionPkg);
+        if (result == null) result = caseElement(compliancyDefinitionPkg);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RePackage.COMPLIANCY_DEFINITION: {
+        CompliancyDefinition compliancyDefinition = (CompliancyDefinition)theEObject;
+        T result = caseCompliancyDefinition(compliancyDefinition);
+        if (result == null) result = caseReDescriptionElement(compliancyDefinition);
+        if (result == null) result = caseReNamedElement(compliancyDefinition);
+        if (result == null) result = caseReAbstractElement(compliancyDefinition);
+        if (result == null) result = caseExtensibleElement(compliancyDefinition);
+        if (result == null) result = caseElement(compliancyDefinition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      default: return defaultCase(theEObject);
+    }
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Element</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Abstract Element</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Abstract Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseReAbstractElement(ReAbstractElement object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseReNamedElement(ReNamedElement object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Description Element</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Description Element</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Description Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Description Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseReDescriptionElement(ReDescriptionElement object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Element Container</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Element Container</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Element Container</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Element Container</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseReElementContainer(ReElementContainer object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Rec Catalog</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Rec Catalog</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Rec Catalog</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Rec Catalog</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseRecCatalog(RecCatalog object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Grouping Element Pkg</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Grouping Element Pkg</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Grouping Element Pkg</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Grouping Element Pkg</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseGroupingElementPkg(GroupingElementPkg object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Catalog Element Pkg</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Catalog Element Pkg</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Catalog Element Pkg</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Catalog Element Pkg</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseCatalogElementPkg(CatalogElementPkg object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Catalog Element Link</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Catalog Element Link</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Catalog Element Link</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Catalog Element Link</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseCatalogElementLink(CatalogElementLink object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Catalog Element</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Catalog Element</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Catalog Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Catalog Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseCatalogElement(CatalogElement object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Compliancy Definition Pkg</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Compliancy Definition Pkg</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Compliancy Definition Pkg</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Compliancy Definition Pkg</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseCompliancyDefinitionPkg(CompliancyDefinitionPkg object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Compliancy Definition</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Compliancy Definition</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Compliancy Definition</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Compliancy Definition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseCompliancyDefinition(CompliancyDefinition object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseElement(Element object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseExtensibleElement(ExtensibleElement object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Element Extension</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Element Extension</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Element Extension</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Element Extension</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseElementExtension(ElementExtension object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch, but this is the last case anyway.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject)
+   * @generated
+   */
 	@Override
 	public T defaultCase(EObject object) {
-		return null;
-	}
+    return null;
+  }
 
 } //ReSwitch

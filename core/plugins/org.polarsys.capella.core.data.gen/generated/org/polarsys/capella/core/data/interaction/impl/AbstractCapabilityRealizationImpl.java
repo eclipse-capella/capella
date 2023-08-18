@@ -50,48 +50,48 @@ public class AbstractCapabilityRealizationImpl extends AllocationImpl implements
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractCapabilityRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION;
-	}
+    return InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractCapability getRealizedCapability() {
 
-		AbstractCapability realizedCapability = basicGetRealizedCapability();
-		return realizedCapability != null && realizedCapability.eIsProxy() ? (AbstractCapability)eResolveProxy((InternalEObject)realizedCapability) : realizedCapability;
-	}
+    AbstractCapability realizedCapability = basicGetRealizedCapability();
+    return realizedCapability != null && realizedCapability.eIsProxy() ? (AbstractCapability)eResolveProxy((InternalEObject)realizedCapability) : realizedCapability;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractCapability basicGetRealizedCapability() {
 
@@ -118,15 +118,15 @@ public class AbstractCapabilityRealizationImpl extends AllocationImpl implements
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION__REALIZED_CAPABILITY.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION__REALIZED_CAPABILITY, annotation);
-		
-		try {
-			return (AbstractCapability) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (AbstractCapability) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -134,23 +134,23 @@ public class AbstractCapabilityRealizationImpl extends AllocationImpl implements
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractCapability getRealizingCapability() {
 
-		AbstractCapability realizingCapability = basicGetRealizingCapability();
-		return realizingCapability != null && realizingCapability.eIsProxy() ? (AbstractCapability)eResolveProxy((InternalEObject)realizingCapability) : realizingCapability;
-	}
+    AbstractCapability realizingCapability = basicGetRealizingCapability();
+    return realizingCapability != null && realizingCapability.eIsProxy() ? (AbstractCapability)eResolveProxy((InternalEObject)realizingCapability) : realizingCapability;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractCapability basicGetRealizingCapability() {
 
@@ -177,53 +177,53 @@ public class AbstractCapabilityRealizationImpl extends AllocationImpl implements
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION__REALIZING_CAPABILITY.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION__REALIZING_CAPABILITY, annotation);
-		
-		try {
-			return (AbstractCapability) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (AbstractCapability) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_REALIZATION__REALIZED_CAPABILITY:
-				if (resolve) return getRealizedCapability();
-				return basicGetRealizedCapability();
-			case InteractionPackage.ABSTRACT_CAPABILITY_REALIZATION__REALIZING_CAPABILITY:
-				if (resolve) return getRealizingCapability();
-				return basicGetRealizingCapability();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_CAPABILITY_REALIZATION__REALIZED_CAPABILITY:
+        if (resolve) return getRealizedCapability();
+        return basicGetRealizedCapability();
+      case InteractionPackage.ABSTRACT_CAPABILITY_REALIZATION__REALIZING_CAPABILITY:
+        if (resolve) return getRealizingCapability();
+        return basicGetRealizingCapability();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_REALIZATION__REALIZED_CAPABILITY:
-				return basicGetRealizedCapability() != null;
-			case InteractionPackage.ABSTRACT_CAPABILITY_REALIZATION__REALIZING_CAPABILITY:
-				return basicGetRealizingCapability() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_CAPABILITY_REALIZATION__REALIZED_CAPABILITY:
+        return basicGetRealizedCapability() != null;
+      case InteractionPackage.ABSTRACT_CAPABILITY_REALIZATION__REALIZING_CAPABILITY:
+        return basicGetRealizingCapability() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

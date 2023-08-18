@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.information.InformationPackage;
  */
 public class DomainElementImpl extends ClassImpl implements DomainElement {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected DomainElementImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.DOMAIN_ELEMENT;
-	}
+    return InformationPackage.Literals.DOMAIN_ELEMENT;
+  }
 
 
 

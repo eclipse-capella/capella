@@ -40,22 +40,22 @@ public interface AbstractModellingStructure extends ReuserStructure {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Architectures</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.ModellingArchitecture}.
+   * Returns the value of the '<em><b>Owned Architectures</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.ModellingArchitecture}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Architectures</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Architectures</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getAbstractModellingStructure_OwnedArchitectures()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the modeling architectures contained in this structure\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which ModellingArchitecture stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Architectures</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getAbstractModellingStructure_OwnedArchitectures()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the modeling architectures contained in this structure\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which ModellingArchitecture stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<ModellingArchitecture> getOwnedArchitectures();
 
@@ -66,22 +66,22 @@ public interface AbstractModellingStructure extends ReuserStructure {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Architecture Pkgs</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.ModellingArchitecturePkg}.
+   * Returns the value of the '<em><b>Owned Architecture Pkgs</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.ModellingArchitecturePkg}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Architecture Pkgs</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Architecture Pkgs</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getAbstractModellingStructure_OwnedArchitecturePkgs()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the architecture packages contained in this structure\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which ModellingArchitecturePkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Architecture Pkgs</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getAbstractModellingStructure_OwnedArchitecturePkgs()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the architecture packages contained in this structure\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which ModellingArchitecturePkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<ModellingArchitecturePkg> getOwnedArchitecturePkgs();
 

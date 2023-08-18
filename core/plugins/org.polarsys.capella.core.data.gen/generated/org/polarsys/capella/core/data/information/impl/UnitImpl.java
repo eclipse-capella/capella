@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.information.Unit;
  */
 public class UnitImpl extends NamedElementImpl implements Unit {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected UnitImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.UNIT;
-	}
+    return InformationPackage.Literals.UNIT;
+  }
 
 
 

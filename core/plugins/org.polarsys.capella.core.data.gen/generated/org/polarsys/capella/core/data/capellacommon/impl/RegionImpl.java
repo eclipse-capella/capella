@@ -45,13 +45,13 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
 public class RegionImpl extends NamedElementImpl implements Region {
 
 	/**
-	 * The cached value of the '{@link #getOwnedStates() <em>Owned States</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedStates() <em>Owned States</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedStates()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedStates()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractState> ownedStates;
 
 
@@ -59,13 +59,13 @@ public class RegionImpl extends NamedElementImpl implements Region {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedTransitions() <em>Owned Transitions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedTransitions() <em>Owned Transitions</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedTransitions()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedTransitions()
+   * @generated
+   * @ordered
+   */
 	protected EList<StateTransition> ownedTransitions;
 
 
@@ -73,195 +73,195 @@ public class RegionImpl extends NamedElementImpl implements Region {
 
 
 	/**
-	 * The cached value of the '{@link #getInvolvedStates() <em>Involved States</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getInvolvedStates() <em>Involved States</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInvolvedStates()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getInvolvedStates()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractState> involvedStates;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected RegionImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.REGION;
-	}
+    return CapellacommonPackage.Literals.REGION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractState> getOwnedStates() {
 
-		if (ownedStates == null) {
-			ownedStates = new EObjectContainmentEList.Resolving<AbstractState>(AbstractState.class, this, CapellacommonPackage.REGION__OWNED_STATES);
-		}
-		return ownedStates;
-	}
+    if (ownedStates == null) {
+      ownedStates = new EObjectContainmentEList.Resolving<AbstractState>(AbstractState.class, this, CapellacommonPackage.REGION__OWNED_STATES);
+    }
+    return ownedStates;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<StateTransition> getOwnedTransitions() {
 
-		if (ownedTransitions == null) {
-			ownedTransitions = new EObjectContainmentEList.Resolving<StateTransition>(StateTransition.class, this, CapellacommonPackage.REGION__OWNED_TRANSITIONS);
-		}
-		return ownedTransitions;
-	}
+    if (ownedTransitions == null) {
+      ownedTransitions = new EObjectContainmentEList.Resolving<StateTransition>(StateTransition.class, this, CapellacommonPackage.REGION__OWNED_TRANSITIONS);
+    }
+    return ownedTransitions;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractState> getInvolvedStates() {
 
-		if (involvedStates == null) {
-			involvedStates = new EObjectResolvingEList<AbstractState>(AbstractState.class, this, CapellacommonPackage.REGION__INVOLVED_STATES);
-		}
-		return involvedStates;
-	}
+    if (involvedStates == null) {
+      involvedStates = new EObjectResolvingEList<AbstractState>(AbstractState.class, this, CapellacommonPackage.REGION__INVOLVED_STATES);
+    }
+    return involvedStates;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CapellacommonPackage.REGION__OWNED_STATES:
-				return ((InternalEList<?>)getOwnedStates()).basicRemove(otherEnd, msgs);
-			case CapellacommonPackage.REGION__OWNED_TRANSITIONS:
-				return ((InternalEList<?>)getOwnedTransitions()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.REGION__OWNED_STATES:
+        return ((InternalEList<?>)getOwnedStates()).basicRemove(otherEnd, msgs);
+      case CapellacommonPackage.REGION__OWNED_TRANSITIONS:
+        return ((InternalEList<?>)getOwnedTransitions()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CapellacommonPackage.REGION__OWNED_STATES:
-				return getOwnedStates();
-			case CapellacommonPackage.REGION__OWNED_TRANSITIONS:
-				return getOwnedTransitions();
-			case CapellacommonPackage.REGION__INVOLVED_STATES:
-				return getInvolvedStates();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.REGION__OWNED_STATES:
+        return getOwnedStates();
+      case CapellacommonPackage.REGION__OWNED_TRANSITIONS:
+        return getOwnedTransitions();
+      case CapellacommonPackage.REGION__INVOLVED_STATES:
+        return getInvolvedStates();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CapellacommonPackage.REGION__OWNED_STATES:
-				getOwnedStates().clear();
-				getOwnedStates().addAll((Collection<? extends AbstractState>)newValue);
-				return;
-			case CapellacommonPackage.REGION__OWNED_TRANSITIONS:
-				getOwnedTransitions().clear();
-				getOwnedTransitions().addAll((Collection<? extends StateTransition>)newValue);
-				return;
-			case CapellacommonPackage.REGION__INVOLVED_STATES:
-				getInvolvedStates().clear();
-				getInvolvedStates().addAll((Collection<? extends AbstractState>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.REGION__OWNED_STATES:
+        getOwnedStates().clear();
+        getOwnedStates().addAll((Collection<? extends AbstractState>)newValue);
+        return;
+      case CapellacommonPackage.REGION__OWNED_TRANSITIONS:
+        getOwnedTransitions().clear();
+        getOwnedTransitions().addAll((Collection<? extends StateTransition>)newValue);
+        return;
+      case CapellacommonPackage.REGION__INVOLVED_STATES:
+        getInvolvedStates().clear();
+        getInvolvedStates().addAll((Collection<? extends AbstractState>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CapellacommonPackage.REGION__OWNED_STATES:
-				getOwnedStates().clear();
-				return;
-			case CapellacommonPackage.REGION__OWNED_TRANSITIONS:
-				getOwnedTransitions().clear();
-				return;
-			case CapellacommonPackage.REGION__INVOLVED_STATES:
-				getInvolvedStates().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.REGION__OWNED_STATES:
+        getOwnedStates().clear();
+        return;
+      case CapellacommonPackage.REGION__OWNED_TRANSITIONS:
+        getOwnedTransitions().clear();
+        return;
+      case CapellacommonPackage.REGION__INVOLVED_STATES:
+        getInvolvedStates().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CapellacommonPackage.REGION__OWNED_STATES:
-				return ownedStates != null && !ownedStates.isEmpty();
-			case CapellacommonPackage.REGION__OWNED_TRANSITIONS:
-				return ownedTransitions != null && !ownedTransitions.isEmpty();
-			case CapellacommonPackage.REGION__INVOLVED_STATES:
-				return involvedStates != null && !involvedStates.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.REGION__OWNED_STATES:
+        return ownedStates != null && !ownedStates.isEmpty();
+      case CapellacommonPackage.REGION__OWNED_TRANSITIONS:
+        return ownedTransitions != null && !ownedTransitions.isEmpty();
+      case CapellacommonPackage.REGION__INVOLVED_STATES:
+        return involvedStates != null && !involvedStates.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

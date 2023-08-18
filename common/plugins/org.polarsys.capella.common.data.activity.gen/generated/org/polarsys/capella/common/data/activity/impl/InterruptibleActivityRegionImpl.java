@@ -40,150 +40,150 @@ import org.polarsys.capella.common.data.activity.InterruptibleActivityRegion;
 public abstract class InterruptibleActivityRegionImpl extends ActivityGroupImpl implements InterruptibleActivityRegion {
 
 	/**
-	 * The cached value of the '{@link #getInterruptingEdges() <em>Interrupting Edges</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getInterruptingEdges() <em>Interrupting Edges</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInterruptingEdges()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getInterruptingEdges()
+   * @generated
+   * @ordered
+   */
 	protected EList<ActivityEdge> interruptingEdges;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected InterruptibleActivityRegionImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return ActivityPackage.Literals.INTERRUPTIBLE_ACTIVITY_REGION;
-	}
+    return ActivityPackage.Literals.INTERRUPTIBLE_ACTIVITY_REGION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ActivityEdge> getInterruptingEdges() {
 
-		if (interruptingEdges == null) {
-			interruptingEdges = new EObjectWithInverseResolvingEList<ActivityEdge>(ActivityEdge.class, this, ActivityPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGES, ActivityPackage.ACTIVITY_EDGE__INTERRUPTS);
-		}
-		return interruptingEdges;
-	}
+    if (interruptingEdges == null) {
+      interruptingEdges = new EObjectWithInverseResolvingEList<ActivityEdge>(ActivityEdge.class, this, ActivityPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGES, ActivityPackage.ACTIVITY_EDGE__INTERRUPTS);
+    }
+    return interruptingEdges;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ActivityPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getInterruptingEdges()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case ActivityPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGES:
+        return ((InternalEList<InternalEObject>)(InternalEList<?>)getInterruptingEdges()).basicAdd(otherEnd, msgs);
+    }
+    return super.eInverseAdd(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ActivityPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGES:
-				return ((InternalEList<?>)getInterruptingEdges()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case ActivityPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGES:
+        return ((InternalEList<?>)getInterruptingEdges()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ActivityPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGES:
-				return getInterruptingEdges();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case ActivityPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGES:
+        return getInterruptingEdges();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ActivityPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGES:
-				getInterruptingEdges().clear();
-				getInterruptingEdges().addAll((Collection<? extends ActivityEdge>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case ActivityPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGES:
+        getInterruptingEdges().clear();
+        getInterruptingEdges().addAll((Collection<? extends ActivityEdge>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGES:
-				getInterruptingEdges().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGES:
+        getInterruptingEdges().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGES:
-				return interruptingEdges != null && !interruptingEdges.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGES:
+        return interruptingEdges != null && !interruptingEdges.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

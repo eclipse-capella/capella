@@ -59,453 +59,453 @@ import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
  */
 public class PaItemProviderAdapterFactory extends PaAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
 	/**
-	 * This keeps track of the root adapter factory that delegates to this adapter factory.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the root adapter factory that delegates to this adapter factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComposedAdapterFactory parentAdapterFactory;
 
 	/**
-	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-	 * <!-- begin-user-doc -->
+   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
 	/**
-	 * This helps manage the child creation extenders.
-	 * <!-- begin-user-doc -->
+   * This helps manage the child creation extenders.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(CapellaModellerEditPlugin.INSTANCE, PaPackage.eNS_URI);
 
 	/**
-	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-	 * <!-- begin-user-doc -->
+   * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
-	 * This constructs an instance.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public PaItemProviderAdapterFactory() {
-		supportedTypes.add(IEditingDomainItemProvider.class);
-		supportedTypes.add(IStructuredItemContentProvider.class);
-		supportedTypes.add(ITreeItemContentProvider.class);
-		supportedTypes.add(IItemLabelProvider.class);
-		supportedTypes.add(IItemPropertySource.class);
-	}
+    supportedTypes.add(IEditingDomainItemProvider.class);
+    supportedTypes.add(IStructuredItemContentProvider.class);
+    supportedTypes.add(ITreeItemContentProvider.class);
+    supportedTypes.add(IItemLabelProvider.class);
+    supportedTypes.add(IItemPropertySource.class);
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.PhysicalArchitecturePkg} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.PhysicalArchitecturePkg} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalArchitecturePkgItemProvider physicalArchitecturePkgItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.PhysicalArchitecturePkg}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.PhysicalArchitecturePkg}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createPhysicalArchitecturePkgAdapter() {
-		if (physicalArchitecturePkgItemProvider == null) {
-			physicalArchitecturePkgItemProvider = new PhysicalArchitecturePkgItemProvider(this);
-		}
+    if (physicalArchitecturePkgItemProvider == null) {
+      physicalArchitecturePkgItemProvider = new PhysicalArchitecturePkgItemProvider(this);
+    }
 
-		return physicalArchitecturePkgItemProvider;
-	}
+    return physicalArchitecturePkgItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.PhysicalArchitecture} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.PhysicalArchitecture} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalArchitectureItemProvider physicalArchitectureItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.PhysicalArchitecture}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.PhysicalArchitecture}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createPhysicalArchitectureAdapter() {
-		if (physicalArchitectureItemProvider == null) {
-			physicalArchitectureItemProvider = new PhysicalArchitectureItemProvider(this);
-		}
+    if (physicalArchitectureItemProvider == null) {
+      physicalArchitectureItemProvider = new PhysicalArchitectureItemProvider(this);
+    }
 
-		return physicalArchitectureItemProvider;
-	}
+    return physicalArchitectureItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.PhysicalFunction} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.PhysicalFunction} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalFunctionItemProvider physicalFunctionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.PhysicalFunction}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.PhysicalFunction}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createPhysicalFunctionAdapter() {
-		if (physicalFunctionItemProvider == null) {
-			physicalFunctionItemProvider = new PhysicalFunctionItemProvider(this);
-		}
+    if (physicalFunctionItemProvider == null) {
+      physicalFunctionItemProvider = new PhysicalFunctionItemProvider(this);
+    }
 
-		return physicalFunctionItemProvider;
-	}
+    return physicalFunctionItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.PhysicalFunctionPkg} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.PhysicalFunctionPkg} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalFunctionPkgItemProvider physicalFunctionPkgItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.PhysicalFunctionPkg}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.PhysicalFunctionPkg}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createPhysicalFunctionPkgAdapter() {
-		if (physicalFunctionPkgItemProvider == null) {
-			physicalFunctionPkgItemProvider = new PhysicalFunctionPkgItemProvider(this);
-		}
+    if (physicalFunctionPkgItemProvider == null) {
+      physicalFunctionPkgItemProvider = new PhysicalFunctionPkgItemProvider(this);
+    }
 
-		return physicalFunctionPkgItemProvider;
-	}
+    return physicalFunctionPkgItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.PhysicalComponent} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.PhysicalComponent} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalComponentItemProvider physicalComponentItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.PhysicalComponent}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.PhysicalComponent}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createPhysicalComponentAdapter() {
-		if (physicalComponentItemProvider == null) {
-			physicalComponentItemProvider = new PhysicalComponentItemProvider(this);
-		}
+    if (physicalComponentItemProvider == null) {
+      physicalComponentItemProvider = new PhysicalComponentItemProvider(this);
+    }
 
-		return physicalComponentItemProvider;
-	}
+    return physicalComponentItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.PhysicalComponentPkg} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.PhysicalComponentPkg} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalComponentPkgItemProvider physicalComponentPkgItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.PhysicalComponentPkg}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.PhysicalComponentPkg}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createPhysicalComponentPkgAdapter() {
-		if (physicalComponentPkgItemProvider == null) {
-			physicalComponentPkgItemProvider = new PhysicalComponentPkgItemProvider(this);
-		}
+    if (physicalComponentPkgItemProvider == null) {
+      physicalComponentPkgItemProvider = new PhysicalComponentPkgItemProvider(this);
+    }
 
-		return physicalComponentPkgItemProvider;
-	}
+    return physicalComponentPkgItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.PhysicalNode} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.PhysicalNode} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalNodeItemProvider physicalNodeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.PhysicalNode}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.PhysicalNode}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createPhysicalNodeAdapter() {
-		if (physicalNodeItemProvider == null) {
-			physicalNodeItemProvider = new PhysicalNodeItemProvider(this);
-		}
+    if (physicalNodeItemProvider == null) {
+      physicalNodeItemProvider = new PhysicalNodeItemProvider(this);
+    }
 
-		return physicalNodeItemProvider;
-	}
+    return physicalNodeItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.LogicalArchitectureRealization} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.LogicalArchitectureRealization} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected LogicalArchitectureRealizationItemProvider logicalArchitectureRealizationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.LogicalArchitectureRealization}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.LogicalArchitectureRealization}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createLogicalArchitectureRealizationAdapter() {
-		if (logicalArchitectureRealizationItemProvider == null) {
-			logicalArchitectureRealizationItemProvider = new LogicalArchitectureRealizationItemProvider(this);
-		}
+    if (logicalArchitectureRealizationItemProvider == null) {
+      logicalArchitectureRealizationItemProvider = new LogicalArchitectureRealizationItemProvider(this);
+    }
 
-		return logicalArchitectureRealizationItemProvider;
-	}
+    return logicalArchitectureRealizationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.LogicalInterfaceRealization} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.LogicalInterfaceRealization} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected LogicalInterfaceRealizationItemProvider logicalInterfaceRealizationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.LogicalInterfaceRealization}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.LogicalInterfaceRealization}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createLogicalInterfaceRealizationAdapter() {
-		if (logicalInterfaceRealizationItemProvider == null) {
-			logicalInterfaceRealizationItemProvider = new LogicalInterfaceRealizationItemProvider(this);
-		}
+    if (logicalInterfaceRealizationItemProvider == null) {
+      logicalInterfaceRealizationItemProvider = new LogicalInterfaceRealizationItemProvider(this);
+    }
 
-		return logicalInterfaceRealizationItemProvider;
-	}
+    return logicalInterfaceRealizationItemProvider;
+  }
 
 	/**
-	 * This returns the root adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+   * This returns the root adapter factory that contains this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
-	}
+    return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+  }
 
 	/**
-	 * This sets the composed adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+   * This sets the composed adapter factory that contains this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
-		this.parentAdapterFactory = parentAdapterFactory;
-	}
+    this.parentAdapterFactory = parentAdapterFactory;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean isFactoryForType(Object type) {
-		return supportedTypes.contains(type) || super.isFactoryForType(type);
-	}
+    return supportedTypes.contains(type) || super.isFactoryForType(type);
+  }
 
 	/**
-	 * This implementation substitutes the factory itself as the key for the adapter.
-	 * <!-- begin-user-doc -->
+   * This implementation substitutes the factory itself as the key for the adapter.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
-		return super.adapt(notifier, this);
-	}
+    return super.adapt(notifier, this);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object adapt(Object object, Object type) {
-		if (isFactoryForType(type)) {
-			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
-				return adapter;
-			}
-		}
+    if (isFactoryForType(type)) {
+      Object adapter = super.adapt(object, type);
+      if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+        return adapter;
+      }
+    }
 
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public List<IChildCreationExtender> getChildCreationExtenders() {
-		return childCreationExtenderManager.getChildCreationExtenders();
-	}
+    return childCreationExtenderManager.getChildCreationExtenders();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
-	}
+    return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ResourceLocator getResourceLocator() {
-		return childCreationExtenderManager;
-	}
+    return childCreationExtenderManager;
+  }
 
 	/**
-	 * This adds a listener.
-	 * <!-- begin-user-doc -->
+   * This adds a listener.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.addListener(notifyChangedListener);
-	}
+    changeNotifier.addListener(notifyChangedListener);
+  }
 
 	/**
-	 * This removes a listener.
-	 * <!-- begin-user-doc -->
+   * This removes a listener.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.removeListener(notifyChangedListener);
-	}
+    changeNotifier.removeListener(notifyChangedListener);
+  }
 
 	/**
-	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-	 * <!-- begin-user-doc -->
+   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void fireNotifyChanged(Notification notification) {
-		changeNotifier.fireNotifyChanged(notification);
+    changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null) {
-			parentAdapterFactory.fireNotifyChanged(notification);
-		}
-	}
+    if (parentAdapterFactory != null) {
+      parentAdapterFactory.fireNotifyChanged(notification);
+    }
+  }
 
 	/**
-	 * This disposes all of the item providers created by this factory. 
-	 * <!-- begin-user-doc -->
+   * This disposes all of the item providers created by this factory. 
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void dispose() {
-		if (physicalArchitecturePkgItemProvider != null) physicalArchitecturePkgItemProvider.dispose();
-		if (physicalArchitectureItemProvider != null) physicalArchitectureItemProvider.dispose();
-		if (physicalFunctionItemProvider != null) physicalFunctionItemProvider.dispose();
-		if (physicalFunctionPkgItemProvider != null) physicalFunctionPkgItemProvider.dispose();
-		if (physicalComponentItemProvider != null) physicalComponentItemProvider.dispose();
-		if (physicalComponentPkgItemProvider != null) physicalComponentPkgItemProvider.dispose();
-		if (physicalNodeItemProvider != null) physicalNodeItemProvider.dispose();
-		if (logicalArchitectureRealizationItemProvider != null) logicalArchitectureRealizationItemProvider.dispose();
-		if (logicalInterfaceRealizationItemProvider != null) logicalInterfaceRealizationItemProvider.dispose();
-	}
+    if (physicalArchitecturePkgItemProvider != null) physicalArchitecturePkgItemProvider.dispose();
+    if (physicalArchitectureItemProvider != null) physicalArchitectureItemProvider.dispose();
+    if (physicalFunctionItemProvider != null) physicalFunctionItemProvider.dispose();
+    if (physicalFunctionPkgItemProvider != null) physicalFunctionPkgItemProvider.dispose();
+    if (physicalComponentItemProvider != null) physicalComponentItemProvider.dispose();
+    if (physicalComponentPkgItemProvider != null) physicalComponentPkgItemProvider.dispose();
+    if (physicalNodeItemProvider != null) physicalNodeItemProvider.dispose();
+    if (logicalArchitectureRealizationItemProvider != null) logicalArchitectureRealizationItemProvider.dispose();
+    if (logicalInterfaceRealizationItemProvider != null) logicalInterfaceRealizationItemProvider.dispose();
+  }
 
 	/**
-	 * A child creation extender for the {@link ActivityPackage}.
-	 * <!-- begin-user-doc -->
+   * A child creation extender for the {@link ActivityPackage}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static class ActivityChildCreationExtender implements IChildCreationExtender {
 		/**
-		 * The switch for creating child descriptors specific to each extended class.
-		 * <!-- begin-user-doc -->
+     * The switch for creating child descriptors specific to each extended class.
+     * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
+     * @generated
+     */
 		protected static class CreationSwitch extends ActivitySwitch<Object> {
 			/**
-			 * The child descriptors being populated.
-			 * <!-- begin-user-doc -->
+       * The child descriptors being populated.
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			protected List<Object> newChildDescriptors;
 
 			/**
-			 * The domain in which to create the children.
-			 * <!-- begin-user-doc -->
+       * The domain in which to create the children.
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			protected EditingDomain editingDomain;
 
 			/**
-			 * Creates the a switch for populating child descriptors in the given domain.
-			 * <!-- begin-user-doc -->
+       * Creates the a switch for populating child descriptors in the given domain.
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
-				this.newChildDescriptors = newChildDescriptors;
-				this.editingDomain = editingDomain;
-			}
+        this.newChildDescriptors = newChildDescriptors;
+        this.editingDomain = editingDomain;
+      }
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			@Override
 			public Object caseAbstractActivity(AbstractActivity object) {
-				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/pa/7.0.0")) { //$NON-NLS-1$
-					return null;				
-				}
-				// end-extension-code
+        // begin-extension-code
+        if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/pa/7.0.0")) { //$NON-NLS-1$
+          return null;				
+        }
+        // end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -519,21 +519,21 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 
 
 
-				return null;
-			}
+        return null;
+      }
  
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			@Override
 			public Object caseActivityGroup(ActivityGroup object) {
-				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/pa/7.0.0")) { //$NON-NLS-1$
-					return null;				
-				}
-				// end-extension-code
+        // begin-extension-code
+        if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/pa/7.0.0")) { //$NON-NLS-1$
+          return null;				
+        }
+        // end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -547,39 +547,39 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 
 
 
-				return null;
-			}
+        return null;
+      }
  
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			protected CommandParameter createChildParameter(Object feature, Object child) {
-				return new CommandParameter(null, feature, child);
-			}
+        return new CommandParameter(null, feature, child);
+      }
 
 		}
 
 		/**
-		 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
+     * @generated
+     */
 		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-			ArrayList<Object> result = new ArrayList<Object>();
-			new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
-			return result;
-		}
+      ArrayList<Object> result = new ArrayList<Object>();
+      new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
+      return result;
+    }
 
 		/**
-		 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
+     * @generated
+     */
 		public ResourceLocator getResourceLocator() {
-			return CapellaModellerEditPlugin.INSTANCE;
-		}
+      return CapellaModellerEditPlugin.INSTANCE;
+    }
 	}
 
 }

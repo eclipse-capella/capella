@@ -42,13 +42,13 @@ import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 public class LogicalComponentPkgImpl extends ComponentPkgImpl implements LogicalComponentPkg {
 
 	/**
-	 * The cached value of the '{@link #getOwnedLogicalComponents() <em>Owned Logical Components</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedLogicalComponents() <em>Owned Logical Components</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedLogicalComponents()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedLogicalComponents()
+   * @generated
+   * @ordered
+   */
 	protected EList<LogicalComponent> ownedLogicalComponents;
 
 
@@ -56,166 +56,166 @@ public class LogicalComponentPkgImpl extends ComponentPkgImpl implements Logical
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedLogicalComponentPkgs() <em>Owned Logical Component Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedLogicalComponentPkgs() <em>Owned Logical Component Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedLogicalComponentPkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedLogicalComponentPkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<LogicalComponentPkg> ownedLogicalComponentPkgs;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected LogicalComponentPkgImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return LaPackage.Literals.LOGICAL_COMPONENT_PKG;
-	}
+    return LaPackage.Literals.LOGICAL_COMPONENT_PKG;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LogicalComponent> getOwnedLogicalComponents() {
 
-		if (ownedLogicalComponents == null) {
-			ownedLogicalComponents = new EObjectContainmentEList.Resolving<LogicalComponent>(LogicalComponent.class, this, LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS);
-		}
-		return ownedLogicalComponents;
-	}
+    if (ownedLogicalComponents == null) {
+      ownedLogicalComponents = new EObjectContainmentEList.Resolving<LogicalComponent>(LogicalComponent.class, this, LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS);
+    }
+    return ownedLogicalComponents;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LogicalComponentPkg> getOwnedLogicalComponentPkgs() {
 
-		if (ownedLogicalComponentPkgs == null) {
-			ownedLogicalComponentPkgs = new EObjectContainmentEList.Resolving<LogicalComponentPkg>(LogicalComponentPkg.class, this, LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS);
-		}
-		return ownedLogicalComponentPkgs;
-	}
+    if (ownedLogicalComponentPkgs == null) {
+      ownedLogicalComponentPkgs = new EObjectContainmentEList.Resolving<LogicalComponentPkg>(LogicalComponentPkg.class, this, LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS);
+    }
+    return ownedLogicalComponentPkgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS:
-				return ((InternalEList<?>)getOwnedLogicalComponents()).basicRemove(otherEnd, msgs);
-			case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS:
-				return ((InternalEList<?>)getOwnedLogicalComponentPkgs()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS:
+        return ((InternalEList<?>)getOwnedLogicalComponents()).basicRemove(otherEnd, msgs);
+      case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS:
+        return ((InternalEList<?>)getOwnedLogicalComponentPkgs()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS:
-				return getOwnedLogicalComponents();
-			case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS:
-				return getOwnedLogicalComponentPkgs();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS:
+        return getOwnedLogicalComponents();
+      case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS:
+        return getOwnedLogicalComponentPkgs();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS:
-				getOwnedLogicalComponents().clear();
-				getOwnedLogicalComponents().addAll((Collection<? extends LogicalComponent>)newValue);
-				return;
-			case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS:
-				getOwnedLogicalComponentPkgs().clear();
-				getOwnedLogicalComponentPkgs().addAll((Collection<? extends LogicalComponentPkg>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS:
+        getOwnedLogicalComponents().clear();
+        getOwnedLogicalComponents().addAll((Collection<? extends LogicalComponent>)newValue);
+        return;
+      case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS:
+        getOwnedLogicalComponentPkgs().clear();
+        getOwnedLogicalComponentPkgs().addAll((Collection<? extends LogicalComponentPkg>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS:
-				getOwnedLogicalComponents().clear();
-				return;
-			case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS:
-				getOwnedLogicalComponentPkgs().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS:
+        getOwnedLogicalComponents().clear();
+        return;
+      case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS:
+        getOwnedLogicalComponentPkgs().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS:
-				return ownedLogicalComponents != null && !ownedLogicalComponents.isEmpty();
-			case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS:
-				return ownedLogicalComponentPkgs != null && !ownedLogicalComponentPkgs.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS:
+        return ownedLogicalComponents != null && !ownedLogicalComponents.isEmpty();
+      case LaPackage.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS:
+        return ownedLogicalComponentPkgs != null && !ownedLogicalComponentPkgs.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

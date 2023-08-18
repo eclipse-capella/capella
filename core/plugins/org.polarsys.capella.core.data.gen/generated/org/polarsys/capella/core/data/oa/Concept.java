@@ -40,21 +40,21 @@ public interface Concept extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Compliances</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.ConceptCompliance}.
+   * Returns the value of the '<em><b>Compliances</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.ConceptCompliance}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Compliances</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Compliances</em>' reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getConcept_Compliances()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of Compliances that this operational concept follows\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Dependency::supplier' constraints='Order must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Compliances</em>' reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getConcept_Compliances()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of Compliances that this operational concept follows\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Dependency::supplier' constraints='Order must be computed'"
+   * @generated
+   */
 
 	EList<ConceptCompliance> getCompliances();
 
@@ -65,22 +65,22 @@ public interface Concept extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Composite Links</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.ItemInConcept}.
+   * Returns the value of the '<em><b>Composite Links</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.ItemInConcept}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Composite Links</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Composite Links</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getConcept_CompositeLinks()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='relationships with concept items\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::clientDependency, keyword::nearestpackage' explanation='none' constraints='uml::NamedElement::clientDependency elements on which ItemInConcept stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Composite Links</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getConcept_CompositeLinks()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='relationships with concept items\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::clientDependency, keyword::nearestpackage' explanation='none' constraints='uml::NamedElement::clientDependency elements on which ItemInConcept stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<ItemInConcept> getCompositeLinks();
 

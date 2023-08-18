@@ -45,13 +45,13 @@ import org.polarsys.capella.common.re.RePackage;
 public class CatalogElementLinkImpl extends ReAbstractElementImpl implements CatalogElementLink {
 
 	/**
-	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSource()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getSource()
+   * @generated
+   * @ordered
+   */
 	protected CatalogElement source;
 
 
@@ -59,13 +59,13 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 
 
 	/**
-	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTarget()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getTarget()
+   * @generated
+   * @ordered
+   */
 	protected EObject target;
 
 
@@ -73,13 +73,13 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 
 
 	/**
-	 * The cached value of the '{@link #getOrigin() <em>Origin</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOrigin() <em>Origin</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOrigin()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOrigin()
+   * @generated
+   * @ordered
+   */
 	protected CatalogElementLink origin;
 
 
@@ -87,26 +87,26 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 
 
 	/**
-	 * The cached value of the '{@link #getUnsynchronizedFeatures() <em>Unsynchronized Features</em>}' attribute list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getUnsynchronizedFeatures() <em>Unsynchronized Features</em>}' attribute list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUnsynchronizedFeatures()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getUnsynchronizedFeatures()
+   * @generated
+   * @ordered
+   */
 	protected EList<String> unsynchronizedFeatures;
 
 
 
 
 	/**
-	 * The default value of the '{@link #isSuffixed() <em>Suffixed</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isSuffixed() <em>Suffixed</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isSuffixed()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isSuffixed()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean SUFFIXED_EDEFAULT = false;
 
 
@@ -114,91 +114,91 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 
 
 	/**
-	 * The cached value of the '{@link #isSuffixed() <em>Suffixed</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isSuffixed() <em>Suffixed</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isSuffixed()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isSuffixed()
+   * @generated
+   * @ordered
+   */
 	protected boolean suffixed = SUFFIXED_EDEFAULT;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CatalogElementLinkImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return RePackage.Literals.CATALOG_ELEMENT_LINK;
-	}
+    return RePackage.Literals.CATALOG_ELEMENT_LINK;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public CatalogElement getSource() {
 
-		if (source != null && source.eIsProxy()) {
-			InternalEObject oldSource = (InternalEObject)source;
-			source = (CatalogElement)eResolveProxy(oldSource);
-			if (source != oldSource) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RePackage.CATALOG_ELEMENT_LINK__SOURCE, oldSource, source));
-			}
-		}
-		return source;
-	}
+    if (source != null && source.eIsProxy()) {
+      InternalEObject oldSource = (InternalEObject)source;
+      source = (CatalogElement)eResolveProxy(oldSource);
+      if (source != oldSource) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, RePackage.CATALOG_ELEMENT_LINK__SOURCE, oldSource, source));
+      }
+    }
+    return source;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public CatalogElement basicGetSource() {
 
-		return source;
-	}
+    return source;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setSource(CatalogElement newSource) {
 
-		CatalogElement oldSource = source;
-		source = newSource;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT_LINK__SOURCE, oldSource, source));
+    CatalogElement oldSource = source;
+    source = newSource;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT_LINK__SOURCE, oldSource, source));
 
-	}
+  }
 
 
 
@@ -206,53 +206,53 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EObject getTarget() {
 
-		if (target != null && target.eIsProxy()) {
-			InternalEObject oldTarget = (InternalEObject)target;
-			target = eResolveProxy(oldTarget);
-			if (target != oldTarget) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RePackage.CATALOG_ELEMENT_LINK__TARGET, oldTarget, target));
-			}
-		}
-		return target;
-	}
+    if (target != null && target.eIsProxy()) {
+      InternalEObject oldTarget = (InternalEObject)target;
+      target = eResolveProxy(oldTarget);
+      if (target != oldTarget) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, RePackage.CATALOG_ELEMENT_LINK__TARGET, oldTarget, target));
+      }
+    }
+    return target;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EObject basicGetTarget() {
 
-		return target;
-	}
+    return target;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setTarget(EObject newTarget) {
 
-		EObject oldTarget = target;
-		target = newTarget;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT_LINK__TARGET, oldTarget, target));
+    EObject oldTarget = target;
+    target = newTarget;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT_LINK__TARGET, oldTarget, target));
 
-	}
+  }
 
 
 
@@ -260,53 +260,53 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public CatalogElementLink getOrigin() {
 
-		if (origin != null && origin.eIsProxy()) {
-			InternalEObject oldOrigin = (InternalEObject)origin;
-			origin = (CatalogElementLink)eResolveProxy(oldOrigin);
-			if (origin != oldOrigin) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RePackage.CATALOG_ELEMENT_LINK__ORIGIN, oldOrigin, origin));
-			}
-		}
-		return origin;
-	}
+    if (origin != null && origin.eIsProxy()) {
+      InternalEObject oldOrigin = (InternalEObject)origin;
+      origin = (CatalogElementLink)eResolveProxy(oldOrigin);
+      if (origin != oldOrigin) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, RePackage.CATALOG_ELEMENT_LINK__ORIGIN, oldOrigin, origin));
+      }
+    }
+    return origin;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public CatalogElementLink basicGetOrigin() {
 
-		return origin;
-	}
+    return origin;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setOrigin(CatalogElementLink newOrigin) {
 
-		CatalogElementLink oldOrigin = origin;
-		origin = newOrigin;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT_LINK__ORIGIN, oldOrigin, origin));
+    CatalogElementLink oldOrigin = origin;
+    origin = newOrigin;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT_LINK__ORIGIN, oldOrigin, origin));
 
-	}
+  }
 
 
 
@@ -314,172 +314,172 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<String> getUnsynchronizedFeatures() {
 
-		if (unsynchronizedFeatures == null) {
-			unsynchronizedFeatures = new EDataTypeUniqueEList<String>(String.class, this, RePackage.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES);
-		}
-		return unsynchronizedFeatures;
-	}
+    if (unsynchronizedFeatures == null) {
+      unsynchronizedFeatures = new EDataTypeUniqueEList<String>(String.class, this, RePackage.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES);
+    }
+    return unsynchronizedFeatures;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isSuffixed() {
 
-		return suffixed;
-	}
+    return suffixed;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setSuffixed(boolean newSuffixed) {
 
-		boolean oldSuffixed = suffixed;
-		suffixed = newSuffixed;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT_LINK__SUFFIXED, oldSuffixed, suffixed));
+    boolean oldSuffixed = suffixed;
+    suffixed = newSuffixed;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT_LINK__SUFFIXED, oldSuffixed, suffixed));
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case RePackage.CATALOG_ELEMENT_LINK__SOURCE:
-				if (resolve) return getSource();
-				return basicGetSource();
-			case RePackage.CATALOG_ELEMENT_LINK__TARGET:
-				if (resolve) return getTarget();
-				return basicGetTarget();
-			case RePackage.CATALOG_ELEMENT_LINK__ORIGIN:
-				if (resolve) return getOrigin();
-				return basicGetOrigin();
-			case RePackage.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES:
-				return getUnsynchronizedFeatures();
-			case RePackage.CATALOG_ELEMENT_LINK__SUFFIXED:
-				return isSuffixed();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case RePackage.CATALOG_ELEMENT_LINK__SOURCE:
+        if (resolve) return getSource();
+        return basicGetSource();
+      case RePackage.CATALOG_ELEMENT_LINK__TARGET:
+        if (resolve) return getTarget();
+        return basicGetTarget();
+      case RePackage.CATALOG_ELEMENT_LINK__ORIGIN:
+        if (resolve) return getOrigin();
+        return basicGetOrigin();
+      case RePackage.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES:
+        return getUnsynchronizedFeatures();
+      case RePackage.CATALOG_ELEMENT_LINK__SUFFIXED:
+        return isSuffixed();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case RePackage.CATALOG_ELEMENT_LINK__SOURCE:
-					setSource((CatalogElement)newValue);
-				return;
-			case RePackage.CATALOG_ELEMENT_LINK__TARGET:
-					setTarget((EObject)newValue);
-				return;
-			case RePackage.CATALOG_ELEMENT_LINK__ORIGIN:
-					setOrigin((CatalogElementLink)newValue);
-				return;
-			case RePackage.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES:
-				getUnsynchronizedFeatures().clear();
-				getUnsynchronizedFeatures().addAll((Collection<? extends String>)newValue);
-				return;
-			case RePackage.CATALOG_ELEMENT_LINK__SUFFIXED:
-					setSuffixed((Boolean)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case RePackage.CATALOG_ELEMENT_LINK__SOURCE:
+          setSource((CatalogElement)newValue);
+        return;
+      case RePackage.CATALOG_ELEMENT_LINK__TARGET:
+          setTarget((EObject)newValue);
+        return;
+      case RePackage.CATALOG_ELEMENT_LINK__ORIGIN:
+          setOrigin((CatalogElementLink)newValue);
+        return;
+      case RePackage.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES:
+        getUnsynchronizedFeatures().clear();
+        getUnsynchronizedFeatures().addAll((Collection<? extends String>)newValue);
+        return;
+      case RePackage.CATALOG_ELEMENT_LINK__SUFFIXED:
+          setSuffixed((Boolean)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case RePackage.CATALOG_ELEMENT_LINK__SOURCE:
-				setSource((CatalogElement)null);
-				return;
-			case RePackage.CATALOG_ELEMENT_LINK__TARGET:
-				setTarget((EObject)null);
-				return;
-			case RePackage.CATALOG_ELEMENT_LINK__ORIGIN:
-				setOrigin((CatalogElementLink)null);
-				return;
-			case RePackage.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES:
-				getUnsynchronizedFeatures().clear();
-				return;
-			case RePackage.CATALOG_ELEMENT_LINK__SUFFIXED:
-				setSuffixed(SUFFIXED_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case RePackage.CATALOG_ELEMENT_LINK__SOURCE:
+        setSource((CatalogElement)null);
+        return;
+      case RePackage.CATALOG_ELEMENT_LINK__TARGET:
+        setTarget((EObject)null);
+        return;
+      case RePackage.CATALOG_ELEMENT_LINK__ORIGIN:
+        setOrigin((CatalogElementLink)null);
+        return;
+      case RePackage.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES:
+        getUnsynchronizedFeatures().clear();
+        return;
+      case RePackage.CATALOG_ELEMENT_LINK__SUFFIXED:
+        setSuffixed(SUFFIXED_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case RePackage.CATALOG_ELEMENT_LINK__SOURCE:
-				return source != null;
-			case RePackage.CATALOG_ELEMENT_LINK__TARGET:
-				return target != null;
-			case RePackage.CATALOG_ELEMENT_LINK__ORIGIN:
-				return origin != null;
-			case RePackage.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES:
-				return unsynchronizedFeatures != null && !unsynchronizedFeatures.isEmpty();
-			case RePackage.CATALOG_ELEMENT_LINK__SUFFIXED:
-				return suffixed != SUFFIXED_EDEFAULT;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case RePackage.CATALOG_ELEMENT_LINK__SOURCE:
+        return source != null;
+      case RePackage.CATALOG_ELEMENT_LINK__TARGET:
+        return target != null;
+      case RePackage.CATALOG_ELEMENT_LINK__ORIGIN:
+        return origin != null;
+      case RePackage.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES:
+        return unsynchronizedFeatures != null && !unsynchronizedFeatures.isEmpty();
+      case RePackage.CATALOG_ELEMENT_LINK__SUFFIXED:
+        return suffixed != SUFFIXED_EDEFAULT;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (unsynchronizedFeatures: "); //$NON-NLS-1$
-		result.append(unsynchronizedFeatures);
-		result.append(", suffixed: "); //$NON-NLS-1$
-		result.append(suffixed);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (unsynchronizedFeatures: "); //$NON-NLS-1$
+    result.append(unsynchronizedFeatures);
+    result.append(", suffixed: "); //$NON-NLS-1$
+    result.append(suffixed);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //CatalogElementLinkImpl

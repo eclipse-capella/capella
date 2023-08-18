@@ -50,61 +50,61 @@ public class InterfaceImplementationImpl extends RelationshipImpl implements Int
 
 
 	/**
-	 * The cached value of the '{@link #getImplementedInterface() <em>Implemented Interface</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getImplementedInterface() <em>Implemented Interface</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getImplementedInterface()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getImplementedInterface()
+   * @generated
+   * @ordered
+   */
 	protected Interface implementedInterface;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected InterfaceImplementationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.INTERFACE_IMPLEMENTATION;
-	}
+    return CsPackage.Literals.INTERFACE_IMPLEMENTATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Component getInterfaceImplementor() {
 
-		Component interfaceImplementor = basicGetInterfaceImplementor();
-		return interfaceImplementor != null && interfaceImplementor.eIsProxy() ? (Component)eResolveProxy((InternalEObject)interfaceImplementor) : interfaceImplementor;
-	}
+    Component interfaceImplementor = basicGetInterfaceImplementor();
+    return interfaceImplementor != null && interfaceImplementor.eIsProxy() ? (Component)eResolveProxy((InternalEObject)interfaceImplementor) : interfaceImplementor;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Component basicGetInterfaceImplementor() {
 
@@ -131,15 +131,15 @@ public class InterfaceImplementationImpl extends RelationshipImpl implements Int
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.INTERFACE_IMPLEMENTATION__INTERFACE_IMPLEMENTOR.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE_IMPLEMENTATION__INTERFACE_IMPLEMENTOR, annotation);
-		
-		try {
-			return (Component) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Component) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -147,123 +147,123 @@ public class InterfaceImplementationImpl extends RelationshipImpl implements Int
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Interface getImplementedInterface() {
 
-		if (implementedInterface != null && implementedInterface.eIsProxy()) {
-			InternalEObject oldImplementedInterface = (InternalEObject)implementedInterface;
-			implementedInterface = (Interface)eResolveProxy(oldImplementedInterface);
-			if (implementedInterface != oldImplementedInterface) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CsPackage.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE, oldImplementedInterface, implementedInterface));
-			}
-		}
-		return implementedInterface;
-	}
+    if (implementedInterface != null && implementedInterface.eIsProxy()) {
+      InternalEObject oldImplementedInterface = (InternalEObject)implementedInterface;
+      implementedInterface = (Interface)eResolveProxy(oldImplementedInterface);
+      if (implementedInterface != oldImplementedInterface) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CsPackage.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE, oldImplementedInterface, implementedInterface));
+      }
+    }
+    return implementedInterface;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Interface basicGetImplementedInterface() {
 
-		return implementedInterface;
-	}
+    return implementedInterface;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setImplementedInterface(Interface newImplementedInterface) {
 
-		Interface oldImplementedInterface = implementedInterface;
-		implementedInterface = newImplementedInterface;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE, oldImplementedInterface, implementedInterface));
+    Interface oldImplementedInterface = implementedInterface;
+    implementedInterface = newImplementedInterface;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE, oldImplementedInterface, implementedInterface));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CsPackage.INTERFACE_IMPLEMENTATION__INTERFACE_IMPLEMENTOR:
-				if (resolve) return getInterfaceImplementor();
-				return basicGetInterfaceImplementor();
-			case CsPackage.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE:
-				if (resolve) return getImplementedInterface();
-				return basicGetImplementedInterface();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CsPackage.INTERFACE_IMPLEMENTATION__INTERFACE_IMPLEMENTOR:
+        if (resolve) return getInterfaceImplementor();
+        return basicGetInterfaceImplementor();
+      case CsPackage.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE:
+        if (resolve) return getImplementedInterface();
+        return basicGetImplementedInterface();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CsPackage.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE:
-					setImplementedInterface((Interface)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CsPackage.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE:
+          setImplementedInterface((Interface)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CsPackage.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE:
-				setImplementedInterface((Interface)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE:
+        setImplementedInterface((Interface)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CsPackage.INTERFACE_IMPLEMENTATION__INTERFACE_IMPLEMENTOR:
-				return basicGetInterfaceImplementor() != null;
-			case CsPackage.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE:
-				return implementedInterface != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.INTERFACE_IMPLEMENTATION__INTERFACE_IMPLEMENTOR:
+        return basicGetInterfaceImplementor() != null;
+      case CsPackage.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE:
+        return implementedInterface != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

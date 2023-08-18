@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.cs.CsPackage;
  */
 public abstract class ComponentArchitectureImpl extends BlockArchitectureImpl implements ComponentArchitecture {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComponentArchitectureImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.COMPONENT_ARCHITECTURE;
-	}
+    return CsPackage.Literals.COMPONENT_ARCHITECTURE;
+  }
 
 
 

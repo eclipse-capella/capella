@@ -55,313 +55,313 @@ public class AbstractStateItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public AbstractStateItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addReferencedStatesPropertyDescriptor(object);
-			addExploitedStatesPropertyDescriptor(object);
-			addRealizedAbstractStatesPropertyDescriptor(object);
-			addRealizingAbstractStatesPropertyDescriptor(object);
-			addOutgoingPropertyDescriptor(object);
-			addIncomingPropertyDescriptor(object);
-			addInvolverRegionsPropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addReferencedStatesPropertyDescriptor(object);
+      addExploitedStatesPropertyDescriptor(object);
+      addRealizedAbstractStatesPropertyDescriptor(object);
+      addRealizingAbstractStatesPropertyDescriptor(object);
+      addOutgoingPropertyDescriptor(object);
+      addIncomingPropertyDescriptor(object);
+      addInvolverRegionsPropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Referenced States feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Referenced States feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addReferencedStatesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_IState_referencedStates_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_IState_referencedStates_feature", "_UI_IState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ModellingcorePackage.Literals.ISTATE__REFERENCED_STATES,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_IState_referencedStates_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_IState_referencedStates_feature", "_UI_IState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ModellingcorePackage.Literals.ISTATE__REFERENCED_STATES,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Exploited States feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Exploited States feature.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected void addExploitedStatesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_IState_exploitedStates_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_IState_exploitedStates_feature", "_UI_IState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ModellingcorePackage.Literals.ISTATE__EXPLOITED_STATES,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_IState_exploitedStates_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_IState_exploitedStates_feature", "_UI_IState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ModellingcorePackage.Literals.ISTATE__EXPLOITED_STATES,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
   /**
-	 * This adds a property descriptor for the Realized Abstract States feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Realized Abstract States feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addRealizedAbstractStatesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractState_realizedAbstractStates_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractState_realizedAbstractStates_feature", "_UI_AbstractState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZED_ABSTRACT_STATES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_AbstractState_realizedAbstractStates_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_AbstractState_realizedAbstractStates_feature", "_UI_AbstractState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZED_ABSTRACT_STATES,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Realizing Abstract States feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Realizing Abstract States feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addRealizingAbstractStatesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractState_realizingAbstractStates_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractState_realizingAbstractStates_feature", "_UI_AbstractState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZING_ABSTRACT_STATES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_AbstractState_realizingAbstractStates_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_AbstractState_realizingAbstractStates_feature", "_UI_AbstractState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZING_ABSTRACT_STATES,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Outgoing feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Outgoing feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addOutgoingPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractState_outgoing_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractState_outgoing_feature", "_UI_AbstractState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacommonPackage.Literals.ABSTRACT_STATE__OUTGOING,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_AbstractState_outgoing_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_AbstractState_outgoing_feature", "_UI_AbstractState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CapellacommonPackage.Literals.ABSTRACT_STATE__OUTGOING,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Incoming feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Incoming feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addIncomingPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractState_incoming_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractState_incoming_feature", "_UI_AbstractState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacommonPackage.Literals.ABSTRACT_STATE__INCOMING,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_AbstractState_incoming_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_AbstractState_incoming_feature", "_UI_AbstractState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CapellacommonPackage.Literals.ABSTRACT_STATE__INCOMING,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Involver Regions feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Involver Regions feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addInvolverRegionsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractState_involverRegions_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractState_involverRegions_feature", "_UI_AbstractState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacommonPackage.Literals.ABSTRACT_STATE__INVOLVER_REGIONS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_AbstractState_involverRegions_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_AbstractState_involverRegions_feature", "_UI_AbstractState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CapellacommonPackage.Literals.ABSTRACT_STATE__INVOLVER_REGIONS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
+   * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+   * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS);
-		}
-		return childrenFeatures;
-	}
+    if (childrenFeatures == null) {
+      super.getChildrenFeatures(object);
+      childrenFeatures.add(CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS);
+    }
+    return childrenFeatures;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
+    // Check the type of the specified child object and return the proper feature to use for
+    // adding (see {@link AddCommand}) it as a child.
 
-		return super.getChildFeature(object, child);
-	}
+    return super.getChildFeature(object, child);
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
-		String label = ((AbstractState)object).getName();
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_AbstractState_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+    String label = ((AbstractState)object).getName();
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_AbstractState_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
+    updateChildren(notification);
 
-		switch (notification.getFeatureID(AbstractState.class)) {
-			case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
-		}
-		super.notifyChanged(notification);
-	}
+    switch (notification.getFeatureID(AbstractState.class)) {
+      case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+        return;
+    }
+    super.notifyChanged(notification);
+  }
 
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
+    super.collectNewChildDescriptors(newChildDescriptors, object);
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -374,17 +374,17 @@ public class AbstractStateItemProvider
                 // end-extension-code
 
 
-	}
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 	// end-capella-code
 }

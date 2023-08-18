@@ -62,22 +62,22 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Returns the value of the '<em><b>Pre Condition</b></em>' reference.
+   * Returns the value of the '<em><b>Pre Condition</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Pre Condition</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Pre Condition</em>' reference.
-	 * @see #setPreCondition(Constraint)
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_PreCondition()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the prerequisite conditions for the use of this Scenario' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Pre Condition</em>' reference.
+   * @see #setPreCondition(Constraint)
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_PreCondition()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the prerequisite conditions for the use of this Scenario' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	Constraint getPreCondition();
 
@@ -85,14 +85,14 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.Scenario#getPreCondition <em>Pre Condition</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.Scenario#getPreCondition <em>Pre Condition</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Pre Condition</em>' reference.
-	 * @see #getPreCondition()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Pre Condition</em>' reference.
+   * @see #getPreCondition()
+   * @generated
+   */
 
 	void setPreCondition(Constraint value);
 
@@ -100,22 +100,22 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Returns the value of the '<em><b>Post Condition</b></em>' reference.
+   * Returns the value of the '<em><b>Post Condition</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Post Condition</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Post Condition</em>' reference.
-	 * @see #setPostCondition(Constraint)
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_PostCondition()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the conditions applying after this Scenario has been exercized' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Post Condition</em>' reference.
+   * @see #setPostCondition(Constraint)
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_PostCondition()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the conditions applying after this Scenario has been exercized' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	Constraint getPostCondition();
 
@@ -123,14 +123,14 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.Scenario#getPostCondition <em>Post Condition</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.Scenario#getPostCondition <em>Post Condition</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Post Condition</em>' reference.
-	 * @see #getPostCondition()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Post Condition</em>' reference.
+   * @see #getPostCondition()
+   * @generated
+   */
 
 	void setPostCondition(Constraint value);
 
@@ -138,26 +138,26 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
-	 * The default value is <code>"UNSET"</code>.
-	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.interaction.ScenarioKind}.
+   * Returns the value of the '<em><b>Kind</b></em>' attribute.
+   * The default value is <code>"UNSET"</code>.
+   * The literals are from the enumeration {@link org.polarsys.capella.core.data.interaction.ScenarioKind}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Kind</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Kind</em>' attribute.
-	 * @see org.polarsys.capella.core.data.interaction.ScenarioKind
-	 * @see #setKind(ScenarioKind)
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_Kind()
-	 * @model default="UNSET"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Kind</em>' attribute.
+   * @see org.polarsys.capella.core.data.interaction.ScenarioKind
+   * @see #setKind(ScenarioKind)
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_Kind()
+   * @model default="UNSET"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	ScenarioKind getKind();
 
@@ -165,15 +165,15 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.Scenario#getKind <em>Kind</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.Scenario#getKind <em>Kind</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Kind</em>' attribute.
-	 * @see org.polarsys.capella.core.data.interaction.ScenarioKind
-	 * @see #getKind()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Kind</em>' attribute.
+   * @see org.polarsys.capella.core.data.interaction.ScenarioKind
+   * @see #getKind()
+   * @generated
+   */
 
 	void setKind(ScenarioKind value);
 
@@ -184,23 +184,23 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Returns the value of the '<em><b>Merged</b></em>' attribute.
+   * Returns the value of the '<em><b>Merged</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Merged</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Merged</em>' attribute.
-	 * @see #setMerged(boolean)
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_Merged()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='isMerged' featureOwner='eng.Scenario' fromStereotype='true'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Whether the scenario underwent a merge operation for the transition from one level to the next\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Merged</em>' attribute.
+   * @see #setMerged(boolean)
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_Merged()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='isMerged' featureOwner='eng.Scenario' fromStereotype='true'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Whether the scenario underwent a merge operation for the transition from one level to the next\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	boolean isMerged();
 
@@ -208,14 +208,14 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.Scenario#isMerged <em>Merged</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.Scenario#isMerged <em>Merged</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Merged</em>' attribute.
-	 * @see #isMerged()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Merged</em>' attribute.
+   * @see #isMerged()
+   * @generated
+   */
 
 	void setMerged(boolean value);
 
@@ -226,26 +226,26 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Instance Roles</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.InstanceRole}.
+   * Returns the value of the '<em><b>Owned Instance Roles</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.interaction.InstanceRole}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Instance Roles</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Instance Roles</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_OwnedInstanceRoles()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='lifeline' featureOwner='Interaction'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='instanceRoles'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the set of instance roles (lifelines)\r\n[source:Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Interaction::lifeline' explanation='none' constraints='uml::Interaction::lifeline elements on which InstanceRole stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Instance Roles</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_OwnedInstanceRoles()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='lifeline' featureOwner='Interaction'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='instanceRoles'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the set of instance roles (lifelines)\r\n[source:Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Interaction::lifeline' explanation='none' constraints='uml::Interaction::lifeline elements on which InstanceRole stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<InstanceRole> getOwnedInstanceRoles();
 
@@ -256,26 +256,26 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Messages</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.SequenceMessage}.
+   * Returns the value of the '<em><b>Owned Messages</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.interaction.SequenceMessage}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Messages</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Messages</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_OwnedMessages()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='message' featureOwner='Interaction'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='messages'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the owned sequence messages\r\n[Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Interaction::message' explanation='none' constraints='Order must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Messages</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_OwnedMessages()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='message' featureOwner='Interaction'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='messages'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the owned sequence messages\r\n[Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Interaction::message' explanation='none' constraints='Order must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<SequenceMessage> getOwnedMessages();
 
@@ -286,25 +286,25 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Interaction Fragments</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.InteractionFragment}.
+   * Returns the value of the '<em><b>Owned Interaction Fragments</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.interaction.InteractionFragment}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Interaction Fragments</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Interaction Fragments</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_OwnedInteractionFragments()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='fragment' featureOwner='Interaction'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedAbstractEnds'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the owned message and operation ends\r\n[source:Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Interaction::fragment' explanation='none' constraints='uml::Interaction::fragment elements on which AbstractEnd stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Interaction Fragments</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_OwnedInteractionFragments()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='fragment' featureOwner='Interaction'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedAbstractEnds'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the owned message and operation ends\r\n[source:Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Interaction::fragment' explanation='none' constraints='uml::Interaction::fragment elements on which AbstractEnd stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	EList<InteractionFragment> getOwnedInteractionFragments();
 
@@ -315,26 +315,26 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Time Lapses</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.TimeLapse}.
+   * Returns the value of the '<em><b>Owned Time Lapses</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.interaction.TimeLapse}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Time Lapses</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Time Lapses</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_OwnedTimeLapses()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='fragment' featureOwner='Interaction'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedExecutions'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the set of owned executions\r\n[source:Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Interaction::fragment' explanation='none' constraints='uml::Interaction::fragment elements on which Execution stereotype or any stereotype that inherits from it is applied'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Time Lapses</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_OwnedTimeLapses()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='fragment' featureOwner='Interaction'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedExecutions'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the set of owned executions\r\n[source:Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Interaction::fragment' explanation='none' constraints='uml::Interaction::fragment elements on which Execution stereotype or any stereotype that inherits from it is applied'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<TimeLapse> getOwnedTimeLapses();
 
@@ -345,25 +345,25 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Events</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.Event}.
+   * Returns the value of the '<em><b>Owned Events</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.interaction.Event}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Events</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Events</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_OwnedEvents()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedEvents'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Events associated to this Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='specific rule : a package will be created in the nearest package, the events will be stored there, and the Capability will have a package import element.' constraints=''"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Events</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_OwnedEvents()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedEvents'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Events associated to this Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='specific rule : a package will be created in the nearest package, the events will be stored there, and the Capability will have a package import element.' constraints=''"
+   * @generated
+   */
 
 	EList<Event> getOwnedEvents();
 
@@ -374,22 +374,22 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Formal Gates</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.Gate}.
+   * Returns the value of the '<em><b>Owned Formal Gates</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.interaction.Gate}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Formal Gates</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Formal Gates</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_OwnedFormalGates()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Formal Gates</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_OwnedFormalGates()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+   * @generated
+   */
 
 	EList<Gate> getOwnedFormalGates();
 
@@ -400,22 +400,22 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Scenario Realization</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.ScenarioRealization}.
+   * Returns the value of the '<em><b>Owned Scenario Realization</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.interaction.ScenarioRealization}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Scenario Realization</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Scenario Realization</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_OwnedScenarioRealization()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Scenario Realization</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_OwnedScenarioRealization()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+   * @generated
+   */
 
 	EList<ScenarioRealization> getOwnedScenarioRealization();
 
@@ -426,23 +426,23 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Constraint Durations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.ConstraintDuration}.
+   * Returns the value of the '<em><b>Owned Constraint Durations</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.interaction.ConstraintDuration}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Constraint Durations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Constraint Durations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_OwnedConstraintDurations()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Constraint Durations</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_OwnedConstraintDurations()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<ConstraintDuration> getOwnedConstraintDurations();
 
@@ -453,24 +453,24 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Returns the value of the '<em><b>Contained Functions</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.AbstractFunction}.
+   * Returns the value of the '<em><b>Contained Functions</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.AbstractFunction}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contained Functions</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contained Functions</em>' reference list.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_ContainedFunctions()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the SequenceMessage list, in sequence order' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedInstanceRoles.representedInstance'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Contained Functions</em>' reference list.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_ContainedFunctions()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the SequenceMessage list, in sequence order' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedInstanceRoles.representedInstance'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<AbstractFunction> getContainedFunctions();
 
@@ -481,24 +481,24 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Returns the value of the '<em><b>Contained Parts</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.Part}.
+   * Returns the value of the '<em><b>Contained Parts</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.cs.Part}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contained Parts</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contained Parts</em>' reference list.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_ContainedParts()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the SequenceMessage list, in sequence order' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedInstanceRoles.representedInstance'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Contained Parts</em>' reference list.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_ContainedParts()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the SequenceMessage list, in sequence order' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedInstanceRoles.representedInstance'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<Part> getContainedParts();
 
@@ -509,24 +509,24 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Returns the value of the '<em><b>Referenced Scenarios</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.Scenario}.
+   * Returns the value of the '<em><b>Referenced Scenarios</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.interaction.Scenario}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Referenced Scenarios</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Referenced Scenarios</em>' reference list.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_ReferencedScenarios()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Scenario.ownedTimeLapses(self, iu);\r\nInteractionUse.referencedScenario(iu, target);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Referenced Scenarios</em>' reference list.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_ReferencedScenarios()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Scenario.ownedTimeLapses(self, iu);\r\nInteractionUse.referencedScenario(iu, target);'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<Scenario> getReferencedScenarios();
 
@@ -537,26 +537,26 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realized Scenarios</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.Scenario}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.Scenario#getRealizingScenarios <em>Realizing Scenarios</em>}'.
+   * Returns the value of the '<em><b>Realized Scenarios</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.interaction.Scenario}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.Scenario#getRealizingScenarios <em>Realizing Scenarios</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realized Scenarios</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realized Scenarios</em>' reference list.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_RealizedScenarios()
-	 * @see org.polarsys.capella.core.data.interaction.Scenario#getRealizingScenarios
-	 * @model opposite="realizingScenarios" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Scenario.outgoingTraces(self, sr);\r\nScenarioRealization.realizedScenario(sr, target);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realized Scenarios</em>' reference list.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_RealizedScenarios()
+   * @see org.polarsys.capella.core.data.interaction.Scenario#getRealizingScenarios
+   * @model opposite="realizingScenarios" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Scenario.outgoingTraces(self, sr);\r\nScenarioRealization.realizedScenario(sr, target);'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<Scenario> getRealizedScenarios();
 
@@ -567,26 +567,26 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realizing Scenarios</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.Scenario}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.Scenario#getRealizedScenarios <em>Realized Scenarios</em>}'.
+   * Returns the value of the '<em><b>Realizing Scenarios</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.interaction.Scenario}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.Scenario#getRealizedScenarios <em>Realized Scenarios</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realizing Scenarios</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realizing Scenarios</em>' reference list.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_RealizingScenarios()
-	 * @see org.polarsys.capella.core.data.interaction.Scenario#getRealizedScenarios
-	 * @model opposite="realizedScenarios" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Scenario.incomingTraces(self, sr);\r\nScenarioRealization.realizingScenario(sr, target);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realizing Scenarios</em>' reference list.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_RealizingScenarios()
+   * @see org.polarsys.capella.core.data.interaction.Scenario#getRealizedScenarios
+   * @model opposite="realizedScenarios" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Scenario.incomingTraces(self, sr);\r\nScenarioRealization.realizingScenario(sr, target);'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   * @generated
+   */
 
 	EList<Scenario> getRealizingScenarios();
 

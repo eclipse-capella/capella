@@ -58,25 +58,25 @@ public interface PhysicalComponent extends AbstractPhysicalArtifact, Component, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.pa.PhysicalComponentKind}.
+   * Returns the value of the '<em><b>Kind</b></em>' attribute.
+   * The literals are from the enumeration {@link org.polarsys.capella.core.data.pa.PhysicalComponentKind}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Kind</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Kind</em>' attribute.
-	 * @see org.polarsys.capella.core.data.pa.PhysicalComponentKind
-	 * @see #setKind(PhysicalComponentKind)
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_Kind()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='type' fromStereotype='true' featureOwner='eng.AbstractPhysicalComponent'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the type of physical component (refer to PhysicalComponentKind for detailed description)\r\n[source: Capella study]' constraints='none' type='refer to PhysicalComponentKind definition' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Kind</em>' attribute.
+   * @see org.polarsys.capella.core.data.pa.PhysicalComponentKind
+   * @see #setKind(PhysicalComponentKind)
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_Kind()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='type' fromStereotype='true' featureOwner='eng.AbstractPhysicalComponent'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the type of physical component (refer to PhysicalComponentKind for detailed description)\r\n[source: Capella study]' constraints='none' type='refer to PhysicalComponentKind definition' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	PhysicalComponentKind getKind();
 
@@ -87,15 +87,15 @@ public interface PhysicalComponent extends AbstractPhysicalArtifact, Component, 
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.pa.PhysicalComponent#getKind <em>Kind</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.pa.PhysicalComponent#getKind <em>Kind</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Kind</em>' attribute.
-	 * @see org.polarsys.capella.core.data.pa.PhysicalComponentKind
-	 * @see #getKind()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Kind</em>' attribute.
+   * @see org.polarsys.capella.core.data.pa.PhysicalComponentKind
+   * @see #getKind()
+   * @generated
+   */
 
 	void setKind(PhysicalComponentKind value);
 
@@ -106,24 +106,24 @@ public interface PhysicalComponent extends AbstractPhysicalArtifact, Component, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Nature</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.pa.PhysicalComponentNature}.
+   * Returns the value of the '<em><b>Nature</b></em>' attribute.
+   * The literals are from the enumeration {@link org.polarsys.capella.core.data.pa.PhysicalComponentNature}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Nature</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Nature</em>' attribute.
-	 * @see org.polarsys.capella.core.data.pa.PhysicalComponentNature
-	 * @see #setNature(PhysicalComponentNature)
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_Nature()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the nature of this physical component, typically whether it is an actual execution node, or a behavioral component like a SW part\r\n[source: Capella study]' constraints='none' type='refer to PhysicalComponentNature definition' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Nature</em>' attribute.
+   * @see org.polarsys.capella.core.data.pa.PhysicalComponentNature
+   * @see #setNature(PhysicalComponentNature)
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_Nature()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the nature of this physical component, typically whether it is an actual execution node, or a behavioral component like a SW part\r\n[source: Capella study]' constraints='none' type='refer to PhysicalComponentNature definition' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	PhysicalComponentNature getNature();
 
@@ -134,15 +134,15 @@ public interface PhysicalComponent extends AbstractPhysicalArtifact, Component, 
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.pa.PhysicalComponent#getNature <em>Nature</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.pa.PhysicalComponent#getNature <em>Nature</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Nature</em>' attribute.
-	 * @see org.polarsys.capella.core.data.pa.PhysicalComponentNature
-	 * @see #getNature()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Nature</em>' attribute.
+   * @see org.polarsys.capella.core.data.pa.PhysicalComponentNature
+   * @see #getNature()
+   * @generated
+   */
 
 	void setNature(PhysicalComponentNature value);
 
@@ -153,23 +153,23 @@ public interface PhysicalComponent extends AbstractPhysicalArtifact, Component, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Deployment Links</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.AbstractDeploymentLink}.
+   * Returns the value of the '<em><b>Owned Deployment Links</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.cs.AbstractDeploymentLink}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Deployment Links</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Deployment Links</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_OwnedDeploymentLinks()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the various deployments of this physical component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='SysML::Blocks::Block cannot contain AbstractDeployment\'s equivalent, hence we find the nearest available package to store them.' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Deployment Links</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_OwnedDeploymentLinks()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the various deployments of this physical component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='SysML::Blocks::Block cannot contain AbstractDeployment\'s equivalent, hence we find the nearest available package to store them.' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<AbstractDeploymentLink> getOwnedDeploymentLinks();
 
@@ -180,23 +180,23 @@ public interface PhysicalComponent extends AbstractPhysicalArtifact, Component, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Physical Components</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalComponent}.
+   * Returns the value of the '<em><b>Owned Physical Components</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalComponent}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Physical Components</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Physical Components</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_OwnedPhysicalComponents()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the physical components stored under this component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Class::nestedClassifier' explanation='the nesting relation is just convenient to store sub-components under a component in the three, even though the hierachical relationship between componenets is not\r\nderived from this nesting : instead, it relies on the Parts present in the component, that are typed by the sub-components types.' constraints='uml::Class::nestedClassifier elements on which PhysicalComponent stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Physical Components</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_OwnedPhysicalComponents()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the physical components stored under this component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Class::nestedClassifier' explanation='the nesting relation is just convenient to store sub-components under a component in the three, even though the hierachical relationship between componenets is not\r\nderived from this nesting : instead, it relies on the Parts present in the component, that are typed by the sub-components types.' constraints='uml::Class::nestedClassifier elements on which PhysicalComponent stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<PhysicalComponent> getOwnedPhysicalComponents();
 
@@ -207,23 +207,23 @@ public interface PhysicalComponent extends AbstractPhysicalArtifact, Component, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Physical Component Pkgs</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalComponentPkg}.
+   * Returns the value of the '<em><b>Owned Physical Component Pkgs</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalComponentPkg}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Physical Component Pkgs</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Physical Component Pkgs</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_OwnedPhysicalComponentPkgs()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the sub-(physical component) packages owned by this component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='SysML::Blocks::Block cannot contain packages, hence we find the nearest available package to store them.' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Physical Component Pkgs</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_OwnedPhysicalComponentPkgs()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the sub-(physical component) packages owned by this component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='SysML::Blocks::Block cannot contain packages, hence we find the nearest available package to store them.' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<PhysicalComponentPkg> getOwnedPhysicalComponentPkgs();
 
@@ -234,23 +234,23 @@ public interface PhysicalComponent extends AbstractPhysicalArtifact, Component, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Logical Interface Realizations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.LogicalInterfaceRealization}.
+   * Returns the value of the '<em><b>Logical Interface Realizations</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.LogicalInterfaceRealization}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Logical Interface Realizations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Logical Interface Realizations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_LogicalInterfaceRealizations()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='provisionedInterfaceAllocations'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of logical interfaces that this physical component reallizes\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Logical Interface Realizations</em>' reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_LogicalInterfaceRealizations()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='provisionedInterfaceAllocations'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of logical interfaces that this physical component reallizes\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<LogicalInterfaceRealization> getLogicalInterfaceRealizations();
 
@@ -261,26 +261,26 @@ public interface PhysicalComponent extends AbstractPhysicalArtifact, Component, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Sub Physical Components</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalComponent}.
+   * Returns the value of the '<em><b>Sub Physical Components</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalComponent}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Sub Physical Components</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sub Physical Components</em>' reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_SubPhysicalComponents()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='subActors'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedPartitions.type'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the children components of this physical component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Sub Physical Components</em>' reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_SubPhysicalComponents()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='subActors'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedPartitions.type'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the children components of this physical component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   * @generated
+   */
 
 	EList<PhysicalComponent> getSubPhysicalComponents();
 
@@ -291,26 +291,26 @@ public interface PhysicalComponent extends AbstractPhysicalArtifact, Component, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Realized Logical Components</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.la.LogicalComponent}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.la.LogicalComponent#getRealizingPhysicalComponents <em>Realizing Physical Components</em>}'.
+   * Returns the value of the '<em><b>Realized Logical Components</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.la.LogicalComponent}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.la.LogicalComponent#getRealizingPhysicalComponents <em>Realizing Physical Components</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realized Logical Components</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realized Logical Components</em>' reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_RealizedLogicalComponents()
-	 * @see org.polarsys.capella.core.data.la.LogicalComponent#getRealizingPhysicalComponents
-	 * @model opposite="realizingPhysicalComponents" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalComponent.outgoingTraces(self, lcr);\r\n\tLogicalComponentRealization.targetElement(lcr, target);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the list of realizations links coming from logical components, and in which this physical component is involved\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realized Logical Components</em>' reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_RealizedLogicalComponents()
+   * @see org.polarsys.capella.core.data.la.LogicalComponent#getRealizingPhysicalComponents
+   * @model opposite="realizingPhysicalComponents" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalComponent.outgoingTraces(self, lcr);\r\n\tLogicalComponentRealization.targetElement(lcr, target);'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the list of realizations links coming from logical components, and in which this physical component is involved\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<LogicalComponent> getRealizedLogicalComponents();
 
@@ -321,25 +321,25 @@ public interface PhysicalComponent extends AbstractPhysicalArtifact, Component, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocated Physical Functions</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalFunction}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.pa.PhysicalFunction#getAllocatingPhysicalComponents <em>Allocating Physical Components</em>}'.
+   * Returns the value of the '<em><b>Allocated Physical Functions</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalFunction}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.pa.PhysicalFunction#getAllocatingPhysicalComponents <em>Allocating Physical Components</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocated Physical Functions</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocated Physical Functions</em>' reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_AllocatedPhysicalFunctions()
-	 * @see org.polarsys.capella.core.data.pa.PhysicalFunction#getAllocatingPhysicalComponents
-	 * @model opposite="allocatingPhysicalComponents" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedFunctions'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Allocated Physical Functions</em>' reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_AllocatedPhysicalFunctions()
+   * @see org.polarsys.capella.core.data.pa.PhysicalFunction#getAllocatingPhysicalComponents
+   * @model opposite="allocatingPhysicalComponents" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedFunctions'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<PhysicalFunction> getAllocatedPhysicalFunctions();
 
@@ -350,23 +350,23 @@ public interface PhysicalComponent extends AbstractPhysicalArtifact, Component, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Deployed Physical Components</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalComponent}.
+   * Returns the value of the '<em><b>Deployed Physical Components</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalComponent}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Deployed Physical Components</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Deployed Physical Components</em>' reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_DeployedPhysicalComponents()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Part.abstractType(part, self);\r\n\tPart.deploymentLinks.deployedElement(part, deployedPart);\r\n\tPart.abstractType(deployedPart, target);\r\n} or {\r\n\tPart.abstractType(part, self);\r\n\tPart.deploymentLinks.deployedElement(part, target);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Deployed Physical Components</em>' reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_DeployedPhysicalComponents()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Part.abstractType(part, self);\r\n\tPart.deploymentLinks.deployedElement(part, deployedPart);\r\n\tPart.abstractType(deployedPart, target);\r\n} or {\r\n\tPart.abstractType(part, self);\r\n\tPart.deploymentLinks.deployedElement(part, target);'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<PhysicalComponent> getDeployedPhysicalComponents();
 
@@ -377,23 +377,23 @@ public interface PhysicalComponent extends AbstractPhysicalArtifact, Component, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Deploying Physical Components</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalComponent}.
+   * Returns the value of the '<em><b>Deploying Physical Components</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalComponent}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Deploying Physical Components</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Deploying Physical Components</em>' reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_DeployingPhysicalComponents()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Part.abstractType(part, self);\r\n\tPart.deployingLinks.location(part, deployedPart);\r\n\tPart.abstractType(deployedPart, target);\r\n} or {\r\n\tPart.abstractType(part, self);\r\n\tPart.deploymentLinks.deployedElement(part, target);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Deploying Physical Components</em>' reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_DeployingPhysicalComponents()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Part.abstractType(part, self);\r\n\tPart.deployingLinks.location(part, deployedPart);\r\n\tPart.abstractType(deployedPart, target);\r\n} or {\r\n\tPart.abstractType(part, self);\r\n\tPart.deploymentLinks.deployedElement(part, target);'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<PhysicalComponent> getDeployingPhysicalComponents();
 

@@ -38,13 +38,13 @@ import org.polarsys.capella.core.data.capellacore.ReuserStructure;
 public class ReuseLinkImpl extends RelationshipImpl implements ReuseLink {
 
 	/**
-	 * The cached value of the '{@link #getReused() <em>Reused</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getReused() <em>Reused</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReused()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getReused()
+   * @generated
+   * @ordered
+   */
 	protected ReuseableStructure reused;
 
 
@@ -52,70 +52,70 @@ public class ReuseLinkImpl extends RelationshipImpl implements ReuseLink {
 
 
 	/**
-	 * The cached value of the '{@link #getReuser() <em>Reuser</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getReuser() <em>Reuser</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReuser()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getReuser()
+   * @generated
+   * @ordered
+   */
 	protected ReuserStructure reuser;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ReuseLinkImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacorePackage.Literals.REUSE_LINK;
-	}
+    return CapellacorePackage.Literals.REUSE_LINK;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ReuseableStructure getReused() {
 
-		return reused;
-	}
+    return reused;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setReused(ReuseableStructure newReused) {
 
-		ReuseableStructure oldReused = reused;
-		reused = newReused;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.REUSE_LINK__REUSED, oldReused, reused));
+    ReuseableStructure oldReused = reused;
+    reused = newReused;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.REUSE_LINK__REUSED, oldReused, reused));
 
-	}
+  }
 
 
 
@@ -123,128 +123,128 @@ public class ReuseLinkImpl extends RelationshipImpl implements ReuseLink {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ReuserStructure getReuser() {
 
-		if (reuser != null && reuser.eIsProxy()) {
-			InternalEObject oldReuser = (InternalEObject)reuser;
-			reuser = (ReuserStructure)eResolveProxy(oldReuser);
-			if (reuser != oldReuser) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacorePackage.REUSE_LINK__REUSER, oldReuser, reuser));
-			}
-		}
-		return reuser;
-	}
+    if (reuser != null && reuser.eIsProxy()) {
+      InternalEObject oldReuser = (InternalEObject)reuser;
+      reuser = (ReuserStructure)eResolveProxy(oldReuser);
+      if (reuser != oldReuser) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacorePackage.REUSE_LINK__REUSER, oldReuser, reuser));
+      }
+    }
+    return reuser;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ReuserStructure basicGetReuser() {
 
-		return reuser;
-	}
+    return reuser;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setReuser(ReuserStructure newReuser) {
 
-		ReuserStructure oldReuser = reuser;
-		reuser = newReuser;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.REUSE_LINK__REUSER, oldReuser, reuser));
+    ReuserStructure oldReuser = reuser;
+    reuser = newReuser;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.REUSE_LINK__REUSER, oldReuser, reuser));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CapellacorePackage.REUSE_LINK__REUSED:
-				return getReused();
-			case CapellacorePackage.REUSE_LINK__REUSER:
-				if (resolve) return getReuser();
-				return basicGetReuser();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CapellacorePackage.REUSE_LINK__REUSED:
+        return getReused();
+      case CapellacorePackage.REUSE_LINK__REUSER:
+        if (resolve) return getReuser();
+        return basicGetReuser();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CapellacorePackage.REUSE_LINK__REUSED:
-					setReused((ReuseableStructure)newValue);
-				return;
-			case CapellacorePackage.REUSE_LINK__REUSER:
-					setReuser((ReuserStructure)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CapellacorePackage.REUSE_LINK__REUSED:
+          setReused((ReuseableStructure)newValue);
+        return;
+      case CapellacorePackage.REUSE_LINK__REUSER:
+          setReuser((ReuserStructure)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CapellacorePackage.REUSE_LINK__REUSED:
-				setReused((ReuseableStructure)null);
-				return;
-			case CapellacorePackage.REUSE_LINK__REUSER:
-				setReuser((ReuserStructure)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CapellacorePackage.REUSE_LINK__REUSED:
+        setReused((ReuseableStructure)null);
+        return;
+      case CapellacorePackage.REUSE_LINK__REUSER:
+        setReuser((ReuserStructure)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CapellacorePackage.REUSE_LINK__REUSED:
-				return reused != null;
-			case CapellacorePackage.REUSE_LINK__REUSER:
-				return reuser != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CapellacorePackage.REUSE_LINK__REUSED:
+        return reused != null;
+      case CapellacorePackage.REUSE_LINK__REUSER:
+        return reuser != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

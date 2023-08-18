@@ -40,22 +40,22 @@ public interface SendSignalAction extends InvocationAction {
 
 
 	/**
-	 * Returns the value of the '<em><b>Target</b></em>' containment reference.
+   * Returns the value of the '<em><b>Target</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Target</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target</em>' containment reference.
-	 * @see #setTarget(InputPin)
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getSendSignalAction_Target()
-	 * @model containment="true" resolveProxies="true" required="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The target object to which the signal is sent.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::SendSignalAction::target' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Target</em>' containment reference.
+   * @see #setTarget(InputPin)
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getSendSignalAction_Target()
+   * @model containment="true" resolveProxies="true" required="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The target object to which the signal is sent.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::SendSignalAction::target' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	InputPin getTarget();
 
@@ -63,14 +63,14 @@ public interface SendSignalAction extends InvocationAction {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.activity.SendSignalAction#getTarget <em>Target</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.activity.SendSignalAction#getTarget <em>Target</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target</em>' containment reference.
-	 * @see #getTarget()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Target</em>' containment reference.
+   * @see #getTarget()
+   * @generated
+   */
 
 	void setTarget(InputPin value);
 
@@ -81,22 +81,22 @@ public interface SendSignalAction extends InvocationAction {
 
 
 	/**
-	 * Returns the value of the '<em><b>Signal</b></em>' reference.
+   * Returns the value of the '<em><b>Signal</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Signal</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Signal</em>' reference.
-	 * @see #setSignal(AbstractSignal)
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getSendSignalAction_Signal()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The type of signal transmitted to the target object.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::SendSignalAction::signal' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Signal</em>' reference.
+   * @see #setSignal(AbstractSignal)
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getSendSignalAction_Signal()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The type of signal transmitted to the target object.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::SendSignalAction::signal' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	AbstractSignal getSignal();
 
@@ -104,14 +104,14 @@ public interface SendSignalAction extends InvocationAction {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.activity.SendSignalAction#getSignal <em>Signal</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.activity.SendSignalAction#getSignal <em>Signal</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Signal</em>' reference.
-	 * @see #getSignal()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Signal</em>' reference.
+   * @see #getSignal()
+   * @generated
+   */
 
 	void setSignal(AbstractSignal value);
 

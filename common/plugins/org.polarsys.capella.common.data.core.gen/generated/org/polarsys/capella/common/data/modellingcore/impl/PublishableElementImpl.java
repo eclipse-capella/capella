@@ -35,23 +35,23 @@ import org.polarsys.capella.common.data.modellingcore.PublishableElement;
 public abstract class PublishableElementImpl extends ModelElementImpl implements PublishableElement {
 
 	/**
-	 * The default value of the '{@link #isVisibleInDoc() <em>Visible In Doc</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isVisibleInDoc() <em>Visible In Doc</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isVisibleInDoc()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isVisibleInDoc()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean VISIBLE_IN_DOC_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isVisibleInDoc() <em>Visible In Doc</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isVisibleInDoc() <em>Visible In Doc</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isVisibleInDoc()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isVisibleInDoc()
+   * @generated
+   * @ordered
+   */
 	protected boolean visibleInDoc = VISIBLE_IN_DOC_EDEFAULT;
 
 
@@ -59,80 +59,80 @@ public abstract class PublishableElementImpl extends ModelElementImpl implements
 
 
 	/**
-	 * The default value of the '{@link #isVisibleInLM() <em>Visible In LM</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isVisibleInLM() <em>Visible In LM</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isVisibleInLM()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isVisibleInLM()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean VISIBLE_IN_LM_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isVisibleInLM() <em>Visible In LM</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isVisibleInLM() <em>Visible In LM</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isVisibleInLM()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isVisibleInLM()
+   * @generated
+   * @ordered
+   */
 	protected boolean visibleInLM = VISIBLE_IN_LM_EDEFAULT;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PublishableElementImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return ModellingcorePackage.Literals.PUBLISHABLE_ELEMENT;
-	}
+    return ModellingcorePackage.Literals.PUBLISHABLE_ELEMENT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isVisibleInDoc() {
 
-		return visibleInDoc;
-	}
+    return visibleInDoc;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setVisibleInDoc(boolean newVisibleInDoc) {
 
-		boolean oldVisibleInDoc = visibleInDoc;
-		visibleInDoc = newVisibleInDoc;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_DOC, oldVisibleInDoc, visibleInDoc));
+    boolean oldVisibleInDoc = visibleInDoc;
+    visibleInDoc = newVisibleInDoc;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_DOC, oldVisibleInDoc, visibleInDoc));
 
-	}
+  }
 
 
 
@@ -140,125 +140,125 @@ public abstract class PublishableElementImpl extends ModelElementImpl implements
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isVisibleInLM() {
 
-		return visibleInLM;
-	}
+    return visibleInLM;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setVisibleInLM(boolean newVisibleInLM) {
 
-		boolean oldVisibleInLM = visibleInLM;
-		visibleInLM = newVisibleInLM;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_LM, oldVisibleInLM, visibleInLM));
+    boolean oldVisibleInLM = visibleInLM;
+    visibleInLM = newVisibleInLM;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_LM, oldVisibleInLM, visibleInLM));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_DOC:
-				return isVisibleInDoc();
-			case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_LM:
-				return isVisibleInLM();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_DOC:
+        return isVisibleInDoc();
+      case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_LM:
+        return isVisibleInLM();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_DOC:
-					setVisibleInDoc((Boolean)newValue);
-				return;
-			case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_LM:
-					setVisibleInLM((Boolean)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_DOC:
+          setVisibleInDoc((Boolean)newValue);
+        return;
+      case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_LM:
+          setVisibleInLM((Boolean)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_DOC:
-				setVisibleInDoc(VISIBLE_IN_DOC_EDEFAULT);
-				return;
-			case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_LM:
-				setVisibleInLM(VISIBLE_IN_LM_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_DOC:
+        setVisibleInDoc(VISIBLE_IN_DOC_EDEFAULT);
+        return;
+      case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_LM:
+        setVisibleInLM(VISIBLE_IN_LM_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_DOC:
-				return visibleInDoc != VISIBLE_IN_DOC_EDEFAULT;
-			case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_LM:
-				return visibleInLM != VISIBLE_IN_LM_EDEFAULT;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_DOC:
+        return visibleInDoc != VISIBLE_IN_DOC_EDEFAULT;
+      case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_LM:
+        return visibleInLM != VISIBLE_IN_LM_EDEFAULT;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (visibleInDoc: "); //$NON-NLS-1$
-		result.append(visibleInDoc);
-		result.append(", visibleInLM: "); //$NON-NLS-1$
-		result.append(visibleInLM);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (visibleInDoc: "); //$NON-NLS-1$
+    result.append(visibleInDoc);
+    result.append(", visibleInLM: "); //$NON-NLS-1$
+    result.append(visibleInLM);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //PublishableElementImpl

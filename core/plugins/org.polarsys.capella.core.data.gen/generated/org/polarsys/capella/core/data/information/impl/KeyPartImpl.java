@@ -37,156 +37,156 @@ import org.polarsys.capella.core.data.information.Property;
 public class KeyPartImpl extends RelationshipImpl implements KeyPart {
 
 	/**
-	 * The cached value of the '{@link #getProperty() <em>Property</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getProperty() <em>Property</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProperty()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getProperty()
+   * @generated
+   * @ordered
+   */
 	protected Property property;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected KeyPartImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.KEY_PART;
-	}
+    return InformationPackage.Literals.KEY_PART;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Property getProperty() {
 
-		if (property != null && property.eIsProxy()) {
-			InternalEObject oldProperty = (InternalEObject)property;
-			property = (Property)eResolveProxy(oldProperty);
-			if (property != oldProperty) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InformationPackage.KEY_PART__PROPERTY, oldProperty, property));
-			}
-		}
-		return property;
-	}
+    if (property != null && property.eIsProxy()) {
+      InternalEObject oldProperty = (InternalEObject)property;
+      property = (Property)eResolveProxy(oldProperty);
+      if (property != oldProperty) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InformationPackage.KEY_PART__PROPERTY, oldProperty, property));
+      }
+    }
+    return property;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Property basicGetProperty() {
 
-		return property;
-	}
+    return property;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setProperty(Property newProperty) {
 
-		Property oldProperty = property;
-		property = newProperty;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.KEY_PART__PROPERTY, oldProperty, property));
+    Property oldProperty = property;
+    property = newProperty;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.KEY_PART__PROPERTY, oldProperty, property));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InformationPackage.KEY_PART__PROPERTY:
-				if (resolve) return getProperty();
-				return basicGetProperty();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InformationPackage.KEY_PART__PROPERTY:
+        if (resolve) return getProperty();
+        return basicGetProperty();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InformationPackage.KEY_PART__PROPERTY:
-					setProperty((Property)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InformationPackage.KEY_PART__PROPERTY:
+          setProperty((Property)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InformationPackage.KEY_PART__PROPERTY:
-				setProperty((Property)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.KEY_PART__PROPERTY:
+        setProperty((Property)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InformationPackage.KEY_PART__PROPERTY:
-				return property != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.KEY_PART__PROPERTY:
+        return property != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

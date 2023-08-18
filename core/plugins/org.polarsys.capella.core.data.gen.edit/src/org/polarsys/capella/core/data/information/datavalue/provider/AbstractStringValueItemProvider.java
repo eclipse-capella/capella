@@ -50,149 +50,149 @@ public class AbstractStringValueItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor stringTypePropertyDescriptor;
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public AbstractStringValueItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process DatavaluePackage.Literals.ABSTRACT_STRING_VALUE__STRING_TYPE
-			if (stringTypePropertyDescriptor != null) {
-				Object stringTypeValue = eObject.eGet(DatavaluePackage.Literals.ABSTRACT_STRING_VALUE__STRING_TYPE, true);
-				if (stringTypeValue != null && stringTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) stringTypeValue)) {
-					itemPropertyDescriptors.remove(stringTypePropertyDescriptor);
-				} else if (stringTypeValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.ABSTRACT_STRING_VALUE__STRING_TYPE) != null) {
-					itemPropertyDescriptors.remove(stringTypePropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(stringTypePropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(stringTypePropertyDescriptor);
-				}
-			}
-		}		
-	}
+    super.checkChildCreationExtender(object);
+    if (object instanceof EObject) {
+      EObject eObject = (EObject) object;
+      // Process DatavaluePackage.Literals.ABSTRACT_STRING_VALUE__STRING_TYPE
+      if (stringTypePropertyDescriptor != null) {
+        Object stringTypeValue = eObject.eGet(DatavaluePackage.Literals.ABSTRACT_STRING_VALUE__STRING_TYPE, true);
+        if (stringTypeValue != null && stringTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) stringTypeValue)) {
+          itemPropertyDescriptors.remove(stringTypePropertyDescriptor);
+        } else if (stringTypeValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.ABSTRACT_STRING_VALUE__STRING_TYPE) != null) {
+          itemPropertyDescriptors.remove(stringTypePropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(stringTypePropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(stringTypePropertyDescriptor);
+        }
+      }
+    }		
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addStringTypePropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addStringTypePropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the String Type feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the String Type feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addStringTypePropertyDescriptor(Object object) {
-		// begin-extension-code
-		stringTypePropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractStringValue_stringType_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractStringValue_stringType_feature", "_UI_AbstractStringValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 DatavaluePackage.Literals.ABSTRACT_STRING_VALUE__STRING_TYPE,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(stringTypePropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    stringTypePropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_AbstractStringValue_stringType_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_AbstractStringValue_stringType_feature", "_UI_AbstractStringValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         DatavaluePackage.Literals.ABSTRACT_STRING_VALUE__STRING_TYPE,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(stringTypePropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
-		String label = ((AbstractStringValue)object).getName();
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_AbstractStringValue_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+    String label = ((AbstractStringValue)object).getName();
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_AbstractStringValue_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
-		super.notifyChanged(notification);
-	}
+    updateChildren(notification);
+    super.notifyChanged(notification);
+  }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+    super.collectNewChildDescriptors(newChildDescriptors, object);
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 	// end-capella-code
 }

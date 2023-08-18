@@ -46,13 +46,13 @@ import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
 public class OperationalCapabilityPkgImpl extends AbstractCapabilityPkgImpl implements OperationalCapabilityPkg {
 
 	/**
-	 * The cached value of the '{@link #getOwnedOperationalCapabilities() <em>Owned Operational Capabilities</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedOperationalCapabilities() <em>Owned Operational Capabilities</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedOperationalCapabilities()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedOperationalCapabilities()
+   * @generated
+   * @ordered
+   */
 	protected EList<OperationalCapability> ownedOperationalCapabilities;
 
 
@@ -60,13 +60,13 @@ public class OperationalCapabilityPkgImpl extends AbstractCapabilityPkgImpl impl
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedOperationalCapabilityPkgs() <em>Owned Operational Capability Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedOperationalCapabilityPkgs() <em>Owned Operational Capability Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedOperationalCapabilityPkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedOperationalCapabilityPkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<OperationalCapabilityPkg> ownedOperationalCapabilityPkgs;
 
 
@@ -74,13 +74,13 @@ public class OperationalCapabilityPkgImpl extends AbstractCapabilityPkgImpl impl
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedCapabilityConfigurations() <em>Owned Capability Configurations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedCapabilityConfigurations() <em>Owned Capability Configurations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedCapabilityConfigurations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedCapabilityConfigurations()
+   * @generated
+   * @ordered
+   */
 	protected EList<CapabilityConfiguration> ownedCapabilityConfigurations;
 
 
@@ -88,228 +88,228 @@ public class OperationalCapabilityPkgImpl extends AbstractCapabilityPkgImpl impl
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedConceptCompliances() <em>Owned Concept Compliances</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedConceptCompliances() <em>Owned Concept Compliances</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedConceptCompliances()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedConceptCompliances()
+   * @generated
+   * @ordered
+   */
 	protected EList<ConceptCompliance> ownedConceptCompliances;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OperationalCapabilityPkgImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OaPackage.Literals.OPERATIONAL_CAPABILITY_PKG;
-	}
+    return OaPackage.Literals.OPERATIONAL_CAPABILITY_PKG;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<OperationalCapability> getOwnedOperationalCapabilities() {
 
-		if (ownedOperationalCapabilities == null) {
-			ownedOperationalCapabilities = new EObjectContainmentEList.Resolving<OperationalCapability>(OperationalCapability.class, this, OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITIES);
-		}
-		return ownedOperationalCapabilities;
-	}
+    if (ownedOperationalCapabilities == null) {
+      ownedOperationalCapabilities = new EObjectContainmentEList.Resolving<OperationalCapability>(OperationalCapability.class, this, OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITIES);
+    }
+    return ownedOperationalCapabilities;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<OperationalCapabilityPkg> getOwnedOperationalCapabilityPkgs() {
 
-		if (ownedOperationalCapabilityPkgs == null) {
-			ownedOperationalCapabilityPkgs = new EObjectContainmentEList.Resolving<OperationalCapabilityPkg>(OperationalCapabilityPkg.class, this, OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITY_PKGS);
-		}
-		return ownedOperationalCapabilityPkgs;
-	}
+    if (ownedOperationalCapabilityPkgs == null) {
+      ownedOperationalCapabilityPkgs = new EObjectContainmentEList.Resolving<OperationalCapabilityPkg>(OperationalCapabilityPkg.class, this, OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITY_PKGS);
+    }
+    return ownedOperationalCapabilityPkgs;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CapabilityConfiguration> getOwnedCapabilityConfigurations() {
 
-		if (ownedCapabilityConfigurations == null) {
-			ownedCapabilityConfigurations = new EObjectContainmentEList.Resolving<CapabilityConfiguration>(CapabilityConfiguration.class, this, OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CAPABILITY_CONFIGURATIONS);
-		}
-		return ownedCapabilityConfigurations;
-	}
+    if (ownedCapabilityConfigurations == null) {
+      ownedCapabilityConfigurations = new EObjectContainmentEList.Resolving<CapabilityConfiguration>(CapabilityConfiguration.class, this, OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CAPABILITY_CONFIGURATIONS);
+    }
+    return ownedCapabilityConfigurations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ConceptCompliance> getOwnedConceptCompliances() {
 
-		if (ownedConceptCompliances == null) {
-			ownedConceptCompliances = new EObjectContainmentEList.Resolving<ConceptCompliance>(ConceptCompliance.class, this, OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CONCEPT_COMPLIANCES);
-		}
-		return ownedConceptCompliances;
-	}
+    if (ownedConceptCompliances == null) {
+      ownedConceptCompliances = new EObjectContainmentEList.Resolving<ConceptCompliance>(ConceptCompliance.class, this, OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CONCEPT_COMPLIANCES);
+    }
+    return ownedConceptCompliances;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITIES:
-				return ((InternalEList<?>)getOwnedOperationalCapabilities()).basicRemove(otherEnd, msgs);
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITY_PKGS:
-				return ((InternalEList<?>)getOwnedOperationalCapabilityPkgs()).basicRemove(otherEnd, msgs);
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CAPABILITY_CONFIGURATIONS:
-				return ((InternalEList<?>)getOwnedCapabilityConfigurations()).basicRemove(otherEnd, msgs);
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CONCEPT_COMPLIANCES:
-				return ((InternalEList<?>)getOwnedConceptCompliances()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITIES:
+        return ((InternalEList<?>)getOwnedOperationalCapabilities()).basicRemove(otherEnd, msgs);
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITY_PKGS:
+        return ((InternalEList<?>)getOwnedOperationalCapabilityPkgs()).basicRemove(otherEnd, msgs);
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CAPABILITY_CONFIGURATIONS:
+        return ((InternalEList<?>)getOwnedCapabilityConfigurations()).basicRemove(otherEnd, msgs);
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CONCEPT_COMPLIANCES:
+        return ((InternalEList<?>)getOwnedConceptCompliances()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITIES:
-				return getOwnedOperationalCapabilities();
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITY_PKGS:
-				return getOwnedOperationalCapabilityPkgs();
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CAPABILITY_CONFIGURATIONS:
-				return getOwnedCapabilityConfigurations();
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CONCEPT_COMPLIANCES:
-				return getOwnedConceptCompliances();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITIES:
+        return getOwnedOperationalCapabilities();
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITY_PKGS:
+        return getOwnedOperationalCapabilityPkgs();
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CAPABILITY_CONFIGURATIONS:
+        return getOwnedCapabilityConfigurations();
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CONCEPT_COMPLIANCES:
+        return getOwnedConceptCompliances();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITIES:
-				getOwnedOperationalCapabilities().clear();
-				getOwnedOperationalCapabilities().addAll((Collection<? extends OperationalCapability>)newValue);
-				return;
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITY_PKGS:
-				getOwnedOperationalCapabilityPkgs().clear();
-				getOwnedOperationalCapabilityPkgs().addAll((Collection<? extends OperationalCapabilityPkg>)newValue);
-				return;
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CAPABILITY_CONFIGURATIONS:
-				getOwnedCapabilityConfigurations().clear();
-				getOwnedCapabilityConfigurations().addAll((Collection<? extends CapabilityConfiguration>)newValue);
-				return;
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CONCEPT_COMPLIANCES:
-				getOwnedConceptCompliances().clear();
-				getOwnedConceptCompliances().addAll((Collection<? extends ConceptCompliance>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITIES:
+        getOwnedOperationalCapabilities().clear();
+        getOwnedOperationalCapabilities().addAll((Collection<? extends OperationalCapability>)newValue);
+        return;
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITY_PKGS:
+        getOwnedOperationalCapabilityPkgs().clear();
+        getOwnedOperationalCapabilityPkgs().addAll((Collection<? extends OperationalCapabilityPkg>)newValue);
+        return;
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CAPABILITY_CONFIGURATIONS:
+        getOwnedCapabilityConfigurations().clear();
+        getOwnedCapabilityConfigurations().addAll((Collection<? extends CapabilityConfiguration>)newValue);
+        return;
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CONCEPT_COMPLIANCES:
+        getOwnedConceptCompliances().clear();
+        getOwnedConceptCompliances().addAll((Collection<? extends ConceptCompliance>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITIES:
-				getOwnedOperationalCapabilities().clear();
-				return;
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITY_PKGS:
-				getOwnedOperationalCapabilityPkgs().clear();
-				return;
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CAPABILITY_CONFIGURATIONS:
-				getOwnedCapabilityConfigurations().clear();
-				return;
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CONCEPT_COMPLIANCES:
-				getOwnedConceptCompliances().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITIES:
+        getOwnedOperationalCapabilities().clear();
+        return;
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITY_PKGS:
+        getOwnedOperationalCapabilityPkgs().clear();
+        return;
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CAPABILITY_CONFIGURATIONS:
+        getOwnedCapabilityConfigurations().clear();
+        return;
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CONCEPT_COMPLIANCES:
+        getOwnedConceptCompliances().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITIES:
-				return ownedOperationalCapabilities != null && !ownedOperationalCapabilities.isEmpty();
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITY_PKGS:
-				return ownedOperationalCapabilityPkgs != null && !ownedOperationalCapabilityPkgs.isEmpty();
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CAPABILITY_CONFIGURATIONS:
-				return ownedCapabilityConfigurations != null && !ownedCapabilityConfigurations.isEmpty();
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CONCEPT_COMPLIANCES:
-				return ownedConceptCompliances != null && !ownedConceptCompliances.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITIES:
+        return ownedOperationalCapabilities != null && !ownedOperationalCapabilities.isEmpty();
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_OPERATIONAL_CAPABILITY_PKGS:
+        return ownedOperationalCapabilityPkgs != null && !ownedOperationalCapabilityPkgs.isEmpty();
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CAPABILITY_CONFIGURATIONS:
+        return ownedCapabilityConfigurations != null && !ownedCapabilityConfigurations.isEmpty();
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG__OWNED_CONCEPT_COMPLIANCES:
+        return ownedConceptCompliances != null && !ownedConceptCompliances.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.cs.PhysicalPathRealization;
  */
 public class PhysicalPathRealizationImpl extends AllocationImpl implements PhysicalPathRealization {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalPathRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.PHYSICAL_PATH_REALIZATION;
-	}
+    return CsPackage.Literals.PHYSICAL_PATH_REALIZATION;
+  }
 
 
 

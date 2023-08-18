@@ -27,25 +27,25 @@ import org.polarsys.capella.core.data.capellacommon.JustificationLink;
  */
 public class JustificationLinkImpl extends GenericTraceImpl implements JustificationLink {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected JustificationLinkImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.JUSTIFICATION_LINK;
-	}
+    return CapellacommonPackage.Literals.JUSTIFICATION_LINK;
+  }
 
 
 

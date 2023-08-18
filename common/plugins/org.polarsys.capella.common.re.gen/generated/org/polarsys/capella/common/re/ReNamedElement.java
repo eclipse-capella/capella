@@ -38,20 +38,20 @@ public interface ReNamedElement extends ReAbstractElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see org.polarsys.capella.common.re.RePackage#getReNamedElement_Name()
-	 * @model annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.polarsys.capella.common.re.RePackage#getReNamedElement_Name()
+   * @model annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	String getName();
 
@@ -59,14 +59,14 @@ public interface ReNamedElement extends ReAbstractElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.re.ReNamedElement#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.common.re.ReNamedElement#getName <em>Name</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
 
 	void setName(String value);
 

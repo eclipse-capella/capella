@@ -49,375 +49,375 @@ import org.polarsys.kitalpha.emde.extension.edit.ChildCreationExtenderManager;
  */
 public class DeploymentItemProviderAdapterFactory extends DeploymentAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
 	/**
-	 * This keeps track of the root adapter factory that delegates to this adapter factory.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the root adapter factory that delegates to this adapter factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComposedAdapterFactory parentAdapterFactory;
 
 	/**
-	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-	 * <!-- begin-user-doc -->
+   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
 	/**
-	 * This helps manage the child creation extenders.
-	 * <!-- begin-user-doc -->
+   * This helps manage the child creation extenders.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(CapellaModellerEditPlugin.INSTANCE, DeploymentPackage.eNS_URI);
 
 	/**
-	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-	 * <!-- begin-user-doc -->
+   * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
-	 * This constructs an instance.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public DeploymentItemProviderAdapterFactory() {
-		supportedTypes.add(IEditingDomainItemProvider.class);
-		supportedTypes.add(IStructuredItemContentProvider.class);
-		supportedTypes.add(ITreeItemContentProvider.class);
-		supportedTypes.add(IItemLabelProvider.class);
-		supportedTypes.add(IItemPropertySource.class);
-	}
+    supportedTypes.add(IEditingDomainItemProvider.class);
+    supportedTypes.add(IStructuredItemContentProvider.class);
+    supportedTypes.add(ITreeItemContentProvider.class);
+    supportedTypes.add(IItemLabelProvider.class);
+    supportedTypes.add(IItemPropertySource.class);
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.deployment.ComponentInstance} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.deployment.ComponentInstance} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComponentInstanceItemProvider componentInstanceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.deployment.ComponentInstance}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.deployment.ComponentInstance}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createComponentInstanceAdapter() {
-		if (componentInstanceItemProvider == null) {
-			componentInstanceItemProvider = new ComponentInstanceItemProvider(this);
-		}
+    if (componentInstanceItemProvider == null) {
+      componentInstanceItemProvider = new ComponentInstanceItemProvider(this);
+    }
 
-		return componentInstanceItemProvider;
-	}
+    return componentInstanceItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.deployment.ConnectionInstance} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.deployment.ConnectionInstance} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ConnectionInstanceItemProvider connectionInstanceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.deployment.ConnectionInstance}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.deployment.ConnectionInstance}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createConnectionInstanceAdapter() {
-		if (connectionInstanceItemProvider == null) {
-			connectionInstanceItemProvider = new ConnectionInstanceItemProvider(this);
-		}
+    if (connectionInstanceItemProvider == null) {
+      connectionInstanceItemProvider = new ConnectionInstanceItemProvider(this);
+    }
 
-		return connectionInstanceItemProvider;
-	}
+    return connectionInstanceItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.deployment.DeploymentAspect} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.deployment.DeploymentAspect} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected DeploymentAspectItemProvider deploymentAspectItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.deployment.DeploymentAspect}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.deployment.DeploymentAspect}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createDeploymentAspectAdapter() {
-		if (deploymentAspectItemProvider == null) {
-			deploymentAspectItemProvider = new DeploymentAspectItemProvider(this);
-		}
+    if (deploymentAspectItemProvider == null) {
+      deploymentAspectItemProvider = new DeploymentAspectItemProvider(this);
+    }
 
-		return deploymentAspectItemProvider;
-	}
+    return deploymentAspectItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.deployment.DeploymentConfiguration} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.deployment.DeploymentConfiguration} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected DeploymentConfigurationItemProvider deploymentConfigurationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.deployment.DeploymentConfiguration}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.deployment.DeploymentConfiguration}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createDeploymentConfigurationAdapter() {
-		if (deploymentConfigurationItemProvider == null) {
-			deploymentConfigurationItemProvider = new DeploymentConfigurationItemProvider(this);
-		}
+    if (deploymentConfigurationItemProvider == null) {
+      deploymentConfigurationItemProvider = new DeploymentConfigurationItemProvider(this);
+    }
 
-		return deploymentConfigurationItemProvider;
-	}
+    return deploymentConfigurationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.deployment.InstanceDeploymentLink} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.deployment.InstanceDeploymentLink} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected InstanceDeploymentLinkItemProvider instanceDeploymentLinkItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.deployment.InstanceDeploymentLink}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.deployment.InstanceDeploymentLink}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createInstanceDeploymentLinkAdapter() {
-		if (instanceDeploymentLinkItemProvider == null) {
-			instanceDeploymentLinkItemProvider = new InstanceDeploymentLinkItemProvider(this);
-		}
+    if (instanceDeploymentLinkItemProvider == null) {
+      instanceDeploymentLinkItemProvider = new InstanceDeploymentLinkItemProvider(this);
+    }
 
-		return instanceDeploymentLinkItemProvider;
-	}
+    return instanceDeploymentLinkItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PartDeploymentLinkItemProvider partDeploymentLinkItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createPartDeploymentLinkAdapter() {
-		if (partDeploymentLinkItemProvider == null) {
-			partDeploymentLinkItemProvider = new PartDeploymentLinkItemProvider(this);
-		}
+    if (partDeploymentLinkItemProvider == null) {
+      partDeploymentLinkItemProvider = new PartDeploymentLinkItemProvider(this);
+    }
 
-		return partDeploymentLinkItemProvider;
-	}
+    return partDeploymentLinkItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.deployment.PortInstance} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.deployment.PortInstance} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PortInstanceItemProvider portInstanceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.deployment.PortInstance}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.deployment.PortInstance}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createPortInstanceAdapter() {
-		if (portInstanceItemProvider == null) {
-			portInstanceItemProvider = new PortInstanceItemProvider(this);
-		}
+    if (portInstanceItemProvider == null) {
+      portInstanceItemProvider = new PortInstanceItemProvider(this);
+    }
 
-		return portInstanceItemProvider;
-	}
+    return portInstanceItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.deployment.TypeDeploymentLink} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.deployment.TypeDeploymentLink} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected TypeDeploymentLinkItemProvider typeDeploymentLinkItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.deployment.TypeDeploymentLink}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.deployment.TypeDeploymentLink}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createTypeDeploymentLinkAdapter() {
-		if (typeDeploymentLinkItemProvider == null) {
-			typeDeploymentLinkItemProvider = new TypeDeploymentLinkItemProvider(this);
-		}
+    if (typeDeploymentLinkItemProvider == null) {
+      typeDeploymentLinkItemProvider = new TypeDeploymentLinkItemProvider(this);
+    }
 
-		return typeDeploymentLinkItemProvider;
-	}
+    return typeDeploymentLinkItemProvider;
+  }
 
 	/**
-	 * This returns the root adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+   * This returns the root adapter factory that contains this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
-	}
+    return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+  }
 
 	/**
-	 * This sets the composed adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+   * This sets the composed adapter factory that contains this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
-		this.parentAdapterFactory = parentAdapterFactory;
-	}
+    this.parentAdapterFactory = parentAdapterFactory;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean isFactoryForType(Object type) {
-		return supportedTypes.contains(type) || super.isFactoryForType(type);
-	}
+    return supportedTypes.contains(type) || super.isFactoryForType(type);
+  }
 
 	/**
-	 * This implementation substitutes the factory itself as the key for the adapter.
-	 * <!-- begin-user-doc -->
+   * This implementation substitutes the factory itself as the key for the adapter.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
-		return super.adapt(notifier, this);
-	}
+    return super.adapt(notifier, this);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object adapt(Object object, Object type) {
-		if (isFactoryForType(type)) {
-			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
-				return adapter;
-			}
-		}
+    if (isFactoryForType(type)) {
+      Object adapter = super.adapt(object, type);
+      if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+        return adapter;
+      }
+    }
 
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public List<IChildCreationExtender> getChildCreationExtenders() {
-		return childCreationExtenderManager.getChildCreationExtenders();
-	}
+    return childCreationExtenderManager.getChildCreationExtenders();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
-	}
+    return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ResourceLocator getResourceLocator() {
-		return childCreationExtenderManager;
-	}
+    return childCreationExtenderManager;
+  }
 
 	/**
-	 * This adds a listener.
-	 * <!-- begin-user-doc -->
+   * This adds a listener.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.addListener(notifyChangedListener);
-	}
+    changeNotifier.addListener(notifyChangedListener);
+  }
 
 	/**
-	 * This removes a listener.
-	 * <!-- begin-user-doc -->
+   * This removes a listener.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.removeListener(notifyChangedListener);
-	}
+    changeNotifier.removeListener(notifyChangedListener);
+  }
 
 	/**
-	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-	 * <!-- begin-user-doc -->
+   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void fireNotifyChanged(Notification notification) {
-		changeNotifier.fireNotifyChanged(notification);
+    changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null) {
-			parentAdapterFactory.fireNotifyChanged(notification);
-		}
-	}
+    if (parentAdapterFactory != null) {
+      parentAdapterFactory.fireNotifyChanged(notification);
+    }
+  }
 
 	/**
-	 * This disposes all of the item providers created by this factory. 
-	 * <!-- begin-user-doc -->
+   * This disposes all of the item providers created by this factory. 
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void dispose() {
-		if (componentInstanceItemProvider != null) componentInstanceItemProvider.dispose();
-		if (connectionInstanceItemProvider != null) connectionInstanceItemProvider.dispose();
-		if (deploymentAspectItemProvider != null) deploymentAspectItemProvider.dispose();
-		if (deploymentConfigurationItemProvider != null) deploymentConfigurationItemProvider.dispose();
-		if (instanceDeploymentLinkItemProvider != null) instanceDeploymentLinkItemProvider.dispose();
-		if (partDeploymentLinkItemProvider != null) partDeploymentLinkItemProvider.dispose();
-		if (portInstanceItemProvider != null) portInstanceItemProvider.dispose();
-		if (typeDeploymentLinkItemProvider != null) typeDeploymentLinkItemProvider.dispose();
-	}
+    if (componentInstanceItemProvider != null) componentInstanceItemProvider.dispose();
+    if (connectionInstanceItemProvider != null) connectionInstanceItemProvider.dispose();
+    if (deploymentAspectItemProvider != null) deploymentAspectItemProvider.dispose();
+    if (deploymentConfigurationItemProvider != null) deploymentConfigurationItemProvider.dispose();
+    if (instanceDeploymentLinkItemProvider != null) instanceDeploymentLinkItemProvider.dispose();
+    if (partDeploymentLinkItemProvider != null) partDeploymentLinkItemProvider.dispose();
+    if (portInstanceItemProvider != null) portInstanceItemProvider.dispose();
+    if (typeDeploymentLinkItemProvider != null) typeDeploymentLinkItemProvider.dispose();
+  }
 
 }

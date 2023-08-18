@@ -51,219 +51,219 @@ public class ExchangeContainmentItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor exchangePropertyDescriptor;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor linkPropertyDescriptor;
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ExchangeContainmentItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process FaPackage.Literals.EXCHANGE_CONTAINMENT__EXCHANGE
-			if (exchangePropertyDescriptor != null) {
-				Object exchangeValue = eObject.eGet(FaPackage.Literals.EXCHANGE_CONTAINMENT__EXCHANGE, true);
-				if (exchangeValue != null && exchangeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) exchangeValue)) {
-					itemPropertyDescriptors.remove(exchangePropertyDescriptor);
-				} else if (exchangeValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.EXCHANGE_CONTAINMENT__EXCHANGE) != null) {
-					itemPropertyDescriptors.remove(exchangePropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(exchangePropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(exchangePropertyDescriptor);
-				}
-			}
-			// Process FaPackage.Literals.EXCHANGE_CONTAINMENT__LINK
-			if (linkPropertyDescriptor != null) {
-				Object linkValue = eObject.eGet(FaPackage.Literals.EXCHANGE_CONTAINMENT__LINK, true);
-				if (linkValue != null && linkValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) linkValue)) {
-					itemPropertyDescriptors.remove(linkPropertyDescriptor);
-				} else if (linkValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.EXCHANGE_CONTAINMENT__LINK) != null) {
-					itemPropertyDescriptors.remove(linkPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(linkPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(linkPropertyDescriptor);
-				}
-			}
-		}		
-	}
+    super.checkChildCreationExtender(object);
+    if (object instanceof EObject) {
+      EObject eObject = (EObject) object;
+      // Process FaPackage.Literals.EXCHANGE_CONTAINMENT__EXCHANGE
+      if (exchangePropertyDescriptor != null) {
+        Object exchangeValue = eObject.eGet(FaPackage.Literals.EXCHANGE_CONTAINMENT__EXCHANGE, true);
+        if (exchangeValue != null && exchangeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) exchangeValue)) {
+          itemPropertyDescriptors.remove(exchangePropertyDescriptor);
+        } else if (exchangeValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.EXCHANGE_CONTAINMENT__EXCHANGE) != null) {
+          itemPropertyDescriptors.remove(exchangePropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(exchangePropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(exchangePropertyDescriptor);
+        }
+      }
+      // Process FaPackage.Literals.EXCHANGE_CONTAINMENT__LINK
+      if (linkPropertyDescriptor != null) {
+        Object linkValue = eObject.eGet(FaPackage.Literals.EXCHANGE_CONTAINMENT__LINK, true);
+        if (linkValue != null && linkValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) linkValue)) {
+          itemPropertyDescriptors.remove(linkPropertyDescriptor);
+        } else if (linkValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.EXCHANGE_CONTAINMENT__LINK) != null) {
+          itemPropertyDescriptors.remove(linkPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(linkPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(linkPropertyDescriptor);
+        }
+      }
+    }		
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addExchangePropertyDescriptor(object);
-			addLinkPropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addExchangePropertyDescriptor(object);
+      addLinkPropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Exchange feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Exchange feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addExchangePropertyDescriptor(Object object) {
-		// begin-extension-code
-		exchangePropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ExchangeContainment_exchange_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ExchangeContainment_exchange_feature", "_UI_ExchangeContainment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.EXCHANGE_CONTAINMENT__EXCHANGE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(exchangePropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    exchangePropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ExchangeContainment_exchange_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ExchangeContainment_exchange_feature", "_UI_ExchangeContainment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.EXCHANGE_CONTAINMENT__EXCHANGE,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(exchangePropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Link feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Link feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addLinkPropertyDescriptor(Object object) {
-		// begin-extension-code
-		linkPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ExchangeContainment_link_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ExchangeContainment_link_feature", "_UI_ExchangeContainment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.EXCHANGE_CONTAINMENT__LINK,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(linkPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    linkPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ExchangeContainment_link_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ExchangeContainment_link_feature", "_UI_ExchangeContainment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.EXCHANGE_CONTAINMENT__LINK,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(linkPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This returns ExchangeContainment.gif.
-	 * <!-- begin-user-doc -->
+   * This returns ExchangeContainment.gif.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ExchangeContainment")); //$NON-NLS-1$
-	}
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/ExchangeContainment")); //$NON-NLS-1$
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
         String label = ""; //$NON-NLS-1$
         String targetName = ""; //$NON-NLS-1$
         EObject target = null;
 
-	 	if (null != target) {
-			if (target instanceof AbstractNamedElement) {
-				targetName = ((AbstractNamedElement) target).getName();
-			}
+   	if (null != target) {
+      if (target instanceof AbstractNamedElement) {
+        targetName = ((AbstractNamedElement) target).getName();
+      }
 
-			if (null == targetName || "" == targetName) { //$NON-NLS-1$
-				targetName = "[" + target.eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
-			}
-	 	}
-	 	label = "[" + getString("_UI_ExchangeContainment_type") + "] to " + targetName; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_ExchangeContainment_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+      if (null == targetName || "" == targetName) { //$NON-NLS-1$
+        targetName = "[" + target.eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
+      }
+   	}
+   	label = "[" + getString("_UI_ExchangeContainment_type") + "] to " + targetName; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_ExchangeContainment_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
-		super.notifyChanged(notification);
-	}
+    updateChildren(notification);
+    super.notifyChanged(notification);
+  }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+    super.collectNewChildDescriptors(newChildDescriptors, object);
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 	// end-capella-code
 }

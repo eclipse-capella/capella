@@ -47,322 +47,322 @@ import org.polarsys.capella.core.data.cs.PhysicalPortRealization;
  */
 public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static CsFactory init() {
-		try {
-			CsFactory theCsFactory = (CsFactory)EPackage.Registry.INSTANCE.getEFactory(CsPackage.eNS_URI);
-			if (theCsFactory != null) {
-				return theCsFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new CsFactoryImpl();
-	}
+    try {
+      CsFactory theCsFactory = (CsFactory)EPackage.Registry.INSTANCE.getEFactory(CsPackage.eNS_URI);
+      if (theCsFactory != null) {
+        return theCsFactory;
+      }
+    }
+    catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new CsFactoryImpl();
+  }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CsFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case CsPackage.PART: return createPart();
-			case CsPackage.COMPONENT_REALIZATION: return createComponentRealization();
-			case CsPackage.INTERFACE_PKG: return createInterfacePkg();
-			case CsPackage.INTERFACE: return createInterface();
-			case CsPackage.INTERFACE_IMPLEMENTATION: return createInterfaceImplementation();
-			case CsPackage.INTERFACE_USE: return createInterfaceUse();
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION: return createExchangeItemAllocation();
-			case CsPackage.PHYSICAL_LINK: return createPhysicalLink();
-			case CsPackage.PHYSICAL_LINK_CATEGORY: return createPhysicalLinkCategory();
-			case CsPackage.PHYSICAL_LINK_END: return createPhysicalLinkEnd();
-			case CsPackage.PHYSICAL_LINK_REALIZATION: return createPhysicalLinkRealization();
-			case CsPackage.PHYSICAL_PATH: return createPhysicalPath();
-			case CsPackage.PHYSICAL_PATH_INVOLVEMENT: return createPhysicalPathInvolvement();
-			case CsPackage.PHYSICAL_PATH_REFERENCE: return createPhysicalPathReference();
-			case CsPackage.PHYSICAL_PATH_REALIZATION: return createPhysicalPathRealization();
-			case CsPackage.PHYSICAL_PORT: return createPhysicalPort();
-			case CsPackage.PHYSICAL_PORT_REALIZATION: return createPhysicalPortRealization();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eClass.getClassifierID()) {
+      case CsPackage.PART: return createPart();
+      case CsPackage.COMPONENT_REALIZATION: return createComponentRealization();
+      case CsPackage.INTERFACE_PKG: return createInterfacePkg();
+      case CsPackage.INTERFACE: return createInterface();
+      case CsPackage.INTERFACE_IMPLEMENTATION: return createInterfaceImplementation();
+      case CsPackage.INTERFACE_USE: return createInterfaceUse();
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION: return createExchangeItemAllocation();
+      case CsPackage.PHYSICAL_LINK: return createPhysicalLink();
+      case CsPackage.PHYSICAL_LINK_CATEGORY: return createPhysicalLinkCategory();
+      case CsPackage.PHYSICAL_LINK_END: return createPhysicalLinkEnd();
+      case CsPackage.PHYSICAL_LINK_REALIZATION: return createPhysicalLinkRealization();
+      case CsPackage.PHYSICAL_PATH: return createPhysicalPath();
+      case CsPackage.PHYSICAL_PATH_INVOLVEMENT: return createPhysicalPathInvolvement();
+      case CsPackage.PHYSICAL_PATH_REFERENCE: return createPhysicalPathReference();
+      case CsPackage.PHYSICAL_PATH_REALIZATION: return createPhysicalPathRealization();
+      case CsPackage.PHYSICAL_PORT: return createPhysicalPort();
+      case CsPackage.PHYSICAL_PORT_REALIZATION: return createPhysicalPortRealization();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Part createPart() {
-		PartImpl part = new PartImpl();
+    PartImpl part = new PartImpl();
     //begin-capella-code
     part.setId(IdGenerator.createId());
     //end-capella-code
-		return part;
-	}
+    return part;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ComponentRealization createComponentRealization() {
-		ComponentRealizationImpl componentRealization = new ComponentRealizationImpl();
+    ComponentRealizationImpl componentRealization = new ComponentRealizationImpl();
     //begin-capella-code
     componentRealization.setId(IdGenerator.createId());
     //end-capella-code
-		return componentRealization;
-	}
+    return componentRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public InterfacePkg createInterfacePkg() {
-		InterfacePkgImpl interfacePkg = new InterfacePkgImpl();
+    InterfacePkgImpl interfacePkg = new InterfacePkgImpl();
     //begin-capella-code
     interfacePkg.setId(IdGenerator.createId());
     //end-capella-code
-		return interfacePkg;
-	}
+    return interfacePkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Interface createInterface() {
-		InterfaceImpl interface_ = new InterfaceImpl();
+    InterfaceImpl interface_ = new InterfaceImpl();
     //begin-capella-code
     interface_.setId(IdGenerator.createId());
     //end-capella-code
-		return interface_;
-	}
+    return interface_;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public InterfaceImplementation createInterfaceImplementation() {
-		InterfaceImplementationImpl interfaceImplementation = new InterfaceImplementationImpl();
+    InterfaceImplementationImpl interfaceImplementation = new InterfaceImplementationImpl();
     //begin-capella-code
     interfaceImplementation.setId(IdGenerator.createId());
     //end-capella-code
-		return interfaceImplementation;
-	}
+    return interfaceImplementation;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public InterfaceUse createInterfaceUse() {
-		InterfaceUseImpl interfaceUse = new InterfaceUseImpl();
+    InterfaceUseImpl interfaceUse = new InterfaceUseImpl();
     //begin-capella-code
     interfaceUse.setId(IdGenerator.createId());
     //end-capella-code
-		return interfaceUse;
-	}
+    return interfaceUse;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ExchangeItemAllocation createExchangeItemAllocation() {
-		ExchangeItemAllocationImpl exchangeItemAllocation = new ExchangeItemAllocationImpl();
+    ExchangeItemAllocationImpl exchangeItemAllocation = new ExchangeItemAllocationImpl();
     //begin-capella-code
     exchangeItemAllocation.setId(IdGenerator.createId());
     //end-capella-code
-		return exchangeItemAllocation;
-	}
+    return exchangeItemAllocation;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PhysicalLink createPhysicalLink() {
-		PhysicalLinkImpl physicalLink = new PhysicalLinkImpl();
+    PhysicalLinkImpl physicalLink = new PhysicalLinkImpl();
     //begin-capella-code
     physicalLink.setId(IdGenerator.createId());
     //end-capella-code
-		return physicalLink;
-	}
+    return physicalLink;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PhysicalLinkCategory createPhysicalLinkCategory() {
-		PhysicalLinkCategoryImpl physicalLinkCategory = new PhysicalLinkCategoryImpl();
+    PhysicalLinkCategoryImpl physicalLinkCategory = new PhysicalLinkCategoryImpl();
     //begin-capella-code
     physicalLinkCategory.setId(IdGenerator.createId());
     //end-capella-code
-		return physicalLinkCategory;
-	}
+    return physicalLinkCategory;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PhysicalLinkEnd createPhysicalLinkEnd() {
-		PhysicalLinkEndImpl physicalLinkEnd = new PhysicalLinkEndImpl();
+    PhysicalLinkEndImpl physicalLinkEnd = new PhysicalLinkEndImpl();
     //begin-capella-code
     physicalLinkEnd.setId(IdGenerator.createId());
     //end-capella-code
-		return physicalLinkEnd;
-	}
+    return physicalLinkEnd;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PhysicalLinkRealization createPhysicalLinkRealization() {
-		PhysicalLinkRealizationImpl physicalLinkRealization = new PhysicalLinkRealizationImpl();
+    PhysicalLinkRealizationImpl physicalLinkRealization = new PhysicalLinkRealizationImpl();
     //begin-capella-code
     physicalLinkRealization.setId(IdGenerator.createId());
     //end-capella-code
-		return physicalLinkRealization;
-	}
+    return physicalLinkRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PhysicalPath createPhysicalPath() {
-		PhysicalPathImpl physicalPath = new PhysicalPathImpl();
+    PhysicalPathImpl physicalPath = new PhysicalPathImpl();
     //begin-capella-code
     physicalPath.setId(IdGenerator.createId());
     //end-capella-code
-		return physicalPath;
-	}
+    return physicalPath;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PhysicalPathInvolvement createPhysicalPathInvolvement() {
-		PhysicalPathInvolvementImpl physicalPathInvolvement = new PhysicalPathInvolvementImpl();
+    PhysicalPathInvolvementImpl physicalPathInvolvement = new PhysicalPathInvolvementImpl();
     //begin-capella-code
     physicalPathInvolvement.setId(IdGenerator.createId());
     //end-capella-code
-		return physicalPathInvolvement;
-	}
+    return physicalPathInvolvement;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PhysicalPathReference createPhysicalPathReference() {
-		PhysicalPathReferenceImpl physicalPathReference = new PhysicalPathReferenceImpl();
+    PhysicalPathReferenceImpl physicalPathReference = new PhysicalPathReferenceImpl();
     //begin-capella-code
     physicalPathReference.setId(IdGenerator.createId());
     //end-capella-code
-		return physicalPathReference;
-	}
+    return physicalPathReference;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PhysicalPathRealization createPhysicalPathRealization() {
-		PhysicalPathRealizationImpl physicalPathRealization = new PhysicalPathRealizationImpl();
+    PhysicalPathRealizationImpl physicalPathRealization = new PhysicalPathRealizationImpl();
     //begin-capella-code
     physicalPathRealization.setId(IdGenerator.createId());
     //end-capella-code
-		return physicalPathRealization;
-	}
+    return physicalPathRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PhysicalPort createPhysicalPort() {
-		PhysicalPortImpl physicalPort = new PhysicalPortImpl();
+    PhysicalPortImpl physicalPort = new PhysicalPortImpl();
     //begin-capella-code
     physicalPort.setId(IdGenerator.createId());
     //end-capella-code
-		return physicalPort;
-	}
+    return physicalPort;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PhysicalPortRealization createPhysicalPortRealization() {
-		PhysicalPortRealizationImpl physicalPortRealization = new PhysicalPortRealizationImpl();
+    PhysicalPortRealizationImpl physicalPortRealization = new PhysicalPortRealizationImpl();
     //begin-capella-code
     physicalPortRealization.setId(IdGenerator.createId());
     //end-capella-code
-		return physicalPortRealization;
-	}
+    return physicalPortRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public CsPackage getCsPackage() {
-		return (CsPackage)getEPackage();
-	}
+    return (CsPackage)getEPackage();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
 	@Deprecated
 	public static CsPackage getPackage() {
-		return CsPackage.eINSTANCE;
-	}
+    return CsPackage.eINSTANCE;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -372,10 +372,10 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * @generated
 	 */
 	public Part createPart(String name_p) {
-		Part part = createPart();
-		part.setName(name_p);	  
-		return part;
-	}
+    Part part = createPart();
+    part.setName(name_p);	  
+    return part;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -385,10 +385,10 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * @generated
 	 */
 	public InterfacePkg createInterfacePkg(String name_p) {
-		InterfacePkg interfacePkg = createInterfacePkg();
-		interfacePkg.setName(name_p);	  
-		return interfacePkg;
-	}
+    InterfacePkg interfacePkg = createInterfacePkg();
+    interfacePkg.setName(name_p);	  
+    return interfacePkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -398,10 +398,10 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * @generated
 	 */
 	public Interface createInterface(String name_p) {
-		Interface interface_ = createInterface();
-		interface_.setName(name_p);	  
-		return interface_;
-	}
+    Interface interface_ = createInterface();
+    interface_.setName(name_p);	  
+    return interface_;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -411,10 +411,10 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * @generated
 	 */
 	public ExchangeItemAllocation createExchangeItemAllocation(String name_p) {
-		ExchangeItemAllocation exchangeItemAllocation = createExchangeItemAllocation();
-		exchangeItemAllocation.setName(name_p);	  
-		return exchangeItemAllocation;
-	}
+    ExchangeItemAllocation exchangeItemAllocation = createExchangeItemAllocation();
+    exchangeItemAllocation.setName(name_p);	  
+    return exchangeItemAllocation;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -424,10 +424,10 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * @generated
 	 */
 	public PhysicalLink createPhysicalLink(String name_p) {
-		PhysicalLink physicalLink = createPhysicalLink();
-		physicalLink.setName(name_p);	  
-		return physicalLink;
-	}
+    PhysicalLink physicalLink = createPhysicalLink();
+    physicalLink.setName(name_p);	  
+    return physicalLink;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -437,10 +437,10 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * @generated
 	 */
 	public PhysicalLinkCategory createPhysicalLinkCategory(String name_p) {
-		PhysicalLinkCategory physicalLinkCategory = createPhysicalLinkCategory();
-		physicalLinkCategory.setName(name_p);	  
-		return physicalLinkCategory;
-	}
+    PhysicalLinkCategory physicalLinkCategory = createPhysicalLinkCategory();
+    physicalLinkCategory.setName(name_p);	  
+    return physicalLinkCategory;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -450,10 +450,10 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * @generated
 	 */
 	public PhysicalPath createPhysicalPath(String name_p) {
-		PhysicalPath physicalPath = createPhysicalPath();
-		physicalPath.setName(name_p);	  
-		return physicalPath;
-	}
+    PhysicalPath physicalPath = createPhysicalPath();
+    physicalPath.setName(name_p);	  
+    return physicalPath;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -463,10 +463,10 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	 * @generated
 	 */
 	public PhysicalPort createPhysicalPort(String name_p) {
-		PhysicalPort physicalPort = createPhysicalPort();
-		physicalPort.setName(name_p);	  
-		return physicalPort;
-	}
+    PhysicalPort physicalPort = createPhysicalPort();
+    physicalPort.setName(name_p);	  
+    return physicalPort;
+  }
 
 	//begin-capella-code
 

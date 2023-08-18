@@ -72,13 +72,13 @@ import org.polarsys.capella.core.data.information.DataPkg;
 public abstract class BlockImpl extends TypeImpl implements Block {
 
 	/**
-	 * The cached value of the '{@link #getOwnedFunctionalAllocation() <em>Owned Functional Allocation</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedFunctionalAllocation() <em>Owned Functional Allocation</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedFunctionalAllocation()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedFunctionalAllocation()
+   * @generated
+   * @ordered
+   */
 	protected EList<ComponentFunctionalAllocation> ownedFunctionalAllocation;
 
 
@@ -86,13 +86,13 @@ public abstract class BlockImpl extends TypeImpl implements Block {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedComponentExchanges() <em>Owned Component Exchanges</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedComponentExchanges() <em>Owned Component Exchanges</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedComponentExchanges()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedComponentExchanges()
+   * @generated
+   * @ordered
+   */
 	protected EList<ComponentExchange> ownedComponentExchanges;
 
 
@@ -100,13 +100,13 @@ public abstract class BlockImpl extends TypeImpl implements Block {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedComponentExchangeCategories() <em>Owned Component Exchange Categories</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedComponentExchangeCategories() <em>Owned Component Exchange Categories</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedComponentExchangeCategories()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedComponentExchangeCategories()
+   * @generated
+   * @ordered
+   */
 	protected EList<ComponentExchangeCategory> ownedComponentExchangeCategories;
 
 
@@ -122,13 +122,13 @@ public abstract class BlockImpl extends TypeImpl implements Block {
 
 
 	/**
-	 * The cached value of the '{@link #getInExchangeLinks() <em>In Exchange Links</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getInExchangeLinks() <em>In Exchange Links</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInExchangeLinks()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getInExchangeLinks()
+   * @generated
+   * @ordered
+   */
 	protected EList<ExchangeLink> inExchangeLinks;
 
 
@@ -136,13 +136,13 @@ public abstract class BlockImpl extends TypeImpl implements Block {
 
 
 	/**
-	 * The cached value of the '{@link #getOutExchangeLinks() <em>Out Exchange Links</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOutExchangeLinks() <em>Out Exchange Links</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOutExchangeLinks()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOutExchangeLinks()
+   * @generated
+   * @ordered
+   */
 	protected EList<ExchangeLink> outExchangeLinks;
 
 
@@ -150,13 +150,13 @@ public abstract class BlockImpl extends TypeImpl implements Block {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedAbstractCapabilityPkg() <em>Owned Abstract Capability Pkg</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedAbstractCapabilityPkg() <em>Owned Abstract Capability Pkg</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedAbstractCapabilityPkg()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedAbstractCapabilityPkg()
+   * @generated
+   * @ordered
+   */
 	protected AbstractCapabilityPkg ownedAbstractCapabilityPkg;
 
 
@@ -164,13 +164,13 @@ public abstract class BlockImpl extends TypeImpl implements Block {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedInterfacePkg() <em>Owned Interface Pkg</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedInterfacePkg() <em>Owned Interface Pkg</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedInterfacePkg()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedInterfacePkg()
+   * @generated
+   * @ordered
+   */
 	protected InterfacePkg ownedInterfacePkg;
 
 
@@ -178,13 +178,13 @@ public abstract class BlockImpl extends TypeImpl implements Block {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedDataPkg() <em>Owned Data Pkg</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedDataPkg() <em>Owned Data Pkg</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedDataPkg()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedDataPkg()
+   * @generated
+   * @ordered
+   */
 	protected DataPkg ownedDataPkg;
 
 
@@ -192,102 +192,102 @@ public abstract class BlockImpl extends TypeImpl implements Block {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedStateMachines() <em>Owned State Machines</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedStateMachines() <em>Owned State Machines</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedStateMachines()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedStateMachines()
+   * @generated
+   * @ordered
+   */
 	protected EList<StateMachine> ownedStateMachines;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected BlockImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.BLOCK;
-	}
+    return CsPackage.Literals.BLOCK;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ComponentFunctionalAllocation> getOwnedFunctionalAllocation() {
 
-		if (ownedFunctionalAllocation == null) {
-			ownedFunctionalAllocation = new EObjectContainmentEList.Resolving<ComponentFunctionalAllocation>(ComponentFunctionalAllocation.class, this, CsPackage.BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
-		}
-		return ownedFunctionalAllocation;
-	}
+    if (ownedFunctionalAllocation == null) {
+      ownedFunctionalAllocation = new EObjectContainmentEList.Resolving<ComponentFunctionalAllocation>(ComponentFunctionalAllocation.class, this, CsPackage.BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
+    }
+    return ownedFunctionalAllocation;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ComponentExchange> getOwnedComponentExchanges() {
 
-		if (ownedComponentExchanges == null) {
-			ownedComponentExchanges = new EObjectContainmentEList<ComponentExchange>(ComponentExchange.class, this, CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGES);
-		}
-		return ownedComponentExchanges;
-	}
+    if (ownedComponentExchanges == null) {
+      ownedComponentExchanges = new EObjectContainmentEList<ComponentExchange>(ComponentExchange.class, this, CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGES);
+    }
+    return ownedComponentExchanges;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ComponentExchangeCategory> getOwnedComponentExchangeCategories() {
 
-		if (ownedComponentExchangeCategories == null) {
-			ownedComponentExchangeCategories = new EObjectContainmentEList<ComponentExchangeCategory>(ComponentExchangeCategory.class, this, CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES);
-		}
-		return ownedComponentExchangeCategories;
-	}
+    if (ownedComponentExchangeCategories == null) {
+      ownedComponentExchangeCategories = new EObjectContainmentEList<ComponentExchangeCategory>(ComponentExchangeCategory.class, this, CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES);
+    }
+    return ownedComponentExchangeCategories;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ComponentFunctionalAllocation> getFunctionalAllocations() {
 
@@ -314,27 +314,27 @@ public abstract class BlockImpl extends TypeImpl implements Block {
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__FUNCTIONAL_ALLOCATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__FUNCTIONAL_ALLOCATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ComponentFunctionalAllocation> resultAsList = (Collection<ComponentFunctionalAllocation>) result;
-		return new EcoreEList.UnmodifiableEList<ComponentFunctionalAllocation>(this, FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__FUNCTIONAL_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<ComponentFunctionalAllocation> resultAsList = (Collection<ComponentFunctionalAllocation>) result;
+    return new EcoreEList.UnmodifiableEList<ComponentFunctionalAllocation>(this, FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__FUNCTIONAL_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractFunction> getAllocatedFunctions() {
 
@@ -361,139 +361,139 @@ public abstract class BlockImpl extends TypeImpl implements Block {
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__ALLOCATED_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__ALLOCATED_FUNCTIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractFunction> resultAsList = (Collection<AbstractFunction>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractFunction>(this, FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__ALLOCATED_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractFunction> resultAsList = (Collection<AbstractFunction>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractFunction>(this, FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__ALLOCATED_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ExchangeLink> getInExchangeLinks() {
 
-		if (inExchangeLinks == null) {
-			inExchangeLinks = new EObjectResolvingEList<ExchangeLink>(ExchangeLink.class, this, CsPackage.BLOCK__IN_EXCHANGE_LINKS);
-		}
-		return inExchangeLinks;
-	}
+    if (inExchangeLinks == null) {
+      inExchangeLinks = new EObjectResolvingEList<ExchangeLink>(ExchangeLink.class, this, CsPackage.BLOCK__IN_EXCHANGE_LINKS);
+    }
+    return inExchangeLinks;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ExchangeLink> getOutExchangeLinks() {
 
-		if (outExchangeLinks == null) {
-			outExchangeLinks = new EObjectResolvingEList<ExchangeLink>(ExchangeLink.class, this, CsPackage.BLOCK__OUT_EXCHANGE_LINKS);
-		}
-		return outExchangeLinks;
-	}
+    if (outExchangeLinks == null) {
+      outExchangeLinks = new EObjectResolvingEList<ExchangeLink>(ExchangeLink.class, this, CsPackage.BLOCK__OUT_EXCHANGE_LINKS);
+    }
+    return outExchangeLinks;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractCapabilityPkg getOwnedAbstractCapabilityPkg() {
 
-		if (ownedAbstractCapabilityPkg != null && ownedAbstractCapabilityPkg.eIsProxy()) {
-			InternalEObject oldOwnedAbstractCapabilityPkg = (InternalEObject)ownedAbstractCapabilityPkg;
-			ownedAbstractCapabilityPkg = (AbstractCapabilityPkg)eResolveProxy(oldOwnedAbstractCapabilityPkg);
-			if (ownedAbstractCapabilityPkg != oldOwnedAbstractCapabilityPkg) {
-				InternalEObject newOwnedAbstractCapabilityPkg = (InternalEObject)ownedAbstractCapabilityPkg;
-				NotificationChain msgs = oldOwnedAbstractCapabilityPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG, null, null);
-				if (newOwnedAbstractCapabilityPkg.eInternalContainer() == null) {
-					msgs = newOwnedAbstractCapabilityPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG, oldOwnedAbstractCapabilityPkg, ownedAbstractCapabilityPkg));
-			}
-		}
-		return ownedAbstractCapabilityPkg;
-	}
+    if (ownedAbstractCapabilityPkg != null && ownedAbstractCapabilityPkg.eIsProxy()) {
+      InternalEObject oldOwnedAbstractCapabilityPkg = (InternalEObject)ownedAbstractCapabilityPkg;
+      ownedAbstractCapabilityPkg = (AbstractCapabilityPkg)eResolveProxy(oldOwnedAbstractCapabilityPkg);
+      if (ownedAbstractCapabilityPkg != oldOwnedAbstractCapabilityPkg) {
+        InternalEObject newOwnedAbstractCapabilityPkg = (InternalEObject)ownedAbstractCapabilityPkg;
+        NotificationChain msgs = oldOwnedAbstractCapabilityPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG, null, null);
+        if (newOwnedAbstractCapabilityPkg.eInternalContainer() == null) {
+          msgs = newOwnedAbstractCapabilityPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG, null, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG, oldOwnedAbstractCapabilityPkg, ownedAbstractCapabilityPkg));
+      }
+    }
+    return ownedAbstractCapabilityPkg;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractCapabilityPkg basicGetOwnedAbstractCapabilityPkg() {
 
-		return ownedAbstractCapabilityPkg;
-	}
+    return ownedAbstractCapabilityPkg;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedAbstractCapabilityPkg(AbstractCapabilityPkg newOwnedAbstractCapabilityPkg, NotificationChain msgs) {
 
-		AbstractCapabilityPkg oldOwnedAbstractCapabilityPkg = ownedAbstractCapabilityPkg;
-		ownedAbstractCapabilityPkg = newOwnedAbstractCapabilityPkg;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG, oldOwnedAbstractCapabilityPkg, newOwnedAbstractCapabilityPkg);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    AbstractCapabilityPkg oldOwnedAbstractCapabilityPkg = ownedAbstractCapabilityPkg;
+    ownedAbstractCapabilityPkg = newOwnedAbstractCapabilityPkg;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG, oldOwnedAbstractCapabilityPkg, newOwnedAbstractCapabilityPkg);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setOwnedAbstractCapabilityPkg(AbstractCapabilityPkg newOwnedAbstractCapabilityPkg) {
 
-		if (newOwnedAbstractCapabilityPkg != ownedAbstractCapabilityPkg) {
-			NotificationChain msgs = null;
-			if (ownedAbstractCapabilityPkg != null)
-				msgs = ((InternalEObject)ownedAbstractCapabilityPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG, null, msgs);
-			if (newOwnedAbstractCapabilityPkg != null)
-				msgs = ((InternalEObject)newOwnedAbstractCapabilityPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG, null, msgs);
-			msgs = basicSetOwnedAbstractCapabilityPkg(newOwnedAbstractCapabilityPkg, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG, newOwnedAbstractCapabilityPkg, newOwnedAbstractCapabilityPkg));
+    if (newOwnedAbstractCapabilityPkg != ownedAbstractCapabilityPkg) {
+      NotificationChain msgs = null;
+      if (ownedAbstractCapabilityPkg != null)
+        msgs = ((InternalEObject)ownedAbstractCapabilityPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG, null, msgs);
+      if (newOwnedAbstractCapabilityPkg != null)
+        msgs = ((InternalEObject)newOwnedAbstractCapabilityPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG, null, msgs);
+      msgs = basicSetOwnedAbstractCapabilityPkg(newOwnedAbstractCapabilityPkg, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG, newOwnedAbstractCapabilityPkg, newOwnedAbstractCapabilityPkg));
 
-	}
+  }
 
 
 
@@ -501,86 +501,86 @@ public abstract class BlockImpl extends TypeImpl implements Block {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InterfacePkg getOwnedInterfacePkg() {
 
-		if (ownedInterfacePkg != null && ownedInterfacePkg.eIsProxy()) {
-			InternalEObject oldOwnedInterfacePkg = (InternalEObject)ownedInterfacePkg;
-			ownedInterfacePkg = (InterfacePkg)eResolveProxy(oldOwnedInterfacePkg);
-			if (ownedInterfacePkg != oldOwnedInterfacePkg) {
-				InternalEObject newOwnedInterfacePkg = (InternalEObject)ownedInterfacePkg;
-				NotificationChain msgs = oldOwnedInterfacePkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_INTERFACE_PKG, null, null);
-				if (newOwnedInterfacePkg.eInternalContainer() == null) {
-					msgs = newOwnedInterfacePkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_INTERFACE_PKG, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CsPackage.BLOCK__OWNED_INTERFACE_PKG, oldOwnedInterfacePkg, ownedInterfacePkg));
-			}
-		}
-		return ownedInterfacePkg;
-	}
+    if (ownedInterfacePkg != null && ownedInterfacePkg.eIsProxy()) {
+      InternalEObject oldOwnedInterfacePkg = (InternalEObject)ownedInterfacePkg;
+      ownedInterfacePkg = (InterfacePkg)eResolveProxy(oldOwnedInterfacePkg);
+      if (ownedInterfacePkg != oldOwnedInterfacePkg) {
+        InternalEObject newOwnedInterfacePkg = (InternalEObject)ownedInterfacePkg;
+        NotificationChain msgs = oldOwnedInterfacePkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_INTERFACE_PKG, null, null);
+        if (newOwnedInterfacePkg.eInternalContainer() == null) {
+          msgs = newOwnedInterfacePkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_INTERFACE_PKG, null, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CsPackage.BLOCK__OWNED_INTERFACE_PKG, oldOwnedInterfacePkg, ownedInterfacePkg));
+      }
+    }
+    return ownedInterfacePkg;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InterfacePkg basicGetOwnedInterfacePkg() {
 
-		return ownedInterfacePkg;
-	}
+    return ownedInterfacePkg;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedInterfacePkg(InterfacePkg newOwnedInterfacePkg, NotificationChain msgs) {
 
-		InterfacePkg oldOwnedInterfacePkg = ownedInterfacePkg;
-		ownedInterfacePkg = newOwnedInterfacePkg;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CsPackage.BLOCK__OWNED_INTERFACE_PKG, oldOwnedInterfacePkg, newOwnedInterfacePkg);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    InterfacePkg oldOwnedInterfacePkg = ownedInterfacePkg;
+    ownedInterfacePkg = newOwnedInterfacePkg;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CsPackage.BLOCK__OWNED_INTERFACE_PKG, oldOwnedInterfacePkg, newOwnedInterfacePkg);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setOwnedInterfacePkg(InterfacePkg newOwnedInterfacePkg) {
 
-		if (newOwnedInterfacePkg != ownedInterfacePkg) {
-			NotificationChain msgs = null;
-			if (ownedInterfacePkg != null)
-				msgs = ((InternalEObject)ownedInterfacePkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_INTERFACE_PKG, null, msgs);
-			if (newOwnedInterfacePkg != null)
-				msgs = ((InternalEObject)newOwnedInterfacePkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_INTERFACE_PKG, null, msgs);
-			msgs = basicSetOwnedInterfacePkg(newOwnedInterfacePkg, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.BLOCK__OWNED_INTERFACE_PKG, newOwnedInterfacePkg, newOwnedInterfacePkg));
+    if (newOwnedInterfacePkg != ownedInterfacePkg) {
+      NotificationChain msgs = null;
+      if (ownedInterfacePkg != null)
+        msgs = ((InternalEObject)ownedInterfacePkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_INTERFACE_PKG, null, msgs);
+      if (newOwnedInterfacePkg != null)
+        msgs = ((InternalEObject)newOwnedInterfacePkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_INTERFACE_PKG, null, msgs);
+      msgs = basicSetOwnedInterfacePkg(newOwnedInterfacePkg, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.BLOCK__OWNED_INTERFACE_PKG, newOwnedInterfacePkg, newOwnedInterfacePkg));
 
-	}
+  }
 
 
 
@@ -588,86 +588,86 @@ public abstract class BlockImpl extends TypeImpl implements Block {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public DataPkg getOwnedDataPkg() {
 
-		if (ownedDataPkg != null && ownedDataPkg.eIsProxy()) {
-			InternalEObject oldOwnedDataPkg = (InternalEObject)ownedDataPkg;
-			ownedDataPkg = (DataPkg)eResolveProxy(oldOwnedDataPkg);
-			if (ownedDataPkg != oldOwnedDataPkg) {
-				InternalEObject newOwnedDataPkg = (InternalEObject)ownedDataPkg;
-				NotificationChain msgs = oldOwnedDataPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_DATA_PKG, null, null);
-				if (newOwnedDataPkg.eInternalContainer() == null) {
-					msgs = newOwnedDataPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_DATA_PKG, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CsPackage.BLOCK__OWNED_DATA_PKG, oldOwnedDataPkg, ownedDataPkg));
-			}
-		}
-		return ownedDataPkg;
-	}
+    if (ownedDataPkg != null && ownedDataPkg.eIsProxy()) {
+      InternalEObject oldOwnedDataPkg = (InternalEObject)ownedDataPkg;
+      ownedDataPkg = (DataPkg)eResolveProxy(oldOwnedDataPkg);
+      if (ownedDataPkg != oldOwnedDataPkg) {
+        InternalEObject newOwnedDataPkg = (InternalEObject)ownedDataPkg;
+        NotificationChain msgs = oldOwnedDataPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_DATA_PKG, null, null);
+        if (newOwnedDataPkg.eInternalContainer() == null) {
+          msgs = newOwnedDataPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_DATA_PKG, null, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CsPackage.BLOCK__OWNED_DATA_PKG, oldOwnedDataPkg, ownedDataPkg));
+      }
+    }
+    return ownedDataPkg;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public DataPkg basicGetOwnedDataPkg() {
 
-		return ownedDataPkg;
-	}
+    return ownedDataPkg;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedDataPkg(DataPkg newOwnedDataPkg, NotificationChain msgs) {
 
-		DataPkg oldOwnedDataPkg = ownedDataPkg;
-		ownedDataPkg = newOwnedDataPkg;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CsPackage.BLOCK__OWNED_DATA_PKG, oldOwnedDataPkg, newOwnedDataPkg);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    DataPkg oldOwnedDataPkg = ownedDataPkg;
+    ownedDataPkg = newOwnedDataPkg;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CsPackage.BLOCK__OWNED_DATA_PKG, oldOwnedDataPkg, newOwnedDataPkg);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setOwnedDataPkg(DataPkg newOwnedDataPkg) {
 
-		if (newOwnedDataPkg != ownedDataPkg) {
-			NotificationChain msgs = null;
-			if (ownedDataPkg != null)
-				msgs = ((InternalEObject)ownedDataPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_DATA_PKG, null, msgs);
-			if (newOwnedDataPkg != null)
-				msgs = ((InternalEObject)newOwnedDataPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_DATA_PKG, null, msgs);
-			msgs = basicSetOwnedDataPkg(newOwnedDataPkg, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.BLOCK__OWNED_DATA_PKG, newOwnedDataPkg, newOwnedDataPkg));
+    if (newOwnedDataPkg != ownedDataPkg) {
+      NotificationChain msgs = null;
+      if (ownedDataPkg != null)
+        msgs = ((InternalEObject)ownedDataPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_DATA_PKG, null, msgs);
+      if (newOwnedDataPkg != null)
+        msgs = ((InternalEObject)newOwnedDataPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CsPackage.BLOCK__OWNED_DATA_PKG, null, msgs);
+      msgs = basicSetOwnedDataPkg(newOwnedDataPkg, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.BLOCK__OWNED_DATA_PKG, newOwnedDataPkg, newOwnedDataPkg));
 
-	}
+  }
 
 
 
@@ -675,250 +675,250 @@ public abstract class BlockImpl extends TypeImpl implements Block {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<StateMachine> getOwnedStateMachines() {
 
-		if (ownedStateMachines == null) {
-			ownedStateMachines = new EObjectContainmentEList.Resolving<StateMachine>(StateMachine.class, this, CsPackage.BLOCK__OWNED_STATE_MACHINES);
-		}
-		return ownedStateMachines;
-	}
+    if (ownedStateMachines == null) {
+      ownedStateMachines = new EObjectContainmentEList.Resolving<StateMachine>(StateMachine.class, this, CsPackage.BLOCK__OWNED_STATE_MACHINES);
+    }
+    return ownedStateMachines;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CsPackage.BLOCK__OWNED_FUNCTIONAL_ALLOCATION:
-				return ((InternalEList<?>)getOwnedFunctionalAllocation()).basicRemove(otherEnd, msgs);
-			case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGES:
-				return ((InternalEList<?>)getOwnedComponentExchanges()).basicRemove(otherEnd, msgs);
-			case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
-				return ((InternalEList<?>)getOwnedComponentExchangeCategories()).basicRemove(otherEnd, msgs);
-			case CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG:
-				return basicSetOwnedAbstractCapabilityPkg(null, msgs);
-			case CsPackage.BLOCK__OWNED_INTERFACE_PKG:
-				return basicSetOwnedInterfacePkg(null, msgs);
-			case CsPackage.BLOCK__OWNED_DATA_PKG:
-				return basicSetOwnedDataPkg(null, msgs);
-			case CsPackage.BLOCK__OWNED_STATE_MACHINES:
-				return ((InternalEList<?>)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CsPackage.BLOCK__OWNED_FUNCTIONAL_ALLOCATION:
+        return ((InternalEList<?>)getOwnedFunctionalAllocation()).basicRemove(otherEnd, msgs);
+      case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGES:
+        return ((InternalEList<?>)getOwnedComponentExchanges()).basicRemove(otherEnd, msgs);
+      case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
+        return ((InternalEList<?>)getOwnedComponentExchangeCategories()).basicRemove(otherEnd, msgs);
+      case CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG:
+        return basicSetOwnedAbstractCapabilityPkg(null, msgs);
+      case CsPackage.BLOCK__OWNED_INTERFACE_PKG:
+        return basicSetOwnedInterfacePkg(null, msgs);
+      case CsPackage.BLOCK__OWNED_DATA_PKG:
+        return basicSetOwnedDataPkg(null, msgs);
+      case CsPackage.BLOCK__OWNED_STATE_MACHINES:
+        return ((InternalEList<?>)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CsPackage.BLOCK__OWNED_FUNCTIONAL_ALLOCATION:
-				return getOwnedFunctionalAllocation();
-			case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGES:
-				return getOwnedComponentExchanges();
-			case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
-				return getOwnedComponentExchangeCategories();
-			case CsPackage.BLOCK__FUNCTIONAL_ALLOCATIONS:
-				return getFunctionalAllocations();
-			case CsPackage.BLOCK__ALLOCATED_FUNCTIONS:
-				return getAllocatedFunctions();
-			case CsPackage.BLOCK__IN_EXCHANGE_LINKS:
-				return getInExchangeLinks();
-			case CsPackage.BLOCK__OUT_EXCHANGE_LINKS:
-				return getOutExchangeLinks();
-			case CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG:
-				if (resolve) return getOwnedAbstractCapabilityPkg();
-				return basicGetOwnedAbstractCapabilityPkg();
-			case CsPackage.BLOCK__OWNED_INTERFACE_PKG:
-				if (resolve) return getOwnedInterfacePkg();
-				return basicGetOwnedInterfacePkg();
-			case CsPackage.BLOCK__OWNED_DATA_PKG:
-				if (resolve) return getOwnedDataPkg();
-				return basicGetOwnedDataPkg();
-			case CsPackage.BLOCK__OWNED_STATE_MACHINES:
-				return getOwnedStateMachines();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CsPackage.BLOCK__OWNED_FUNCTIONAL_ALLOCATION:
+        return getOwnedFunctionalAllocation();
+      case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGES:
+        return getOwnedComponentExchanges();
+      case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
+        return getOwnedComponentExchangeCategories();
+      case CsPackage.BLOCK__FUNCTIONAL_ALLOCATIONS:
+        return getFunctionalAllocations();
+      case CsPackage.BLOCK__ALLOCATED_FUNCTIONS:
+        return getAllocatedFunctions();
+      case CsPackage.BLOCK__IN_EXCHANGE_LINKS:
+        return getInExchangeLinks();
+      case CsPackage.BLOCK__OUT_EXCHANGE_LINKS:
+        return getOutExchangeLinks();
+      case CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG:
+        if (resolve) return getOwnedAbstractCapabilityPkg();
+        return basicGetOwnedAbstractCapabilityPkg();
+      case CsPackage.BLOCK__OWNED_INTERFACE_PKG:
+        if (resolve) return getOwnedInterfacePkg();
+        return basicGetOwnedInterfacePkg();
+      case CsPackage.BLOCK__OWNED_DATA_PKG:
+        if (resolve) return getOwnedDataPkg();
+        return basicGetOwnedDataPkg();
+      case CsPackage.BLOCK__OWNED_STATE_MACHINES:
+        return getOwnedStateMachines();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CsPackage.BLOCK__OWNED_FUNCTIONAL_ALLOCATION:
-				getOwnedFunctionalAllocation().clear();
-				getOwnedFunctionalAllocation().addAll((Collection<? extends ComponentFunctionalAllocation>)newValue);
-				return;
-			case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGES:
-				getOwnedComponentExchanges().clear();
-				getOwnedComponentExchanges().addAll((Collection<? extends ComponentExchange>)newValue);
-				return;
-			case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
-				getOwnedComponentExchangeCategories().clear();
-				getOwnedComponentExchangeCategories().addAll((Collection<? extends ComponentExchangeCategory>)newValue);
-				return;
-			case CsPackage.BLOCK__IN_EXCHANGE_LINKS:
-				getInExchangeLinks().clear();
-				getInExchangeLinks().addAll((Collection<? extends ExchangeLink>)newValue);
-				return;
-			case CsPackage.BLOCK__OUT_EXCHANGE_LINKS:
-				getOutExchangeLinks().clear();
-				getOutExchangeLinks().addAll((Collection<? extends ExchangeLink>)newValue);
-				return;
-			case CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG:
-					setOwnedAbstractCapabilityPkg((AbstractCapabilityPkg)newValue);
-				return;
-			case CsPackage.BLOCK__OWNED_INTERFACE_PKG:
-					setOwnedInterfacePkg((InterfacePkg)newValue);
-				return;
-			case CsPackage.BLOCK__OWNED_DATA_PKG:
-					setOwnedDataPkg((DataPkg)newValue);
-				return;
-			case CsPackage.BLOCK__OWNED_STATE_MACHINES:
-				getOwnedStateMachines().clear();
-				getOwnedStateMachines().addAll((Collection<? extends StateMachine>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CsPackage.BLOCK__OWNED_FUNCTIONAL_ALLOCATION:
+        getOwnedFunctionalAllocation().clear();
+        getOwnedFunctionalAllocation().addAll((Collection<? extends ComponentFunctionalAllocation>)newValue);
+        return;
+      case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGES:
+        getOwnedComponentExchanges().clear();
+        getOwnedComponentExchanges().addAll((Collection<? extends ComponentExchange>)newValue);
+        return;
+      case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
+        getOwnedComponentExchangeCategories().clear();
+        getOwnedComponentExchangeCategories().addAll((Collection<? extends ComponentExchangeCategory>)newValue);
+        return;
+      case CsPackage.BLOCK__IN_EXCHANGE_LINKS:
+        getInExchangeLinks().clear();
+        getInExchangeLinks().addAll((Collection<? extends ExchangeLink>)newValue);
+        return;
+      case CsPackage.BLOCK__OUT_EXCHANGE_LINKS:
+        getOutExchangeLinks().clear();
+        getOutExchangeLinks().addAll((Collection<? extends ExchangeLink>)newValue);
+        return;
+      case CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG:
+          setOwnedAbstractCapabilityPkg((AbstractCapabilityPkg)newValue);
+        return;
+      case CsPackage.BLOCK__OWNED_INTERFACE_PKG:
+          setOwnedInterfacePkg((InterfacePkg)newValue);
+        return;
+      case CsPackage.BLOCK__OWNED_DATA_PKG:
+          setOwnedDataPkg((DataPkg)newValue);
+        return;
+      case CsPackage.BLOCK__OWNED_STATE_MACHINES:
+        getOwnedStateMachines().clear();
+        getOwnedStateMachines().addAll((Collection<? extends StateMachine>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CsPackage.BLOCK__OWNED_FUNCTIONAL_ALLOCATION:
-				getOwnedFunctionalAllocation().clear();
-				return;
-			case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGES:
-				getOwnedComponentExchanges().clear();
-				return;
-			case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
-				getOwnedComponentExchangeCategories().clear();
-				return;
-			case CsPackage.BLOCK__IN_EXCHANGE_LINKS:
-				getInExchangeLinks().clear();
-				return;
-			case CsPackage.BLOCK__OUT_EXCHANGE_LINKS:
-				getOutExchangeLinks().clear();
-				return;
-			case CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG:
-				setOwnedAbstractCapabilityPkg((AbstractCapabilityPkg)null);
-				return;
-			case CsPackage.BLOCK__OWNED_INTERFACE_PKG:
-				setOwnedInterfacePkg((InterfacePkg)null);
-				return;
-			case CsPackage.BLOCK__OWNED_DATA_PKG:
-				setOwnedDataPkg((DataPkg)null);
-				return;
-			case CsPackage.BLOCK__OWNED_STATE_MACHINES:
-				getOwnedStateMachines().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.BLOCK__OWNED_FUNCTIONAL_ALLOCATION:
+        getOwnedFunctionalAllocation().clear();
+        return;
+      case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGES:
+        getOwnedComponentExchanges().clear();
+        return;
+      case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
+        getOwnedComponentExchangeCategories().clear();
+        return;
+      case CsPackage.BLOCK__IN_EXCHANGE_LINKS:
+        getInExchangeLinks().clear();
+        return;
+      case CsPackage.BLOCK__OUT_EXCHANGE_LINKS:
+        getOutExchangeLinks().clear();
+        return;
+      case CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG:
+        setOwnedAbstractCapabilityPkg((AbstractCapabilityPkg)null);
+        return;
+      case CsPackage.BLOCK__OWNED_INTERFACE_PKG:
+        setOwnedInterfacePkg((InterfacePkg)null);
+        return;
+      case CsPackage.BLOCK__OWNED_DATA_PKG:
+        setOwnedDataPkg((DataPkg)null);
+        return;
+      case CsPackage.BLOCK__OWNED_STATE_MACHINES:
+        getOwnedStateMachines().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CsPackage.BLOCK__OWNED_FUNCTIONAL_ALLOCATION:
-				return ownedFunctionalAllocation != null && !ownedFunctionalAllocation.isEmpty();
-			case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGES:
-				return ownedComponentExchanges != null && !ownedComponentExchanges.isEmpty();
-			case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
-				return ownedComponentExchangeCategories != null && !ownedComponentExchangeCategories.isEmpty();
-			case CsPackage.BLOCK__FUNCTIONAL_ALLOCATIONS:
-				return !getFunctionalAllocations().isEmpty();
-			case CsPackage.BLOCK__ALLOCATED_FUNCTIONS:
-				return !getAllocatedFunctions().isEmpty();
-			case CsPackage.BLOCK__IN_EXCHANGE_LINKS:
-				return inExchangeLinks != null && !inExchangeLinks.isEmpty();
-			case CsPackage.BLOCK__OUT_EXCHANGE_LINKS:
-				return outExchangeLinks != null && !outExchangeLinks.isEmpty();
-			case CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG:
-				return ownedAbstractCapabilityPkg != null;
-			case CsPackage.BLOCK__OWNED_INTERFACE_PKG:
-				return ownedInterfacePkg != null;
-			case CsPackage.BLOCK__OWNED_DATA_PKG:
-				return ownedDataPkg != null;
-			case CsPackage.BLOCK__OWNED_STATE_MACHINES:
-				return ownedStateMachines != null && !ownedStateMachines.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.BLOCK__OWNED_FUNCTIONAL_ALLOCATION:
+        return ownedFunctionalAllocation != null && !ownedFunctionalAllocation.isEmpty();
+      case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGES:
+        return ownedComponentExchanges != null && !ownedComponentExchanges.isEmpty();
+      case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
+        return ownedComponentExchangeCategories != null && !ownedComponentExchangeCategories.isEmpty();
+      case CsPackage.BLOCK__FUNCTIONAL_ALLOCATIONS:
+        return !getFunctionalAllocations().isEmpty();
+      case CsPackage.BLOCK__ALLOCATED_FUNCTIONS:
+        return !getAllocatedFunctions().isEmpty();
+      case CsPackage.BLOCK__IN_EXCHANGE_LINKS:
+        return inExchangeLinks != null && !inExchangeLinks.isEmpty();
+      case CsPackage.BLOCK__OUT_EXCHANGE_LINKS:
+        return outExchangeLinks != null && !outExchangeLinks.isEmpty();
+      case CsPackage.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG:
+        return ownedAbstractCapabilityPkg != null;
+      case CsPackage.BLOCK__OWNED_INTERFACE_PKG:
+        return ownedInterfacePkg != null;
+      case CsPackage.BLOCK__OWNED_DATA_PKG:
+        return ownedDataPkg != null;
+      case CsPackage.BLOCK__OWNED_STATE_MACHINES:
+        return ownedStateMachines != null && !ownedStateMachines.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractFunctionalBlock.class) {
-			switch (derivedFeatureID) {
-				case CsPackage.BLOCK__OWNED_FUNCTIONAL_ALLOCATION: return FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION;
-				case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGES: return FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGES;
-				case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES: return FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES;
-				case CsPackage.BLOCK__FUNCTIONAL_ALLOCATIONS: return FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__FUNCTIONAL_ALLOCATIONS;
-				case CsPackage.BLOCK__ALLOCATED_FUNCTIONS: return FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__ALLOCATED_FUNCTIONS;
-				case CsPackage.BLOCK__IN_EXCHANGE_LINKS: return FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__IN_EXCHANGE_LINKS;
-				case CsPackage.BLOCK__OUT_EXCHANGE_LINKS: return FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__OUT_EXCHANGE_LINKS;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == AbstractFunctionalBlock.class) {
+      switch (derivedFeatureID) {
+        case CsPackage.BLOCK__OWNED_FUNCTIONAL_ALLOCATION: return FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION;
+        case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGES: return FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGES;
+        case CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES: return FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES;
+        case CsPackage.BLOCK__FUNCTIONAL_ALLOCATIONS: return FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__FUNCTIONAL_ALLOCATIONS;
+        case CsPackage.BLOCK__ALLOCATED_FUNCTIONS: return FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__ALLOCATED_FUNCTIONS;
+        case CsPackage.BLOCK__IN_EXCHANGE_LINKS: return FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__IN_EXCHANGE_LINKS;
+        case CsPackage.BLOCK__OUT_EXCHANGE_LINKS: return FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__OUT_EXCHANGE_LINKS;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractFunctionalBlock.class) {
-			switch (baseFeatureID) {
-				case FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION: return CsPackage.BLOCK__OWNED_FUNCTIONAL_ALLOCATION;
-				case FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGES: return CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGES;
-				case FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES: return CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES;
-				case FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__FUNCTIONAL_ALLOCATIONS: return CsPackage.BLOCK__FUNCTIONAL_ALLOCATIONS;
-				case FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__ALLOCATED_FUNCTIONS: return CsPackage.BLOCK__ALLOCATED_FUNCTIONS;
-				case FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__IN_EXCHANGE_LINKS: return CsPackage.BLOCK__IN_EXCHANGE_LINKS;
-				case FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__OUT_EXCHANGE_LINKS: return CsPackage.BLOCK__OUT_EXCHANGE_LINKS;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == AbstractFunctionalBlock.class) {
+      switch (baseFeatureID) {
+        case FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION: return CsPackage.BLOCK__OWNED_FUNCTIONAL_ALLOCATION;
+        case FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGES: return CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGES;
+        case FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES: return CsPackage.BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES;
+        case FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__FUNCTIONAL_ALLOCATIONS: return CsPackage.BLOCK__FUNCTIONAL_ALLOCATIONS;
+        case FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__ALLOCATED_FUNCTIONS: return CsPackage.BLOCK__ALLOCATED_FUNCTIONS;
+        case FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__IN_EXCHANGE_LINKS: return CsPackage.BLOCK__IN_EXCHANGE_LINKS;
+        case FaPackage.ABSTRACT_FUNCTIONAL_BLOCK__OUT_EXCHANGE_LINKS: return CsPackage.BLOCK__OUT_EXCHANGE_LINKS;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 
 } //BlockImpl

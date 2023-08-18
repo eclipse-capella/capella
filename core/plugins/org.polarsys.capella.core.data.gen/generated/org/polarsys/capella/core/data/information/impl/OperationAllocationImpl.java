@@ -50,48 +50,48 @@ public class OperationAllocationImpl extends AllocationImpl implements Operation
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OperationAllocationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.OPERATION_ALLOCATION;
-	}
+    return InformationPackage.Literals.OPERATION_ALLOCATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Operation getAllocatedOperation() {
 
-		Operation allocatedOperation = basicGetAllocatedOperation();
-		return allocatedOperation != null && allocatedOperation.eIsProxy() ? (Operation)eResolveProxy((InternalEObject)allocatedOperation) : allocatedOperation;
-	}
+    Operation allocatedOperation = basicGetAllocatedOperation();
+    return allocatedOperation != null && allocatedOperation.eIsProxy() ? (Operation)eResolveProxy((InternalEObject)allocatedOperation) : allocatedOperation;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Operation basicGetAllocatedOperation() {
 
@@ -118,15 +118,15 @@ public class OperationAllocationImpl extends AllocationImpl implements Operation
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.OPERATION_ALLOCATION__ALLOCATED_OPERATION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.OPERATION_ALLOCATION__ALLOCATED_OPERATION, annotation);
-		
-		try {
-			return (Operation) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Operation) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -134,23 +134,23 @@ public class OperationAllocationImpl extends AllocationImpl implements Operation
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Operation getAllocatingOperation() {
 
-		Operation allocatingOperation = basicGetAllocatingOperation();
-		return allocatingOperation != null && allocatingOperation.eIsProxy() ? (Operation)eResolveProxy((InternalEObject)allocatingOperation) : allocatingOperation;
-	}
+    Operation allocatingOperation = basicGetAllocatingOperation();
+    return allocatingOperation != null && allocatingOperation.eIsProxy() ? (Operation)eResolveProxy((InternalEObject)allocatingOperation) : allocatingOperation;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Operation basicGetAllocatingOperation() {
 
@@ -177,53 +177,53 @@ public class OperationAllocationImpl extends AllocationImpl implements Operation
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.OPERATION_ALLOCATION__ALLOCATING_OPERATION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.OPERATION_ALLOCATION__ALLOCATING_OPERATION, annotation);
-		
-		try {
-			return (Operation) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Operation) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InformationPackage.OPERATION_ALLOCATION__ALLOCATED_OPERATION:
-				if (resolve) return getAllocatedOperation();
-				return basicGetAllocatedOperation();
-			case InformationPackage.OPERATION_ALLOCATION__ALLOCATING_OPERATION:
-				if (resolve) return getAllocatingOperation();
-				return basicGetAllocatingOperation();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InformationPackage.OPERATION_ALLOCATION__ALLOCATED_OPERATION:
+        if (resolve) return getAllocatedOperation();
+        return basicGetAllocatedOperation();
+      case InformationPackage.OPERATION_ALLOCATION__ALLOCATING_OPERATION:
+        if (resolve) return getAllocatingOperation();
+        return basicGetAllocatingOperation();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InformationPackage.OPERATION_ALLOCATION__ALLOCATED_OPERATION:
-				return basicGetAllocatedOperation() != null;
-			case InformationPackage.OPERATION_ALLOCATION__ALLOCATING_OPERATION:
-				return basicGetAllocatingOperation() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.OPERATION_ALLOCATION__ALLOCATED_OPERATION:
+        return basicGetAllocatedOperation() != null;
+      case InformationPackage.OPERATION_ALLOCATION__ALLOCATING_OPERATION:
+        return basicGetAllocatingOperation() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

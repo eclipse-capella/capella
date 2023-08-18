@@ -46,25 +46,25 @@ public interface FunctionPkg extends Structure {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Functional Links</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeLink}.
+   * Returns the value of the '<em><b>Owned Functional Links</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeLink}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Functional Links</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Functional Links</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionPkg_OwnedFunctionalLinks()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedFunctionalLinks'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the (functional) exchange links contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which ExchangeLink stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Functional Links</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionPkg_OwnedFunctionalLinks()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedFunctionalLinks'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the (functional) exchange links contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which ExchangeLink stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<ExchangeLink> getOwnedFunctionalLinks();
 
@@ -75,22 +75,22 @@ public interface FunctionPkg extends Structure {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Exchanges</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalExchangeSpecification}.
+   * Returns the value of the '<em><b>Owned Exchanges</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalExchangeSpecification}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Exchanges</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Exchanges</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionPkg_OwnedExchanges()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchanges specifications contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which FunctionalExchangeSpecification stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Exchanges</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionPkg_OwnedExchanges()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchanges specifications contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which FunctionalExchangeSpecification stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<FunctionalExchangeSpecification> getOwnedExchanges();
 
@@ -101,22 +101,22 @@ public interface FunctionPkg extends Structure {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Exchange Specification Realizations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeSpecificationRealization}.
+   * Returns the value of the '<em><b>Owned Exchange Specification Realizations</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeSpecificationRealization}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Exchange Specification Realizations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Exchange Specification Realizations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionPkg_OwnedExchangeSpecificationRealizations()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange realization links contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which ExchangeSpecificationRealisation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Exchange Specification Realizations</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionPkg_OwnedExchangeSpecificationRealizations()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange realization links contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which ExchangeSpecificationRealisation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<ExchangeSpecificationRealization> getOwnedExchangeSpecificationRealizations();
 
@@ -127,23 +127,23 @@ public interface FunctionPkg extends Structure {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Categories</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeCategory}.
+   * Returns the value of the '<em><b>Owned Categories</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeCategory}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Categories</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Categories</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionPkg_OwnedCategories()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange categories (families) contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which ExchangeCategory stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Categories</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionPkg_OwnedCategories()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange categories (families) contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which ExchangeCategory stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<ExchangeCategory> getOwnedCategories();
 
@@ -154,22 +154,22 @@ public interface FunctionPkg extends Structure {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Function Specifications</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionSpecification}.
+   * Returns the value of the '<em><b>Owned Function Specifications</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionSpecification}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Function Specifications</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Function Specifications</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionPkg_OwnedFunctionSpecifications()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the functions (specifications) included in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which FunctionSpecification stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Function Specifications</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionPkg_OwnedFunctionSpecifications()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the functions (specifications) included in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which FunctionSpecification stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<FunctionSpecification> getOwnedFunctionSpecifications();
 

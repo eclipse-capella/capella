@@ -52,165 +52,165 @@ import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 public class LibraryReferenceItemProvider extends LibraryAbstractElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider,
     ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor libraryPropertyDescriptor;
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor versionPropertyDescriptor;
 
 
 		/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public LibraryReferenceItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process LibrariesPackage.Literals.LIBRARY_REFERENCE__LIBRARY
-			if (libraryPropertyDescriptor != null) {
-				Object libraryValue = eObject.eGet(LibrariesPackage.Literals.LIBRARY_REFERENCE__LIBRARY, true);
-				if (libraryValue != null && libraryValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) libraryValue)) {
-					itemPropertyDescriptors.remove(libraryPropertyDescriptor);
-				} else if (libraryValue == null && ExtensionModelManager.getAnyType(eObject, LibrariesPackage.Literals.LIBRARY_REFERENCE__LIBRARY) != null) {
-					itemPropertyDescriptors.remove(libraryPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(libraryPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(libraryPropertyDescriptor);
-				}
-			}
-			// Process LibrariesPackage.Literals.LIBRARY_REFERENCE__VERSION
-			if (versionPropertyDescriptor != null) {
-				Object versionValue = eObject.eGet(LibrariesPackage.Literals.LIBRARY_REFERENCE__VERSION, true);
-				if (versionValue != null && versionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) versionValue)) {
-					itemPropertyDescriptors.remove(versionPropertyDescriptor);
-				} else if (versionValue == null && ExtensionModelManager.getAnyType(eObject, LibrariesPackage.Literals.LIBRARY_REFERENCE__VERSION) != null) {
-					itemPropertyDescriptors.remove(versionPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(versionPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(versionPropertyDescriptor);
-				}
-			}
-		}		
-	}
+    super.checkChildCreationExtender(object);
+    if (object instanceof EObject) {
+      EObject eObject = (EObject) object;
+      // Process LibrariesPackage.Literals.LIBRARY_REFERENCE__LIBRARY
+      if (libraryPropertyDescriptor != null) {
+        Object libraryValue = eObject.eGet(LibrariesPackage.Literals.LIBRARY_REFERENCE__LIBRARY, true);
+        if (libraryValue != null && libraryValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) libraryValue)) {
+          itemPropertyDescriptors.remove(libraryPropertyDescriptor);
+        } else if (libraryValue == null && ExtensionModelManager.getAnyType(eObject, LibrariesPackage.Literals.LIBRARY_REFERENCE__LIBRARY) != null) {
+          itemPropertyDescriptors.remove(libraryPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(libraryPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(libraryPropertyDescriptor);
+        }
+      }
+      // Process LibrariesPackage.Literals.LIBRARY_REFERENCE__VERSION
+      if (versionPropertyDescriptor != null) {
+        Object versionValue = eObject.eGet(LibrariesPackage.Literals.LIBRARY_REFERENCE__VERSION, true);
+        if (versionValue != null && versionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) versionValue)) {
+          itemPropertyDescriptors.remove(versionPropertyDescriptor);
+        } else if (versionValue == null && ExtensionModelManager.getAnyType(eObject, LibrariesPackage.Literals.LIBRARY_REFERENCE__VERSION) != null) {
+          itemPropertyDescriptors.remove(versionPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(versionPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(versionPropertyDescriptor);
+        }
+      }
+    }		
+  }
 
 
 		/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addLibraryPropertyDescriptor(object);
-			addAccessPolicyPropertyDescriptor(object);
-			addVersionPropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addLibraryPropertyDescriptor(object);
+      addAccessPolicyPropertyDescriptor(object);
+      addVersionPropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
   /**
-	 * This adds a property descriptor for the Access Policy feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Access Policy feature.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected void addAccessPolicyPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_LibraryReference_accessPolicy_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_LibraryReference_accessPolicy_feature", "_UI_LibraryReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 LibrariesPackage.Literals.LIBRARY_REFERENCE__ACCESS_POLICY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_LibraryReference_accessPolicy_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_LibraryReference_accessPolicy_feature", "_UI_LibraryReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         LibrariesPackage.Literals.LIBRARY_REFERENCE__ACCESS_POLICY,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
   /**
-	 * This adds a property descriptor for the Library feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Library feature.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected void addLibraryPropertyDescriptor(Object object) {
-		// begin-extension-code
-		libraryPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_LibraryReference_library_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_LibraryReference_library_feature", "_UI_LibraryReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 LibrariesPackage.Literals.LIBRARY_REFERENCE__LIBRARY,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(libraryPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    libraryPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_LibraryReference_library_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_LibraryReference_library_feature", "_UI_LibraryReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         LibrariesPackage.Literals.LIBRARY_REFERENCE__LIBRARY,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(libraryPropertyDescriptor);
+    // end-extension-code
+  }
 
   /**
-	 * This adds a property descriptor for the Version feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Version feature.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected void addVersionPropertyDescriptor(Object object) {
-		// begin-extension-code
-		versionPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_LibraryReference_version_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_LibraryReference_version_feature", "_UI_LibraryReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 LibrariesPackage.Literals.LIBRARY_REFERENCE__VERSION,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(versionPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    versionPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_LibraryReference_version_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_LibraryReference_version_feature", "_UI_LibraryReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         LibrariesPackage.Literals.LIBRARY_REFERENCE__VERSION,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(versionPropertyDescriptor);
+    // end-extension-code
+  }
 
   /**
    * This returns LibraryReference.gif.
@@ -282,47 +282,47 @@ public class LibraryReferenceItemProvider extends LibraryAbstractElementItemProv
   }
 
   /**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void notifyChanged(Notification notification) {
-		updateChildren(notification);
+    updateChildren(notification);
 
-		switch (notification.getFeatureID(LibraryReference.class)) {
-			case LibrariesPackage.LIBRARY_REFERENCE__ACCESS_POLICY:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
-		super.notifyChanged(notification);
-	}
+    switch (notification.getFeatureID(LibraryReference.class)) {
+      case LibrariesPackage.LIBRARY_REFERENCE__ACCESS_POLICY:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+        return;
+    }
+    super.notifyChanged(notification);
+  }
 
 
 		/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+    super.collectNewChildDescriptors(newChildDescriptors, object);
+  }
 
 
 		/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 
 
 }

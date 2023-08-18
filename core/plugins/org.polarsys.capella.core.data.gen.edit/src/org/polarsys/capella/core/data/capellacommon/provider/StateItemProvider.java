@@ -54,301 +54,301 @@ public class StateItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public StateItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addAvailableAbstractFunctionsPropertyDescriptor(object);
-			addAvailableFunctionalChainsPropertyDescriptor(object);
-			addAvailableAbstractCapabilitiesPropertyDescriptor(object);
-			addEntryPropertyDescriptor(object);
-			addDoActivityPropertyDescriptor(object);
-			addExitPropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addAvailableAbstractFunctionsPropertyDescriptor(object);
+      addAvailableFunctionalChainsPropertyDescriptor(object);
+      addAvailableAbstractCapabilitiesPropertyDescriptor(object);
+      addEntryPropertyDescriptor(object);
+      addDoActivityPropertyDescriptor(object);
+      addExitPropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Available Abstract Functions feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Available Abstract Functions feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addAvailableAbstractFunctionsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_State_availableAbstractFunctions_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_State_availableAbstractFunctions_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacommonPackage.Literals.STATE__AVAILABLE_ABSTRACT_FUNCTIONS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_State_availableAbstractFunctions_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_State_availableAbstractFunctions_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CapellacommonPackage.Literals.STATE__AVAILABLE_ABSTRACT_FUNCTIONS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Available Functional Chains feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Available Functional Chains feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addAvailableFunctionalChainsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_State_availableFunctionalChains_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_State_availableFunctionalChains_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacommonPackage.Literals.STATE__AVAILABLE_FUNCTIONAL_CHAINS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_State_availableFunctionalChains_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_State_availableFunctionalChains_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CapellacommonPackage.Literals.STATE__AVAILABLE_FUNCTIONAL_CHAINS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Available Abstract Capabilities feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Available Abstract Capabilities feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addAvailableAbstractCapabilitiesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_State_availableAbstractCapabilities_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_State_availableAbstractCapabilities_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacommonPackage.Literals.STATE__AVAILABLE_ABSTRACT_CAPABILITIES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_State_availableAbstractCapabilities_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_State_availableAbstractCapabilities_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CapellacommonPackage.Literals.STATE__AVAILABLE_ABSTRACT_CAPABILITIES,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Entry feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Entry feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addEntryPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_State_entry_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_State_entry_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacommonPackage.Literals.STATE__ENTRY,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_State_entry_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_State_entry_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CapellacommonPackage.Literals.STATE__ENTRY,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Do Activity feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Do Activity feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addDoActivityPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_State_doActivity_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_State_doActivity_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacommonPackage.Literals.STATE__DO_ACTIVITY,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_State_doActivity_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_State_doActivity_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CapellacommonPackage.Literals.STATE__DO_ACTIVITY,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Exit feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Exit feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addExitPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_State_exit_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_State_exit_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacommonPackage.Literals.STATE__EXIT,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_State_exit_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_State_exit_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CapellacommonPackage.Literals.STATE__EXIT,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
+   * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+   * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(CapellacommonPackage.Literals.STATE__OWNED_REGIONS);
-			childrenFeatures.add(CapellacommonPackage.Literals.STATE__OWNED_CONNECTION_POINTS);
-			childrenFeatures.add(CapellacommonPackage.Literals.STATE__STATE_INVARIANT);
-		}
-		return childrenFeatures;
-	}
+    if (childrenFeatures == null) {
+      super.getChildrenFeatures(object);
+      childrenFeatures.add(CapellacommonPackage.Literals.STATE__OWNED_REGIONS);
+      childrenFeatures.add(CapellacommonPackage.Literals.STATE__OWNED_CONNECTION_POINTS);
+      childrenFeatures.add(CapellacommonPackage.Literals.STATE__STATE_INVARIANT);
+    }
+    return childrenFeatures;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
+    // Check the type of the specified child object and return the proper feature to use for
+    // adding (see {@link AddCommand}) it as a child.
 
-		return super.getChildFeature(object, child);
-	}
+    return super.getChildFeature(object, child);
+  }
 
 	/**
-	 * This returns State.gif.
-	 * <!-- begin-user-doc -->
+   * This returns State.gif.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/State")); //$NON-NLS-1$
-	}
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/State")); //$NON-NLS-1$
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
-		String label = ((State)object).getName();
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_State_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+    String label = ((State)object).getName();
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_State_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
+    updateChildren(notification);
 
-		switch (notification.getFeatureID(State.class)) {
-			case CapellacommonPackage.STATE__OWNED_REGIONS:
-			case CapellacommonPackage.STATE__OWNED_CONNECTION_POINTS:
-			case CapellacommonPackage.STATE__STATE_INVARIANT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
-		}
-		super.notifyChanged(notification);
-	}
+    switch (notification.getFeatureID(State.class)) {
+      case CapellacommonPackage.STATE__OWNED_REGIONS:
+      case CapellacommonPackage.STATE__OWNED_CONNECTION_POINTS:
+      case CapellacommonPackage.STATE__STATE_INVARIANT:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+        return;
+    }
+    super.notifyChanged(notification);
+  }
 
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
+    super.collectNewChildDescriptors(newChildDescriptors, object);
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -481,41 +481,41 @@ public class StateItemProvider
                 // end-extension-code
 
 
-	}
+  }
 
 
 	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
+    Object childFeature = feature;
+    Object childObject = child;
 
-		boolean qualify =
-			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
-			childFeature == CapellacommonPackage.Literals.STATE__STATE_INVARIANT;
+    boolean qualify =
+      childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
+      childFeature == CapellacommonPackage.Literals.STATE__STATE_INVARIANT;
 
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2", //$NON-NLS-1$
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
-	}
+    if (qualify) {
+      return getString
+        ("_UI_CreateChild_text2", //$NON-NLS-1$
+         new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+    }
+    return super.getCreateChildText(owner, feature, child, selection);
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 	// end-capella-code
 }

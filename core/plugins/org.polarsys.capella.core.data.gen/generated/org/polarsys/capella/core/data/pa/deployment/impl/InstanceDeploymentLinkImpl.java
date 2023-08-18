@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.pa.deployment.InstanceDeploymentLink;
  */
 public class InstanceDeploymentLinkImpl extends AbstractDeploymentLinkImpl implements InstanceDeploymentLink {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected InstanceDeploymentLinkImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return DeploymentPackage.Literals.INSTANCE_DEPLOYMENT_LINK;
-	}
+    return DeploymentPackage.Literals.INSTANCE_DEPLOYMENT_LINK;
+  }
 
 
 

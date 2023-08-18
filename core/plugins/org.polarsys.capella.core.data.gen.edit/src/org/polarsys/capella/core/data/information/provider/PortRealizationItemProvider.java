@@ -52,156 +52,156 @@ public class PortRealizationItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor realizedPortPropertyDescriptor;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor realizingPortPropertyDescriptor;
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public PortRealizationItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process InformationPackage.Literals.PORT_REALIZATION__REALIZED_PORT
-			if (realizedPortPropertyDescriptor != null) {
-				Object realizedPortValue = eObject.eGet(InformationPackage.Literals.PORT_REALIZATION__REALIZED_PORT, true);
-				if (realizedPortValue != null && realizedPortValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizedPortValue)) {
-					itemPropertyDescriptors.remove(realizedPortPropertyDescriptor);
-				} else if (realizedPortValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.PORT_REALIZATION__REALIZED_PORT) != null) {
-					itemPropertyDescriptors.remove(realizedPortPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(realizedPortPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(realizedPortPropertyDescriptor);
-				}
-			}
-			// Process InformationPackage.Literals.PORT_REALIZATION__REALIZING_PORT
-			if (realizingPortPropertyDescriptor != null) {
-				Object realizingPortValue = eObject.eGet(InformationPackage.Literals.PORT_REALIZATION__REALIZING_PORT, true);
-				if (realizingPortValue != null && realizingPortValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizingPortValue)) {
-					itemPropertyDescriptors.remove(realizingPortPropertyDescriptor);
-				} else if (realizingPortValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.PORT_REALIZATION__REALIZING_PORT) != null) {
-					itemPropertyDescriptors.remove(realizingPortPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(realizingPortPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(realizingPortPropertyDescriptor);
-				}
-			}
-		}		
-	}
+    super.checkChildCreationExtender(object);
+    if (object instanceof EObject) {
+      EObject eObject = (EObject) object;
+      // Process InformationPackage.Literals.PORT_REALIZATION__REALIZED_PORT
+      if (realizedPortPropertyDescriptor != null) {
+        Object realizedPortValue = eObject.eGet(InformationPackage.Literals.PORT_REALIZATION__REALIZED_PORT, true);
+        if (realizedPortValue != null && realizedPortValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizedPortValue)) {
+          itemPropertyDescriptors.remove(realizedPortPropertyDescriptor);
+        } else if (realizedPortValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.PORT_REALIZATION__REALIZED_PORT) != null) {
+          itemPropertyDescriptors.remove(realizedPortPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(realizedPortPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(realizedPortPropertyDescriptor);
+        }
+      }
+      // Process InformationPackage.Literals.PORT_REALIZATION__REALIZING_PORT
+      if (realizingPortPropertyDescriptor != null) {
+        Object realizingPortValue = eObject.eGet(InformationPackage.Literals.PORT_REALIZATION__REALIZING_PORT, true);
+        if (realizingPortValue != null && realizingPortValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizingPortValue)) {
+          itemPropertyDescriptors.remove(realizingPortPropertyDescriptor);
+        } else if (realizingPortValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.PORT_REALIZATION__REALIZING_PORT) != null) {
+          itemPropertyDescriptors.remove(realizingPortPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(realizingPortPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(realizingPortPropertyDescriptor);
+        }
+      }
+    }		
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addRealizedPortPropertyDescriptor(object);
-			addRealizingPortPropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addRealizedPortPropertyDescriptor(object);
+      addRealizingPortPropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Realized Port feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Realized Port feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addRealizedPortPropertyDescriptor(Object object) {
-		// begin-extension-code
-		realizedPortPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PortRealization_realizedPort_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_PortRealization_realizedPort_feature", "_UI_PortRealization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InformationPackage.Literals.PORT_REALIZATION__REALIZED_PORT,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(realizedPortPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    realizedPortPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_PortRealization_realizedPort_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_PortRealization_realizedPort_feature", "_UI_PortRealization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         InformationPackage.Literals.PORT_REALIZATION__REALIZED_PORT,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(realizedPortPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Realizing Port feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Realizing Port feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addRealizingPortPropertyDescriptor(Object object) {
-		// begin-extension-code
-		realizingPortPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PortRealization_realizingPort_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_PortRealization_realizingPort_feature", "_UI_PortRealization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InformationPackage.Literals.PORT_REALIZATION__REALIZING_PORT,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(realizingPortPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    realizingPortPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_PortRealization_realizingPort_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_PortRealization_realizingPort_feature", "_UI_PortRealization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         InformationPackage.Literals.PORT_REALIZATION__REALIZING_PORT,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(realizingPortPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This returns PortRealization.gif.
-	 * <!-- begin-user-doc -->
+   * This returns PortRealization.gif.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/PortRealization")); //$NON-NLS-1$
-	}
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/PortRealization")); //$NON-NLS-1$
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
         String label = ""; //$NON-NLS-1$
@@ -209,64 +209,64 @@ public class PortRealizationItemProvider
         EObject target = null;
 
  		target = ((AbstractTrace) object).getTargetElement();
-	
-	 	if (null != target) {
-			if (target instanceof AbstractNamedElement) {
-				targetName = ((AbstractNamedElement) target).getName();
-			}
+  
+   	if (null != target) {
+      if (target instanceof AbstractNamedElement) {
+        targetName = ((AbstractNamedElement) target).getName();
+      }
 
-			if (null == targetName || "" == targetName) { //$NON-NLS-1$
-				targetName = "[" + target.eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
-			}
-	 	}
-	 	label = "[" + getString("_UI_PortRealization_type") + "] to " + targetName; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_PortRealization_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+      if (null == targetName || "" == targetName) { //$NON-NLS-1$
+        targetName = "[" + target.eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
+      }
+   	}
+   	label = "[" + getString("_UI_PortRealization_type") + "] to " + targetName; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_PortRealization_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
-		super.notifyChanged(notification);
-	}
+    updateChildren(notification);
+    super.notifyChanged(notification);
+  }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+    super.collectNewChildDescriptors(newChildDescriptors, object);
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 	// end-capella-code
 }

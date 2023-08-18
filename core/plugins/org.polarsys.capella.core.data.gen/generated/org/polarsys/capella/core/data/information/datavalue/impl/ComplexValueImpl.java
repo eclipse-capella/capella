@@ -40,135 +40,135 @@ import org.polarsys.capella.core.data.information.datavalue.ValuePart;
 public class ComplexValueImpl extends AbstractComplexValueImpl implements ComplexValue {
 
 	/**
-	 * The cached value of the '{@link #getOwnedParts() <em>Owned Parts</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedParts() <em>Owned Parts</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedParts()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedParts()
+   * @generated
+   * @ordered
+   */
 	protected EList<ValuePart> ownedParts;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComplexValueImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return DatavaluePackage.Literals.COMPLEX_VALUE;
-	}
+    return DatavaluePackage.Literals.COMPLEX_VALUE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ValuePart> getOwnedParts() {
 
-		if (ownedParts == null) {
-			ownedParts = new EObjectContainmentEList.Resolving<ValuePart>(ValuePart.class, this, DatavaluePackage.COMPLEX_VALUE__OWNED_PARTS);
-		}
-		return ownedParts;
-	}
+    if (ownedParts == null) {
+      ownedParts = new EObjectContainmentEList.Resolving<ValuePart>(ValuePart.class, this, DatavaluePackage.COMPLEX_VALUE__OWNED_PARTS);
+    }
+    return ownedParts;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case DatavaluePackage.COMPLEX_VALUE__OWNED_PARTS:
-				return ((InternalEList<?>)getOwnedParts()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case DatavaluePackage.COMPLEX_VALUE__OWNED_PARTS:
+        return ((InternalEList<?>)getOwnedParts()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case DatavaluePackage.COMPLEX_VALUE__OWNED_PARTS:
-				return getOwnedParts();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case DatavaluePackage.COMPLEX_VALUE__OWNED_PARTS:
+        return getOwnedParts();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case DatavaluePackage.COMPLEX_VALUE__OWNED_PARTS:
-				getOwnedParts().clear();
-				getOwnedParts().addAll((Collection<? extends ValuePart>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case DatavaluePackage.COMPLEX_VALUE__OWNED_PARTS:
+        getOwnedParts().clear();
+        getOwnedParts().addAll((Collection<? extends ValuePart>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case DatavaluePackage.COMPLEX_VALUE__OWNED_PARTS:
-				getOwnedParts().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case DatavaluePackage.COMPLEX_VALUE__OWNED_PARTS:
+        getOwnedParts().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case DatavaluePackage.COMPLEX_VALUE__OWNED_PARTS:
-				return ownedParts != null && !ownedParts.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case DatavaluePackage.COMPLEX_VALUE__OWNED_PARTS:
+        return ownedParts != null && !ownedParts.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

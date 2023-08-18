@@ -42,13 +42,13 @@ import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
 public class LogicalFunctionPkgImpl extends FunctionPkgImpl implements LogicalFunctionPkg {
 
 	/**
-	 * The cached value of the '{@link #getOwnedLogicalFunctions() <em>Owned Logical Functions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedLogicalFunctions() <em>Owned Logical Functions</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedLogicalFunctions()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedLogicalFunctions()
+   * @generated
+   * @ordered
+   */
 	protected EList<LogicalFunction> ownedLogicalFunctions;
 
 
@@ -56,166 +56,166 @@ public class LogicalFunctionPkgImpl extends FunctionPkgImpl implements LogicalFu
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedLogicalFunctionPkgs() <em>Owned Logical Function Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedLogicalFunctionPkgs() <em>Owned Logical Function Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedLogicalFunctionPkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedLogicalFunctionPkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<LogicalFunctionPkg> ownedLogicalFunctionPkgs;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected LogicalFunctionPkgImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return LaPackage.Literals.LOGICAL_FUNCTION_PKG;
-	}
+    return LaPackage.Literals.LOGICAL_FUNCTION_PKG;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LogicalFunction> getOwnedLogicalFunctions() {
 
-		if (ownedLogicalFunctions == null) {
-			ownedLogicalFunctions = new EObjectContainmentEList.Resolving<LogicalFunction>(LogicalFunction.class, this, LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTIONS);
-		}
-		return ownedLogicalFunctions;
-	}
+    if (ownedLogicalFunctions == null) {
+      ownedLogicalFunctions = new EObjectContainmentEList.Resolving<LogicalFunction>(LogicalFunction.class, this, LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTIONS);
+    }
+    return ownedLogicalFunctions;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LogicalFunctionPkg> getOwnedLogicalFunctionPkgs() {
 
-		if (ownedLogicalFunctionPkgs == null) {
-			ownedLogicalFunctionPkgs = new EObjectContainmentEList.Resolving<LogicalFunctionPkg>(LogicalFunctionPkg.class, this, LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTION_PKGS);
-		}
-		return ownedLogicalFunctionPkgs;
-	}
+    if (ownedLogicalFunctionPkgs == null) {
+      ownedLogicalFunctionPkgs = new EObjectContainmentEList.Resolving<LogicalFunctionPkg>(LogicalFunctionPkg.class, this, LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTION_PKGS);
+    }
+    return ownedLogicalFunctionPkgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTIONS:
-				return ((InternalEList<?>)getOwnedLogicalFunctions()).basicRemove(otherEnd, msgs);
-			case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTION_PKGS:
-				return ((InternalEList<?>)getOwnedLogicalFunctionPkgs()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTIONS:
+        return ((InternalEList<?>)getOwnedLogicalFunctions()).basicRemove(otherEnd, msgs);
+      case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTION_PKGS:
+        return ((InternalEList<?>)getOwnedLogicalFunctionPkgs()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTIONS:
-				return getOwnedLogicalFunctions();
-			case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTION_PKGS:
-				return getOwnedLogicalFunctionPkgs();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTIONS:
+        return getOwnedLogicalFunctions();
+      case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTION_PKGS:
+        return getOwnedLogicalFunctionPkgs();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTIONS:
-				getOwnedLogicalFunctions().clear();
-				getOwnedLogicalFunctions().addAll((Collection<? extends LogicalFunction>)newValue);
-				return;
-			case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTION_PKGS:
-				getOwnedLogicalFunctionPkgs().clear();
-				getOwnedLogicalFunctionPkgs().addAll((Collection<? extends LogicalFunctionPkg>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTIONS:
+        getOwnedLogicalFunctions().clear();
+        getOwnedLogicalFunctions().addAll((Collection<? extends LogicalFunction>)newValue);
+        return;
+      case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTION_PKGS:
+        getOwnedLogicalFunctionPkgs().clear();
+        getOwnedLogicalFunctionPkgs().addAll((Collection<? extends LogicalFunctionPkg>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTIONS:
-				getOwnedLogicalFunctions().clear();
-				return;
-			case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTION_PKGS:
-				getOwnedLogicalFunctionPkgs().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTIONS:
+        getOwnedLogicalFunctions().clear();
+        return;
+      case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTION_PKGS:
+        getOwnedLogicalFunctionPkgs().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTIONS:
-				return ownedLogicalFunctions != null && !ownedLogicalFunctions.isEmpty();
-			case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTION_PKGS:
-				return ownedLogicalFunctionPkgs != null && !ownedLogicalFunctionPkgs.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTIONS:
+        return ownedLogicalFunctions != null && !ownedLogicalFunctions.isEmpty();
+      case LaPackage.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTION_PKGS:
+        return ownedLogicalFunctionPkgs != null && !ownedLogicalFunctionPkgs.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

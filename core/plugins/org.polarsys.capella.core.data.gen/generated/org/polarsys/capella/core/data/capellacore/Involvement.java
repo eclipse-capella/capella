@@ -39,22 +39,22 @@ public interface Involvement extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Involver</b></em>' reference.
+   * Returns the value of the '<em><b>Involver</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Involver</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Involver</em>' reference.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getInvolvement_Involver()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='involvedInvolvements'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the element that involves\r\n[Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='none' constraints='Multiplicity must be [0..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Involver</em>' reference.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getInvolvement_Involver()
+   * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='involvedInvolvements'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the element that involves\r\n[Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='none' constraints='Multiplicity must be [0..1]'"
+   * @generated
+   */
 
 	InvolverElement getInvolver();
 
@@ -62,22 +62,22 @@ public interface Involvement extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Involved</b></em>' reference.
+   * Returns the value of the '<em><b>Involved</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Involved</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Involved</em>' reference.
-	 * @see #setInvolved(InvolvedElement)
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getInvolvement_Involved()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the element that is involved\r\n[Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [0..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Involved</em>' reference.
+   * @see #setInvolved(InvolvedElement)
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getInvolvement_Involved()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the element that is involved\r\n[Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [0..1]'"
+   * @generated
+   */
 
 	InvolvedElement getInvolved();
 
@@ -85,14 +85,14 @@ public interface Involvement extends Relationship {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.Involvement#getInvolved <em>Involved</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.Involvement#getInvolved <em>Involved</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Involved</em>' reference.
-	 * @see #getInvolved()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Involved</em>' reference.
+   * @see #getInvolved()
+   * @generated
+   */
 
 	void setInvolved(InvolvedElement value);
 

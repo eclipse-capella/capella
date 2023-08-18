@@ -54,424 +54,424 @@ public class SystemComponentItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public SystemComponentItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addInvolvingInvolvementsPropertyDescriptor(object);
-			addDataComponentPropertyDescriptor(object);
-			addDataTypePropertyDescriptor(object);
-			addInvolvingCapabilitiesPropertyDescriptor(object);
-			addCapabilityInvolvementsPropertyDescriptor(object);
-			addInvolvingMissionsPropertyDescriptor(object);
-			addMissionInvolvementsPropertyDescriptor(object);
-			addRealizedEntitiesPropertyDescriptor(object);
-			addRealizingLogicalComponentsPropertyDescriptor(object);
-			addAllocatedSystemFunctionsPropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addInvolvingInvolvementsPropertyDescriptor(object);
+      addDataComponentPropertyDescriptor(object);
+      addDataTypePropertyDescriptor(object);
+      addInvolvingCapabilitiesPropertyDescriptor(object);
+      addCapabilityInvolvementsPropertyDescriptor(object);
+      addInvolvingMissionsPropertyDescriptor(object);
+      addMissionInvolvementsPropertyDescriptor(object);
+      addRealizedEntitiesPropertyDescriptor(object);
+      addRealizingLogicalComponentsPropertyDescriptor(object);
+      addAllocatedSystemFunctionsPropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Involving Involvements feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Involving Involvements feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addInvolvingInvolvementsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InvolvedElement_involvingInvolvements_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_InvolvedElement_involvingInvolvements_feature", "_UI_InvolvedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_InvolvedElement_involvingInvolvements_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_InvolvedElement_involvingInvolvements_feature", "_UI_InvolvedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Data Component feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Data Component feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addDataComponentPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SystemComponent_dataComponent_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_dataComponent_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CtxPackage.Literals.SYSTEM_COMPONENT__DATA_COMPONENT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_SystemComponent_dataComponent_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_dataComponent_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CtxPackage.Literals.SYSTEM_COMPONENT__DATA_COMPONENT,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Data Type feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Data Type feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addDataTypePropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SystemComponent_dataType_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_dataType_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CtxPackage.Literals.SYSTEM_COMPONENT__DATA_TYPE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_SystemComponent_dataType_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_dataType_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CtxPackage.Literals.SYSTEM_COMPONENT__DATA_TYPE,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Involving Capabilities feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Involving Capabilities feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addInvolvingCapabilitiesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SystemComponent_involvingCapabilities_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_involvingCapabilities_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CtxPackage.Literals.SYSTEM_COMPONENT__INVOLVING_CAPABILITIES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_SystemComponent_involvingCapabilities_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_involvingCapabilities_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CtxPackage.Literals.SYSTEM_COMPONENT__INVOLVING_CAPABILITIES,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Capability Involvements feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Capability Involvements feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addCapabilityInvolvementsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SystemComponent_capabilityInvolvements_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_capabilityInvolvements_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CtxPackage.Literals.SYSTEM_COMPONENT__CAPABILITY_INVOLVEMENTS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_SystemComponent_capabilityInvolvements_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_capabilityInvolvements_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CtxPackage.Literals.SYSTEM_COMPONENT__CAPABILITY_INVOLVEMENTS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Involving Missions feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Involving Missions feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addInvolvingMissionsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SystemComponent_involvingMissions_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_involvingMissions_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CtxPackage.Literals.SYSTEM_COMPONENT__INVOLVING_MISSIONS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_SystemComponent_involvingMissions_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_involvingMissions_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CtxPackage.Literals.SYSTEM_COMPONENT__INVOLVING_MISSIONS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Mission Involvements feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Mission Involvements feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addMissionInvolvementsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SystemComponent_missionInvolvements_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_missionInvolvements_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CtxPackage.Literals.SYSTEM_COMPONENT__MISSION_INVOLVEMENTS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_SystemComponent_missionInvolvements_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_missionInvolvements_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CtxPackage.Literals.SYSTEM_COMPONENT__MISSION_INVOLVEMENTS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Realized Entities feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Realized Entities feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addRealizedEntitiesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SystemComponent_realizedEntities_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_realizedEntities_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CtxPackage.Literals.SYSTEM_COMPONENT__REALIZED_ENTITIES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_SystemComponent_realizedEntities_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_realizedEntities_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CtxPackage.Literals.SYSTEM_COMPONENT__REALIZED_ENTITIES,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Realizing Logical Components feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Realizing Logical Components feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addRealizingLogicalComponentsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SystemComponent_realizingLogicalComponents_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_realizingLogicalComponents_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CtxPackage.Literals.SYSTEM_COMPONENT__REALIZING_LOGICAL_COMPONENTS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_SystemComponent_realizingLogicalComponents_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_realizingLogicalComponents_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CtxPackage.Literals.SYSTEM_COMPONENT__REALIZING_LOGICAL_COMPONENTS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Allocated System Functions feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Allocated System Functions feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addAllocatedSystemFunctionsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SystemComponent_allocatedSystemFunctions_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_allocatedSystemFunctions_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CtxPackage.Literals.SYSTEM_COMPONENT__ALLOCATED_SYSTEM_FUNCTIONS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_SystemComponent_allocatedSystemFunctions_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_allocatedSystemFunctions_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CtxPackage.Literals.SYSTEM_COMPONENT__ALLOCATED_SYSTEM_FUNCTIONS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
+   * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+   * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(CtxPackage.Literals.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENTS);
-			childrenFeatures.add(CtxPackage.Literals.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS);
-		}
-		return childrenFeatures;
-	}
+    if (childrenFeatures == null) {
+      super.getChildrenFeatures(object);
+      childrenFeatures.add(CtxPackage.Literals.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENTS);
+      childrenFeatures.add(CtxPackage.Literals.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS);
+    }
+    return childrenFeatures;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
+    // Check the type of the specified child object and return the proper feature to use for
+    // adding (see {@link AddCommand}) it as a child.
 
-		return super.getChildFeature(object, child);
-	}
+    return super.getChildFeature(object, child);
+  }
 
 	/**
-	 * This returns SystemComponent.gif.
-	 * <!-- begin-user-doc -->
+   * This returns SystemComponent.gif.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SystemComponent")); //$NON-NLS-1$
-	}
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/SystemComponent")); //$NON-NLS-1$
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
-		String label = ((SystemComponent)object).getName();
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_SystemComponent_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+    String label = ((SystemComponent)object).getName();
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_SystemComponent_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
+    updateChildren(notification);
 
-		switch (notification.getFeatureID(SystemComponent.class)) {
-			case CtxPackage.SYSTEM_COMPONENT__DATA_COMPONENT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case CtxPackage.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENTS:
-			case CtxPackage.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
-		}
-		super.notifyChanged(notification);
-	}
+    switch (notification.getFeatureID(SystemComponent.class)) {
+      case CtxPackage.SYSTEM_COMPONENT__DATA_COMPONENT:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+        return;
+      case CtxPackage.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENTS:
+      case CtxPackage.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+        return;
+    }
+    super.notifyChanged(notification);
+  }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+    super.collectNewChildDescriptors(newChildDescriptors, object);
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 	// end-capella-code
 }

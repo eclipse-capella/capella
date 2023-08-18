@@ -41,25 +41,25 @@ public interface ReuseLink extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Reused</b></em>' reference.
+   * Returns the value of the '<em><b>Reused</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Reused</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Reused</em>' reference.
-	 * @see #setReused(ReuseableStructure)
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getReuseLink_Reused()
-	 * @model resolveProxies="false" required="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='supplier' featureOwner='Dependency'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='sharedPkg'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the structure that is reused\r\n[Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [1..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Reused</em>' reference.
+   * @see #setReused(ReuseableStructure)
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getReuseLink_Reused()
+   * @model resolveProxies="false" required="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='supplier' featureOwner='Dependency'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='sharedPkg'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the structure that is reused\r\n[Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [1..1]'"
+   * @generated
+   */
 
 	ReuseableStructure getReused();
 
@@ -67,14 +67,14 @@ public interface ReuseLink extends Relationship {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.ReuseLink#getReused <em>Reused</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.ReuseLink#getReused <em>Reused</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Reused</em>' reference.
-	 * @see #getReused()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Reused</em>' reference.
+   * @see #getReused()
+   * @generated
+   */
 
 	void setReused(ReuseableStructure value);
 
@@ -85,25 +85,25 @@ public interface ReuseLink extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Reuser</b></em>' reference.
+   * Returns the value of the '<em><b>Reuser</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Reuser</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Reuser</em>' reference.
-	 * @see #setReuser(ReuserStructure)
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getReuseLink_Reuser()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='client' featureOwner='Dependency'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='systemEngineering'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation constraints='none' description='Link to the structure that reuses\r\n[Capella study]' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='none' constraints='Multiplicity must be [1..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Reuser</em>' reference.
+   * @see #setReuser(ReuserStructure)
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getReuseLink_Reuser()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='client' featureOwner='Dependency'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='systemEngineering'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation constraints='none' description='Link to the structure that reuses\r\n[Capella study]' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='none' constraints='Multiplicity must be [1..1]'"
+   * @generated
+   */
 
 	ReuserStructure getReuser();
 
@@ -111,14 +111,14 @@ public interface ReuseLink extends Relationship {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.ReuseLink#getReuser <em>Reuser</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.ReuseLink#getReuser <em>Reuser</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Reuser</em>' reference.
-	 * @see #getReuser()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Reuser</em>' reference.
+   * @see #getReuser()
+   * @generated
+   */
 
 	void setReuser(ReuserStructure value);
 

@@ -44,20 +44,20 @@ public interface SequenceMessageValuation extends CapellaElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Exchange Item Element</b></em>' reference.
+   * Returns the value of the '<em><b>Exchange Item Element</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Exchange Item Element</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exchange Item Element</em>' reference.
-	 * @see #setExchangeItemElement(ExchangeItemElement)
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getSequenceMessageValuation_ExchangeItemElement()
-	 * @model annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Exchange Item Element</em>' reference.
+   * @see #setExchangeItemElement(ExchangeItemElement)
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getSequenceMessageValuation_ExchangeItemElement()
+   * @model annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	ExchangeItemElement getExchangeItemElement();
 
@@ -65,14 +65,14 @@ public interface SequenceMessageValuation extends CapellaElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.SequenceMessageValuation#getExchangeItemElement <em>Exchange Item Element</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.SequenceMessageValuation#getExchangeItemElement <em>Exchange Item Element</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Exchange Item Element</em>' reference.
-	 * @see #getExchangeItemElement()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Exchange Item Element</em>' reference.
+   * @see #getExchangeItemElement()
+   * @generated
+   */
 
 	void setExchangeItemElement(ExchangeItemElement value);
 
@@ -83,20 +83,20 @@ public interface SequenceMessageValuation extends CapellaElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' reference.
+   * Returns the value of the '<em><b>Value</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' reference.
-	 * @see #setValue(ValueSpecification)
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getSequenceMessageValuation_Value()
-	 * @model annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Value</em>' reference.
+   * @see #setValue(ValueSpecification)
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getSequenceMessageValuation_Value()
+   * @model annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	ValueSpecification getValue();
 
@@ -104,14 +104,14 @@ public interface SequenceMessageValuation extends CapellaElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.SequenceMessageValuation#getValue <em>Value</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.SequenceMessageValuation#getValue <em>Value</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' reference.
-	 * @see #getValue()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Value</em>' reference.
+   * @see #getValue()
+   * @generated
+   */
 
 	void setValue(ValueSpecification value);
 

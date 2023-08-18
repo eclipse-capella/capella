@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  */
 public class CancelTimerEventImpl extends EventImpl implements CancelTimerEvent {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CancelTimerEventImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.CANCEL_TIMER_EVENT;
-	}
+    return InteractionPackage.Literals.CANCEL_TIMER_EVENT;
+  }
 
 
 

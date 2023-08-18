@@ -77,61 +77,61 @@ public abstract class ExecutableNodeImpl extends AbstractNamedElementImpl implem
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedHandlers() <em>Owned Handlers</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedHandlers() <em>Owned Handlers</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedHandlers()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedHandlers()
+   * @generated
+   * @ordered
+   */
 	protected EList<ExceptionHandler> ownedHandlers;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ExecutableNodeImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return ActivityPackage.Literals.EXECUTABLE_NODE;
-	}
+    return ActivityPackage.Literals.EXECUTABLE_NODE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ActivityPartition getInActivityPartition() {
 
-		ActivityPartition inActivityPartition = basicGetInActivityPartition();
-		return inActivityPartition != null && inActivityPartition.eIsProxy() ? (ActivityPartition)eResolveProxy((InternalEObject)inActivityPartition) : inActivityPartition;
-	}
+    ActivityPartition inActivityPartition = basicGetInActivityPartition();
+    return inActivityPartition != null && inActivityPartition.eIsProxy() ? (ActivityPartition)eResolveProxy((InternalEObject)inActivityPartition) : inActivityPartition;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ActivityPartition basicGetInActivityPartition() {
 
@@ -158,15 +158,15 @@ public abstract class ExecutableNodeImpl extends AbstractNamedElementImpl implem
     // A helper is found, let's use it. 
     EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION, annotation);
-		
-		try {
-			return (ActivityPartition) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (ActivityPartition) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -174,23 +174,23 @@ public abstract class ExecutableNodeImpl extends AbstractNamedElementImpl implem
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InterruptibleActivityRegion getInInterruptibleRegion() {
 
-		InterruptibleActivityRegion inInterruptibleRegion = basicGetInInterruptibleRegion();
-		return inInterruptibleRegion != null && inInterruptibleRegion.eIsProxy() ? (InterruptibleActivityRegion)eResolveProxy((InternalEObject)inInterruptibleRegion) : inInterruptibleRegion;
-	}
+    InterruptibleActivityRegion inInterruptibleRegion = basicGetInInterruptibleRegion();
+    return inInterruptibleRegion != null && inInterruptibleRegion.eIsProxy() ? (InterruptibleActivityRegion)eResolveProxy((InternalEObject)inInterruptibleRegion) : inInterruptibleRegion;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InterruptibleActivityRegion basicGetInInterruptibleRegion() {
 
@@ -217,15 +217,15 @@ public abstract class ExecutableNodeImpl extends AbstractNamedElementImpl implem
     // A helper is found, let's use it. 
     EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION, annotation);
-		
-		try {
-			return (InterruptibleActivityRegion) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (InterruptibleActivityRegion) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -233,23 +233,23 @@ public abstract class ExecutableNodeImpl extends AbstractNamedElementImpl implem
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InterruptibleActivityRegion getInStructuredNode() {
 
-		InterruptibleActivityRegion inStructuredNode = basicGetInStructuredNode();
-		return inStructuredNode != null && inStructuredNode.eIsProxy() ? (InterruptibleActivityRegion)eResolveProxy((InternalEObject)inStructuredNode) : inStructuredNode;
-	}
+    InterruptibleActivityRegion inStructuredNode = basicGetInStructuredNode();
+    return inStructuredNode != null && inStructuredNode.eIsProxy() ? (InterruptibleActivityRegion)eResolveProxy((InternalEObject)inStructuredNode) : inStructuredNode;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InterruptibleActivityRegion basicGetInStructuredNode() {
 
@@ -276,15 +276,15 @@ public abstract class ExecutableNodeImpl extends AbstractNamedElementImpl implem
     // A helper is found, let's use it. 
     EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE, annotation);
-		
-		try {
-			return (InterruptibleActivityRegion) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (InterruptibleActivityRegion) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -292,10 +292,10 @@ public abstract class ExecutableNodeImpl extends AbstractNamedElementImpl implem
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ActivityEdge> getOutgoing() {
 
@@ -322,27 +322,27 @@ public abstract class ExecutableNodeImpl extends AbstractNamedElementImpl implem
     // A helper is found, let's use it. 
     EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__OUTGOING.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ACTIVITY_NODE__OUTGOING, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ActivityEdge> resultAsList = (Collection<ActivityEdge>) result;
-		return new EcoreEList.UnmodifiableEList<ActivityEdge>(this, ActivityPackage.Literals.ACTIVITY_NODE__OUTGOING, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<ActivityEdge> resultAsList = (Collection<ActivityEdge>) result;
+    return new EcoreEList.UnmodifiableEList<ActivityEdge>(this, ActivityPackage.Literals.ACTIVITY_NODE__OUTGOING, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ActivityEdge> getIncoming() {
 
@@ -369,152 +369,152 @@ public abstract class ExecutableNodeImpl extends AbstractNamedElementImpl implem
     // A helper is found, let's use it. 
     EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__INCOMING.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ACTIVITY_NODE__INCOMING, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ActivityEdge> resultAsList = (Collection<ActivityEdge>) result;
-		return new EcoreEList.UnmodifiableEList<ActivityEdge>(this, ActivityPackage.Literals.ACTIVITY_NODE__INCOMING, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<ActivityEdge> resultAsList = (Collection<ActivityEdge>) result;
+    return new EcoreEList.UnmodifiableEList<ActivityEdge>(this, ActivityPackage.Literals.ACTIVITY_NODE__INCOMING, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ExceptionHandler> getOwnedHandlers() {
 
-		if (ownedHandlers == null) {
-			ownedHandlers = new EObjectContainmentWithInverseEList.Resolving<ExceptionHandler>(ExceptionHandler.class, this, ActivityPackage.EXECUTABLE_NODE__OWNED_HANDLERS, ActivityPackage.EXCEPTION_HANDLER__PROTECTED_NODE);
-		}
-		return ownedHandlers;
-	}
+    if (ownedHandlers == null) {
+      ownedHandlers = new EObjectContainmentWithInverseEList.Resolving<ExceptionHandler>(ExceptionHandler.class, this, ActivityPackage.EXECUTABLE_NODE__OWNED_HANDLERS, ActivityPackage.EXCEPTION_HANDLER__PROTECTED_NODE);
+    }
+    return ownedHandlers;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ActivityPackage.EXECUTABLE_NODE__OWNED_HANDLERS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOwnedHandlers()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case ActivityPackage.EXECUTABLE_NODE__OWNED_HANDLERS:
+        return ((InternalEList<InternalEObject>)(InternalEList<?>)getOwnedHandlers()).basicAdd(otherEnd, msgs);
+    }
+    return super.eInverseAdd(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ActivityPackage.EXECUTABLE_NODE__OWNED_HANDLERS:
-				return ((InternalEList<?>)getOwnedHandlers()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case ActivityPackage.EXECUTABLE_NODE__OWNED_HANDLERS:
+        return ((InternalEList<?>)getOwnedHandlers()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ActivityPackage.EXECUTABLE_NODE__IN_ACTIVITY_PARTITION:
-				if (resolve) return getInActivityPartition();
-				return basicGetInActivityPartition();
-			case ActivityPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION:
-				if (resolve) return getInInterruptibleRegion();
-				return basicGetInInterruptibleRegion();
-			case ActivityPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE:
-				if (resolve) return getInStructuredNode();
-				return basicGetInStructuredNode();
-			case ActivityPackage.EXECUTABLE_NODE__OUTGOING:
-				return getOutgoing();
-			case ActivityPackage.EXECUTABLE_NODE__INCOMING:
-				return getIncoming();
-			case ActivityPackage.EXECUTABLE_NODE__OWNED_HANDLERS:
-				return getOwnedHandlers();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case ActivityPackage.EXECUTABLE_NODE__IN_ACTIVITY_PARTITION:
+        if (resolve) return getInActivityPartition();
+        return basicGetInActivityPartition();
+      case ActivityPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION:
+        if (resolve) return getInInterruptibleRegion();
+        return basicGetInInterruptibleRegion();
+      case ActivityPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE:
+        if (resolve) return getInStructuredNode();
+        return basicGetInStructuredNode();
+      case ActivityPackage.EXECUTABLE_NODE__OUTGOING:
+        return getOutgoing();
+      case ActivityPackage.EXECUTABLE_NODE__INCOMING:
+        return getIncoming();
+      case ActivityPackage.EXECUTABLE_NODE__OWNED_HANDLERS:
+        return getOwnedHandlers();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ActivityPackage.EXECUTABLE_NODE__OWNED_HANDLERS:
-				getOwnedHandlers().clear();
-				getOwnedHandlers().addAll((Collection<? extends ExceptionHandler>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case ActivityPackage.EXECUTABLE_NODE__OWNED_HANDLERS:
+        getOwnedHandlers().clear();
+        getOwnedHandlers().addAll((Collection<? extends ExceptionHandler>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.EXECUTABLE_NODE__OWNED_HANDLERS:
-				getOwnedHandlers().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.EXECUTABLE_NODE__OWNED_HANDLERS:
+        getOwnedHandlers().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.EXECUTABLE_NODE__IN_ACTIVITY_PARTITION:
-				return basicGetInActivityPartition() != null;
-			case ActivityPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION:
-				return basicGetInInterruptibleRegion() != null;
-			case ActivityPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE:
-				return basicGetInStructuredNode() != null;
-			case ActivityPackage.EXECUTABLE_NODE__OUTGOING:
-				return !getOutgoing().isEmpty();
-			case ActivityPackage.EXECUTABLE_NODE__INCOMING:
-				return !getIncoming().isEmpty();
-			case ActivityPackage.EXECUTABLE_NODE__OWNED_HANDLERS:
-				return ownedHandlers != null && !ownedHandlers.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.EXECUTABLE_NODE__IN_ACTIVITY_PARTITION:
+        return basicGetInActivityPartition() != null;
+      case ActivityPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION:
+        return basicGetInInterruptibleRegion() != null;
+      case ActivityPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE:
+        return basicGetInStructuredNode() != null;
+      case ActivityPackage.EXECUTABLE_NODE__OUTGOING:
+        return !getOutgoing().isEmpty();
+      case ActivityPackage.EXECUTABLE_NODE__INCOMING:
+        return !getIncoming().isEmpty();
+      case ActivityPackage.EXECUTABLE_NODE__OWNED_HANDLERS:
+        return ownedHandlers != null && !ownedHandlers.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

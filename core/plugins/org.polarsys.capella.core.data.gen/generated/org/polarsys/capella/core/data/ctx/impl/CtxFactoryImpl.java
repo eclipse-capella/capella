@@ -45,292 +45,292 @@ import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
  */
 public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static CtxFactory init() {
-		try {
-			CtxFactory theCtxFactory = (CtxFactory)EPackage.Registry.INSTANCE.getEFactory(CtxPackage.eNS_URI);
-			if (theCtxFactory != null) {
-				return theCtxFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new CtxFactoryImpl();
-	}
+    try {
+      CtxFactory theCtxFactory = (CtxFactory)EPackage.Registry.INSTANCE.getEFactory(CtxPackage.eNS_URI);
+      if (theCtxFactory != null) {
+        return theCtxFactory;
+      }
+    }
+    catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new CtxFactoryImpl();
+  }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CtxFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case CtxPackage.SYSTEM_ANALYSIS: return createSystemAnalysis();
-			case CtxPackage.SYSTEM_FUNCTION: return createSystemFunction();
-			case CtxPackage.SYSTEM_FUNCTION_PKG: return createSystemFunctionPkg();
-			case CtxPackage.SYSTEM_COMMUNICATION_HOOK: return createSystemCommunicationHook();
-			case CtxPackage.SYSTEM_COMMUNICATION: return createSystemCommunication();
-			case CtxPackage.CAPABILITY_INVOLVEMENT: return createCapabilityInvolvement();
-			case CtxPackage.MISSION_INVOLVEMENT: return createMissionInvolvement();
-			case CtxPackage.MISSION: return createMission();
-			case CtxPackage.MISSION_PKG: return createMissionPkg();
-			case CtxPackage.CAPABILITY: return createCapability();
-			case CtxPackage.CAPABILITY_EXPLOITATION: return createCapabilityExploitation();
-			case CtxPackage.CAPABILITY_PKG: return createCapabilityPkg();
-			case CtxPackage.OPERATIONAL_ANALYSIS_REALIZATION: return createOperationalAnalysisRealization();
-			case CtxPackage.SYSTEM_COMPONENT_PKG: return createSystemComponentPkg();
-			case CtxPackage.SYSTEM_COMPONENT: return createSystemComponent();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eClass.getClassifierID()) {
+      case CtxPackage.SYSTEM_ANALYSIS: return createSystemAnalysis();
+      case CtxPackage.SYSTEM_FUNCTION: return createSystemFunction();
+      case CtxPackage.SYSTEM_FUNCTION_PKG: return createSystemFunctionPkg();
+      case CtxPackage.SYSTEM_COMMUNICATION_HOOK: return createSystemCommunicationHook();
+      case CtxPackage.SYSTEM_COMMUNICATION: return createSystemCommunication();
+      case CtxPackage.CAPABILITY_INVOLVEMENT: return createCapabilityInvolvement();
+      case CtxPackage.MISSION_INVOLVEMENT: return createMissionInvolvement();
+      case CtxPackage.MISSION: return createMission();
+      case CtxPackage.MISSION_PKG: return createMissionPkg();
+      case CtxPackage.CAPABILITY: return createCapability();
+      case CtxPackage.CAPABILITY_EXPLOITATION: return createCapabilityExploitation();
+      case CtxPackage.CAPABILITY_PKG: return createCapabilityPkg();
+      case CtxPackage.OPERATIONAL_ANALYSIS_REALIZATION: return createOperationalAnalysisRealization();
+      case CtxPackage.SYSTEM_COMPONENT_PKG: return createSystemComponentPkg();
+      case CtxPackage.SYSTEM_COMPONENT: return createSystemComponent();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public SystemAnalysis createSystemAnalysis() {
-		SystemAnalysisImpl systemAnalysis = new SystemAnalysisImpl();
+    SystemAnalysisImpl systemAnalysis = new SystemAnalysisImpl();
     //begin-capella-code
     systemAnalysis.setId(IdGenerator.createId());
     //end-capella-code
-		return systemAnalysis;
-	}
+    return systemAnalysis;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public SystemFunction createSystemFunction() {
-		SystemFunctionImpl systemFunction = new SystemFunctionImpl();
+    SystemFunctionImpl systemFunction = new SystemFunctionImpl();
     //begin-capella-code
     systemFunction.setId(IdGenerator.createId());
     //end-capella-code
-		return systemFunction;
-	}
+    return systemFunction;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public SystemFunctionPkg createSystemFunctionPkg() {
-		SystemFunctionPkgImpl systemFunctionPkg = new SystemFunctionPkgImpl();
+    SystemFunctionPkgImpl systemFunctionPkg = new SystemFunctionPkgImpl();
     //begin-capella-code
     systemFunctionPkg.setId(IdGenerator.createId());
     //end-capella-code
-		return systemFunctionPkg;
-	}
+    return systemFunctionPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public SystemCommunicationHook createSystemCommunicationHook() {
-		SystemCommunicationHookImpl systemCommunicationHook = new SystemCommunicationHookImpl();
+    SystemCommunicationHookImpl systemCommunicationHook = new SystemCommunicationHookImpl();
     //begin-capella-code
     systemCommunicationHook.setId(IdGenerator.createId());
     //end-capella-code
-		return systemCommunicationHook;
-	}
+    return systemCommunicationHook;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public SystemCommunication createSystemCommunication() {
-		SystemCommunicationImpl systemCommunication = new SystemCommunicationImpl();
+    SystemCommunicationImpl systemCommunication = new SystemCommunicationImpl();
     //begin-capella-code
     systemCommunication.setId(IdGenerator.createId());
     //end-capella-code
-		return systemCommunication;
-	}
+    return systemCommunication;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public CapabilityInvolvement createCapabilityInvolvement() {
-		CapabilityInvolvementImpl capabilityInvolvement = new CapabilityInvolvementImpl();
+    CapabilityInvolvementImpl capabilityInvolvement = new CapabilityInvolvementImpl();
     //begin-capella-code
     capabilityInvolvement.setId(IdGenerator.createId());
     //end-capella-code
-		return capabilityInvolvement;
-	}
+    return capabilityInvolvement;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public MissionInvolvement createMissionInvolvement() {
-		MissionInvolvementImpl missionInvolvement = new MissionInvolvementImpl();
+    MissionInvolvementImpl missionInvolvement = new MissionInvolvementImpl();
     //begin-capella-code
     missionInvolvement.setId(IdGenerator.createId());
     //end-capella-code
-		return missionInvolvement;
-	}
+    return missionInvolvement;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Mission createMission() {
-		MissionImpl mission = new MissionImpl();
+    MissionImpl mission = new MissionImpl();
     //begin-capella-code
     mission.setId(IdGenerator.createId());
     //end-capella-code
-		return mission;
-	}
+    return mission;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public MissionPkg createMissionPkg() {
-		MissionPkgImpl missionPkg = new MissionPkgImpl();
+    MissionPkgImpl missionPkg = new MissionPkgImpl();
     //begin-capella-code
     missionPkg.setId(IdGenerator.createId());
     //end-capella-code
-		return missionPkg;
-	}
+    return missionPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Capability createCapability() {
-		CapabilityImpl capability = new CapabilityImpl();
+    CapabilityImpl capability = new CapabilityImpl();
     //begin-capella-code
     capability.setId(IdGenerator.createId());
     //end-capella-code
-		return capability;
-	}
+    return capability;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public CapabilityExploitation createCapabilityExploitation() {
-		CapabilityExploitationImpl capabilityExploitation = new CapabilityExploitationImpl();
+    CapabilityExploitationImpl capabilityExploitation = new CapabilityExploitationImpl();
     //begin-capella-code
     capabilityExploitation.setId(IdGenerator.createId());
     //end-capella-code
-		return capabilityExploitation;
-	}
+    return capabilityExploitation;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public CapabilityPkg createCapabilityPkg() {
-		CapabilityPkgImpl capabilityPkg = new CapabilityPkgImpl();
+    CapabilityPkgImpl capabilityPkg = new CapabilityPkgImpl();
     //begin-capella-code
     capabilityPkg.setId(IdGenerator.createId());
     //end-capella-code
-		return capabilityPkg;
-	}
+    return capabilityPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public OperationalAnalysisRealization createOperationalAnalysisRealization() {
-		OperationalAnalysisRealizationImpl operationalAnalysisRealization = new OperationalAnalysisRealizationImpl();
+    OperationalAnalysisRealizationImpl operationalAnalysisRealization = new OperationalAnalysisRealizationImpl();
     //begin-capella-code
     operationalAnalysisRealization.setId(IdGenerator.createId());
     //end-capella-code
-		return operationalAnalysisRealization;
-	}
+    return operationalAnalysisRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public SystemComponentPkg createSystemComponentPkg() {
-		SystemComponentPkgImpl systemComponentPkg = new SystemComponentPkgImpl();
+    SystemComponentPkgImpl systemComponentPkg = new SystemComponentPkgImpl();
     //begin-capella-code
     systemComponentPkg.setId(IdGenerator.createId());
     //end-capella-code
-		return systemComponentPkg;
-	}
+    return systemComponentPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public SystemComponent createSystemComponent() {
-		SystemComponentImpl systemComponent = new SystemComponentImpl();
+    SystemComponentImpl systemComponent = new SystemComponentImpl();
     //begin-capella-code
     systemComponent.setId(IdGenerator.createId());
     //end-capella-code
-		return systemComponent;
-	}
+    return systemComponent;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public CtxPackage getCtxPackage() {
-		return (CtxPackage)getEPackage();
-	}
+    return (CtxPackage)getEPackage();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
 	@Deprecated
 	public static CtxPackage getPackage() {
-		return CtxPackage.eINSTANCE;
-	}
+    return CtxPackage.eINSTANCE;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -340,10 +340,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public SystemAnalysis createSystemAnalysis(String name_p) {
-		SystemAnalysis systemAnalysis = createSystemAnalysis();
-		systemAnalysis.setName(name_p);	  
-		return systemAnalysis;
-	}
+    SystemAnalysis systemAnalysis = createSystemAnalysis();
+    systemAnalysis.setName(name_p);	  
+    return systemAnalysis;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -353,10 +353,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public SystemFunction createSystemFunction(String name_p) {
-		SystemFunction systemFunction = createSystemFunction();
-		systemFunction.setName(name_p);	  
-		return systemFunction;
-	}
+    SystemFunction systemFunction = createSystemFunction();
+    systemFunction.setName(name_p);	  
+    return systemFunction;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -366,10 +366,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public SystemFunctionPkg createSystemFunctionPkg(String name_p) {
-		SystemFunctionPkg systemFunctionPkg = createSystemFunctionPkg();
-		systemFunctionPkg.setName(name_p);	  
-		return systemFunctionPkg;
-	}
+    SystemFunctionPkg systemFunctionPkg = createSystemFunctionPkg();
+    systemFunctionPkg.setName(name_p);	  
+    return systemFunctionPkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -379,10 +379,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public SystemCommunicationHook createSystemCommunicationHook(String name_p) {
-		SystemCommunicationHook systemCommunicationHook = createSystemCommunicationHook();
-		systemCommunicationHook.setName(name_p);	  
-		return systemCommunicationHook;
-	}
+    SystemCommunicationHook systemCommunicationHook = createSystemCommunicationHook();
+    systemCommunicationHook.setName(name_p);	  
+    return systemCommunicationHook;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -392,10 +392,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public Mission createMission(String name_p) {
-		Mission mission = createMission();
-		mission.setName(name_p);	  
-		return mission;
-	}
+    Mission mission = createMission();
+    mission.setName(name_p);	  
+    return mission;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -405,10 +405,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public MissionPkg createMissionPkg(String name_p) {
-		MissionPkg missionPkg = createMissionPkg();
-		missionPkg.setName(name_p);	  
-		return missionPkg;
-	}
+    MissionPkg missionPkg = createMissionPkg();
+    missionPkg.setName(name_p);	  
+    return missionPkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -418,10 +418,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public Capability createCapability(String name_p) {
-		Capability capability = createCapability();
-		capability.setName(name_p);	  
-		return capability;
-	}
+    Capability capability = createCapability();
+    capability.setName(name_p);	  
+    return capability;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -431,10 +431,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public CapabilityPkg createCapabilityPkg(String name_p) {
-		CapabilityPkg capabilityPkg = createCapabilityPkg();
-		capabilityPkg.setName(name_p);	  
-		return capabilityPkg;
-	}
+    CapabilityPkg capabilityPkg = createCapabilityPkg();
+    capabilityPkg.setName(name_p);	  
+    return capabilityPkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -444,10 +444,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public SystemComponentPkg createSystemComponentPkg(String name_p) {
-		SystemComponentPkg systemComponentPkg = createSystemComponentPkg();
-		systemComponentPkg.setName(name_p);	  
-		return systemComponentPkg;
-	}
+    SystemComponentPkg systemComponentPkg = createSystemComponentPkg();
+    systemComponentPkg.setName(name_p);	  
+    return systemComponentPkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -457,10 +457,10 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @generated
 	 */
 	public SystemComponent createSystemComponent(String name_p) {
-		SystemComponent systemComponent = createSystemComponent();
-		systemComponent.setName(name_p);	  
-		return systemComponent;
-	}
+    SystemComponent systemComponent = createSystemComponent();
+    systemComponent.setName(name_p);	  
+    return systemComponent;
+  }
 
 	//begin-capella-code
 

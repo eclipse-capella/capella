@@ -58,623 +58,623 @@ public class FunctionInputPortItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor inActivityPartitionPropertyDescriptor;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor inInterruptibleRegionPropertyDescriptor;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor inStructuredNodePropertyDescriptor;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor selectionPropertyDescriptor;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor inputEvaluationActionPropertyDescriptor;
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public FunctionInputPortItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION
-			if (inActivityPartitionPropertyDescriptor != null) {
-				Object inActivityPartitionValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION, true);
-				if (inActivityPartitionValue != null && inActivityPartitionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inActivityPartitionValue)) {
-					itemPropertyDescriptors.remove(inActivityPartitionPropertyDescriptor);
-				} else if (inActivityPartitionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION) != null) {
-					itemPropertyDescriptors.remove(inActivityPartitionPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(inActivityPartitionPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(inActivityPartitionPropertyDescriptor);
-				}
-			}
-			// Process ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION
-			if (inInterruptibleRegionPropertyDescriptor != null) {
-				Object inInterruptibleRegionValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION, true);
-				if (inInterruptibleRegionValue != null && inInterruptibleRegionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inInterruptibleRegionValue)) {
-					itemPropertyDescriptors.remove(inInterruptibleRegionPropertyDescriptor);
-				} else if (inInterruptibleRegionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION) != null) {
-					itemPropertyDescriptors.remove(inInterruptibleRegionPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(inInterruptibleRegionPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(inInterruptibleRegionPropertyDescriptor);
-				}
-			}
-			// Process ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE
-			if (inStructuredNodePropertyDescriptor != null) {
-				Object inStructuredNodeValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE, true);
-				if (inStructuredNodeValue != null && inStructuredNodeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inStructuredNodeValue)) {
-					itemPropertyDescriptors.remove(inStructuredNodePropertyDescriptor);
-				} else if (inStructuredNodeValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE) != null) {
-					itemPropertyDescriptors.remove(inStructuredNodePropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(inStructuredNodePropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(inStructuredNodePropertyDescriptor);
-				}
-			}
-			// Process ActivityPackage.Literals.OBJECT_NODE__SELECTION
-			if (selectionPropertyDescriptor != null) {
-				Object selectionValue = eObject.eGet(ActivityPackage.Literals.OBJECT_NODE__SELECTION, true);
-				if (selectionValue != null && selectionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) selectionValue)) {
-					itemPropertyDescriptors.remove(selectionPropertyDescriptor);
-				} else if (selectionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.OBJECT_NODE__SELECTION) != null) {
-					itemPropertyDescriptors.remove(selectionPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(selectionPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(selectionPropertyDescriptor);
-				}
-			}
-			// Process ActivityPackage.Literals.INPUT_PIN__INPUT_EVALUATION_ACTION
-			if (inputEvaluationActionPropertyDescriptor != null) {
-				Object inputEvaluationActionValue = eObject.eGet(ActivityPackage.Literals.INPUT_PIN__INPUT_EVALUATION_ACTION, true);
-				if (inputEvaluationActionValue != null && inputEvaluationActionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inputEvaluationActionValue)) {
-					itemPropertyDescriptors.remove(inputEvaluationActionPropertyDescriptor);
-				} else if (inputEvaluationActionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.INPUT_PIN__INPUT_EVALUATION_ACTION) != null) {
-					itemPropertyDescriptors.remove(inputEvaluationActionPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(inputEvaluationActionPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(inputEvaluationActionPropertyDescriptor);
-				}
-			}
-		}		
-	}
+    super.checkChildCreationExtender(object);
+    if (object instanceof EObject) {
+      EObject eObject = (EObject) object;
+      // Process ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION
+      if (inActivityPartitionPropertyDescriptor != null) {
+        Object inActivityPartitionValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION, true);
+        if (inActivityPartitionValue != null && inActivityPartitionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inActivityPartitionValue)) {
+          itemPropertyDescriptors.remove(inActivityPartitionPropertyDescriptor);
+        } else if (inActivityPartitionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION) != null) {
+          itemPropertyDescriptors.remove(inActivityPartitionPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(inActivityPartitionPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(inActivityPartitionPropertyDescriptor);
+        }
+      }
+      // Process ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION
+      if (inInterruptibleRegionPropertyDescriptor != null) {
+        Object inInterruptibleRegionValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION, true);
+        if (inInterruptibleRegionValue != null && inInterruptibleRegionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inInterruptibleRegionValue)) {
+          itemPropertyDescriptors.remove(inInterruptibleRegionPropertyDescriptor);
+        } else if (inInterruptibleRegionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION) != null) {
+          itemPropertyDescriptors.remove(inInterruptibleRegionPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(inInterruptibleRegionPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(inInterruptibleRegionPropertyDescriptor);
+        }
+      }
+      // Process ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE
+      if (inStructuredNodePropertyDescriptor != null) {
+        Object inStructuredNodeValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE, true);
+        if (inStructuredNodeValue != null && inStructuredNodeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inStructuredNodeValue)) {
+          itemPropertyDescriptors.remove(inStructuredNodePropertyDescriptor);
+        } else if (inStructuredNodeValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE) != null) {
+          itemPropertyDescriptors.remove(inStructuredNodePropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(inStructuredNodePropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(inStructuredNodePropertyDescriptor);
+        }
+      }
+      // Process ActivityPackage.Literals.OBJECT_NODE__SELECTION
+      if (selectionPropertyDescriptor != null) {
+        Object selectionValue = eObject.eGet(ActivityPackage.Literals.OBJECT_NODE__SELECTION, true);
+        if (selectionValue != null && selectionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) selectionValue)) {
+          itemPropertyDescriptors.remove(selectionPropertyDescriptor);
+        } else if (selectionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.OBJECT_NODE__SELECTION) != null) {
+          itemPropertyDescriptors.remove(selectionPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(selectionPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(selectionPropertyDescriptor);
+        }
+      }
+      // Process ActivityPackage.Literals.INPUT_PIN__INPUT_EVALUATION_ACTION
+      if (inputEvaluationActionPropertyDescriptor != null) {
+        Object inputEvaluationActionValue = eObject.eGet(ActivityPackage.Literals.INPUT_PIN__INPUT_EVALUATION_ACTION, true);
+        if (inputEvaluationActionValue != null && inputEvaluationActionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inputEvaluationActionValue)) {
+          itemPropertyDescriptors.remove(inputEvaluationActionPropertyDescriptor);
+        } else if (inputEvaluationActionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.INPUT_PIN__INPUT_EVALUATION_ACTION) != null) {
+          itemPropertyDescriptors.remove(inputEvaluationActionPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(inputEvaluationActionPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(inputEvaluationActionPropertyDescriptor);
+        }
+      }
+    }		
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addInActivityPartitionPropertyDescriptor(object);
-			addInInterruptibleRegionPropertyDescriptor(object);
-			addInStructuredNodePropertyDescriptor(object);
-			addOutgoingPropertyDescriptor(object);
-			addIncomingPropertyDescriptor(object);
-			addIsControlTypePropertyDescriptor(object);
-			addKindOfNodePropertyDescriptor(object);
-			addOrderingPropertyDescriptor(object);
-			addInStatePropertyDescriptor(object);
-			addSelectionPropertyDescriptor(object);
-			addIsControlPropertyDescriptor(object);
-			addInputEvaluationActionPropertyDescriptor(object);
-			addIncomingExchangeItemsPropertyDescriptor(object);
-			addIncomingFunctionalExchangesPropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addInActivityPartitionPropertyDescriptor(object);
+      addInInterruptibleRegionPropertyDescriptor(object);
+      addInStructuredNodePropertyDescriptor(object);
+      addOutgoingPropertyDescriptor(object);
+      addIncomingPropertyDescriptor(object);
+      addIsControlTypePropertyDescriptor(object);
+      addKindOfNodePropertyDescriptor(object);
+      addOrderingPropertyDescriptor(object);
+      addInStatePropertyDescriptor(object);
+      addSelectionPropertyDescriptor(object);
+      addIsControlPropertyDescriptor(object);
+      addInputEvaluationActionPropertyDescriptor(object);
+      addIncomingExchangeItemsPropertyDescriptor(object);
+      addIncomingFunctionalExchangesPropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the In Activity Partition feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the In Activity Partition feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addInActivityPartitionPropertyDescriptor(Object object) {
-		// begin-extension-code
-		inActivityPartitionPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ActivityNode_inActivityPartition_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityNode_inActivityPartition_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(inActivityPartitionPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    inActivityPartitionPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ActivityNode_inActivityPartition_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ActivityNode_inActivityPartition_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(inActivityPartitionPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the In Interruptible Region feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the In Interruptible Region feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addInInterruptibleRegionPropertyDescriptor(Object object) {
-		// begin-extension-code
-		inInterruptibleRegionPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ActivityNode_inInterruptibleRegion_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityNode_inInterruptibleRegion_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(inInterruptibleRegionPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    inInterruptibleRegionPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ActivityNode_inInterruptibleRegion_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ActivityNode_inInterruptibleRegion_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(inInterruptibleRegionPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the In Structured Node feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the In Structured Node feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addInStructuredNodePropertyDescriptor(Object object) {
-		// begin-extension-code
-		inStructuredNodePropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ActivityNode_inStructuredNode_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityNode_inStructuredNode_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(inStructuredNodePropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    inStructuredNodePropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ActivityNode_inStructuredNode_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ActivityNode_inStructuredNode_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(inStructuredNodePropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Outgoing feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Outgoing feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addOutgoingPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ActivityNode_outgoing_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityNode_outgoing_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ActivityPackage.Literals.ACTIVITY_NODE__OUTGOING,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ActivityNode_outgoing_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ActivityNode_outgoing_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ActivityPackage.Literals.ACTIVITY_NODE__OUTGOING,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Incoming feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Incoming feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addIncomingPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ActivityNode_incoming_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityNode_incoming_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ActivityPackage.Literals.ACTIVITY_NODE__INCOMING,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ActivityNode_incoming_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ActivityNode_incoming_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ActivityPackage.Literals.ACTIVITY_NODE__INCOMING,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Is Control Type feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Is Control Type feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addIsControlTypePropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ObjectNode_isControlType_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ObjectNode_isControlType_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ActivityPackage.Literals.OBJECT_NODE__IS_CONTROL_TYPE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ObjectNode_isControlType_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ObjectNode_isControlType_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ActivityPackage.Literals.OBJECT_NODE__IS_CONTROL_TYPE,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Kind Of Node feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Kind Of Node feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addKindOfNodePropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ObjectNode_kindOfNode_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ObjectNode_kindOfNode_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ActivityPackage.Literals.OBJECT_NODE__KIND_OF_NODE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ObjectNode_kindOfNode_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ObjectNode_kindOfNode_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ActivityPackage.Literals.OBJECT_NODE__KIND_OF_NODE,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Ordering feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Ordering feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addOrderingPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ObjectNode_ordering_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ObjectNode_ordering_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ActivityPackage.Literals.OBJECT_NODE__ORDERING,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ObjectNode_ordering_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ObjectNode_ordering_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ActivityPackage.Literals.OBJECT_NODE__ORDERING,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the In State feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the In State feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addInStatePropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ObjectNode_inState_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ObjectNode_inState_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ActivityPackage.Literals.OBJECT_NODE__IN_STATE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ObjectNode_inState_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ObjectNode_inState_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ActivityPackage.Literals.OBJECT_NODE__IN_STATE,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Selection feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Selection feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addSelectionPropertyDescriptor(Object object) {
-		// begin-extension-code
-		selectionPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ObjectNode_selection_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ObjectNode_selection_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ActivityPackage.Literals.OBJECT_NODE__SELECTION,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(selectionPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    selectionPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ObjectNode_selection_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ObjectNode_selection_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ActivityPackage.Literals.OBJECT_NODE__SELECTION,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(selectionPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Is Control feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Is Control feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addIsControlPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Pin_isControl_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Pin_isControl_feature", "_UI_Pin_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ActivityPackage.Literals.PIN__IS_CONTROL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Pin_isControl_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_Pin_isControl_feature", "_UI_Pin_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ActivityPackage.Literals.PIN__IS_CONTROL,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Input Evaluation Action feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Input Evaluation Action feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addInputEvaluationActionPropertyDescriptor(Object object) {
-		// begin-extension-code
-		inputEvaluationActionPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InputPin_inputEvaluationAction_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_InputPin_inputEvaluationAction_feature", "_UI_InputPin_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ActivityPackage.Literals.INPUT_PIN__INPUT_EVALUATION_ACTION,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(inputEvaluationActionPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    inputEvaluationActionPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_InputPin_inputEvaluationAction_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_InputPin_inputEvaluationAction_feature", "_UI_InputPin_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         ActivityPackage.Literals.INPUT_PIN__INPUT_EVALUATION_ACTION,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(inputEvaluationActionPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Incoming Exchange Items feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Incoming Exchange Items feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addIncomingExchangeItemsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FunctionInputPort_incomingExchangeItems_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionInputPort_incomingExchangeItems_feature", "_UI_FunctionInputPort_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.FUNCTION_INPUT_PORT__INCOMING_EXCHANGE_ITEMS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_FunctionInputPort_incomingExchangeItems_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_FunctionInputPort_incomingExchangeItems_feature", "_UI_FunctionInputPort_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.FUNCTION_INPUT_PORT__INCOMING_EXCHANGE_ITEMS,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Incoming Functional Exchanges feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Incoming Functional Exchanges feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addIncomingFunctionalExchangesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FunctionInputPort_incomingFunctionalExchanges_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionInputPort_incomingFunctionalExchanges_feature", "_UI_FunctionInputPort_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.FUNCTION_INPUT_PORT__INCOMING_FUNCTIONAL_EXCHANGES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_FunctionInputPort_incomingFunctionalExchanges_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_FunctionInputPort_incomingFunctionalExchanges_feature", "_UI_FunctionInputPort_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.FUNCTION_INPUT_PORT__INCOMING_FUNCTIONAL_EXCHANGES,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
+   * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+   * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND);
-		}
-		return childrenFeatures;
-	}
+    if (childrenFeatures == null) {
+      super.getChildrenFeatures(object);
+      childrenFeatures.add(ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND);
+    }
+    return childrenFeatures;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
+    // Check the type of the specified child object and return the proper feature to use for
+    // adding (see {@link AddCommand}) it as a child.
 
-		return super.getChildFeature(object, child);
-	}
+    return super.getChildFeature(object, child);
+  }
 
 	/**
-	 * This returns FunctionInputPort.gif.
-	 * <!-- begin-user-doc -->
+   * This returns FunctionInputPort.gif.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/FunctionInputPort")); //$NON-NLS-1$
-	}
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/FunctionInputPort")); //$NON-NLS-1$
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
-		String label = ((FunctionInputPort)object).getName();
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_FunctionInputPort_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+    String label = ((FunctionInputPort)object).getName();
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_FunctionInputPort_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
+    updateChildren(notification);
 
-		switch (notification.getFeatureID(FunctionInputPort.class)) {
-			case FaPackage.FUNCTION_INPUT_PORT__IS_CONTROL_TYPE:
-			case FaPackage.FUNCTION_INPUT_PORT__KIND_OF_NODE:
-			case FaPackage.FUNCTION_INPUT_PORT__ORDERING:
-			case FaPackage.FUNCTION_INPUT_PORT__IS_CONTROL:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case FaPackage.FUNCTION_INPUT_PORT__UPPER_BOUND:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
-		}
-		super.notifyChanged(notification);
-	}
+    switch (notification.getFeatureID(FunctionInputPort.class)) {
+      case FaPackage.FUNCTION_INPUT_PORT__IS_CONTROL_TYPE:
+      case FaPackage.FUNCTION_INPUT_PORT__KIND_OF_NODE:
+      case FaPackage.FUNCTION_INPUT_PORT__ORDERING:
+      case FaPackage.FUNCTION_INPUT_PORT__IS_CONTROL:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+        return;
+      case FaPackage.FUNCTION_INPUT_PORT__UPPER_BOUND:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+        return;
+    }
+    super.notifyChanged(notification);
+  }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
+    super.collectNewChildDescriptors(newChildDescriptors, object);
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -855,17 +855,17 @@ public class FunctionInputPortItemProvider
                 // end-extension-code
 
 
-	}
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 	// end-capella-code
 }

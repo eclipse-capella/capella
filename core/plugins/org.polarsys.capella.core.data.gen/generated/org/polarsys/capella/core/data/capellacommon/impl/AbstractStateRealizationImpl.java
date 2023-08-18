@@ -50,48 +50,48 @@ public class AbstractStateRealizationImpl extends AllocationImpl implements Abst
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractStateRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION;
-	}
+    return CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractState getRealizedAbstractState() {
 
-		AbstractState realizedAbstractState = basicGetRealizedAbstractState();
-		return realizedAbstractState != null && realizedAbstractState.eIsProxy() ? (AbstractState)eResolveProxy((InternalEObject)realizedAbstractState) : realizedAbstractState;
-	}
+    AbstractState realizedAbstractState = basicGetRealizedAbstractState();
+    return realizedAbstractState != null && realizedAbstractState.eIsProxy() ? (AbstractState)eResolveProxy((InternalEObject)realizedAbstractState) : realizedAbstractState;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractState basicGetRealizedAbstractState() {
 
@@ -118,15 +118,15 @@ public class AbstractStateRealizationImpl extends AllocationImpl implements Abst
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION__REALIZED_ABSTRACT_STATE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION__REALIZED_ABSTRACT_STATE, annotation);
-		
-		try {
-			return (AbstractState) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (AbstractState) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -134,23 +134,23 @@ public class AbstractStateRealizationImpl extends AllocationImpl implements Abst
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractState getRealizingAbstractState() {
 
-		AbstractState realizingAbstractState = basicGetRealizingAbstractState();
-		return realizingAbstractState != null && realizingAbstractState.eIsProxy() ? (AbstractState)eResolveProxy((InternalEObject)realizingAbstractState) : realizingAbstractState;
-	}
+    AbstractState realizingAbstractState = basicGetRealizingAbstractState();
+    return realizingAbstractState != null && realizingAbstractState.eIsProxy() ? (AbstractState)eResolveProxy((InternalEObject)realizingAbstractState) : realizingAbstractState;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractState basicGetRealizingAbstractState() {
 
@@ -177,53 +177,53 @@ public class AbstractStateRealizationImpl extends AllocationImpl implements Abst
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION__REALIZING_ABSTRACT_STATE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION__REALIZING_ABSTRACT_STATE, annotation);
-		
-		try {
-			return (AbstractState) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (AbstractState) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CapellacommonPackage.ABSTRACT_STATE_REALIZATION__REALIZED_ABSTRACT_STATE:
-				if (resolve) return getRealizedAbstractState();
-				return basicGetRealizedAbstractState();
-			case CapellacommonPackage.ABSTRACT_STATE_REALIZATION__REALIZING_ABSTRACT_STATE:
-				if (resolve) return getRealizingAbstractState();
-				return basicGetRealizingAbstractState();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.ABSTRACT_STATE_REALIZATION__REALIZED_ABSTRACT_STATE:
+        if (resolve) return getRealizedAbstractState();
+        return basicGetRealizedAbstractState();
+      case CapellacommonPackage.ABSTRACT_STATE_REALIZATION__REALIZING_ABSTRACT_STATE:
+        if (resolve) return getRealizingAbstractState();
+        return basicGetRealizingAbstractState();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CapellacommonPackage.ABSTRACT_STATE_REALIZATION__REALIZED_ABSTRACT_STATE:
-				return basicGetRealizedAbstractState() != null;
-			case CapellacommonPackage.ABSTRACT_STATE_REALIZATION__REALIZING_ABSTRACT_STATE:
-				return basicGetRealizingAbstractState() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.ABSTRACT_STATE_REALIZATION__REALIZED_ABSTRACT_STATE:
+        return basicGetRealizedAbstractState() != null;
+      case CapellacommonPackage.ABSTRACT_STATE_REALIZATION__REALIZING_ABSTRACT_STATE:
+        return basicGetRealizingAbstractState() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

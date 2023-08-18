@@ -63,13 +63,13 @@ import org.polarsys.capella.core.data.oa.Swimlane;
 public class OperationalActivityImpl extends AbstractFunctionImpl implements OperationalActivity {
 
 	/**
-	 * The cached value of the '{@link #getOwnedOperationalActivityPkgs() <em>Owned Operational Activity Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedOperationalActivityPkgs() <em>Owned Operational Activity Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedOperationalActivityPkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedOperationalActivityPkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<OperationalActivityPkg> ownedOperationalActivityPkgs;
 
 
@@ -108,53 +108,53 @@ public class OperationalActivityImpl extends AbstractFunctionImpl implements Ope
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OperationalActivityImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OaPackage.Literals.OPERATIONAL_ACTIVITY;
-	}
+    return OaPackage.Literals.OPERATIONAL_ACTIVITY;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<OperationalActivityPkg> getOwnedOperationalActivityPkgs() {
 
-		if (ownedOperationalActivityPkgs == null) {
-			ownedOperationalActivityPkgs = new EObjectContainmentEList.Resolving<OperationalActivityPkg>(OperationalActivityPkg.class, this, OaPackage.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS);
-		}
-		return ownedOperationalActivityPkgs;
-	}
+    if (ownedOperationalActivityPkgs == null) {
+      ownedOperationalActivityPkgs = new EObjectContainmentEList.Resolving<OperationalActivityPkg>(OperationalActivityPkg.class, this, OaPackage.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS);
+    }
+    return ownedOperationalActivityPkgs;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ActivityAllocation> getActivityAllocations() {
 
@@ -181,27 +181,27 @@ public class OperationalActivityImpl extends AbstractFunctionImpl implements Ope
     // A helper is found, let's use it. 
     EAnnotation annotation = OaPackage.Literals.OPERATIONAL_ACTIVITY__ACTIVITY_ALLOCATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__ACTIVITY_ALLOCATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ActivityAllocation> resultAsList = (Collection<ActivityAllocation>) result;
-		return new EcoreEList.UnmodifiableEList<ActivityAllocation>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__ACTIVITY_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<ActivityAllocation> resultAsList = (Collection<ActivityAllocation>) result;
+    return new EcoreEList.UnmodifiableEList<ActivityAllocation>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__ACTIVITY_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Swimlane> getOwnedSwimlanes() {
 
@@ -228,27 +228,27 @@ public class OperationalActivityImpl extends AbstractFunctionImpl implements Ope
     // A helper is found, let's use it. 
     EAnnotation annotation = OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_SWIMLANES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_SWIMLANES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Swimlane> resultAsList = (Collection<Swimlane>) result;
-		return new EcoreEList.UnmodifiableEList<Swimlane>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_SWIMLANES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Swimlane> resultAsList = (Collection<Swimlane>) result;
+    return new EcoreEList.UnmodifiableEList<Swimlane>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_SWIMLANES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<OperationalProcess> getOwnedProcess() {
 
@@ -275,27 +275,27 @@ public class OperationalActivityImpl extends AbstractFunctionImpl implements Ope
     // A helper is found, let's use it. 
     EAnnotation annotation = OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_PROCESS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_PROCESS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<OperationalProcess> resultAsList = (Collection<OperationalProcess>) result;
-		return new EcoreEList.UnmodifiableEList<OperationalProcess>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_PROCESS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<OperationalProcess> resultAsList = (Collection<OperationalProcess>) result;
+    return new EcoreEList.UnmodifiableEList<OperationalProcess>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_PROCESS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Entity> getAllocatorEntities() {
 
@@ -322,27 +322,27 @@ public class OperationalActivityImpl extends AbstractFunctionImpl implements Ope
     // A helper is found, let's use it. 
     EAnnotation annotation = OaPackage.Literals.OPERATIONAL_ACTIVITY__ALLOCATOR_ENTITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__ALLOCATOR_ENTITIES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Entity> resultAsList = (Collection<Entity>) result;
-		return new EcoreEList.UnmodifiableEList<Entity>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__ALLOCATOR_ENTITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Entity> resultAsList = (Collection<Entity>) result;
+    return new EcoreEList.UnmodifiableEList<Entity>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__ALLOCATOR_ENTITIES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<SystemFunction> getRealizingSystemFunctions() {
 
@@ -369,27 +369,27 @@ public class OperationalActivityImpl extends AbstractFunctionImpl implements Ope
     // A helper is found, let's use it. 
     EAnnotation annotation = OaPackage.Literals.OPERATIONAL_ACTIVITY__REALIZING_SYSTEM_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__REALIZING_SYSTEM_FUNCTIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<SystemFunction> resultAsList = (Collection<SystemFunction>) result;
-		return new EcoreEList.UnmodifiableEList<SystemFunction>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__REALIZING_SYSTEM_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<SystemFunction> resultAsList = (Collection<SystemFunction>) result;
+    return new EcoreEList.UnmodifiableEList<SystemFunction>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__REALIZING_SYSTEM_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Role> getAllocatingRoles() {
 
@@ -416,27 +416,27 @@ public class OperationalActivityImpl extends AbstractFunctionImpl implements Ope
     // A helper is found, let's use it. 
     EAnnotation annotation = OaPackage.Literals.OPERATIONAL_ACTIVITY__ALLOCATING_ROLES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__ALLOCATING_ROLES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Role> resultAsList = (Collection<Role>) result;
-		return new EcoreEList.UnmodifiableEList<Role>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__ALLOCATING_ROLES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Role> resultAsList = (Collection<Role>) result;
+    return new EcoreEList.UnmodifiableEList<Role>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__ALLOCATING_ROLES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<OperationalActivity> getContainedOperationalActivities() {
 
@@ -463,27 +463,27 @@ public class OperationalActivityImpl extends AbstractFunctionImpl implements Ope
     // A helper is found, let's use it. 
     EAnnotation annotation = OaPackage.Literals.OPERATIONAL_ACTIVITY__CONTAINED_OPERATIONAL_ACTIVITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__CONTAINED_OPERATIONAL_ACTIVITIES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<OperationalActivity> resultAsList = (Collection<OperationalActivity>) result;
-		return new EcoreEList.UnmodifiableEList<OperationalActivity>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__CONTAINED_OPERATIONAL_ACTIVITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<OperationalActivity> resultAsList = (Collection<OperationalActivity>) result;
+    return new EcoreEList.UnmodifiableEList<OperationalActivity>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__CONTAINED_OPERATIONAL_ACTIVITIES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<OperationalActivity> getChildrenOperationalActivities() {
 
@@ -510,128 +510,128 @@ public class OperationalActivityImpl extends AbstractFunctionImpl implements Ope
     // A helper is found, let's use it. 
     EAnnotation annotation = OaPackage.Literals.OPERATIONAL_ACTIVITY__CHILDREN_OPERATIONAL_ACTIVITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__CHILDREN_OPERATIONAL_ACTIVITIES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<OperationalActivity> resultAsList = (Collection<OperationalActivity>) result;
-		return new EcoreEList.UnmodifiableEList<OperationalActivity>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__CHILDREN_OPERATIONAL_ACTIVITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<OperationalActivity> resultAsList = (Collection<OperationalActivity>) result;
+    return new EcoreEList.UnmodifiableEList<OperationalActivity>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__CHILDREN_OPERATIONAL_ACTIVITIES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS:
-				return ((InternalEList<?>)getOwnedOperationalActivityPkgs()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS:
+        return ((InternalEList<?>)getOwnedOperationalActivityPkgs()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS:
-				return getOwnedOperationalActivityPkgs();
-			case OaPackage.OPERATIONAL_ACTIVITY__ACTIVITY_ALLOCATIONS:
-				return getActivityAllocations();
-			case OaPackage.OPERATIONAL_ACTIVITY__OWNED_SWIMLANES:
-				return getOwnedSwimlanes();
-			case OaPackage.OPERATIONAL_ACTIVITY__OWNED_PROCESS:
-				return getOwnedProcess();
-			case OaPackage.OPERATIONAL_ACTIVITY__ALLOCATOR_ENTITIES:
-				return getAllocatorEntities();
-			case OaPackage.OPERATIONAL_ACTIVITY__REALIZING_SYSTEM_FUNCTIONS:
-				return getRealizingSystemFunctions();
-			case OaPackage.OPERATIONAL_ACTIVITY__ALLOCATING_ROLES:
-				return getAllocatingRoles();
-			case OaPackage.OPERATIONAL_ACTIVITY__CONTAINED_OPERATIONAL_ACTIVITIES:
-				return getContainedOperationalActivities();
-			case OaPackage.OPERATIONAL_ACTIVITY__CHILDREN_OPERATIONAL_ACTIVITIES:
-				return getChildrenOperationalActivities();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS:
+        return getOwnedOperationalActivityPkgs();
+      case OaPackage.OPERATIONAL_ACTIVITY__ACTIVITY_ALLOCATIONS:
+        return getActivityAllocations();
+      case OaPackage.OPERATIONAL_ACTIVITY__OWNED_SWIMLANES:
+        return getOwnedSwimlanes();
+      case OaPackage.OPERATIONAL_ACTIVITY__OWNED_PROCESS:
+        return getOwnedProcess();
+      case OaPackage.OPERATIONAL_ACTIVITY__ALLOCATOR_ENTITIES:
+        return getAllocatorEntities();
+      case OaPackage.OPERATIONAL_ACTIVITY__REALIZING_SYSTEM_FUNCTIONS:
+        return getRealizingSystemFunctions();
+      case OaPackage.OPERATIONAL_ACTIVITY__ALLOCATING_ROLES:
+        return getAllocatingRoles();
+      case OaPackage.OPERATIONAL_ACTIVITY__CONTAINED_OPERATIONAL_ACTIVITIES:
+        return getContainedOperationalActivities();
+      case OaPackage.OPERATIONAL_ACTIVITY__CHILDREN_OPERATIONAL_ACTIVITIES:
+        return getChildrenOperationalActivities();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS:
-				getOwnedOperationalActivityPkgs().clear();
-				getOwnedOperationalActivityPkgs().addAll((Collection<? extends OperationalActivityPkg>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS:
+        getOwnedOperationalActivityPkgs().clear();
+        getOwnedOperationalActivityPkgs().addAll((Collection<? extends OperationalActivityPkg>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS:
-				getOwnedOperationalActivityPkgs().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS:
+        getOwnedOperationalActivityPkgs().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS:
-				return ownedOperationalActivityPkgs != null && !ownedOperationalActivityPkgs.isEmpty();
-			case OaPackage.OPERATIONAL_ACTIVITY__ACTIVITY_ALLOCATIONS:
-				return !getActivityAllocations().isEmpty();
-			case OaPackage.OPERATIONAL_ACTIVITY__OWNED_SWIMLANES:
-				return !getOwnedSwimlanes().isEmpty();
-			case OaPackage.OPERATIONAL_ACTIVITY__OWNED_PROCESS:
-				return !getOwnedProcess().isEmpty();
-			case OaPackage.OPERATIONAL_ACTIVITY__ALLOCATOR_ENTITIES:
-				return !getAllocatorEntities().isEmpty();
-			case OaPackage.OPERATIONAL_ACTIVITY__REALIZING_SYSTEM_FUNCTIONS:
-				return !getRealizingSystemFunctions().isEmpty();
-			case OaPackage.OPERATIONAL_ACTIVITY__ALLOCATING_ROLES:
-				return !getAllocatingRoles().isEmpty();
-			case OaPackage.OPERATIONAL_ACTIVITY__CONTAINED_OPERATIONAL_ACTIVITIES:
-				return !getContainedOperationalActivities().isEmpty();
-			case OaPackage.OPERATIONAL_ACTIVITY__CHILDREN_OPERATIONAL_ACTIVITIES:
-				return !getChildrenOperationalActivities().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS:
+        return ownedOperationalActivityPkgs != null && !ownedOperationalActivityPkgs.isEmpty();
+      case OaPackage.OPERATIONAL_ACTIVITY__ACTIVITY_ALLOCATIONS:
+        return !getActivityAllocations().isEmpty();
+      case OaPackage.OPERATIONAL_ACTIVITY__OWNED_SWIMLANES:
+        return !getOwnedSwimlanes().isEmpty();
+      case OaPackage.OPERATIONAL_ACTIVITY__OWNED_PROCESS:
+        return !getOwnedProcess().isEmpty();
+      case OaPackage.OPERATIONAL_ACTIVITY__ALLOCATOR_ENTITIES:
+        return !getAllocatorEntities().isEmpty();
+      case OaPackage.OPERATIONAL_ACTIVITY__REALIZING_SYSTEM_FUNCTIONS:
+        return !getRealizingSystemFunctions().isEmpty();
+      case OaPackage.OPERATIONAL_ACTIVITY__ALLOCATING_ROLES:
+        return !getAllocatingRoles().isEmpty();
+      case OaPackage.OPERATIONAL_ACTIVITY__CONTAINED_OPERATIONAL_ACTIVITIES:
+        return !getContainedOperationalActivities().isEmpty();
+      case OaPackage.OPERATIONAL_ACTIVITY__CHILDREN_OPERATIONAL_ACTIVITIES:
+        return !getChildrenOperationalActivities().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

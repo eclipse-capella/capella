@@ -25,27 +25,27 @@ import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
  */
 public class InteractionResourceFactoryImpl extends ResourceFactoryImpl {
 	/**
-	 * Creates an instance of the resource factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the resource factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public InteractionResourceFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * Creates an instance of the resource.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the resource.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Resource createResource(URI uri) {
 
-		Resource result = new InteractionResourceImpl(uri);
-		return result;
+    Resource result = new InteractionResourceImpl(uri);
+    return result;
 
-	}
+  }
 
 } //InteractionResourceFactoryImpl

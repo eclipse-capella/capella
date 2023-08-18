@@ -49,13 +49,13 @@ import org.polarsys.capella.core.data.interaction.Scenario;
 public class InteractionUseImpl extends AbstractFragmentImpl implements InteractionUse {
 
 	/**
-	 * The cached value of the '{@link #getReferencedScenario() <em>Referenced Scenario</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getReferencedScenario() <em>Referenced Scenario</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReferencedScenario()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getReferencedScenario()
+   * @generated
+   * @ordered
+   */
 	protected Scenario referencedScenario;
 
 
@@ -66,78 +66,78 @@ public class InteractionUseImpl extends AbstractFragmentImpl implements Interact
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected InteractionUseImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.INTERACTION_USE;
-	}
+    return InteractionPackage.Literals.INTERACTION_USE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Scenario getReferencedScenario() {
 
-		if (referencedScenario != null && referencedScenario.eIsProxy()) {
-			InternalEObject oldReferencedScenario = (InternalEObject)referencedScenario;
-			referencedScenario = (Scenario)eResolveProxy(oldReferencedScenario);
-			if (referencedScenario != oldReferencedScenario) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.INTERACTION_USE__REFERENCED_SCENARIO, oldReferencedScenario, referencedScenario));
-			}
-		}
-		return referencedScenario;
-	}
+    if (referencedScenario != null && referencedScenario.eIsProxy()) {
+      InternalEObject oldReferencedScenario = (InternalEObject)referencedScenario;
+      referencedScenario = (Scenario)eResolveProxy(oldReferencedScenario);
+      if (referencedScenario != oldReferencedScenario) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.INTERACTION_USE__REFERENCED_SCENARIO, oldReferencedScenario, referencedScenario));
+      }
+    }
+    return referencedScenario;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Scenario basicGetReferencedScenario() {
 
-		return referencedScenario;
-	}
+    return referencedScenario;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setReferencedScenario(Scenario newReferencedScenario) {
 
-		Scenario oldReferencedScenario = referencedScenario;
-		referencedScenario = newReferencedScenario;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.INTERACTION_USE__REFERENCED_SCENARIO, oldReferencedScenario, referencedScenario));
+    Scenario oldReferencedScenario = referencedScenario;
+    referencedScenario = newReferencedScenario;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.INTERACTION_USE__REFERENCED_SCENARIO, oldReferencedScenario, referencedScenario));
 
-	}
+  }
 
 
 
@@ -145,10 +145,10 @@ public class InteractionUseImpl extends AbstractFragmentImpl implements Interact
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Gate> getActualGates() {
 
@@ -175,85 +175,85 @@ public class InteractionUseImpl extends AbstractFragmentImpl implements Interact
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.INTERACTION_USE__ACTUAL_GATES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.INTERACTION_USE__ACTUAL_GATES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Gate> resultAsList = (Collection<Gate>) result;
-		return new EcoreEList.UnmodifiableEList<Gate>(this, InteractionPackage.Literals.INTERACTION_USE__ACTUAL_GATES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Gate> resultAsList = (Collection<Gate>) result;
+    return new EcoreEList.UnmodifiableEList<Gate>(this, InteractionPackage.Literals.INTERACTION_USE__ACTUAL_GATES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_USE__REFERENCED_SCENARIO:
-				if (resolve) return getReferencedScenario();
-				return basicGetReferencedScenario();
-			case InteractionPackage.INTERACTION_USE__ACTUAL_GATES:
-				return getActualGates();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_USE__REFERENCED_SCENARIO:
+        if (resolve) return getReferencedScenario();
+        return basicGetReferencedScenario();
+      case InteractionPackage.INTERACTION_USE__ACTUAL_GATES:
+        return getActualGates();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_USE__REFERENCED_SCENARIO:
-					setReferencedScenario((Scenario)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_USE__REFERENCED_SCENARIO:
+          setReferencedScenario((Scenario)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_USE__REFERENCED_SCENARIO:
-				setReferencedScenario((Scenario)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_USE__REFERENCED_SCENARIO:
+        setReferencedScenario((Scenario)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_USE__REFERENCED_SCENARIO:
-				return referencedScenario != null;
-			case InteractionPackage.INTERACTION_USE__ACTUAL_GATES:
-				return !getActualGates().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_USE__REFERENCED_SCENARIO:
+        return referencedScenario != null;
+      case InteractionPackage.INTERACTION_USE__ACTUAL_GATES:
+        return !getActualGates().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

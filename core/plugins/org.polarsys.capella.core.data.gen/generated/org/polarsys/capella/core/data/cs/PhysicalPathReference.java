@@ -37,22 +37,22 @@ public interface PhysicalPathReference extends PhysicalPathInvolvement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Referenced Physical Path</b></em>' reference.
+   * Returns the value of the '<em><b>Referenced Physical Path</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Referenced Physical Path</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Referenced Physical Path</em>' reference.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPathReference_ReferencedPhysicalPath()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involved'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Referenced Physical Path</em>' reference.
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPathReference_ReferencedPhysicalPath()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involved'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	PhysicalPath getReferencedPhysicalPath();
 

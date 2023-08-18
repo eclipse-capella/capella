@@ -43,26 +43,26 @@ public interface DeploymentAspect extends Structure {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Configurations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.deployment.DeploymentConfiguration}.
+   * Returns the value of the '<em><b>Owned Configurations</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.deployment.DeploymentConfiguration}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Configurations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Configurations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getDeploymentAspect_OwnedConfigurations()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedConfigurations'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the deployment configurations associated to this deployment aspect\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which DeploymentConfiguration stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Configurations</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getDeploymentAspect_OwnedConfigurations()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedConfigurations'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the deployment configurations associated to this deployment aspect\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which DeploymentConfiguration stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<DeploymentConfiguration> getOwnedConfigurations();
 
@@ -73,26 +73,26 @@ public interface DeploymentAspect extends Structure {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Deployment Aspects</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.deployment.DeploymentAspect}.
+   * Returns the value of the '<em><b>Owned Deployment Aspects</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.deployment.DeploymentAspect}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Deployment Aspects</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Deployment Aspects</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getDeploymentAspect_OwnedDeploymentAspects()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedAspects'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the sub packages contained under this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which AbstractCapabilityPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Deployment Aspects</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getDeploymentAspect_OwnedDeploymentAspects()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedAspects'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the sub packages contained under this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which AbstractCapabilityPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<DeploymentAspect> getOwnedDeploymentAspects();
 

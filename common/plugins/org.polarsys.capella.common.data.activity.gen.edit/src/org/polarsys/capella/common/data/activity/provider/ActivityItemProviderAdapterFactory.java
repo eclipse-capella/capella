@@ -48,183 +48,183 @@ import org.polarsys.kitalpha.emde.extension.edit.ChildCreationExtenderManager;
  */
 public class ActivityItemProviderAdapterFactory extends ActivityAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
 	/**
-	 * This keeps track of the root adapter factory that delegates to this adapter factory.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the root adapter factory that delegates to this adapter factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComposedAdapterFactory parentAdapterFactory;
 
 	/**
-	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-	 * <!-- begin-user-doc -->
+   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
 	/**
-	 * This helps manage the child creation extenders.
-	 * <!-- begin-user-doc -->
+   * This helps manage the child creation extenders.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(ActivityEditPlugin.INSTANCE, ActivityPackage.eNS_URI);
 
 	/**
-	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-	 * <!-- begin-user-doc -->
+   * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
-	 * This constructs an instance.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ActivityItemProviderAdapterFactory() {
-		supportedTypes.add(IEditingDomainItemProvider.class);
-		supportedTypes.add(IStructuredItemContentProvider.class);
-		supportedTypes.add(ITreeItemContentProvider.class);
-		supportedTypes.add(IItemLabelProvider.class);
-		supportedTypes.add(IItemPropertySource.class);
-	}
+    supportedTypes.add(IEditingDomainItemProvider.class);
+    supportedTypes.add(IStructuredItemContentProvider.class);
+    supportedTypes.add(ITreeItemContentProvider.class);
+    supportedTypes.add(IItemLabelProvider.class);
+    supportedTypes.add(IItemPropertySource.class);
+  }
 
 	/**
-	 * This returns the root adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+   * This returns the root adapter factory that contains this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
-	}
+    return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+  }
 
 	/**
-	 * This sets the composed adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+   * This sets the composed adapter factory that contains this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
-		this.parentAdapterFactory = parentAdapterFactory;
-	}
+    this.parentAdapterFactory = parentAdapterFactory;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean isFactoryForType(Object type) {
-		return supportedTypes.contains(type) || super.isFactoryForType(type);
-	}
+    return supportedTypes.contains(type) || super.isFactoryForType(type);
+  }
 
 	/**
-	 * This implementation substitutes the factory itself as the key for the adapter.
-	 * <!-- begin-user-doc -->
+   * This implementation substitutes the factory itself as the key for the adapter.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
-		return super.adapt(notifier, this);
-	}
+    return super.adapt(notifier, this);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object adapt(Object object, Object type) {
-		if (isFactoryForType(type)) {
-			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
-				return adapter;
-			}
-		}
+    if (isFactoryForType(type)) {
+      Object adapter = super.adapt(object, type);
+      if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+        return adapter;
+      }
+    }
 
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public List<IChildCreationExtender> getChildCreationExtenders() {
-		return childCreationExtenderManager.getChildCreationExtenders();
-	}
+    return childCreationExtenderManager.getChildCreationExtenders();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
-	}
+    return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ResourceLocator getResourceLocator() {
-		return childCreationExtenderManager;
-	}
+    return childCreationExtenderManager;
+  }
 
 	/**
-	 * This adds a listener.
-	 * <!-- begin-user-doc -->
+   * This adds a listener.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.addListener(notifyChangedListener);
-	}
+    changeNotifier.addListener(notifyChangedListener);
+  }
 
 	/**
-	 * This removes a listener.
-	 * <!-- begin-user-doc -->
+   * This removes a listener.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.removeListener(notifyChangedListener);
-	}
+    changeNotifier.removeListener(notifyChangedListener);
+  }
 
 	/**
-	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-	 * <!-- begin-user-doc -->
+   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void fireNotifyChanged(Notification notification) {
-		changeNotifier.fireNotifyChanged(notification);
+    changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null) {
-			parentAdapterFactory.fireNotifyChanged(notification);
-		}
-	}
+    if (parentAdapterFactory != null) {
+      parentAdapterFactory.fireNotifyChanged(notification);
+    }
+  }
 
 	/**
-	 * This disposes all of the item providers created by this factory. 
-	 * <!-- begin-user-doc -->
+   * This disposes all of the item providers created by this factory. 
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void dispose() {
-	}
+  }
 
 }

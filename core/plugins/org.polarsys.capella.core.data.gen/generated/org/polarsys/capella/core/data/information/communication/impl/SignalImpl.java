@@ -40,135 +40,135 @@ import org.polarsys.capella.core.data.information.communication.SignalInstance;
 public class SignalImpl extends CommunicationItemImpl implements Signal {
 
 	/**
-	 * The cached value of the '{@link #getSignalInstances() <em>Signal Instances</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getSignalInstances() <em>Signal Instances</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSignalInstances()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getSignalInstances()
+   * @generated
+   * @ordered
+   */
 	protected EList<SignalInstance> signalInstances;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected SignalImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CommunicationPackage.Literals.SIGNAL;
-	}
+    return CommunicationPackage.Literals.SIGNAL;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<SignalInstance> getSignalInstances() {
 
-		if (signalInstances == null) {
-			signalInstances = new EObjectContainmentEList.Resolving<SignalInstance>(SignalInstance.class, this, CommunicationPackage.SIGNAL__SIGNAL_INSTANCES);
-		}
-		return signalInstances;
-	}
+    if (signalInstances == null) {
+      signalInstances = new EObjectContainmentEList.Resolving<SignalInstance>(SignalInstance.class, this, CommunicationPackage.SIGNAL__SIGNAL_INSTANCES);
+    }
+    return signalInstances;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CommunicationPackage.SIGNAL__SIGNAL_INSTANCES:
-				return ((InternalEList<?>)getSignalInstances()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CommunicationPackage.SIGNAL__SIGNAL_INSTANCES:
+        return ((InternalEList<?>)getSignalInstances()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CommunicationPackage.SIGNAL__SIGNAL_INSTANCES:
-				return getSignalInstances();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CommunicationPackage.SIGNAL__SIGNAL_INSTANCES:
+        return getSignalInstances();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CommunicationPackage.SIGNAL__SIGNAL_INSTANCES:
-				getSignalInstances().clear();
-				getSignalInstances().addAll((Collection<? extends SignalInstance>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CommunicationPackage.SIGNAL__SIGNAL_INSTANCES:
+        getSignalInstances().clear();
+        getSignalInstances().addAll((Collection<? extends SignalInstance>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CommunicationPackage.SIGNAL__SIGNAL_INSTANCES:
-				getSignalInstances().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CommunicationPackage.SIGNAL__SIGNAL_INSTANCES:
+        getSignalInstances().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CommunicationPackage.SIGNAL__SIGNAL_INSTANCES:
-				return signalInstances != null && !signalInstances.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CommunicationPackage.SIGNAL__SIGNAL_INSTANCES:
+        return signalInstances != null && !signalInstances.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

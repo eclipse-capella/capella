@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.requirement.SystemFunctionalInterfaceRequi
  */
 public class SystemFunctionalInterfaceRequirementImpl extends RequirementImpl implements SystemFunctionalInterfaceRequirement {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected SystemFunctionalInterfaceRequirementImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return RequirementPackage.Literals.SYSTEM_FUNCTIONAL_INTERFACE_REQUIREMENT;
-	}
+    return RequirementPackage.Literals.SYSTEM_FUNCTIONAL_INTERFACE_REQUIREMENT;
+  }
 
 
 

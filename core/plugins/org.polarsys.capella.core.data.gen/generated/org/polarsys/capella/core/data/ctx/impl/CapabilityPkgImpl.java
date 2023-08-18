@@ -42,13 +42,13 @@ import org.polarsys.capella.core.data.ctx.CtxPackage;
 public class CapabilityPkgImpl extends AbstractCapabilityPkgImpl implements CapabilityPkg {
 
 	/**
-	 * The cached value of the '{@link #getOwnedCapabilities() <em>Owned Capabilities</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedCapabilities() <em>Owned Capabilities</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedCapabilities()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedCapabilities()
+   * @generated
+   * @ordered
+   */
 	protected EList<Capability> ownedCapabilities;
 
 
@@ -56,166 +56,166 @@ public class CapabilityPkgImpl extends AbstractCapabilityPkgImpl implements Capa
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedCapabilityPkgs() <em>Owned Capability Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedCapabilityPkgs() <em>Owned Capability Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedCapabilityPkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedCapabilityPkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<CapabilityPkg> ownedCapabilityPkgs;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CapabilityPkgImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CtxPackage.Literals.CAPABILITY_PKG;
-	}
+    return CtxPackage.Literals.CAPABILITY_PKG;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Capability> getOwnedCapabilities() {
 
-		if (ownedCapabilities == null) {
-			ownedCapabilities = new EObjectContainmentEList.Resolving<Capability>(Capability.class, this, CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITIES);
-		}
-		return ownedCapabilities;
-	}
+    if (ownedCapabilities == null) {
+      ownedCapabilities = new EObjectContainmentEList.Resolving<Capability>(Capability.class, this, CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITIES);
+    }
+    return ownedCapabilities;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CapabilityPkg> getOwnedCapabilityPkgs() {
 
-		if (ownedCapabilityPkgs == null) {
-			ownedCapabilityPkgs = new EObjectContainmentEList.Resolving<CapabilityPkg>(CapabilityPkg.class, this, CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITY_PKGS);
-		}
-		return ownedCapabilityPkgs;
-	}
+    if (ownedCapabilityPkgs == null) {
+      ownedCapabilityPkgs = new EObjectContainmentEList.Resolving<CapabilityPkg>(CapabilityPkg.class, this, CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITY_PKGS);
+    }
+    return ownedCapabilityPkgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITIES:
-				return ((InternalEList<?>)getOwnedCapabilities()).basicRemove(otherEnd, msgs);
-			case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITY_PKGS:
-				return ((InternalEList<?>)getOwnedCapabilityPkgs()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITIES:
+        return ((InternalEList<?>)getOwnedCapabilities()).basicRemove(otherEnd, msgs);
+      case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITY_PKGS:
+        return ((InternalEList<?>)getOwnedCapabilityPkgs()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITIES:
-				return getOwnedCapabilities();
-			case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITY_PKGS:
-				return getOwnedCapabilityPkgs();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITIES:
+        return getOwnedCapabilities();
+      case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITY_PKGS:
+        return getOwnedCapabilityPkgs();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITIES:
-				getOwnedCapabilities().clear();
-				getOwnedCapabilities().addAll((Collection<? extends Capability>)newValue);
-				return;
-			case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITY_PKGS:
-				getOwnedCapabilityPkgs().clear();
-				getOwnedCapabilityPkgs().addAll((Collection<? extends CapabilityPkg>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITIES:
+        getOwnedCapabilities().clear();
+        getOwnedCapabilities().addAll((Collection<? extends Capability>)newValue);
+        return;
+      case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITY_PKGS:
+        getOwnedCapabilityPkgs().clear();
+        getOwnedCapabilityPkgs().addAll((Collection<? extends CapabilityPkg>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITIES:
-				getOwnedCapabilities().clear();
-				return;
-			case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITY_PKGS:
-				getOwnedCapabilityPkgs().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITIES:
+        getOwnedCapabilities().clear();
+        return;
+      case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITY_PKGS:
+        getOwnedCapabilityPkgs().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITIES:
-				return ownedCapabilities != null && !ownedCapabilities.isEmpty();
-			case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITY_PKGS:
-				return ownedCapabilityPkgs != null && !ownedCapabilityPkgs.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITIES:
+        return ownedCapabilities != null && !ownedCapabilities.isEmpty();
+      case CtxPackage.CAPABILITY_PKG__OWNED_CAPABILITY_PKGS:
+        return ownedCapabilityPkgs != null && !ownedCapabilityPkgs.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

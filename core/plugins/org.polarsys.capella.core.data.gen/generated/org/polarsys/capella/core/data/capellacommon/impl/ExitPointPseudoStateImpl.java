@@ -27,25 +27,25 @@ import org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState;
  */
 public class ExitPointPseudoStateImpl extends PseudostateImpl implements ExitPointPseudoState {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ExitPointPseudoStateImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.EXIT_POINT_PSEUDO_STATE;
-	}
+    return CapellacommonPackage.Literals.EXIT_POINT_PSEUDO_STATE;
+  }
 
 
 

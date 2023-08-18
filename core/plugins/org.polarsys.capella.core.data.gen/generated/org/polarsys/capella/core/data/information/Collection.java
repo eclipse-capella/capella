@@ -53,22 +53,22 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 
 
 	/**
-	 * Returns the value of the '<em><b>Is Primitive</b></em>' attribute.
+   * Returns the value of the '<em><b>Is Primitive</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Is Primitive</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Is Primitive</em>' attribute.
-	 * @see #setIsPrimitive(boolean)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection_IsPrimitive()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='indicates whether this collection is a first level assembly using native types, or if it is using previously defined Collections \r\n[source: Capella study]' constraints='none' type='true if the Collection is not assembling other Collections' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Is Primitive</em>' attribute.
+   * @see #setIsPrimitive(boolean)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection_IsPrimitive()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='indicates whether this collection is a first level assembly using native types, or if it is using previously defined Collections \r\n[source: Capella study]' constraints='none' type='true if the Collection is not assembling other Collections' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	boolean isIsPrimitive();
 
@@ -76,14 +76,14 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.Collection#isIsPrimitive <em>Is Primitive</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.Collection#isIsPrimitive <em>Is Primitive</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Primitive</em>' attribute.
-	 * @see #isIsPrimitive()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Is Primitive</em>' attribute.
+   * @see #isIsPrimitive()
+   * @generated
+   */
 
 	void setIsPrimitive(boolean value);
 
@@ -94,24 +94,24 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 
 
 	/**
-	 * Returns the value of the '<em><b>Visibility</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.capellacore.VisibilityKind}.
+   * Returns the value of the '<em><b>Visibility</b></em>' attribute.
+   * The literals are from the enumeration {@link org.polarsys.capella.core.data.capellacore.VisibilityKind}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Visibility</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Visibility</em>' attribute.
-	 * @see org.polarsys.capella.core.data.capellacore.VisibilityKind
-	 * @see #setVisibility(VisibilityKind)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection_Visibility()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the visibility status for this collection\r\n[source: Capella study]' constraints='none' type='Refer to VisibilityKind definition' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::visibility' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Visibility</em>' attribute.
+   * @see org.polarsys.capella.core.data.capellacore.VisibilityKind
+   * @see #setVisibility(VisibilityKind)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection_Visibility()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the visibility status for this collection\r\n[source: Capella study]' constraints='none' type='Refer to VisibilityKind definition' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::visibility' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	VisibilityKind getVisibility();
 
@@ -119,15 +119,15 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.Collection#getVisibility <em>Visibility</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.Collection#getVisibility <em>Visibility</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Visibility</em>' attribute.
-	 * @see org.polarsys.capella.core.data.capellacore.VisibilityKind
-	 * @see #getVisibility()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Visibility</em>' attribute.
+   * @see org.polarsys.capella.core.data.capellacore.VisibilityKind
+   * @see #getVisibility()
+   * @generated
+   */
 
 	void setVisibility(VisibilityKind value);
 
@@ -138,24 +138,24 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 
 
 	/**
-	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.information.CollectionKind}.
+   * Returns the value of the '<em><b>Kind</b></em>' attribute.
+   * The literals are from the enumeration {@link org.polarsys.capella.core.data.information.CollectionKind}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Kind</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Kind</em>' attribute.
-	 * @see org.polarsys.capella.core.data.information.CollectionKind
-	 * @see #setKind(CollectionKind)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection_Kind()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the kind status for this collection' constraints='none' type='Refer to CollectionKind definition' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Kind</em>' attribute.
+   * @see org.polarsys.capella.core.data.information.CollectionKind
+   * @see #setKind(CollectionKind)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection_Kind()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the kind status for this collection' constraints='none' type='Refer to CollectionKind definition' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	CollectionKind getKind();
 
@@ -163,15 +163,15 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.Collection#getKind <em>Kind</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.Collection#getKind <em>Kind</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Kind</em>' attribute.
-	 * @see org.polarsys.capella.core.data.information.CollectionKind
-	 * @see #getKind()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Kind</em>' attribute.
+   * @see org.polarsys.capella.core.data.information.CollectionKind
+   * @see #getKind()
+   * @generated
+   */
 
 	void setKind(CollectionKind value);
 
@@ -182,24 +182,24 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 
 
 	/**
-	 * Returns the value of the '<em><b>Aggregation Kind</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.information.AggregationKind}.
+   * Returns the value of the '<em><b>Aggregation Kind</b></em>' attribute.
+   * The literals are from the enumeration {@link org.polarsys.capella.core.data.information.AggregationKind}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Aggregation Kind</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Aggregation Kind</em>' attribute.
-	 * @see org.polarsys.capella.core.data.information.AggregationKind
-	 * @see #setAggregationKind(AggregationKind)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection_AggregationKind()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the kind of aggregation that applies to the Collection' constraints='none' type='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Aggregation Kind</em>' attribute.
+   * @see org.polarsys.capella.core.data.information.AggregationKind
+   * @see #setAggregationKind(AggregationKind)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection_AggregationKind()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the kind of aggregation that applies to the Collection' constraints='none' type='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	AggregationKind getAggregationKind();
 
@@ -207,15 +207,15 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.Collection#getAggregationKind <em>Aggregation Kind</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.Collection#getAggregationKind <em>Aggregation Kind</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Aggregation Kind</em>' attribute.
-	 * @see org.polarsys.capella.core.data.information.AggregationKind
-	 * @see #getAggregationKind()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Aggregation Kind</em>' attribute.
+   * @see org.polarsys.capella.core.data.information.AggregationKind
+   * @see #getAggregationKind()
+   * @generated
+   */
 
 	void setAggregationKind(AggregationKind value);
 
@@ -226,23 +226,23 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 
 
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' reference.
+   * Returns the value of the '<em><b>Type</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Type</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Type</em>' reference.
-	 * @see #setType(Type)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection_Type()
-	 * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='type'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the type of the elements being collected\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Type</em>' reference.
+   * @see #setType(Type)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection_Type()
+   * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='type'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the type of the elements being collected\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	Type getType();
 
@@ -250,14 +250,14 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.Collection#getType <em>Type</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.Collection#getType <em>Type</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' reference.
-	 * @see #getType()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Type</em>' reference.
+   * @see #getType()
+   * @generated
+   */
 
 	void setType(Type value);
 
@@ -268,22 +268,22 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 
 
 	/**
-	 * Returns the value of the '<em><b>Index</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.datatype.DataType}.
+   * Returns the value of the '<em><b>Index</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.datatype.DataType}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Index</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Index</em>' reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection_Index()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='index pointing to a specific part of this collection \r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Index</em>' reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection_Index()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='index pointing to a specific part of this collection \r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<DataType> getIndex();
 
@@ -294,27 +294,27 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 
 
 	/**
-	 * Returns the value of the '<em><b>Contained Operations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.Operation}.
+   * Returns the value of the '<em><b>Contained Operations</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.Operation}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contained Operations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contained Operations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection_ContainedOperations()
-	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedOperation' featureOwner='Class'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='operations'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFeatures'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The operations associated to this collection\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::DataType::ownedOperation' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedFeatures'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Contained Operations</em>' reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection_ContainedOperations()
+   * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedOperation' featureOwner='Class'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='operations'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFeatures'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The operations associated to this collection\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::DataType::ownedOperation' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic feature='ownedFeatures'"
+   * @generated
+   */
 
 	EList<Operation> getContainedOperations();
 

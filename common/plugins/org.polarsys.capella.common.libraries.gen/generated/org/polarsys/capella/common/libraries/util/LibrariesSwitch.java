@@ -40,207 +40,207 @@ import org.polarsys.kitalpha.emde.model.ExtensibleElement;
  */
 public class LibrariesSwitch<T> extends Switch<T> {
 	/**
-	 * The cached model package
-	 * <!-- begin-user-doc -->
+   * The cached model package
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected static LibrariesPackage modelPackage;
 
 	/**
-	 * Creates an instance of the switch.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the switch.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public LibrariesSwitch() {
-		if (modelPackage == null) {
-			modelPackage = LibrariesPackage.eINSTANCE;
-		}
-	}
+    if (modelPackage == null) {
+      modelPackage = LibrariesPackage.eINSTANCE;
+    }
+  }
 
 	/**
-	 * Checks whether this is a switch for the given package.
-	 * <!-- begin-user-doc -->
+   * Checks whether this is a switch for the given package.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param ePackage the package in question.
-	 * @return whether this is a switch for the given package.
-	 * @generated
-	 */
+   * @param ePackage the package in question.
+   * @return whether this is a switch for the given package.
+   * @generated
+   */
 	@Override
 	protected boolean isSwitchFor(EPackage ePackage) {
-		return ePackage == modelPackage;
-	}
+    return ePackage == modelPackage;
+  }
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
+   * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
+   * @return the first non-null result returned by a <code>caseXXX</code> call.
+   * @generated
+   */
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
-		switch (classifierID) {
-			case LibrariesPackage.MODEL_INFORMATION: {
-				ModelInformation modelInformation = (ModelInformation)theEObject;
-				T result = caseModelInformation(modelInformation);
-				if (result == null) result = caseLibraryAbstractElement(modelInformation);
-				if (result == null) result = caseElementExtension(modelInformation);
-				if (result == null) result = caseExtensibleElement(modelInformation);
-				if (result == null) result = caseElement(modelInformation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case LibrariesPackage.LIBRARY_REFERENCE: {
-				LibraryReference libraryReference = (LibraryReference)theEObject;
-				T result = caseLibraryReference(libraryReference);
-				if (result == null) result = caseLibraryAbstractElement(libraryReference);
-				if (result == null) result = caseExtensibleElement(libraryReference);
-				if (result == null) result = caseElement(libraryReference);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case LibrariesPackage.MODEL_VERSION: {
-				ModelVersion modelVersion = (ModelVersion)theEObject;
-				T result = caseModelVersion(modelVersion);
-				if (result == null) result = caseLibraryAbstractElement(modelVersion);
-				if (result == null) result = caseExtensibleElement(modelVersion);
-				if (result == null) result = caseElement(modelVersion);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case LibrariesPackage.LIBRARY_ABSTRACT_ELEMENT: {
-				LibraryAbstractElement libraryAbstractElement = (LibraryAbstractElement)theEObject;
-				T result = caseLibraryAbstractElement(libraryAbstractElement);
-				if (result == null) result = caseExtensibleElement(libraryAbstractElement);
-				if (result == null) result = caseElement(libraryAbstractElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			default: return defaultCase(theEObject);
-		}
-	}
+    switch (classifierID) {
+      case LibrariesPackage.MODEL_INFORMATION: {
+        ModelInformation modelInformation = (ModelInformation)theEObject;
+        T result = caseModelInformation(modelInformation);
+        if (result == null) result = caseLibraryAbstractElement(modelInformation);
+        if (result == null) result = caseElementExtension(modelInformation);
+        if (result == null) result = caseExtensibleElement(modelInformation);
+        if (result == null) result = caseElement(modelInformation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LibrariesPackage.LIBRARY_REFERENCE: {
+        LibraryReference libraryReference = (LibraryReference)theEObject;
+        T result = caseLibraryReference(libraryReference);
+        if (result == null) result = caseLibraryAbstractElement(libraryReference);
+        if (result == null) result = caseExtensibleElement(libraryReference);
+        if (result == null) result = caseElement(libraryReference);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LibrariesPackage.MODEL_VERSION: {
+        ModelVersion modelVersion = (ModelVersion)theEObject;
+        T result = caseModelVersion(modelVersion);
+        if (result == null) result = caseLibraryAbstractElement(modelVersion);
+        if (result == null) result = caseExtensibleElement(modelVersion);
+        if (result == null) result = caseElement(modelVersion);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LibrariesPackage.LIBRARY_ABSTRACT_ELEMENT: {
+        LibraryAbstractElement libraryAbstractElement = (LibraryAbstractElement)theEObject;
+        T result = caseLibraryAbstractElement(libraryAbstractElement);
+        if (result == null) result = caseExtensibleElement(libraryAbstractElement);
+        if (result == null) result = caseElement(libraryAbstractElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      default: return defaultCase(theEObject);
+    }
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Model Information</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Model Information</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Model Information</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Model Information</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseModelInformation(ModelInformation object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Library Reference</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Library Reference</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Library Reference</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Library Reference</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseLibraryReference(LibraryReference object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Model Version</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Model Version</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Model Version</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Model Version</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseModelVersion(ModelVersion object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Library Abstract Element</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Library Abstract Element</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Library Abstract Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Library Abstract Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseLibraryAbstractElement(LibraryAbstractElement object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseElement(Element object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseExtensibleElement(ExtensibleElement object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Element Extension</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Element Extension</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Element Extension</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Element Extension</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseElementExtension(ElementExtension object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
+   * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch, but this is the last case anyway.
 	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject)
+   * @generated
+   */
 	@Override
 	public T defaultCase(EObject object) {
-		return null;
-	}
+    return null;
+  }
 
 } //LibrariesSwitch

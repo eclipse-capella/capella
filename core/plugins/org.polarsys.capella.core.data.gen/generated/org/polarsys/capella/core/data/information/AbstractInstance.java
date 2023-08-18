@@ -42,22 +42,22 @@ public interface AbstractInstance extends Property {
 
 
 	/**
-	 * Returns the value of the '<em><b>Representing Instance Roles</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.InstanceRole}.
+   * Returns the value of the '<em><b>Representing Instance Roles</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.interaction.InstanceRole}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Representing Instance Roles</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Representing Instance Roles</em>' reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getAbstractInstance_RepresentingInstanceRoles()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='representedInstance'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Representing Instance Roles</em>' reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getAbstractInstance_RepresentingInstanceRoles()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='representedInstance'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<InstanceRole> getRepresentingInstanceRoles();
 

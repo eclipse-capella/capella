@@ -39,23 +39,23 @@ public interface InvolverElement extends CapellaElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Involved Involvements</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.Involvement}.
+   * Returns the value of the '<em><b>Involved Involvements</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.Involvement}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Involved Involvements</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Involved Involvements</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getInvolverElement_InvolvedInvolvements()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='AbstractCapability.ownedAbstractFunctionAbstractCapabilityInvolvements(self, target);\r\n\t} or {\tAbstractCapability.ownedFunctionalChainAbstractCapabilityInvolvements(self, target);\r\n\t} or {\tCapability.ownedActorCapabilityInvolvements(self, target);\r\n\t} or {\tCapability.ownedSystemCapabilityInvolvement(self, target);\r\n\t} or {\tCapabilityRealization.ownedActorCapabilityRealizations(self, target);\r\n\t} or {\tCapabilityRealization.ownedSystemComponentCapabilityRealizations(self, target);\r\n\t} or {\tOperationalCapability.ownedEntityOperationalCapabilityInvolvements(self, target);\r\n\t} or {\tFunctionalChain.ownedFunctionalChainInvolvements(self, target);\r\n\t} or {\tMission.ownedActorMissionInvolvements(self, target);\r\n\t} or {\tMission.ownedSystemMissionInvolvement(self, target);\r\n\t} or {\tPhysicalPath.ownedPhysicalPathInvolvements(self, target);\r\n'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the set of involvement relationships for which the element is involved with the role of the element which is involved\r\n[source:Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and Transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Involved Involvements</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getInvolverElement_InvolvedInvolvements()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='AbstractCapability.ownedAbstractFunctionAbstractCapabilityInvolvements(self, target);\r\n\t} or {\tAbstractCapability.ownedFunctionalChainAbstractCapabilityInvolvements(self, target);\r\n\t} or {\tCapability.ownedActorCapabilityInvolvements(self, target);\r\n\t} or {\tCapability.ownedSystemCapabilityInvolvement(self, target);\r\n\t} or {\tCapabilityRealization.ownedActorCapabilityRealizations(self, target);\r\n\t} or {\tCapabilityRealization.ownedSystemComponentCapabilityRealizations(self, target);\r\n\t} or {\tOperationalCapability.ownedEntityOperationalCapabilityInvolvements(self, target);\r\n\t} or {\tFunctionalChain.ownedFunctionalChainInvolvements(self, target);\r\n\t} or {\tMission.ownedActorMissionInvolvements(self, target);\r\n\t} or {\tMission.ownedSystemMissionInvolvement(self, target);\r\n\t} or {\tPhysicalPath.ownedPhysicalPathInvolvements(self, target);\r\n'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the set of involvement relationships for which the element is involved with the role of the element which is involved\r\n[source:Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and Transient' constraints='none'"
+   * @generated
+   */
 
 	EList<Involvement> getInvolvedInvolvements();
 

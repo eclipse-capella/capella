@@ -49,26 +49,26 @@ public interface Block extends ModellingBlock, AbstractFunctionalBlock {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Abstract Capability Pkg</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Abstract Capability Pkg</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Abstract Capability Pkg</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Abstract Capability Pkg</em>' containment reference.
-	 * @see #setOwnedAbstractCapabilityPkg(AbstractCapabilityPkg)
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getBlock_OwnedAbstractCapabilityPkg()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Component'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='aspectPkg'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to packages that contain capabilities\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='Descendants are mapped to SysML::Blocks::Block, which cannot contain a Package.\r\nTherefore, store these AbstractCapabilityPackages in the nearest available package.' constraints='Multiplicity must be [0..1]'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Abstract Capability Pkg</em>' containment reference.
+   * @see #setOwnedAbstractCapabilityPkg(AbstractCapabilityPkg)
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getBlock_OwnedAbstractCapabilityPkg()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Component'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='aspectPkg'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to packages that contain capabilities\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='Descendants are mapped to SysML::Blocks::Block, which cannot contain a Package.\r\nTherefore, store these AbstractCapabilityPackages in the nearest available package.' constraints='Multiplicity must be [0..1]'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	AbstractCapabilityPkg getOwnedAbstractCapabilityPkg();
 
@@ -76,14 +76,14 @@ public interface Block extends ModellingBlock, AbstractFunctionalBlock {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.cs.Block#getOwnedAbstractCapabilityPkg <em>Owned Abstract Capability Pkg</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.cs.Block#getOwnedAbstractCapabilityPkg <em>Owned Abstract Capability Pkg</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Abstract Capability Pkg</em>' containment reference.
-	 * @see #getOwnedAbstractCapabilityPkg()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Abstract Capability Pkg</em>' containment reference.
+   * @see #getOwnedAbstractCapabilityPkg()
+   * @generated
+   */
 
 	void setOwnedAbstractCapabilityPkg(AbstractCapabilityPkg value);
 
@@ -94,26 +94,26 @@ public interface Block extends ModellingBlock, AbstractFunctionalBlock {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Interface Pkg</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Interface Pkg</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Interface Pkg</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Interface Pkg</em>' containment reference.
-	 * @see #setOwnedInterfacePkg(InterfacePkg)
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getBlock_OwnedInterfacePkg()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Component'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedInterfacePkg'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to packages that contain interfaces\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which InterfacePkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Interface Pkg</em>' containment reference.
+   * @see #setOwnedInterfacePkg(InterfacePkg)
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getBlock_OwnedInterfacePkg()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Component'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedInterfacePkg'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to packages that contain interfaces\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which InterfacePkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	InterfacePkg getOwnedInterfacePkg();
 
@@ -121,14 +121,14 @@ public interface Block extends ModellingBlock, AbstractFunctionalBlock {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.cs.Block#getOwnedInterfacePkg <em>Owned Interface Pkg</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.cs.Block#getOwnedInterfacePkg <em>Owned Interface Pkg</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Interface Pkg</em>' containment reference.
-	 * @see #getOwnedInterfacePkg()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Interface Pkg</em>' containment reference.
+   * @see #getOwnedInterfacePkg()
+   * @generated
+   */
 
 	void setOwnedInterfacePkg(InterfacePkg value);
 
@@ -139,26 +139,26 @@ public interface Block extends ModellingBlock, AbstractFunctionalBlock {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Data Pkg</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Data Pkg</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Data Pkg</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Data Pkg</em>' containment reference.
-	 * @see #setOwnedDataPkg(DataPkg)
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getBlock_OwnedDataPkg()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Component'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedDataPkg'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to packages that contain data\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which DataPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Data Pkg</em>' containment reference.
+   * @see #setOwnedDataPkg(DataPkg)
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getBlock_OwnedDataPkg()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Component'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedDataPkg'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to packages that contain data\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which DataPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	DataPkg getOwnedDataPkg();
 
@@ -166,14 +166,14 @@ public interface Block extends ModellingBlock, AbstractFunctionalBlock {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.cs.Block#getOwnedDataPkg <em>Owned Data Pkg</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.cs.Block#getOwnedDataPkg <em>Owned Data Pkg</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Data Pkg</em>' containment reference.
-	 * @see #getOwnedDataPkg()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Data Pkg</em>' containment reference.
+   * @see #getOwnedDataPkg()
+   * @generated
+   */
 
 	void setOwnedDataPkg(DataPkg value);
 
@@ -184,23 +184,23 @@ public interface Block extends ModellingBlock, AbstractFunctionalBlock {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned State Machines</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.StateMachine}.
+   * Returns the value of the '<em><b>Owned State Machines</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.StateMachine}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned State Machines</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned State Machines</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getBlock_OwnedStateMachines()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to related state machines\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::BehavioredClassifier::ownedBehavior' explanation='none' constraints='uml::BehavioredClassifier::ownedBehavior elements on which StateMachine stereotype or any stereotype that inherits from it is applied'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned State Machines</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getBlock_OwnedStateMachines()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to related state machines\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::BehavioredClassifier::ownedBehavior' explanation='none' constraints='uml::BehavioredClassifier::ownedBehavior elements on which StateMachine stereotype or any stereotype that inherits from it is applied'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<StateMachine> getOwnedStateMachines();
 

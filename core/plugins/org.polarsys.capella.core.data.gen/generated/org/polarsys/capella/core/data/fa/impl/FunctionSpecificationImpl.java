@@ -84,13 +84,13 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 public class FunctionSpecificationImpl extends NamedElementImpl implements FunctionSpecification {
 
 	/**
-	 * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedTraces()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedTraces()
+   * @generated
+   * @ordered
+   */
 	protected EList<Trace> ownedTraces;
 
 
@@ -106,13 +106,13 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 
 
 	/**
-	 * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNamingRules()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getNamingRules()
+   * @generated
+   * @ordered
+   */
 	protected EList<NamingRule> namingRules;
 
 
@@ -120,23 +120,23 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 
 
 	/**
-	 * The default value of the '{@link #isIsControlOperator() <em>Is Control Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isIsControlOperator() <em>Is Control Operator</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsControlOperator()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsControlOperator()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean IS_CONTROL_OPERATOR_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsControlOperator() <em>Is Control Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isIsControlOperator() <em>Is Control Operator</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsControlOperator()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsControlOperator()
+   * @generated
+   * @ordered
+   */
 	protected boolean isControlOperator = IS_CONTROL_OPERATOR_EDEFAULT;
 
 
@@ -144,13 +144,13 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedParameterSet() <em>Owned Parameter Set</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedParameterSet() <em>Owned Parameter Set</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedParameterSet()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedParameterSet()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractParameterSet> ownedParameterSet;
 
 
@@ -158,13 +158,13 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedParameter() <em>Owned Parameter</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedParameter() <em>Owned Parameter</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedParameter()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedParameter()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractParameter> ownedParameter;
 
 
@@ -172,23 +172,23 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 
 
 	/**
-	 * The default value of the '{@link #isIsReadOnly() <em>Is Read Only</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isIsReadOnly() <em>Is Read Only</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsReadOnly()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsReadOnly()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean IS_READ_ONLY_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsReadOnly() <em>Is Read Only</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isIsReadOnly() <em>Is Read Only</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsReadOnly()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsReadOnly()
+   * @generated
+   * @ordered
+   */
 	protected boolean isReadOnly = IS_READ_ONLY_EDEFAULT;
 
 
@@ -196,23 +196,23 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 
 
 	/**
-	 * The default value of the '{@link #isIsSingleExecution() <em>Is Single Execution</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isIsSingleExecution() <em>Is Single Execution</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsSingleExecution()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsSingleExecution()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean IS_SINGLE_EXECUTION_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsSingleExecution() <em>Is Single Execution</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isIsSingleExecution() <em>Is Single Execution</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsSingleExecution()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsSingleExecution()
+   * @generated
+   * @ordered
+   */
 	protected boolean isSingleExecution = IS_SINGLE_EXECUTION_EDEFAULT;
 
 
@@ -220,13 +220,13 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedNodes() <em>Owned Nodes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedNodes() <em>Owned Nodes</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedNodes()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedNodes()
+   * @generated
+   * @ordered
+   */
 	protected EList<ActivityNode> ownedNodes;
 
 
@@ -234,13 +234,13 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedEdges() <em>Owned Edges</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedEdges() <em>Owned Edges</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedEdges()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedEdges()
+   * @generated
+   * @ordered
+   */
 	protected EList<ActivityEdge> ownedEdges;
 
 
@@ -248,13 +248,13 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedGroups() <em>Owned Groups</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedGroups() <em>Owned Groups</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedGroups()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedGroups()
+   * @generated
+   * @ordered
+   */
 	protected EList<ActivityGroup> ownedGroups;
 
 
@@ -266,13 +266,13 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 
 
 	/**
-	 * The cached value of the '{@link #getInExchangeLinks() <em>In Exchange Links</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getInExchangeLinks() <em>In Exchange Links</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInExchangeLinks()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getInExchangeLinks()
+   * @generated
+   * @ordered
+   */
 	protected EList<ExchangeLink> inExchangeLinks;
 
 
@@ -280,13 +280,13 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 
 
 	/**
-	 * The cached value of the '{@link #getOutExchangeLinks() <em>Out Exchange Links</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOutExchangeLinks() <em>Out Exchange Links</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOutExchangeLinks()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOutExchangeLinks()
+   * @generated
+   * @ordered
+   */
 	protected EList<ExchangeLink> outExchangeLinks;
 
 
@@ -294,13 +294,13 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedFunctionPorts() <em>Owned Function Ports</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedFunctionPorts() <em>Owned Function Ports</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedFunctionPorts()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedFunctionPorts()
+   * @generated
+   * @ordered
+   */
 	protected EList<FunctionPort> ownedFunctionPorts;
 
 
@@ -311,53 +311,53 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionSpecificationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FaPackage.Literals.FUNCTION_SPECIFICATION;
-	}
+    return FaPackage.Literals.FUNCTION_SPECIFICATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Trace> getOwnedTraces() {
 
-		if (ownedTraces == null) {
-			ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this, FaPackage.FUNCTION_SPECIFICATION__OWNED_TRACES);
-		}
-		return ownedTraces;
-	}
+    if (ownedTraces == null) {
+      ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this, FaPackage.FUNCTION_SPECIFICATION__OWNED_TRACES);
+    }
+    return ownedTraces;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<GenericTrace> getContainedGenericTraces() {
 
@@ -384,27 +384,27 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
-		return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
+    return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<RequirementsTrace> getContainedRequirementsTraces() {
 
@@ -431,67 +431,67 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
-		return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
+    return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<NamingRule> getNamingRules() {
 
-		if (namingRules == null) {
-			namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, FaPackage.FUNCTION_SPECIFICATION__NAMING_RULES);
-		}
-		return namingRules;
-	}
+    if (namingRules == null) {
+      namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, FaPackage.FUNCTION_SPECIFICATION__NAMING_RULES);
+    }
+    return namingRules;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isIsControlOperator() {
 
-		return isControlOperator;
-	}
+    return isControlOperator;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setIsControlOperator(boolean newIsControlOperator) {
 
-		boolean oldIsControlOperator = isControlOperator;
-		isControlOperator = newIsControlOperator;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_SPECIFICATION__IS_CONTROL_OPERATOR, oldIsControlOperator, isControlOperator));
+    boolean oldIsControlOperator = isControlOperator;
+    isControlOperator = newIsControlOperator;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_SPECIFICATION__IS_CONTROL_OPERATOR, oldIsControlOperator, isControlOperator));
 
-	}
+  }
 
 
 
@@ -499,68 +499,68 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractParameterSet> getOwnedParameterSet() {
 
-		if (ownedParameterSet == null) {
-			ownedParameterSet = new EObjectResolvingEList<AbstractParameterSet>(AbstractParameterSet.class, this, FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER_SET);
-		}
-		return ownedParameterSet;
-	}
+    if (ownedParameterSet == null) {
+      ownedParameterSet = new EObjectResolvingEList<AbstractParameterSet>(AbstractParameterSet.class, this, FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER_SET);
+    }
+    return ownedParameterSet;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractParameter> getOwnedParameter() {
 
-		if (ownedParameter == null) {
-			ownedParameter = new EObjectResolvingEList<AbstractParameter>(AbstractParameter.class, this, FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER);
-		}
-		return ownedParameter;
-	}
+    if (ownedParameter == null) {
+      ownedParameter = new EObjectResolvingEList<AbstractParameter>(AbstractParameter.class, this, FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER);
+    }
+    return ownedParameter;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isIsReadOnly() {
 
-		return isReadOnly;
-	}
+    return isReadOnly;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setIsReadOnly(boolean newIsReadOnly) {
 
-		boolean oldIsReadOnly = isReadOnly;
-		isReadOnly = newIsReadOnly;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_SPECIFICATION__IS_READ_ONLY, oldIsReadOnly, isReadOnly));
+    boolean oldIsReadOnly = isReadOnly;
+    isReadOnly = newIsReadOnly;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_SPECIFICATION__IS_READ_ONLY, oldIsReadOnly, isReadOnly));
 
-	}
+  }
 
 
 
@@ -568,32 +568,32 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isIsSingleExecution() {
 
-		return isSingleExecution;
-	}
+    return isSingleExecution;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setIsSingleExecution(boolean newIsSingleExecution) {
 
-		boolean oldIsSingleExecution = isSingleExecution;
-		isSingleExecution = newIsSingleExecution;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_SPECIFICATION__IS_SINGLE_EXECUTION, oldIsSingleExecution, isSingleExecution));
+    boolean oldIsSingleExecution = isSingleExecution;
+    isSingleExecution = newIsSingleExecution;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_SPECIFICATION__IS_SINGLE_EXECUTION, oldIsSingleExecution, isSingleExecution));
 
-	}
+  }
 
 
 
@@ -601,64 +601,64 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ActivityNode> getOwnedNodes() {
 
-		if (ownedNodes == null) {
-			ownedNodes = new EObjectContainmentEList.Resolving<ActivityNode>(ActivityNode.class, this, FaPackage.FUNCTION_SPECIFICATION__OWNED_NODES);
-		}
-		return ownedNodes;
-	}
+    if (ownedNodes == null) {
+      ownedNodes = new EObjectContainmentEList.Resolving<ActivityNode>(ActivityNode.class, this, FaPackage.FUNCTION_SPECIFICATION__OWNED_NODES);
+    }
+    return ownedNodes;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ActivityEdge> getOwnedEdges() {
 
-		if (ownedEdges == null) {
-			ownedEdges = new EObjectContainmentEList.Resolving<ActivityEdge>(ActivityEdge.class, this, FaPackage.FUNCTION_SPECIFICATION__OWNED_EDGES);
-		}
-		return ownedEdges;
-	}
+    if (ownedEdges == null) {
+      ownedEdges = new EObjectContainmentEList.Resolving<ActivityEdge>(ActivityEdge.class, this, FaPackage.FUNCTION_SPECIFICATION__OWNED_EDGES);
+    }
+    return ownedEdges;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ActivityGroup> getOwnedGroups() {
 
-		if (ownedGroups == null) {
-			ownedGroups = new EObjectContainmentEList.Resolving<ActivityGroup>(ActivityGroup.class, this, FaPackage.FUNCTION_SPECIFICATION__OWNED_GROUPS);
-		}
-		return ownedGroups;
-	}
+    if (ownedGroups == null) {
+      ownedGroups = new EObjectContainmentEList.Resolving<ActivityGroup>(ActivityGroup.class, this, FaPackage.FUNCTION_SPECIFICATION__OWNED_GROUPS);
+    }
+    return ownedGroups;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<StructuredActivityNode> getOwnedStructuredNodes() {
 
@@ -685,81 +685,81 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
     // A helper is found, let's use it. 
     EAnnotation annotation = ActivityPackage.Literals.ABSTRACT_ACTIVITY__OWNED_STRUCTURED_NODES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ABSTRACT_ACTIVITY__OWNED_STRUCTURED_NODES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<StructuredActivityNode> resultAsList = (Collection<StructuredActivityNode>) result;
-		return new EcoreEList.UnmodifiableEList<StructuredActivityNode>(this, ActivityPackage.Literals.ABSTRACT_ACTIVITY__OWNED_STRUCTURED_NODES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<StructuredActivityNode> resultAsList = (Collection<StructuredActivityNode>) result;
+    return new EcoreEList.UnmodifiableEList<StructuredActivityNode>(this, ActivityPackage.Literals.ABSTRACT_ACTIVITY__OWNED_STRUCTURED_NODES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ExchangeLink> getInExchangeLinks() {
 
-		if (inExchangeLinks == null) {
-			inExchangeLinks = new EObjectResolvingEList<ExchangeLink>(ExchangeLink.class, this, FaPackage.FUNCTION_SPECIFICATION__IN_EXCHANGE_LINKS);
-		}
-		return inExchangeLinks;
-	}
+    if (inExchangeLinks == null) {
+      inExchangeLinks = new EObjectResolvingEList<ExchangeLink>(ExchangeLink.class, this, FaPackage.FUNCTION_SPECIFICATION__IN_EXCHANGE_LINKS);
+    }
+    return inExchangeLinks;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ExchangeLink> getOutExchangeLinks() {
 
-		if (outExchangeLinks == null) {
-			outExchangeLinks = new EObjectResolvingEList<ExchangeLink>(ExchangeLink.class, this, FaPackage.FUNCTION_SPECIFICATION__OUT_EXCHANGE_LINKS);
-		}
-		return outExchangeLinks;
-	}
+    if (outExchangeLinks == null) {
+      outExchangeLinks = new EObjectResolvingEList<ExchangeLink>(ExchangeLink.class, this, FaPackage.FUNCTION_SPECIFICATION__OUT_EXCHANGE_LINKS);
+    }
+    return outExchangeLinks;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionPort> getOwnedFunctionPorts() {
 
-		if (ownedFunctionPorts == null) {
-			ownedFunctionPorts = new EObjectContainmentEList.Resolving<FunctionPort>(FunctionPort.class, this, FaPackage.FUNCTION_SPECIFICATION__OWNED_FUNCTION_PORTS);
-		}
-		return ownedFunctionPorts;
-	}
+    if (ownedFunctionPorts == null) {
+      ownedFunctionPorts = new EObjectContainmentEList.Resolving<FunctionPort>(FunctionPort.class, this, FaPackage.FUNCTION_SPECIFICATION__OWNED_FUNCTION_PORTS);
+    }
+    return ownedFunctionPorts;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionSpecification> getSubFunctionSpecifications() {
 
@@ -786,330 +786,330 @@ public class FunctionSpecificationImpl extends NamedElementImpl implements Funct
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTION_SPECIFICATION__SUB_FUNCTION_SPECIFICATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTION_SPECIFICATION__SUB_FUNCTION_SPECIFICATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<FunctionSpecification> resultAsList = (Collection<FunctionSpecification>) result;
-		return new EcoreEList.UnmodifiableEList<FunctionSpecification>(this, FaPackage.Literals.FUNCTION_SPECIFICATION__SUB_FUNCTION_SPECIFICATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<FunctionSpecification> resultAsList = (Collection<FunctionSpecification>) result;
+    return new EcoreEList.UnmodifiableEList<FunctionSpecification>(this, FaPackage.Literals.FUNCTION_SPECIFICATION__SUB_FUNCTION_SPECIFICATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_TRACES:
-				return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
-			case FaPackage.FUNCTION_SPECIFICATION__NAMING_RULES:
-				return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_NODES:
-				return ((InternalEList<?>)getOwnedNodes()).basicRemove(otherEnd, msgs);
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_EDGES:
-				return ((InternalEList<?>)getOwnedEdges()).basicRemove(otherEnd, msgs);
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_GROUPS:
-				return ((InternalEList<?>)getOwnedGroups()).basicRemove(otherEnd, msgs);
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_FUNCTION_PORTS:
-				return ((InternalEList<?>)getOwnedFunctionPorts()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_TRACES:
+        return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
+      case FaPackage.FUNCTION_SPECIFICATION__NAMING_RULES:
+        return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_NODES:
+        return ((InternalEList<?>)getOwnedNodes()).basicRemove(otherEnd, msgs);
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_EDGES:
+        return ((InternalEList<?>)getOwnedEdges()).basicRemove(otherEnd, msgs);
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_GROUPS:
+        return ((InternalEList<?>)getOwnedGroups()).basicRemove(otherEnd, msgs);
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_FUNCTION_PORTS:
+        return ((InternalEList<?>)getOwnedFunctionPorts()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_TRACES:
-				return getOwnedTraces();
-			case FaPackage.FUNCTION_SPECIFICATION__CONTAINED_GENERIC_TRACES:
-				return getContainedGenericTraces();
-			case FaPackage.FUNCTION_SPECIFICATION__CONTAINED_REQUIREMENTS_TRACES:
-				return getContainedRequirementsTraces();
-			case FaPackage.FUNCTION_SPECIFICATION__NAMING_RULES:
-				return getNamingRules();
-			case FaPackage.FUNCTION_SPECIFICATION__IS_CONTROL_OPERATOR:
-				return isIsControlOperator();
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER_SET:
-				return getOwnedParameterSet();
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER:
-				return getOwnedParameter();
-			case FaPackage.FUNCTION_SPECIFICATION__IS_READ_ONLY:
-				return isIsReadOnly();
-			case FaPackage.FUNCTION_SPECIFICATION__IS_SINGLE_EXECUTION:
-				return isIsSingleExecution();
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_NODES:
-				return getOwnedNodes();
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_EDGES:
-				return getOwnedEdges();
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_GROUPS:
-				return getOwnedGroups();
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_STRUCTURED_NODES:
-				return getOwnedStructuredNodes();
-			case FaPackage.FUNCTION_SPECIFICATION__IN_EXCHANGE_LINKS:
-				return getInExchangeLinks();
-			case FaPackage.FUNCTION_SPECIFICATION__OUT_EXCHANGE_LINKS:
-				return getOutExchangeLinks();
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_FUNCTION_PORTS:
-				return getOwnedFunctionPorts();
-			case FaPackage.FUNCTION_SPECIFICATION__SUB_FUNCTION_SPECIFICATIONS:
-				return getSubFunctionSpecifications();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_TRACES:
+        return getOwnedTraces();
+      case FaPackage.FUNCTION_SPECIFICATION__CONTAINED_GENERIC_TRACES:
+        return getContainedGenericTraces();
+      case FaPackage.FUNCTION_SPECIFICATION__CONTAINED_REQUIREMENTS_TRACES:
+        return getContainedRequirementsTraces();
+      case FaPackage.FUNCTION_SPECIFICATION__NAMING_RULES:
+        return getNamingRules();
+      case FaPackage.FUNCTION_SPECIFICATION__IS_CONTROL_OPERATOR:
+        return isIsControlOperator();
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER_SET:
+        return getOwnedParameterSet();
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER:
+        return getOwnedParameter();
+      case FaPackage.FUNCTION_SPECIFICATION__IS_READ_ONLY:
+        return isIsReadOnly();
+      case FaPackage.FUNCTION_SPECIFICATION__IS_SINGLE_EXECUTION:
+        return isIsSingleExecution();
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_NODES:
+        return getOwnedNodes();
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_EDGES:
+        return getOwnedEdges();
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_GROUPS:
+        return getOwnedGroups();
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_STRUCTURED_NODES:
+        return getOwnedStructuredNodes();
+      case FaPackage.FUNCTION_SPECIFICATION__IN_EXCHANGE_LINKS:
+        return getInExchangeLinks();
+      case FaPackage.FUNCTION_SPECIFICATION__OUT_EXCHANGE_LINKS:
+        return getOutExchangeLinks();
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_FUNCTION_PORTS:
+        return getOwnedFunctionPorts();
+      case FaPackage.FUNCTION_SPECIFICATION__SUB_FUNCTION_SPECIFICATIONS:
+        return getSubFunctionSpecifications();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_TRACES:
-				getOwnedTraces().clear();
-				getOwnedTraces().addAll((Collection<? extends Trace>)newValue);
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__NAMING_RULES:
-				getNamingRules().clear();
-				getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__IS_CONTROL_OPERATOR:
-					setIsControlOperator((Boolean)newValue);
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER_SET:
-				getOwnedParameterSet().clear();
-				getOwnedParameterSet().addAll((Collection<? extends AbstractParameterSet>)newValue);
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER:
-				getOwnedParameter().clear();
-				getOwnedParameter().addAll((Collection<? extends AbstractParameter>)newValue);
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__IS_READ_ONLY:
-					setIsReadOnly((Boolean)newValue);
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__IS_SINGLE_EXECUTION:
-					setIsSingleExecution((Boolean)newValue);
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_NODES:
-				getOwnedNodes().clear();
-				getOwnedNodes().addAll((Collection<? extends ActivityNode>)newValue);
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_EDGES:
-				getOwnedEdges().clear();
-				getOwnedEdges().addAll((Collection<? extends ActivityEdge>)newValue);
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_GROUPS:
-				getOwnedGroups().clear();
-				getOwnedGroups().addAll((Collection<? extends ActivityGroup>)newValue);
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__IN_EXCHANGE_LINKS:
-				getInExchangeLinks().clear();
-				getInExchangeLinks().addAll((Collection<? extends ExchangeLink>)newValue);
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__OUT_EXCHANGE_LINKS:
-				getOutExchangeLinks().clear();
-				getOutExchangeLinks().addAll((Collection<? extends ExchangeLink>)newValue);
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_FUNCTION_PORTS:
-				getOwnedFunctionPorts().clear();
-				getOwnedFunctionPorts().addAll((Collection<? extends FunctionPort>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_TRACES:
+        getOwnedTraces().clear();
+        getOwnedTraces().addAll((Collection<? extends Trace>)newValue);
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__NAMING_RULES:
+        getNamingRules().clear();
+        getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__IS_CONTROL_OPERATOR:
+          setIsControlOperator((Boolean)newValue);
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER_SET:
+        getOwnedParameterSet().clear();
+        getOwnedParameterSet().addAll((Collection<? extends AbstractParameterSet>)newValue);
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER:
+        getOwnedParameter().clear();
+        getOwnedParameter().addAll((Collection<? extends AbstractParameter>)newValue);
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__IS_READ_ONLY:
+          setIsReadOnly((Boolean)newValue);
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__IS_SINGLE_EXECUTION:
+          setIsSingleExecution((Boolean)newValue);
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_NODES:
+        getOwnedNodes().clear();
+        getOwnedNodes().addAll((Collection<? extends ActivityNode>)newValue);
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_EDGES:
+        getOwnedEdges().clear();
+        getOwnedEdges().addAll((Collection<? extends ActivityEdge>)newValue);
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_GROUPS:
+        getOwnedGroups().clear();
+        getOwnedGroups().addAll((Collection<? extends ActivityGroup>)newValue);
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__IN_EXCHANGE_LINKS:
+        getInExchangeLinks().clear();
+        getInExchangeLinks().addAll((Collection<? extends ExchangeLink>)newValue);
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__OUT_EXCHANGE_LINKS:
+        getOutExchangeLinks().clear();
+        getOutExchangeLinks().addAll((Collection<? extends ExchangeLink>)newValue);
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_FUNCTION_PORTS:
+        getOwnedFunctionPorts().clear();
+        getOwnedFunctionPorts().addAll((Collection<? extends FunctionPort>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_TRACES:
-				getOwnedTraces().clear();
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__NAMING_RULES:
-				getNamingRules().clear();
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__IS_CONTROL_OPERATOR:
-				setIsControlOperator(IS_CONTROL_OPERATOR_EDEFAULT);
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER_SET:
-				getOwnedParameterSet().clear();
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER:
-				getOwnedParameter().clear();
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__IS_READ_ONLY:
-				setIsReadOnly(IS_READ_ONLY_EDEFAULT);
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__IS_SINGLE_EXECUTION:
-				setIsSingleExecution(IS_SINGLE_EXECUTION_EDEFAULT);
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_NODES:
-				getOwnedNodes().clear();
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_EDGES:
-				getOwnedEdges().clear();
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_GROUPS:
-				getOwnedGroups().clear();
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__IN_EXCHANGE_LINKS:
-				getInExchangeLinks().clear();
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__OUT_EXCHANGE_LINKS:
-				getOutExchangeLinks().clear();
-				return;
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_FUNCTION_PORTS:
-				getOwnedFunctionPorts().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_TRACES:
+        getOwnedTraces().clear();
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__NAMING_RULES:
+        getNamingRules().clear();
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__IS_CONTROL_OPERATOR:
+        setIsControlOperator(IS_CONTROL_OPERATOR_EDEFAULT);
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER_SET:
+        getOwnedParameterSet().clear();
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER:
+        getOwnedParameter().clear();
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__IS_READ_ONLY:
+        setIsReadOnly(IS_READ_ONLY_EDEFAULT);
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__IS_SINGLE_EXECUTION:
+        setIsSingleExecution(IS_SINGLE_EXECUTION_EDEFAULT);
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_NODES:
+        getOwnedNodes().clear();
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_EDGES:
+        getOwnedEdges().clear();
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_GROUPS:
+        getOwnedGroups().clear();
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__IN_EXCHANGE_LINKS:
+        getInExchangeLinks().clear();
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__OUT_EXCHANGE_LINKS:
+        getOutExchangeLinks().clear();
+        return;
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_FUNCTION_PORTS:
+        getOwnedFunctionPorts().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_TRACES:
-				return ownedTraces != null && !ownedTraces.isEmpty();
-			case FaPackage.FUNCTION_SPECIFICATION__CONTAINED_GENERIC_TRACES:
-				return !getContainedGenericTraces().isEmpty();
-			case FaPackage.FUNCTION_SPECIFICATION__CONTAINED_REQUIREMENTS_TRACES:
-				return !getContainedRequirementsTraces().isEmpty();
-			case FaPackage.FUNCTION_SPECIFICATION__NAMING_RULES:
-				return namingRules != null && !namingRules.isEmpty();
-			case FaPackage.FUNCTION_SPECIFICATION__IS_CONTROL_OPERATOR:
-				return isControlOperator != IS_CONTROL_OPERATOR_EDEFAULT;
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER_SET:
-				return ownedParameterSet != null && !ownedParameterSet.isEmpty();
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER:
-				return ownedParameter != null && !ownedParameter.isEmpty();
-			case FaPackage.FUNCTION_SPECIFICATION__IS_READ_ONLY:
-				return isReadOnly != IS_READ_ONLY_EDEFAULT;
-			case FaPackage.FUNCTION_SPECIFICATION__IS_SINGLE_EXECUTION:
-				return isSingleExecution != IS_SINGLE_EXECUTION_EDEFAULT;
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_NODES:
-				return ownedNodes != null && !ownedNodes.isEmpty();
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_EDGES:
-				return ownedEdges != null && !ownedEdges.isEmpty();
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_GROUPS:
-				return ownedGroups != null && !ownedGroups.isEmpty();
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_STRUCTURED_NODES:
-				return !getOwnedStructuredNodes().isEmpty();
-			case FaPackage.FUNCTION_SPECIFICATION__IN_EXCHANGE_LINKS:
-				return inExchangeLinks != null && !inExchangeLinks.isEmpty();
-			case FaPackage.FUNCTION_SPECIFICATION__OUT_EXCHANGE_LINKS:
-				return outExchangeLinks != null && !outExchangeLinks.isEmpty();
-			case FaPackage.FUNCTION_SPECIFICATION__OWNED_FUNCTION_PORTS:
-				return ownedFunctionPorts != null && !ownedFunctionPorts.isEmpty();
-			case FaPackage.FUNCTION_SPECIFICATION__SUB_FUNCTION_SPECIFICATIONS:
-				return !getSubFunctionSpecifications().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_TRACES:
+        return ownedTraces != null && !ownedTraces.isEmpty();
+      case FaPackage.FUNCTION_SPECIFICATION__CONTAINED_GENERIC_TRACES:
+        return !getContainedGenericTraces().isEmpty();
+      case FaPackage.FUNCTION_SPECIFICATION__CONTAINED_REQUIREMENTS_TRACES:
+        return !getContainedRequirementsTraces().isEmpty();
+      case FaPackage.FUNCTION_SPECIFICATION__NAMING_RULES:
+        return namingRules != null && !namingRules.isEmpty();
+      case FaPackage.FUNCTION_SPECIFICATION__IS_CONTROL_OPERATOR:
+        return isControlOperator != IS_CONTROL_OPERATOR_EDEFAULT;
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER_SET:
+        return ownedParameterSet != null && !ownedParameterSet.isEmpty();
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER:
+        return ownedParameter != null && !ownedParameter.isEmpty();
+      case FaPackage.FUNCTION_SPECIFICATION__IS_READ_ONLY:
+        return isReadOnly != IS_READ_ONLY_EDEFAULT;
+      case FaPackage.FUNCTION_SPECIFICATION__IS_SINGLE_EXECUTION:
+        return isSingleExecution != IS_SINGLE_EXECUTION_EDEFAULT;
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_NODES:
+        return ownedNodes != null && !ownedNodes.isEmpty();
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_EDGES:
+        return ownedEdges != null && !ownedEdges.isEmpty();
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_GROUPS:
+        return ownedGroups != null && !ownedGroups.isEmpty();
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_STRUCTURED_NODES:
+        return !getOwnedStructuredNodes().isEmpty();
+      case FaPackage.FUNCTION_SPECIFICATION__IN_EXCHANGE_LINKS:
+        return inExchangeLinks != null && !inExchangeLinks.isEmpty();
+      case FaPackage.FUNCTION_SPECIFICATION__OUT_EXCHANGE_LINKS:
+        return outExchangeLinks != null && !outExchangeLinks.isEmpty();
+      case FaPackage.FUNCTION_SPECIFICATION__OWNED_FUNCTION_PORTS:
+        return ownedFunctionPorts != null && !ownedFunctionPorts.isEmpty();
+      case FaPackage.FUNCTION_SPECIFICATION__SUB_FUNCTION_SPECIFICATIONS:
+        return !getSubFunctionSpecifications().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractBehavior.class) {
-			switch (derivedFeatureID) {
-				case FaPackage.FUNCTION_SPECIFICATION__IS_CONTROL_OPERATOR: return BehaviorPackage.ABSTRACT_BEHAVIOR__IS_CONTROL_OPERATOR;
-				case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER_SET: return BehaviorPackage.ABSTRACT_BEHAVIOR__OWNED_PARAMETER_SET;
-				case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER: return BehaviorPackage.ABSTRACT_BEHAVIOR__OWNED_PARAMETER;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractActivity.class) {
-			switch (derivedFeatureID) {
-				case FaPackage.FUNCTION_SPECIFICATION__IS_READ_ONLY: return ActivityPackage.ABSTRACT_ACTIVITY__IS_READ_ONLY;
-				case FaPackage.FUNCTION_SPECIFICATION__IS_SINGLE_EXECUTION: return ActivityPackage.ABSTRACT_ACTIVITY__IS_SINGLE_EXECUTION;
-				case FaPackage.FUNCTION_SPECIFICATION__OWNED_NODES: return ActivityPackage.ABSTRACT_ACTIVITY__OWNED_NODES;
-				case FaPackage.FUNCTION_SPECIFICATION__OWNED_EDGES: return ActivityPackage.ABSTRACT_ACTIVITY__OWNED_EDGES;
-				case FaPackage.FUNCTION_SPECIFICATION__OWNED_GROUPS: return ActivityPackage.ABSTRACT_ACTIVITY__OWNED_GROUPS;
-				case FaPackage.FUNCTION_SPECIFICATION__OWNED_STRUCTURED_NODES: return ActivityPackage.ABSTRACT_ACTIVITY__OWNED_STRUCTURED_NODES;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == AbstractBehavior.class) {
+      switch (derivedFeatureID) {
+        case FaPackage.FUNCTION_SPECIFICATION__IS_CONTROL_OPERATOR: return BehaviorPackage.ABSTRACT_BEHAVIOR__IS_CONTROL_OPERATOR;
+        case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER_SET: return BehaviorPackage.ABSTRACT_BEHAVIOR__OWNED_PARAMETER_SET;
+        case FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER: return BehaviorPackage.ABSTRACT_BEHAVIOR__OWNED_PARAMETER;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractActivity.class) {
+      switch (derivedFeatureID) {
+        case FaPackage.FUNCTION_SPECIFICATION__IS_READ_ONLY: return ActivityPackage.ABSTRACT_ACTIVITY__IS_READ_ONLY;
+        case FaPackage.FUNCTION_SPECIFICATION__IS_SINGLE_EXECUTION: return ActivityPackage.ABSTRACT_ACTIVITY__IS_SINGLE_EXECUTION;
+        case FaPackage.FUNCTION_SPECIFICATION__OWNED_NODES: return ActivityPackage.ABSTRACT_ACTIVITY__OWNED_NODES;
+        case FaPackage.FUNCTION_SPECIFICATION__OWNED_EDGES: return ActivityPackage.ABSTRACT_ACTIVITY__OWNED_EDGES;
+        case FaPackage.FUNCTION_SPECIFICATION__OWNED_GROUPS: return ActivityPackage.ABSTRACT_ACTIVITY__OWNED_GROUPS;
+        case FaPackage.FUNCTION_SPECIFICATION__OWNED_STRUCTURED_NODES: return ActivityPackage.ABSTRACT_ACTIVITY__OWNED_STRUCTURED_NODES;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractBehavior.class) {
-			switch (baseFeatureID) {
-				case BehaviorPackage.ABSTRACT_BEHAVIOR__IS_CONTROL_OPERATOR: return FaPackage.FUNCTION_SPECIFICATION__IS_CONTROL_OPERATOR;
-				case BehaviorPackage.ABSTRACT_BEHAVIOR__OWNED_PARAMETER_SET: return FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER_SET;
-				case BehaviorPackage.ABSTRACT_BEHAVIOR__OWNED_PARAMETER: return FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractActivity.class) {
-			switch (baseFeatureID) {
-				case ActivityPackage.ABSTRACT_ACTIVITY__IS_READ_ONLY: return FaPackage.FUNCTION_SPECIFICATION__IS_READ_ONLY;
-				case ActivityPackage.ABSTRACT_ACTIVITY__IS_SINGLE_EXECUTION: return FaPackage.FUNCTION_SPECIFICATION__IS_SINGLE_EXECUTION;
-				case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_NODES: return FaPackage.FUNCTION_SPECIFICATION__OWNED_NODES;
-				case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_EDGES: return FaPackage.FUNCTION_SPECIFICATION__OWNED_EDGES;
-				case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_GROUPS: return FaPackage.FUNCTION_SPECIFICATION__OWNED_GROUPS;
-				case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_STRUCTURED_NODES: return FaPackage.FUNCTION_SPECIFICATION__OWNED_STRUCTURED_NODES;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == AbstractBehavior.class) {
+      switch (baseFeatureID) {
+        case BehaviorPackage.ABSTRACT_BEHAVIOR__IS_CONTROL_OPERATOR: return FaPackage.FUNCTION_SPECIFICATION__IS_CONTROL_OPERATOR;
+        case BehaviorPackage.ABSTRACT_BEHAVIOR__OWNED_PARAMETER_SET: return FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER_SET;
+        case BehaviorPackage.ABSTRACT_BEHAVIOR__OWNED_PARAMETER: return FaPackage.FUNCTION_SPECIFICATION__OWNED_PARAMETER;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractActivity.class) {
+      switch (baseFeatureID) {
+        case ActivityPackage.ABSTRACT_ACTIVITY__IS_READ_ONLY: return FaPackage.FUNCTION_SPECIFICATION__IS_READ_ONLY;
+        case ActivityPackage.ABSTRACT_ACTIVITY__IS_SINGLE_EXECUTION: return FaPackage.FUNCTION_SPECIFICATION__IS_SINGLE_EXECUTION;
+        case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_NODES: return FaPackage.FUNCTION_SPECIFICATION__OWNED_NODES;
+        case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_EDGES: return FaPackage.FUNCTION_SPECIFICATION__OWNED_EDGES;
+        case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_GROUPS: return FaPackage.FUNCTION_SPECIFICATION__OWNED_GROUPS;
+        case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_STRUCTURED_NODES: return FaPackage.FUNCTION_SPECIFICATION__OWNED_STRUCTURED_NODES;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (isControlOperator: "); //$NON-NLS-1$
-		result.append(isControlOperator);
-		result.append(", isReadOnly: "); //$NON-NLS-1$
-		result.append(isReadOnly);
-		result.append(", isSingleExecution: "); //$NON-NLS-1$
-		result.append(isSingleExecution);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (isControlOperator: "); //$NON-NLS-1$
+    result.append(isControlOperator);
+    result.append(", isReadOnly: "); //$NON-NLS-1$
+    result.append(isReadOnly);
+    result.append(", isSingleExecution: "); //$NON-NLS-1$
+    result.append(isSingleExecution);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //FunctionSpecificationImpl

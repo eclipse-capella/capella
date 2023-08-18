@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.requirement.SystemUserRequirement;
  */
 public class SystemUserRequirementImpl extends RequirementImpl implements SystemUserRequirement {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected SystemUserRequirementImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return RequirementPackage.Literals.SYSTEM_USER_REQUIREMENT;
-	}
+    return RequirementPackage.Literals.SYSTEM_USER_REQUIREMENT;
+  }
 
 
 

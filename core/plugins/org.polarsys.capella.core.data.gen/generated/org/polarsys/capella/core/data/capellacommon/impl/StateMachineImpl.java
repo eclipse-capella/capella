@@ -95,23 +95,23 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * The default value of the '{@link #isVisibleInDoc() <em>Visible In Doc</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isVisibleInDoc() <em>Visible In Doc</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isVisibleInDoc()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isVisibleInDoc()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean VISIBLE_IN_DOC_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isVisibleInDoc() <em>Visible In Doc</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isVisibleInDoc() <em>Visible In Doc</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isVisibleInDoc()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isVisibleInDoc()
+   * @generated
+   * @ordered
+   */
 	protected boolean visibleInDoc = VISIBLE_IN_DOC_EDEFAULT;
 
 
@@ -119,23 +119,23 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * The default value of the '{@link #isVisibleInLM() <em>Visible In LM</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isVisibleInLM() <em>Visible In LM</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isVisibleInLM()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isVisibleInLM()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean VISIBLE_IN_LM_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isVisibleInLM() <em>Visible In LM</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isVisibleInLM() <em>Visible In LM</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isVisibleInLM()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isVisibleInLM()
+   * @generated
+   * @ordered
+   */
 	protected boolean visibleInLM = VISIBLE_IN_LM_EDEFAULT;
 
 
@@ -143,23 +143,23 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * The default value of the '{@link #getSummary() <em>Summary</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getSummary() <em>Summary</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSummary()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getSummary()
+   * @generated
+   * @ordered
+   */
 	protected static final String SUMMARY_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getSummary() <em>Summary</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getSummary() <em>Summary</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSummary()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getSummary()
+   * @generated
+   * @ordered
+   */
 	protected String summary = SUMMARY_EDEFAULT;
 
 
@@ -167,23 +167,23 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDescription()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getDescription()
+   * @generated
+   * @ordered
+   */
 	protected static final String DESCRIPTION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDescription()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getDescription()
+   * @generated
+   * @ordered
+   */
 	protected String description = DESCRIPTION_EDEFAULT;
 
 
@@ -191,23 +191,23 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * The default value of the '{@link #getReview() <em>Review</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getReview() <em>Review</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReview()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getReview()
+   * @generated
+   * @ordered
+   */
 	protected static final String REVIEW_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getReview() <em>Review</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getReview() <em>Review</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReview()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getReview()
+   * @generated
+   * @ordered
+   */
 	protected String review = REVIEW_EDEFAULT;
 
 
@@ -215,13 +215,13 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedPropertyValues() <em>Owned Property Values</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPropertyValues() <em>Owned Property Values</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPropertyValues()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPropertyValues()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractPropertyValue> ownedPropertyValues;
 
 
@@ -229,13 +229,13 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedEnumerationPropertyTypes() <em>Owned Enumeration Property Types</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedEnumerationPropertyTypes() <em>Owned Enumeration Property Types</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedEnumerationPropertyTypes()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedEnumerationPropertyTypes()
+   * @generated
+   * @ordered
+   */
 	protected EList<EnumerationPropertyType> ownedEnumerationPropertyTypes;
 
 
@@ -243,13 +243,13 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * The cached value of the '{@link #getAppliedPropertyValues() <em>Applied Property Values</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getAppliedPropertyValues() <em>Applied Property Values</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAppliedPropertyValues()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getAppliedPropertyValues()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractPropertyValue> appliedPropertyValues;
 
 
@@ -257,13 +257,13 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedPropertyValueGroups() <em>Owned Property Value Groups</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPropertyValueGroups() <em>Owned Property Value Groups</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPropertyValueGroups()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPropertyValueGroups()
+   * @generated
+   * @ordered
+   */
 	protected EList<PropertyValueGroup> ownedPropertyValueGroups;
 
 
@@ -271,13 +271,13 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * The cached value of the '{@link #getAppliedPropertyValueGroups() <em>Applied Property Value Groups</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getAppliedPropertyValueGroups() <em>Applied Property Value Groups</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAppliedPropertyValueGroups()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getAppliedPropertyValueGroups()
+   * @generated
+   * @ordered
+   */
 	protected EList<PropertyValueGroup> appliedPropertyValueGroups;
 
 
@@ -285,13 +285,13 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * The cached value of the '{@link #getStatus() <em>Status</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getStatus() <em>Status</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStatus()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getStatus()
+   * @generated
+   * @ordered
+   */
 	protected EnumerationPropertyLiteral status;
 
 
@@ -299,13 +299,13 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * The cached value of the '{@link #getFeatures() <em>Features</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getFeatures() <em>Features</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFeatures()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getFeatures()
+   * @generated
+   * @ordered
+   */
 	protected EList<EnumerationPropertyLiteral> features;
 
 
@@ -317,23 +317,23 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
 	protected String name = NAME_EDEFAULT;
 
 
@@ -341,23 +341,23 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * The default value of the '{@link #isIsControlOperator() <em>Is Control Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isIsControlOperator() <em>Is Control Operator</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsControlOperator()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsControlOperator()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean IS_CONTROL_OPERATOR_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsControlOperator() <em>Is Control Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isIsControlOperator() <em>Is Control Operator</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsControlOperator()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsControlOperator()
+   * @generated
+   * @ordered
+   */
 	protected boolean isControlOperator = IS_CONTROL_OPERATOR_EDEFAULT;
 
 
@@ -365,13 +365,13 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedParameterSet() <em>Owned Parameter Set</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedParameterSet() <em>Owned Parameter Set</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedParameterSet()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedParameterSet()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractParameterSet> ownedParameterSet;
 
 
@@ -379,13 +379,13 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedParameter() <em>Owned Parameter</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedParameter() <em>Owned Parameter</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedParameter()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedParameter()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractParameter> ownedParameter;
 
 
@@ -393,61 +393,61 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedRegions() <em>Owned Regions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedRegions() <em>Owned Regions</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedRegions()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedRegions()
+   * @generated
+   * @ordered
+   */
 	protected EList<Region> ownedRegions;
 
 
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedConnectionPoints() <em>Owned Connection Points</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedConnectionPoints() <em>Owned Connection Points</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedConnectionPoints()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedConnectionPoints()
+   * @generated
+   * @ordered
+   */
 	protected EList<Pseudostate> ownedConnectionPoints;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected StateMachineImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.STATE_MACHINE;
-	}
+    return CapellacommonPackage.Literals.STATE_MACHINE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractTrace> getIncomingTraces() {
 
@@ -474,27 +474,27 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
     // A helper is found, let's use it. 
     EAnnotation annotation = ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractTrace> resultAsList = (Collection<AbstractTrace>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractTrace>(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractTrace> resultAsList = (Collection<AbstractTrace>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractTrace>(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractTrace> getOutgoingTraces() {
 
@@ -521,49 +521,49 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
     // A helper is found, let's use it. 
     EAnnotation annotation = ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractTrace> resultAsList = (Collection<AbstractTrace>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractTrace>(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractTrace> resultAsList = (Collection<AbstractTrace>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractTrace>(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isVisibleInDoc() {
 
-		return visibleInDoc;
-	}
+    return visibleInDoc;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setVisibleInDoc(boolean newVisibleInDoc) {
 
-		boolean oldVisibleInDoc = visibleInDoc;
-		visibleInDoc = newVisibleInDoc;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_DOC, oldVisibleInDoc, visibleInDoc));
+    boolean oldVisibleInDoc = visibleInDoc;
+    visibleInDoc = newVisibleInDoc;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_DOC, oldVisibleInDoc, visibleInDoc));
 
-	}
+  }
 
 
 
@@ -571,32 +571,32 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isVisibleInLM() {
 
-		return visibleInLM;
-	}
+    return visibleInLM;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setVisibleInLM(boolean newVisibleInLM) {
 
-		boolean oldVisibleInLM = visibleInLM;
-		visibleInLM = newVisibleInLM;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_LM, oldVisibleInLM, visibleInLM));
+    boolean oldVisibleInLM = visibleInLM;
+    visibleInLM = newVisibleInLM;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_LM, oldVisibleInLM, visibleInLM));
 
-	}
+  }
 
 
 
@@ -604,32 +604,32 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public String getSummary() {
 
-		return summary;
-	}
+    return summary;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setSummary(String newSummary) {
 
-		String oldSummary = summary;
-		summary = newSummary;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_MACHINE__SUMMARY, oldSummary, summary));
+    String oldSummary = summary;
+    summary = newSummary;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_MACHINE__SUMMARY, oldSummary, summary));
 
-	}
+  }
 
 
 
@@ -637,32 +637,32 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public String getDescription() {
 
-		return description;
-	}
+    return description;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setDescription(String newDescription) {
 
-		String oldDescription = description;
-		description = newDescription;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_MACHINE__DESCRIPTION, oldDescription, description));
+    String oldDescription = description;
+    description = newDescription;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_MACHINE__DESCRIPTION, oldDescription, description));
 
-	}
+  }
 
 
 
@@ -670,32 +670,32 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public String getReview() {
 
-		return review;
-	}
+    return review;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setReview(String newReview) {
 
-		String oldReview = review;
-		review = newReview;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_MACHINE__REVIEW, oldReview, review));
+    String oldReview = review;
+    review = newReview;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_MACHINE__REVIEW, oldReview, review));
 
-	}
+  }
 
 
 
@@ -703,143 +703,143 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractPropertyValue> getOwnedPropertyValues() {
 
-		if (ownedPropertyValues == null) {
-			ownedPropertyValues = new EObjectContainmentEList.Resolving<AbstractPropertyValue>(AbstractPropertyValue.class, this, CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUES);
-		}
-		return ownedPropertyValues;
-	}
+    if (ownedPropertyValues == null) {
+      ownedPropertyValues = new EObjectContainmentEList.Resolving<AbstractPropertyValue>(AbstractPropertyValue.class, this, CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUES);
+    }
+    return ownedPropertyValues;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<EnumerationPropertyType> getOwnedEnumerationPropertyTypes() {
 
-		if (ownedEnumerationPropertyTypes == null) {
-			ownedEnumerationPropertyTypes = new EObjectContainmentEList.Resolving<EnumerationPropertyType>(EnumerationPropertyType.class, this, CapellacommonPackage.STATE_MACHINE__OWNED_ENUMERATION_PROPERTY_TYPES);
-		}
-		return ownedEnumerationPropertyTypes;
-	}
+    if (ownedEnumerationPropertyTypes == null) {
+      ownedEnumerationPropertyTypes = new EObjectContainmentEList.Resolving<EnumerationPropertyType>(EnumerationPropertyType.class, this, CapellacommonPackage.STATE_MACHINE__OWNED_ENUMERATION_PROPERTY_TYPES);
+    }
+    return ownedEnumerationPropertyTypes;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractPropertyValue> getAppliedPropertyValues() {
 
-		if (appliedPropertyValues == null) {
-			appliedPropertyValues = new EObjectResolvingEList<AbstractPropertyValue>(AbstractPropertyValue.class, this, CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUES);
-		}
-		return appliedPropertyValues;
-	}
+    if (appliedPropertyValues == null) {
+      appliedPropertyValues = new EObjectResolvingEList<AbstractPropertyValue>(AbstractPropertyValue.class, this, CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUES);
+    }
+    return appliedPropertyValues;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PropertyValueGroup> getOwnedPropertyValueGroups() {
 
-		if (ownedPropertyValueGroups == null) {
-			ownedPropertyValueGroups = new EObjectContainmentEList.Resolving<PropertyValueGroup>(PropertyValueGroup.class, this, CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUE_GROUPS);
-		}
-		return ownedPropertyValueGroups;
-	}
+    if (ownedPropertyValueGroups == null) {
+      ownedPropertyValueGroups = new EObjectContainmentEList.Resolving<PropertyValueGroup>(PropertyValueGroup.class, this, CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUE_GROUPS);
+    }
+    return ownedPropertyValueGroups;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PropertyValueGroup> getAppliedPropertyValueGroups() {
 
-		if (appliedPropertyValueGroups == null) {
-			appliedPropertyValueGroups = new EObjectResolvingEList<PropertyValueGroup>(PropertyValueGroup.class, this, CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUE_GROUPS);
-		}
-		return appliedPropertyValueGroups;
-	}
+    if (appliedPropertyValueGroups == null) {
+      appliedPropertyValueGroups = new EObjectResolvingEList<PropertyValueGroup>(PropertyValueGroup.class, this, CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUE_GROUPS);
+    }
+    return appliedPropertyValueGroups;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EnumerationPropertyLiteral getStatus() {
 
-		if (status != null && status.eIsProxy()) {
-			InternalEObject oldStatus = (InternalEObject)status;
-			status = (EnumerationPropertyLiteral)eResolveProxy(oldStatus);
-			if (status != oldStatus) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE_MACHINE__STATUS, oldStatus, status));
-			}
-		}
-		return status;
-	}
+    if (status != null && status.eIsProxy()) {
+      InternalEObject oldStatus = (InternalEObject)status;
+      status = (EnumerationPropertyLiteral)eResolveProxy(oldStatus);
+      if (status != oldStatus) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE_MACHINE__STATUS, oldStatus, status));
+      }
+    }
+    return status;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EnumerationPropertyLiteral basicGetStatus() {
 
-		return status;
-	}
+    return status;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setStatus(EnumerationPropertyLiteral newStatus) {
 
-		EnumerationPropertyLiteral oldStatus = status;
-		status = newStatus;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_MACHINE__STATUS, oldStatus, status));
+    EnumerationPropertyLiteral oldStatus = status;
+    status = newStatus;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_MACHINE__STATUS, oldStatus, status));
 
-	}
+  }
 
 
 
@@ -847,28 +847,28 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<EnumerationPropertyLiteral> getFeatures() {
 
-		if (features == null) {
-			features = new EObjectResolvingEList<EnumerationPropertyLiteral>(EnumerationPropertyLiteral.class, this, CapellacommonPackage.STATE_MACHINE__FEATURES);
-		}
-		return features;
-	}
+    if (features == null) {
+      features = new EObjectResolvingEList<EnumerationPropertyLiteral>(EnumerationPropertyLiteral.class, this, CapellacommonPackage.STATE_MACHINE__FEATURES);
+    }
+    return features;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Requirement> getAppliedRequirements() {
 
@@ -895,49 +895,49 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Requirement> resultAsList = (Collection<Requirement>) result;
-		return new EcoreEList.UnmodifiableEList<Requirement>(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Requirement> resultAsList = (Collection<Requirement>) result;
+    return new EcoreEList.UnmodifiableEList<Requirement>(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public String getName() {
 
-		return name;
-	}
+    return name;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setName(String newName) {
 
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_MACHINE__NAME, oldName, name));
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_MACHINE__NAME, oldName, name));
 
-	}
+  }
 
 
 
@@ -945,32 +945,32 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isIsControlOperator() {
 
-		return isControlOperator;
-	}
+    return isControlOperator;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setIsControlOperator(boolean newIsControlOperator) {
 
-		boolean oldIsControlOperator = isControlOperator;
-		isControlOperator = newIsControlOperator;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR, oldIsControlOperator, isControlOperator));
+    boolean oldIsControlOperator = isControlOperator;
+    isControlOperator = newIsControlOperator;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR, oldIsControlOperator, isControlOperator));
 
-	}
+  }
 
 
 
@@ -978,436 +978,436 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractParameterSet> getOwnedParameterSet() {
 
-		if (ownedParameterSet == null) {
-			ownedParameterSet = new EObjectResolvingEList<AbstractParameterSet>(AbstractParameterSet.class, this, CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER_SET);
-		}
-		return ownedParameterSet;
-	}
+    if (ownedParameterSet == null) {
+      ownedParameterSet = new EObjectResolvingEList<AbstractParameterSet>(AbstractParameterSet.class, this, CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER_SET);
+    }
+    return ownedParameterSet;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractParameter> getOwnedParameter() {
 
-		if (ownedParameter == null) {
-			ownedParameter = new EObjectResolvingEList<AbstractParameter>(AbstractParameter.class, this, CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER);
-		}
-		return ownedParameter;
-	}
+    if (ownedParameter == null) {
+      ownedParameter = new EObjectResolvingEList<AbstractParameter>(AbstractParameter.class, this, CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER);
+    }
+    return ownedParameter;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Region> getOwnedRegions() {
 
-		if (ownedRegions == null) {
-			ownedRegions = new EObjectContainmentEList.Resolving<Region>(Region.class, this, CapellacommonPackage.STATE_MACHINE__OWNED_REGIONS);
-		}
-		return ownedRegions;
-	}
+    if (ownedRegions == null) {
+      ownedRegions = new EObjectContainmentEList.Resolving<Region>(Region.class, this, CapellacommonPackage.STATE_MACHINE__OWNED_REGIONS);
+    }
+    return ownedRegions;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Pseudostate> getOwnedConnectionPoints() {
 
-		if (ownedConnectionPoints == null) {
-			ownedConnectionPoints = new EObjectContainmentEList.Resolving<Pseudostate>(Pseudostate.class, this, CapellacommonPackage.STATE_MACHINE__OWNED_CONNECTION_POINTS);
-		}
-		return ownedConnectionPoints;
-	}
+    if (ownedConnectionPoints == null) {
+      ownedConnectionPoints = new EObjectContainmentEList.Resolving<Pseudostate>(Pseudostate.class, this, CapellacommonPackage.STATE_MACHINE__OWNED_CONNECTION_POINTS);
+    }
+    return ownedConnectionPoints;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUES:
-				return ((InternalEList<?>)getOwnedPropertyValues()).basicRemove(otherEnd, msgs);
-			case CapellacommonPackage.STATE_MACHINE__OWNED_ENUMERATION_PROPERTY_TYPES:
-				return ((InternalEList<?>)getOwnedEnumerationPropertyTypes()).basicRemove(otherEnd, msgs);
-			case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUE_GROUPS:
-				return ((InternalEList<?>)getOwnedPropertyValueGroups()).basicRemove(otherEnd, msgs);
-			case CapellacommonPackage.STATE_MACHINE__OWNED_REGIONS:
-				return ((InternalEList<?>)getOwnedRegions()).basicRemove(otherEnd, msgs);
-			case CapellacommonPackage.STATE_MACHINE__OWNED_CONNECTION_POINTS:
-				return ((InternalEList<?>)getOwnedConnectionPoints()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUES:
+        return ((InternalEList<?>)getOwnedPropertyValues()).basicRemove(otherEnd, msgs);
+      case CapellacommonPackage.STATE_MACHINE__OWNED_ENUMERATION_PROPERTY_TYPES:
+        return ((InternalEList<?>)getOwnedEnumerationPropertyTypes()).basicRemove(otherEnd, msgs);
+      case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUE_GROUPS:
+        return ((InternalEList<?>)getOwnedPropertyValueGroups()).basicRemove(otherEnd, msgs);
+      case CapellacommonPackage.STATE_MACHINE__OWNED_REGIONS:
+        return ((InternalEList<?>)getOwnedRegions()).basicRemove(otherEnd, msgs);
+      case CapellacommonPackage.STATE_MACHINE__OWNED_CONNECTION_POINTS:
+        return ((InternalEList<?>)getOwnedConnectionPoints()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CapellacommonPackage.STATE_MACHINE__INCOMING_TRACES:
-				return getIncomingTraces();
-			case CapellacommonPackage.STATE_MACHINE__OUTGOING_TRACES:
-				return getOutgoingTraces();
-			case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_DOC:
-				return isVisibleInDoc();
-			case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_LM:
-				return isVisibleInLM();
-			case CapellacommonPackage.STATE_MACHINE__SUMMARY:
-				return getSummary();
-			case CapellacommonPackage.STATE_MACHINE__DESCRIPTION:
-				return getDescription();
-			case CapellacommonPackage.STATE_MACHINE__REVIEW:
-				return getReview();
-			case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUES:
-				return getOwnedPropertyValues();
-			case CapellacommonPackage.STATE_MACHINE__OWNED_ENUMERATION_PROPERTY_TYPES:
-				return getOwnedEnumerationPropertyTypes();
-			case CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUES:
-				return getAppliedPropertyValues();
-			case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUE_GROUPS:
-				return getOwnedPropertyValueGroups();
-			case CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUE_GROUPS:
-				return getAppliedPropertyValueGroups();
-			case CapellacommonPackage.STATE_MACHINE__STATUS:
-				if (resolve) return getStatus();
-				return basicGetStatus();
-			case CapellacommonPackage.STATE_MACHINE__FEATURES:
-				return getFeatures();
-			case CapellacommonPackage.STATE_MACHINE__APPLIED_REQUIREMENTS:
-				return getAppliedRequirements();
-			case CapellacommonPackage.STATE_MACHINE__NAME:
-				return getName();
-			case CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR:
-				return isIsControlOperator();
-			case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER_SET:
-				return getOwnedParameterSet();
-			case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER:
-				return getOwnedParameter();
-			case CapellacommonPackage.STATE_MACHINE__OWNED_REGIONS:
-				return getOwnedRegions();
-			case CapellacommonPackage.STATE_MACHINE__OWNED_CONNECTION_POINTS:
-				return getOwnedConnectionPoints();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.STATE_MACHINE__INCOMING_TRACES:
+        return getIncomingTraces();
+      case CapellacommonPackage.STATE_MACHINE__OUTGOING_TRACES:
+        return getOutgoingTraces();
+      case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_DOC:
+        return isVisibleInDoc();
+      case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_LM:
+        return isVisibleInLM();
+      case CapellacommonPackage.STATE_MACHINE__SUMMARY:
+        return getSummary();
+      case CapellacommonPackage.STATE_MACHINE__DESCRIPTION:
+        return getDescription();
+      case CapellacommonPackage.STATE_MACHINE__REVIEW:
+        return getReview();
+      case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUES:
+        return getOwnedPropertyValues();
+      case CapellacommonPackage.STATE_MACHINE__OWNED_ENUMERATION_PROPERTY_TYPES:
+        return getOwnedEnumerationPropertyTypes();
+      case CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUES:
+        return getAppliedPropertyValues();
+      case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUE_GROUPS:
+        return getOwnedPropertyValueGroups();
+      case CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUE_GROUPS:
+        return getAppliedPropertyValueGroups();
+      case CapellacommonPackage.STATE_MACHINE__STATUS:
+        if (resolve) return getStatus();
+        return basicGetStatus();
+      case CapellacommonPackage.STATE_MACHINE__FEATURES:
+        return getFeatures();
+      case CapellacommonPackage.STATE_MACHINE__APPLIED_REQUIREMENTS:
+        return getAppliedRequirements();
+      case CapellacommonPackage.STATE_MACHINE__NAME:
+        return getName();
+      case CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR:
+        return isIsControlOperator();
+      case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER_SET:
+        return getOwnedParameterSet();
+      case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER:
+        return getOwnedParameter();
+      case CapellacommonPackage.STATE_MACHINE__OWNED_REGIONS:
+        return getOwnedRegions();
+      case CapellacommonPackage.STATE_MACHINE__OWNED_CONNECTION_POINTS:
+        return getOwnedConnectionPoints();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_DOC:
-					setVisibleInDoc((Boolean)newValue);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_LM:
-					setVisibleInLM((Boolean)newValue);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__SUMMARY:
-					setSummary((String)newValue);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__DESCRIPTION:
-					setDescription((String)newValue);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__REVIEW:
-					setReview((String)newValue);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUES:
-				getOwnedPropertyValues().clear();
-				getOwnedPropertyValues().addAll((Collection<? extends AbstractPropertyValue>)newValue);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__OWNED_ENUMERATION_PROPERTY_TYPES:
-				getOwnedEnumerationPropertyTypes().clear();
-				getOwnedEnumerationPropertyTypes().addAll((Collection<? extends EnumerationPropertyType>)newValue);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUES:
-				getAppliedPropertyValues().clear();
-				getAppliedPropertyValues().addAll((Collection<? extends AbstractPropertyValue>)newValue);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUE_GROUPS:
-				getOwnedPropertyValueGroups().clear();
-				getOwnedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUE_GROUPS:
-				getAppliedPropertyValueGroups().clear();
-				getAppliedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__STATUS:
-					setStatus((EnumerationPropertyLiteral)newValue);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__FEATURES:
-				getFeatures().clear();
-				getFeatures().addAll((Collection<? extends EnumerationPropertyLiteral>)newValue);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__NAME:
-					setName((String)newValue);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR:
-					setIsControlOperator((Boolean)newValue);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER_SET:
-				getOwnedParameterSet().clear();
-				getOwnedParameterSet().addAll((Collection<? extends AbstractParameterSet>)newValue);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER:
-				getOwnedParameter().clear();
-				getOwnedParameter().addAll((Collection<? extends AbstractParameter>)newValue);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__OWNED_REGIONS:
-				getOwnedRegions().clear();
-				getOwnedRegions().addAll((Collection<? extends Region>)newValue);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__OWNED_CONNECTION_POINTS:
-				getOwnedConnectionPoints().clear();
-				getOwnedConnectionPoints().addAll((Collection<? extends Pseudostate>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_DOC:
+          setVisibleInDoc((Boolean)newValue);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_LM:
+          setVisibleInLM((Boolean)newValue);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__SUMMARY:
+          setSummary((String)newValue);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__DESCRIPTION:
+          setDescription((String)newValue);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__REVIEW:
+          setReview((String)newValue);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUES:
+        getOwnedPropertyValues().clear();
+        getOwnedPropertyValues().addAll((Collection<? extends AbstractPropertyValue>)newValue);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__OWNED_ENUMERATION_PROPERTY_TYPES:
+        getOwnedEnumerationPropertyTypes().clear();
+        getOwnedEnumerationPropertyTypes().addAll((Collection<? extends EnumerationPropertyType>)newValue);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUES:
+        getAppliedPropertyValues().clear();
+        getAppliedPropertyValues().addAll((Collection<? extends AbstractPropertyValue>)newValue);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUE_GROUPS:
+        getOwnedPropertyValueGroups().clear();
+        getOwnedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUE_GROUPS:
+        getAppliedPropertyValueGroups().clear();
+        getAppliedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__STATUS:
+          setStatus((EnumerationPropertyLiteral)newValue);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__FEATURES:
+        getFeatures().clear();
+        getFeatures().addAll((Collection<? extends EnumerationPropertyLiteral>)newValue);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__NAME:
+          setName((String)newValue);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR:
+          setIsControlOperator((Boolean)newValue);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER_SET:
+        getOwnedParameterSet().clear();
+        getOwnedParameterSet().addAll((Collection<? extends AbstractParameterSet>)newValue);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER:
+        getOwnedParameter().clear();
+        getOwnedParameter().addAll((Collection<? extends AbstractParameter>)newValue);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__OWNED_REGIONS:
+        getOwnedRegions().clear();
+        getOwnedRegions().addAll((Collection<? extends Region>)newValue);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__OWNED_CONNECTION_POINTS:
+        getOwnedConnectionPoints().clear();
+        getOwnedConnectionPoints().addAll((Collection<? extends Pseudostate>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_DOC:
-				setVisibleInDoc(VISIBLE_IN_DOC_EDEFAULT);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_LM:
-				setVisibleInLM(VISIBLE_IN_LM_EDEFAULT);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__SUMMARY:
-				setSummary(SUMMARY_EDEFAULT);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__DESCRIPTION:
-				setDescription(DESCRIPTION_EDEFAULT);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__REVIEW:
-				setReview(REVIEW_EDEFAULT);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUES:
-				getOwnedPropertyValues().clear();
-				return;
-			case CapellacommonPackage.STATE_MACHINE__OWNED_ENUMERATION_PROPERTY_TYPES:
-				getOwnedEnumerationPropertyTypes().clear();
-				return;
-			case CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUES:
-				getAppliedPropertyValues().clear();
-				return;
-			case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUE_GROUPS:
-				getOwnedPropertyValueGroups().clear();
-				return;
-			case CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUE_GROUPS:
-				getAppliedPropertyValueGroups().clear();
-				return;
-			case CapellacommonPackage.STATE_MACHINE__STATUS:
-				setStatus((EnumerationPropertyLiteral)null);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__FEATURES:
-				getFeatures().clear();
-				return;
-			case CapellacommonPackage.STATE_MACHINE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR:
-				setIsControlOperator(IS_CONTROL_OPERATOR_EDEFAULT);
-				return;
-			case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER_SET:
-				getOwnedParameterSet().clear();
-				return;
-			case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER:
-				getOwnedParameter().clear();
-				return;
-			case CapellacommonPackage.STATE_MACHINE__OWNED_REGIONS:
-				getOwnedRegions().clear();
-				return;
-			case CapellacommonPackage.STATE_MACHINE__OWNED_CONNECTION_POINTS:
-				getOwnedConnectionPoints().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_DOC:
+        setVisibleInDoc(VISIBLE_IN_DOC_EDEFAULT);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_LM:
+        setVisibleInLM(VISIBLE_IN_LM_EDEFAULT);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__SUMMARY:
+        setSummary(SUMMARY_EDEFAULT);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__DESCRIPTION:
+        setDescription(DESCRIPTION_EDEFAULT);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__REVIEW:
+        setReview(REVIEW_EDEFAULT);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUES:
+        getOwnedPropertyValues().clear();
+        return;
+      case CapellacommonPackage.STATE_MACHINE__OWNED_ENUMERATION_PROPERTY_TYPES:
+        getOwnedEnumerationPropertyTypes().clear();
+        return;
+      case CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUES:
+        getAppliedPropertyValues().clear();
+        return;
+      case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUE_GROUPS:
+        getOwnedPropertyValueGroups().clear();
+        return;
+      case CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUE_GROUPS:
+        getAppliedPropertyValueGroups().clear();
+        return;
+      case CapellacommonPackage.STATE_MACHINE__STATUS:
+        setStatus((EnumerationPropertyLiteral)null);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__FEATURES:
+        getFeatures().clear();
+        return;
+      case CapellacommonPackage.STATE_MACHINE__NAME:
+        setName(NAME_EDEFAULT);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR:
+        setIsControlOperator(IS_CONTROL_OPERATOR_EDEFAULT);
+        return;
+      case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER_SET:
+        getOwnedParameterSet().clear();
+        return;
+      case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER:
+        getOwnedParameter().clear();
+        return;
+      case CapellacommonPackage.STATE_MACHINE__OWNED_REGIONS:
+        getOwnedRegions().clear();
+        return;
+      case CapellacommonPackage.STATE_MACHINE__OWNED_CONNECTION_POINTS:
+        getOwnedConnectionPoints().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CapellacommonPackage.STATE_MACHINE__INCOMING_TRACES:
-				return !getIncomingTraces().isEmpty();
-			case CapellacommonPackage.STATE_MACHINE__OUTGOING_TRACES:
-				return !getOutgoingTraces().isEmpty();
-			case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_DOC:
-				return visibleInDoc != VISIBLE_IN_DOC_EDEFAULT;
-			case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_LM:
-				return visibleInLM != VISIBLE_IN_LM_EDEFAULT;
-			case CapellacommonPackage.STATE_MACHINE__SUMMARY:
-				return SUMMARY_EDEFAULT == null ? summary != null : !SUMMARY_EDEFAULT.equals(summary);
-			case CapellacommonPackage.STATE_MACHINE__DESCRIPTION:
-				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-			case CapellacommonPackage.STATE_MACHINE__REVIEW:
-				return REVIEW_EDEFAULT == null ? review != null : !REVIEW_EDEFAULT.equals(review);
-			case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUES:
-				return ownedPropertyValues != null && !ownedPropertyValues.isEmpty();
-			case CapellacommonPackage.STATE_MACHINE__OWNED_ENUMERATION_PROPERTY_TYPES:
-				return ownedEnumerationPropertyTypes != null && !ownedEnumerationPropertyTypes.isEmpty();
-			case CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUES:
-				return appliedPropertyValues != null && !appliedPropertyValues.isEmpty();
-			case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUE_GROUPS:
-				return ownedPropertyValueGroups != null && !ownedPropertyValueGroups.isEmpty();
-			case CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUE_GROUPS:
-				return appliedPropertyValueGroups != null && !appliedPropertyValueGroups.isEmpty();
-			case CapellacommonPackage.STATE_MACHINE__STATUS:
-				return status != null;
-			case CapellacommonPackage.STATE_MACHINE__FEATURES:
-				return features != null && !features.isEmpty();
-			case CapellacommonPackage.STATE_MACHINE__APPLIED_REQUIREMENTS:
-				return !getAppliedRequirements().isEmpty();
-			case CapellacommonPackage.STATE_MACHINE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR:
-				return isControlOperator != IS_CONTROL_OPERATOR_EDEFAULT;
-			case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER_SET:
-				return ownedParameterSet != null && !ownedParameterSet.isEmpty();
-			case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER:
-				return ownedParameter != null && !ownedParameter.isEmpty();
-			case CapellacommonPackage.STATE_MACHINE__OWNED_REGIONS:
-				return ownedRegions != null && !ownedRegions.isEmpty();
-			case CapellacommonPackage.STATE_MACHINE__OWNED_CONNECTION_POINTS:
-				return ownedConnectionPoints != null && !ownedConnectionPoints.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.STATE_MACHINE__INCOMING_TRACES:
+        return !getIncomingTraces().isEmpty();
+      case CapellacommonPackage.STATE_MACHINE__OUTGOING_TRACES:
+        return !getOutgoingTraces().isEmpty();
+      case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_DOC:
+        return visibleInDoc != VISIBLE_IN_DOC_EDEFAULT;
+      case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_LM:
+        return visibleInLM != VISIBLE_IN_LM_EDEFAULT;
+      case CapellacommonPackage.STATE_MACHINE__SUMMARY:
+        return SUMMARY_EDEFAULT == null ? summary != null : !SUMMARY_EDEFAULT.equals(summary);
+      case CapellacommonPackage.STATE_MACHINE__DESCRIPTION:
+        return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+      case CapellacommonPackage.STATE_MACHINE__REVIEW:
+        return REVIEW_EDEFAULT == null ? review != null : !REVIEW_EDEFAULT.equals(review);
+      case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUES:
+        return ownedPropertyValues != null && !ownedPropertyValues.isEmpty();
+      case CapellacommonPackage.STATE_MACHINE__OWNED_ENUMERATION_PROPERTY_TYPES:
+        return ownedEnumerationPropertyTypes != null && !ownedEnumerationPropertyTypes.isEmpty();
+      case CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUES:
+        return appliedPropertyValues != null && !appliedPropertyValues.isEmpty();
+      case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUE_GROUPS:
+        return ownedPropertyValueGroups != null && !ownedPropertyValueGroups.isEmpty();
+      case CapellacommonPackage.STATE_MACHINE__APPLIED_PROPERTY_VALUE_GROUPS:
+        return appliedPropertyValueGroups != null && !appliedPropertyValueGroups.isEmpty();
+      case CapellacommonPackage.STATE_MACHINE__STATUS:
+        return status != null;
+      case CapellacommonPackage.STATE_MACHINE__FEATURES:
+        return features != null && !features.isEmpty();
+      case CapellacommonPackage.STATE_MACHINE__APPLIED_REQUIREMENTS:
+        return !getAppliedRequirements().isEmpty();
+      case CapellacommonPackage.STATE_MACHINE__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR:
+        return isControlOperator != IS_CONTROL_OPERATOR_EDEFAULT;
+      case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER_SET:
+        return ownedParameterSet != null && !ownedParameterSet.isEmpty();
+      case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER:
+        return ownedParameter != null && !ownedParameter.isEmpty();
+      case CapellacommonPackage.STATE_MACHINE__OWNED_REGIONS:
+        return ownedRegions != null && !ownedRegions.isEmpty();
+      case CapellacommonPackage.STATE_MACHINE__OWNED_CONNECTION_POINTS:
+        return ownedConnectionPoints != null && !ownedConnectionPoints.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == PublishableElement.class) {
-			switch (derivedFeatureID) {
-				case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_DOC: return ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_DOC;
-				case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_LM: return ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_LM;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractNamedElement.class) {
-			switch (derivedFeatureID) {
-				case CapellacommonPackage.STATE_MACHINE__NAME: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractBehavior.class) {
-			switch (derivedFeatureID) {
-				case CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR: return BehaviorPackage.ABSTRACT_BEHAVIOR__IS_CONTROL_OPERATOR;
-				case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER_SET: return BehaviorPackage.ABSTRACT_BEHAVIOR__OWNED_PARAMETER_SET;
-				case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER: return BehaviorPackage.ABSTRACT_BEHAVIOR__OWNED_PARAMETER;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == PublishableElement.class) {
+      switch (derivedFeatureID) {
+        case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_DOC: return ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_DOC;
+        case CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_LM: return ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_LM;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractNamedElement.class) {
+      switch (derivedFeatureID) {
+        case CapellacommonPackage.STATE_MACHINE__NAME: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractBehavior.class) {
+      switch (derivedFeatureID) {
+        case CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR: return BehaviorPackage.ABSTRACT_BEHAVIOR__IS_CONTROL_OPERATOR;
+        case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER_SET: return BehaviorPackage.ABSTRACT_BEHAVIOR__OWNED_PARAMETER_SET;
+        case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER: return BehaviorPackage.ABSTRACT_BEHAVIOR__OWNED_PARAMETER;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == PublishableElement.class) {
-			switch (baseFeatureID) {
-				case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_DOC: return CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_DOC;
-				case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_LM: return CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_LM;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractNamedElement.class) {
-			switch (baseFeatureID) {
-				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME: return CapellacommonPackage.STATE_MACHINE__NAME;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractBehavior.class) {
-			switch (baseFeatureID) {
-				case BehaviorPackage.ABSTRACT_BEHAVIOR__IS_CONTROL_OPERATOR: return CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR;
-				case BehaviorPackage.ABSTRACT_BEHAVIOR__OWNED_PARAMETER_SET: return CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER_SET;
-				case BehaviorPackage.ABSTRACT_BEHAVIOR__OWNED_PARAMETER: return CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == PublishableElement.class) {
+      switch (baseFeatureID) {
+        case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_DOC: return CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_DOC;
+        case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_LM: return CapellacommonPackage.STATE_MACHINE__VISIBLE_IN_LM;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractNamedElement.class) {
+      switch (baseFeatureID) {
+        case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME: return CapellacommonPackage.STATE_MACHINE__NAME;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractBehavior.class) {
+      switch (baseFeatureID) {
+        case BehaviorPackage.ABSTRACT_BEHAVIOR__IS_CONTROL_OPERATOR: return CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR;
+        case BehaviorPackage.ABSTRACT_BEHAVIOR__OWNED_PARAMETER_SET: return CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER_SET;
+        case BehaviorPackage.ABSTRACT_BEHAVIOR__OWNED_PARAMETER: return CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (visibleInDoc: "); //$NON-NLS-1$
-		result.append(visibleInDoc);
-		result.append(", visibleInLM: "); //$NON-NLS-1$
-		result.append(visibleInLM);
-		result.append(", summary: "); //$NON-NLS-1$
-		result.append(summary);
-		result.append(", review: "); //$NON-NLS-1$
-		result.append(review);
-		result.append(", name: "); //$NON-NLS-1$
-		result.append(name);
-		result.append(", isControlOperator: "); //$NON-NLS-1$
-		result.append(isControlOperator);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (visibleInDoc: "); //$NON-NLS-1$
+    result.append(visibleInDoc);
+    result.append(", visibleInLM: "); //$NON-NLS-1$
+    result.append(visibleInLM);
+    result.append(", summary: "); //$NON-NLS-1$
+    result.append(summary);
+    result.append(", review: "); //$NON-NLS-1$
+    result.append(review);
+    result.append(", name: "); //$NON-NLS-1$
+    result.append(name);
+    result.append(", isControlOperator: "); //$NON-NLS-1$
+    result.append(isControlOperator);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //StateMachineImpl

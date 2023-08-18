@@ -24,74 +24,74 @@ import org.eclipse.emf.ecore.EFactory;
  */
 public interface EpbsFactory extends EFactory {
 	/**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
+   * The singleton instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	EpbsFactory eINSTANCE = org.polarsys.capella.core.data.epbs.impl.EpbsFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>EPBS Architecture Pkg</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>EPBS Architecture Pkg</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>EPBS Architecture Pkg</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>EPBS Architecture Pkg</em>'.
+   * @generated
+   */
 	EPBSArchitecturePkg createEPBSArchitecturePkg();
 
 	/**
-	 * Returns a new object of class '<em>EPBS Architecture</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>EPBS Architecture</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>EPBS Architecture</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>EPBS Architecture</em>'.
+   * @generated
+   */
 	EPBSArchitecture createEPBSArchitecture();
 
 	/**
-	 * Returns a new object of class '<em>Configuration Item Pkg</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Configuration Item Pkg</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Configuration Item Pkg</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Configuration Item Pkg</em>'.
+   * @generated
+   */
 	ConfigurationItemPkg createConfigurationItemPkg();
 
 	/**
-	 * Returns a new object of class '<em>Configuration Item</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Configuration Item</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Configuration Item</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Configuration Item</em>'.
+   * @generated
+   */
 	ConfigurationItem createConfigurationItem();
 
 	/**
-	 * Returns a new object of class '<em>Physical Architecture Realization</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Physical Architecture Realization</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Physical Architecture Realization</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Physical Architecture Realization</em>'.
+   * @generated
+   */
 	PhysicalArchitectureRealization createPhysicalArchitectureRealization();
 
 	/**
-	 * Returns a new object of class '<em>Physical Artifact Realization</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Physical Artifact Realization</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Physical Artifact Realization</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Physical Artifact Realization</em>'.
+   * @generated
+   */
 	PhysicalArtifactRealization createPhysicalArtifactRealization();
 
 	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
+   * Returns the package supported by this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
+   * @return the package supported by this factory.
+   * @generated
+   */
 	EpbsPackage getEpbsPackage();
 
 	/**

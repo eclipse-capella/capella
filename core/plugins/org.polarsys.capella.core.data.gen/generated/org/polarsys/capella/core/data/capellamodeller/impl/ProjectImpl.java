@@ -64,13 +64,13 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 public class ProjectImpl extends NamedElementImpl implements Project {
 
 	/**
-	 * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedTraces()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedTraces()
+   * @generated
+   * @ordered
+   */
 	protected EList<Trace> ownedTraces;
 
 
@@ -86,13 +86,13 @@ public class ProjectImpl extends NamedElementImpl implements Project {
 
 
 	/**
-	 * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNamingRules()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getNamingRules()
+   * @generated
+   * @ordered
+   */
 	protected EList<NamingRule> namingRules;
 
 
@@ -100,13 +100,13 @@ public class ProjectImpl extends NamedElementImpl implements Project {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPropertyValuePkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPropertyValuePkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<PropertyValuePkg> ownedPropertyValuePkgs;
 
 
@@ -114,13 +114,13 @@ public class ProjectImpl extends NamedElementImpl implements Project {
 
 
 	/**
-	 * The cached value of the '{@link #getKeyValuePairs() <em>Key Value Pairs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getKeyValuePairs() <em>Key Value Pairs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getKeyValuePairs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getKeyValuePairs()
+   * @generated
+   * @ordered
+   */
 	protected EList<KeyValue> keyValuePairs;
 
 
@@ -128,13 +128,13 @@ public class ProjectImpl extends NamedElementImpl implements Project {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedFolders() <em>Owned Folders</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedFolders() <em>Owned Folders</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedFolders()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedFolders()
+   * @generated
+   * @ordered
+   */
 	protected EList<Folder> ownedFolders;
 
 
@@ -142,66 +142,66 @@ public class ProjectImpl extends NamedElementImpl implements Project {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedModelRoots() <em>Owned Model Roots</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedModelRoots() <em>Owned Model Roots</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedModelRoots()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedModelRoots()
+   * @generated
+   * @ordered
+   */
 	protected EList<ModelRoot> ownedModelRoots;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ProjectImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellamodellerPackage.Literals.PROJECT;
-	}
+    return CapellamodellerPackage.Literals.PROJECT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Trace> getOwnedTraces() {
 
-		if (ownedTraces == null) {
-			ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this, CapellamodellerPackage.PROJECT__OWNED_TRACES);
-		}
-		return ownedTraces;
-	}
+    if (ownedTraces == null) {
+      ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this, CapellamodellerPackage.PROJECT__OWNED_TRACES);
+    }
+    return ownedTraces;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<GenericTrace> getContainedGenericTraces() {
 
@@ -228,27 +228,27 @@ public class ProjectImpl extends NamedElementImpl implements Project {
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
-		return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
+    return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<RequirementsTrace> getContainedRequirementsTraces() {
 
@@ -275,259 +275,259 @@ public class ProjectImpl extends NamedElementImpl implements Project {
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
-		return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
+    return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<NamingRule> getNamingRules() {
 
-		if (namingRules == null) {
-			namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, CapellamodellerPackage.PROJECT__NAMING_RULES);
-		}
-		return namingRules;
-	}
+    if (namingRules == null) {
+      namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, CapellamodellerPackage.PROJECT__NAMING_RULES);
+    }
+    return namingRules;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PropertyValuePkg> getOwnedPropertyValuePkgs() {
 
-		if (ownedPropertyValuePkgs == null) {
-			ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this, CapellamodellerPackage.PROJECT__OWNED_PROPERTY_VALUE_PKGS);
-		}
-		return ownedPropertyValuePkgs;
-	}
+    if (ownedPropertyValuePkgs == null) {
+      ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this, CapellamodellerPackage.PROJECT__OWNED_PROPERTY_VALUE_PKGS);
+    }
+    return ownedPropertyValuePkgs;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<KeyValue> getKeyValuePairs() {
 
-		if (keyValuePairs == null) {
-			keyValuePairs = new EObjectContainmentEList<KeyValue>(KeyValue.class, this, CapellamodellerPackage.PROJECT__KEY_VALUE_PAIRS);
-		}
-		return keyValuePairs;
-	}
+    if (keyValuePairs == null) {
+      keyValuePairs = new EObjectContainmentEList<KeyValue>(KeyValue.class, this, CapellamodellerPackage.PROJECT__KEY_VALUE_PAIRS);
+    }
+    return keyValuePairs;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Folder> getOwnedFolders() {
 
-		if (ownedFolders == null) {
-			ownedFolders = new EObjectContainmentEList.Resolving<Folder>(Folder.class, this, CapellamodellerPackage.PROJECT__OWNED_FOLDERS);
-		}
-		return ownedFolders;
-	}
+    if (ownedFolders == null) {
+      ownedFolders = new EObjectContainmentEList.Resolving<Folder>(Folder.class, this, CapellamodellerPackage.PROJECT__OWNED_FOLDERS);
+    }
+    return ownedFolders;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ModelRoot> getOwnedModelRoots() {
 
-		if (ownedModelRoots == null) {
-			ownedModelRoots = new EObjectContainmentEList.Resolving<ModelRoot>(ModelRoot.class, this, CapellamodellerPackage.PROJECT__OWNED_MODEL_ROOTS);
-		}
-		return ownedModelRoots;
-	}
+    if (ownedModelRoots == null) {
+      ownedModelRoots = new EObjectContainmentEList.Resolving<ModelRoot>(ModelRoot.class, this, CapellamodellerPackage.PROJECT__OWNED_MODEL_ROOTS);
+    }
+    return ownedModelRoots;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CapellamodellerPackage.PROJECT__OWNED_TRACES:
-				return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
-			case CapellamodellerPackage.PROJECT__NAMING_RULES:
-				return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
-			case CapellamodellerPackage.PROJECT__OWNED_PROPERTY_VALUE_PKGS:
-				return ((InternalEList<?>)getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
-			case CapellamodellerPackage.PROJECT__KEY_VALUE_PAIRS:
-				return ((InternalEList<?>)getKeyValuePairs()).basicRemove(otherEnd, msgs);
-			case CapellamodellerPackage.PROJECT__OWNED_FOLDERS:
-				return ((InternalEList<?>)getOwnedFolders()).basicRemove(otherEnd, msgs);
-			case CapellamodellerPackage.PROJECT__OWNED_MODEL_ROOTS:
-				return ((InternalEList<?>)getOwnedModelRoots()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CapellamodellerPackage.PROJECT__OWNED_TRACES:
+        return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
+      case CapellamodellerPackage.PROJECT__NAMING_RULES:
+        return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
+      case CapellamodellerPackage.PROJECT__OWNED_PROPERTY_VALUE_PKGS:
+        return ((InternalEList<?>)getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
+      case CapellamodellerPackage.PROJECT__KEY_VALUE_PAIRS:
+        return ((InternalEList<?>)getKeyValuePairs()).basicRemove(otherEnd, msgs);
+      case CapellamodellerPackage.PROJECT__OWNED_FOLDERS:
+        return ((InternalEList<?>)getOwnedFolders()).basicRemove(otherEnd, msgs);
+      case CapellamodellerPackage.PROJECT__OWNED_MODEL_ROOTS:
+        return ((InternalEList<?>)getOwnedModelRoots()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CapellamodellerPackage.PROJECT__OWNED_TRACES:
-				return getOwnedTraces();
-			case CapellamodellerPackage.PROJECT__CONTAINED_GENERIC_TRACES:
-				return getContainedGenericTraces();
-			case CapellamodellerPackage.PROJECT__CONTAINED_REQUIREMENTS_TRACES:
-				return getContainedRequirementsTraces();
-			case CapellamodellerPackage.PROJECT__NAMING_RULES:
-				return getNamingRules();
-			case CapellamodellerPackage.PROJECT__OWNED_PROPERTY_VALUE_PKGS:
-				return getOwnedPropertyValuePkgs();
-			case CapellamodellerPackage.PROJECT__KEY_VALUE_PAIRS:
-				return getKeyValuePairs();
-			case CapellamodellerPackage.PROJECT__OWNED_FOLDERS:
-				return getOwnedFolders();
-			case CapellamodellerPackage.PROJECT__OWNED_MODEL_ROOTS:
-				return getOwnedModelRoots();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CapellamodellerPackage.PROJECT__OWNED_TRACES:
+        return getOwnedTraces();
+      case CapellamodellerPackage.PROJECT__CONTAINED_GENERIC_TRACES:
+        return getContainedGenericTraces();
+      case CapellamodellerPackage.PROJECT__CONTAINED_REQUIREMENTS_TRACES:
+        return getContainedRequirementsTraces();
+      case CapellamodellerPackage.PROJECT__NAMING_RULES:
+        return getNamingRules();
+      case CapellamodellerPackage.PROJECT__OWNED_PROPERTY_VALUE_PKGS:
+        return getOwnedPropertyValuePkgs();
+      case CapellamodellerPackage.PROJECT__KEY_VALUE_PAIRS:
+        return getKeyValuePairs();
+      case CapellamodellerPackage.PROJECT__OWNED_FOLDERS:
+        return getOwnedFolders();
+      case CapellamodellerPackage.PROJECT__OWNED_MODEL_ROOTS:
+        return getOwnedModelRoots();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CapellamodellerPackage.PROJECT__OWNED_TRACES:
-				getOwnedTraces().clear();
-				getOwnedTraces().addAll((Collection<? extends Trace>)newValue);
-				return;
-			case CapellamodellerPackage.PROJECT__NAMING_RULES:
-				getNamingRules().clear();
-				getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
-				return;
-			case CapellamodellerPackage.PROJECT__OWNED_PROPERTY_VALUE_PKGS:
-				getOwnedPropertyValuePkgs().clear();
-				getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
-				return;
-			case CapellamodellerPackage.PROJECT__KEY_VALUE_PAIRS:
-				getKeyValuePairs().clear();
-				getKeyValuePairs().addAll((Collection<? extends KeyValue>)newValue);
-				return;
-			case CapellamodellerPackage.PROJECT__OWNED_FOLDERS:
-				getOwnedFolders().clear();
-				getOwnedFolders().addAll((Collection<? extends Folder>)newValue);
-				return;
-			case CapellamodellerPackage.PROJECT__OWNED_MODEL_ROOTS:
-				getOwnedModelRoots().clear();
-				getOwnedModelRoots().addAll((Collection<? extends ModelRoot>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CapellamodellerPackage.PROJECT__OWNED_TRACES:
+        getOwnedTraces().clear();
+        getOwnedTraces().addAll((Collection<? extends Trace>)newValue);
+        return;
+      case CapellamodellerPackage.PROJECT__NAMING_RULES:
+        getNamingRules().clear();
+        getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
+        return;
+      case CapellamodellerPackage.PROJECT__OWNED_PROPERTY_VALUE_PKGS:
+        getOwnedPropertyValuePkgs().clear();
+        getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
+        return;
+      case CapellamodellerPackage.PROJECT__KEY_VALUE_PAIRS:
+        getKeyValuePairs().clear();
+        getKeyValuePairs().addAll((Collection<? extends KeyValue>)newValue);
+        return;
+      case CapellamodellerPackage.PROJECT__OWNED_FOLDERS:
+        getOwnedFolders().clear();
+        getOwnedFolders().addAll((Collection<? extends Folder>)newValue);
+        return;
+      case CapellamodellerPackage.PROJECT__OWNED_MODEL_ROOTS:
+        getOwnedModelRoots().clear();
+        getOwnedModelRoots().addAll((Collection<? extends ModelRoot>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CapellamodellerPackage.PROJECT__OWNED_TRACES:
-				getOwnedTraces().clear();
-				return;
-			case CapellamodellerPackage.PROJECT__NAMING_RULES:
-				getNamingRules().clear();
-				return;
-			case CapellamodellerPackage.PROJECT__OWNED_PROPERTY_VALUE_PKGS:
-				getOwnedPropertyValuePkgs().clear();
-				return;
-			case CapellamodellerPackage.PROJECT__KEY_VALUE_PAIRS:
-				getKeyValuePairs().clear();
-				return;
-			case CapellamodellerPackage.PROJECT__OWNED_FOLDERS:
-				getOwnedFolders().clear();
-				return;
-			case CapellamodellerPackage.PROJECT__OWNED_MODEL_ROOTS:
-				getOwnedModelRoots().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CapellamodellerPackage.PROJECT__OWNED_TRACES:
+        getOwnedTraces().clear();
+        return;
+      case CapellamodellerPackage.PROJECT__NAMING_RULES:
+        getNamingRules().clear();
+        return;
+      case CapellamodellerPackage.PROJECT__OWNED_PROPERTY_VALUE_PKGS:
+        getOwnedPropertyValuePkgs().clear();
+        return;
+      case CapellamodellerPackage.PROJECT__KEY_VALUE_PAIRS:
+        getKeyValuePairs().clear();
+        return;
+      case CapellamodellerPackage.PROJECT__OWNED_FOLDERS:
+        getOwnedFolders().clear();
+        return;
+      case CapellamodellerPackage.PROJECT__OWNED_MODEL_ROOTS:
+        getOwnedModelRoots().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CapellamodellerPackage.PROJECT__OWNED_TRACES:
-				return ownedTraces != null && !ownedTraces.isEmpty();
-			case CapellamodellerPackage.PROJECT__CONTAINED_GENERIC_TRACES:
-				return !getContainedGenericTraces().isEmpty();
-			case CapellamodellerPackage.PROJECT__CONTAINED_REQUIREMENTS_TRACES:
-				return !getContainedRequirementsTraces().isEmpty();
-			case CapellamodellerPackage.PROJECT__NAMING_RULES:
-				return namingRules != null && !namingRules.isEmpty();
-			case CapellamodellerPackage.PROJECT__OWNED_PROPERTY_VALUE_PKGS:
-				return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
-			case CapellamodellerPackage.PROJECT__KEY_VALUE_PAIRS:
-				return keyValuePairs != null && !keyValuePairs.isEmpty();
-			case CapellamodellerPackage.PROJECT__OWNED_FOLDERS:
-				return ownedFolders != null && !ownedFolders.isEmpty();
-			case CapellamodellerPackage.PROJECT__OWNED_MODEL_ROOTS:
-				return ownedModelRoots != null && !ownedModelRoots.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CapellamodellerPackage.PROJECT__OWNED_TRACES:
+        return ownedTraces != null && !ownedTraces.isEmpty();
+      case CapellamodellerPackage.PROJECT__CONTAINED_GENERIC_TRACES:
+        return !getContainedGenericTraces().isEmpty();
+      case CapellamodellerPackage.PROJECT__CONTAINED_REQUIREMENTS_TRACES:
+        return !getContainedRequirementsTraces().isEmpty();
+      case CapellamodellerPackage.PROJECT__NAMING_RULES:
+        return namingRules != null && !namingRules.isEmpty();
+      case CapellamodellerPackage.PROJECT__OWNED_PROPERTY_VALUE_PKGS:
+        return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
+      case CapellamodellerPackage.PROJECT__KEY_VALUE_PAIRS:
+        return keyValuePairs != null && !keyValuePairs.isEmpty();
+      case CapellamodellerPackage.PROJECT__OWNED_FOLDERS:
+        return ownedFolders != null && !ownedFolders.isEmpty();
+      case CapellamodellerPackage.PROJECT__OWNED_MODEL_ROOTS:
+        return ownedModelRoots != null && !ownedModelRoots.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

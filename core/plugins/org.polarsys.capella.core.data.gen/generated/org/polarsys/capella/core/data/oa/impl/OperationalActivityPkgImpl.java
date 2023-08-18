@@ -42,13 +42,13 @@ import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
 public class OperationalActivityPkgImpl extends FunctionPkgImpl implements OperationalActivityPkg {
 
 	/**
-	 * The cached value of the '{@link #getOwnedOperationalActivities() <em>Owned Operational Activities</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedOperationalActivities() <em>Owned Operational Activities</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedOperationalActivities()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedOperationalActivities()
+   * @generated
+   * @ordered
+   */
 	protected EList<OperationalActivity> ownedOperationalActivities;
 
 
@@ -56,166 +56,166 @@ public class OperationalActivityPkgImpl extends FunctionPkgImpl implements Opera
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedOperationalActivityPkgs() <em>Owned Operational Activity Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedOperationalActivityPkgs() <em>Owned Operational Activity Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedOperationalActivityPkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedOperationalActivityPkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<OperationalActivityPkg> ownedOperationalActivityPkgs;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OperationalActivityPkgImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OaPackage.Literals.OPERATIONAL_ACTIVITY_PKG;
-	}
+    return OaPackage.Literals.OPERATIONAL_ACTIVITY_PKG;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<OperationalActivity> getOwnedOperationalActivities() {
 
-		if (ownedOperationalActivities == null) {
-			ownedOperationalActivities = new EObjectContainmentEList.Resolving<OperationalActivity>(OperationalActivity.class, this, OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITIES);
-		}
-		return ownedOperationalActivities;
-	}
+    if (ownedOperationalActivities == null) {
+      ownedOperationalActivities = new EObjectContainmentEList.Resolving<OperationalActivity>(OperationalActivity.class, this, OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITIES);
+    }
+    return ownedOperationalActivities;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<OperationalActivityPkg> getOwnedOperationalActivityPkgs() {
 
-		if (ownedOperationalActivityPkgs == null) {
-			ownedOperationalActivityPkgs = new EObjectContainmentEList.Resolving<OperationalActivityPkg>(OperationalActivityPkg.class, this, OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITY_PKGS);
-		}
-		return ownedOperationalActivityPkgs;
-	}
+    if (ownedOperationalActivityPkgs == null) {
+      ownedOperationalActivityPkgs = new EObjectContainmentEList.Resolving<OperationalActivityPkg>(OperationalActivityPkg.class, this, OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITY_PKGS);
+    }
+    return ownedOperationalActivityPkgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITIES:
-				return ((InternalEList<?>)getOwnedOperationalActivities()).basicRemove(otherEnd, msgs);
-			case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITY_PKGS:
-				return ((InternalEList<?>)getOwnedOperationalActivityPkgs()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITIES:
+        return ((InternalEList<?>)getOwnedOperationalActivities()).basicRemove(otherEnd, msgs);
+      case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITY_PKGS:
+        return ((InternalEList<?>)getOwnedOperationalActivityPkgs()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITIES:
-				return getOwnedOperationalActivities();
-			case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITY_PKGS:
-				return getOwnedOperationalActivityPkgs();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITIES:
+        return getOwnedOperationalActivities();
+      case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITY_PKGS:
+        return getOwnedOperationalActivityPkgs();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITIES:
-				getOwnedOperationalActivities().clear();
-				getOwnedOperationalActivities().addAll((Collection<? extends OperationalActivity>)newValue);
-				return;
-			case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITY_PKGS:
-				getOwnedOperationalActivityPkgs().clear();
-				getOwnedOperationalActivityPkgs().addAll((Collection<? extends OperationalActivityPkg>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITIES:
+        getOwnedOperationalActivities().clear();
+        getOwnedOperationalActivities().addAll((Collection<? extends OperationalActivity>)newValue);
+        return;
+      case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITY_PKGS:
+        getOwnedOperationalActivityPkgs().clear();
+        getOwnedOperationalActivityPkgs().addAll((Collection<? extends OperationalActivityPkg>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITIES:
-				getOwnedOperationalActivities().clear();
-				return;
-			case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITY_PKGS:
-				getOwnedOperationalActivityPkgs().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITIES:
+        getOwnedOperationalActivities().clear();
+        return;
+      case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITY_PKGS:
+        getOwnedOperationalActivityPkgs().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITIES:
-				return ownedOperationalActivities != null && !ownedOperationalActivities.isEmpty();
-			case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITY_PKGS:
-				return ownedOperationalActivityPkgs != null && !ownedOperationalActivityPkgs.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITIES:
+        return ownedOperationalActivities != null && !ownedOperationalActivities.isEmpty();
+      case OaPackage.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITY_PKGS:
+        return ownedOperationalActivityPkgs != null && !ownedOperationalActivityPkgs.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

@@ -54,13 +54,13 @@ import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 public abstract class FunctionalChainInvolvementImpl extends RelationshipImpl implements FunctionalChainInvolvement {
 
 	/**
-	 * The cached value of the '{@link #getInvolved() <em>Involved</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getInvolved() <em>Involved</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInvolved()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getInvolved()
+   * @generated
+   * @ordered
+   */
 	protected InvolvedElement involved;
 
 
@@ -68,48 +68,48 @@ public abstract class FunctionalChainInvolvementImpl extends RelationshipImpl im
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionalChainInvolvementImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT;
-	}
+    return FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolverElement getInvolver() {
 
-		InvolverElement involver = basicGetInvolver();
-		return involver != null && involver.eIsProxy() ? (InvolverElement)eResolveProxy((InternalEObject)involver) : involver;
-	}
+    InvolverElement involver = basicGetInvolver();
+    return involver != null && involver.eIsProxy() ? (InvolverElement)eResolveProxy((InternalEObject)involver) : involver;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolverElement basicGetInvolver() {
 
@@ -136,66 +136,66 @@ public abstract class FunctionalChainInvolvementImpl extends RelationshipImpl im
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.INVOLVEMENT__INVOLVER.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, annotation);
-		
-		try {
-			return (InvolverElement) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (InvolverElement) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolvedElement getInvolved() {
 
-		if (involved != null && involved.eIsProxy()) {
-			InternalEObject oldInvolved = (InternalEObject)involved;
-			involved = (InvolvedElement)eResolveProxy(oldInvolved);
-			if (involved != oldInvolved) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED, oldInvolved, involved));
-			}
-		}
-		return involved;
-	}
+    if (involved != null && involved.eIsProxy()) {
+      InternalEObject oldInvolved = (InternalEObject)involved;
+      involved = (InvolvedElement)eResolveProxy(oldInvolved);
+      if (involved != oldInvolved) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED, oldInvolved, involved));
+      }
+    }
+    return involved;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolvedElement basicGetInvolved() {
 
-		return involved;
-	}
+    return involved;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setInvolved(InvolvedElement newInvolved) {
 
-		InvolvedElement oldInvolved = involved;
-		involved = newInvolved;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED, oldInvolved, involved));
+    InvolvedElement oldInvolved = involved;
+    involved = newInvolved;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED, oldInvolved, involved));
 
-	}
+  }
 
 
 
@@ -203,10 +203,10 @@ public abstract class FunctionalChainInvolvementImpl extends RelationshipImpl im
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionalChainInvolvement> getNextFunctionalChainInvolvements() {
 
@@ -233,27 +233,27 @@ public abstract class FunctionalChainInvolvementImpl extends RelationshipImpl im
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<FunctionalChainInvolvement> resultAsList = (Collection<FunctionalChainInvolvement>) result;
-		return new EcoreEList.UnmodifiableEList<FunctionalChainInvolvement>(this, FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<FunctionalChainInvolvement> resultAsList = (Collection<FunctionalChainInvolvement>) result;
+    return new EcoreEList.UnmodifiableEList<FunctionalChainInvolvement>(this, FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionalChainInvolvement> getPreviousFunctionalChainInvolvements() {
 
@@ -280,40 +280,40 @@ public abstract class FunctionalChainInvolvementImpl extends RelationshipImpl im
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__PREVIOUS_FUNCTIONAL_CHAIN_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__PREVIOUS_FUNCTIONAL_CHAIN_INVOLVEMENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<FunctionalChainInvolvement> resultAsList = (Collection<FunctionalChainInvolvement>) result;
-		return new EcoreEList.UnmodifiableEList<FunctionalChainInvolvement>(this, FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__PREVIOUS_FUNCTIONAL_CHAIN_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<FunctionalChainInvolvement> resultAsList = (Collection<FunctionalChainInvolvement>) result;
+    return new EcoreEList.UnmodifiableEList<FunctionalChainInvolvement>(this, FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__PREVIOUS_FUNCTIONAL_CHAIN_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolvedElement getInvolvedElement() {
 
-		InvolvedElement involvedElement = basicGetInvolvedElement();
-		return involvedElement != null && involvedElement.eIsProxy() ? (InvolvedElement)eResolveProxy((InternalEObject)involvedElement) : involvedElement;
-	}
+    InvolvedElement involvedElement = basicGetInvolvedElement();
+    return involvedElement != null && involvedElement.eIsProxy() ? (InvolvedElement)eResolveProxy((InternalEObject)involvedElement) : involvedElement;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolvedElement basicGetInvolvedElement() {
 
@@ -340,99 +340,99 @@ public abstract class FunctionalChainInvolvementImpl extends RelationshipImpl im
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED_ELEMENT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED_ELEMENT, annotation);
-		
-		try {
-			return (InvolvedElement) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (InvolvedElement) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVER:
-				if (resolve) return getInvolver();
-				return basicGetInvolver();
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED:
-				if (resolve) return getInvolved();
-				return basicGetInvolved();
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS:
-				return getNextFunctionalChainInvolvements();
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__PREVIOUS_FUNCTIONAL_CHAIN_INVOLVEMENTS:
-				return getPreviousFunctionalChainInvolvements();
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED_ELEMENT:
-				if (resolve) return getInvolvedElement();
-				return basicGetInvolvedElement();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVER:
+        if (resolve) return getInvolver();
+        return basicGetInvolver();
+      case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED:
+        if (resolve) return getInvolved();
+        return basicGetInvolved();
+      case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS:
+        return getNextFunctionalChainInvolvements();
+      case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__PREVIOUS_FUNCTIONAL_CHAIN_INVOLVEMENTS:
+        return getPreviousFunctionalChainInvolvements();
+      case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED_ELEMENT:
+        if (resolve) return getInvolvedElement();
+        return basicGetInvolvedElement();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED:
-					setInvolved((InvolvedElement)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED:
+          setInvolved((InvolvedElement)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED:
-				setInvolved((InvolvedElement)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED:
+        setInvolved((InvolvedElement)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVER:
-				return basicGetInvolver() != null;
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED:
-				return involved != null;
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS:
-				return !getNextFunctionalChainInvolvements().isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__PREVIOUS_FUNCTIONAL_CHAIN_INVOLVEMENTS:
-				return !getPreviousFunctionalChainInvolvements().isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED_ELEMENT:
-				return basicGetInvolvedElement() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVER:
+        return basicGetInvolver() != null;
+      case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED:
+        return involved != null;
+      case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS:
+        return !getNextFunctionalChainInvolvements().isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__PREVIOUS_FUNCTIONAL_CHAIN_INVOLVEMENTS:
+        return !getPreviousFunctionalChainInvolvements().isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED_ELEMENT:
+        return basicGetInvolvedElement() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

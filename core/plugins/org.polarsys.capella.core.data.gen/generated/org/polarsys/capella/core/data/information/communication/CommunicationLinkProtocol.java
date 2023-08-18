@@ -31,369 +31,369 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum CommunicationLinkProtocol implements Enumerator {
 	/**
-	 * The '<em><b>UNSET</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>UNSET</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #UNSET_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #UNSET_VALUE
+   * @generated
+   * @ordered
+   */
 	UNSET(0, "UNSET", "UNSET"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>UNICAST</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>UNICAST</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #UNICAST_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #UNICAST_VALUE
+   * @generated
+   * @ordered
+   */
 	UNICAST(1, "UNICAST", "UNICAST"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>MULTICAST</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>MULTICAST</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #MULTICAST_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #MULTICAST_VALUE
+   * @generated
+   * @ordered
+   */
 	MULTICAST(2, "MULTICAST", "MULTICAST"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>BROADCAST</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>BROADCAST</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #BROADCAST_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #BROADCAST_VALUE
+   * @generated
+   * @ordered
+   */
 	BROADCAST(3, "BROADCAST", "BROADCAST"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>SYNCHRONOUS</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>SYNCHRONOUS</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #SYNCHRONOUS_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #SYNCHRONOUS_VALUE
+   * @generated
+   * @ordered
+   */
 	SYNCHRONOUS(4, "SYNCHRONOUS", "SYNCHRONOUS"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>ASYNCHRONOUS</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>ASYNCHRONOUS</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #ASYNCHRONOUS_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #ASYNCHRONOUS_VALUE
+   * @generated
+   * @ordered
+   */
 	ASYNCHRONOUS(5, "ASYNCHRONOUS", "ASYNCHRONOUS"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>READ</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>READ</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #READ_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #READ_VALUE
+   * @generated
+   * @ordered
+   */
 	READ(6, "READ", "READ"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>ACCEPT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>ACCEPT</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #ACCEPT_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #ACCEPT_VALUE
+   * @generated
+   * @ordered
+   */
 	ACCEPT(7, "ACCEPT", "ACCEPT"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>UNSET</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>UNSET</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>UNSET</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #UNSET
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink protocol is not yet set' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #UNSET
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink protocol is not yet set' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int UNSET_VALUE = 0;
 
 	/**
-	 * The '<em><b>UNICAST</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>UNICAST</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>UNICAST</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #UNICAST
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a sending of ExchangeItem using the unicast protocol' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #UNICAST
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a sending of ExchangeItem using the unicast protocol' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int UNICAST_VALUE = 1;
 
 	/**
-	 * The '<em><b>MULTICAST</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>MULTICAST</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>MULTICAST</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #MULTICAST
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a sending of ExchangeItem using the multicast protocol' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #MULTICAST
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a sending of ExchangeItem using the multicast protocol' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int MULTICAST_VALUE = 2;
 
 	/**
-	 * The '<em><b>BROADCAST</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>BROADCAST</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>BROADCAST</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #BROADCAST
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a sending of ExchangeItem using the broadcast protocol' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #BROADCAST
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a sending of ExchangeItem using the broadcast protocol' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int BROADCAST_VALUE = 3;
 
 	/**
-	 * The '<em><b>SYNCHRONOUS</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>SYNCHRONOUS</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>SYNCHRONOUS</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #SYNCHRONOUS
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a call of ExchangeItem using the synchronous protocol' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #SYNCHRONOUS
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a call of ExchangeItem using the synchronous protocol' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int SYNCHRONOUS_VALUE = 4;
 
 	/**
-	 * The '<em><b>ASYNCHRONOUS</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>ASYNCHRONOUS</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>ASYNCHRONOUS</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #ASYNCHRONOUS
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a call of ExchangeItem using the asynchronous protocol' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #ASYNCHRONOUS
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a call of ExchangeItem using the asynchronous protocol' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int ASYNCHRONOUS_VALUE = 5;
 
 	/**
-	 * The '<em><b>READ</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>READ</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>READ</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #READ
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a access to the ExchangeItem by reading it' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #READ
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a access to the ExchangeItem by reading it' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int READ_VALUE = 6;
 
 	/**
-	 * The '<em><b>ACCEPT</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>ACCEPT</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>ACCEPT</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #ACCEPT
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a access to the ExchangeItem by accepting it' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #ACCEPT
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a access to the ExchangeItem by accepting it' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int ACCEPT_VALUE = 7;
 
 	/**
-	 * An array of all the '<em><b>Link Protocol</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
+   * An array of all the '<em><b>Link Protocol</b></em>' enumerators.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private static final CommunicationLinkProtocol[] VALUES_ARRAY =
 		new CommunicationLinkProtocol[] {
-			UNSET,
-			UNICAST,
-			MULTICAST,
-			BROADCAST,
-			SYNCHRONOUS,
-			ASYNCHRONOUS,
-			READ,
-			ACCEPT,
-		};
+      UNSET,
+      UNICAST,
+      MULTICAST,
+      BROADCAST,
+      SYNCHRONOUS,
+      ASYNCHRONOUS,
+      READ,
+      ACCEPT,
+    };
 
 	/**
-	 * A public read-only list of all the '<em><b>Link Protocol</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
+   * A public read-only list of all the '<em><b>Link Protocol</b></em>' enumerators.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static final List<CommunicationLinkProtocol> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Link Protocol</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
+   * Returns the '<em><b>Link Protocol</b></em>' literal with the specified literal value.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param literal the literal.
-	 * @return the matching enumerator or <code>null</code>.
-	 * @generated
-	 */
+   * @param literal the literal.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
 	public static CommunicationLinkProtocol get(String literal) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			CommunicationLinkProtocol result = VALUES_ARRAY[i];
-			if (result.toString().equals(literal)) {
-				return result;
-			}
-		}
-		return null;
-	}
+    for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+      CommunicationLinkProtocol result = VALUES_ARRAY[i];
+      if (result.toString().equals(literal)) {
+        return result;
+      }
+    }
+    return null;
+  }
 
 	/**
-	 * Returns the '<em><b>Link Protocol</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
+   * Returns the '<em><b>Link Protocol</b></em>' literal with the specified name.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name the name.
-	 * @return the matching enumerator or <code>null</code>.
-	 * @generated
-	 */
+   * @param name the name.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
 	public static CommunicationLinkProtocol getByName(String name) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			CommunicationLinkProtocol result = VALUES_ARRAY[i];
-			if (result.getName().equals(name)) {
-				return result;
-			}
-		}
-		return null;
-	}
+    for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+      CommunicationLinkProtocol result = VALUES_ARRAY[i];
+      if (result.getName().equals(name)) {
+        return result;
+      }
+    }
+    return null;
+  }
 
 	/**
-	 * Returns the '<em><b>Link Protocol</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
+   * Returns the '<em><b>Link Protocol</b></em>' literal with the specified integer value.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the integer value.
-	 * @return the matching enumerator or <code>null</code>.
-	 * @generated
-	 */
+   * @param value the integer value.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
 	public static CommunicationLinkProtocol get(int value) {
-		switch (value) {
-			case UNSET_VALUE: return UNSET;
-			case UNICAST_VALUE: return UNICAST;
-			case MULTICAST_VALUE: return MULTICAST;
-			case BROADCAST_VALUE: return BROADCAST;
-			case SYNCHRONOUS_VALUE: return SYNCHRONOUS;
-			case ASYNCHRONOUS_VALUE: return ASYNCHRONOUS;
-			case READ_VALUE: return READ;
-			case ACCEPT_VALUE: return ACCEPT;
-		}
-		return null;
-	}
+    switch (value) {
+      case UNSET_VALUE: return UNSET;
+      case UNICAST_VALUE: return UNICAST;
+      case MULTICAST_VALUE: return MULTICAST;
+      case BROADCAST_VALUE: return BROADCAST;
+      case SYNCHRONOUS_VALUE: return SYNCHRONOUS;
+      case ASYNCHRONOUS_VALUE: return ASYNCHRONOUS;
+      case READ_VALUE: return READ;
+      case ACCEPT_VALUE: return ACCEPT;
+    }
+    return null;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
+   * Only this class can construct instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private CommunicationLinkProtocol(int value, String name, String literal) {
-		this.value = value;
-		this.name = name;
-		this.literal = literal;
-	}
+    this.value = value;
+    this.name = name;
+    this.literal = literal;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int getValue() {
-	  return value;
-	}
+    return value;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getName() {
-	  return name;
-	}
+    return name;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getLiteral() {
-	  return literal;
-	}
+    return literal;
+  }
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
+   * Returns the literal value of the enumerator, which is its string representation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		return literal;
-	}
+    return literal;
+  }
 	
 } //CommunicationLinkProtocol

@@ -44,48 +44,48 @@ public class FragmentEndImpl extends InteractionFragmentImpl implements Fragment
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FragmentEndImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.FRAGMENT_END;
-	}
+    return InteractionPackage.Literals.FRAGMENT_END;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractFragment getAbstractFragment() {
 
-		AbstractFragment abstractFragment = basicGetAbstractFragment();
-		return abstractFragment != null && abstractFragment.eIsProxy() ? (AbstractFragment)eResolveProxy((InternalEObject)abstractFragment) : abstractFragment;
-	}
+    AbstractFragment abstractFragment = basicGetAbstractFragment();
+    return abstractFragment != null && abstractFragment.eIsProxy() ? (AbstractFragment)eResolveProxy((InternalEObject)abstractFragment) : abstractFragment;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractFragment basicGetAbstractFragment() {
 
@@ -112,48 +112,48 @@ public class FragmentEndImpl extends InteractionFragmentImpl implements Fragment
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.FRAGMENT_END__ABSTRACT_FRAGMENT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.FRAGMENT_END__ABSTRACT_FRAGMENT, annotation);
-		
-		try {
-			return (AbstractFragment) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (AbstractFragment) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.FRAGMENT_END__ABSTRACT_FRAGMENT:
-				if (resolve) return getAbstractFragment();
-				return basicGetAbstractFragment();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.FRAGMENT_END__ABSTRACT_FRAGMENT:
+        if (resolve) return getAbstractFragment();
+        return basicGetAbstractFragment();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.FRAGMENT_END__ABSTRACT_FRAGMENT:
-				return basicGetAbstractFragment() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.FRAGMENT_END__ABSTRACT_FRAGMENT:
+        return basicGetAbstractFragment() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

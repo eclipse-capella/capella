@@ -48,20 +48,20 @@ public interface PhysicalPort extends Port, AbstractPhysicalArtifact, Informatio
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Component Port Allocations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ComponentPortAllocation}.
+   * Returns the value of the '<em><b>Owned Component Port Allocations</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ComponentPortAllocation}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Component Port Allocations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Component Port Allocations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPort_OwnedComponentPortAllocations()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Component Port Allocations</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPort_OwnedComponentPortAllocations()
+   * @model containment="true" resolveProxies="true"
+   * @generated
+   */
 
 	EList<ComponentPortAllocation> getOwnedComponentPortAllocations();
 
@@ -72,22 +72,22 @@ public interface PhysicalPort extends Port, AbstractPhysicalArtifact, Informatio
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Physical Port Realizations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalPortRealization}.
+   * Returns the value of the '<em><b>Owned Physical Port Realizations</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalPortRealization}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Physical Port Realizations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Physical Port Realizations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPort_OwnedPhysicalPortRealizations()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='none' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Physical Port Realizations</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPort_OwnedPhysicalPortRealizations()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='none' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	EList<PhysicalPortRealization> getOwnedPhysicalPortRealizations();
 
@@ -98,25 +98,25 @@ public interface PhysicalPort extends Port, AbstractPhysicalArtifact, Informatio
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocated Component Ports</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ComponentPort}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ComponentPort#getAllocatingPhysicalPorts <em>Allocating Physical Ports</em>}'.
+   * Returns the value of the '<em><b>Allocated Component Ports</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ComponentPort}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ComponentPort#getAllocatingPhysicalPorts <em>Allocating Physical Ports</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocated Component Ports</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocated Component Ports</em>' reference list.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPort_AllocatedComponentPorts()
-	 * @see org.polarsys.capella.core.data.fa.ComponentPort#getAllocatingPhysicalPorts
-	 * @model opposite="allocatingPhysicalPorts" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentPortAllocation.allocatingPort(ppr, self);\r\nComponentPortAllocation.allocatedPort(ppr, target);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Allocated Component Ports</em>' reference list.
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPort_AllocatedComponentPorts()
+   * @see org.polarsys.capella.core.data.fa.ComponentPort#getAllocatingPhysicalPorts
+   * @model opposite="allocatingPhysicalPorts" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentPortAllocation.allocatingPort(ppr, self);\r\nComponentPortAllocation.allocatedPort(ppr, target);'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<ComponentPort> getAllocatedComponentPorts();
 
@@ -127,23 +127,23 @@ public interface PhysicalPort extends Port, AbstractPhysicalArtifact, Informatio
 
 
 	/**
-	 * Returns the value of the '<em><b>Realized Physical Ports</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalPort}.
+   * Returns the value of the '<em><b>Realized Physical Ports</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalPort}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realized Physical Ports</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realized Physical Ports</em>' reference list.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPort_RealizedPhysicalPorts()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalPortRealization.sourceElement(ppr, self);\r\nPhysicalPortRealization.targetElement(ppr, target);'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realized Physical Ports</em>' reference list.
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPort_RealizedPhysicalPorts()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalPortRealization.sourceElement(ppr, self);\r\nPhysicalPortRealization.targetElement(ppr, target);'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<PhysicalPort> getRealizedPhysicalPorts();
 
@@ -154,23 +154,23 @@ public interface PhysicalPort extends Port, AbstractPhysicalArtifact, Informatio
 
 
 	/**
-	 * Returns the value of the '<em><b>Realizing Physical Ports</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalPort}.
+   * Returns the value of the '<em><b>Realizing Physical Ports</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalPort}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realizing Physical Ports</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realizing Physical Ports</em>' reference list.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPort_RealizingPhysicalPorts()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalPortRealization.targetElement(ppr, self);\r\nPhysicalPortRealization.sourceElement(ppr, target);'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realizing Physical Ports</em>' reference list.
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPort_RealizingPhysicalPorts()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalPortRealization.targetElement(ppr, self);\r\nPhysicalPortRealization.sourceElement(ppr, target);'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   * @generated
+   */
 
 	EList<PhysicalPort> getRealizingPhysicalPorts();
 

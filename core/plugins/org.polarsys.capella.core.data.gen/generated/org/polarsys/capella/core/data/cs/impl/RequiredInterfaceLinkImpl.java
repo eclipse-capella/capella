@@ -37,156 +37,156 @@ import org.polarsys.capella.core.data.cs.RequiredInterfaceLink;
 public abstract class RequiredInterfaceLinkImpl extends RelationshipImpl implements RequiredInterfaceLink {
 
 	/**
-	 * The cached value of the '{@link #getInterface() <em>Interface</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getInterface() <em>Interface</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInterface()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getInterface()
+   * @generated
+   * @ordered
+   */
 	protected Interface interface_;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected RequiredInterfaceLinkImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.REQUIRED_INTERFACE_LINK;
-	}
+    return CsPackage.Literals.REQUIRED_INTERFACE_LINK;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Interface getInterface() {
 
-		if (interface_ != null && interface_.eIsProxy()) {
-			InternalEObject oldInterface = (InternalEObject)interface_;
-			interface_ = (Interface)eResolveProxy(oldInterface);
-			if (interface_ != oldInterface) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CsPackage.REQUIRED_INTERFACE_LINK__INTERFACE, oldInterface, interface_));
-			}
-		}
-		return interface_;
-	}
+    if (interface_ != null && interface_.eIsProxy()) {
+      InternalEObject oldInterface = (InternalEObject)interface_;
+      interface_ = (Interface)eResolveProxy(oldInterface);
+      if (interface_ != oldInterface) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CsPackage.REQUIRED_INTERFACE_LINK__INTERFACE, oldInterface, interface_));
+      }
+    }
+    return interface_;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Interface basicGetInterface() {
 
-		return interface_;
-	}
+    return interface_;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setInterface(Interface newInterface) {
 
-		Interface oldInterface = interface_;
-		interface_ = newInterface;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.REQUIRED_INTERFACE_LINK__INTERFACE, oldInterface, interface_));
+    Interface oldInterface = interface_;
+    interface_ = newInterface;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.REQUIRED_INTERFACE_LINK__INTERFACE, oldInterface, interface_));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CsPackage.REQUIRED_INTERFACE_LINK__INTERFACE:
-				if (resolve) return getInterface();
-				return basicGetInterface();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CsPackage.REQUIRED_INTERFACE_LINK__INTERFACE:
+        if (resolve) return getInterface();
+        return basicGetInterface();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CsPackage.REQUIRED_INTERFACE_LINK__INTERFACE:
-					setInterface((Interface)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CsPackage.REQUIRED_INTERFACE_LINK__INTERFACE:
+          setInterface((Interface)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CsPackage.REQUIRED_INTERFACE_LINK__INTERFACE:
-				setInterface((Interface)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.REQUIRED_INTERFACE_LINK__INTERFACE:
+        setInterface((Interface)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CsPackage.REQUIRED_INTERFACE_LINK__INTERFACE:
-				return interface_ != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.REQUIRED_INTERFACE_LINK__INTERFACE:
+        return interface_ != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

@@ -41,135 +41,135 @@ import org.polarsys.capella.core.data.ctx.SystemCommunicationHook;
 public class SystemCommunicationImpl extends RelationshipImpl implements SystemCommunication {
 
 	/**
-	 * The cached value of the '{@link #getEnds() <em>Ends</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getEnds() <em>Ends</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEnds()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getEnds()
+   * @generated
+   * @ordered
+   */
 	protected EList<SystemCommunicationHook> ends;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected SystemCommunicationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CtxPackage.Literals.SYSTEM_COMMUNICATION;
-	}
+    return CtxPackage.Literals.SYSTEM_COMMUNICATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<SystemCommunicationHook> getEnds() {
 
-		if (ends == null) {
-			ends = new EObjectContainmentEList.Resolving<SystemCommunicationHook>(SystemCommunicationHook.class, this, CtxPackage.SYSTEM_COMMUNICATION__ENDS);
-		}
-		return ends;
-	}
+    if (ends == null) {
+      ends = new EObjectContainmentEList.Resolving<SystemCommunicationHook>(SystemCommunicationHook.class, this, CtxPackage.SYSTEM_COMMUNICATION__ENDS);
+    }
+    return ends;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CtxPackage.SYSTEM_COMMUNICATION__ENDS:
-				return ((InternalEList<?>)getEnds()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CtxPackage.SYSTEM_COMMUNICATION__ENDS:
+        return ((InternalEList<?>)getEnds()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CtxPackage.SYSTEM_COMMUNICATION__ENDS:
-				return getEnds();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CtxPackage.SYSTEM_COMMUNICATION__ENDS:
+        return getEnds();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CtxPackage.SYSTEM_COMMUNICATION__ENDS:
-				getEnds().clear();
-				getEnds().addAll((Collection<? extends SystemCommunicationHook>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CtxPackage.SYSTEM_COMMUNICATION__ENDS:
+        getEnds().clear();
+        getEnds().addAll((Collection<? extends SystemCommunicationHook>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CtxPackage.SYSTEM_COMMUNICATION__ENDS:
-				getEnds().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CtxPackage.SYSTEM_COMMUNICATION__ENDS:
+        getEnds().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CtxPackage.SYSTEM_COMMUNICATION__ENDS:
-				return ends != null && !ends.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CtxPackage.SYSTEM_COMMUNICATION__ENDS:
+        return ends != null && !ends.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

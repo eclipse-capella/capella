@@ -3,7 +3,7 @@
 
 <!--
 #
-#  Copyright (c) 2006, 2021 THALES GLOBAL SERVICES.
+#  Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
 #  This program and the accompanying materials are made available under the
 #  terms of the Eclipse Public License 2.0 which is available at
 #  http://www.eclipse.org/legal/epl-2.0
@@ -30,7 +30,7 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.editors">
       <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.capellamodeller.presentation.CapellamodellerEditor" contributorClass="org.polarsys.capella.core.data.capellamodeller.presentation.CapellamodellerActionBarContributor" default="true" extensions="capella" icon="icons/full/obj16/CapellamodellerModelFile.gif" id="org.polarsys.capella.core.data.capellamodeller.presentation.CapellamodellerEditorID" name="%_UI_CapellamodellerEditor_label">
+      <editor class="org.polarsys.capella.core.data.capellamodeller.presentation.CapellamodellerEditor" contributorClass="org.polarsys.capella.core.data.capellamodeller.presentation.CapellamodellerActionBarContributor" extensions="capella" icon="icons/full/obj16/CapellamodellerModelFile.gif" id="org.polarsys.capella.core.data.capellamodeller.presentation.CapellamodellerEditorID" default="true" name="%_UI_CapellamodellerEditor_label">
       </editor>
    </extension>
 
@@ -48,7 +48,7 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.editors">
       <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.capellacore.presentation.CapellacoreEditor" contributorClass="org.polarsys.capella.core.data.capellacore.presentation.CapellacoreActionBarContributor" default="true" extensions="capellacore" icon="icons/full/obj16/CapellacoreModelFile.gif" id="org.polarsys.capella.core.data.capellacore.presentation.CapellacoreEditorID" name="%_UI_CapellacoreEditor_label">
+      <editor class="org.polarsys.capella.core.data.capellacore.presentation.CapellacoreEditor" contributorClass="org.polarsys.capella.core.data.capellacore.presentation.CapellacoreActionBarContributor" extensions="capellacore" icon="icons/full/obj16/CapellacoreModelFile.gif" id="org.polarsys.capella.core.data.capellacore.presentation.CapellacoreEditorID" default="true" name="%_UI_CapellacoreEditor_label">
       </editor>
    </extension>
 
@@ -66,7 +66,7 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.editors">
       <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.oa.presentation.OaEditor" contributorClass="org.polarsys.capella.core.data.oa.presentation.OaActionBarContributor" default="true" extensions="oa" icon="icons/full/obj16/OaModelFile.gif" id="org.polarsys.capella.core.data.oa.presentation.OaEditorID" name="%_UI_OaEditor_label">
+      <editor class="org.polarsys.capella.core.data.oa.presentation.OaEditor" contributorClass="org.polarsys.capella.core.data.oa.presentation.OaActionBarContributor" extensions="oa" icon="icons/full/obj16/OaModelFile.gif" id="org.polarsys.capella.core.data.oa.presentation.OaEditorID" default="true" name="%_UI_OaEditor_label">
       </editor>
    </extension>
 
@@ -84,7 +84,7 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.editors">
       <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.ctx.presentation.CtxEditor" contributorClass="org.polarsys.capella.core.data.ctx.presentation.CtxActionBarContributor" default="true" extensions="ctx" icon="icons/full/obj16/CtxModelFile.gif" id="org.polarsys.capella.core.data.ctx.presentation.CtxEditorID" name="%_UI_CtxEditor_label">
+      <editor class="org.polarsys.capella.core.data.ctx.presentation.CtxEditor" contributorClass="org.polarsys.capella.core.data.ctx.presentation.CtxActionBarContributor" extensions="ctx" icon="icons/full/obj16/CtxModelFile.gif" id="org.polarsys.capella.core.data.ctx.presentation.CtxEditorID" default="true" name="%_UI_CtxEditor_label">
       </editor>
    </extension>
 
@@ -102,7 +102,7 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.editors">
       <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.la.presentation.LaEditor" contributorClass="org.polarsys.capella.core.data.la.presentation.LaActionBarContributor" default="true" extensions="la" icon="icons/full/obj16/LaModelFile.gif" id="org.polarsys.capella.core.data.la.presentation.LaEditorID" name="%_UI_LaEditor_label">
+      <editor class="org.polarsys.capella.core.data.la.presentation.LaEditor" contributorClass="org.polarsys.capella.core.data.la.presentation.LaActionBarContributor" extensions="la" icon="icons/full/obj16/LaModelFile.gif" id="org.polarsys.capella.core.data.la.presentation.LaEditorID" default="true" name="%_UI_LaEditor_label">
       </editor>
    </extension>
 
@@ -120,7 +120,7 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.editors">
       <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.pa.presentation.PaEditor" contributorClass="org.polarsys.capella.core.data.pa.presentation.PaActionBarContributor" default="true" extensions="pa" icon="icons/full/obj16/PaModelFile.gif" id="org.polarsys.capella.core.data.pa.presentation.PaEditorID" name="%_UI_PaEditor_label">
+      <editor class="org.polarsys.capella.core.data.pa.presentation.PaEditor" contributorClass="org.polarsys.capella.core.data.pa.presentation.PaActionBarContributor" extensions="pa" icon="icons/full/obj16/PaModelFile.gif" id="org.polarsys.capella.core.data.pa.presentation.PaEditorID" default="true" name="%_UI_PaEditor_label">
       </editor>
    </extension>
 
@@ -138,7 +138,7 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.editors">
       <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.pa.deployment.presentation.DeploymentEditor" contributorClass="org.polarsys.capella.core.data.pa.deployment.presentation.DeploymentActionBarContributor" default="true" extensions="deployment" icon="icons/full/obj16/DeploymentModelFile.gif" id="org.polarsys.capella.core.data.pa.deployment.presentation.DeploymentEditorID" name="%_UI_DeploymentEditor_label">
+      <editor class="org.polarsys.capella.core.data.pa.deployment.presentation.DeploymentEditor" contributorClass="org.polarsys.capella.core.data.pa.deployment.presentation.DeploymentActionBarContributor" extensions="deployment" icon="icons/full/obj16/DeploymentModelFile.gif" id="org.polarsys.capella.core.data.pa.deployment.presentation.DeploymentEditorID" default="true" name="%_UI_DeploymentEditor_label">
       </editor>
    </extension>
 
@@ -156,7 +156,7 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.editors">
       <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.epbs.presentation.EpbsEditor" contributorClass="org.polarsys.capella.core.data.epbs.presentation.EpbsActionBarContributor" default="true" extensions="epbs" icon="icons/full/obj16/EpbsModelFile.gif" id="org.polarsys.capella.core.data.epbs.presentation.EpbsEditorID" name="%_UI_EpbsEditor_label">
+      <editor class="org.polarsys.capella.core.data.epbs.presentation.EpbsEditor" contributorClass="org.polarsys.capella.core.data.epbs.presentation.EpbsActionBarContributor" extensions="epbs" icon="icons/full/obj16/EpbsModelFile.gif" id="org.polarsys.capella.core.data.epbs.presentation.EpbsEditorID" default="true" name="%_UI_EpbsEditor_label">
       </editor>
    </extension>
 
@@ -174,7 +174,7 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.editors">
       <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.sharedmodel.presentation.SharedmodelEditor" contributorClass="org.polarsys.capella.core.data.sharedmodel.presentation.SharedmodelActionBarContributor" default="true" extensions="sharedmodel" icon="icons/full/obj16/SharedmodelModelFile.gif" id="org.polarsys.capella.core.data.sharedmodel.presentation.SharedmodelEditorID" name="%_UI_SharedmodelEditor_label">
+      <editor class="org.polarsys.capella.core.data.sharedmodel.presentation.SharedmodelEditor" contributorClass="org.polarsys.capella.core.data.sharedmodel.presentation.SharedmodelActionBarContributor" extensions="sharedmodel" icon="icons/full/obj16/SharedmodelModelFile.gif" id="org.polarsys.capella.core.data.sharedmodel.presentation.SharedmodelEditorID" default="true" name="%_UI_SharedmodelEditor_label">
       </editor>
    </extension>
 
@@ -192,7 +192,7 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.editors">
       <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.requirement.presentation.RequirementEditor" contributorClass="org.polarsys.capella.core.data.requirement.presentation.RequirementActionBarContributor" default="true" extensions="requirement" icon="icons/full/obj16/RequirementModelFile.gif" id="org.polarsys.capella.core.data.requirement.presentation.RequirementEditorID" name="%_UI_RequirementEditor_label">
+      <editor class="org.polarsys.capella.core.data.requirement.presentation.RequirementEditor" contributorClass="org.polarsys.capella.core.data.requirement.presentation.RequirementActionBarContributor" extensions="requirement" icon="icons/full/obj16/RequirementModelFile.gif" id="org.polarsys.capella.core.data.requirement.presentation.RequirementEditorID" name="%_UI_RequirementEditor_label">
       </editor>
    </extension>
 
@@ -210,7 +210,7 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.editors">
       <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.capellacommon.presentation.CapellacommonEditor" contributorClass="org.polarsys.capella.core.data.capellacommon.presentation.CapellacommonActionBarContributor" default="true" extensions="capellacommon" icon="icons/full/obj16/CapellacommonModelFile.gif" id="org.polarsys.capella.core.data.capellacommon.presentation.CapellacommonEditorID" name="%_UI_CapellacommonEditor_label">
+      <editor class="org.polarsys.capella.core.data.capellacommon.presentation.CapellacommonEditor" contributorClass="org.polarsys.capella.core.data.capellacommon.presentation.CapellacommonActionBarContributor" extensions="capellacommon" icon="icons/full/obj16/CapellacommonModelFile.gif" id="org.polarsys.capella.core.data.capellacommon.presentation.CapellacommonEditorID" default="true" name="%_UI_CapellacommonEditor_label">
       </editor>
    </extension>
 
@@ -228,7 +228,7 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.editors">
       <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.information.presentation.InformationEditor" contributorClass="org.polarsys.capella.core.data.information.presentation.InformationActionBarContributor" default="true" extensions="information" icon="icons/full/obj16/InformationModelFile.gif" id="org.polarsys.capella.core.data.information.presentation.InformationEditorID" name="%_UI_InformationEditor_label">
+      <editor class="org.polarsys.capella.core.data.information.presentation.InformationEditor" contributorClass="org.polarsys.capella.core.data.information.presentation.InformationActionBarContributor" extensions="information" icon="icons/full/obj16/InformationModelFile.gif" id="org.polarsys.capella.core.data.information.presentation.InformationEditorID" default="true" name="%_UI_InformationEditor_label">
       </editor>
    </extension>
 
@@ -246,7 +246,7 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.editors">
       <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.information.communication.presentation.CommunicationEditor" contributorClass="org.polarsys.capella.core.data.information.communication.presentation.CommunicationActionBarContributor" default="true" extensions="communication" icon="icons/full/obj16/CommunicationModelFile.gif" id="org.polarsys.capella.core.data.information.communication.presentation.CommunicationEditorID" name="%_UI_CommunicationEditor_label">
+      <editor class="org.polarsys.capella.core.data.information.communication.presentation.CommunicationEditor" contributorClass="org.polarsys.capella.core.data.information.communication.presentation.CommunicationActionBarContributor" extensions="communication" icon="icons/full/obj16/CommunicationModelFile.gif" id="org.polarsys.capella.core.data.information.communication.presentation.CommunicationEditorID" default="true" name="%_UI_CommunicationEditor_label">
       </editor>
    </extension>
 
@@ -264,7 +264,7 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.editors">
       <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.information.datatype.presentation.DatatypeEditor" contributorClass="org.polarsys.capella.core.data.information.datatype.presentation.DatatypeActionBarContributor" default="true" extensions="datatype" icon="icons/full/obj16/DatatypeModelFile.gif" id="org.polarsys.capella.core.data.information.datatype.presentation.DatatypeEditorID" name="%_UI_DatatypeEditor_label">
+      <editor class="org.polarsys.capella.core.data.information.datatype.presentation.DatatypeEditor" contributorClass="org.polarsys.capella.core.data.information.datatype.presentation.DatatypeActionBarContributor" extensions="datatype" icon="icons/full/obj16/DatatypeModelFile.gif" id="org.polarsys.capella.core.data.information.datatype.presentation.DatatypeEditorID" default="true" name="%_UI_DatatypeEditor_label">
       </editor>
    </extension>
 
@@ -282,7 +282,7 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.editors">
       <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.information.datavalue.presentation.DatavalueEditor" contributorClass="org.polarsys.capella.core.data.information.datavalue.presentation.DatavalueActionBarContributor" default="true" extensions="datavalue" icon="icons/full/obj16/DatavalueModelFile.gif" id="org.polarsys.capella.core.data.information.datavalue.presentation.DatavalueEditorID" name="%_UI_DatavalueEditor_label">
+      <editor class="org.polarsys.capella.core.data.information.datavalue.presentation.DatavalueEditor" contributorClass="org.polarsys.capella.core.data.information.datavalue.presentation.DatavalueActionBarContributor" extensions="datavalue" icon="icons/full/obj16/DatavalueModelFile.gif" id="org.polarsys.capella.core.data.information.datavalue.presentation.DatavalueEditorID" default="true" name="%_UI_DatavalueEditor_label">
       </editor>
    </extension>
 
@@ -300,7 +300,7 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.editors">
       <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.cs.presentation.CsEditor" contributorClass="org.polarsys.capella.core.data.cs.presentation.CsActionBarContributor" default="true" extensions="cs" icon="icons/full/obj16/CsModelFile.gif" id="org.polarsys.capella.core.data.cs.presentation.CsEditorID" name="%_UI_CsEditor_label">
+      <editor class="org.polarsys.capella.core.data.cs.presentation.CsEditor" contributorClass="org.polarsys.capella.core.data.cs.presentation.CsActionBarContributor" extensions="cs" icon="icons/full/obj16/CsModelFile.gif" id="org.polarsys.capella.core.data.cs.presentation.CsEditorID" default="true" name="%_UI_CsEditor_label">
       </editor>
    </extension>
 
@@ -318,7 +318,7 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.editors">
       <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.fa.presentation.FaEditor" contributorClass="org.polarsys.capella.core.data.fa.presentation.FaActionBarContributor" default="true" extensions="fa" icon="icons/full/obj16/FaModelFile.gif" id="org.polarsys.capella.core.data.fa.presentation.FaEditorID" name="%_UI_FaEditor_label">
+      <editor class="org.polarsys.capella.core.data.fa.presentation.FaEditor" contributorClass="org.polarsys.capella.core.data.fa.presentation.FaActionBarContributor" extensions="fa" icon="icons/full/obj16/FaModelFile.gif" id="org.polarsys.capella.core.data.fa.presentation.FaEditorID" default="true" name="%_UI_FaEditor_label">
       </editor>
    </extension>
 
@@ -336,7 +336,7 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.editors">
       <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.interaction.presentation.InteractionEditor" contributorClass="org.polarsys.capella.core.data.interaction.presentation.InteractionActionBarContributor" default="true" extensions="interaction" icon="icons/full/obj16/InteractionModelFile.gif" id="org.polarsys.capella.core.data.interaction.presentation.InteractionEditorID" name="%_UI_InteractionEditor_label">
+      <editor class="org.polarsys.capella.core.data.interaction.presentation.InteractionEditor" contributorClass="org.polarsys.capella.core.data.interaction.presentation.InteractionActionBarContributor" extensions="interaction" icon="icons/full/obj16/InteractionModelFile.gif" id="org.polarsys.capella.core.data.interaction.presentation.InteractionEditorID" default="true" name="%_UI_InteractionEditor_label">
       </editor>
    </extension>
 

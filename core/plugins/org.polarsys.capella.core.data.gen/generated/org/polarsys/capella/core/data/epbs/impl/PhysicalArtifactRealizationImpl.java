@@ -52,48 +52,48 @@ public class PhysicalArtifactRealizationImpl extends AllocationImpl implements P
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalArtifactRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION;
-	}
+    return EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractPhysicalArtifact getRealizedPhysicalArtifact() {
 
-		AbstractPhysicalArtifact realizedPhysicalArtifact = basicGetRealizedPhysicalArtifact();
-		return realizedPhysicalArtifact != null && realizedPhysicalArtifact.eIsProxy() ? (AbstractPhysicalArtifact)eResolveProxy((InternalEObject)realizedPhysicalArtifact) : realizedPhysicalArtifact;
-	}
+    AbstractPhysicalArtifact realizedPhysicalArtifact = basicGetRealizedPhysicalArtifact();
+    return realizedPhysicalArtifact != null && realizedPhysicalArtifact.eIsProxy() ? (AbstractPhysicalArtifact)eResolveProxy((InternalEObject)realizedPhysicalArtifact) : realizedPhysicalArtifact;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractPhysicalArtifact basicGetRealizedPhysicalArtifact() {
 
@@ -120,15 +120,15 @@ public class PhysicalArtifactRealizationImpl extends AllocationImpl implements P
     // A helper is found, let's use it. 
     EAnnotation annotation = EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION__REALIZED_PHYSICAL_ARTIFACT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION__REALIZED_PHYSICAL_ARTIFACT, annotation);
-		
-		try {
-			return (AbstractPhysicalArtifact) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (AbstractPhysicalArtifact) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -136,23 +136,23 @@ public class PhysicalArtifactRealizationImpl extends AllocationImpl implements P
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ConfigurationItem getRealizingConfigurationItem() {
 
-		ConfigurationItem realizingConfigurationItem = basicGetRealizingConfigurationItem();
-		return realizingConfigurationItem != null && realizingConfigurationItem.eIsProxy() ? (ConfigurationItem)eResolveProxy((InternalEObject)realizingConfigurationItem) : realizingConfigurationItem;
-	}
+    ConfigurationItem realizingConfigurationItem = basicGetRealizingConfigurationItem();
+    return realizingConfigurationItem != null && realizingConfigurationItem.eIsProxy() ? (ConfigurationItem)eResolveProxy((InternalEObject)realizingConfigurationItem) : realizingConfigurationItem;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ConfigurationItem basicGetRealizingConfigurationItem() {
 
@@ -179,53 +179,53 @@ public class PhysicalArtifactRealizationImpl extends AllocationImpl implements P
     // A helper is found, let's use it. 
     EAnnotation annotation = EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION__REALIZING_CONFIGURATION_ITEM.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION__REALIZING_CONFIGURATION_ITEM, annotation);
-		
-		try {
-			return (ConfigurationItem) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (ConfigurationItem) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case EpbsPackage.PHYSICAL_ARTIFACT_REALIZATION__REALIZED_PHYSICAL_ARTIFACT:
-				if (resolve) return getRealizedPhysicalArtifact();
-				return basicGetRealizedPhysicalArtifact();
-			case EpbsPackage.PHYSICAL_ARTIFACT_REALIZATION__REALIZING_CONFIGURATION_ITEM:
-				if (resolve) return getRealizingConfigurationItem();
-				return basicGetRealizingConfigurationItem();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case EpbsPackage.PHYSICAL_ARTIFACT_REALIZATION__REALIZED_PHYSICAL_ARTIFACT:
+        if (resolve) return getRealizedPhysicalArtifact();
+        return basicGetRealizedPhysicalArtifact();
+      case EpbsPackage.PHYSICAL_ARTIFACT_REALIZATION__REALIZING_CONFIGURATION_ITEM:
+        if (resolve) return getRealizingConfigurationItem();
+        return basicGetRealizingConfigurationItem();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case EpbsPackage.PHYSICAL_ARTIFACT_REALIZATION__REALIZED_PHYSICAL_ARTIFACT:
-				return basicGetRealizedPhysicalArtifact() != null;
-			case EpbsPackage.PHYSICAL_ARTIFACT_REALIZATION__REALIZING_CONFIGURATION_ITEM:
-				return basicGetRealizingConfigurationItem() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case EpbsPackage.PHYSICAL_ARTIFACT_REALIZATION__REALIZED_PHYSICAL_ARTIFACT:
+        return basicGetRealizedPhysicalArtifact() != null;
+      case EpbsPackage.PHYSICAL_ARTIFACT_REALIZATION__REALIZING_CONFIGURATION_ITEM:
+        return basicGetRealizingConfigurationItem() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  */
 public class CreationEventImpl extends EventImpl implements CreationEvent {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CreationEventImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.CREATION_EVENT;
-	}
+    return InteractionPackage.Literals.CREATION_EVENT;
+  }
 
 
 

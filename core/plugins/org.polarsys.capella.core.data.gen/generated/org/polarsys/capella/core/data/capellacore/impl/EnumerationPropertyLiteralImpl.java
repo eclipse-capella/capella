@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
  */
 public class EnumerationPropertyLiteralImpl extends NamedElementImpl implements EnumerationPropertyLiteral {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected EnumerationPropertyLiteralImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacorePackage.Literals.ENUMERATION_PROPERTY_LITERAL;
-	}
+    return CapellacorePackage.Literals.ENUMERATION_PROPERTY_LITERAL;
+  }
 
 
 

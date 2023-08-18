@@ -64,642 +64,642 @@ import org.polarsys.capella.core.data.fa.SequenceLink;
  */
 public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static FaFactory init() {
-		try {
-			FaFactory theFaFactory = (FaFactory)EPackage.Registry.INSTANCE.getEFactory(FaPackage.eNS_URI);
-			if (theFaFactory != null) {
-				return theFaFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new FaFactoryImpl();
-	}
+    try {
+      FaFactory theFaFactory = (FaFactory)EPackage.Registry.INSTANCE.getEFactory(FaPackage.eNS_URI);
+      if (theFaFactory != null) {
+        return theFaFactory;
+      }
+    }
+    catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new FaFactoryImpl();
+  }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public FaFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case FaPackage.FUNCTION_SPECIFICATION: return createFunctionSpecification();
-			case FaPackage.EXCHANGE_CATEGORY: return createExchangeCategory();
-			case FaPackage.EXCHANGE_LINK: return createExchangeLink();
-			case FaPackage.EXCHANGE_CONTAINMENT: return createExchangeContainment();
-			case FaPackage.FUNCTIONAL_EXCHANGE_SPECIFICATION: return createFunctionalExchangeSpecification();
-			case FaPackage.FUNCTIONAL_CHAIN: return createFunctionalChain();
-			case FaPackage.FUNCTIONAL_CHAIN_REFERENCE: return createFunctionalChainReference();
-			case FaPackage.FUNCTION_INPUT_PORT: return createFunctionInputPort();
-			case FaPackage.FUNCTION_OUTPUT_PORT: return createFunctionOutputPort();
-			case FaPackage.COMPONENT_FUNCTIONAL_ALLOCATION: return createComponentFunctionalAllocation();
-			case FaPackage.FUNCTIONAL_CHAIN_REALIZATION: return createFunctionalChainRealization();
-			case FaPackage.FUNCTIONAL_EXCHANGE_REALIZATION: return createFunctionalExchangeRealization();
-			case FaPackage.FUNCTION_REALIZATION: return createFunctionRealization();
-			case FaPackage.FUNCTIONAL_EXCHANGE: return createFunctionalExchange();
-			case FaPackage.COMPONENT_EXCHANGE: return createComponentExchange();
-			case FaPackage.COMPONENT_EXCHANGE_ALLOCATION: return createComponentExchangeAllocation();
-			case FaPackage.COMPONENT_EXCHANGE_CATEGORY: return createComponentExchangeCategory();
-			case FaPackage.COMPONENT_EXCHANGE_END: return createComponentExchangeEnd();
-			case FaPackage.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION: return createComponentExchangeFunctionalExchangeAllocation();
-			case FaPackage.COMPONENT_EXCHANGE_REALIZATION: return createComponentExchangeRealization();
-			case FaPackage.COMPONENT_PORT: return createComponentPort();
-			case FaPackage.COMPONENT_PORT_ALLOCATION: return createComponentPortAllocation();
-			case FaPackage.COMPONENT_PORT_ALLOCATION_END: return createComponentPortAllocationEnd();
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT_LINK: return createFunctionalChainInvolvementLink();
-			case FaPackage.SEQUENCE_LINK: return createSequenceLink();
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION: return createFunctionalChainInvolvementFunction();
-			case FaPackage.CONTROL_NODE: return createControlNode();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eClass.getClassifierID()) {
+      case FaPackage.FUNCTION_SPECIFICATION: return createFunctionSpecification();
+      case FaPackage.EXCHANGE_CATEGORY: return createExchangeCategory();
+      case FaPackage.EXCHANGE_LINK: return createExchangeLink();
+      case FaPackage.EXCHANGE_CONTAINMENT: return createExchangeContainment();
+      case FaPackage.FUNCTIONAL_EXCHANGE_SPECIFICATION: return createFunctionalExchangeSpecification();
+      case FaPackage.FUNCTIONAL_CHAIN: return createFunctionalChain();
+      case FaPackage.FUNCTIONAL_CHAIN_REFERENCE: return createFunctionalChainReference();
+      case FaPackage.FUNCTION_INPUT_PORT: return createFunctionInputPort();
+      case FaPackage.FUNCTION_OUTPUT_PORT: return createFunctionOutputPort();
+      case FaPackage.COMPONENT_FUNCTIONAL_ALLOCATION: return createComponentFunctionalAllocation();
+      case FaPackage.FUNCTIONAL_CHAIN_REALIZATION: return createFunctionalChainRealization();
+      case FaPackage.FUNCTIONAL_EXCHANGE_REALIZATION: return createFunctionalExchangeRealization();
+      case FaPackage.FUNCTION_REALIZATION: return createFunctionRealization();
+      case FaPackage.FUNCTIONAL_EXCHANGE: return createFunctionalExchange();
+      case FaPackage.COMPONENT_EXCHANGE: return createComponentExchange();
+      case FaPackage.COMPONENT_EXCHANGE_ALLOCATION: return createComponentExchangeAllocation();
+      case FaPackage.COMPONENT_EXCHANGE_CATEGORY: return createComponentExchangeCategory();
+      case FaPackage.COMPONENT_EXCHANGE_END: return createComponentExchangeEnd();
+      case FaPackage.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION: return createComponentExchangeFunctionalExchangeAllocation();
+      case FaPackage.COMPONENT_EXCHANGE_REALIZATION: return createComponentExchangeRealization();
+      case FaPackage.COMPONENT_PORT: return createComponentPort();
+      case FaPackage.COMPONENT_PORT_ALLOCATION: return createComponentPortAllocation();
+      case FaPackage.COMPONENT_PORT_ALLOCATION_END: return createComponentPortAllocationEnd();
+      case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT_LINK: return createFunctionalChainInvolvementLink();
+      case FaPackage.SEQUENCE_LINK: return createSequenceLink();
+      case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION: return createFunctionalChainInvolvementFunction();
+      case FaPackage.CONTROL_NODE: return createControlNode();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID()) {
-			case FaPackage.FUNCTIONAL_CHAIN_KIND:
-				return createFunctionalChainKindFromString(eDataType, initialValue);
-			case FaPackage.FUNCTION_KIND:
-				return createFunctionKindFromString(eDataType, initialValue);
-			case FaPackage.COMPONENT_EXCHANGE_KIND:
-				return createComponentExchangeKindFromString(eDataType, initialValue);
-			case FaPackage.COMPONENT_PORT_KIND:
-				return createComponentPortKindFromString(eDataType, initialValue);
-			case FaPackage.ORIENTATION_PORT_KIND:
-				return createOrientationPortKindFromString(eDataType, initialValue);
-			case FaPackage.CONTROL_NODE_KIND:
-				return createControlNodeKindFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eDataType.getClassifierID()) {
+      case FaPackage.FUNCTIONAL_CHAIN_KIND:
+        return createFunctionalChainKindFromString(eDataType, initialValue);
+      case FaPackage.FUNCTION_KIND:
+        return createFunctionKindFromString(eDataType, initialValue);
+      case FaPackage.COMPONENT_EXCHANGE_KIND:
+        return createComponentExchangeKindFromString(eDataType, initialValue);
+      case FaPackage.COMPONENT_PORT_KIND:
+        return createComponentPortKindFromString(eDataType, initialValue);
+      case FaPackage.ORIENTATION_PORT_KIND:
+        return createOrientationPortKindFromString(eDataType, initialValue);
+      case FaPackage.CONTROL_NODE_KIND:
+        return createControlNodeKindFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID()) {
-			case FaPackage.FUNCTIONAL_CHAIN_KIND:
-				return convertFunctionalChainKindToString(eDataType, instanceValue);
-			case FaPackage.FUNCTION_KIND:
-				return convertFunctionKindToString(eDataType, instanceValue);
-			case FaPackage.COMPONENT_EXCHANGE_KIND:
-				return convertComponentExchangeKindToString(eDataType, instanceValue);
-			case FaPackage.COMPONENT_PORT_KIND:
-				return convertComponentPortKindToString(eDataType, instanceValue);
-			case FaPackage.ORIENTATION_PORT_KIND:
-				return convertOrientationPortKindToString(eDataType, instanceValue);
-			case FaPackage.CONTROL_NODE_KIND:
-				return convertControlNodeKindToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eDataType.getClassifierID()) {
+      case FaPackage.FUNCTIONAL_CHAIN_KIND:
+        return convertFunctionalChainKindToString(eDataType, instanceValue);
+      case FaPackage.FUNCTION_KIND:
+        return convertFunctionKindToString(eDataType, instanceValue);
+      case FaPackage.COMPONENT_EXCHANGE_KIND:
+        return convertComponentExchangeKindToString(eDataType, instanceValue);
+      case FaPackage.COMPONENT_PORT_KIND:
+        return convertComponentPortKindToString(eDataType, instanceValue);
+      case FaPackage.ORIENTATION_PORT_KIND:
+        return convertOrientationPortKindToString(eDataType, instanceValue);
+      case FaPackage.CONTROL_NODE_KIND:
+        return convertControlNodeKindToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public FunctionSpecification createFunctionSpecification() {
-		FunctionSpecificationImpl functionSpecification = new FunctionSpecificationImpl();
+    FunctionSpecificationImpl functionSpecification = new FunctionSpecificationImpl();
     //begin-capella-code
     functionSpecification.setId(IdGenerator.createId());
     //end-capella-code
-		return functionSpecification;
-	}
+    return functionSpecification;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ExchangeCategory createExchangeCategory() {
-		ExchangeCategoryImpl exchangeCategory = new ExchangeCategoryImpl();
+    ExchangeCategoryImpl exchangeCategory = new ExchangeCategoryImpl();
     //begin-capella-code
     exchangeCategory.setId(IdGenerator.createId());
     //end-capella-code
-		return exchangeCategory;
-	}
+    return exchangeCategory;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ExchangeLink createExchangeLink() {
-		ExchangeLinkImpl exchangeLink = new ExchangeLinkImpl();
+    ExchangeLinkImpl exchangeLink = new ExchangeLinkImpl();
     //begin-capella-code
     exchangeLink.setId(IdGenerator.createId());
     //end-capella-code
-		return exchangeLink;
-	}
+    return exchangeLink;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ExchangeContainment createExchangeContainment() {
-		ExchangeContainmentImpl exchangeContainment = new ExchangeContainmentImpl();
+    ExchangeContainmentImpl exchangeContainment = new ExchangeContainmentImpl();
     //begin-capella-code
     exchangeContainment.setId(IdGenerator.createId());
     //end-capella-code
-		return exchangeContainment;
-	}
+    return exchangeContainment;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public FunctionalExchangeSpecification createFunctionalExchangeSpecification() {
-		FunctionalExchangeSpecificationImpl functionalExchangeSpecification = new FunctionalExchangeSpecificationImpl();
+    FunctionalExchangeSpecificationImpl functionalExchangeSpecification = new FunctionalExchangeSpecificationImpl();
     //begin-capella-code
     functionalExchangeSpecification.setId(IdGenerator.createId());
     //end-capella-code
-		return functionalExchangeSpecification;
-	}
+    return functionalExchangeSpecification;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public FunctionalChain createFunctionalChain() {
-		FunctionalChainImpl functionalChain = new FunctionalChainImpl();
+    FunctionalChainImpl functionalChain = new FunctionalChainImpl();
     //begin-capella-code
     functionalChain.setId(IdGenerator.createId());
     //end-capella-code
-		return functionalChain;
-	}
+    return functionalChain;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public FunctionalChainReference createFunctionalChainReference() {
-		FunctionalChainReferenceImpl functionalChainReference = new FunctionalChainReferenceImpl();
+    FunctionalChainReferenceImpl functionalChainReference = new FunctionalChainReferenceImpl();
     //begin-capella-code
     functionalChainReference.setId(IdGenerator.createId());
     //end-capella-code
-		return functionalChainReference;
-	}
+    return functionalChainReference;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public FunctionInputPort createFunctionInputPort() {
-		FunctionInputPortImpl functionInputPort = new FunctionInputPortImpl();
+    FunctionInputPortImpl functionInputPort = new FunctionInputPortImpl();
     //begin-capella-code
     functionInputPort.setId(IdGenerator.createId());
     //end-capella-code
-		return functionInputPort;
-	}
+    return functionInputPort;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public FunctionOutputPort createFunctionOutputPort() {
-		FunctionOutputPortImpl functionOutputPort = new FunctionOutputPortImpl();
+    FunctionOutputPortImpl functionOutputPort = new FunctionOutputPortImpl();
     //begin-capella-code
     functionOutputPort.setId(IdGenerator.createId());
     //end-capella-code
-		return functionOutputPort;
-	}
+    return functionOutputPort;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ComponentFunctionalAllocation createComponentFunctionalAllocation() {
-		ComponentFunctionalAllocationImpl componentFunctionalAllocation = new ComponentFunctionalAllocationImpl();
+    ComponentFunctionalAllocationImpl componentFunctionalAllocation = new ComponentFunctionalAllocationImpl();
     //begin-capella-code
     componentFunctionalAllocation.setId(IdGenerator.createId());
     //end-capella-code
-		return componentFunctionalAllocation;
-	}
+    return componentFunctionalAllocation;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public FunctionalChainRealization createFunctionalChainRealization() {
-		FunctionalChainRealizationImpl functionalChainRealization = new FunctionalChainRealizationImpl();
+    FunctionalChainRealizationImpl functionalChainRealization = new FunctionalChainRealizationImpl();
     //begin-capella-code
     functionalChainRealization.setId(IdGenerator.createId());
     //end-capella-code
-		return functionalChainRealization;
-	}
+    return functionalChainRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public FunctionalExchangeRealization createFunctionalExchangeRealization() {
-		FunctionalExchangeRealizationImpl functionalExchangeRealization = new FunctionalExchangeRealizationImpl();
+    FunctionalExchangeRealizationImpl functionalExchangeRealization = new FunctionalExchangeRealizationImpl();
     //begin-capella-code
     functionalExchangeRealization.setId(IdGenerator.createId());
     //end-capella-code
-		return functionalExchangeRealization;
-	}
+    return functionalExchangeRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public FunctionRealization createFunctionRealization() {
-		FunctionRealizationImpl functionRealization = new FunctionRealizationImpl();
+    FunctionRealizationImpl functionRealization = new FunctionRealizationImpl();
     //begin-capella-code
     functionRealization.setId(IdGenerator.createId());
     //end-capella-code
-		return functionRealization;
-	}
+    return functionRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public FunctionalExchange createFunctionalExchange() {
-		FunctionalExchangeImpl functionalExchange = new FunctionalExchangeImpl();
+    FunctionalExchangeImpl functionalExchange = new FunctionalExchangeImpl();
     //begin-capella-code
     functionalExchange.setId(IdGenerator.createId());
     //end-capella-code
-		return functionalExchange;
-	}
+    return functionalExchange;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ComponentExchange createComponentExchange() {
-		ComponentExchangeImpl componentExchange = new ComponentExchangeImpl();
+    ComponentExchangeImpl componentExchange = new ComponentExchangeImpl();
     //begin-capella-code
     componentExchange.setId(IdGenerator.createId());
     //end-capella-code
-		return componentExchange;
-	}
+    return componentExchange;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ComponentExchangeAllocation createComponentExchangeAllocation() {
-		ComponentExchangeAllocationImpl componentExchangeAllocation = new ComponentExchangeAllocationImpl();
+    ComponentExchangeAllocationImpl componentExchangeAllocation = new ComponentExchangeAllocationImpl();
     //begin-capella-code
     componentExchangeAllocation.setId(IdGenerator.createId());
     //end-capella-code
-		return componentExchangeAllocation;
-	}
+    return componentExchangeAllocation;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ComponentExchangeCategory createComponentExchangeCategory() {
-		ComponentExchangeCategoryImpl componentExchangeCategory = new ComponentExchangeCategoryImpl();
+    ComponentExchangeCategoryImpl componentExchangeCategory = new ComponentExchangeCategoryImpl();
     //begin-capella-code
     componentExchangeCategory.setId(IdGenerator.createId());
     //end-capella-code
-		return componentExchangeCategory;
-	}
+    return componentExchangeCategory;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ComponentExchangeEnd createComponentExchangeEnd() {
-		ComponentExchangeEndImpl componentExchangeEnd = new ComponentExchangeEndImpl();
+    ComponentExchangeEndImpl componentExchangeEnd = new ComponentExchangeEndImpl();
     //begin-capella-code
     componentExchangeEnd.setId(IdGenerator.createId());
     //end-capella-code
-		return componentExchangeEnd;
-	}
+    return componentExchangeEnd;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ComponentExchangeFunctionalExchangeAllocation createComponentExchangeFunctionalExchangeAllocation() {
-		ComponentExchangeFunctionalExchangeAllocationImpl componentExchangeFunctionalExchangeAllocation = new ComponentExchangeFunctionalExchangeAllocationImpl();
+    ComponentExchangeFunctionalExchangeAllocationImpl componentExchangeFunctionalExchangeAllocation = new ComponentExchangeFunctionalExchangeAllocationImpl();
     //begin-capella-code
     componentExchangeFunctionalExchangeAllocation.setId(IdGenerator.createId());
     //end-capella-code
-		return componentExchangeFunctionalExchangeAllocation;
-	}
+    return componentExchangeFunctionalExchangeAllocation;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ComponentExchangeRealization createComponentExchangeRealization() {
-		ComponentExchangeRealizationImpl componentExchangeRealization = new ComponentExchangeRealizationImpl();
+    ComponentExchangeRealizationImpl componentExchangeRealization = new ComponentExchangeRealizationImpl();
     //begin-capella-code
     componentExchangeRealization.setId(IdGenerator.createId());
     //end-capella-code
-		return componentExchangeRealization;
-	}
+    return componentExchangeRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ComponentPort createComponentPort() {
-		ComponentPortImpl componentPort = new ComponentPortImpl();
+    ComponentPortImpl componentPort = new ComponentPortImpl();
     //begin-capella-code
     componentPort.setId(IdGenerator.createId());
     //end-capella-code
-		return componentPort;
-	}
+    return componentPort;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ComponentPortAllocation createComponentPortAllocation() {
-		ComponentPortAllocationImpl componentPortAllocation = new ComponentPortAllocationImpl();
+    ComponentPortAllocationImpl componentPortAllocation = new ComponentPortAllocationImpl();
     //begin-capella-code
     componentPortAllocation.setId(IdGenerator.createId());
     //end-capella-code
-		return componentPortAllocation;
-	}
+    return componentPortAllocation;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ComponentPortAllocationEnd createComponentPortAllocationEnd() {
-		ComponentPortAllocationEndImpl componentPortAllocationEnd = new ComponentPortAllocationEndImpl();
+    ComponentPortAllocationEndImpl componentPortAllocationEnd = new ComponentPortAllocationEndImpl();
     //begin-capella-code
     componentPortAllocationEnd.setId(IdGenerator.createId());
     //end-capella-code
-		return componentPortAllocationEnd;
-	}
+    return componentPortAllocationEnd;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public FunctionalChainInvolvementLink createFunctionalChainInvolvementLink() {
-		FunctionalChainInvolvementLinkImpl functionalChainInvolvementLink = new FunctionalChainInvolvementLinkImpl();
+    FunctionalChainInvolvementLinkImpl functionalChainInvolvementLink = new FunctionalChainInvolvementLinkImpl();
     //begin-capella-code
     functionalChainInvolvementLink.setId(IdGenerator.createId());
     //end-capella-code
-		return functionalChainInvolvementLink;
-	}
+    return functionalChainInvolvementLink;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public SequenceLink createSequenceLink() {
-		SequenceLinkImpl sequenceLink = new SequenceLinkImpl();
+    SequenceLinkImpl sequenceLink = new SequenceLinkImpl();
     //begin-capella-code
     sequenceLink.setId(IdGenerator.createId());
     //end-capella-code
-		return sequenceLink;
-	}
+    return sequenceLink;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public FunctionalChainInvolvementFunction createFunctionalChainInvolvementFunction() {
-		FunctionalChainInvolvementFunctionImpl functionalChainInvolvementFunction = new FunctionalChainInvolvementFunctionImpl();
+    FunctionalChainInvolvementFunctionImpl functionalChainInvolvementFunction = new FunctionalChainInvolvementFunctionImpl();
     //begin-capella-code
     functionalChainInvolvementFunction.setId(IdGenerator.createId());
     //end-capella-code
-		return functionalChainInvolvementFunction;
-	}
+    return functionalChainInvolvementFunction;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ControlNode createControlNode() {
-		ControlNodeImpl controlNode = new ControlNodeImpl();
+    ControlNodeImpl controlNode = new ControlNodeImpl();
     //begin-capella-code
     controlNode.setId(IdGenerator.createId());
     //end-capella-code
-		return controlNode;
-	}
+    return controlNode;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public FunctionalChainKind createFunctionalChainKindFromString(EDataType eDataType, String initialValue) {
-		FunctionalChainKind result = FunctionalChainKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    FunctionalChainKind result = FunctionalChainKind.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertFunctionalChainKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public FunctionKind createFunctionKindFromString(EDataType eDataType, String initialValue) {
-		FunctionKind result = FunctionKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    FunctionKind result = FunctionKind.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertFunctionKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ComponentExchangeKind createComponentExchangeKindFromString(EDataType eDataType, String initialValue) {
-		ComponentExchangeKind result = ComponentExchangeKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    ComponentExchangeKind result = ComponentExchangeKind.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertComponentExchangeKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ComponentPortKind createComponentPortKindFromString(EDataType eDataType, String initialValue) {
-		ComponentPortKind result = ComponentPortKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    ComponentPortKind result = ComponentPortKind.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertComponentPortKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public OrientationPortKind createOrientationPortKindFromString(EDataType eDataType, String initialValue) {
-		OrientationPortKind result = OrientationPortKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    OrientationPortKind result = OrientationPortKind.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertOrientationPortKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ControlNodeKind createControlNodeKindFromString(EDataType eDataType, String initialValue) {
-		ControlNodeKind result = ControlNodeKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    ControlNodeKind result = ControlNodeKind.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertControlNodeKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public FaPackage getFaPackage() {
-		return (FaPackage)getEPackage();
-	}
+    return (FaPackage)getEPackage();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
 	@Deprecated
 	public static FaPackage getPackage() {
-		return FaPackage.eINSTANCE;
-	}
+    return FaPackage.eINSTANCE;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -709,10 +709,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	 * @generated
 	 */
 	public FunctionSpecification createFunctionSpecification(String name_p) {
-		FunctionSpecification functionSpecification = createFunctionSpecification();
-		functionSpecification.setName(name_p);	  
-		return functionSpecification;
-	}
+    FunctionSpecification functionSpecification = createFunctionSpecification();
+    functionSpecification.setName(name_p);	  
+    return functionSpecification;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -722,10 +722,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	 * @generated
 	 */
 	public ExchangeCategory createExchangeCategory(String name_p) {
-		ExchangeCategory exchangeCategory = createExchangeCategory();
-		exchangeCategory.setName(name_p);	  
-		return exchangeCategory;
-	}
+    ExchangeCategory exchangeCategory = createExchangeCategory();
+    exchangeCategory.setName(name_p);	  
+    return exchangeCategory;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -735,10 +735,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	 * @generated
 	 */
 	public ExchangeLink createExchangeLink(String name_p) {
-		ExchangeLink exchangeLink = createExchangeLink();
-		exchangeLink.setName(name_p);	  
-		return exchangeLink;
-	}
+    ExchangeLink exchangeLink = createExchangeLink();
+    exchangeLink.setName(name_p);	  
+    return exchangeLink;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -748,10 +748,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	 * @generated
 	 */
 	public FunctionalExchangeSpecification createFunctionalExchangeSpecification(String name_p) {
-		FunctionalExchangeSpecification functionalExchangeSpecification = createFunctionalExchangeSpecification();
-		functionalExchangeSpecification.setName(name_p);	  
-		return functionalExchangeSpecification;
-	}
+    FunctionalExchangeSpecification functionalExchangeSpecification = createFunctionalExchangeSpecification();
+    functionalExchangeSpecification.setName(name_p);	  
+    return functionalExchangeSpecification;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -761,10 +761,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	 * @generated
 	 */
 	public FunctionalChain createFunctionalChain(String name_p) {
-		FunctionalChain functionalChain = createFunctionalChain();
-		functionalChain.setName(name_p);	  
-		return functionalChain;
-	}
+    FunctionalChain functionalChain = createFunctionalChain();
+    functionalChain.setName(name_p);	  
+    return functionalChain;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -774,10 +774,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	 * @generated
 	 */
 	public FunctionInputPort createFunctionInputPort(String name_p) {
-		FunctionInputPort functionInputPort = createFunctionInputPort();
-		functionInputPort.setName(name_p);	  
-		return functionInputPort;
-	}
+    FunctionInputPort functionInputPort = createFunctionInputPort();
+    functionInputPort.setName(name_p);	  
+    return functionInputPort;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -787,10 +787,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	 * @generated
 	 */
 	public FunctionOutputPort createFunctionOutputPort(String name_p) {
-		FunctionOutputPort functionOutputPort = createFunctionOutputPort();
-		functionOutputPort.setName(name_p);	  
-		return functionOutputPort;
-	}
+    FunctionOutputPort functionOutputPort = createFunctionOutputPort();
+    functionOutputPort.setName(name_p);	  
+    return functionOutputPort;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -800,10 +800,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	 * @generated
 	 */
 	public FunctionalExchange createFunctionalExchange(String name_p) {
-		FunctionalExchange functionalExchange = createFunctionalExchange();
-		functionalExchange.setName(name_p);	  
-		return functionalExchange;
-	}
+    FunctionalExchange functionalExchange = createFunctionalExchange();
+    functionalExchange.setName(name_p);	  
+    return functionalExchange;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -813,10 +813,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	 * @generated
 	 */
 	public ComponentExchange createComponentExchange(String name_p) {
-		ComponentExchange componentExchange = createComponentExchange();
-		componentExchange.setName(name_p);	  
-		return componentExchange;
-	}
+    ComponentExchange componentExchange = createComponentExchange();
+    componentExchange.setName(name_p);	  
+    return componentExchange;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -826,10 +826,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	 * @generated
 	 */
 	public ComponentExchangeCategory createComponentExchangeCategory(String name_p) {
-		ComponentExchangeCategory componentExchangeCategory = createComponentExchangeCategory();
-		componentExchangeCategory.setName(name_p);	  
-		return componentExchangeCategory;
-	}
+    ComponentExchangeCategory componentExchangeCategory = createComponentExchangeCategory();
+    componentExchangeCategory.setName(name_p);	  
+    return componentExchangeCategory;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -839,10 +839,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	 * @generated
 	 */
 	public ComponentPort createComponentPort(String name_p) {
-		ComponentPort componentPort = createComponentPort();
-		componentPort.setName(name_p);	  
-		return componentPort;
-	}
+    ComponentPort componentPort = createComponentPort();
+    componentPort.setName(name_p);	  
+    return componentPort;
+  }
 
 	//begin-capella-code
 

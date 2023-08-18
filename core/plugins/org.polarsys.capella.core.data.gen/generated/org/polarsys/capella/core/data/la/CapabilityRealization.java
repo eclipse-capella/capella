@@ -49,21 +49,21 @@ public interface CapabilityRealization extends AbstractCapability {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Capability Realization Involvements</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement}.
+   * Returns the value of the '<em><b>Owned Capability Realization Involvements</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Capability Realization Involvements</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Capability Realization Involvements</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_OwnedCapabilityRealizationInvolvements()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the capability realization links that are contained in this CapabilityRealization\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Capability Realization Involvements</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_OwnedCapabilityRealizationInvolvements()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the capability realization links that are contained in this CapabilityRealization\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   * @generated
+   */
 
 	EList<CapabilityRealizationInvolvement> getOwnedCapabilityRealizationInvolvements();
 
@@ -74,23 +74,23 @@ public interface CapabilityRealization extends AbstractCapability {
 
 
 	/**
-	 * Returns the value of the '<em><b>Involved Components</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement}.
+   * Returns the value of the '<em><b>Involved Components</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Involved Components</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Involved Components</em>' reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_InvolvedComponents()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Components that are involved in this Capability Realization' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CapabilityRealization.ownedCapabilityRealizationInvolvements(self, involvements);\r\nCapabilityRealizationInvolvement.involvedCapabilityRealizationInvolvedElement(involvements, target);'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Involved Components</em>' reference list.
+   * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_InvolvedComponents()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Components that are involved in this Capability Realization' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CapabilityRealization.ownedCapabilityRealizationInvolvements(self, involvements);\r\nCapabilityRealizationInvolvement.involvedCapabilityRealizationInvolvedElement(involvements, target);'"
+   * @generated
+   */
 
 	EList<CapabilityRealizationInvolvedElement> getInvolvedComponents();
 
@@ -101,25 +101,25 @@ public interface CapabilityRealization extends AbstractCapability {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realized Capabilities</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.Capability}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.Capability#getRealizingCapabilityRealizations <em>Realizing Capability Realizations</em>}'.
+   * Returns the value of the '<em><b>Realized Capabilities</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.ctx.Capability}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.Capability#getRealizingCapabilityRealizations <em>Realizing Capability Realizations</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realized Capabilities</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realized Capabilities</em>' reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_RealizedCapabilities()
-	 * @see org.polarsys.capella.core.data.ctx.Capability#getRealizingCapabilityRealizations
-	 * @model opposite="realizingCapabilityRealizations" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CapabilityRealization.outgoingTraces(self, acr);\r\nAbstractCapabilityRealization.realizedCapability(acr, target);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realized Capabilities</em>' reference list.
+   * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_RealizedCapabilities()
+   * @see org.polarsys.capella.core.data.ctx.Capability#getRealizingCapabilityRealizations
+   * @model opposite="realizingCapabilityRealizations" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CapabilityRealization.outgoingTraces(self, acr);\r\nAbstractCapabilityRealization.realizedCapability(acr, target);'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<Capability> getRealizedCapabilities();
 
@@ -130,25 +130,25 @@ public interface CapabilityRealization extends AbstractCapability {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realized Capability Realizations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.la.CapabilityRealization}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.la.CapabilityRealization#getRealizingCapabilityRealizations <em>Realizing Capability Realizations</em>}'.
+   * Returns the value of the '<em><b>Realized Capability Realizations</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.la.CapabilityRealization}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.la.CapabilityRealization#getRealizingCapabilityRealizations <em>Realizing Capability Realizations</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realized Capability Realizations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realized Capability Realizations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_RealizedCapabilityRealizations()
-	 * @see org.polarsys.capella.core.data.la.CapabilityRealization#getRealizingCapabilityRealizations
-	 * @model opposite="realizingCapabilityRealizations" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CapabilityRealization.outgoingTraces(self, acr);\r\nAbstractCapabilityRealization.realizedCapability(acr, target);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realized Capability Realizations</em>' reference list.
+   * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_RealizedCapabilityRealizations()
+   * @see org.polarsys.capella.core.data.la.CapabilityRealization#getRealizingCapabilityRealizations
+   * @model opposite="realizingCapabilityRealizations" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CapabilityRealization.outgoingTraces(self, acr);\r\nAbstractCapabilityRealization.realizedCapability(acr, target);'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<CapabilityRealization> getRealizedCapabilityRealizations();
 
@@ -159,25 +159,25 @@ public interface CapabilityRealization extends AbstractCapability {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realizing Capability Realizations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.la.CapabilityRealization}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.la.CapabilityRealization#getRealizedCapabilityRealizations <em>Realized Capability Realizations</em>}'.
+   * Returns the value of the '<em><b>Realizing Capability Realizations</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.la.CapabilityRealization}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.la.CapabilityRealization#getRealizedCapabilityRealizations <em>Realized Capability Realizations</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realizing Capability Realizations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realizing Capability Realizations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_RealizingCapabilityRealizations()
-	 * @see org.polarsys.capella.core.data.la.CapabilityRealization#getRealizedCapabilityRealizations
-	 * @model opposite="realizedCapabilityRealizations" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CapabilityRealization.incomingTraces(self, acr);\r\nAbstractCapabilityRealization.realizingCapability(acr, target);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realizing Capability Realizations</em>' reference list.
+   * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_RealizingCapabilityRealizations()
+   * @see org.polarsys.capella.core.data.la.CapabilityRealization#getRealizedCapabilityRealizations
+   * @model opposite="realizedCapabilityRealizations" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CapabilityRealization.incomingTraces(self, acr);\r\nAbstractCapabilityRealization.realizingCapability(acr, target);'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<CapabilityRealization> getRealizingCapabilityRealizations();
 

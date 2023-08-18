@@ -40,21 +40,21 @@ public interface AbstractConceptItem extends Component {
 
 
 	/**
-	 * Returns the value of the '<em><b>Composing Links</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.ItemInConcept}.
+   * Returns the value of the '<em><b>Composing Links</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.ItemInConcept}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Composing Links</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Composing Links</em>' reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getAbstractConceptItem_ComposingLinks()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='relationships between this item and the concept(s) that it is involved in\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Dependency::supplier' constraints='Order must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Composing Links</em>' reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getAbstractConceptItem_ComposingLinks()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='relationships between this item and the concept(s) that it is involved in\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Dependency::supplier' constraints='Order must be computed'"
+   * @generated
+   */
 
 	EList<ItemInConcept> getComposingLinks();
 

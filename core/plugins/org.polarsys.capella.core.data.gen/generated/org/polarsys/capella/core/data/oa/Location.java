@@ -39,22 +39,22 @@ public interface Location extends AbstractConceptItem {
 
 
 	/**
-	 * Returns the value of the '<em><b>Location Description</b></em>' attribute.
+   * Returns the value of the '<em><b>Location Description</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Location Description</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Location Description</em>' attribute.
-	 * @see #setLocationDescription(String)
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getLocation_LocationDescription()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a textual description of this location\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Location Description</em>' attribute.
+   * @see #setLocationDescription(String)
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getLocation_LocationDescription()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a textual description of this location\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	String getLocationDescription();
 
@@ -62,14 +62,14 @@ public interface Location extends AbstractConceptItem {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.oa.Location#getLocationDescription <em>Location Description</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.oa.Location#getLocationDescription <em>Location Description</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Location Description</em>' attribute.
-	 * @see #getLocationDescription()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Location Description</em>' attribute.
+   * @see #getLocationDescription()
+   * @generated
+   */
 
 	void setLocationDescription(String value);
 
@@ -80,21 +80,21 @@ public interface Location extends AbstractConceptItem {
 
 
 	/**
-	 * Returns the value of the '<em><b>Located Entities</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.Entity}.
+   * Returns the value of the '<em><b>Located Entities</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.Entity}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Located Entities</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Located Entities</em>' reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getLocation_LocatedEntities()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the operational entities assigned to this location\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Located Entities</em>' reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getLocation_LocatedEntities()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the operational entities assigned to this location\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	EList<Entity> getLocatedEntities();
 

@@ -50,460 +50,460 @@ import org.polarsys.kitalpha.emde.model.ExtensibleElement;
  */
 public class DatatypeAdapterFactory extends AdapterFactoryImpl {
 	/**
-	 * The cached model package.
-	 * <!-- begin-user-doc -->
+   * The cached model package.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected static DatatypePackage modelPackage;
 
 	/**
-	 * Creates an instance of the adapter factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the adapter factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public DatatypeAdapterFactory() {
-		if (modelPackage == null) {
-			modelPackage = DatatypePackage.eINSTANCE;
-		}
-	}
+    if (modelPackage == null) {
+      modelPackage = DatatypePackage.eINSTANCE;
+    }
+  }
 
 	/**
-	 * Returns whether this factory is applicable for the type of the object.
-	 * <!-- begin-user-doc -->
+   * Returns whether this factory is applicable for the type of the object.
+   * <!-- begin-user-doc -->
 	 * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
 	 * <!-- end-user-doc -->
-	 * @return whether this factory is applicable for the type of the object.
-	 * @generated
-	 */
+   * @return whether this factory is applicable for the type of the object.
+   * @generated
+   */
 	@Override
 	public boolean isFactoryForType(Object object) {
-		if (object == modelPackage) {
-			return true;
-		}
-		if (object instanceof EObject) {
-			return ((EObject)object).eClass().getEPackage() == modelPackage;
-		}
-		return false;
-	}
+    if (object == modelPackage) {
+      return true;
+    }
+    if (object instanceof EObject) {
+      return ((EObject)object).eClass().getEPackage() == modelPackage;
+    }
+    return false;
+  }
 
 	/**
-	 * The switch that delegates to the <code>createXXX</code> methods.
-	 * <!-- begin-user-doc -->
+   * The switch that delegates to the <code>createXXX</code> methods.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected DatatypeSwitch<Adapter> modelSwitch =
 		new DatatypeSwitch<Adapter>() {
-			@Override
-			public Adapter caseDataType(DataType object) {
-				return createDataTypeAdapter();
-			}
-			@Override
-			public Adapter caseBooleanType(BooleanType object) {
-				return createBooleanTypeAdapter();
-			}
-			@Override
-			public Adapter caseEnumeration(Enumeration object) {
-				return createEnumerationAdapter();
-			}
-			@Override
-			public Adapter caseStringType(StringType object) {
-				return createStringTypeAdapter();
-			}
-			@Override
-			public Adapter caseNumericType(NumericType object) {
-				return createNumericTypeAdapter();
-			}
-			@Override
-			public Adapter casePhysicalQuantity(PhysicalQuantity object) {
-				return createPhysicalQuantityAdapter();
-			}
-			@Override
-			public Adapter caseElement(Element object) {
-				return createElementAdapter();
-			}
-			@Override
-			public Adapter caseExtensibleElement(ExtensibleElement object) {
-				return createExtensibleElementAdapter();
-			}
-			@Override
-			public Adapter caseModelElement(ModelElement object) {
-				return createModelElementAdapter();
-			}
-			@Override
-			public Adapter caseAbstractNamedElement(AbstractNamedElement object) {
-				return createAbstractNamedElementAdapter();
-			}
-			@Override
-			public Adapter caseAbstractType(AbstractType object) {
-				return createAbstractTypeAdapter();
-			}
-			@Override
-			public Adapter caseTraceableElement(TraceableElement object) {
-				return createTraceableElementAdapter();
-			}
-			@Override
-			public Adapter casePublishableElement(PublishableElement object) {
-				return createPublishableElementAdapter();
-			}
-			@Override
-			public Adapter caseCapellaElement(CapellaElement object) {
-				return createCapellaElementAdapter();
-			}
-			@Override
-			public Adapter caseNamedElement(NamedElement object) {
-				return createNamedElementAdapter();
-			}
-			@Override
-			public Adapter caseNamespace(Namespace object) {
-				return createNamespaceAdapter();
-			}
-			@Override
-			public Adapter caseType(Type object) {
-				return createTypeAdapter();
-			}
-			@Override
-			public Adapter caseGeneralizableElement(GeneralizableElement object) {
-				return createGeneralizableElementAdapter();
-			}
-			@Override
-			public Adapter caseStructure(Structure object) {
-				return createStructureAdapter();
-			}
-			@Override
-			public Adapter caseDataValueContainer(DataValueContainer object) {
-				return createDataValueContainerAdapter();
-			}
-			@Override
-			public Adapter caseFinalizableElement(FinalizableElement object) {
-				return createFinalizableElementAdapter();
-			}
-			@Override
-			public Adapter defaultCase(EObject object) {
-				return createEObjectAdapter();
-			}
-		};
+      @Override
+      public Adapter caseDataType(DataType object) {
+        return createDataTypeAdapter();
+      }
+      @Override
+      public Adapter caseBooleanType(BooleanType object) {
+        return createBooleanTypeAdapter();
+      }
+      @Override
+      public Adapter caseEnumeration(Enumeration object) {
+        return createEnumerationAdapter();
+      }
+      @Override
+      public Adapter caseStringType(StringType object) {
+        return createStringTypeAdapter();
+      }
+      @Override
+      public Adapter caseNumericType(NumericType object) {
+        return createNumericTypeAdapter();
+      }
+      @Override
+      public Adapter casePhysicalQuantity(PhysicalQuantity object) {
+        return createPhysicalQuantityAdapter();
+      }
+      @Override
+      public Adapter caseElement(Element object) {
+        return createElementAdapter();
+      }
+      @Override
+      public Adapter caseExtensibleElement(ExtensibleElement object) {
+        return createExtensibleElementAdapter();
+      }
+      @Override
+      public Adapter caseModelElement(ModelElement object) {
+        return createModelElementAdapter();
+      }
+      @Override
+      public Adapter caseAbstractNamedElement(AbstractNamedElement object) {
+        return createAbstractNamedElementAdapter();
+      }
+      @Override
+      public Adapter caseAbstractType(AbstractType object) {
+        return createAbstractTypeAdapter();
+      }
+      @Override
+      public Adapter caseTraceableElement(TraceableElement object) {
+        return createTraceableElementAdapter();
+      }
+      @Override
+      public Adapter casePublishableElement(PublishableElement object) {
+        return createPublishableElementAdapter();
+      }
+      @Override
+      public Adapter caseCapellaElement(CapellaElement object) {
+        return createCapellaElementAdapter();
+      }
+      @Override
+      public Adapter caseNamedElement(NamedElement object) {
+        return createNamedElementAdapter();
+      }
+      @Override
+      public Adapter caseNamespace(Namespace object) {
+        return createNamespaceAdapter();
+      }
+      @Override
+      public Adapter caseType(Type object) {
+        return createTypeAdapter();
+      }
+      @Override
+      public Adapter caseGeneralizableElement(GeneralizableElement object) {
+        return createGeneralizableElementAdapter();
+      }
+      @Override
+      public Adapter caseStructure(Structure object) {
+        return createStructureAdapter();
+      }
+      @Override
+      public Adapter caseDataValueContainer(DataValueContainer object) {
+        return createDataValueContainerAdapter();
+      }
+      @Override
+      public Adapter caseFinalizableElement(FinalizableElement object) {
+        return createFinalizableElementAdapter();
+      }
+      @Override
+      public Adapter defaultCase(EObject object) {
+        return createEObjectAdapter();
+      }
+    };
 
 	/**
-	 * Creates an adapter for the <code>target</code>.
-	 * <!-- begin-user-doc -->
+   * Creates an adapter for the <code>target</code>.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param target the object to adapt.
-	 * @return the adapter for the <code>target</code>.
-	 * @generated
-	 */
+   * @param target the object to adapt.
+   * @return the adapter for the <code>target</code>.
+   * @generated
+   */
 	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject)target);
-	}
+    return modelSwitch.doSwitch((EObject)target);
+  }
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.datatype.DataType <em>Data Type</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.datatype.DataType <em>Data Type</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.information.datatype.DataType
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.core.data.information.datatype.DataType
+   * @generated
+   */
 	public Adapter createDataTypeAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.datatype.BooleanType <em>Boolean Type</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.datatype.BooleanType <em>Boolean Type</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.information.datatype.BooleanType
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.core.data.information.datatype.BooleanType
+   * @generated
+   */
 	public Adapter createBooleanTypeAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.datatype.Enumeration <em>Enumeration</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.datatype.Enumeration <em>Enumeration</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.information.datatype.Enumeration
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.core.data.information.datatype.Enumeration
+   * @generated
+   */
 	public Adapter createEnumerationAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.datatype.StringType <em>String Type</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.datatype.StringType <em>String Type</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.information.datatype.StringType
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.core.data.information.datatype.StringType
+   * @generated
+   */
 	public Adapter createStringTypeAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.datatype.NumericType <em>Numeric Type</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.datatype.NumericType <em>Numeric Type</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.information.datatype.NumericType
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.core.data.information.datatype.NumericType
+   * @generated
+   */
 	public Adapter createNumericTypeAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.datatype.PhysicalQuantity <em>Physical Quantity</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.datatype.PhysicalQuantity <em>Physical Quantity</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.information.datatype.PhysicalQuantity
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.core.data.information.datatype.PhysicalQuantity
+   * @generated
+   */
 	public Adapter createPhysicalQuantityAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.kitalpha.emde.model.Element <em>Element</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.kitalpha.emde.model.Element <em>Element</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.kitalpha.emde.model.Element
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.kitalpha.emde.model.Element
+   * @generated
+   */
 	public Adapter createElementAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.kitalpha.emde.model.ExtensibleElement <em>Extensible Element</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.kitalpha.emde.model.ExtensibleElement <em>Extensible Element</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.kitalpha.emde.model.ExtensibleElement
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.kitalpha.emde.model.ExtensibleElement
+   * @generated
+   */
 	public Adapter createExtensibleElementAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.data.modellingcore.ModelElement <em>Model Element</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.data.modellingcore.ModelElement <em>Model Element</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.common.data.modellingcore.ModelElement
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.common.data.modellingcore.ModelElement
+   * @generated
+   */
 	public Adapter createModelElementAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.data.modellingcore.AbstractNamedElement <em>Abstract Named Element</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.data.modellingcore.AbstractNamedElement <em>Abstract Named Element</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.common.data.modellingcore.AbstractNamedElement
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.common.data.modellingcore.AbstractNamedElement
+   * @generated
+   */
 	public Adapter createAbstractNamedElementAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.data.modellingcore.AbstractType <em>Abstract Type</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.data.modellingcore.AbstractType <em>Abstract Type</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.common.data.modellingcore.AbstractType
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.common.data.modellingcore.AbstractType
+   * @generated
+   */
 	public Adapter createAbstractTypeAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.data.modellingcore.TraceableElement <em>Traceable Element</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.data.modellingcore.TraceableElement <em>Traceable Element</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.common.data.modellingcore.TraceableElement
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.common.data.modellingcore.TraceableElement
+   * @generated
+   */
 	public Adapter createTraceableElementAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.data.modellingcore.PublishableElement <em>Publishable Element</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.data.modellingcore.PublishableElement <em>Publishable Element</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.common.data.modellingcore.PublishableElement
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.common.data.modellingcore.PublishableElement
+   * @generated
+   */
 	public Adapter createPublishableElementAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.CapellaElement <em>Capella Element</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.CapellaElement <em>Capella Element</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellaElement
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.core.data.capellacore.CapellaElement
+   * @generated
+   */
 	public Adapter createCapellaElementAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.NamedElement <em>Named Element</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.NamedElement <em>Named Element</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.capellacore.NamedElement
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.core.data.capellacore.NamedElement
+   * @generated
+   */
 	public Adapter createNamedElementAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.Namespace <em>Namespace</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.Namespace <em>Namespace</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.capellacore.Namespace
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.core.data.capellacore.Namespace
+   * @generated
+   */
 	public Adapter createNamespaceAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.Type <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.Type <em>Type</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.capellacore.Type
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.core.data.capellacore.Type
+   * @generated
+   */
 	public Adapter createTypeAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.GeneralizableElement <em>Generalizable Element</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.GeneralizableElement <em>Generalizable Element</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.capellacore.GeneralizableElement
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.core.data.capellacore.GeneralizableElement
+   * @generated
+   */
 	public Adapter createGeneralizableElementAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.Structure <em>Structure</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.Structure <em>Structure</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.capellacore.Structure
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.core.data.capellacore.Structure
+   * @generated
+   */
 	public Adapter createStructureAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.datavalue.DataValueContainer <em>Data Value Container</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.datavalue.DataValueContainer <em>Data Value Container</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.information.datavalue.DataValueContainer
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.core.data.information.datavalue.DataValueContainer
+   * @generated
+   */
 	public Adapter createDataValueContainerAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.data.modellingcore.FinalizableElement <em>Finalizable Element</em>}'.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.data.modellingcore.FinalizableElement <em>Finalizable Element</em>}'.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.common.data.modellingcore.FinalizableElement
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @see org.polarsys.capella.common.data.modellingcore.FinalizableElement
+   * @generated
+   */
 	public Adapter createFinalizableElementAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Creates a new adapter for the default case.
-	 * <!-- begin-user-doc -->
+   * Creates a new adapter for the default case.
+   * <!-- begin-user-doc -->
 	 * This default implementation returns null.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @generated
-	 */
+   * @return the new adapter.
+   * @generated
+   */
 	public Adapter createEObjectAdapter() {
-		return null;
-	}
+    return null;
+  }
 
 } //DatatypeAdapterFactory

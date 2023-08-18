@@ -50,249 +50,249 @@ public class CatalogElementLinkItemProvider extends
 		IStructuredItemContentProvider, ITreeItemContentProvider,
 		IItemLabelProvider, IItemPropertySource {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor sourcePropertyDescriptor;
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor targetPropertyDescriptor;
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor originPropertyDescriptor;
 
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CatalogElementLinkItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process RePackage.Literals.CATALOG_ELEMENT_LINK__SOURCE
-			if (sourcePropertyDescriptor != null) {
-				Object sourceValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT_LINK__SOURCE, true);
-				if (sourceValue != null && sourceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sourceValue)) {
-					itemPropertyDescriptors.remove(sourcePropertyDescriptor);
-				} else if (sourceValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT_LINK__SOURCE) != null) {
-					itemPropertyDescriptors.remove(sourcePropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(sourcePropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(sourcePropertyDescriptor);
-				}
-			}
-			// Process RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET
-			if (targetPropertyDescriptor != null) {
-				Object targetValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET, true);
-				if (targetValue != null && targetValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) targetValue)) {
-					itemPropertyDescriptors.remove(targetPropertyDescriptor);
-				} else if (targetValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET) != null) {
-					itemPropertyDescriptors.remove(targetPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(targetPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(targetPropertyDescriptor);
-				}
-			}
-			// Process RePackage.Literals.CATALOG_ELEMENT_LINK__ORIGIN
-			if (originPropertyDescriptor != null) {
-				Object originValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT_LINK__ORIGIN, true);
-				if (originValue != null && originValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) originValue)) {
-					itemPropertyDescriptors.remove(originPropertyDescriptor);
-				} else if (originValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT_LINK__ORIGIN) != null) {
-					itemPropertyDescriptors.remove(originPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(originPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(originPropertyDescriptor);
-				}
-			}
-		}		
-	}
+    super.checkChildCreationExtender(object);
+    if (object instanceof EObject) {
+      EObject eObject = (EObject) object;
+      // Process RePackage.Literals.CATALOG_ELEMENT_LINK__SOURCE
+      if (sourcePropertyDescriptor != null) {
+        Object sourceValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT_LINK__SOURCE, true);
+        if (sourceValue != null && sourceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sourceValue)) {
+          itemPropertyDescriptors.remove(sourcePropertyDescriptor);
+        } else if (sourceValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT_LINK__SOURCE) != null) {
+          itemPropertyDescriptors.remove(sourcePropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(sourcePropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(sourcePropertyDescriptor);
+        }
+      }
+      // Process RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET
+      if (targetPropertyDescriptor != null) {
+        Object targetValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET, true);
+        if (targetValue != null && targetValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) targetValue)) {
+          itemPropertyDescriptors.remove(targetPropertyDescriptor);
+        } else if (targetValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET) != null) {
+          itemPropertyDescriptors.remove(targetPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(targetPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(targetPropertyDescriptor);
+        }
+      }
+      // Process RePackage.Literals.CATALOG_ELEMENT_LINK__ORIGIN
+      if (originPropertyDescriptor != null) {
+        Object originValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT_LINK__ORIGIN, true);
+        if (originValue != null && originValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) originValue)) {
+          itemPropertyDescriptors.remove(originPropertyDescriptor);
+        } else if (originValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT_LINK__ORIGIN) != null) {
+          itemPropertyDescriptors.remove(originPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(originPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(originPropertyDescriptor);
+        }
+      }
+    }		
+  }
 
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addSourcePropertyDescriptor(object);
-			addTargetPropertyDescriptor(object);
-			addOriginPropertyDescriptor(object);
-			addUnsynchronizedFeaturesPropertyDescriptor(object);
-			addSuffixedPropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addSourcePropertyDescriptor(object);
+      addTargetPropertyDescriptor(object);
+      addOriginPropertyDescriptor(object);
+      addUnsynchronizedFeaturesPropertyDescriptor(object);
+      addSuffixedPropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Source feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Source feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addSourcePropertyDescriptor(Object object) {
-		// begin-extension-code
-		sourcePropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CatalogElementLink_source_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_CatalogElementLink_source_feature", "_UI_CatalogElementLink_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 RePackage.Literals.CATALOG_ELEMENT_LINK__SOURCE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(sourcePropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    sourcePropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_CatalogElementLink_source_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_CatalogElementLink_source_feature", "_UI_CatalogElementLink_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         RePackage.Literals.CATALOG_ELEMENT_LINK__SOURCE,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(sourcePropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Target feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Target feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addTargetPropertyDescriptor(Object object) {
-		// begin-extension-code
-		targetPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CatalogElementLink_target_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_CatalogElementLink_target_feature", "_UI_CatalogElementLink_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(targetPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    targetPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_CatalogElementLink_target_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_CatalogElementLink_target_feature", "_UI_CatalogElementLink_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(targetPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Origin feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Origin feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addOriginPropertyDescriptor(Object object) {
-		// begin-extension-code
-		originPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CatalogElementLink_origin_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_CatalogElementLink_origin_feature", "_UI_CatalogElementLink_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 RePackage.Literals.CATALOG_ELEMENT_LINK__ORIGIN,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(originPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    originPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_CatalogElementLink_origin_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_CatalogElementLink_origin_feature", "_UI_CatalogElementLink_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         RePackage.Literals.CATALOG_ELEMENT_LINK__ORIGIN,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(originPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Unsynchronized Features feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Unsynchronized Features feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addUnsynchronizedFeaturesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CatalogElementLink_unsynchronizedFeatures_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_CatalogElementLink_unsynchronizedFeatures_feature", "_UI_CatalogElementLink_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 RePackage.Literals.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_CatalogElementLink_unsynchronizedFeatures_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_CatalogElementLink_unsynchronizedFeatures_feature", "_UI_CatalogElementLink_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         RePackage.Literals.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Suffixed feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Suffixed feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addSuffixedPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CatalogElementLink_suffixed_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_CatalogElementLink_suffixed_feature", "_UI_CatalogElementLink_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 RePackage.Literals.CATALOG_ELEMENT_LINK__SUFFIXED,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_CatalogElementLink_suffixed_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_CatalogElementLink_suffixed_feature", "_UI_CatalogElementLink_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         RePackage.Literals.CATALOG_ELEMENT_LINK__SUFFIXED,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 
 	/**
-	 * This returns CatalogElementLink.gif.
-	 * <!-- begin-user-doc -->
+   * This returns CatalogElementLink.gif.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CatalogElementLink")); //$NON-NLS-1$
-	}
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/CatalogElementLink")); //$NON-NLS-1$
+  }
 
 	/**
 	 * This returns the label text for the adapted class.
@@ -319,47 +319,47 @@ public class CatalogElementLinkItemProvider extends
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
+    updateChildren(notification);
 
-		switch (notification.getFeatureID(CatalogElementLink.class)) {
-			case RePackage.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES:
-			case RePackage.CATALOG_ELEMENT_LINK__SUFFIXED:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
-		super.notifyChanged(notification);
-	}
+    switch (notification.getFeatureID(CatalogElementLink.class)) {
+      case RePackage.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES:
+      case RePackage.CATALOG_ELEMENT_LINK__SUFFIXED:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+        return;
+    }
+    super.notifyChanged(notification);
+  }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+    super.collectNewChildDescriptors(newChildDescriptors, object);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 
 }

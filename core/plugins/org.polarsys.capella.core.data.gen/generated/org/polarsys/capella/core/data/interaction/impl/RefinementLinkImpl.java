@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.interaction.RefinementLink;
  */
 public class RefinementLinkImpl extends TraceImpl implements RefinementLink {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected RefinementLinkImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.REFINEMENT_LINK;
-	}
+    return InteractionPackage.Literals.REFINEMENT_LINK;
+  }
 
 
 

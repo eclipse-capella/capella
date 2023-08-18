@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.ctx.OperationalAnalysisRealization;
  */
 public class OperationalAnalysisRealizationImpl extends ArchitectureAllocationImpl implements OperationalAnalysisRealization {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OperationalAnalysisRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CtxPackage.Literals.OPERATIONAL_ANALYSIS_REALIZATION;
-	}
+    return CtxPackage.Literals.OPERATIONAL_ANALYSIS_REALIZATION;
+  }
 
 
 

@@ -39,23 +39,23 @@ public interface EnumerationPropertyType extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Literals</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral}.
+   * Returns the value of the '<em><b>Owned Literals</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Literals</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Literals</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getEnumerationPropertyType_OwnedLiterals()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The literal values that are part of this enumeration\r\n[source:Capella study]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Enumeration::ownedLiteral' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Literals</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getEnumerationPropertyType_OwnedLiterals()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The literal values that are part of this enumeration\r\n[source:Capella study]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Enumeration::ownedLiteral' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<EnumerationPropertyLiteral> getOwnedLiterals();
 

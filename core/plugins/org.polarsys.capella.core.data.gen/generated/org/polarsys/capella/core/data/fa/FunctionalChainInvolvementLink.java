@@ -48,20 +48,20 @@ public interface FunctionalChainInvolvementLink extends FunctionalChainInvolveme
 
 
 	/**
-	 * Returns the value of the '<em><b>Exchange Context</b></em>' reference.
+   * Returns the value of the '<em><b>Exchange Context</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Exchange Context</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exchange Context</em>' reference.
-	 * @see #setExchangeContext(Constraint)
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementLink_ExchangeContext()
-	 * @model annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Exchange Context</em>' reference.
+   * @see #setExchangeContext(Constraint)
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementLink_ExchangeContext()
+   * @model annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	Constraint getExchangeContext();
 
@@ -69,14 +69,14 @@ public interface FunctionalChainInvolvementLink extends FunctionalChainInvolveme
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink#getExchangeContext <em>Exchange Context</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink#getExchangeContext <em>Exchange Context</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Exchange Context</em>' reference.
-	 * @see #getExchangeContext()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Exchange Context</em>' reference.
+   * @see #getExchangeContext()
+   * @generated
+   */
 
 	void setExchangeContext(Constraint value);
 
@@ -87,22 +87,22 @@ public interface FunctionalChainInvolvementLink extends FunctionalChainInvolveme
 
 
 	/**
-	 * Returns the value of the '<em><b>Exchanged Items</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.ExchangeItem}.
+   * Returns the value of the '<em><b>Exchanged Items</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.ExchangeItem}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Exchanged Items</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exchanged Items</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementLink_ExchangedItems()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the ExchangeItems carried by this Functional Chain Involvement Link' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Exchanged Items</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementLink_ExchangedItems()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the ExchangeItems carried by this Functional Chain Involvement Link' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<ExchangeItem> getExchangedItems();
 
@@ -110,20 +110,20 @@ public interface FunctionalChainInvolvementLink extends FunctionalChainInvolveme
 
 
 	/**
-	 * Returns the value of the '<em><b>Source</b></em>' reference.
+   * Returns the value of the '<em><b>Source</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Source</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source</em>' reference.
-	 * @see #setSource(FunctionalChainInvolvementFunction)
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementLink_Source()
-	 * @model annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Source</em>' reference.
+   * @see #setSource(FunctionalChainInvolvementFunction)
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementLink_Source()
+   * @model annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	FunctionalChainInvolvementFunction getSource();
 
@@ -131,14 +131,14 @@ public interface FunctionalChainInvolvementLink extends FunctionalChainInvolveme
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink#getSource <em>Source</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink#getSource <em>Source</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Source</em>' reference.
-	 * @see #getSource()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Source</em>' reference.
+   * @see #getSource()
+   * @generated
+   */
 
 	void setSource(FunctionalChainInvolvementFunction value);
 
@@ -146,20 +146,20 @@ public interface FunctionalChainInvolvementLink extends FunctionalChainInvolveme
 
 
 	/**
-	 * Returns the value of the '<em><b>Target</b></em>' reference.
+   * Returns the value of the '<em><b>Target</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Target</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target</em>' reference.
-	 * @see #setTarget(FunctionalChainInvolvementFunction)
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementLink_Target()
-	 * @model annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Target</em>' reference.
+   * @see #setTarget(FunctionalChainInvolvementFunction)
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementLink_Target()
+   * @model annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	FunctionalChainInvolvementFunction getTarget();
 
@@ -167,14 +167,14 @@ public interface FunctionalChainInvolvementLink extends FunctionalChainInvolveme
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink#getTarget <em>Target</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink#getTarget <em>Target</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target</em>' reference.
-	 * @see #getTarget()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Target</em>' reference.
+   * @see #getTarget()
+   * @generated
+   */
 
 	void setTarget(FunctionalChainInvolvementFunction value);
 

@@ -25,27 +25,27 @@ import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
  */
 public class DeploymentResourceFactoryImpl extends ResourceFactoryImpl {
 	/**
-	 * Creates an instance of the resource factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the resource factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public DeploymentResourceFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * Creates an instance of the resource.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the resource.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Resource createResource(URI uri) {
 
-		Resource result = new DeploymentResourceImpl(uri);
-		return result;
+    Resource result = new DeploymentResourceImpl(uri);
+    return result;
 
-	}
+  }
 
 } //DeploymentResourceFactoryImpl

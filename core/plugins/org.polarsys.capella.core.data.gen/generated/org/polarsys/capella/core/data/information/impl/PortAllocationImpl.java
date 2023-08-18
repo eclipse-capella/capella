@@ -50,48 +50,48 @@ public class PortAllocationImpl extends AllocationImpl implements PortAllocation
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PortAllocationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.PORT_ALLOCATION;
-	}
+    return InformationPackage.Literals.PORT_ALLOCATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Port getAllocatedPort() {
 
-		Port allocatedPort = basicGetAllocatedPort();
-		return allocatedPort != null && allocatedPort.eIsProxy() ? (Port)eResolveProxy((InternalEObject)allocatedPort) : allocatedPort;
-	}
+    Port allocatedPort = basicGetAllocatedPort();
+    return allocatedPort != null && allocatedPort.eIsProxy() ? (Port)eResolveProxy((InternalEObject)allocatedPort) : allocatedPort;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Port basicGetAllocatedPort() {
 
@@ -118,15 +118,15 @@ public class PortAllocationImpl extends AllocationImpl implements PortAllocation
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.PORT_ALLOCATION__ALLOCATED_PORT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.PORT_ALLOCATION__ALLOCATED_PORT, annotation);
-		
-		try {
-			return (Port) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Port) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -134,23 +134,23 @@ public class PortAllocationImpl extends AllocationImpl implements PortAllocation
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Port getAllocatingPort() {
 
-		Port allocatingPort = basicGetAllocatingPort();
-		return allocatingPort != null && allocatingPort.eIsProxy() ? (Port)eResolveProxy((InternalEObject)allocatingPort) : allocatingPort;
-	}
+    Port allocatingPort = basicGetAllocatingPort();
+    return allocatingPort != null && allocatingPort.eIsProxy() ? (Port)eResolveProxy((InternalEObject)allocatingPort) : allocatingPort;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Port basicGetAllocatingPort() {
 
@@ -177,53 +177,53 @@ public class PortAllocationImpl extends AllocationImpl implements PortAllocation
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.PORT_ALLOCATION__ALLOCATING_PORT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.PORT_ALLOCATION__ALLOCATING_PORT, annotation);
-		
-		try {
-			return (Port) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Port) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InformationPackage.PORT_ALLOCATION__ALLOCATED_PORT:
-				if (resolve) return getAllocatedPort();
-				return basicGetAllocatedPort();
-			case InformationPackage.PORT_ALLOCATION__ALLOCATING_PORT:
-				if (resolve) return getAllocatingPort();
-				return basicGetAllocatingPort();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InformationPackage.PORT_ALLOCATION__ALLOCATED_PORT:
+        if (resolve) return getAllocatedPort();
+        return basicGetAllocatedPort();
+      case InformationPackage.PORT_ALLOCATION__ALLOCATING_PORT:
+        if (resolve) return getAllocatingPort();
+        return basicGetAllocatingPort();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InformationPackage.PORT_ALLOCATION__ALLOCATED_PORT:
-				return basicGetAllocatedPort() != null;
-			case InformationPackage.PORT_ALLOCATION__ALLOCATING_PORT:
-				return basicGetAllocatingPort() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.PORT_ALLOCATION__ALLOCATED_PORT:
+        return basicGetAllocatedPort() != null;
+      case InformationPackage.PORT_ALLOCATION__ALLOCATING_PORT:
+        return basicGetAllocatingPort() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

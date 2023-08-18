@@ -42,13 +42,13 @@ import org.polarsys.capella.common.re.RePackage;
 public class CatalogElementPkgImpl extends ReNamedElementImpl implements CatalogElementPkg {
 
 	/**
-	 * The cached value of the '{@link #getOwnedElements() <em>Owned Elements</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedElements() <em>Owned Elements</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedElements()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedElements()
+   * @generated
+   * @ordered
+   */
 	protected EList<CatalogElement> ownedElements;
 
 
@@ -56,199 +56,199 @@ public class CatalogElementPkgImpl extends ReNamedElementImpl implements Catalog
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedElementPkgs() <em>Owned Element Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedElementPkgs() <em>Owned Element Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedElementPkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedElementPkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<CatalogElementPkg> ownedElementPkgs;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CatalogElementPkgImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return RePackage.Literals.CATALOG_ELEMENT_PKG;
-	}
+    return RePackage.Literals.CATALOG_ELEMENT_PKG;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CatalogElement> getOwnedElements() {
 
-		if (ownedElements == null) {
-			ownedElements = new EObjectContainmentEList.Resolving<CatalogElement>(CatalogElement.class, this, RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENTS);
-		}
-		return ownedElements;
-	}
+    if (ownedElements == null) {
+      ownedElements = new EObjectContainmentEList.Resolving<CatalogElement>(CatalogElement.class, this, RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENTS);
+    }
+    return ownedElements;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CatalogElementPkg> getOwnedElementPkgs() {
 
-		if (ownedElementPkgs == null) {
-			ownedElementPkgs = new EObjectContainmentEList.Resolving<CatalogElementPkg>(CatalogElementPkg.class, this, RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENT_PKGS);
-		}
-		return ownedElementPkgs;
-	}
+    if (ownedElementPkgs == null) {
+      ownedElementPkgs = new EObjectContainmentEList.Resolving<CatalogElementPkg>(CatalogElementPkg.class, this, RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENT_PKGS);
+    }
+    return ownedElementPkgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENTS:
-				return ((InternalEList<?>)getOwnedElements()).basicRemove(otherEnd, msgs);
-			case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENT_PKGS:
-				return ((InternalEList<?>)getOwnedElementPkgs()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENTS:
+        return ((InternalEList<?>)getOwnedElements()).basicRemove(otherEnd, msgs);
+      case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENT_PKGS:
+        return ((InternalEList<?>)getOwnedElementPkgs()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENTS:
-				return getOwnedElements();
-			case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENT_PKGS:
-				return getOwnedElementPkgs();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENTS:
+        return getOwnedElements();
+      case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENT_PKGS:
+        return getOwnedElementPkgs();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENTS:
-				getOwnedElements().clear();
-				getOwnedElements().addAll((Collection<? extends CatalogElement>)newValue);
-				return;
-			case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENT_PKGS:
-				getOwnedElementPkgs().clear();
-				getOwnedElementPkgs().addAll((Collection<? extends CatalogElementPkg>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENTS:
+        getOwnedElements().clear();
+        getOwnedElements().addAll((Collection<? extends CatalogElement>)newValue);
+        return;
+      case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENT_PKGS:
+        getOwnedElementPkgs().clear();
+        getOwnedElementPkgs().addAll((Collection<? extends CatalogElementPkg>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENTS:
-				getOwnedElements().clear();
-				return;
-			case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENT_PKGS:
-				getOwnedElementPkgs().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENTS:
+        getOwnedElements().clear();
+        return;
+      case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENT_PKGS:
+        getOwnedElementPkgs().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENTS:
-				return ownedElements != null && !ownedElements.isEmpty();
-			case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENT_PKGS:
-				return ownedElementPkgs != null && !ownedElementPkgs.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENTS:
+        return ownedElements != null && !ownedElements.isEmpty();
+      case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENT_PKGS:
+        return ownedElementPkgs != null && !ownedElementPkgs.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == ReElementContainer.class) {
-			switch (derivedFeatureID) {
-				case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENTS: return RePackage.RE_ELEMENT_CONTAINER__OWNED_ELEMENTS;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == ReElementContainer.class) {
+      switch (derivedFeatureID) {
+        case RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENTS: return RePackage.RE_ELEMENT_CONTAINER__OWNED_ELEMENTS;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == ReElementContainer.class) {
-			switch (baseFeatureID) {
-				case RePackage.RE_ELEMENT_CONTAINER__OWNED_ELEMENTS: return RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENTS;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == ReElementContainer.class) {
+      switch (baseFeatureID) {
+        case RePackage.RE_ELEMENT_CONTAINER__OWNED_ELEMENTS: return RePackage.CATALOG_ELEMENT_PKG__OWNED_ELEMENTS;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 
 } //CatalogElementPkgImpl

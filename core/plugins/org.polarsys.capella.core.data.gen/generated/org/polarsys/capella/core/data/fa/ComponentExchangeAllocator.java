@@ -41,22 +41,22 @@ public interface ComponentExchangeAllocator extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Component Exchange Allocations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ComponentExchangeAllocation}.
+   * Returns the value of the '<em><b>Owned Component Exchange Allocations</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ComponentExchangeAllocation}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Component Exchange Allocations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Component Exchange Allocations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeAllocator_OwnedComponentExchangeAllocations()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the component exchanges allocations contained in this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='Elements are contained in the nearest possible parent container.' constraints='uml::NamedElement::clientDependency elements on which ConnectionAllocation stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Component Exchange Allocations</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeAllocator_OwnedComponentExchangeAllocations()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the component exchanges allocations contained in this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='Elements are contained in the nearest possible parent container.' constraints='uml::NamedElement::clientDependency elements on which ConnectionAllocation stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	EList<ComponentExchangeAllocation> getOwnedComponentExchangeAllocations();
 
@@ -67,24 +67,24 @@ public interface ComponentExchangeAllocator extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocated Component Exchanges</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ComponentExchange}.
+   * Returns the value of the '<em><b>Allocated Component Exchanges</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ComponentExchange}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocated Component Exchanges</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocated Component Exchanges</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeAllocator_AllocatedComponentExchanges()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentExchangeAllocator.outgoingTraces(self, cea);\r\nComponentExchangeAllocation.componentExchangeAllocated(cea, target);'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) direct references to the component exchanges being allocated by this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Allocated Component Exchanges</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeAllocator_AllocatedComponentExchanges()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentExchangeAllocator.outgoingTraces(self, cea);\r\nComponentExchangeAllocation.componentExchangeAllocated(cea, target);'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) direct references to the component exchanges being allocated by this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<ComponentExchange> getAllocatedComponentExchanges();
 

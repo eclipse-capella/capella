@@ -39,23 +39,23 @@ import org.polarsys.capella.core.data.information.datavalue.UnaryOperator;
 public class UnaryExpressionImpl extends AbstractExpressionValueImpl implements UnaryExpression {
 
 	/**
-	 * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOperator()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOperator()
+   * @generated
+   * @ordered
+   */
 	protected static final UnaryOperator OPERATOR_EDEFAULT = UnaryOperator.UNSET;
 
 	/**
-	 * The cached value of the '{@link #getOperator() <em>Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOperator() <em>Operator</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOperator()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOperator()
+   * @generated
+   * @ordered
+   */
 	protected UnaryOperator operator = OPERATOR_EDEFAULT;
 
 
@@ -63,70 +63,70 @@ public class UnaryExpressionImpl extends AbstractExpressionValueImpl implements 
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedOperand() <em>Owned Operand</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedOperand() <em>Owned Operand</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedOperand()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedOperand()
+   * @generated
+   * @ordered
+   */
 	protected DataValue ownedOperand;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected UnaryExpressionImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return DatavaluePackage.Literals.UNARY_EXPRESSION;
-	}
+    return DatavaluePackage.Literals.UNARY_EXPRESSION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public UnaryOperator getOperator() {
 
-		return operator;
-	}
+    return operator;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setOperator(UnaryOperator newOperator) {
 
-		UnaryOperator oldOperator = operator;
-		operator = newOperator == null ? OPERATOR_EDEFAULT : newOperator;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DatavaluePackage.UNARY_EXPRESSION__OPERATOR, oldOperator, operator));
+    UnaryOperator oldOperator = operator;
+    operator = newOperator == null ? OPERATOR_EDEFAULT : newOperator;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DatavaluePackage.UNARY_EXPRESSION__OPERATOR, oldOperator, operator));
 
-	}
+  }
 
 
 
@@ -134,192 +134,192 @@ public class UnaryExpressionImpl extends AbstractExpressionValueImpl implements 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public DataValue getOwnedOperand() {
 
-		if (ownedOperand != null && ownedOperand.eIsProxy()) {
-			InternalEObject oldOwnedOperand = (InternalEObject)ownedOperand;
-			ownedOperand = (DataValue)eResolveProxy(oldOwnedOperand);
-			if (ownedOperand != oldOwnedOperand) {
-				InternalEObject newOwnedOperand = (InternalEObject)ownedOperand;
-				NotificationChain msgs = oldOwnedOperand.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND, null, null);
-				if (newOwnedOperand.eInternalContainer() == null) {
-					msgs = newOwnedOperand.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND, oldOwnedOperand, ownedOperand));
-			}
-		}
-		return ownedOperand;
-	}
+    if (ownedOperand != null && ownedOperand.eIsProxy()) {
+      InternalEObject oldOwnedOperand = (InternalEObject)ownedOperand;
+      ownedOperand = (DataValue)eResolveProxy(oldOwnedOperand);
+      if (ownedOperand != oldOwnedOperand) {
+        InternalEObject newOwnedOperand = (InternalEObject)ownedOperand;
+        NotificationChain msgs = oldOwnedOperand.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND, null, null);
+        if (newOwnedOperand.eInternalContainer() == null) {
+          msgs = newOwnedOperand.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND, null, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND, oldOwnedOperand, ownedOperand));
+      }
+    }
+    return ownedOperand;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public DataValue basicGetOwnedOperand() {
 
-		return ownedOperand;
-	}
+    return ownedOperand;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedOperand(DataValue newOwnedOperand, NotificationChain msgs) {
 
-		DataValue oldOwnedOperand = ownedOperand;
-		ownedOperand = newOwnedOperand;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND, oldOwnedOperand, newOwnedOperand);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    DataValue oldOwnedOperand = ownedOperand;
+    ownedOperand = newOwnedOperand;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND, oldOwnedOperand, newOwnedOperand);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setOwnedOperand(DataValue newOwnedOperand) {
 
-		if (newOwnedOperand != ownedOperand) {
-			NotificationChain msgs = null;
-			if (ownedOperand != null)
-				msgs = ((InternalEObject)ownedOperand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND, null, msgs);
-			if (newOwnedOperand != null)
-				msgs = ((InternalEObject)newOwnedOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND, null, msgs);
-			msgs = basicSetOwnedOperand(newOwnedOperand, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND, newOwnedOperand, newOwnedOperand));
+    if (newOwnedOperand != ownedOperand) {
+      NotificationChain msgs = null;
+      if (ownedOperand != null)
+        msgs = ((InternalEObject)ownedOperand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND, null, msgs);
+      if (newOwnedOperand != null)
+        msgs = ((InternalEObject)newOwnedOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND, null, msgs);
+      msgs = basicSetOwnedOperand(newOwnedOperand, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND, newOwnedOperand, newOwnedOperand));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND:
-				return basicSetOwnedOperand(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND:
+        return basicSetOwnedOperand(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case DatavaluePackage.UNARY_EXPRESSION__OPERATOR:
-				return getOperator();
-			case DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND:
-				if (resolve) return getOwnedOperand();
-				return basicGetOwnedOperand();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case DatavaluePackage.UNARY_EXPRESSION__OPERATOR:
+        return getOperator();
+      case DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND:
+        if (resolve) return getOwnedOperand();
+        return basicGetOwnedOperand();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case DatavaluePackage.UNARY_EXPRESSION__OPERATOR:
-					setOperator((UnaryOperator)newValue);
-				return;
-			case DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND:
-					setOwnedOperand((DataValue)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case DatavaluePackage.UNARY_EXPRESSION__OPERATOR:
+          setOperator((UnaryOperator)newValue);
+        return;
+      case DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND:
+          setOwnedOperand((DataValue)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case DatavaluePackage.UNARY_EXPRESSION__OPERATOR:
-				setOperator(OPERATOR_EDEFAULT);
-				return;
-			case DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND:
-				setOwnedOperand((DataValue)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case DatavaluePackage.UNARY_EXPRESSION__OPERATOR:
+        setOperator(OPERATOR_EDEFAULT);
+        return;
+      case DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND:
+        setOwnedOperand((DataValue)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case DatavaluePackage.UNARY_EXPRESSION__OPERATOR:
-				return operator != OPERATOR_EDEFAULT;
-			case DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND:
-				return ownedOperand != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case DatavaluePackage.UNARY_EXPRESSION__OPERATOR:
+        return operator != OPERATOR_EDEFAULT;
+      case DatavaluePackage.UNARY_EXPRESSION__OWNED_OPERAND:
+        return ownedOperand != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (operator: "); //$NON-NLS-1$
-		result.append(operator);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (operator: "); //$NON-NLS-1$
+    result.append(operator);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //UnaryExpressionImpl

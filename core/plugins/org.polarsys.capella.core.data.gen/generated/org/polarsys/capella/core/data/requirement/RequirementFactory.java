@@ -24,83 +24,83 @@ import org.eclipse.emf.ecore.EFactory;
  */
 public interface RequirementFactory extends EFactory {
 	/**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
+   * The singleton instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	RequirementFactory eINSTANCE = org.polarsys.capella.core.data.requirement.impl.RequirementFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Requirements Pkg</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Requirements Pkg</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Requirements Pkg</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Requirements Pkg</em>'.
+   * @generated
+   */
 	RequirementsPkg createRequirementsPkg();
 
 	/**
-	 * Returns a new object of class '<em>Requirements Trace</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Requirements Trace</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Requirements Trace</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Requirements Trace</em>'.
+   * @generated
+   */
 	RequirementsTrace createRequirementsTrace();
 
 	/**
-	 * Returns a new object of class '<em>System Functional Interface Requirement</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>System Functional Interface Requirement</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Functional Interface Requirement</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>System Functional Interface Requirement</em>'.
+   * @generated
+   */
 	SystemFunctionalInterfaceRequirement createSystemFunctionalInterfaceRequirement();
 
 	/**
-	 * Returns a new object of class '<em>System Functional Requirement</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>System Functional Requirement</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Functional Requirement</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>System Functional Requirement</em>'.
+   * @generated
+   */
 	SystemFunctionalRequirement createSystemFunctionalRequirement();
 
 	/**
-	 * Returns a new object of class '<em>System Non Functional Interface Requirement</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>System Non Functional Interface Requirement</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Non Functional Interface Requirement</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>System Non Functional Interface Requirement</em>'.
+   * @generated
+   */
 	SystemNonFunctionalInterfaceRequirement createSystemNonFunctionalInterfaceRequirement();
 
 	/**
-	 * Returns a new object of class '<em>System Non Functional Requirement</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>System Non Functional Requirement</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Non Functional Requirement</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>System Non Functional Requirement</em>'.
+   * @generated
+   */
 	SystemNonFunctionalRequirement createSystemNonFunctionalRequirement();
 
 	/**
-	 * Returns a new object of class '<em>System User Requirement</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>System User Requirement</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System User Requirement</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>System User Requirement</em>'.
+   * @generated
+   */
 	SystemUserRequirement createSystemUserRequirement();
 
 	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
+   * Returns the package supported by this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
+   * @return the package supported by this factory.
+   * @generated
+   */
 	RequirementPackage getRequirementPackage();
 
 	/**

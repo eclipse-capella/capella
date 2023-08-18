@@ -55,23 +55,23 @@ public interface SystemEngineering extends AbstractModellingStructure, ModelRoot
 
 
 	/**
-	 * Returns the value of the '<em><b>Contained Operational Analysis</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.OperationalAnalysis}.
+   * Returns the value of the '<em><b>Contained Operational Analysis</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.OperationalAnalysis}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contained Operational Analysis</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contained Operational Analysis</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getSystemEngineering_ContainedOperationalAnalysis()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedArchitectures'"
-	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedArchitectures'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Contained Operational Analysis</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getSystemEngineering_ContainedOperationalAnalysis()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedArchitectures'"
+   *        annotation="http://www.polarsys.org/capella/semantic feature='ownedArchitectures'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<OperationalAnalysis> getContainedOperationalAnalysis();
 
@@ -82,23 +82,23 @@ public interface SystemEngineering extends AbstractModellingStructure, ModelRoot
 
 
 	/**
-	 * Returns the value of the '<em><b>Contained System Analysis</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemAnalysis}.
+   * Returns the value of the '<em><b>Contained System Analysis</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemAnalysis}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contained System Analysis</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contained System Analysis</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getSystemEngineering_ContainedSystemAnalysis()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedArchitectures'"
-	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedArchitectures'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Contained System Analysis</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getSystemEngineering_ContainedSystemAnalysis()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedArchitectures'"
+   *        annotation="http://www.polarsys.org/capella/semantic feature='ownedArchitectures'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<SystemAnalysis> getContainedSystemAnalysis();
 
@@ -109,23 +109,23 @@ public interface SystemEngineering extends AbstractModellingStructure, ModelRoot
 
 
 	/**
-	 * Returns the value of the '<em><b>Contained Logical Architectures</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.la.LogicalArchitecture}.
+   * Returns the value of the '<em><b>Contained Logical Architectures</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.la.LogicalArchitecture}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contained Logical Architectures</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contained Logical Architectures</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getSystemEngineering_ContainedLogicalArchitectures()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedArchitectures'"
-	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedArchitectures'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Contained Logical Architectures</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getSystemEngineering_ContainedLogicalArchitectures()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedArchitectures'"
+   *        annotation="http://www.polarsys.org/capella/semantic feature='ownedArchitectures'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<LogicalArchitecture> getContainedLogicalArchitectures();
 
@@ -136,23 +136,23 @@ public interface SystemEngineering extends AbstractModellingStructure, ModelRoot
 
 
 	/**
-	 * Returns the value of the '<em><b>Contained Physical Architectures</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalArchitecture}.
+   * Returns the value of the '<em><b>Contained Physical Architectures</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalArchitecture}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contained Physical Architectures</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contained Physical Architectures</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getSystemEngineering_ContainedPhysicalArchitectures()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedArchitectures'"
-	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedArchitectures'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Contained Physical Architectures</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getSystemEngineering_ContainedPhysicalArchitectures()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedArchitectures'"
+   *        annotation="http://www.polarsys.org/capella/semantic feature='ownedArchitectures'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<PhysicalArchitecture> getContainedPhysicalArchitectures();
 
@@ -163,23 +163,23 @@ public interface SystemEngineering extends AbstractModellingStructure, ModelRoot
 
 
 	/**
-	 * Returns the value of the '<em><b>Contained EPBS Architectures</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.epbs.EPBSArchitecture}.
+   * Returns the value of the '<em><b>Contained EPBS Architectures</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.epbs.EPBSArchitecture}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contained EPBS Architectures</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contained EPBS Architectures</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getSystemEngineering_ContainedEPBSArchitectures()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedArchitectures'"
-	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedArchitectures'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Contained EPBS Architectures</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getSystemEngineering_ContainedEPBSArchitectures()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedArchitectures'"
+   *        annotation="http://www.polarsys.org/capella/semantic feature='ownedArchitectures'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<EPBSArchitecture> getContainedEPBSArchitectures();
 
@@ -190,23 +190,23 @@ public interface SystemEngineering extends AbstractModellingStructure, ModelRoot
 
 
 	/**
-	 * Returns the value of the '<em><b>Contained Shared Pkgs</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.sharedmodel.SharedPkg}.
+   * Returns the value of the '<em><b>Contained Shared Pkgs</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.sharedmodel.SharedPkg}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contained Shared Pkgs</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contained Shared Pkgs</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getSystemEngineering_ContainedSharedPkgs()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedArchitectures'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='unimplemented' viatra.expression='ownedArchitectures as SharedPkg, but SharedPkg is not a subclass of ModellingArchitecture !'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Contained Shared Pkgs</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getSystemEngineering_ContainedSharedPkgs()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/semantic feature='ownedArchitectures'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='unimplemented' viatra.expression='ownedArchitectures as SharedPkg, but SharedPkg is not a subclass of ModellingArchitecture !'"
+   * @generated
+   */
 
 	EList<SharedPkg> getContainedSharedPkgs();
 

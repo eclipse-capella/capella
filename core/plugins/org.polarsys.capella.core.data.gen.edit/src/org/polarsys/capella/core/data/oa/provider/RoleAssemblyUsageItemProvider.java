@@ -51,162 +51,162 @@ public class RoleAssemblyUsageItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor childPropertyDescriptor;
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public RoleAssemblyUsageItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process OaPackage.Literals.ROLE_ASSEMBLY_USAGE__CHILD
-			if (childPropertyDescriptor != null) {
-				Object childValue = eObject.eGet(OaPackage.Literals.ROLE_ASSEMBLY_USAGE__CHILD, true);
-				if (childValue != null && childValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) childValue)) {
-					itemPropertyDescriptors.remove(childPropertyDescriptor);
-				} else if (childValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.ROLE_ASSEMBLY_USAGE__CHILD) != null) {
-					itemPropertyDescriptors.remove(childPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(childPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(childPropertyDescriptor);
-				}
-			}
-		}		
-	}
+    super.checkChildCreationExtender(object);
+    if (object instanceof EObject) {
+      EObject eObject = (EObject) object;
+      // Process OaPackage.Literals.ROLE_ASSEMBLY_USAGE__CHILD
+      if (childPropertyDescriptor != null) {
+        Object childValue = eObject.eGet(OaPackage.Literals.ROLE_ASSEMBLY_USAGE__CHILD, true);
+        if (childValue != null && childValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) childValue)) {
+          itemPropertyDescriptors.remove(childPropertyDescriptor);
+        } else if (childValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.ROLE_ASSEMBLY_USAGE__CHILD) != null) {
+          itemPropertyDescriptors.remove(childPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(childPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(childPropertyDescriptor);
+        }
+      }
+    }		
+  }
 
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addChildPropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addChildPropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Child feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Child feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addChildPropertyDescriptor(Object object) {
-		// begin-extension-code
-		childPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_RoleAssemblyUsage_child_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_RoleAssemblyUsage_child_feature", "_UI_RoleAssemblyUsage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 OaPackage.Literals.ROLE_ASSEMBLY_USAGE__CHILD,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(childPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    childPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_RoleAssemblyUsage_child_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_RoleAssemblyUsage_child_feature", "_UI_RoleAssemblyUsage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         OaPackage.Literals.ROLE_ASSEMBLY_USAGE__CHILD,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(childPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This returns RoleAssemblyUsage.gif.
-	 * <!-- begin-user-doc -->
+   * This returns RoleAssemblyUsage.gif.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/RoleAssemblyUsage")); //$NON-NLS-1$
-	}
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/RoleAssemblyUsage")); //$NON-NLS-1$
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
-		String label = ((RoleAssemblyUsage)object).getName();
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_RoleAssemblyUsage_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+    String label = ((RoleAssemblyUsage)object).getName();
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_RoleAssemblyUsage_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
-		super.notifyChanged(notification);
-	}
+    updateChildren(notification);
+    super.notifyChanged(notification);
+  }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+    super.collectNewChildDescriptors(newChildDescriptors, object);
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 	// end-capella-code
 }

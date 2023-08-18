@@ -39,22 +39,22 @@ public interface ConceptCompliance extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Comply With Concept</b></em>' reference.
+   * Returns the value of the '<em><b>Comply With Concept</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Comply With Concept</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Comply With Concept</em>' reference.
-	 * @see #setComplyWithConcept(Concept)
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getConceptCompliance_ComplyWithConcept()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Concept involved in this compliance relationship\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [1..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Comply With Concept</em>' reference.
+   * @see #setComplyWithConcept(Concept)
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getConceptCompliance_ComplyWithConcept()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Concept involved in this compliance relationship\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [1..1]'"
+   * @generated
+   */
 
 	Concept getComplyWithConcept();
 
@@ -62,14 +62,14 @@ public interface ConceptCompliance extends Relationship {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.oa.ConceptCompliance#getComplyWithConcept <em>Comply With Concept</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.oa.ConceptCompliance#getComplyWithConcept <em>Comply With Concept</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Comply With Concept</em>' reference.
-	 * @see #getComplyWithConcept()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Comply With Concept</em>' reference.
+   * @see #getComplyWithConcept()
+   * @generated
+   */
 
 	void setComplyWithConcept(Concept value);
 
@@ -80,22 +80,22 @@ public interface ConceptCompliance extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Compliant Capability</b></em>' reference.
+   * Returns the value of the '<em><b>Compliant Capability</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Compliant Capability</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Compliant Capability</em>' reference.
-	 * @see #setCompliantCapability(OperationalCapability)
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getConceptCompliance_CompliantCapability()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability involved in this compliance relationship\r\n[source: Capella study]' constraints='none' comment/notes='n/a'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='none' constraints='Multiplicity must be [1..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Compliant Capability</em>' reference.
+   * @see #setCompliantCapability(OperationalCapability)
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getConceptCompliance_CompliantCapability()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability involved in this compliance relationship\r\n[source: Capella study]' constraints='none' comment/notes='n/a'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='none' constraints='Multiplicity must be [1..1]'"
+   * @generated
+   */
 
 	OperationalCapability getCompliantCapability();
 
@@ -103,14 +103,14 @@ public interface ConceptCompliance extends Relationship {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.oa.ConceptCompliance#getCompliantCapability <em>Compliant Capability</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.oa.ConceptCompliance#getCompliantCapability <em>Compliant Capability</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Compliant Capability</em>' reference.
-	 * @see #getCompliantCapability()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Compliant Capability</em>' reference.
+   * @see #getCompliantCapability()
+   * @generated
+   */
 
 	void setCompliantCapability(OperationalCapability value);
 

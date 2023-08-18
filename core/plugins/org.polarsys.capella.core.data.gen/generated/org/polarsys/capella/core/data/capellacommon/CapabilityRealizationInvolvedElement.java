@@ -42,42 +42,42 @@ public interface CapabilityRealizationInvolvedElement extends InvolvedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Capability Realization Involvements</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement}.
+   * Returns the value of the '<em><b>Capability Realization Involvements</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Capability Realization Involvements</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Capability Realization Involvements</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getCapabilityRealizationInvolvedElement_CapabilityRealizationInvolvements()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the capability realization involvement relationships in which this element is referenced\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvingInvolvements'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Capability Realization Involvements</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getCapabilityRealizationInvolvedElement_CapabilityRealizationInvolvements()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the capability realization involvement relationships in which this element is referenced\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvingInvolvements'"
+   * @generated
+   */
 
 	EList<CapabilityRealizationInvolvement> getCapabilityRealizationInvolvements();
 
 	/**
-	 * Returns the value of the '<em><b>Involving Capability Realizations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.la.CapabilityRealization}.
+   * Returns the value of the '<em><b>Involving Capability Realizations</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.la.CapabilityRealization}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Involving Capability Realizations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Involving Capability Realizations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizations()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Capability realizations that involve this element' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CapabilityRealizationInvolvedElement.capabilityRealizationInvolvements(self, involvements);\r\nCapabilityRealizationInvolvement.involver(involvements, target);'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Involving Capability Realizations</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizations()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Capability realizations that involve this element' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CapabilityRealizationInvolvedElement.capabilityRealizationInvolvements(self, involvements);\r\nCapabilityRealizationInvolvement.involver(involvements, target);'"
+   * @generated
+   */
 
 	EList<CapabilityRealization> getInvolvingCapabilityRealizations();
 

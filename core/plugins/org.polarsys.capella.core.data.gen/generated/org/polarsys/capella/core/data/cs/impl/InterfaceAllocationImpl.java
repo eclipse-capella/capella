@@ -51,48 +51,48 @@ public abstract class InterfaceAllocationImpl extends AllocationImpl implements 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected InterfaceAllocationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.INTERFACE_ALLOCATION;
-	}
+    return CsPackage.Literals.INTERFACE_ALLOCATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Interface getAllocatedInterface() {
 
-		Interface allocatedInterface = basicGetAllocatedInterface();
-		return allocatedInterface != null && allocatedInterface.eIsProxy() ? (Interface)eResolveProxy((InternalEObject)allocatedInterface) : allocatedInterface;
-	}
+    Interface allocatedInterface = basicGetAllocatedInterface();
+    return allocatedInterface != null && allocatedInterface.eIsProxy() ? (Interface)eResolveProxy((InternalEObject)allocatedInterface) : allocatedInterface;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Interface basicGetAllocatedInterface() {
 
@@ -119,15 +119,15 @@ public abstract class InterfaceAllocationImpl extends AllocationImpl implements 
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.INTERFACE_ALLOCATION__ALLOCATED_INTERFACE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE_ALLOCATION__ALLOCATED_INTERFACE, annotation);
-		
-		try {
-			return (Interface) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Interface) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -135,23 +135,23 @@ public abstract class InterfaceAllocationImpl extends AllocationImpl implements 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InterfaceAllocator getAllocatingInterfaceAllocator() {
 
-		InterfaceAllocator allocatingInterfaceAllocator = basicGetAllocatingInterfaceAllocator();
-		return allocatingInterfaceAllocator != null && allocatingInterfaceAllocator.eIsProxy() ? (InterfaceAllocator)eResolveProxy((InternalEObject)allocatingInterfaceAllocator) : allocatingInterfaceAllocator;
-	}
+    InterfaceAllocator allocatingInterfaceAllocator = basicGetAllocatingInterfaceAllocator();
+    return allocatingInterfaceAllocator != null && allocatingInterfaceAllocator.eIsProxy() ? (InterfaceAllocator)eResolveProxy((InternalEObject)allocatingInterfaceAllocator) : allocatingInterfaceAllocator;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InterfaceAllocator basicGetAllocatingInterfaceAllocator() {
 
@@ -178,53 +178,53 @@ public abstract class InterfaceAllocationImpl extends AllocationImpl implements 
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.INTERFACE_ALLOCATION__ALLOCATING_INTERFACE_ALLOCATOR.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE_ALLOCATION__ALLOCATING_INTERFACE_ALLOCATOR, annotation);
-		
-		try {
-			return (InterfaceAllocator) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (InterfaceAllocator) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CsPackage.INTERFACE_ALLOCATION__ALLOCATED_INTERFACE:
-				if (resolve) return getAllocatedInterface();
-				return basicGetAllocatedInterface();
-			case CsPackage.INTERFACE_ALLOCATION__ALLOCATING_INTERFACE_ALLOCATOR:
-				if (resolve) return getAllocatingInterfaceAllocator();
-				return basicGetAllocatingInterfaceAllocator();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CsPackage.INTERFACE_ALLOCATION__ALLOCATED_INTERFACE:
+        if (resolve) return getAllocatedInterface();
+        return basicGetAllocatedInterface();
+      case CsPackage.INTERFACE_ALLOCATION__ALLOCATING_INTERFACE_ALLOCATOR:
+        if (resolve) return getAllocatingInterfaceAllocator();
+        return basicGetAllocatingInterfaceAllocator();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CsPackage.INTERFACE_ALLOCATION__ALLOCATED_INTERFACE:
-				return basicGetAllocatedInterface() != null;
-			case CsPackage.INTERFACE_ALLOCATION__ALLOCATING_INTERFACE_ALLOCATOR:
-				return basicGetAllocatingInterfaceAllocator() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.INTERFACE_ALLOCATION__ALLOCATED_INTERFACE:
+        return basicGetAllocatedInterface() != null;
+      case CsPackage.INTERFACE_ALLOCATION__ALLOCATING_INTERFACE_ALLOCATOR:
+        return basicGetAllocatingInterfaceAllocator() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

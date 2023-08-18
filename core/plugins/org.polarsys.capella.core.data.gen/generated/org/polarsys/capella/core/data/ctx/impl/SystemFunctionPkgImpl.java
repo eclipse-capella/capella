@@ -42,13 +42,13 @@ import org.polarsys.capella.core.data.fa.impl.FunctionPkgImpl;
 public class SystemFunctionPkgImpl extends FunctionPkgImpl implements SystemFunctionPkg {
 
 	/**
-	 * The cached value of the '{@link #getOwnedSystemFunctions() <em>Owned System Functions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedSystemFunctions() <em>Owned System Functions</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedSystemFunctions()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedSystemFunctions()
+   * @generated
+   * @ordered
+   */
 	protected EList<SystemFunction> ownedSystemFunctions;
 
 
@@ -56,166 +56,166 @@ public class SystemFunctionPkgImpl extends FunctionPkgImpl implements SystemFunc
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedSystemFunctionPkgs() <em>Owned System Function Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedSystemFunctionPkgs() <em>Owned System Function Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedSystemFunctionPkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedSystemFunctionPkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<SystemFunctionPkg> ownedSystemFunctionPkgs;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected SystemFunctionPkgImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CtxPackage.Literals.SYSTEM_FUNCTION_PKG;
-	}
+    return CtxPackage.Literals.SYSTEM_FUNCTION_PKG;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<SystemFunction> getOwnedSystemFunctions() {
 
-		if (ownedSystemFunctions == null) {
-			ownedSystemFunctions = new EObjectContainmentEList.Resolving<SystemFunction>(SystemFunction.class, this, CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTIONS);
-		}
-		return ownedSystemFunctions;
-	}
+    if (ownedSystemFunctions == null) {
+      ownedSystemFunctions = new EObjectContainmentEList.Resolving<SystemFunction>(SystemFunction.class, this, CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTIONS);
+    }
+    return ownedSystemFunctions;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<SystemFunctionPkg> getOwnedSystemFunctionPkgs() {
 
-		if (ownedSystemFunctionPkgs == null) {
-			ownedSystemFunctionPkgs = new EObjectContainmentEList.Resolving<SystemFunctionPkg>(SystemFunctionPkg.class, this, CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTION_PKGS);
-		}
-		return ownedSystemFunctionPkgs;
-	}
+    if (ownedSystemFunctionPkgs == null) {
+      ownedSystemFunctionPkgs = new EObjectContainmentEList.Resolving<SystemFunctionPkg>(SystemFunctionPkg.class, this, CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTION_PKGS);
+    }
+    return ownedSystemFunctionPkgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTIONS:
-				return ((InternalEList<?>)getOwnedSystemFunctions()).basicRemove(otherEnd, msgs);
-			case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTION_PKGS:
-				return ((InternalEList<?>)getOwnedSystemFunctionPkgs()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTIONS:
+        return ((InternalEList<?>)getOwnedSystemFunctions()).basicRemove(otherEnd, msgs);
+      case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTION_PKGS:
+        return ((InternalEList<?>)getOwnedSystemFunctionPkgs()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTIONS:
-				return getOwnedSystemFunctions();
-			case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTION_PKGS:
-				return getOwnedSystemFunctionPkgs();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTIONS:
+        return getOwnedSystemFunctions();
+      case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTION_PKGS:
+        return getOwnedSystemFunctionPkgs();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTIONS:
-				getOwnedSystemFunctions().clear();
-				getOwnedSystemFunctions().addAll((Collection<? extends SystemFunction>)newValue);
-				return;
-			case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTION_PKGS:
-				getOwnedSystemFunctionPkgs().clear();
-				getOwnedSystemFunctionPkgs().addAll((Collection<? extends SystemFunctionPkg>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTIONS:
+        getOwnedSystemFunctions().clear();
+        getOwnedSystemFunctions().addAll((Collection<? extends SystemFunction>)newValue);
+        return;
+      case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTION_PKGS:
+        getOwnedSystemFunctionPkgs().clear();
+        getOwnedSystemFunctionPkgs().addAll((Collection<? extends SystemFunctionPkg>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTIONS:
-				getOwnedSystemFunctions().clear();
-				return;
-			case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTION_PKGS:
-				getOwnedSystemFunctionPkgs().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTIONS:
+        getOwnedSystemFunctions().clear();
+        return;
+      case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTION_PKGS:
+        getOwnedSystemFunctionPkgs().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTIONS:
-				return ownedSystemFunctions != null && !ownedSystemFunctions.isEmpty();
-			case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTION_PKGS:
-				return ownedSystemFunctionPkgs != null && !ownedSystemFunctionPkgs.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTIONS:
+        return ownedSystemFunctions != null && !ownedSystemFunctions.isEmpty();
+      case CtxPackage.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTION_PKGS:
+        return ownedSystemFunctionPkgs != null && !ownedSystemFunctionPkgs.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

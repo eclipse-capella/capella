@@ -51,48 +51,48 @@ public class ExchangeItemRealizationImpl extends AllocationImpl implements Excha
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ExchangeItemRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.EXCHANGE_ITEM_REALIZATION;
-	}
+    return InformationPackage.Literals.EXCHANGE_ITEM_REALIZATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractExchangeItem getRealizedItem() {
 
-		AbstractExchangeItem realizedItem = basicGetRealizedItem();
-		return realizedItem != null && realizedItem.eIsProxy() ? (AbstractExchangeItem)eResolveProxy((InternalEObject)realizedItem) : realizedItem;
-	}
+    AbstractExchangeItem realizedItem = basicGetRealizedItem();
+    return realizedItem != null && realizedItem.eIsProxy() ? (AbstractExchangeItem)eResolveProxy((InternalEObject)realizedItem) : realizedItem;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractExchangeItem basicGetRealizedItem() {
 
@@ -119,15 +119,15 @@ public class ExchangeItemRealizationImpl extends AllocationImpl implements Excha
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.EXCHANGE_ITEM_REALIZATION__REALIZED_ITEM.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.EXCHANGE_ITEM_REALIZATION__REALIZED_ITEM, annotation);
-		
-		try {
-			return (AbstractExchangeItem) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (AbstractExchangeItem) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -135,23 +135,23 @@ public class ExchangeItemRealizationImpl extends AllocationImpl implements Excha
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Operation getRealizingOperation() {
 
-		Operation realizingOperation = basicGetRealizingOperation();
-		return realizingOperation != null && realizingOperation.eIsProxy() ? (Operation)eResolveProxy((InternalEObject)realizingOperation) : realizingOperation;
-	}
+    Operation realizingOperation = basicGetRealizingOperation();
+    return realizingOperation != null && realizingOperation.eIsProxy() ? (Operation)eResolveProxy((InternalEObject)realizingOperation) : realizingOperation;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Operation basicGetRealizingOperation() {
 
@@ -178,53 +178,53 @@ public class ExchangeItemRealizationImpl extends AllocationImpl implements Excha
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.EXCHANGE_ITEM_REALIZATION__REALIZING_OPERATION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.EXCHANGE_ITEM_REALIZATION__REALIZING_OPERATION, annotation);
-		
-		try {
-			return (Operation) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Operation) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InformationPackage.EXCHANGE_ITEM_REALIZATION__REALIZED_ITEM:
-				if (resolve) return getRealizedItem();
-				return basicGetRealizedItem();
-			case InformationPackage.EXCHANGE_ITEM_REALIZATION__REALIZING_OPERATION:
-				if (resolve) return getRealizingOperation();
-				return basicGetRealizingOperation();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InformationPackage.EXCHANGE_ITEM_REALIZATION__REALIZED_ITEM:
+        if (resolve) return getRealizedItem();
+        return basicGetRealizedItem();
+      case InformationPackage.EXCHANGE_ITEM_REALIZATION__REALIZING_OPERATION:
+        if (resolve) return getRealizingOperation();
+        return basicGetRealizingOperation();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InformationPackage.EXCHANGE_ITEM_REALIZATION__REALIZED_ITEM:
-				return basicGetRealizedItem() != null;
-			case InformationPackage.EXCHANGE_ITEM_REALIZATION__REALIZING_OPERATION:
-				return basicGetRealizingOperation() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.EXCHANGE_ITEM_REALIZATION__REALIZED_ITEM:
+        return basicGetRealizedItem() != null;
+      case InformationPackage.EXCHANGE_ITEM_REALIZATION__REALIZING_OPERATION:
+        return basicGetRealizingOperation() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

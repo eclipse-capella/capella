@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.pa.PaPackage;
  */
 public class LogicalInterfaceRealizationImpl extends InterfaceAllocationImpl implements LogicalInterfaceRealization {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected LogicalInterfaceRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return PaPackage.Literals.LOGICAL_INTERFACE_REALIZATION;
-	}
+    return PaPackage.Literals.LOGICAL_INTERFACE_REALIZATION;
+  }
 
 
 

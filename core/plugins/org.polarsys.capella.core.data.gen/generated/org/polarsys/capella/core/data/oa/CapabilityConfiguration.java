@@ -37,21 +37,21 @@ public interface CapabilityConfiguration extends AbstractConceptItem {
 
 
 	/**
-	 * Returns the value of the '<em><b>Configured Capability</b></em>' reference.
+   * Returns the value of the '<em><b>Configured Capability</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Configured Capability</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Configured Capability</em>' reference.
-	 * @see #setConfiguredCapability(OperationalCapability)
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getCapabilityConfiguration_ConfiguredCapability()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability to which this configuration is associated\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Configured Capability</em>' reference.
+   * @see #setConfiguredCapability(OperationalCapability)
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getCapabilityConfiguration_ConfiguredCapability()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability to which this configuration is associated\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	OperationalCapability getConfiguredCapability();
 
@@ -59,14 +59,14 @@ public interface CapabilityConfiguration extends AbstractConceptItem {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.oa.CapabilityConfiguration#getConfiguredCapability <em>Configured Capability</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.oa.CapabilityConfiguration#getConfiguredCapability <em>Configured Capability</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Configured Capability</em>' reference.
-	 * @see #getConfiguredCapability()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Configured Capability</em>' reference.
+   * @see #getConfiguredCapability()
+   * @generated
+   */
 
 	void setConfiguredCapability(OperationalCapability value);
 

@@ -39,23 +39,23 @@ public interface NamingRule extends AbstractAnnotation {
 
 
 	/**
-	 * Returns the value of the '<em><b>Target Type</b></em>' attribute.
+   * Returns the value of the '<em><b>Target Type</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Target Type</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target Type</em>' attribute.
-	 * @see #setTargetType(String)
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getNamingRule_TargetType()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='targetType' featureOwner='eng.NamingRule' fromStereotype='true'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Type to which instances the naming rule has to be applied' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Target Type</em>' attribute.
+   * @see #setTargetType(String)
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getNamingRule_TargetType()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='targetType' featureOwner='eng.NamingRule' fromStereotype='true'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Type to which instances the naming rule has to be applied' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	String getTargetType();
 
@@ -63,14 +63,14 @@ public interface NamingRule extends AbstractAnnotation {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.NamingRule#getTargetType <em>Target Type</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.NamingRule#getTargetType <em>Target Type</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target Type</em>' attribute.
-	 * @see #getTargetType()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Target Type</em>' attribute.
+   * @see #getTargetType()
+   * @generated
+   */
 
 	void setTargetType(String value);
 

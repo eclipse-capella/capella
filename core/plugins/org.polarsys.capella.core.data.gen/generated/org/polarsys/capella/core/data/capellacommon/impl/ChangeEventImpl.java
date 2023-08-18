@@ -37,161 +37,161 @@ import org.polarsys.capella.core.data.capellacommon.ChangeEventKind;
 public class ChangeEventImpl extends StateEventImpl implements ChangeEvent {
 
 	/**
-	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getKind()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getKind()
+   * @generated
+   * @ordered
+   */
 	protected static final ChangeEventKind KIND_EDEFAULT = ChangeEventKind.WHEN;
 
 	/**
-	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getKind()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getKind()
+   * @generated
+   * @ordered
+   */
 	protected ChangeEventKind kind = KIND_EDEFAULT;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ChangeEventImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.CHANGE_EVENT;
-	}
+    return CapellacommonPackage.Literals.CHANGE_EVENT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ChangeEventKind getKind() {
 
-		return kind;
-	}
+    return kind;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setKind(ChangeEventKind newKind) {
 
-		ChangeEventKind oldKind = kind;
-		kind = newKind == null ? KIND_EDEFAULT : newKind;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.CHANGE_EVENT__KIND, oldKind, kind));
+    ChangeEventKind oldKind = kind;
+    kind = newKind == null ? KIND_EDEFAULT : newKind;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.CHANGE_EVENT__KIND, oldKind, kind));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CapellacommonPackage.CHANGE_EVENT__KIND:
-				return getKind();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.CHANGE_EVENT__KIND:
+        return getKind();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CapellacommonPackage.CHANGE_EVENT__KIND:
-					setKind((ChangeEventKind)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.CHANGE_EVENT__KIND:
+          setKind((ChangeEventKind)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CapellacommonPackage.CHANGE_EVENT__KIND:
-				setKind(KIND_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.CHANGE_EVENT__KIND:
+        setKind(KIND_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CapellacommonPackage.CHANGE_EVENT__KIND:
-				return kind != KIND_EDEFAULT;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.CHANGE_EVENT__KIND:
+        return kind != KIND_EDEFAULT;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (kind: "); //$NON-NLS-1$
-		result.append(kind);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (kind: "); //$NON-NLS-1$
+    result.append(kind);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //ChangeEventImpl

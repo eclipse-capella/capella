@@ -44,48 +44,48 @@ public class PhysicalPathReferenceImpl extends PhysicalPathInvolvementImpl imple
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalPathReferenceImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.PHYSICAL_PATH_REFERENCE;
-	}
+    return CsPackage.Literals.PHYSICAL_PATH_REFERENCE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public PhysicalPath getReferencedPhysicalPath() {
 
-		PhysicalPath referencedPhysicalPath = basicGetReferencedPhysicalPath();
-		return referencedPhysicalPath != null && referencedPhysicalPath.eIsProxy() ? (PhysicalPath)eResolveProxy((InternalEObject)referencedPhysicalPath) : referencedPhysicalPath;
-	}
+    PhysicalPath referencedPhysicalPath = basicGetReferencedPhysicalPath();
+    return referencedPhysicalPath != null && referencedPhysicalPath.eIsProxy() ? (PhysicalPath)eResolveProxy((InternalEObject)referencedPhysicalPath) : referencedPhysicalPath;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public PhysicalPath basicGetReferencedPhysicalPath() {
 
@@ -112,48 +112,48 @@ public class PhysicalPathReferenceImpl extends PhysicalPathInvolvementImpl imple
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.PHYSICAL_PATH_REFERENCE__REFERENCED_PHYSICAL_PATH.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.PHYSICAL_PATH_REFERENCE__REFERENCED_PHYSICAL_PATH, annotation);
-		
-		try {
-			return (PhysicalPath) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (PhysicalPath) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_PATH_REFERENCE__REFERENCED_PHYSICAL_PATH:
-				if (resolve) return getReferencedPhysicalPath();
-				return basicGetReferencedPhysicalPath();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_PATH_REFERENCE__REFERENCED_PHYSICAL_PATH:
+        if (resolve) return getReferencedPhysicalPath();
+        return basicGetReferencedPhysicalPath();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_PATH_REFERENCE__REFERENCED_PHYSICAL_PATH:
-				return basicGetReferencedPhysicalPath() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_PATH_REFERENCE__REFERENCED_PHYSICAL_PATH:
+        return basicGetReferencedPhysicalPath() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

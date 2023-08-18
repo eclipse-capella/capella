@@ -40,22 +40,22 @@ public interface ExchangeCategory extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Exchanges</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalExchange}.
+   * Returns the value of the '<em><b>Exchanges</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalExchange}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Exchanges</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exchanges</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeCategory_Exchanges()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of functional exchanges that are part of this exchange category\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Exchanges</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeCategory_Exchanges()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of functional exchanges that are part of this exchange category\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   * @generated
+   */
 
 	EList<FunctionalExchange> getExchanges();
 

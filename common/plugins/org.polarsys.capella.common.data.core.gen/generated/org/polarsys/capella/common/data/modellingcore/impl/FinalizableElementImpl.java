@@ -34,161 +34,161 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 public abstract class FinalizableElementImpl extends ModelElementImpl implements FinalizableElement {
 
 	/**
-	 * The default value of the '{@link #isFinal() <em>Final</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isFinal() <em>Final</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isFinal()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isFinal()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean FINAL_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isFinal() <em>Final</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isFinal() <em>Final</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isFinal()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isFinal()
+   * @generated
+   * @ordered
+   */
 	protected boolean final_ = FINAL_EDEFAULT;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FinalizableElementImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return ModellingcorePackage.Literals.FINALIZABLE_ELEMENT;
-	}
+    return ModellingcorePackage.Literals.FINALIZABLE_ELEMENT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isFinal() {
 
-		return final_;
-	}
+    return final_;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setFinal(boolean newFinal) {
 
-		boolean oldFinal = final_;
-		final_ = newFinal;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL, oldFinal, final_));
+    boolean oldFinal = final_;
+    final_ = newFinal;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL, oldFinal, final_));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL:
-				return isFinal();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL:
+        return isFinal();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL:
-					setFinal((Boolean)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL:
+          setFinal((Boolean)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL:
-				setFinal(FINAL_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL:
+        setFinal(FINAL_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL:
-				return final_ != FINAL_EDEFAULT;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL:
+        return final_ != FINAL_EDEFAULT;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (final: "); //$NON-NLS-1$
-		result.append(final_);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (final: "); //$NON-NLS-1$
+    result.append(final_);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //FinalizableElementImpl

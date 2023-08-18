@@ -27,25 +27,25 @@ import org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState;
  */
 public class EntryPointPseudoStateImpl extends PseudostateImpl implements EntryPointPseudoState {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected EntryPointPseudoStateImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.ENTRY_POINT_PSEUDO_STATE;
-	}
+    return CapellacommonPackage.Literals.ENTRY_POINT_PSEUDO_STATE;
+  }
 
 
 
