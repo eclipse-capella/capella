@@ -38,24 +38,24 @@ public interface AbstractTypedElement extends AbstractNamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Abstract Type</b></em>' reference.
+   * Returns the value of the '<em><b>Abstract Type</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Abstract Type</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Abstract Type</em>' reference.
-	 * @see #setAbstractType(AbstractType)
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractTypedElement_AbstractType()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='type' featureOwner='TypedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='type'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the type associated to this model element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TypedElement::type' explanation='' constraints=''"
-	 * @generated
-	 */
+   * @return the value of the '<em>Abstract Type</em>' reference.
+   * @see #setAbstractType(AbstractType)
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractTypedElement_AbstractType()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='type' featureOwner='TypedElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='type'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the type associated to this model element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TypedElement::type' explanation='' constraints=''"
+   * @generated
+   */
 
 	AbstractType getAbstractType();
 
@@ -63,14 +63,14 @@ public interface AbstractTypedElement extends AbstractNamedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractTypedElement#getAbstractType <em>Abstract Type</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractTypedElement#getAbstractType <em>Abstract Type</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Abstract Type</em>' reference.
-	 * @see #getAbstractType()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Abstract Type</em>' reference.
+   * @see #getAbstractType()
+   * @generated
+   */
 
 	void setAbstractType(AbstractType value);
 

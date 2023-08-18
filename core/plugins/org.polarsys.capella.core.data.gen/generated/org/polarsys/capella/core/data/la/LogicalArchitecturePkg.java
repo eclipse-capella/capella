@@ -41,25 +41,25 @@ public interface LogicalArchitecturePkg extends BlockArchitecturePkg {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Logical Architectures</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.la.LogicalArchitecture}.
+   * Returns the value of the '<em><b>Owned Logical Architectures</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.la.LogicalArchitecture}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Logical Architectures</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Logical Architectures</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalArchitecturePkg_OwnedLogicalArchitectures()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedLogicalArchitectures'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Logical architectures set\r\n[source:Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which LogicalArchitecture stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Logical Architectures</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalArchitecturePkg_OwnedLogicalArchitectures()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedLogicalArchitectures'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Logical architectures set\r\n[source:Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which LogicalArchitecture stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<LogicalArchitecture> getOwnedLogicalArchitectures();
 

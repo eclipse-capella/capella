@@ -38,121 +38,121 @@ import org.polarsys.capella.core.data.fa.FunctionalExchange;
 public class ExchangeCategoryImpl extends NamedElementImpl implements ExchangeCategory {
 
 	/**
-	 * The cached value of the '{@link #getExchanges() <em>Exchanges</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getExchanges() <em>Exchanges</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExchanges()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getExchanges()
+   * @generated
+   * @ordered
+   */
 	protected EList<FunctionalExchange> exchanges;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ExchangeCategoryImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FaPackage.Literals.EXCHANGE_CATEGORY;
-	}
+    return FaPackage.Literals.EXCHANGE_CATEGORY;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionalExchange> getExchanges() {
 
-		if (exchanges == null) {
-			exchanges = new EObjectResolvingEList<FunctionalExchange>(FunctionalExchange.class, this, FaPackage.EXCHANGE_CATEGORY__EXCHANGES);
-		}
-		return exchanges;
-	}
+    if (exchanges == null) {
+      exchanges = new EObjectResolvingEList<FunctionalExchange>(FunctionalExchange.class, this, FaPackage.EXCHANGE_CATEGORY__EXCHANGES);
+    }
+    return exchanges;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case FaPackage.EXCHANGE_CATEGORY__EXCHANGES:
-				return getExchanges();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case FaPackage.EXCHANGE_CATEGORY__EXCHANGES:
+        return getExchanges();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case FaPackage.EXCHANGE_CATEGORY__EXCHANGES:
-				getExchanges().clear();
-				getExchanges().addAll((Collection<? extends FunctionalExchange>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case FaPackage.EXCHANGE_CATEGORY__EXCHANGES:
+        getExchanges().clear();
+        getExchanges().addAll((Collection<? extends FunctionalExchange>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case FaPackage.EXCHANGE_CATEGORY__EXCHANGES:
-				getExchanges().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.EXCHANGE_CATEGORY__EXCHANGES:
+        getExchanges().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case FaPackage.EXCHANGE_CATEGORY__EXCHANGES:
-				return exchanges != null && !exchanges.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.EXCHANGE_CATEGORY__EXCHANGES:
+        return exchanges != null && !exchanges.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

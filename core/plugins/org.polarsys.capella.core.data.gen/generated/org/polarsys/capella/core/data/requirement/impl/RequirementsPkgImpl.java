@@ -65,13 +65,13 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 public class RequirementsPkgImpl extends NamedElementImpl implements RequirementsPkg {
 
 	/**
-	 * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedTraces()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedTraces()
+   * @generated
+   * @ordered
+   */
 	protected EList<Trace> ownedTraces;
 
 
@@ -87,13 +87,13 @@ public class RequirementsPkgImpl extends NamedElementImpl implements Requirement
 
 
 	/**
-	 * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNamingRules()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getNamingRules()
+   * @generated
+   * @ordered
+   */
 	protected EList<NamingRule> namingRules;
 
 
@@ -101,13 +101,13 @@ public class RequirementsPkgImpl extends NamedElementImpl implements Requirement
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPropertyValuePkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPropertyValuePkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<PropertyValuePkg> ownedPropertyValuePkgs;
 
 
@@ -115,23 +115,23 @@ public class RequirementsPkgImpl extends NamedElementImpl implements Requirement
 
 
 	/**
-	 * The default value of the '{@link #getAdditionalInformation() <em>Additional Information</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getAdditionalInformation() <em>Additional Information</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAdditionalInformation()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getAdditionalInformation()
+   * @generated
+   * @ordered
+   */
 	protected static final String ADDITIONAL_INFORMATION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getAdditionalInformation() <em>Additional Information</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getAdditionalInformation() <em>Additional Information</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAdditionalInformation()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getAdditionalInformation()
+   * @generated
+   * @ordered
+   */
 	protected String additionalInformation = ADDITIONAL_INFORMATION_EDEFAULT;
 
 
@@ -139,23 +139,23 @@ public class RequirementsPkgImpl extends NamedElementImpl implements Requirement
 
 
 	/**
-	 * The default value of the '{@link #getLevel() <em>Level</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getLevel() <em>Level</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLevel()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getLevel()
+   * @generated
+   * @ordered
+   */
 	protected static final String LEVEL_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getLevel() <em>Level</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getLevel() <em>Level</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLevel()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getLevel()
+   * @generated
+   * @ordered
+   */
 	protected String level = LEVEL_EDEFAULT;
 
 
@@ -163,13 +163,13 @@ public class RequirementsPkgImpl extends NamedElementImpl implements Requirement
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedRequirements() <em>Owned Requirements</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedRequirements() <em>Owned Requirements</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedRequirements()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedRequirements()
+   * @generated
+   * @ordered
+   */
 	protected EList<Requirement> ownedRequirements;
 
 
@@ -177,66 +177,66 @@ public class RequirementsPkgImpl extends NamedElementImpl implements Requirement
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedRequirementPkgs() <em>Owned Requirement Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedRequirementPkgs() <em>Owned Requirement Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedRequirementPkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedRequirementPkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<RequirementsPkg> ownedRequirementPkgs;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected RequirementsPkgImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return RequirementPackage.Literals.REQUIREMENTS_PKG;
-	}
+    return RequirementPackage.Literals.REQUIREMENTS_PKG;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Trace> getOwnedTraces() {
 
-		if (ownedTraces == null) {
-			ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this, RequirementPackage.REQUIREMENTS_PKG__OWNED_TRACES);
-		}
-		return ownedTraces;
-	}
+    if (ownedTraces == null) {
+      ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this, RequirementPackage.REQUIREMENTS_PKG__OWNED_TRACES);
+    }
+    return ownedTraces;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<GenericTrace> getContainedGenericTraces() {
 
@@ -263,27 +263,27 @@ public class RequirementsPkgImpl extends NamedElementImpl implements Requirement
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
-		return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
+    return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<RequirementsTrace> getContainedRequirementsTraces() {
 
@@ -310,85 +310,85 @@ public class RequirementsPkgImpl extends NamedElementImpl implements Requirement
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
-		return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
+    return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<NamingRule> getNamingRules() {
 
-		if (namingRules == null) {
-			namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, RequirementPackage.REQUIREMENTS_PKG__NAMING_RULES);
-		}
-		return namingRules;
-	}
+    if (namingRules == null) {
+      namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, RequirementPackage.REQUIREMENTS_PKG__NAMING_RULES);
+    }
+    return namingRules;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PropertyValuePkg> getOwnedPropertyValuePkgs() {
 
-		if (ownedPropertyValuePkgs == null) {
-			ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this, RequirementPackage.REQUIREMENTS_PKG__OWNED_PROPERTY_VALUE_PKGS);
-		}
-		return ownedPropertyValuePkgs;
-	}
+    if (ownedPropertyValuePkgs == null) {
+      ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this, RequirementPackage.REQUIREMENTS_PKG__OWNED_PROPERTY_VALUE_PKGS);
+    }
+    return ownedPropertyValuePkgs;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public String getAdditionalInformation() {
 
-		return additionalInformation;
-	}
+    return additionalInformation;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setAdditionalInformation(String newAdditionalInformation) {
 
-		String oldAdditionalInformation = additionalInformation;
-		additionalInformation = newAdditionalInformation;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RequirementPackage.REQUIREMENTS_PKG__ADDITIONAL_INFORMATION, oldAdditionalInformation, additionalInformation));
+    String oldAdditionalInformation = additionalInformation;
+    additionalInformation = newAdditionalInformation;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RequirementPackage.REQUIREMENTS_PKG__ADDITIONAL_INFORMATION, oldAdditionalInformation, additionalInformation));
 
-	}
+  }
 
 
 
@@ -396,32 +396,32 @@ public class RequirementsPkgImpl extends NamedElementImpl implements Requirement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public String getLevel() {
 
-		return level;
-	}
+    return level;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setLevel(String newLevel) {
 
-		String oldLevel = level;
-		level = newLevel;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RequirementPackage.REQUIREMENTS_PKG__LEVEL, oldLevel, level));
+    String oldLevel = level;
+    level = newLevel;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RequirementPackage.REQUIREMENTS_PKG__LEVEL, oldLevel, level));
 
-	}
+  }
 
 
 
@@ -429,214 +429,214 @@ public class RequirementsPkgImpl extends NamedElementImpl implements Requirement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Requirement> getOwnedRequirements() {
 
-		if (ownedRequirements == null) {
-			ownedRequirements = new EObjectContainmentEList<Requirement>(Requirement.class, this, RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENTS);
-		}
-		return ownedRequirements;
-	}
+    if (ownedRequirements == null) {
+      ownedRequirements = new EObjectContainmentEList<Requirement>(Requirement.class, this, RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENTS);
+    }
+    return ownedRequirements;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<RequirementsPkg> getOwnedRequirementPkgs() {
 
-		if (ownedRequirementPkgs == null) {
-			ownedRequirementPkgs = new EObjectContainmentEList.Resolving<RequirementsPkg>(RequirementsPkg.class, this, RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENT_PKGS);
-		}
-		return ownedRequirementPkgs;
-	}
+    if (ownedRequirementPkgs == null) {
+      ownedRequirementPkgs = new EObjectContainmentEList.Resolving<RequirementsPkg>(RequirementsPkg.class, this, RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENT_PKGS);
+    }
+    return ownedRequirementPkgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_TRACES:
-				return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
-			case RequirementPackage.REQUIREMENTS_PKG__NAMING_RULES:
-				return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				return ((InternalEList<?>)getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENTS:
-				return ((InternalEList<?>)getOwnedRequirements()).basicRemove(otherEnd, msgs);
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENT_PKGS:
-				return ((InternalEList<?>)getOwnedRequirementPkgs()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_TRACES:
+        return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
+      case RequirementPackage.REQUIREMENTS_PKG__NAMING_RULES:
+        return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        return ((InternalEList<?>)getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENTS:
+        return ((InternalEList<?>)getOwnedRequirements()).basicRemove(otherEnd, msgs);
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENT_PKGS:
+        return ((InternalEList<?>)getOwnedRequirementPkgs()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_TRACES:
-				return getOwnedTraces();
-			case RequirementPackage.REQUIREMENTS_PKG__CONTAINED_GENERIC_TRACES:
-				return getContainedGenericTraces();
-			case RequirementPackage.REQUIREMENTS_PKG__CONTAINED_REQUIREMENTS_TRACES:
-				return getContainedRequirementsTraces();
-			case RequirementPackage.REQUIREMENTS_PKG__NAMING_RULES:
-				return getNamingRules();
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				return getOwnedPropertyValuePkgs();
-			case RequirementPackage.REQUIREMENTS_PKG__ADDITIONAL_INFORMATION:
-				return getAdditionalInformation();
-			case RequirementPackage.REQUIREMENTS_PKG__LEVEL:
-				return getLevel();
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENTS:
-				return getOwnedRequirements();
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENT_PKGS:
-				return getOwnedRequirementPkgs();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_TRACES:
+        return getOwnedTraces();
+      case RequirementPackage.REQUIREMENTS_PKG__CONTAINED_GENERIC_TRACES:
+        return getContainedGenericTraces();
+      case RequirementPackage.REQUIREMENTS_PKG__CONTAINED_REQUIREMENTS_TRACES:
+        return getContainedRequirementsTraces();
+      case RequirementPackage.REQUIREMENTS_PKG__NAMING_RULES:
+        return getNamingRules();
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        return getOwnedPropertyValuePkgs();
+      case RequirementPackage.REQUIREMENTS_PKG__ADDITIONAL_INFORMATION:
+        return getAdditionalInformation();
+      case RequirementPackage.REQUIREMENTS_PKG__LEVEL:
+        return getLevel();
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENTS:
+        return getOwnedRequirements();
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENT_PKGS:
+        return getOwnedRequirementPkgs();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_TRACES:
-				getOwnedTraces().clear();
-				getOwnedTraces().addAll((Collection<? extends Trace>)newValue);
-				return;
-			case RequirementPackage.REQUIREMENTS_PKG__NAMING_RULES:
-				getNamingRules().clear();
-				getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
-				return;
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				getOwnedPropertyValuePkgs().clear();
-				getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
-				return;
-			case RequirementPackage.REQUIREMENTS_PKG__ADDITIONAL_INFORMATION:
-					setAdditionalInformation((String)newValue);
-				return;
-			case RequirementPackage.REQUIREMENTS_PKG__LEVEL:
-					setLevel((String)newValue);
-				return;
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENTS:
-				getOwnedRequirements().clear();
-				getOwnedRequirements().addAll((Collection<? extends Requirement>)newValue);
-				return;
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENT_PKGS:
-				getOwnedRequirementPkgs().clear();
-				getOwnedRequirementPkgs().addAll((Collection<? extends RequirementsPkg>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_TRACES:
+        getOwnedTraces().clear();
+        getOwnedTraces().addAll((Collection<? extends Trace>)newValue);
+        return;
+      case RequirementPackage.REQUIREMENTS_PKG__NAMING_RULES:
+        getNamingRules().clear();
+        getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
+        return;
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        getOwnedPropertyValuePkgs().clear();
+        getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
+        return;
+      case RequirementPackage.REQUIREMENTS_PKG__ADDITIONAL_INFORMATION:
+          setAdditionalInformation((String)newValue);
+        return;
+      case RequirementPackage.REQUIREMENTS_PKG__LEVEL:
+          setLevel((String)newValue);
+        return;
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENTS:
+        getOwnedRequirements().clear();
+        getOwnedRequirements().addAll((Collection<? extends Requirement>)newValue);
+        return;
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENT_PKGS:
+        getOwnedRequirementPkgs().clear();
+        getOwnedRequirementPkgs().addAll((Collection<? extends RequirementsPkg>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_TRACES:
-				getOwnedTraces().clear();
-				return;
-			case RequirementPackage.REQUIREMENTS_PKG__NAMING_RULES:
-				getNamingRules().clear();
-				return;
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				getOwnedPropertyValuePkgs().clear();
-				return;
-			case RequirementPackage.REQUIREMENTS_PKG__ADDITIONAL_INFORMATION:
-				setAdditionalInformation(ADDITIONAL_INFORMATION_EDEFAULT);
-				return;
-			case RequirementPackage.REQUIREMENTS_PKG__LEVEL:
-				setLevel(LEVEL_EDEFAULT);
-				return;
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENTS:
-				getOwnedRequirements().clear();
-				return;
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENT_PKGS:
-				getOwnedRequirementPkgs().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_TRACES:
+        getOwnedTraces().clear();
+        return;
+      case RequirementPackage.REQUIREMENTS_PKG__NAMING_RULES:
+        getNamingRules().clear();
+        return;
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        getOwnedPropertyValuePkgs().clear();
+        return;
+      case RequirementPackage.REQUIREMENTS_PKG__ADDITIONAL_INFORMATION:
+        setAdditionalInformation(ADDITIONAL_INFORMATION_EDEFAULT);
+        return;
+      case RequirementPackage.REQUIREMENTS_PKG__LEVEL:
+        setLevel(LEVEL_EDEFAULT);
+        return;
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENTS:
+        getOwnedRequirements().clear();
+        return;
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENT_PKGS:
+        getOwnedRequirementPkgs().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_TRACES:
-				return ownedTraces != null && !ownedTraces.isEmpty();
-			case RequirementPackage.REQUIREMENTS_PKG__CONTAINED_GENERIC_TRACES:
-				return !getContainedGenericTraces().isEmpty();
-			case RequirementPackage.REQUIREMENTS_PKG__CONTAINED_REQUIREMENTS_TRACES:
-				return !getContainedRequirementsTraces().isEmpty();
-			case RequirementPackage.REQUIREMENTS_PKG__NAMING_RULES:
-				return namingRules != null && !namingRules.isEmpty();
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
-			case RequirementPackage.REQUIREMENTS_PKG__ADDITIONAL_INFORMATION:
-				return ADDITIONAL_INFORMATION_EDEFAULT == null ? additionalInformation != null : !ADDITIONAL_INFORMATION_EDEFAULT.equals(additionalInformation);
-			case RequirementPackage.REQUIREMENTS_PKG__LEVEL:
-				return LEVEL_EDEFAULT == null ? level != null : !LEVEL_EDEFAULT.equals(level);
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENTS:
-				return ownedRequirements != null && !ownedRequirements.isEmpty();
-			case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENT_PKGS:
-				return ownedRequirementPkgs != null && !ownedRequirementPkgs.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_TRACES:
+        return ownedTraces != null && !ownedTraces.isEmpty();
+      case RequirementPackage.REQUIREMENTS_PKG__CONTAINED_GENERIC_TRACES:
+        return !getContainedGenericTraces().isEmpty();
+      case RequirementPackage.REQUIREMENTS_PKG__CONTAINED_REQUIREMENTS_TRACES:
+        return !getContainedRequirementsTraces().isEmpty();
+      case RequirementPackage.REQUIREMENTS_PKG__NAMING_RULES:
+        return namingRules != null && !namingRules.isEmpty();
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
+      case RequirementPackage.REQUIREMENTS_PKG__ADDITIONAL_INFORMATION:
+        return ADDITIONAL_INFORMATION_EDEFAULT == null ? additionalInformation != null : !ADDITIONAL_INFORMATION_EDEFAULT.equals(additionalInformation);
+      case RequirementPackage.REQUIREMENTS_PKG__LEVEL:
+        return LEVEL_EDEFAULT == null ? level != null : !LEVEL_EDEFAULT.equals(level);
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENTS:
+        return ownedRequirements != null && !ownedRequirements.isEmpty();
+      case RequirementPackage.REQUIREMENTS_PKG__OWNED_REQUIREMENT_PKGS:
+        return ownedRequirementPkgs != null && !ownedRequirementPkgs.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (additionalInformation: "); //$NON-NLS-1$
-		result.append(additionalInformation);
-		result.append(", level: "); //$NON-NLS-1$
-		result.append(level);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (additionalInformation: "); //$NON-NLS-1$
+    result.append(additionalInformation);
+    result.append(", level: "); //$NON-NLS-1$
+    result.append(level);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //RequirementsPkgImpl

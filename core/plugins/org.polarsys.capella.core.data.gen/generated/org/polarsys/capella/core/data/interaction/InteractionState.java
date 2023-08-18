@@ -41,20 +41,20 @@ public interface InteractionState extends InteractionFragment {
 
 
 	/**
-	 * Returns the value of the '<em><b>Related Abstract State</b></em>' reference.
+   * Returns the value of the '<em><b>Related Abstract State</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * @deprecated : relatedAbstractState shall not be used anymore
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Related Abstract State</em>' reference.
-	 * @see #setRelatedAbstractState(AbstractState)
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getInteractionState_RelatedAbstractState()
-	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
-	 * @generated
-	 */
+   * <!-- begin-model-doc -->
+   * @deprecated : relatedAbstractState shall not be used anymore
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Related Abstract State</em>' reference.
+   * @see #setRelatedAbstractState(AbstractState)
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getInteractionState_RelatedAbstractState()
+   * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+   * @generated
+   */
 
 	@Deprecated
 	AbstractState getRelatedAbstractState();
@@ -63,15 +63,15 @@ public interface InteractionState extends InteractionFragment {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState <em>Related Abstract State</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState <em>Related Abstract State</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Related Abstract State</em>' reference.
-	 * @see #getRelatedAbstractState()
-	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState() model documentation} for details.
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Related Abstract State</em>' reference.
+   * @see #getRelatedAbstractState()
+   * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState() model documentation} for details.
+   * @generated
+   */
 
 	@Deprecated
 	void setRelatedAbstractState(AbstractState value);
@@ -83,20 +83,20 @@ public interface InteractionState extends InteractionFragment {
 
 
 	/**
-	 * Returns the value of the '<em><b>Related Abstract Function</b></em>' reference.
+   * Returns the value of the '<em><b>Related Abstract Function</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * @deprecated : relatedAbstractFunction shall not be used anymore
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Related Abstract Function</em>' reference.
-	 * @see #setRelatedAbstractFunction(AbstractFunction)
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getInteractionState_RelatedAbstractFunction()
-	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
-	 * @generated
-	 */
+   * <!-- begin-model-doc -->
+   * @deprecated : relatedAbstractFunction shall not be used anymore
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Related Abstract Function</em>' reference.
+   * @see #setRelatedAbstractFunction(AbstractFunction)
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getInteractionState_RelatedAbstractFunction()
+   * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+   * @generated
+   */
 
 	@Deprecated
 	AbstractFunction getRelatedAbstractFunction();
@@ -105,15 +105,15 @@ public interface InteractionState extends InteractionFragment {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction <em>Related Abstract Function</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction <em>Related Abstract Function</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Related Abstract Function</em>' reference.
-	 * @see #getRelatedAbstractFunction()
-	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction() model documentation} for details.
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Related Abstract Function</em>' reference.
+   * @see #getRelatedAbstractFunction()
+   * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction() model documentation} for details.
+   * @generated
+   */
 
 	@Deprecated
 	void setRelatedAbstractFunction(AbstractFunction value);
@@ -125,25 +125,25 @@ public interface InteractionState extends InteractionFragment {
 
 
 	/**
-	 * Returns the value of the '<em><b>Covered</b></em>' reference.
+   * Returns the value of the '<em><b>Covered</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Covered</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Covered</em>' reference.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getInteractionState_Covered()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='covered' featureOwner='InteractionFragment'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='instanceRole'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the instance role (lifeline) to which this interaction endpoint is attached\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InteractionFragment::covered' explanation='none' constraints='Multiplicity must be [1..1]'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='coveredInstanceRoles'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Covered</em>' reference.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getInteractionState_Covered()
+   * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='covered' featureOwner='InteractionFragment'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='instanceRole'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the instance role (lifeline) to which this interaction endpoint is attached\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InteractionFragment::covered' explanation='none' constraints='Multiplicity must be [1..1]'"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='coveredInstanceRoles'"
+   * @generated
+   */
 
 	InstanceRole getCovered();
 

@@ -42,13 +42,13 @@ import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 public class PhysicalFunctionPkgImpl extends FunctionPkgImpl implements PhysicalFunctionPkg {
 
 	/**
-	 * The cached value of the '{@link #getOwnedPhysicalFunctions() <em>Owned Physical Functions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPhysicalFunctions() <em>Owned Physical Functions</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPhysicalFunctions()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPhysicalFunctions()
+   * @generated
+   * @ordered
+   */
 	protected EList<PhysicalFunction> ownedPhysicalFunctions;
 
 
@@ -56,166 +56,166 @@ public class PhysicalFunctionPkgImpl extends FunctionPkgImpl implements Physical
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedPhysicalFunctionPkgs() <em>Owned Physical Function Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPhysicalFunctionPkgs() <em>Owned Physical Function Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPhysicalFunctionPkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPhysicalFunctionPkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<PhysicalFunctionPkg> ownedPhysicalFunctionPkgs;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalFunctionPkgImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return PaPackage.Literals.PHYSICAL_FUNCTION_PKG;
-	}
+    return PaPackage.Literals.PHYSICAL_FUNCTION_PKG;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalFunction> getOwnedPhysicalFunctions() {
 
-		if (ownedPhysicalFunctions == null) {
-			ownedPhysicalFunctions = new EObjectContainmentEList.Resolving<PhysicalFunction>(PhysicalFunction.class, this, PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTIONS);
-		}
-		return ownedPhysicalFunctions;
-	}
+    if (ownedPhysicalFunctions == null) {
+      ownedPhysicalFunctions = new EObjectContainmentEList.Resolving<PhysicalFunction>(PhysicalFunction.class, this, PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTIONS);
+    }
+    return ownedPhysicalFunctions;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalFunctionPkg> getOwnedPhysicalFunctionPkgs() {
 
-		if (ownedPhysicalFunctionPkgs == null) {
-			ownedPhysicalFunctionPkgs = new EObjectContainmentEList.Resolving<PhysicalFunctionPkg>(PhysicalFunctionPkg.class, this, PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTION_PKGS);
-		}
-		return ownedPhysicalFunctionPkgs;
-	}
+    if (ownedPhysicalFunctionPkgs == null) {
+      ownedPhysicalFunctionPkgs = new EObjectContainmentEList.Resolving<PhysicalFunctionPkg>(PhysicalFunctionPkg.class, this, PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTION_PKGS);
+    }
+    return ownedPhysicalFunctionPkgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTIONS:
-				return ((InternalEList<?>)getOwnedPhysicalFunctions()).basicRemove(otherEnd, msgs);
-			case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTION_PKGS:
-				return ((InternalEList<?>)getOwnedPhysicalFunctionPkgs()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTIONS:
+        return ((InternalEList<?>)getOwnedPhysicalFunctions()).basicRemove(otherEnd, msgs);
+      case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTION_PKGS:
+        return ((InternalEList<?>)getOwnedPhysicalFunctionPkgs()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTIONS:
-				return getOwnedPhysicalFunctions();
-			case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTION_PKGS:
-				return getOwnedPhysicalFunctionPkgs();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTIONS:
+        return getOwnedPhysicalFunctions();
+      case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTION_PKGS:
+        return getOwnedPhysicalFunctionPkgs();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTIONS:
-				getOwnedPhysicalFunctions().clear();
-				getOwnedPhysicalFunctions().addAll((Collection<? extends PhysicalFunction>)newValue);
-				return;
-			case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTION_PKGS:
-				getOwnedPhysicalFunctionPkgs().clear();
-				getOwnedPhysicalFunctionPkgs().addAll((Collection<? extends PhysicalFunctionPkg>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTIONS:
+        getOwnedPhysicalFunctions().clear();
+        getOwnedPhysicalFunctions().addAll((Collection<? extends PhysicalFunction>)newValue);
+        return;
+      case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTION_PKGS:
+        getOwnedPhysicalFunctionPkgs().clear();
+        getOwnedPhysicalFunctionPkgs().addAll((Collection<? extends PhysicalFunctionPkg>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTIONS:
-				getOwnedPhysicalFunctions().clear();
-				return;
-			case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTION_PKGS:
-				getOwnedPhysicalFunctionPkgs().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTIONS:
+        getOwnedPhysicalFunctions().clear();
+        return;
+      case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTION_PKGS:
+        getOwnedPhysicalFunctionPkgs().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTIONS:
-				return ownedPhysicalFunctions != null && !ownedPhysicalFunctions.isEmpty();
-			case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTION_PKGS:
-				return ownedPhysicalFunctionPkgs != null && !ownedPhysicalFunctionPkgs.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTIONS:
+        return ownedPhysicalFunctions != null && !ownedPhysicalFunctions.isEmpty();
+      case PaPackage.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTION_PKGS:
+        return ownedPhysicalFunctionPkgs != null && !ownedPhysicalFunctionPkgs.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

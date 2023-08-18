@@ -46,22 +46,22 @@ public interface ReferenceHierarchyContext extends EObject {
 
 
 	/**
-	 * Returns the value of the '<em><b>Source Reference Hierarchy</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChainReference}.
+   * Returns the value of the '<em><b>Source Reference Hierarchy</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChainReference}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Source Reference Hierarchy</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source Reference Hierarchy</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getReferenceHierarchyContext_SourceReferenceHierarchy()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used to uniquely identify the source of a link between involvement functions when their functional chain is referenced more than once.\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Source Reference Hierarchy</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getReferenceHierarchyContext_SourceReferenceHierarchy()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used to uniquely identify the source of a link between involvement functions when their functional chain is referenced more than once.\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<FunctionalChainReference> getSourceReferenceHierarchy();
 
@@ -72,22 +72,22 @@ public interface ReferenceHierarchyContext extends EObject {
 
 
 	/**
-	 * Returns the value of the '<em><b>Target Reference Hierarchy</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChainReference}.
+   * Returns the value of the '<em><b>Target Reference Hierarchy</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChainReference}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Target Reference Hierarchy</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target Reference Hierarchy</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getReferenceHierarchyContext_TargetReferenceHierarchy()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used to uniquely identify the target of a link between involvement functions when their functional chain is referenced more than once.\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Target Reference Hierarchy</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getReferenceHierarchyContext_TargetReferenceHierarchy()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used to uniquely identify the target of a link between involvement functions when their functional chain is referenced more than once.\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<FunctionalChainReference> getTargetReferenceHierarchy();
 

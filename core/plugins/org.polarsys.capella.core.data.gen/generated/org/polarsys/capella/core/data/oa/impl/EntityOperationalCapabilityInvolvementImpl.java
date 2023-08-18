@@ -51,13 +51,13 @@ import org.polarsys.capella.core.data.oa.OperationalCapability;
 public class EntityOperationalCapabilityInvolvementImpl extends RelationshipImpl implements EntityOperationalCapabilityInvolvement {
 
 	/**
-	 * The cached value of the '{@link #getInvolved() <em>Involved</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getInvolved() <em>Involved</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInvolved()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getInvolved()
+   * @generated
+   * @ordered
+   */
 	protected InvolvedElement involved;
 
 
@@ -72,48 +72,48 @@ public class EntityOperationalCapabilityInvolvementImpl extends RelationshipImpl
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected EntityOperationalCapabilityInvolvementImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OaPackage.Literals.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT;
-	}
+    return OaPackage.Literals.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolverElement getInvolver() {
 
-		InvolverElement involver = basicGetInvolver();
-		return involver != null && involver.eIsProxy() ? (InvolverElement)eResolveProxy((InternalEObject)involver) : involver;
-	}
+    InvolverElement involver = basicGetInvolver();
+    return involver != null && involver.eIsProxy() ? (InvolverElement)eResolveProxy((InternalEObject)involver) : involver;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolverElement basicGetInvolver() {
 
@@ -140,66 +140,66 @@ public class EntityOperationalCapabilityInvolvementImpl extends RelationshipImpl
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.INVOLVEMENT__INVOLVER.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, annotation);
-		
-		try {
-			return (InvolverElement) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (InvolverElement) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolvedElement getInvolved() {
 
-		if (involved != null && involved.eIsProxy()) {
-			InternalEObject oldInvolved = (InternalEObject)involved;
-			involved = (InvolvedElement)eResolveProxy(oldInvolved);
-			if (involved != oldInvolved) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVED, oldInvolved, involved));
-			}
-		}
-		return involved;
-	}
+    if (involved != null && involved.eIsProxy()) {
+      InternalEObject oldInvolved = (InternalEObject)involved;
+      involved = (InvolvedElement)eResolveProxy(oldInvolved);
+      if (involved != oldInvolved) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVED, oldInvolved, involved));
+      }
+    }
+    return involved;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolvedElement basicGetInvolved() {
 
-		return involved;
-	}
+    return involved;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setInvolved(InvolvedElement newInvolved) {
 
-		InvolvedElement oldInvolved = involved;
-		involved = newInvolved;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVED, oldInvolved, involved));
+    InvolvedElement oldInvolved = involved;
+    involved = newInvolved;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVED, oldInvolved, involved));
 
-	}
+  }
 
 
 
@@ -207,23 +207,23 @@ public class EntityOperationalCapabilityInvolvementImpl extends RelationshipImpl
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Entity getEntity() {
 
-		Entity entity = basicGetEntity();
-		return entity != null && entity.eIsProxy() ? (Entity)eResolveProxy((InternalEObject)entity) : entity;
-	}
+    Entity entity = basicGetEntity();
+    return entity != null && entity.eIsProxy() ? (Entity)eResolveProxy((InternalEObject)entity) : entity;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Entity basicGetEntity() {
 
@@ -250,15 +250,15 @@ public class EntityOperationalCapabilityInvolvementImpl extends RelationshipImpl
     // A helper is found, let's use it. 
     EAnnotation annotation = OaPackage.Literals.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__ENTITY.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, OaPackage.Literals.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__ENTITY, annotation);
-		
-		try {
-			return (Entity) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Entity) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -266,23 +266,23 @@ public class EntityOperationalCapabilityInvolvementImpl extends RelationshipImpl
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public OperationalCapability getCapability() {
 
-		OperationalCapability capability = basicGetCapability();
-		return capability != null && capability.eIsProxy() ? (OperationalCapability)eResolveProxy((InternalEObject)capability) : capability;
-	}
+    OperationalCapability capability = basicGetCapability();
+    return capability != null && capability.eIsProxy() ? (OperationalCapability)eResolveProxy((InternalEObject)capability) : capability;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public OperationalCapability basicGetCapability() {
 
@@ -309,95 +309,95 @@ public class EntityOperationalCapabilityInvolvementImpl extends RelationshipImpl
     // A helper is found, let's use it. 
     EAnnotation annotation = OaPackage.Literals.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__CAPABILITY.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, OaPackage.Literals.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__CAPABILITY, annotation);
-		
-		try {
-			return (OperationalCapability) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (OperationalCapability) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVER:
-				if (resolve) return getInvolver();
-				return basicGetInvolver();
-			case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVED:
-				if (resolve) return getInvolved();
-				return basicGetInvolved();
-			case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__ENTITY:
-				if (resolve) return getEntity();
-				return basicGetEntity();
-			case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__CAPABILITY:
-				if (resolve) return getCapability();
-				return basicGetCapability();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVER:
+        if (resolve) return getInvolver();
+        return basicGetInvolver();
+      case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVED:
+        if (resolve) return getInvolved();
+        return basicGetInvolved();
+      case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__ENTITY:
+        if (resolve) return getEntity();
+        return basicGetEntity();
+      case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__CAPABILITY:
+        if (resolve) return getCapability();
+        return basicGetCapability();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVED:
-					setInvolved((InvolvedElement)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVED:
+          setInvolved((InvolvedElement)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVED:
-				setInvolved((InvolvedElement)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVED:
+        setInvolved((InvolvedElement)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVER:
-				return basicGetInvolver() != null;
-			case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVED:
-				return involved != null;
-			case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__ENTITY:
-				return basicGetEntity() != null;
-			case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__CAPABILITY:
-				return basicGetCapability() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVER:
+        return basicGetInvolver() != null;
+      case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__INVOLVED:
+        return involved != null;
+      case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__ENTITY:
+        return basicGetEntity() != null;
+      case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__CAPABILITY:
+        return basicGetCapability() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

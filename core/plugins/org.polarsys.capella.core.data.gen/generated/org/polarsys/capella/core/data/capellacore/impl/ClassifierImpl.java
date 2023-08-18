@@ -50,13 +50,13 @@ import org.polarsys.capella.core.data.information.Property;
 public abstract class ClassifierImpl extends GeneralizableElementImpl implements Classifier {
 
 	/**
-	 * The cached value of the '{@link #getOwnedFeatures() <em>Owned Features</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedFeatures() <em>Owned Features</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedFeatures()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedFeatures()
+   * @generated
+   * @ordered
+   */
 	protected EList<Feature> ownedFeatures;
 
 
@@ -67,53 +67,53 @@ public abstract class ClassifierImpl extends GeneralizableElementImpl implements
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ClassifierImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacorePackage.Literals.CLASSIFIER;
-	}
+    return CapellacorePackage.Literals.CLASSIFIER;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Feature> getOwnedFeatures() {
 
-		if (ownedFeatures == null) {
-			ownedFeatures = new EObjectContainmentEList.Resolving<Feature>(Feature.class, this, CapellacorePackage.CLASSIFIER__OWNED_FEATURES);
-		}
-		return ownedFeatures;
-	}
+    if (ownedFeatures == null) {
+      ownedFeatures = new EObjectContainmentEList.Resolving<Feature>(Feature.class, this, CapellacorePackage.CLASSIFIER__OWNED_FEATURES);
+    }
+    return ownedFeatures;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Property> getContainedProperties() {
 
@@ -140,100 +140,100 @@ public abstract class ClassifierImpl extends GeneralizableElementImpl implements
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Property> resultAsList = (Collection<Property>) result;
-		return new EcoreEList.UnmodifiableEList<Property>(this, CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Property> resultAsList = (Collection<Property>) result;
+    return new EcoreEList.UnmodifiableEList<Property>(this, CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CapellacorePackage.CLASSIFIER__OWNED_FEATURES:
-				return ((InternalEList<?>)getOwnedFeatures()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CapellacorePackage.CLASSIFIER__OWNED_FEATURES:
+        return ((InternalEList<?>)getOwnedFeatures()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CapellacorePackage.CLASSIFIER__OWNED_FEATURES:
-				return getOwnedFeatures();
-			case CapellacorePackage.CLASSIFIER__CONTAINED_PROPERTIES:
-				return getContainedProperties();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CapellacorePackage.CLASSIFIER__OWNED_FEATURES:
+        return getOwnedFeatures();
+      case CapellacorePackage.CLASSIFIER__CONTAINED_PROPERTIES:
+        return getContainedProperties();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CapellacorePackage.CLASSIFIER__OWNED_FEATURES:
-				getOwnedFeatures().clear();
-				getOwnedFeatures().addAll((Collection<? extends Feature>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CapellacorePackage.CLASSIFIER__OWNED_FEATURES:
+        getOwnedFeatures().clear();
+        getOwnedFeatures().addAll((Collection<? extends Feature>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CapellacorePackage.CLASSIFIER__OWNED_FEATURES:
-				getOwnedFeatures().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CapellacorePackage.CLASSIFIER__OWNED_FEATURES:
+        getOwnedFeatures().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CapellacorePackage.CLASSIFIER__OWNED_FEATURES:
-				return ownedFeatures != null && !ownedFeatures.isEmpty();
-			case CapellacorePackage.CLASSIFIER__CONTAINED_PROPERTIES:
-				return !getContainedProperties().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CapellacorePackage.CLASSIFIER__OWNED_FEATURES:
+        return ownedFeatures != null && !ownedFeatures.isEmpty();
+      case CapellacorePackage.CLASSIFIER__CONTAINED_PROPERTIES:
+        return !getContainedProperties().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

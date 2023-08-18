@@ -39,22 +39,22 @@ public interface ScenarioRealization extends Allocation {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realized Scenario</b></em>' reference.
+   * Returns the value of the '<em><b>Realized Scenario</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realized Scenario</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realized Scenario</em>' reference.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenarioRealization_RealizedScenario()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the scenario that is being realized by/from the other scenario' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realized Scenario</em>' reference.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenarioRealization_RealizedScenario()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the scenario that is being realized by/from the other scenario' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	Scenario getRealizedScenario();
 
@@ -65,22 +65,22 @@ public interface ScenarioRealization extends Allocation {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realizing Scenario</b></em>' reference.
+   * Returns the value of the '<em><b>Realizing Scenario</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realizing Scenario</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realizing Scenario</em>' reference.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenarioRealization_RealizingScenario()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the scenario that realizes (to) the other scenario' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realizing Scenario</em>' reference.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenarioRealization_RealizingScenario()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the scenario that realizes (to) the other scenario' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	Scenario getRealizingScenario();
 

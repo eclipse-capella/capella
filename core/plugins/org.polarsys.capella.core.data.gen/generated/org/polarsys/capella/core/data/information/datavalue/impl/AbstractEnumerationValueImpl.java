@@ -44,48 +44,48 @@ public abstract class AbstractEnumerationValueImpl extends DataValueImpl impleme
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractEnumerationValueImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return DatavaluePackage.Literals.ABSTRACT_ENUMERATION_VALUE;
-	}
+    return DatavaluePackage.Literals.ABSTRACT_ENUMERATION_VALUE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Enumeration getEnumerationType() {
 
-		Enumeration enumerationType = basicGetEnumerationType();
-		return enumerationType != null && enumerationType.eIsProxy() ? (Enumeration)eResolveProxy((InternalEObject)enumerationType) : enumerationType;
-	}
+    Enumeration enumerationType = basicGetEnumerationType();
+    return enumerationType != null && enumerationType.eIsProxy() ? (Enumeration)eResolveProxy((InternalEObject)enumerationType) : enumerationType;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Enumeration basicGetEnumerationType() {
 
@@ -112,48 +112,48 @@ public abstract class AbstractEnumerationValueImpl extends DataValueImpl impleme
     // A helper is found, let's use it. 
     EAnnotation annotation = DatavaluePackage.Literals.ABSTRACT_ENUMERATION_VALUE__ENUMERATION_TYPE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, DatavaluePackage.Literals.ABSTRACT_ENUMERATION_VALUE__ENUMERATION_TYPE, annotation);
-		
-		try {
-			return (Enumeration) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Enumeration) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case DatavaluePackage.ABSTRACT_ENUMERATION_VALUE__ENUMERATION_TYPE:
-				if (resolve) return getEnumerationType();
-				return basicGetEnumerationType();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case DatavaluePackage.ABSTRACT_ENUMERATION_VALUE__ENUMERATION_TYPE:
+        if (resolve) return getEnumerationType();
+        return basicGetEnumerationType();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case DatavaluePackage.ABSTRACT_ENUMERATION_VALUE__ENUMERATION_TYPE:
-				return basicGetEnumerationType() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case DatavaluePackage.ABSTRACT_ENUMERATION_VALUE__ENUMERATION_TYPE:
+        return basicGetEnumerationType() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

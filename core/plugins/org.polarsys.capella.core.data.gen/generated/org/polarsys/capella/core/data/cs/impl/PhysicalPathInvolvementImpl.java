@@ -58,13 +58,13 @@ import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
 public class PhysicalPathInvolvementImpl extends RelationshipImpl implements PhysicalPathInvolvement {
 
 	/**
-	 * The cached value of the '{@link #getInvolved() <em>Involved</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getInvolved() <em>Involved</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInvolved()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getInvolved()
+   * @generated
+   * @ordered
+   */
 	protected InvolvedElement involved;
 
 
@@ -72,13 +72,13 @@ public class PhysicalPathInvolvementImpl extends RelationshipImpl implements Phy
 
 
 	/**
-	 * The cached value of the '{@link #getNextInvolvements() <em>Next Involvements</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getNextInvolvements() <em>Next Involvements</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNextInvolvements()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getNextInvolvements()
+   * @generated
+   * @ordered
+   */
 	protected EList<PhysicalPathInvolvement> nextInvolvements;
 
 
@@ -97,48 +97,48 @@ public class PhysicalPathInvolvementImpl extends RelationshipImpl implements Phy
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalPathInvolvementImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT;
-	}
+    return CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolverElement getInvolver() {
 
-		InvolverElement involver = basicGetInvolver();
-		return involver != null && involver.eIsProxy() ? (InvolverElement)eResolveProxy((InternalEObject)involver) : involver;
-	}
+    InvolverElement involver = basicGetInvolver();
+    return involver != null && involver.eIsProxy() ? (InvolverElement)eResolveProxy((InternalEObject)involver) : involver;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolverElement basicGetInvolver() {
 
@@ -165,66 +165,66 @@ public class PhysicalPathInvolvementImpl extends RelationshipImpl implements Phy
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.INVOLVEMENT__INVOLVER.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, annotation);
-		
-		try {
-			return (InvolverElement) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (InvolverElement) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolvedElement getInvolved() {
 
-		if (involved != null && involved.eIsProxy()) {
-			InternalEObject oldInvolved = (InternalEObject)involved;
-			involved = (InvolvedElement)eResolveProxy(oldInvolved);
-			if (involved != oldInvolved) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED, oldInvolved, involved));
-			}
-		}
-		return involved;
-	}
+    if (involved != null && involved.eIsProxy()) {
+      InternalEObject oldInvolved = (InternalEObject)involved;
+      involved = (InvolvedElement)eResolveProxy(oldInvolved);
+      if (involved != oldInvolved) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED, oldInvolved, involved));
+      }
+    }
+    return involved;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolvedElement basicGetInvolved() {
 
-		return involved;
-	}
+    return involved;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setInvolved(InvolvedElement newInvolved) {
 
-		InvolvedElement oldInvolved = involved;
-		involved = newInvolved;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED, oldInvolved, involved));
+    InvolvedElement oldInvolved = involved;
+    involved = newInvolved;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED, oldInvolved, involved));
 
-	}
+  }
 
 
 
@@ -232,28 +232,28 @@ public class PhysicalPathInvolvementImpl extends RelationshipImpl implements Phy
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalPathInvolvement> getNextInvolvements() {
 
-		if (nextInvolvements == null) {
-			nextInvolvements = new EObjectResolvingEList<PhysicalPathInvolvement>(PhysicalPathInvolvement.class, this, CsPackage.PHYSICAL_PATH_INVOLVEMENT__NEXT_INVOLVEMENTS);
-		}
-		return nextInvolvements;
-	}
+    if (nextInvolvements == null) {
+      nextInvolvements = new EObjectResolvingEList<PhysicalPathInvolvement>(PhysicalPathInvolvement.class, this, CsPackage.PHYSICAL_PATH_INVOLVEMENT__NEXT_INVOLVEMENTS);
+    }
+    return nextInvolvements;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalPathInvolvement> getPreviousInvolvements() {
 
@@ -280,40 +280,40 @@ public class PhysicalPathInvolvementImpl extends RelationshipImpl implements Phy
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT__PREVIOUS_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT__PREVIOUS_INVOLVEMENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PhysicalPathInvolvement> resultAsList = (Collection<PhysicalPathInvolvement>) result;
-		return new EcoreEList.UnmodifiableEList<PhysicalPathInvolvement>(this, CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT__PREVIOUS_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PhysicalPathInvolvement> resultAsList = (Collection<PhysicalPathInvolvement>) result;
+    return new EcoreEList.UnmodifiableEList<PhysicalPathInvolvement>(this, CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT__PREVIOUS_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractPathInvolvedElement getInvolvedElement() {
 
-		AbstractPathInvolvedElement involvedElement = basicGetInvolvedElement();
-		return involvedElement != null && involvedElement.eIsProxy() ? (AbstractPathInvolvedElement)eResolveProxy((InternalEObject)involvedElement) : involvedElement;
-	}
+    AbstractPathInvolvedElement involvedElement = basicGetInvolvedElement();
+    return involvedElement != null && involvedElement.eIsProxy() ? (AbstractPathInvolvedElement)eResolveProxy((InternalEObject)involvedElement) : involvedElement;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractPathInvolvedElement basicGetInvolvedElement() {
 
@@ -340,15 +340,15 @@ public class PhysicalPathInvolvementImpl extends RelationshipImpl implements Phy
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT__INVOLVED_ELEMENT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT__INVOLVED_ELEMENT, annotation);
-		
-		try {
-			return (AbstractPathInvolvedElement) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (AbstractPathInvolvedElement) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -356,23 +356,23 @@ public class PhysicalPathInvolvementImpl extends RelationshipImpl implements Phy
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Component getInvolvedComponent() {
 
-		Component involvedComponent = basicGetInvolvedComponent();
-		return involvedComponent != null && involvedComponent.eIsProxy() ? (Component)eResolveProxy((InternalEObject)involvedComponent) : involvedComponent;
-	}
+    Component involvedComponent = basicGetInvolvedComponent();
+    return involvedComponent != null && involvedComponent.eIsProxy() ? (Component)eResolveProxy((InternalEObject)involvedComponent) : involvedComponent;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Component basicGetInvolvedComponent() {
 
@@ -399,111 +399,111 @@ public class PhysicalPathInvolvementImpl extends RelationshipImpl implements Phy
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT__INVOLVED_COMPONENT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT__INVOLVED_COMPONENT, annotation);
-		
-		try {
-			return (Component) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Component) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVER:
-				if (resolve) return getInvolver();
-				return basicGetInvolver();
-			case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED:
-				if (resolve) return getInvolved();
-				return basicGetInvolved();
-			case CsPackage.PHYSICAL_PATH_INVOLVEMENT__NEXT_INVOLVEMENTS:
-				return getNextInvolvements();
-			case CsPackage.PHYSICAL_PATH_INVOLVEMENT__PREVIOUS_INVOLVEMENTS:
-				return getPreviousInvolvements();
-			case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED_ELEMENT:
-				if (resolve) return getInvolvedElement();
-				return basicGetInvolvedElement();
-			case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED_COMPONENT:
-				if (resolve) return getInvolvedComponent();
-				return basicGetInvolvedComponent();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVER:
+        if (resolve) return getInvolver();
+        return basicGetInvolver();
+      case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED:
+        if (resolve) return getInvolved();
+        return basicGetInvolved();
+      case CsPackage.PHYSICAL_PATH_INVOLVEMENT__NEXT_INVOLVEMENTS:
+        return getNextInvolvements();
+      case CsPackage.PHYSICAL_PATH_INVOLVEMENT__PREVIOUS_INVOLVEMENTS:
+        return getPreviousInvolvements();
+      case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED_ELEMENT:
+        if (resolve) return getInvolvedElement();
+        return basicGetInvolvedElement();
+      case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED_COMPONENT:
+        if (resolve) return getInvolvedComponent();
+        return basicGetInvolvedComponent();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED:
-					setInvolved((InvolvedElement)newValue);
-				return;
-			case CsPackage.PHYSICAL_PATH_INVOLVEMENT__NEXT_INVOLVEMENTS:
-				getNextInvolvements().clear();
-				getNextInvolvements().addAll((Collection<? extends PhysicalPathInvolvement>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED:
+          setInvolved((InvolvedElement)newValue);
+        return;
+      case CsPackage.PHYSICAL_PATH_INVOLVEMENT__NEXT_INVOLVEMENTS:
+        getNextInvolvements().clear();
+        getNextInvolvements().addAll((Collection<? extends PhysicalPathInvolvement>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED:
-				setInvolved((InvolvedElement)null);
-				return;
-			case CsPackage.PHYSICAL_PATH_INVOLVEMENT__NEXT_INVOLVEMENTS:
-				getNextInvolvements().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED:
+        setInvolved((InvolvedElement)null);
+        return;
+      case CsPackage.PHYSICAL_PATH_INVOLVEMENT__NEXT_INVOLVEMENTS:
+        getNextInvolvements().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVER:
-				return basicGetInvolver() != null;
-			case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED:
-				return involved != null;
-			case CsPackage.PHYSICAL_PATH_INVOLVEMENT__NEXT_INVOLVEMENTS:
-				return nextInvolvements != null && !nextInvolvements.isEmpty();
-			case CsPackage.PHYSICAL_PATH_INVOLVEMENT__PREVIOUS_INVOLVEMENTS:
-				return !getPreviousInvolvements().isEmpty();
-			case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED_ELEMENT:
-				return basicGetInvolvedElement() != null;
-			case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED_COMPONENT:
-				return basicGetInvolvedComponent() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVER:
+        return basicGetInvolver() != null;
+      case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED:
+        return involved != null;
+      case CsPackage.PHYSICAL_PATH_INVOLVEMENT__NEXT_INVOLVEMENTS:
+        return nextInvolvements != null && !nextInvolvements.isEmpty();
+      case CsPackage.PHYSICAL_PATH_INVOLVEMENT__PREVIOUS_INVOLVEMENTS:
+        return !getPreviousInvolvements().isEmpty();
+      case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED_ELEMENT:
+        return basicGetInvolvedElement() != null;
+      case CsPackage.PHYSICAL_PATH_INVOLVEMENT__INVOLVED_COMPONENT:
+        return basicGetInvolvedComponent() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

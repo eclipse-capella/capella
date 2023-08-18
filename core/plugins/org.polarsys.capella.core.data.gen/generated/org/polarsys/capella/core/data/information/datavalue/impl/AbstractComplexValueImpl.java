@@ -44,48 +44,48 @@ public abstract class AbstractComplexValueImpl extends DataValueImpl implements 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractComplexValueImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return DatavaluePackage.Literals.ABSTRACT_COMPLEX_VALUE;
-	}
+    return DatavaluePackage.Literals.ABSTRACT_COMPLEX_VALUE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Classifier getComplexType() {
 
-		Classifier complexType = basicGetComplexType();
-		return complexType != null && complexType.eIsProxy() ? (Classifier)eResolveProxy((InternalEObject)complexType) : complexType;
-	}
+    Classifier complexType = basicGetComplexType();
+    return complexType != null && complexType.eIsProxy() ? (Classifier)eResolveProxy((InternalEObject)complexType) : complexType;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Classifier basicGetComplexType() {
 
@@ -112,48 +112,48 @@ public abstract class AbstractComplexValueImpl extends DataValueImpl implements 
     // A helper is found, let's use it. 
     EAnnotation annotation = DatavaluePackage.Literals.ABSTRACT_COMPLEX_VALUE__COMPLEX_TYPE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, DatavaluePackage.Literals.ABSTRACT_COMPLEX_VALUE__COMPLEX_TYPE, annotation);
-		
-		try {
-			return (Classifier) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Classifier) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case DatavaluePackage.ABSTRACT_COMPLEX_VALUE__COMPLEX_TYPE:
-				if (resolve) return getComplexType();
-				return basicGetComplexType();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case DatavaluePackage.ABSTRACT_COMPLEX_VALUE__COMPLEX_TYPE:
+        if (resolve) return getComplexType();
+        return basicGetComplexType();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case DatavaluePackage.ABSTRACT_COMPLEX_VALUE__COMPLEX_TYPE:
-				return basicGetComplexType() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case DatavaluePackage.ABSTRACT_COMPLEX_VALUE__COMPLEX_TYPE:
+        return basicGetComplexType() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

@@ -42,26 +42,26 @@ public interface MessageReference extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Message</b></em>' reference.
+   * Returns the value of the '<em><b>Message</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Message</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Message</em>' reference.
-	 * @see #setMessage(Message)
-	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getMessageReference_Message()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='supplier' featureOwner='Dependency'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='message'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The message being referenced\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [1..1]'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Message</em>' reference.
+   * @see #setMessage(Message)
+   * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getMessageReference_Message()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='supplier' featureOwner='Dependency'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='message'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The message being referenced\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [1..1]'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	Message getMessage();
 
@@ -69,14 +69,14 @@ public interface MessageReference extends Relationship {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.communication.MessageReference#getMessage <em>Message</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.communication.MessageReference#getMessage <em>Message</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Message</em>' reference.
-	 * @see #getMessage()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Message</em>' reference.
+   * @see #getMessage()
+   * @generated
+   */
 
 	void setMessage(Message value);
 

@@ -42,26 +42,26 @@ public interface TraceableElement extends ModelElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Incoming Traces</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractTrace}.
+   * Returns the value of the '<em><b>Incoming Traces</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractTrace}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Incoming Traces</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Incoming Traces</em>' reference list.
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getTraceableElement_IncomingTraces()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='incomingTraces'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='targetElement'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of trace relationships pointing towards this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and Transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Incoming Traces</em>' reference list.
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getTraceableElement_IncomingTraces()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='incomingTraces'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='targetElement'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of trace relationships pointing towards this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and Transient' constraints='none'"
+   * @generated
+   */
 
 	EList<AbstractTrace> getIncomingTraces();
 
@@ -72,26 +72,26 @@ public interface TraceableElement extends ModelElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Outgoing Traces</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractTrace}.
+   * Returns the value of the '<em><b>Outgoing Traces</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractTrace}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Outgoing Traces</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Outgoing Traces</em>' reference list.
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getTraceableElement_OutgoingTraces()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping umlOppositeReference='supplier' umlOppositeReferenceOwner='Dependency'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='outgoingTraces'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='sourceElement'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of trace relationships starting from this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and Transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Outgoing Traces</em>' reference list.
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getTraceableElement_OutgoingTraces()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping umlOppositeReference='supplier' umlOppositeReferenceOwner='Dependency'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='outgoingTraces'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='sourceElement'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of trace relationships starting from this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and Transient' constraints='none'"
+   * @generated
+   */
 
 	EList<AbstractTrace> getOutgoingTraces();
 

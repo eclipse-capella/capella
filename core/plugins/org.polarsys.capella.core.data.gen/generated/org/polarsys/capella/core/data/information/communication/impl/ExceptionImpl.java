@@ -24,25 +24,25 @@ import org.polarsys.capella.core.data.information.communication.CommunicationPac
  */
 public class ExceptionImpl extends CommunicationItemImpl implements org.polarsys.capella.core.data.information.communication.Exception {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ExceptionImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CommunicationPackage.Literals.EXCEPTION;
-	}
+    return CommunicationPackage.Literals.EXCEPTION;
+  }
 
 
 

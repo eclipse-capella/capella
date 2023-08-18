@@ -57,13 +57,13 @@ import org.polarsys.capella.core.data.pa.PhysicalFunction;
 public class LogicalFunctionImpl extends AbstractFunctionImpl implements LogicalFunction {
 
 	/**
-	 * The cached value of the '{@link #getOwnedLogicalFunctionPkgs() <em>Owned Logical Function Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedLogicalFunctionPkgs() <em>Owned Logical Function Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedLogicalFunctionPkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedLogicalFunctionPkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<LogicalFunctionPkg> ownedLogicalFunctionPkgs;
 
 
@@ -94,53 +94,53 @@ public class LogicalFunctionImpl extends AbstractFunctionImpl implements Logical
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected LogicalFunctionImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return LaPackage.Literals.LOGICAL_FUNCTION;
-	}
+    return LaPackage.Literals.LOGICAL_FUNCTION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LogicalFunctionPkg> getOwnedLogicalFunctionPkgs() {
 
-		if (ownedLogicalFunctionPkgs == null) {
-			ownedLogicalFunctionPkgs = new EObjectContainmentEList.Resolving<LogicalFunctionPkg>(LogicalFunctionPkg.class, this, LaPackage.LOGICAL_FUNCTION__OWNED_LOGICAL_FUNCTION_PKGS);
-		}
-		return ownedLogicalFunctionPkgs;
-	}
+    if (ownedLogicalFunctionPkgs == null) {
+      ownedLogicalFunctionPkgs = new EObjectContainmentEList.Resolving<LogicalFunctionPkg>(LogicalFunctionPkg.class, this, LaPackage.LOGICAL_FUNCTION__OWNED_LOGICAL_FUNCTION_PKGS);
+    }
+    return ownedLogicalFunctionPkgs;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LogicalComponent> getAllocatingLogicalComponents() {
 
@@ -167,23 +167,23 @@ public class LogicalFunctionImpl extends AbstractFunctionImpl implements Logical
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATING_LOGICAL_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATING_LOGICAL_COMPONENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<LogicalComponent> resultAsList = (Collection<LogicalComponent>) result;
-		return new EcoreEList.UnmodifiableEList<LogicalComponent>(this, LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATING_LOGICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<LogicalComponent> resultAsList = (Collection<LogicalComponent>) result;
+    return new EcoreEList.UnmodifiableEList<LogicalComponent>(this, LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATING_LOGICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<SystemFunction> getRealizedSystemFunctions() {
 
@@ -210,27 +210,27 @@ public class LogicalFunctionImpl extends AbstractFunctionImpl implements Logical
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.LOGICAL_FUNCTION__REALIZED_SYSTEM_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.LOGICAL_FUNCTION__REALIZED_SYSTEM_FUNCTIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<SystemFunction> resultAsList = (Collection<SystemFunction>) result;
-		return new EcoreEList.UnmodifiableEList<SystemFunction>(this, LaPackage.Literals.LOGICAL_FUNCTION__REALIZED_SYSTEM_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<SystemFunction> resultAsList = (Collection<SystemFunction>) result;
+    return new EcoreEList.UnmodifiableEList<SystemFunction>(this, LaPackage.Literals.LOGICAL_FUNCTION__REALIZED_SYSTEM_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalFunction> getRealizingPhysicalFunctions() {
 
@@ -257,27 +257,27 @@ public class LogicalFunctionImpl extends AbstractFunctionImpl implements Logical
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.LOGICAL_FUNCTION__REALIZING_PHYSICAL_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.LOGICAL_FUNCTION__REALIZING_PHYSICAL_FUNCTIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PhysicalFunction> resultAsList = (Collection<PhysicalFunction>) result;
-		return new EcoreEList.UnmodifiableEList<PhysicalFunction>(this, LaPackage.Literals.LOGICAL_FUNCTION__REALIZING_PHYSICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PhysicalFunction> resultAsList = (Collection<PhysicalFunction>) result;
+    return new EcoreEList.UnmodifiableEList<PhysicalFunction>(this, LaPackage.Literals.LOGICAL_FUNCTION__REALIZING_PHYSICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LogicalFunction> getContainedLogicalFunctions() {
 
@@ -304,27 +304,27 @@ public class LogicalFunctionImpl extends AbstractFunctionImpl implements Logical
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.LOGICAL_FUNCTION__CONTAINED_LOGICAL_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.LOGICAL_FUNCTION__CONTAINED_LOGICAL_FUNCTIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<LogicalFunction> resultAsList = (Collection<LogicalFunction>) result;
-		return new EcoreEList.UnmodifiableEList<LogicalFunction>(this, LaPackage.Literals.LOGICAL_FUNCTION__CONTAINED_LOGICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<LogicalFunction> resultAsList = (Collection<LogicalFunction>) result;
+    return new EcoreEList.UnmodifiableEList<LogicalFunction>(this, LaPackage.Literals.LOGICAL_FUNCTION__CONTAINED_LOGICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LogicalFunction> getChildrenLogicalFunctions() {
 
@@ -351,116 +351,116 @@ public class LogicalFunctionImpl extends AbstractFunctionImpl implements Logical
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.LOGICAL_FUNCTION__CHILDREN_LOGICAL_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.LOGICAL_FUNCTION__CHILDREN_LOGICAL_FUNCTIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<LogicalFunction> resultAsList = (Collection<LogicalFunction>) result;
-		return new EcoreEList.UnmodifiableEList<LogicalFunction>(this, LaPackage.Literals.LOGICAL_FUNCTION__CHILDREN_LOGICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<LogicalFunction> resultAsList = (Collection<LogicalFunction>) result;
+    return new EcoreEList.UnmodifiableEList<LogicalFunction>(this, LaPackage.Literals.LOGICAL_FUNCTION__CHILDREN_LOGICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_FUNCTION__OWNED_LOGICAL_FUNCTION_PKGS:
-				return ((InternalEList<?>)getOwnedLogicalFunctionPkgs()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_FUNCTION__OWNED_LOGICAL_FUNCTION_PKGS:
+        return ((InternalEList<?>)getOwnedLogicalFunctionPkgs()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_FUNCTION__OWNED_LOGICAL_FUNCTION_PKGS:
-				return getOwnedLogicalFunctionPkgs();
-			case LaPackage.LOGICAL_FUNCTION__ALLOCATING_LOGICAL_COMPONENTS:
-				return getAllocatingLogicalComponents();
-			case LaPackage.LOGICAL_FUNCTION__REALIZED_SYSTEM_FUNCTIONS:
-				return getRealizedSystemFunctions();
-			case LaPackage.LOGICAL_FUNCTION__REALIZING_PHYSICAL_FUNCTIONS:
-				return getRealizingPhysicalFunctions();
-			case LaPackage.LOGICAL_FUNCTION__CONTAINED_LOGICAL_FUNCTIONS:
-				return getContainedLogicalFunctions();
-			case LaPackage.LOGICAL_FUNCTION__CHILDREN_LOGICAL_FUNCTIONS:
-				return getChildrenLogicalFunctions();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_FUNCTION__OWNED_LOGICAL_FUNCTION_PKGS:
+        return getOwnedLogicalFunctionPkgs();
+      case LaPackage.LOGICAL_FUNCTION__ALLOCATING_LOGICAL_COMPONENTS:
+        return getAllocatingLogicalComponents();
+      case LaPackage.LOGICAL_FUNCTION__REALIZED_SYSTEM_FUNCTIONS:
+        return getRealizedSystemFunctions();
+      case LaPackage.LOGICAL_FUNCTION__REALIZING_PHYSICAL_FUNCTIONS:
+        return getRealizingPhysicalFunctions();
+      case LaPackage.LOGICAL_FUNCTION__CONTAINED_LOGICAL_FUNCTIONS:
+        return getContainedLogicalFunctions();
+      case LaPackage.LOGICAL_FUNCTION__CHILDREN_LOGICAL_FUNCTIONS:
+        return getChildrenLogicalFunctions();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_FUNCTION__OWNED_LOGICAL_FUNCTION_PKGS:
-				getOwnedLogicalFunctionPkgs().clear();
-				getOwnedLogicalFunctionPkgs().addAll((Collection<? extends LogicalFunctionPkg>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_FUNCTION__OWNED_LOGICAL_FUNCTION_PKGS:
+        getOwnedLogicalFunctionPkgs().clear();
+        getOwnedLogicalFunctionPkgs().addAll((Collection<? extends LogicalFunctionPkg>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_FUNCTION__OWNED_LOGICAL_FUNCTION_PKGS:
-				getOwnedLogicalFunctionPkgs().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_FUNCTION__OWNED_LOGICAL_FUNCTION_PKGS:
+        getOwnedLogicalFunctionPkgs().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_FUNCTION__OWNED_LOGICAL_FUNCTION_PKGS:
-				return ownedLogicalFunctionPkgs != null && !ownedLogicalFunctionPkgs.isEmpty();
-			case LaPackage.LOGICAL_FUNCTION__ALLOCATING_LOGICAL_COMPONENTS:
-				return !getAllocatingLogicalComponents().isEmpty();
-			case LaPackage.LOGICAL_FUNCTION__REALIZED_SYSTEM_FUNCTIONS:
-				return !getRealizedSystemFunctions().isEmpty();
-			case LaPackage.LOGICAL_FUNCTION__REALIZING_PHYSICAL_FUNCTIONS:
-				return !getRealizingPhysicalFunctions().isEmpty();
-			case LaPackage.LOGICAL_FUNCTION__CONTAINED_LOGICAL_FUNCTIONS:
-				return !getContainedLogicalFunctions().isEmpty();
-			case LaPackage.LOGICAL_FUNCTION__CHILDREN_LOGICAL_FUNCTIONS:
-				return !getChildrenLogicalFunctions().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_FUNCTION__OWNED_LOGICAL_FUNCTION_PKGS:
+        return ownedLogicalFunctionPkgs != null && !ownedLogicalFunctionPkgs.isEmpty();
+      case LaPackage.LOGICAL_FUNCTION__ALLOCATING_LOGICAL_COMPONENTS:
+        return !getAllocatingLogicalComponents().isEmpty();
+      case LaPackage.LOGICAL_FUNCTION__REALIZED_SYSTEM_FUNCTIONS:
+        return !getRealizedSystemFunctions().isEmpty();
+      case LaPackage.LOGICAL_FUNCTION__REALIZING_PHYSICAL_FUNCTIONS:
+        return !getRealizingPhysicalFunctions().isEmpty();
+      case LaPackage.LOGICAL_FUNCTION__CONTAINED_LOGICAL_FUNCTIONS:
+        return !getContainedLogicalFunctions().isEmpty();
+      case LaPackage.LOGICAL_FUNCTION__CHILDREN_LOGICAL_FUNCTIONS:
+        return !getChildrenLogicalFunctions().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

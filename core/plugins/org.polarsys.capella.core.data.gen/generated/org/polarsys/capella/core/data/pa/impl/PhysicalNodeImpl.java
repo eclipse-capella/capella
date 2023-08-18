@@ -46,35 +46,35 @@ public class PhysicalNodeImpl extends PhysicalComponentImpl implements PhysicalN
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalNodeImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return PaPackage.Literals.PHYSICAL_NODE;
-	}
+    return PaPackage.Literals.PHYSICAL_NODE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalNode> getSubPhysicalNodes() {
 
@@ -101,48 +101,48 @@ public class PhysicalNodeImpl extends PhysicalComponentImpl implements PhysicalN
     // A helper is found, let's use it. 
     EAnnotation annotation = PaPackage.Literals.PHYSICAL_NODE__SUB_PHYSICAL_NODES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, PaPackage.Literals.PHYSICAL_NODE__SUB_PHYSICAL_NODES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PhysicalNode> resultAsList = (Collection<PhysicalNode>) result;
-		return new EcoreEList.UnmodifiableEList<PhysicalNode>(this, PaPackage.Literals.PHYSICAL_NODE__SUB_PHYSICAL_NODES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PhysicalNode> resultAsList = (Collection<PhysicalNode>) result;
+    return new EcoreEList.UnmodifiableEList<PhysicalNode>(this, PaPackage.Literals.PHYSICAL_NODE__SUB_PHYSICAL_NODES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_NODE__SUB_PHYSICAL_NODES:
-				return getSubPhysicalNodes();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_NODE__SUB_PHYSICAL_NODES:
+        return getSubPhysicalNodes();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_NODE__SUB_PHYSICAL_NODES:
-				return !getSubPhysicalNodes().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_NODE__SUB_PHYSICAL_NODES:
+        return !getSubPhysicalNodes().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

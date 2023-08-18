@@ -43,22 +43,22 @@ public interface Classifier extends GeneralizableElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Features</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.Feature}.
+   * Returns the value of the '<em><b>Owned Features</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.Feature}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Features</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Features</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getClassifier_OwnedFeatures()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the features contained in this classifier\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Classifier::feature#keyword::none' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Features</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getClassifier_OwnedFeatures()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the features contained in this classifier\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Classifier::feature#keyword::none' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	EList<Feature> getOwnedFeatures();
 
@@ -69,23 +69,23 @@ public interface Classifier extends GeneralizableElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Contained Properties</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.Property}.
+   * Returns the value of the '<em><b>Contained Properties</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.Property}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contained Properties</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contained Properties</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getClassifier_ContainedProperties()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFeatures'"
-	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedFeatures'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Contained Properties</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getClassifier_ContainedProperties()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFeatures'"
+   *        annotation="http://www.polarsys.org/capella/semantic feature='ownedFeatures'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<Property> getContainedProperties();
 

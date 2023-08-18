@@ -46,21 +46,21 @@ public interface OperationalCapability extends AbstractCapability, Namespace {
 
 
 	/**
-	 * Returns the value of the '<em><b>Compliances</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.ConceptCompliance}.
+   * Returns the value of the '<em><b>Compliances</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.ConceptCompliance}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Compliances</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Compliances</em>' reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalCapability_Compliances()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of concepts to which this Capability complies\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::clientDependency' explanation='none' constraints='uml::NamedElement::clientDependency elements on which ConceptCompliance stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Compliances</em>' reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalCapability_Compliances()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of concepts to which this Capability complies\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::clientDependency' explanation='none' constraints='uml::NamedElement::clientDependency elements on which ConceptCompliance stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<ConceptCompliance> getCompliances();
 
@@ -71,21 +71,21 @@ public interface OperationalCapability extends AbstractCapability, Namespace {
 
 
 	/**
-	 * Returns the value of the '<em><b>Configurations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.CapabilityConfiguration}.
+   * Returns the value of the '<em><b>Configurations</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.CapabilityConfiguration}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Configurations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Configurations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalCapability_Configurations()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of various configurations of this Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Configurations</em>' reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalCapability_Configurations()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of various configurations of this Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	EList<CapabilityConfiguration> getConfigurations();
 
@@ -96,21 +96,21 @@ public interface OperationalCapability extends AbstractCapability, Namespace {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Entity Operational Capability Involvements</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement}.
+   * Returns the value of the '<em><b>Owned Entity Operational Capability Involvements</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Entity Operational Capability Involvements</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Entity Operational Capability Involvements</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalCapability_OwnedEntityOperationalCapabilityInvolvements()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Entity Operational Capability Involvements</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalCapability_OwnedEntityOperationalCapabilityInvolvements()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	EList<EntityOperationalCapabilityInvolvement> getOwnedEntityOperationalCapabilityInvolvements();
 
@@ -121,25 +121,25 @@ public interface OperationalCapability extends AbstractCapability, Namespace {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realizing Capabilities</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.Capability}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.Capability#getRealizedOperationalCapabilities <em>Realized Operational Capabilities</em>}'.
+   * Returns the value of the '<em><b>Realizing Capabilities</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.ctx.Capability}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.Capability#getRealizedOperationalCapabilities <em>Realized Operational Capabilities</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realizing Capabilities</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realizing Capabilities</em>' reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalCapability_RealizingCapabilities()
-	 * @see org.polarsys.capella.core.data.ctx.Capability#getRealizedOperationalCapabilities
-	 * @model opposite="realizedOperationalCapabilities" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='OperationalCapability.incomingTraces(self, acr);\r\nAbstractCapabilityRealization.realizingCapability(acr, target);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realizing Capabilities</em>' reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalCapability_RealizingCapabilities()
+   * @see org.polarsys.capella.core.data.ctx.Capability#getRealizedOperationalCapabilities
+   * @model opposite="realizedOperationalCapabilities" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='OperationalCapability.incomingTraces(self, acr);\r\nAbstractCapabilityRealization.realizingCapability(acr, target);'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<Capability> getRealizingCapabilities();
 
@@ -150,23 +150,23 @@ public interface OperationalCapability extends AbstractCapability, Namespace {
 
 
 	/**
-	 * Returns the value of the '<em><b>Involved Entities</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.Entity}.
+   * Returns the value of the '<em><b>Involved Entities</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.Entity}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Involved Entities</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Involved Entities</em>' reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalCapability_InvolvedEntities()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='OperationalCapability.involvedInvolvements(self, eoci);\r\nEntityOperationalCapabilityInvolvement.entity(eoci, target);'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Involved Entities</em>' reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalCapability_InvolvedEntities()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='OperationalCapability.involvedInvolvements(self, eoci);\r\nEntityOperationalCapabilityInvolvement.entity(eoci, target);'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<Entity> getInvolvedEntities();
 

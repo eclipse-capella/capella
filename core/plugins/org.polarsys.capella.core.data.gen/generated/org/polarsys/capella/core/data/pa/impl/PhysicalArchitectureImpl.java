@@ -64,13 +64,13 @@ import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implements PhysicalArchitecture {
 
 	/**
-	 * The cached value of the '{@link #getOwnedPhysicalComponentPkg() <em>Owned Physical Component Pkg</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPhysicalComponentPkg() <em>Owned Physical Component Pkg</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPhysicalComponentPkg()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPhysicalComponentPkg()
+   * @generated
+   * @ordered
+   */
 	protected PhysicalComponentPkg ownedPhysicalComponentPkg;
 
 
@@ -78,13 +78,13 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedDeployments() <em>Owned Deployments</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedDeployments() <em>Owned Deployments</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedDeployments()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedDeployments()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractDeploymentLink> ownedDeployments;
 
 
@@ -92,13 +92,13 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedLogicalArchitectureRealizations() <em>Owned Logical Architecture Realizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedLogicalArchitectureRealizations() <em>Owned Logical Architecture Realizations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedLogicalArchitectureRealizations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedLogicalArchitectureRealizations()
+   * @generated
+   * @ordered
+   */
 	protected EList<LogicalArchitectureRealization> ownedLogicalArchitectureRealizations;
 
 
@@ -117,111 +117,111 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalArchitectureImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return PaPackage.Literals.PHYSICAL_ARCHITECTURE;
-	}
+    return PaPackage.Literals.PHYSICAL_ARCHITECTURE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public PhysicalComponentPkg getOwnedPhysicalComponentPkg() {
 
-		if (ownedPhysicalComponentPkg != null && ownedPhysicalComponentPkg.eIsProxy()) {
-			InternalEObject oldOwnedPhysicalComponentPkg = (InternalEObject)ownedPhysicalComponentPkg;
-			ownedPhysicalComponentPkg = (PhysicalComponentPkg)eResolveProxy(oldOwnedPhysicalComponentPkg);
-			if (ownedPhysicalComponentPkg != oldOwnedPhysicalComponentPkg) {
-				InternalEObject newOwnedPhysicalComponentPkg = (InternalEObject)ownedPhysicalComponentPkg;
-				NotificationChain msgs = oldOwnedPhysicalComponentPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG, null, null);
-				if (newOwnedPhysicalComponentPkg.eInternalContainer() == null) {
-					msgs = newOwnedPhysicalComponentPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG, oldOwnedPhysicalComponentPkg, ownedPhysicalComponentPkg));
-			}
-		}
-		return ownedPhysicalComponentPkg;
-	}
+    if (ownedPhysicalComponentPkg != null && ownedPhysicalComponentPkg.eIsProxy()) {
+      InternalEObject oldOwnedPhysicalComponentPkg = (InternalEObject)ownedPhysicalComponentPkg;
+      ownedPhysicalComponentPkg = (PhysicalComponentPkg)eResolveProxy(oldOwnedPhysicalComponentPkg);
+      if (ownedPhysicalComponentPkg != oldOwnedPhysicalComponentPkg) {
+        InternalEObject newOwnedPhysicalComponentPkg = (InternalEObject)ownedPhysicalComponentPkg;
+        NotificationChain msgs = oldOwnedPhysicalComponentPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG, null, null);
+        if (newOwnedPhysicalComponentPkg.eInternalContainer() == null) {
+          msgs = newOwnedPhysicalComponentPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG, null, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG, oldOwnedPhysicalComponentPkg, ownedPhysicalComponentPkg));
+      }
+    }
+    return ownedPhysicalComponentPkg;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public PhysicalComponentPkg basicGetOwnedPhysicalComponentPkg() {
 
-		return ownedPhysicalComponentPkg;
-	}
+    return ownedPhysicalComponentPkg;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedPhysicalComponentPkg(PhysicalComponentPkg newOwnedPhysicalComponentPkg, NotificationChain msgs) {
 
-		PhysicalComponentPkg oldOwnedPhysicalComponentPkg = ownedPhysicalComponentPkg;
-		ownedPhysicalComponentPkg = newOwnedPhysicalComponentPkg;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG, oldOwnedPhysicalComponentPkg, newOwnedPhysicalComponentPkg);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    PhysicalComponentPkg oldOwnedPhysicalComponentPkg = ownedPhysicalComponentPkg;
+    ownedPhysicalComponentPkg = newOwnedPhysicalComponentPkg;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG, oldOwnedPhysicalComponentPkg, newOwnedPhysicalComponentPkg);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setOwnedPhysicalComponentPkg(PhysicalComponentPkg newOwnedPhysicalComponentPkg) {
 
-		if (newOwnedPhysicalComponentPkg != ownedPhysicalComponentPkg) {
-			NotificationChain msgs = null;
-			if (ownedPhysicalComponentPkg != null)
-				msgs = ((InternalEObject)ownedPhysicalComponentPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG, null, msgs);
-			if (newOwnedPhysicalComponentPkg != null)
-				msgs = ((InternalEObject)newOwnedPhysicalComponentPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG, null, msgs);
-			msgs = basicSetOwnedPhysicalComponentPkg(newOwnedPhysicalComponentPkg, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG, newOwnedPhysicalComponentPkg, newOwnedPhysicalComponentPkg));
+    if (newOwnedPhysicalComponentPkg != ownedPhysicalComponentPkg) {
+      NotificationChain msgs = null;
+      if (ownedPhysicalComponentPkg != null)
+        msgs = ((InternalEObject)ownedPhysicalComponentPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG, null, msgs);
+      if (newOwnedPhysicalComponentPkg != null)
+        msgs = ((InternalEObject)newOwnedPhysicalComponentPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG, null, msgs);
+      msgs = basicSetOwnedPhysicalComponentPkg(newOwnedPhysicalComponentPkg, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG, newOwnedPhysicalComponentPkg, newOwnedPhysicalComponentPkg));
 
-	}
+  }
 
 
 
@@ -229,23 +229,23 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public CapabilityRealizationPkg getContainedCapabilityRealizationPkg() {
 
-		CapabilityRealizationPkg containedCapabilityRealizationPkg = basicGetContainedCapabilityRealizationPkg();
-		return containedCapabilityRealizationPkg != null && containedCapabilityRealizationPkg.eIsProxy() ? (CapabilityRealizationPkg)eResolveProxy((InternalEObject)containedCapabilityRealizationPkg) : containedCapabilityRealizationPkg;
-	}
+    CapabilityRealizationPkg containedCapabilityRealizationPkg = basicGetContainedCapabilityRealizationPkg();
+    return containedCapabilityRealizationPkg != null && containedCapabilityRealizationPkg.eIsProxy() ? (CapabilityRealizationPkg)eResolveProxy((InternalEObject)containedCapabilityRealizationPkg) : containedCapabilityRealizationPkg;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public CapabilityRealizationPkg basicGetContainedCapabilityRealizationPkg() {
 
@@ -272,15 +272,15 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
     // A helper is found, let's use it. 
     EAnnotation annotation = PaPackage.Literals.PHYSICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, PaPackage.Literals.PHYSICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG, annotation);
-		
-		try {
-			return (CapabilityRealizationPkg) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (CapabilityRealizationPkg) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -288,23 +288,23 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public PhysicalFunctionPkg getContainedPhysicalFunctionPkg() {
 
-		PhysicalFunctionPkg containedPhysicalFunctionPkg = basicGetContainedPhysicalFunctionPkg();
-		return containedPhysicalFunctionPkg != null && containedPhysicalFunctionPkg.eIsProxy() ? (PhysicalFunctionPkg)eResolveProxy((InternalEObject)containedPhysicalFunctionPkg) : containedPhysicalFunctionPkg;
-	}
+    PhysicalFunctionPkg containedPhysicalFunctionPkg = basicGetContainedPhysicalFunctionPkg();
+    return containedPhysicalFunctionPkg != null && containedPhysicalFunctionPkg.eIsProxy() ? (PhysicalFunctionPkg)eResolveProxy((InternalEObject)containedPhysicalFunctionPkg) : containedPhysicalFunctionPkg;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public PhysicalFunctionPkg basicGetContainedPhysicalFunctionPkg() {
 
@@ -331,15 +331,15 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
     // A helper is found, let's use it. 
     EAnnotation annotation = PaPackage.Literals.PHYSICAL_ARCHITECTURE__CONTAINED_PHYSICAL_FUNCTION_PKG.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, PaPackage.Literals.PHYSICAL_ARCHITECTURE__CONTAINED_PHYSICAL_FUNCTION_PKG, annotation);
-		
-		try {
-			return (PhysicalFunctionPkg) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (PhysicalFunctionPkg) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -347,46 +347,46 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractDeploymentLink> getOwnedDeployments() {
 
-		if (ownedDeployments == null) {
-			ownedDeployments = new EObjectContainmentEList.Resolving<AbstractDeploymentLink>(AbstractDeploymentLink.class, this, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_DEPLOYMENTS);
-		}
-		return ownedDeployments;
-	}
+    if (ownedDeployments == null) {
+      ownedDeployments = new EObjectContainmentEList.Resolving<AbstractDeploymentLink>(AbstractDeploymentLink.class, this, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_DEPLOYMENTS);
+    }
+    return ownedDeployments;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LogicalArchitectureRealization> getOwnedLogicalArchitectureRealizations() {
 
-		if (ownedLogicalArchitectureRealizations == null) {
-			ownedLogicalArchitectureRealizations = new EObjectContainmentEList.Resolving<LogicalArchitectureRealization>(LogicalArchitectureRealization.class, this, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_LOGICAL_ARCHITECTURE_REALIZATIONS);
-		}
-		return ownedLogicalArchitectureRealizations;
-	}
+    if (ownedLogicalArchitectureRealizations == null) {
+      ownedLogicalArchitectureRealizations = new EObjectContainmentEList.Resolving<LogicalArchitectureRealization>(LogicalArchitectureRealization.class, this, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_LOGICAL_ARCHITECTURE_REALIZATIONS);
+    }
+    return ownedLogicalArchitectureRealizations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LogicalArchitectureRealization> getAllocatedLogicalArchitectureRealizations() {
 
@@ -413,27 +413,27 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
     // A helper is found, let's use it. 
     EAnnotation annotation = PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURE_REALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURE_REALIZATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<LogicalArchitectureRealization> resultAsList = (Collection<LogicalArchitectureRealization>) result;
-		return new EcoreEList.UnmodifiableEList<LogicalArchitectureRealization>(this, PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURE_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<LogicalArchitectureRealization> resultAsList = (Collection<LogicalArchitectureRealization>) result;
+    return new EcoreEList.UnmodifiableEList<LogicalArchitectureRealization>(this, PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURE_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LogicalArchitecture> getAllocatedLogicalArchitectures() {
 
@@ -460,27 +460,27 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
     // A helper is found, let's use it. 
     EAnnotation annotation = PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<LogicalArchitecture> resultAsList = (Collection<LogicalArchitecture>) result;
-		return new EcoreEList.UnmodifiableEList<LogicalArchitecture>(this, PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<LogicalArchitecture> resultAsList = (Collection<LogicalArchitecture>) result;
+    return new EcoreEList.UnmodifiableEList<LogicalArchitecture>(this, PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<EPBSArchitecture> getAllocatingEpbsArchitectures() {
 
@@ -507,144 +507,144 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
     // A helper is found, let's use it. 
     EAnnotation annotation = PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATING_EPBS_ARCHITECTURES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATING_EPBS_ARCHITECTURES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<EPBSArchitecture> resultAsList = (Collection<EPBSArchitecture>) result;
-		return new EcoreEList.UnmodifiableEList<EPBSArchitecture>(this, PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATING_EPBS_ARCHITECTURES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<EPBSArchitecture> resultAsList = (Collection<EPBSArchitecture>) result;
+    return new EcoreEList.UnmodifiableEList<EPBSArchitecture>(this, PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATING_EPBS_ARCHITECTURES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG:
-				return basicSetOwnedPhysicalComponentPkg(null, msgs);
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_DEPLOYMENTS:
-				return ((InternalEList<?>)getOwnedDeployments()).basicRemove(otherEnd, msgs);
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_LOGICAL_ARCHITECTURE_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedLogicalArchitectureRealizations()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG:
+        return basicSetOwnedPhysicalComponentPkg(null, msgs);
+      case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_DEPLOYMENTS:
+        return ((InternalEList<?>)getOwnedDeployments()).basicRemove(otherEnd, msgs);
+      case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_LOGICAL_ARCHITECTURE_REALIZATIONS:
+        return ((InternalEList<?>)getOwnedLogicalArchitectureRealizations()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG:
-				if (resolve) return getOwnedPhysicalComponentPkg();
-				return basicGetOwnedPhysicalComponentPkg();
-			case PaPackage.PHYSICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG:
-				if (resolve) return getContainedCapabilityRealizationPkg();
-				return basicGetContainedCapabilityRealizationPkg();
-			case PaPackage.PHYSICAL_ARCHITECTURE__CONTAINED_PHYSICAL_FUNCTION_PKG:
-				if (resolve) return getContainedPhysicalFunctionPkg();
-				return basicGetContainedPhysicalFunctionPkg();
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_DEPLOYMENTS:
-				return getOwnedDeployments();
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_LOGICAL_ARCHITECTURE_REALIZATIONS:
-				return getOwnedLogicalArchitectureRealizations();
-			case PaPackage.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURE_REALIZATIONS:
-				return getAllocatedLogicalArchitectureRealizations();
-			case PaPackage.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURES:
-				return getAllocatedLogicalArchitectures();
-			case PaPackage.PHYSICAL_ARCHITECTURE__ALLOCATING_EPBS_ARCHITECTURES:
-				return getAllocatingEpbsArchitectures();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG:
+        if (resolve) return getOwnedPhysicalComponentPkg();
+        return basicGetOwnedPhysicalComponentPkg();
+      case PaPackage.PHYSICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG:
+        if (resolve) return getContainedCapabilityRealizationPkg();
+        return basicGetContainedCapabilityRealizationPkg();
+      case PaPackage.PHYSICAL_ARCHITECTURE__CONTAINED_PHYSICAL_FUNCTION_PKG:
+        if (resolve) return getContainedPhysicalFunctionPkg();
+        return basicGetContainedPhysicalFunctionPkg();
+      case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_DEPLOYMENTS:
+        return getOwnedDeployments();
+      case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_LOGICAL_ARCHITECTURE_REALIZATIONS:
+        return getOwnedLogicalArchitectureRealizations();
+      case PaPackage.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURE_REALIZATIONS:
+        return getAllocatedLogicalArchitectureRealizations();
+      case PaPackage.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURES:
+        return getAllocatedLogicalArchitectures();
+      case PaPackage.PHYSICAL_ARCHITECTURE__ALLOCATING_EPBS_ARCHITECTURES:
+        return getAllocatingEpbsArchitectures();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG:
-					setOwnedPhysicalComponentPkg((PhysicalComponentPkg)newValue);
-				return;
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_DEPLOYMENTS:
-				getOwnedDeployments().clear();
-				getOwnedDeployments().addAll((Collection<? extends AbstractDeploymentLink>)newValue);
-				return;
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_LOGICAL_ARCHITECTURE_REALIZATIONS:
-				getOwnedLogicalArchitectureRealizations().clear();
-				getOwnedLogicalArchitectureRealizations().addAll((Collection<? extends LogicalArchitectureRealization>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG:
+          setOwnedPhysicalComponentPkg((PhysicalComponentPkg)newValue);
+        return;
+      case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_DEPLOYMENTS:
+        getOwnedDeployments().clear();
+        getOwnedDeployments().addAll((Collection<? extends AbstractDeploymentLink>)newValue);
+        return;
+      case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_LOGICAL_ARCHITECTURE_REALIZATIONS:
+        getOwnedLogicalArchitectureRealizations().clear();
+        getOwnedLogicalArchitectureRealizations().addAll((Collection<? extends LogicalArchitectureRealization>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG:
-				setOwnedPhysicalComponentPkg((PhysicalComponentPkg)null);
-				return;
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_DEPLOYMENTS:
-				getOwnedDeployments().clear();
-				return;
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_LOGICAL_ARCHITECTURE_REALIZATIONS:
-				getOwnedLogicalArchitectureRealizations().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG:
+        setOwnedPhysicalComponentPkg((PhysicalComponentPkg)null);
+        return;
+      case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_DEPLOYMENTS:
+        getOwnedDeployments().clear();
+        return;
+      case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_LOGICAL_ARCHITECTURE_REALIZATIONS:
+        getOwnedLogicalArchitectureRealizations().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG:
-				return ownedPhysicalComponentPkg != null;
-			case PaPackage.PHYSICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG:
-				return basicGetContainedCapabilityRealizationPkg() != null;
-			case PaPackage.PHYSICAL_ARCHITECTURE__CONTAINED_PHYSICAL_FUNCTION_PKG:
-				return basicGetContainedPhysicalFunctionPkg() != null;
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_DEPLOYMENTS:
-				return ownedDeployments != null && !ownedDeployments.isEmpty();
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_LOGICAL_ARCHITECTURE_REALIZATIONS:
-				return ownedLogicalArchitectureRealizations != null && !ownedLogicalArchitectureRealizations.isEmpty();
-			case PaPackage.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURE_REALIZATIONS:
-				return !getAllocatedLogicalArchitectureRealizations().isEmpty();
-			case PaPackage.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURES:
-				return !getAllocatedLogicalArchitectures().isEmpty();
-			case PaPackage.PHYSICAL_ARCHITECTURE__ALLOCATING_EPBS_ARCHITECTURES:
-				return !getAllocatingEpbsArchitectures().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG:
+        return ownedPhysicalComponentPkg != null;
+      case PaPackage.PHYSICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG:
+        return basicGetContainedCapabilityRealizationPkg() != null;
+      case PaPackage.PHYSICAL_ARCHITECTURE__CONTAINED_PHYSICAL_FUNCTION_PKG:
+        return basicGetContainedPhysicalFunctionPkg() != null;
+      case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_DEPLOYMENTS:
+        return ownedDeployments != null && !ownedDeployments.isEmpty();
+      case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_LOGICAL_ARCHITECTURE_REALIZATIONS:
+        return ownedLogicalArchitectureRealizations != null && !ownedLogicalArchitectureRealizations.isEmpty();
+      case PaPackage.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURE_REALIZATIONS:
+        return !getAllocatedLogicalArchitectureRealizations().isEmpty();
+      case PaPackage.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURES:
+        return !getAllocatedLogicalArchitectures().isEmpty();
+      case PaPackage.PHYSICAL_ARCHITECTURE__ALLOCATING_EPBS_ARCHITECTURES:
+        return !getAllocatingEpbsArchitectures().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

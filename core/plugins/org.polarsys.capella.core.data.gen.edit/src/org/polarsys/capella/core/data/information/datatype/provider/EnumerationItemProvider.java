@@ -56,193 +56,193 @@ public class EnumerationItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor domainTypePropertyDescriptor;
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public EnumerationItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process DatatypePackage.Literals.ENUMERATION__DOMAIN_TYPE
-			if (domainTypePropertyDescriptor != null) {
-				Object domainTypeValue = eObject.eGet(DatatypePackage.Literals.ENUMERATION__DOMAIN_TYPE, true);
-				if (domainTypeValue != null && domainTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) domainTypeValue)) {
-					itemPropertyDescriptors.remove(domainTypePropertyDescriptor);
-				} else if (domainTypeValue == null && ExtensionModelManager.getAnyType(eObject, DatatypePackage.Literals.ENUMERATION__DOMAIN_TYPE) != null) {
-					itemPropertyDescriptors.remove(domainTypePropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(domainTypePropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(domainTypePropertyDescriptor);
-				}
-			}
-		}		
-	}
+    super.checkChildCreationExtender(object);
+    if (object instanceof EObject) {
+      EObject eObject = (EObject) object;
+      // Process DatatypePackage.Literals.ENUMERATION__DOMAIN_TYPE
+      if (domainTypePropertyDescriptor != null) {
+        Object domainTypeValue = eObject.eGet(DatatypePackage.Literals.ENUMERATION__DOMAIN_TYPE, true);
+        if (domainTypeValue != null && domainTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) domainTypeValue)) {
+          itemPropertyDescriptors.remove(domainTypePropertyDescriptor);
+        } else if (domainTypeValue == null && ExtensionModelManager.getAnyType(eObject, DatatypePackage.Literals.ENUMERATION__DOMAIN_TYPE) != null) {
+          itemPropertyDescriptors.remove(domainTypePropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(domainTypePropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(domainTypePropertyDescriptor);
+        }
+      }
+    }		
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addDomainTypePropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addDomainTypePropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Domain Type feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Domain Type feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addDomainTypePropertyDescriptor(Object object) {
-		// begin-extension-code
-		domainTypePropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Enumeration_domainType_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Enumeration_domainType_feature", "_UI_Enumeration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 DatatypePackage.Literals.ENUMERATION__DOMAIN_TYPE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(domainTypePropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    domainTypePropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Enumeration_domainType_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_Enumeration_domainType_feature", "_UI_Enumeration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         DatatypePackage.Literals.ENUMERATION__DOMAIN_TYPE,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(domainTypePropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
+   * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+   * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(DatatypePackage.Literals.ENUMERATION__OWNED_LITERALS);
-			childrenFeatures.add(DatatypePackage.Literals.ENUMERATION__OWNED_DEFAULT_VALUE);
-			childrenFeatures.add(DatatypePackage.Literals.ENUMERATION__OWNED_NULL_VALUE);
-			childrenFeatures.add(DatatypePackage.Literals.ENUMERATION__OWNED_MIN_VALUE);
-			childrenFeatures.add(DatatypePackage.Literals.ENUMERATION__OWNED_MAX_VALUE);
-		}
-		return childrenFeatures;
-	}
+    if (childrenFeatures == null) {
+      super.getChildrenFeatures(object);
+      childrenFeatures.add(DatatypePackage.Literals.ENUMERATION__OWNED_LITERALS);
+      childrenFeatures.add(DatatypePackage.Literals.ENUMERATION__OWNED_DEFAULT_VALUE);
+      childrenFeatures.add(DatatypePackage.Literals.ENUMERATION__OWNED_NULL_VALUE);
+      childrenFeatures.add(DatatypePackage.Literals.ENUMERATION__OWNED_MIN_VALUE);
+      childrenFeatures.add(DatatypePackage.Literals.ENUMERATION__OWNED_MAX_VALUE);
+    }
+    return childrenFeatures;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
+    // Check the type of the specified child object and return the proper feature to use for
+    // adding (see {@link AddCommand}) it as a child.
 
-		return super.getChildFeature(object, child);
-	}
+    return super.getChildFeature(object, child);
+  }
 
 	/**
-	 * This returns Enumeration.gif.
-	 * <!-- begin-user-doc -->
+   * This returns Enumeration.gif.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Enumeration")); //$NON-NLS-1$
-	}
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/Enumeration")); //$NON-NLS-1$
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
-		String label = ((Enumeration)object).getName();
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_Enumeration_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+    String label = ((Enumeration)object).getName();
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_Enumeration_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
+    updateChildren(notification);
 
-		switch (notification.getFeatureID(Enumeration.class)) {
-			case DatatypePackage.ENUMERATION__OWNED_LITERALS:
-			case DatatypePackage.ENUMERATION__OWNED_DEFAULT_VALUE:
-			case DatatypePackage.ENUMERATION__OWNED_NULL_VALUE:
-			case DatatypePackage.ENUMERATION__OWNED_MIN_VALUE:
-			case DatatypePackage.ENUMERATION__OWNED_MAX_VALUE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
-		}
-		super.notifyChanged(notification);
-	}
+    switch (notification.getFeatureID(Enumeration.class)) {
+      case DatatypePackage.ENUMERATION__OWNED_LITERALS:
+      case DatatypePackage.ENUMERATION__OWNED_DEFAULT_VALUE:
+      case DatatypePackage.ENUMERATION__OWNED_NULL_VALUE:
+      case DatatypePackage.ENUMERATION__OWNED_MIN_VALUE:
+      case DatatypePackage.ENUMERATION__OWNED_MAX_VALUE:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+        return;
+    }
+    super.notifyChanged(notification);
+  }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
+    super.collectNewChildDescriptors(newChildDescriptors, object);
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -447,44 +447,44 @@ public class EnumerationItemProvider
                 // end-extension-code
 
 
-	}
+  }
 
 	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
+    Object childFeature = feature;
+    Object childObject = child;
 
-		boolean qualify =
-			childFeature == DatavaluePackage.Literals.DATA_VALUE_CONTAINER__OWNED_DATA_VALUES ||
-			childFeature == DatatypePackage.Literals.ENUMERATION__OWNED_LITERALS ||
-			childFeature == DatatypePackage.Literals.ENUMERATION__OWNED_DEFAULT_VALUE ||
-			childFeature == DatatypePackage.Literals.ENUMERATION__OWNED_NULL_VALUE ||
-			childFeature == DatatypePackage.Literals.ENUMERATION__OWNED_MIN_VALUE ||
-			childFeature == DatatypePackage.Literals.ENUMERATION__OWNED_MAX_VALUE;
+    boolean qualify =
+      childFeature == DatavaluePackage.Literals.DATA_VALUE_CONTAINER__OWNED_DATA_VALUES ||
+      childFeature == DatatypePackage.Literals.ENUMERATION__OWNED_LITERALS ||
+      childFeature == DatatypePackage.Literals.ENUMERATION__OWNED_DEFAULT_VALUE ||
+      childFeature == DatatypePackage.Literals.ENUMERATION__OWNED_NULL_VALUE ||
+      childFeature == DatatypePackage.Literals.ENUMERATION__OWNED_MIN_VALUE ||
+      childFeature == DatatypePackage.Literals.ENUMERATION__OWNED_MAX_VALUE;
 
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2", //$NON-NLS-1$
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
-	}
+    if (qualify) {
+      return getString
+        ("_UI_CreateChild_text2", //$NON-NLS-1$
+         new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+    }
+    return super.getCreateChildText(owner, feature, child, selection);
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 	// end-capella-code
 }

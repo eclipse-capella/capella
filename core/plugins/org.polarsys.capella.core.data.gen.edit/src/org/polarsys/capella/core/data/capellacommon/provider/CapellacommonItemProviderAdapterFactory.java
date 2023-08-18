@@ -49,759 +49,759 @@ import org.polarsys.kitalpha.emde.extension.edit.ChildCreationExtenderManager;
  */
 public class CapellacommonItemProviderAdapterFactory extends CapellacommonAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
 	/**
-	 * This keeps track of the root adapter factory that delegates to this adapter factory.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the root adapter factory that delegates to this adapter factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComposedAdapterFactory parentAdapterFactory;
 
 	/**
-	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-	 * <!-- begin-user-doc -->
+   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
 	/**
-	 * This helps manage the child creation extenders.
-	 * <!-- begin-user-doc -->
+   * This helps manage the child creation extenders.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(CapellaModellerEditPlugin.INSTANCE, CapellacommonPackage.eNS_URI);
 
 	/**
-	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-	 * <!-- begin-user-doc -->
+   * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
-	 * This constructs an instance.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CapellacommonItemProviderAdapterFactory() {
-		supportedTypes.add(IEditingDomainItemProvider.class);
-		supportedTypes.add(IStructuredItemContentProvider.class);
-		supportedTypes.add(ITreeItemContentProvider.class);
-		supportedTypes.add(IItemLabelProvider.class);
-		supportedTypes.add(IItemPropertySource.class);
-	}
+    supportedTypes.add(IEditingDomainItemProvider.class);
+    supportedTypes.add(IStructuredItemContentProvider.class);
+    supportedTypes.add(ITreeItemContentProvider.class);
+    supportedTypes.add(IItemLabelProvider.class);
+    supportedTypes.add(IItemPropertySource.class);
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.GenericTrace} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.GenericTrace} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected GenericTraceItemProvider genericTraceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.GenericTrace}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.GenericTrace}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createGenericTraceAdapter() {
-		if (genericTraceItemProvider == null) {
-			genericTraceItemProvider = new GenericTraceItemProvider(this);
-		}
+    if (genericTraceItemProvider == null) {
+      genericTraceItemProvider = new GenericTraceItemProvider(this);
+    }
 
-		return genericTraceItemProvider;
-	}
+    return genericTraceItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.TransfoLink} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.TransfoLink} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected TransfoLinkItemProvider transfoLinkItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.TransfoLink}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.TransfoLink}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createTransfoLinkAdapter() {
-		if (transfoLinkItemProvider == null) {
-			transfoLinkItemProvider = new TransfoLinkItemProvider(this);
-		}
+    if (transfoLinkItemProvider == null) {
+      transfoLinkItemProvider = new TransfoLinkItemProvider(this);
+    }
 
-		return transfoLinkItemProvider;
-	}
+    return transfoLinkItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.JustificationLink} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.JustificationLink} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected JustificationLinkItemProvider justificationLinkItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.JustificationLink}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.JustificationLink}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createJustificationLinkAdapter() {
-		if (justificationLinkItemProvider == null) {
-			justificationLinkItemProvider = new JustificationLinkItemProvider(this);
-		}
+    if (justificationLinkItemProvider == null) {
+      justificationLinkItemProvider = new JustificationLinkItemProvider(this);
+    }
 
-		return justificationLinkItemProvider;
-	}
+    return justificationLinkItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CapabilityRealizationInvolvementItemProvider capabilityRealizationInvolvementItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createCapabilityRealizationInvolvementAdapter() {
-		if (capabilityRealizationInvolvementItemProvider == null) {
-			capabilityRealizationInvolvementItemProvider = new CapabilityRealizationInvolvementItemProvider(this);
-		}
+    if (capabilityRealizationInvolvementItemProvider == null) {
+      capabilityRealizationInvolvementItemProvider = new CapabilityRealizationInvolvementItemProvider(this);
+    }
 
-		return capabilityRealizationInvolvementItemProvider;
-	}
+    return capabilityRealizationInvolvementItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.StateMachine} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.StateMachine} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected StateMachineItemProvider stateMachineItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.StateMachine}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.StateMachine}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createStateMachineAdapter() {
-		if (stateMachineItemProvider == null) {
-			stateMachineItemProvider = new StateMachineItemProvider(this);
-		}
+    if (stateMachineItemProvider == null) {
+      stateMachineItemProvider = new StateMachineItemProvider(this);
+    }
 
-		return stateMachineItemProvider;
-	}
+    return stateMachineItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.Region} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.Region} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected RegionItemProvider regionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.Region}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.Region}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createRegionAdapter() {
-		if (regionItemProvider == null) {
-			regionItemProvider = new RegionItemProvider(this);
-		}
+    if (regionItemProvider == null) {
+      regionItemProvider = new RegionItemProvider(this);
+    }
 
-		return regionItemProvider;
-	}
+    return regionItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.State} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.State} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected StateItemProvider stateItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.State}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.State}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createStateAdapter() {
-		if (stateItemProvider == null) {
-			stateItemProvider = new StateItemProvider(this);
-		}
+    if (stateItemProvider == null) {
+      stateItemProvider = new StateItemProvider(this);
+    }
 
-		return stateItemProvider;
-	}
+    return stateItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.Mode} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.Mode} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ModeItemProvider modeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.Mode}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.Mode}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createModeAdapter() {
-		if (modeItemProvider == null) {
-			modeItemProvider = new ModeItemProvider(this);
-		}
+    if (modeItemProvider == null) {
+      modeItemProvider = new ModeItemProvider(this);
+    }
 
-		return modeItemProvider;
-	}
+    return modeItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.FinalState} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.FinalState} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FinalStateItemProvider finalStateItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.FinalState}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.FinalState}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createFinalStateAdapter() {
-		if (finalStateItemProvider == null) {
-			finalStateItemProvider = new FinalStateItemProvider(this);
-		}
+    if (finalStateItemProvider == null) {
+      finalStateItemProvider = new FinalStateItemProvider(this);
+    }
 
-		return finalStateItemProvider;
-	}
+    return finalStateItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.StateTransition} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.StateTransition} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected StateTransitionItemProvider stateTransitionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.StateTransition}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.StateTransition}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createStateTransitionAdapter() {
-		if (stateTransitionItemProvider == null) {
-			stateTransitionItemProvider = new StateTransitionItemProvider(this);
-		}
+    if (stateTransitionItemProvider == null) {
+      stateTransitionItemProvider = new StateTransitionItemProvider(this);
+    }
 
-		return stateTransitionItemProvider;
-	}
+    return stateTransitionItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.InitialPseudoState} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.InitialPseudoState} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected InitialPseudoStateItemProvider initialPseudoStateItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.InitialPseudoState}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.InitialPseudoState}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createInitialPseudoStateAdapter() {
-		if (initialPseudoStateItemProvider == null) {
-			initialPseudoStateItemProvider = new InitialPseudoStateItemProvider(this);
-		}
+    if (initialPseudoStateItemProvider == null) {
+      initialPseudoStateItemProvider = new InitialPseudoStateItemProvider(this);
+    }
 
-		return initialPseudoStateItemProvider;
-	}
+    return initialPseudoStateItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.JoinPseudoState} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.JoinPseudoState} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected JoinPseudoStateItemProvider joinPseudoStateItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.JoinPseudoState}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.JoinPseudoState}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createJoinPseudoStateAdapter() {
-		if (joinPseudoStateItemProvider == null) {
-			joinPseudoStateItemProvider = new JoinPseudoStateItemProvider(this);
-		}
+    if (joinPseudoStateItemProvider == null) {
+      joinPseudoStateItemProvider = new JoinPseudoStateItemProvider(this);
+    }
 
-		return joinPseudoStateItemProvider;
-	}
+    return joinPseudoStateItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.ForkPseudoState} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.ForkPseudoState} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ForkPseudoStateItemProvider forkPseudoStateItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.ForkPseudoState}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.ForkPseudoState}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createForkPseudoStateAdapter() {
-		if (forkPseudoStateItemProvider == null) {
-			forkPseudoStateItemProvider = new ForkPseudoStateItemProvider(this);
-		}
+    if (forkPseudoStateItemProvider == null) {
+      forkPseudoStateItemProvider = new ForkPseudoStateItemProvider(this);
+    }
 
-		return forkPseudoStateItemProvider;
-	}
+    return forkPseudoStateItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.ChoicePseudoState} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.ChoicePseudoState} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ChoicePseudoStateItemProvider choicePseudoStateItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.ChoicePseudoState}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.ChoicePseudoState}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createChoicePseudoStateAdapter() {
-		if (choicePseudoStateItemProvider == null) {
-			choicePseudoStateItemProvider = new ChoicePseudoStateItemProvider(this);
-		}
+    if (choicePseudoStateItemProvider == null) {
+      choicePseudoStateItemProvider = new ChoicePseudoStateItemProvider(this);
+    }
 
-		return choicePseudoStateItemProvider;
-	}
+    return choicePseudoStateItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.TerminatePseudoState} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.TerminatePseudoState} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected TerminatePseudoStateItemProvider terminatePseudoStateItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.TerminatePseudoState}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.TerminatePseudoState}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createTerminatePseudoStateAdapter() {
-		if (terminatePseudoStateItemProvider == null) {
-			terminatePseudoStateItemProvider = new TerminatePseudoStateItemProvider(this);
-		}
+    if (terminatePseudoStateItemProvider == null) {
+      terminatePseudoStateItemProvider = new TerminatePseudoStateItemProvider(this);
+    }
 
-		return terminatePseudoStateItemProvider;
-	}
+    return terminatePseudoStateItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.AbstractStateRealization} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.AbstractStateRealization} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractStateRealizationItemProvider abstractStateRealizationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.AbstractStateRealization}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.AbstractStateRealization}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createAbstractStateRealizationAdapter() {
-		if (abstractStateRealizationItemProvider == null) {
-			abstractStateRealizationItemProvider = new AbstractStateRealizationItemProvider(this);
-		}
+    if (abstractStateRealizationItemProvider == null) {
+      abstractStateRealizationItemProvider = new AbstractStateRealizationItemProvider(this);
+    }
 
-		return abstractStateRealizationItemProvider;
-	}
+    return abstractStateRealizationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.StateTransitionRealization} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.StateTransitionRealization} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected StateTransitionRealizationItemProvider stateTransitionRealizationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.StateTransitionRealization}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.StateTransitionRealization}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createStateTransitionRealizationAdapter() {
-		if (stateTransitionRealizationItemProvider == null) {
-			stateTransitionRealizationItemProvider = new StateTransitionRealizationItemProvider(this);
-		}
+    if (stateTransitionRealizationItemProvider == null) {
+      stateTransitionRealizationItemProvider = new StateTransitionRealizationItemProvider(this);
+    }
 
-		return stateTransitionRealizationItemProvider;
-	}
+    return stateTransitionRealizationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.ShallowHistoryPseudoState} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.ShallowHistoryPseudoState} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ShallowHistoryPseudoStateItemProvider shallowHistoryPseudoStateItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.ShallowHistoryPseudoState}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.ShallowHistoryPseudoState}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createShallowHistoryPseudoStateAdapter() {
-		if (shallowHistoryPseudoStateItemProvider == null) {
-			shallowHistoryPseudoStateItemProvider = new ShallowHistoryPseudoStateItemProvider(this);
-		}
+    if (shallowHistoryPseudoStateItemProvider == null) {
+      shallowHistoryPseudoStateItemProvider = new ShallowHistoryPseudoStateItemProvider(this);
+    }
 
-		return shallowHistoryPseudoStateItemProvider;
-	}
+    return shallowHistoryPseudoStateItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.DeepHistoryPseudoState} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.DeepHistoryPseudoState} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected DeepHistoryPseudoStateItemProvider deepHistoryPseudoStateItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.DeepHistoryPseudoState}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.DeepHistoryPseudoState}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createDeepHistoryPseudoStateAdapter() {
-		if (deepHistoryPseudoStateItemProvider == null) {
-			deepHistoryPseudoStateItemProvider = new DeepHistoryPseudoStateItemProvider(this);
-		}
+    if (deepHistoryPseudoStateItemProvider == null) {
+      deepHistoryPseudoStateItemProvider = new DeepHistoryPseudoStateItemProvider(this);
+    }
 
-		return deepHistoryPseudoStateItemProvider;
-	}
+    return deepHistoryPseudoStateItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected EntryPointPseudoStateItemProvider entryPointPseudoStateItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createEntryPointPseudoStateAdapter() {
-		if (entryPointPseudoStateItemProvider == null) {
-			entryPointPseudoStateItemProvider = new EntryPointPseudoStateItemProvider(this);
-		}
+    if (entryPointPseudoStateItemProvider == null) {
+      entryPointPseudoStateItemProvider = new EntryPointPseudoStateItemProvider(this);
+    }
 
-		return entryPointPseudoStateItemProvider;
-	}
+    return entryPointPseudoStateItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ExitPointPseudoStateItemProvider exitPointPseudoStateItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createExitPointPseudoStateAdapter() {
-		if (exitPointPseudoStateItemProvider == null) {
-			exitPointPseudoStateItemProvider = new ExitPointPseudoStateItemProvider(this);
-		}
+    if (exitPointPseudoStateItemProvider == null) {
+      exitPointPseudoStateItemProvider = new ExitPointPseudoStateItemProvider(this);
+    }
 
-		return exitPointPseudoStateItemProvider;
-	}
+    return exitPointPseudoStateItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.StateEventRealization} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.StateEventRealization} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected StateEventRealizationItemProvider stateEventRealizationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.StateEventRealization}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.StateEventRealization}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createStateEventRealizationAdapter() {
-		if (stateEventRealizationItemProvider == null) {
-			stateEventRealizationItemProvider = new StateEventRealizationItemProvider(this);
-		}
+    if (stateEventRealizationItemProvider == null) {
+      stateEventRealizationItemProvider = new StateEventRealizationItemProvider(this);
+    }
 
-		return stateEventRealizationItemProvider;
-	}
+    return stateEventRealizationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.ChangeEvent} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.ChangeEvent} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ChangeEventItemProvider changeEventItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.ChangeEvent}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.ChangeEvent}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createChangeEventAdapter() {
-		if (changeEventItemProvider == null) {
-			changeEventItemProvider = new ChangeEventItemProvider(this);
-		}
+    if (changeEventItemProvider == null) {
+      changeEventItemProvider = new ChangeEventItemProvider(this);
+    }
 
-		return changeEventItemProvider;
-	}
+    return changeEventItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.TimeEvent} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.TimeEvent} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected TimeEventItemProvider timeEventItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.TimeEvent}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.TimeEvent}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createTimeEventAdapter() {
-		if (timeEventItemProvider == null) {
-			timeEventItemProvider = new TimeEventItemProvider(this);
-		}
+    if (timeEventItemProvider == null) {
+      timeEventItemProvider = new TimeEventItemProvider(this);
+    }
 
-		return timeEventItemProvider;
-	}
+    return timeEventItemProvider;
+  }
 
 	/**
-	 * This returns the root adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+   * This returns the root adapter factory that contains this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
-	}
+    return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+  }
 
 	/**
-	 * This sets the composed adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+   * This sets the composed adapter factory that contains this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
-		this.parentAdapterFactory = parentAdapterFactory;
-	}
+    this.parentAdapterFactory = parentAdapterFactory;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean isFactoryForType(Object type) {
-		return supportedTypes.contains(type) || super.isFactoryForType(type);
-	}
+    return supportedTypes.contains(type) || super.isFactoryForType(type);
+  }
 
 	/**
-	 * This implementation substitutes the factory itself as the key for the adapter.
-	 * <!-- begin-user-doc -->
+   * This implementation substitutes the factory itself as the key for the adapter.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
-		return super.adapt(notifier, this);
-	}
+    return super.adapt(notifier, this);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object adapt(Object object, Object type) {
-		if (isFactoryForType(type)) {
-			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
-				return adapter;
-			}
-		}
+    if (isFactoryForType(type)) {
+      Object adapter = super.adapt(object, type);
+      if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+        return adapter;
+      }
+    }
 
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public List<IChildCreationExtender> getChildCreationExtenders() {
-		return childCreationExtenderManager.getChildCreationExtenders();
-	}
+    return childCreationExtenderManager.getChildCreationExtenders();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
-	}
+    return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ResourceLocator getResourceLocator() {
-		return childCreationExtenderManager;
-	}
+    return childCreationExtenderManager;
+  }
 
 	/**
-	 * This adds a listener.
-	 * <!-- begin-user-doc -->
+   * This adds a listener.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.addListener(notifyChangedListener);
-	}
+    changeNotifier.addListener(notifyChangedListener);
+  }
 
 	/**
-	 * This removes a listener.
-	 * <!-- begin-user-doc -->
+   * This removes a listener.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.removeListener(notifyChangedListener);
-	}
+    changeNotifier.removeListener(notifyChangedListener);
+  }
 
 	/**
-	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-	 * <!-- begin-user-doc -->
+   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void fireNotifyChanged(Notification notification) {
-		changeNotifier.fireNotifyChanged(notification);
+    changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null) {
-			parentAdapterFactory.fireNotifyChanged(notification);
-		}
-	}
+    if (parentAdapterFactory != null) {
+      parentAdapterFactory.fireNotifyChanged(notification);
+    }
+  }
 
 	/**
-	 * This disposes all of the item providers created by this factory. 
-	 * <!-- begin-user-doc -->
+   * This disposes all of the item providers created by this factory. 
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void dispose() {
-		if (genericTraceItemProvider != null) genericTraceItemProvider.dispose();
-		if (transfoLinkItemProvider != null) transfoLinkItemProvider.dispose();
-		if (justificationLinkItemProvider != null) justificationLinkItemProvider.dispose();
-		if (capabilityRealizationInvolvementItemProvider != null) capabilityRealizationInvolvementItemProvider.dispose();
-		if (stateMachineItemProvider != null) stateMachineItemProvider.dispose();
-		if (regionItemProvider != null) regionItemProvider.dispose();
-		if (stateItemProvider != null) stateItemProvider.dispose();
-		if (modeItemProvider != null) modeItemProvider.dispose();
-		if (finalStateItemProvider != null) finalStateItemProvider.dispose();
-		if (stateTransitionItemProvider != null) stateTransitionItemProvider.dispose();
-		if (initialPseudoStateItemProvider != null) initialPseudoStateItemProvider.dispose();
-		if (joinPseudoStateItemProvider != null) joinPseudoStateItemProvider.dispose();
-		if (forkPseudoStateItemProvider != null) forkPseudoStateItemProvider.dispose();
-		if (choicePseudoStateItemProvider != null) choicePseudoStateItemProvider.dispose();
-		if (terminatePseudoStateItemProvider != null) terminatePseudoStateItemProvider.dispose();
-		if (abstractStateRealizationItemProvider != null) abstractStateRealizationItemProvider.dispose();
-		if (stateTransitionRealizationItemProvider != null) stateTransitionRealizationItemProvider.dispose();
-		if (shallowHistoryPseudoStateItemProvider != null) shallowHistoryPseudoStateItemProvider.dispose();
-		if (deepHistoryPseudoStateItemProvider != null) deepHistoryPseudoStateItemProvider.dispose();
-		if (entryPointPseudoStateItemProvider != null) entryPointPseudoStateItemProvider.dispose();
-		if (exitPointPseudoStateItemProvider != null) exitPointPseudoStateItemProvider.dispose();
-		if (stateEventRealizationItemProvider != null) stateEventRealizationItemProvider.dispose();
-		if (changeEventItemProvider != null) changeEventItemProvider.dispose();
-		if (timeEventItemProvider != null) timeEventItemProvider.dispose();
-	}
+    if (genericTraceItemProvider != null) genericTraceItemProvider.dispose();
+    if (transfoLinkItemProvider != null) transfoLinkItemProvider.dispose();
+    if (justificationLinkItemProvider != null) justificationLinkItemProvider.dispose();
+    if (capabilityRealizationInvolvementItemProvider != null) capabilityRealizationInvolvementItemProvider.dispose();
+    if (stateMachineItemProvider != null) stateMachineItemProvider.dispose();
+    if (regionItemProvider != null) regionItemProvider.dispose();
+    if (stateItemProvider != null) stateItemProvider.dispose();
+    if (modeItemProvider != null) modeItemProvider.dispose();
+    if (finalStateItemProvider != null) finalStateItemProvider.dispose();
+    if (stateTransitionItemProvider != null) stateTransitionItemProvider.dispose();
+    if (initialPseudoStateItemProvider != null) initialPseudoStateItemProvider.dispose();
+    if (joinPseudoStateItemProvider != null) joinPseudoStateItemProvider.dispose();
+    if (forkPseudoStateItemProvider != null) forkPseudoStateItemProvider.dispose();
+    if (choicePseudoStateItemProvider != null) choicePseudoStateItemProvider.dispose();
+    if (terminatePseudoStateItemProvider != null) terminatePseudoStateItemProvider.dispose();
+    if (abstractStateRealizationItemProvider != null) abstractStateRealizationItemProvider.dispose();
+    if (stateTransitionRealizationItemProvider != null) stateTransitionRealizationItemProvider.dispose();
+    if (shallowHistoryPseudoStateItemProvider != null) shallowHistoryPseudoStateItemProvider.dispose();
+    if (deepHistoryPseudoStateItemProvider != null) deepHistoryPseudoStateItemProvider.dispose();
+    if (entryPointPseudoStateItemProvider != null) entryPointPseudoStateItemProvider.dispose();
+    if (exitPointPseudoStateItemProvider != null) exitPointPseudoStateItemProvider.dispose();
+    if (stateEventRealizationItemProvider != null) stateEventRealizationItemProvider.dispose();
+    if (changeEventItemProvider != null) changeEventItemProvider.dispose();
+    if (timeEventItemProvider != null) timeEventItemProvider.dispose();
+  }
 
 }

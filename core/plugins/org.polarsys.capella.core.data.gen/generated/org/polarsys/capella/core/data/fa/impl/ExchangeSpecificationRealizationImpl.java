@@ -50,48 +50,48 @@ public abstract class ExchangeSpecificationRealizationImpl extends AllocationImp
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ExchangeSpecificationRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FaPackage.Literals.EXCHANGE_SPECIFICATION_REALIZATION;
-	}
+    return FaPackage.Literals.EXCHANGE_SPECIFICATION_REALIZATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ExchangeSpecification getRealizedExchangeSpecification() {
 
-		ExchangeSpecification realizedExchangeSpecification = basicGetRealizedExchangeSpecification();
-		return realizedExchangeSpecification != null && realizedExchangeSpecification.eIsProxy() ? (ExchangeSpecification)eResolveProxy((InternalEObject)realizedExchangeSpecification) : realizedExchangeSpecification;
-	}
+    ExchangeSpecification realizedExchangeSpecification = basicGetRealizedExchangeSpecification();
+    return realizedExchangeSpecification != null && realizedExchangeSpecification.eIsProxy() ? (ExchangeSpecification)eResolveProxy((InternalEObject)realizedExchangeSpecification) : realizedExchangeSpecification;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ExchangeSpecification basicGetRealizedExchangeSpecification() {
 
@@ -118,15 +118,15 @@ public abstract class ExchangeSpecificationRealizationImpl extends AllocationImp
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.EXCHANGE_SPECIFICATION_REALIZATION__REALIZED_EXCHANGE_SPECIFICATION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.EXCHANGE_SPECIFICATION_REALIZATION__REALIZED_EXCHANGE_SPECIFICATION, annotation);
-		
-		try {
-			return (ExchangeSpecification) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (ExchangeSpecification) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -134,23 +134,23 @@ public abstract class ExchangeSpecificationRealizationImpl extends AllocationImp
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ExchangeSpecification getRealizingExchangeSpecification() {
 
-		ExchangeSpecification realizingExchangeSpecification = basicGetRealizingExchangeSpecification();
-		return realizingExchangeSpecification != null && realizingExchangeSpecification.eIsProxy() ? (ExchangeSpecification)eResolveProxy((InternalEObject)realizingExchangeSpecification) : realizingExchangeSpecification;
-	}
+    ExchangeSpecification realizingExchangeSpecification = basicGetRealizingExchangeSpecification();
+    return realizingExchangeSpecification != null && realizingExchangeSpecification.eIsProxy() ? (ExchangeSpecification)eResolveProxy((InternalEObject)realizingExchangeSpecification) : realizingExchangeSpecification;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ExchangeSpecification basicGetRealizingExchangeSpecification() {
 
@@ -177,53 +177,53 @@ public abstract class ExchangeSpecificationRealizationImpl extends AllocationImp
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.EXCHANGE_SPECIFICATION_REALIZATION__REALIZING_EXCHANGE_SPECIFICATION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.EXCHANGE_SPECIFICATION_REALIZATION__REALIZING_EXCHANGE_SPECIFICATION, annotation);
-		
-		try {
-			return (ExchangeSpecification) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (ExchangeSpecification) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case FaPackage.EXCHANGE_SPECIFICATION_REALIZATION__REALIZED_EXCHANGE_SPECIFICATION:
-				if (resolve) return getRealizedExchangeSpecification();
-				return basicGetRealizedExchangeSpecification();
-			case FaPackage.EXCHANGE_SPECIFICATION_REALIZATION__REALIZING_EXCHANGE_SPECIFICATION:
-				if (resolve) return getRealizingExchangeSpecification();
-				return basicGetRealizingExchangeSpecification();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case FaPackage.EXCHANGE_SPECIFICATION_REALIZATION__REALIZED_EXCHANGE_SPECIFICATION:
+        if (resolve) return getRealizedExchangeSpecification();
+        return basicGetRealizedExchangeSpecification();
+      case FaPackage.EXCHANGE_SPECIFICATION_REALIZATION__REALIZING_EXCHANGE_SPECIFICATION:
+        if (resolve) return getRealizingExchangeSpecification();
+        return basicGetRealizingExchangeSpecification();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case FaPackage.EXCHANGE_SPECIFICATION_REALIZATION__REALIZED_EXCHANGE_SPECIFICATION:
-				return basicGetRealizedExchangeSpecification() != null;
-			case FaPackage.EXCHANGE_SPECIFICATION_REALIZATION__REALIZING_EXCHANGE_SPECIFICATION:
-				return basicGetRealizingExchangeSpecification() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.EXCHANGE_SPECIFICATION_REALIZATION__REALIZED_EXCHANGE_SPECIFICATION:
+        return basicGetRealizedExchangeSpecification() != null;
+      case FaPackage.EXCHANGE_SPECIFICATION_REALIZATION__REALIZING_EXCHANGE_SPECIFICATION:
+        return basicGetRealizingExchangeSpecification() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

@@ -39,23 +39,23 @@ import org.polarsys.capella.common.data.behavior.AbstractBehavior;
 public abstract class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 
 	/**
-	 * The default value of the '{@link #isIsMulticast() <em>Is Multicast</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isIsMulticast() <em>Is Multicast</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsMulticast()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsMulticast()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean IS_MULTICAST_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsMulticast() <em>Is Multicast</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isIsMulticast() <em>Is Multicast</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsMulticast()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsMulticast()
+   * @generated
+   * @ordered
+   */
 	protected boolean isMulticast = IS_MULTICAST_EDEFAULT;
 
 
@@ -63,23 +63,23 @@ public abstract class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectF
 
 
 	/**
-	 * The default value of the '{@link #isIsMultireceive() <em>Is Multireceive</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isIsMultireceive() <em>Is Multireceive</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsMultireceive()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsMultireceive()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean IS_MULTIRECEIVE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsMultireceive() <em>Is Multireceive</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isIsMultireceive() <em>Is Multireceive</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsMultireceive()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsMultireceive()
+   * @generated
+   * @ordered
+   */
 	protected boolean isMultireceive = IS_MULTIRECEIVE_EDEFAULT;
 
 
@@ -87,13 +87,13 @@ public abstract class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectF
 
 
 	/**
-	 * The cached value of the '{@link #getTransformation() <em>Transformation</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getTransformation() <em>Transformation</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTransformation()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getTransformation()
+   * @generated
+   * @ordered
+   */
 	protected AbstractBehavior transformation;
 
 
@@ -101,70 +101,70 @@ public abstract class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectF
 
 
 	/**
-	 * The cached value of the '{@link #getSelection() <em>Selection</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getSelection() <em>Selection</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSelection()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getSelection()
+   * @generated
+   * @ordered
+   */
 	protected AbstractBehavior selection;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ObjectFlowImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return ActivityPackage.Literals.OBJECT_FLOW;
-	}
+    return ActivityPackage.Literals.OBJECT_FLOW;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isIsMulticast() {
 
-		return isMulticast;
-	}
+    return isMulticast;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setIsMulticast(boolean newIsMulticast) {
 
-		boolean oldIsMulticast = isMulticast;
-		isMulticast = newIsMulticast;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.OBJECT_FLOW__IS_MULTICAST, oldIsMulticast, isMulticast));
+    boolean oldIsMulticast = isMulticast;
+    isMulticast = newIsMulticast;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.OBJECT_FLOW__IS_MULTICAST, oldIsMulticast, isMulticast));
 
-	}
+  }
 
 
 
@@ -172,32 +172,32 @@ public abstract class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectF
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isIsMultireceive() {
 
-		return isMultireceive;
-	}
+    return isMultireceive;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setIsMultireceive(boolean newIsMultireceive) {
 
-		boolean oldIsMultireceive = isMultireceive;
-		isMultireceive = newIsMultireceive;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.OBJECT_FLOW__IS_MULTIRECEIVE, oldIsMultireceive, isMultireceive));
+    boolean oldIsMultireceive = isMultireceive;
+    isMultireceive = newIsMultireceive;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.OBJECT_FLOW__IS_MULTIRECEIVE, oldIsMultireceive, isMultireceive));
 
-	}
+  }
 
 
 
@@ -205,53 +205,53 @@ public abstract class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectF
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractBehavior getTransformation() {
 
-		if (transformation != null && transformation.eIsProxy()) {
-			InternalEObject oldTransformation = (InternalEObject)transformation;
-			transformation = (AbstractBehavior)eResolveProxy(oldTransformation);
-			if (transformation != oldTransformation) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityPackage.OBJECT_FLOW__TRANSFORMATION, oldTransformation, transformation));
-			}
-		}
-		return transformation;
-	}
+    if (transformation != null && transformation.eIsProxy()) {
+      InternalEObject oldTransformation = (InternalEObject)transformation;
+      transformation = (AbstractBehavior)eResolveProxy(oldTransformation);
+      if (transformation != oldTransformation) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityPackage.OBJECT_FLOW__TRANSFORMATION, oldTransformation, transformation));
+      }
+    }
+    return transformation;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractBehavior basicGetTransformation() {
 
-		return transformation;
-	}
+    return transformation;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setTransformation(AbstractBehavior newTransformation) {
 
-		AbstractBehavior oldTransformation = transformation;
-		transformation = newTransformation;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.OBJECT_FLOW__TRANSFORMATION, oldTransformation, transformation));
+    AbstractBehavior oldTransformation = transformation;
+    transformation = newTransformation;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.OBJECT_FLOW__TRANSFORMATION, oldTransformation, transformation));
 
-	}
+  }
 
 
 
@@ -259,168 +259,168 @@ public abstract class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectF
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractBehavior getSelection() {
 
-		if (selection != null && selection.eIsProxy()) {
-			InternalEObject oldSelection = (InternalEObject)selection;
-			selection = (AbstractBehavior)eResolveProxy(oldSelection);
-			if (selection != oldSelection) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityPackage.OBJECT_FLOW__SELECTION, oldSelection, selection));
-			}
-		}
-		return selection;
-	}
+    if (selection != null && selection.eIsProxy()) {
+      InternalEObject oldSelection = (InternalEObject)selection;
+      selection = (AbstractBehavior)eResolveProxy(oldSelection);
+      if (selection != oldSelection) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityPackage.OBJECT_FLOW__SELECTION, oldSelection, selection));
+      }
+    }
+    return selection;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractBehavior basicGetSelection() {
 
-		return selection;
-	}
+    return selection;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setSelection(AbstractBehavior newSelection) {
 
-		AbstractBehavior oldSelection = selection;
-		selection = newSelection;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.OBJECT_FLOW__SELECTION, oldSelection, selection));
+    AbstractBehavior oldSelection = selection;
+    selection = newSelection;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.OBJECT_FLOW__SELECTION, oldSelection, selection));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ActivityPackage.OBJECT_FLOW__IS_MULTICAST:
-				return isIsMulticast();
-			case ActivityPackage.OBJECT_FLOW__IS_MULTIRECEIVE:
-				return isIsMultireceive();
-			case ActivityPackage.OBJECT_FLOW__TRANSFORMATION:
-				if (resolve) return getTransformation();
-				return basicGetTransformation();
-			case ActivityPackage.OBJECT_FLOW__SELECTION:
-				if (resolve) return getSelection();
-				return basicGetSelection();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case ActivityPackage.OBJECT_FLOW__IS_MULTICAST:
+        return isIsMulticast();
+      case ActivityPackage.OBJECT_FLOW__IS_MULTIRECEIVE:
+        return isIsMultireceive();
+      case ActivityPackage.OBJECT_FLOW__TRANSFORMATION:
+        if (resolve) return getTransformation();
+        return basicGetTransformation();
+      case ActivityPackage.OBJECT_FLOW__SELECTION:
+        if (resolve) return getSelection();
+        return basicGetSelection();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ActivityPackage.OBJECT_FLOW__IS_MULTICAST:
-					setIsMulticast((Boolean)newValue);
-				return;
-			case ActivityPackage.OBJECT_FLOW__IS_MULTIRECEIVE:
-					setIsMultireceive((Boolean)newValue);
-				return;
-			case ActivityPackage.OBJECT_FLOW__TRANSFORMATION:
-					setTransformation((AbstractBehavior)newValue);
-				return;
-			case ActivityPackage.OBJECT_FLOW__SELECTION:
-					setSelection((AbstractBehavior)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case ActivityPackage.OBJECT_FLOW__IS_MULTICAST:
+          setIsMulticast((Boolean)newValue);
+        return;
+      case ActivityPackage.OBJECT_FLOW__IS_MULTIRECEIVE:
+          setIsMultireceive((Boolean)newValue);
+        return;
+      case ActivityPackage.OBJECT_FLOW__TRANSFORMATION:
+          setTransformation((AbstractBehavior)newValue);
+        return;
+      case ActivityPackage.OBJECT_FLOW__SELECTION:
+          setSelection((AbstractBehavior)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.OBJECT_FLOW__IS_MULTICAST:
-				setIsMulticast(IS_MULTICAST_EDEFAULT);
-				return;
-			case ActivityPackage.OBJECT_FLOW__IS_MULTIRECEIVE:
-				setIsMultireceive(IS_MULTIRECEIVE_EDEFAULT);
-				return;
-			case ActivityPackage.OBJECT_FLOW__TRANSFORMATION:
-				setTransformation((AbstractBehavior)null);
-				return;
-			case ActivityPackage.OBJECT_FLOW__SELECTION:
-				setSelection((AbstractBehavior)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.OBJECT_FLOW__IS_MULTICAST:
+        setIsMulticast(IS_MULTICAST_EDEFAULT);
+        return;
+      case ActivityPackage.OBJECT_FLOW__IS_MULTIRECEIVE:
+        setIsMultireceive(IS_MULTIRECEIVE_EDEFAULT);
+        return;
+      case ActivityPackage.OBJECT_FLOW__TRANSFORMATION:
+        setTransformation((AbstractBehavior)null);
+        return;
+      case ActivityPackage.OBJECT_FLOW__SELECTION:
+        setSelection((AbstractBehavior)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.OBJECT_FLOW__IS_MULTICAST:
-				return isMulticast != IS_MULTICAST_EDEFAULT;
-			case ActivityPackage.OBJECT_FLOW__IS_MULTIRECEIVE:
-				return isMultireceive != IS_MULTIRECEIVE_EDEFAULT;
-			case ActivityPackage.OBJECT_FLOW__TRANSFORMATION:
-				return transformation != null;
-			case ActivityPackage.OBJECT_FLOW__SELECTION:
-				return selection != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.OBJECT_FLOW__IS_MULTICAST:
+        return isMulticast != IS_MULTICAST_EDEFAULT;
+      case ActivityPackage.OBJECT_FLOW__IS_MULTIRECEIVE:
+        return isMultireceive != IS_MULTIRECEIVE_EDEFAULT;
+      case ActivityPackage.OBJECT_FLOW__TRANSFORMATION:
+        return transformation != null;
+      case ActivityPackage.OBJECT_FLOW__SELECTION:
+        return selection != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (isMulticast: "); //$NON-NLS-1$
-		result.append(isMulticast);
-		result.append(", isMultireceive: "); //$NON-NLS-1$
-		result.append(isMultireceive);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (isMulticast: "); //$NON-NLS-1$
+    result.append(isMulticast);
+    result.append(", isMultireceive: "); //$NON-NLS-1$
+    result.append(isMultireceive);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //ObjectFlowImpl

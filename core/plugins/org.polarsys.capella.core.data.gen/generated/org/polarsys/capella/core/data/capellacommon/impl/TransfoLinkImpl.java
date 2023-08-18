@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.capellacommon.TransfoLink;
  */
 public class TransfoLinkImpl extends GenericTraceImpl implements TransfoLink {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected TransfoLinkImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.TRANSFO_LINK;
-	}
+    return CapellacommonPackage.Literals.TRANSFO_LINK;
+  }
 
 
 

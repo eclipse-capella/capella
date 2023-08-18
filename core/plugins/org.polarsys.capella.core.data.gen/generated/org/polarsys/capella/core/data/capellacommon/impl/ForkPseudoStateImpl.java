@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.capellacommon.ForkPseudoState;
  */
 public class ForkPseudoStateImpl extends PseudostateImpl implements ForkPseudoState {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ForkPseudoStateImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.FORK_PSEUDO_STATE;
-	}
+    return CapellacommonPackage.Literals.FORK_PSEUDO_STATE;
+  }
 
 
 

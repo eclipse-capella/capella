@@ -51,219 +51,219 @@ public class ConceptComplianceItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor complyWithConceptPropertyDescriptor;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor compliantCapabilityPropertyDescriptor;
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ConceptComplianceItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLY_WITH_CONCEPT
-			if (complyWithConceptPropertyDescriptor != null) {
-				Object complyWithConceptValue = eObject.eGet(OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLY_WITH_CONCEPT, true);
-				if (complyWithConceptValue != null && complyWithConceptValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) complyWithConceptValue)) {
-					itemPropertyDescriptors.remove(complyWithConceptPropertyDescriptor);
-				} else if (complyWithConceptValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLY_WITH_CONCEPT) != null) {
-					itemPropertyDescriptors.remove(complyWithConceptPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(complyWithConceptPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(complyWithConceptPropertyDescriptor);
-				}
-			}
-			// Process OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLIANT_CAPABILITY
-			if (compliantCapabilityPropertyDescriptor != null) {
-				Object compliantCapabilityValue = eObject.eGet(OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLIANT_CAPABILITY, true);
-				if (compliantCapabilityValue != null && compliantCapabilityValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) compliantCapabilityValue)) {
-					itemPropertyDescriptors.remove(compliantCapabilityPropertyDescriptor);
-				} else if (compliantCapabilityValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLIANT_CAPABILITY) != null) {
-					itemPropertyDescriptors.remove(compliantCapabilityPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(compliantCapabilityPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(compliantCapabilityPropertyDescriptor);
-				}
-			}
-		}		
-	}
+    super.checkChildCreationExtender(object);
+    if (object instanceof EObject) {
+      EObject eObject = (EObject) object;
+      // Process OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLY_WITH_CONCEPT
+      if (complyWithConceptPropertyDescriptor != null) {
+        Object complyWithConceptValue = eObject.eGet(OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLY_WITH_CONCEPT, true);
+        if (complyWithConceptValue != null && complyWithConceptValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) complyWithConceptValue)) {
+          itemPropertyDescriptors.remove(complyWithConceptPropertyDescriptor);
+        } else if (complyWithConceptValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLY_WITH_CONCEPT) != null) {
+          itemPropertyDescriptors.remove(complyWithConceptPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(complyWithConceptPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(complyWithConceptPropertyDescriptor);
+        }
+      }
+      // Process OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLIANT_CAPABILITY
+      if (compliantCapabilityPropertyDescriptor != null) {
+        Object compliantCapabilityValue = eObject.eGet(OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLIANT_CAPABILITY, true);
+        if (compliantCapabilityValue != null && compliantCapabilityValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) compliantCapabilityValue)) {
+          itemPropertyDescriptors.remove(compliantCapabilityPropertyDescriptor);
+        } else if (compliantCapabilityValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLIANT_CAPABILITY) != null) {
+          itemPropertyDescriptors.remove(compliantCapabilityPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(compliantCapabilityPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(compliantCapabilityPropertyDescriptor);
+        }
+      }
+    }		
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addComplyWithConceptPropertyDescriptor(object);
-			addCompliantCapabilityPropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addComplyWithConceptPropertyDescriptor(object);
+      addCompliantCapabilityPropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Comply With Concept feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Comply With Concept feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addComplyWithConceptPropertyDescriptor(Object object) {
-		// begin-extension-code
-		complyWithConceptPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ConceptCompliance_complyWithConcept_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ConceptCompliance_complyWithConcept_feature", "_UI_ConceptCompliance_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLY_WITH_CONCEPT,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(complyWithConceptPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    complyWithConceptPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ConceptCompliance_complyWithConcept_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ConceptCompliance_complyWithConcept_feature", "_UI_ConceptCompliance_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLY_WITH_CONCEPT,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(complyWithConceptPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Compliant Capability feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Compliant Capability feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addCompliantCapabilityPropertyDescriptor(Object object) {
-		// begin-extension-code
-		compliantCapabilityPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ConceptCompliance_compliantCapability_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ConceptCompliance_compliantCapability_feature", "_UI_ConceptCompliance_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLIANT_CAPABILITY,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(compliantCapabilityPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    compliantCapabilityPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ConceptCompliance_compliantCapability_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ConceptCompliance_compliantCapability_feature", "_UI_ConceptCompliance_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLIANT_CAPABILITY,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(compliantCapabilityPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This returns ConceptCompliance.gif.
-	 * <!-- begin-user-doc -->
+   * This returns ConceptCompliance.gif.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ConceptCompliance")); //$NON-NLS-1$
-	}
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/ConceptCompliance")); //$NON-NLS-1$
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
         String label = ""; //$NON-NLS-1$
         String targetName = ""; //$NON-NLS-1$
         EObject target = null;
 
-	 	if (null != target) {
-			if (target instanceof AbstractNamedElement) {
-				targetName = ((AbstractNamedElement) target).getName();
-			}
+   	if (null != target) {
+      if (target instanceof AbstractNamedElement) {
+        targetName = ((AbstractNamedElement) target).getName();
+      }
 
-			if (null == targetName || "" == targetName) { //$NON-NLS-1$
-				targetName = "[" + target.eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
-			}
-	 	}
-	 	label = "[" + getString("_UI_ConceptCompliance_type") + "] to " + targetName; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_ConceptCompliance_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+      if (null == targetName || "" == targetName) { //$NON-NLS-1$
+        targetName = "[" + target.eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
+      }
+   	}
+   	label = "[" + getString("_UI_ConceptCompliance_type") + "] to " + targetName; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_ConceptCompliance_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
-		super.notifyChanged(notification);
-	}
+    updateChildren(notification);
+    super.notifyChanged(notification);
+  }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+    super.collectNewChildDescriptors(newChildDescriptors, object);
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 	// end-capella-code
 }

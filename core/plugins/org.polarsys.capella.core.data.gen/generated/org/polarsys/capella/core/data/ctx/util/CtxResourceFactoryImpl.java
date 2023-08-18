@@ -25,27 +25,27 @@ import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
  */
 public class CtxResourceFactoryImpl extends ResourceFactoryImpl {
 	/**
-	 * Creates an instance of the resource factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the resource factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CtxResourceFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * Creates an instance of the resource.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the resource.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Resource createResource(URI uri) {
 
-		Resource result = new CtxResourceImpl(uri);
-		return result;
+    Resource result = new CtxResourceImpl(uri);
+    return result;
 
-	}
+  }
 
 } //CtxResourceFactoryImpl

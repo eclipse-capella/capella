@@ -38,20 +38,20 @@ public interface ReDescriptionElement extends ReNamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Description</b></em>' attribute.
+   * Returns the value of the '<em><b>Description</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Description</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Description</em>' attribute.
-	 * @see #setDescription(String)
-	 * @see org.polarsys.capella.common.re.RePackage#getReDescriptionElement_Description()
-	 * @model annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Description</em>' attribute.
+   * @see #setDescription(String)
+   * @see org.polarsys.capella.common.re.RePackage#getReDescriptionElement_Description()
+   * @model annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	String getDescription();
 
@@ -59,14 +59,14 @@ public interface ReDescriptionElement extends ReNamedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.re.ReDescriptionElement#getDescription <em>Description</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.common.re.ReDescriptionElement#getDescription <em>Description</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Description</em>' attribute.
-	 * @see #getDescription()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Description</em>' attribute.
+   * @see #getDescription()
+   * @generated
+   */
 
 	void setDescription(String value);
 

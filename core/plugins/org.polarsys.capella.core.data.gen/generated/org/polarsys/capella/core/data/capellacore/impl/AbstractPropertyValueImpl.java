@@ -46,13 +46,13 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 public abstract class AbstractPropertyValueImpl extends NamedElementImpl implements AbstractPropertyValue {
 
 	/**
-	 * The cached value of the '{@link #getInvolvedElements() <em>Involved Elements</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getInvolvedElements() <em>Involved Elements</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInvolvedElements()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getInvolvedElements()
+   * @generated
+   * @ordered
+   */
 	protected EList<CapellaElement> involvedElements;
 
 
@@ -63,53 +63,53 @@ public abstract class AbstractPropertyValueImpl extends NamedElementImpl impleme
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractPropertyValueImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacorePackage.Literals.ABSTRACT_PROPERTY_VALUE;
-	}
+    return CapellacorePackage.Literals.ABSTRACT_PROPERTY_VALUE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CapellaElement> getInvolvedElements() {
 
-		if (involvedElements == null) {
-			involvedElements = new EObjectResolvingEList<CapellaElement>(CapellaElement.class, this, CapellacorePackage.ABSTRACT_PROPERTY_VALUE__INVOLVED_ELEMENTS);
-		}
-		return involvedElements;
-	}
+    if (involvedElements == null) {
+      involvedElements = new EObjectResolvingEList<CapellaElement>(CapellaElement.class, this, CapellacorePackage.ABSTRACT_PROPERTY_VALUE__INVOLVED_ELEMENTS);
+    }
+    return involvedElements;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CapellaElement> getValuedElements() {
 
@@ -136,86 +136,86 @@ public abstract class AbstractPropertyValueImpl extends NamedElementImpl impleme
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.ABSTRACT_PROPERTY_VALUE__VALUED_ELEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.ABSTRACT_PROPERTY_VALUE__VALUED_ELEMENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<CapellaElement> resultAsList = (Collection<CapellaElement>) result;
-		return new EcoreEList.UnmodifiableEList<CapellaElement>(this, CapellacorePackage.Literals.ABSTRACT_PROPERTY_VALUE__VALUED_ELEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<CapellaElement> resultAsList = (Collection<CapellaElement>) result;
+    return new EcoreEList.UnmodifiableEList<CapellaElement>(this, CapellacorePackage.Literals.ABSTRACT_PROPERTY_VALUE__VALUED_ELEMENTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CapellacorePackage.ABSTRACT_PROPERTY_VALUE__INVOLVED_ELEMENTS:
-				return getInvolvedElements();
-			case CapellacorePackage.ABSTRACT_PROPERTY_VALUE__VALUED_ELEMENTS:
-				return getValuedElements();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CapellacorePackage.ABSTRACT_PROPERTY_VALUE__INVOLVED_ELEMENTS:
+        return getInvolvedElements();
+      case CapellacorePackage.ABSTRACT_PROPERTY_VALUE__VALUED_ELEMENTS:
+        return getValuedElements();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CapellacorePackage.ABSTRACT_PROPERTY_VALUE__INVOLVED_ELEMENTS:
-				getInvolvedElements().clear();
-				getInvolvedElements().addAll((Collection<? extends CapellaElement>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CapellacorePackage.ABSTRACT_PROPERTY_VALUE__INVOLVED_ELEMENTS:
+        getInvolvedElements().clear();
+        getInvolvedElements().addAll((Collection<? extends CapellaElement>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CapellacorePackage.ABSTRACT_PROPERTY_VALUE__INVOLVED_ELEMENTS:
-				getInvolvedElements().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CapellacorePackage.ABSTRACT_PROPERTY_VALUE__INVOLVED_ELEMENTS:
+        getInvolvedElements().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CapellacorePackage.ABSTRACT_PROPERTY_VALUE__INVOLVED_ELEMENTS:
-				return involvedElements != null && !involvedElements.isEmpty();
-			case CapellacorePackage.ABSTRACT_PROPERTY_VALUE__VALUED_ELEMENTS:
-				return !getValuedElements().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CapellacorePackage.ABSTRACT_PROPERTY_VALUE__INVOLVED_ELEMENTS:
+        return involvedElements != null && !involvedElements.isEmpty();
+      case CapellacorePackage.ABSTRACT_PROPERTY_VALUE__VALUED_ELEMENTS:
+        return !getValuedElements().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

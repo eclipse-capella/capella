@@ -43,13 +43,13 @@ import org.polarsys.capella.core.data.information.datavalue.DataValue;
 public class CollectionValueImpl extends AbstractCollectionValueImpl implements CollectionValue {
 
 	/**
-	 * The cached value of the '{@link #getOwnedElements() <em>Owned Elements</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedElements() <em>Owned Elements</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedElements()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedElements()
+   * @generated
+   * @ordered
+   */
 	protected EList<DataValue> ownedElements;
 
 
@@ -57,235 +57,235 @@ public class CollectionValueImpl extends AbstractCollectionValueImpl implements 
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedDefaultElement() <em>Owned Default Element</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedDefaultElement() <em>Owned Default Element</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedDefaultElement()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedDefaultElement()
+   * @generated
+   * @ordered
+   */
 	protected DataValue ownedDefaultElement;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CollectionValueImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.COLLECTION_VALUE;
-	}
+    return InformationPackage.Literals.COLLECTION_VALUE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<DataValue> getOwnedElements() {
 
-		if (ownedElements == null) {
-			ownedElements = new EObjectContainmentEList.Resolving<DataValue>(DataValue.class, this, InformationPackage.COLLECTION_VALUE__OWNED_ELEMENTS);
-		}
-		return ownedElements;
-	}
+    if (ownedElements == null) {
+      ownedElements = new EObjectContainmentEList.Resolving<DataValue>(DataValue.class, this, InformationPackage.COLLECTION_VALUE__OWNED_ELEMENTS);
+    }
+    return ownedElements;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public DataValue getOwnedDefaultElement() {
 
-		if (ownedDefaultElement != null && ownedDefaultElement.eIsProxy()) {
-			InternalEObject oldOwnedDefaultElement = (InternalEObject)ownedDefaultElement;
-			ownedDefaultElement = (DataValue)eResolveProxy(oldOwnedDefaultElement);
-			if (ownedDefaultElement != oldOwnedDefaultElement) {
-				InternalEObject newOwnedDefaultElement = (InternalEObject)ownedDefaultElement;
-				NotificationChain msgs = oldOwnedDefaultElement.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT, null, null);
-				if (newOwnedDefaultElement.eInternalContainer() == null) {
-					msgs = newOwnedDefaultElement.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT, oldOwnedDefaultElement, ownedDefaultElement));
-			}
-		}
-		return ownedDefaultElement;
-	}
+    if (ownedDefaultElement != null && ownedDefaultElement.eIsProxy()) {
+      InternalEObject oldOwnedDefaultElement = (InternalEObject)ownedDefaultElement;
+      ownedDefaultElement = (DataValue)eResolveProxy(oldOwnedDefaultElement);
+      if (ownedDefaultElement != oldOwnedDefaultElement) {
+        InternalEObject newOwnedDefaultElement = (InternalEObject)ownedDefaultElement;
+        NotificationChain msgs = oldOwnedDefaultElement.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT, null, null);
+        if (newOwnedDefaultElement.eInternalContainer() == null) {
+          msgs = newOwnedDefaultElement.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT, null, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT, oldOwnedDefaultElement, ownedDefaultElement));
+      }
+    }
+    return ownedDefaultElement;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public DataValue basicGetOwnedDefaultElement() {
 
-		return ownedDefaultElement;
-	}
+    return ownedDefaultElement;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedDefaultElement(DataValue newOwnedDefaultElement, NotificationChain msgs) {
 
-		DataValue oldOwnedDefaultElement = ownedDefaultElement;
-		ownedDefaultElement = newOwnedDefaultElement;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT, oldOwnedDefaultElement, newOwnedDefaultElement);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    DataValue oldOwnedDefaultElement = ownedDefaultElement;
+    ownedDefaultElement = newOwnedDefaultElement;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT, oldOwnedDefaultElement, newOwnedDefaultElement);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setOwnedDefaultElement(DataValue newOwnedDefaultElement) {
 
-		if (newOwnedDefaultElement != ownedDefaultElement) {
-			NotificationChain msgs = null;
-			if (ownedDefaultElement != null)
-				msgs = ((InternalEObject)ownedDefaultElement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT, null, msgs);
-			if (newOwnedDefaultElement != null)
-				msgs = ((InternalEObject)newOwnedDefaultElement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT, null, msgs);
-			msgs = basicSetOwnedDefaultElement(newOwnedDefaultElement, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT, newOwnedDefaultElement, newOwnedDefaultElement));
+    if (newOwnedDefaultElement != ownedDefaultElement) {
+      NotificationChain msgs = null;
+      if (ownedDefaultElement != null)
+        msgs = ((InternalEObject)ownedDefaultElement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT, null, msgs);
+      if (newOwnedDefaultElement != null)
+        msgs = ((InternalEObject)newOwnedDefaultElement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT, null, msgs);
+      msgs = basicSetOwnedDefaultElement(newOwnedDefaultElement, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT, newOwnedDefaultElement, newOwnedDefaultElement));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case InformationPackage.COLLECTION_VALUE__OWNED_ELEMENTS:
-				return ((InternalEList<?>)getOwnedElements()).basicRemove(otherEnd, msgs);
-			case InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT:
-				return basicSetOwnedDefaultElement(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case InformationPackage.COLLECTION_VALUE__OWNED_ELEMENTS:
+        return ((InternalEList<?>)getOwnedElements()).basicRemove(otherEnd, msgs);
+      case InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT:
+        return basicSetOwnedDefaultElement(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InformationPackage.COLLECTION_VALUE__OWNED_ELEMENTS:
-				return getOwnedElements();
-			case InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT:
-				if (resolve) return getOwnedDefaultElement();
-				return basicGetOwnedDefaultElement();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InformationPackage.COLLECTION_VALUE__OWNED_ELEMENTS:
+        return getOwnedElements();
+      case InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT:
+        if (resolve) return getOwnedDefaultElement();
+        return basicGetOwnedDefaultElement();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InformationPackage.COLLECTION_VALUE__OWNED_ELEMENTS:
-				getOwnedElements().clear();
-				getOwnedElements().addAll((Collection<? extends DataValue>)newValue);
-				return;
-			case InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT:
-					setOwnedDefaultElement((DataValue)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InformationPackage.COLLECTION_VALUE__OWNED_ELEMENTS:
+        getOwnedElements().clear();
+        getOwnedElements().addAll((Collection<? extends DataValue>)newValue);
+        return;
+      case InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT:
+          setOwnedDefaultElement((DataValue)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InformationPackage.COLLECTION_VALUE__OWNED_ELEMENTS:
-				getOwnedElements().clear();
-				return;
-			case InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT:
-				setOwnedDefaultElement((DataValue)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.COLLECTION_VALUE__OWNED_ELEMENTS:
+        getOwnedElements().clear();
+        return;
+      case InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT:
+        setOwnedDefaultElement((DataValue)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InformationPackage.COLLECTION_VALUE__OWNED_ELEMENTS:
-				return ownedElements != null && !ownedElements.isEmpty();
-			case InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT:
-				return ownedDefaultElement != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.COLLECTION_VALUE__OWNED_ELEMENTS:
+        return ownedElements != null && !ownedElements.isEmpty();
+      case InformationPackage.COLLECTION_VALUE__OWNED_DEFAULT_ELEMENT:
+        return ownedDefaultElement != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

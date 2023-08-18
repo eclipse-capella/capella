@@ -48,35 +48,35 @@ public class OperationalProcessImpl extends FunctionalChainImpl implements Opera
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OperationalProcessImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OaPackage.Literals.OPERATIONAL_PROCESS;
-	}
+    return OaPackage.Literals.OPERATIONAL_PROCESS;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<OperationalCapability> getInvolvingOperationalCapabilities() {
 
@@ -103,48 +103,48 @@ public class OperationalProcessImpl extends FunctionalChainImpl implements Opera
     // A helper is found, let's use it. 
     EAnnotation annotation = OaPackage.Literals.OPERATIONAL_PROCESS__INVOLVING_OPERATIONAL_CAPABILITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, OaPackage.Literals.OPERATIONAL_PROCESS__INVOLVING_OPERATIONAL_CAPABILITIES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<OperationalCapability> resultAsList = (Collection<OperationalCapability>) result;
-		return new EcoreEList.UnmodifiableEList<OperationalCapability>(this, OaPackage.Literals.OPERATIONAL_PROCESS__INVOLVING_OPERATIONAL_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<OperationalCapability> resultAsList = (Collection<OperationalCapability>) result;
+    return new EcoreEList.UnmodifiableEList<OperationalCapability>(this, OaPackage.Literals.OPERATIONAL_PROCESS__INVOLVING_OPERATIONAL_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_PROCESS__INVOLVING_OPERATIONAL_CAPABILITIES:
-				return getInvolvingOperationalCapabilities();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_PROCESS__INVOLVING_OPERATIONAL_CAPABILITIES:
+        return getInvolvingOperationalCapabilities();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_PROCESS__INVOLVING_OPERATIONAL_CAPABILITIES:
-				return !getInvolvingOperationalCapabilities().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_PROCESS__INVOLVING_OPERATIONAL_CAPABILITIES:
+        return !getInvolvingOperationalCapabilities().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

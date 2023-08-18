@@ -56,13 +56,13 @@ public class CapabilityInvolvementImpl extends RelationshipImpl implements Capab
 
 
 	/**
-	 * The cached value of the '{@link #getInvolved() <em>Involved</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getInvolved() <em>Involved</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInvolved()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getInvolved()
+   * @generated
+   * @ordered
+   */
 	protected InvolvedElement involved;
 
 
@@ -77,48 +77,48 @@ public class CapabilityInvolvementImpl extends RelationshipImpl implements Capab
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CapabilityInvolvementImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CtxPackage.Literals.CAPABILITY_INVOLVEMENT;
-	}
+    return CtxPackage.Literals.CAPABILITY_INVOLVEMENT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolverElement getInvolver() {
 
-		InvolverElement involver = basicGetInvolver();
-		return involver != null && involver.eIsProxy() ? (InvolverElement)eResolveProxy((InternalEObject)involver) : involver;
-	}
+    InvolverElement involver = basicGetInvolver();
+    return involver != null && involver.eIsProxy() ? (InvolverElement)eResolveProxy((InternalEObject)involver) : involver;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolverElement basicGetInvolver() {
 
@@ -145,15 +145,15 @@ public class CapabilityInvolvementImpl extends RelationshipImpl implements Capab
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.INVOLVEMENT__INVOLVER.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, annotation);
-		
-		try {
-			return (InvolverElement) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (InvolverElement) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -161,53 +161,53 @@ public class CapabilityInvolvementImpl extends RelationshipImpl implements Capab
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolvedElement getInvolved() {
 
-		if (involved != null && involved.eIsProxy()) {
-			InternalEObject oldInvolved = (InternalEObject)involved;
-			involved = (InvolvedElement)eResolveProxy(oldInvolved);
-			if (involved != oldInvolved) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.CAPABILITY_INVOLVEMENT__INVOLVED, oldInvolved, involved));
-			}
-		}
-		return involved;
-	}
+    if (involved != null && involved.eIsProxy()) {
+      InternalEObject oldInvolved = (InternalEObject)involved;
+      involved = (InvolvedElement)eResolveProxy(oldInvolved);
+      if (involved != oldInvolved) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.CAPABILITY_INVOLVEMENT__INVOLVED, oldInvolved, involved));
+      }
+    }
+    return involved;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolvedElement basicGetInvolved() {
 
-		return involved;
-	}
+    return involved;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setInvolved(InvolvedElement newInvolved) {
 
-		InvolvedElement oldInvolved = involved;
-		involved = newInvolved;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.CAPABILITY_INVOLVEMENT__INVOLVED, oldInvolved, involved));
+    InvolvedElement oldInvolved = involved;
+    involved = newInvolved;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.CAPABILITY_INVOLVEMENT__INVOLVED, oldInvolved, involved));
 
-	}
+  }
 
 
 
@@ -215,23 +215,23 @@ public class CapabilityInvolvementImpl extends RelationshipImpl implements Capab
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public SystemComponent getSystemComponent() {
 
-		SystemComponent systemComponent = basicGetSystemComponent();
-		return systemComponent != null && systemComponent.eIsProxy() ? (SystemComponent)eResolveProxy((InternalEObject)systemComponent) : systemComponent;
-	}
+    SystemComponent systemComponent = basicGetSystemComponent();
+    return systemComponent != null && systemComponent.eIsProxy() ? (SystemComponent)eResolveProxy((InternalEObject)systemComponent) : systemComponent;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public SystemComponent basicGetSystemComponent() {
 
@@ -258,15 +258,15 @@ public class CapabilityInvolvementImpl extends RelationshipImpl implements Capab
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.CAPABILITY_INVOLVEMENT__SYSTEM_COMPONENT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.CAPABILITY_INVOLVEMENT__SYSTEM_COMPONENT, annotation);
-		
-		try {
-			return (SystemComponent) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (SystemComponent) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -274,23 +274,23 @@ public class CapabilityInvolvementImpl extends RelationshipImpl implements Capab
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Capability getCapability() {
 
-		Capability capability = basicGetCapability();
-		return capability != null && capability.eIsProxy() ? (Capability)eResolveProxy((InternalEObject)capability) : capability;
-	}
+    Capability capability = basicGetCapability();
+    return capability != null && capability.eIsProxy() ? (Capability)eResolveProxy((InternalEObject)capability) : capability;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Capability basicGetCapability() {
 
@@ -317,95 +317,95 @@ public class CapabilityInvolvementImpl extends RelationshipImpl implements Capab
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.CAPABILITY_INVOLVEMENT__CAPABILITY.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.CAPABILITY_INVOLVEMENT__CAPABILITY, annotation);
-		
-		try {
-			return (Capability) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Capability) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CtxPackage.CAPABILITY_INVOLVEMENT__INVOLVER:
-				if (resolve) return getInvolver();
-				return basicGetInvolver();
-			case CtxPackage.CAPABILITY_INVOLVEMENT__INVOLVED:
-				if (resolve) return getInvolved();
-				return basicGetInvolved();
-			case CtxPackage.CAPABILITY_INVOLVEMENT__SYSTEM_COMPONENT:
-				if (resolve) return getSystemComponent();
-				return basicGetSystemComponent();
-			case CtxPackage.CAPABILITY_INVOLVEMENT__CAPABILITY:
-				if (resolve) return getCapability();
-				return basicGetCapability();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CtxPackage.CAPABILITY_INVOLVEMENT__INVOLVER:
+        if (resolve) return getInvolver();
+        return basicGetInvolver();
+      case CtxPackage.CAPABILITY_INVOLVEMENT__INVOLVED:
+        if (resolve) return getInvolved();
+        return basicGetInvolved();
+      case CtxPackage.CAPABILITY_INVOLVEMENT__SYSTEM_COMPONENT:
+        if (resolve) return getSystemComponent();
+        return basicGetSystemComponent();
+      case CtxPackage.CAPABILITY_INVOLVEMENT__CAPABILITY:
+        if (resolve) return getCapability();
+        return basicGetCapability();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CtxPackage.CAPABILITY_INVOLVEMENT__INVOLVED:
-					setInvolved((InvolvedElement)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CtxPackage.CAPABILITY_INVOLVEMENT__INVOLVED:
+          setInvolved((InvolvedElement)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CtxPackage.CAPABILITY_INVOLVEMENT__INVOLVED:
-				setInvolved((InvolvedElement)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CtxPackage.CAPABILITY_INVOLVEMENT__INVOLVED:
+        setInvolved((InvolvedElement)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CtxPackage.CAPABILITY_INVOLVEMENT__INVOLVER:
-				return basicGetInvolver() != null;
-			case CtxPackage.CAPABILITY_INVOLVEMENT__INVOLVED:
-				return involved != null;
-			case CtxPackage.CAPABILITY_INVOLVEMENT__SYSTEM_COMPONENT:
-				return basicGetSystemComponent() != null;
-			case CtxPackage.CAPABILITY_INVOLVEMENT__CAPABILITY:
-				return basicGetCapability() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CtxPackage.CAPABILITY_INVOLVEMENT__INVOLVER:
+        return basicGetInvolver() != null;
+      case CtxPackage.CAPABILITY_INVOLVEMENT__INVOLVED:
+        return involved != null;
+      case CtxPackage.CAPABILITY_INVOLVEMENT__SYSTEM_COMPONENT:
+        return basicGetSystemComponent() != null;
+      case CtxPackage.CAPABILITY_INVOLVEMENT__CAPABILITY:
+        return basicGetCapability() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.requirement.SystemFunctionalRequirement;
  */
 public class SystemFunctionalRequirementImpl extends RequirementImpl implements SystemFunctionalRequirement {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected SystemFunctionalRequirementImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return RequirementPackage.Literals.SYSTEM_FUNCTIONAL_REQUIREMENT;
-	}
+    return RequirementPackage.Literals.SYSTEM_FUNCTIONAL_REQUIREMENT;
+  }
 
 
 

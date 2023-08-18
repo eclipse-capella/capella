@@ -26,25 +26,25 @@ import org.polarsys.capella.common.re.RePackage;
 public class GroupingElementPkgImpl extends CatalogElementPkgImpl implements GroupingElementPkg {
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected GroupingElementPkgImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return RePackage.Literals.GROUPING_ELEMENT_PKG;
-	}
+    return RePackage.Literals.GROUPING_ELEMENT_PKG;
+  }
 
 
 

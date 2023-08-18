@@ -49,48 +49,48 @@ public class ComponentExchangeRealizationImpl extends ExchangeSpecificationReali
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComponentExchangeRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FaPackage.Literals.COMPONENT_EXCHANGE_REALIZATION;
-	}
+    return FaPackage.Literals.COMPONENT_EXCHANGE_REALIZATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ComponentExchange getAllocatedComponentExchange() {
 
-		ComponentExchange allocatedComponentExchange = basicGetAllocatedComponentExchange();
-		return allocatedComponentExchange != null && allocatedComponentExchange.eIsProxy() ? (ComponentExchange)eResolveProxy((InternalEObject)allocatedComponentExchange) : allocatedComponentExchange;
-	}
+    ComponentExchange allocatedComponentExchange = basicGetAllocatedComponentExchange();
+    return allocatedComponentExchange != null && allocatedComponentExchange.eIsProxy() ? (ComponentExchange)eResolveProxy((InternalEObject)allocatedComponentExchange) : allocatedComponentExchange;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ComponentExchange basicGetAllocatedComponentExchange() {
 
@@ -117,15 +117,15 @@ public class ComponentExchangeRealizationImpl extends ExchangeSpecificationReali
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.COMPONENT_EXCHANGE_REALIZATION__ALLOCATED_COMPONENT_EXCHANGE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.COMPONENT_EXCHANGE_REALIZATION__ALLOCATED_COMPONENT_EXCHANGE, annotation);
-		
-		try {
-			return (ComponentExchange) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (ComponentExchange) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -133,23 +133,23 @@ public class ComponentExchangeRealizationImpl extends ExchangeSpecificationReali
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ComponentExchange getAllocatingComponentExchange() {
 
-		ComponentExchange allocatingComponentExchange = basicGetAllocatingComponentExchange();
-		return allocatingComponentExchange != null && allocatingComponentExchange.eIsProxy() ? (ComponentExchange)eResolveProxy((InternalEObject)allocatingComponentExchange) : allocatingComponentExchange;
-	}
+    ComponentExchange allocatingComponentExchange = basicGetAllocatingComponentExchange();
+    return allocatingComponentExchange != null && allocatingComponentExchange.eIsProxy() ? (ComponentExchange)eResolveProxy((InternalEObject)allocatingComponentExchange) : allocatingComponentExchange;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ComponentExchange basicGetAllocatingComponentExchange() {
 
@@ -176,53 +176,53 @@ public class ComponentExchangeRealizationImpl extends ExchangeSpecificationReali
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.COMPONENT_EXCHANGE_REALIZATION__ALLOCATING_COMPONENT_EXCHANGE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.COMPONENT_EXCHANGE_REALIZATION__ALLOCATING_COMPONENT_EXCHANGE, annotation);
-		
-		try {
-			return (ComponentExchange) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (ComponentExchange) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case FaPackage.COMPONENT_EXCHANGE_REALIZATION__ALLOCATED_COMPONENT_EXCHANGE:
-				if (resolve) return getAllocatedComponentExchange();
-				return basicGetAllocatedComponentExchange();
-			case FaPackage.COMPONENT_EXCHANGE_REALIZATION__ALLOCATING_COMPONENT_EXCHANGE:
-				if (resolve) return getAllocatingComponentExchange();
-				return basicGetAllocatingComponentExchange();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case FaPackage.COMPONENT_EXCHANGE_REALIZATION__ALLOCATED_COMPONENT_EXCHANGE:
+        if (resolve) return getAllocatedComponentExchange();
+        return basicGetAllocatedComponentExchange();
+      case FaPackage.COMPONENT_EXCHANGE_REALIZATION__ALLOCATING_COMPONENT_EXCHANGE:
+        if (resolve) return getAllocatingComponentExchange();
+        return basicGetAllocatingComponentExchange();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case FaPackage.COMPONENT_EXCHANGE_REALIZATION__ALLOCATED_COMPONENT_EXCHANGE:
-				return basicGetAllocatedComponentExchange() != null;
-			case FaPackage.COMPONENT_EXCHANGE_REALIZATION__ALLOCATING_COMPONENT_EXCHANGE:
-				return basicGetAllocatingComponentExchange() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.COMPONENT_EXCHANGE_REALIZATION__ALLOCATED_COMPONENT_EXCHANGE:
+        return basicGetAllocatedComponentExchange() != null;
+      case FaPackage.COMPONENT_EXCHANGE_REALIZATION__ALLOCATING_COMPONENT_EXCHANGE:
+        return basicGetAllocatingComponentExchange() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

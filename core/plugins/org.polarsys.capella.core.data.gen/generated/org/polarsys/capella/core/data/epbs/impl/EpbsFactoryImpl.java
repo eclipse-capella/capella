@@ -38,207 +38,207 @@ import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
  */
 public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static EpbsFactory init() {
-		try {
-			EpbsFactory theEpbsFactory = (EpbsFactory)EPackage.Registry.INSTANCE.getEFactory(EpbsPackage.eNS_URI);
-			if (theEpbsFactory != null) {
-				return theEpbsFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new EpbsFactoryImpl();
-	}
+    try {
+      EpbsFactory theEpbsFactory = (EpbsFactory)EPackage.Registry.INSTANCE.getEFactory(EpbsPackage.eNS_URI);
+      if (theEpbsFactory != null) {
+        return theEpbsFactory;
+      }
+    }
+    catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new EpbsFactoryImpl();
+  }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public EpbsFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case EpbsPackage.EPBS_ARCHITECTURE_PKG: return createEPBSArchitecturePkg();
-			case EpbsPackage.EPBS_ARCHITECTURE: return createEPBSArchitecture();
-			case EpbsPackage.CONFIGURATION_ITEM_PKG: return createConfigurationItemPkg();
-			case EpbsPackage.CONFIGURATION_ITEM: return createConfigurationItem();
-			case EpbsPackage.PHYSICAL_ARCHITECTURE_REALIZATION: return createPhysicalArchitectureRealization();
-			case EpbsPackage.PHYSICAL_ARTIFACT_REALIZATION: return createPhysicalArtifactRealization();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eClass.getClassifierID()) {
+      case EpbsPackage.EPBS_ARCHITECTURE_PKG: return createEPBSArchitecturePkg();
+      case EpbsPackage.EPBS_ARCHITECTURE: return createEPBSArchitecture();
+      case EpbsPackage.CONFIGURATION_ITEM_PKG: return createConfigurationItemPkg();
+      case EpbsPackage.CONFIGURATION_ITEM: return createConfigurationItem();
+      case EpbsPackage.PHYSICAL_ARCHITECTURE_REALIZATION: return createPhysicalArchitectureRealization();
+      case EpbsPackage.PHYSICAL_ARTIFACT_REALIZATION: return createPhysicalArtifactRealization();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID()) {
-			case EpbsPackage.CONFIGURATION_ITEM_KIND:
-				return createConfigurationItemKindFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eDataType.getClassifierID()) {
+      case EpbsPackage.CONFIGURATION_ITEM_KIND:
+        return createConfigurationItemKindFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID()) {
-			case EpbsPackage.CONFIGURATION_ITEM_KIND:
-				return convertConfigurationItemKindToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eDataType.getClassifierID()) {
+      case EpbsPackage.CONFIGURATION_ITEM_KIND:
+        return convertConfigurationItemKindToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EPBSArchitecturePkg createEPBSArchitecturePkg() {
-		EPBSArchitecturePkgImpl epbsArchitecturePkg = new EPBSArchitecturePkgImpl();
+    EPBSArchitecturePkgImpl epbsArchitecturePkg = new EPBSArchitecturePkgImpl();
     //begin-capella-code
     epbsArchitecturePkg.setId(IdGenerator.createId());
     //end-capella-code
-		return epbsArchitecturePkg;
-	}
+    return epbsArchitecturePkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EPBSArchitecture createEPBSArchitecture() {
-		EPBSArchitectureImpl epbsArchitecture = new EPBSArchitectureImpl();
+    EPBSArchitectureImpl epbsArchitecture = new EPBSArchitectureImpl();
     //begin-capella-code
     epbsArchitecture.setId(IdGenerator.createId());
     //end-capella-code
-		return epbsArchitecture;
-	}
+    return epbsArchitecture;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ConfigurationItemPkg createConfigurationItemPkg() {
-		ConfigurationItemPkgImpl configurationItemPkg = new ConfigurationItemPkgImpl();
+    ConfigurationItemPkgImpl configurationItemPkg = new ConfigurationItemPkgImpl();
     //begin-capella-code
     configurationItemPkg.setId(IdGenerator.createId());
     //end-capella-code
-		return configurationItemPkg;
-	}
+    return configurationItemPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ConfigurationItem createConfigurationItem() {
-		ConfigurationItemImpl configurationItem = new ConfigurationItemImpl();
+    ConfigurationItemImpl configurationItem = new ConfigurationItemImpl();
     //begin-capella-code
     configurationItem.setId(IdGenerator.createId());
     //end-capella-code
-		return configurationItem;
-	}
+    return configurationItem;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PhysicalArchitectureRealization createPhysicalArchitectureRealization() {
-		PhysicalArchitectureRealizationImpl physicalArchitectureRealization = new PhysicalArchitectureRealizationImpl();
+    PhysicalArchitectureRealizationImpl physicalArchitectureRealization = new PhysicalArchitectureRealizationImpl();
     //begin-capella-code
     physicalArchitectureRealization.setId(IdGenerator.createId());
     //end-capella-code
-		return physicalArchitectureRealization;
-	}
+    return physicalArchitectureRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PhysicalArtifactRealization createPhysicalArtifactRealization() {
-		PhysicalArtifactRealizationImpl physicalArtifactRealization = new PhysicalArtifactRealizationImpl();
+    PhysicalArtifactRealizationImpl physicalArtifactRealization = new PhysicalArtifactRealizationImpl();
     //begin-capella-code
     physicalArtifactRealization.setId(IdGenerator.createId());
     //end-capella-code
-		return physicalArtifactRealization;
-	}
+    return physicalArtifactRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ConfigurationItemKind createConfigurationItemKindFromString(EDataType eDataType, String initialValue) {
-		ConfigurationItemKind result = ConfigurationItemKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    ConfigurationItemKind result = ConfigurationItemKind.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertConfigurationItemKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EpbsPackage getEpbsPackage() {
-		return (EpbsPackage)getEPackage();
-	}
+    return (EpbsPackage)getEPackage();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
 	@Deprecated
 	public static EpbsPackage getPackage() {
-		return EpbsPackage.eINSTANCE;
-	}
+    return EpbsPackage.eINSTANCE;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -248,10 +248,10 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	 * @generated
 	 */
 	public EPBSArchitecturePkg createEPBSArchitecturePkg(String name_p) {
-		EPBSArchitecturePkg epbsArchitecturePkg = createEPBSArchitecturePkg();
-		epbsArchitecturePkg.setName(name_p);	  
-		return epbsArchitecturePkg;
-	}
+    EPBSArchitecturePkg epbsArchitecturePkg = createEPBSArchitecturePkg();
+    epbsArchitecturePkg.setName(name_p);	  
+    return epbsArchitecturePkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -261,10 +261,10 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	 * @generated
 	 */
 	public EPBSArchitecture createEPBSArchitecture(String name_p) {
-		EPBSArchitecture epbsArchitecture = createEPBSArchitecture();
-		epbsArchitecture.setName(name_p);	  
-		return epbsArchitecture;
-	}
+    EPBSArchitecture epbsArchitecture = createEPBSArchitecture();
+    epbsArchitecture.setName(name_p);	  
+    return epbsArchitecture;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -274,10 +274,10 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	 * @generated
 	 */
 	public ConfigurationItemPkg createConfigurationItemPkg(String name_p) {
-		ConfigurationItemPkg configurationItemPkg = createConfigurationItemPkg();
-		configurationItemPkg.setName(name_p);	  
-		return configurationItemPkg;
-	}
+    ConfigurationItemPkg configurationItemPkg = createConfigurationItemPkg();
+    configurationItemPkg.setName(name_p);	  
+    return configurationItemPkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -287,10 +287,10 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	 * @generated
 	 */
 	public ConfigurationItem createConfigurationItem(String name_p) {
-		ConfigurationItem configurationItem = createConfigurationItem();
-		configurationItem.setName(name_p);	  
-		return configurationItem;
-	}
+    ConfigurationItem configurationItem = createConfigurationItem();
+    configurationItem.setName(name_p);	  
+    return configurationItem;
+  }
 
 	//begin-capella-code
 

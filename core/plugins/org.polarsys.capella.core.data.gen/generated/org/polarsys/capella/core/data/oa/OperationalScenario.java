@@ -40,23 +40,23 @@ public interface OperationalScenario extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Context</b></em>' attribute.
+   * Returns the value of the '<em><b>Context</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Context</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Context</em>' attribute.
-	 * @see #setContext(String)
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalScenario_Context()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='description of the context in which this operational scenario takes place\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Context</em>' attribute.
+   * @see #setContext(String)
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalScenario_Context()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='description of the context in which this operational scenario takes place\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	String getContext();
 
@@ -64,14 +64,14 @@ public interface OperationalScenario extends NamedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.oa.OperationalScenario#getContext <em>Context</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.oa.OperationalScenario#getContext <em>Context</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Context</em>' attribute.
-	 * @see #getContext()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Context</em>' attribute.
+   * @see #getContext()
+   * @generated
+   */
 
 	void setContext(String value);
 
@@ -82,23 +82,23 @@ public interface OperationalScenario extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Objective</b></em>' attribute.
+   * Returns the value of the '<em><b>Objective</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Objective</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Objective</em>' attribute.
-	 * @see #setObjective(String)
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalScenario_Objective()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='description of the objective/output of this operational scenario\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Objective</em>' attribute.
+   * @see #setObjective(String)
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalScenario_Objective()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='description of the objective/output of this operational scenario\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	String getObjective();
 
@@ -106,14 +106,14 @@ public interface OperationalScenario extends NamedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.oa.OperationalScenario#getObjective <em>Objective</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.oa.OperationalScenario#getObjective <em>Objective</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Objective</em>' attribute.
-	 * @see #getObjective()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Objective</em>' attribute.
+   * @see #getObjective()
+   * @generated
+   */
 
 	void setObjective(String value);
 

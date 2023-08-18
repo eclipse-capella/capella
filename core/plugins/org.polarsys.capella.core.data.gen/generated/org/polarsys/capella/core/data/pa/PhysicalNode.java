@@ -41,26 +41,26 @@ public interface PhysicalNode extends PhysicalComponent {
 
 
 	/**
-	 * Returns the value of the '<em><b>Sub Physical Nodes</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalNode}.
+   * Returns the value of the '<em><b>Sub Physical Nodes</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalNode}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Sub Physical Nodes</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sub Physical Nodes</em>' reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalNode_SubPhysicalNodes()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='subActors'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedPartitions.type'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='all derived children of this physical node\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Sub Physical Nodes</em>' reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalNode_SubPhysicalNodes()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='subActors'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedPartitions.type'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='all derived children of this physical node\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   * @generated
+   */
 
 	EList<PhysicalNode> getSubPhysicalNodes();
 

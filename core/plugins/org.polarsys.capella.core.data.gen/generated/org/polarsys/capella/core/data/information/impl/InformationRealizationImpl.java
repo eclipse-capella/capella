@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.information.InformationRealization;
  */
 public class InformationRealizationImpl extends AllocationImpl implements InformationRealization {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected InformationRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.INFORMATION_REALIZATION;
-	}
+    return InformationPackage.Literals.INFORMATION_REALIZATION;
+  }
 
 
 

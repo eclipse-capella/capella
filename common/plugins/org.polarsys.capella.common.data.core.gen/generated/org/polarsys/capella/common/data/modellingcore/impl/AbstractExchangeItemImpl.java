@@ -25,25 +25,25 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
  */
 public abstract class AbstractExchangeItemImpl extends AbstractTypeImpl implements AbstractExchangeItem {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractExchangeItemImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return ModellingcorePackage.Literals.ABSTRACT_EXCHANGE_ITEM;
-	}
+    return ModellingcorePackage.Literals.ABSTRACT_EXCHANGE_ITEM;
+  }
 
 
 

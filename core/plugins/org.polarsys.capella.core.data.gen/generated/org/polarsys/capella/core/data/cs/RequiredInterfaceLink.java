@@ -42,25 +42,25 @@ public interface RequiredInterfaceLink extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Interface</b></em>' reference.
+   * Returns the value of the '<em><b>Interface</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Interface</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Interface</em>' reference.
-	 * @see #setInterface(Interface)
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getRequiredInterfaceLink_Interface()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='supplier' featureOwner='Dependency'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='interface'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The element(s) independent of the client element(s), in the same respect and the same dependency relationship\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='uml::Dependency::supplier elements on which Interface stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [1..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Interface</em>' reference.
+   * @see #setInterface(Interface)
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getRequiredInterfaceLink_Interface()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='supplier' featureOwner='Dependency'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='interface'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The element(s) independent of the client element(s), in the same respect and the same dependency relationship\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='uml::Dependency::supplier elements on which Interface stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [1..1]'"
+   * @generated
+   */
 
 	Interface getInterface();
 
@@ -68,14 +68,14 @@ public interface RequiredInterfaceLink extends Relationship {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.cs.RequiredInterfaceLink#getInterface <em>Interface</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.cs.RequiredInterfaceLink#getInterface <em>Interface</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Interface</em>' reference.
-	 * @see #getInterface()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Interface</em>' reference.
+   * @see #getInterface()
+   * @generated
+   */
 
 	void setInterface(Interface value);
 

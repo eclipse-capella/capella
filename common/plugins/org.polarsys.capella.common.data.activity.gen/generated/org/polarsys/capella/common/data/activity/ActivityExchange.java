@@ -40,23 +40,23 @@ public interface ActivityExchange extends AbstractInformationFlow {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realizing Activity Flows</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.activity.ActivityEdge}.
+   * Returns the value of the '<em><b>Realizing Activity Flows</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.activity.ActivityEdge}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realizing Activity Flows</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realizing Activity Flows</em>' reference list.
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityExchange_RealizingActivityFlows()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='realizations'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Determines which ActivityEdges will realize the specified flow.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realizing Activity Flows</em>' reference list.
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityExchange_RealizingActivityFlows()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='realizations'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Determines which ActivityEdges will realize the specified flow.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<ActivityEdge> getRealizingActivityFlows();
 

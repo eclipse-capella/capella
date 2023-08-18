@@ -45,23 +45,23 @@ public interface PhysicalFunction extends AbstractFunction {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Physical Function Pkgs</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalFunctionPkg}.
+   * Returns the value of the '<em><b>Owned Physical Function Pkgs</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalFunctionPkg}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Physical Function Pkgs</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Physical Function Pkgs</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction_OwnedPhysicalFunctionPkgs()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the sub-(physical function) packages contained in this physical function' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which PhysicalFunctionPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Physical Function Pkgs</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction_OwnedPhysicalFunctionPkgs()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the sub-(physical function) packages contained in this physical function' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which PhysicalFunctionPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<PhysicalFunctionPkg> getOwnedPhysicalFunctionPkgs();
 
@@ -72,25 +72,25 @@ public interface PhysicalFunction extends AbstractFunction {
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocating Physical Components</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalComponent}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.pa.PhysicalComponent#getAllocatedPhysicalFunctions <em>Allocated Physical Functions</em>}'.
+   * Returns the value of the '<em><b>Allocating Physical Components</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalComponent}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.pa.PhysicalComponent#getAllocatedPhysicalFunctions <em>Allocated Physical Functions</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocating Physical Components</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocating Physical Components</em>' reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction_AllocatingPhysicalComponents()
-	 * @see org.polarsys.capella.core.data.pa.PhysicalComponent#getAllocatedPhysicalFunctions
-	 * @model opposite="allocatedPhysicalFunctions" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalFunction.incomingTraces(self, incomingTraces);\r\nComponentFunctionalAllocation.sourceElement(incomingTraces, target);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Allocating Physical Components</em>' reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction_AllocatingPhysicalComponents()
+   * @see org.polarsys.capella.core.data.pa.PhysicalComponent#getAllocatedPhysicalFunctions
+   * @model opposite="allocatedPhysicalFunctions" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalFunction.incomingTraces(self, incomingTraces);\r\nComponentFunctionalAllocation.sourceElement(incomingTraces, target);'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<PhysicalComponent> getAllocatingPhysicalComponents();
 
@@ -101,25 +101,25 @@ public interface PhysicalFunction extends AbstractFunction {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realized Logical Functions</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.la.LogicalFunction}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.la.LogicalFunction#getRealizingPhysicalFunctions <em>Realizing Physical Functions</em>}'.
+   * Returns the value of the '<em><b>Realized Logical Functions</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.la.LogicalFunction}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.la.LogicalFunction#getRealizingPhysicalFunctions <em>Realizing Physical Functions</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realized Logical Functions</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realized Logical Functions</em>' reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction_RealizedLogicalFunctions()
-	 * @see org.polarsys.capella.core.data.la.LogicalFunction#getRealizingPhysicalFunctions
-	 * @model opposite="realizingPhysicalFunctions" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outFunctionRealizations.allocatedFunction'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realized Logical Functions</em>' reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction_RealizedLogicalFunctions()
+   * @see org.polarsys.capella.core.data.la.LogicalFunction#getRealizingPhysicalFunctions
+   * @model opposite="realizingPhysicalFunctions" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outFunctionRealizations.allocatedFunction'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<LogicalFunction> getRealizedLogicalFunctions();
 
@@ -130,23 +130,23 @@ public interface PhysicalFunction extends AbstractFunction {
 
 
 	/**
-	 * Returns the value of the '<em><b>Contained Physical Functions</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalFunction}.
+   * Returns the value of the '<em><b>Contained Physical Functions</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalFunction}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contained Physical Functions</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contained Physical Functions</em>' reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction_ContainedPhysicalFunctions()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFunctions'"
-	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedFunctions'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Contained Physical Functions</em>' reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction_ContainedPhysicalFunctions()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFunctions'"
+   *        annotation="http://www.polarsys.org/capella/semantic feature='ownedFunctions'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<PhysicalFunction> getContainedPhysicalFunctions();
 
@@ -157,24 +157,24 @@ public interface PhysicalFunction extends AbstractFunction {
 
 
 	/**
-	 * Returns the value of the '<em><b>Children Physical Functions</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalFunction}.
+   * Returns the value of the '<em><b>Children Physical Functions</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalFunction}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Children Physical Functions</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Children Physical Functions</em>' reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction_ChildrenPhysicalFunctions()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='subFunctions'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='list of children physical functions\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Children Physical Functions</em>' reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction_ChildrenPhysicalFunctions()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='subFunctions'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='list of children physical functions\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<PhysicalFunction> getChildrenPhysicalFunctions();
 

@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.capellamodeller.Library;
  */
 public class LibraryImpl extends ProjectImpl implements Library {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected LibraryImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellamodellerPackage.Literals.LIBRARY;
-	}
+    return CapellamodellerPackage.Literals.LIBRARY;
+  }
 
 
 

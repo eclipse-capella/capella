@@ -38,22 +38,22 @@ public interface Pin extends ObjectNode {
 
 
 	/**
-	 * Returns the value of the '<em><b>Is Control</b></em>' attribute.
+   * Returns the value of the '<em><b>Is Control</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Is Control</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Is Control</em>' attribute.
-	 * @see #setIsControl(boolean)
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getPin_IsControl()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Tells whether the pins provide data to the actions, or just controls when it executes it.\r\n[source: UML superstructure v2.2]\r\n' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='Cardinality of uml::Pin::isControl is [1..1]'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Is Control</em>' attribute.
+   * @see #setIsControl(boolean)
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getPin_IsControl()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Tells whether the pins provide data to the actions, or just controls when it executes it.\r\n[source: UML superstructure v2.2]\r\n' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='Cardinality of uml::Pin::isControl is [1..1]'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	boolean isIsControl();
 
@@ -61,14 +61,14 @@ public interface Pin extends ObjectNode {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.activity.Pin#isIsControl <em>Is Control</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.activity.Pin#isIsControl <em>Is Control</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Control</em>' attribute.
-	 * @see #isIsControl()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Is Control</em>' attribute.
+   * @see #isIsControl()
+   * @generated
+   */
 
 	void setIsControl(boolean value);
 

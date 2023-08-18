@@ -59,861 +59,861 @@ import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
  */
 public class OaItemProviderAdapterFactory extends OaAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
 	/**
-	 * This keeps track of the root adapter factory that delegates to this adapter factory.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the root adapter factory that delegates to this adapter factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComposedAdapterFactory parentAdapterFactory;
 
 	/**
-	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-	 * <!-- begin-user-doc -->
+   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
 	/**
-	 * This helps manage the child creation extenders.
-	 * <!-- begin-user-doc -->
+   * This helps manage the child creation extenders.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(CapellaModellerEditPlugin.INSTANCE, OaPackage.eNS_URI);
 
 	/**
-	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-	 * <!-- begin-user-doc -->
+   * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
-	 * This constructs an instance.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public OaItemProviderAdapterFactory() {
-		supportedTypes.add(IEditingDomainItemProvider.class);
-		supportedTypes.add(IStructuredItemContentProvider.class);
-		supportedTypes.add(ITreeItemContentProvider.class);
-		supportedTypes.add(IItemLabelProvider.class);
-		supportedTypes.add(IItemPropertySource.class);
-	}
+    supportedTypes.add(IEditingDomainItemProvider.class);
+    supportedTypes.add(IStructuredItemContentProvider.class);
+    supportedTypes.add(ITreeItemContentProvider.class);
+    supportedTypes.add(IItemLabelProvider.class);
+    supportedTypes.add(IItemPropertySource.class);
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.OperationalAnalysis} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.OperationalAnalysis} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OperationalAnalysisItemProvider operationalAnalysisItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.OperationalAnalysis}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.OperationalAnalysis}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createOperationalAnalysisAdapter() {
-		if (operationalAnalysisItemProvider == null) {
-			operationalAnalysisItemProvider = new OperationalAnalysisItemProvider(this);
-		}
+    if (operationalAnalysisItemProvider == null) {
+      operationalAnalysisItemProvider = new OperationalAnalysisItemProvider(this);
+    }
 
-		return operationalAnalysisItemProvider;
-	}
+    return operationalAnalysisItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.OperationalActivityPkg} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.OperationalActivityPkg} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OperationalActivityPkgItemProvider operationalActivityPkgItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.OperationalActivityPkg}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.OperationalActivityPkg}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createOperationalActivityPkgAdapter() {
-		if (operationalActivityPkgItemProvider == null) {
-			operationalActivityPkgItemProvider = new OperationalActivityPkgItemProvider(this);
-		}
+    if (operationalActivityPkgItemProvider == null) {
+      operationalActivityPkgItemProvider = new OperationalActivityPkgItemProvider(this);
+    }
 
-		return operationalActivityPkgItemProvider;
-	}
+    return operationalActivityPkgItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.OperationalActivity} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.OperationalActivity} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OperationalActivityItemProvider operationalActivityItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.OperationalActivity}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.OperationalActivity}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createOperationalActivityAdapter() {
-		if (operationalActivityItemProvider == null) {
-			operationalActivityItemProvider = new OperationalActivityItemProvider(this);
-		}
+    if (operationalActivityItemProvider == null) {
+      operationalActivityItemProvider = new OperationalActivityItemProvider(this);
+    }
 
-		return operationalActivityItemProvider;
-	}
+    return operationalActivityItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.OperationalProcess} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.OperationalProcess} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OperationalProcessItemProvider operationalProcessItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.OperationalProcess}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.OperationalProcess}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createOperationalProcessAdapter() {
-		if (operationalProcessItemProvider == null) {
-			operationalProcessItemProvider = new OperationalProcessItemProvider(this);
-		}
+    if (operationalProcessItemProvider == null) {
+      operationalProcessItemProvider = new OperationalProcessItemProvider(this);
+    }
 
-		return operationalProcessItemProvider;
-	}
+    return operationalProcessItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.Swimlane} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.Swimlane} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected SwimlaneItemProvider swimlaneItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.Swimlane}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.Swimlane}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createSwimlaneAdapter() {
-		if (swimlaneItemProvider == null) {
-			swimlaneItemProvider = new SwimlaneItemProvider(this);
-		}
+    if (swimlaneItemProvider == null) {
+      swimlaneItemProvider = new SwimlaneItemProvider(this);
+    }
 
-		return swimlaneItemProvider;
-	}
+    return swimlaneItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.OperationalCapabilityPkg} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.OperationalCapabilityPkg} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OperationalCapabilityPkgItemProvider operationalCapabilityPkgItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.OperationalCapabilityPkg}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.OperationalCapabilityPkg}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createOperationalCapabilityPkgAdapter() {
-		if (operationalCapabilityPkgItemProvider == null) {
-			operationalCapabilityPkgItemProvider = new OperationalCapabilityPkgItemProvider(this);
-		}
+    if (operationalCapabilityPkgItemProvider == null) {
+      operationalCapabilityPkgItemProvider = new OperationalCapabilityPkgItemProvider(this);
+    }
 
-		return operationalCapabilityPkgItemProvider;
-	}
+    return operationalCapabilityPkgItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.OperationalCapability} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.OperationalCapability} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OperationalCapabilityItemProvider operationalCapabilityItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.OperationalCapability}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.OperationalCapability}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createOperationalCapabilityAdapter() {
-		if (operationalCapabilityItemProvider == null) {
-			operationalCapabilityItemProvider = new OperationalCapabilityItemProvider(this);
-		}
+    if (operationalCapabilityItemProvider == null) {
+      operationalCapabilityItemProvider = new OperationalCapabilityItemProvider(this);
+    }
 
-		return operationalCapabilityItemProvider;
-	}
+    return operationalCapabilityItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.ActivityAllocation} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.ActivityAllocation} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ActivityAllocationItemProvider activityAllocationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.ActivityAllocation}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.ActivityAllocation}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createActivityAllocationAdapter() {
-		if (activityAllocationItemProvider == null) {
-			activityAllocationItemProvider = new ActivityAllocationItemProvider(this);
-		}
+    if (activityAllocationItemProvider == null) {
+      activityAllocationItemProvider = new ActivityAllocationItemProvider(this);
+    }
 
-		return activityAllocationItemProvider;
-	}
+    return activityAllocationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.RolePkg} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.RolePkg} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected RolePkgItemProvider rolePkgItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.RolePkg}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.RolePkg}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createRolePkgAdapter() {
-		if (rolePkgItemProvider == null) {
-			rolePkgItemProvider = new RolePkgItemProvider(this);
-		}
+    if (rolePkgItemProvider == null) {
+      rolePkgItemProvider = new RolePkgItemProvider(this);
+    }
 
-		return rolePkgItemProvider;
-	}
+    return rolePkgItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.Role} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.Role} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected RoleItemProvider roleItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.Role}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.Role}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createRoleAdapter() {
-		if (roleItemProvider == null) {
-			roleItemProvider = new RoleItemProvider(this);
-		}
+    if (roleItemProvider == null) {
+      roleItemProvider = new RoleItemProvider(this);
+    }
 
-		return roleItemProvider;
-	}
+    return roleItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.RoleAssemblyUsage} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.RoleAssemblyUsage} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected RoleAssemblyUsageItemProvider roleAssemblyUsageItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.RoleAssemblyUsage}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.RoleAssemblyUsage}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createRoleAssemblyUsageAdapter() {
-		if (roleAssemblyUsageItemProvider == null) {
-			roleAssemblyUsageItemProvider = new RoleAssemblyUsageItemProvider(this);
-		}
+    if (roleAssemblyUsageItemProvider == null) {
+      roleAssemblyUsageItemProvider = new RoleAssemblyUsageItemProvider(this);
+    }
 
-		return roleAssemblyUsageItemProvider;
-	}
+    return roleAssemblyUsageItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.RoleAllocation} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.RoleAllocation} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected RoleAllocationItemProvider roleAllocationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.RoleAllocation}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.RoleAllocation}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createRoleAllocationAdapter() {
-		if (roleAllocationItemProvider == null) {
-			roleAllocationItemProvider = new RoleAllocationItemProvider(this);
-		}
+    if (roleAllocationItemProvider == null) {
+      roleAllocationItemProvider = new RoleAllocationItemProvider(this);
+    }
 
-		return roleAllocationItemProvider;
-	}
+    return roleAllocationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.EntityPkg} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.EntityPkg} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected EntityPkgItemProvider entityPkgItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.EntityPkg}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.EntityPkg}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createEntityPkgAdapter() {
-		if (entityPkgItemProvider == null) {
-			entityPkgItemProvider = new EntityPkgItemProvider(this);
-		}
+    if (entityPkgItemProvider == null) {
+      entityPkgItemProvider = new EntityPkgItemProvider(this);
+    }
 
-		return entityPkgItemProvider;
-	}
+    return entityPkgItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.Entity} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.Entity} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected EntityItemProvider entityItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.Entity}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.Entity}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createEntityAdapter() {
-		if (entityItemProvider == null) {
-			entityItemProvider = new EntityItemProvider(this);
-		}
+    if (entityItemProvider == null) {
+      entityItemProvider = new EntityItemProvider(this);
+    }
 
-		return entityItemProvider;
-	}
+    return entityItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.ConceptPkg} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.ConceptPkg} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ConceptPkgItemProvider conceptPkgItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.ConceptPkg}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.ConceptPkg}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createConceptPkgAdapter() {
-		if (conceptPkgItemProvider == null) {
-			conceptPkgItemProvider = new ConceptPkgItemProvider(this);
-		}
+    if (conceptPkgItemProvider == null) {
+      conceptPkgItemProvider = new ConceptPkgItemProvider(this);
+    }
 
-		return conceptPkgItemProvider;
-	}
+    return conceptPkgItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.Concept} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.Concept} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ConceptItemProvider conceptItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.Concept}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.Concept}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createConceptAdapter() {
-		if (conceptItemProvider == null) {
-			conceptItemProvider = new ConceptItemProvider(this);
-		}
+    if (conceptItemProvider == null) {
+      conceptItemProvider = new ConceptItemProvider(this);
+    }
 
-		return conceptItemProvider;
-	}
+    return conceptItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.ConceptCompliance} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.ConceptCompliance} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ConceptComplianceItemProvider conceptComplianceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.ConceptCompliance}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.ConceptCompliance}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createConceptComplianceAdapter() {
-		if (conceptComplianceItemProvider == null) {
-			conceptComplianceItemProvider = new ConceptComplianceItemProvider(this);
-		}
+    if (conceptComplianceItemProvider == null) {
+      conceptComplianceItemProvider = new ConceptComplianceItemProvider(this);
+    }
 
-		return conceptComplianceItemProvider;
-	}
+    return conceptComplianceItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.ItemInConcept} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.ItemInConcept} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ItemInConceptItemProvider itemInConceptItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.ItemInConcept}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.ItemInConcept}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createItemInConceptAdapter() {
-		if (itemInConceptItemProvider == null) {
-			itemInConceptItemProvider = new ItemInConceptItemProvider(this);
-		}
+    if (itemInConceptItemProvider == null) {
+      itemInConceptItemProvider = new ItemInConceptItemProvider(this);
+    }
 
-		return itemInConceptItemProvider;
-	}
+    return itemInConceptItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.CommunityOfInterest} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.CommunityOfInterest} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CommunityOfInterestItemProvider communityOfInterestItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.CommunityOfInterest}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.CommunityOfInterest}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createCommunityOfInterestAdapter() {
-		if (communityOfInterestItemProvider == null) {
-			communityOfInterestItemProvider = new CommunityOfInterestItemProvider(this);
-		}
+    if (communityOfInterestItemProvider == null) {
+      communityOfInterestItemProvider = new CommunityOfInterestItemProvider(this);
+    }
 
-		return communityOfInterestItemProvider;
-	}
+    return communityOfInterestItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.CommunityOfInterestComposition} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.CommunityOfInterestComposition} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CommunityOfInterestCompositionItemProvider communityOfInterestCompositionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.CommunityOfInterestComposition}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.CommunityOfInterestComposition}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createCommunityOfInterestCompositionAdapter() {
-		if (communityOfInterestCompositionItemProvider == null) {
-			communityOfInterestCompositionItemProvider = new CommunityOfInterestCompositionItemProvider(this);
-		}
+    if (communityOfInterestCompositionItemProvider == null) {
+      communityOfInterestCompositionItemProvider = new CommunityOfInterestCompositionItemProvider(this);
+    }
 
-		return communityOfInterestCompositionItemProvider;
-	}
+    return communityOfInterestCompositionItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.OrganisationalUnit} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.OrganisationalUnit} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OrganisationalUnitItemProvider organisationalUnitItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.OrganisationalUnit}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.OrganisationalUnit}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createOrganisationalUnitAdapter() {
-		if (organisationalUnitItemProvider == null) {
-			organisationalUnitItemProvider = new OrganisationalUnitItemProvider(this);
-		}
+    if (organisationalUnitItemProvider == null) {
+      organisationalUnitItemProvider = new OrganisationalUnitItemProvider(this);
+    }
 
-		return organisationalUnitItemProvider;
-	}
+    return organisationalUnitItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.OrganisationalUnitComposition} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.OrganisationalUnitComposition} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OrganisationalUnitCompositionItemProvider organisationalUnitCompositionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.OrganisationalUnitComposition}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.OrganisationalUnitComposition}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createOrganisationalUnitCompositionAdapter() {
-		if (organisationalUnitCompositionItemProvider == null) {
-			organisationalUnitCompositionItemProvider = new OrganisationalUnitCompositionItemProvider(this);
-		}
+    if (organisationalUnitCompositionItemProvider == null) {
+      organisationalUnitCompositionItemProvider = new OrganisationalUnitCompositionItemProvider(this);
+    }
 
-		return organisationalUnitCompositionItemProvider;
-	}
+    return organisationalUnitCompositionItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.Location} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.Location} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected LocationItemProvider locationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.Location}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.Location}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createLocationAdapter() {
-		if (locationItemProvider == null) {
-			locationItemProvider = new LocationItemProvider(this);
-		}
+    if (locationItemProvider == null) {
+      locationItemProvider = new LocationItemProvider(this);
+    }
 
-		return locationItemProvider;
-	}
+    return locationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.CapabilityConfiguration} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.CapabilityConfiguration} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CapabilityConfigurationItemProvider capabilityConfigurationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.CapabilityConfiguration}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.CapabilityConfiguration}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createCapabilityConfigurationAdapter() {
-		if (capabilityConfigurationItemProvider == null) {
-			capabilityConfigurationItemProvider = new CapabilityConfigurationItemProvider(this);
-		}
+    if (capabilityConfigurationItemProvider == null) {
+      capabilityConfigurationItemProvider = new CapabilityConfigurationItemProvider(this);
+    }
 
-		return capabilityConfigurationItemProvider;
-	}
+    return capabilityConfigurationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.CommunicationMean} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.CommunicationMean} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CommunicationMeanItemProvider communicationMeanItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.CommunicationMean}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.CommunicationMean}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createCommunicationMeanAdapter() {
-		if (communicationMeanItemProvider == null) {
-			communicationMeanItemProvider = new CommunicationMeanItemProvider(this);
-		}
+    if (communicationMeanItemProvider == null) {
+      communicationMeanItemProvider = new CommunicationMeanItemProvider(this);
+    }
 
-		return communicationMeanItemProvider;
-	}
+    return communicationMeanItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected EntityOperationalCapabilityInvolvementItemProvider entityOperationalCapabilityInvolvementItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createEntityOperationalCapabilityInvolvementAdapter() {
-		if (entityOperationalCapabilityInvolvementItemProvider == null) {
-			entityOperationalCapabilityInvolvementItemProvider = new EntityOperationalCapabilityInvolvementItemProvider(this);
-		}
+    if (entityOperationalCapabilityInvolvementItemProvider == null) {
+      entityOperationalCapabilityInvolvementItemProvider = new EntityOperationalCapabilityInvolvementItemProvider(this);
+    }
 
-		return entityOperationalCapabilityInvolvementItemProvider;
-	}
+    return entityOperationalCapabilityInvolvementItemProvider;
+  }
 
 	/**
-	 * This returns the root adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+   * This returns the root adapter factory that contains this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
-	}
+    return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+  }
 
 	/**
-	 * This sets the composed adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+   * This sets the composed adapter factory that contains this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
-		this.parentAdapterFactory = parentAdapterFactory;
-	}
+    this.parentAdapterFactory = parentAdapterFactory;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean isFactoryForType(Object type) {
-		return supportedTypes.contains(type) || super.isFactoryForType(type);
-	}
+    return supportedTypes.contains(type) || super.isFactoryForType(type);
+  }
 
 	/**
-	 * This implementation substitutes the factory itself as the key for the adapter.
-	 * <!-- begin-user-doc -->
+   * This implementation substitutes the factory itself as the key for the adapter.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
-		return super.adapt(notifier, this);
-	}
+    return super.adapt(notifier, this);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object adapt(Object object, Object type) {
-		if (isFactoryForType(type)) {
-			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
-				return adapter;
-			}
-		}
+    if (isFactoryForType(type)) {
+      Object adapter = super.adapt(object, type);
+      if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+        return adapter;
+      }
+    }
 
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public List<IChildCreationExtender> getChildCreationExtenders() {
-		return childCreationExtenderManager.getChildCreationExtenders();
-	}
+    return childCreationExtenderManager.getChildCreationExtenders();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
-	}
+    return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ResourceLocator getResourceLocator() {
-		return childCreationExtenderManager;
-	}
+    return childCreationExtenderManager;
+  }
 
 	/**
-	 * This adds a listener.
-	 * <!-- begin-user-doc -->
+   * This adds a listener.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.addListener(notifyChangedListener);
-	}
+    changeNotifier.addListener(notifyChangedListener);
+  }
 
 	/**
-	 * This removes a listener.
-	 * <!-- begin-user-doc -->
+   * This removes a listener.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.removeListener(notifyChangedListener);
-	}
+    changeNotifier.removeListener(notifyChangedListener);
+  }
 
 	/**
-	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-	 * <!-- begin-user-doc -->
+   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void fireNotifyChanged(Notification notification) {
-		changeNotifier.fireNotifyChanged(notification);
+    changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null) {
-			parentAdapterFactory.fireNotifyChanged(notification);
-		}
-	}
+    if (parentAdapterFactory != null) {
+      parentAdapterFactory.fireNotifyChanged(notification);
+    }
+  }
 
 	/**
-	 * This disposes all of the item providers created by this factory. 
-	 * <!-- begin-user-doc -->
+   * This disposes all of the item providers created by this factory. 
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void dispose() {
-		if (operationalAnalysisItemProvider != null) operationalAnalysisItemProvider.dispose();
-		if (operationalActivityPkgItemProvider != null) operationalActivityPkgItemProvider.dispose();
-		if (operationalActivityItemProvider != null) operationalActivityItemProvider.dispose();
-		if (operationalProcessItemProvider != null) operationalProcessItemProvider.dispose();
-		if (swimlaneItemProvider != null) swimlaneItemProvider.dispose();
-		if (operationalCapabilityPkgItemProvider != null) operationalCapabilityPkgItemProvider.dispose();
-		if (operationalCapabilityItemProvider != null) operationalCapabilityItemProvider.dispose();
-		if (activityAllocationItemProvider != null) activityAllocationItemProvider.dispose();
-		if (rolePkgItemProvider != null) rolePkgItemProvider.dispose();
-		if (roleItemProvider != null) roleItemProvider.dispose();
-		if (roleAssemblyUsageItemProvider != null) roleAssemblyUsageItemProvider.dispose();
-		if (roleAllocationItemProvider != null) roleAllocationItemProvider.dispose();
-		if (entityPkgItemProvider != null) entityPkgItemProvider.dispose();
-		if (entityItemProvider != null) entityItemProvider.dispose();
-		if (conceptPkgItemProvider != null) conceptPkgItemProvider.dispose();
-		if (conceptItemProvider != null) conceptItemProvider.dispose();
-		if (conceptComplianceItemProvider != null) conceptComplianceItemProvider.dispose();
-		if (itemInConceptItemProvider != null) itemInConceptItemProvider.dispose();
-		if (communityOfInterestItemProvider != null) communityOfInterestItemProvider.dispose();
-		if (communityOfInterestCompositionItemProvider != null) communityOfInterestCompositionItemProvider.dispose();
-		if (organisationalUnitItemProvider != null) organisationalUnitItemProvider.dispose();
-		if (organisationalUnitCompositionItemProvider != null) organisationalUnitCompositionItemProvider.dispose();
-		if (locationItemProvider != null) locationItemProvider.dispose();
-		if (capabilityConfigurationItemProvider != null) capabilityConfigurationItemProvider.dispose();
-		if (communicationMeanItemProvider != null) communicationMeanItemProvider.dispose();
-		if (entityOperationalCapabilityInvolvementItemProvider != null) entityOperationalCapabilityInvolvementItemProvider.dispose();
-	}
+    if (operationalAnalysisItemProvider != null) operationalAnalysisItemProvider.dispose();
+    if (operationalActivityPkgItemProvider != null) operationalActivityPkgItemProvider.dispose();
+    if (operationalActivityItemProvider != null) operationalActivityItemProvider.dispose();
+    if (operationalProcessItemProvider != null) operationalProcessItemProvider.dispose();
+    if (swimlaneItemProvider != null) swimlaneItemProvider.dispose();
+    if (operationalCapabilityPkgItemProvider != null) operationalCapabilityPkgItemProvider.dispose();
+    if (operationalCapabilityItemProvider != null) operationalCapabilityItemProvider.dispose();
+    if (activityAllocationItemProvider != null) activityAllocationItemProvider.dispose();
+    if (rolePkgItemProvider != null) rolePkgItemProvider.dispose();
+    if (roleItemProvider != null) roleItemProvider.dispose();
+    if (roleAssemblyUsageItemProvider != null) roleAssemblyUsageItemProvider.dispose();
+    if (roleAllocationItemProvider != null) roleAllocationItemProvider.dispose();
+    if (entityPkgItemProvider != null) entityPkgItemProvider.dispose();
+    if (entityItemProvider != null) entityItemProvider.dispose();
+    if (conceptPkgItemProvider != null) conceptPkgItemProvider.dispose();
+    if (conceptItemProvider != null) conceptItemProvider.dispose();
+    if (conceptComplianceItemProvider != null) conceptComplianceItemProvider.dispose();
+    if (itemInConceptItemProvider != null) itemInConceptItemProvider.dispose();
+    if (communityOfInterestItemProvider != null) communityOfInterestItemProvider.dispose();
+    if (communityOfInterestCompositionItemProvider != null) communityOfInterestCompositionItemProvider.dispose();
+    if (organisationalUnitItemProvider != null) organisationalUnitItemProvider.dispose();
+    if (organisationalUnitCompositionItemProvider != null) organisationalUnitCompositionItemProvider.dispose();
+    if (locationItemProvider != null) locationItemProvider.dispose();
+    if (capabilityConfigurationItemProvider != null) capabilityConfigurationItemProvider.dispose();
+    if (communicationMeanItemProvider != null) communicationMeanItemProvider.dispose();
+    if (entityOperationalCapabilityInvolvementItemProvider != null) entityOperationalCapabilityInvolvementItemProvider.dispose();
+  }
 
 	/**
-	 * A child creation extender for the {@link ActivityPackage}.
-	 * <!-- begin-user-doc -->
+   * A child creation extender for the {@link ActivityPackage}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static class ActivityChildCreationExtender implements IChildCreationExtender {
 		/**
-		 * The switch for creating child descriptors specific to each extended class.
-		 * <!-- begin-user-doc -->
+     * The switch for creating child descriptors specific to each extended class.
+     * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
+     * @generated
+     */
 		protected static class CreationSwitch extends ActivitySwitch<Object> {
 			/**
-			 * The child descriptors being populated.
-			 * <!-- begin-user-doc -->
+       * The child descriptors being populated.
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			protected List<Object> newChildDescriptors;
 
 			/**
-			 * The domain in which to create the children.
-			 * <!-- begin-user-doc -->
+       * The domain in which to create the children.
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			protected EditingDomain editingDomain;
 
 			/**
-			 * Creates the a switch for populating child descriptors in the given domain.
-			 * <!-- begin-user-doc -->
+       * Creates the a switch for populating child descriptors in the given domain.
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
-				this.newChildDescriptors = newChildDescriptors;
-				this.editingDomain = editingDomain;
-			}
+        this.newChildDescriptors = newChildDescriptors;
+        this.editingDomain = editingDomain;
+      }
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			@Override
 			public Object caseAbstractActivity(AbstractActivity object) {
-				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/oa/7.0.0")) { //$NON-NLS-1$
-					return null;				
-				}
-				// end-extension-code
+        // begin-extension-code
+        if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/oa/7.0.0")) { //$NON-NLS-1$
+          return null;				
+        }
+        // end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -940,21 +940,21 @@ public class OaItemProviderAdapterFactory extends OaAdapterFactory implements Co
 
 
 
-				return null;
-			}
+        return null;
+      }
  
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			@Override
 			public Object caseActivityGroup(ActivityGroup object) {
-				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/oa/7.0.0")) { //$NON-NLS-1$
-					return null;				
-				}
-				// end-extension-code
+        // begin-extension-code
+        if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/oa/7.0.0")) { //$NON-NLS-1$
+          return null;				
+        }
+        // end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -981,39 +981,39 @@ public class OaItemProviderAdapterFactory extends OaAdapterFactory implements Co
 
 
 
-				return null;
-			}
+        return null;
+      }
  
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			protected CommandParameter createChildParameter(Object feature, Object child) {
-				return new CommandParameter(null, feature, child);
-			}
+        return new CommandParameter(null, feature, child);
+      }
 
 		}
 
 		/**
-		 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
+     * @generated
+     */
 		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-			ArrayList<Object> result = new ArrayList<Object>();
-			new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
-			return result;
-		}
+      ArrayList<Object> result = new ArrayList<Object>();
+      new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
+      return result;
+    }
 
 		/**
-		 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
+     * @generated
+     */
 		public ResourceLocator getResourceLocator() {
-			return CapellaModellerEditPlugin.INSTANCE;
-		}
+      return CapellaModellerEditPlugin.INSTANCE;
+    }
 	}
 
 }

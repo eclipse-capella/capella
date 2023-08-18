@@ -39,13 +39,13 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 public abstract class AllocationImpl extends RelationshipImpl implements Allocation {
 
 	/**
-	 * The cached value of the '{@link #getTargetElement() <em>Target Element</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getTargetElement() <em>Target Element</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTargetElement()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getTargetElement()
+   * @generated
+   * @ordered
+   */
 	protected TraceableElement targetElement;
 
 
@@ -53,91 +53,91 @@ public abstract class AllocationImpl extends RelationshipImpl implements Allocat
 
 
 	/**
-	 * The cached value of the '{@link #getSourceElement() <em>Source Element</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getSourceElement() <em>Source Element</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSourceElement()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getSourceElement()
+   * @generated
+   * @ordered
+   */
 	protected TraceableElement sourceElement;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AllocationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacorePackage.Literals.ALLOCATION;
-	}
+    return CapellacorePackage.Literals.ALLOCATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public TraceableElement getTargetElement() {
 
-		if (targetElement != null && targetElement.eIsProxy()) {
-			InternalEObject oldTargetElement = (InternalEObject)targetElement;
-			targetElement = (TraceableElement)eResolveProxy(oldTargetElement);
-			if (targetElement != oldTargetElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacorePackage.ALLOCATION__TARGET_ELEMENT, oldTargetElement, targetElement));
-			}
-		}
-		return targetElement;
-	}
+    if (targetElement != null && targetElement.eIsProxy()) {
+      InternalEObject oldTargetElement = (InternalEObject)targetElement;
+      targetElement = (TraceableElement)eResolveProxy(oldTargetElement);
+      if (targetElement != oldTargetElement) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacorePackage.ALLOCATION__TARGET_ELEMENT, oldTargetElement, targetElement));
+      }
+    }
+    return targetElement;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public TraceableElement basicGetTargetElement() {
 
-		return targetElement;
-	}
+    return targetElement;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setTargetElement(TraceableElement newTargetElement) {
 
-		TraceableElement oldTargetElement = targetElement;
-		targetElement = newTargetElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.ALLOCATION__TARGET_ELEMENT, oldTargetElement, targetElement));
+    TraceableElement oldTargetElement = targetElement;
+    targetElement = newTargetElement;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.ALLOCATION__TARGET_ELEMENT, oldTargetElement, targetElement));
 
-	}
+  }
 
 
 
@@ -145,164 +145,164 @@ public abstract class AllocationImpl extends RelationshipImpl implements Allocat
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public TraceableElement getSourceElement() {
 
-		if (sourceElement != null && sourceElement.eIsProxy()) {
-			InternalEObject oldSourceElement = (InternalEObject)sourceElement;
-			sourceElement = (TraceableElement)eResolveProxy(oldSourceElement);
-			if (sourceElement != oldSourceElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacorePackage.ALLOCATION__SOURCE_ELEMENT, oldSourceElement, sourceElement));
-			}
-		}
-		return sourceElement;
-	}
+    if (sourceElement != null && sourceElement.eIsProxy()) {
+      InternalEObject oldSourceElement = (InternalEObject)sourceElement;
+      sourceElement = (TraceableElement)eResolveProxy(oldSourceElement);
+      if (sourceElement != oldSourceElement) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacorePackage.ALLOCATION__SOURCE_ELEMENT, oldSourceElement, sourceElement));
+      }
+    }
+    return sourceElement;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public TraceableElement basicGetSourceElement() {
 
-		return sourceElement;
-	}
+    return sourceElement;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setSourceElement(TraceableElement newSourceElement) {
 
-		TraceableElement oldSourceElement = sourceElement;
-		sourceElement = newSourceElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.ALLOCATION__SOURCE_ELEMENT, oldSourceElement, sourceElement));
+    TraceableElement oldSourceElement = sourceElement;
+    sourceElement = newSourceElement;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.ALLOCATION__SOURCE_ELEMENT, oldSourceElement, sourceElement));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CapellacorePackage.ALLOCATION__TARGET_ELEMENT:
-				if (resolve) return getTargetElement();
-				return basicGetTargetElement();
-			case CapellacorePackage.ALLOCATION__SOURCE_ELEMENT:
-				if (resolve) return getSourceElement();
-				return basicGetSourceElement();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CapellacorePackage.ALLOCATION__TARGET_ELEMENT:
+        if (resolve) return getTargetElement();
+        return basicGetTargetElement();
+      case CapellacorePackage.ALLOCATION__SOURCE_ELEMENT:
+        if (resolve) return getSourceElement();
+        return basicGetSourceElement();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CapellacorePackage.ALLOCATION__TARGET_ELEMENT:
-					setTargetElement((TraceableElement)newValue);
-				return;
-			case CapellacorePackage.ALLOCATION__SOURCE_ELEMENT:
-					setSourceElement((TraceableElement)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CapellacorePackage.ALLOCATION__TARGET_ELEMENT:
+          setTargetElement((TraceableElement)newValue);
+        return;
+      case CapellacorePackage.ALLOCATION__SOURCE_ELEMENT:
+          setSourceElement((TraceableElement)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CapellacorePackage.ALLOCATION__TARGET_ELEMENT:
-				setTargetElement((TraceableElement)null);
-				return;
-			case CapellacorePackage.ALLOCATION__SOURCE_ELEMENT:
-				setSourceElement((TraceableElement)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CapellacorePackage.ALLOCATION__TARGET_ELEMENT:
+        setTargetElement((TraceableElement)null);
+        return;
+      case CapellacorePackage.ALLOCATION__SOURCE_ELEMENT:
+        setSourceElement((TraceableElement)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CapellacorePackage.ALLOCATION__TARGET_ELEMENT:
-				return targetElement != null;
-			case CapellacorePackage.ALLOCATION__SOURCE_ELEMENT:
-				return sourceElement != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CapellacorePackage.ALLOCATION__TARGET_ELEMENT:
+        return targetElement != null;
+      case CapellacorePackage.ALLOCATION__SOURCE_ELEMENT:
+        return sourceElement != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractTrace.class) {
-			switch (derivedFeatureID) {
-				case CapellacorePackage.ALLOCATION__TARGET_ELEMENT: return ModellingcorePackage.ABSTRACT_TRACE__TARGET_ELEMENT;
-				case CapellacorePackage.ALLOCATION__SOURCE_ELEMENT: return ModellingcorePackage.ABSTRACT_TRACE__SOURCE_ELEMENT;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == AbstractTrace.class) {
+      switch (derivedFeatureID) {
+        case CapellacorePackage.ALLOCATION__TARGET_ELEMENT: return ModellingcorePackage.ABSTRACT_TRACE__TARGET_ELEMENT;
+        case CapellacorePackage.ALLOCATION__SOURCE_ELEMENT: return ModellingcorePackage.ABSTRACT_TRACE__SOURCE_ELEMENT;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractTrace.class) {
-			switch (baseFeatureID) {
-				case ModellingcorePackage.ABSTRACT_TRACE__TARGET_ELEMENT: return CapellacorePackage.ALLOCATION__TARGET_ELEMENT;
-				case ModellingcorePackage.ABSTRACT_TRACE__SOURCE_ELEMENT: return CapellacorePackage.ALLOCATION__SOURCE_ELEMENT;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == AbstractTrace.class) {
+      switch (baseFeatureID) {
+        case ModellingcorePackage.ABSTRACT_TRACE__TARGET_ELEMENT: return CapellacorePackage.ALLOCATION__TARGET_ELEMENT;
+        case ModellingcorePackage.ABSTRACT_TRACE__SOURCE_ELEMENT: return CapellacorePackage.ALLOCATION__SOURCE_ELEMENT;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 
 } //AllocationImpl

@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.capellacommon.InitialPseudoState;
  */
 public class InitialPseudoStateImpl extends PseudostateImpl implements InitialPseudoState {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected InitialPseudoStateImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.INITIAL_PSEUDO_STATE;
-	}
+    return CapellacommonPackage.Literals.INITIAL_PSEUDO_STATE;
+  }
 
 
 

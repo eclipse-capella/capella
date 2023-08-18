@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.requirement.SystemNonFunctionalInterfaceRe
  */
 public class SystemNonFunctionalInterfaceRequirementImpl extends RequirementImpl implements SystemNonFunctionalInterfaceRequirement {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected SystemNonFunctionalInterfaceRequirementImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return RequirementPackage.Literals.SYSTEM_NON_FUNCTIONAL_INTERFACE_REQUIREMENT;
-	}
+    return RequirementPackage.Literals.SYSTEM_NON_FUNCTIONAL_INTERFACE_REQUIREMENT;
+  }
 
 
 

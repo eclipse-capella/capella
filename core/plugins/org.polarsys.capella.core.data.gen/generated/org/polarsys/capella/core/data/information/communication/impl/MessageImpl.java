@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.information.communication.Message;
  */
 public class MessageImpl extends CommunicationItemImpl implements Message {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected MessageImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CommunicationPackage.Literals.MESSAGE;
-	}
+    return CommunicationPackage.Literals.MESSAGE;
+  }
 
 
 

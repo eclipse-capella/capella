@@ -39,24 +39,24 @@ public interface InterruptibleActivityRegion extends ActivityGroup {
 
 
 	/**
-	 * Returns the value of the '<em><b>Interrupting Edges</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.activity.ActivityEdge}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.common.data.activity.ActivityEdge#getInterrupts <em>Interrupts</em>}'.
+   * Returns the value of the '<em><b>Interrupting Edges</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.activity.ActivityEdge}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.common.data.activity.ActivityEdge#getInterrupts <em>Interrupts</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Interrupting Edges</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Interrupting Edges</em>' reference list.
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getInterruptibleActivityRegion_InterruptingEdges()
-	 * @see org.polarsys.capella.common.data.activity.ActivityEdge#getInterrupts
-	 * @model opposite="interrupts"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The edges leaving the region that will abort other tokens flowing in the region\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InterruptibleActivityRegion::interruptingEdge' explanation='none' constraints='Order must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Interrupting Edges</em>' reference list.
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getInterruptibleActivityRegion_InterruptingEdges()
+   * @see org.polarsys.capella.common.data.activity.ActivityEdge#getInterrupts
+   * @model opposite="interrupts"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The edges leaving the region that will abort other tokens flowing in the region\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InterruptibleActivityRegion::interruptingEdge' explanation='none' constraints='Order must be computed'"
+   * @generated
+   */
 
 	EList<ActivityEdge> getInterruptingEdges();
 

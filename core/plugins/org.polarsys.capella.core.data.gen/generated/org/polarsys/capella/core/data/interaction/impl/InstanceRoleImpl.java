@@ -54,48 +54,48 @@ public class InstanceRoleImpl extends NamedElementImpl implements InstanceRole {
 
 
 	/**
-	 * The cached value of the '{@link #getRepresentedInstance() <em>Represented Instance</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getRepresentedInstance() <em>Represented Instance</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRepresentedInstance()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getRepresentedInstance()
+   * @generated
+   * @ordered
+   */
 	protected AbstractInstance representedInstance;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected InstanceRoleImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.INSTANCE_ROLE;
-	}
+    return InteractionPackage.Literals.INSTANCE_ROLE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractEnd> getAbstractEnds() {
 
@@ -122,139 +122,139 @@ public class InstanceRoleImpl extends NamedElementImpl implements InstanceRole {
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.INSTANCE_ROLE__ABSTRACT_ENDS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.INSTANCE_ROLE__ABSTRACT_ENDS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractEnd> resultAsList = (Collection<AbstractEnd>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractEnd>(this, InteractionPackage.Literals.INSTANCE_ROLE__ABSTRACT_ENDS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractEnd> resultAsList = (Collection<AbstractEnd>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractEnd>(this, InteractionPackage.Literals.INSTANCE_ROLE__ABSTRACT_ENDS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractInstance getRepresentedInstance() {
 
-		if (representedInstance != null && representedInstance.eIsProxy()) {
-			InternalEObject oldRepresentedInstance = (InternalEObject)representedInstance;
-			representedInstance = (AbstractInstance)eResolveProxy(oldRepresentedInstance);
-			if (representedInstance != oldRepresentedInstance) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.INSTANCE_ROLE__REPRESENTED_INSTANCE, oldRepresentedInstance, representedInstance));
-			}
-		}
-		return representedInstance;
-	}
+    if (representedInstance != null && representedInstance.eIsProxy()) {
+      InternalEObject oldRepresentedInstance = (InternalEObject)representedInstance;
+      representedInstance = (AbstractInstance)eResolveProxy(oldRepresentedInstance);
+      if (representedInstance != oldRepresentedInstance) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.INSTANCE_ROLE__REPRESENTED_INSTANCE, oldRepresentedInstance, representedInstance));
+      }
+    }
+    return representedInstance;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractInstance basicGetRepresentedInstance() {
 
-		return representedInstance;
-	}
+    return representedInstance;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setRepresentedInstance(AbstractInstance newRepresentedInstance) {
 
-		AbstractInstance oldRepresentedInstance = representedInstance;
-		representedInstance = newRepresentedInstance;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.INSTANCE_ROLE__REPRESENTED_INSTANCE, oldRepresentedInstance, representedInstance));
+    AbstractInstance oldRepresentedInstance = representedInstance;
+    representedInstance = newRepresentedInstance;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.INSTANCE_ROLE__REPRESENTED_INSTANCE, oldRepresentedInstance, representedInstance));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.INSTANCE_ROLE__ABSTRACT_ENDS:
-				return getAbstractEnds();
-			case InteractionPackage.INSTANCE_ROLE__REPRESENTED_INSTANCE:
-				if (resolve) return getRepresentedInstance();
-				return basicGetRepresentedInstance();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.INSTANCE_ROLE__ABSTRACT_ENDS:
+        return getAbstractEnds();
+      case InteractionPackage.INSTANCE_ROLE__REPRESENTED_INSTANCE:
+        if (resolve) return getRepresentedInstance();
+        return basicGetRepresentedInstance();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InteractionPackage.INSTANCE_ROLE__REPRESENTED_INSTANCE:
-					setRepresentedInstance((AbstractInstance)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InteractionPackage.INSTANCE_ROLE__REPRESENTED_INSTANCE:
+          setRepresentedInstance((AbstractInstance)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.INSTANCE_ROLE__REPRESENTED_INSTANCE:
-				setRepresentedInstance((AbstractInstance)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.INSTANCE_ROLE__REPRESENTED_INSTANCE:
+        setRepresentedInstance((AbstractInstance)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.INSTANCE_ROLE__ABSTRACT_ENDS:
-				return !getAbstractEnds().isEmpty();
-			case InteractionPackage.INSTANCE_ROLE__REPRESENTED_INSTANCE:
-				return representedInstance != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.INSTANCE_ROLE__ABSTRACT_ENDS:
+        return !getAbstractEnds().isEmpty();
+      case InteractionPackage.INSTANCE_ROLE__REPRESENTED_INSTANCE:
+        return representedInstance != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

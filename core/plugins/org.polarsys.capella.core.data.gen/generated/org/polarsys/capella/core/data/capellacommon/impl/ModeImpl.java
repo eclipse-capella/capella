@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.capellacommon.Mode;
  */
 public class ModeImpl extends StateImpl implements Mode {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ModeImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.MODE;
-	}
+    return CapellacommonPackage.Literals.MODE;
+  }
 
 
 

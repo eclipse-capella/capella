@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.pa.PaPackage;
  */
 public class LogicalArchitectureRealizationImpl extends ArchitectureAllocationImpl implements LogicalArchitectureRealization {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected LogicalArchitectureRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return PaPackage.Literals.LOGICAL_ARCHITECTURE_REALIZATION;
-	}
+    return PaPackage.Literals.LOGICAL_ARCHITECTURE_REALIZATION;
+  }
 
 
 

@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.information.datavalue.impl.DataValueImpl;
  */
 public abstract class AbstractCollectionValueImpl extends DataValueImpl implements AbstractCollectionValue {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractCollectionValueImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.ABSTRACT_COLLECTION_VALUE;
-	}
+    return InformationPackage.Literals.ABSTRACT_COLLECTION_VALUE;
+  }
 
 
 

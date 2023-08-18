@@ -56,457 +56,457 @@ import org.polarsys.capella.core.data.oa.Swimlane;
  */
 public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static OaFactory init() {
-		try {
-			OaFactory theOaFactory = (OaFactory)EPackage.Registry.INSTANCE.getEFactory(OaPackage.eNS_URI);
-			if (theOaFactory != null) {
-				return theOaFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new OaFactoryImpl();
-	}
+    try {
+      OaFactory theOaFactory = (OaFactory)EPackage.Registry.INSTANCE.getEFactory(OaPackage.eNS_URI);
+      if (theOaFactory != null) {
+        return theOaFactory;
+      }
+    }
+    catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new OaFactoryImpl();
+  }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public OaFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case OaPackage.OPERATIONAL_ANALYSIS: return createOperationalAnalysis();
-			case OaPackage.OPERATIONAL_ACTIVITY_PKG: return createOperationalActivityPkg();
-			case OaPackage.OPERATIONAL_ACTIVITY: return createOperationalActivity();
-			case OaPackage.OPERATIONAL_PROCESS: return createOperationalProcess();
-			case OaPackage.SWIMLANE: return createSwimlane();
-			case OaPackage.OPERATIONAL_CAPABILITY_PKG: return createOperationalCapabilityPkg();
-			case OaPackage.OPERATIONAL_CAPABILITY: return createOperationalCapability();
-			case OaPackage.ACTIVITY_ALLOCATION: return createActivityAllocation();
-			case OaPackage.ROLE_PKG: return createRolePkg();
-			case OaPackage.ROLE: return createRole();
-			case OaPackage.ROLE_ASSEMBLY_USAGE: return createRoleAssemblyUsage();
-			case OaPackage.ROLE_ALLOCATION: return createRoleAllocation();
-			case OaPackage.ENTITY_PKG: return createEntityPkg();
-			case OaPackage.ENTITY: return createEntity();
-			case OaPackage.CONCEPT_PKG: return createConceptPkg();
-			case OaPackage.CONCEPT: return createConcept();
-			case OaPackage.CONCEPT_COMPLIANCE: return createConceptCompliance();
-			case OaPackage.ITEM_IN_CONCEPT: return createItemInConcept();
-			case OaPackage.COMMUNITY_OF_INTEREST: return createCommunityOfInterest();
-			case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION: return createCommunityOfInterestComposition();
-			case OaPackage.ORGANISATIONAL_UNIT: return createOrganisationalUnit();
-			case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION: return createOrganisationalUnitComposition();
-			case OaPackage.LOCATION: return createLocation();
-			case OaPackage.CAPABILITY_CONFIGURATION: return createCapabilityConfiguration();
-			case OaPackage.COMMUNICATION_MEAN: return createCommunicationMean();
-			case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT: return createEntityOperationalCapabilityInvolvement();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eClass.getClassifierID()) {
+      case OaPackage.OPERATIONAL_ANALYSIS: return createOperationalAnalysis();
+      case OaPackage.OPERATIONAL_ACTIVITY_PKG: return createOperationalActivityPkg();
+      case OaPackage.OPERATIONAL_ACTIVITY: return createOperationalActivity();
+      case OaPackage.OPERATIONAL_PROCESS: return createOperationalProcess();
+      case OaPackage.SWIMLANE: return createSwimlane();
+      case OaPackage.OPERATIONAL_CAPABILITY_PKG: return createOperationalCapabilityPkg();
+      case OaPackage.OPERATIONAL_CAPABILITY: return createOperationalCapability();
+      case OaPackage.ACTIVITY_ALLOCATION: return createActivityAllocation();
+      case OaPackage.ROLE_PKG: return createRolePkg();
+      case OaPackage.ROLE: return createRole();
+      case OaPackage.ROLE_ASSEMBLY_USAGE: return createRoleAssemblyUsage();
+      case OaPackage.ROLE_ALLOCATION: return createRoleAllocation();
+      case OaPackage.ENTITY_PKG: return createEntityPkg();
+      case OaPackage.ENTITY: return createEntity();
+      case OaPackage.CONCEPT_PKG: return createConceptPkg();
+      case OaPackage.CONCEPT: return createConcept();
+      case OaPackage.CONCEPT_COMPLIANCE: return createConceptCompliance();
+      case OaPackage.ITEM_IN_CONCEPT: return createItemInConcept();
+      case OaPackage.COMMUNITY_OF_INTEREST: return createCommunityOfInterest();
+      case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION: return createCommunityOfInterestComposition();
+      case OaPackage.ORGANISATIONAL_UNIT: return createOrganisationalUnit();
+      case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION: return createOrganisationalUnitComposition();
+      case OaPackage.LOCATION: return createLocation();
+      case OaPackage.CAPABILITY_CONFIGURATION: return createCapabilityConfiguration();
+      case OaPackage.COMMUNICATION_MEAN: return createCommunicationMean();
+      case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT: return createEntityOperationalCapabilityInvolvement();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public OperationalAnalysis createOperationalAnalysis() {
-		OperationalAnalysisImpl operationalAnalysis = new OperationalAnalysisImpl();
+    OperationalAnalysisImpl operationalAnalysis = new OperationalAnalysisImpl();
     //begin-capella-code
     operationalAnalysis.setId(IdGenerator.createId());
     //end-capella-code
-		return operationalAnalysis;
-	}
+    return operationalAnalysis;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public OperationalActivityPkg createOperationalActivityPkg() {
-		OperationalActivityPkgImpl operationalActivityPkg = new OperationalActivityPkgImpl();
+    OperationalActivityPkgImpl operationalActivityPkg = new OperationalActivityPkgImpl();
     //begin-capella-code
     operationalActivityPkg.setId(IdGenerator.createId());
     //end-capella-code
-		return operationalActivityPkg;
-	}
+    return operationalActivityPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public OperationalActivity createOperationalActivity() {
-		OperationalActivityImpl operationalActivity = new OperationalActivityImpl();
+    OperationalActivityImpl operationalActivity = new OperationalActivityImpl();
     //begin-capella-code
     operationalActivity.setId(IdGenerator.createId());
     //end-capella-code
-		return operationalActivity;
-	}
+    return operationalActivity;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public OperationalProcess createOperationalProcess() {
-		OperationalProcessImpl operationalProcess = new OperationalProcessImpl();
+    OperationalProcessImpl operationalProcess = new OperationalProcessImpl();
     //begin-capella-code
     operationalProcess.setId(IdGenerator.createId());
     //end-capella-code
-		return operationalProcess;
-	}
+    return operationalProcess;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Swimlane createSwimlane() {
-		SwimlaneImpl swimlane = new SwimlaneImpl();
+    SwimlaneImpl swimlane = new SwimlaneImpl();
     //begin-capella-code
     swimlane.setId(IdGenerator.createId());
     //end-capella-code
-		return swimlane;
-	}
+    return swimlane;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public OperationalCapabilityPkg createOperationalCapabilityPkg() {
-		OperationalCapabilityPkgImpl operationalCapabilityPkg = new OperationalCapabilityPkgImpl();
+    OperationalCapabilityPkgImpl operationalCapabilityPkg = new OperationalCapabilityPkgImpl();
     //begin-capella-code
     operationalCapabilityPkg.setId(IdGenerator.createId());
     //end-capella-code
-		return operationalCapabilityPkg;
-	}
+    return operationalCapabilityPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public OperationalCapability createOperationalCapability() {
-		OperationalCapabilityImpl operationalCapability = new OperationalCapabilityImpl();
+    OperationalCapabilityImpl operationalCapability = new OperationalCapabilityImpl();
     //begin-capella-code
     operationalCapability.setId(IdGenerator.createId());
     //end-capella-code
-		return operationalCapability;
-	}
+    return operationalCapability;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ActivityAllocation createActivityAllocation() {
-		ActivityAllocationImpl activityAllocation = new ActivityAllocationImpl();
+    ActivityAllocationImpl activityAllocation = new ActivityAllocationImpl();
     //begin-capella-code
     activityAllocation.setId(IdGenerator.createId());
     //end-capella-code
-		return activityAllocation;
-	}
+    return activityAllocation;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public RolePkg createRolePkg() {
-		RolePkgImpl rolePkg = new RolePkgImpl();
+    RolePkgImpl rolePkg = new RolePkgImpl();
     //begin-capella-code
     rolePkg.setId(IdGenerator.createId());
     //end-capella-code
-		return rolePkg;
-	}
+    return rolePkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Role createRole() {
-		RoleImpl role = new RoleImpl();
+    RoleImpl role = new RoleImpl();
     //begin-capella-code
     role.setId(IdGenerator.createId());
     //end-capella-code
-		return role;
-	}
+    return role;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public RoleAssemblyUsage createRoleAssemblyUsage() {
-		RoleAssemblyUsageImpl roleAssemblyUsage = new RoleAssemblyUsageImpl();
+    RoleAssemblyUsageImpl roleAssemblyUsage = new RoleAssemblyUsageImpl();
     //begin-capella-code
     roleAssemblyUsage.setId(IdGenerator.createId());
     //end-capella-code
-		return roleAssemblyUsage;
-	}
+    return roleAssemblyUsage;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public RoleAllocation createRoleAllocation() {
-		RoleAllocationImpl roleAllocation = new RoleAllocationImpl();
+    RoleAllocationImpl roleAllocation = new RoleAllocationImpl();
     //begin-capella-code
     roleAllocation.setId(IdGenerator.createId());
     //end-capella-code
-		return roleAllocation;
-	}
+    return roleAllocation;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EntityPkg createEntityPkg() {
-		EntityPkgImpl entityPkg = new EntityPkgImpl();
+    EntityPkgImpl entityPkg = new EntityPkgImpl();
     //begin-capella-code
     entityPkg.setId(IdGenerator.createId());
     //end-capella-code
-		return entityPkg;
-	}
+    return entityPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Entity createEntity() {
-		EntityImpl entity = new EntityImpl();
+    EntityImpl entity = new EntityImpl();
     //begin-capella-code
     entity.setId(IdGenerator.createId());
     //end-capella-code
-		return entity;
-	}
+    return entity;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ConceptPkg createConceptPkg() {
-		ConceptPkgImpl conceptPkg = new ConceptPkgImpl();
+    ConceptPkgImpl conceptPkg = new ConceptPkgImpl();
     //begin-capella-code
     conceptPkg.setId(IdGenerator.createId());
     //end-capella-code
-		return conceptPkg;
-	}
+    return conceptPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Concept createConcept() {
-		ConceptImpl concept = new ConceptImpl();
+    ConceptImpl concept = new ConceptImpl();
     //begin-capella-code
     concept.setId(IdGenerator.createId());
     //end-capella-code
-		return concept;
-	}
+    return concept;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ConceptCompliance createConceptCompliance() {
-		ConceptComplianceImpl conceptCompliance = new ConceptComplianceImpl();
+    ConceptComplianceImpl conceptCompliance = new ConceptComplianceImpl();
     //begin-capella-code
     conceptCompliance.setId(IdGenerator.createId());
     //end-capella-code
-		return conceptCompliance;
-	}
+    return conceptCompliance;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ItemInConcept createItemInConcept() {
-		ItemInConceptImpl itemInConcept = new ItemInConceptImpl();
+    ItemInConceptImpl itemInConcept = new ItemInConceptImpl();
     //begin-capella-code
     itemInConcept.setId(IdGenerator.createId());
     //end-capella-code
-		return itemInConcept;
-	}
+    return itemInConcept;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public CommunityOfInterest createCommunityOfInterest() {
-		CommunityOfInterestImpl communityOfInterest = new CommunityOfInterestImpl();
+    CommunityOfInterestImpl communityOfInterest = new CommunityOfInterestImpl();
     //begin-capella-code
     communityOfInterest.setId(IdGenerator.createId());
     //end-capella-code
-		return communityOfInterest;
-	}
+    return communityOfInterest;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public CommunityOfInterestComposition createCommunityOfInterestComposition() {
-		CommunityOfInterestCompositionImpl communityOfInterestComposition = new CommunityOfInterestCompositionImpl();
+    CommunityOfInterestCompositionImpl communityOfInterestComposition = new CommunityOfInterestCompositionImpl();
     //begin-capella-code
     communityOfInterestComposition.setId(IdGenerator.createId());
     //end-capella-code
-		return communityOfInterestComposition;
-	}
+    return communityOfInterestComposition;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public OrganisationalUnit createOrganisationalUnit() {
-		OrganisationalUnitImpl organisationalUnit = new OrganisationalUnitImpl();
+    OrganisationalUnitImpl organisationalUnit = new OrganisationalUnitImpl();
     //begin-capella-code
     organisationalUnit.setId(IdGenerator.createId());
     //end-capella-code
-		return organisationalUnit;
-	}
+    return organisationalUnit;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public OrganisationalUnitComposition createOrganisationalUnitComposition() {
-		OrganisationalUnitCompositionImpl organisationalUnitComposition = new OrganisationalUnitCompositionImpl();
+    OrganisationalUnitCompositionImpl organisationalUnitComposition = new OrganisationalUnitCompositionImpl();
     //begin-capella-code
     organisationalUnitComposition.setId(IdGenerator.createId());
     //end-capella-code
-		return organisationalUnitComposition;
-	}
+    return organisationalUnitComposition;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Location createLocation() {
-		LocationImpl location = new LocationImpl();
+    LocationImpl location = new LocationImpl();
     //begin-capella-code
     location.setId(IdGenerator.createId());
     //end-capella-code
-		return location;
-	}
+    return location;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public CapabilityConfiguration createCapabilityConfiguration() {
-		CapabilityConfigurationImpl capabilityConfiguration = new CapabilityConfigurationImpl();
+    CapabilityConfigurationImpl capabilityConfiguration = new CapabilityConfigurationImpl();
     //begin-capella-code
     capabilityConfiguration.setId(IdGenerator.createId());
     //end-capella-code
-		return capabilityConfiguration;
-	}
+    return capabilityConfiguration;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public CommunicationMean createCommunicationMean() {
-		CommunicationMeanImpl communicationMean = new CommunicationMeanImpl();
+    CommunicationMeanImpl communicationMean = new CommunicationMeanImpl();
     //begin-capella-code
     communicationMean.setId(IdGenerator.createId());
     //end-capella-code
-		return communicationMean;
-	}
+    return communicationMean;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EntityOperationalCapabilityInvolvement createEntityOperationalCapabilityInvolvement() {
-		EntityOperationalCapabilityInvolvementImpl entityOperationalCapabilityInvolvement = new EntityOperationalCapabilityInvolvementImpl();
+    EntityOperationalCapabilityInvolvementImpl entityOperationalCapabilityInvolvement = new EntityOperationalCapabilityInvolvementImpl();
     //begin-capella-code
     entityOperationalCapabilityInvolvement.setId(IdGenerator.createId());
     //end-capella-code
-		return entityOperationalCapabilityInvolvement;
-	}
+    return entityOperationalCapabilityInvolvement;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public OaPackage getOaPackage() {
-		return (OaPackage)getEPackage();
-	}
+    return (OaPackage)getEPackage();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
 	@Deprecated
 	public static OaPackage getPackage() {
-		return OaPackage.eINSTANCE;
-	}
+    return OaPackage.eINSTANCE;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -516,10 +516,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public OperationalAnalysis createOperationalAnalysis(String name_p) {
-		OperationalAnalysis operationalAnalysis = createOperationalAnalysis();
-		operationalAnalysis.setName(name_p);	  
-		return operationalAnalysis;
-	}
+    OperationalAnalysis operationalAnalysis = createOperationalAnalysis();
+    operationalAnalysis.setName(name_p);	  
+    return operationalAnalysis;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -529,10 +529,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public OperationalActivityPkg createOperationalActivityPkg(String name_p) {
-		OperationalActivityPkg operationalActivityPkg = createOperationalActivityPkg();
-		operationalActivityPkg.setName(name_p);	  
-		return operationalActivityPkg;
-	}
+    OperationalActivityPkg operationalActivityPkg = createOperationalActivityPkg();
+    operationalActivityPkg.setName(name_p);	  
+    return operationalActivityPkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -542,10 +542,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public OperationalActivity createOperationalActivity(String name_p) {
-		OperationalActivity operationalActivity = createOperationalActivity();
-		operationalActivity.setName(name_p);	  
-		return operationalActivity;
-	}
+    OperationalActivity operationalActivity = createOperationalActivity();
+    operationalActivity.setName(name_p);	  
+    return operationalActivity;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -555,10 +555,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public OperationalProcess createOperationalProcess(String name_p) {
-		OperationalProcess operationalProcess = createOperationalProcess();
-		operationalProcess.setName(name_p);	  
-		return operationalProcess;
-	}
+    OperationalProcess operationalProcess = createOperationalProcess();
+    operationalProcess.setName(name_p);	  
+    return operationalProcess;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -568,10 +568,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public Swimlane createSwimlane(String name_p) {
-		Swimlane swimlane = createSwimlane();
-		swimlane.setName(name_p);	  
-		return swimlane;
-	}
+    Swimlane swimlane = createSwimlane();
+    swimlane.setName(name_p);	  
+    return swimlane;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -581,10 +581,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public OperationalCapabilityPkg createOperationalCapabilityPkg(String name_p) {
-		OperationalCapabilityPkg operationalCapabilityPkg = createOperationalCapabilityPkg();
-		operationalCapabilityPkg.setName(name_p);	  
-		return operationalCapabilityPkg;
-	}
+    OperationalCapabilityPkg operationalCapabilityPkg = createOperationalCapabilityPkg();
+    operationalCapabilityPkg.setName(name_p);	  
+    return operationalCapabilityPkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -594,10 +594,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public OperationalCapability createOperationalCapability(String name_p) {
-		OperationalCapability operationalCapability = createOperationalCapability();
-		operationalCapability.setName(name_p);	  
-		return operationalCapability;
-	}
+    OperationalCapability operationalCapability = createOperationalCapability();
+    operationalCapability.setName(name_p);	  
+    return operationalCapability;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -607,10 +607,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public RolePkg createRolePkg(String name_p) {
-		RolePkg rolePkg = createRolePkg();
-		rolePkg.setName(name_p);	  
-		return rolePkg;
-	}
+    RolePkg rolePkg = createRolePkg();
+    rolePkg.setName(name_p);	  
+    return rolePkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -620,10 +620,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public Role createRole(String name_p) {
-		Role role = createRole();
-		role.setName(name_p);	  
-		return role;
-	}
+    Role role = createRole();
+    role.setName(name_p);	  
+    return role;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -633,10 +633,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public RoleAssemblyUsage createRoleAssemblyUsage(String name_p) {
-		RoleAssemblyUsage roleAssemblyUsage = createRoleAssemblyUsage();
-		roleAssemblyUsage.setName(name_p);	  
-		return roleAssemblyUsage;
-	}
+    RoleAssemblyUsage roleAssemblyUsage = createRoleAssemblyUsage();
+    roleAssemblyUsage.setName(name_p);	  
+    return roleAssemblyUsage;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -646,10 +646,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public EntityPkg createEntityPkg(String name_p) {
-		EntityPkg entityPkg = createEntityPkg();
-		entityPkg.setName(name_p);	  
-		return entityPkg;
-	}
+    EntityPkg entityPkg = createEntityPkg();
+    entityPkg.setName(name_p);	  
+    return entityPkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -659,10 +659,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public Entity createEntity(String name_p) {
-		Entity entity = createEntity();
-		entity.setName(name_p);	  
-		return entity;
-	}
+    Entity entity = createEntity();
+    entity.setName(name_p);	  
+    return entity;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -672,10 +672,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public ConceptPkg createConceptPkg(String name_p) {
-		ConceptPkg conceptPkg = createConceptPkg();
-		conceptPkg.setName(name_p);	  
-		return conceptPkg;
-	}
+    ConceptPkg conceptPkg = createConceptPkg();
+    conceptPkg.setName(name_p);	  
+    return conceptPkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -685,10 +685,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public Concept createConcept(String name_p) {
-		Concept concept = createConcept();
-		concept.setName(name_p);	  
-		return concept;
-	}
+    Concept concept = createConcept();
+    concept.setName(name_p);	  
+    return concept;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -698,10 +698,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public ItemInConcept createItemInConcept(String name_p) {
-		ItemInConcept itemInConcept = createItemInConcept();
-		itemInConcept.setName(name_p);	  
-		return itemInConcept;
-	}
+    ItemInConcept itemInConcept = createItemInConcept();
+    itemInConcept.setName(name_p);	  
+    return itemInConcept;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -711,10 +711,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public CommunityOfInterest createCommunityOfInterest(String name_p) {
-		CommunityOfInterest communityOfInterest = createCommunityOfInterest();
-		communityOfInterest.setName(name_p);	  
-		return communityOfInterest;
-	}
+    CommunityOfInterest communityOfInterest = createCommunityOfInterest();
+    communityOfInterest.setName(name_p);	  
+    return communityOfInterest;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -724,10 +724,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public CommunityOfInterestComposition createCommunityOfInterestComposition(String name_p) {
-		CommunityOfInterestComposition communityOfInterestComposition = createCommunityOfInterestComposition();
-		communityOfInterestComposition.setName(name_p);	  
-		return communityOfInterestComposition;
-	}
+    CommunityOfInterestComposition communityOfInterestComposition = createCommunityOfInterestComposition();
+    communityOfInterestComposition.setName(name_p);	  
+    return communityOfInterestComposition;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -737,10 +737,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public OrganisationalUnit createOrganisationalUnit(String name_p) {
-		OrganisationalUnit organisationalUnit = createOrganisationalUnit();
-		organisationalUnit.setName(name_p);	  
-		return organisationalUnit;
-	}
+    OrganisationalUnit organisationalUnit = createOrganisationalUnit();
+    organisationalUnit.setName(name_p);	  
+    return organisationalUnit;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -750,10 +750,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public OrganisationalUnitComposition createOrganisationalUnitComposition(String name_p) {
-		OrganisationalUnitComposition organisationalUnitComposition = createOrganisationalUnitComposition();
-		organisationalUnitComposition.setName(name_p);	  
-		return organisationalUnitComposition;
-	}
+    OrganisationalUnitComposition organisationalUnitComposition = createOrganisationalUnitComposition();
+    organisationalUnitComposition.setName(name_p);	  
+    return organisationalUnitComposition;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -763,10 +763,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public Location createLocation(String name_p) {
-		Location location = createLocation();
-		location.setName(name_p);	  
-		return location;
-	}
+    Location location = createLocation();
+    location.setName(name_p);	  
+    return location;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -776,10 +776,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public CapabilityConfiguration createCapabilityConfiguration(String name_p) {
-		CapabilityConfiguration capabilityConfiguration = createCapabilityConfiguration();
-		capabilityConfiguration.setName(name_p);	  
-		return capabilityConfiguration;
-	}
+    CapabilityConfiguration capabilityConfiguration = createCapabilityConfiguration();
+    capabilityConfiguration.setName(name_p);	  
+    return capabilityConfiguration;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -789,10 +789,10 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @generated
 	 */
 	public CommunicationMean createCommunicationMean(String name_p) {
-		CommunicationMean communicationMean = createCommunicationMean();
-		communicationMean.setName(name_p);	  
-		return communicationMean;
-	}
+    CommunicationMean communicationMean = createCommunicationMean();
+    communicationMean.setName(name_p);	  
+    return communicationMean;
+  }
 
 	//begin-capella-code
 

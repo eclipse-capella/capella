@@ -42,27 +42,27 @@ public interface ExchangeContainment extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Exchange</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ExchangeSpecification#getLink <em>Link</em>}'.
+   * Returns the value of the '<em><b>Exchange</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ExchangeSpecification#getLink <em>Link</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Exchange</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exchange</em>' reference.
-	 * @see #setExchange(ExchangeSpecification)
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeContainment_Exchange()
-	 * @see org.polarsys.capella.core.data.fa.ExchangeSpecification#getLink
-	 * @model opposite="link" required="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='supplier' featureOwner='Dependency'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='exchange'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange (specification) involved in this relationship\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [1..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Exchange</em>' reference.
+   * @see #setExchange(ExchangeSpecification)
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeContainment_Exchange()
+   * @see org.polarsys.capella.core.data.fa.ExchangeSpecification#getLink
+   * @model opposite="link" required="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='supplier' featureOwner='Dependency'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='exchange'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange (specification) involved in this relationship\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [1..1]'"
+   * @generated
+   */
 
 	ExchangeSpecification getExchange();
 
@@ -70,14 +70,14 @@ public interface ExchangeContainment extends Relationship {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.fa.ExchangeContainment#getExchange <em>Exchange</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.fa.ExchangeContainment#getExchange <em>Exchange</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Exchange</em>' reference.
-	 * @see #getExchange()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Exchange</em>' reference.
+   * @see #getExchange()
+   * @generated
+   */
 
 	void setExchange(ExchangeSpecification value);
 
@@ -88,27 +88,27 @@ public interface ExchangeContainment extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Link</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ExchangeLink#getExchangeContainmentLinks <em>Exchange Containment Links</em>}'.
+   * Returns the value of the '<em><b>Link</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ExchangeLink#getExchangeContainmentLinks <em>Exchange Containment Links</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Link</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Link</em>' reference.
-	 * @see #setLink(ExchangeLink)
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeContainment_Link()
-	 * @see org.polarsys.capella.core.data.fa.ExchangeLink#getExchangeContainmentLinks
-	 * @model opposite="exchangeContainmentLinks" required="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='client' featureOwner='Dependency'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='link'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange link involved in this relationship\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='none' constraints='Multiplicity must be [1..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Link</em>' reference.
+   * @see #setLink(ExchangeLink)
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeContainment_Link()
+   * @see org.polarsys.capella.core.data.fa.ExchangeLink#getExchangeContainmentLinks
+   * @model opposite="exchangeContainmentLinks" required="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='client' featureOwner='Dependency'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='link'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange link involved in this relationship\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='none' constraints='Multiplicity must be [1..1]'"
+   * @generated
+   */
 
 	ExchangeLink getLink();
 
@@ -116,14 +116,14 @@ public interface ExchangeContainment extends Relationship {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.fa.ExchangeContainment#getLink <em>Link</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.fa.ExchangeContainment#getLink <em>Link</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Link</em>' reference.
-	 * @see #getLink()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Link</em>' reference.
+   * @see #getLink()
+   * @generated
+   */
 
 	void setLink(ExchangeLink value);
 

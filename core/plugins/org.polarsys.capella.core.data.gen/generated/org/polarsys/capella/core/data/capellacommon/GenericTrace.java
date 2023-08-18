@@ -47,25 +47,25 @@ public interface GenericTrace extends Trace {
 
 
 	/**
-	 * Returns the value of the '<em><b>Key Value Pairs</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.KeyValue}.
+   * Returns the value of the '<em><b>Key Value Pairs</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.KeyValue}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Key Value Pairs</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Key Value Pairs</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getGenericTrace_KeyValuePairs()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedComment' featureOwner='Element'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='keyValuePairs'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of key/value pairs that characterize this trace relationship\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Element::ownedComment' explanation='none' constraints='uml::Element::ownedComment elements on which KeyValue stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Key Value Pairs</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getGenericTrace_KeyValuePairs()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedComment' featureOwner='Element'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='keyValuePairs'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of key/value pairs that characterize this trace relationship\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Element::ownedComment' explanation='none' constraints='uml::Element::ownedComment elements on which KeyValue stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<KeyValue> getKeyValuePairs();
 
@@ -76,21 +76,21 @@ public interface GenericTrace extends Trace {
 
 
 	/**
-	 * Returns the value of the '<em><b>Source</b></em>' reference.
+   * Returns the value of the '<em><b>Source</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Source</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source</em>' reference.
-	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getGenericTrace_Source()
-	 * @model resolveProxies="false" required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Source</em>' reference.
+   * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getGenericTrace_Source()
+   * @model resolveProxies="false" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	TraceableElement getSource();
 
@@ -101,21 +101,21 @@ public interface GenericTrace extends Trace {
 
 
 	/**
-	 * Returns the value of the '<em><b>Target</b></em>' reference.
+   * Returns the value of the '<em><b>Target</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Target</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target</em>' reference.
-	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getGenericTrace_Target()
-	 * @model resolveProxies="false" required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Target</em>' reference.
+   * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getGenericTrace_Target()
+   * @model resolveProxies="false" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	TraceableElement getTarget();
 

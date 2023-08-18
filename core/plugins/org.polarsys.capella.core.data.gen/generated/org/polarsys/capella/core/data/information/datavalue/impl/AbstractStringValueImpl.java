@@ -44,48 +44,48 @@ public abstract class AbstractStringValueImpl extends DataValueImpl implements A
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractStringValueImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return DatavaluePackage.Literals.ABSTRACT_STRING_VALUE;
-	}
+    return DatavaluePackage.Literals.ABSTRACT_STRING_VALUE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public StringType getStringType() {
 
-		StringType stringType = basicGetStringType();
-		return stringType != null && stringType.eIsProxy() ? (StringType)eResolveProxy((InternalEObject)stringType) : stringType;
-	}
+    StringType stringType = basicGetStringType();
+    return stringType != null && stringType.eIsProxy() ? (StringType)eResolveProxy((InternalEObject)stringType) : stringType;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public StringType basicGetStringType() {
 
@@ -112,48 +112,48 @@ public abstract class AbstractStringValueImpl extends DataValueImpl implements A
     // A helper is found, let's use it. 
     EAnnotation annotation = DatavaluePackage.Literals.ABSTRACT_STRING_VALUE__STRING_TYPE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, DatavaluePackage.Literals.ABSTRACT_STRING_VALUE__STRING_TYPE, annotation);
-		
-		try {
-			return (StringType) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (StringType) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case DatavaluePackage.ABSTRACT_STRING_VALUE__STRING_TYPE:
-				if (resolve) return getStringType();
-				return basicGetStringType();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case DatavaluePackage.ABSTRACT_STRING_VALUE__STRING_TYPE:
+        if (resolve) return getStringType();
+        return basicGetStringType();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case DatavaluePackage.ABSTRACT_STRING_VALUE__STRING_TYPE:
-				return basicGetStringType() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case DatavaluePackage.ABSTRACT_STRING_VALUE__STRING_TYPE:
+        return basicGetStringType() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

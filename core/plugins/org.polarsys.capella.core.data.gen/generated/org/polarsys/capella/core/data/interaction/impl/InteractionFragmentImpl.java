@@ -38,121 +38,121 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 public abstract class InteractionFragmentImpl extends NamedElementImpl implements InteractionFragment {
 
 	/**
-	 * The cached value of the '{@link #getCoveredInstanceRoles() <em>Covered Instance Roles</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getCoveredInstanceRoles() <em>Covered Instance Roles</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCoveredInstanceRoles()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getCoveredInstanceRoles()
+   * @generated
+   * @ordered
+   */
 	protected EList<InstanceRole> coveredInstanceRoles;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected InteractionFragmentImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.INTERACTION_FRAGMENT;
-	}
+    return InteractionPackage.Literals.INTERACTION_FRAGMENT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<InstanceRole> getCoveredInstanceRoles() {
 
-		if (coveredInstanceRoles == null) {
-			coveredInstanceRoles = new EObjectResolvingEList<InstanceRole>(InstanceRole.class, this, InteractionPackage.INTERACTION_FRAGMENT__COVERED_INSTANCE_ROLES);
-		}
-		return coveredInstanceRoles;
-	}
+    if (coveredInstanceRoles == null) {
+      coveredInstanceRoles = new EObjectResolvingEList<InstanceRole>(InstanceRole.class, this, InteractionPackage.INTERACTION_FRAGMENT__COVERED_INSTANCE_ROLES);
+    }
+    return coveredInstanceRoles;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_FRAGMENT__COVERED_INSTANCE_ROLES:
-				return getCoveredInstanceRoles();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_FRAGMENT__COVERED_INSTANCE_ROLES:
+        return getCoveredInstanceRoles();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_FRAGMENT__COVERED_INSTANCE_ROLES:
-				getCoveredInstanceRoles().clear();
-				getCoveredInstanceRoles().addAll((Collection<? extends InstanceRole>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_FRAGMENT__COVERED_INSTANCE_ROLES:
+        getCoveredInstanceRoles().clear();
+        getCoveredInstanceRoles().addAll((Collection<? extends InstanceRole>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_FRAGMENT__COVERED_INSTANCE_ROLES:
-				getCoveredInstanceRoles().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_FRAGMENT__COVERED_INSTANCE_ROLES:
+        getCoveredInstanceRoles().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_FRAGMENT__COVERED_INSTANCE_ROLES:
-				return coveredInstanceRoles != null && !coveredInstanceRoles.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_FRAGMENT__COVERED_INSTANCE_ROLES:
+        return coveredInstanceRoles != null && !coveredInstanceRoles.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

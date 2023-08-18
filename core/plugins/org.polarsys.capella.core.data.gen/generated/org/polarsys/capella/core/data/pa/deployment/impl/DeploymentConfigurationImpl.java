@@ -43,13 +43,13 @@ import org.polarsys.capella.core.data.pa.deployment.DeploymentPackage;
 public class DeploymentConfigurationImpl extends NamedElementImpl implements DeploymentConfiguration {
 
 	/**
-	 * The cached value of the '{@link #getOwnedDeploymentLinks() <em>Owned Deployment Links</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedDeploymentLinks() <em>Owned Deployment Links</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedDeploymentLinks()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedDeploymentLinks()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractDeploymentLink> ownedDeploymentLinks;
 
 
@@ -57,166 +57,166 @@ public class DeploymentConfigurationImpl extends NamedElementImpl implements Dep
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedPhysicalInstances() <em>Owned Physical Instances</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPhysicalInstances() <em>Owned Physical Instances</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPhysicalInstances()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPhysicalInstances()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractPhysicalInstance> ownedPhysicalInstances;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected DeploymentConfigurationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return DeploymentPackage.Literals.DEPLOYMENT_CONFIGURATION;
-	}
+    return DeploymentPackage.Literals.DEPLOYMENT_CONFIGURATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractDeploymentLink> getOwnedDeploymentLinks() {
 
-		if (ownedDeploymentLinks == null) {
-			ownedDeploymentLinks = new EObjectContainmentEList.Resolving<AbstractDeploymentLink>(AbstractDeploymentLink.class, this, DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_DEPLOYMENT_LINKS);
-		}
-		return ownedDeploymentLinks;
-	}
+    if (ownedDeploymentLinks == null) {
+      ownedDeploymentLinks = new EObjectContainmentEList.Resolving<AbstractDeploymentLink>(AbstractDeploymentLink.class, this, DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_DEPLOYMENT_LINKS);
+    }
+    return ownedDeploymentLinks;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractPhysicalInstance> getOwnedPhysicalInstances() {
 
-		if (ownedPhysicalInstances == null) {
-			ownedPhysicalInstances = new EObjectContainmentEList.Resolving<AbstractPhysicalInstance>(AbstractPhysicalInstance.class, this, DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_PHYSICAL_INSTANCES);
-		}
-		return ownedPhysicalInstances;
-	}
+    if (ownedPhysicalInstances == null) {
+      ownedPhysicalInstances = new EObjectContainmentEList.Resolving<AbstractPhysicalInstance>(AbstractPhysicalInstance.class, this, DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_PHYSICAL_INSTANCES);
+    }
+    return ownedPhysicalInstances;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_DEPLOYMENT_LINKS:
-				return ((InternalEList<?>)getOwnedDeploymentLinks()).basicRemove(otherEnd, msgs);
-			case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_PHYSICAL_INSTANCES:
-				return ((InternalEList<?>)getOwnedPhysicalInstances()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_DEPLOYMENT_LINKS:
+        return ((InternalEList<?>)getOwnedDeploymentLinks()).basicRemove(otherEnd, msgs);
+      case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_PHYSICAL_INSTANCES:
+        return ((InternalEList<?>)getOwnedPhysicalInstances()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_DEPLOYMENT_LINKS:
-				return getOwnedDeploymentLinks();
-			case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_PHYSICAL_INSTANCES:
-				return getOwnedPhysicalInstances();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_DEPLOYMENT_LINKS:
+        return getOwnedDeploymentLinks();
+      case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_PHYSICAL_INSTANCES:
+        return getOwnedPhysicalInstances();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_DEPLOYMENT_LINKS:
-				getOwnedDeploymentLinks().clear();
-				getOwnedDeploymentLinks().addAll((Collection<? extends AbstractDeploymentLink>)newValue);
-				return;
-			case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_PHYSICAL_INSTANCES:
-				getOwnedPhysicalInstances().clear();
-				getOwnedPhysicalInstances().addAll((Collection<? extends AbstractPhysicalInstance>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_DEPLOYMENT_LINKS:
+        getOwnedDeploymentLinks().clear();
+        getOwnedDeploymentLinks().addAll((Collection<? extends AbstractDeploymentLink>)newValue);
+        return;
+      case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_PHYSICAL_INSTANCES:
+        getOwnedPhysicalInstances().clear();
+        getOwnedPhysicalInstances().addAll((Collection<? extends AbstractPhysicalInstance>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_DEPLOYMENT_LINKS:
-				getOwnedDeploymentLinks().clear();
-				return;
-			case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_PHYSICAL_INSTANCES:
-				getOwnedPhysicalInstances().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_DEPLOYMENT_LINKS:
+        getOwnedDeploymentLinks().clear();
+        return;
+      case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_PHYSICAL_INSTANCES:
+        getOwnedPhysicalInstances().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_DEPLOYMENT_LINKS:
-				return ownedDeploymentLinks != null && !ownedDeploymentLinks.isEmpty();
-			case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_PHYSICAL_INSTANCES:
-				return ownedPhysicalInstances != null && !ownedPhysicalInstances.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_DEPLOYMENT_LINKS:
+        return ownedDeploymentLinks != null && !ownedDeploymentLinks.isEmpty();
+      case DeploymentPackage.DEPLOYMENT_CONFIGURATION__OWNED_PHYSICAL_INSTANCES:
+        return ownedPhysicalInstances != null && !ownedPhysicalInstances.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

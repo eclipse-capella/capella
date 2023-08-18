@@ -58,658 +58,658 @@ public class FunctionalChainItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor preConditionPropertyDescriptor;
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor postConditionPropertyDescriptor;
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public FunctionalChainItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process FaPackage.Literals.FUNCTIONAL_CHAIN__PRE_CONDITION
-			if (preConditionPropertyDescriptor != null) {
-				Object preConditionValue = eObject.eGet(FaPackage.Literals.FUNCTIONAL_CHAIN__PRE_CONDITION, true);
-				if (preConditionValue != null && preConditionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) preConditionValue)) {
-					itemPropertyDescriptors.remove(preConditionPropertyDescriptor);
-				} else if (preConditionValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.FUNCTIONAL_CHAIN__PRE_CONDITION) != null) {
-					itemPropertyDescriptors.remove(preConditionPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(preConditionPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(preConditionPropertyDescriptor);
-				}
-			}
-			// Process FaPackage.Literals.FUNCTIONAL_CHAIN__POST_CONDITION
-			if (postConditionPropertyDescriptor != null) {
-				Object postConditionValue = eObject.eGet(FaPackage.Literals.FUNCTIONAL_CHAIN__POST_CONDITION, true);
-				if (postConditionValue != null && postConditionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) postConditionValue)) {
-					itemPropertyDescriptors.remove(postConditionPropertyDescriptor);
-				} else if (postConditionValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.FUNCTIONAL_CHAIN__POST_CONDITION) != null) {
-					itemPropertyDescriptors.remove(postConditionPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(postConditionPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(postConditionPropertyDescriptor);
-				}
-			}
-		}		
-	}
+    super.checkChildCreationExtender(object);
+    if (object instanceof EObject) {
+      EObject eObject = (EObject) object;
+      // Process FaPackage.Literals.FUNCTIONAL_CHAIN__PRE_CONDITION
+      if (preConditionPropertyDescriptor != null) {
+        Object preConditionValue = eObject.eGet(FaPackage.Literals.FUNCTIONAL_CHAIN__PRE_CONDITION, true);
+        if (preConditionValue != null && preConditionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) preConditionValue)) {
+          itemPropertyDescriptors.remove(preConditionPropertyDescriptor);
+        } else if (preConditionValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.FUNCTIONAL_CHAIN__PRE_CONDITION) != null) {
+          itemPropertyDescriptors.remove(preConditionPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(preConditionPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(preConditionPropertyDescriptor);
+        }
+      }
+      // Process FaPackage.Literals.FUNCTIONAL_CHAIN__POST_CONDITION
+      if (postConditionPropertyDescriptor != null) {
+        Object postConditionValue = eObject.eGet(FaPackage.Literals.FUNCTIONAL_CHAIN__POST_CONDITION, true);
+        if (postConditionValue != null && postConditionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) postConditionValue)) {
+          itemPropertyDescriptors.remove(postConditionPropertyDescriptor);
+        } else if (postConditionValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.FUNCTIONAL_CHAIN__POST_CONDITION) != null) {
+          itemPropertyDescriptors.remove(postConditionPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(postConditionPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(postConditionPropertyDescriptor);
+        }
+      }
+    }		
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addInvolvedInvolvementsPropertyDescriptor(object);
-			addInvolvingInvolvementsPropertyDescriptor(object);
-			addKindPropertyDescriptor(object);
-			addInvolvedFunctionalChainInvolvementsPropertyDescriptor(object);
-			addInvolvedFunctionsPropertyDescriptor(object);
-			addInvolvedFunctionalExchangesPropertyDescriptor(object);
-			addInvolvedElementsPropertyDescriptor(object);
-			addEnactedFunctionsPropertyDescriptor(object);
-			addEnactedFunctionalBlocksPropertyDescriptor(object);
-			addAvailableInStatesPropertyDescriptor(object);
-			addFirstFunctionalChainInvolvementsPropertyDescriptor(object);
-			addInvolvingCapabilitiesPropertyDescriptor(object);
-			addInvolvingCapabilityRealizationsPropertyDescriptor(object);
-			addRealizedFunctionalChainsPropertyDescriptor(object);
-			addRealizingFunctionalChainsPropertyDescriptor(object);
-			addPreConditionPropertyDescriptor(object);
-			addPostConditionPropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addInvolvedInvolvementsPropertyDescriptor(object);
+      addInvolvingInvolvementsPropertyDescriptor(object);
+      addKindPropertyDescriptor(object);
+      addInvolvedFunctionalChainInvolvementsPropertyDescriptor(object);
+      addInvolvedFunctionsPropertyDescriptor(object);
+      addInvolvedFunctionalExchangesPropertyDescriptor(object);
+      addInvolvedElementsPropertyDescriptor(object);
+      addEnactedFunctionsPropertyDescriptor(object);
+      addEnactedFunctionalBlocksPropertyDescriptor(object);
+      addAvailableInStatesPropertyDescriptor(object);
+      addFirstFunctionalChainInvolvementsPropertyDescriptor(object);
+      addInvolvingCapabilitiesPropertyDescriptor(object);
+      addInvolvingCapabilityRealizationsPropertyDescriptor(object);
+      addRealizedFunctionalChainsPropertyDescriptor(object);
+      addRealizingFunctionalChainsPropertyDescriptor(object);
+      addPreConditionPropertyDescriptor(object);
+      addPostConditionPropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Involved Involvements feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Involved Involvements feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addInvolvedInvolvementsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InvolverElement_involvedInvolvements_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_InvolverElement_involvedInvolvements_feature", "_UI_InvolverElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_InvolverElement_involvedInvolvements_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_InvolverElement_involvedInvolvements_feature", "_UI_InvolverElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Involving Involvements feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Involving Involvements feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addInvolvingInvolvementsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InvolvedElement_involvingInvolvements_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_InvolvedElement_involvingInvolvements_feature", "_UI_InvolvedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_InvolvedElement_involvingInvolvements_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_InvolvedElement_involvingInvolvements_feature", "_UI_InvolvedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Kind feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Kind feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addKindPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FunctionalChain_kind_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_kind_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.FUNCTIONAL_CHAIN__KIND,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_FunctionalChain_kind_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_kind_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.FUNCTIONAL_CHAIN__KIND,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Involved Functional Chain Involvements feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Involved Functional Chain Involvements feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addInvolvedFunctionalChainInvolvementsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FunctionalChain_involvedFunctionalChainInvolvements_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_involvedFunctionalChainInvolvements_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_CHAIN_INVOLVEMENTS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_FunctionalChain_involvedFunctionalChainInvolvements_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_involvedFunctionalChainInvolvements_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_CHAIN_INVOLVEMENTS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Involved Functions feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Involved Functions feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addInvolvedFunctionsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FunctionalChain_involvedFunctions_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_involvedFunctions_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_FunctionalChain_involvedFunctions_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_involvedFunctions_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Involved Functional Exchanges feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Involved Functional Exchanges feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addInvolvedFunctionalExchangesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FunctionalChain_involvedFunctionalExchanges_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_involvedFunctionalExchanges_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_EXCHANGES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_FunctionalChain_involvedFunctionalExchanges_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_involvedFunctionalExchanges_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_EXCHANGES,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Involved Elements feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Involved Elements feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addInvolvedElementsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FunctionalChain_involvedElements_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_involvedElements_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_ELEMENTS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_FunctionalChain_involvedElements_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_involvedElements_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_ELEMENTS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Enacted Functions feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Enacted Functions feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addEnactedFunctionsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FunctionalChain_enactedFunctions_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_enactedFunctions_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_FunctionalChain_enactedFunctions_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_enactedFunctions_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Enacted Functional Blocks feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Enacted Functional Blocks feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addEnactedFunctionalBlocksPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FunctionalChain_enactedFunctionalBlocks_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_enactedFunctionalBlocks_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONAL_BLOCKS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_FunctionalChain_enactedFunctionalBlocks_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_enactedFunctionalBlocks_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONAL_BLOCKS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Available In States feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Available In States feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addAvailableInStatesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FunctionalChain_availableInStates_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_availableInStates_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_FunctionalChain_availableInStates_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_availableInStates_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the First Functional Chain Involvements feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the First Functional Chain Involvements feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addFirstFunctionalChainInvolvementsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FunctionalChain_firstFunctionalChainInvolvements_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_firstFunctionalChainInvolvements_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.FUNCTIONAL_CHAIN__FIRST_FUNCTIONAL_CHAIN_INVOLVEMENTS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_FunctionalChain_firstFunctionalChainInvolvements_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_firstFunctionalChainInvolvements_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.FUNCTIONAL_CHAIN__FIRST_FUNCTIONAL_CHAIN_INVOLVEMENTS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Involving Capabilities feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Involving Capabilities feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addInvolvingCapabilitiesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FunctionalChain_involvingCapabilities_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_involvingCapabilities_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITIES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_FunctionalChain_involvingCapabilities_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_involvingCapabilities_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITIES,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Involving Capability Realizations feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Involving Capability Realizations feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addInvolvingCapabilityRealizationsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FunctionalChain_involvingCapabilityRealizations_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_involvingCapabilityRealizations_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITY_REALIZATIONS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_FunctionalChain_involvingCapabilityRealizations_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_involvingCapabilityRealizations_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITY_REALIZATIONS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Realized Functional Chains feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Realized Functional Chains feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addRealizedFunctionalChainsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FunctionalChain_realizedFunctionalChains_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_realizedFunctionalChains_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_FunctionalChain_realizedFunctionalChains_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_realizedFunctionalChains_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Realizing Functional Chains feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Realizing Functional Chains feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addRealizingFunctionalChainsPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FunctionalChain_realizingFunctionalChains_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_realizingFunctionalChains_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_FunctionalChain_realizingFunctionalChains_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_realizingFunctionalChains_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Pre Condition feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Pre Condition feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addPreConditionPropertyDescriptor(Object object) {
-		// begin-extension-code
-		preConditionPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FunctionalChain_preCondition_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_preCondition_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.FUNCTIONAL_CHAIN__PRE_CONDITION,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(preConditionPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    preConditionPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_FunctionalChain_preCondition_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_preCondition_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.FUNCTIONAL_CHAIN__PRE_CONDITION,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(preConditionPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Post Condition feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Post Condition feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addPostConditionPropertyDescriptor(Object object) {
-		// begin-extension-code
-		postConditionPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FunctionalChain_postCondition_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_postCondition_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.FUNCTIONAL_CHAIN__POST_CONDITION,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(postConditionPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    postConditionPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_FunctionalChain_postCondition_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_postCondition_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         FaPackage.Literals.FUNCTIONAL_CHAIN__POST_CONDITION,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(postConditionPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
+   * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+   * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS);
-			childrenFeatures.add(FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS);
-			childrenFeatures.add(FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES);
-			childrenFeatures.add(FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS);
-		}
-		return childrenFeatures;
-	}
+    if (childrenFeatures == null) {
+      super.getChildrenFeatures(object);
+      childrenFeatures.add(FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS);
+      childrenFeatures.add(FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS);
+      childrenFeatures.add(FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES);
+      childrenFeatures.add(FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS);
+    }
+    return childrenFeatures;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
+    // Check the type of the specified child object and return the proper feature to use for
+    // adding (see {@link AddCommand}) it as a child.
 
-		return super.getChildFeature(object, child);
-	}
+    return super.getChildFeature(object, child);
+  }
 
 	/**
-	 * This returns FunctionalChain.gif.
-	 * <!-- begin-user-doc -->
+   * This returns FunctionalChain.gif.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/FunctionalChain")); //$NON-NLS-1$
-	}
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/FunctionalChain")); //$NON-NLS-1$
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
-		String label = ((FunctionalChain)object).getName();
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_FunctionalChain_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+    String label = ((FunctionalChain)object).getName();
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_FunctionalChain_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
+    updateChildren(notification);
 
-		switch (notification.getFeatureID(FunctionalChain.class)) {
-			case FaPackage.FUNCTIONAL_CHAIN__KIND:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS:
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS:
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES:
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
-		}
-		super.notifyChanged(notification);
-	}
+    switch (notification.getFeatureID(FunctionalChain.class)) {
+      case FaPackage.FUNCTIONAL_CHAIN__KIND:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+        return;
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS:
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS:
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES:
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+        return;
+    }
+    super.notifyChanged(notification);
+  }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
+    super.collectNewChildDescriptors(newChildDescriptors, object);
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -782,17 +782,17 @@ public class FunctionalChainItemProvider
                 // end-extension-code
 
 
-	}
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 	// end-capella-code
 }

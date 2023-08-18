@@ -39,21 +39,21 @@ public interface OrganisationalUnitComposition extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Organisational Unit</b></em>' reference.
+   * Returns the value of the '<em><b>Organisational Unit</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Organisational Unit</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Organisational Unit</em>' reference.
-	 * @see #setOrganisationalUnit(OrganisationalUnit)
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOrganisationalUnitComposition_OrganisationalUnit()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the organisational unit involved in the relationship implemented by this mediator element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='none' constraints='Multiplicity must be [0..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Organisational Unit</em>' reference.
+   * @see #setOrganisationalUnit(OrganisationalUnit)
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getOrganisationalUnitComposition_OrganisationalUnit()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the organisational unit involved in the relationship implemented by this mediator element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='none' constraints='Multiplicity must be [0..1]'"
+   * @generated
+   */
 
 	OrganisationalUnit getOrganisationalUnit();
 
@@ -61,14 +61,14 @@ public interface OrganisationalUnitComposition extends NamedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.oa.OrganisationalUnitComposition#getOrganisationalUnit <em>Organisational Unit</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.oa.OrganisationalUnitComposition#getOrganisationalUnit <em>Organisational Unit</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Organisational Unit</em>' reference.
-	 * @see #getOrganisationalUnit()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Organisational Unit</em>' reference.
+   * @see #getOrganisationalUnit()
+   * @generated
+   */
 
 	void setOrganisationalUnit(OrganisationalUnit value);
 
@@ -79,21 +79,21 @@ public interface OrganisationalUnitComposition extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Participating Entity</b></em>' reference.
+   * Returns the value of the '<em><b>Participating Entity</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Participating Entity</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Participating Entity</em>' reference.
-	 * @see #setParticipatingEntity(Entity)
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOrganisationalUnitComposition_ParticipatingEntity()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the operational entity involved in the relationship implemented by this mediator element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [0..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Participating Entity</em>' reference.
+   * @see #setParticipatingEntity(Entity)
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getOrganisationalUnitComposition_ParticipatingEntity()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the operational entity involved in the relationship implemented by this mediator element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [0..1]'"
+   * @generated
+   */
 
 	Entity getParticipatingEntity();
 
@@ -101,14 +101,14 @@ public interface OrganisationalUnitComposition extends NamedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.oa.OrganisationalUnitComposition#getParticipatingEntity <em>Participating Entity</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.oa.OrganisationalUnitComposition#getParticipatingEntity <em>Participating Entity</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Participating Entity</em>' reference.
-	 * @see #getParticipatingEntity()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Participating Entity</em>' reference.
+   * @see #getParticipatingEntity()
+   * @generated
+   */
 
 	void setParticipatingEntity(Entity value);
 

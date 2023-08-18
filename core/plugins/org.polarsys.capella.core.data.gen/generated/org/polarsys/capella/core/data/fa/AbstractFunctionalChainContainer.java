@@ -40,26 +40,26 @@ public interface AbstractFunctionalChainContainer extends CapellaElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Functional Chains</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChain}.
+   * Returns the value of the '<em><b>Owned Functional Chains</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChain}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Functional Chains</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Functional Chains</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalChainContainer_OwnedFunctionalChains()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedFunctionalChains'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the functional chains associated to this function, e.g. functional chains that involve only sub-functions of this function\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='uml::Class::nestedClassifier elements on which FunctionalChain stereotype or any stereotype that inherits from it is applied'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Functional Chains</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalChainContainer_OwnedFunctionalChains()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedFunctionalChains'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the functional chains associated to this function, e.g. functional chains that involve only sub-functions of this function\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='uml::Class::nestedClassifier elements on which FunctionalChain stereotype or any stereotype that inherits from it is applied'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<FunctionalChain> getOwnedFunctionalChains();
 

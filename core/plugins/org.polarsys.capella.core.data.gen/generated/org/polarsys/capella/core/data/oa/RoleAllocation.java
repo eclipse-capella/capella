@@ -39,24 +39,24 @@ public interface RoleAllocation extends Allocation {
 
 
 	/**
-	 * Returns the value of the '<em><b>Role</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.oa.Role#getRoleAllocations <em>Role Allocations</em>}'.
+   * Returns the value of the '<em><b>Role</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.oa.Role#getRoleAllocations <em>Role Allocations</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Role</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Role</em>' reference.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getRoleAllocation_Role()
-	 * @see org.polarsys.capella.core.data.oa.Role#getRoleAllocations
-	 * @model opposite="roleAllocations" required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the operational role involved in this allocation link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Role</em>' reference.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getRoleAllocation_Role()
+   * @see org.polarsys.capella.core.data.oa.Role#getRoleAllocations
+   * @model opposite="roleAllocations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the operational role involved in this allocation link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	Role getRole();
 
@@ -67,24 +67,24 @@ public interface RoleAllocation extends Allocation {
 
 
 	/**
-	 * Returns the value of the '<em><b>Entity</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.oa.Entity#getRoleAllocations <em>Role Allocations</em>}'.
+   * Returns the value of the '<em><b>Entity</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.oa.Entity#getRoleAllocations <em>Role Allocations</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Entity</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Entity</em>' reference.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getRoleAllocation_Entity()
-	 * @see org.polarsys.capella.core.data.oa.Entity#getRoleAllocations
-	 * @model opposite="roleAllocations" required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the operational entity involved in this allocation link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Entity</em>' reference.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getRoleAllocation_Entity()
+   * @see org.polarsys.capella.core.data.oa.Entity#getRoleAllocations
+   * @model opposite="roleAllocations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the operational entity involved in this allocation link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	Entity getEntity();
 

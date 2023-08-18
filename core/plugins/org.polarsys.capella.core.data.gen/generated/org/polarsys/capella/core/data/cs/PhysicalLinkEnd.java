@@ -40,25 +40,25 @@ public interface PhysicalLinkEnd extends AbstractPhysicalLinkEnd {
 
 
 	/**
-	 * Returns the value of the '<em><b>Port</b></em>' reference.
+   * Returns the value of the '<em><b>Port</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Port</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Port</em>' reference.
-	 * @see #setPort(PhysicalPort)
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLinkEnd_Port()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='role' featureOwner='ConnectorEnd'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='port'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the port to which this communication endpoint is attached\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ConnectorEnd::role' explanation='none' constraints='uml::ConnectorEnd::role elements on which PhysicalPort stereotype or any stereotype that inherits from it is applied'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Port</em>' reference.
+   * @see #setPort(PhysicalPort)
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLinkEnd_Port()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='role' featureOwner='ConnectorEnd'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='port'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the port to which this communication endpoint is attached\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ConnectorEnd::role' explanation='none' constraints='uml::ConnectorEnd::role elements on which PhysicalPort stereotype or any stereotype that inherits from it is applied'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	PhysicalPort getPort();
 
@@ -66,14 +66,14 @@ public interface PhysicalLinkEnd extends AbstractPhysicalLinkEnd {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.cs.PhysicalLinkEnd#getPort <em>Port</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.cs.PhysicalLinkEnd#getPort <em>Port</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Port</em>' reference.
-	 * @see #getPort()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Port</em>' reference.
+   * @see #getPort()
+   * @generated
+   */
 
 	void setPort(PhysicalPort value);
 
@@ -84,25 +84,25 @@ public interface PhysicalLinkEnd extends AbstractPhysicalLinkEnd {
 
 
 	/**
-	 * Returns the value of the '<em><b>Part</b></em>' reference.
+   * Returns the value of the '<em><b>Part</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Part</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Part</em>' reference.
-	 * @see #setPart(Part)
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLinkEnd_Part()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='partWithPort' featureOwner='ConnectorEnd'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='part'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the part to which this connect endpoint is attached\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ConnectorEnd::partWithPort' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Part</em>' reference.
+   * @see #setPart(Part)
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLinkEnd_Part()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='partWithPort' featureOwner='ConnectorEnd'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='part'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the part to which this connect endpoint is attached\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ConnectorEnd::partWithPort' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	Part getPart();
 
@@ -110,14 +110,14 @@ public interface PhysicalLinkEnd extends AbstractPhysicalLinkEnd {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.cs.PhysicalLinkEnd#getPart <em>Part</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.cs.PhysicalLinkEnd#getPart <em>Part</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Part</em>' reference.
-	 * @see #getPart()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Part</em>' reference.
+   * @see #getPart()
+   * @generated
+   */
 
 	void setPart(Part value);
 

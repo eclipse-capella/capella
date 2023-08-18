@@ -67,13 +67,13 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
 
 
 	/**
-	 * The cached value of the '{@link #getUnit() <em>Unit</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getUnit() <em>Unit</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUnit()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getUnit()
+   * @generated
+   * @ordered
+   */
 	protected Unit unit;
 
 
@@ -89,13 +89,13 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
 
 
 	/**
-	 * The default value of the '{@link #getExpression() <em>Expression</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getExpression() <em>Expression</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExpression()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getExpression()
+   * @generated
+   * @ordered
+   */
 	protected static final String EXPRESSION_EDEFAULT = null;
 
 
@@ -103,23 +103,23 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
 
 
 	/**
-	 * The default value of the '{@link #getUnparsedExpression() <em>Unparsed Expression</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getUnparsedExpression() <em>Unparsed Expression</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUnparsedExpression()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getUnparsedExpression()
+   * @generated
+   * @ordered
+   */
 	protected static final String UNPARSED_EXPRESSION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getUnparsedExpression() <em>Unparsed Expression</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getUnparsedExpression() <em>Unparsed Expression</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUnparsedExpression()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getUnparsedExpression()
+   * @generated
+   * @ordered
+   */
 	protected String unparsedExpression = UNPARSED_EXPRESSION_EDEFAULT;
 
 
@@ -130,48 +130,48 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractExpressionValueImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return DatavaluePackage.Literals.ABSTRACT_EXPRESSION_VALUE;
-	}
+    return DatavaluePackage.Literals.ABSTRACT_EXPRESSION_VALUE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Classifier getComplexType() {
 
-		Classifier complexType = basicGetComplexType();
-		return complexType != null && complexType.eIsProxy() ? (Classifier)eResolveProxy((InternalEObject)complexType) : complexType;
-	}
+    Classifier complexType = basicGetComplexType();
+    return complexType != null && complexType.eIsProxy() ? (Classifier)eResolveProxy((InternalEObject)complexType) : complexType;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Classifier basicGetComplexType() {
 
@@ -198,15 +198,15 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
     // A helper is found, let's use it. 
     EAnnotation annotation = DatavaluePackage.Literals.ABSTRACT_COMPLEX_VALUE__COMPLEX_TYPE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, DatavaluePackage.Literals.ABSTRACT_COMPLEX_VALUE__COMPLEX_TYPE, annotation);
-		
-		try {
-			return (Classifier) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Classifier) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -214,23 +214,23 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Enumeration getEnumerationType() {
 
-		Enumeration enumerationType = basicGetEnumerationType();
-		return enumerationType != null && enumerationType.eIsProxy() ? (Enumeration)eResolveProxy((InternalEObject)enumerationType) : enumerationType;
-	}
+    Enumeration enumerationType = basicGetEnumerationType();
+    return enumerationType != null && enumerationType.eIsProxy() ? (Enumeration)eResolveProxy((InternalEObject)enumerationType) : enumerationType;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Enumeration basicGetEnumerationType() {
 
@@ -257,15 +257,15 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
     // A helper is found, let's use it. 
     EAnnotation annotation = DatavaluePackage.Literals.ABSTRACT_ENUMERATION_VALUE__ENUMERATION_TYPE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, DatavaluePackage.Literals.ABSTRACT_ENUMERATION_VALUE__ENUMERATION_TYPE, annotation);
-		
-		try {
-			return (Enumeration) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Enumeration) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -273,53 +273,53 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Unit getUnit() {
 
-		if (unit != null && unit.eIsProxy()) {
-			InternalEObject oldUnit = (InternalEObject)unit;
-			unit = (Unit)eResolveProxy(oldUnit);
-			if (unit != oldUnit) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNIT, oldUnit, unit));
-			}
-		}
-		return unit;
-	}
+    if (unit != null && unit.eIsProxy()) {
+      InternalEObject oldUnit = (InternalEObject)unit;
+      unit = (Unit)eResolveProxy(oldUnit);
+      if (unit != oldUnit) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNIT, oldUnit, unit));
+      }
+    }
+    return unit;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Unit basicGetUnit() {
 
-		return unit;
-	}
+    return unit;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setUnit(Unit newUnit) {
 
-		Unit oldUnit = unit;
-		unit = newUnit;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNIT, oldUnit, unit));
+    Unit oldUnit = unit;
+    unit = newUnit;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNIT, oldUnit, unit));
 
-	}
+  }
 
 
 
@@ -327,23 +327,23 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NumericType getNumericType() {
 
-		NumericType numericType = basicGetNumericType();
-		return numericType != null && numericType.eIsProxy() ? (NumericType)eResolveProxy((InternalEObject)numericType) : numericType;
-	}
+    NumericType numericType = basicGetNumericType();
+    return numericType != null && numericType.eIsProxy() ? (NumericType)eResolveProxy((InternalEObject)numericType) : numericType;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NumericType basicGetNumericType() {
 
@@ -370,15 +370,15 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
     // A helper is found, let's use it. 
     EAnnotation annotation = DatavaluePackage.Literals.NUMERIC_VALUE__NUMERIC_TYPE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, DatavaluePackage.Literals.NUMERIC_VALUE__NUMERIC_TYPE, annotation);
-		
-		try {
-			return (NumericType) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (NumericType) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -386,23 +386,23 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public StringType getStringType() {
 
-		StringType stringType = basicGetStringType();
-		return stringType != null && stringType.eIsProxy() ? (StringType)eResolveProxy((InternalEObject)stringType) : stringType;
-	}
+    StringType stringType = basicGetStringType();
+    return stringType != null && stringType.eIsProxy() ? (StringType)eResolveProxy((InternalEObject)stringType) : stringType;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public StringType basicGetStringType() {
 
@@ -429,15 +429,15 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
     // A helper is found, let's use it. 
     EAnnotation annotation = DatavaluePackage.Literals.ABSTRACT_STRING_VALUE__STRING_TYPE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, DatavaluePackage.Literals.ABSTRACT_STRING_VALUE__STRING_TYPE, annotation);
-		
-		try {
-			return (StringType) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (StringType) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -445,10 +445,10 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public String getExpression() {
 
@@ -475,47 +475,47 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
     // A helper is found, let's use it. 
     EAnnotation annotation = DatavaluePackage.Literals.ABSTRACT_EXPRESSION_VALUE__EXPRESSION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, DatavaluePackage.Literals.ABSTRACT_EXPRESSION_VALUE__EXPRESSION, annotation);
-		
-		try {
-			return (String) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (String) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public String getUnparsedExpression() {
 
-		return unparsedExpression;
-	}
+    return unparsedExpression;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setUnparsedExpression(String newUnparsedExpression) {
 
-		String oldUnparsedExpression = unparsedExpression;
-		unparsedExpression = newUnparsedExpression;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNPARSED_EXPRESSION, oldUnparsedExpression, unparsedExpression));
+    String oldUnparsedExpression = unparsedExpression;
+    unparsedExpression = newUnparsedExpression;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNPARSED_EXPRESSION, oldUnparsedExpression, unparsedExpression));
 
-	}
+  }
 
 
 
@@ -523,23 +523,23 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public DataType getExpressionType() {
 
-		DataType expressionType = basicGetExpressionType();
-		return expressionType != null && expressionType.eIsProxy() ? (DataType)eResolveProxy((InternalEObject)expressionType) : expressionType;
-	}
+    DataType expressionType = basicGetExpressionType();
+    return expressionType != null && expressionType.eIsProxy() ? (DataType)eResolveProxy((InternalEObject)expressionType) : expressionType;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public DataType basicGetExpressionType() {
 
@@ -566,206 +566,206 @@ public abstract class AbstractExpressionValueImpl extends AbstractBooleanValueIm
     // A helper is found, let's use it. 
     EAnnotation annotation = DatavaluePackage.Literals.ABSTRACT_EXPRESSION_VALUE__EXPRESSION_TYPE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, DatavaluePackage.Literals.ABSTRACT_EXPRESSION_VALUE__EXPRESSION_TYPE, annotation);
-		
-		try {
-			return (DataType) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (DataType) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__COMPLEX_TYPE:
-				if (resolve) return getComplexType();
-				return basicGetComplexType();
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__ENUMERATION_TYPE:
-				if (resolve) return getEnumerationType();
-				return basicGetEnumerationType();
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNIT:
-				if (resolve) return getUnit();
-				return basicGetUnit();
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__NUMERIC_TYPE:
-				if (resolve) return getNumericType();
-				return basicGetNumericType();
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__STRING_TYPE:
-				if (resolve) return getStringType();
-				return basicGetStringType();
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__EXPRESSION:
-				return getExpression();
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNPARSED_EXPRESSION:
-				return getUnparsedExpression();
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__EXPRESSION_TYPE:
-				if (resolve) return getExpressionType();
-				return basicGetExpressionType();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__COMPLEX_TYPE:
+        if (resolve) return getComplexType();
+        return basicGetComplexType();
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__ENUMERATION_TYPE:
+        if (resolve) return getEnumerationType();
+        return basicGetEnumerationType();
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNIT:
+        if (resolve) return getUnit();
+        return basicGetUnit();
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__NUMERIC_TYPE:
+        if (resolve) return getNumericType();
+        return basicGetNumericType();
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__STRING_TYPE:
+        if (resolve) return getStringType();
+        return basicGetStringType();
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__EXPRESSION:
+        return getExpression();
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNPARSED_EXPRESSION:
+        return getUnparsedExpression();
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__EXPRESSION_TYPE:
+        if (resolve) return getExpressionType();
+        return basicGetExpressionType();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNIT:
-					setUnit((Unit)newValue);
-				return;
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNPARSED_EXPRESSION:
-					setUnparsedExpression((String)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNIT:
+          setUnit((Unit)newValue);
+        return;
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNPARSED_EXPRESSION:
+          setUnparsedExpression((String)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNIT:
-				setUnit((Unit)null);
-				return;
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNPARSED_EXPRESSION:
-				setUnparsedExpression(UNPARSED_EXPRESSION_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNIT:
+        setUnit((Unit)null);
+        return;
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNPARSED_EXPRESSION:
+        setUnparsedExpression(UNPARSED_EXPRESSION_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__COMPLEX_TYPE:
-				return basicGetComplexType() != null;
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__ENUMERATION_TYPE:
-				return basicGetEnumerationType() != null;
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNIT:
-				return unit != null;
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__NUMERIC_TYPE:
-				return basicGetNumericType() != null;
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__STRING_TYPE:
-				return basicGetStringType() != null;
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__EXPRESSION:
-				return EXPRESSION_EDEFAULT == null ? getExpression() != null : !EXPRESSION_EDEFAULT.equals(getExpression());
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNPARSED_EXPRESSION:
-				return UNPARSED_EXPRESSION_EDEFAULT == null ? unparsedExpression != null : !UNPARSED_EXPRESSION_EDEFAULT.equals(unparsedExpression);
-			case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__EXPRESSION_TYPE:
-				return basicGetExpressionType() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__COMPLEX_TYPE:
+        return basicGetComplexType() != null;
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__ENUMERATION_TYPE:
+        return basicGetEnumerationType() != null;
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNIT:
+        return unit != null;
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__NUMERIC_TYPE:
+        return basicGetNumericType() != null;
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__STRING_TYPE:
+        return basicGetStringType() != null;
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__EXPRESSION:
+        return EXPRESSION_EDEFAULT == null ? getExpression() != null : !EXPRESSION_EDEFAULT.equals(getExpression());
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNPARSED_EXPRESSION:
+        return UNPARSED_EXPRESSION_EDEFAULT == null ? unparsedExpression != null : !UNPARSED_EXPRESSION_EDEFAULT.equals(unparsedExpression);
+      case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__EXPRESSION_TYPE:
+        return basicGetExpressionType() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractComplexValue.class) {
-			switch (derivedFeatureID) {
-				case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__COMPLEX_TYPE: return DatavaluePackage.ABSTRACT_COMPLEX_VALUE__COMPLEX_TYPE;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractEnumerationValue.class) {
-			switch (derivedFeatureID) {
-				case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__ENUMERATION_TYPE: return DatavaluePackage.ABSTRACT_ENUMERATION_VALUE__ENUMERATION_TYPE;
-				default: return -1;
-			}
-		}
-		if (baseClass == NumericValue.class) {
-			switch (derivedFeatureID) {
-				case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNIT: return DatavaluePackage.NUMERIC_VALUE__UNIT;
-				case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__NUMERIC_TYPE: return DatavaluePackage.NUMERIC_VALUE__NUMERIC_TYPE;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractStringValue.class) {
-			switch (derivedFeatureID) {
-				case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__STRING_TYPE: return DatavaluePackage.ABSTRACT_STRING_VALUE__STRING_TYPE;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == AbstractComplexValue.class) {
+      switch (derivedFeatureID) {
+        case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__COMPLEX_TYPE: return DatavaluePackage.ABSTRACT_COMPLEX_VALUE__COMPLEX_TYPE;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractEnumerationValue.class) {
+      switch (derivedFeatureID) {
+        case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__ENUMERATION_TYPE: return DatavaluePackage.ABSTRACT_ENUMERATION_VALUE__ENUMERATION_TYPE;
+        default: return -1;
+      }
+    }
+    if (baseClass == NumericValue.class) {
+      switch (derivedFeatureID) {
+        case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNIT: return DatavaluePackage.NUMERIC_VALUE__UNIT;
+        case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__NUMERIC_TYPE: return DatavaluePackage.NUMERIC_VALUE__NUMERIC_TYPE;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractStringValue.class) {
+      switch (derivedFeatureID) {
+        case DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__STRING_TYPE: return DatavaluePackage.ABSTRACT_STRING_VALUE__STRING_TYPE;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractComplexValue.class) {
-			switch (baseFeatureID) {
-				case DatavaluePackage.ABSTRACT_COMPLEX_VALUE__COMPLEX_TYPE: return DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__COMPLEX_TYPE;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractEnumerationValue.class) {
-			switch (baseFeatureID) {
-				case DatavaluePackage.ABSTRACT_ENUMERATION_VALUE__ENUMERATION_TYPE: return DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__ENUMERATION_TYPE;
-				default: return -1;
-			}
-		}
-		if (baseClass == NumericValue.class) {
-			switch (baseFeatureID) {
-				case DatavaluePackage.NUMERIC_VALUE__UNIT: return DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNIT;
-				case DatavaluePackage.NUMERIC_VALUE__NUMERIC_TYPE: return DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__NUMERIC_TYPE;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractStringValue.class) {
-			switch (baseFeatureID) {
-				case DatavaluePackage.ABSTRACT_STRING_VALUE__STRING_TYPE: return DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__STRING_TYPE;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == AbstractComplexValue.class) {
+      switch (baseFeatureID) {
+        case DatavaluePackage.ABSTRACT_COMPLEX_VALUE__COMPLEX_TYPE: return DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__COMPLEX_TYPE;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractEnumerationValue.class) {
+      switch (baseFeatureID) {
+        case DatavaluePackage.ABSTRACT_ENUMERATION_VALUE__ENUMERATION_TYPE: return DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__ENUMERATION_TYPE;
+        default: return -1;
+      }
+    }
+    if (baseClass == NumericValue.class) {
+      switch (baseFeatureID) {
+        case DatavaluePackage.NUMERIC_VALUE__UNIT: return DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__UNIT;
+        case DatavaluePackage.NUMERIC_VALUE__NUMERIC_TYPE: return DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__NUMERIC_TYPE;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractStringValue.class) {
+      switch (baseFeatureID) {
+        case DatavaluePackage.ABSTRACT_STRING_VALUE__STRING_TYPE: return DatavaluePackage.ABSTRACT_EXPRESSION_VALUE__STRING_TYPE;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (unparsedExpression: "); //$NON-NLS-1$
-		result.append(unparsedExpression);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (unparsedExpression: "); //$NON-NLS-1$
+    result.append(unparsedExpression);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //AbstractExpressionValueImpl

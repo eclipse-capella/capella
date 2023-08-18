@@ -64,885 +64,885 @@ import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
  */
 public class FaItemProviderAdapterFactory extends FaAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
 	/**
-	 * This keeps track of the root adapter factory that delegates to this adapter factory.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the root adapter factory that delegates to this adapter factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComposedAdapterFactory parentAdapterFactory;
 
 	/**
-	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-	 * <!-- begin-user-doc -->
+   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
 	/**
-	 * This helps manage the child creation extenders.
-	 * <!-- begin-user-doc -->
+   * This helps manage the child creation extenders.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(CapellaModellerEditPlugin.INSTANCE, FaPackage.eNS_URI);
 
 	/**
-	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-	 * <!-- begin-user-doc -->
+   * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
-	 * This constructs an instance.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public FaItemProviderAdapterFactory() {
-		supportedTypes.add(IEditingDomainItemProvider.class);
-		supportedTypes.add(IStructuredItemContentProvider.class);
-		supportedTypes.add(ITreeItemContentProvider.class);
-		supportedTypes.add(IItemLabelProvider.class);
-		supportedTypes.add(IItemPropertySource.class);
-	}
+    supportedTypes.add(IEditingDomainItemProvider.class);
+    supportedTypes.add(IStructuredItemContentProvider.class);
+    supportedTypes.add(ITreeItemContentProvider.class);
+    supportedTypes.add(IItemLabelProvider.class);
+    supportedTypes.add(IItemPropertySource.class);
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionSpecification} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionSpecification} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionSpecificationItemProvider functionSpecificationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionSpecification}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionSpecification}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createFunctionSpecificationAdapter() {
-		if (functionSpecificationItemProvider == null) {
-			functionSpecificationItemProvider = new FunctionSpecificationItemProvider(this);
-		}
+    if (functionSpecificationItemProvider == null) {
+      functionSpecificationItemProvider = new FunctionSpecificationItemProvider(this);
+    }
 
-		return functionSpecificationItemProvider;
-	}
+    return functionSpecificationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ExchangeCategory} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ExchangeCategory} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ExchangeCategoryItemProvider exchangeCategoryItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ExchangeCategory}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ExchangeCategory}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createExchangeCategoryAdapter() {
-		if (exchangeCategoryItemProvider == null) {
-			exchangeCategoryItemProvider = new ExchangeCategoryItemProvider(this);
-		}
+    if (exchangeCategoryItemProvider == null) {
+      exchangeCategoryItemProvider = new ExchangeCategoryItemProvider(this);
+    }
 
-		return exchangeCategoryItemProvider;
-	}
+    return exchangeCategoryItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ExchangeLink} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ExchangeLink} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ExchangeLinkItemProvider exchangeLinkItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ExchangeLink}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ExchangeLink}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createExchangeLinkAdapter() {
-		if (exchangeLinkItemProvider == null) {
-			exchangeLinkItemProvider = new ExchangeLinkItemProvider(this);
-		}
+    if (exchangeLinkItemProvider == null) {
+      exchangeLinkItemProvider = new ExchangeLinkItemProvider(this);
+    }
 
-		return exchangeLinkItemProvider;
-	}
+    return exchangeLinkItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ExchangeContainment} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ExchangeContainment} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ExchangeContainmentItemProvider exchangeContainmentItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ExchangeContainment}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ExchangeContainment}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createExchangeContainmentAdapter() {
-		if (exchangeContainmentItemProvider == null) {
-			exchangeContainmentItemProvider = new ExchangeContainmentItemProvider(this);
-		}
+    if (exchangeContainmentItemProvider == null) {
+      exchangeContainmentItemProvider = new ExchangeContainmentItemProvider(this);
+    }
 
-		return exchangeContainmentItemProvider;
-	}
+    return exchangeContainmentItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalExchangeSpecification} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalExchangeSpecification} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionalExchangeSpecificationItemProvider functionalExchangeSpecificationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalExchangeSpecification}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalExchangeSpecification}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createFunctionalExchangeSpecificationAdapter() {
-		if (functionalExchangeSpecificationItemProvider == null) {
-			functionalExchangeSpecificationItemProvider = new FunctionalExchangeSpecificationItemProvider(this);
-		}
+    if (functionalExchangeSpecificationItemProvider == null) {
+      functionalExchangeSpecificationItemProvider = new FunctionalExchangeSpecificationItemProvider(this);
+    }
 
-		return functionalExchangeSpecificationItemProvider;
-	}
+    return functionalExchangeSpecificationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalChain} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalChain} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionalChainItemProvider functionalChainItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalChain}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalChain}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createFunctionalChainAdapter() {
-		if (functionalChainItemProvider == null) {
-			functionalChainItemProvider = new FunctionalChainItemProvider(this);
-		}
+    if (functionalChainItemProvider == null) {
+      functionalChainItemProvider = new FunctionalChainItemProvider(this);
+    }
 
-		return functionalChainItemProvider;
-	}
+    return functionalChainItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalChainReference} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalChainReference} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionalChainReferenceItemProvider functionalChainReferenceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalChainReference}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalChainReference}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createFunctionalChainReferenceAdapter() {
-		if (functionalChainReferenceItemProvider == null) {
-			functionalChainReferenceItemProvider = new FunctionalChainReferenceItemProvider(this);
-		}
+    if (functionalChainReferenceItemProvider == null) {
+      functionalChainReferenceItemProvider = new FunctionalChainReferenceItemProvider(this);
+    }
 
-		return functionalChainReferenceItemProvider;
-	}
+    return functionalChainReferenceItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionInputPort} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionInputPort} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionInputPortItemProvider functionInputPortItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionInputPort}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionInputPort}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createFunctionInputPortAdapter() {
-		if (functionInputPortItemProvider == null) {
-			functionInputPortItemProvider = new FunctionInputPortItemProvider(this);
-		}
+    if (functionInputPortItemProvider == null) {
+      functionInputPortItemProvider = new FunctionInputPortItemProvider(this);
+    }
 
-		return functionInputPortItemProvider;
-	}
+    return functionInputPortItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionOutputPort} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionOutputPort} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionOutputPortItemProvider functionOutputPortItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionOutputPort}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionOutputPort}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createFunctionOutputPortAdapter() {
-		if (functionOutputPortItemProvider == null) {
-			functionOutputPortItemProvider = new FunctionOutputPortItemProvider(this);
-		}
+    if (functionOutputPortItemProvider == null) {
+      functionOutputPortItemProvider = new FunctionOutputPortItemProvider(this);
+    }
 
-		return functionOutputPortItemProvider;
-	}
+    return functionOutputPortItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComponentFunctionalAllocationItemProvider componentFunctionalAllocationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createComponentFunctionalAllocationAdapter() {
-		if (componentFunctionalAllocationItemProvider == null) {
-			componentFunctionalAllocationItemProvider = new ComponentFunctionalAllocationItemProvider(this);
-		}
+    if (componentFunctionalAllocationItemProvider == null) {
+      componentFunctionalAllocationItemProvider = new ComponentFunctionalAllocationItemProvider(this);
+    }
 
-		return componentFunctionalAllocationItemProvider;
-	}
+    return componentFunctionalAllocationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalChainRealization} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalChainRealization} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionalChainRealizationItemProvider functionalChainRealizationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalChainRealization}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalChainRealization}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createFunctionalChainRealizationAdapter() {
-		if (functionalChainRealizationItemProvider == null) {
-			functionalChainRealizationItemProvider = new FunctionalChainRealizationItemProvider(this);
-		}
+    if (functionalChainRealizationItemProvider == null) {
+      functionalChainRealizationItemProvider = new FunctionalChainRealizationItemProvider(this);
+    }
 
-		return functionalChainRealizationItemProvider;
-	}
+    return functionalChainRealizationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalExchangeRealization} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalExchangeRealization} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionalExchangeRealizationItemProvider functionalExchangeRealizationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalExchangeRealization}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalExchangeRealization}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createFunctionalExchangeRealizationAdapter() {
-		if (functionalExchangeRealizationItemProvider == null) {
-			functionalExchangeRealizationItemProvider = new FunctionalExchangeRealizationItemProvider(this);
-		}
+    if (functionalExchangeRealizationItemProvider == null) {
+      functionalExchangeRealizationItemProvider = new FunctionalExchangeRealizationItemProvider(this);
+    }
 
-		return functionalExchangeRealizationItemProvider;
-	}
+    return functionalExchangeRealizationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionRealization} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionRealization} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionRealizationItemProvider functionRealizationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionRealization}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionRealization}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createFunctionRealizationAdapter() {
-		if (functionRealizationItemProvider == null) {
-			functionRealizationItemProvider = new FunctionRealizationItemProvider(this);
-		}
+    if (functionRealizationItemProvider == null) {
+      functionRealizationItemProvider = new FunctionRealizationItemProvider(this);
+    }
 
-		return functionRealizationItemProvider;
-	}
+    return functionRealizationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalExchange} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalExchange} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionalExchangeItemProvider functionalExchangeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalExchange}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalExchange}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createFunctionalExchangeAdapter() {
-		if (functionalExchangeItemProvider == null) {
-			functionalExchangeItemProvider = new FunctionalExchangeItemProvider(this);
-		}
+    if (functionalExchangeItemProvider == null) {
+      functionalExchangeItemProvider = new FunctionalExchangeItemProvider(this);
+    }
 
-		return functionalExchangeItemProvider;
-	}
+    return functionalExchangeItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentExchange} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentExchange} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComponentExchangeItemProvider componentExchangeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentExchange}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentExchange}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createComponentExchangeAdapter() {
-		if (componentExchangeItemProvider == null) {
-			componentExchangeItemProvider = new ComponentExchangeItemProvider(this);
-		}
+    if (componentExchangeItemProvider == null) {
+      componentExchangeItemProvider = new ComponentExchangeItemProvider(this);
+    }
 
-		return componentExchangeItemProvider;
-	}
+    return componentExchangeItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentExchangeAllocation} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentExchangeAllocation} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComponentExchangeAllocationItemProvider componentExchangeAllocationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentExchangeAllocation}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentExchangeAllocation}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createComponentExchangeAllocationAdapter() {
-		if (componentExchangeAllocationItemProvider == null) {
-			componentExchangeAllocationItemProvider = new ComponentExchangeAllocationItemProvider(this);
-		}
+    if (componentExchangeAllocationItemProvider == null) {
+      componentExchangeAllocationItemProvider = new ComponentExchangeAllocationItemProvider(this);
+    }
 
-		return componentExchangeAllocationItemProvider;
-	}
+    return componentExchangeAllocationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentExchangeCategory} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentExchangeCategory} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComponentExchangeCategoryItemProvider componentExchangeCategoryItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentExchangeCategory}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentExchangeCategory}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createComponentExchangeCategoryAdapter() {
-		if (componentExchangeCategoryItemProvider == null) {
-			componentExchangeCategoryItemProvider = new ComponentExchangeCategoryItemProvider(this);
-		}
+    if (componentExchangeCategoryItemProvider == null) {
+      componentExchangeCategoryItemProvider = new ComponentExchangeCategoryItemProvider(this);
+    }
 
-		return componentExchangeCategoryItemProvider;
-	}
+    return componentExchangeCategoryItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentExchangeEnd} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentExchangeEnd} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComponentExchangeEndItemProvider componentExchangeEndItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentExchangeEnd}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentExchangeEnd}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createComponentExchangeEndAdapter() {
-		if (componentExchangeEndItemProvider == null) {
-			componentExchangeEndItemProvider = new ComponentExchangeEndItemProvider(this);
-		}
+    if (componentExchangeEndItemProvider == null) {
+      componentExchangeEndItemProvider = new ComponentExchangeEndItemProvider(this);
+    }
 
-		return componentExchangeEndItemProvider;
-	}
+    return componentExchangeEndItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComponentExchangeFunctionalExchangeAllocationItemProvider componentExchangeFunctionalExchangeAllocationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createComponentExchangeFunctionalExchangeAllocationAdapter() {
-		if (componentExchangeFunctionalExchangeAllocationItemProvider == null) {
-			componentExchangeFunctionalExchangeAllocationItemProvider = new ComponentExchangeFunctionalExchangeAllocationItemProvider(this);
-		}
+    if (componentExchangeFunctionalExchangeAllocationItemProvider == null) {
+      componentExchangeFunctionalExchangeAllocationItemProvider = new ComponentExchangeFunctionalExchangeAllocationItemProvider(this);
+    }
 
-		return componentExchangeFunctionalExchangeAllocationItemProvider;
-	}
+    return componentExchangeFunctionalExchangeAllocationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentExchangeRealization} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentExchangeRealization} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComponentExchangeRealizationItemProvider componentExchangeRealizationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentExchangeRealization}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentExchangeRealization}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createComponentExchangeRealizationAdapter() {
-		if (componentExchangeRealizationItemProvider == null) {
-			componentExchangeRealizationItemProvider = new ComponentExchangeRealizationItemProvider(this);
-		}
+    if (componentExchangeRealizationItemProvider == null) {
+      componentExchangeRealizationItemProvider = new ComponentExchangeRealizationItemProvider(this);
+    }
 
-		return componentExchangeRealizationItemProvider;
-	}
+    return componentExchangeRealizationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentPort} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentPort} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComponentPortItemProvider componentPortItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentPort}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentPort}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createComponentPortAdapter() {
-		if (componentPortItemProvider == null) {
-			componentPortItemProvider = new ComponentPortItemProvider(this);
-		}
+    if (componentPortItemProvider == null) {
+      componentPortItemProvider = new ComponentPortItemProvider(this);
+    }
 
-		return componentPortItemProvider;
-	}
+    return componentPortItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentPortAllocation} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentPortAllocation} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComponentPortAllocationItemProvider componentPortAllocationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentPortAllocation}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentPortAllocation}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createComponentPortAllocationAdapter() {
-		if (componentPortAllocationItemProvider == null) {
-			componentPortAllocationItemProvider = new ComponentPortAllocationItemProvider(this);
-		}
+    if (componentPortAllocationItemProvider == null) {
+      componentPortAllocationItemProvider = new ComponentPortAllocationItemProvider(this);
+    }
 
-		return componentPortAllocationItemProvider;
-	}
+    return componentPortAllocationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComponentPortAllocationEndItemProvider componentPortAllocationEndItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createComponentPortAllocationEndAdapter() {
-		if (componentPortAllocationEndItemProvider == null) {
-			componentPortAllocationEndItemProvider = new ComponentPortAllocationEndItemProvider(this);
-		}
+    if (componentPortAllocationEndItemProvider == null) {
+      componentPortAllocationEndItemProvider = new ComponentPortAllocationEndItemProvider(this);
+    }
 
-		return componentPortAllocationEndItemProvider;
-	}
+    return componentPortAllocationEndItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionalChainInvolvementLinkItemProvider functionalChainInvolvementLinkItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createFunctionalChainInvolvementLinkAdapter() {
-		if (functionalChainInvolvementLinkItemProvider == null) {
-			functionalChainInvolvementLinkItemProvider = new FunctionalChainInvolvementLinkItemProvider(this);
-		}
+    if (functionalChainInvolvementLinkItemProvider == null) {
+      functionalChainInvolvementLinkItemProvider = new FunctionalChainInvolvementLinkItemProvider(this);
+    }
 
-		return functionalChainInvolvementLinkItemProvider;
-	}
+    return functionalChainInvolvementLinkItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.SequenceLink} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.SequenceLink} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected SequenceLinkItemProvider sequenceLinkItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.SequenceLink}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.SequenceLink}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createSequenceLinkAdapter() {
-		if (sequenceLinkItemProvider == null) {
-			sequenceLinkItemProvider = new SequenceLinkItemProvider(this);
-		}
+    if (sequenceLinkItemProvider == null) {
+      sequenceLinkItemProvider = new SequenceLinkItemProvider(this);
+    }
 
-		return sequenceLinkItemProvider;
-	}
+    return sequenceLinkItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionalChainInvolvementFunctionItemProvider functionalChainInvolvementFunctionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createFunctionalChainInvolvementFunctionAdapter() {
-		if (functionalChainInvolvementFunctionItemProvider == null) {
-			functionalChainInvolvementFunctionItemProvider = new FunctionalChainInvolvementFunctionItemProvider(this);
-		}
+    if (functionalChainInvolvementFunctionItemProvider == null) {
+      functionalChainInvolvementFunctionItemProvider = new FunctionalChainInvolvementFunctionItemProvider(this);
+    }
 
-		return functionalChainInvolvementFunctionItemProvider;
-	}
+    return functionalChainInvolvementFunctionItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ControlNode} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ControlNode} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ControlNodeItemProvider controlNodeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ControlNode}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ControlNode}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createControlNodeAdapter() {
-		if (controlNodeItemProvider == null) {
-			controlNodeItemProvider = new ControlNodeItemProvider(this);
-		}
+    if (controlNodeItemProvider == null) {
+      controlNodeItemProvider = new ControlNodeItemProvider(this);
+    }
 
-		return controlNodeItemProvider;
-	}
+    return controlNodeItemProvider;
+  }
 
 	/**
-	 * This returns the root adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+   * This returns the root adapter factory that contains this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
-	}
+    return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+  }
 
 	/**
-	 * This sets the composed adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+   * This sets the composed adapter factory that contains this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
-		this.parentAdapterFactory = parentAdapterFactory;
-	}
+    this.parentAdapterFactory = parentAdapterFactory;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean isFactoryForType(Object type) {
-		return supportedTypes.contains(type) || super.isFactoryForType(type);
-	}
+    return supportedTypes.contains(type) || super.isFactoryForType(type);
+  }
 
 	/**
-	 * This implementation substitutes the factory itself as the key for the adapter.
-	 * <!-- begin-user-doc -->
+   * This implementation substitutes the factory itself as the key for the adapter.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
-		return super.adapt(notifier, this);
-	}
+    return super.adapt(notifier, this);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object adapt(Object object, Object type) {
-		if (isFactoryForType(type)) {
-			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
-				return adapter;
-			}
-		}
+    if (isFactoryForType(type)) {
+      Object adapter = super.adapt(object, type);
+      if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+        return adapter;
+      }
+    }
 
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public List<IChildCreationExtender> getChildCreationExtenders() {
-		return childCreationExtenderManager.getChildCreationExtenders();
-	}
+    return childCreationExtenderManager.getChildCreationExtenders();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
-	}
+    return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ResourceLocator getResourceLocator() {
-		return childCreationExtenderManager;
-	}
+    return childCreationExtenderManager;
+  }
 
 	/**
-	 * This adds a listener.
-	 * <!-- begin-user-doc -->
+   * This adds a listener.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.addListener(notifyChangedListener);
-	}
+    changeNotifier.addListener(notifyChangedListener);
+  }
 
 	/**
-	 * This removes a listener.
-	 * <!-- begin-user-doc -->
+   * This removes a listener.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.removeListener(notifyChangedListener);
-	}
+    changeNotifier.removeListener(notifyChangedListener);
+  }
 
 	/**
-	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-	 * <!-- begin-user-doc -->
+   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void fireNotifyChanged(Notification notification) {
-		changeNotifier.fireNotifyChanged(notification);
+    changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null) {
-			parentAdapterFactory.fireNotifyChanged(notification);
-		}
-	}
+    if (parentAdapterFactory != null) {
+      parentAdapterFactory.fireNotifyChanged(notification);
+    }
+  }
 
 	/**
-	 * This disposes all of the item providers created by this factory. 
-	 * <!-- begin-user-doc -->
+   * This disposes all of the item providers created by this factory. 
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void dispose() {
-		if (functionSpecificationItemProvider != null) functionSpecificationItemProvider.dispose();
-		if (exchangeCategoryItemProvider != null) exchangeCategoryItemProvider.dispose();
-		if (exchangeLinkItemProvider != null) exchangeLinkItemProvider.dispose();
-		if (exchangeContainmentItemProvider != null) exchangeContainmentItemProvider.dispose();
-		if (functionalExchangeSpecificationItemProvider != null) functionalExchangeSpecificationItemProvider.dispose();
-		if (functionalChainItemProvider != null) functionalChainItemProvider.dispose();
-		if (functionalChainReferenceItemProvider != null) functionalChainReferenceItemProvider.dispose();
-		if (functionInputPortItemProvider != null) functionInputPortItemProvider.dispose();
-		if (functionOutputPortItemProvider != null) functionOutputPortItemProvider.dispose();
-		if (componentFunctionalAllocationItemProvider != null) componentFunctionalAllocationItemProvider.dispose();
-		if (functionalChainRealizationItemProvider != null) functionalChainRealizationItemProvider.dispose();
-		if (functionalExchangeRealizationItemProvider != null) functionalExchangeRealizationItemProvider.dispose();
-		if (functionRealizationItemProvider != null) functionRealizationItemProvider.dispose();
-		if (functionalExchangeItemProvider != null) functionalExchangeItemProvider.dispose();
-		if (componentExchangeItemProvider != null) componentExchangeItemProvider.dispose();
-		if (componentExchangeAllocationItemProvider != null) componentExchangeAllocationItemProvider.dispose();
-		if (componentExchangeCategoryItemProvider != null) componentExchangeCategoryItemProvider.dispose();
-		if (componentExchangeEndItemProvider != null) componentExchangeEndItemProvider.dispose();
-		if (componentExchangeFunctionalExchangeAllocationItemProvider != null) componentExchangeFunctionalExchangeAllocationItemProvider.dispose();
-		if (componentExchangeRealizationItemProvider != null) componentExchangeRealizationItemProvider.dispose();
-		if (componentPortItemProvider != null) componentPortItemProvider.dispose();
-		if (componentPortAllocationItemProvider != null) componentPortAllocationItemProvider.dispose();
-		if (componentPortAllocationEndItemProvider != null) componentPortAllocationEndItemProvider.dispose();
-		if (functionalChainInvolvementLinkItemProvider != null) functionalChainInvolvementLinkItemProvider.dispose();
-		if (sequenceLinkItemProvider != null) sequenceLinkItemProvider.dispose();
-		if (functionalChainInvolvementFunctionItemProvider != null) functionalChainInvolvementFunctionItemProvider.dispose();
-		if (controlNodeItemProvider != null) controlNodeItemProvider.dispose();
-	}
+    if (functionSpecificationItemProvider != null) functionSpecificationItemProvider.dispose();
+    if (exchangeCategoryItemProvider != null) exchangeCategoryItemProvider.dispose();
+    if (exchangeLinkItemProvider != null) exchangeLinkItemProvider.dispose();
+    if (exchangeContainmentItemProvider != null) exchangeContainmentItemProvider.dispose();
+    if (functionalExchangeSpecificationItemProvider != null) functionalExchangeSpecificationItemProvider.dispose();
+    if (functionalChainItemProvider != null) functionalChainItemProvider.dispose();
+    if (functionalChainReferenceItemProvider != null) functionalChainReferenceItemProvider.dispose();
+    if (functionInputPortItemProvider != null) functionInputPortItemProvider.dispose();
+    if (functionOutputPortItemProvider != null) functionOutputPortItemProvider.dispose();
+    if (componentFunctionalAllocationItemProvider != null) componentFunctionalAllocationItemProvider.dispose();
+    if (functionalChainRealizationItemProvider != null) functionalChainRealizationItemProvider.dispose();
+    if (functionalExchangeRealizationItemProvider != null) functionalExchangeRealizationItemProvider.dispose();
+    if (functionRealizationItemProvider != null) functionRealizationItemProvider.dispose();
+    if (functionalExchangeItemProvider != null) functionalExchangeItemProvider.dispose();
+    if (componentExchangeItemProvider != null) componentExchangeItemProvider.dispose();
+    if (componentExchangeAllocationItemProvider != null) componentExchangeAllocationItemProvider.dispose();
+    if (componentExchangeCategoryItemProvider != null) componentExchangeCategoryItemProvider.dispose();
+    if (componentExchangeEndItemProvider != null) componentExchangeEndItemProvider.dispose();
+    if (componentExchangeFunctionalExchangeAllocationItemProvider != null) componentExchangeFunctionalExchangeAllocationItemProvider.dispose();
+    if (componentExchangeRealizationItemProvider != null) componentExchangeRealizationItemProvider.dispose();
+    if (componentPortItemProvider != null) componentPortItemProvider.dispose();
+    if (componentPortAllocationItemProvider != null) componentPortAllocationItemProvider.dispose();
+    if (componentPortAllocationEndItemProvider != null) componentPortAllocationEndItemProvider.dispose();
+    if (functionalChainInvolvementLinkItemProvider != null) functionalChainInvolvementLinkItemProvider.dispose();
+    if (sequenceLinkItemProvider != null) sequenceLinkItemProvider.dispose();
+    if (functionalChainInvolvementFunctionItemProvider != null) functionalChainInvolvementFunctionItemProvider.dispose();
+    if (controlNodeItemProvider != null) controlNodeItemProvider.dispose();
+  }
 
 	/**
-	 * A child creation extender for the {@link ActivityPackage}.
-	 * <!-- begin-user-doc -->
+   * A child creation extender for the {@link ActivityPackage}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static class ActivityChildCreationExtender implements IChildCreationExtender {
 		/**
-		 * The switch for creating child descriptors specific to each extended class.
-		 * <!-- begin-user-doc -->
+     * The switch for creating child descriptors specific to each extended class.
+     * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
+     * @generated
+     */
 		protected static class CreationSwitch extends ActivitySwitch<Object> {
 			/**
-			 * The child descriptors being populated.
-			 * <!-- begin-user-doc -->
+       * The child descriptors being populated.
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			protected List<Object> newChildDescriptors;
 
 			/**
-			 * The domain in which to create the children.
-			 * <!-- begin-user-doc -->
+       * The domain in which to create the children.
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			protected EditingDomain editingDomain;
 
 			/**
-			 * Creates the a switch for populating child descriptors in the given domain.
-			 * <!-- begin-user-doc -->
+       * Creates the a switch for populating child descriptors in the given domain.
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
-				this.newChildDescriptors = newChildDescriptors;
-				this.editingDomain = editingDomain;
-			}
+        this.newChildDescriptors = newChildDescriptors;
+        this.editingDomain = editingDomain;
+      }
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			@Override
 			public Object caseAbstractActivity(AbstractActivity object) {
-				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/7.0.0")) { //$NON-NLS-1$
-					return null;				
-				}
-				// end-extension-code
+        // begin-extension-code
+        if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/7.0.0")) { //$NON-NLS-1$
+          return null;				
+        }
+        // end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -982,21 +982,21 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 
 
 
-				return null;
-			}
+        return null;
+      }
  
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			@Override
 			public Object caseActivityGroup(ActivityGroup object) {
-				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/7.0.0")) { //$NON-NLS-1$
-					return null;				
-				}
-				// end-extension-code
+        // begin-extension-code
+        if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/7.0.0")) { //$NON-NLS-1$
+          return null;				
+        }
+        // end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -1036,21 +1036,21 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 
 
 
-				return null;
-			}
+        return null;
+      }
  
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			@Override
 			public Object caseAbstractAction(AbstractAction object) {
-				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/7.0.0")) { //$NON-NLS-1$
-					return null;				
-				}
-				// end-extension-code
+        // begin-extension-code
+        if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/7.0.0")) { //$NON-NLS-1$
+          return null;				
+        }
+        // end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -1077,21 +1077,21 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 
 
 
-				return null;
-			}
+        return null;
+      }
  
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			@Override
 			public Object caseAcceptEventAction(AcceptEventAction object) {
-				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/7.0.0")) { //$NON-NLS-1$
-					return null;				
-				}
-				// end-extension-code
+        // begin-extension-code
+        if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/7.0.0")) { //$NON-NLS-1$
+          return null;				
+        }
+        // end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -1105,21 +1105,21 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 
 
 
-				return null;
-			}
+        return null;
+      }
  
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			@Override
 			public Object caseInvocationAction(InvocationAction object) {
-				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/7.0.0")) { //$NON-NLS-1$
-					return null;				
-				}
-				// end-extension-code
+        // begin-extension-code
+        if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/7.0.0")) { //$NON-NLS-1$
+          return null;				
+        }
+        // end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -1133,21 +1133,21 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 
 
 
-				return null;
-			}
+        return null;
+      }
  
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			@Override
 			public Object caseSendSignalAction(SendSignalAction object) {
-				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/7.0.0")) { //$NON-NLS-1$
-					return null;				
-				}
-				// end-extension-code
+        // begin-extension-code
+        if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/7.0.0")) { //$NON-NLS-1$
+          return null;				
+        }
+        // end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -1161,21 +1161,21 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 
 
 
-				return null;
-			}
+        return null;
+      }
  
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			@Override
 			public Object caseCallAction(CallAction object) {
-				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/7.0.0")) { //$NON-NLS-1$
-					return null;				
-				}
-				// end-extension-code
+        // begin-extension-code
+        if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/7.0.0")) { //$NON-NLS-1$
+          return null;				
+        }
+        // end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -1189,39 +1189,39 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 
 
 
-				return null;
-			}
+        return null;
+      }
  
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			protected CommandParameter createChildParameter(Object feature, Object child) {
-				return new CommandParameter(null, feature, child);
-			}
+        return new CommandParameter(null, feature, child);
+      }
 
 		}
 
 		/**
-		 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
+     * @generated
+     */
 		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-			ArrayList<Object> result = new ArrayList<Object>();
-			new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
-			return result;
-		}
+      ArrayList<Object> result = new ArrayList<Object>();
+      new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
+      return result;
+    }
 
 		/**
-		 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
+     * @generated
+     */
 		public ResourceLocator getResourceLocator() {
-			return CapellaModellerEditPlugin.INSTANCE;
-		}
+      return CapellaModellerEditPlugin.INSTANCE;
+    }
 	}
 
 }

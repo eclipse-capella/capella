@@ -37,172 +37,172 @@ import org.polarsys.capella.core.data.requirement.SystemUserRequirement;
  */
 public class RequirementFactoryImpl extends EFactoryImpl implements RequirementFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static RequirementFactory init() {
-		try {
-			RequirementFactory theRequirementFactory = (RequirementFactory)EPackage.Registry.INSTANCE.getEFactory(RequirementPackage.eNS_URI);
-			if (theRequirementFactory != null) {
-				return theRequirementFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new RequirementFactoryImpl();
-	}
+    try {
+      RequirementFactory theRequirementFactory = (RequirementFactory)EPackage.Registry.INSTANCE.getEFactory(RequirementPackage.eNS_URI);
+      if (theRequirementFactory != null) {
+        return theRequirementFactory;
+      }
+    }
+    catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new RequirementFactoryImpl();
+  }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public RequirementFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case RequirementPackage.REQUIREMENTS_PKG: return createRequirementsPkg();
-			case RequirementPackage.REQUIREMENTS_TRACE: return createRequirementsTrace();
-			case RequirementPackage.SYSTEM_FUNCTIONAL_INTERFACE_REQUIREMENT: return createSystemFunctionalInterfaceRequirement();
-			case RequirementPackage.SYSTEM_FUNCTIONAL_REQUIREMENT: return createSystemFunctionalRequirement();
-			case RequirementPackage.SYSTEM_NON_FUNCTIONAL_INTERFACE_REQUIREMENT: return createSystemNonFunctionalInterfaceRequirement();
-			case RequirementPackage.SYSTEM_NON_FUNCTIONAL_REQUIREMENT: return createSystemNonFunctionalRequirement();
-			case RequirementPackage.SYSTEM_USER_REQUIREMENT: return createSystemUserRequirement();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eClass.getClassifierID()) {
+      case RequirementPackage.REQUIREMENTS_PKG: return createRequirementsPkg();
+      case RequirementPackage.REQUIREMENTS_TRACE: return createRequirementsTrace();
+      case RequirementPackage.SYSTEM_FUNCTIONAL_INTERFACE_REQUIREMENT: return createSystemFunctionalInterfaceRequirement();
+      case RequirementPackage.SYSTEM_FUNCTIONAL_REQUIREMENT: return createSystemFunctionalRequirement();
+      case RequirementPackage.SYSTEM_NON_FUNCTIONAL_INTERFACE_REQUIREMENT: return createSystemNonFunctionalInterfaceRequirement();
+      case RequirementPackage.SYSTEM_NON_FUNCTIONAL_REQUIREMENT: return createSystemNonFunctionalRequirement();
+      case RequirementPackage.SYSTEM_USER_REQUIREMENT: return createSystemUserRequirement();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public RequirementsPkg createRequirementsPkg() {
-		RequirementsPkgImpl requirementsPkg = new RequirementsPkgImpl();
+    RequirementsPkgImpl requirementsPkg = new RequirementsPkgImpl();
     //begin-capella-code
     requirementsPkg.setId(IdGenerator.createId());
     //end-capella-code
-		return requirementsPkg;
-	}
+    return requirementsPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public RequirementsTrace createRequirementsTrace() {
-		RequirementsTraceImpl requirementsTrace = new RequirementsTraceImpl();
+    RequirementsTraceImpl requirementsTrace = new RequirementsTraceImpl();
     //begin-capella-code
     requirementsTrace.setId(IdGenerator.createId());
     //end-capella-code
-		return requirementsTrace;
-	}
+    return requirementsTrace;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public SystemFunctionalInterfaceRequirement createSystemFunctionalInterfaceRequirement() {
-		SystemFunctionalInterfaceRequirementImpl systemFunctionalInterfaceRequirement = new SystemFunctionalInterfaceRequirementImpl();
+    SystemFunctionalInterfaceRequirementImpl systemFunctionalInterfaceRequirement = new SystemFunctionalInterfaceRequirementImpl();
     //begin-capella-code
     systemFunctionalInterfaceRequirement.setId(IdGenerator.createId());
     //end-capella-code
-		return systemFunctionalInterfaceRequirement;
-	}
+    return systemFunctionalInterfaceRequirement;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public SystemFunctionalRequirement createSystemFunctionalRequirement() {
-		SystemFunctionalRequirementImpl systemFunctionalRequirement = new SystemFunctionalRequirementImpl();
+    SystemFunctionalRequirementImpl systemFunctionalRequirement = new SystemFunctionalRequirementImpl();
     //begin-capella-code
     systemFunctionalRequirement.setId(IdGenerator.createId());
     //end-capella-code
-		return systemFunctionalRequirement;
-	}
+    return systemFunctionalRequirement;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public SystemNonFunctionalInterfaceRequirement createSystemNonFunctionalInterfaceRequirement() {
-		SystemNonFunctionalInterfaceRequirementImpl systemNonFunctionalInterfaceRequirement = new SystemNonFunctionalInterfaceRequirementImpl();
+    SystemNonFunctionalInterfaceRequirementImpl systemNonFunctionalInterfaceRequirement = new SystemNonFunctionalInterfaceRequirementImpl();
     //begin-capella-code
     systemNonFunctionalInterfaceRequirement.setId(IdGenerator.createId());
     //end-capella-code
-		return systemNonFunctionalInterfaceRequirement;
-	}
+    return systemNonFunctionalInterfaceRequirement;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public SystemNonFunctionalRequirement createSystemNonFunctionalRequirement() {
-		SystemNonFunctionalRequirementImpl systemNonFunctionalRequirement = new SystemNonFunctionalRequirementImpl();
+    SystemNonFunctionalRequirementImpl systemNonFunctionalRequirement = new SystemNonFunctionalRequirementImpl();
     //begin-capella-code
     systemNonFunctionalRequirement.setId(IdGenerator.createId());
     //end-capella-code
-		return systemNonFunctionalRequirement;
-	}
+    return systemNonFunctionalRequirement;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public SystemUserRequirement createSystemUserRequirement() {
-		SystemUserRequirementImpl systemUserRequirement = new SystemUserRequirementImpl();
+    SystemUserRequirementImpl systemUserRequirement = new SystemUserRequirementImpl();
     //begin-capella-code
     systemUserRequirement.setId(IdGenerator.createId());
     //end-capella-code
-		return systemUserRequirement;
-	}
+    return systemUserRequirement;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public RequirementPackage getRequirementPackage() {
-		return (RequirementPackage)getEPackage();
-	}
+    return (RequirementPackage)getEPackage();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
 	@Deprecated
 	public static RequirementPackage getPackage() {
-		return RequirementPackage.eINSTANCE;
-	}
+    return RequirementPackage.eINSTANCE;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -212,10 +212,10 @@ public class RequirementFactoryImpl extends EFactoryImpl implements RequirementF
 	 * @generated
 	 */
 	public RequirementsPkg createRequirementsPkg(String name_p) {
-		RequirementsPkg requirementsPkg = createRequirementsPkg();
-		requirementsPkg.setName(name_p);	  
-		return requirementsPkg;
-	}
+    RequirementsPkg requirementsPkg = createRequirementsPkg();
+    requirementsPkg.setName(name_p);	  
+    return requirementsPkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -225,10 +225,10 @@ public class RequirementFactoryImpl extends EFactoryImpl implements RequirementF
 	 * @generated
 	 */
 	public SystemFunctionalInterfaceRequirement createSystemFunctionalInterfaceRequirement(String name_p) {
-		SystemFunctionalInterfaceRequirement systemFunctionalInterfaceRequirement = createSystemFunctionalInterfaceRequirement();
-		systemFunctionalInterfaceRequirement.setName(name_p);	  
-		return systemFunctionalInterfaceRequirement;
-	}
+    SystemFunctionalInterfaceRequirement systemFunctionalInterfaceRequirement = createSystemFunctionalInterfaceRequirement();
+    systemFunctionalInterfaceRequirement.setName(name_p);	  
+    return systemFunctionalInterfaceRequirement;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -238,10 +238,10 @@ public class RequirementFactoryImpl extends EFactoryImpl implements RequirementF
 	 * @generated
 	 */
 	public SystemFunctionalRequirement createSystemFunctionalRequirement(String name_p) {
-		SystemFunctionalRequirement systemFunctionalRequirement = createSystemFunctionalRequirement();
-		systemFunctionalRequirement.setName(name_p);	  
-		return systemFunctionalRequirement;
-	}
+    SystemFunctionalRequirement systemFunctionalRequirement = createSystemFunctionalRequirement();
+    systemFunctionalRequirement.setName(name_p);	  
+    return systemFunctionalRequirement;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -251,10 +251,10 @@ public class RequirementFactoryImpl extends EFactoryImpl implements RequirementF
 	 * @generated
 	 */
 	public SystemNonFunctionalInterfaceRequirement createSystemNonFunctionalInterfaceRequirement(String name_p) {
-		SystemNonFunctionalInterfaceRequirement systemNonFunctionalInterfaceRequirement = createSystemNonFunctionalInterfaceRequirement();
-		systemNonFunctionalInterfaceRequirement.setName(name_p);	  
-		return systemNonFunctionalInterfaceRequirement;
-	}
+    SystemNonFunctionalInterfaceRequirement systemNonFunctionalInterfaceRequirement = createSystemNonFunctionalInterfaceRequirement();
+    systemNonFunctionalInterfaceRequirement.setName(name_p);	  
+    return systemNonFunctionalInterfaceRequirement;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -264,10 +264,10 @@ public class RequirementFactoryImpl extends EFactoryImpl implements RequirementF
 	 * @generated
 	 */
 	public SystemNonFunctionalRequirement createSystemNonFunctionalRequirement(String name_p) {
-		SystemNonFunctionalRequirement systemNonFunctionalRequirement = createSystemNonFunctionalRequirement();
-		systemNonFunctionalRequirement.setName(name_p);	  
-		return systemNonFunctionalRequirement;
-	}
+    SystemNonFunctionalRequirement systemNonFunctionalRequirement = createSystemNonFunctionalRequirement();
+    systemNonFunctionalRequirement.setName(name_p);	  
+    return systemNonFunctionalRequirement;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -277,10 +277,10 @@ public class RequirementFactoryImpl extends EFactoryImpl implements RequirementF
 	 * @generated
 	 */
 	public SystemUserRequirement createSystemUserRequirement(String name_p) {
-		SystemUserRequirement systemUserRequirement = createSystemUserRequirement();
-		systemUserRequirement.setName(name_p);	  
-		return systemUserRequirement;
-	}
+    SystemUserRequirement systemUserRequirement = createSystemUserRequirement();
+    systemUserRequirement.setName(name_p);	  
+    return systemUserRequirement;
+  }
 
 	//begin-capella-code
 

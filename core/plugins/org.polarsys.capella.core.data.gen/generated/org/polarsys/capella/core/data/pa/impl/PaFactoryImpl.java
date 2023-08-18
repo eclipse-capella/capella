@@ -42,276 +42,276 @@ import org.polarsys.capella.core.data.pa.PhysicalNode;
  */
 public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static PaFactory init() {
-		try {
-			PaFactory thePaFactory = (PaFactory)EPackage.Registry.INSTANCE.getEFactory(PaPackage.eNS_URI);
-			if (thePaFactory != null) {
-				return thePaFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new PaFactoryImpl();
-	}
+    try {
+      PaFactory thePaFactory = (PaFactory)EPackage.Registry.INSTANCE.getEFactory(PaPackage.eNS_URI);
+      if (thePaFactory != null) {
+        return thePaFactory;
+      }
+    }
+    catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new PaFactoryImpl();
+  }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public PaFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case PaPackage.PHYSICAL_ARCHITECTURE_PKG: return createPhysicalArchitecturePkg();
-			case PaPackage.PHYSICAL_ARCHITECTURE: return createPhysicalArchitecture();
-			case PaPackage.PHYSICAL_FUNCTION: return createPhysicalFunction();
-			case PaPackage.PHYSICAL_FUNCTION_PKG: return createPhysicalFunctionPkg();
-			case PaPackage.PHYSICAL_COMPONENT: return createPhysicalComponent();
-			case PaPackage.PHYSICAL_COMPONENT_PKG: return createPhysicalComponentPkg();
-			case PaPackage.PHYSICAL_NODE: return createPhysicalNode();
-			case PaPackage.LOGICAL_ARCHITECTURE_REALIZATION: return createLogicalArchitectureRealization();
-			case PaPackage.LOGICAL_INTERFACE_REALIZATION: return createLogicalInterfaceRealization();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eClass.getClassifierID()) {
+      case PaPackage.PHYSICAL_ARCHITECTURE_PKG: return createPhysicalArchitecturePkg();
+      case PaPackage.PHYSICAL_ARCHITECTURE: return createPhysicalArchitecture();
+      case PaPackage.PHYSICAL_FUNCTION: return createPhysicalFunction();
+      case PaPackage.PHYSICAL_FUNCTION_PKG: return createPhysicalFunctionPkg();
+      case PaPackage.PHYSICAL_COMPONENT: return createPhysicalComponent();
+      case PaPackage.PHYSICAL_COMPONENT_PKG: return createPhysicalComponentPkg();
+      case PaPackage.PHYSICAL_NODE: return createPhysicalNode();
+      case PaPackage.LOGICAL_ARCHITECTURE_REALIZATION: return createLogicalArchitectureRealization();
+      case PaPackage.LOGICAL_INTERFACE_REALIZATION: return createLogicalInterfaceRealization();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID()) {
-			case PaPackage.PHYSICAL_COMPONENT_KIND:
-				return createPhysicalComponentKindFromString(eDataType, initialValue);
-			case PaPackage.PHYSICAL_COMPONENT_NATURE:
-				return createPhysicalComponentNatureFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eDataType.getClassifierID()) {
+      case PaPackage.PHYSICAL_COMPONENT_KIND:
+        return createPhysicalComponentKindFromString(eDataType, initialValue);
+      case PaPackage.PHYSICAL_COMPONENT_NATURE:
+        return createPhysicalComponentNatureFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID()) {
-			case PaPackage.PHYSICAL_COMPONENT_KIND:
-				return convertPhysicalComponentKindToString(eDataType, instanceValue);
-			case PaPackage.PHYSICAL_COMPONENT_NATURE:
-				return convertPhysicalComponentNatureToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eDataType.getClassifierID()) {
+      case PaPackage.PHYSICAL_COMPONENT_KIND:
+        return convertPhysicalComponentKindToString(eDataType, instanceValue);
+      case PaPackage.PHYSICAL_COMPONENT_NATURE:
+        return convertPhysicalComponentNatureToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PhysicalArchitecturePkg createPhysicalArchitecturePkg() {
-		PhysicalArchitecturePkgImpl physicalArchitecturePkg = new PhysicalArchitecturePkgImpl();
+    PhysicalArchitecturePkgImpl physicalArchitecturePkg = new PhysicalArchitecturePkgImpl();
     //begin-capella-code
     physicalArchitecturePkg.setId(IdGenerator.createId());
     //end-capella-code
-		return physicalArchitecturePkg;
-	}
+    return physicalArchitecturePkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PhysicalArchitecture createPhysicalArchitecture() {
-		PhysicalArchitectureImpl physicalArchitecture = new PhysicalArchitectureImpl();
+    PhysicalArchitectureImpl physicalArchitecture = new PhysicalArchitectureImpl();
     //begin-capella-code
     physicalArchitecture.setId(IdGenerator.createId());
     //end-capella-code
-		return physicalArchitecture;
-	}
+    return physicalArchitecture;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PhysicalFunction createPhysicalFunction() {
-		PhysicalFunctionImpl physicalFunction = new PhysicalFunctionImpl();
+    PhysicalFunctionImpl physicalFunction = new PhysicalFunctionImpl();
     //begin-capella-code
     physicalFunction.setId(IdGenerator.createId());
     //end-capella-code
-		return physicalFunction;
-	}
+    return physicalFunction;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PhysicalFunctionPkg createPhysicalFunctionPkg() {
-		PhysicalFunctionPkgImpl physicalFunctionPkg = new PhysicalFunctionPkgImpl();
+    PhysicalFunctionPkgImpl physicalFunctionPkg = new PhysicalFunctionPkgImpl();
     //begin-capella-code
     physicalFunctionPkg.setId(IdGenerator.createId());
     //end-capella-code
-		return physicalFunctionPkg;
-	}
+    return physicalFunctionPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PhysicalComponent createPhysicalComponent() {
-		PhysicalComponentImpl physicalComponent = new PhysicalComponentImpl();
+    PhysicalComponentImpl physicalComponent = new PhysicalComponentImpl();
     //begin-capella-code
     physicalComponent.setId(IdGenerator.createId());
     //end-capella-code
-		return physicalComponent;
-	}
+    return physicalComponent;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PhysicalComponentPkg createPhysicalComponentPkg() {
-		PhysicalComponentPkgImpl physicalComponentPkg = new PhysicalComponentPkgImpl();
+    PhysicalComponentPkgImpl physicalComponentPkg = new PhysicalComponentPkgImpl();
     //begin-capella-code
     physicalComponentPkg.setId(IdGenerator.createId());
     //end-capella-code
-		return physicalComponentPkg;
-	}
+    return physicalComponentPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PhysicalNode createPhysicalNode() {
-		PhysicalNodeImpl physicalNode = new PhysicalNodeImpl();
+    PhysicalNodeImpl physicalNode = new PhysicalNodeImpl();
     //begin-capella-code
     physicalNode.setId(IdGenerator.createId());
     //end-capella-code
-		return physicalNode;
-	}
+    return physicalNode;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public LogicalArchitectureRealization createLogicalArchitectureRealization() {
-		LogicalArchitectureRealizationImpl logicalArchitectureRealization = new LogicalArchitectureRealizationImpl();
+    LogicalArchitectureRealizationImpl logicalArchitectureRealization = new LogicalArchitectureRealizationImpl();
     //begin-capella-code
     logicalArchitectureRealization.setId(IdGenerator.createId());
     //end-capella-code
-		return logicalArchitectureRealization;
-	}
+    return logicalArchitectureRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public LogicalInterfaceRealization createLogicalInterfaceRealization() {
-		LogicalInterfaceRealizationImpl logicalInterfaceRealization = new LogicalInterfaceRealizationImpl();
+    LogicalInterfaceRealizationImpl logicalInterfaceRealization = new LogicalInterfaceRealizationImpl();
     //begin-capella-code
     logicalInterfaceRealization.setId(IdGenerator.createId());
     //end-capella-code
-		return logicalInterfaceRealization;
-	}
+    return logicalInterfaceRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public PhysicalComponentKind createPhysicalComponentKindFromString(EDataType eDataType, String initialValue) {
-		PhysicalComponentKind result = PhysicalComponentKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    PhysicalComponentKind result = PhysicalComponentKind.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertPhysicalComponentKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public PhysicalComponentNature createPhysicalComponentNatureFromString(EDataType eDataType, String initialValue) {
-		PhysicalComponentNature result = PhysicalComponentNature.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    PhysicalComponentNature result = PhysicalComponentNature.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertPhysicalComponentNatureToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public PaPackage getPaPackage() {
-		return (PaPackage)getEPackage();
-	}
+    return (PaPackage)getEPackage();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
 	@Deprecated
 	public static PaPackage getPackage() {
-		return PaPackage.eINSTANCE;
-	}
+    return PaPackage.eINSTANCE;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -321,10 +321,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * @generated
 	 */
 	public PhysicalArchitecturePkg createPhysicalArchitecturePkg(String name_p) {
-		PhysicalArchitecturePkg physicalArchitecturePkg = createPhysicalArchitecturePkg();
-		physicalArchitecturePkg.setName(name_p);	  
-		return physicalArchitecturePkg;
-	}
+    PhysicalArchitecturePkg physicalArchitecturePkg = createPhysicalArchitecturePkg();
+    physicalArchitecturePkg.setName(name_p);	  
+    return physicalArchitecturePkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -334,10 +334,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * @generated
 	 */
 	public PhysicalArchitecture createPhysicalArchitecture(String name_p) {
-		PhysicalArchitecture physicalArchitecture = createPhysicalArchitecture();
-		physicalArchitecture.setName(name_p);	  
-		return physicalArchitecture;
-	}
+    PhysicalArchitecture physicalArchitecture = createPhysicalArchitecture();
+    physicalArchitecture.setName(name_p);	  
+    return physicalArchitecture;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -347,10 +347,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * @generated
 	 */
 	public PhysicalFunction createPhysicalFunction(String name_p) {
-		PhysicalFunction physicalFunction = createPhysicalFunction();
-		physicalFunction.setName(name_p);	  
-		return physicalFunction;
-	}
+    PhysicalFunction physicalFunction = createPhysicalFunction();
+    physicalFunction.setName(name_p);	  
+    return physicalFunction;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -360,10 +360,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * @generated
 	 */
 	public PhysicalFunctionPkg createPhysicalFunctionPkg(String name_p) {
-		PhysicalFunctionPkg physicalFunctionPkg = createPhysicalFunctionPkg();
-		physicalFunctionPkg.setName(name_p);	  
-		return physicalFunctionPkg;
-	}
+    PhysicalFunctionPkg physicalFunctionPkg = createPhysicalFunctionPkg();
+    physicalFunctionPkg.setName(name_p);	  
+    return physicalFunctionPkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -373,10 +373,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * @generated
 	 */
 	public PhysicalComponent createPhysicalComponent(String name_p) {
-		PhysicalComponent physicalComponent = createPhysicalComponent();
-		physicalComponent.setName(name_p);	  
-		return physicalComponent;
-	}
+    PhysicalComponent physicalComponent = createPhysicalComponent();
+    physicalComponent.setName(name_p);	  
+    return physicalComponent;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -386,10 +386,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * @generated
 	 */
 	public PhysicalComponentPkg createPhysicalComponentPkg(String name_p) {
-		PhysicalComponentPkg physicalComponentPkg = createPhysicalComponentPkg();
-		physicalComponentPkg.setName(name_p);	  
-		return physicalComponentPkg;
-	}
+    PhysicalComponentPkg physicalComponentPkg = createPhysicalComponentPkg();
+    physicalComponentPkg.setName(name_p);	  
+    return physicalComponentPkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -399,10 +399,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * @generated
 	 */
 	public PhysicalNode createPhysicalNode(String name_p) {
-		PhysicalNode physicalNode = createPhysicalNode();
-		physicalNode.setName(name_p);	  
-		return physicalNode;
-	}
+    PhysicalNode physicalNode = createPhysicalNode();
+    physicalNode.setName(name_p);	  
+    return physicalNode;
+  }
 
 	//begin-capella-code
 

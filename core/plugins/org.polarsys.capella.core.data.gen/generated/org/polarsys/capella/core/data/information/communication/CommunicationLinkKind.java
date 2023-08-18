@@ -31,453 +31,453 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum CommunicationLinkKind implements Enumerator {
 	/**
-	 * The '<em><b>UNSET</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>UNSET</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #UNSET_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #UNSET_VALUE
+   * @generated
+   * @ordered
+   */
 	UNSET(0, "UNSET", "UNSET"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>PRODUCE</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>PRODUCE</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PRODUCE_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #PRODUCE_VALUE
+   * @generated
+   * @ordered
+   */
 	PRODUCE(1, "PRODUCE", "PRODUCE"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>CONSUME</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>CONSUME</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #CONSUME_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #CONSUME_VALUE
+   * @generated
+   * @ordered
+   */
 	CONSUME(2, "CONSUME", "CONSUME"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>SEND</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>SEND</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #SEND_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #SEND_VALUE
+   * @generated
+   * @ordered
+   */
 	SEND(3, "SEND", "SEND"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>RECEIVE</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>RECEIVE</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #RECEIVE_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #RECEIVE_VALUE
+   * @generated
+   * @ordered
+   */
 	RECEIVE(4, "RECEIVE", "RECEIVE"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>CALL</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>CALL</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #CALL_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #CALL_VALUE
+   * @generated
+   * @ordered
+   */
 	CALL(5, "CALL", "CALL"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>EXECUTE</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>EXECUTE</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #EXECUTE_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #EXECUTE_VALUE
+   * @generated
+   * @ordered
+   */
 	EXECUTE(6, "EXECUTE", "EXECUTE"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>WRITE</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>WRITE</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #WRITE_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #WRITE_VALUE
+   * @generated
+   * @ordered
+   */
 	WRITE(7, "WRITE", "WRITE"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>ACCESS</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>ACCESS</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #ACCESS_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #ACCESS_VALUE
+   * @generated
+   * @ordered
+   */
 	ACCESS(8, "ACCESS", "ACCESS"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>ACQUIRE</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>ACQUIRE</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #ACQUIRE_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #ACQUIRE_VALUE
+   * @generated
+   * @ordered
+   */
 	ACQUIRE(9, "ACQUIRE", "ACQUIRE"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>TRANSMIT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>TRANSMIT</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #TRANSMIT_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #TRANSMIT_VALUE
+   * @generated
+   * @ordered
+   */
 	TRANSMIT(10, "TRANSMIT", "TRANSMIT"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>UNSET</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>UNSET</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>UNSET</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #UNSET
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink protocol is not yet set' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #UNSET
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink protocol is not yet set' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int UNSET_VALUE = 0;
 
 	/**
-	 * The '<em><b>PRODUCE</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>PRODUCE</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>PRODUCE</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #PRODUCE
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a production of ExchangeItem' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #PRODUCE
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a production of ExchangeItem' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int PRODUCE_VALUE = 1;
 
 	/**
-	 * The '<em><b>CONSUME</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>CONSUME</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>CONSUME</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #CONSUME
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a comsumption of ExchangeItem' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #CONSUME
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a comsumption of ExchangeItem' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int CONSUME_VALUE = 2;
 
 	/**
-	 * The '<em><b>SEND</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>SEND</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>SEND</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #SEND
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a sending of ExchangeItem' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #SEND
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a sending of ExchangeItem' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int SEND_VALUE = 3;
 
 	/**
-	 * The '<em><b>RECEIVE</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>RECEIVE</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>RECEIVE</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #RECEIVE
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a reception of ExchangeItem' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #RECEIVE
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a reception of ExchangeItem' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int RECEIVE_VALUE = 4;
 
 	/**
-	 * The '<em><b>CALL</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>CALL</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>CALL</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #CALL
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a call of ExchangeItem' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #CALL
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a call of ExchangeItem' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int CALL_VALUE = 5;
 
 	/**
-	 * The '<em><b>EXECUTE</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>EXECUTE</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>EXECUTE</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #EXECUTE
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe an execution of ExchangeItem' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #EXECUTE
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe an execution of ExchangeItem' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int EXECUTE_VALUE = 6;
 
 	/**
-	 * The '<em><b>WRITE</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>WRITE</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>WRITE</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #WRITE
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a writing of ExchangeItem' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #WRITE
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a writing of ExchangeItem' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int WRITE_VALUE = 7;
 
 	/**
-	 * The '<em><b>ACCESS</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>ACCESS</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>ACCESS</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #ACCESS
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe an access to the ExchangeItem' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #ACCESS
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe an access to the ExchangeItem' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int ACCESS_VALUE = 8;
 
 	/**
-	 * The '<em><b>ACQUIRE</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>ACQUIRE</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>ACQUIRE</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #ACQUIRE
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe an acquisition of ExchangeItem' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #ACQUIRE
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe an acquisition of ExchangeItem' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int ACQUIRE_VALUE = 9;
 
 	/**
-	 * The '<em><b>TRANSMIT</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>TRANSMIT</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>TRANSMIT</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #TRANSMIT
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a transmission of ExchangeItem' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #TRANSMIT
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the CommunicationLink is used to describe a transmission of ExchangeItem' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int TRANSMIT_VALUE = 10;
 
 	/**
-	 * An array of all the '<em><b>Link Kind</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
+   * An array of all the '<em><b>Link Kind</b></em>' enumerators.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private static final CommunicationLinkKind[] VALUES_ARRAY =
 		new CommunicationLinkKind[] {
-			UNSET,
-			PRODUCE,
-			CONSUME,
-			SEND,
-			RECEIVE,
-			CALL,
-			EXECUTE,
-			WRITE,
-			ACCESS,
-			ACQUIRE,
-			TRANSMIT,
-		};
+      UNSET,
+      PRODUCE,
+      CONSUME,
+      SEND,
+      RECEIVE,
+      CALL,
+      EXECUTE,
+      WRITE,
+      ACCESS,
+      ACQUIRE,
+      TRANSMIT,
+    };
 
 	/**
-	 * A public read-only list of all the '<em><b>Link Kind</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
+   * A public read-only list of all the '<em><b>Link Kind</b></em>' enumerators.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static final List<CommunicationLinkKind> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Link Kind</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
+   * Returns the '<em><b>Link Kind</b></em>' literal with the specified literal value.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param literal the literal.
-	 * @return the matching enumerator or <code>null</code>.
-	 * @generated
-	 */
+   * @param literal the literal.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
 	public static CommunicationLinkKind get(String literal) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			CommunicationLinkKind result = VALUES_ARRAY[i];
-			if (result.toString().equals(literal)) {
-				return result;
-			}
-		}
-		return null;
-	}
+    for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+      CommunicationLinkKind result = VALUES_ARRAY[i];
+      if (result.toString().equals(literal)) {
+        return result;
+      }
+    }
+    return null;
+  }
 
 	/**
-	 * Returns the '<em><b>Link Kind</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
+   * Returns the '<em><b>Link Kind</b></em>' literal with the specified name.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name the name.
-	 * @return the matching enumerator or <code>null</code>.
-	 * @generated
-	 */
+   * @param name the name.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
 	public static CommunicationLinkKind getByName(String name) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			CommunicationLinkKind result = VALUES_ARRAY[i];
-			if (result.getName().equals(name)) {
-				return result;
-			}
-		}
-		return null;
-	}
+    for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+      CommunicationLinkKind result = VALUES_ARRAY[i];
+      if (result.getName().equals(name)) {
+        return result;
+      }
+    }
+    return null;
+  }
 
 	/**
-	 * Returns the '<em><b>Link Kind</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
+   * Returns the '<em><b>Link Kind</b></em>' literal with the specified integer value.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the integer value.
-	 * @return the matching enumerator or <code>null</code>.
-	 * @generated
-	 */
+   * @param value the integer value.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
 	public static CommunicationLinkKind get(int value) {
-		switch (value) {
-			case UNSET_VALUE: return UNSET;
-			case PRODUCE_VALUE: return PRODUCE;
-			case CONSUME_VALUE: return CONSUME;
-			case SEND_VALUE: return SEND;
-			case RECEIVE_VALUE: return RECEIVE;
-			case CALL_VALUE: return CALL;
-			case EXECUTE_VALUE: return EXECUTE;
-			case WRITE_VALUE: return WRITE;
-			case ACCESS_VALUE: return ACCESS;
-			case ACQUIRE_VALUE: return ACQUIRE;
-			case TRANSMIT_VALUE: return TRANSMIT;
-		}
-		return null;
-	}
+    switch (value) {
+      case UNSET_VALUE: return UNSET;
+      case PRODUCE_VALUE: return PRODUCE;
+      case CONSUME_VALUE: return CONSUME;
+      case SEND_VALUE: return SEND;
+      case RECEIVE_VALUE: return RECEIVE;
+      case CALL_VALUE: return CALL;
+      case EXECUTE_VALUE: return EXECUTE;
+      case WRITE_VALUE: return WRITE;
+      case ACCESS_VALUE: return ACCESS;
+      case ACQUIRE_VALUE: return ACQUIRE;
+      case TRANSMIT_VALUE: return TRANSMIT;
+    }
+    return null;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
+   * Only this class can construct instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private CommunicationLinkKind(int value, String name, String literal) {
-		this.value = value;
-		this.name = name;
-		this.literal = literal;
-	}
+    this.value = value;
+    this.name = name;
+    this.literal = literal;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int getValue() {
-	  return value;
-	}
+    return value;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getName() {
-	  return name;
-	}
+    return name;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getLiteral() {
-	  return literal;
-	}
+    return literal;
+  }
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
+   * Returns the literal value of the enumerator, which is its string representation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		return literal;
-	}
+    return literal;
+  }
 	
 } //CommunicationLinkKind

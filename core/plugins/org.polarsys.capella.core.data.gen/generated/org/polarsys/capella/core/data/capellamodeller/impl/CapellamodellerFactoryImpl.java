@@ -35,142 +35,142 @@ import org.polarsys.capella.core.data.capellamodeller.SystemEngineeringPkg;
  */
 public class CapellamodellerFactoryImpl extends EFactoryImpl implements CapellamodellerFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static CapellamodellerFactory init() {
-		try {
-			CapellamodellerFactory theCapellamodellerFactory = (CapellamodellerFactory)EPackage.Registry.INSTANCE.getEFactory(CapellamodellerPackage.eNS_URI);
-			if (theCapellamodellerFactory != null) {
-				return theCapellamodellerFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new CapellamodellerFactoryImpl();
-	}
+    try {
+      CapellamodellerFactory theCapellamodellerFactory = (CapellamodellerFactory)EPackage.Registry.INSTANCE.getEFactory(CapellamodellerPackage.eNS_URI);
+      if (theCapellamodellerFactory != null) {
+        return theCapellamodellerFactory;
+      }
+    }
+    catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new CapellamodellerFactoryImpl();
+  }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CapellamodellerFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case CapellamodellerPackage.PROJECT: return createProject();
-			case CapellamodellerPackage.FOLDER: return createFolder();
-			case CapellamodellerPackage.SYSTEM_ENGINEERING: return createSystemEngineering();
-			case CapellamodellerPackage.SYSTEM_ENGINEERING_PKG: return createSystemEngineeringPkg();
-			case CapellamodellerPackage.LIBRARY: return createLibrary();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eClass.getClassifierID()) {
+      case CapellamodellerPackage.PROJECT: return createProject();
+      case CapellamodellerPackage.FOLDER: return createFolder();
+      case CapellamodellerPackage.SYSTEM_ENGINEERING: return createSystemEngineering();
+      case CapellamodellerPackage.SYSTEM_ENGINEERING_PKG: return createSystemEngineeringPkg();
+      case CapellamodellerPackage.LIBRARY: return createLibrary();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Project createProject() {
-		ProjectImpl project = new ProjectImpl();
+    ProjectImpl project = new ProjectImpl();
     //begin-capella-code
     project.setId(IdGenerator.createId());
     //end-capella-code
-		return project;
-	}
+    return project;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Folder createFolder() {
-		FolderImpl folder = new FolderImpl();
+    FolderImpl folder = new FolderImpl();
     //begin-capella-code
     folder.setId(IdGenerator.createId());
     //end-capella-code
-		return folder;
-	}
+    return folder;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public SystemEngineering createSystemEngineering() {
-		SystemEngineeringImpl systemEngineering = new SystemEngineeringImpl();
+    SystemEngineeringImpl systemEngineering = new SystemEngineeringImpl();
     //begin-capella-code
     systemEngineering.setId(IdGenerator.createId());
     //end-capella-code
-		return systemEngineering;
-	}
+    return systemEngineering;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public SystemEngineeringPkg createSystemEngineeringPkg() {
-		SystemEngineeringPkgImpl systemEngineeringPkg = new SystemEngineeringPkgImpl();
+    SystemEngineeringPkgImpl systemEngineeringPkg = new SystemEngineeringPkgImpl();
     //begin-capella-code
     systemEngineeringPkg.setId(IdGenerator.createId());
     //end-capella-code
-		return systemEngineeringPkg;
-	}
+    return systemEngineeringPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Library createLibrary() {
-		LibraryImpl library = new LibraryImpl();
+    LibraryImpl library = new LibraryImpl();
     //begin-capella-code
     library.setId(IdGenerator.createId());
     //end-capella-code
-		return library;
-	}
+    return library;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public CapellamodellerPackage getCapellamodellerPackage() {
-		return (CapellamodellerPackage)getEPackage();
-	}
+    return (CapellamodellerPackage)getEPackage();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
 	@Deprecated
 	public static CapellamodellerPackage getPackage() {
-		return CapellamodellerPackage.eINSTANCE;
-	}
+    return CapellamodellerPackage.eINSTANCE;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -180,10 +180,10 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	 * @generated
 	 */
 	public Project createProject(String name_p) {
-		Project project = createProject();
-		project.setName(name_p);	  
-		return project;
-	}
+    Project project = createProject();
+    project.setName(name_p);	  
+    return project;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -193,10 +193,10 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	 * @generated
 	 */
 	public Folder createFolder(String name_p) {
-		Folder folder = createFolder();
-		folder.setName(name_p);	  
-		return folder;
-	}
+    Folder folder = createFolder();
+    folder.setName(name_p);	  
+    return folder;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -206,10 +206,10 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	 * @generated
 	 */
 	public SystemEngineering createSystemEngineering(String name_p) {
-		SystemEngineering systemEngineering = createSystemEngineering();
-		systemEngineering.setName(name_p);	  
-		return systemEngineering;
-	}
+    SystemEngineering systemEngineering = createSystemEngineering();
+    systemEngineering.setName(name_p);	  
+    return systemEngineering;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -219,10 +219,10 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	 * @generated
 	 */
 	public SystemEngineeringPkg createSystemEngineeringPkg(String name_p) {
-		SystemEngineeringPkg systemEngineeringPkg = createSystemEngineeringPkg();
-		systemEngineeringPkg.setName(name_p);	  
-		return systemEngineeringPkg;
-	}
+    SystemEngineeringPkg systemEngineeringPkg = createSystemEngineeringPkg();
+    systemEngineeringPkg.setName(name_p);	  
+    return systemEngineeringPkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -232,10 +232,10 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	 * @generated
 	 */
 	public Library createLibrary(String name_p) {
-		Library library = createLibrary();
-		library.setName(name_p);	  
-		return library;
-	}
+    Library library = createLibrary();
+    library.setName(name_p);	  
+    return library;
+  }
 
 	//begin-capella-code
 

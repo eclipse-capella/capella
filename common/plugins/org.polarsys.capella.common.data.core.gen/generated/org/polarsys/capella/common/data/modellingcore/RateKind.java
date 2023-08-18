@@ -31,232 +31,232 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum RateKind implements Enumerator {
 	/**
-	 * The '<em><b>Unspecified</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>Unspecified</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #UNSPECIFIED_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #UNSPECIFIED_VALUE
+   * @generated
+   * @ordered
+   */
 	UNSPECIFIED(0, "Unspecified", "Unspecified"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>Continuous</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>Continuous</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #CONTINUOUS_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #CONTINUOUS_VALUE
+   * @generated
+   * @ordered
+   */
 	CONTINUOUS(1, "Continuous", "Continuous"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>Discrete</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>Discrete</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #DISCRETE_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #DISCRETE_VALUE
+   * @generated
+   * @ordered
+   */
 	DISCRETE(2, "Discrete", "Discrete"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>Unspecified</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>Unspecified</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Unspecified</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #UNSPECIFIED
-	 * @model name="Unspecified"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the rate kind is not precised\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='Neither SysML::Activities::Continuous or SysML::Activities::Discrete stereotypes are applied' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #UNSPECIFIED
+   * @model name="Unspecified"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the rate kind is not precised\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='Neither SysML::Activities::Continuous or SysML::Activities::Discrete stereotypes are applied' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int UNSPECIFIED_VALUE = 0;
 
 	/**
-	 * The '<em><b>Continuous</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>Continuous</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Continuous</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #CONTINUOUS
-	 * @model name="Continuous"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the rate characterizes a continuous flow\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='SysML::Activities::Continuous' explanation='SysML::Activities::Continuous stereotype is applied' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #CONTINUOUS
+   * @model name="Continuous"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when the rate characterizes a continuous flow\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='SysML::Activities::Continuous' explanation='SysML::Activities::Continuous stereotype is applied' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int CONTINUOUS_VALUE = 1;
 
 	/**
-	 * The '<em><b>Discrete</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>Discrete</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Discrete</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #DISCRETE
-	 * @model name="Discrete"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Used when the rate characterizes a discrete flow\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='SysML::Activities::Discrete' explanation='SysML::Activities::Discrete' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #DISCRETE
+   * @model name="Discrete"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Used when the rate characterizes a discrete flow\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='SysML::Activities::Discrete' explanation='SysML::Activities::Discrete' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int DISCRETE_VALUE = 2;
 
 	/**
-	 * An array of all the '<em><b>Rate Kind</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
+   * An array of all the '<em><b>Rate Kind</b></em>' enumerators.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private static final RateKind[] VALUES_ARRAY =
 		new RateKind[] {
-			UNSPECIFIED,
-			CONTINUOUS,
-			DISCRETE,
-		};
+      UNSPECIFIED,
+      CONTINUOUS,
+      DISCRETE,
+    };
 
 	/**
-	 * A public read-only list of all the '<em><b>Rate Kind</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
+   * A public read-only list of all the '<em><b>Rate Kind</b></em>' enumerators.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static final List<RateKind> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Rate Kind</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
+   * Returns the '<em><b>Rate Kind</b></em>' literal with the specified literal value.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param literal the literal.
-	 * @return the matching enumerator or <code>null</code>.
-	 * @generated
-	 */
+   * @param literal the literal.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
 	public static RateKind get(String literal) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			RateKind result = VALUES_ARRAY[i];
-			if (result.toString().equals(literal)) {
-				return result;
-			}
-		}
-		return null;
-	}
+    for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+      RateKind result = VALUES_ARRAY[i];
+      if (result.toString().equals(literal)) {
+        return result;
+      }
+    }
+    return null;
+  }
 
 	/**
-	 * Returns the '<em><b>Rate Kind</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
+   * Returns the '<em><b>Rate Kind</b></em>' literal with the specified name.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name the name.
-	 * @return the matching enumerator or <code>null</code>.
-	 * @generated
-	 */
+   * @param name the name.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
 	public static RateKind getByName(String name) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			RateKind result = VALUES_ARRAY[i];
-			if (result.getName().equals(name)) {
-				return result;
-			}
-		}
-		return null;
-	}
+    for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+      RateKind result = VALUES_ARRAY[i];
+      if (result.getName().equals(name)) {
+        return result;
+      }
+    }
+    return null;
+  }
 
 	/**
-	 * Returns the '<em><b>Rate Kind</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
+   * Returns the '<em><b>Rate Kind</b></em>' literal with the specified integer value.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the integer value.
-	 * @return the matching enumerator or <code>null</code>.
-	 * @generated
-	 */
+   * @param value the integer value.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
 	public static RateKind get(int value) {
-		switch (value) {
-			case UNSPECIFIED_VALUE: return UNSPECIFIED;
-			case CONTINUOUS_VALUE: return CONTINUOUS;
-			case DISCRETE_VALUE: return DISCRETE;
-		}
-		return null;
-	}
+    switch (value) {
+      case UNSPECIFIED_VALUE: return UNSPECIFIED;
+      case CONTINUOUS_VALUE: return CONTINUOUS;
+      case DISCRETE_VALUE: return DISCRETE;
+    }
+    return null;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
+   * Only this class can construct instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private RateKind(int value, String name, String literal) {
-		this.value = value;
-		this.name = name;
-		this.literal = literal;
-	}
+    this.value = value;
+    this.name = name;
+    this.literal = literal;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int getValue() {
-	  return value;
-	}
+    return value;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getName() {
-	  return name;
-	}
+    return name;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getLiteral() {
-	  return literal;
-	}
+    return literal;
+  }
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
+   * Returns the literal value of the enumerator, which is its string representation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		return literal;
-	}
+    return literal;
+  }
 	
 } //RateKind

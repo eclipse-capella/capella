@@ -25,27 +25,27 @@ import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
  */
 public class CapellacoreResourceFactoryImpl extends ResourceFactoryImpl {
 	/**
-	 * Creates an instance of the resource factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the resource factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CapellacoreResourceFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * Creates an instance of the resource.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the resource.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Resource createResource(URI uri) {
 
-		Resource result = new CapellacoreResourceImpl(uri);
-		return result;
+    Resource result = new CapellacoreResourceImpl(uri);
+    return result;
 
-	}
+  }
 
 } //CapellacoreResourceFactoryImpl

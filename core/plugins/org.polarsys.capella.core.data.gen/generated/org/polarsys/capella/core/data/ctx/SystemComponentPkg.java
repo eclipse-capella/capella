@@ -44,23 +44,23 @@ public interface SystemComponentPkg extends ComponentPkg {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned System Components</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemComponent}.
+   * Returns the value of the '<em><b>Owned System Components</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemComponent}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned System Components</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned System Components</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponentPkg_OwnedSystemComponents()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the System Components included in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned System Components</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponentPkg_OwnedSystemComponents()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the System Components included in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<SystemComponent> getOwnedSystemComponents();
 
@@ -71,23 +71,23 @@ public interface SystemComponentPkg extends ComponentPkg {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned System Component Pkgs</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemComponentPkg}.
+   * Returns the value of the '<em><b>Owned System Component Pkgs</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemComponentPkg}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned System Component Pkgs</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned System Component Pkgs</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponentPkg_OwnedSystemComponentPkgs()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='sub-packages of this System Component Package' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned System Component Pkgs</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponentPkg_OwnedSystemComponentPkgs()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='sub-packages of this System Component Package' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<SystemComponentPkg> getOwnedSystemComponentPkgs();
 

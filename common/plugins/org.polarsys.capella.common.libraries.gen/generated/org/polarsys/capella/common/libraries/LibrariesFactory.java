@@ -24,47 +24,47 @@ import org.eclipse.emf.ecore.EFactory;
  */
 public interface LibrariesFactory extends EFactory {
 	/**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
+   * The singleton instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	LibrariesFactory eINSTANCE = org.polarsys.capella.common.libraries.impl.LibrariesFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Model Information</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Model Information</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Model Information</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Model Information</em>'.
+   * @generated
+   */
 	ModelInformation createModelInformation();
 
 	/**
-	 * Returns a new object of class '<em>Library Reference</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Library Reference</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Library Reference</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Library Reference</em>'.
+   * @generated
+   */
 	LibraryReference createLibraryReference();
 
 	/**
-	 * Returns a new object of class '<em>Model Version</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Model Version</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Model Version</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Model Version</em>'.
+   * @generated
+   */
 	ModelVersion createModelVersion();
 
 	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
+   * Returns the package supported by this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
+   * @return the package supported by this factory.
+   * @generated
+   */
 	LibrariesPackage getLibrariesPackage();
 
 	//begin-capella-code

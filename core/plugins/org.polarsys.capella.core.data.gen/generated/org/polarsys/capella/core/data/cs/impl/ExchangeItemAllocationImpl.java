@@ -63,23 +63,23 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
 public class ExchangeItemAllocationImpl extends RelationshipImpl implements ExchangeItemAllocation {
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
 	protected String name = NAME_EDEFAULT;
 
 
@@ -87,23 +87,23 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 
 
 	/**
-	 * The default value of the '{@link #isFinal() <em>Final</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isFinal() <em>Final</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isFinal()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isFinal()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean FINAL_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isFinal() <em>Final</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isFinal() <em>Final</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isFinal()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isFinal()
+   * @generated
+   * @ordered
+   */
 	protected boolean final_ = FINAL_EDEFAULT;
 
 
@@ -111,23 +111,23 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 
 
 	/**
-	 * The default value of the '{@link #getSendProtocol() <em>Send Protocol</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getSendProtocol() <em>Send Protocol</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSendProtocol()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getSendProtocol()
+   * @generated
+   * @ordered
+   */
 	protected static final CommunicationLinkProtocol SEND_PROTOCOL_EDEFAULT = CommunicationLinkProtocol.UNSET;
 
 	/**
-	 * The cached value of the '{@link #getSendProtocol() <em>Send Protocol</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getSendProtocol() <em>Send Protocol</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSendProtocol()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getSendProtocol()
+   * @generated
+   * @ordered
+   */
 	protected CommunicationLinkProtocol sendProtocol = SEND_PROTOCOL_EDEFAULT;
 
 
@@ -135,23 +135,23 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 
 
 	/**
-	 * The default value of the '{@link #getReceiveProtocol() <em>Receive Protocol</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getReceiveProtocol() <em>Receive Protocol</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReceiveProtocol()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getReceiveProtocol()
+   * @generated
+   * @ordered
+   */
 	protected static final CommunicationLinkProtocol RECEIVE_PROTOCOL_EDEFAULT = CommunicationLinkProtocol.UNSET;
 
 	/**
-	 * The cached value of the '{@link #getReceiveProtocol() <em>Receive Protocol</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getReceiveProtocol() <em>Receive Protocol</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReceiveProtocol()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getReceiveProtocol()
+   * @generated
+   * @ordered
+   */
 	protected CommunicationLinkProtocol receiveProtocol = RECEIVE_PROTOCOL_EDEFAULT;
 
 
@@ -159,13 +159,13 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 
 
 	/**
-	 * The cached value of the '{@link #getAllocatedItem() <em>Allocated Item</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getAllocatedItem() <em>Allocated Item</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAllocatedItem()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getAllocatedItem()
+   * @generated
+   * @ordered
+   */
 	protected ExchangeItem allocatedItem;
 
 
@@ -176,57 +176,57 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ExchangeItemAllocationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION;
-	}
+    return CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public String getName() {
 
-		return name;
-	}
+    return name;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setName(String newName) {
 
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME, oldName, name));
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME, oldName, name));
 
-	}
+  }
 
 
 
@@ -234,10 +234,10 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<SequenceMessage> getInvokingSequenceMessages() {
 
@@ -264,49 +264,49 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<SequenceMessage> resultAsList = (Collection<SequenceMessage>) result;
-		return new EcoreEList.UnmodifiableEList<SequenceMessage>(this, InformationPackage.Literals.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<SequenceMessage> resultAsList = (Collection<SequenceMessage>) result;
+    return new EcoreEList.UnmodifiableEList<SequenceMessage>(this, InformationPackage.Literals.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isFinal() {
 
-		return final_;
-	}
+    return final_;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setFinal(boolean newFinal) {
 
-		boolean oldFinal = final_;
-		final_ = newFinal;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.EXCHANGE_ITEM_ALLOCATION__FINAL, oldFinal, final_));
+    boolean oldFinal = final_;
+    final_ = newFinal;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.EXCHANGE_ITEM_ALLOCATION__FINAL, oldFinal, final_));
 
-	}
+  }
 
 
 
@@ -314,32 +314,32 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public CommunicationLinkProtocol getSendProtocol() {
 
-		return sendProtocol;
-	}
+    return sendProtocol;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setSendProtocol(CommunicationLinkProtocol newSendProtocol) {
 
-		CommunicationLinkProtocol oldSendProtocol = sendProtocol;
-		sendProtocol = newSendProtocol == null ? SEND_PROTOCOL_EDEFAULT : newSendProtocol;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.EXCHANGE_ITEM_ALLOCATION__SEND_PROTOCOL, oldSendProtocol, sendProtocol));
+    CommunicationLinkProtocol oldSendProtocol = sendProtocol;
+    sendProtocol = newSendProtocol == null ? SEND_PROTOCOL_EDEFAULT : newSendProtocol;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.EXCHANGE_ITEM_ALLOCATION__SEND_PROTOCOL, oldSendProtocol, sendProtocol));
 
-	}
+  }
 
 
 
@@ -347,32 +347,32 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public CommunicationLinkProtocol getReceiveProtocol() {
 
-		return receiveProtocol;
-	}
+    return receiveProtocol;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setReceiveProtocol(CommunicationLinkProtocol newReceiveProtocol) {
 
-		CommunicationLinkProtocol oldReceiveProtocol = receiveProtocol;
-		receiveProtocol = newReceiveProtocol == null ? RECEIVE_PROTOCOL_EDEFAULT : newReceiveProtocol;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.EXCHANGE_ITEM_ALLOCATION__RECEIVE_PROTOCOL, oldReceiveProtocol, receiveProtocol));
+    CommunicationLinkProtocol oldReceiveProtocol = receiveProtocol;
+    receiveProtocol = newReceiveProtocol == null ? RECEIVE_PROTOCOL_EDEFAULT : newReceiveProtocol;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.EXCHANGE_ITEM_ALLOCATION__RECEIVE_PROTOCOL, oldReceiveProtocol, receiveProtocol));
 
-	}
+  }
 
 
 
@@ -380,53 +380,53 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ExchangeItem getAllocatedItem() {
 
-		if (allocatedItem != null && allocatedItem.eIsProxy()) {
-			InternalEObject oldAllocatedItem = (InternalEObject)allocatedItem;
-			allocatedItem = (ExchangeItem)eResolveProxy(oldAllocatedItem);
-			if (allocatedItem != oldAllocatedItem) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CsPackage.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM, oldAllocatedItem, allocatedItem));
-			}
-		}
-		return allocatedItem;
-	}
+    if (allocatedItem != null && allocatedItem.eIsProxy()) {
+      InternalEObject oldAllocatedItem = (InternalEObject)allocatedItem;
+      allocatedItem = (ExchangeItem)eResolveProxy(oldAllocatedItem);
+      if (allocatedItem != oldAllocatedItem) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CsPackage.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM, oldAllocatedItem, allocatedItem));
+      }
+    }
+    return allocatedItem;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ExchangeItem basicGetAllocatedItem() {
 
-		return allocatedItem;
-	}
+    return allocatedItem;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setAllocatedItem(ExchangeItem newAllocatedItem) {
 
-		ExchangeItem oldAllocatedItem = allocatedItem;
-		allocatedItem = newAllocatedItem;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM, oldAllocatedItem, allocatedItem));
+    ExchangeItem oldAllocatedItem = allocatedItem;
+    allocatedItem = newAllocatedItem;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM, oldAllocatedItem, allocatedItem));
 
-	}
+  }
 
 
 
@@ -434,23 +434,23 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Interface getAllocatingInterface() {
 
-		Interface allocatingInterface = basicGetAllocatingInterface();
-		return allocatingInterface != null && allocatingInterface.eIsProxy() ? (Interface)eResolveProxy((InternalEObject)allocatingInterface) : allocatingInterface;
-	}
+    Interface allocatingInterface = basicGetAllocatingInterface();
+    return allocatingInterface != null && allocatingInterface.eIsProxy() ? (Interface)eResolveProxy((InternalEObject)allocatingInterface) : allocatingInterface;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Interface basicGetAllocatingInterface() {
 
@@ -477,219 +477,219 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATING_INTERFACE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATING_INTERFACE, annotation);
-		
-		try {
-			return (Interface) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Interface) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME:
-				return getName();
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__INVOKING_SEQUENCE_MESSAGES:
-				return getInvokingSequenceMessages();
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__FINAL:
-				return isFinal();
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__SEND_PROTOCOL:
-				return getSendProtocol();
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__RECEIVE_PROTOCOL:
-				return getReceiveProtocol();
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM:
-				if (resolve) return getAllocatedItem();
-				return basicGetAllocatedItem();
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__ALLOCATING_INTERFACE:
-				if (resolve) return getAllocatingInterface();
-				return basicGetAllocatingInterface();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME:
+        return getName();
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__INVOKING_SEQUENCE_MESSAGES:
+        return getInvokingSequenceMessages();
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__FINAL:
+        return isFinal();
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__SEND_PROTOCOL:
+        return getSendProtocol();
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__RECEIVE_PROTOCOL:
+        return getReceiveProtocol();
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM:
+        if (resolve) return getAllocatedItem();
+        return basicGetAllocatedItem();
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__ALLOCATING_INTERFACE:
+        if (resolve) return getAllocatingInterface();
+        return basicGetAllocatingInterface();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME:
-					setName((String)newValue);
-				return;
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__FINAL:
-					setFinal((Boolean)newValue);
-				return;
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__SEND_PROTOCOL:
-					setSendProtocol((CommunicationLinkProtocol)newValue);
-				return;
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__RECEIVE_PROTOCOL:
-					setReceiveProtocol((CommunicationLinkProtocol)newValue);
-				return;
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM:
-					setAllocatedItem((ExchangeItem)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME:
+          setName((String)newValue);
+        return;
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__FINAL:
+          setFinal((Boolean)newValue);
+        return;
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__SEND_PROTOCOL:
+          setSendProtocol((CommunicationLinkProtocol)newValue);
+        return;
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__RECEIVE_PROTOCOL:
+          setReceiveProtocol((CommunicationLinkProtocol)newValue);
+        return;
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM:
+          setAllocatedItem((ExchangeItem)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__FINAL:
-				setFinal(FINAL_EDEFAULT);
-				return;
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__SEND_PROTOCOL:
-				setSendProtocol(SEND_PROTOCOL_EDEFAULT);
-				return;
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__RECEIVE_PROTOCOL:
-				setReceiveProtocol(RECEIVE_PROTOCOL_EDEFAULT);
-				return;
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM:
-				setAllocatedItem((ExchangeItem)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME:
+        setName(NAME_EDEFAULT);
+        return;
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__FINAL:
+        setFinal(FINAL_EDEFAULT);
+        return;
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__SEND_PROTOCOL:
+        setSendProtocol(SEND_PROTOCOL_EDEFAULT);
+        return;
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__RECEIVE_PROTOCOL:
+        setReceiveProtocol(RECEIVE_PROTOCOL_EDEFAULT);
+        return;
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM:
+        setAllocatedItem((ExchangeItem)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__INVOKING_SEQUENCE_MESSAGES:
-				return !getInvokingSequenceMessages().isEmpty();
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__FINAL:
-				return final_ != FINAL_EDEFAULT;
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__SEND_PROTOCOL:
-				return sendProtocol != SEND_PROTOCOL_EDEFAULT;
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__RECEIVE_PROTOCOL:
-				return receiveProtocol != RECEIVE_PROTOCOL_EDEFAULT;
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM:
-				return allocatedItem != null;
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__ALLOCATING_INTERFACE:
-				return basicGetAllocatingInterface() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__INVOKING_SEQUENCE_MESSAGES:
+        return !getInvokingSequenceMessages().isEmpty();
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__FINAL:
+        return final_ != FINAL_EDEFAULT;
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__SEND_PROTOCOL:
+        return sendProtocol != SEND_PROTOCOL_EDEFAULT;
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__RECEIVE_PROTOCOL:
+        return receiveProtocol != RECEIVE_PROTOCOL_EDEFAULT;
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM:
+        return allocatedItem != null;
+      case CsPackage.EXCHANGE_ITEM_ALLOCATION__ALLOCATING_INTERFACE:
+        return basicGetAllocatingInterface() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractNamedElement.class) {
-			switch (derivedFeatureID) {
-				case CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
-				default: return -1;
-			}
-		}
-		if (baseClass == NamedElement.class) {
-			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractEventOperation.class) {
-			switch (derivedFeatureID) {
-				case CsPackage.EXCHANGE_ITEM_ALLOCATION__INVOKING_SEQUENCE_MESSAGES: return InformationPackage.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES;
-				default: return -1;
-			}
-		}
-		if (baseClass == FinalizableElement.class) {
-			switch (derivedFeatureID) {
-				case CsPackage.EXCHANGE_ITEM_ALLOCATION__FINAL: return ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == AbstractNamedElement.class) {
+      switch (derivedFeatureID) {
+        case CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
+        default: return -1;
+      }
+    }
+    if (baseClass == NamedElement.class) {
+      switch (derivedFeatureID) {
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractEventOperation.class) {
+      switch (derivedFeatureID) {
+        case CsPackage.EXCHANGE_ITEM_ALLOCATION__INVOKING_SEQUENCE_MESSAGES: return InformationPackage.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES;
+        default: return -1;
+      }
+    }
+    if (baseClass == FinalizableElement.class) {
+      switch (derivedFeatureID) {
+        case CsPackage.EXCHANGE_ITEM_ALLOCATION__FINAL: return ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractNamedElement.class) {
-			switch (baseFeatureID) {
-				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME: return CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME;
-				default: return -1;
-			}
-		}
-		if (baseClass == NamedElement.class) {
-			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractEventOperation.class) {
-			switch (baseFeatureID) {
-				case InformationPackage.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES: return CsPackage.EXCHANGE_ITEM_ALLOCATION__INVOKING_SEQUENCE_MESSAGES;
-				default: return -1;
-			}
-		}
-		if (baseClass == FinalizableElement.class) {
-			switch (baseFeatureID) {
-				case ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL: return CsPackage.EXCHANGE_ITEM_ALLOCATION__FINAL;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == AbstractNamedElement.class) {
+      switch (baseFeatureID) {
+        case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME: return CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME;
+        default: return -1;
+      }
+    }
+    if (baseClass == NamedElement.class) {
+      switch (baseFeatureID) {
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractEventOperation.class) {
+      switch (baseFeatureID) {
+        case InformationPackage.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES: return CsPackage.EXCHANGE_ITEM_ALLOCATION__INVOKING_SEQUENCE_MESSAGES;
+        default: return -1;
+      }
+    }
+    if (baseClass == FinalizableElement.class) {
+      switch (baseFeatureID) {
+        case ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL: return CsPackage.EXCHANGE_ITEM_ALLOCATION__FINAL;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (name: "); //$NON-NLS-1$
-		result.append(name);
-		result.append(", final: "); //$NON-NLS-1$
-		result.append(final_);
-		result.append(", sendProtocol: "); //$NON-NLS-1$
-		result.append(sendProtocol);
-		result.append(", receiveProtocol: "); //$NON-NLS-1$
-		result.append(receiveProtocol);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (name: "); //$NON-NLS-1$
+    result.append(name);
+    result.append(", final: "); //$NON-NLS-1$
+    result.append(final_);
+    result.append(", sendProtocol: "); //$NON-NLS-1$
+    result.append(sendProtocol);
+    result.append(", receiveProtocol: "); //$NON-NLS-1$
+    result.append(receiveProtocol);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //ExchangeItemAllocationImpl

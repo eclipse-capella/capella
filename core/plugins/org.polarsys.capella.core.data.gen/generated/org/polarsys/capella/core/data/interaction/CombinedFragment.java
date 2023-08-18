@@ -40,26 +40,26 @@ public interface CombinedFragment extends AbstractFragment {
 
 
 	/**
-	 * Returns the value of the '<em><b>Operator</b></em>' attribute.
-	 * The default value is <code>"UNSET"</code>.
-	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.interaction.InteractionOperatorKind}.
+   * Returns the value of the '<em><b>Operator</b></em>' attribute.
+   * The default value is <code>"UNSET"</code>.
+   * The literals are from the enumeration {@link org.polarsys.capella.core.data.interaction.InteractionOperatorKind}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Operator</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Operator</em>' attribute.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionOperatorKind
-	 * @see #setOperator(InteractionOperatorKind)
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getCombinedFragment_Operator()
-	 * @model default="UNSET"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Operator</em>' attribute.
+   * @see org.polarsys.capella.core.data.interaction.InteractionOperatorKind
+   * @see #setOperator(InteractionOperatorKind)
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getCombinedFragment_Operator()
+   * @model default="UNSET"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	InteractionOperatorKind getOperator();
 
@@ -67,15 +67,15 @@ public interface CombinedFragment extends AbstractFragment {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.CombinedFragment#getOperator <em>Operator</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.CombinedFragment#getOperator <em>Operator</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Operator</em>' attribute.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionOperatorKind
-	 * @see #getOperator()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Operator</em>' attribute.
+   * @see org.polarsys.capella.core.data.interaction.InteractionOperatorKind
+   * @see #getOperator()
+   * @generated
+   */
 
 	void setOperator(InteractionOperatorKind value);
 
@@ -86,21 +86,21 @@ public interface CombinedFragment extends AbstractFragment {
 
 
 	/**
-	 * Returns the value of the '<em><b>Referenced Operands</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.InteractionOperand}.
+   * Returns the value of the '<em><b>Referenced Operands</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.interaction.InteractionOperand}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Referenced Operands</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Referenced Operands</em>' reference list.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getCombinedFragment_ReferencedOperands()
-	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Referenced Operands</em>' reference list.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getCombinedFragment_ReferencedOperands()
+   * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+   * @generated
+   */
 
 	EList<InteractionOperand> getReferencedOperands();
 
@@ -111,23 +111,23 @@ public interface CombinedFragment extends AbstractFragment {
 
 
 	/**
-	 * Returns the value of the '<em><b>Expression Gates</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.Gate}.
+   * Returns the value of the '<em><b>Expression Gates</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.interaction.Gate}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Expression Gates</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Expression Gates</em>' reference list.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getCombinedFragment_ExpressionGates()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedGates'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Expression Gates</em>' reference list.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getCombinedFragment_ExpressionGates()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedGates'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+   * @generated
+   */
 
 	EList<Gate> getExpressionGates();
 

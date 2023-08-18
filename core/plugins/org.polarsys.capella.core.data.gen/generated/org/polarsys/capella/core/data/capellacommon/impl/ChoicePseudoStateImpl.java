@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.capellacommon.ChoicePseudoState;
  */
 public class ChoicePseudoStateImpl extends PseudostateImpl implements ChoicePseudoState {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ChoicePseudoStateImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.CHOICE_PSEUDO_STATE;
-	}
+    return CapellacommonPackage.Literals.CHOICE_PSEUDO_STATE;
+  }
 
 
 

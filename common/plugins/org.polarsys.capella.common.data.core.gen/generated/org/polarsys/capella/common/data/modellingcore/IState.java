@@ -40,42 +40,42 @@ public interface IState extends AbstractNamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Referenced States</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.IState}.
+   * Returns the value of the '<em><b>Referenced States</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.IState}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Referenced States</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Referenced States</em>' reference list.
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getIState_ReferencedStates()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Referenced States</em>' reference list.
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getIState_ReferencedStates()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<IState> getReferencedStates();
 
 	/**
-	 * Returns the value of the '<em><b>Exploited States</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.IState}.
+   * Returns the value of the '<em><b>Exploited States</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.IState}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Exploited States</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exploited States</em>' reference list.
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getIState_ExploitedStates()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Exploited States</em>' reference list.
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getIState_ExploitedStates()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
   EList<IState> getExploitedStates();
 

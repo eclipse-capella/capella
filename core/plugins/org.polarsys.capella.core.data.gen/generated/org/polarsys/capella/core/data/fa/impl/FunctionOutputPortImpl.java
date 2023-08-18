@@ -96,23 +96,23 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
 
 
 	/**
-	 * The default value of the '{@link #isIsControlType() <em>Is Control Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isIsControlType() <em>Is Control Type</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsControlType()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsControlType()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean IS_CONTROL_TYPE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsControlType() <em>Is Control Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isIsControlType() <em>Is Control Type</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsControlType()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsControlType()
+   * @generated
+   * @ordered
+   */
 	protected boolean isControlType = IS_CONTROL_TYPE_EDEFAULT;
 
 
@@ -120,23 +120,23 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
 
 
 	/**
-	 * The default value of the '{@link #getKindOfNode() <em>Kind Of Node</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getKindOfNode() <em>Kind Of Node</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getKindOfNode()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getKindOfNode()
+   * @generated
+   * @ordered
+   */
 	protected static final ObjectNodeKind KIND_OF_NODE_EDEFAULT = ObjectNodeKind.UNSPECIFIED;
 
 	/**
-	 * The cached value of the '{@link #getKindOfNode() <em>Kind Of Node</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getKindOfNode() <em>Kind Of Node</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getKindOfNode()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getKindOfNode()
+   * @generated
+   * @ordered
+   */
 	protected ObjectNodeKind kindOfNode = KIND_OF_NODE_EDEFAULT;
 
 
@@ -144,23 +144,23 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
 
 
 	/**
-	 * The default value of the '{@link #getOrdering() <em>Ordering</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getOrdering() <em>Ordering</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOrdering()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOrdering()
+   * @generated
+   * @ordered
+   */
 	protected static final ObjectNodeOrderingKind ORDERING_EDEFAULT = ObjectNodeOrderingKind.FIFO;
 
 	/**
-	 * The cached value of the '{@link #getOrdering() <em>Ordering</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOrdering() <em>Ordering</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOrdering()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOrdering()
+   * @generated
+   * @ordered
+   */
 	protected ObjectNodeOrderingKind ordering = ORDERING_EDEFAULT;
 
 
@@ -168,13 +168,13 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
 
 
 	/**
-	 * The cached value of the '{@link #getUpperBound() <em>Upper Bound</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getUpperBound() <em>Upper Bound</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUpperBound()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getUpperBound()
+   * @generated
+   * @ordered
+   */
 	protected ValueSpecification upperBound;
 
 
@@ -182,13 +182,13 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
 
 
 	/**
-	 * The cached value of the '{@link #getInState() <em>In State</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getInState() <em>In State</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInState()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getInState()
+   * @generated
+   * @ordered
+   */
 	protected EList<IState> inState;
 
 
@@ -196,13 +196,13 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
 
 
 	/**
-	 * The cached value of the '{@link #getSelection() <em>Selection</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getSelection() <em>Selection</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSelection()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getSelection()
+   * @generated
+   * @ordered
+   */
 	protected AbstractBehavior selection;
 
 
@@ -210,23 +210,23 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
 
 
 	/**
-	 * The default value of the '{@link #isIsControl() <em>Is Control</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isIsControl() <em>Is Control</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsControl()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsControl()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean IS_CONTROL_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsControl() <em>Is Control</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isIsControl() <em>Is Control</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsControl()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsControl()
+   * @generated
+   * @ordered
+   */
 	protected boolean isControl = IS_CONTROL_EDEFAULT;
 
 
@@ -234,13 +234,13 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
 
 
 	/**
-	 * The cached value of the '{@link #getOutgoingExchangeItems() <em>Outgoing Exchange Items</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOutgoingExchangeItems() <em>Outgoing Exchange Items</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOutgoingExchangeItems()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOutgoingExchangeItems()
+   * @generated
+   * @ordered
+   */
 	protected EList<ExchangeItem> outgoingExchangeItems;
 
 
@@ -251,48 +251,48 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionOutputPortImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FaPackage.Literals.FUNCTION_OUTPUT_PORT;
-	}
+    return FaPackage.Literals.FUNCTION_OUTPUT_PORT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ActivityPartition getInActivityPartition() {
 
-		ActivityPartition inActivityPartition = basicGetInActivityPartition();
-		return inActivityPartition != null && inActivityPartition.eIsProxy() ? (ActivityPartition)eResolveProxy((InternalEObject)inActivityPartition) : inActivityPartition;
-	}
+    ActivityPartition inActivityPartition = basicGetInActivityPartition();
+    return inActivityPartition != null && inActivityPartition.eIsProxy() ? (ActivityPartition)eResolveProxy((InternalEObject)inActivityPartition) : inActivityPartition;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ActivityPartition basicGetInActivityPartition() {
 
@@ -319,15 +319,15 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
     // A helper is found, let's use it. 
     EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION, annotation);
-		
-		try {
-			return (ActivityPartition) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (ActivityPartition) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -335,23 +335,23 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InterruptibleActivityRegion getInInterruptibleRegion() {
 
-		InterruptibleActivityRegion inInterruptibleRegion = basicGetInInterruptibleRegion();
-		return inInterruptibleRegion != null && inInterruptibleRegion.eIsProxy() ? (InterruptibleActivityRegion)eResolveProxy((InternalEObject)inInterruptibleRegion) : inInterruptibleRegion;
-	}
+    InterruptibleActivityRegion inInterruptibleRegion = basicGetInInterruptibleRegion();
+    return inInterruptibleRegion != null && inInterruptibleRegion.eIsProxy() ? (InterruptibleActivityRegion)eResolveProxy((InternalEObject)inInterruptibleRegion) : inInterruptibleRegion;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InterruptibleActivityRegion basicGetInInterruptibleRegion() {
 
@@ -378,15 +378,15 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
     // A helper is found, let's use it. 
     EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION, annotation);
-		
-		try {
-			return (InterruptibleActivityRegion) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (InterruptibleActivityRegion) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -394,23 +394,23 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InterruptibleActivityRegion getInStructuredNode() {
 
-		InterruptibleActivityRegion inStructuredNode = basicGetInStructuredNode();
-		return inStructuredNode != null && inStructuredNode.eIsProxy() ? (InterruptibleActivityRegion)eResolveProxy((InternalEObject)inStructuredNode) : inStructuredNode;
-	}
+    InterruptibleActivityRegion inStructuredNode = basicGetInStructuredNode();
+    return inStructuredNode != null && inStructuredNode.eIsProxy() ? (InterruptibleActivityRegion)eResolveProxy((InternalEObject)inStructuredNode) : inStructuredNode;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InterruptibleActivityRegion basicGetInStructuredNode() {
 
@@ -437,15 +437,15 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
     // A helper is found, let's use it. 
     EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE, annotation);
-		
-		try {
-			return (InterruptibleActivityRegion) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (InterruptibleActivityRegion) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -453,10 +453,10 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ActivityEdge> getOutgoing() {
 
@@ -483,27 +483,27 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
     // A helper is found, let's use it. 
     EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__OUTGOING.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ACTIVITY_NODE__OUTGOING, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ActivityEdge> resultAsList = (Collection<ActivityEdge>) result;
-		return new EcoreEList.UnmodifiableEList<ActivityEdge>(this, ActivityPackage.Literals.ACTIVITY_NODE__OUTGOING, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<ActivityEdge> resultAsList = (Collection<ActivityEdge>) result;
+    return new EcoreEList.UnmodifiableEList<ActivityEdge>(this, ActivityPackage.Literals.ACTIVITY_NODE__OUTGOING, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ActivityEdge> getIncoming() {
 
@@ -530,49 +530,49 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
     // A helper is found, let's use it. 
     EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__INCOMING.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ACTIVITY_NODE__INCOMING, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ActivityEdge> resultAsList = (Collection<ActivityEdge>) result;
-		return new EcoreEList.UnmodifiableEList<ActivityEdge>(this, ActivityPackage.Literals.ACTIVITY_NODE__INCOMING, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<ActivityEdge> resultAsList = (Collection<ActivityEdge>) result;
+    return new EcoreEList.UnmodifiableEList<ActivityEdge>(this, ActivityPackage.Literals.ACTIVITY_NODE__INCOMING, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isIsControlType() {
 
-		return isControlType;
-	}
+    return isControlType;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setIsControlType(boolean newIsControlType) {
 
-		boolean oldIsControlType = isControlType;
-		isControlType = newIsControlType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL_TYPE, oldIsControlType, isControlType));
+    boolean oldIsControlType = isControlType;
+    isControlType = newIsControlType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL_TYPE, oldIsControlType, isControlType));
 
-	}
+  }
 
 
 
@@ -580,32 +580,32 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ObjectNodeKind getKindOfNode() {
 
-		return kindOfNode;
-	}
+    return kindOfNode;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setKindOfNode(ObjectNodeKind newKindOfNode) {
 
-		ObjectNodeKind oldKindOfNode = kindOfNode;
-		kindOfNode = newKindOfNode == null ? KIND_OF_NODE_EDEFAULT : newKindOfNode;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_OUTPUT_PORT__KIND_OF_NODE, oldKindOfNode, kindOfNode));
+    ObjectNodeKind oldKindOfNode = kindOfNode;
+    kindOfNode = newKindOfNode == null ? KIND_OF_NODE_EDEFAULT : newKindOfNode;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_OUTPUT_PORT__KIND_OF_NODE, oldKindOfNode, kindOfNode));
 
-	}
+  }
 
 
 
@@ -613,32 +613,32 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ObjectNodeOrderingKind getOrdering() {
 
-		return ordering;
-	}
+    return ordering;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setOrdering(ObjectNodeOrderingKind newOrdering) {
 
-		ObjectNodeOrderingKind oldOrdering = ordering;
-		ordering = newOrdering == null ? ORDERING_EDEFAULT : newOrdering;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_OUTPUT_PORT__ORDERING, oldOrdering, ordering));
+    ObjectNodeOrderingKind oldOrdering = ordering;
+    ordering = newOrdering == null ? ORDERING_EDEFAULT : newOrdering;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_OUTPUT_PORT__ORDERING, oldOrdering, ordering));
 
-	}
+  }
 
 
 
@@ -646,86 +646,86 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ValueSpecification getUpperBound() {
 
-		if (upperBound != null && upperBound.eIsProxy()) {
-			InternalEObject oldUpperBound = (InternalEObject)upperBound;
-			upperBound = (ValueSpecification)eResolveProxy(oldUpperBound);
-			if (upperBound != oldUpperBound) {
-				InternalEObject newUpperBound = (InternalEObject)upperBound;
-				NotificationChain msgs = oldUpperBound.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND, null, null);
-				if (newUpperBound.eInternalContainer() == null) {
-					msgs = newUpperBound.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND, oldUpperBound, upperBound));
-			}
-		}
-		return upperBound;
-	}
+    if (upperBound != null && upperBound.eIsProxy()) {
+      InternalEObject oldUpperBound = (InternalEObject)upperBound;
+      upperBound = (ValueSpecification)eResolveProxy(oldUpperBound);
+      if (upperBound != oldUpperBound) {
+        InternalEObject newUpperBound = (InternalEObject)upperBound;
+        NotificationChain msgs = oldUpperBound.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND, null, null);
+        if (newUpperBound.eInternalContainer() == null) {
+          msgs = newUpperBound.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND, null, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND, oldUpperBound, upperBound));
+      }
+    }
+    return upperBound;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ValueSpecification basicGetUpperBound() {
 
-		return upperBound;
-	}
+    return upperBound;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetUpperBound(ValueSpecification newUpperBound, NotificationChain msgs) {
 
-		ValueSpecification oldUpperBound = upperBound;
-		upperBound = newUpperBound;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND, oldUpperBound, newUpperBound);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    ValueSpecification oldUpperBound = upperBound;
+    upperBound = newUpperBound;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND, oldUpperBound, newUpperBound);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setUpperBound(ValueSpecification newUpperBound) {
 
-		if (newUpperBound != upperBound) {
-			NotificationChain msgs = null;
-			if (upperBound != null)
-				msgs = ((InternalEObject)upperBound).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND, null, msgs);
-			if (newUpperBound != null)
-				msgs = ((InternalEObject)newUpperBound).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND, null, msgs);
-			msgs = basicSetUpperBound(newUpperBound, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND, newUpperBound, newUpperBound));
+    if (newUpperBound != upperBound) {
+      NotificationChain msgs = null;
+      if (upperBound != null)
+        msgs = ((InternalEObject)upperBound).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND, null, msgs);
+      if (newUpperBound != null)
+        msgs = ((InternalEObject)newUpperBound).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND, null, msgs);
+      msgs = basicSetUpperBound(newUpperBound, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND, newUpperBound, newUpperBound));
 
-	}
+  }
 
 
 
@@ -733,71 +733,71 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<IState> getInState() {
 
-		if (inState == null) {
-			inState = new EObjectResolvingEList<IState>(IState.class, this, FaPackage.FUNCTION_OUTPUT_PORT__IN_STATE);
-		}
-		return inState;
-	}
+    if (inState == null) {
+      inState = new EObjectResolvingEList<IState>(IState.class, this, FaPackage.FUNCTION_OUTPUT_PORT__IN_STATE);
+    }
+    return inState;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractBehavior getSelection() {
 
-		if (selection != null && selection.eIsProxy()) {
-			InternalEObject oldSelection = (InternalEObject)selection;
-			selection = (AbstractBehavior)eResolveProxy(oldSelection);
-			if (selection != oldSelection) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FaPackage.FUNCTION_OUTPUT_PORT__SELECTION, oldSelection, selection));
-			}
-		}
-		return selection;
-	}
+    if (selection != null && selection.eIsProxy()) {
+      InternalEObject oldSelection = (InternalEObject)selection;
+      selection = (AbstractBehavior)eResolveProxy(oldSelection);
+      if (selection != oldSelection) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, FaPackage.FUNCTION_OUTPUT_PORT__SELECTION, oldSelection, selection));
+      }
+    }
+    return selection;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractBehavior basicGetSelection() {
 
-		return selection;
-	}
+    return selection;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setSelection(AbstractBehavior newSelection) {
 
-		AbstractBehavior oldSelection = selection;
-		selection = newSelection;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_OUTPUT_PORT__SELECTION, oldSelection, selection));
+    AbstractBehavior oldSelection = selection;
+    selection = newSelection;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_OUTPUT_PORT__SELECTION, oldSelection, selection));
 
-	}
+  }
 
 
 
@@ -805,32 +805,32 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isIsControl() {
 
-		return isControl;
-	}
+    return isControl;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setIsControl(boolean newIsControl) {
 
-		boolean oldIsControl = isControl;
-		isControl = newIsControl;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL, oldIsControl, isControl));
+    boolean oldIsControl = isControl;
+    isControl = newIsControl;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL, oldIsControl, isControl));
 
-	}
+  }
 
 
 
@@ -838,28 +838,28 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ExchangeItem> getOutgoingExchangeItems() {
 
-		if (outgoingExchangeItems == null) {
-			outgoingExchangeItems = new EObjectResolvingEList<ExchangeItem>(ExchangeItem.class, this, FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING_EXCHANGE_ITEMS);
-		}
-		return outgoingExchangeItems;
-	}
+    if (outgoingExchangeItems == null) {
+      outgoingExchangeItems = new EObjectResolvingEList<ExchangeItem>(ExchangeItem.class, this, FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING_EXCHANGE_ITEMS);
+    }
+    return outgoingExchangeItems;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionalExchange> getOutgoingFunctionalExchanges() {
 
@@ -886,303 +886,303 @@ public class FunctionOutputPortImpl extends FunctionPortImpl implements Function
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTION_OUTPUT_PORT__OUTGOING_FUNCTIONAL_EXCHANGES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTION_OUTPUT_PORT__OUTGOING_FUNCTIONAL_EXCHANGES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<FunctionalExchange> resultAsList = (Collection<FunctionalExchange>) result;
-		return new EcoreEList.UnmodifiableEList<FunctionalExchange>(this, FaPackage.Literals.FUNCTION_OUTPUT_PORT__OUTGOING_FUNCTIONAL_EXCHANGES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<FunctionalExchange> resultAsList = (Collection<FunctionalExchange>) result;
+    return new EcoreEList.UnmodifiableEList<FunctionalExchange>(this, FaPackage.Literals.FUNCTION_OUTPUT_PORT__OUTGOING_FUNCTIONAL_EXCHANGES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND:
-				return basicSetUpperBound(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND:
+        return basicSetUpperBound(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_OUTPUT_PORT__IN_ACTIVITY_PARTITION:
-				if (resolve) return getInActivityPartition();
-				return basicGetInActivityPartition();
-			case FaPackage.FUNCTION_OUTPUT_PORT__IN_INTERRUPTIBLE_REGION:
-				if (resolve) return getInInterruptibleRegion();
-				return basicGetInInterruptibleRegion();
-			case FaPackage.FUNCTION_OUTPUT_PORT__IN_STRUCTURED_NODE:
-				if (resolve) return getInStructuredNode();
-				return basicGetInStructuredNode();
-			case FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING:
-				return getOutgoing();
-			case FaPackage.FUNCTION_OUTPUT_PORT__INCOMING:
-				return getIncoming();
-			case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL_TYPE:
-				return isIsControlType();
-			case FaPackage.FUNCTION_OUTPUT_PORT__KIND_OF_NODE:
-				return getKindOfNode();
-			case FaPackage.FUNCTION_OUTPUT_PORT__ORDERING:
-				return getOrdering();
-			case FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND:
-				if (resolve) return getUpperBound();
-				return basicGetUpperBound();
-			case FaPackage.FUNCTION_OUTPUT_PORT__IN_STATE:
-				return getInState();
-			case FaPackage.FUNCTION_OUTPUT_PORT__SELECTION:
-				if (resolve) return getSelection();
-				return basicGetSelection();
-			case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL:
-				return isIsControl();
-			case FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING_EXCHANGE_ITEMS:
-				return getOutgoingExchangeItems();
-			case FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING_FUNCTIONAL_EXCHANGES:
-				return getOutgoingFunctionalExchanges();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_OUTPUT_PORT__IN_ACTIVITY_PARTITION:
+        if (resolve) return getInActivityPartition();
+        return basicGetInActivityPartition();
+      case FaPackage.FUNCTION_OUTPUT_PORT__IN_INTERRUPTIBLE_REGION:
+        if (resolve) return getInInterruptibleRegion();
+        return basicGetInInterruptibleRegion();
+      case FaPackage.FUNCTION_OUTPUT_PORT__IN_STRUCTURED_NODE:
+        if (resolve) return getInStructuredNode();
+        return basicGetInStructuredNode();
+      case FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING:
+        return getOutgoing();
+      case FaPackage.FUNCTION_OUTPUT_PORT__INCOMING:
+        return getIncoming();
+      case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL_TYPE:
+        return isIsControlType();
+      case FaPackage.FUNCTION_OUTPUT_PORT__KIND_OF_NODE:
+        return getKindOfNode();
+      case FaPackage.FUNCTION_OUTPUT_PORT__ORDERING:
+        return getOrdering();
+      case FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND:
+        if (resolve) return getUpperBound();
+        return basicGetUpperBound();
+      case FaPackage.FUNCTION_OUTPUT_PORT__IN_STATE:
+        return getInState();
+      case FaPackage.FUNCTION_OUTPUT_PORT__SELECTION:
+        if (resolve) return getSelection();
+        return basicGetSelection();
+      case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL:
+        return isIsControl();
+      case FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING_EXCHANGE_ITEMS:
+        return getOutgoingExchangeItems();
+      case FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING_FUNCTIONAL_EXCHANGES:
+        return getOutgoingFunctionalExchanges();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL_TYPE:
-					setIsControlType((Boolean)newValue);
-				return;
-			case FaPackage.FUNCTION_OUTPUT_PORT__KIND_OF_NODE:
-					setKindOfNode((ObjectNodeKind)newValue);
-				return;
-			case FaPackage.FUNCTION_OUTPUT_PORT__ORDERING:
-					setOrdering((ObjectNodeOrderingKind)newValue);
-				return;
-			case FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND:
-					setUpperBound((ValueSpecification)newValue);
-				return;
-			case FaPackage.FUNCTION_OUTPUT_PORT__IN_STATE:
-				getInState().clear();
-				getInState().addAll((Collection<? extends IState>)newValue);
-				return;
-			case FaPackage.FUNCTION_OUTPUT_PORT__SELECTION:
-					setSelection((AbstractBehavior)newValue);
-				return;
-			case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL:
-					setIsControl((Boolean)newValue);
-				return;
-			case FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING_EXCHANGE_ITEMS:
-				getOutgoingExchangeItems().clear();
-				getOutgoingExchangeItems().addAll((Collection<? extends ExchangeItem>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL_TYPE:
+          setIsControlType((Boolean)newValue);
+        return;
+      case FaPackage.FUNCTION_OUTPUT_PORT__KIND_OF_NODE:
+          setKindOfNode((ObjectNodeKind)newValue);
+        return;
+      case FaPackage.FUNCTION_OUTPUT_PORT__ORDERING:
+          setOrdering((ObjectNodeOrderingKind)newValue);
+        return;
+      case FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND:
+          setUpperBound((ValueSpecification)newValue);
+        return;
+      case FaPackage.FUNCTION_OUTPUT_PORT__IN_STATE:
+        getInState().clear();
+        getInState().addAll((Collection<? extends IState>)newValue);
+        return;
+      case FaPackage.FUNCTION_OUTPUT_PORT__SELECTION:
+          setSelection((AbstractBehavior)newValue);
+        return;
+      case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL:
+          setIsControl((Boolean)newValue);
+        return;
+      case FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING_EXCHANGE_ITEMS:
+        getOutgoingExchangeItems().clear();
+        getOutgoingExchangeItems().addAll((Collection<? extends ExchangeItem>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL_TYPE:
-				setIsControlType(IS_CONTROL_TYPE_EDEFAULT);
-				return;
-			case FaPackage.FUNCTION_OUTPUT_PORT__KIND_OF_NODE:
-				setKindOfNode(KIND_OF_NODE_EDEFAULT);
-				return;
-			case FaPackage.FUNCTION_OUTPUT_PORT__ORDERING:
-				setOrdering(ORDERING_EDEFAULT);
-				return;
-			case FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND:
-				setUpperBound((ValueSpecification)null);
-				return;
-			case FaPackage.FUNCTION_OUTPUT_PORT__IN_STATE:
-				getInState().clear();
-				return;
-			case FaPackage.FUNCTION_OUTPUT_PORT__SELECTION:
-				setSelection((AbstractBehavior)null);
-				return;
-			case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL:
-				setIsControl(IS_CONTROL_EDEFAULT);
-				return;
-			case FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING_EXCHANGE_ITEMS:
-				getOutgoingExchangeItems().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL_TYPE:
+        setIsControlType(IS_CONTROL_TYPE_EDEFAULT);
+        return;
+      case FaPackage.FUNCTION_OUTPUT_PORT__KIND_OF_NODE:
+        setKindOfNode(KIND_OF_NODE_EDEFAULT);
+        return;
+      case FaPackage.FUNCTION_OUTPUT_PORT__ORDERING:
+        setOrdering(ORDERING_EDEFAULT);
+        return;
+      case FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND:
+        setUpperBound((ValueSpecification)null);
+        return;
+      case FaPackage.FUNCTION_OUTPUT_PORT__IN_STATE:
+        getInState().clear();
+        return;
+      case FaPackage.FUNCTION_OUTPUT_PORT__SELECTION:
+        setSelection((AbstractBehavior)null);
+        return;
+      case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL:
+        setIsControl(IS_CONTROL_EDEFAULT);
+        return;
+      case FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING_EXCHANGE_ITEMS:
+        getOutgoingExchangeItems().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_OUTPUT_PORT__IN_ACTIVITY_PARTITION:
-				return basicGetInActivityPartition() != null;
-			case FaPackage.FUNCTION_OUTPUT_PORT__IN_INTERRUPTIBLE_REGION:
-				return basicGetInInterruptibleRegion() != null;
-			case FaPackage.FUNCTION_OUTPUT_PORT__IN_STRUCTURED_NODE:
-				return basicGetInStructuredNode() != null;
-			case FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING:
-				return !getOutgoing().isEmpty();
-			case FaPackage.FUNCTION_OUTPUT_PORT__INCOMING:
-				return !getIncoming().isEmpty();
-			case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL_TYPE:
-				return isControlType != IS_CONTROL_TYPE_EDEFAULT;
-			case FaPackage.FUNCTION_OUTPUT_PORT__KIND_OF_NODE:
-				return kindOfNode != KIND_OF_NODE_EDEFAULT;
-			case FaPackage.FUNCTION_OUTPUT_PORT__ORDERING:
-				return ordering != ORDERING_EDEFAULT;
-			case FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND:
-				return upperBound != null;
-			case FaPackage.FUNCTION_OUTPUT_PORT__IN_STATE:
-				return inState != null && !inState.isEmpty();
-			case FaPackage.FUNCTION_OUTPUT_PORT__SELECTION:
-				return selection != null;
-			case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL:
-				return isControl != IS_CONTROL_EDEFAULT;
-			case FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING_EXCHANGE_ITEMS:
-				return outgoingExchangeItems != null && !outgoingExchangeItems.isEmpty();
-			case FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING_FUNCTIONAL_EXCHANGES:
-				return !getOutgoingFunctionalExchanges().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_OUTPUT_PORT__IN_ACTIVITY_PARTITION:
+        return basicGetInActivityPartition() != null;
+      case FaPackage.FUNCTION_OUTPUT_PORT__IN_INTERRUPTIBLE_REGION:
+        return basicGetInInterruptibleRegion() != null;
+      case FaPackage.FUNCTION_OUTPUT_PORT__IN_STRUCTURED_NODE:
+        return basicGetInStructuredNode() != null;
+      case FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING:
+        return !getOutgoing().isEmpty();
+      case FaPackage.FUNCTION_OUTPUT_PORT__INCOMING:
+        return !getIncoming().isEmpty();
+      case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL_TYPE:
+        return isControlType != IS_CONTROL_TYPE_EDEFAULT;
+      case FaPackage.FUNCTION_OUTPUT_PORT__KIND_OF_NODE:
+        return kindOfNode != KIND_OF_NODE_EDEFAULT;
+      case FaPackage.FUNCTION_OUTPUT_PORT__ORDERING:
+        return ordering != ORDERING_EDEFAULT;
+      case FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND:
+        return upperBound != null;
+      case FaPackage.FUNCTION_OUTPUT_PORT__IN_STATE:
+        return inState != null && !inState.isEmpty();
+      case FaPackage.FUNCTION_OUTPUT_PORT__SELECTION:
+        return selection != null;
+      case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL:
+        return isControl != IS_CONTROL_EDEFAULT;
+      case FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING_EXCHANGE_ITEMS:
+        return outgoingExchangeItems != null && !outgoingExchangeItems.isEmpty();
+      case FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING_FUNCTIONAL_EXCHANGES:
+        return !getOutgoingFunctionalExchanges().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == ActivityNode.class) {
-			switch (derivedFeatureID) {
-				case FaPackage.FUNCTION_OUTPUT_PORT__IN_ACTIVITY_PARTITION: return ActivityPackage.ACTIVITY_NODE__IN_ACTIVITY_PARTITION;
-				case FaPackage.FUNCTION_OUTPUT_PORT__IN_INTERRUPTIBLE_REGION: return ActivityPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION;
-				case FaPackage.FUNCTION_OUTPUT_PORT__IN_STRUCTURED_NODE: return ActivityPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE;
-				case FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING: return ActivityPackage.ACTIVITY_NODE__OUTGOING;
-				case FaPackage.FUNCTION_OUTPUT_PORT__INCOMING: return ActivityPackage.ACTIVITY_NODE__INCOMING;
-				default: return -1;
-			}
-		}
-		if (baseClass == ObjectNode.class) {
-			switch (derivedFeatureID) {
-				case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL_TYPE: return ActivityPackage.OBJECT_NODE__IS_CONTROL_TYPE;
-				case FaPackage.FUNCTION_OUTPUT_PORT__KIND_OF_NODE: return ActivityPackage.OBJECT_NODE__KIND_OF_NODE;
-				case FaPackage.FUNCTION_OUTPUT_PORT__ORDERING: return ActivityPackage.OBJECT_NODE__ORDERING;
-				case FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND: return ActivityPackage.OBJECT_NODE__UPPER_BOUND;
-				case FaPackage.FUNCTION_OUTPUT_PORT__IN_STATE: return ActivityPackage.OBJECT_NODE__IN_STATE;
-				case FaPackage.FUNCTION_OUTPUT_PORT__SELECTION: return ActivityPackage.OBJECT_NODE__SELECTION;
-				default: return -1;
-			}
-		}
-		if (baseClass == Pin.class) {
-			switch (derivedFeatureID) {
-				case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL: return ActivityPackage.PIN__IS_CONTROL;
-				default: return -1;
-			}
-		}
-		if (baseClass == OutputPin.class) {
-			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == ActivityNode.class) {
+      switch (derivedFeatureID) {
+        case FaPackage.FUNCTION_OUTPUT_PORT__IN_ACTIVITY_PARTITION: return ActivityPackage.ACTIVITY_NODE__IN_ACTIVITY_PARTITION;
+        case FaPackage.FUNCTION_OUTPUT_PORT__IN_INTERRUPTIBLE_REGION: return ActivityPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION;
+        case FaPackage.FUNCTION_OUTPUT_PORT__IN_STRUCTURED_NODE: return ActivityPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE;
+        case FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING: return ActivityPackage.ACTIVITY_NODE__OUTGOING;
+        case FaPackage.FUNCTION_OUTPUT_PORT__INCOMING: return ActivityPackage.ACTIVITY_NODE__INCOMING;
+        default: return -1;
+      }
+    }
+    if (baseClass == ObjectNode.class) {
+      switch (derivedFeatureID) {
+        case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL_TYPE: return ActivityPackage.OBJECT_NODE__IS_CONTROL_TYPE;
+        case FaPackage.FUNCTION_OUTPUT_PORT__KIND_OF_NODE: return ActivityPackage.OBJECT_NODE__KIND_OF_NODE;
+        case FaPackage.FUNCTION_OUTPUT_PORT__ORDERING: return ActivityPackage.OBJECT_NODE__ORDERING;
+        case FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND: return ActivityPackage.OBJECT_NODE__UPPER_BOUND;
+        case FaPackage.FUNCTION_OUTPUT_PORT__IN_STATE: return ActivityPackage.OBJECT_NODE__IN_STATE;
+        case FaPackage.FUNCTION_OUTPUT_PORT__SELECTION: return ActivityPackage.OBJECT_NODE__SELECTION;
+        default: return -1;
+      }
+    }
+    if (baseClass == Pin.class) {
+      switch (derivedFeatureID) {
+        case FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL: return ActivityPackage.PIN__IS_CONTROL;
+        default: return -1;
+      }
+    }
+    if (baseClass == OutputPin.class) {
+      switch (derivedFeatureID) {
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == ActivityNode.class) {
-			switch (baseFeatureID) {
-				case ActivityPackage.ACTIVITY_NODE__IN_ACTIVITY_PARTITION: return FaPackage.FUNCTION_OUTPUT_PORT__IN_ACTIVITY_PARTITION;
-				case ActivityPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION: return FaPackage.FUNCTION_OUTPUT_PORT__IN_INTERRUPTIBLE_REGION;
-				case ActivityPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE: return FaPackage.FUNCTION_OUTPUT_PORT__IN_STRUCTURED_NODE;
-				case ActivityPackage.ACTIVITY_NODE__OUTGOING: return FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING;
-				case ActivityPackage.ACTIVITY_NODE__INCOMING: return FaPackage.FUNCTION_OUTPUT_PORT__INCOMING;
-				default: return -1;
-			}
-		}
-		if (baseClass == ObjectNode.class) {
-			switch (baseFeatureID) {
-				case ActivityPackage.OBJECT_NODE__IS_CONTROL_TYPE: return FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL_TYPE;
-				case ActivityPackage.OBJECT_NODE__KIND_OF_NODE: return FaPackage.FUNCTION_OUTPUT_PORT__KIND_OF_NODE;
-				case ActivityPackage.OBJECT_NODE__ORDERING: return FaPackage.FUNCTION_OUTPUT_PORT__ORDERING;
-				case ActivityPackage.OBJECT_NODE__UPPER_BOUND: return FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND;
-				case ActivityPackage.OBJECT_NODE__IN_STATE: return FaPackage.FUNCTION_OUTPUT_PORT__IN_STATE;
-				case ActivityPackage.OBJECT_NODE__SELECTION: return FaPackage.FUNCTION_OUTPUT_PORT__SELECTION;
-				default: return -1;
-			}
-		}
-		if (baseClass == Pin.class) {
-			switch (baseFeatureID) {
-				case ActivityPackage.PIN__IS_CONTROL: return FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL;
-				default: return -1;
-			}
-		}
-		if (baseClass == OutputPin.class) {
-			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == ActivityNode.class) {
+      switch (baseFeatureID) {
+        case ActivityPackage.ACTIVITY_NODE__IN_ACTIVITY_PARTITION: return FaPackage.FUNCTION_OUTPUT_PORT__IN_ACTIVITY_PARTITION;
+        case ActivityPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION: return FaPackage.FUNCTION_OUTPUT_PORT__IN_INTERRUPTIBLE_REGION;
+        case ActivityPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE: return FaPackage.FUNCTION_OUTPUT_PORT__IN_STRUCTURED_NODE;
+        case ActivityPackage.ACTIVITY_NODE__OUTGOING: return FaPackage.FUNCTION_OUTPUT_PORT__OUTGOING;
+        case ActivityPackage.ACTIVITY_NODE__INCOMING: return FaPackage.FUNCTION_OUTPUT_PORT__INCOMING;
+        default: return -1;
+      }
+    }
+    if (baseClass == ObjectNode.class) {
+      switch (baseFeatureID) {
+        case ActivityPackage.OBJECT_NODE__IS_CONTROL_TYPE: return FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL_TYPE;
+        case ActivityPackage.OBJECT_NODE__KIND_OF_NODE: return FaPackage.FUNCTION_OUTPUT_PORT__KIND_OF_NODE;
+        case ActivityPackage.OBJECT_NODE__ORDERING: return FaPackage.FUNCTION_OUTPUT_PORT__ORDERING;
+        case ActivityPackage.OBJECT_NODE__UPPER_BOUND: return FaPackage.FUNCTION_OUTPUT_PORT__UPPER_BOUND;
+        case ActivityPackage.OBJECT_NODE__IN_STATE: return FaPackage.FUNCTION_OUTPUT_PORT__IN_STATE;
+        case ActivityPackage.OBJECT_NODE__SELECTION: return FaPackage.FUNCTION_OUTPUT_PORT__SELECTION;
+        default: return -1;
+      }
+    }
+    if (baseClass == Pin.class) {
+      switch (baseFeatureID) {
+        case ActivityPackage.PIN__IS_CONTROL: return FaPackage.FUNCTION_OUTPUT_PORT__IS_CONTROL;
+        default: return -1;
+      }
+    }
+    if (baseClass == OutputPin.class) {
+      switch (baseFeatureID) {
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (isControlType: "); //$NON-NLS-1$
-		result.append(isControlType);
-		result.append(", kindOfNode: "); //$NON-NLS-1$
-		result.append(kindOfNode);
-		result.append(", ordering: "); //$NON-NLS-1$
-		result.append(ordering);
-		result.append(", isControl: "); //$NON-NLS-1$
-		result.append(isControl);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (isControlType: "); //$NON-NLS-1$
+    result.append(isControlType);
+    result.append(", kindOfNode: "); //$NON-NLS-1$
+    result.append(kindOfNode);
+    result.append(", ordering: "); //$NON-NLS-1$
+    result.append(ordering);
+    result.append(", isControl: "); //$NON-NLS-1$
+    result.append(isControl);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //FunctionOutputPortImpl

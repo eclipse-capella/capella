@@ -42,24 +42,24 @@ public interface TimeEvent extends StateEvent {
 
 
 	/**
-	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.capellacommon.TimeEventKind}.
+   * Returns the value of the '<em><b>Kind</b></em>' attribute.
+   * The literals are from the enumeration {@link org.polarsys.capella.core.data.capellacommon.TimeEventKind}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Kind</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Kind</em>' attribute.
-	 * @see org.polarsys.capella.core.data.capellacommon.TimeEventKind
-	 * @see #setKind(TimeEventKind)
-	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getTimeEvent_Kind()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the type of the state TimeEvent (see TimeEventKind)\r\n[source: Capella study]' constraints='none' type='refer to TimeEventKind definition' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TimeEvent::isRelative' explanation='A relative time trigger is specified with the keyword \'after\' followed by an expression that evaluates to a time value, such\r\nas \'after (5 seconds).\' An absolute time trigger is specified with the keyword \'at\' followed by an expression that\r\nevaluates to a time value, such as \'Jan. 1, 2000, Noon\'.' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Kind</em>' attribute.
+   * @see org.polarsys.capella.core.data.capellacommon.TimeEventKind
+   * @see #setKind(TimeEventKind)
+   * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getTimeEvent_Kind()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the type of the state TimeEvent (see TimeEventKind)\r\n[source: Capella study]' constraints='none' type='refer to TimeEventKind definition' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TimeEvent::isRelative' explanation='A relative time trigger is specified with the keyword \'after\' followed by an expression that evaluates to a time value, such\r\nas \'after (5 seconds).\' An absolute time trigger is specified with the keyword \'at\' followed by an expression that\r\nevaluates to a time value, such as \'Jan. 1, 2000, Noon\'.' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	TimeEventKind getKind();
 
@@ -67,15 +67,15 @@ public interface TimeEvent extends StateEvent {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacommon.TimeEvent#getKind <em>Kind</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.capellacommon.TimeEvent#getKind <em>Kind</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Kind</em>' attribute.
-	 * @see org.polarsys.capella.core.data.capellacommon.TimeEventKind
-	 * @see #getKind()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Kind</em>' attribute.
+   * @see org.polarsys.capella.core.data.capellacommon.TimeEventKind
+   * @see #getKind()
+   * @generated
+   */
 
 	void setKind(TimeEventKind value);
 

@@ -31,285 +31,285 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum ExchangeMechanism implements Enumerator {
 	/**
-	 * The '<em><b>UNSET</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>UNSET</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #UNSET_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #UNSET_VALUE
+   * @generated
+   * @ordered
+   */
 	UNSET(0, "UNSET", "UNSET"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>FLOW</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>FLOW</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #FLOW_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #FLOW_VALUE
+   * @generated
+   * @ordered
+   */
 	FLOW(1, "FLOW", "FLOW"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>OPERATION</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>OPERATION</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #OPERATION_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #OPERATION_VALUE
+   * @generated
+   * @ordered
+   */
 	OPERATION(2, "OPERATION", "OPERATION"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>EVENT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>EVENT</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #EVENT_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #EVENT_VALUE
+   * @generated
+   * @ordered
+   */
 	EVENT(3, "EVENT", "EVENT"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>SHARED DATA</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>SHARED DATA</b></em>' literal object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #SHARED_DATA_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #SHARED_DATA_VALUE
+   * @generated
+   * @ordered
+   */
 	SHARED_DATA(4, "SHARED_DATA", "SHARED_DATA"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
-	 * The '<em><b>UNSET</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>UNSET</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>UNSET</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #UNSET
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Exchange mechanism not defined' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #UNSET
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Exchange mechanism not defined' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int UNSET_VALUE = 0;
 
 	/**
-	 * The '<em><b>FLOW</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>FLOW</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>FLOW</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #FLOW
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Continuous supply of a data\r\n[Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #FLOW
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Continuous supply of a data\r\n[Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int FLOW_VALUE = 1;
 
 	/**
-	 * The '<em><b>OPERATION</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>OPERATION</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>OPERATION</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #OPERATION
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Sporadic supply of a data with a returned data\r\n[Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #OPERATION
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Sporadic supply of a data with a returned data\r\n[Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int OPERATION_VALUE = 2;
 
 	/**
-	 * The '<em><b>EVENT</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>EVENT</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>EVENT</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #EVENT
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Asynchronous information that is taken into account rapidly\r\n[Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #EVENT
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Asynchronous information that is taken into account rapidly\r\n[Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int EVENT_VALUE = 3;
 
 	/**
-	 * The '<em><b>SHARED DATA</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>SHARED DATA</b></em>' literal value.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>SHARED DATA</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #SHARED_DATA
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Data taken into account (reading or writing) without taking care of producers or consumers\r\n[Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #SHARED_DATA
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Data taken into account (reading or writing) without taking care of producers or consumers\r\n[Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   * @ordered
+   */
 	public static final int SHARED_DATA_VALUE = 4;
 
 	/**
-	 * An array of all the '<em><b>Exchange Mechanism</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
+   * An array of all the '<em><b>Exchange Mechanism</b></em>' enumerators.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private static final ExchangeMechanism[] VALUES_ARRAY =
 		new ExchangeMechanism[] {
-			UNSET,
-			FLOW,
-			OPERATION,
-			EVENT,
-			SHARED_DATA,
-		};
+      UNSET,
+      FLOW,
+      OPERATION,
+      EVENT,
+      SHARED_DATA,
+    };
 
 	/**
-	 * A public read-only list of all the '<em><b>Exchange Mechanism</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
+   * A public read-only list of all the '<em><b>Exchange Mechanism</b></em>' enumerators.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static final List<ExchangeMechanism> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Exchange Mechanism</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
+   * Returns the '<em><b>Exchange Mechanism</b></em>' literal with the specified literal value.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param literal the literal.
-	 * @return the matching enumerator or <code>null</code>.
-	 * @generated
-	 */
+   * @param literal the literal.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
 	public static ExchangeMechanism get(String literal) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			ExchangeMechanism result = VALUES_ARRAY[i];
-			if (result.toString().equals(literal)) {
-				return result;
-			}
-		}
-		return null;
-	}
+    for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+      ExchangeMechanism result = VALUES_ARRAY[i];
+      if (result.toString().equals(literal)) {
+        return result;
+      }
+    }
+    return null;
+  }
 
 	/**
-	 * Returns the '<em><b>Exchange Mechanism</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
+   * Returns the '<em><b>Exchange Mechanism</b></em>' literal with the specified name.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name the name.
-	 * @return the matching enumerator or <code>null</code>.
-	 * @generated
-	 */
+   * @param name the name.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
 	public static ExchangeMechanism getByName(String name) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			ExchangeMechanism result = VALUES_ARRAY[i];
-			if (result.getName().equals(name)) {
-				return result;
-			}
-		}
-		return null;
-	}
+    for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+      ExchangeMechanism result = VALUES_ARRAY[i];
+      if (result.getName().equals(name)) {
+        return result;
+      }
+    }
+    return null;
+  }
 
 	/**
-	 * Returns the '<em><b>Exchange Mechanism</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
+   * Returns the '<em><b>Exchange Mechanism</b></em>' literal with the specified integer value.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the integer value.
-	 * @return the matching enumerator or <code>null</code>.
-	 * @generated
-	 */
+   * @param value the integer value.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
 	public static ExchangeMechanism get(int value) {
-		switch (value) {
-			case UNSET_VALUE: return UNSET;
-			case FLOW_VALUE: return FLOW;
-			case OPERATION_VALUE: return OPERATION;
-			case EVENT_VALUE: return EVENT;
-			case SHARED_DATA_VALUE: return SHARED_DATA;
-		}
-		return null;
-	}
+    switch (value) {
+      case UNSET_VALUE: return UNSET;
+      case FLOW_VALUE: return FLOW;
+      case OPERATION_VALUE: return OPERATION;
+      case EVENT_VALUE: return EVENT;
+      case SHARED_DATA_VALUE: return SHARED_DATA;
+    }
+    return null;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
+   * Only this class can construct instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private ExchangeMechanism(int value, String name, String literal) {
-		this.value = value;
-		this.name = name;
-		this.literal = literal;
-	}
+    this.value = value;
+    this.name = name;
+    this.literal = literal;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int getValue() {
-	  return value;
-	}
+    return value;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getName() {
-	  return name;
-	}
+    return name;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getLiteral() {
-	  return literal;
-	}
+    return literal;
+  }
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
+   * Returns the literal value of the enumerator, which is its string representation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		return literal;
-	}
+    return literal;
+  }
 	
 } //ExchangeMechanism

@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization;
  */
 public class PhysicalArchitectureRealizationImpl extends ArchitectureAllocationImpl implements PhysicalArchitectureRealization {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalArchitectureRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return EpbsPackage.Literals.PHYSICAL_ARCHITECTURE_REALIZATION;
-	}
+    return EpbsPackage.Literals.PHYSICAL_ARCHITECTURE_REALIZATION;
+  }
 
 
 

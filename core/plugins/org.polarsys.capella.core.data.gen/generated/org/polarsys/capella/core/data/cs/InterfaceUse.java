@@ -42,27 +42,27 @@ public interface InterfaceUse extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Interface User</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.cs.Component#getUsedInterfaceLinks <em>Used Interface Links</em>}'.
+   * Returns the value of the '<em><b>Interface User</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.cs.Component#getUsedInterfaceLinks <em>Used Interface Links</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Interface User</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Interface User</em>' reference.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getInterfaceUse_InterfaceUser()
-	 * @see org.polarsys.capella.core.data.cs.Component#getUsedInterfaceLinks
-	 * @model opposite="usedInterfaceLinks" required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='client' featureOwner='Dependency'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='interfaceUser'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='ownedInterfaceUses'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Component that uses the interface\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Interface User</em>' reference.
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getInterfaceUse_InterfaceUser()
+   * @see org.polarsys.capella.core.data.cs.Component#getUsedInterfaceLinks
+   * @model opposite="usedInterfaceLinks" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='client' featureOwner='Dependency'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='interfaceUser'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='ownedInterfaceUses'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Component that uses the interface\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	Component getInterfaceUser();
 
@@ -73,25 +73,25 @@ public interface InterfaceUse extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Used Interface</b></em>' reference.
+   * Returns the value of the '<em><b>Used Interface</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Used Interface</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Used Interface</em>' reference.
-	 * @see #setUsedInterface(Interface)
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getInterfaceUse_UsedInterface()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='supplier' featureOwner='Dependency'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='usedInterface'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Supplied interface\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [1..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Used Interface</em>' reference.
+   * @see #setUsedInterface(Interface)
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getInterfaceUse_UsedInterface()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='supplier' featureOwner='Dependency'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='usedInterface'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Supplied interface\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [1..1]'"
+   * @generated
+   */
 
 	Interface getUsedInterface();
 
@@ -99,14 +99,14 @@ public interface InterfaceUse extends Relationship {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.cs.InterfaceUse#getUsedInterface <em>Used Interface</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.cs.InterfaceUse#getUsedInterface <em>Used Interface</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Used Interface</em>' reference.
-	 * @see #getUsedInterface()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Used Interface</em>' reference.
+   * @see #getUsedInterface()
+   * @generated
+   */
 
 	void setUsedInterface(Interface value);
 

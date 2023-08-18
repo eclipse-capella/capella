@@ -42,25 +42,25 @@ public interface AbstractCapabilityGeneralization extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Super</b></em>' reference.
+   * Returns the value of the '<em><b>Super</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Super</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Super</em>' reference.
-	 * @see #setSuper(AbstractCapability)
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityGeneralization_Super()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='general' featureOwner='Generalization'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='super'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the parent Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Generalization::general' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Super</em>' reference.
+   * @see #setSuper(AbstractCapability)
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityGeneralization_Super()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='general' featureOwner='Generalization'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='super'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the parent Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Generalization::general' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	AbstractCapability getSuper();
 
@@ -68,14 +68,14 @@ public interface AbstractCapabilityGeneralization extends Relationship {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization#getSuper <em>Super</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization#getSuper <em>Super</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Super</em>' reference.
-	 * @see #getSuper()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Super</em>' reference.
+   * @see #getSuper()
+   * @generated
+   */
 
 	void setSuper(AbstractCapability value);
 
@@ -86,25 +86,25 @@ public interface AbstractCapabilityGeneralization extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Sub</b></em>' reference.
+   * Returns the value of the '<em><b>Sub</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Sub</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sub</em>' reference.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityGeneralization_Sub()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='general' featureOwner='Generalization'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='super'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the child Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Generalization::specific' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='superGeneralizations'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Sub</em>' reference.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityGeneralization_Sub()
+   * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='general' featureOwner='Generalization'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='super'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the child Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Generalization::specific' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='superGeneralizations'"
+   * @generated
+   */
 
 	AbstractCapability getSub();
 

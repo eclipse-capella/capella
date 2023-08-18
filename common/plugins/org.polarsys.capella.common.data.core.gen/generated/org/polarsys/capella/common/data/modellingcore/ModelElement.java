@@ -46,23 +46,23 @@ public interface ModelElement extends ExtensibleElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Id</b></em>' attribute.
+   * Returns the value of the '<em><b>Id</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Id</em>' attribute.
-	 * @see #setId(String)
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getModelElement_Id()
-	 * @model id="true" required="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the unique identifier for this element\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='' constraints=''"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Id</em>' attribute.
+   * @see #setId(String)
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getModelElement_Id()
+   * @model id="true" required="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the unique identifier for this element\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='' constraints=''"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	String getId();
 
@@ -70,14 +70,14 @@ public interface ModelElement extends ExtensibleElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.ModelElement#getId <em>Id</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.ModelElement#getId <em>Id</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Id</em>' attribute.
-	 * @see #getId()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Id</em>' attribute.
+   * @see #getId()
+   * @generated
+   */
 
 	void setId(String value);
 
@@ -88,21 +88,21 @@ public interface ModelElement extends ExtensibleElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Sid</b></em>' attribute.
+   * Returns the value of the '<em><b>Sid</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Sid</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sid</em>' attribute.
-	 * @see #setSid(String)
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getModelElement_Sid()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the unique system identifier for this element' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Sid</em>' attribute.
+   * @see #setSid(String)
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getModelElement_Sid()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the unique system identifier for this element' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	String getSid();
 
@@ -110,14 +110,14 @@ public interface ModelElement extends ExtensibleElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.ModelElement#getSid <em>Sid</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.ModelElement#getSid <em>Sid</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Sid</em>' attribute.
-	 * @see #getSid()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Sid</em>' attribute.
+   * @see #getSid()
+   * @generated
+   */
 
 	void setSid(String value);
 
@@ -128,24 +128,24 @@ public interface ModelElement extends ExtensibleElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Constraints</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractConstraint}.
+   * Returns the value of the '<em><b>Constraints</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractConstraint}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Constraints</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Constraints</em>' reference list.
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getModelElement_Constraints()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of constraints applying to this element of the model\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Constraint::constrainedElement' constraints='Order must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='constrainedElements'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Constraints</em>' reference list.
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getModelElement_Constraints()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of constraints applying to this element of the model\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Constraint::constrainedElement' constraints='Order must be computed'"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='constrainedElements'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   * @generated
+   */
 
 	EList<AbstractConstraint> getConstraints();
 
@@ -155,23 +155,23 @@ public interface ModelElement extends ExtensibleElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Constraints</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractConstraint}.
+   * Returns the value of the '<em><b>Owned Constraints</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractConstraint}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Constraints</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Constraints</em>' containment reference list.
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getModelElement_OwnedConstraints()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the constraints that are stored/owned by this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='Some packaged elements of uml::Element::nearestPackage on which AbstractConstraint stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Constraints</em>' containment reference list.
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getModelElement_OwnedConstraints()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the constraints that are stored/owned by this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='Some packaged elements of uml::Element::nearestPackage on which AbstractConstraint stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<AbstractConstraint> getOwnedConstraints();
 
@@ -179,21 +179,21 @@ public interface ModelElement extends ExtensibleElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.ModelElement}.
+   * Returns the value of the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.ModelElement}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Migrated Elements</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Migrated Elements</em>' containment reference list.
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getModelElement_OwnedMigratedElements()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Temporary migrated elements for the purpose of model migration.' constraints='none' comment/notes='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Migrated Elements</em>' containment reference list.
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getModelElement_OwnedMigratedElements()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Temporary migrated elements for the purpose of model migration.' constraints='none' comment/notes='none'"
+   * @generated
+   */
 
 	EList<ModelElement> getOwnedMigratedElements();
 
@@ -202,11 +202,11 @@ public interface ModelElement extends ExtensibleElement {
 
 	/**
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
+   * @model
+   * @generated
+   */
 
 	void destroy();
 
@@ -216,11 +216,11 @@ public interface ModelElement extends ExtensibleElement {
 
 	/**
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
+   * @model kind="operation"
+   * @generated
+   */
 
 	String getFullLabel();
 
@@ -230,11 +230,11 @@ public interface ModelElement extends ExtensibleElement {
 
 	/**
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
+   * @model kind="operation"
+   * @generated
+   */
 
 	String getLabel();
 
@@ -244,11 +244,11 @@ public interface ModelElement extends ExtensibleElement {
 
 	/**
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
+   * @model
+   * @generated
+   */
 
 	boolean hasUnnamedLabel();
 

@@ -44,24 +44,24 @@ public interface ExchangeItemElement extends NamedElement, MultiplicityElement, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.information.ElementKind}.
+   * Returns the value of the '<em><b>Kind</b></em>' attribute.
+   * The literals are from the enumeration {@link org.polarsys.capella.core.data.information.ElementKind}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Kind</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Kind</em>' attribute.
-	 * @see org.polarsys.capella.core.data.information.ElementKind
-	 * @see #setKind(ElementKind)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItemElement_Kind()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='refer to ElementKind description' constraints='none' type='refer to ElementKind definition' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Kind</em>' attribute.
+   * @see org.polarsys.capella.core.data.information.ElementKind
+   * @see #setKind(ElementKind)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItemElement_Kind()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='refer to ElementKind description' constraints='none' type='refer to ElementKind definition' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	ElementKind getKind();
 
@@ -69,15 +69,15 @@ public interface ExchangeItemElement extends NamedElement, MultiplicityElement, 
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.ExchangeItemElement#getKind <em>Kind</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.ExchangeItemElement#getKind <em>Kind</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Kind</em>' attribute.
-	 * @see org.polarsys.capella.core.data.information.ElementKind
-	 * @see #getKind()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Kind</em>' attribute.
+   * @see org.polarsys.capella.core.data.information.ElementKind
+   * @see #getKind()
+   * @generated
+   */
 
 	void setKind(ElementKind value);
 
@@ -88,25 +88,25 @@ public interface ExchangeItemElement extends NamedElement, MultiplicityElement, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Direction</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.information.ParameterDirection}.
+   * Returns the value of the '<em><b>Direction</b></em>' attribute.
+   * The literals are from the enumeration {@link org.polarsys.capella.core.data.information.ParameterDirection}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Direction</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Direction</em>' attribute.
-	 * @see org.polarsys.capella.core.data.information.ParameterDirection
-	 * @see #setDirection(ParameterDirection)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItemElement_Direction()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='direction' featureOwner='Parameter'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether the parameter is an input, an output, or both.\r\n[source: Capella study]' constraints='none' type='see ParameterDirection definition' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Parameter::direction' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Direction</em>' attribute.
+   * @see org.polarsys.capella.core.data.information.ParameterDirection
+   * @see #setDirection(ParameterDirection)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItemElement_Direction()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='direction' featureOwner='Parameter'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether the parameter is an input, an output, or both.\r\n[source: Capella study]' constraints='none' type='see ParameterDirection definition' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Parameter::direction' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	ParameterDirection getDirection();
 
@@ -114,15 +114,15 @@ public interface ExchangeItemElement extends NamedElement, MultiplicityElement, 
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.ExchangeItemElement#getDirection <em>Direction</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.ExchangeItemElement#getDirection <em>Direction</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Direction</em>' attribute.
-	 * @see org.polarsys.capella.core.data.information.ParameterDirection
-	 * @see #getDirection()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Direction</em>' attribute.
+   * @see org.polarsys.capella.core.data.information.ParameterDirection
+   * @see #getDirection()
+   * @generated
+   */
 
 	void setDirection(ParameterDirection value);
 
@@ -133,22 +133,22 @@ public interface ExchangeItemElement extends NamedElement, MultiplicityElement, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Composite</b></em>' attribute.
+   * Returns the value of the '<em><b>Composite</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Composite</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Composite</em>' attribute.
-	 * @see #setComposite(boolean)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItemElement_Composite()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' constraints='none' type='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Composite</em>' attribute.
+   * @see #setComposite(boolean)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItemElement_Composite()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' constraints='none' type='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	boolean isComposite();
 
@@ -156,14 +156,14 @@ public interface ExchangeItemElement extends NamedElement, MultiplicityElement, 
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.ExchangeItemElement#isComposite <em>Composite</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.ExchangeItemElement#isComposite <em>Composite</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Composite</em>' attribute.
-	 * @see #isComposite()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Composite</em>' attribute.
+   * @see #isComposite()
+   * @generated
+   */
 
 	void setComposite(boolean value);
 
@@ -174,22 +174,22 @@ public interface ExchangeItemElement extends NamedElement, MultiplicityElement, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Referenced Properties</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.Property}.
+   * Returns the value of the '<em><b>Referenced Properties</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.Property}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Referenced Properties</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Referenced Properties</em>' reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItemElement_ReferencedProperties()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' constraints='none' type='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Referenced Properties</em>' reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItemElement_ReferencedProperties()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' constraints='none' type='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<Property> getReferencedProperties();
 

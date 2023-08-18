@@ -65,23 +65,23 @@ import org.polarsys.capella.core.data.fa.FunctionSpecification;
 public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
 	protected String name = NAME_EDEFAULT;
 
 
@@ -89,13 +89,13 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
 
 
 	/**
-	 * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNamingRules()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getNamingRules()
+   * @generated
+   * @ordered
+   */
 	protected EList<NamingRule> namingRules;
 
 
@@ -107,13 +107,13 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
 
 
 	/**
-	 * The cached value of the '{@link #getExchangeContainmentLinks() <em>Exchange Containment Links</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getExchangeContainmentLinks() <em>Exchange Containment Links</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExchangeContainmentLinks()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getExchangeContainmentLinks()
+   * @generated
+   * @ordered
+   */
 	protected EList<ExchangeContainment> exchangeContainmentLinks;
 
 
@@ -121,13 +121,13 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedExchangeContainments() <em>Owned Exchange Containments</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedExchangeContainments() <em>Owned Exchange Containments</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedExchangeContainments()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedExchangeContainments()
+   * @generated
+   * @ordered
+   */
 	protected EList<ExchangeContainment> ownedExchangeContainments;
 
 
@@ -135,13 +135,13 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
 
 
 	/**
-	 * The cached value of the '{@link #getSources() <em>Sources</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getSources() <em>Sources</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSources()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getSources()
+   * @generated
+   * @ordered
+   */
 	protected EList<FunctionSpecification> sources;
 
 
@@ -149,70 +149,70 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
 
 
 	/**
-	 * The cached value of the '{@link #getDestinations() <em>Destinations</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getDestinations() <em>Destinations</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDestinations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getDestinations()
+   * @generated
+   * @ordered
+   */
 	protected EList<FunctionSpecification> destinations;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ExchangeLinkImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FaPackage.Literals.EXCHANGE_LINK;
-	}
+    return FaPackage.Literals.EXCHANGE_LINK;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public String getName() {
 
-		return name;
-	}
+    return name;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setName(String newName) {
 
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.EXCHANGE_LINK__NAME, oldName, name));
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.EXCHANGE_LINK__NAME, oldName, name));
 
-	}
+  }
 
 
 
@@ -220,28 +220,28 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<NamingRule> getNamingRules() {
 
-		if (namingRules == null) {
-			namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, FaPackage.EXCHANGE_LINK__NAMING_RULES);
-		}
-		return namingRules;
-	}
+    if (namingRules == null) {
+      namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, FaPackage.EXCHANGE_LINK__NAMING_RULES);
+    }
+    return namingRules;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ExchangeSpecification> getExchanges() {
 
@@ -268,304 +268,304 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.EXCHANGE_LINK__EXCHANGES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.EXCHANGE_LINK__EXCHANGES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ExchangeSpecification> resultAsList = (Collection<ExchangeSpecification>) result;
-		return new EcoreEList.UnmodifiableEList<ExchangeSpecification>(this, FaPackage.Literals.EXCHANGE_LINK__EXCHANGES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<ExchangeSpecification> resultAsList = (Collection<ExchangeSpecification>) result;
+    return new EcoreEList.UnmodifiableEList<ExchangeSpecification>(this, FaPackage.Literals.EXCHANGE_LINK__EXCHANGES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ExchangeContainment> getExchangeContainmentLinks() {
 
-		if (exchangeContainmentLinks == null) {
-			exchangeContainmentLinks = new EObjectWithInverseResolvingEList<ExchangeContainment>(ExchangeContainment.class, this, FaPackage.EXCHANGE_LINK__EXCHANGE_CONTAINMENT_LINKS, FaPackage.EXCHANGE_CONTAINMENT__LINK);
-		}
-		return exchangeContainmentLinks;
-	}
+    if (exchangeContainmentLinks == null) {
+      exchangeContainmentLinks = new EObjectWithInverseResolvingEList<ExchangeContainment>(ExchangeContainment.class, this, FaPackage.EXCHANGE_LINK__EXCHANGE_CONTAINMENT_LINKS, FaPackage.EXCHANGE_CONTAINMENT__LINK);
+    }
+    return exchangeContainmentLinks;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ExchangeContainment> getOwnedExchangeContainments() {
 
-		if (ownedExchangeContainments == null) {
-			ownedExchangeContainments = new EObjectContainmentEList<ExchangeContainment>(ExchangeContainment.class, this, FaPackage.EXCHANGE_LINK__OWNED_EXCHANGE_CONTAINMENTS);
-		}
-		return ownedExchangeContainments;
-	}
+    if (ownedExchangeContainments == null) {
+      ownedExchangeContainments = new EObjectContainmentEList<ExchangeContainment>(ExchangeContainment.class, this, FaPackage.EXCHANGE_LINK__OWNED_EXCHANGE_CONTAINMENTS);
+    }
+    return ownedExchangeContainments;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionSpecification> getSources() {
 
-		if (sources == null) {
-			sources = new EObjectResolvingEList<FunctionSpecification>(FunctionSpecification.class, this, FaPackage.EXCHANGE_LINK__SOURCES);
-		}
-		return sources;
-	}
+    if (sources == null) {
+      sources = new EObjectResolvingEList<FunctionSpecification>(FunctionSpecification.class, this, FaPackage.EXCHANGE_LINK__SOURCES);
+    }
+    return sources;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionSpecification> getDestinations() {
 
-		if (destinations == null) {
-			destinations = new EObjectResolvingEList<FunctionSpecification>(FunctionSpecification.class, this, FaPackage.EXCHANGE_LINK__DESTINATIONS);
-		}
-		return destinations;
-	}
+    if (destinations == null) {
+      destinations = new EObjectResolvingEList<FunctionSpecification>(FunctionSpecification.class, this, FaPackage.EXCHANGE_LINK__DESTINATIONS);
+    }
+    return destinations;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case FaPackage.EXCHANGE_LINK__EXCHANGE_CONTAINMENT_LINKS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getExchangeContainmentLinks()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case FaPackage.EXCHANGE_LINK__EXCHANGE_CONTAINMENT_LINKS:
+        return ((InternalEList<InternalEObject>)(InternalEList<?>)getExchangeContainmentLinks()).basicAdd(otherEnd, msgs);
+    }
+    return super.eInverseAdd(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case FaPackage.EXCHANGE_LINK__NAMING_RULES:
-				return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
-			case FaPackage.EXCHANGE_LINK__EXCHANGE_CONTAINMENT_LINKS:
-				return ((InternalEList<?>)getExchangeContainmentLinks()).basicRemove(otherEnd, msgs);
-			case FaPackage.EXCHANGE_LINK__OWNED_EXCHANGE_CONTAINMENTS:
-				return ((InternalEList<?>)getOwnedExchangeContainments()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case FaPackage.EXCHANGE_LINK__NAMING_RULES:
+        return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
+      case FaPackage.EXCHANGE_LINK__EXCHANGE_CONTAINMENT_LINKS:
+        return ((InternalEList<?>)getExchangeContainmentLinks()).basicRemove(otherEnd, msgs);
+      case FaPackage.EXCHANGE_LINK__OWNED_EXCHANGE_CONTAINMENTS:
+        return ((InternalEList<?>)getOwnedExchangeContainments()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case FaPackage.EXCHANGE_LINK__NAME:
-				return getName();
-			case FaPackage.EXCHANGE_LINK__NAMING_RULES:
-				return getNamingRules();
-			case FaPackage.EXCHANGE_LINK__EXCHANGES:
-				return getExchanges();
-			case FaPackage.EXCHANGE_LINK__EXCHANGE_CONTAINMENT_LINKS:
-				return getExchangeContainmentLinks();
-			case FaPackage.EXCHANGE_LINK__OWNED_EXCHANGE_CONTAINMENTS:
-				return getOwnedExchangeContainments();
-			case FaPackage.EXCHANGE_LINK__SOURCES:
-				return getSources();
-			case FaPackage.EXCHANGE_LINK__DESTINATIONS:
-				return getDestinations();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case FaPackage.EXCHANGE_LINK__NAME:
+        return getName();
+      case FaPackage.EXCHANGE_LINK__NAMING_RULES:
+        return getNamingRules();
+      case FaPackage.EXCHANGE_LINK__EXCHANGES:
+        return getExchanges();
+      case FaPackage.EXCHANGE_LINK__EXCHANGE_CONTAINMENT_LINKS:
+        return getExchangeContainmentLinks();
+      case FaPackage.EXCHANGE_LINK__OWNED_EXCHANGE_CONTAINMENTS:
+        return getOwnedExchangeContainments();
+      case FaPackage.EXCHANGE_LINK__SOURCES:
+        return getSources();
+      case FaPackage.EXCHANGE_LINK__DESTINATIONS:
+        return getDestinations();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case FaPackage.EXCHANGE_LINK__NAME:
-					setName((String)newValue);
-				return;
-			case FaPackage.EXCHANGE_LINK__NAMING_RULES:
-				getNamingRules().clear();
-				getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
-				return;
-			case FaPackage.EXCHANGE_LINK__EXCHANGE_CONTAINMENT_LINKS:
-				getExchangeContainmentLinks().clear();
-				getExchangeContainmentLinks().addAll((Collection<? extends ExchangeContainment>)newValue);
-				return;
-			case FaPackage.EXCHANGE_LINK__OWNED_EXCHANGE_CONTAINMENTS:
-				getOwnedExchangeContainments().clear();
-				getOwnedExchangeContainments().addAll((Collection<? extends ExchangeContainment>)newValue);
-				return;
-			case FaPackage.EXCHANGE_LINK__SOURCES:
-				getSources().clear();
-				getSources().addAll((Collection<? extends FunctionSpecification>)newValue);
-				return;
-			case FaPackage.EXCHANGE_LINK__DESTINATIONS:
-				getDestinations().clear();
-				getDestinations().addAll((Collection<? extends FunctionSpecification>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case FaPackage.EXCHANGE_LINK__NAME:
+          setName((String)newValue);
+        return;
+      case FaPackage.EXCHANGE_LINK__NAMING_RULES:
+        getNamingRules().clear();
+        getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
+        return;
+      case FaPackage.EXCHANGE_LINK__EXCHANGE_CONTAINMENT_LINKS:
+        getExchangeContainmentLinks().clear();
+        getExchangeContainmentLinks().addAll((Collection<? extends ExchangeContainment>)newValue);
+        return;
+      case FaPackage.EXCHANGE_LINK__OWNED_EXCHANGE_CONTAINMENTS:
+        getOwnedExchangeContainments().clear();
+        getOwnedExchangeContainments().addAll((Collection<? extends ExchangeContainment>)newValue);
+        return;
+      case FaPackage.EXCHANGE_LINK__SOURCES:
+        getSources().clear();
+        getSources().addAll((Collection<? extends FunctionSpecification>)newValue);
+        return;
+      case FaPackage.EXCHANGE_LINK__DESTINATIONS:
+        getDestinations().clear();
+        getDestinations().addAll((Collection<? extends FunctionSpecification>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case FaPackage.EXCHANGE_LINK__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case FaPackage.EXCHANGE_LINK__NAMING_RULES:
-				getNamingRules().clear();
-				return;
-			case FaPackage.EXCHANGE_LINK__EXCHANGE_CONTAINMENT_LINKS:
-				getExchangeContainmentLinks().clear();
-				return;
-			case FaPackage.EXCHANGE_LINK__OWNED_EXCHANGE_CONTAINMENTS:
-				getOwnedExchangeContainments().clear();
-				return;
-			case FaPackage.EXCHANGE_LINK__SOURCES:
-				getSources().clear();
-				return;
-			case FaPackage.EXCHANGE_LINK__DESTINATIONS:
-				getDestinations().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.EXCHANGE_LINK__NAME:
+        setName(NAME_EDEFAULT);
+        return;
+      case FaPackage.EXCHANGE_LINK__NAMING_RULES:
+        getNamingRules().clear();
+        return;
+      case FaPackage.EXCHANGE_LINK__EXCHANGE_CONTAINMENT_LINKS:
+        getExchangeContainmentLinks().clear();
+        return;
+      case FaPackage.EXCHANGE_LINK__OWNED_EXCHANGE_CONTAINMENTS:
+        getOwnedExchangeContainments().clear();
+        return;
+      case FaPackage.EXCHANGE_LINK__SOURCES:
+        getSources().clear();
+        return;
+      case FaPackage.EXCHANGE_LINK__DESTINATIONS:
+        getDestinations().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case FaPackage.EXCHANGE_LINK__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case FaPackage.EXCHANGE_LINK__NAMING_RULES:
-				return namingRules != null && !namingRules.isEmpty();
-			case FaPackage.EXCHANGE_LINK__EXCHANGES:
-				return !getExchanges().isEmpty();
-			case FaPackage.EXCHANGE_LINK__EXCHANGE_CONTAINMENT_LINKS:
-				return exchangeContainmentLinks != null && !exchangeContainmentLinks.isEmpty();
-			case FaPackage.EXCHANGE_LINK__OWNED_EXCHANGE_CONTAINMENTS:
-				return ownedExchangeContainments != null && !ownedExchangeContainments.isEmpty();
-			case FaPackage.EXCHANGE_LINK__SOURCES:
-				return sources != null && !sources.isEmpty();
-			case FaPackage.EXCHANGE_LINK__DESTINATIONS:
-				return destinations != null && !destinations.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.EXCHANGE_LINK__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case FaPackage.EXCHANGE_LINK__NAMING_RULES:
+        return namingRules != null && !namingRules.isEmpty();
+      case FaPackage.EXCHANGE_LINK__EXCHANGES:
+        return !getExchanges().isEmpty();
+      case FaPackage.EXCHANGE_LINK__EXCHANGE_CONTAINMENT_LINKS:
+        return exchangeContainmentLinks != null && !exchangeContainmentLinks.isEmpty();
+      case FaPackage.EXCHANGE_LINK__OWNED_EXCHANGE_CONTAINMENTS:
+        return ownedExchangeContainments != null && !ownedExchangeContainments.isEmpty();
+      case FaPackage.EXCHANGE_LINK__SOURCES:
+        return sources != null && !sources.isEmpty();
+      case FaPackage.EXCHANGE_LINK__DESTINATIONS:
+        return destinations != null && !destinations.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractNamedElement.class) {
-			switch (derivedFeatureID) {
-				case FaPackage.EXCHANGE_LINK__NAME: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
-				default: return -1;
-			}
-		}
-		if (baseClass == NamedElement.class) {
-			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == AbstractNamedElement.class) {
+      switch (derivedFeatureID) {
+        case FaPackage.EXCHANGE_LINK__NAME: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
+        default: return -1;
+      }
+    }
+    if (baseClass == NamedElement.class) {
+      switch (derivedFeatureID) {
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractNamedElement.class) {
-			switch (baseFeatureID) {
-				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME: return FaPackage.EXCHANGE_LINK__NAME;
-				default: return -1;
-			}
-		}
-		if (baseClass == NamedElement.class) {
-			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == AbstractNamedElement.class) {
+      switch (baseFeatureID) {
+        case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME: return FaPackage.EXCHANGE_LINK__NAME;
+        default: return -1;
+      }
+    }
+    if (baseClass == NamedElement.class) {
+      switch (baseFeatureID) {
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (name: "); //$NON-NLS-1$
-		result.append(name);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (name: "); //$NON-NLS-1$
+    result.append(name);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //ExchangeLinkImpl

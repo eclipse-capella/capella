@@ -39,13 +39,13 @@ import org.polarsys.capella.core.data.oa.OrganisationalUnitComposition;
 public class OrganisationalUnitCompositionImpl extends NamedElementImpl implements OrganisationalUnitComposition {
 
 	/**
-	 * The cached value of the '{@link #getOrganisationalUnit() <em>Organisational Unit</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOrganisationalUnit() <em>Organisational Unit</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOrganisationalUnit()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOrganisationalUnit()
+   * @generated
+   * @ordered
+   */
 	protected OrganisationalUnit organisationalUnit;
 
 
@@ -53,91 +53,91 @@ public class OrganisationalUnitCompositionImpl extends NamedElementImpl implemen
 
 
 	/**
-	 * The cached value of the '{@link #getParticipatingEntity() <em>Participating Entity</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getParticipatingEntity() <em>Participating Entity</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getParticipatingEntity()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getParticipatingEntity()
+   * @generated
+   * @ordered
+   */
 	protected Entity participatingEntity;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OrganisationalUnitCompositionImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OaPackage.Literals.ORGANISATIONAL_UNIT_COMPOSITION;
-	}
+    return OaPackage.Literals.ORGANISATIONAL_UNIT_COMPOSITION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public OrganisationalUnit getOrganisationalUnit() {
 
-		if (organisationalUnit != null && organisationalUnit.eIsProxy()) {
-			InternalEObject oldOrganisationalUnit = (InternalEObject)organisationalUnit;
-			organisationalUnit = (OrganisationalUnit)eResolveProxy(oldOrganisationalUnit);
-			if (organisationalUnit != oldOrganisationalUnit) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__ORGANISATIONAL_UNIT, oldOrganisationalUnit, organisationalUnit));
-			}
-		}
-		return organisationalUnit;
-	}
+    if (organisationalUnit != null && organisationalUnit.eIsProxy()) {
+      InternalEObject oldOrganisationalUnit = (InternalEObject)organisationalUnit;
+      organisationalUnit = (OrganisationalUnit)eResolveProxy(oldOrganisationalUnit);
+      if (organisationalUnit != oldOrganisationalUnit) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__ORGANISATIONAL_UNIT, oldOrganisationalUnit, organisationalUnit));
+      }
+    }
+    return organisationalUnit;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public OrganisationalUnit basicGetOrganisationalUnit() {
 
-		return organisationalUnit;
-	}
+    return organisationalUnit;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setOrganisationalUnit(OrganisationalUnit newOrganisationalUnit) {
 
-		OrganisationalUnit oldOrganisationalUnit = organisationalUnit;
-		organisationalUnit = newOrganisationalUnit;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__ORGANISATIONAL_UNIT, oldOrganisationalUnit, organisationalUnit));
+    OrganisationalUnit oldOrganisationalUnit = organisationalUnit;
+    organisationalUnit = newOrganisationalUnit;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__ORGANISATIONAL_UNIT, oldOrganisationalUnit, organisationalUnit));
 
-	}
+  }
 
 
 
@@ -145,129 +145,129 @@ public class OrganisationalUnitCompositionImpl extends NamedElementImpl implemen
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Entity getParticipatingEntity() {
 
-		if (participatingEntity != null && participatingEntity.eIsProxy()) {
-			InternalEObject oldParticipatingEntity = (InternalEObject)participatingEntity;
-			participatingEntity = (Entity)eResolveProxy(oldParticipatingEntity);
-			if (participatingEntity != oldParticipatingEntity) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__PARTICIPATING_ENTITY, oldParticipatingEntity, participatingEntity));
-			}
-		}
-		return participatingEntity;
-	}
+    if (participatingEntity != null && participatingEntity.eIsProxy()) {
+      InternalEObject oldParticipatingEntity = (InternalEObject)participatingEntity;
+      participatingEntity = (Entity)eResolveProxy(oldParticipatingEntity);
+      if (participatingEntity != oldParticipatingEntity) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__PARTICIPATING_ENTITY, oldParticipatingEntity, participatingEntity));
+      }
+    }
+    return participatingEntity;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Entity basicGetParticipatingEntity() {
 
-		return participatingEntity;
-	}
+    return participatingEntity;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setParticipatingEntity(Entity newParticipatingEntity) {
 
-		Entity oldParticipatingEntity = participatingEntity;
-		participatingEntity = newParticipatingEntity;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__PARTICIPATING_ENTITY, oldParticipatingEntity, participatingEntity));
+    Entity oldParticipatingEntity = participatingEntity;
+    participatingEntity = newParticipatingEntity;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__PARTICIPATING_ENTITY, oldParticipatingEntity, participatingEntity));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__ORGANISATIONAL_UNIT:
-				if (resolve) return getOrganisationalUnit();
-				return basicGetOrganisationalUnit();
-			case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__PARTICIPATING_ENTITY:
-				if (resolve) return getParticipatingEntity();
-				return basicGetParticipatingEntity();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__ORGANISATIONAL_UNIT:
+        if (resolve) return getOrganisationalUnit();
+        return basicGetOrganisationalUnit();
+      case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__PARTICIPATING_ENTITY:
+        if (resolve) return getParticipatingEntity();
+        return basicGetParticipatingEntity();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__ORGANISATIONAL_UNIT:
-					setOrganisationalUnit((OrganisationalUnit)newValue);
-				return;
-			case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__PARTICIPATING_ENTITY:
-					setParticipatingEntity((Entity)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__ORGANISATIONAL_UNIT:
+          setOrganisationalUnit((OrganisationalUnit)newValue);
+        return;
+      case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__PARTICIPATING_ENTITY:
+          setParticipatingEntity((Entity)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__ORGANISATIONAL_UNIT:
-				setOrganisationalUnit((OrganisationalUnit)null);
-				return;
-			case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__PARTICIPATING_ENTITY:
-				setParticipatingEntity((Entity)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__ORGANISATIONAL_UNIT:
+        setOrganisationalUnit((OrganisationalUnit)null);
+        return;
+      case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__PARTICIPATING_ENTITY:
+        setParticipatingEntity((Entity)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__ORGANISATIONAL_UNIT:
-				return organisationalUnit != null;
-			case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__PARTICIPATING_ENTITY:
-				return participatingEntity != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__ORGANISATIONAL_UNIT:
+        return organisationalUnit != null;
+      case OaPackage.ORGANISATIONAL_UNIT_COMPOSITION__PARTICIPATING_ENTITY:
+        return participatingEntity != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

@@ -38,121 +38,121 @@ import org.polarsys.capella.core.data.cs.PhysicalLinkCategory;
 public class PhysicalLinkCategoryImpl extends NamedElementImpl implements PhysicalLinkCategory {
 
 	/**
-	 * The cached value of the '{@link #getLinks() <em>Links</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getLinks() <em>Links</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLinks()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getLinks()
+   * @generated
+   * @ordered
+   */
 	protected EList<PhysicalLink> links;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalLinkCategoryImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.PHYSICAL_LINK_CATEGORY;
-	}
+    return CsPackage.Literals.PHYSICAL_LINK_CATEGORY;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalLink> getLinks() {
 
-		if (links == null) {
-			links = new EObjectResolvingEList<PhysicalLink>(PhysicalLink.class, this, CsPackage.PHYSICAL_LINK_CATEGORY__LINKS);
-		}
-		return links;
-	}
+    if (links == null) {
+      links = new EObjectResolvingEList<PhysicalLink>(PhysicalLink.class, this, CsPackage.PHYSICAL_LINK_CATEGORY__LINKS);
+    }
+    return links;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_LINK_CATEGORY__LINKS:
-				return getLinks();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_LINK_CATEGORY__LINKS:
+        return getLinks();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_LINK_CATEGORY__LINKS:
-				getLinks().clear();
-				getLinks().addAll((Collection<? extends PhysicalLink>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_LINK_CATEGORY__LINKS:
+        getLinks().clear();
+        getLinks().addAll((Collection<? extends PhysicalLink>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_LINK_CATEGORY__LINKS:
-				getLinks().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_LINK_CATEGORY__LINKS:
+        getLinks().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_LINK_CATEGORY__LINKS:
-				return links != null && !links.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_LINK_CATEGORY__LINKS:
+        return links != null && !links.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

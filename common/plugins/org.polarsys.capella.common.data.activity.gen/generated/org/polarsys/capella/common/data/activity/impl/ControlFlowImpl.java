@@ -25,25 +25,25 @@ import org.polarsys.capella.common.data.activity.ControlFlow;
  */
 public abstract class ControlFlowImpl extends ActivityEdgeImpl implements ControlFlow {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ControlFlowImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return ActivityPackage.Literals.CONTROL_FLOW;
-	}
+    return ActivityPackage.Literals.CONTROL_FLOW;
+  }
 
 
 

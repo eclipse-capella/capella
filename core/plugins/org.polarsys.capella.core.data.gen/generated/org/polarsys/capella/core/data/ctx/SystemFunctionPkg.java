@@ -41,23 +41,23 @@ public interface SystemFunctionPkg extends FunctionPkg {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned System Functions</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemFunction}.
+   * Returns the value of the '<em><b>Owned System Functions</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemFunction}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned System Functions</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned System Functions</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemFunctionPkg_OwnedSystemFunctions()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='system functions contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='Order must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned System Functions</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemFunctionPkg_OwnedSystemFunctions()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='system functions contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='Order must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<SystemFunction> getOwnedSystemFunctions();
 
@@ -68,23 +68,23 @@ public interface SystemFunctionPkg extends FunctionPkg {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned System Function Pkgs</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemFunctionPkg}.
+   * Returns the value of the '<em><b>Owned System Function Pkgs</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemFunctionPkg}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned System Function Pkgs</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned System Function Pkgs</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemFunctionPkg_OwnedSystemFunctionPkgs()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='sub (function) package under this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='' constraints='uml::Package::nestedPackage elements on which SystemFunctionPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned System Function Pkgs</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemFunctionPkg_OwnedSystemFunctionPkgs()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='sub (function) package under this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='' constraints='uml::Package::nestedPackage elements on which SystemFunctionPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<SystemFunctionPkg> getOwnedSystemFunctionPkgs();
 

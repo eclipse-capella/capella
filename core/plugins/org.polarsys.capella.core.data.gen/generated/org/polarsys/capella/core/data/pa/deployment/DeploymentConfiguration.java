@@ -44,25 +44,25 @@ public interface DeploymentConfiguration extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Deployment Links</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.AbstractDeploymentLink}.
+   * Returns the value of the '<em><b>Owned Deployment Links</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.cs.AbstractDeploymentLink}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Deployment Links</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Deployment Links</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getDeploymentConfiguration_OwnedDeploymentLinks()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='elementImport' featureOwner='Namespace'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='deployments'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the deployment specifications that are part of this deployment configuration\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Namespace::elementImport' explanation='none' constraints='uml::Namespace::elementImport elements on which AbstractDeployment stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Deployment Links</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getDeploymentConfiguration_OwnedDeploymentLinks()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='elementImport' featureOwner='Namespace'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='deployments'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the deployment specifications that are part of this deployment configuration\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Namespace::elementImport' explanation='none' constraints='uml::Namespace::elementImport elements on which AbstractDeployment stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<AbstractDeploymentLink> getOwnedDeploymentLinks();
 
@@ -73,22 +73,22 @@ public interface DeploymentConfiguration extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Physical Instances</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.deployment.AbstractPhysicalInstance}.
+   * Returns the value of the '<em><b>Owned Physical Instances</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.deployment.AbstractPhysicalInstance}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Physical Instances</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Physical Instances</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getDeploymentConfiguration_OwnedPhysicalInstances()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Physical Instances</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getDeploymentConfiguration_OwnedPhysicalInstances()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<AbstractPhysicalInstance> getOwnedPhysicalInstances();
 

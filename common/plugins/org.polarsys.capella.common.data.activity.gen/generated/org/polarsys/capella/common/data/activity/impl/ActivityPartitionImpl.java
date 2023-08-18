@@ -54,23 +54,23 @@ import org.polarsys.capella.common.model.helpers.IHelper;
 public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements ActivityPartition {
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
 	protected String name = NAME_EDEFAULT;
 
 
@@ -78,23 +78,23 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 
 
 	/**
-	 * The default value of the '{@link #isIsDimension() <em>Is Dimension</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isIsDimension() <em>Is Dimension</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsDimension()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsDimension()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean IS_DIMENSION_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsDimension() <em>Is Dimension</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isIsDimension() <em>Is Dimension</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsDimension()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsDimension()
+   * @generated
+   * @ordered
+   */
 	protected boolean isDimension = IS_DIMENSION_EDEFAULT;
 
 
@@ -102,23 +102,23 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 
 
 	/**
-	 * The default value of the '{@link #isIsExternal() <em>Is External</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isIsExternal() <em>Is External</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsExternal()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsExternal()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean IS_EXTERNAL_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsExternal() <em>Is External</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isIsExternal() <em>Is External</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsExternal()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsExternal()
+   * @generated
+   * @ordered
+   */
 	protected boolean isExternal = IS_EXTERNAL_EDEFAULT;
 
 
@@ -126,13 +126,13 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 
 
 	/**
-	 * The cached value of the '{@link #getRepresentedElement() <em>Represented Element</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getRepresentedElement() <em>Represented Element</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRepresentedElement()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getRepresentedElement()
+   * @generated
+   * @ordered
+   */
 	protected AbstractType representedElement;
 
 
@@ -147,57 +147,57 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ActivityPartitionImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return ActivityPackage.Literals.ACTIVITY_PARTITION;
-	}
+    return ActivityPackage.Literals.ACTIVITY_PARTITION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public String getName() {
 
-		return name;
-	}
+    return name;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setName(String newName) {
 
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ACTIVITY_PARTITION__NAME, oldName, name));
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ACTIVITY_PARTITION__NAME, oldName, name));
 
-	}
+  }
 
 
 
@@ -205,32 +205,32 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isIsDimension() {
 
-		return isDimension;
-	}
+    return isDimension;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setIsDimension(boolean newIsDimension) {
 
-		boolean oldIsDimension = isDimension;
-		isDimension = newIsDimension;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ACTIVITY_PARTITION__IS_DIMENSION, oldIsDimension, isDimension));
+    boolean oldIsDimension = isDimension;
+    isDimension = newIsDimension;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ACTIVITY_PARTITION__IS_DIMENSION, oldIsDimension, isDimension));
 
-	}
+  }
 
 
 
@@ -238,32 +238,32 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isIsExternal() {
 
-		return isExternal;
-	}
+    return isExternal;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setIsExternal(boolean newIsExternal) {
 
-		boolean oldIsExternal = isExternal;
-		isExternal = newIsExternal;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ACTIVITY_PARTITION__IS_EXTERNAL, oldIsExternal, isExternal));
+    boolean oldIsExternal = isExternal;
+    isExternal = newIsExternal;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ACTIVITY_PARTITION__IS_EXTERNAL, oldIsExternal, isExternal));
 
-	}
+  }
 
 
 
@@ -271,53 +271,53 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractType getRepresentedElement() {
 
-		if (representedElement != null && representedElement.eIsProxy()) {
-			InternalEObject oldRepresentedElement = (InternalEObject)representedElement;
-			representedElement = (AbstractType)eResolveProxy(oldRepresentedElement);
-			if (representedElement != oldRepresentedElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityPackage.ACTIVITY_PARTITION__REPRESENTED_ELEMENT, oldRepresentedElement, representedElement));
-			}
-		}
-		return representedElement;
-	}
+    if (representedElement != null && representedElement.eIsProxy()) {
+      InternalEObject oldRepresentedElement = (InternalEObject)representedElement;
+      representedElement = (AbstractType)eResolveProxy(oldRepresentedElement);
+      if (representedElement != oldRepresentedElement) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityPackage.ACTIVITY_PARTITION__REPRESENTED_ELEMENT, oldRepresentedElement, representedElement));
+      }
+    }
+    return representedElement;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractType basicGetRepresentedElement() {
 
-		return representedElement;
-	}
+    return representedElement;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setRepresentedElement(AbstractType newRepresentedElement) {
 
-		AbstractType oldRepresentedElement = representedElement;
-		representedElement = newRepresentedElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ACTIVITY_PARTITION__REPRESENTED_ELEMENT, oldRepresentedElement, representedElement));
+    AbstractType oldRepresentedElement = representedElement;
+    representedElement = newRepresentedElement;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ACTIVITY_PARTITION__REPRESENTED_ELEMENT, oldRepresentedElement, representedElement));
 
-	}
+  }
 
 
 
@@ -325,23 +325,23 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ActivityPartition getSuperPartition() {
 
-		ActivityPartition superPartition = basicGetSuperPartition();
-		return superPartition != null && superPartition.eIsProxy() ? (ActivityPartition)eResolveProxy((InternalEObject)superPartition) : superPartition;
-	}
+    ActivityPartition superPartition = basicGetSuperPartition();
+    return superPartition != null && superPartition.eIsProxy() ? (ActivityPartition)eResolveProxy((InternalEObject)superPartition) : superPartition;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ActivityPartition basicGetSuperPartition() {
 
@@ -368,15 +368,15 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
     // A helper is found, let's use it. 
     EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_PARTITION__SUPER_PARTITION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ACTIVITY_PARTITION__SUPER_PARTITION, annotation);
-		
-		try {
-			return (ActivityPartition) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (ActivityPartition) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -384,10 +384,10 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ActivityPartition> getSubPartitions() {
 
@@ -414,174 +414,174 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
     // A helper is found, let's use it. 
     EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_PARTITION__SUB_PARTITIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ACTIVITY_PARTITION__SUB_PARTITIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ActivityPartition> resultAsList = (Collection<ActivityPartition>) result;
-		return new EcoreEList.UnmodifiableEList<ActivityPartition>(this, ActivityPackage.Literals.ACTIVITY_PARTITION__SUB_PARTITIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<ActivityPartition> resultAsList = (Collection<ActivityPartition>) result;
+    return new EcoreEList.UnmodifiableEList<ActivityPartition>(this, ActivityPackage.Literals.ACTIVITY_PARTITION__SUB_PARTITIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ActivityPackage.ACTIVITY_PARTITION__NAME:
-				return getName();
-			case ActivityPackage.ACTIVITY_PARTITION__IS_DIMENSION:
-				return isIsDimension();
-			case ActivityPackage.ACTIVITY_PARTITION__IS_EXTERNAL:
-				return isIsExternal();
-			case ActivityPackage.ACTIVITY_PARTITION__REPRESENTED_ELEMENT:
-				if (resolve) return getRepresentedElement();
-				return basicGetRepresentedElement();
-			case ActivityPackage.ACTIVITY_PARTITION__SUPER_PARTITION:
-				if (resolve) return getSuperPartition();
-				return basicGetSuperPartition();
-			case ActivityPackage.ACTIVITY_PARTITION__SUB_PARTITIONS:
-				return getSubPartitions();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case ActivityPackage.ACTIVITY_PARTITION__NAME:
+        return getName();
+      case ActivityPackage.ACTIVITY_PARTITION__IS_DIMENSION:
+        return isIsDimension();
+      case ActivityPackage.ACTIVITY_PARTITION__IS_EXTERNAL:
+        return isIsExternal();
+      case ActivityPackage.ACTIVITY_PARTITION__REPRESENTED_ELEMENT:
+        if (resolve) return getRepresentedElement();
+        return basicGetRepresentedElement();
+      case ActivityPackage.ACTIVITY_PARTITION__SUPER_PARTITION:
+        if (resolve) return getSuperPartition();
+        return basicGetSuperPartition();
+      case ActivityPackage.ACTIVITY_PARTITION__SUB_PARTITIONS:
+        return getSubPartitions();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ActivityPackage.ACTIVITY_PARTITION__NAME:
-					setName((String)newValue);
-				return;
-			case ActivityPackage.ACTIVITY_PARTITION__IS_DIMENSION:
-					setIsDimension((Boolean)newValue);
-				return;
-			case ActivityPackage.ACTIVITY_PARTITION__IS_EXTERNAL:
-					setIsExternal((Boolean)newValue);
-				return;
-			case ActivityPackage.ACTIVITY_PARTITION__REPRESENTED_ELEMENT:
-					setRepresentedElement((AbstractType)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case ActivityPackage.ACTIVITY_PARTITION__NAME:
+          setName((String)newValue);
+        return;
+      case ActivityPackage.ACTIVITY_PARTITION__IS_DIMENSION:
+          setIsDimension((Boolean)newValue);
+        return;
+      case ActivityPackage.ACTIVITY_PARTITION__IS_EXTERNAL:
+          setIsExternal((Boolean)newValue);
+        return;
+      case ActivityPackage.ACTIVITY_PARTITION__REPRESENTED_ELEMENT:
+          setRepresentedElement((AbstractType)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.ACTIVITY_PARTITION__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case ActivityPackage.ACTIVITY_PARTITION__IS_DIMENSION:
-				setIsDimension(IS_DIMENSION_EDEFAULT);
-				return;
-			case ActivityPackage.ACTIVITY_PARTITION__IS_EXTERNAL:
-				setIsExternal(IS_EXTERNAL_EDEFAULT);
-				return;
-			case ActivityPackage.ACTIVITY_PARTITION__REPRESENTED_ELEMENT:
-				setRepresentedElement((AbstractType)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.ACTIVITY_PARTITION__NAME:
+        setName(NAME_EDEFAULT);
+        return;
+      case ActivityPackage.ACTIVITY_PARTITION__IS_DIMENSION:
+        setIsDimension(IS_DIMENSION_EDEFAULT);
+        return;
+      case ActivityPackage.ACTIVITY_PARTITION__IS_EXTERNAL:
+        setIsExternal(IS_EXTERNAL_EDEFAULT);
+        return;
+      case ActivityPackage.ACTIVITY_PARTITION__REPRESENTED_ELEMENT:
+        setRepresentedElement((AbstractType)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.ACTIVITY_PARTITION__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case ActivityPackage.ACTIVITY_PARTITION__IS_DIMENSION:
-				return isDimension != IS_DIMENSION_EDEFAULT;
-			case ActivityPackage.ACTIVITY_PARTITION__IS_EXTERNAL:
-				return isExternal != IS_EXTERNAL_EDEFAULT;
-			case ActivityPackage.ACTIVITY_PARTITION__REPRESENTED_ELEMENT:
-				return representedElement != null;
-			case ActivityPackage.ACTIVITY_PARTITION__SUPER_PARTITION:
-				return basicGetSuperPartition() != null;
-			case ActivityPackage.ACTIVITY_PARTITION__SUB_PARTITIONS:
-				return !getSubPartitions().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.ACTIVITY_PARTITION__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case ActivityPackage.ACTIVITY_PARTITION__IS_DIMENSION:
+        return isDimension != IS_DIMENSION_EDEFAULT;
+      case ActivityPackage.ACTIVITY_PARTITION__IS_EXTERNAL:
+        return isExternal != IS_EXTERNAL_EDEFAULT;
+      case ActivityPackage.ACTIVITY_PARTITION__REPRESENTED_ELEMENT:
+        return representedElement != null;
+      case ActivityPackage.ACTIVITY_PARTITION__SUPER_PARTITION:
+        return basicGetSuperPartition() != null;
+      case ActivityPackage.ACTIVITY_PARTITION__SUB_PARTITIONS:
+        return !getSubPartitions().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractNamedElement.class) {
-			switch (derivedFeatureID) {
-				case ActivityPackage.ACTIVITY_PARTITION__NAME: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == AbstractNamedElement.class) {
+      switch (derivedFeatureID) {
+        case ActivityPackage.ACTIVITY_PARTITION__NAME: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractNamedElement.class) {
-			switch (baseFeatureID) {
-				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME: return ActivityPackage.ACTIVITY_PARTITION__NAME;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == AbstractNamedElement.class) {
+      switch (baseFeatureID) {
+        case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME: return ActivityPackage.ACTIVITY_PARTITION__NAME;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (name: "); //$NON-NLS-1$
-		result.append(name);
-		result.append(", isDimension: "); //$NON-NLS-1$
-		result.append(isDimension);
-		result.append(", isExternal: "); //$NON-NLS-1$
-		result.append(isExternal);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (name: "); //$NON-NLS-1$
+    result.append(name);
+    result.append(", isDimension: "); //$NON-NLS-1$
+    result.append(isDimension);
+    result.append(", isExternal: "); //$NON-NLS-1$
+    result.append(isExternal);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //ActivityPartitionImpl

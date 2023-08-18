@@ -40,135 +40,135 @@ import org.polarsys.capella.common.data.activity.OutputPin;
 public abstract class CallActionImpl extends InvocationActionImpl implements CallAction {
 
 	/**
-	 * The cached value of the '{@link #getResults() <em>Results</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getResults() <em>Results</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getResults()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getResults()
+   * @generated
+   * @ordered
+   */
 	protected EList<OutputPin> results;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CallActionImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return ActivityPackage.Literals.CALL_ACTION;
-	}
+    return ActivityPackage.Literals.CALL_ACTION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<OutputPin> getResults() {
 
-		if (results == null) {
-			results = new EObjectContainmentEList.Resolving<OutputPin>(OutputPin.class, this, ActivityPackage.CALL_ACTION__RESULTS);
-		}
-		return results;
-	}
+    if (results == null) {
+      results = new EObjectContainmentEList.Resolving<OutputPin>(OutputPin.class, this, ActivityPackage.CALL_ACTION__RESULTS);
+    }
+    return results;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ActivityPackage.CALL_ACTION__RESULTS:
-				return ((InternalEList<?>)getResults()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case ActivityPackage.CALL_ACTION__RESULTS:
+        return ((InternalEList<?>)getResults()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ActivityPackage.CALL_ACTION__RESULTS:
-				return getResults();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case ActivityPackage.CALL_ACTION__RESULTS:
+        return getResults();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ActivityPackage.CALL_ACTION__RESULTS:
-				getResults().clear();
-				getResults().addAll((Collection<? extends OutputPin>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case ActivityPackage.CALL_ACTION__RESULTS:
+        getResults().clear();
+        getResults().addAll((Collection<? extends OutputPin>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.CALL_ACTION__RESULTS:
-				getResults().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.CALL_ACTION__RESULTS:
+        getResults().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.CALL_ACTION__RESULTS:
-				return results != null && !results.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.CALL_ACTION__RESULTS:
+        return results != null && !results.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

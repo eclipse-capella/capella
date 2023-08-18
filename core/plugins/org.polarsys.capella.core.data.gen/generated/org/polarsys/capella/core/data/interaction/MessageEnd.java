@@ -39,25 +39,25 @@ public interface MessageEnd extends AbstractEnd {
 
 
 	/**
-	 * Returns the value of the '<em><b>Message</b></em>' reference.
+   * Returns the value of the '<em><b>Message</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Message</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Message</em>' reference.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getMessageEnd_Message()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='message' featureOwner='MessageEnd'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='message'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Message to which this MessageEnd is attached\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::MessageEnd::message' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='SequenceMessage.sendingEnd(target, self);\r\n} or {\r\n\tSequenceMessage.receivingEnd(target, self);'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Message</em>' reference.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getMessageEnd_Message()
+   * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='message' featureOwner='MessageEnd'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='message'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Message to which this MessageEnd is attached\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::MessageEnd::message' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='SequenceMessage.sendingEnd(target, self);\r\n} or {\r\n\tSequenceMessage.receivingEnd(target, self);'"
+   * @generated
+   */
 
 	SequenceMessage getMessage();
 

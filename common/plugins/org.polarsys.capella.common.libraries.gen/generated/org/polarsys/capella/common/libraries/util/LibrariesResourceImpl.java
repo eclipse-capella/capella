@@ -44,36 +44,36 @@ import org.polarsys.kitalpha.emde.xmi.XMIExtensionLoadImpl;
  */
 public class LibrariesResourceImpl extends XMIResourceImpl {
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private List<Object> lookupTable = new ArrayList<Object>();
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private XMLParserPool parserPool = new XMLParserPoolImpl();
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private Map<Object, Object> nameToFeatureMap = new HashMap<Object, Object>();
 
   /**
-	 * Creates an instance of the resource.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the resource.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param uri the URI of the new resource.
-	 * @generated
-	 */
+   * @param uri the URI of the new resource.
+   * @generated
+   */
   public LibrariesResourceImpl(URI uri) {
-		super(uri);
-	}
+    super(uri);
+  }
 
   /**
      * {@inheritDoc}
@@ -95,117 +95,117 @@ public class LibrariesResourceImpl extends XMIResourceImpl {
   }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   protected XMLHelper createXMLHelper() {
-		return new XMIExtensionHelperImpl(this);	
-	}
+    return new XMIExtensionHelperImpl(this);	
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   protected XMLLoad createXMLLoad() {
-		return new XMIExtensionLoadImpl((XMIExtensionHelperImpl) createXMLHelper());	
-	}
+    return new XMIExtensionLoadImpl((XMIExtensionHelperImpl) createXMLHelper());	
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   protected boolean useIDAttributes() {
-		return false;
-	}
+    return false;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   protected void init() {
-		super.init();
+    super.init();
 
-		// Save Options
-		getDefaultSaveOptions().put(XMLResource.OPTION_ENCODING, "UTF-8");  //$NON-NLS-1$
-		getDefaultSaveOptions().put(XMLResource.OPTION_CONFIGURATION_CACHE, Boolean.TRUE);
-		getDefaultSaveOptions().put(XMLResource.OPTION_USE_CACHED_LOOKUP_TABLE, lookupTable);    
-		getDefaultSaveOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);    
-		getDefaultSaveOptions().put(XMLResource.OPTION_SAVE_TYPE_INFORMATION, Boolean.TRUE);    
-		getDefaultSaveOptions().put(XMLResource.OPTION_LINE_WIDTH, new Integer(80));
-		getDefaultSaveOptions().put(XMLResource.OPTION_URI_HANDLER, new URIHandlerImpl.PlatformSchemeAware());		        
-		getDefaultSaveOptions().put(XMLResource.OPTION_FLUSH_THRESHOLD, Integer.valueOf(0x01000000));
-		getDefaultSaveOptions().put(XMLResource.OPTION_USE_FILE_BUFFER, Boolean.TRUE);
+    // Save Options
+    getDefaultSaveOptions().put(XMLResource.OPTION_ENCODING, "UTF-8");  //$NON-NLS-1$
+    getDefaultSaveOptions().put(XMLResource.OPTION_CONFIGURATION_CACHE, Boolean.TRUE);
+    getDefaultSaveOptions().put(XMLResource.OPTION_USE_CACHED_LOOKUP_TABLE, lookupTable);    
+    getDefaultSaveOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);    
+    getDefaultSaveOptions().put(XMLResource.OPTION_SAVE_TYPE_INFORMATION, Boolean.TRUE);    
+    getDefaultSaveOptions().put(XMLResource.OPTION_LINE_WIDTH, new Integer(80));
+    getDefaultSaveOptions().put(XMLResource.OPTION_URI_HANDLER, new URIHandlerImpl.PlatformSchemeAware());		        
+    getDefaultSaveOptions().put(XMLResource.OPTION_FLUSH_THRESHOLD, Integer.valueOf(0x01000000));
+    getDefaultSaveOptions().put(XMLResource.OPTION_USE_FILE_BUFFER, Boolean.TRUE);
 
-		// Load Options
-		getDefaultLoadOptions().put(XMLResource.OPTION_DEFER_ATTACHMENT, Boolean.TRUE);
-		getDefaultLoadOptions().put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION, Boolean.TRUE);
-		getDefaultLoadOptions().put(XMLResource.OPTION_USE_DEPRECATED_METHODS, Boolean.TRUE);
-		getDefaultLoadOptions().put(XMLResource.OPTION_USE_PARSER_POOL, parserPool);
-		getDefaultLoadOptions().put(XMLResource.OPTION_USE_XML_NAME_TO_FEATURE_MAP, nameToFeatureMap);
-		getDefaultLoadOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
-		getDefaultLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
-	}
+    // Load Options
+    getDefaultLoadOptions().put(XMLResource.OPTION_DEFER_ATTACHMENT, Boolean.TRUE);
+    getDefaultLoadOptions().put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION, Boolean.TRUE);
+    getDefaultLoadOptions().put(XMLResource.OPTION_USE_DEPRECATED_METHODS, Boolean.TRUE);
+    getDefaultLoadOptions().put(XMLResource.OPTION_USE_PARSER_POOL, parserPool);
+    getDefaultLoadOptions().put(XMLResource.OPTION_USE_XML_NAME_TO_FEATURE_MAP, nameToFeatureMap);
+    getDefaultLoadOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
+    getDefaultLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
+  }
 
   //begin-capella-code
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * 
-	 * @see org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl#getEObjectByID(java.lang.String)
-	 * @generated
-	 */
+   * 
+   * @see org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl#getEObjectByID(java.lang.String)
+   * @generated
+   */
   @Override
   protected EObject getEObjectByID(String id) {
-		if (idToEObjectMap == null)
-			return super.getEObjectByID(id);
-		return getIDToEObjectMap().get(id);
-	}
+    if (idToEObjectMap == null)
+      return super.getEObjectByID(id);
+    return getIDToEObjectMap().get(id);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * 
-	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#getIntrinsicIDToEObjectMap()
-	 * @generated
-	 */
+   * 
+   * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#getIntrinsicIDToEObjectMap()
+   * @generated
+   */
   @Override
   @SuppressWarnings("unchecked")
   public Map getIntrinsicIDToEObjectMap() {
-		return getIDToEObjectMap();
-	}
+    return getIDToEObjectMap();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * 
-	 * @see org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl#doUnload()
-	 * @generated
-	 */
+   * 
+   * @see org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl#doUnload()
+   * @generated
+   */
   @Override
   protected void doUnload() {
-		super.doUnload();
-		this.idToEObjectMap = null;
-	}
+    super.doUnload();
+    this.idToEObjectMap = null;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * 
-	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#setLoaded()
-	 * @generated
-	 */
+   * 
+   * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#setLoaded()
+   * @generated
+   */
   @Override
   protected Notification setLoaded(boolean isLoaded) {
-		return super.setLoaded(isLoaded);
-	}
+    return super.setLoaded(isLoaded);
+  }
   //end-capella-code
 
 } //LibrariesResourceImpl

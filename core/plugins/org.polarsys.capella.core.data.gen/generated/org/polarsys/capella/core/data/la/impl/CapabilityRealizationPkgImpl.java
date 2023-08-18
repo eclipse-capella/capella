@@ -42,13 +42,13 @@ import org.polarsys.capella.core.data.la.LaPackage;
 public class CapabilityRealizationPkgImpl extends AbstractCapabilityPkgImpl implements CapabilityRealizationPkg {
 
 	/**
-	 * The cached value of the '{@link #getOwnedCapabilityRealizations() <em>Owned Capability Realizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedCapabilityRealizations() <em>Owned Capability Realizations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedCapabilityRealizations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedCapabilityRealizations()
+   * @generated
+   * @ordered
+   */
 	protected EList<CapabilityRealization> ownedCapabilityRealizations;
 
 
@@ -56,166 +56,166 @@ public class CapabilityRealizationPkgImpl extends AbstractCapabilityPkgImpl impl
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedCapabilityRealizationPkgs() <em>Owned Capability Realization Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedCapabilityRealizationPkgs() <em>Owned Capability Realization Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedCapabilityRealizationPkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedCapabilityRealizationPkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<CapabilityRealizationPkg> ownedCapabilityRealizationPkgs;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CapabilityRealizationPkgImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return LaPackage.Literals.CAPABILITY_REALIZATION_PKG;
-	}
+    return LaPackage.Literals.CAPABILITY_REALIZATION_PKG;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CapabilityRealization> getOwnedCapabilityRealizations() {
 
-		if (ownedCapabilityRealizations == null) {
-			ownedCapabilityRealizations = new EObjectContainmentEList.Resolving<CapabilityRealization>(CapabilityRealization.class, this, LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATIONS);
-		}
-		return ownedCapabilityRealizations;
-	}
+    if (ownedCapabilityRealizations == null) {
+      ownedCapabilityRealizations = new EObjectContainmentEList.Resolving<CapabilityRealization>(CapabilityRealization.class, this, LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATIONS);
+    }
+    return ownedCapabilityRealizations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CapabilityRealizationPkg> getOwnedCapabilityRealizationPkgs() {
 
-		if (ownedCapabilityRealizationPkgs == null) {
-			ownedCapabilityRealizationPkgs = new EObjectContainmentEList.Resolving<CapabilityRealizationPkg>(CapabilityRealizationPkg.class, this, LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATION_PKGS);
-		}
-		return ownedCapabilityRealizationPkgs;
-	}
+    if (ownedCapabilityRealizationPkgs == null) {
+      ownedCapabilityRealizationPkgs = new EObjectContainmentEList.Resolving<CapabilityRealizationPkg>(CapabilityRealizationPkg.class, this, LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATION_PKGS);
+    }
+    return ownedCapabilityRealizationPkgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedCapabilityRealizations()).basicRemove(otherEnd, msgs);
-			case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATION_PKGS:
-				return ((InternalEList<?>)getOwnedCapabilityRealizationPkgs()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATIONS:
+        return ((InternalEList<?>)getOwnedCapabilityRealizations()).basicRemove(otherEnd, msgs);
+      case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATION_PKGS:
+        return ((InternalEList<?>)getOwnedCapabilityRealizationPkgs()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATIONS:
-				return getOwnedCapabilityRealizations();
-			case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATION_PKGS:
-				return getOwnedCapabilityRealizationPkgs();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATIONS:
+        return getOwnedCapabilityRealizations();
+      case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATION_PKGS:
+        return getOwnedCapabilityRealizationPkgs();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATIONS:
-				getOwnedCapabilityRealizations().clear();
-				getOwnedCapabilityRealizations().addAll((Collection<? extends CapabilityRealization>)newValue);
-				return;
-			case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATION_PKGS:
-				getOwnedCapabilityRealizationPkgs().clear();
-				getOwnedCapabilityRealizationPkgs().addAll((Collection<? extends CapabilityRealizationPkg>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATIONS:
+        getOwnedCapabilityRealizations().clear();
+        getOwnedCapabilityRealizations().addAll((Collection<? extends CapabilityRealization>)newValue);
+        return;
+      case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATION_PKGS:
+        getOwnedCapabilityRealizationPkgs().clear();
+        getOwnedCapabilityRealizationPkgs().addAll((Collection<? extends CapabilityRealizationPkg>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATIONS:
-				getOwnedCapabilityRealizations().clear();
-				return;
-			case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATION_PKGS:
-				getOwnedCapabilityRealizationPkgs().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATIONS:
+        getOwnedCapabilityRealizations().clear();
+        return;
+      case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATION_PKGS:
+        getOwnedCapabilityRealizationPkgs().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATIONS:
-				return ownedCapabilityRealizations != null && !ownedCapabilityRealizations.isEmpty();
-			case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATION_PKGS:
-				return ownedCapabilityRealizationPkgs != null && !ownedCapabilityRealizationPkgs.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATIONS:
+        return ownedCapabilityRealizations != null && !ownedCapabilityRealizations.isEmpty();
+      case LaPackage.CAPABILITY_REALIZATION_PKG__OWNED_CAPABILITY_REALIZATION_PKGS:
+        return ownedCapabilityRealizationPkgs != null && !ownedCapabilityRealizationPkgs.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

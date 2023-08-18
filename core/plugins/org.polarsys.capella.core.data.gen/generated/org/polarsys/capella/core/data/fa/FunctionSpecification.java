@@ -45,23 +45,23 @@ public interface FunctionSpecification extends Namespace, AbstractActivity {
 
 
 	/**
-	 * Returns the value of the '<em><b>In Exchange Links</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeLink}.
+   * Returns the value of the '<em><b>In Exchange Links</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeLink}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>In Exchange Links</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>In Exchange Links</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionSpecification_InExchangeLinks()
-	 * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='inFunctionalLinks'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='inbound exchange links\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>In Exchange Links</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionSpecification_InExchangeLinks()
+   * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='inFunctionalLinks'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='inbound exchange links\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	EList<ExchangeLink> getInExchangeLinks();
 
@@ -72,23 +72,23 @@ public interface FunctionSpecification extends Namespace, AbstractActivity {
 
 
 	/**
-	 * Returns the value of the '<em><b>Out Exchange Links</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeLink}.
+   * Returns the value of the '<em><b>Out Exchange Links</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeLink}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Out Exchange Links</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Out Exchange Links</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionSpecification_OutExchangeLinks()
-	 * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='outFunctionalLinks'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='outbound exchange links\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Out Exchange Links</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionSpecification_OutExchangeLinks()
+   * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='outFunctionalLinks'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='outbound exchange links\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	EList<ExchangeLink> getOutExchangeLinks();
 
@@ -99,22 +99,22 @@ public interface FunctionSpecification extends Namespace, AbstractActivity {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Function Ports</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionPort}.
+   * Returns the value of the '<em><b>Owned Function Ports</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionPort}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Function Ports</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Function Ports</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionSpecification_OwnedFunctionPorts()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='flow ports owned by functions instanciating this function specification\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::StructuredClassifier::ownedAttribute' explanation='none' constraints='uml::StructuredClassifier::ownedAttribute elements on which FlowPort stereotype or any stereotype that inherits from it is applied\r\nOrder will not be preserved'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Function Ports</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionSpecification_OwnedFunctionPorts()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='flow ports owned by functions instanciating this function specification\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::StructuredClassifier::ownedAttribute' explanation='none' constraints='uml::StructuredClassifier::ownedAttribute elements on which FlowPort stereotype or any stereotype that inherits from it is applied\r\nOrder will not be preserved'"
+   * @generated
+   */
 
 	EList<FunctionPort> getOwnedFunctionPorts();
 
@@ -125,26 +125,26 @@ public interface FunctionSpecification extends Namespace, AbstractActivity {
 
 
 	/**
-	 * Returns the value of the '<em><b>Sub Function Specifications</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionSpecification}.
+   * Returns the value of the '<em><b>Sub Function Specifications</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionSpecification}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Sub Function Specifications</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sub Function Specifications</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionSpecification_SubFunctionSpecifications()
-	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Component'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='subFunctions'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='FunctionSpecification.ownedNodes(self, af);\r\nAbstractFunction.linkedFunctionSpecification(af, target); '"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of sub-specifications of this function specification \r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Sub Function Specifications</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionSpecification_SubFunctionSpecifications()
+   * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Component'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='subFunctions'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='FunctionSpecification.ownedNodes(self, af);\r\nAbstractFunction.linkedFunctionSpecification(af, target); '"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of sub-specifications of this function specification \r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<FunctionSpecification> getSubFunctionSpecifications();
 

@@ -39,24 +39,24 @@ public interface AbstractNamedElement extends ModelElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractNamedElement_Name()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='name' featureOwner='AbstractNamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation namingAttribute='true' Label='name'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The name of the NamedElement\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::name' explanation='' constraints=''"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractNamedElement_Name()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='name' featureOwner='AbstractNamedElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation namingAttribute='true' Label='name'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The name of the NamedElement\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::name' explanation='' constraints=''"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	String getName();
 
@@ -64,14 +64,14 @@ public interface AbstractNamedElement extends ModelElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractNamedElement#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractNamedElement#getName <em>Name</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
 
 	void setName(String value);
 

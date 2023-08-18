@@ -39,22 +39,22 @@ public interface CommunityOfInterest extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Community Of Interest Compositions</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.CommunityOfInterestComposition}.
+   * Returns the value of the '<em><b>Community Of Interest Compositions</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.CommunityOfInterestComposition}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Community Of Interest Compositions</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Community Of Interest Compositions</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getCommunityOfInterest_CommunityOfInterestCompositions()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='mediator elements implementing the relationships between this community of interest and the organizational units.\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::clientDependency, keyword::nearestpackage' explanation='none' constraints='Some elements on which CommunityOfInterestComposition stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Community Of Interest Compositions</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getCommunityOfInterest_CommunityOfInterestCompositions()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='mediator elements implementing the relationships between this community of interest and the organizational units.\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::clientDependency, keyword::nearestpackage' explanation='none' constraints='Some elements on which CommunityOfInterestComposition stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<CommunityOfInterestComposition> getCommunityOfInterestCompositions();
 

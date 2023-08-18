@@ -39,24 +39,24 @@ public interface ExecutableNode extends ActivityNode {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Handlers</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.activity.ExceptionHandler}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.common.data.activity.ExceptionHandler#getProtectedNode <em>Protected Node</em>}'.
+   * Returns the value of the '<em><b>Owned Handlers</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.activity.ExceptionHandler}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.common.data.activity.ExceptionHandler#getProtectedNode <em>Protected Node</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Handlers</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Handlers</em>' containment reference list.
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getExecutableNode_OwnedHandlers()
-	 * @see org.polarsys.capella.common.data.activity.ExceptionHandler#getProtectedNode
-	 * @model opposite="protectedNode" containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable\r\nnode.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExecutableNode::handler' explanation='none' constraints='Order must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Handlers</em>' containment reference list.
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getExecutableNode_OwnedHandlers()
+   * @see org.polarsys.capella.common.data.activity.ExceptionHandler#getProtectedNode
+   * @model opposite="protectedNode" containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable\r\nnode.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExecutableNode::handler' explanation='none' constraints='Order must be computed'"
+   * @generated
+   */
 
 	EList<ExceptionHandler> getOwnedHandlers();
 

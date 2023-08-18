@@ -43,23 +43,23 @@ public interface EntityPkg extends ComponentPkg {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Entity Pkgs</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.EntityPkg}.
+   * Returns the value of the '<em><b>Owned Entity Pkgs</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.EntityPkg}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Entity Pkgs</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Entity Pkgs</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getEntityPkg_OwnedEntityPkgs()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='sub-(Entity)packages contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which EntityPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Entity Pkgs</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getEntityPkg_OwnedEntityPkgs()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='sub-(Entity)packages contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which EntityPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<EntityPkg> getOwnedEntityPkgs();
 
@@ -70,23 +70,23 @@ public interface EntityPkg extends ComponentPkg {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Entities</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.Entity}.
+   * Returns the value of the '<em><b>Owned Entities</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.Entity}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Entities</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Entities</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getEntityPkg_OwnedEntities()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Entity elements contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Entity stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Entities</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getEntityPkg_OwnedEntities()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Entity elements contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Entity stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<Entity> getOwnedEntities();
 
@@ -97,22 +97,22 @@ public interface EntityPkg extends ComponentPkg {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Locations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.Location}.
+   * Returns the value of the '<em><b>Owned Locations</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.Location}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Locations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Locations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getEntityPkg_OwnedLocations()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Location elements contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Location stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Locations</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getEntityPkg_OwnedLocations()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Location elements contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which Location stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<Location> getOwnedLocations();
 
@@ -123,22 +123,22 @@ public interface EntityPkg extends ComponentPkg {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Communication Means</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.CommunicationMean}.
+   * Returns the value of the '<em><b>Owned Communication Means</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.CommunicationMean}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Communication Means</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Communication Means</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getEntityPkg_OwnedCommunicationMeans()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the CommunicationMean elements contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which CommunicationMean stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Communication Means</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getEntityPkg_OwnedCommunicationMeans()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the CommunicationMean elements contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which CommunicationMean stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<CommunicationMean> getOwnedCommunicationMeans();
 

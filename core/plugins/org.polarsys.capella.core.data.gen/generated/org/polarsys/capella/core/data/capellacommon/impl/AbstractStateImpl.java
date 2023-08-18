@@ -61,13 +61,13 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
 public abstract class AbstractStateImpl extends NamedElementImpl implements AbstractState {
 
 	/**
-	 * The cached value of the '{@link #getReferencedStates() <em>Referenced States</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getReferencedStates() <em>Referenced States</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReferencedStates()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getReferencedStates()
+   * @generated
+   * @ordered
+   */
 	protected EList<IState> referencedStates;
 
 
@@ -75,13 +75,13 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 
 
 	/**
-	 * The cached value of the '{@link #getExploitedStates() <em>Exploited States</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getExploitedStates() <em>Exploited States</em>}' reference list.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getExploitedStates()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getExploitedStates()
+   * @generated
+   * @ordered
+   */
   protected EList<IState> exploitedStates;
 
 
@@ -89,13 +89,13 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 
 
   /**
-	 * The cached value of the '{@link #getOwnedAbstractStateRealizations() <em>Owned Abstract State Realizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedAbstractStateRealizations() <em>Owned Abstract State Realizations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedAbstractStateRealizations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedAbstractStateRealizations()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractStateRealization> ownedAbstractStateRealizations;
 
 
@@ -111,85 +111,85 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractStateImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.ABSTRACT_STATE;
-	}
+    return CapellacommonPackage.Literals.ABSTRACT_STATE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<IState> getReferencedStates() {
 
-		if (referencedStates == null) {
-			referencedStates = new EObjectResolvingEList<IState>(IState.class, this, CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES);
-		}
-		return referencedStates;
-	}
+    if (referencedStates == null) {
+      referencedStates = new EObjectResolvingEList<IState>(IState.class, this, CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES);
+    }
+    return referencedStates;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
   public EList<IState> getExploitedStates() {
 
-		if (exploitedStates == null) {
-			exploitedStates = new EObjectResolvingEList<IState>(IState.class, this, CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES);
-		}
-		return exploitedStates;
-	}
+    if (exploitedStates == null) {
+      exploitedStates = new EObjectResolvingEList<IState>(IState.class, this, CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES);
+    }
+    return exploitedStates;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractStateRealization> getOwnedAbstractStateRealizations() {
 
-		if (ownedAbstractStateRealizations == null) {
-			ownedAbstractStateRealizations = new EObjectContainmentEList.Resolving<AbstractStateRealization>(AbstractStateRealization.class, this, CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS);
-		}
-		return ownedAbstractStateRealizations;
-	}
+    if (ownedAbstractStateRealizations == null) {
+      ownedAbstractStateRealizations = new EObjectContainmentEList.Resolving<AbstractStateRealization>(AbstractStateRealization.class, this, CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS);
+    }
+    return ownedAbstractStateRealizations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractState> getRealizedAbstractStates() {
 
@@ -216,27 +216,27 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZED_ABSTRACT_STATES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZED_ABSTRACT_STATES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractState> resultAsList = (Collection<AbstractState>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractState>(this, CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZED_ABSTRACT_STATES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractState> resultAsList = (Collection<AbstractState>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractState>(this, CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZED_ABSTRACT_STATES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractState> getRealizingAbstractStates() {
 
@@ -263,27 +263,27 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZING_ABSTRACT_STATES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZING_ABSTRACT_STATES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractState> resultAsList = (Collection<AbstractState>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractState>(this, CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZING_ABSTRACT_STATES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractState> resultAsList = (Collection<AbstractState>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractState>(this, CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZING_ABSTRACT_STATES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<StateTransition> getOutgoing() {
 
@@ -310,27 +310,27 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacommonPackage.Literals.ABSTRACT_STATE__OUTGOING.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.ABSTRACT_STATE__OUTGOING, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<StateTransition> resultAsList = (Collection<StateTransition>) result;
-		return new EcoreEList.UnmodifiableEList<StateTransition>(this, CapellacommonPackage.Literals.ABSTRACT_STATE__OUTGOING, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<StateTransition> resultAsList = (Collection<StateTransition>) result;
+    return new EcoreEList.UnmodifiableEList<StateTransition>(this, CapellacommonPackage.Literals.ABSTRACT_STATE__OUTGOING, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<StateTransition> getIncoming() {
 
@@ -357,27 +357,27 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacommonPackage.Literals.ABSTRACT_STATE__INCOMING.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.ABSTRACT_STATE__INCOMING, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<StateTransition> resultAsList = (Collection<StateTransition>) result;
-		return new EcoreEList.UnmodifiableEList<StateTransition>(this, CapellacommonPackage.Literals.ABSTRACT_STATE__INCOMING, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<StateTransition> resultAsList = (Collection<StateTransition>) result;
+    return new EcoreEList.UnmodifiableEList<StateTransition>(this, CapellacommonPackage.Literals.ABSTRACT_STATE__INCOMING, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Region> getInvolverRegions() {
 
@@ -404,173 +404,173 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacommonPackage.Literals.ABSTRACT_STATE__INVOLVER_REGIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.ABSTRACT_STATE__INVOLVER_REGIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Region> resultAsList = (Collection<Region>) result;
-		return new EcoreEList.UnmodifiableEList<Region>(this, CapellacommonPackage.Literals.ABSTRACT_STATE__INVOLVER_REGIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Region> resultAsList = (Collection<Region>) result;
+    return new EcoreEList.UnmodifiableEList<Region>(this, CapellacommonPackage.Literals.ABSTRACT_STATE__INVOLVER_REGIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedAbstractStateRealizations()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
+        return ((InternalEList<?>)getOwnedAbstractStateRealizations()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES:
-				return getReferencedStates();
-			case CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES:
-				return getExploitedStates();
-			case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
-				return getOwnedAbstractStateRealizations();
-			case CapellacommonPackage.ABSTRACT_STATE__REALIZED_ABSTRACT_STATES:
-				return getRealizedAbstractStates();
-			case CapellacommonPackage.ABSTRACT_STATE__REALIZING_ABSTRACT_STATES:
-				return getRealizingAbstractStates();
-			case CapellacommonPackage.ABSTRACT_STATE__OUTGOING:
-				return getOutgoing();
-			case CapellacommonPackage.ABSTRACT_STATE__INCOMING:
-				return getIncoming();
-			case CapellacommonPackage.ABSTRACT_STATE__INVOLVER_REGIONS:
-				return getInvolverRegions();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES:
+        return getReferencedStates();
+      case CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES:
+        return getExploitedStates();
+      case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
+        return getOwnedAbstractStateRealizations();
+      case CapellacommonPackage.ABSTRACT_STATE__REALIZED_ABSTRACT_STATES:
+        return getRealizedAbstractStates();
+      case CapellacommonPackage.ABSTRACT_STATE__REALIZING_ABSTRACT_STATES:
+        return getRealizingAbstractStates();
+      case CapellacommonPackage.ABSTRACT_STATE__OUTGOING:
+        return getOutgoing();
+      case CapellacommonPackage.ABSTRACT_STATE__INCOMING:
+        return getIncoming();
+      case CapellacommonPackage.ABSTRACT_STATE__INVOLVER_REGIONS:
+        return getInvolverRegions();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES:
-				getReferencedStates().clear();
-				getReferencedStates().addAll((Collection<? extends IState>)newValue);
-				return;
-			case CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES:
-				getExploitedStates().clear();
-				getExploitedStates().addAll((Collection<? extends IState>)newValue);
-				return;
-			case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
-				getOwnedAbstractStateRealizations().clear();
-				getOwnedAbstractStateRealizations().addAll((Collection<? extends AbstractStateRealization>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES:
+        getReferencedStates().clear();
+        getReferencedStates().addAll((Collection<? extends IState>)newValue);
+        return;
+      case CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES:
+        getExploitedStates().clear();
+        getExploitedStates().addAll((Collection<? extends IState>)newValue);
+        return;
+      case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
+        getOwnedAbstractStateRealizations().clear();
+        getOwnedAbstractStateRealizations().addAll((Collection<? extends AbstractStateRealization>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES:
-				getReferencedStates().clear();
-				return;
-			case CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES:
-				getExploitedStates().clear();
-				return;
-			case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
-				getOwnedAbstractStateRealizations().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES:
+        getReferencedStates().clear();
+        return;
+      case CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES:
+        getExploitedStates().clear();
+        return;
+      case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
+        getOwnedAbstractStateRealizations().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES:
-				return referencedStates != null && !referencedStates.isEmpty();
-			case CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES:
-				return exploitedStates != null && !exploitedStates.isEmpty();
-			case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
-				return ownedAbstractStateRealizations != null && !ownedAbstractStateRealizations.isEmpty();
-			case CapellacommonPackage.ABSTRACT_STATE__REALIZED_ABSTRACT_STATES:
-				return !getRealizedAbstractStates().isEmpty();
-			case CapellacommonPackage.ABSTRACT_STATE__REALIZING_ABSTRACT_STATES:
-				return !getRealizingAbstractStates().isEmpty();
-			case CapellacommonPackage.ABSTRACT_STATE__OUTGOING:
-				return !getOutgoing().isEmpty();
-			case CapellacommonPackage.ABSTRACT_STATE__INCOMING:
-				return !getIncoming().isEmpty();
-			case CapellacommonPackage.ABSTRACT_STATE__INVOLVER_REGIONS:
-				return !getInvolverRegions().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES:
+        return referencedStates != null && !referencedStates.isEmpty();
+      case CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES:
+        return exploitedStates != null && !exploitedStates.isEmpty();
+      case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
+        return ownedAbstractStateRealizations != null && !ownedAbstractStateRealizations.isEmpty();
+      case CapellacommonPackage.ABSTRACT_STATE__REALIZED_ABSTRACT_STATES:
+        return !getRealizedAbstractStates().isEmpty();
+      case CapellacommonPackage.ABSTRACT_STATE__REALIZING_ABSTRACT_STATES:
+        return !getRealizingAbstractStates().isEmpty();
+      case CapellacommonPackage.ABSTRACT_STATE__OUTGOING:
+        return !getOutgoing().isEmpty();
+      case CapellacommonPackage.ABSTRACT_STATE__INCOMING:
+        return !getIncoming().isEmpty();
+      case CapellacommonPackage.ABSTRACT_STATE__INVOLVER_REGIONS:
+        return !getInvolverRegions().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == IState.class) {
-			switch (derivedFeatureID) {
-				case CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES: return ModellingcorePackage.ISTATE__REFERENCED_STATES;
-				case CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES: return ModellingcorePackage.ISTATE__EXPLOITED_STATES;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == IState.class) {
+      switch (derivedFeatureID) {
+        case CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES: return ModellingcorePackage.ISTATE__REFERENCED_STATES;
+        case CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES: return ModellingcorePackage.ISTATE__EXPLOITED_STATES;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == IState.class) {
-			switch (baseFeatureID) {
-				case ModellingcorePackage.ISTATE__REFERENCED_STATES: return CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES;
-				case ModellingcorePackage.ISTATE__EXPLOITED_STATES: return CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == IState.class) {
+      switch (baseFeatureID) {
+        case ModellingcorePackage.ISTATE__REFERENCED_STATES: return CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES;
+        case ModellingcorePackage.ISTATE__EXPLOITED_STATES: return CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 
 } //AbstractStateImpl

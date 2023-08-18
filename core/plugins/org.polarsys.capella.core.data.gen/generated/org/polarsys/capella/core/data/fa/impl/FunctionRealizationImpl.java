@@ -50,48 +50,48 @@ public class FunctionRealizationImpl extends AllocationImpl implements FunctionR
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FaPackage.Literals.FUNCTION_REALIZATION;
-	}
+    return FaPackage.Literals.FUNCTION_REALIZATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractFunction getAllocatedFunction() {
 
-		AbstractFunction allocatedFunction = basicGetAllocatedFunction();
-		return allocatedFunction != null && allocatedFunction.eIsProxy() ? (AbstractFunction)eResolveProxy((InternalEObject)allocatedFunction) : allocatedFunction;
-	}
+    AbstractFunction allocatedFunction = basicGetAllocatedFunction();
+    return allocatedFunction != null && allocatedFunction.eIsProxy() ? (AbstractFunction)eResolveProxy((InternalEObject)allocatedFunction) : allocatedFunction;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractFunction basicGetAllocatedFunction() {
 
@@ -118,15 +118,15 @@ public class FunctionRealizationImpl extends AllocationImpl implements FunctionR
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTION_REALIZATION__ALLOCATED_FUNCTION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTION_REALIZATION__ALLOCATED_FUNCTION, annotation);
-		
-		try {
-			return (AbstractFunction) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (AbstractFunction) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -134,23 +134,23 @@ public class FunctionRealizationImpl extends AllocationImpl implements FunctionR
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractFunction getAllocatingFunction() {
 
-		AbstractFunction allocatingFunction = basicGetAllocatingFunction();
-		return allocatingFunction != null && allocatingFunction.eIsProxy() ? (AbstractFunction)eResolveProxy((InternalEObject)allocatingFunction) : allocatingFunction;
-	}
+    AbstractFunction allocatingFunction = basicGetAllocatingFunction();
+    return allocatingFunction != null && allocatingFunction.eIsProxy() ? (AbstractFunction)eResolveProxy((InternalEObject)allocatingFunction) : allocatingFunction;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractFunction basicGetAllocatingFunction() {
 
@@ -177,53 +177,53 @@ public class FunctionRealizationImpl extends AllocationImpl implements FunctionR
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTION_REALIZATION__ALLOCATING_FUNCTION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTION_REALIZATION__ALLOCATING_FUNCTION, annotation);
-		
-		try {
-			return (AbstractFunction) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (AbstractFunction) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_REALIZATION__ALLOCATED_FUNCTION:
-				if (resolve) return getAllocatedFunction();
-				return basicGetAllocatedFunction();
-			case FaPackage.FUNCTION_REALIZATION__ALLOCATING_FUNCTION:
-				if (resolve) return getAllocatingFunction();
-				return basicGetAllocatingFunction();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_REALIZATION__ALLOCATED_FUNCTION:
+        if (resolve) return getAllocatedFunction();
+        return basicGetAllocatedFunction();
+      case FaPackage.FUNCTION_REALIZATION__ALLOCATING_FUNCTION:
+        if (resolve) return getAllocatingFunction();
+        return basicGetAllocatingFunction();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_REALIZATION__ALLOCATED_FUNCTION:
-				return basicGetAllocatedFunction() != null;
-			case FaPackage.FUNCTION_REALIZATION__ALLOCATING_FUNCTION:
-				return basicGetAllocatingFunction() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_REALIZATION__ALLOCATED_FUNCTION:
+        return basicGetAllocatedFunction() != null;
+      case FaPackage.FUNCTION_REALIZATION__ALLOCATING_FUNCTION:
+        return basicGetAllocatingFunction() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

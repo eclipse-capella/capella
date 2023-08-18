@@ -44,48 +44,48 @@ public class ExecutionEndImpl extends AbstractEndImpl implements ExecutionEnd {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ExecutionEndImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.EXECUTION_END;
-	}
+    return InteractionPackage.Literals.EXECUTION_END;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Execution getExecution() {
 
-		Execution execution = basicGetExecution();
-		return execution != null && execution.eIsProxy() ? (Execution)eResolveProxy((InternalEObject)execution) : execution;
-	}
+    Execution execution = basicGetExecution();
+    return execution != null && execution.eIsProxy() ? (Execution)eResolveProxy((InternalEObject)execution) : execution;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Execution basicGetExecution() {
 
@@ -112,48 +112,48 @@ public class ExecutionEndImpl extends AbstractEndImpl implements ExecutionEnd {
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.EXECUTION_END__EXECUTION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.EXECUTION_END__EXECUTION, annotation);
-		
-		try {
-			return (Execution) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Execution) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.EXECUTION_END__EXECUTION:
-				if (resolve) return getExecution();
-				return basicGetExecution();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.EXECUTION_END__EXECUTION:
+        if (resolve) return getExecution();
+        return basicGetExecution();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.EXECUTION_END__EXECUTION:
-				return basicGetExecution() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.EXECUTION_END__EXECUTION:
+        return basicGetExecution() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

@@ -51,23 +51,23 @@ import org.polarsys.capella.core.data.information.UnionProperty;
 public class UnionImpl extends ClassImpl implements Union {
 
 	/**
-	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getKind()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getKind()
+   * @generated
+   * @ordered
+   */
 	protected static final UnionKind KIND_EDEFAULT = UnionKind.UNION;
 
 	/**
-	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getKind()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getKind()
+   * @generated
+   * @ordered
+   */
 	protected UnionKind kind = KIND_EDEFAULT;
 
 
@@ -75,13 +75,13 @@ public class UnionImpl extends ClassImpl implements Union {
 
 
 	/**
-	 * The cached value of the '{@link #getDiscriminant() <em>Discriminant</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getDiscriminant() <em>Discriminant</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDiscriminant()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getDiscriminant()
+   * @generated
+   * @ordered
+   */
 	protected UnionProperty discriminant;
 
 
@@ -89,13 +89,13 @@ public class UnionImpl extends ClassImpl implements Union {
 
 
 	/**
-	 * The cached value of the '{@link #getDefaultProperty() <em>Default Property</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getDefaultProperty() <em>Default Property</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDefaultProperty()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getDefaultProperty()
+   * @generated
+   * @ordered
+   */
 	protected UnionProperty defaultProperty;
 
 
@@ -106,57 +106,57 @@ public class UnionImpl extends ClassImpl implements Union {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected UnionImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.UNION;
-	}
+    return InformationPackage.Literals.UNION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public UnionKind getKind() {
 
-		return kind;
-	}
+    return kind;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setKind(UnionKind newKind) {
 
-		UnionKind oldKind = kind;
-		kind = newKind == null ? KIND_EDEFAULT : newKind;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.UNION__KIND, oldKind, kind));
+    UnionKind oldKind = kind;
+    kind = newKind == null ? KIND_EDEFAULT : newKind;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.UNION__KIND, oldKind, kind));
 
-	}
+  }
 
 
 
@@ -164,53 +164,53 @@ public class UnionImpl extends ClassImpl implements Union {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public UnionProperty getDiscriminant() {
 
-		if (discriminant != null && discriminant.eIsProxy()) {
-			InternalEObject oldDiscriminant = (InternalEObject)discriminant;
-			discriminant = (UnionProperty)eResolveProxy(oldDiscriminant);
-			if (discriminant != oldDiscriminant) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InformationPackage.UNION__DISCRIMINANT, oldDiscriminant, discriminant));
-			}
-		}
-		return discriminant;
-	}
+    if (discriminant != null && discriminant.eIsProxy()) {
+      InternalEObject oldDiscriminant = (InternalEObject)discriminant;
+      discriminant = (UnionProperty)eResolveProxy(oldDiscriminant);
+      if (discriminant != oldDiscriminant) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InformationPackage.UNION__DISCRIMINANT, oldDiscriminant, discriminant));
+      }
+    }
+    return discriminant;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public UnionProperty basicGetDiscriminant() {
 
-		return discriminant;
-	}
+    return discriminant;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setDiscriminant(UnionProperty newDiscriminant) {
 
-		UnionProperty oldDiscriminant = discriminant;
-		discriminant = newDiscriminant;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.UNION__DISCRIMINANT, oldDiscriminant, discriminant));
+    UnionProperty oldDiscriminant = discriminant;
+    discriminant = newDiscriminant;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.UNION__DISCRIMINANT, oldDiscriminant, discriminant));
 
-	}
+  }
 
 
 
@@ -218,53 +218,53 @@ public class UnionImpl extends ClassImpl implements Union {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public UnionProperty getDefaultProperty() {
 
-		if (defaultProperty != null && defaultProperty.eIsProxy()) {
-			InternalEObject oldDefaultProperty = (InternalEObject)defaultProperty;
-			defaultProperty = (UnionProperty)eResolveProxy(oldDefaultProperty);
-			if (defaultProperty != oldDefaultProperty) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InformationPackage.UNION__DEFAULT_PROPERTY, oldDefaultProperty, defaultProperty));
-			}
-		}
-		return defaultProperty;
-	}
+    if (defaultProperty != null && defaultProperty.eIsProxy()) {
+      InternalEObject oldDefaultProperty = (InternalEObject)defaultProperty;
+      defaultProperty = (UnionProperty)eResolveProxy(oldDefaultProperty);
+      if (defaultProperty != oldDefaultProperty) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InformationPackage.UNION__DEFAULT_PROPERTY, oldDefaultProperty, defaultProperty));
+      }
+    }
+    return defaultProperty;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public UnionProperty basicGetDefaultProperty() {
 
-		return defaultProperty;
-	}
+    return defaultProperty;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setDefaultProperty(UnionProperty newDefaultProperty) {
 
-		UnionProperty oldDefaultProperty = defaultProperty;
-		defaultProperty = newDefaultProperty;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.UNION__DEFAULT_PROPERTY, oldDefaultProperty, defaultProperty));
+    UnionProperty oldDefaultProperty = defaultProperty;
+    defaultProperty = newDefaultProperty;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.UNION__DEFAULT_PROPERTY, oldDefaultProperty, defaultProperty));
 
-	}
+  }
 
 
 
@@ -272,10 +272,10 @@ public class UnionImpl extends ClassImpl implements Union {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<UnionProperty> getContainedUnionProperties() {
 
@@ -302,123 +302,123 @@ public class UnionImpl extends ClassImpl implements Union {
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.UNION__CONTAINED_UNION_PROPERTIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.UNION__CONTAINED_UNION_PROPERTIES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<UnionProperty> resultAsList = (Collection<UnionProperty>) result;
-		return new EcoreEList.UnmodifiableEList<UnionProperty>(this, InformationPackage.Literals.UNION__CONTAINED_UNION_PROPERTIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<UnionProperty> resultAsList = (Collection<UnionProperty>) result;
+    return new EcoreEList.UnmodifiableEList<UnionProperty>(this, InformationPackage.Literals.UNION__CONTAINED_UNION_PROPERTIES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InformationPackage.UNION__KIND:
-				return getKind();
-			case InformationPackage.UNION__DISCRIMINANT:
-				if (resolve) return getDiscriminant();
-				return basicGetDiscriminant();
-			case InformationPackage.UNION__DEFAULT_PROPERTY:
-				if (resolve) return getDefaultProperty();
-				return basicGetDefaultProperty();
-			case InformationPackage.UNION__CONTAINED_UNION_PROPERTIES:
-				return getContainedUnionProperties();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InformationPackage.UNION__KIND:
+        return getKind();
+      case InformationPackage.UNION__DISCRIMINANT:
+        if (resolve) return getDiscriminant();
+        return basicGetDiscriminant();
+      case InformationPackage.UNION__DEFAULT_PROPERTY:
+        if (resolve) return getDefaultProperty();
+        return basicGetDefaultProperty();
+      case InformationPackage.UNION__CONTAINED_UNION_PROPERTIES:
+        return getContainedUnionProperties();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InformationPackage.UNION__KIND:
-					setKind((UnionKind)newValue);
-				return;
-			case InformationPackage.UNION__DISCRIMINANT:
-					setDiscriminant((UnionProperty)newValue);
-				return;
-			case InformationPackage.UNION__DEFAULT_PROPERTY:
-					setDefaultProperty((UnionProperty)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InformationPackage.UNION__KIND:
+          setKind((UnionKind)newValue);
+        return;
+      case InformationPackage.UNION__DISCRIMINANT:
+          setDiscriminant((UnionProperty)newValue);
+        return;
+      case InformationPackage.UNION__DEFAULT_PROPERTY:
+          setDefaultProperty((UnionProperty)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InformationPackage.UNION__KIND:
-				setKind(KIND_EDEFAULT);
-				return;
-			case InformationPackage.UNION__DISCRIMINANT:
-				setDiscriminant((UnionProperty)null);
-				return;
-			case InformationPackage.UNION__DEFAULT_PROPERTY:
-				setDefaultProperty((UnionProperty)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.UNION__KIND:
+        setKind(KIND_EDEFAULT);
+        return;
+      case InformationPackage.UNION__DISCRIMINANT:
+        setDiscriminant((UnionProperty)null);
+        return;
+      case InformationPackage.UNION__DEFAULT_PROPERTY:
+        setDefaultProperty((UnionProperty)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InformationPackage.UNION__KIND:
-				return kind != KIND_EDEFAULT;
-			case InformationPackage.UNION__DISCRIMINANT:
-				return discriminant != null;
-			case InformationPackage.UNION__DEFAULT_PROPERTY:
-				return defaultProperty != null;
-			case InformationPackage.UNION__CONTAINED_UNION_PROPERTIES:
-				return !getContainedUnionProperties().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.UNION__KIND:
+        return kind != KIND_EDEFAULT;
+      case InformationPackage.UNION__DISCRIMINANT:
+        return discriminant != null;
+      case InformationPackage.UNION__DEFAULT_PROPERTY:
+        return defaultProperty != null;
+      case InformationPackage.UNION__CONTAINED_UNION_PROPERTIES:
+        return !getContainedUnionProperties().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (kind: "); //$NON-NLS-1$
-		result.append(kind);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (kind: "); //$NON-NLS-1$
+    result.append(kind);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //UnionImpl

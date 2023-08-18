@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  */
 public class GateImpl extends MessageEndImpl implements Gate {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected GateImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.GATE;
-	}
+    return InteractionPackage.Literals.GATE;
+  }
 
 
 

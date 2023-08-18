@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.fa.impl.ComponentExchangeAllocatorImpl;
  */
 public abstract class AbstractPhysicalPathLinkImpl extends ComponentExchangeAllocatorImpl implements AbstractPhysicalPathLink {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractPhysicalPathLinkImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.ABSTRACT_PHYSICAL_PATH_LINK;
-	}
+    return CsPackage.Literals.ABSTRACT_PHYSICAL_PATH_LINK;
+  }
 
 
 

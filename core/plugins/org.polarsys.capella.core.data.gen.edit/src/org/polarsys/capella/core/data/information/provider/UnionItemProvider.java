@@ -52,267 +52,267 @@ public class UnionItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor discriminantPropertyDescriptor;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor defaultPropertyPropertyDescriptor;
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public UnionItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process InformationPackage.Literals.UNION__DISCRIMINANT
-			if (discriminantPropertyDescriptor != null) {
-				Object discriminantValue = eObject.eGet(InformationPackage.Literals.UNION__DISCRIMINANT, true);
-				if (discriminantValue != null && discriminantValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) discriminantValue)) {
-					itemPropertyDescriptors.remove(discriminantPropertyDescriptor);
-				} else if (discriminantValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.UNION__DISCRIMINANT) != null) {
-					itemPropertyDescriptors.remove(discriminantPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(discriminantPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(discriminantPropertyDescriptor);
-				}
-			}
-			// Process InformationPackage.Literals.UNION__DEFAULT_PROPERTY
-			if (defaultPropertyPropertyDescriptor != null) {
-				Object defaultPropertyValue = eObject.eGet(InformationPackage.Literals.UNION__DEFAULT_PROPERTY, true);
-				if (defaultPropertyValue != null && defaultPropertyValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) defaultPropertyValue)) {
-					itemPropertyDescriptors.remove(defaultPropertyPropertyDescriptor);
-				} else if (defaultPropertyValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.UNION__DEFAULT_PROPERTY) != null) {
-					itemPropertyDescriptors.remove(defaultPropertyPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(defaultPropertyPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(defaultPropertyPropertyDescriptor);
-				}
-			}
-		}		
-	}
+    super.checkChildCreationExtender(object);
+    if (object instanceof EObject) {
+      EObject eObject = (EObject) object;
+      // Process InformationPackage.Literals.UNION__DISCRIMINANT
+      if (discriminantPropertyDescriptor != null) {
+        Object discriminantValue = eObject.eGet(InformationPackage.Literals.UNION__DISCRIMINANT, true);
+        if (discriminantValue != null && discriminantValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) discriminantValue)) {
+          itemPropertyDescriptors.remove(discriminantPropertyDescriptor);
+        } else if (discriminantValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.UNION__DISCRIMINANT) != null) {
+          itemPropertyDescriptors.remove(discriminantPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(discriminantPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(discriminantPropertyDescriptor);
+        }
+      }
+      // Process InformationPackage.Literals.UNION__DEFAULT_PROPERTY
+      if (defaultPropertyPropertyDescriptor != null) {
+        Object defaultPropertyValue = eObject.eGet(InformationPackage.Literals.UNION__DEFAULT_PROPERTY, true);
+        if (defaultPropertyValue != null && defaultPropertyValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) defaultPropertyValue)) {
+          itemPropertyDescriptors.remove(defaultPropertyPropertyDescriptor);
+        } else if (defaultPropertyValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.UNION__DEFAULT_PROPERTY) != null) {
+          itemPropertyDescriptors.remove(defaultPropertyPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(defaultPropertyPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(defaultPropertyPropertyDescriptor);
+        }
+      }
+    }		
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addKindPropertyDescriptor(object);
-			addDiscriminantPropertyDescriptor(object);
-			addDefaultPropertyPropertyDescriptor(object);
-			addContainedUnionPropertiesPropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addKindPropertyDescriptor(object);
+      addDiscriminantPropertyDescriptor(object);
+      addDefaultPropertyPropertyDescriptor(object);
+      addContainedUnionPropertiesPropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Kind feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Kind feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addKindPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Union_kind_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Union_kind_feature", "_UI_Union_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InformationPackage.Literals.UNION__KIND,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Union_kind_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_Union_kind_feature", "_UI_Union_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         InformationPackage.Literals.UNION__KIND,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Discriminant feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Discriminant feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addDiscriminantPropertyDescriptor(Object object) {
-		// begin-extension-code
-		discriminantPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Union_discriminant_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Union_discriminant_feature", "_UI_Union_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InformationPackage.Literals.UNION__DISCRIMINANT,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(discriminantPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    discriminantPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Union_discriminant_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_Union_discriminant_feature", "_UI_Union_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         InformationPackage.Literals.UNION__DISCRIMINANT,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(discriminantPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Default Property feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Default Property feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addDefaultPropertyPropertyDescriptor(Object object) {
-		// begin-extension-code
-		defaultPropertyPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Union_defaultProperty_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Union_defaultProperty_feature", "_UI_Union_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InformationPackage.Literals.UNION__DEFAULT_PROPERTY,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(defaultPropertyPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    defaultPropertyPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Union_defaultProperty_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_Union_defaultProperty_feature", "_UI_Union_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         InformationPackage.Literals.UNION__DEFAULT_PROPERTY,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(defaultPropertyPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Contained Union Properties feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Contained Union Properties feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addContainedUnionPropertiesPropertyDescriptor(Object object) {
 
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Union_containedUnionProperties_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Union_containedUnionProperties_feature", "_UI_Union_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InformationPackage.Literals.UNION__CONTAINED_UNION_PROPERTIES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Union_containedUnionProperties_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_Union_containedUnionProperties_feature", "_UI_Union_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         InformationPackage.Literals.UNION__CONTAINED_UNION_PROPERTIES,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
 
 	/**
-	 * This returns Union.gif.
-	 * <!-- begin-user-doc -->
+   * This returns Union.gif.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Union")); //$NON-NLS-1$
-	}
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/Union")); //$NON-NLS-1$
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
-		String label = ((Union)object).getName();
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_Union_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+    String label = ((Union)object).getName();
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_Union_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
+    updateChildren(notification);
 
-		switch (notification.getFeatureID(Union.class)) {
-			case InformationPackage.UNION__KIND:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
-		super.notifyChanged(notification);
-	}
+    switch (notification.getFeatureID(Union.class)) {
+      case InformationPackage.UNION__KIND:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+        return;
+    }
+    super.notifyChanged(notification);
+  }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+    super.collectNewChildDescriptors(newChildDescriptors, object);
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 	// end-capella-code
 }

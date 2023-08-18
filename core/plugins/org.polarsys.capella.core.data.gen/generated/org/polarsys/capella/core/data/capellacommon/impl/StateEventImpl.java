@@ -59,13 +59,13 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
 public abstract class StateEventImpl extends NamedElementImpl implements StateEvent {
 
 	/**
-	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getExpression() <em>Expression</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExpression()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getExpression()
+   * @generated
+   * @ordered
+   */
 	protected Constraint expression;
 
 
@@ -73,48 +73,48 @@ public abstract class StateEventImpl extends NamedElementImpl implements StateEv
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedStateEventRealizations() <em>Owned State Event Realizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedStateEventRealizations() <em>Owned State Event Realizations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedStateEventRealizations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedStateEventRealizations()
+   * @generated
+   * @ordered
+   */
 	protected EList<StateEventRealization> ownedStateEventRealizations;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected StateEventImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.STATE_EVENT;
-	}
+    return CapellacommonPackage.Literals.STATE_EVENT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractTypedElement> getAbstractTypedElements() {
 
@@ -141,213 +141,213 @@ public abstract class StateEventImpl extends NamedElementImpl implements StateEv
     // A helper is found, let's use it. 
     EAnnotation annotation = ModellingcorePackage.Literals.ABSTRACT_TYPE__ABSTRACT_TYPED_ELEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ModellingcorePackage.Literals.ABSTRACT_TYPE__ABSTRACT_TYPED_ELEMENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractTypedElement> resultAsList = (Collection<AbstractTypedElement>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractTypedElement>(this, ModellingcorePackage.Literals.ABSTRACT_TYPE__ABSTRACT_TYPED_ELEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractTypedElement> resultAsList = (Collection<AbstractTypedElement>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractTypedElement>(this, ModellingcorePackage.Literals.ABSTRACT_TYPE__ABSTRACT_TYPED_ELEMENTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Constraint getExpression() {
 
-		if (expression != null && expression.eIsProxy()) {
-			InternalEObject oldExpression = (InternalEObject)expression;
-			expression = (Constraint)eResolveProxy(oldExpression);
-			if (expression != oldExpression) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE_EVENT__EXPRESSION, oldExpression, expression));
-			}
-		}
-		return expression;
-	}
+    if (expression != null && expression.eIsProxy()) {
+      InternalEObject oldExpression = (InternalEObject)expression;
+      expression = (Constraint)eResolveProxy(oldExpression);
+      if (expression != oldExpression) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE_EVENT__EXPRESSION, oldExpression, expression));
+      }
+    }
+    return expression;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Constraint basicGetExpression() {
 
-		return expression;
-	}
+    return expression;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setExpression(Constraint newExpression) {
 
-		Constraint oldExpression = expression;
-		expression = newExpression;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_EVENT__EXPRESSION, oldExpression, expression));
+    Constraint oldExpression = expression;
+    expression = newExpression;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_EVENT__EXPRESSION, oldExpression, expression));
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<StateEventRealization> getOwnedStateEventRealizations() {
 
-		if (ownedStateEventRealizations == null) {
-			ownedStateEventRealizations = new EObjectContainmentEList.Resolving<StateEventRealization>(StateEventRealization.class, this, CapellacommonPackage.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS);
-		}
-		return ownedStateEventRealizations;
-	}
+    if (ownedStateEventRealizations == null) {
+      ownedStateEventRealizations = new EObjectContainmentEList.Resolving<StateEventRealization>(StateEventRealization.class, this, CapellacommonPackage.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS);
+    }
+    return ownedStateEventRealizations;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CapellacommonPackage.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedStateEventRealizations()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS:
+        return ((InternalEList<?>)getOwnedStateEventRealizations()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CapellacommonPackage.STATE_EVENT__ABSTRACT_TYPED_ELEMENTS:
-				return getAbstractTypedElements();
-			case CapellacommonPackage.STATE_EVENT__EXPRESSION:
-				if (resolve) return getExpression();
-				return basicGetExpression();
-			case CapellacommonPackage.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS:
-				return getOwnedStateEventRealizations();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.STATE_EVENT__ABSTRACT_TYPED_ELEMENTS:
+        return getAbstractTypedElements();
+      case CapellacommonPackage.STATE_EVENT__EXPRESSION:
+        if (resolve) return getExpression();
+        return basicGetExpression();
+      case CapellacommonPackage.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS:
+        return getOwnedStateEventRealizations();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CapellacommonPackage.STATE_EVENT__EXPRESSION:
-					setExpression((Constraint)newValue);
-				return;
-			case CapellacommonPackage.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS:
-				getOwnedStateEventRealizations().clear();
-				getOwnedStateEventRealizations().addAll((Collection<? extends StateEventRealization>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.STATE_EVENT__EXPRESSION:
+          setExpression((Constraint)newValue);
+        return;
+      case CapellacommonPackage.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS:
+        getOwnedStateEventRealizations().clear();
+        getOwnedStateEventRealizations().addAll((Collection<? extends StateEventRealization>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CapellacommonPackage.STATE_EVENT__EXPRESSION:
-				setExpression((Constraint)null);
-				return;
-			case CapellacommonPackage.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS:
-				getOwnedStateEventRealizations().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.STATE_EVENT__EXPRESSION:
+        setExpression((Constraint)null);
+        return;
+      case CapellacommonPackage.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS:
+        getOwnedStateEventRealizations().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CapellacommonPackage.STATE_EVENT__ABSTRACT_TYPED_ELEMENTS:
-				return !getAbstractTypedElements().isEmpty();
-			case CapellacommonPackage.STATE_EVENT__EXPRESSION:
-				return expression != null;
-			case CapellacommonPackage.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS:
-				return ownedStateEventRealizations != null && !ownedStateEventRealizations.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.STATE_EVENT__ABSTRACT_TYPED_ELEMENTS:
+        return !getAbstractTypedElements().isEmpty();
+      case CapellacommonPackage.STATE_EVENT__EXPRESSION:
+        return expression != null;
+      case CapellacommonPackage.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS:
+        return ownedStateEventRealizations != null && !ownedStateEventRealizations.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractType.class) {
-			switch (derivedFeatureID) {
-				case CapellacommonPackage.STATE_EVENT__ABSTRACT_TYPED_ELEMENTS: return ModellingcorePackage.ABSTRACT_TYPE__ABSTRACT_TYPED_ELEMENTS;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractEvent.class) {
-			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == AbstractType.class) {
+      switch (derivedFeatureID) {
+        case CapellacommonPackage.STATE_EVENT__ABSTRACT_TYPED_ELEMENTS: return ModellingcorePackage.ABSTRACT_TYPE__ABSTRACT_TYPED_ELEMENTS;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractEvent.class) {
+      switch (derivedFeatureID) {
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractType.class) {
-			switch (baseFeatureID) {
-				case ModellingcorePackage.ABSTRACT_TYPE__ABSTRACT_TYPED_ELEMENTS: return CapellacommonPackage.STATE_EVENT__ABSTRACT_TYPED_ELEMENTS;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractEvent.class) {
-			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == AbstractType.class) {
+      switch (baseFeatureID) {
+        case ModellingcorePackage.ABSTRACT_TYPE__ABSTRACT_TYPED_ELEMENTS: return CapellacommonPackage.STATE_EVENT__ABSTRACT_TYPED_ELEMENTS;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractEvent.class) {
+      switch (baseFeatureID) {
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 
 

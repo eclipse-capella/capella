@@ -39,22 +39,22 @@ public interface ItemInConcept extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Concept</b></em>' reference.
+   * Returns the value of the '<em><b>Concept</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Concept</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Concept</em>' reference.
-	 * @see #setConcept(Concept)
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getItemInConcept_Concept()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the operational concept involved in the relationship implemented by this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='none' constraints='Multiplicity must be [1..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Concept</em>' reference.
+   * @see #setConcept(Concept)
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getItemInConcept_Concept()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the operational concept involved in the relationship implemented by this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='none' constraints='Multiplicity must be [1..1]'"
+   * @generated
+   */
 
 	Concept getConcept();
 
@@ -62,14 +62,14 @@ public interface ItemInConcept extends NamedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.oa.ItemInConcept#getConcept <em>Concept</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.oa.ItemInConcept#getConcept <em>Concept</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Concept</em>' reference.
-	 * @see #getConcept()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Concept</em>' reference.
+   * @see #getConcept()
+   * @generated
+   */
 
 	void setConcept(Concept value);
 
@@ -80,22 +80,22 @@ public interface ItemInConcept extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Item</b></em>' reference.
+   * Returns the value of the '<em><b>Item</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Item</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Item</em>' reference.
-	 * @see #setItem(AbstractConceptItem)
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getItemInConcept_Item()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the concept item involved in the relationship implemented by this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [1..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Item</em>' reference.
+   * @see #setItem(AbstractConceptItem)
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getItemInConcept_Item()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the concept item involved in the relationship implemented by this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [1..1]'"
+   * @generated
+   */
 
 	AbstractConceptItem getItem();
 
@@ -103,14 +103,14 @@ public interface ItemInConcept extends NamedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.oa.ItemInConcept#getItem <em>Item</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.oa.ItemInConcept#getItem <em>Item</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Item</em>' reference.
-	 * @see #getItem()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Item</em>' reference.
+   * @see #getItem()
+   * @generated
+   */
 
 	void setItem(AbstractConceptItem value);
 

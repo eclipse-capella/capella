@@ -49,951 +49,951 @@ import org.polarsys.kitalpha.emde.extension.edit.ChildCreationExtenderManager;
  */
 public class InteractionItemProviderAdapterFactory extends InteractionAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
 	/**
-	 * This keeps track of the root adapter factory that delegates to this adapter factory.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the root adapter factory that delegates to this adapter factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComposedAdapterFactory parentAdapterFactory;
 
 	/**
-	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-	 * <!-- begin-user-doc -->
+   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
 	/**
-	 * This helps manage the child creation extenders.
-	 * <!-- begin-user-doc -->
+   * This helps manage the child creation extenders.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(CapellaModellerEditPlugin.INSTANCE, InteractionPackage.eNS_URI);
 
 	/**
-	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-	 * <!-- begin-user-doc -->
+   * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
-	 * This constructs an instance.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public InteractionItemProviderAdapterFactory() {
-		supportedTypes.add(IEditingDomainItemProvider.class);
-		supportedTypes.add(IStructuredItemContentProvider.class);
-		supportedTypes.add(ITreeItemContentProvider.class);
-		supportedTypes.add(IItemLabelProvider.class);
-		supportedTypes.add(IItemPropertySource.class);
-	}
+    supportedTypes.add(IEditingDomainItemProvider.class);
+    supportedTypes.add(IStructuredItemContentProvider.class);
+    supportedTypes.add(ITreeItemContentProvider.class);
+    supportedTypes.add(IItemLabelProvider.class);
+    supportedTypes.add(IItemPropertySource.class);
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.SequenceMessage} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.SequenceMessage} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected SequenceMessageItemProvider sequenceMessageItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.SequenceMessage}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.SequenceMessage}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createSequenceMessageAdapter() {
-		if (sequenceMessageItemProvider == null) {
-			sequenceMessageItemProvider = new SequenceMessageItemProvider(this);
-		}
+    if (sequenceMessageItemProvider == null) {
+      sequenceMessageItemProvider = new SequenceMessageItemProvider(this);
+    }
 
-		return sequenceMessageItemProvider;
-	}
+    return sequenceMessageItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.Scenario} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.Scenario} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ScenarioItemProvider scenarioItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.Scenario}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.Scenario}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createScenarioAdapter() {
-		if (scenarioItemProvider == null) {
-			scenarioItemProvider = new ScenarioItemProvider(this);
-		}
+    if (scenarioItemProvider == null) {
+      scenarioItemProvider = new ScenarioItemProvider(this);
+    }
 
-		return scenarioItemProvider;
-	}
+    return scenarioItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.MessageEnd} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.MessageEnd} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected MessageEndItemProvider messageEndItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.MessageEnd}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.MessageEnd}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createMessageEndAdapter() {
-		if (messageEndItemProvider == null) {
-			messageEndItemProvider = new MessageEndItemProvider(this);
-		}
+    if (messageEndItemProvider == null) {
+      messageEndItemProvider = new MessageEndItemProvider(this);
+    }
 
-		return messageEndItemProvider;
-	}
+    return messageEndItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.Execution} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.Execution} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ExecutionItemProvider executionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.Execution}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.Execution}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createExecutionAdapter() {
-		if (executionItemProvider == null) {
-			executionItemProvider = new ExecutionItemProvider(this);
-		}
+    if (executionItemProvider == null) {
+      executionItemProvider = new ExecutionItemProvider(this);
+    }
 
-		return executionItemProvider;
-	}
+    return executionItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.ExecutionEnd} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.ExecutionEnd} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ExecutionEndItemProvider executionEndItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.ExecutionEnd}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.ExecutionEnd}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createExecutionEndAdapter() {
-		if (executionEndItemProvider == null) {
-			executionEndItemProvider = new ExecutionEndItemProvider(this);
-		}
+    if (executionEndItemProvider == null) {
+      executionEndItemProvider = new ExecutionEndItemProvider(this);
+    }
 
-		return executionEndItemProvider;
-	}
+    return executionEndItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.CreationEvent} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.CreationEvent} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CreationEventItemProvider creationEventItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.CreationEvent}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.CreationEvent}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createCreationEventAdapter() {
-		if (creationEventItemProvider == null) {
-			creationEventItemProvider = new CreationEventItemProvider(this);
-		}
+    if (creationEventItemProvider == null) {
+      creationEventItemProvider = new CreationEventItemProvider(this);
+    }
 
-		return creationEventItemProvider;
-	}
+    return creationEventItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.DestructionEvent} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.DestructionEvent} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected DestructionEventItemProvider destructionEventItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.DestructionEvent}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.DestructionEvent}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createDestructionEventAdapter() {
-		if (destructionEventItemProvider == null) {
-			destructionEventItemProvider = new DestructionEventItemProvider(this);
-		}
+    if (destructionEventItemProvider == null) {
+      destructionEventItemProvider = new DestructionEventItemProvider(this);
+    }
 
-		return destructionEventItemProvider;
-	}
+    return destructionEventItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.ExecutionEvent} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.ExecutionEvent} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ExecutionEventItemProvider executionEventItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.ExecutionEvent}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.ExecutionEvent}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createExecutionEventAdapter() {
-		if (executionEventItemProvider == null) {
-			executionEventItemProvider = new ExecutionEventItemProvider(this);
-		}
+    if (executionEventItemProvider == null) {
+      executionEventItemProvider = new ExecutionEventItemProvider(this);
+    }
 
-		return executionEventItemProvider;
-	}
+    return executionEventItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.InstanceRole} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.InstanceRole} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected InstanceRoleItemProvider instanceRoleItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.InstanceRole}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.InstanceRole}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createInstanceRoleAdapter() {
-		if (instanceRoleItemProvider == null) {
-			instanceRoleItemProvider = new InstanceRoleItemProvider(this);
-		}
+    if (instanceRoleItemProvider == null) {
+      instanceRoleItemProvider = new InstanceRoleItemProvider(this);
+    }
 
-		return instanceRoleItemProvider;
-	}
+    return instanceRoleItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.EventReceiptOperation} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.EventReceiptOperation} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected EventReceiptOperationItemProvider eventReceiptOperationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.EventReceiptOperation}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.EventReceiptOperation}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createEventReceiptOperationAdapter() {
-		if (eventReceiptOperationItemProvider == null) {
-			eventReceiptOperationItemProvider = new EventReceiptOperationItemProvider(this);
-		}
+    if (eventReceiptOperationItemProvider == null) {
+      eventReceiptOperationItemProvider = new EventReceiptOperationItemProvider(this);
+    }
 
-		return eventReceiptOperationItemProvider;
-	}
+    return eventReceiptOperationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.EventSentOperation} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.EventSentOperation} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected EventSentOperationItemProvider eventSentOperationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.EventSentOperation}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.EventSentOperation}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createEventSentOperationAdapter() {
-		if (eventSentOperationItemProvider == null) {
-			eventSentOperationItemProvider = new EventSentOperationItemProvider(this);
-		}
+    if (eventSentOperationItemProvider == null) {
+      eventSentOperationItemProvider = new EventSentOperationItemProvider(this);
+    }
 
-		return eventSentOperationItemProvider;
-	}
+    return eventSentOperationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.MergeLink} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.MergeLink} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected MergeLinkItemProvider mergeLinkItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.MergeLink}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.MergeLink}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createMergeLinkAdapter() {
-		if (mergeLinkItemProvider == null) {
-			mergeLinkItemProvider = new MergeLinkItemProvider(this);
-		}
+    if (mergeLinkItemProvider == null) {
+      mergeLinkItemProvider = new MergeLinkItemProvider(this);
+    }
 
-		return mergeLinkItemProvider;
-	}
+    return mergeLinkItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.RefinementLink} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.RefinementLink} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected RefinementLinkItemProvider refinementLinkItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.RefinementLink}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.RefinementLink}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createRefinementLinkAdapter() {
-		if (refinementLinkItemProvider == null) {
-			refinementLinkItemProvider = new RefinementLinkItemProvider(this);
-		}
+    if (refinementLinkItemProvider == null) {
+      refinementLinkItemProvider = new RefinementLinkItemProvider(this);
+    }
 
-		return refinementLinkItemProvider;
-	}
+    return refinementLinkItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityRealization} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityRealization} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractCapabilityRealizationItemProvider abstractCapabilityRealizationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityRealization}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityRealization}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createAbstractCapabilityRealizationAdapter() {
-		if (abstractCapabilityRealizationItemProvider == null) {
-			abstractCapabilityRealizationItemProvider = new AbstractCapabilityRealizationItemProvider(this);
-		}
+    if (abstractCapabilityRealizationItemProvider == null) {
+      abstractCapabilityRealizationItemProvider = new AbstractCapabilityRealizationItemProvider(this);
+    }
 
-		return abstractCapabilityRealizationItemProvider;
-	}
+    return abstractCapabilityRealizationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractCapabilityExtendItemProvider abstractCapabilityExtendItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createAbstractCapabilityExtendAdapter() {
-		if (abstractCapabilityExtendItemProvider == null) {
-			abstractCapabilityExtendItemProvider = new AbstractCapabilityExtendItemProvider(this);
-		}
+    if (abstractCapabilityExtendItemProvider == null) {
+      abstractCapabilityExtendItemProvider = new AbstractCapabilityExtendItemProvider(this);
+    }
 
-		return abstractCapabilityExtendItemProvider;
-	}
+    return abstractCapabilityExtendItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractCapabilityExtensionPointItemProvider abstractCapabilityExtensionPointItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createAbstractCapabilityExtensionPointAdapter() {
-		if (abstractCapabilityExtensionPointItemProvider == null) {
-			abstractCapabilityExtensionPointItemProvider = new AbstractCapabilityExtensionPointItemProvider(this);
-		}
+    if (abstractCapabilityExtensionPointItemProvider == null) {
+      abstractCapabilityExtensionPointItemProvider = new AbstractCapabilityExtensionPointItemProvider(this);
+    }
 
-		return abstractCapabilityExtensionPointItemProvider;
-	}
+    return abstractCapabilityExtensionPointItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractCapabilityGeneralizationItemProvider abstractCapabilityGeneralizationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createAbstractCapabilityGeneralizationAdapter() {
-		if (abstractCapabilityGeneralizationItemProvider == null) {
-			abstractCapabilityGeneralizationItemProvider = new AbstractCapabilityGeneralizationItemProvider(this);
-		}
+    if (abstractCapabilityGeneralizationItemProvider == null) {
+      abstractCapabilityGeneralizationItemProvider = new AbstractCapabilityGeneralizationItemProvider(this);
+    }
 
-		return abstractCapabilityGeneralizationItemProvider;
-	}
+    return abstractCapabilityGeneralizationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractCapabilityIncludeItemProvider abstractCapabilityIncludeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createAbstractCapabilityIncludeAdapter() {
-		if (abstractCapabilityIncludeItemProvider == null) {
-			abstractCapabilityIncludeItemProvider = new AbstractCapabilityIncludeItemProvider(this);
-		}
+    if (abstractCapabilityIncludeItemProvider == null) {
+      abstractCapabilityIncludeItemProvider = new AbstractCapabilityIncludeItemProvider(this);
+    }
 
-		return abstractCapabilityIncludeItemProvider;
-	}
+    return abstractCapabilityIncludeItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.InteractionState} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.InteractionState} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected InteractionStateItemProvider interactionStateItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.InteractionState}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.InteractionState}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createInteractionStateAdapter() {
-		if (interactionStateItemProvider == null) {
-			interactionStateItemProvider = new InteractionStateItemProvider(this);
-		}
+    if (interactionStateItemProvider == null) {
+      interactionStateItemProvider = new InteractionStateItemProvider(this);
+    }
 
-		return interactionStateItemProvider;
-	}
+    return interactionStateItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.InteractionUse} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.InteractionUse} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected InteractionUseItemProvider interactionUseItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.InteractionUse}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.InteractionUse}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createInteractionUseAdapter() {
-		if (interactionUseItemProvider == null) {
-			interactionUseItemProvider = new InteractionUseItemProvider(this);
-		}
+    if (interactionUseItemProvider == null) {
+      interactionUseItemProvider = new InteractionUseItemProvider(this);
+    }
 
-		return interactionUseItemProvider;
-	}
+    return interactionUseItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.CombinedFragment} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.CombinedFragment} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CombinedFragmentItemProvider combinedFragmentItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.CombinedFragment}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.CombinedFragment}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createCombinedFragmentAdapter() {
-		if (combinedFragmentItemProvider == null) {
-			combinedFragmentItemProvider = new CombinedFragmentItemProvider(this);
-		}
+    if (combinedFragmentItemProvider == null) {
+      combinedFragmentItemProvider = new CombinedFragmentItemProvider(this);
+    }
 
-		return combinedFragmentItemProvider;
-	}
+    return combinedFragmentItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.Gate} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.Gate} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected GateItemProvider gateItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.Gate}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.Gate}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createGateAdapter() {
-		if (gateItemProvider == null) {
-			gateItemProvider = new GateItemProvider(this);
-		}
+    if (gateItemProvider == null) {
+      gateItemProvider = new GateItemProvider(this);
+    }
 
-		return gateItemProvider;
-	}
+    return gateItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.InteractionOperand} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.InteractionOperand} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected InteractionOperandItemProvider interactionOperandItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.InteractionOperand}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.InteractionOperand}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createInteractionOperandAdapter() {
-		if (interactionOperandItemProvider == null) {
-			interactionOperandItemProvider = new InteractionOperandItemProvider(this);
-		}
+    if (interactionOperandItemProvider == null) {
+      interactionOperandItemProvider = new InteractionOperandItemProvider(this);
+    }
 
-		return interactionOperandItemProvider;
-	}
+    return interactionOperandItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.FragmentEnd} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.FragmentEnd} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FragmentEndItemProvider fragmentEndItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.FragmentEnd}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.FragmentEnd}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createFragmentEndAdapter() {
-		if (fragmentEndItemProvider == null) {
-			fragmentEndItemProvider = new FragmentEndItemProvider(this);
-		}
+    if (fragmentEndItemProvider == null) {
+      fragmentEndItemProvider = new FragmentEndItemProvider(this);
+    }
 
-		return fragmentEndItemProvider;
-	}
+    return fragmentEndItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.FunctionalChainAbstractCapabilityInvolvement} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.FunctionalChainAbstractCapabilityInvolvement} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionalChainAbstractCapabilityInvolvementItemProvider functionalChainAbstractCapabilityInvolvementItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.FunctionalChainAbstractCapabilityInvolvement}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.FunctionalChainAbstractCapabilityInvolvement}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createFunctionalChainAbstractCapabilityInvolvementAdapter() {
-		if (functionalChainAbstractCapabilityInvolvementItemProvider == null) {
-			functionalChainAbstractCapabilityInvolvementItemProvider = new FunctionalChainAbstractCapabilityInvolvementItemProvider(this);
-		}
+    if (functionalChainAbstractCapabilityInvolvementItemProvider == null) {
+      functionalChainAbstractCapabilityInvolvementItemProvider = new FunctionalChainAbstractCapabilityInvolvementItemProvider(this);
+    }
 
-		return functionalChainAbstractCapabilityInvolvementItemProvider;
-	}
+    return functionalChainAbstractCapabilityInvolvementItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.AbstractFunctionAbstractCapabilityInvolvement} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.AbstractFunctionAbstractCapabilityInvolvement} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractFunctionAbstractCapabilityInvolvementItemProvider abstractFunctionAbstractCapabilityInvolvementItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.AbstractFunctionAbstractCapabilityInvolvement}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.AbstractFunctionAbstractCapabilityInvolvement}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createAbstractFunctionAbstractCapabilityInvolvementAdapter() {
-		if (abstractFunctionAbstractCapabilityInvolvementItemProvider == null) {
-			abstractFunctionAbstractCapabilityInvolvementItemProvider = new AbstractFunctionAbstractCapabilityInvolvementItemProvider(this);
-		}
+    if (abstractFunctionAbstractCapabilityInvolvementItemProvider == null) {
+      abstractFunctionAbstractCapabilityInvolvementItemProvider = new AbstractFunctionAbstractCapabilityInvolvementItemProvider(this);
+    }
 
-		return abstractFunctionAbstractCapabilityInvolvementItemProvider;
-	}
+    return abstractFunctionAbstractCapabilityInvolvementItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.ScenarioRealization} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.ScenarioRealization} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ScenarioRealizationItemProvider scenarioRealizationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.ScenarioRealization}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.ScenarioRealization}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createScenarioRealizationAdapter() {
-		if (scenarioRealizationItemProvider == null) {
-			scenarioRealizationItemProvider = new ScenarioRealizationItemProvider(this);
-		}
+    if (scenarioRealizationItemProvider == null) {
+      scenarioRealizationItemProvider = new ScenarioRealizationItemProvider(this);
+    }
 
-		return scenarioRealizationItemProvider;
-	}
+    return scenarioRealizationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.StateFragment} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.StateFragment} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected StateFragmentItemProvider stateFragmentItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.StateFragment}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.StateFragment}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createStateFragmentAdapter() {
-		if (stateFragmentItemProvider == null) {
-			stateFragmentItemProvider = new StateFragmentItemProvider(this);
-		}
+    if (stateFragmentItemProvider == null) {
+      stateFragmentItemProvider = new StateFragmentItemProvider(this);
+    }
 
-		return stateFragmentItemProvider;
-	}
+    return stateFragmentItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.ArmTimerEvent} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.ArmTimerEvent} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ArmTimerEventItemProvider armTimerEventItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.ArmTimerEvent}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.ArmTimerEvent}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createArmTimerEventAdapter() {
-		if (armTimerEventItemProvider == null) {
-			armTimerEventItemProvider = new ArmTimerEventItemProvider(this);
-		}
+    if (armTimerEventItemProvider == null) {
+      armTimerEventItemProvider = new ArmTimerEventItemProvider(this);
+    }
 
-		return armTimerEventItemProvider;
-	}
+    return armTimerEventItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.CancelTimerEvent} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.CancelTimerEvent} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CancelTimerEventItemProvider cancelTimerEventItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.CancelTimerEvent}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.CancelTimerEvent}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createCancelTimerEventAdapter() {
-		if (cancelTimerEventItemProvider == null) {
-			cancelTimerEventItemProvider = new CancelTimerEventItemProvider(this);
-		}
+    if (cancelTimerEventItemProvider == null) {
+      cancelTimerEventItemProvider = new CancelTimerEventItemProvider(this);
+    }
 
-		return cancelTimerEventItemProvider;
-	}
+    return cancelTimerEventItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.ConstraintDuration} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.ConstraintDuration} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ConstraintDurationItemProvider constraintDurationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.ConstraintDuration}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.ConstraintDuration}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createConstraintDurationAdapter() {
-		if (constraintDurationItemProvider == null) {
-			constraintDurationItemProvider = new ConstraintDurationItemProvider(this);
-		}
+    if (constraintDurationItemProvider == null) {
+      constraintDurationItemProvider = new ConstraintDurationItemProvider(this);
+    }
 
-		return constraintDurationItemProvider;
-	}
+    return constraintDurationItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.SequenceMessageValuation} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.SequenceMessageValuation} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected SequenceMessageValuationItemProvider sequenceMessageValuationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.SequenceMessageValuation}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.SequenceMessageValuation}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createSequenceMessageValuationAdapter() {
-		if (sequenceMessageValuationItemProvider == null) {
-			sequenceMessageValuationItemProvider = new SequenceMessageValuationItemProvider(this);
-		}
+    if (sequenceMessageValuationItemProvider == null) {
+      sequenceMessageValuationItemProvider = new SequenceMessageValuationItemProvider(this);
+    }
 
-		return sequenceMessageValuationItemProvider;
-	}
+    return sequenceMessageValuationItemProvider;
+  }
 
 	/**
-	 * This returns the root adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+   * This returns the root adapter factory that contains this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
-	}
+    return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+  }
 
 	/**
-	 * This sets the composed adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+   * This sets the composed adapter factory that contains this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
-		this.parentAdapterFactory = parentAdapterFactory;
-	}
+    this.parentAdapterFactory = parentAdapterFactory;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean isFactoryForType(Object type) {
-		return supportedTypes.contains(type) || super.isFactoryForType(type);
-	}
+    return supportedTypes.contains(type) || super.isFactoryForType(type);
+  }
 
 	/**
-	 * This implementation substitutes the factory itself as the key for the adapter.
-	 * <!-- begin-user-doc -->
+   * This implementation substitutes the factory itself as the key for the adapter.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
-		return super.adapt(notifier, this);
-	}
+    return super.adapt(notifier, this);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object adapt(Object object, Object type) {
-		if (isFactoryForType(type)) {
-			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
-				return adapter;
-			}
-		}
+    if (isFactoryForType(type)) {
+      Object adapter = super.adapt(object, type);
+      if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+        return adapter;
+      }
+    }
 
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public List<IChildCreationExtender> getChildCreationExtenders() {
-		return childCreationExtenderManager.getChildCreationExtenders();
-	}
+    return childCreationExtenderManager.getChildCreationExtenders();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
-	}
+    return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ResourceLocator getResourceLocator() {
-		return childCreationExtenderManager;
-	}
+    return childCreationExtenderManager;
+  }
 
 	/**
-	 * This adds a listener.
-	 * <!-- begin-user-doc -->
+   * This adds a listener.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.addListener(notifyChangedListener);
-	}
+    changeNotifier.addListener(notifyChangedListener);
+  }
 
 	/**
-	 * This removes a listener.
-	 * <!-- begin-user-doc -->
+   * This removes a listener.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.removeListener(notifyChangedListener);
-	}
+    changeNotifier.removeListener(notifyChangedListener);
+  }
 
 	/**
-	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-	 * <!-- begin-user-doc -->
+   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void fireNotifyChanged(Notification notification) {
-		changeNotifier.fireNotifyChanged(notification);
+    changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null) {
-			parentAdapterFactory.fireNotifyChanged(notification);
-		}
-	}
+    if (parentAdapterFactory != null) {
+      parentAdapterFactory.fireNotifyChanged(notification);
+    }
+  }
 
 	/**
-	 * This disposes all of the item providers created by this factory. 
-	 * <!-- begin-user-doc -->
+   * This disposes all of the item providers created by this factory. 
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void dispose() {
-		if (sequenceMessageItemProvider != null) sequenceMessageItemProvider.dispose();
-		if (scenarioItemProvider != null) scenarioItemProvider.dispose();
-		if (messageEndItemProvider != null) messageEndItemProvider.dispose();
-		if (executionItemProvider != null) executionItemProvider.dispose();
-		if (executionEndItemProvider != null) executionEndItemProvider.dispose();
-		if (creationEventItemProvider != null) creationEventItemProvider.dispose();
-		if (destructionEventItemProvider != null) destructionEventItemProvider.dispose();
-		if (executionEventItemProvider != null) executionEventItemProvider.dispose();
-		if (instanceRoleItemProvider != null) instanceRoleItemProvider.dispose();
-		if (eventReceiptOperationItemProvider != null) eventReceiptOperationItemProvider.dispose();
-		if (eventSentOperationItemProvider != null) eventSentOperationItemProvider.dispose();
-		if (mergeLinkItemProvider != null) mergeLinkItemProvider.dispose();
-		if (refinementLinkItemProvider != null) refinementLinkItemProvider.dispose();
-		if (abstractCapabilityRealizationItemProvider != null) abstractCapabilityRealizationItemProvider.dispose();
-		if (abstractCapabilityExtendItemProvider != null) abstractCapabilityExtendItemProvider.dispose();
-		if (abstractCapabilityExtensionPointItemProvider != null) abstractCapabilityExtensionPointItemProvider.dispose();
-		if (abstractCapabilityGeneralizationItemProvider != null) abstractCapabilityGeneralizationItemProvider.dispose();
-		if (abstractCapabilityIncludeItemProvider != null) abstractCapabilityIncludeItemProvider.dispose();
-		if (interactionStateItemProvider != null) interactionStateItemProvider.dispose();
-		if (interactionUseItemProvider != null) interactionUseItemProvider.dispose();
-		if (combinedFragmentItemProvider != null) combinedFragmentItemProvider.dispose();
-		if (gateItemProvider != null) gateItemProvider.dispose();
-		if (interactionOperandItemProvider != null) interactionOperandItemProvider.dispose();
-		if (fragmentEndItemProvider != null) fragmentEndItemProvider.dispose();
-		if (functionalChainAbstractCapabilityInvolvementItemProvider != null) functionalChainAbstractCapabilityInvolvementItemProvider.dispose();
-		if (abstractFunctionAbstractCapabilityInvolvementItemProvider != null) abstractFunctionAbstractCapabilityInvolvementItemProvider.dispose();
-		if (scenarioRealizationItemProvider != null) scenarioRealizationItemProvider.dispose();
-		if (stateFragmentItemProvider != null) stateFragmentItemProvider.dispose();
-		if (armTimerEventItemProvider != null) armTimerEventItemProvider.dispose();
-		if (cancelTimerEventItemProvider != null) cancelTimerEventItemProvider.dispose();
-		if (constraintDurationItemProvider != null) constraintDurationItemProvider.dispose();
-		if (sequenceMessageValuationItemProvider != null) sequenceMessageValuationItemProvider.dispose();
-	}
+    if (sequenceMessageItemProvider != null) sequenceMessageItemProvider.dispose();
+    if (scenarioItemProvider != null) scenarioItemProvider.dispose();
+    if (messageEndItemProvider != null) messageEndItemProvider.dispose();
+    if (executionItemProvider != null) executionItemProvider.dispose();
+    if (executionEndItemProvider != null) executionEndItemProvider.dispose();
+    if (creationEventItemProvider != null) creationEventItemProvider.dispose();
+    if (destructionEventItemProvider != null) destructionEventItemProvider.dispose();
+    if (executionEventItemProvider != null) executionEventItemProvider.dispose();
+    if (instanceRoleItemProvider != null) instanceRoleItemProvider.dispose();
+    if (eventReceiptOperationItemProvider != null) eventReceiptOperationItemProvider.dispose();
+    if (eventSentOperationItemProvider != null) eventSentOperationItemProvider.dispose();
+    if (mergeLinkItemProvider != null) mergeLinkItemProvider.dispose();
+    if (refinementLinkItemProvider != null) refinementLinkItemProvider.dispose();
+    if (abstractCapabilityRealizationItemProvider != null) abstractCapabilityRealizationItemProvider.dispose();
+    if (abstractCapabilityExtendItemProvider != null) abstractCapabilityExtendItemProvider.dispose();
+    if (abstractCapabilityExtensionPointItemProvider != null) abstractCapabilityExtensionPointItemProvider.dispose();
+    if (abstractCapabilityGeneralizationItemProvider != null) abstractCapabilityGeneralizationItemProvider.dispose();
+    if (abstractCapabilityIncludeItemProvider != null) abstractCapabilityIncludeItemProvider.dispose();
+    if (interactionStateItemProvider != null) interactionStateItemProvider.dispose();
+    if (interactionUseItemProvider != null) interactionUseItemProvider.dispose();
+    if (combinedFragmentItemProvider != null) combinedFragmentItemProvider.dispose();
+    if (gateItemProvider != null) gateItemProvider.dispose();
+    if (interactionOperandItemProvider != null) interactionOperandItemProvider.dispose();
+    if (fragmentEndItemProvider != null) fragmentEndItemProvider.dispose();
+    if (functionalChainAbstractCapabilityInvolvementItemProvider != null) functionalChainAbstractCapabilityInvolvementItemProvider.dispose();
+    if (abstractFunctionAbstractCapabilityInvolvementItemProvider != null) abstractFunctionAbstractCapabilityInvolvementItemProvider.dispose();
+    if (scenarioRealizationItemProvider != null) scenarioRealizationItemProvider.dispose();
+    if (stateFragmentItemProvider != null) stateFragmentItemProvider.dispose();
+    if (armTimerEventItemProvider != null) armTimerEventItemProvider.dispose();
+    if (cancelTimerEventItemProvider != null) cancelTimerEventItemProvider.dispose();
+    if (constraintDurationItemProvider != null) constraintDurationItemProvider.dispose();
+    if (sequenceMessageValuationItemProvider != null) sequenceMessageValuationItemProvider.dispose();
+  }
 
 }

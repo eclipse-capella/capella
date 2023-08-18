@@ -49,13 +49,13 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
 public abstract class AbstractActionImpl extends ExecutableNodeImpl implements AbstractAction {
 
 	/**
-	 * The cached value of the '{@link #getLocalPrecondition() <em>Local Precondition</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getLocalPrecondition() <em>Local Precondition</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLocalPrecondition()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getLocalPrecondition()
+   * @generated
+   * @ordered
+   */
 	protected AbstractConstraint localPrecondition;
 
 
@@ -63,13 +63,13 @@ public abstract class AbstractActionImpl extends ExecutableNodeImpl implements A
 
 
 	/**
-	 * The cached value of the '{@link #getLocalPostcondition() <em>Local Postcondition</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getLocalPostcondition() <em>Local Postcondition</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLocalPostcondition()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getLocalPostcondition()
+   * @generated
+   * @ordered
+   */
 	protected AbstractConstraint localPostcondition;
 
 
@@ -77,13 +77,13 @@ public abstract class AbstractActionImpl extends ExecutableNodeImpl implements A
 
 
 	/**
-	 * The cached value of the '{@link #getContext() <em>Context</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getContext() <em>Context</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getContext()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getContext()
+   * @generated
+   * @ordered
+   */
 	protected AbstractType context;
 
 
@@ -91,13 +91,13 @@ public abstract class AbstractActionImpl extends ExecutableNodeImpl implements A
 
 
 	/**
-	 * The cached value of the '{@link #getInputs() <em>Inputs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getInputs() <em>Inputs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInputs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getInputs()
+   * @generated
+   * @ordered
+   */
 	protected EList<InputPin> inputs;
 
 
@@ -105,124 +105,124 @@ public abstract class AbstractActionImpl extends ExecutableNodeImpl implements A
 
 
 	/**
-	 * The cached value of the '{@link #getOutputs() <em>Outputs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOutputs() <em>Outputs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOutputs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOutputs()
+   * @generated
+   * @ordered
+   */
 	protected EList<OutputPin> outputs;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractActionImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return ActivityPackage.Literals.ABSTRACT_ACTION;
-	}
+    return ActivityPackage.Literals.ABSTRACT_ACTION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractConstraint getLocalPrecondition() {
 
-		if (localPrecondition != null && localPrecondition.eIsProxy()) {
-			InternalEObject oldLocalPrecondition = (InternalEObject)localPrecondition;
-			localPrecondition = (AbstractConstraint)eResolveProxy(oldLocalPrecondition);
-			if (localPrecondition != oldLocalPrecondition) {
-				InternalEObject newLocalPrecondition = (InternalEObject)localPrecondition;
-				NotificationChain msgs = oldLocalPrecondition.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION, null, null);
-				if (newLocalPrecondition.eInternalContainer() == null) {
-					msgs = newLocalPrecondition.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION, oldLocalPrecondition, localPrecondition));
-			}
-		}
-		return localPrecondition;
-	}
+    if (localPrecondition != null && localPrecondition.eIsProxy()) {
+      InternalEObject oldLocalPrecondition = (InternalEObject)localPrecondition;
+      localPrecondition = (AbstractConstraint)eResolveProxy(oldLocalPrecondition);
+      if (localPrecondition != oldLocalPrecondition) {
+        InternalEObject newLocalPrecondition = (InternalEObject)localPrecondition;
+        NotificationChain msgs = oldLocalPrecondition.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION, null, null);
+        if (newLocalPrecondition.eInternalContainer() == null) {
+          msgs = newLocalPrecondition.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION, null, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION, oldLocalPrecondition, localPrecondition));
+      }
+    }
+    return localPrecondition;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractConstraint basicGetLocalPrecondition() {
 
-		return localPrecondition;
-	}
+    return localPrecondition;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetLocalPrecondition(AbstractConstraint newLocalPrecondition, NotificationChain msgs) {
 
-		AbstractConstraint oldLocalPrecondition = localPrecondition;
-		localPrecondition = newLocalPrecondition;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION, oldLocalPrecondition, newLocalPrecondition);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    AbstractConstraint oldLocalPrecondition = localPrecondition;
+    localPrecondition = newLocalPrecondition;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION, oldLocalPrecondition, newLocalPrecondition);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setLocalPrecondition(AbstractConstraint newLocalPrecondition) {
 
-		if (newLocalPrecondition != localPrecondition) {
-			NotificationChain msgs = null;
-			if (localPrecondition != null)
-				msgs = ((InternalEObject)localPrecondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION, null, msgs);
-			if (newLocalPrecondition != null)
-				msgs = ((InternalEObject)newLocalPrecondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION, null, msgs);
-			msgs = basicSetLocalPrecondition(newLocalPrecondition, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION, newLocalPrecondition, newLocalPrecondition));
+    if (newLocalPrecondition != localPrecondition) {
+      NotificationChain msgs = null;
+      if (localPrecondition != null)
+        msgs = ((InternalEObject)localPrecondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION, null, msgs);
+      if (newLocalPrecondition != null)
+        msgs = ((InternalEObject)newLocalPrecondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION, null, msgs);
+      msgs = basicSetLocalPrecondition(newLocalPrecondition, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION, newLocalPrecondition, newLocalPrecondition));
 
-	}
+  }
 
 
 
@@ -230,86 +230,86 @@ public abstract class AbstractActionImpl extends ExecutableNodeImpl implements A
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractConstraint getLocalPostcondition() {
 
-		if (localPostcondition != null && localPostcondition.eIsProxy()) {
-			InternalEObject oldLocalPostcondition = (InternalEObject)localPostcondition;
-			localPostcondition = (AbstractConstraint)eResolveProxy(oldLocalPostcondition);
-			if (localPostcondition != oldLocalPostcondition) {
-				InternalEObject newLocalPostcondition = (InternalEObject)localPostcondition;
-				NotificationChain msgs = oldLocalPostcondition.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION, null, null);
-				if (newLocalPostcondition.eInternalContainer() == null) {
-					msgs = newLocalPostcondition.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION, oldLocalPostcondition, localPostcondition));
-			}
-		}
-		return localPostcondition;
-	}
+    if (localPostcondition != null && localPostcondition.eIsProxy()) {
+      InternalEObject oldLocalPostcondition = (InternalEObject)localPostcondition;
+      localPostcondition = (AbstractConstraint)eResolveProxy(oldLocalPostcondition);
+      if (localPostcondition != oldLocalPostcondition) {
+        InternalEObject newLocalPostcondition = (InternalEObject)localPostcondition;
+        NotificationChain msgs = oldLocalPostcondition.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION, null, null);
+        if (newLocalPostcondition.eInternalContainer() == null) {
+          msgs = newLocalPostcondition.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION, null, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION, oldLocalPostcondition, localPostcondition));
+      }
+    }
+    return localPostcondition;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractConstraint basicGetLocalPostcondition() {
 
-		return localPostcondition;
-	}
+    return localPostcondition;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetLocalPostcondition(AbstractConstraint newLocalPostcondition, NotificationChain msgs) {
 
-		AbstractConstraint oldLocalPostcondition = localPostcondition;
-		localPostcondition = newLocalPostcondition;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION, oldLocalPostcondition, newLocalPostcondition);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    AbstractConstraint oldLocalPostcondition = localPostcondition;
+    localPostcondition = newLocalPostcondition;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION, oldLocalPostcondition, newLocalPostcondition);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setLocalPostcondition(AbstractConstraint newLocalPostcondition) {
 
-		if (newLocalPostcondition != localPostcondition) {
-			NotificationChain msgs = null;
-			if (localPostcondition != null)
-				msgs = ((InternalEObject)localPostcondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION, null, msgs);
-			if (newLocalPostcondition != null)
-				msgs = ((InternalEObject)newLocalPostcondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION, null, msgs);
-			msgs = basicSetLocalPostcondition(newLocalPostcondition, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION, newLocalPostcondition, newLocalPostcondition));
+    if (newLocalPostcondition != localPostcondition) {
+      NotificationChain msgs = null;
+      if (localPostcondition != null)
+        msgs = ((InternalEObject)localPostcondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION, null, msgs);
+      if (newLocalPostcondition != null)
+        msgs = ((InternalEObject)newLocalPostcondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION, null, msgs);
+      msgs = basicSetLocalPostcondition(newLocalPostcondition, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION, newLocalPostcondition, newLocalPostcondition));
 
-	}
+  }
 
 
 
@@ -317,53 +317,53 @@ public abstract class AbstractActionImpl extends ExecutableNodeImpl implements A
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractType getContext() {
 
-		if (context != null && context.eIsProxy()) {
-			InternalEObject oldContext = (InternalEObject)context;
-			context = (AbstractType)eResolveProxy(oldContext);
-			if (context != oldContext) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityPackage.ABSTRACT_ACTION__CONTEXT, oldContext, context));
-			}
-		}
-		return context;
-	}
+    if (context != null && context.eIsProxy()) {
+      InternalEObject oldContext = (InternalEObject)context;
+      context = (AbstractType)eResolveProxy(oldContext);
+      if (context != oldContext) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityPackage.ABSTRACT_ACTION__CONTEXT, oldContext, context));
+      }
+    }
+    return context;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractType basicGetContext() {
 
-		return context;
-	}
+    return context;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setContext(AbstractType newContext) {
 
-		AbstractType oldContext = context;
-		context = newContext;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ABSTRACT_ACTION__CONTEXT, oldContext, context));
+    AbstractType oldContext = context;
+    context = newContext;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ABSTRACT_ACTION__CONTEXT, oldContext, context));
 
-	}
+  }
 
 
 
@@ -371,165 +371,165 @@ public abstract class AbstractActionImpl extends ExecutableNodeImpl implements A
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<InputPin> getInputs() {
 
-		if (inputs == null) {
-			inputs = new EObjectContainmentEList.Resolving<InputPin>(InputPin.class, this, ActivityPackage.ABSTRACT_ACTION__INPUTS);
-		}
-		return inputs;
-	}
+    if (inputs == null) {
+      inputs = new EObjectContainmentEList.Resolving<InputPin>(InputPin.class, this, ActivityPackage.ABSTRACT_ACTION__INPUTS);
+    }
+    return inputs;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<OutputPin> getOutputs() {
 
-		if (outputs == null) {
-			outputs = new EObjectContainmentEList.Resolving<OutputPin>(OutputPin.class, this, ActivityPackage.ABSTRACT_ACTION__OUTPUTS);
-		}
-		return outputs;
-	}
+    if (outputs == null) {
+      outputs = new EObjectContainmentEList.Resolving<OutputPin>(OutputPin.class, this, ActivityPackage.ABSTRACT_ACTION__OUTPUTS);
+    }
+    return outputs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION:
-				return basicSetLocalPrecondition(null, msgs);
-			case ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION:
-				return basicSetLocalPostcondition(null, msgs);
-			case ActivityPackage.ABSTRACT_ACTION__INPUTS:
-				return ((InternalEList<?>)getInputs()).basicRemove(otherEnd, msgs);
-			case ActivityPackage.ABSTRACT_ACTION__OUTPUTS:
-				return ((InternalEList<?>)getOutputs()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION:
+        return basicSetLocalPrecondition(null, msgs);
+      case ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION:
+        return basicSetLocalPostcondition(null, msgs);
+      case ActivityPackage.ABSTRACT_ACTION__INPUTS:
+        return ((InternalEList<?>)getInputs()).basicRemove(otherEnd, msgs);
+      case ActivityPackage.ABSTRACT_ACTION__OUTPUTS:
+        return ((InternalEList<?>)getOutputs()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION:
-				if (resolve) return getLocalPrecondition();
-				return basicGetLocalPrecondition();
-			case ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION:
-				if (resolve) return getLocalPostcondition();
-				return basicGetLocalPostcondition();
-			case ActivityPackage.ABSTRACT_ACTION__CONTEXT:
-				if (resolve) return getContext();
-				return basicGetContext();
-			case ActivityPackage.ABSTRACT_ACTION__INPUTS:
-				return getInputs();
-			case ActivityPackage.ABSTRACT_ACTION__OUTPUTS:
-				return getOutputs();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION:
+        if (resolve) return getLocalPrecondition();
+        return basicGetLocalPrecondition();
+      case ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION:
+        if (resolve) return getLocalPostcondition();
+        return basicGetLocalPostcondition();
+      case ActivityPackage.ABSTRACT_ACTION__CONTEXT:
+        if (resolve) return getContext();
+        return basicGetContext();
+      case ActivityPackage.ABSTRACT_ACTION__INPUTS:
+        return getInputs();
+      case ActivityPackage.ABSTRACT_ACTION__OUTPUTS:
+        return getOutputs();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION:
-					setLocalPrecondition((AbstractConstraint)newValue);
-				return;
-			case ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION:
-					setLocalPostcondition((AbstractConstraint)newValue);
-				return;
-			case ActivityPackage.ABSTRACT_ACTION__CONTEXT:
-					setContext((AbstractType)newValue);
-				return;
-			case ActivityPackage.ABSTRACT_ACTION__INPUTS:
-				getInputs().clear();
-				getInputs().addAll((Collection<? extends InputPin>)newValue);
-				return;
-			case ActivityPackage.ABSTRACT_ACTION__OUTPUTS:
-				getOutputs().clear();
-				getOutputs().addAll((Collection<? extends OutputPin>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION:
+          setLocalPrecondition((AbstractConstraint)newValue);
+        return;
+      case ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION:
+          setLocalPostcondition((AbstractConstraint)newValue);
+        return;
+      case ActivityPackage.ABSTRACT_ACTION__CONTEXT:
+          setContext((AbstractType)newValue);
+        return;
+      case ActivityPackage.ABSTRACT_ACTION__INPUTS:
+        getInputs().clear();
+        getInputs().addAll((Collection<? extends InputPin>)newValue);
+        return;
+      case ActivityPackage.ABSTRACT_ACTION__OUTPUTS:
+        getOutputs().clear();
+        getOutputs().addAll((Collection<? extends OutputPin>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION:
-				setLocalPrecondition((AbstractConstraint)null);
-				return;
-			case ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION:
-				setLocalPostcondition((AbstractConstraint)null);
-				return;
-			case ActivityPackage.ABSTRACT_ACTION__CONTEXT:
-				setContext((AbstractType)null);
-				return;
-			case ActivityPackage.ABSTRACT_ACTION__INPUTS:
-				getInputs().clear();
-				return;
-			case ActivityPackage.ABSTRACT_ACTION__OUTPUTS:
-				getOutputs().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION:
+        setLocalPrecondition((AbstractConstraint)null);
+        return;
+      case ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION:
+        setLocalPostcondition((AbstractConstraint)null);
+        return;
+      case ActivityPackage.ABSTRACT_ACTION__CONTEXT:
+        setContext((AbstractType)null);
+        return;
+      case ActivityPackage.ABSTRACT_ACTION__INPUTS:
+        getInputs().clear();
+        return;
+      case ActivityPackage.ABSTRACT_ACTION__OUTPUTS:
+        getOutputs().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION:
-				return localPrecondition != null;
-			case ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION:
-				return localPostcondition != null;
-			case ActivityPackage.ABSTRACT_ACTION__CONTEXT:
-				return context != null;
-			case ActivityPackage.ABSTRACT_ACTION__INPUTS:
-				return inputs != null && !inputs.isEmpty();
-			case ActivityPackage.ABSTRACT_ACTION__OUTPUTS:
-				return outputs != null && !outputs.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.ABSTRACT_ACTION__LOCAL_PRECONDITION:
+        return localPrecondition != null;
+      case ActivityPackage.ABSTRACT_ACTION__LOCAL_POSTCONDITION:
+        return localPostcondition != null;
+      case ActivityPackage.ABSTRACT_ACTION__CONTEXT:
+        return context != null;
+      case ActivityPackage.ABSTRACT_ACTION__INPUTS:
+        return inputs != null && !inputs.isEmpty();
+      case ActivityPackage.ABSTRACT_ACTION__OUTPUTS:
+        return outputs != null && !outputs.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

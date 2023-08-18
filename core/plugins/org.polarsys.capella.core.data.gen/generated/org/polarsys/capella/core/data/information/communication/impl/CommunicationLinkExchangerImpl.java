@@ -59,13 +59,13 @@ import org.polarsys.capella.core.data.information.communication.CommunicationPac
 public abstract class CommunicationLinkExchangerImpl extends EObjectImpl implements CommunicationLinkExchanger {
 
 	/**
-	 * The cached value of the '{@link #getOwnedCommunicationLinks() <em>Owned Communication Links</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedCommunicationLinks() <em>Owned Communication Links</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedCommunicationLinks()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedCommunicationLinks()
+   * @generated
+   * @ordered
+   */
 	protected EList<CommunicationLink> ownedCommunicationLinks;
 
 
@@ -112,53 +112,53 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CommunicationLinkExchangerImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER;
-	}
+    return CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CommunicationLink> getOwnedCommunicationLinks() {
 
-		if (ownedCommunicationLinks == null) {
-			ownedCommunicationLinks = new EObjectContainmentEList.Resolving<CommunicationLink>(CommunicationLink.class, this, CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__OWNED_COMMUNICATION_LINKS);
-		}
-		return ownedCommunicationLinks;
-	}
+    if (ownedCommunicationLinks == null) {
+      ownedCommunicationLinks = new EObjectContainmentEList.Resolving<CommunicationLink>(CommunicationLink.class, this, CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__OWNED_COMMUNICATION_LINKS);
+    }
+    return ownedCommunicationLinks;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CommunicationLink> getProduce() {
 
@@ -185,27 +185,27 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
     // A helper is found, let's use it. 
     EAnnotation annotation = CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__PRODUCE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__PRODUCE, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
-		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__PRODUCE, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
+    return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__PRODUCE, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CommunicationLink> getConsume() {
 
@@ -232,27 +232,27 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
     // A helper is found, let's use it. 
     EAnnotation annotation = CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__CONSUME.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__CONSUME, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
-		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__CONSUME, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
+    return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__CONSUME, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CommunicationLink> getSend() {
 
@@ -279,27 +279,27 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
     // A helper is found, let's use it. 
     EAnnotation annotation = CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__SEND.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__SEND, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
-		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__SEND, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
+    return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__SEND, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CommunicationLink> getReceive() {
 
@@ -326,27 +326,27 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
     // A helper is found, let's use it. 
     EAnnotation annotation = CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__RECEIVE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__RECEIVE, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
-		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__RECEIVE, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
+    return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__RECEIVE, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CommunicationLink> getCall() {
 
@@ -373,27 +373,27 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
     // A helper is found, let's use it. 
     EAnnotation annotation = CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__CALL.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__CALL, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
-		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__CALL, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
+    return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__CALL, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CommunicationLink> getExecute() {
 
@@ -420,27 +420,27 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
     // A helper is found, let's use it. 
     EAnnotation annotation = CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__EXECUTE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__EXECUTE, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
-		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__EXECUTE, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
+    return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__EXECUTE, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CommunicationLink> getWrite() {
 
@@ -467,27 +467,27 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
     // A helper is found, let's use it. 
     EAnnotation annotation = CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__WRITE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__WRITE, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
-		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__WRITE, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
+    return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__WRITE, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CommunicationLink> getAccess() {
 
@@ -514,27 +514,27 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
     // A helper is found, let's use it. 
     EAnnotation annotation = CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__ACCESS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__ACCESS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
-		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__ACCESS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
+    return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__ACCESS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CommunicationLink> getAcquire() {
 
@@ -561,27 +561,27 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
     // A helper is found, let's use it. 
     EAnnotation annotation = CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__ACQUIRE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__ACQUIRE, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
-		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__ACQUIRE, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
+    return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__ACQUIRE, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CommunicationLink> getTransmit() {
 
@@ -608,136 +608,136 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
     // A helper is found, let's use it. 
     EAnnotation annotation = CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__TRANSMIT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__TRANSMIT, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
-		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__TRANSMIT, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
+    return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__TRANSMIT, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__OWNED_COMMUNICATION_LINKS:
-				return ((InternalEList<?>)getOwnedCommunicationLinks()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__OWNED_COMMUNICATION_LINKS:
+        return ((InternalEList<?>)getOwnedCommunicationLinks()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__OWNED_COMMUNICATION_LINKS:
-				return getOwnedCommunicationLinks();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__PRODUCE:
-				return getProduce();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__CONSUME:
-				return getConsume();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__SEND:
-				return getSend();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__RECEIVE:
-				return getReceive();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__CALL:
-				return getCall();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__EXECUTE:
-				return getExecute();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__WRITE:
-				return getWrite();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__ACCESS:
-				return getAccess();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__ACQUIRE:
-				return getAcquire();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__TRANSMIT:
-				return getTransmit();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__OWNED_COMMUNICATION_LINKS:
+        return getOwnedCommunicationLinks();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__PRODUCE:
+        return getProduce();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__CONSUME:
+        return getConsume();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__SEND:
+        return getSend();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__RECEIVE:
+        return getReceive();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__CALL:
+        return getCall();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__EXECUTE:
+        return getExecute();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__WRITE:
+        return getWrite();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__ACCESS:
+        return getAccess();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__ACQUIRE:
+        return getAcquire();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__TRANSMIT:
+        return getTransmit();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__OWNED_COMMUNICATION_LINKS:
-				getOwnedCommunicationLinks().clear();
-				getOwnedCommunicationLinks().addAll((Collection<? extends CommunicationLink>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__OWNED_COMMUNICATION_LINKS:
+        getOwnedCommunicationLinks().clear();
+        getOwnedCommunicationLinks().addAll((Collection<? extends CommunicationLink>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__OWNED_COMMUNICATION_LINKS:
-				getOwnedCommunicationLinks().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__OWNED_COMMUNICATION_LINKS:
+        getOwnedCommunicationLinks().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__OWNED_COMMUNICATION_LINKS:
-				return ownedCommunicationLinks != null && !ownedCommunicationLinks.isEmpty();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__PRODUCE:
-				return !getProduce().isEmpty();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__CONSUME:
-				return !getConsume().isEmpty();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__SEND:
-				return !getSend().isEmpty();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__RECEIVE:
-				return !getReceive().isEmpty();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__CALL:
-				return !getCall().isEmpty();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__EXECUTE:
-				return !getExecute().isEmpty();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__WRITE:
-				return !getWrite().isEmpty();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__ACCESS:
-				return !getAccess().isEmpty();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__ACQUIRE:
-				return !getAcquire().isEmpty();
-			case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__TRANSMIT:
-				return !getTransmit().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__OWNED_COMMUNICATION_LINKS:
+        return ownedCommunicationLinks != null && !ownedCommunicationLinks.isEmpty();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__PRODUCE:
+        return !getProduce().isEmpty();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__CONSUME:
+        return !getConsume().isEmpty();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__SEND:
+        return !getSend().isEmpty();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__RECEIVE:
+        return !getReceive().isEmpty();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__CALL:
+        return !getCall().isEmpty();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__EXECUTE:
+        return !getExecute().isEmpty();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__WRITE:
+        return !getWrite().isEmpty();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__ACCESS:
+        return !getAccess().isEmpty();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__ACQUIRE:
+        return !getAcquire().isEmpty();
+      case CommunicationPackage.COMMUNICATION_LINK_EXCHANGER__TRANSMIT:
+        return !getTransmit().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

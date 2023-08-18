@@ -51,23 +51,23 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 public class CombinedFragmentImpl extends AbstractFragmentImpl implements CombinedFragment {
 
 	/**
-	 * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOperator()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOperator()
+   * @generated
+   * @ordered
+   */
 	protected static final InteractionOperatorKind OPERATOR_EDEFAULT = InteractionOperatorKind.UNSET;
 
 	/**
-	 * The cached value of the '{@link #getOperator() <em>Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOperator() <em>Operator</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOperator()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOperator()
+   * @generated
+   * @ordered
+   */
 	protected InteractionOperatorKind operator = OPERATOR_EDEFAULT;
 
 
@@ -75,13 +75,13 @@ public class CombinedFragmentImpl extends AbstractFragmentImpl implements Combin
 
 
 	/**
-	 * The cached value of the '{@link #getReferencedOperands() <em>Referenced Operands</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getReferencedOperands() <em>Referenced Operands</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReferencedOperands()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getReferencedOperands()
+   * @generated
+   * @ordered
+   */
 	protected EList<InteractionOperand> referencedOperands;
 
 
@@ -92,57 +92,57 @@ public class CombinedFragmentImpl extends AbstractFragmentImpl implements Combin
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CombinedFragmentImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.COMBINED_FRAGMENT;
-	}
+    return InteractionPackage.Literals.COMBINED_FRAGMENT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InteractionOperatorKind getOperator() {
 
-		return operator;
-	}
+    return operator;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setOperator(InteractionOperatorKind newOperator) {
 
-		InteractionOperatorKind oldOperator = operator;
-		operator = newOperator == null ? OPERATOR_EDEFAULT : newOperator;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.COMBINED_FRAGMENT__OPERATOR, oldOperator, operator));
+    InteractionOperatorKind oldOperator = operator;
+    operator = newOperator == null ? OPERATOR_EDEFAULT : newOperator;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.COMBINED_FRAGMENT__OPERATOR, oldOperator, operator));
 
-	}
+  }
 
 
 
@@ -150,28 +150,28 @@ public class CombinedFragmentImpl extends AbstractFragmentImpl implements Combin
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<InteractionOperand> getReferencedOperands() {
 
-		if (referencedOperands == null) {
-			referencedOperands = new EObjectResolvingEList<InteractionOperand>(InteractionOperand.class, this, InteractionPackage.COMBINED_FRAGMENT__REFERENCED_OPERANDS);
-		}
-		return referencedOperands;
-	}
+    if (referencedOperands == null) {
+      referencedOperands = new EObjectResolvingEList<InteractionOperand>(InteractionOperand.class, this, InteractionPackage.COMBINED_FRAGMENT__REFERENCED_OPERANDS);
+    }
+    return referencedOperands;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Gate> getExpressionGates() {
 
@@ -198,113 +198,113 @@ public class CombinedFragmentImpl extends AbstractFragmentImpl implements Combin
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.COMBINED_FRAGMENT__EXPRESSION_GATES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.COMBINED_FRAGMENT__EXPRESSION_GATES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Gate> resultAsList = (Collection<Gate>) result;
-		return new EcoreEList.UnmodifiableEList<Gate>(this, InteractionPackage.Literals.COMBINED_FRAGMENT__EXPRESSION_GATES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Gate> resultAsList = (Collection<Gate>) result;
+    return new EcoreEList.UnmodifiableEList<Gate>(this, InteractionPackage.Literals.COMBINED_FRAGMENT__EXPRESSION_GATES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.COMBINED_FRAGMENT__OPERATOR:
-				return getOperator();
-			case InteractionPackage.COMBINED_FRAGMENT__REFERENCED_OPERANDS:
-				return getReferencedOperands();
-			case InteractionPackage.COMBINED_FRAGMENT__EXPRESSION_GATES:
-				return getExpressionGates();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.COMBINED_FRAGMENT__OPERATOR:
+        return getOperator();
+      case InteractionPackage.COMBINED_FRAGMENT__REFERENCED_OPERANDS:
+        return getReferencedOperands();
+      case InteractionPackage.COMBINED_FRAGMENT__EXPRESSION_GATES:
+        return getExpressionGates();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InteractionPackage.COMBINED_FRAGMENT__OPERATOR:
-					setOperator((InteractionOperatorKind)newValue);
-				return;
-			case InteractionPackage.COMBINED_FRAGMENT__REFERENCED_OPERANDS:
-				getReferencedOperands().clear();
-				getReferencedOperands().addAll((Collection<? extends InteractionOperand>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InteractionPackage.COMBINED_FRAGMENT__OPERATOR:
+          setOperator((InteractionOperatorKind)newValue);
+        return;
+      case InteractionPackage.COMBINED_FRAGMENT__REFERENCED_OPERANDS:
+        getReferencedOperands().clear();
+        getReferencedOperands().addAll((Collection<? extends InteractionOperand>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.COMBINED_FRAGMENT__OPERATOR:
-				setOperator(OPERATOR_EDEFAULT);
-				return;
-			case InteractionPackage.COMBINED_FRAGMENT__REFERENCED_OPERANDS:
-				getReferencedOperands().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.COMBINED_FRAGMENT__OPERATOR:
+        setOperator(OPERATOR_EDEFAULT);
+        return;
+      case InteractionPackage.COMBINED_FRAGMENT__REFERENCED_OPERANDS:
+        getReferencedOperands().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.COMBINED_FRAGMENT__OPERATOR:
-				return operator != OPERATOR_EDEFAULT;
-			case InteractionPackage.COMBINED_FRAGMENT__REFERENCED_OPERANDS:
-				return referencedOperands != null && !referencedOperands.isEmpty();
-			case InteractionPackage.COMBINED_FRAGMENT__EXPRESSION_GATES:
-				return !getExpressionGates().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.COMBINED_FRAGMENT__OPERATOR:
+        return operator != OPERATOR_EDEFAULT;
+      case InteractionPackage.COMBINED_FRAGMENT__REFERENCED_OPERANDS:
+        return referencedOperands != null && !referencedOperands.isEmpty();
+      case InteractionPackage.COMBINED_FRAGMENT__EXPRESSION_GATES:
+        return !getExpressionGates().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (operator: "); //$NON-NLS-1$
-		result.append(operator);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (operator: "); //$NON-NLS-1$
+    result.append(operator);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //CombinedFragmentImpl

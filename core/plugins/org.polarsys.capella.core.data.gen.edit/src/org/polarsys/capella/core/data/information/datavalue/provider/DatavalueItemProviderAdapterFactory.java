@@ -65,573 +65,573 @@ import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
  */
 public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
 	/**
-	 * This keeps track of the root adapter factory that delegates to this adapter factory.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the root adapter factory that delegates to this adapter factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComposedAdapterFactory parentAdapterFactory;
 
 	/**
-	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-	 * <!-- begin-user-doc -->
+   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
 	/**
-	 * This helps manage the child creation extenders.
-	 * <!-- begin-user-doc -->
+   * This helps manage the child creation extenders.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(CapellaModellerEditPlugin.INSTANCE, DatavaluePackage.eNS_URI);
 
 	/**
-	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-	 * <!-- begin-user-doc -->
+   * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
-	 * This constructs an instance.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public DatavalueItemProviderAdapterFactory() {
-		supportedTypes.add(IEditingDomainItemProvider.class);
-		supportedTypes.add(IStructuredItemContentProvider.class);
-		supportedTypes.add(ITreeItemContentProvider.class);
-		supportedTypes.add(IItemLabelProvider.class);
-		supportedTypes.add(IItemPropertySource.class);
-	}
+    supportedTypes.add(IEditingDomainItemProvider.class);
+    supportedTypes.add(IStructuredItemContentProvider.class);
+    supportedTypes.add(ITreeItemContentProvider.class);
+    supportedTypes.add(IItemLabelProvider.class);
+    supportedTypes.add(IItemPropertySource.class);
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected LiteralBooleanValueItemProvider literalBooleanValueItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createLiteralBooleanValueAdapter() {
-		if (literalBooleanValueItemProvider == null) {
-			literalBooleanValueItemProvider = new LiteralBooleanValueItemProvider(this);
-		}
+    if (literalBooleanValueItemProvider == null) {
+      literalBooleanValueItemProvider = new LiteralBooleanValueItemProvider(this);
+    }
 
-		return literalBooleanValueItemProvider;
-	}
+    return literalBooleanValueItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.BooleanReference} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.BooleanReference} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected BooleanReferenceItemProvider booleanReferenceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.BooleanReference}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.BooleanReference}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createBooleanReferenceAdapter() {
-		if (booleanReferenceItemProvider == null) {
-			booleanReferenceItemProvider = new BooleanReferenceItemProvider(this);
-		}
+    if (booleanReferenceItemProvider == null) {
+      booleanReferenceItemProvider = new BooleanReferenceItemProvider(this);
+    }
 
-		return booleanReferenceItemProvider;
-	}
+    return booleanReferenceItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected EnumerationLiteralItemProvider enumerationLiteralItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createEnumerationLiteralAdapter() {
-		if (enumerationLiteralItemProvider == null) {
-			enumerationLiteralItemProvider = new EnumerationLiteralItemProvider(this);
-		}
+    if (enumerationLiteralItemProvider == null) {
+      enumerationLiteralItemProvider = new EnumerationLiteralItemProvider(this);
+    }
 
-		return enumerationLiteralItemProvider;
-	}
+    return enumerationLiteralItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.EnumerationReference} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.EnumerationReference} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected EnumerationReferenceItemProvider enumerationReferenceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.EnumerationReference}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.EnumerationReference}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createEnumerationReferenceAdapter() {
-		if (enumerationReferenceItemProvider == null) {
-			enumerationReferenceItemProvider = new EnumerationReferenceItemProvider(this);
-		}
+    if (enumerationReferenceItemProvider == null) {
+      enumerationReferenceItemProvider = new EnumerationReferenceItemProvider(this);
+    }
 
-		return enumerationReferenceItemProvider;
-	}
+    return enumerationReferenceItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.LiteralStringValue} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.LiteralStringValue} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected LiteralStringValueItemProvider literalStringValueItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.LiteralStringValue}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.LiteralStringValue}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createLiteralStringValueAdapter() {
-		if (literalStringValueItemProvider == null) {
-			literalStringValueItemProvider = new LiteralStringValueItemProvider(this);
-		}
+    if (literalStringValueItemProvider == null) {
+      literalStringValueItemProvider = new LiteralStringValueItemProvider(this);
+    }
 
-		return literalStringValueItemProvider;
-	}
+    return literalStringValueItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.StringReference} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.StringReference} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected StringReferenceItemProvider stringReferenceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.StringReference}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.StringReference}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createStringReferenceAdapter() {
-		if (stringReferenceItemProvider == null) {
-			stringReferenceItemProvider = new StringReferenceItemProvider(this);
-		}
+    if (stringReferenceItemProvider == null) {
+      stringReferenceItemProvider = new StringReferenceItemProvider(this);
+    }
 
-		return stringReferenceItemProvider;
-	}
+    return stringReferenceItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected LiteralNumericValueItemProvider literalNumericValueItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createLiteralNumericValueAdapter() {
-		if (literalNumericValueItemProvider == null) {
-			literalNumericValueItemProvider = new LiteralNumericValueItemProvider(this);
-		}
+    if (literalNumericValueItemProvider == null) {
+      literalNumericValueItemProvider = new LiteralNumericValueItemProvider(this);
+    }
 
-		return literalNumericValueItemProvider;
-	}
+    return literalNumericValueItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.NumericReference} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.NumericReference} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected NumericReferenceItemProvider numericReferenceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.NumericReference}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.NumericReference}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createNumericReferenceAdapter() {
-		if (numericReferenceItemProvider == null) {
-			numericReferenceItemProvider = new NumericReferenceItemProvider(this);
-		}
+    if (numericReferenceItemProvider == null) {
+      numericReferenceItemProvider = new NumericReferenceItemProvider(this);
+    }
 
-		return numericReferenceItemProvider;
-	}
+    return numericReferenceItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.ComplexValue} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.ComplexValue} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComplexValueItemProvider complexValueItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.ComplexValue}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.ComplexValue}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createComplexValueAdapter() {
-		if (complexValueItemProvider == null) {
-			complexValueItemProvider = new ComplexValueItemProvider(this);
-		}
+    if (complexValueItemProvider == null) {
+      complexValueItemProvider = new ComplexValueItemProvider(this);
+    }
 
-		return complexValueItemProvider;
-	}
+    return complexValueItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.ComplexValueReference} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.ComplexValueReference} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComplexValueReferenceItemProvider complexValueReferenceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.ComplexValueReference}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.ComplexValueReference}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createComplexValueReferenceAdapter() {
-		if (complexValueReferenceItemProvider == null) {
-			complexValueReferenceItemProvider = new ComplexValueReferenceItemProvider(this);
-		}
+    if (complexValueReferenceItemProvider == null) {
+      complexValueReferenceItemProvider = new ComplexValueReferenceItemProvider(this);
+    }
 
-		return complexValueReferenceItemProvider;
-	}
+    return complexValueReferenceItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.ValuePart} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.ValuePart} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ValuePartItemProvider valuePartItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.ValuePart}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.ValuePart}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createValuePartAdapter() {
-		if (valuePartItemProvider == null) {
-			valuePartItemProvider = new ValuePartItemProvider(this);
-		}
+    if (valuePartItemProvider == null) {
+      valuePartItemProvider = new ValuePartItemProvider(this);
+    }
 
-		return valuePartItemProvider;
-	}
+    return valuePartItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.BinaryExpression} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.BinaryExpression} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected BinaryExpressionItemProvider binaryExpressionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.BinaryExpression}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.BinaryExpression}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createBinaryExpressionAdapter() {
-		if (binaryExpressionItemProvider == null) {
-			binaryExpressionItemProvider = new BinaryExpressionItemProvider(this);
-		}
+    if (binaryExpressionItemProvider == null) {
+      binaryExpressionItemProvider = new BinaryExpressionItemProvider(this);
+    }
 
-		return binaryExpressionItemProvider;
-	}
+    return binaryExpressionItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.UnaryExpression} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.UnaryExpression} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected UnaryExpressionItemProvider unaryExpressionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.UnaryExpression}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.UnaryExpression}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createUnaryExpressionAdapter() {
-		if (unaryExpressionItemProvider == null) {
-			unaryExpressionItemProvider = new UnaryExpressionItemProvider(this);
-		}
+    if (unaryExpressionItemProvider == null) {
+      unaryExpressionItemProvider = new UnaryExpressionItemProvider(this);
+    }
 
-		return unaryExpressionItemProvider;
-	}
+    return unaryExpressionItemProvider;
+  }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.OpaqueExpression} instances.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.OpaqueExpression} instances.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OpaqueExpressionItemProvider opaqueExpressionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.OpaqueExpression}.
-	 * <!-- begin-user-doc -->
+   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.OpaqueExpression}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter createOpaqueExpressionAdapter() {
-		if (opaqueExpressionItemProvider == null) {
-			opaqueExpressionItemProvider = new OpaqueExpressionItemProvider(this);
-		}
+    if (opaqueExpressionItemProvider == null) {
+      opaqueExpressionItemProvider = new OpaqueExpressionItemProvider(this);
+    }
 
-		return opaqueExpressionItemProvider;
-	}
+    return opaqueExpressionItemProvider;
+  }
 
 	/**
-	 * This returns the root adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+   * This returns the root adapter factory that contains this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
-	}
+    return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+  }
 
 	/**
-	 * This sets the composed adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+   * This sets the composed adapter factory that contains this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
-		this.parentAdapterFactory = parentAdapterFactory;
-	}
+    this.parentAdapterFactory = parentAdapterFactory;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean isFactoryForType(Object type) {
-		return supportedTypes.contains(type) || super.isFactoryForType(type);
-	}
+    return supportedTypes.contains(type) || super.isFactoryForType(type);
+  }
 
 	/**
-	 * This implementation substitutes the factory itself as the key for the adapter.
-	 * <!-- begin-user-doc -->
+   * This implementation substitutes the factory itself as the key for the adapter.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
-		return super.adapt(notifier, this);
-	}
+    return super.adapt(notifier, this);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object adapt(Object object, Object type) {
-		if (isFactoryForType(type)) {
-			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
-				return adapter;
-			}
-		}
+    if (isFactoryForType(type)) {
+      Object adapter = super.adapt(object, type);
+      if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+        return adapter;
+      }
+    }
 
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public List<IChildCreationExtender> getChildCreationExtenders() {
-		return childCreationExtenderManager.getChildCreationExtenders();
-	}
+    return childCreationExtenderManager.getChildCreationExtenders();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
-	}
+    return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ResourceLocator getResourceLocator() {
-		return childCreationExtenderManager;
-	}
+    return childCreationExtenderManager;
+  }
 
 	/**
-	 * This adds a listener.
-	 * <!-- begin-user-doc -->
+   * This adds a listener.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.addListener(notifyChangedListener);
-	}
+    changeNotifier.addListener(notifyChangedListener);
+  }
 
 	/**
-	 * This removes a listener.
-	 * <!-- begin-user-doc -->
+   * This removes a listener.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.removeListener(notifyChangedListener);
-	}
+    changeNotifier.removeListener(notifyChangedListener);
+  }
 
 	/**
-	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-	 * <!-- begin-user-doc -->
+   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void fireNotifyChanged(Notification notification) {
-		changeNotifier.fireNotifyChanged(notification);
+    changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null) {
-			parentAdapterFactory.fireNotifyChanged(notification);
-		}
-	}
+    if (parentAdapterFactory != null) {
+      parentAdapterFactory.fireNotifyChanged(notification);
+    }
+  }
 
 	/**
-	 * This disposes all of the item providers created by this factory. 
-	 * <!-- begin-user-doc -->
+   * This disposes all of the item providers created by this factory. 
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void dispose() {
-		if (literalBooleanValueItemProvider != null) literalBooleanValueItemProvider.dispose();
-		if (booleanReferenceItemProvider != null) booleanReferenceItemProvider.dispose();
-		if (enumerationLiteralItemProvider != null) enumerationLiteralItemProvider.dispose();
-		if (enumerationReferenceItemProvider != null) enumerationReferenceItemProvider.dispose();
-		if (literalStringValueItemProvider != null) literalStringValueItemProvider.dispose();
-		if (stringReferenceItemProvider != null) stringReferenceItemProvider.dispose();
-		if (literalNumericValueItemProvider != null) literalNumericValueItemProvider.dispose();
-		if (numericReferenceItemProvider != null) numericReferenceItemProvider.dispose();
-		if (complexValueItemProvider != null) complexValueItemProvider.dispose();
-		if (complexValueReferenceItemProvider != null) complexValueReferenceItemProvider.dispose();
-		if (valuePartItemProvider != null) valuePartItemProvider.dispose();
-		if (binaryExpressionItemProvider != null) binaryExpressionItemProvider.dispose();
-		if (unaryExpressionItemProvider != null) unaryExpressionItemProvider.dispose();
-		if (opaqueExpressionItemProvider != null) opaqueExpressionItemProvider.dispose();
-	}
+    if (literalBooleanValueItemProvider != null) literalBooleanValueItemProvider.dispose();
+    if (booleanReferenceItemProvider != null) booleanReferenceItemProvider.dispose();
+    if (enumerationLiteralItemProvider != null) enumerationLiteralItemProvider.dispose();
+    if (enumerationReferenceItemProvider != null) enumerationReferenceItemProvider.dispose();
+    if (literalStringValueItemProvider != null) literalStringValueItemProvider.dispose();
+    if (stringReferenceItemProvider != null) stringReferenceItemProvider.dispose();
+    if (literalNumericValueItemProvider != null) literalNumericValueItemProvider.dispose();
+    if (numericReferenceItemProvider != null) numericReferenceItemProvider.dispose();
+    if (complexValueItemProvider != null) complexValueItemProvider.dispose();
+    if (complexValueReferenceItemProvider != null) complexValueReferenceItemProvider.dispose();
+    if (valuePartItemProvider != null) valuePartItemProvider.dispose();
+    if (binaryExpressionItemProvider != null) binaryExpressionItemProvider.dispose();
+    if (unaryExpressionItemProvider != null) unaryExpressionItemProvider.dispose();
+    if (opaqueExpressionItemProvider != null) opaqueExpressionItemProvider.dispose();
+  }
 
 	/**
-	 * A child creation extender for the {@link ModellingcorePackage}.
-	 * <!-- begin-user-doc -->
+   * A child creation extender for the {@link ModellingcorePackage}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static class ModellingcoreChildCreationExtender implements IChildCreationExtender {
 		/**
-		 * The switch for creating child descriptors specific to each extended class.
-		 * <!-- begin-user-doc -->
+     * The switch for creating child descriptors specific to each extended class.
+     * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
+     * @generated
+     */
 		protected static class CreationSwitch extends ModellingcoreSwitch<Object> {
 			/**
-			 * The child descriptors being populated.
-			 * <!-- begin-user-doc -->
+       * The child descriptors being populated.
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			protected List<Object> newChildDescriptors;
 
 			/**
-			 * The domain in which to create the children.
-			 * <!-- begin-user-doc -->
+       * The domain in which to create the children.
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			protected EditingDomain editingDomain;
 
 			/**
-			 * Creates the a switch for populating child descriptors in the given domain.
-			 * <!-- begin-user-doc -->
+       * Creates the a switch for populating child descriptors in the given domain.
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
-				this.newChildDescriptors = newChildDescriptors;
-				this.editingDomain = editingDomain;
-			}
+        this.newChildDescriptors = newChildDescriptors;
+        this.editingDomain = editingDomain;
+      }
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			@Override
 			public Object caseAbstractConstraint(AbstractConstraint object) {
-				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/7.0.0")) { //$NON-NLS-1$
-					return null;				
-				}
-				// end-extension-code
+        // begin-extension-code
+        if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/7.0.0")) { //$NON-NLS-1$
+          return null;				
+        }
+        // end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -801,20 +801,20 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 
 
 
-				return null;
-			}
+        return null;
+      }
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			@Override
 			public Object caseAbstractParameter(AbstractParameter object) {
-				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/7.0.0")) { //$NON-NLS-1$
-					return null;				
-				}
-				// end-extension-code
+        // begin-extension-code
+        if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/7.0.0")) { //$NON-NLS-1$
+          return null;				
+        }
+        // end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -1153,21 +1153,21 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 
 
 
-				return null;
-			}
+        return null;
+      }
  
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			@Override
 			public Object caseAbstractParameterSet(AbstractParameterSet object) {
-				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/7.0.0")) { //$NON-NLS-1$
-					return null;				
-				}
-				// end-extension-code
+        // begin-extension-code
+        if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/7.0.0")) { //$NON-NLS-1$
+          return null;				
+        }
+        // end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -1337,93 +1337,93 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 
 
 
-				return null;
-			}
+        return null;
+      }
  
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			protected CommandParameter createChildParameter(Object feature, Object child) {
-				return new CommandParameter(null, feature, child);
-			}
+        return new CommandParameter(null, feature, child);
+      }
 
 		}
 
 		/**
-		 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
+     * @generated
+     */
 		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-			ArrayList<Object> result = new ArrayList<Object>();
-			new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
-			return result;
-		}
+      ArrayList<Object> result = new ArrayList<Object>();
+      new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
+      return result;
+    }
 
 		/**
-		 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
+     * @generated
+     */
 		public ResourceLocator getResourceLocator() {
-			return CapellaModellerEditPlugin.INSTANCE;
-		}
+      return CapellaModellerEditPlugin.INSTANCE;
+    }
 	}
 
 	/**
-	 * A child creation extender for the {@link ActivityPackage}.
-	 * <!-- begin-user-doc -->
+   * A child creation extender for the {@link ActivityPackage}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static class ActivityChildCreationExtender implements IChildCreationExtender {
 		/**
-		 * The switch for creating child descriptors specific to each extended class.
-		 * <!-- begin-user-doc -->
+     * The switch for creating child descriptors specific to each extended class.
+     * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
+     * @generated
+     */
 		protected static class CreationSwitch extends ActivitySwitch<Object> {
 			/**
-			 * The child descriptors being populated.
-			 * <!-- begin-user-doc -->
+       * The child descriptors being populated.
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			protected List<Object> newChildDescriptors;
 
 			/**
-			 * The domain in which to create the children.
-			 * <!-- begin-user-doc -->
+       * The domain in which to create the children.
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			protected EditingDomain editingDomain;
 
 			/**
-			 * Creates the a switch for populating child descriptors in the given domain.
-			 * <!-- begin-user-doc -->
+       * Creates the a switch for populating child descriptors in the given domain.
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
-				this.newChildDescriptors = newChildDescriptors;
-				this.editingDomain = editingDomain;
-			}
+        this.newChildDescriptors = newChildDescriptors;
+        this.editingDomain = editingDomain;
+      }
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			@Override
 			public Object caseActivityEdge(ActivityEdge object) {
-				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/7.0.0")) { //$NON-NLS-1$
-					return null;				
-				}
-				// end-extension-code
+        // begin-extension-code
+        if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/7.0.0")) { //$NON-NLS-1$
+          return null;				
+        }
+        // end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -2100,21 +2100,21 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 
 
 
-				return null;
-			}
+        return null;
+      }
  
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			@Override
 			public Object caseObjectNode(ObjectNode object) {
-				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/7.0.0")) { //$NON-NLS-1$
-					return null;				
-				}
-				// end-extension-code
+        // begin-extension-code
+        if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/7.0.0")) { //$NON-NLS-1$
+          return null;				
+        }
+        // end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -2284,21 +2284,21 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 
 
 
-				return null;
-			}
+        return null;
+      }
  
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			@Override
 			public Object caseValuePin(ValuePin object) {
-				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/7.0.0")) { //$NON-NLS-1$
-					return null;				
-				}
-				// end-extension-code
+        // begin-extension-code
+        if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/7.0.0")) { //$NON-NLS-1$
+          return null;				
+        }
+        // end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -2468,39 +2468,39 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 
 
 
-				return null;
-			}
+        return null;
+      }
  
 			/**
-			 * <!-- begin-user-doc -->
+       * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-			 * @generated
-			 */
+       * @generated
+       */
 			protected CommandParameter createChildParameter(Object feature, Object child) {
-				return new CommandParameter(null, feature, child);
-			}
+        return new CommandParameter(null, feature, child);
+      }
 
 		}
 
 		/**
-		 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
+     * @generated
+     */
 		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-			ArrayList<Object> result = new ArrayList<Object>();
-			new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
-			return result;
-		}
+      ArrayList<Object> result = new ArrayList<Object>();
+      new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
+      return result;
+    }
 
 		/**
-		 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
+     * @generated
+     */
 		public ResourceLocator getResourceLocator() {
-			return CapellaModellerEditPlugin.INSTANCE;
-		}
+      return CapellaModellerEditPlugin.INSTANCE;
+    }
 	}
 
 }

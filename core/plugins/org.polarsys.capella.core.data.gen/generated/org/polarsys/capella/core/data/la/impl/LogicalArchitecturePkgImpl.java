@@ -41,135 +41,135 @@ import org.polarsys.capella.core.data.la.LogicalArchitecturePkg;
 public class LogicalArchitecturePkgImpl extends BlockArchitecturePkgImpl implements LogicalArchitecturePkg {
 
 	/**
-	 * The cached value of the '{@link #getOwnedLogicalArchitectures() <em>Owned Logical Architectures</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedLogicalArchitectures() <em>Owned Logical Architectures</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedLogicalArchitectures()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedLogicalArchitectures()
+   * @generated
+   * @ordered
+   */
 	protected EList<LogicalArchitecture> ownedLogicalArchitectures;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected LogicalArchitecturePkgImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return LaPackage.Literals.LOGICAL_ARCHITECTURE_PKG;
-	}
+    return LaPackage.Literals.LOGICAL_ARCHITECTURE_PKG;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LogicalArchitecture> getOwnedLogicalArchitectures() {
 
-		if (ownedLogicalArchitectures == null) {
-			ownedLogicalArchitectures = new EObjectContainmentEList.Resolving<LogicalArchitecture>(LogicalArchitecture.class, this, LaPackage.LOGICAL_ARCHITECTURE_PKG__OWNED_LOGICAL_ARCHITECTURES);
-		}
-		return ownedLogicalArchitectures;
-	}
+    if (ownedLogicalArchitectures == null) {
+      ownedLogicalArchitectures = new EObjectContainmentEList.Resolving<LogicalArchitecture>(LogicalArchitecture.class, this, LaPackage.LOGICAL_ARCHITECTURE_PKG__OWNED_LOGICAL_ARCHITECTURES);
+    }
+    return ownedLogicalArchitectures;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_ARCHITECTURE_PKG__OWNED_LOGICAL_ARCHITECTURES:
-				return ((InternalEList<?>)getOwnedLogicalArchitectures()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_ARCHITECTURE_PKG__OWNED_LOGICAL_ARCHITECTURES:
+        return ((InternalEList<?>)getOwnedLogicalArchitectures()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_ARCHITECTURE_PKG__OWNED_LOGICAL_ARCHITECTURES:
-				return getOwnedLogicalArchitectures();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_ARCHITECTURE_PKG__OWNED_LOGICAL_ARCHITECTURES:
+        return getOwnedLogicalArchitectures();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_ARCHITECTURE_PKG__OWNED_LOGICAL_ARCHITECTURES:
-				getOwnedLogicalArchitectures().clear();
-				getOwnedLogicalArchitectures().addAll((Collection<? extends LogicalArchitecture>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_ARCHITECTURE_PKG__OWNED_LOGICAL_ARCHITECTURES:
+        getOwnedLogicalArchitectures().clear();
+        getOwnedLogicalArchitectures().addAll((Collection<? extends LogicalArchitecture>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_ARCHITECTURE_PKG__OWNED_LOGICAL_ARCHITECTURES:
-				getOwnedLogicalArchitectures().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_ARCHITECTURE_PKG__OWNED_LOGICAL_ARCHITECTURES:
+        getOwnedLogicalArchitectures().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_ARCHITECTURE_PKG__OWNED_LOGICAL_ARCHITECTURES:
-				return ownedLogicalArchitectures != null && !ownedLogicalArchitectures.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_ARCHITECTURE_PKG__OWNED_LOGICAL_ARCHITECTURES:
+        return ownedLogicalArchitectures != null && !ownedLogicalArchitectures.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

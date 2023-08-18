@@ -24,146 +24,146 @@ import org.eclipse.emf.ecore.EFactory;
  */
 public interface DatavalueFactory extends EFactory {
 	/**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
+   * The singleton instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	DatavalueFactory eINSTANCE = org.polarsys.capella.core.data.information.datavalue.impl.DatavalueFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Literal Boolean Value</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Literal Boolean Value</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Literal Boolean Value</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Literal Boolean Value</em>'.
+   * @generated
+   */
 	LiteralBooleanValue createLiteralBooleanValue();
 
 	/**
-	 * Returns a new object of class '<em>Boolean Reference</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Boolean Reference</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Boolean Reference</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Boolean Reference</em>'.
+   * @generated
+   */
 	BooleanReference createBooleanReference();
 
 	/**
-	 * Returns a new object of class '<em>Enumeration Literal</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Enumeration Literal</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Enumeration Literal</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Enumeration Literal</em>'.
+   * @generated
+   */
 	EnumerationLiteral createEnumerationLiteral();
 
 	/**
-	 * Returns a new object of class '<em>Enumeration Reference</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Enumeration Reference</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Enumeration Reference</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Enumeration Reference</em>'.
+   * @generated
+   */
 	EnumerationReference createEnumerationReference();
 
 	/**
-	 * Returns a new object of class '<em>Literal String Value</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Literal String Value</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Literal String Value</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Literal String Value</em>'.
+   * @generated
+   */
 	LiteralStringValue createLiteralStringValue();
 
 	/**
-	 * Returns a new object of class '<em>String Reference</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>String Reference</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>String Reference</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>String Reference</em>'.
+   * @generated
+   */
 	StringReference createStringReference();
 
 	/**
-	 * Returns a new object of class '<em>Literal Numeric Value</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Literal Numeric Value</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Literal Numeric Value</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Literal Numeric Value</em>'.
+   * @generated
+   */
 	LiteralNumericValue createLiteralNumericValue();
 
 	/**
-	 * Returns a new object of class '<em>Numeric Reference</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Numeric Reference</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Numeric Reference</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Numeric Reference</em>'.
+   * @generated
+   */
 	NumericReference createNumericReference();
 
 	/**
-	 * Returns a new object of class '<em>Complex Value</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Complex Value</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Complex Value</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Complex Value</em>'.
+   * @generated
+   */
 	ComplexValue createComplexValue();
 
 	/**
-	 * Returns a new object of class '<em>Complex Value Reference</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Complex Value Reference</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Complex Value Reference</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Complex Value Reference</em>'.
+   * @generated
+   */
 	ComplexValueReference createComplexValueReference();
 
 	/**
-	 * Returns a new object of class '<em>Value Part</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Value Part</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Value Part</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Value Part</em>'.
+   * @generated
+   */
 	ValuePart createValuePart();
 
 	/**
-	 * Returns a new object of class '<em>Binary Expression</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Binary Expression</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Binary Expression</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Binary Expression</em>'.
+   * @generated
+   */
 	BinaryExpression createBinaryExpression();
 
 	/**
-	 * Returns a new object of class '<em>Unary Expression</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Unary Expression</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Unary Expression</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Unary Expression</em>'.
+   * @generated
+   */
 	UnaryExpression createUnaryExpression();
 
 	/**
-	 * Returns a new object of class '<em>Opaque Expression</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Opaque Expression</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Opaque Expression</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Opaque Expression</em>'.
+   * @generated
+   */
 	OpaqueExpression createOpaqueExpression();
 
 	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
+   * Returns the package supported by this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
+   * @return the package supported by this factory.
+   * @generated
+   */
 	DatavaluePackage getDatavaluePackage();
 
 	/**

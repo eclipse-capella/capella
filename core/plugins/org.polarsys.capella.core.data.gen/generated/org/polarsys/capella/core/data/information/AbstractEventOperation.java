@@ -41,23 +41,23 @@ public interface AbstractEventOperation extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Invoking Sequence Messages</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.SequenceMessage}.
+   * Returns the value of the '<em><b>Invoking Sequence Messages</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.interaction.SequenceMessage}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Invoking Sequence Messages</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Invoking Sequence Messages</em>' reference list.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getAbstractEventOperation_InvokingSequenceMessages()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='SequenceMessage.receivingEnd.event(target, ero);\r\n\tEventReceiptOperation.operation(ero, self);\r\n} or {\r\n\tSequenceMessage.sendingEnd.event(target, eso);\r\n\tEventSentOperation.operation(eso, self);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Invoking Sequence Messages</em>' reference list.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getAbstractEventOperation_InvokingSequenceMessages()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='SequenceMessage.receivingEnd.event(target, ero);\r\n\tEventReceiptOperation.operation(ero, self);\r\n} or {\r\n\tSequenceMessage.sendingEnd.event(target, eso);\r\n\tEventSentOperation.operation(eso, self);'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<SequenceMessage> getInvokingSequenceMessages();
 

@@ -41,25 +41,25 @@ public interface SystemCommunication extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Ends</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemCommunicationHook}.
+   * Returns the value of the '<em><b>Ends</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemCommunicationHook}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Ends</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ends</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemCommunication_Ends()
-	 * @model containment="true" resolveProxies="true" lower="2" upper="2"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='navigableOwnedEnd' featureOwner='Association'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='system'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the endpoints of this relationship link (there can be an arbitrary number of them for a given link)\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Association::ownedEnd' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Ends</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemCommunication_Ends()
+   * @model containment="true" resolveProxies="true" lower="2" upper="2"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='navigableOwnedEnd' featureOwner='Association'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='system'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the endpoints of this relationship link (there can be an arbitrary number of them for a given link)\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Association::ownedEnd' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	EList<SystemCommunicationHook> getEnds();
 

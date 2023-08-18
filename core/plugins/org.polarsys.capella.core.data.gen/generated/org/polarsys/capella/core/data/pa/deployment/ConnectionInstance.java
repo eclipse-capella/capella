@@ -40,24 +40,24 @@ public interface ConnectionInstance extends AbstractPhysicalInstance {
 
 
 	/**
-	 * Returns the value of the '<em><b>Connection Ends</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.deployment.PortInstance}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.pa.deployment.PortInstance#getConnections <em>Connections</em>}'.
+   * Returns the value of the '<em><b>Connection Ends</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.deployment.PortInstance}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.pa.deployment.PortInstance#getConnections <em>Connections</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Connection Ends</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Connection Ends</em>' reference list.
-	 * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getConnectionInstance_ConnectionEnds()
-	 * @see org.polarsys.capella.core.data.pa.deployment.PortInstance#getConnections
-	 * @model opposite="connections"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Connection Ends</em>' reference list.
+   * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getConnectionInstance_ConnectionEnds()
+   * @see org.polarsys.capella.core.data.pa.deployment.PortInstance#getConnections
+   * @model opposite="connections"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   * @generated
+   */
 
 	EList<PortInstance> getConnectionEnds();
 
@@ -68,21 +68,21 @@ public interface ConnectionInstance extends AbstractPhysicalInstance {
 
 
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' reference.
+   * Returns the value of the '<em><b>Type</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Type</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Type</em>' reference.
-	 * @see #setType(ComponentExchange)
-	 * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getConnectionInstance_Type()
-	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Type</em>' reference.
+   * @see #setType(ComponentExchange)
+   * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getConnectionInstance_Type()
+   * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	ComponentExchange getType();
 
@@ -90,14 +90,14 @@ public interface ConnectionInstance extends AbstractPhysicalInstance {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.pa.deployment.ConnectionInstance#getType <em>Type</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.pa.deployment.ConnectionInstance#getType <em>Type</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' reference.
-	 * @see #getType()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Type</em>' reference.
+   * @see #getType()
+   * @generated
+   */
 
 	void setType(ComponentExchange value);
 

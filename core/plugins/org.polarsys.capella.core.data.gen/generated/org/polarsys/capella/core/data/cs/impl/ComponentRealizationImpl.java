@@ -51,48 +51,48 @@ public class ComponentRealizationImpl extends AllocationImpl implements Componen
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComponentRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.COMPONENT_REALIZATION;
-	}
+    return CsPackage.Literals.COMPONENT_REALIZATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Component getRealizedComponent() {
 
-		Component realizedComponent = basicGetRealizedComponent();
-		return realizedComponent != null && realizedComponent.eIsProxy() ? (Component)eResolveProxy((InternalEObject)realizedComponent) : realizedComponent;
-	}
+    Component realizedComponent = basicGetRealizedComponent();
+    return realizedComponent != null && realizedComponent.eIsProxy() ? (Component)eResolveProxy((InternalEObject)realizedComponent) : realizedComponent;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Component basicGetRealizedComponent() {
 
@@ -119,15 +119,15 @@ public class ComponentRealizationImpl extends AllocationImpl implements Componen
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.COMPONENT_REALIZATION__REALIZED_COMPONENT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.COMPONENT_REALIZATION__REALIZED_COMPONENT, annotation);
-		
-		try {
-			return (Component) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Component) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -135,23 +135,23 @@ public class ComponentRealizationImpl extends AllocationImpl implements Componen
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Component getRealizingComponent() {
 
-		Component realizingComponent = basicGetRealizingComponent();
-		return realizingComponent != null && realizingComponent.eIsProxy() ? (Component)eResolveProxy((InternalEObject)realizingComponent) : realizingComponent;
-	}
+    Component realizingComponent = basicGetRealizingComponent();
+    return realizingComponent != null && realizingComponent.eIsProxy() ? (Component)eResolveProxy((InternalEObject)realizingComponent) : realizingComponent;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Component basicGetRealizingComponent() {
 
@@ -178,53 +178,53 @@ public class ComponentRealizationImpl extends AllocationImpl implements Componen
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.COMPONENT_REALIZATION__REALIZING_COMPONENT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.COMPONENT_REALIZATION__REALIZING_COMPONENT, annotation);
-		
-		try {
-			return (Component) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Component) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CsPackage.COMPONENT_REALIZATION__REALIZED_COMPONENT:
-				if (resolve) return getRealizedComponent();
-				return basicGetRealizedComponent();
-			case CsPackage.COMPONENT_REALIZATION__REALIZING_COMPONENT:
-				if (resolve) return getRealizingComponent();
-				return basicGetRealizingComponent();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CsPackage.COMPONENT_REALIZATION__REALIZED_COMPONENT:
+        if (resolve) return getRealizedComponent();
+        return basicGetRealizedComponent();
+      case CsPackage.COMPONENT_REALIZATION__REALIZING_COMPONENT:
+        if (resolve) return getRealizingComponent();
+        return basicGetRealizingComponent();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CsPackage.COMPONENT_REALIZATION__REALIZED_COMPONENT:
-				return basicGetRealizedComponent() != null;
-			case CsPackage.COMPONENT_REALIZATION__REALIZING_COMPONENT:
-				return basicGetRealizingComponent() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.COMPONENT_REALIZATION__REALIZED_COMPONENT:
+        return basicGetRealizedComponent() != null;
+      case CsPackage.COMPONENT_REALIZATION__REALIZING_COMPONENT:
+        return basicGetRealizingComponent() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

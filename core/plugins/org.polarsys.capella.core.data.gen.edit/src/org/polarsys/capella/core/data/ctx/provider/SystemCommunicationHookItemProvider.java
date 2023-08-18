@@ -51,205 +51,205 @@ public class SystemCommunicationHookItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor communicationPropertyDescriptor;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor typePropertyDescriptor;
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public SystemCommunicationHookItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION
-			if (communicationPropertyDescriptor != null) {
-				Object communicationValue = eObject.eGet(CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION, true);
-				if (communicationValue != null && communicationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) communicationValue)) {
-					itemPropertyDescriptors.remove(communicationPropertyDescriptor);
-				} else if (communicationValue == null && ExtensionModelManager.getAnyType(eObject, CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION) != null) {
-					itemPropertyDescriptors.remove(communicationPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(communicationPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(communicationPropertyDescriptor);
-				}
-			}
-			// Process CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__TYPE
-			if (typePropertyDescriptor != null) {
-				Object typeValue = eObject.eGet(CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__TYPE, true);
-				if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) typeValue)) {
-					itemPropertyDescriptors.remove(typePropertyDescriptor);
-				} else if (typeValue == null && ExtensionModelManager.getAnyType(eObject, CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__TYPE) != null) {
-					itemPropertyDescriptors.remove(typePropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(typePropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(typePropertyDescriptor);
-				}
-			}
-		}		
-	}
+    super.checkChildCreationExtender(object);
+    if (object instanceof EObject) {
+      EObject eObject = (EObject) object;
+      // Process CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION
+      if (communicationPropertyDescriptor != null) {
+        Object communicationValue = eObject.eGet(CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION, true);
+        if (communicationValue != null && communicationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) communicationValue)) {
+          itemPropertyDescriptors.remove(communicationPropertyDescriptor);
+        } else if (communicationValue == null && ExtensionModelManager.getAnyType(eObject, CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION) != null) {
+          itemPropertyDescriptors.remove(communicationPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(communicationPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(communicationPropertyDescriptor);
+        }
+      }
+      // Process CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__TYPE
+      if (typePropertyDescriptor != null) {
+        Object typeValue = eObject.eGet(CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__TYPE, true);
+        if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) typeValue)) {
+          itemPropertyDescriptors.remove(typePropertyDescriptor);
+        } else if (typeValue == null && ExtensionModelManager.getAnyType(eObject, CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__TYPE) != null) {
+          itemPropertyDescriptors.remove(typePropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(typePropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(typePropertyDescriptor);
+        }
+      }
+    }		
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addCommunicationPropertyDescriptor(object);
-			addTypePropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addCommunicationPropertyDescriptor(object);
+      addTypePropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Communication feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Communication feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addCommunicationPropertyDescriptor(Object object) {
-		// begin-extension-code
-		communicationPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SystemCommunicationHook_communication_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_SystemCommunicationHook_communication_feature", "_UI_SystemCommunicationHook_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(communicationPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    communicationPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_SystemCommunicationHook_communication_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_SystemCommunicationHook_communication_feature", "_UI_SystemCommunicationHook_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(communicationPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Type feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Type feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addTypePropertyDescriptor(Object object) {
-		// begin-extension-code
-		typePropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SystemCommunicationHook_type_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_SystemCommunicationHook_type_feature", "_UI_SystemCommunicationHook_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__TYPE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(typePropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    typePropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_SystemCommunicationHook_type_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_SystemCommunicationHook_type_feature", "_UI_SystemCommunicationHook_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__TYPE,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(typePropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This returns SystemCommunicationHook.gif.
-	 * <!-- begin-user-doc -->
+   * This returns SystemCommunicationHook.gif.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SystemCommunicationHook")); //$NON-NLS-1$
-	}
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/SystemCommunicationHook")); //$NON-NLS-1$
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
-		String label = ((SystemCommunicationHook)object).getName();
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_SystemCommunicationHook_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+    String label = ((SystemCommunicationHook)object).getName();
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_SystemCommunicationHook_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
-		super.notifyChanged(notification);
-	}
+    updateChildren(notification);
+    super.notifyChanged(notification);
+  }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+    super.collectNewChildDescriptors(newChildDescriptors, object);
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 	// end-capella-code
 }

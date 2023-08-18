@@ -55,23 +55,23 @@ import org.polarsys.capella.core.data.capellacore.Generalization;
 public abstract class GeneralizableElementImpl extends TypeImpl implements GeneralizableElement {
 
 	/**
-	 * The default value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isAbstract()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isAbstract()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean ABSTRACT_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isAbstract()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isAbstract()
+   * @generated
+   * @ordered
+   */
 	protected boolean abstract_ = ABSTRACT_EDEFAULT;
 
 
@@ -79,13 +79,13 @@ public abstract class GeneralizableElementImpl extends TypeImpl implements Gener
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedGeneralizations() <em>Owned Generalizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedGeneralizations() <em>Owned Generalizations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedGeneralizations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedGeneralizations()
+   * @generated
+   * @ordered
+   */
 	protected EList<Generalization> ownedGeneralizations;
 
 
@@ -108,57 +108,57 @@ public abstract class GeneralizableElementImpl extends TypeImpl implements Gener
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected GeneralizableElementImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacorePackage.Literals.GENERALIZABLE_ELEMENT;
-	}
+    return CapellacorePackage.Literals.GENERALIZABLE_ELEMENT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isAbstract() {
 
-		return abstract_;
-	}
+    return abstract_;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setAbstract(boolean newAbstract) {
 
-		boolean oldAbstract = abstract_;
-		abstract_ = newAbstract;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.GENERALIZABLE_ELEMENT__ABSTRACT, oldAbstract, abstract_));
+    boolean oldAbstract = abstract_;
+    abstract_ = newAbstract;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.GENERALIZABLE_ELEMENT__ABSTRACT, oldAbstract, abstract_));
 
-	}
+  }
 
 
 
@@ -166,28 +166,28 @@ public abstract class GeneralizableElementImpl extends TypeImpl implements Gener
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Generalization> getOwnedGeneralizations() {
 
-		if (ownedGeneralizations == null) {
-			ownedGeneralizations = new EObjectContainmentEList.Resolving<Generalization>(Generalization.class, this, CapellacorePackage.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS);
-		}
-		return ownedGeneralizations;
-	}
+    if (ownedGeneralizations == null) {
+      ownedGeneralizations = new EObjectContainmentEList.Resolving<Generalization>(Generalization.class, this, CapellacorePackage.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS);
+    }
+    return ownedGeneralizations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Generalization> getSuperGeneralizations() {
 
@@ -214,27 +214,27 @@ public abstract class GeneralizableElementImpl extends TypeImpl implements Gener
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER_GENERALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER_GENERALIZATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Generalization> resultAsList = (Collection<Generalization>) result;
-		return new EcoreEList.UnmodifiableEList<Generalization>(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER_GENERALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Generalization> resultAsList = (Collection<Generalization>) result;
+    return new EcoreEList.UnmodifiableEList<Generalization>(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER_GENERALIZATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Generalization> getSubGeneralizations() {
 
@@ -261,27 +261,27 @@ public abstract class GeneralizableElementImpl extends TypeImpl implements Gener
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB_GENERALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB_GENERALIZATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Generalization> resultAsList = (Collection<Generalization>) result;
-		return new EcoreEList.UnmodifiableEList<Generalization>(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB_GENERALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Generalization> resultAsList = (Collection<Generalization>) result;
+    return new EcoreEList.UnmodifiableEList<Generalization>(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB_GENERALIZATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<GeneralizableElement> getSuper() {
 
@@ -308,27 +308,27 @@ public abstract class GeneralizableElementImpl extends TypeImpl implements Gener
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<GeneralizableElement> resultAsList = (Collection<GeneralizableElement>) result;
-		return new EcoreEList.UnmodifiableEList<GeneralizableElement>(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<GeneralizableElement> resultAsList = (Collection<GeneralizableElement>) result;
+    return new EcoreEList.UnmodifiableEList<GeneralizableElement>(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<GeneralizableElement> getSub() {
 
@@ -355,139 +355,139 @@ public abstract class GeneralizableElementImpl extends TypeImpl implements Gener
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<GeneralizableElement> resultAsList = (Collection<GeneralizableElement>) result;
-		return new EcoreEList.UnmodifiableEList<GeneralizableElement>(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<GeneralizableElement> resultAsList = (Collection<GeneralizableElement>) result;
+    return new EcoreEList.UnmodifiableEList<GeneralizableElement>(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CapellacorePackage.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS:
-				return ((InternalEList<?>)getOwnedGeneralizations()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CapellacorePackage.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS:
+        return ((InternalEList<?>)getOwnedGeneralizations()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CapellacorePackage.GENERALIZABLE_ELEMENT__ABSTRACT:
-				return isAbstract();
-			case CapellacorePackage.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS:
-				return getOwnedGeneralizations();
-			case CapellacorePackage.GENERALIZABLE_ELEMENT__SUPER_GENERALIZATIONS:
-				return getSuperGeneralizations();
-			case CapellacorePackage.GENERALIZABLE_ELEMENT__SUB_GENERALIZATIONS:
-				return getSubGeneralizations();
-			case CapellacorePackage.GENERALIZABLE_ELEMENT__SUPER:
-				return getSuper();
-			case CapellacorePackage.GENERALIZABLE_ELEMENT__SUB:
-				return getSub();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CapellacorePackage.GENERALIZABLE_ELEMENT__ABSTRACT:
+        return isAbstract();
+      case CapellacorePackage.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS:
+        return getOwnedGeneralizations();
+      case CapellacorePackage.GENERALIZABLE_ELEMENT__SUPER_GENERALIZATIONS:
+        return getSuperGeneralizations();
+      case CapellacorePackage.GENERALIZABLE_ELEMENT__SUB_GENERALIZATIONS:
+        return getSubGeneralizations();
+      case CapellacorePackage.GENERALIZABLE_ELEMENT__SUPER:
+        return getSuper();
+      case CapellacorePackage.GENERALIZABLE_ELEMENT__SUB:
+        return getSub();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CapellacorePackage.GENERALIZABLE_ELEMENT__ABSTRACT:
-					setAbstract((Boolean)newValue);
-				return;
-			case CapellacorePackage.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS:
-				getOwnedGeneralizations().clear();
-				getOwnedGeneralizations().addAll((Collection<? extends Generalization>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CapellacorePackage.GENERALIZABLE_ELEMENT__ABSTRACT:
+          setAbstract((Boolean)newValue);
+        return;
+      case CapellacorePackage.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS:
+        getOwnedGeneralizations().clear();
+        getOwnedGeneralizations().addAll((Collection<? extends Generalization>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CapellacorePackage.GENERALIZABLE_ELEMENT__ABSTRACT:
-				setAbstract(ABSTRACT_EDEFAULT);
-				return;
-			case CapellacorePackage.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS:
-				getOwnedGeneralizations().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CapellacorePackage.GENERALIZABLE_ELEMENT__ABSTRACT:
+        setAbstract(ABSTRACT_EDEFAULT);
+        return;
+      case CapellacorePackage.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS:
+        getOwnedGeneralizations().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CapellacorePackage.GENERALIZABLE_ELEMENT__ABSTRACT:
-				return abstract_ != ABSTRACT_EDEFAULT;
-			case CapellacorePackage.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS:
-				return ownedGeneralizations != null && !ownedGeneralizations.isEmpty();
-			case CapellacorePackage.GENERALIZABLE_ELEMENT__SUPER_GENERALIZATIONS:
-				return !getSuperGeneralizations().isEmpty();
-			case CapellacorePackage.GENERALIZABLE_ELEMENT__SUB_GENERALIZATIONS:
-				return !getSubGeneralizations().isEmpty();
-			case CapellacorePackage.GENERALIZABLE_ELEMENT__SUPER:
-				return !getSuper().isEmpty();
-			case CapellacorePackage.GENERALIZABLE_ELEMENT__SUB:
-				return !getSub().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CapellacorePackage.GENERALIZABLE_ELEMENT__ABSTRACT:
+        return abstract_ != ABSTRACT_EDEFAULT;
+      case CapellacorePackage.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS:
+        return ownedGeneralizations != null && !ownedGeneralizations.isEmpty();
+      case CapellacorePackage.GENERALIZABLE_ELEMENT__SUPER_GENERALIZATIONS:
+        return !getSuperGeneralizations().isEmpty();
+      case CapellacorePackage.GENERALIZABLE_ELEMENT__SUB_GENERALIZATIONS:
+        return !getSubGeneralizations().isEmpty();
+      case CapellacorePackage.GENERALIZABLE_ELEMENT__SUPER:
+        return !getSuper().isEmpty();
+      case CapellacorePackage.GENERALIZABLE_ELEMENT__SUB:
+        return !getSub().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (abstract: "); //$NON-NLS-1$
-		result.append(abstract_);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (abstract: "); //$NON-NLS-1$
+    result.append(abstract_);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //GeneralizableElementImpl

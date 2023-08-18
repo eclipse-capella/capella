@@ -44,48 +44,48 @@ public class ExecutionImpl extends TimeLapseImpl implements Execution {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ExecutionImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.EXECUTION;
-	}
+    return InteractionPackage.Literals.EXECUTION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InstanceRole getCovered() {
 
-		InstanceRole covered = basicGetCovered();
-		return covered != null && covered.eIsProxy() ? (InstanceRole)eResolveProxy((InternalEObject)covered) : covered;
-	}
+    InstanceRole covered = basicGetCovered();
+    return covered != null && covered.eIsProxy() ? (InstanceRole)eResolveProxy((InternalEObject)covered) : covered;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InstanceRole basicGetCovered() {
 
@@ -112,48 +112,48 @@ public class ExecutionImpl extends TimeLapseImpl implements Execution {
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.EXECUTION__COVERED.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.EXECUTION__COVERED, annotation);
-		
-		try {
-			return (InstanceRole) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (InstanceRole) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.EXECUTION__COVERED:
-				if (resolve) return getCovered();
-				return basicGetCovered();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.EXECUTION__COVERED:
+        if (resolve) return getCovered();
+        return basicGetCovered();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.EXECUTION__COVERED:
-				return basicGetCovered() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.EXECUTION__COVERED:
+        return basicGetCovered() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

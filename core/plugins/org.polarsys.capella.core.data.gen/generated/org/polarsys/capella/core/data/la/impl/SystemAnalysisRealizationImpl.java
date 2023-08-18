@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.la.SystemAnalysisRealization;
  */
 public class SystemAnalysisRealizationImpl extends ArchitectureAllocationImpl implements SystemAnalysisRealization {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected SystemAnalysisRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return LaPackage.Literals.SYSTEM_ANALYSIS_REALIZATION;
-	}
+    return LaPackage.Literals.SYSTEM_ANALYSIS_REALIZATION;
+  }
 
 
 

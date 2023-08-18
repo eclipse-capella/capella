@@ -40,217 +40,217 @@ import org.polarsys.capella.core.data.la.SystemAnalysisRealization;
  */
 public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static LaFactory init() {
-		try {
-			LaFactory theLaFactory = (LaFactory)EPackage.Registry.INSTANCE.getEFactory(LaPackage.eNS_URI);
-			if (theLaFactory != null) {
-				return theLaFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new LaFactoryImpl();
-	}
+    try {
+      LaFactory theLaFactory = (LaFactory)EPackage.Registry.INSTANCE.getEFactory(LaPackage.eNS_URI);
+      if (theLaFactory != null) {
+        return theLaFactory;
+      }
+    }
+    catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new LaFactoryImpl();
+  }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public LaFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case LaPackage.LOGICAL_ARCHITECTURE_PKG: return createLogicalArchitecturePkg();
-			case LaPackage.LOGICAL_ARCHITECTURE: return createLogicalArchitecture();
-			case LaPackage.LOGICAL_FUNCTION: return createLogicalFunction();
-			case LaPackage.LOGICAL_FUNCTION_PKG: return createLogicalFunctionPkg();
-			case LaPackage.LOGICAL_COMPONENT: return createLogicalComponent();
-			case LaPackage.LOGICAL_COMPONENT_PKG: return createLogicalComponentPkg();
-			case LaPackage.CAPABILITY_REALIZATION: return createCapabilityRealization();
-			case LaPackage.CAPABILITY_REALIZATION_PKG: return createCapabilityRealizationPkg();
-			case LaPackage.SYSTEM_ANALYSIS_REALIZATION: return createSystemAnalysisRealization();
-			case LaPackage.CONTEXT_INTERFACE_REALIZATION: return createContextInterfaceRealization();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eClass.getClassifierID()) {
+      case LaPackage.LOGICAL_ARCHITECTURE_PKG: return createLogicalArchitecturePkg();
+      case LaPackage.LOGICAL_ARCHITECTURE: return createLogicalArchitecture();
+      case LaPackage.LOGICAL_FUNCTION: return createLogicalFunction();
+      case LaPackage.LOGICAL_FUNCTION_PKG: return createLogicalFunctionPkg();
+      case LaPackage.LOGICAL_COMPONENT: return createLogicalComponent();
+      case LaPackage.LOGICAL_COMPONENT_PKG: return createLogicalComponentPkg();
+      case LaPackage.CAPABILITY_REALIZATION: return createCapabilityRealization();
+      case LaPackage.CAPABILITY_REALIZATION_PKG: return createCapabilityRealizationPkg();
+      case LaPackage.SYSTEM_ANALYSIS_REALIZATION: return createSystemAnalysisRealization();
+      case LaPackage.CONTEXT_INTERFACE_REALIZATION: return createContextInterfaceRealization();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public LogicalArchitecturePkg createLogicalArchitecturePkg() {
-		LogicalArchitecturePkgImpl logicalArchitecturePkg = new LogicalArchitecturePkgImpl();
+    LogicalArchitecturePkgImpl logicalArchitecturePkg = new LogicalArchitecturePkgImpl();
     //begin-capella-code
     logicalArchitecturePkg.setId(IdGenerator.createId());
     //end-capella-code
-		return logicalArchitecturePkg;
-	}
+    return logicalArchitecturePkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public LogicalArchitecture createLogicalArchitecture() {
-		LogicalArchitectureImpl logicalArchitecture = new LogicalArchitectureImpl();
+    LogicalArchitectureImpl logicalArchitecture = new LogicalArchitectureImpl();
     //begin-capella-code
     logicalArchitecture.setId(IdGenerator.createId());
     //end-capella-code
-		return logicalArchitecture;
-	}
+    return logicalArchitecture;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public LogicalFunction createLogicalFunction() {
-		LogicalFunctionImpl logicalFunction = new LogicalFunctionImpl();
+    LogicalFunctionImpl logicalFunction = new LogicalFunctionImpl();
     //begin-capella-code
     logicalFunction.setId(IdGenerator.createId());
     //end-capella-code
-		return logicalFunction;
-	}
+    return logicalFunction;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public LogicalFunctionPkg createLogicalFunctionPkg() {
-		LogicalFunctionPkgImpl logicalFunctionPkg = new LogicalFunctionPkgImpl();
+    LogicalFunctionPkgImpl logicalFunctionPkg = new LogicalFunctionPkgImpl();
     //begin-capella-code
     logicalFunctionPkg.setId(IdGenerator.createId());
     //end-capella-code
-		return logicalFunctionPkg;
-	}
+    return logicalFunctionPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public LogicalComponent createLogicalComponent() {
-		LogicalComponentImpl logicalComponent = new LogicalComponentImpl();
+    LogicalComponentImpl logicalComponent = new LogicalComponentImpl();
     //begin-capella-code
     logicalComponent.setId(IdGenerator.createId());
     //end-capella-code
-		return logicalComponent;
-	}
+    return logicalComponent;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public LogicalComponentPkg createLogicalComponentPkg() {
-		LogicalComponentPkgImpl logicalComponentPkg = new LogicalComponentPkgImpl();
+    LogicalComponentPkgImpl logicalComponentPkg = new LogicalComponentPkgImpl();
     //begin-capella-code
     logicalComponentPkg.setId(IdGenerator.createId());
     //end-capella-code
-		return logicalComponentPkg;
-	}
+    return logicalComponentPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public CapabilityRealization createCapabilityRealization() {
-		CapabilityRealizationImpl capabilityRealization = new CapabilityRealizationImpl();
+    CapabilityRealizationImpl capabilityRealization = new CapabilityRealizationImpl();
     //begin-capella-code
     capabilityRealization.setId(IdGenerator.createId());
     //end-capella-code
-		return capabilityRealization;
-	}
+    return capabilityRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public CapabilityRealizationPkg createCapabilityRealizationPkg() {
-		CapabilityRealizationPkgImpl capabilityRealizationPkg = new CapabilityRealizationPkgImpl();
+    CapabilityRealizationPkgImpl capabilityRealizationPkg = new CapabilityRealizationPkgImpl();
     //begin-capella-code
     capabilityRealizationPkg.setId(IdGenerator.createId());
     //end-capella-code
-		return capabilityRealizationPkg;
-	}
+    return capabilityRealizationPkg;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public SystemAnalysisRealization createSystemAnalysisRealization() {
-		SystemAnalysisRealizationImpl systemAnalysisRealization = new SystemAnalysisRealizationImpl();
+    SystemAnalysisRealizationImpl systemAnalysisRealization = new SystemAnalysisRealizationImpl();
     //begin-capella-code
     systemAnalysisRealization.setId(IdGenerator.createId());
     //end-capella-code
-		return systemAnalysisRealization;
-	}
+    return systemAnalysisRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public ContextInterfaceRealization createContextInterfaceRealization() {
-		ContextInterfaceRealizationImpl contextInterfaceRealization = new ContextInterfaceRealizationImpl();
+    ContextInterfaceRealizationImpl contextInterfaceRealization = new ContextInterfaceRealizationImpl();
     //begin-capella-code
     contextInterfaceRealization.setId(IdGenerator.createId());
     //end-capella-code
-		return contextInterfaceRealization;
-	}
+    return contextInterfaceRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public LaPackage getLaPackage() {
-		return (LaPackage)getEPackage();
-	}
+    return (LaPackage)getEPackage();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
 	@Deprecated
 	public static LaPackage getPackage() {
-		return LaPackage.eINSTANCE;
-	}
+    return LaPackage.eINSTANCE;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -260,10 +260,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * @generated
 	 */
 	public LogicalArchitecturePkg createLogicalArchitecturePkg(String name_p) {
-		LogicalArchitecturePkg logicalArchitecturePkg = createLogicalArchitecturePkg();
-		logicalArchitecturePkg.setName(name_p);	  
-		return logicalArchitecturePkg;
-	}
+    LogicalArchitecturePkg logicalArchitecturePkg = createLogicalArchitecturePkg();
+    logicalArchitecturePkg.setName(name_p);	  
+    return logicalArchitecturePkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -273,10 +273,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * @generated
 	 */
 	public LogicalArchitecture createLogicalArchitecture(String name_p) {
-		LogicalArchitecture logicalArchitecture = createLogicalArchitecture();
-		logicalArchitecture.setName(name_p);	  
-		return logicalArchitecture;
-	}
+    LogicalArchitecture logicalArchitecture = createLogicalArchitecture();
+    logicalArchitecture.setName(name_p);	  
+    return logicalArchitecture;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -286,10 +286,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * @generated
 	 */
 	public LogicalFunction createLogicalFunction(String name_p) {
-		LogicalFunction logicalFunction = createLogicalFunction();
-		logicalFunction.setName(name_p);	  
-		return logicalFunction;
-	}
+    LogicalFunction logicalFunction = createLogicalFunction();
+    logicalFunction.setName(name_p);	  
+    return logicalFunction;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -299,10 +299,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * @generated
 	 */
 	public LogicalFunctionPkg createLogicalFunctionPkg(String name_p) {
-		LogicalFunctionPkg logicalFunctionPkg = createLogicalFunctionPkg();
-		logicalFunctionPkg.setName(name_p);	  
-		return logicalFunctionPkg;
-	}
+    LogicalFunctionPkg logicalFunctionPkg = createLogicalFunctionPkg();
+    logicalFunctionPkg.setName(name_p);	  
+    return logicalFunctionPkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -312,10 +312,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * @generated
 	 */
 	public LogicalComponent createLogicalComponent(String name_p) {
-		LogicalComponent logicalComponent = createLogicalComponent();
-		logicalComponent.setName(name_p);	  
-		return logicalComponent;
-	}
+    LogicalComponent logicalComponent = createLogicalComponent();
+    logicalComponent.setName(name_p);	  
+    return logicalComponent;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -325,10 +325,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * @generated
 	 */
 	public LogicalComponentPkg createLogicalComponentPkg(String name_p) {
-		LogicalComponentPkg logicalComponentPkg = createLogicalComponentPkg();
-		logicalComponentPkg.setName(name_p);	  
-		return logicalComponentPkg;
-	}
+    LogicalComponentPkg logicalComponentPkg = createLogicalComponentPkg();
+    logicalComponentPkg.setName(name_p);	  
+    return logicalComponentPkg;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -338,10 +338,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * @generated
 	 */
 	public CapabilityRealization createCapabilityRealization(String name_p) {
-		CapabilityRealization capabilityRealization = createCapabilityRealization();
-		capabilityRealization.setName(name_p);	  
-		return capabilityRealization;
-	}
+    CapabilityRealization capabilityRealization = createCapabilityRealization();
+    capabilityRealization.setName(name_p);	  
+    return capabilityRealization;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -351,10 +351,10 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * @generated
 	 */
 	public CapabilityRealizationPkg createCapabilityRealizationPkg(String name_p) {
-		CapabilityRealizationPkg capabilityRealizationPkg = createCapabilityRealizationPkg();
-		capabilityRealizationPkg.setName(name_p);	  
-		return capabilityRealizationPkg;
-	}
+    CapabilityRealizationPkg capabilityRealizationPkg = createCapabilityRealizationPkg();
+    capabilityRealizationPkg.setName(name_p);	  
+    return capabilityRealizationPkg;
+  }
 
 	//begin-capella-code
 

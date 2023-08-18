@@ -38,22 +38,22 @@ public interface BooleanPropertyValue extends AbstractPropertyValue {
 
 
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+   * Returns the value of the '<em><b>Value</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(boolean)
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getBooleanPropertyValue_Value()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Value of this property, described in string format\r\n[source:Capella study]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='value will be stored as a stereotype-specific property, of type Boolean' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Value</em>' attribute.
+   * @see #setValue(boolean)
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getBooleanPropertyValue_Value()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Value of this property, described in string format\r\n[source:Capella study]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='value will be stored as a stereotype-specific property, of type Boolean' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	boolean isValue();
 
@@ -61,14 +61,14 @@ public interface BooleanPropertyValue extends AbstractPropertyValue {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.BooleanPropertyValue#isValue <em>Value</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.BooleanPropertyValue#isValue <em>Value</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' attribute.
-	 * @see #isValue()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Value</em>' attribute.
+   * @see #isValue()
+   * @generated
+   */
 
 	void setValue(boolean value);
 

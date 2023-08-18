@@ -42,22 +42,22 @@ public interface FunctionOutputPort extends FunctionPort, OutputPin {
 
 
 	/**
-	 * Returns the value of the '<em><b>Outgoing Exchange Items</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.ExchangeItem}.
+   * Returns the value of the '<em><b>Outgoing Exchange Items</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.ExchangeItem}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Outgoing Exchange Items</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Outgoing Exchange Items</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionOutputPort_OutgoingExchangeItems()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange items that are declared as potentially flowing out of this port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Outgoing Exchange Items</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionOutputPort_OutgoingExchangeItems()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange items that are declared as potentially flowing out of this port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<ExchangeItem> getOutgoingExchangeItems();
 
@@ -68,23 +68,23 @@ public interface FunctionOutputPort extends FunctionPort, OutputPin {
 
 
 	/**
-	 * Returns the value of the '<em><b>Outgoing Functional Exchanges</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalExchange}.
+   * Returns the value of the '<em><b>Outgoing Functional Exchanges</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalExchange}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Outgoing Functional Exchanges</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Outgoing Functional Exchanges</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionOutputPort_OutgoingFunctionalExchanges()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoing'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Outgoing Functional Exchanges</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionOutputPort_OutgoingFunctionalExchanges()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoing'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<FunctionalExchange> getOutgoingFunctionalExchanges();
 

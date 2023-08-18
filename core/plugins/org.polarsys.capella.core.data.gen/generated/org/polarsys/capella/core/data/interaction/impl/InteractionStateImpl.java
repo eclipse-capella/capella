@@ -48,14 +48,14 @@ import org.polarsys.capella.core.data.interaction.InteractionState;
 public class InteractionStateImpl extends InteractionFragmentImpl implements InteractionState {
 
 	/**
-	 * The cached value of the '{@link #getRelatedAbstractState() <em>Related Abstract State</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getRelatedAbstractState() <em>Related Abstract State</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRelatedAbstractState()
-	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState() model documentation} for details.
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getRelatedAbstractState()
+   * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState() model documentation} for details.
+   * @generated
+   * @ordered
+   */
 	@Deprecated
 	protected AbstractState relatedAbstractState;
 
@@ -64,14 +64,14 @@ public class InteractionStateImpl extends InteractionFragmentImpl implements Int
 
 
 	/**
-	 * The cached value of the '{@link #getRelatedAbstractFunction() <em>Related Abstract Function</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getRelatedAbstractFunction() <em>Related Abstract Function</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRelatedAbstractFunction()
-	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction() model documentation} for details.
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getRelatedAbstractFunction()
+   * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction() model documentation} for details.
+   * @generated
+   * @ordered
+   */
 	@Deprecated
 	protected AbstractFunction relatedAbstractFunction;
 
@@ -83,84 +83,84 @@ public class InteractionStateImpl extends InteractionFragmentImpl implements Int
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected InteractionStateImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.INTERACTION_STATE;
-	}
+    return InteractionPackage.Literals.INTERACTION_STATE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState() model documentation} for details.
-	 * @generated
-	 */
+   * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState() model documentation} for details.
+   * @generated
+   */
 
 	@Deprecated
 	public AbstractState getRelatedAbstractState() {
 
-		if (relatedAbstractState != null && relatedAbstractState.eIsProxy()) {
-			InternalEObject oldRelatedAbstractState = (InternalEObject)relatedAbstractState;
-			relatedAbstractState = (AbstractState)eResolveProxy(oldRelatedAbstractState);
-			if (relatedAbstractState != oldRelatedAbstractState) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE, oldRelatedAbstractState, relatedAbstractState));
-			}
-		}
-		return relatedAbstractState;
-	}
+    if (relatedAbstractState != null && relatedAbstractState.eIsProxy()) {
+      InternalEObject oldRelatedAbstractState = (InternalEObject)relatedAbstractState;
+      relatedAbstractState = (AbstractState)eResolveProxy(oldRelatedAbstractState);
+      if (relatedAbstractState != oldRelatedAbstractState) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE, oldRelatedAbstractState, relatedAbstractState));
+      }
+    }
+    return relatedAbstractState;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState() model documentation} for details.
-	 * @generated
-	 */
+   * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState() model documentation} for details.
+   * @generated
+   */
 
 	@Deprecated
 	public AbstractState basicGetRelatedAbstractState() {
 
-		return relatedAbstractState;
-	}
+    return relatedAbstractState;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState() model documentation} for details.
-	 * @generated
-	 */
+   * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState() model documentation} for details.
+   * @generated
+   */
 
 	@Deprecated
 		@Override
 	public void setRelatedAbstractState(AbstractState newRelatedAbstractState) {
 
-		AbstractState oldRelatedAbstractState = relatedAbstractState;
-		relatedAbstractState = newRelatedAbstractState;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE, oldRelatedAbstractState, relatedAbstractState));
+    AbstractState oldRelatedAbstractState = relatedAbstractState;
+    relatedAbstractState = newRelatedAbstractState;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE, oldRelatedAbstractState, relatedAbstractState));
 
-	}
+  }
 
 
 
@@ -168,59 +168,59 @@ public class InteractionStateImpl extends InteractionFragmentImpl implements Int
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction() model documentation} for details.
-	 * @generated
-	 */
+   * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction() model documentation} for details.
+   * @generated
+   */
 
 	@Deprecated
 	public AbstractFunction getRelatedAbstractFunction() {
 
-		if (relatedAbstractFunction != null && relatedAbstractFunction.eIsProxy()) {
-			InternalEObject oldRelatedAbstractFunction = (InternalEObject)relatedAbstractFunction;
-			relatedAbstractFunction = (AbstractFunction)eResolveProxy(oldRelatedAbstractFunction);
-			if (relatedAbstractFunction != oldRelatedAbstractFunction) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION, oldRelatedAbstractFunction, relatedAbstractFunction));
-			}
-		}
-		return relatedAbstractFunction;
-	}
+    if (relatedAbstractFunction != null && relatedAbstractFunction.eIsProxy()) {
+      InternalEObject oldRelatedAbstractFunction = (InternalEObject)relatedAbstractFunction;
+      relatedAbstractFunction = (AbstractFunction)eResolveProxy(oldRelatedAbstractFunction);
+      if (relatedAbstractFunction != oldRelatedAbstractFunction) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION, oldRelatedAbstractFunction, relatedAbstractFunction));
+      }
+    }
+    return relatedAbstractFunction;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction() model documentation} for details.
-	 * @generated
-	 */
+   * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction() model documentation} for details.
+   * @generated
+   */
 
 	@Deprecated
 	public AbstractFunction basicGetRelatedAbstractFunction() {
 
-		return relatedAbstractFunction;
-	}
+    return relatedAbstractFunction;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction() model documentation} for details.
-	 * @generated
-	 */
+   * @deprecated See {@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction() model documentation} for details.
+   * @generated
+   */
 
 	@Deprecated
 		@Override
 	public void setRelatedAbstractFunction(AbstractFunction newRelatedAbstractFunction) {
 
-		AbstractFunction oldRelatedAbstractFunction = relatedAbstractFunction;
-		relatedAbstractFunction = newRelatedAbstractFunction;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION, oldRelatedAbstractFunction, relatedAbstractFunction));
+    AbstractFunction oldRelatedAbstractFunction = relatedAbstractFunction;
+    relatedAbstractFunction = newRelatedAbstractFunction;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION, oldRelatedAbstractFunction, relatedAbstractFunction));
 
-	}
+  }
 
 
 
@@ -228,23 +228,23 @@ public class InteractionStateImpl extends InteractionFragmentImpl implements Int
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InstanceRole getCovered() {
 
-		InstanceRole covered = basicGetCovered();
-		return covered != null && covered.eIsProxy() ? (InstanceRole)eResolveProxy((InternalEObject)covered) : covered;
-	}
+    InstanceRole covered = basicGetCovered();
+    return covered != null && covered.eIsProxy() ? (InstanceRole)eResolveProxy((InternalEObject)covered) : covered;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InstanceRole basicGetCovered() {
 
@@ -271,96 +271,96 @@ public class InteractionStateImpl extends InteractionFragmentImpl implements Int
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.INTERACTION_STATE__COVERED.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.INTERACTION_STATE__COVERED, annotation);
-		
-		try {
-			return (InstanceRole) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (InstanceRole) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE:
-				if (resolve) return getRelatedAbstractState();
-				return basicGetRelatedAbstractState();
-			case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION:
-				if (resolve) return getRelatedAbstractFunction();
-				return basicGetRelatedAbstractFunction();
-			case InteractionPackage.INTERACTION_STATE__COVERED:
-				if (resolve) return getCovered();
-				return basicGetCovered();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE:
+        if (resolve) return getRelatedAbstractState();
+        return basicGetRelatedAbstractState();
+      case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION:
+        if (resolve) return getRelatedAbstractFunction();
+        return basicGetRelatedAbstractFunction();
+      case InteractionPackage.INTERACTION_STATE__COVERED:
+        if (resolve) return getCovered();
+        return basicGetCovered();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE:
-					setRelatedAbstractState((AbstractState)newValue);
-				return;
-			case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION:
-					setRelatedAbstractFunction((AbstractFunction)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE:
+          setRelatedAbstractState((AbstractState)newValue);
+        return;
+      case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION:
+          setRelatedAbstractFunction((AbstractFunction)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE:
-				setRelatedAbstractState((AbstractState)null);
-				return;
-			case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION:
-				setRelatedAbstractFunction((AbstractFunction)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE:
+        setRelatedAbstractState((AbstractState)null);
+        return;
+      case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION:
+        setRelatedAbstractFunction((AbstractFunction)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE:
-				return relatedAbstractState != null;
-			case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION:
-				return relatedAbstractFunction != null;
-			case InteractionPackage.INTERACTION_STATE__COVERED:
-				return basicGetCovered() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE:
+        return relatedAbstractState != null;
+      case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION:
+        return relatedAbstractFunction != null;
+      case InteractionPackage.INTERACTION_STATE__COVERED:
+        return basicGetCovered() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

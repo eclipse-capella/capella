@@ -52,156 +52,156 @@ public class InterfaceUseItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor interfaceUserPropertyDescriptor;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor usedInterfacePropertyDescriptor;
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public InterfaceUseItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process CsPackage.Literals.INTERFACE_USE__INTERFACE_USER
-			if (interfaceUserPropertyDescriptor != null) {
-				Object interfaceUserValue = eObject.eGet(CsPackage.Literals.INTERFACE_USE__INTERFACE_USER, true);
-				if (interfaceUserValue != null && interfaceUserValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) interfaceUserValue)) {
-					itemPropertyDescriptors.remove(interfaceUserPropertyDescriptor);
-				} else if (interfaceUserValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.INTERFACE_USE__INTERFACE_USER) != null) {
-					itemPropertyDescriptors.remove(interfaceUserPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(interfaceUserPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(interfaceUserPropertyDescriptor);
-				}
-			}
-			// Process CsPackage.Literals.INTERFACE_USE__USED_INTERFACE
-			if (usedInterfacePropertyDescriptor != null) {
-				Object usedInterfaceValue = eObject.eGet(CsPackage.Literals.INTERFACE_USE__USED_INTERFACE, true);
-				if (usedInterfaceValue != null && usedInterfaceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) usedInterfaceValue)) {
-					itemPropertyDescriptors.remove(usedInterfacePropertyDescriptor);
-				} else if (usedInterfaceValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.INTERFACE_USE__USED_INTERFACE) != null) {
-					itemPropertyDescriptors.remove(usedInterfacePropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(usedInterfacePropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(usedInterfacePropertyDescriptor);
-				}
-			}
-		}		
-	}
+    super.checkChildCreationExtender(object);
+    if (object instanceof EObject) {
+      EObject eObject = (EObject) object;
+      // Process CsPackage.Literals.INTERFACE_USE__INTERFACE_USER
+      if (interfaceUserPropertyDescriptor != null) {
+        Object interfaceUserValue = eObject.eGet(CsPackage.Literals.INTERFACE_USE__INTERFACE_USER, true);
+        if (interfaceUserValue != null && interfaceUserValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) interfaceUserValue)) {
+          itemPropertyDescriptors.remove(interfaceUserPropertyDescriptor);
+        } else if (interfaceUserValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.INTERFACE_USE__INTERFACE_USER) != null) {
+          itemPropertyDescriptors.remove(interfaceUserPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(interfaceUserPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(interfaceUserPropertyDescriptor);
+        }
+      }
+      // Process CsPackage.Literals.INTERFACE_USE__USED_INTERFACE
+      if (usedInterfacePropertyDescriptor != null) {
+        Object usedInterfaceValue = eObject.eGet(CsPackage.Literals.INTERFACE_USE__USED_INTERFACE, true);
+        if (usedInterfaceValue != null && usedInterfaceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) usedInterfaceValue)) {
+          itemPropertyDescriptors.remove(usedInterfacePropertyDescriptor);
+        } else if (usedInterfaceValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.INTERFACE_USE__USED_INTERFACE) != null) {
+          itemPropertyDescriptors.remove(usedInterfacePropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(usedInterfacePropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(usedInterfacePropertyDescriptor);
+        }
+      }
+    }		
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addInterfaceUserPropertyDescriptor(object);
-			addUsedInterfacePropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addInterfaceUserPropertyDescriptor(object);
+      addUsedInterfacePropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Interface User feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Interface User feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addInterfaceUserPropertyDescriptor(Object object) {
-		// begin-extension-code
-		interfaceUserPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InterfaceUse_interfaceUser_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_InterfaceUse_interfaceUser_feature", "_UI_InterfaceUse_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CsPackage.Literals.INTERFACE_USE__INTERFACE_USER,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(interfaceUserPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    interfaceUserPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_InterfaceUse_interfaceUser_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_InterfaceUse_interfaceUser_feature", "_UI_InterfaceUse_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CsPackage.Literals.INTERFACE_USE__INTERFACE_USER,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(interfaceUserPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Used Interface feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Used Interface feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addUsedInterfacePropertyDescriptor(Object object) {
-		// begin-extension-code
-		usedInterfacePropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InterfaceUse_usedInterface_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_InterfaceUse_usedInterface_feature", "_UI_InterfaceUse_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CsPackage.Literals.INTERFACE_USE__USED_INTERFACE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(usedInterfacePropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    usedInterfacePropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_InterfaceUse_usedInterface_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_InterfaceUse_usedInterface_feature", "_UI_InterfaceUse_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CsPackage.Literals.INTERFACE_USE__USED_INTERFACE,
+         true,
+         false,
+         true,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(usedInterfacePropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This returns InterfaceUse.gif.
-	 * <!-- begin-user-doc -->
+   * This returns InterfaceUse.gif.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/InterfaceUse")); //$NON-NLS-1$
-	}
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/InterfaceUse")); //$NON-NLS-1$
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
         String label = ""; //$NON-NLS-1$
@@ -209,64 +209,64 @@ public class InterfaceUseItemProvider
         EObject target = null;
 
  		target = ((InterfaceUse) object).getUsedInterface();
-	
-	 	if (null != target) {
-			if (target instanceof AbstractNamedElement) {
-				targetName = ((AbstractNamedElement) target).getName();
-			}
+  
+   	if (null != target) {
+      if (target instanceof AbstractNamedElement) {
+        targetName = ((AbstractNamedElement) target).getName();
+      }
 
-			if (null == targetName || "" == targetName) { //$NON-NLS-1$
-				targetName = "[" + target.eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
-			}
-	 	}
-	 	label = "[" + getString("_UI_InterfaceUse_type") + "] to " + targetName; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_InterfaceUse_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+      if (null == targetName || "" == targetName) { //$NON-NLS-1$
+        targetName = "[" + target.eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
+      }
+   	}
+   	label = "[" + getString("_UI_InterfaceUse_type") + "] to " + targetName; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_InterfaceUse_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
-		super.notifyChanged(notification);
-	}
+    updateChildren(notification);
+    super.notifyChanged(notification);
+  }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+    super.collectNewChildDescriptors(newChildDescriptors, object);
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
-		return new SharedInitializeCopyCommand(domain, owner, helper);
-	}
+    return new SharedInitializeCopyCommand(domain, owner, helper);
+  }
 	// end-capella-code
 }

@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.information.impl.AbstractInstanceImpl;
  */
 public class SignalInstanceImpl extends AbstractInstanceImpl implements SignalInstance {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected SignalInstanceImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CommunicationPackage.Literals.SIGNAL_INSTANCE;
-	}
+    return CommunicationPackage.Literals.SIGNAL_INSTANCE;
+  }
 
 
 

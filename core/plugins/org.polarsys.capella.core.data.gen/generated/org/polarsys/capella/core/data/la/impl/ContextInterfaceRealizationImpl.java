@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.la.LaPackage;
  */
 public class ContextInterfaceRealizationImpl extends InterfaceAllocationImpl implements ContextInterfaceRealization {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ContextInterfaceRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return LaPackage.Literals.CONTEXT_INTERFACE_REALIZATION;
-	}
+    return LaPackage.Literals.CONTEXT_INTERFACE_REALIZATION;
+  }
 
 
 

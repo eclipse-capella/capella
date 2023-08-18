@@ -40,24 +40,24 @@ public interface OperationalProcess extends FunctionalChain {
 
 
 	/**
-	 * Returns the value of the '<em><b>Involving Operational Capabilities</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.oa.OperationalCapability}.
+   * Returns the value of the '<em><b>Involving Operational Capabilities</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.oa.OperationalCapability}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Involving Operational Capabilities</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Involving Operational Capabilities</em>' reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalProcess_InvolvingOperationalCapabilities()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='OperationalProcess.involvingInvolvements(self, fcaci);\r\nFunctionalChainAbstractCapabilityInvolvement.capability(fcaci, target);'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Involving Operational Capabilities</em>' reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalProcess_InvolvingOperationalCapabilities()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='OperationalProcess.involvingInvolvements(self, fcaci);\r\nFunctionalChainAbstractCapabilityInvolvement.capability(fcaci, target);'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   * @generated
+   */
 
 	EList<OperationalCapability> getInvolvingOperationalCapabilities();
 

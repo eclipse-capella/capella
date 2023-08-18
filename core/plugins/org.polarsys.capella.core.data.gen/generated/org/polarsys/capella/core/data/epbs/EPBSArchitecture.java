@@ -48,26 +48,26 @@ public interface EPBSArchitecture extends ComponentArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Configuration Item Pkg</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Configuration Item Pkg</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Configuration Item Pkg</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Configuration Item Pkg</em>' containment reference.
-	 * @see #setOwnedConfigurationItemPkg(ConfigurationItemPkg)
-	 * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getEPBSArchitecture_OwnedConfigurationItemPkg()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedConfigurationItemPkgs'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Set of packages that contain configuration items, owned by this EPBS architecture\r\n[source:Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which ConfigurationItemPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Configuration Item Pkg</em>' containment reference.
+   * @see #setOwnedConfigurationItemPkg(ConfigurationItemPkg)
+   * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getEPBSArchitecture_OwnedConfigurationItemPkg()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedConfigurationItemPkgs'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Set of packages that contain configuration items, owned by this EPBS architecture\r\n[source:Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which ConfigurationItemPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	ConfigurationItemPkg getOwnedConfigurationItemPkg();
 
@@ -75,14 +75,14 @@ public interface EPBSArchitecture extends ComponentArchitecture {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.epbs.EPBSArchitecture#getOwnedConfigurationItemPkg <em>Owned Configuration Item Pkg</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.epbs.EPBSArchitecture#getOwnedConfigurationItemPkg <em>Owned Configuration Item Pkg</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Configuration Item Pkg</em>' containment reference.
-	 * @see #getOwnedConfigurationItemPkg()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Configuration Item Pkg</em>' containment reference.
+   * @see #getOwnedConfigurationItemPkg()
+   * @generated
+   */
 
 	void setOwnedConfigurationItemPkg(ConfigurationItemPkg value);
 
@@ -93,22 +93,22 @@ public interface EPBSArchitecture extends ComponentArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Contained Capability Realization Pkg</b></em>' reference.
+   * Returns the value of the '<em><b>Contained Capability Realization Pkg</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contained Capability Realization Pkg</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contained Capability Realization Pkg</em>' reference.
-	 * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getEPBSArchitecture_ContainedCapabilityRealizationPkg()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedAbstractCapabilityPkg'"
-	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedAbstractCapabilityPkg'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Contained Capability Realization Pkg</em>' reference.
+   * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getEPBSArchitecture_ContainedCapabilityRealizationPkg()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedAbstractCapabilityPkg'"
+   *        annotation="http://www.polarsys.org/capella/semantic feature='ownedAbstractCapabilityPkg'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	CapabilityRealizationPkg getContainedCapabilityRealizationPkg();
 
@@ -119,22 +119,22 @@ public interface EPBSArchitecture extends ComponentArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Physical Architecture Realizations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization}.
+   * Returns the value of the '<em><b>Owned Physical Architecture Realizations</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Physical Architecture Realizations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Physical Architecture Realizations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getEPBSArchitecture_OwnedPhysicalArchitectureRealizations()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Set of physical architecture realization links owned by this EPBS architecture\r\n[source:Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which PhysicalArchitectureRealisation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Physical Architecture Realizations</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getEPBSArchitecture_OwnedPhysicalArchitectureRealizations()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Set of physical architecture realization links owned by this EPBS architecture\r\n[source:Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which PhysicalArchitectureRealisation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<PhysicalArchitectureRealization> getOwnedPhysicalArchitectureRealizations();
 
@@ -145,23 +145,23 @@ public interface EPBSArchitecture extends ComponentArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocated Physical Architecture Realizations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization}.
+   * Returns the value of the '<em><b>Allocated Physical Architecture Realizations</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocated Physical Architecture Realizations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocated Physical Architecture Realizations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getEPBSArchitecture_AllocatedPhysicalArchitectureRealizations()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='provisionedArchitectureAllocations'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the physical architecture realization links involving this EPBS architecture\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Allocated Physical Architecture Realizations</em>' reference list.
+   * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getEPBSArchitecture_AllocatedPhysicalArchitectureRealizations()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='provisionedArchitectureAllocations'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the physical architecture realization links involving this EPBS architecture\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<PhysicalArchitectureRealization> getAllocatedPhysicalArchitectureRealizations();
 
@@ -172,25 +172,25 @@ public interface EPBSArchitecture extends ComponentArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocated Physical Architectures</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalArchitecture}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.pa.PhysicalArchitecture#getAllocatingEpbsArchitectures <em>Allocating Epbs Architectures</em>}'.
+   * Returns the value of the '<em><b>Allocated Physical Architectures</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalArchitecture}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.pa.PhysicalArchitecture#getAllocatingEpbsArchitectures <em>Allocating Epbs Architectures</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocated Physical Architectures</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocated Physical Architectures</em>' reference list.
-	 * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getEPBSArchitecture_AllocatedPhysicalArchitectures()
-	 * @see org.polarsys.capella.core.data.pa.PhysicalArchitecture#getAllocatingEpbsArchitectures
-	 * @model opposite="allocatingEpbsArchitectures" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedArchitectures'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Allocated Physical Architectures</em>' reference list.
+   * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getEPBSArchitecture_AllocatedPhysicalArchitectures()
+   * @see org.polarsys.capella.core.data.pa.PhysicalArchitecture#getAllocatingEpbsArchitectures
+   * @model opposite="allocatingEpbsArchitectures" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedArchitectures'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<PhysicalArchitecture> getAllocatedPhysicalArchitectures();
 

@@ -39,24 +39,24 @@ public interface PortRealization extends Allocation {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realized Port</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.Port#getIncomingPortRealizations <em>Incoming Port Realizations</em>}'.
+   * Returns the value of the '<em><b>Realized Port</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.Port#getIncomingPortRealizations <em>Incoming Port Realizations</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realized Port</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realized Port</em>' reference.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getPortRealization_RealizedPort()
-	 * @see org.polarsys.capella.core.data.information.Port#getIncomingPortRealizations
-	 * @model opposite="incomingPortRealizations" required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='destiniation of the port realization : the port that is being realized\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realized Port</em>' reference.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getPortRealization_RealizedPort()
+   * @see org.polarsys.capella.core.data.information.Port#getIncomingPortRealizations
+   * @model opposite="incomingPortRealizations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='destiniation of the port realization : the port that is being realized\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	Port getRealizedPort();
 
@@ -67,24 +67,24 @@ public interface PortRealization extends Allocation {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realizing Port</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.Port#getOutgoingPortRealizations <em>Outgoing Port Realizations</em>}'.
+   * Returns the value of the '<em><b>Realizing Port</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.Port#getOutgoingPortRealizations <em>Outgoing Port Realizations</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realizing Port</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realizing Port</em>' reference.
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getPortRealization_RealizingPort()
-	 * @see org.polarsys.capella.core.data.information.Port#getOutgoingPortRealizations
-	 * @model opposite="outgoingPortRealizations" required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the source of the Port realization : the port that is realizing another port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realizing Port</em>' reference.
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getPortRealization_RealizingPort()
+   * @see org.polarsys.capella.core.data.information.Port#getOutgoingPortRealizations
+   * @model opposite="outgoingPortRealizations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the source of the Port realization : the port that is realizing another port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	Port getRealizingPort();
 

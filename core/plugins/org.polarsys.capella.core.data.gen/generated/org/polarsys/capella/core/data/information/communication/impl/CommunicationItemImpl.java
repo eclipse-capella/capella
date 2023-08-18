@@ -63,13 +63,13 @@ import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
 public abstract class CommunicationItemImpl extends ClassifierImpl implements CommunicationItem {
 
 	/**
-	 * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPropertyValuePkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPropertyValuePkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<PropertyValuePkg> ownedPropertyValuePkgs;
 
 
@@ -77,13 +77,13 @@ public abstract class CommunicationItemImpl extends ClassifierImpl implements Co
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedDataValues() <em>Owned Data Values</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedDataValues() <em>Owned Data Values</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedDataValues()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedDataValues()
+   * @generated
+   * @ordered
+   */
 	protected EList<DataValue> ownedDataValues;
 
 
@@ -91,23 +91,23 @@ public abstract class CommunicationItemImpl extends ClassifierImpl implements Co
 
 
 	/**
-	 * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVisibility()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getVisibility()
+   * @generated
+   * @ordered
+   */
 	protected static final VisibilityKind VISIBILITY_EDEFAULT = VisibilityKind.UNSET;
 
 	/**
-	 * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVisibility()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getVisibility()
+   * @generated
+   * @ordered
+   */
 	protected VisibilityKind visibility = VISIBILITY_EDEFAULT;
 
 
@@ -115,13 +115,13 @@ public abstract class CommunicationItemImpl extends ClassifierImpl implements Co
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedStateMachines() <em>Owned State Machines</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedStateMachines() <em>Owned State Machines</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedStateMachines()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedStateMachines()
+   * @generated
+   * @ordered
+   */
 	protected EList<StateMachine> ownedStateMachines;
 
 
@@ -132,93 +132,93 @@ public abstract class CommunicationItemImpl extends ClassifierImpl implements Co
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CommunicationItemImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CommunicationPackage.Literals.COMMUNICATION_ITEM;
-	}
+    return CommunicationPackage.Literals.COMMUNICATION_ITEM;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PropertyValuePkg> getOwnedPropertyValuePkgs() {
 
-		if (ownedPropertyValuePkgs == null) {
-			ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this, CommunicationPackage.COMMUNICATION_ITEM__OWNED_PROPERTY_VALUE_PKGS);
-		}
-		return ownedPropertyValuePkgs;
-	}
+    if (ownedPropertyValuePkgs == null) {
+      ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this, CommunicationPackage.COMMUNICATION_ITEM__OWNED_PROPERTY_VALUE_PKGS);
+    }
+    return ownedPropertyValuePkgs;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<DataValue> getOwnedDataValues() {
 
-		if (ownedDataValues == null) {
-			ownedDataValues = new EObjectContainmentEList<DataValue>(DataValue.class, this, CommunicationPackage.COMMUNICATION_ITEM__OWNED_DATA_VALUES);
-		}
-		return ownedDataValues;
-	}
+    if (ownedDataValues == null) {
+      ownedDataValues = new EObjectContainmentEList<DataValue>(DataValue.class, this, CommunicationPackage.COMMUNICATION_ITEM__OWNED_DATA_VALUES);
+    }
+    return ownedDataValues;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public VisibilityKind getVisibility() {
 
-		return visibility;
-	}
+    return visibility;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
 
-		VisibilityKind oldVisibility = visibility;
-		visibility = newVisibility == null ? VISIBILITY_EDEFAULT : newVisibility;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommunicationPackage.COMMUNICATION_ITEM__VISIBILITY, oldVisibility, visibility));
+    VisibilityKind oldVisibility = visibility;
+    visibility = newVisibility == null ? VISIBILITY_EDEFAULT : newVisibility;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CommunicationPackage.COMMUNICATION_ITEM__VISIBILITY, oldVisibility, visibility));
 
-	}
+  }
 
 
 
@@ -226,28 +226,28 @@ public abstract class CommunicationItemImpl extends ClassifierImpl implements Co
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<StateMachine> getOwnedStateMachines() {
 
-		if (ownedStateMachines == null) {
-			ownedStateMachines = new EObjectContainmentEList.Resolving<StateMachine>(StateMachine.class, this, CommunicationPackage.COMMUNICATION_ITEM__OWNED_STATE_MACHINES);
-		}
-		return ownedStateMachines;
-	}
+    if (ownedStateMachines == null) {
+      ownedStateMachines = new EObjectContainmentEList.Resolving<StateMachine>(StateMachine.class, this, CommunicationPackage.COMMUNICATION_ITEM__OWNED_STATE_MACHINES);
+    }
+    return ownedStateMachines;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Property> getProperties() {
 
@@ -274,197 +274,197 @@ public abstract class CommunicationItemImpl extends ClassifierImpl implements Co
     // A helper is found, let's use it. 
     EAnnotation annotation = CommunicationPackage.Literals.COMMUNICATION_ITEM__PROPERTIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CommunicationPackage.Literals.COMMUNICATION_ITEM__PROPERTIES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Property> resultAsList = (Collection<Property>) result;
-		return new EcoreEList.UnmodifiableEList<Property>(this, CommunicationPackage.Literals.COMMUNICATION_ITEM__PROPERTIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Property> resultAsList = (Collection<Property>) result;
+    return new EcoreEList.UnmodifiableEList<Property>(this, CommunicationPackage.Literals.COMMUNICATION_ITEM__PROPERTIES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CommunicationPackage.COMMUNICATION_ITEM__OWNED_PROPERTY_VALUE_PKGS:
-				return ((InternalEList<?>)getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
-			case CommunicationPackage.COMMUNICATION_ITEM__OWNED_DATA_VALUES:
-				return ((InternalEList<?>)getOwnedDataValues()).basicRemove(otherEnd, msgs);
-			case CommunicationPackage.COMMUNICATION_ITEM__OWNED_STATE_MACHINES:
-				return ((InternalEList<?>)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CommunicationPackage.COMMUNICATION_ITEM__OWNED_PROPERTY_VALUE_PKGS:
+        return ((InternalEList<?>)getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
+      case CommunicationPackage.COMMUNICATION_ITEM__OWNED_DATA_VALUES:
+        return ((InternalEList<?>)getOwnedDataValues()).basicRemove(otherEnd, msgs);
+      case CommunicationPackage.COMMUNICATION_ITEM__OWNED_STATE_MACHINES:
+        return ((InternalEList<?>)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CommunicationPackage.COMMUNICATION_ITEM__OWNED_PROPERTY_VALUE_PKGS:
-				return getOwnedPropertyValuePkgs();
-			case CommunicationPackage.COMMUNICATION_ITEM__OWNED_DATA_VALUES:
-				return getOwnedDataValues();
-			case CommunicationPackage.COMMUNICATION_ITEM__VISIBILITY:
-				return getVisibility();
-			case CommunicationPackage.COMMUNICATION_ITEM__OWNED_STATE_MACHINES:
-				return getOwnedStateMachines();
-			case CommunicationPackage.COMMUNICATION_ITEM__PROPERTIES:
-				return getProperties();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CommunicationPackage.COMMUNICATION_ITEM__OWNED_PROPERTY_VALUE_PKGS:
+        return getOwnedPropertyValuePkgs();
+      case CommunicationPackage.COMMUNICATION_ITEM__OWNED_DATA_VALUES:
+        return getOwnedDataValues();
+      case CommunicationPackage.COMMUNICATION_ITEM__VISIBILITY:
+        return getVisibility();
+      case CommunicationPackage.COMMUNICATION_ITEM__OWNED_STATE_MACHINES:
+        return getOwnedStateMachines();
+      case CommunicationPackage.COMMUNICATION_ITEM__PROPERTIES:
+        return getProperties();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CommunicationPackage.COMMUNICATION_ITEM__OWNED_PROPERTY_VALUE_PKGS:
-				getOwnedPropertyValuePkgs().clear();
-				getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
-				return;
-			case CommunicationPackage.COMMUNICATION_ITEM__OWNED_DATA_VALUES:
-				getOwnedDataValues().clear();
-				getOwnedDataValues().addAll((Collection<? extends DataValue>)newValue);
-				return;
-			case CommunicationPackage.COMMUNICATION_ITEM__VISIBILITY:
-					setVisibility((VisibilityKind)newValue);
-				return;
-			case CommunicationPackage.COMMUNICATION_ITEM__OWNED_STATE_MACHINES:
-				getOwnedStateMachines().clear();
-				getOwnedStateMachines().addAll((Collection<? extends StateMachine>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CommunicationPackage.COMMUNICATION_ITEM__OWNED_PROPERTY_VALUE_PKGS:
+        getOwnedPropertyValuePkgs().clear();
+        getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
+        return;
+      case CommunicationPackage.COMMUNICATION_ITEM__OWNED_DATA_VALUES:
+        getOwnedDataValues().clear();
+        getOwnedDataValues().addAll((Collection<? extends DataValue>)newValue);
+        return;
+      case CommunicationPackage.COMMUNICATION_ITEM__VISIBILITY:
+          setVisibility((VisibilityKind)newValue);
+        return;
+      case CommunicationPackage.COMMUNICATION_ITEM__OWNED_STATE_MACHINES:
+        getOwnedStateMachines().clear();
+        getOwnedStateMachines().addAll((Collection<? extends StateMachine>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CommunicationPackage.COMMUNICATION_ITEM__OWNED_PROPERTY_VALUE_PKGS:
-				getOwnedPropertyValuePkgs().clear();
-				return;
-			case CommunicationPackage.COMMUNICATION_ITEM__OWNED_DATA_VALUES:
-				getOwnedDataValues().clear();
-				return;
-			case CommunicationPackage.COMMUNICATION_ITEM__VISIBILITY:
-				setVisibility(VISIBILITY_EDEFAULT);
-				return;
-			case CommunicationPackage.COMMUNICATION_ITEM__OWNED_STATE_MACHINES:
-				getOwnedStateMachines().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CommunicationPackage.COMMUNICATION_ITEM__OWNED_PROPERTY_VALUE_PKGS:
+        getOwnedPropertyValuePkgs().clear();
+        return;
+      case CommunicationPackage.COMMUNICATION_ITEM__OWNED_DATA_VALUES:
+        getOwnedDataValues().clear();
+        return;
+      case CommunicationPackage.COMMUNICATION_ITEM__VISIBILITY:
+        setVisibility(VISIBILITY_EDEFAULT);
+        return;
+      case CommunicationPackage.COMMUNICATION_ITEM__OWNED_STATE_MACHINES:
+        getOwnedStateMachines().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CommunicationPackage.COMMUNICATION_ITEM__OWNED_PROPERTY_VALUE_PKGS:
-				return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
-			case CommunicationPackage.COMMUNICATION_ITEM__OWNED_DATA_VALUES:
-				return ownedDataValues != null && !ownedDataValues.isEmpty();
-			case CommunicationPackage.COMMUNICATION_ITEM__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
-			case CommunicationPackage.COMMUNICATION_ITEM__OWNED_STATE_MACHINES:
-				return ownedStateMachines != null && !ownedStateMachines.isEmpty();
-			case CommunicationPackage.COMMUNICATION_ITEM__PROPERTIES:
-				return !getProperties().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CommunicationPackage.COMMUNICATION_ITEM__OWNED_PROPERTY_VALUE_PKGS:
+        return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
+      case CommunicationPackage.COMMUNICATION_ITEM__OWNED_DATA_VALUES:
+        return ownedDataValues != null && !ownedDataValues.isEmpty();
+      case CommunicationPackage.COMMUNICATION_ITEM__VISIBILITY:
+        return visibility != VISIBILITY_EDEFAULT;
+      case CommunicationPackage.COMMUNICATION_ITEM__OWNED_STATE_MACHINES:
+        return ownedStateMachines != null && !ownedStateMachines.isEmpty();
+      case CommunicationPackage.COMMUNICATION_ITEM__PROPERTIES:
+        return !getProperties().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == Structure.class) {
-			switch (derivedFeatureID) {
-				case CommunicationPackage.COMMUNICATION_ITEM__OWNED_PROPERTY_VALUE_PKGS: return CapellacorePackage.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS;
-				default: return -1;
-			}
-		}
-		if (baseClass == DataValueContainer.class) {
-			switch (derivedFeatureID) {
-				case CommunicationPackage.COMMUNICATION_ITEM__OWNED_DATA_VALUES: return DatavaluePackage.DATA_VALUE_CONTAINER__OWNED_DATA_VALUES;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == Structure.class) {
+      switch (derivedFeatureID) {
+        case CommunicationPackage.COMMUNICATION_ITEM__OWNED_PROPERTY_VALUE_PKGS: return CapellacorePackage.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS;
+        default: return -1;
+      }
+    }
+    if (baseClass == DataValueContainer.class) {
+      switch (derivedFeatureID) {
+        case CommunicationPackage.COMMUNICATION_ITEM__OWNED_DATA_VALUES: return DatavaluePackage.DATA_VALUE_CONTAINER__OWNED_DATA_VALUES;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == Structure.class) {
-			switch (baseFeatureID) {
-				case CapellacorePackage.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS: return CommunicationPackage.COMMUNICATION_ITEM__OWNED_PROPERTY_VALUE_PKGS;
-				default: return -1;
-			}
-		}
-		if (baseClass == DataValueContainer.class) {
-			switch (baseFeatureID) {
-				case DatavaluePackage.DATA_VALUE_CONTAINER__OWNED_DATA_VALUES: return CommunicationPackage.COMMUNICATION_ITEM__OWNED_DATA_VALUES;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == Structure.class) {
+      switch (baseFeatureID) {
+        case CapellacorePackage.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS: return CommunicationPackage.COMMUNICATION_ITEM__OWNED_PROPERTY_VALUE_PKGS;
+        default: return -1;
+      }
+    }
+    if (baseClass == DataValueContainer.class) {
+      switch (baseFeatureID) {
+        case DatavaluePackage.DATA_VALUE_CONTAINER__OWNED_DATA_VALUES: return CommunicationPackage.COMMUNICATION_ITEM__OWNED_DATA_VALUES;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (visibility: "); //$NON-NLS-1$
-		result.append(visibility);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (visibility: "); //$NON-NLS-1$
+    result.append(visibility);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //CommunicationItemImpl

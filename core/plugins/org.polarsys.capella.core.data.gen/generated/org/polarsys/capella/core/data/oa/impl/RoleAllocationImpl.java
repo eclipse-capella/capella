@@ -51,48 +51,48 @@ public class RoleAllocationImpl extends AllocationImpl implements RoleAllocation
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected RoleAllocationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OaPackage.Literals.ROLE_ALLOCATION;
-	}
+    return OaPackage.Literals.ROLE_ALLOCATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Role getRole() {
 
-		Role role = basicGetRole();
-		return role != null && role.eIsProxy() ? (Role)eResolveProxy((InternalEObject)role) : role;
-	}
+    Role role = basicGetRole();
+    return role != null && role.eIsProxy() ? (Role)eResolveProxy((InternalEObject)role) : role;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Role basicGetRole() {
 
@@ -119,15 +119,15 @@ public class RoleAllocationImpl extends AllocationImpl implements RoleAllocation
     // A helper is found, let's use it. 
     EAnnotation annotation = OaPackage.Literals.ROLE_ALLOCATION__ROLE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, OaPackage.Literals.ROLE_ALLOCATION__ROLE, annotation);
-		
-		try {
-			return (Role) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Role) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -135,23 +135,23 @@ public class RoleAllocationImpl extends AllocationImpl implements RoleAllocation
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Entity getEntity() {
 
-		Entity entity = basicGetEntity();
-		return entity != null && entity.eIsProxy() ? (Entity)eResolveProxy((InternalEObject)entity) : entity;
-	}
+    Entity entity = basicGetEntity();
+    return entity != null && entity.eIsProxy() ? (Entity)eResolveProxy((InternalEObject)entity) : entity;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Entity basicGetEntity() {
 
@@ -178,53 +178,53 @@ public class RoleAllocationImpl extends AllocationImpl implements RoleAllocation
     // A helper is found, let's use it. 
     EAnnotation annotation = OaPackage.Literals.ROLE_ALLOCATION__ENTITY.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, OaPackage.Literals.ROLE_ALLOCATION__ENTITY, annotation);
-		
-		try {
-			return (Entity) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Entity) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OaPackage.ROLE_ALLOCATION__ROLE:
-				if (resolve) return getRole();
-				return basicGetRole();
-			case OaPackage.ROLE_ALLOCATION__ENTITY:
-				if (resolve) return getEntity();
-				return basicGetEntity();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case OaPackage.ROLE_ALLOCATION__ROLE:
+        if (resolve) return getRole();
+        return basicGetRole();
+      case OaPackage.ROLE_ALLOCATION__ENTITY:
+        if (resolve) return getEntity();
+        return basicGetEntity();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OaPackage.ROLE_ALLOCATION__ROLE:
-				return basicGetRole() != null;
-			case OaPackage.ROLE_ALLOCATION__ENTITY:
-				return basicGetEntity() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.ROLE_ALLOCATION__ROLE:
+        return basicGetRole() != null;
+      case OaPackage.ROLE_ALLOCATION__ENTITY:
+        return basicGetEntity() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

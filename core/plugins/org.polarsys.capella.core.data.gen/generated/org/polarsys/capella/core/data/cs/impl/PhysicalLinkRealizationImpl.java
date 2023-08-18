@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.cs.PhysicalLinkRealization;
  */
 public class PhysicalLinkRealizationImpl extends AllocationImpl implements PhysicalLinkRealization {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalLinkRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.PHYSICAL_LINK_REALIZATION;
-	}
+    return CsPackage.Literals.PHYSICAL_LINK_REALIZATION;
+  }
 
 
 

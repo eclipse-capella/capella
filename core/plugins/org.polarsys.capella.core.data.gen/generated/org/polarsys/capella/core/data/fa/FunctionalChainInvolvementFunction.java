@@ -44,23 +44,23 @@ public interface FunctionalChainInvolvementFunction extends FunctionalChainInvol
 
 
 	/**
-	 * Returns the value of the '<em><b>Outgoing Involvement Links</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink}.
+   * Returns the value of the '<em><b>Outgoing Involvement Links</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Outgoing Involvement Links</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Outgoing Involvement Links</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementFunction_OutgoingInvolvementLinks()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='source'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Outgoing Involvement Links</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementFunction_OutgoingInvolvementLinks()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='source'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<FunctionalChainInvolvementLink> getOutgoingInvolvementLinks();
 
@@ -71,23 +71,23 @@ public interface FunctionalChainInvolvementFunction extends FunctionalChainInvol
 
 
 	/**
-	 * Returns the value of the '<em><b>Incoming Involvement Links</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink}.
+   * Returns the value of the '<em><b>Incoming Involvement Links</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Incoming Involvement Links</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Incoming Involvement Links</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementFunction_IncomingInvolvementLinks()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='target'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Incoming Involvement Links</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvementFunction_IncomingInvolvementLinks()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='target'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<FunctionalChainInvolvementLink> getIncomingInvolvementLinks();
 

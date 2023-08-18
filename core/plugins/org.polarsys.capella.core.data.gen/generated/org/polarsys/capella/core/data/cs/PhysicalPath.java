@@ -47,20 +47,20 @@ public interface PhysicalPath extends NamedElement, ComponentExchangeAllocator, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Involved Links</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.AbstractPhysicalPathLink}.
+   * Returns the value of the '<em><b>Involved Links</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.cs.AbstractPhysicalPathLink}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * @deprecated : 'involvedLinks' shall not be used anymore
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Involved Links</em>' reference list.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPath_InvolvedLinks()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of steps of this physical path\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * <!-- begin-model-doc -->
+   * @deprecated : 'involvedLinks' shall not be used anymore
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Involved Links</em>' reference list.
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPath_InvolvedLinks()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of steps of this physical path\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	@Deprecated
 	EList<AbstractPhysicalPathLink> getInvolvedLinks();
@@ -72,22 +72,22 @@ public interface PhysicalPath extends NamedElement, ComponentExchangeAllocator, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Physical Path Involvements</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalPathInvolvement}.
+   * Returns the value of the '<em><b>Owned Physical Path Involvements</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalPathInvolvement}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Physical Path Involvements</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Physical Path Involvements</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPath_OwnedPhysicalPathInvolvements()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Physical Path Involvements</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPath_OwnedPhysicalPathInvolvements()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<PhysicalPathInvolvement> getOwnedPhysicalPathInvolvements();
 
@@ -98,23 +98,23 @@ public interface PhysicalPath extends NamedElement, ComponentExchangeAllocator, 
 
 
 	/**
-	 * Returns the value of the '<em><b>First Physical Path Involvements</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalPathInvolvement}.
+   * Returns the value of the '<em><b>First Physical Path Involvements</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalPathInvolvement}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>First Physical Path Involvements</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>First Physical Path Involvements</em>' reference list.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPath_FirstPhysicalPathInvolvements()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='freeform' viatra.expression='pattern PhysicalPath__firstPhysicalPathInvolvements(self : PhysicalPath, target : PhysicalPathInvolvement) {\r\n\tPhysicalPath.ownedPhysicalPathInvolvements(self, target);\r\n\tPhysicalPathInvolvement.involved(target, _);\r\n\tneg find _PreviousInvolvement(target, _);\r\n}\r\nprivate pattern _PreviousInvolvement(ppi : PhysicalPathInvolvement, previous : PhysicalPathInvolvement) {\r\n\tPhysicalPathInvolvement.previousInvolvements(ppi, previous);\r\n}\r\n'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>First Physical Path Involvements</em>' reference list.
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPath_FirstPhysicalPathInvolvements()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='freeform' viatra.expression='pattern PhysicalPath__firstPhysicalPathInvolvements(self : PhysicalPath, target : PhysicalPathInvolvement) {\r\n\tPhysicalPath.ownedPhysicalPathInvolvements(self, target);\r\n\tPhysicalPathInvolvement.involved(target, _);\r\n\tneg find _PreviousInvolvement(target, _);\r\n}\r\nprivate pattern _PreviousInvolvement(ppi : PhysicalPathInvolvement, previous : PhysicalPathInvolvement) {\r\n\tPhysicalPathInvolvement.previousInvolvements(ppi, previous);\r\n}\r\n'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<PhysicalPathInvolvement> getFirstPhysicalPathInvolvements();
 
@@ -125,22 +125,22 @@ public interface PhysicalPath extends NamedElement, ComponentExchangeAllocator, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Physical Path Realizations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalPathRealization}.
+   * Returns the value of the '<em><b>Owned Physical Path Realizations</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalPathRealization}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Physical Path Realizations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Physical Path Realizations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPath_OwnedPhysicalPathRealizations()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='none' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Physical Path Realizations</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPath_OwnedPhysicalPathRealizations()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='none' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	EList<PhysicalPathRealization> getOwnedPhysicalPathRealizations();
 
@@ -151,23 +151,23 @@ public interface PhysicalPath extends NamedElement, ComponentExchangeAllocator, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Realized Physical Paths</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalPath}.
+   * Returns the value of the '<em><b>Realized Physical Paths</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalPath}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realized Physical Paths</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realized Physical Paths</em>' reference list.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPath_RealizedPhysicalPaths()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalPathRealization.sourceElement(ppr, self);\r\nPhysicalPathRealization.targetElement(ppr, target);'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realized Physical Paths</em>' reference list.
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPath_RealizedPhysicalPaths()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalPathRealization.sourceElement(ppr, self);\r\nPhysicalPathRealization.targetElement(ppr, target);'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<PhysicalPath> getRealizedPhysicalPaths();
 
@@ -178,23 +178,23 @@ public interface PhysicalPath extends NamedElement, ComponentExchangeAllocator, 
 
 
 	/**
-	 * Returns the value of the '<em><b>Realizing Physical Paths</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalPath}.
+   * Returns the value of the '<em><b>Realizing Physical Paths</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalPath}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realizing Physical Paths</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realizing Physical Paths</em>' reference list.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPath_RealizingPhysicalPaths()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalPathRealization.targetElement(ppr, self);\r\nPhysicalPathRealization.sourceElement(ppr, target);'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realizing Physical Paths</em>' reference list.
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPath_RealizingPhysicalPaths()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalPathRealization.targetElement(ppr, self);\r\nPhysicalPathRealization.sourceElement(ppr, target);'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   * @generated
+   */
 
 	EList<PhysicalPath> getRealizingPhysicalPaths();
 

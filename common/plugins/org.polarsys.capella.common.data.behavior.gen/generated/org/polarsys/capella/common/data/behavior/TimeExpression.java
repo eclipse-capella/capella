@@ -41,21 +41,21 @@ public interface TimeExpression extends ValueSpecification {
 
 
 	/**
-	 * Returns the value of the '<em><b>Observations</b></em>' reference.
+   * Returns the value of the '<em><b>Observations</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Observations</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Observations</em>' reference.
-	 * @see #setObservations(AbstractNamedElement)
-	 * @see org.polarsys.capella.common.data.behavior.BehaviorPackage#getTimeExpression_Observations()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Refers to the time and duration observations that are involved in expr\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='cardinality of TimeExpression::observations should be changed to [0..*]'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TimeExpression::observation' explanation='none' constraints='Multiplicity must be [0..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Observations</em>' reference.
+   * @see #setObservations(AbstractNamedElement)
+   * @see org.polarsys.capella.common.data.behavior.BehaviorPackage#getTimeExpression_Observations()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Refers to the time and duration observations that are involved in expr\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='cardinality of TimeExpression::observations should be changed to [0..*]'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TimeExpression::observation' explanation='none' constraints='Multiplicity must be [0..1]'"
+   * @generated
+   */
 
 	AbstractNamedElement getObservations();
 
@@ -63,14 +63,14 @@ public interface TimeExpression extends ValueSpecification {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.behavior.TimeExpression#getObservations <em>Observations</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.behavior.TimeExpression#getObservations <em>Observations</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Observations</em>' reference.
-	 * @see #getObservations()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Observations</em>' reference.
+   * @see #getObservations()
+   * @generated
+   */
 
 	void setObservations(AbstractNamedElement value);
 
@@ -81,21 +81,21 @@ public interface TimeExpression extends ValueSpecification {
 
 
 	/**
-	 * Returns the value of the '<em><b>Expression</b></em>' reference.
+   * Returns the value of the '<em><b>Expression</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Expression</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Expression</em>' reference.
-	 * @see #setExpression(ValueSpecification)
-	 * @see org.polarsys.capella.common.data.behavior.BehaviorPackage#getTimeExpression_Expression()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The value of the time expression\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TimeExpression::expr' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Expression</em>' reference.
+   * @see #setExpression(ValueSpecification)
+   * @see org.polarsys.capella.common.data.behavior.BehaviorPackage#getTimeExpression_Expression()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The value of the time expression\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TimeExpression::expr' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	ValueSpecification getExpression();
 
@@ -103,14 +103,14 @@ public interface TimeExpression extends ValueSpecification {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.behavior.TimeExpression#getExpression <em>Expression</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.behavior.TimeExpression#getExpression <em>Expression</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Expression</em>' reference.
-	 * @see #getExpression()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Expression</em>' reference.
+   * @see #getExpression()
+   * @generated
+   */
 
 	void setExpression(ValueSpecification value);
 

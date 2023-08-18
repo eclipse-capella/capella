@@ -51,13 +51,13 @@ import org.polarsys.capella.core.data.capellacore.impl.TraceImpl;
 public class GenericTraceImpl extends TraceImpl implements GenericTrace {
 
 	/**
-	 * The cached value of the '{@link #getKeyValuePairs() <em>Key Value Pairs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getKeyValuePairs() <em>Key Value Pairs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getKeyValuePairs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getKeyValuePairs()
+   * @generated
+   * @ordered
+   */
 	protected EList<KeyValue> keyValuePairs;
 
 
@@ -72,53 +72,53 @@ public class GenericTraceImpl extends TraceImpl implements GenericTrace {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected GenericTraceImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.GENERIC_TRACE;
-	}
+    return CapellacommonPackage.Literals.GENERIC_TRACE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<KeyValue> getKeyValuePairs() {
 
-		if (keyValuePairs == null) {
-			keyValuePairs = new EObjectContainmentEList<KeyValue>(KeyValue.class, this, CapellacommonPackage.GENERIC_TRACE__KEY_VALUE_PAIRS);
-		}
-		return keyValuePairs;
-	}
+    if (keyValuePairs == null) {
+      keyValuePairs = new EObjectContainmentEList<KeyValue>(KeyValue.class, this, CapellacommonPackage.GENERIC_TRACE__KEY_VALUE_PAIRS);
+    }
+    return keyValuePairs;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public TraceableElement getSource() {
 
@@ -145,25 +145,25 @@ public class GenericTraceImpl extends TraceImpl implements GenericTrace {
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacommonPackage.Literals.GENERIC_TRACE__SOURCE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.GENERIC_TRACE__SOURCE, annotation);
-		
-		try {
-			return (TraceableElement) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (TraceableElement) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public TraceableElement getTarget() {
 
@@ -190,102 +190,102 @@ public class GenericTraceImpl extends TraceImpl implements GenericTrace {
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacommonPackage.Literals.GENERIC_TRACE__TARGET.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.GENERIC_TRACE__TARGET, annotation);
-		
-		try {
-			return (TraceableElement) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (TraceableElement) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CapellacommonPackage.GENERIC_TRACE__KEY_VALUE_PAIRS:
-				return ((InternalEList<?>)getKeyValuePairs()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.GENERIC_TRACE__KEY_VALUE_PAIRS:
+        return ((InternalEList<?>)getKeyValuePairs()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CapellacommonPackage.GENERIC_TRACE__KEY_VALUE_PAIRS:
-				return getKeyValuePairs();
-			case CapellacommonPackage.GENERIC_TRACE__SOURCE:
-				return getSource();
-			case CapellacommonPackage.GENERIC_TRACE__TARGET:
-				return getTarget();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.GENERIC_TRACE__KEY_VALUE_PAIRS:
+        return getKeyValuePairs();
+      case CapellacommonPackage.GENERIC_TRACE__SOURCE:
+        return getSource();
+      case CapellacommonPackage.GENERIC_TRACE__TARGET:
+        return getTarget();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CapellacommonPackage.GENERIC_TRACE__KEY_VALUE_PAIRS:
-				getKeyValuePairs().clear();
-				getKeyValuePairs().addAll((Collection<? extends KeyValue>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.GENERIC_TRACE__KEY_VALUE_PAIRS:
+        getKeyValuePairs().clear();
+        getKeyValuePairs().addAll((Collection<? extends KeyValue>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CapellacommonPackage.GENERIC_TRACE__KEY_VALUE_PAIRS:
-				getKeyValuePairs().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.GENERIC_TRACE__KEY_VALUE_PAIRS:
+        getKeyValuePairs().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CapellacommonPackage.GENERIC_TRACE__KEY_VALUE_PAIRS:
-				return keyValuePairs != null && !keyValuePairs.isEmpty();
-			case CapellacommonPackage.GENERIC_TRACE__SOURCE:
-				return getSource() != null;
-			case CapellacommonPackage.GENERIC_TRACE__TARGET:
-				return getTarget() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.GENERIC_TRACE__KEY_VALUE_PAIRS:
+        return keyValuePairs != null && !keyValuePairs.isEmpty();
+      case CapellacommonPackage.GENERIC_TRACE__SOURCE:
+        return getSource() != null;
+      case CapellacommonPackage.GENERIC_TRACE__TARGET:
+        return getTarget() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.pa.deployment.TypeDeploymentLink;
  */
 public class TypeDeploymentLinkImpl extends AbstractDeploymentLinkImpl implements TypeDeploymentLink {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected TypeDeploymentLinkImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return DeploymentPackage.Literals.TYPE_DEPLOYMENT_LINK;
-	}
+    return DeploymentPackage.Literals.TYPE_DEPLOYMENT_LINK;
+  }
 
 
 

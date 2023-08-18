@@ -95,23 +95,23 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 
 
 	/**
-	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getKind()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getKind()
+   * @generated
+   * @ordered
+   */
 	protected static final FunctionalChainKind KIND_EDEFAULT = FunctionalChainKind.SIMPLE;
 
 	/**
-	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getKind()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getKind()
+   * @generated
+   * @ordered
+   */
 	protected FunctionalChainKind kind = KIND_EDEFAULT;
 
 
@@ -119,13 +119,13 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedFunctionalChainInvolvements() <em>Owned Functional Chain Involvements</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedFunctionalChainInvolvements() <em>Owned Functional Chain Involvements</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedFunctionalChainInvolvements()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedFunctionalChainInvolvements()
+   * @generated
+   * @ordered
+   */
 	protected EList<FunctionalChainInvolvement> ownedFunctionalChainInvolvements;
 
 
@@ -133,13 +133,13 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedFunctionalChainRealizations() <em>Owned Functional Chain Realizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedFunctionalChainRealizations() <em>Owned Functional Chain Realizations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedFunctionalChainRealizations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedFunctionalChainRealizations()
+   * @generated
+   * @ordered
+   */
 	protected EList<FunctionalChainRealization> ownedFunctionalChainRealizations;
 
 
@@ -171,13 +171,13 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 
 
 	/**
-	 * The cached value of the '{@link #getAvailableInStates() <em>Available In States</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getAvailableInStates() <em>Available In States</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAvailableInStates()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getAvailableInStates()
+   * @generated
+   * @ordered
+   */
 	protected EList<State> availableInStates;
 
 
@@ -204,43 +204,43 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 
 
 	/**
-	 * The cached value of the '{@link #getPreCondition() <em>Pre Condition</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getPreCondition() <em>Pre Condition</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPreCondition()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getPreCondition()
+   * @generated
+   * @ordered
+   */
 	protected Constraint preCondition;
 
 	/**
-	 * The cached value of the '{@link #getPostCondition() <em>Post Condition</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getPostCondition() <em>Post Condition</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPostCondition()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getPostCondition()
+   * @generated
+   * @ordered
+   */
 	protected Constraint postCondition;
 
 	/**
-	 * The cached value of the '{@link #getOwnedSequenceNodes() <em>Owned Sequence Nodes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedSequenceNodes() <em>Owned Sequence Nodes</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedSequenceNodes()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedSequenceNodes()
+   * @generated
+   * @ordered
+   */
 	protected EList<ControlNode> ownedSequenceNodes;
 
 	/**
-	 * The cached value of the '{@link #getOwnedSequenceLinks() <em>Owned Sequence Links</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedSequenceLinks() <em>Owned Sequence Links</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedSequenceLinks()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedSequenceLinks()
+   * @generated
+   * @ordered
+   */
 	protected EList<SequenceLink> ownedSequenceLinks;
 
 
@@ -267,35 +267,35 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionalChainImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FaPackage.Literals.FUNCTIONAL_CHAIN;
-	}
+    return FaPackage.Literals.FUNCTIONAL_CHAIN;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Involvement> getInvolvedInvolvements() {
 
@@ -322,27 +322,27 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Involvement> resultAsList = (Collection<Involvement>) result;
-		return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Involvement> resultAsList = (Collection<Involvement>) result;
+    return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Involvement> getInvolvingInvolvements() {
 
@@ -369,49 +369,49 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Involvement> resultAsList = (Collection<Involvement>) result;
-		return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Involvement> resultAsList = (Collection<Involvement>) result;
+    return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public FunctionalChainKind getKind() {
 
-		return kind;
-	}
+    return kind;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setKind(FunctionalChainKind newKind) {
 
-		FunctionalChainKind oldKind = kind;
-		kind = newKind == null ? KIND_EDEFAULT : newKind;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTIONAL_CHAIN__KIND, oldKind, kind));
+    FunctionalChainKind oldKind = kind;
+    kind = newKind == null ? KIND_EDEFAULT : newKind;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTIONAL_CHAIN__KIND, oldKind, kind));
 
-	}
+  }
 
 
 
@@ -419,46 +419,46 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionalChainInvolvement> getOwnedFunctionalChainInvolvements() {
 
-		if (ownedFunctionalChainInvolvements == null) {
-			ownedFunctionalChainInvolvements = new EObjectContainmentEList.Resolving<FunctionalChainInvolvement>(FunctionalChainInvolvement.class, this, FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS);
-		}
-		return ownedFunctionalChainInvolvements;
-	}
+    if (ownedFunctionalChainInvolvements == null) {
+      ownedFunctionalChainInvolvements = new EObjectContainmentEList.Resolving<FunctionalChainInvolvement>(FunctionalChainInvolvement.class, this, FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS);
+    }
+    return ownedFunctionalChainInvolvements;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionalChainRealization> getOwnedFunctionalChainRealizations() {
 
-		if (ownedFunctionalChainRealizations == null) {
-			ownedFunctionalChainRealizations = new EObjectContainmentEList.Resolving<FunctionalChainRealization>(FunctionalChainRealization.class, this, FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS);
-		}
-		return ownedFunctionalChainRealizations;
-	}
+    if (ownedFunctionalChainRealizations == null) {
+      ownedFunctionalChainRealizations = new EObjectContainmentEList.Resolving<FunctionalChainRealization>(FunctionalChainRealization.class, this, FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS);
+    }
+    return ownedFunctionalChainRealizations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionalChainInvolvement> getInvolvedFunctionalChainInvolvements() {
 
@@ -485,27 +485,27 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_CHAIN_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_CHAIN_INVOLVEMENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<FunctionalChainInvolvement> resultAsList = (Collection<FunctionalChainInvolvement>) result;
-		return new EcoreEList.UnmodifiableEList<FunctionalChainInvolvement>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_CHAIN_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<FunctionalChainInvolvement> resultAsList = (Collection<FunctionalChainInvolvement>) result;
+    return new EcoreEList.UnmodifiableEList<FunctionalChainInvolvement>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_CHAIN_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractFunction> getInvolvedFunctions() {
 
@@ -532,27 +532,27 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractFunction> resultAsList = (Collection<AbstractFunction>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractFunction>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractFunction> resultAsList = (Collection<AbstractFunction>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractFunction>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionalExchange> getInvolvedFunctionalExchanges() {
 
@@ -579,27 +579,27 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_EXCHANGES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_EXCHANGES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<FunctionalExchange> resultAsList = (Collection<FunctionalExchange>) result;
-		return new EcoreEList.UnmodifiableEList<FunctionalExchange>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_EXCHANGES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<FunctionalExchange> resultAsList = (Collection<FunctionalExchange>) result;
+    return new EcoreEList.UnmodifiableEList<FunctionalExchange>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_EXCHANGES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<InvolvedElement> getInvolvedElements() {
 
@@ -626,27 +626,27 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_ELEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_ELEMENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<InvolvedElement> resultAsList = (Collection<InvolvedElement>) result;
-		return new EcoreEList.UnmodifiableEList<InvolvedElement>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_ELEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<InvolvedElement> resultAsList = (Collection<InvolvedElement>) result;
+    return new EcoreEList.UnmodifiableEList<InvolvedElement>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_ELEMENTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractFunction> getEnactedFunctions() {
 
@@ -673,27 +673,27 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractFunction> resultAsList = (Collection<AbstractFunction>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractFunction>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractFunction> resultAsList = (Collection<AbstractFunction>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractFunction>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractFunctionalBlock> getEnactedFunctionalBlocks() {
 
@@ -720,45 +720,45 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONAL_BLOCKS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONAL_BLOCKS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractFunctionalBlock> resultAsList = (Collection<AbstractFunctionalBlock>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractFunctionalBlock>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONAL_BLOCKS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractFunctionalBlock> resultAsList = (Collection<AbstractFunctionalBlock>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractFunctionalBlock>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONAL_BLOCKS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<State> getAvailableInStates() {
 
-		if (availableInStates == null) {
-			availableInStates = new EObjectResolvingEList<State>(State.class, this, FaPackage.FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES);
-		}
-		return availableInStates;
-	}
+    if (availableInStates == null) {
+      availableInStates = new EObjectResolvingEList<State>(State.class, this, FaPackage.FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES);
+    }
+    return availableInStates;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionalChainInvolvement> getFirstFunctionalChainInvolvements() {
 
@@ -785,27 +785,27 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_CHAIN__FIRST_FUNCTIONAL_CHAIN_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_CHAIN__FIRST_FUNCTIONAL_CHAIN_INVOLVEMENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<FunctionalChainInvolvement> resultAsList = (Collection<FunctionalChainInvolvement>) result;
-		return new EcoreEList.UnmodifiableEList<FunctionalChainInvolvement>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__FIRST_FUNCTIONAL_CHAIN_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<FunctionalChainInvolvement> resultAsList = (Collection<FunctionalChainInvolvement>) result;
+    return new EcoreEList.UnmodifiableEList<FunctionalChainInvolvement>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__FIRST_FUNCTIONAL_CHAIN_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Capability> getInvolvingCapabilities() {
 
@@ -832,27 +832,27 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITIES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Capability> resultAsList = (Collection<Capability>) result;
-		return new EcoreEList.UnmodifiableEList<Capability>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Capability> resultAsList = (Collection<Capability>) result;
+    return new EcoreEList.UnmodifiableEList<Capability>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CapabilityRealization> getInvolvingCapabilityRealizations() {
 
@@ -879,27 +879,27 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITY_REALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITY_REALIZATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<CapabilityRealization> resultAsList = (Collection<CapabilityRealization>) result;
-		return new EcoreEList.UnmodifiableEList<CapabilityRealization>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<CapabilityRealization> resultAsList = (Collection<CapabilityRealization>) result;
+    return new EcoreEList.UnmodifiableEList<CapabilityRealization>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionalChain> getRealizedFunctionalChains() {
 
@@ -926,27 +926,27 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<FunctionalChain> resultAsList = (Collection<FunctionalChain>) result;
-		return new EcoreEList.UnmodifiableEList<FunctionalChain>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<FunctionalChain> resultAsList = (Collection<FunctionalChain>) result;
+    return new EcoreEList.UnmodifiableEList<FunctionalChain>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionalChain> getRealizingFunctionalChains() {
 
@@ -973,411 +973,411 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<FunctionalChain> resultAsList = (Collection<FunctionalChain>) result;
-		return new EcoreEList.UnmodifiableEList<FunctionalChain>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<FunctionalChain> resultAsList = (Collection<FunctionalChain>) result;
+    return new EcoreEList.UnmodifiableEList<FunctionalChain>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Constraint getPreCondition() {
 
-		if (preCondition != null && preCondition.eIsProxy()) {
-			InternalEObject oldPreCondition = (InternalEObject)preCondition;
-			preCondition = (Constraint)eResolveProxy(oldPreCondition);
-			if (preCondition != oldPreCondition) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION, oldPreCondition, preCondition));
-			}
-		}
-		return preCondition;
-	}
+    if (preCondition != null && preCondition.eIsProxy()) {
+      InternalEObject oldPreCondition = (InternalEObject)preCondition;
+      preCondition = (Constraint)eResolveProxy(oldPreCondition);
+      if (preCondition != oldPreCondition) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION, oldPreCondition, preCondition));
+      }
+    }
+    return preCondition;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Constraint basicGetPreCondition() {
 
-		return preCondition;
-	}
+    return preCondition;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setPreCondition(Constraint newPreCondition) {
 
-		Constraint oldPreCondition = preCondition;
-		preCondition = newPreCondition;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION, oldPreCondition, preCondition));
+    Constraint oldPreCondition = preCondition;
+    preCondition = newPreCondition;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION, oldPreCondition, preCondition));
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Constraint getPostCondition() {
 
-		if (postCondition != null && postCondition.eIsProxy()) {
-			InternalEObject oldPostCondition = (InternalEObject)postCondition;
-			postCondition = (Constraint)eResolveProxy(oldPostCondition);
-			if (postCondition != oldPostCondition) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION, oldPostCondition, postCondition));
-			}
-		}
-		return postCondition;
-	}
+    if (postCondition != null && postCondition.eIsProxy()) {
+      InternalEObject oldPostCondition = (InternalEObject)postCondition;
+      postCondition = (Constraint)eResolveProxy(oldPostCondition);
+      if (postCondition != oldPostCondition) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION, oldPostCondition, postCondition));
+      }
+    }
+    return postCondition;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Constraint basicGetPostCondition() {
 
-		return postCondition;
-	}
+    return postCondition;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setPostCondition(Constraint newPostCondition) {
 
-		Constraint oldPostCondition = postCondition;
-		postCondition = newPostCondition;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION, oldPostCondition, postCondition));
+    Constraint oldPostCondition = postCondition;
+    postCondition = newPostCondition;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION, oldPostCondition, postCondition));
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ControlNode> getOwnedSequenceNodes() {
 
-		if (ownedSequenceNodes == null) {
-			ownedSequenceNodes = new EObjectContainmentEList.Resolving<ControlNode>(ControlNode.class, this, FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES);
-		}
-		return ownedSequenceNodes;
-	}
+    if (ownedSequenceNodes == null) {
+      ownedSequenceNodes = new EObjectContainmentEList.Resolving<ControlNode>(ControlNode.class, this, FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES);
+    }
+    return ownedSequenceNodes;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<SequenceLink> getOwnedSequenceLinks() {
 
-		if (ownedSequenceLinks == null) {
-			ownedSequenceLinks = new EObjectContainmentEList.Resolving<SequenceLink>(SequenceLink.class, this, FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS);
-		}
-		return ownedSequenceLinks;
-	}
+    if (ownedSequenceLinks == null) {
+      ownedSequenceLinks = new EObjectContainmentEList.Resolving<SequenceLink>(SequenceLink.class, this, FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS);
+    }
+    return ownedSequenceLinks;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS:
-				return ((InternalEList<?>)getOwnedFunctionalChainInvolvements()).basicRemove(otherEnd, msgs);
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedFunctionalChainRealizations()).basicRemove(otherEnd, msgs);
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES:
-				return ((InternalEList<?>)getOwnedSequenceNodes()).basicRemove(otherEnd, msgs);
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS:
-				return ((InternalEList<?>)getOwnedSequenceLinks()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS:
+        return ((InternalEList<?>)getOwnedFunctionalChainInvolvements()).basicRemove(otherEnd, msgs);
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS:
+        return ((InternalEList<?>)getOwnedFunctionalChainRealizations()).basicRemove(otherEnd, msgs);
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES:
+        return ((InternalEList<?>)getOwnedSequenceNodes()).basicRemove(otherEnd, msgs);
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS:
+        return ((InternalEList<?>)getOwnedSequenceLinks()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_INVOLVEMENTS:
-				return getInvolvedInvolvements();
-			case FaPackage.FUNCTIONAL_CHAIN__INVOLVING_INVOLVEMENTS:
-				return getInvolvingInvolvements();
-			case FaPackage.FUNCTIONAL_CHAIN__KIND:
-				return getKind();
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS:
-				return getOwnedFunctionalChainInvolvements();
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS:
-				return getOwnedFunctionalChainRealizations();
-			case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_CHAIN_INVOLVEMENTS:
-				return getInvolvedFunctionalChainInvolvements();
-			case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONS:
-				return getInvolvedFunctions();
-			case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_EXCHANGES:
-				return getInvolvedFunctionalExchanges();
-			case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_ELEMENTS:
-				return getInvolvedElements();
-			case FaPackage.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONS:
-				return getEnactedFunctions();
-			case FaPackage.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONAL_BLOCKS:
-				return getEnactedFunctionalBlocks();
-			case FaPackage.FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES:
-				return getAvailableInStates();
-			case FaPackage.FUNCTIONAL_CHAIN__FIRST_FUNCTIONAL_CHAIN_INVOLVEMENTS:
-				return getFirstFunctionalChainInvolvements();
-			case FaPackage.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITIES:
-				return getInvolvingCapabilities();
-			case FaPackage.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITY_REALIZATIONS:
-				return getInvolvingCapabilityRealizations();
-			case FaPackage.FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS:
-				return getRealizedFunctionalChains();
-			case FaPackage.FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS:
-				return getRealizingFunctionalChains();
-			case FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION:
-				if (resolve) return getPreCondition();
-				return basicGetPreCondition();
-			case FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION:
-				if (resolve) return getPostCondition();
-				return basicGetPostCondition();
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES:
-				return getOwnedSequenceNodes();
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS:
-				return getOwnedSequenceLinks();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_INVOLVEMENTS:
+        return getInvolvedInvolvements();
+      case FaPackage.FUNCTIONAL_CHAIN__INVOLVING_INVOLVEMENTS:
+        return getInvolvingInvolvements();
+      case FaPackage.FUNCTIONAL_CHAIN__KIND:
+        return getKind();
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS:
+        return getOwnedFunctionalChainInvolvements();
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS:
+        return getOwnedFunctionalChainRealizations();
+      case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_CHAIN_INVOLVEMENTS:
+        return getInvolvedFunctionalChainInvolvements();
+      case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONS:
+        return getInvolvedFunctions();
+      case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_EXCHANGES:
+        return getInvolvedFunctionalExchanges();
+      case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_ELEMENTS:
+        return getInvolvedElements();
+      case FaPackage.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONS:
+        return getEnactedFunctions();
+      case FaPackage.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONAL_BLOCKS:
+        return getEnactedFunctionalBlocks();
+      case FaPackage.FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES:
+        return getAvailableInStates();
+      case FaPackage.FUNCTIONAL_CHAIN__FIRST_FUNCTIONAL_CHAIN_INVOLVEMENTS:
+        return getFirstFunctionalChainInvolvements();
+      case FaPackage.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITIES:
+        return getInvolvingCapabilities();
+      case FaPackage.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITY_REALIZATIONS:
+        return getInvolvingCapabilityRealizations();
+      case FaPackage.FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS:
+        return getRealizedFunctionalChains();
+      case FaPackage.FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS:
+        return getRealizingFunctionalChains();
+      case FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION:
+        if (resolve) return getPreCondition();
+        return basicGetPreCondition();
+      case FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION:
+        if (resolve) return getPostCondition();
+        return basicGetPostCondition();
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES:
+        return getOwnedSequenceNodes();
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS:
+        return getOwnedSequenceLinks();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case FaPackage.FUNCTIONAL_CHAIN__KIND:
-					setKind((FunctionalChainKind)newValue);
-				return;
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS:
-				getOwnedFunctionalChainInvolvements().clear();
-				getOwnedFunctionalChainInvolvements().addAll((Collection<? extends FunctionalChainInvolvement>)newValue);
-				return;
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS:
-				getOwnedFunctionalChainRealizations().clear();
-				getOwnedFunctionalChainRealizations().addAll((Collection<? extends FunctionalChainRealization>)newValue);
-				return;
-			case FaPackage.FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES:
-				getAvailableInStates().clear();
-				getAvailableInStates().addAll((Collection<? extends State>)newValue);
-				return;
-			case FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION:
-					setPreCondition((Constraint)newValue);
-				return;
-			case FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION:
-					setPostCondition((Constraint)newValue);
-				return;
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES:
-				getOwnedSequenceNodes().clear();
-				getOwnedSequenceNodes().addAll((Collection<? extends ControlNode>)newValue);
-				return;
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS:
-				getOwnedSequenceLinks().clear();
-				getOwnedSequenceLinks().addAll((Collection<? extends SequenceLink>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTIONAL_CHAIN__KIND:
+          setKind((FunctionalChainKind)newValue);
+        return;
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS:
+        getOwnedFunctionalChainInvolvements().clear();
+        getOwnedFunctionalChainInvolvements().addAll((Collection<? extends FunctionalChainInvolvement>)newValue);
+        return;
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS:
+        getOwnedFunctionalChainRealizations().clear();
+        getOwnedFunctionalChainRealizations().addAll((Collection<? extends FunctionalChainRealization>)newValue);
+        return;
+      case FaPackage.FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES:
+        getAvailableInStates().clear();
+        getAvailableInStates().addAll((Collection<? extends State>)newValue);
+        return;
+      case FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION:
+          setPreCondition((Constraint)newValue);
+        return;
+      case FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION:
+          setPostCondition((Constraint)newValue);
+        return;
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES:
+        getOwnedSequenceNodes().clear();
+        getOwnedSequenceNodes().addAll((Collection<? extends ControlNode>)newValue);
+        return;
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS:
+        getOwnedSequenceLinks().clear();
+        getOwnedSequenceLinks().addAll((Collection<? extends SequenceLink>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case FaPackage.FUNCTIONAL_CHAIN__KIND:
-				setKind(KIND_EDEFAULT);
-				return;
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS:
-				getOwnedFunctionalChainInvolvements().clear();
-				return;
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS:
-				getOwnedFunctionalChainRealizations().clear();
-				return;
-			case FaPackage.FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES:
-				getAvailableInStates().clear();
-				return;
-			case FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION:
-				setPreCondition((Constraint)null);
-				return;
-			case FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION:
-				setPostCondition((Constraint)null);
-				return;
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES:
-				getOwnedSequenceNodes().clear();
-				return;
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS:
-				getOwnedSequenceLinks().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTIONAL_CHAIN__KIND:
+        setKind(KIND_EDEFAULT);
+        return;
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS:
+        getOwnedFunctionalChainInvolvements().clear();
+        return;
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS:
+        getOwnedFunctionalChainRealizations().clear();
+        return;
+      case FaPackage.FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES:
+        getAvailableInStates().clear();
+        return;
+      case FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION:
+        setPreCondition((Constraint)null);
+        return;
+      case FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION:
+        setPostCondition((Constraint)null);
+        return;
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES:
+        getOwnedSequenceNodes().clear();
+        return;
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS:
+        getOwnedSequenceLinks().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_INVOLVEMENTS:
-				return !getInvolvedInvolvements().isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN__INVOLVING_INVOLVEMENTS:
-				return !getInvolvingInvolvements().isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN__KIND:
-				return kind != KIND_EDEFAULT;
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS:
-				return ownedFunctionalChainInvolvements != null && !ownedFunctionalChainInvolvements.isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS:
-				return ownedFunctionalChainRealizations != null && !ownedFunctionalChainRealizations.isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_CHAIN_INVOLVEMENTS:
-				return !getInvolvedFunctionalChainInvolvements().isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONS:
-				return !getInvolvedFunctions().isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_EXCHANGES:
-				return !getInvolvedFunctionalExchanges().isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_ELEMENTS:
-				return !getInvolvedElements().isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONS:
-				return !getEnactedFunctions().isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONAL_BLOCKS:
-				return !getEnactedFunctionalBlocks().isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES:
-				return availableInStates != null && !availableInStates.isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN__FIRST_FUNCTIONAL_CHAIN_INVOLVEMENTS:
-				return !getFirstFunctionalChainInvolvements().isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITIES:
-				return !getInvolvingCapabilities().isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITY_REALIZATIONS:
-				return !getInvolvingCapabilityRealizations().isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS:
-				return !getRealizedFunctionalChains().isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS:
-				return !getRealizingFunctionalChains().isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION:
-				return preCondition != null;
-			case FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION:
-				return postCondition != null;
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES:
-				return ownedSequenceNodes != null && !ownedSequenceNodes.isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS:
-				return ownedSequenceLinks != null && !ownedSequenceLinks.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_INVOLVEMENTS:
+        return !getInvolvedInvolvements().isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN__INVOLVING_INVOLVEMENTS:
+        return !getInvolvingInvolvements().isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN__KIND:
+        return kind != KIND_EDEFAULT;
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS:
+        return ownedFunctionalChainInvolvements != null && !ownedFunctionalChainInvolvements.isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS:
+        return ownedFunctionalChainRealizations != null && !ownedFunctionalChainRealizations.isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_CHAIN_INVOLVEMENTS:
+        return !getInvolvedFunctionalChainInvolvements().isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONS:
+        return !getInvolvedFunctions().isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_EXCHANGES:
+        return !getInvolvedFunctionalExchanges().isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_ELEMENTS:
+        return !getInvolvedElements().isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONS:
+        return !getEnactedFunctions().isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONAL_BLOCKS:
+        return !getEnactedFunctionalBlocks().isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES:
+        return availableInStates != null && !availableInStates.isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN__FIRST_FUNCTIONAL_CHAIN_INVOLVEMENTS:
+        return !getFirstFunctionalChainInvolvements().isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITIES:
+        return !getInvolvingCapabilities().isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITY_REALIZATIONS:
+        return !getInvolvingCapabilityRealizations().isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS:
+        return !getRealizedFunctionalChains().isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS:
+        return !getRealizingFunctionalChains().isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION:
+        return preCondition != null;
+      case FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION:
+        return postCondition != null;
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES:
+        return ownedSequenceNodes != null && !ownedSequenceNodes.isEmpty();
+      case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS:
+        return ownedSequenceLinks != null && !ownedSequenceLinks.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == InvolverElement.class) {
-			switch (derivedFeatureID) {
-				case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_INVOLVEMENTS: return CapellacorePackage.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS;
-				default: return -1;
-			}
-		}
-		if (baseClass == InvolvedElement.class) {
-			switch (derivedFeatureID) {
-				case FaPackage.FUNCTIONAL_CHAIN__INVOLVING_INVOLVEMENTS: return CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == InvolverElement.class) {
+      switch (derivedFeatureID) {
+        case FaPackage.FUNCTIONAL_CHAIN__INVOLVED_INVOLVEMENTS: return CapellacorePackage.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS;
+        default: return -1;
+      }
+    }
+    if (baseClass == InvolvedElement.class) {
+      switch (derivedFeatureID) {
+        case FaPackage.FUNCTIONAL_CHAIN__INVOLVING_INVOLVEMENTS: return CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == InvolverElement.class) {
-			switch (baseFeatureID) {
-				case CapellacorePackage.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS: return FaPackage.FUNCTIONAL_CHAIN__INVOLVED_INVOLVEMENTS;
-				default: return -1;
-			}
-		}
-		if (baseClass == InvolvedElement.class) {
-			switch (baseFeatureID) {
-				case CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS: return FaPackage.FUNCTIONAL_CHAIN__INVOLVING_INVOLVEMENTS;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == InvolverElement.class) {
+      switch (baseFeatureID) {
+        case CapellacorePackage.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS: return FaPackage.FUNCTIONAL_CHAIN__INVOLVED_INVOLVEMENTS;
+        default: return -1;
+      }
+    }
+    if (baseClass == InvolvedElement.class) {
+      switch (baseFeatureID) {
+        case CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS: return FaPackage.FUNCTIONAL_CHAIN__INVOLVING_INVOLVEMENTS;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (kind: "); //$NON-NLS-1$
-		result.append(kind);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (kind: "); //$NON-NLS-1$
+    result.append(kind);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //FunctionalChainImpl

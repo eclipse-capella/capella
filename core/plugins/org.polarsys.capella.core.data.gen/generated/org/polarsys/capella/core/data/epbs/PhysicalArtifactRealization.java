@@ -35,41 +35,41 @@ import org.polarsys.capella.core.data.cs.AbstractPhysicalArtifact;
 public interface PhysicalArtifactRealization extends Allocation {
 
 	/**
-	 * Returns the value of the '<em><b>Realized Physical Artifact</b></em>' reference.
+   * Returns the value of the '<em><b>Realized Physical Artifact</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realized Physical Artifact</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realized Physical Artifact</em>' reference.
-	 * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getPhysicalArtifactRealization_RealizedPhysicalArtifact()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the allocated architecture\r\n[source: Capella study]\r\n\r\nSpecifies the targets of the DirectedRelationship.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realized Physical Artifact</em>' reference.
+   * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getPhysicalArtifactRealization_RealizedPhysicalArtifact()
+   * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the allocated architecture\r\n[source: Capella study]\r\n\r\nSpecifies the targets of the DirectedRelationship.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   * @generated
+   */
 
 	AbstractPhysicalArtifact getRealizedPhysicalArtifact();
 
 	/**
-	 * Returns the value of the '<em><b>Realizing Configuration Item</b></em>' reference.
+   * Returns the value of the '<em><b>Realizing Configuration Item</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realizing Configuration Item</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realizing Configuration Item</em>' reference.
-	 * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getPhysicalArtifactRealization_RealizingConfigurationItem()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the allocating architecture\r\n[source: Capella study]\r\n\r\nSpecifies the sources of the DirectedRelationship.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realizing Configuration Item</em>' reference.
+   * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getPhysicalArtifactRealization_RealizingConfigurationItem()
+   * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the allocating architecture\r\n[source: Capella study]\r\n\r\nSpecifies the sources of the DirectedRelationship.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	ConfigurationItem getRealizingConfigurationItem();
 

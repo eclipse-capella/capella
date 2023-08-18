@@ -77,155 +77,155 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 public abstract class ComponentPkgImpl extends NamedElementImpl implements ComponentPkg {
 
 	/**
-	 * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedTraces()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedTraces()
+   * @generated
+   * @ordered
+   */
 	protected EList<Trace> ownedTraces;
 	/**
-	 * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNamingRules()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getNamingRules()
+   * @generated
+   * @ordered
+   */
 	protected EList<NamingRule> namingRules;
 	/**
-	 * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPropertyValuePkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPropertyValuePkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<PropertyValuePkg> ownedPropertyValuePkgs;
 	/**
-	 * The cached value of the '{@link #getOwnedParts() <em>Owned Parts</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedParts() <em>Owned Parts</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedParts()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedParts()
+   * @generated
+   * @ordered
+   */
 	protected EList<Part> ownedParts;
 
 	/**
-	 * The cached value of the '{@link #getOwnedComponentExchanges() <em>Owned Component Exchanges</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedComponentExchanges() <em>Owned Component Exchanges</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedComponentExchanges()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedComponentExchanges()
+   * @generated
+   * @ordered
+   */
 	protected EList<ComponentExchange> ownedComponentExchanges;
 	/**
-	 * The cached value of the '{@link #getOwnedComponentExchangeCategories() <em>Owned Component Exchange Categories</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedComponentExchangeCategories() <em>Owned Component Exchange Categories</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedComponentExchangeCategories()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedComponentExchangeCategories()
+   * @generated
+   * @ordered
+   */
 	protected EList<ComponentExchangeCategory> ownedComponentExchangeCategories;
 	/**
-	 * The cached value of the '{@link #getOwnedFunctionalLinks() <em>Owned Functional Links</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedFunctionalLinks() <em>Owned Functional Links</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedFunctionalLinks()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedFunctionalLinks()
+   * @generated
+   * @ordered
+   */
 	protected EList<ExchangeLink> ownedFunctionalLinks;
 	/**
-	 * The cached value of the '{@link #getOwnedFunctionalAllocations() <em>Owned Functional Allocations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedFunctionalAllocations() <em>Owned Functional Allocations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedFunctionalAllocations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedFunctionalAllocations()
+   * @generated
+   * @ordered
+   */
 	protected EList<ComponentFunctionalAllocation> ownedFunctionalAllocations;
 	/**
-	 * The cached value of the '{@link #getOwnedComponentExchangeRealizations() <em>Owned Component Exchange Realizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedComponentExchangeRealizations() <em>Owned Component Exchange Realizations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedComponentExchangeRealizations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedComponentExchangeRealizations()
+   * @generated
+   * @ordered
+   */
 	protected EList<ComponentExchangeRealization> ownedComponentExchangeRealizations;
 	/**
-	 * The cached value of the '{@link #getOwnedPhysicalLinks() <em>Owned Physical Links</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPhysicalLinks() <em>Owned Physical Links</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPhysicalLinks()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPhysicalLinks()
+   * @generated
+   * @ordered
+   */
 	protected EList<PhysicalLink> ownedPhysicalLinks;
 	/**
-	 * The cached value of the '{@link #getOwnedPhysicalLinkCategories() <em>Owned Physical Link Categories</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPhysicalLinkCategories() <em>Owned Physical Link Categories</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPhysicalLinkCategories()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPhysicalLinkCategories()
+   * @generated
+   * @ordered
+   */
 	protected EList<PhysicalLinkCategory> ownedPhysicalLinkCategories;
 	/**
-	 * The cached value of the '{@link #getOwnedStateMachines() <em>Owned State Machines</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedStateMachines() <em>Owned State Machines</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedStateMachines()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedStateMachines()
+   * @generated
+   * @ordered
+   */
 	protected EList<StateMachine> ownedStateMachines;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComponentPkgImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.COMPONENT_PKG;
-	}
+    return CsPackage.Literals.COMPONENT_PKG;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Trace> getOwnedTraces() {
 
-		if (ownedTraces == null) {
-			ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this, CsPackage.COMPONENT_PKG__OWNED_TRACES);
-		}
-		return ownedTraces;
-	}
+    if (ownedTraces == null) {
+      ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this, CsPackage.COMPONENT_PKG__OWNED_TRACES);
+    }
+    return ownedTraces;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<GenericTrace> getContainedGenericTraces() {
 
@@ -252,23 +252,23 @@ public abstract class ComponentPkgImpl extends NamedElementImpl implements Compo
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
-		return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
+    return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<RequirementsTrace> getContainedRequirementsTraces() {
 
@@ -295,396 +295,396 @@ public abstract class ComponentPkgImpl extends NamedElementImpl implements Compo
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
-		return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
+    return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException exception) {
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<NamingRule> getNamingRules() {
 
-		if (namingRules == null) {
-			namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, CsPackage.COMPONENT_PKG__NAMING_RULES);
-		}
-		return namingRules;
-	}
+    if (namingRules == null) {
+      namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, CsPackage.COMPONENT_PKG__NAMING_RULES);
+    }
+    return namingRules;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PropertyValuePkg> getOwnedPropertyValuePkgs() {
 
-		if (ownedPropertyValuePkgs == null) {
-			ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this, CsPackage.COMPONENT_PKG__OWNED_PROPERTY_VALUE_PKGS);
-		}
-		return ownedPropertyValuePkgs;
-	}
+    if (ownedPropertyValuePkgs == null) {
+      ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this, CsPackage.COMPONENT_PKG__OWNED_PROPERTY_VALUE_PKGS);
+    }
+    return ownedPropertyValuePkgs;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Part> getOwnedParts() {
 
-		if (ownedParts == null) {
-			ownedParts = new EObjectContainmentEList.Resolving<Part>(Part.class, this, CsPackage.COMPONENT_PKG__OWNED_PARTS);
-		}
-		return ownedParts;
-	}
+    if (ownedParts == null) {
+      ownedParts = new EObjectContainmentEList.Resolving<Part>(Part.class, this, CsPackage.COMPONENT_PKG__OWNED_PARTS);
+    }
+    return ownedParts;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ComponentExchange> getOwnedComponentExchanges() {
 
-		if (ownedComponentExchanges == null) {
-			ownedComponentExchanges = new EObjectContainmentEList<ComponentExchange>(ComponentExchange.class, this, CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGES);
-		}
-		return ownedComponentExchanges;
-	}
+    if (ownedComponentExchanges == null) {
+      ownedComponentExchanges = new EObjectContainmentEList<ComponentExchange>(ComponentExchange.class, this, CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGES);
+    }
+    return ownedComponentExchanges;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ComponentExchangeCategory> getOwnedComponentExchangeCategories() {
 
-		if (ownedComponentExchangeCategories == null) {
-			ownedComponentExchangeCategories = new EObjectContainmentEList<ComponentExchangeCategory>(ComponentExchangeCategory.class, this, CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_CATEGORIES);
-		}
-		return ownedComponentExchangeCategories;
-	}
+    if (ownedComponentExchangeCategories == null) {
+      ownedComponentExchangeCategories = new EObjectContainmentEList<ComponentExchangeCategory>(ComponentExchangeCategory.class, this, CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_CATEGORIES);
+    }
+    return ownedComponentExchangeCategories;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ExchangeLink> getOwnedFunctionalLinks() {
 
-		if (ownedFunctionalLinks == null) {
-			ownedFunctionalLinks = new EObjectContainmentEList<ExchangeLink>(ExchangeLink.class, this, CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_LINKS);
-		}
-		return ownedFunctionalLinks;
-	}
+    if (ownedFunctionalLinks == null) {
+      ownedFunctionalLinks = new EObjectContainmentEList<ExchangeLink>(ExchangeLink.class, this, CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_LINKS);
+    }
+    return ownedFunctionalLinks;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ComponentFunctionalAllocation> getOwnedFunctionalAllocations() {
 
-		if (ownedFunctionalAllocations == null) {
-			ownedFunctionalAllocations = new EObjectContainmentEList.Resolving<ComponentFunctionalAllocation>(ComponentFunctionalAllocation.class, this, CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_ALLOCATIONS);
-		}
-		return ownedFunctionalAllocations;
-	}
+    if (ownedFunctionalAllocations == null) {
+      ownedFunctionalAllocations = new EObjectContainmentEList.Resolving<ComponentFunctionalAllocation>(ComponentFunctionalAllocation.class, this, CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_ALLOCATIONS);
+    }
+    return ownedFunctionalAllocations;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ComponentExchangeRealization> getOwnedComponentExchangeRealizations() {
 
-		if (ownedComponentExchangeRealizations == null) {
-			ownedComponentExchangeRealizations = new EObjectContainmentEList<ComponentExchangeRealization>(ComponentExchangeRealization.class, this, CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS);
-		}
-		return ownedComponentExchangeRealizations;
-	}
+    if (ownedComponentExchangeRealizations == null) {
+      ownedComponentExchangeRealizations = new EObjectContainmentEList<ComponentExchangeRealization>(ComponentExchangeRealization.class, this, CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS);
+    }
+    return ownedComponentExchangeRealizations;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalLink> getOwnedPhysicalLinks() {
 
-		if (ownedPhysicalLinks == null) {
-			ownedPhysicalLinks = new EObjectContainmentEList<PhysicalLink>(PhysicalLink.class, this, CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINKS);
-		}
-		return ownedPhysicalLinks;
-	}
+    if (ownedPhysicalLinks == null) {
+      ownedPhysicalLinks = new EObjectContainmentEList<PhysicalLink>(PhysicalLink.class, this, CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINKS);
+    }
+    return ownedPhysicalLinks;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalLinkCategory> getOwnedPhysicalLinkCategories() {
 
-		if (ownedPhysicalLinkCategories == null) {
-			ownedPhysicalLinkCategories = new EObjectContainmentEList<PhysicalLinkCategory>(PhysicalLinkCategory.class, this, CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINK_CATEGORIES);
-		}
-		return ownedPhysicalLinkCategories;
-	}
+    if (ownedPhysicalLinkCategories == null) {
+      ownedPhysicalLinkCategories = new EObjectContainmentEList<PhysicalLinkCategory>(PhysicalLinkCategory.class, this, CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINK_CATEGORIES);
+    }
+    return ownedPhysicalLinkCategories;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<StateMachine> getOwnedStateMachines() {
 
-		if (ownedStateMachines == null) {
-			ownedStateMachines = new EObjectContainmentEList<StateMachine>(StateMachine.class, this, CsPackage.COMPONENT_PKG__OWNED_STATE_MACHINES);
-		}
-		return ownedStateMachines;
-	}
+    if (ownedStateMachines == null) {
+      ownedStateMachines = new EObjectContainmentEList<StateMachine>(StateMachine.class, this, CsPackage.COMPONENT_PKG__OWNED_STATE_MACHINES);
+    }
+    return ownedStateMachines;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CsPackage.COMPONENT_PKG__OWNED_TRACES:
-				return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
-			case CsPackage.COMPONENT_PKG__NAMING_RULES:
-				return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
-			case CsPackage.COMPONENT_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				return ((InternalEList<?>)getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
-			case CsPackage.COMPONENT_PKG__OWNED_PARTS:
-				return ((InternalEList<?>)getOwnedParts()).basicRemove(otherEnd, msgs);
-			case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGES:
-				return ((InternalEList<?>)getOwnedComponentExchanges()).basicRemove(otherEnd, msgs);
-			case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
-				return ((InternalEList<?>)getOwnedComponentExchangeCategories()).basicRemove(otherEnd, msgs);
-			case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_LINKS:
-				return ((InternalEList<?>)getOwnedFunctionalLinks()).basicRemove(otherEnd, msgs);
-			case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_ALLOCATIONS:
-				return ((InternalEList<?>)getOwnedFunctionalAllocations()).basicRemove(otherEnd, msgs);
-			case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedComponentExchangeRealizations()).basicRemove(otherEnd, msgs);
-			case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINKS:
-				return ((InternalEList<?>)getOwnedPhysicalLinks()).basicRemove(otherEnd, msgs);
-			case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINK_CATEGORIES:
-				return ((InternalEList<?>)getOwnedPhysicalLinkCategories()).basicRemove(otherEnd, msgs);
-			case CsPackage.COMPONENT_PKG__OWNED_STATE_MACHINES:
-				return ((InternalEList<?>)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CsPackage.COMPONENT_PKG__OWNED_TRACES:
+        return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
+      case CsPackage.COMPONENT_PKG__NAMING_RULES:
+        return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
+      case CsPackage.COMPONENT_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        return ((InternalEList<?>)getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
+      case CsPackage.COMPONENT_PKG__OWNED_PARTS:
+        return ((InternalEList<?>)getOwnedParts()).basicRemove(otherEnd, msgs);
+      case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGES:
+        return ((InternalEList<?>)getOwnedComponentExchanges()).basicRemove(otherEnd, msgs);
+      case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
+        return ((InternalEList<?>)getOwnedComponentExchangeCategories()).basicRemove(otherEnd, msgs);
+      case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_LINKS:
+        return ((InternalEList<?>)getOwnedFunctionalLinks()).basicRemove(otherEnd, msgs);
+      case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_ALLOCATIONS:
+        return ((InternalEList<?>)getOwnedFunctionalAllocations()).basicRemove(otherEnd, msgs);
+      case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS:
+        return ((InternalEList<?>)getOwnedComponentExchangeRealizations()).basicRemove(otherEnd, msgs);
+      case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINKS:
+        return ((InternalEList<?>)getOwnedPhysicalLinks()).basicRemove(otherEnd, msgs);
+      case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINK_CATEGORIES:
+        return ((InternalEList<?>)getOwnedPhysicalLinkCategories()).basicRemove(otherEnd, msgs);
+      case CsPackage.COMPONENT_PKG__OWNED_STATE_MACHINES:
+        return ((InternalEList<?>)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CsPackage.COMPONENT_PKG__OWNED_TRACES:
-				return getOwnedTraces();
-			case CsPackage.COMPONENT_PKG__CONTAINED_GENERIC_TRACES:
-				return getContainedGenericTraces();
-			case CsPackage.COMPONENT_PKG__CONTAINED_REQUIREMENTS_TRACES:
-				return getContainedRequirementsTraces();
-			case CsPackage.COMPONENT_PKG__NAMING_RULES:
-				return getNamingRules();
-			case CsPackage.COMPONENT_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				return getOwnedPropertyValuePkgs();
-			case CsPackage.COMPONENT_PKG__OWNED_PARTS:
-				return getOwnedParts();
-			case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGES:
-				return getOwnedComponentExchanges();
-			case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
-				return getOwnedComponentExchangeCategories();
-			case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_LINKS:
-				return getOwnedFunctionalLinks();
-			case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_ALLOCATIONS:
-				return getOwnedFunctionalAllocations();
-			case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS:
-				return getOwnedComponentExchangeRealizations();
-			case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINKS:
-				return getOwnedPhysicalLinks();
-			case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINK_CATEGORIES:
-				return getOwnedPhysicalLinkCategories();
-			case CsPackage.COMPONENT_PKG__OWNED_STATE_MACHINES:
-				return getOwnedStateMachines();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CsPackage.COMPONENT_PKG__OWNED_TRACES:
+        return getOwnedTraces();
+      case CsPackage.COMPONENT_PKG__CONTAINED_GENERIC_TRACES:
+        return getContainedGenericTraces();
+      case CsPackage.COMPONENT_PKG__CONTAINED_REQUIREMENTS_TRACES:
+        return getContainedRequirementsTraces();
+      case CsPackage.COMPONENT_PKG__NAMING_RULES:
+        return getNamingRules();
+      case CsPackage.COMPONENT_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        return getOwnedPropertyValuePkgs();
+      case CsPackage.COMPONENT_PKG__OWNED_PARTS:
+        return getOwnedParts();
+      case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGES:
+        return getOwnedComponentExchanges();
+      case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
+        return getOwnedComponentExchangeCategories();
+      case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_LINKS:
+        return getOwnedFunctionalLinks();
+      case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_ALLOCATIONS:
+        return getOwnedFunctionalAllocations();
+      case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS:
+        return getOwnedComponentExchangeRealizations();
+      case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINKS:
+        return getOwnedPhysicalLinks();
+      case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINK_CATEGORIES:
+        return getOwnedPhysicalLinkCategories();
+      case CsPackage.COMPONENT_PKG__OWNED_STATE_MACHINES:
+        return getOwnedStateMachines();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CsPackage.COMPONENT_PKG__OWNED_TRACES:
-				getOwnedTraces().clear();
-				getOwnedTraces().addAll((Collection<? extends Trace>)newValue);
-				return;
-			case CsPackage.COMPONENT_PKG__NAMING_RULES:
-				getNamingRules().clear();
-				getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				getOwnedPropertyValuePkgs().clear();
-				getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_PARTS:
-				getOwnedParts().clear();
-				getOwnedParts().addAll((Collection<? extends Part>)newValue);
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGES:
-				getOwnedComponentExchanges().clear();
-				getOwnedComponentExchanges().addAll((Collection<? extends ComponentExchange>)newValue);
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
-				getOwnedComponentExchangeCategories().clear();
-				getOwnedComponentExchangeCategories().addAll((Collection<? extends ComponentExchangeCategory>)newValue);
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_LINKS:
-				getOwnedFunctionalLinks().clear();
-				getOwnedFunctionalLinks().addAll((Collection<? extends ExchangeLink>)newValue);
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_ALLOCATIONS:
-				getOwnedFunctionalAllocations().clear();
-				getOwnedFunctionalAllocations().addAll((Collection<? extends ComponentFunctionalAllocation>)newValue);
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS:
-				getOwnedComponentExchangeRealizations().clear();
-				getOwnedComponentExchangeRealizations().addAll((Collection<? extends ComponentExchangeRealization>)newValue);
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINKS:
-				getOwnedPhysicalLinks().clear();
-				getOwnedPhysicalLinks().addAll((Collection<? extends PhysicalLink>)newValue);
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINK_CATEGORIES:
-				getOwnedPhysicalLinkCategories().clear();
-				getOwnedPhysicalLinkCategories().addAll((Collection<? extends PhysicalLinkCategory>)newValue);
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_STATE_MACHINES:
-				getOwnedStateMachines().clear();
-				getOwnedStateMachines().addAll((Collection<? extends StateMachine>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CsPackage.COMPONENT_PKG__OWNED_TRACES:
+        getOwnedTraces().clear();
+        getOwnedTraces().addAll((Collection<? extends Trace>)newValue);
+        return;
+      case CsPackage.COMPONENT_PKG__NAMING_RULES:
+        getNamingRules().clear();
+        getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        getOwnedPropertyValuePkgs().clear();
+        getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_PARTS:
+        getOwnedParts().clear();
+        getOwnedParts().addAll((Collection<? extends Part>)newValue);
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGES:
+        getOwnedComponentExchanges().clear();
+        getOwnedComponentExchanges().addAll((Collection<? extends ComponentExchange>)newValue);
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
+        getOwnedComponentExchangeCategories().clear();
+        getOwnedComponentExchangeCategories().addAll((Collection<? extends ComponentExchangeCategory>)newValue);
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_LINKS:
+        getOwnedFunctionalLinks().clear();
+        getOwnedFunctionalLinks().addAll((Collection<? extends ExchangeLink>)newValue);
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_ALLOCATIONS:
+        getOwnedFunctionalAllocations().clear();
+        getOwnedFunctionalAllocations().addAll((Collection<? extends ComponentFunctionalAllocation>)newValue);
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS:
+        getOwnedComponentExchangeRealizations().clear();
+        getOwnedComponentExchangeRealizations().addAll((Collection<? extends ComponentExchangeRealization>)newValue);
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINKS:
+        getOwnedPhysicalLinks().clear();
+        getOwnedPhysicalLinks().addAll((Collection<? extends PhysicalLink>)newValue);
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINK_CATEGORIES:
+        getOwnedPhysicalLinkCategories().clear();
+        getOwnedPhysicalLinkCategories().addAll((Collection<? extends PhysicalLinkCategory>)newValue);
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_STATE_MACHINES:
+        getOwnedStateMachines().clear();
+        getOwnedStateMachines().addAll((Collection<? extends StateMachine>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CsPackage.COMPONENT_PKG__OWNED_TRACES:
-				getOwnedTraces().clear();
-				return;
-			case CsPackage.COMPONENT_PKG__NAMING_RULES:
-				getNamingRules().clear();
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				getOwnedPropertyValuePkgs().clear();
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_PARTS:
-				getOwnedParts().clear();
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGES:
-				getOwnedComponentExchanges().clear();
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
-				getOwnedComponentExchangeCategories().clear();
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_LINKS:
-				getOwnedFunctionalLinks().clear();
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_ALLOCATIONS:
-				getOwnedFunctionalAllocations().clear();
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS:
-				getOwnedComponentExchangeRealizations().clear();
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINKS:
-				getOwnedPhysicalLinks().clear();
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINK_CATEGORIES:
-				getOwnedPhysicalLinkCategories().clear();
-				return;
-			case CsPackage.COMPONENT_PKG__OWNED_STATE_MACHINES:
-				getOwnedStateMachines().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.COMPONENT_PKG__OWNED_TRACES:
+        getOwnedTraces().clear();
+        return;
+      case CsPackage.COMPONENT_PKG__NAMING_RULES:
+        getNamingRules().clear();
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        getOwnedPropertyValuePkgs().clear();
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_PARTS:
+        getOwnedParts().clear();
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGES:
+        getOwnedComponentExchanges().clear();
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
+        getOwnedComponentExchangeCategories().clear();
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_LINKS:
+        getOwnedFunctionalLinks().clear();
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_ALLOCATIONS:
+        getOwnedFunctionalAllocations().clear();
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS:
+        getOwnedComponentExchangeRealizations().clear();
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINKS:
+        getOwnedPhysicalLinks().clear();
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINK_CATEGORIES:
+        getOwnedPhysicalLinkCategories().clear();
+        return;
+      case CsPackage.COMPONENT_PKG__OWNED_STATE_MACHINES:
+        getOwnedStateMachines().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CsPackage.COMPONENT_PKG__OWNED_TRACES:
-				return ownedTraces != null && !ownedTraces.isEmpty();
-			case CsPackage.COMPONENT_PKG__CONTAINED_GENERIC_TRACES:
-				return !getContainedGenericTraces().isEmpty();
-			case CsPackage.COMPONENT_PKG__CONTAINED_REQUIREMENTS_TRACES:
-				return !getContainedRequirementsTraces().isEmpty();
-			case CsPackage.COMPONENT_PKG__NAMING_RULES:
-				return namingRules != null && !namingRules.isEmpty();
-			case CsPackage.COMPONENT_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
-			case CsPackage.COMPONENT_PKG__OWNED_PARTS:
-				return ownedParts != null && !ownedParts.isEmpty();
-			case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGES:
-				return ownedComponentExchanges != null && !ownedComponentExchanges.isEmpty();
-			case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
-				return ownedComponentExchangeCategories != null && !ownedComponentExchangeCategories.isEmpty();
-			case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_LINKS:
-				return ownedFunctionalLinks != null && !ownedFunctionalLinks.isEmpty();
-			case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_ALLOCATIONS:
-				return ownedFunctionalAllocations != null && !ownedFunctionalAllocations.isEmpty();
-			case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS:
-				return ownedComponentExchangeRealizations != null && !ownedComponentExchangeRealizations.isEmpty();
-			case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINKS:
-				return ownedPhysicalLinks != null && !ownedPhysicalLinks.isEmpty();
-			case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINK_CATEGORIES:
-				return ownedPhysicalLinkCategories != null && !ownedPhysicalLinkCategories.isEmpty();
-			case CsPackage.COMPONENT_PKG__OWNED_STATE_MACHINES:
-				return ownedStateMachines != null && !ownedStateMachines.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.COMPONENT_PKG__OWNED_TRACES:
+        return ownedTraces != null && !ownedTraces.isEmpty();
+      case CsPackage.COMPONENT_PKG__CONTAINED_GENERIC_TRACES:
+        return !getContainedGenericTraces().isEmpty();
+      case CsPackage.COMPONENT_PKG__CONTAINED_REQUIREMENTS_TRACES:
+        return !getContainedRequirementsTraces().isEmpty();
+      case CsPackage.COMPONENT_PKG__NAMING_RULES:
+        return namingRules != null && !namingRules.isEmpty();
+      case CsPackage.COMPONENT_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
+      case CsPackage.COMPONENT_PKG__OWNED_PARTS:
+        return ownedParts != null && !ownedParts.isEmpty();
+      case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGES:
+        return ownedComponentExchanges != null && !ownedComponentExchanges.isEmpty();
+      case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
+        return ownedComponentExchangeCategories != null && !ownedComponentExchangeCategories.isEmpty();
+      case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_LINKS:
+        return ownedFunctionalLinks != null && !ownedFunctionalLinks.isEmpty();
+      case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_ALLOCATIONS:
+        return ownedFunctionalAllocations != null && !ownedFunctionalAllocations.isEmpty();
+      case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS:
+        return ownedComponentExchangeRealizations != null && !ownedComponentExchangeRealizations.isEmpty();
+      case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINKS:
+        return ownedPhysicalLinks != null && !ownedPhysicalLinks.isEmpty();
+      case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINK_CATEGORIES:
+        return ownedPhysicalLinkCategories != null && !ownedPhysicalLinkCategories.isEmpty();
+      case CsPackage.COMPONENT_PKG__OWNED_STATE_MACHINES:
+        return ownedStateMachines != null && !ownedStateMachines.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

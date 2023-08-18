@@ -41,25 +41,25 @@ public interface Generalization extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Super</b></em>' reference.
+   * Returns the value of the '<em><b>Super</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Super</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Super</em>' reference.
-	 * @see #setSuper(GeneralizableElement)
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralization_Super()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='general' featureOwner='Generalization'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='super'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Same as UML Generalization general association : References the general classifier in the Generalization relationship.\r\n[source:UML Superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Generalization::general' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Super</em>' reference.
+   * @see #setSuper(GeneralizableElement)
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralization_Super()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='general' featureOwner='Generalization'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='super'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Same as UML Generalization general association : References the general classifier in the Generalization relationship.\r\n[source:UML Superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Generalization::general' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	GeneralizableElement getSuper();
 
@@ -67,14 +67,14 @@ public interface Generalization extends Relationship {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.Generalization#getSuper <em>Super</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.Generalization#getSuper <em>Super</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Super</em>' reference.
-	 * @see #getSuper()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Super</em>' reference.
+   * @see #getSuper()
+   * @generated
+   */
 
 	void setSuper(GeneralizableElement value);
 
@@ -85,22 +85,22 @@ public interface Generalization extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Sub</b></em>' reference.
+   * Returns the value of the '<em><b>Sub</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Sub</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sub</em>' reference.
-	 * @see #setSub(GeneralizableElement)
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralization_Sub()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Same as UML Generalization specific association : References the specializing classifier in the Generalization relationship.\r\n[source:UML Superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Generalization::specific' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Sub</em>' reference.
+   * @see #setSub(GeneralizableElement)
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralization_Sub()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Same as UML Generalization specific association : References the specializing classifier in the Generalization relationship.\r\n[source:UML Superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Generalization::specific' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	GeneralizableElement getSub();
 
@@ -108,14 +108,14 @@ public interface Generalization extends Relationship {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.Generalization#getSub <em>Sub</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.Generalization#getSub <em>Sub</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Sub</em>' reference.
-	 * @see #getSub()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Sub</em>' reference.
+   * @see #getSub()
+   * @generated
+   */
 
 	void setSub(GeneralizableElement value);
 

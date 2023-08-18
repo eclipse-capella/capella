@@ -24,20 +24,20 @@ import org.eclipse.emf.ecore.EFactory;
  */
 public interface BehaviorFactory extends EFactory {
 	/**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
+   * The singleton instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	BehaviorFactory eINSTANCE = org.polarsys.capella.common.data.behavior.impl.BehaviorFactoryImpl.init();
 
 	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
+   * Returns the package supported by this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
+   * @return the package supported by this factory.
+   * @generated
+   */
 	BehaviorPackage getBehaviorPackage();
 
 	//begin-capella-code

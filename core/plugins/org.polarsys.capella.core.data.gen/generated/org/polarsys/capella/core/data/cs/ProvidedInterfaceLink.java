@@ -42,25 +42,25 @@ public interface ProvidedInterfaceLink extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Interface</b></em>' reference.
+   * Returns the value of the '<em><b>Interface</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Interface</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Interface</em>' reference.
-	 * @see #setInterface(Interface)
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getProvidedInterfaceLink_Interface()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='contract' featureOwner='InterfaceRealization'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='interface'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='References the Interface specifying the conformance contract\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InterfaceRealization::contract' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Interface</em>' reference.
+   * @see #setInterface(Interface)
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getProvidedInterfaceLink_Interface()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='contract' featureOwner='InterfaceRealization'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='interface'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='References the Interface specifying the conformance contract\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InterfaceRealization::contract' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	Interface getInterface();
 
@@ -68,14 +68,14 @@ public interface ProvidedInterfaceLink extends Relationship {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.cs.ProvidedInterfaceLink#getInterface <em>Interface</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.cs.ProvidedInterfaceLink#getInterface <em>Interface</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Interface</em>' reference.
-	 * @see #getInterface()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Interface</em>' reference.
+   * @see #getInterface()
+   * @generated
+   */
 
 	void setInterface(Interface value);
 

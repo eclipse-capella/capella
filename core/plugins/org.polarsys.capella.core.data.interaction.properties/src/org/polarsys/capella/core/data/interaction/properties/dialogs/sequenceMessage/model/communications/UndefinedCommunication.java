@@ -29,158 +29,152 @@ import org.polarsys.capella.core.data.information.ExchangeItemInstance;
 import org.polarsys.capella.core.data.information.ExchangeMechanism;
 import org.polarsys.capella.core.data.information.InformationRealization;
 import org.polarsys.capella.core.data.information.Operation;
-import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 
 public class UndefinedCommunication extends AbstractCommunication implements ExchangeItem {
 
-	public UndefinedCommunication(ExchangeItem exchangeItem) {
-		super(exchangeItem, true);
-	}
-	
-	@Override
-	public CommunicationInfo toCommunicationInfo() {
-		return new CommunicationInfo(null, exchangeItem.getExchangeMechanism(), null);
-	}
+  public UndefinedCommunication(ExchangeItem exchangeItem) {
+    super(exchangeItem, true);
+  }
 
-	@Override
-	public ExchangeItem getRepresentativeElement() {
-		return exchangeItem;
-	}
+  @Override
+  public CommunicationInfo toCommunicationInfo() {
+    return new CommunicationInfo(null, exchangeItem.getExchangeMechanism(), null);
+  }
 
-	@Override
-	public String getName() {
-		return getRepresentativeElement().getName();
-	}
+  @Override
+  public ExchangeItem getRepresentativeElement() {
+    return exchangeItem;
+  }
 
-	@Override
-	public void setName(String value) {
-		getRepresentativeElement().setName(value);
-	}
+  @Override
+  public String getName() {
+    return getRepresentativeElement().getName();
+  }
 
-	@Override
-	public EList<AbstractConstraint> getOwnedConstraints() {
-		return getRepresentativeElement().getOwnedConstraints();
-	}
+  @Override
+  public void setName(String value) {
+    getRepresentativeElement().setName(value);
+  }
 
-	@Override
-	public boolean isFinal() {
-		return getRepresentativeElement().isFinal();
-	}
+  @Override
+  public EList<AbstractConstraint> getOwnedConstraints() {
+    return getRepresentativeElement().getOwnedConstraints();
+  }
 
-	@Override
-	public void setFinal(boolean value) {
-		getRepresentativeElement().setFinal(value);
-	}
+  @Override
+  public boolean isFinal() {
+    return getRepresentativeElement().isFinal();
+  }
 
-	@Override
-	public EList<AbstractTypedElement> getAbstractTypedElements() {
-		return getRepresentativeElement().getAbstractTypedElements();
-	}
+  @Override
+  public void setFinal(boolean value) {
+    getRepresentativeElement().setFinal(value);
+  }
 
-	@Override
-	public boolean isAbstract() {
-		return getRepresentativeElement().isAbstract();
-	}
+  @Override
+  public EList<AbstractTypedElement> getAbstractTypedElements() {
+    return getRepresentativeElement().getAbstractTypedElements();
+  }
 
-	@Override
-	public void setAbstract(boolean value) {
-		getRepresentativeElement().setAbstract(value);
-	}
+  @Override
+  public boolean isAbstract() {
+    return getRepresentativeElement().isAbstract();
+  }
 
-	@Override
-	public EList<Generalization> getOwnedGeneralizations() {
-		return getRepresentativeElement().getOwnedGeneralizations();
-	}
+  @Override
+  public void setAbstract(boolean value) {
+    getRepresentativeElement().setAbstract(value);
+  }
 
-	@Override
-	public EList<Generalization> getSuperGeneralizations() {
-		return getRepresentativeElement().getSuperGeneralizations();
-	}
+  @Override
+  public EList<Generalization> getOwnedGeneralizations() {
+    return getRepresentativeElement().getOwnedGeneralizations();
+  }
 
-	@Override
-	public EList<Generalization> getSubGeneralizations() {
-		return getRepresentativeElement().getSubGeneralizations();
-	}
+  @Override
+  public EList<Generalization> getSuperGeneralizations() {
+    return getRepresentativeElement().getSuperGeneralizations();
+  }
 
-	@Override
-	public EList<GeneralizableElement> getSuper() {
-		return getRepresentativeElement().getSuper();
-	}
+  @Override
+  public EList<Generalization> getSubGeneralizations() {
+    return getRepresentativeElement().getSubGeneralizations();
+  }
 
-	@Override
-	public EList<GeneralizableElement> getSub() {
-		return getRepresentativeElement().getSub();
-	}
+  @Override
+  public EList<GeneralizableElement> getSuper() {
+    return getRepresentativeElement().getSuper();
+  }
 
-	@Override
-	public EList<TypedElement> getTypedElements() {
-		return getRepresentativeElement().getTypedElements();
-	}
+  @Override
+  public EList<GeneralizableElement> getSub() {
+    return getRepresentativeElement().getSub();
+  }
 
-	@Override
-	public EList<Trace> getOwnedTraces() {
-		return getRepresentativeElement().getOwnedTraces();
-	}
+  @Override
+  public EList<TypedElement> getTypedElements() {
+    return getRepresentativeElement().getTypedElements();
+  }
 
-	@Override
-	public EList<GenericTrace> getContainedGenericTraces() {
-		return getRepresentativeElement().getContainedGenericTraces();
-	}
+  @Override
+  public EList<Trace> getOwnedTraces() {
+    return getRepresentativeElement().getOwnedTraces();
+  }
 
-	@Override
-	public EList<RequirementsTrace> getContainedRequirementsTraces() {
-		return getRepresentativeElement().getContainedRequirementsTraces();
-	}
+  @Override
+  public EList<GenericTrace> getContainedGenericTraces() {
+    return getRepresentativeElement().getContainedGenericTraces();
+  }
 
-	@Override
-	public EList<NamingRule> getNamingRules() {
-		return getRepresentativeElement().getNamingRules();
-	}
+  @Override
+  public EList<NamingRule> getNamingRules() {
+    return getRepresentativeElement().getNamingRules();
+  }
 
-	@Override
-	public ExchangeMechanism getExchangeMechanism() {
-		return getRepresentativeElement().getExchangeMechanism();
-	}
+  @Override
+  public ExchangeMechanism getExchangeMechanism() {
+    return getRepresentativeElement().getExchangeMechanism();
+  }
 
-	@Override
-	public void setExchangeMechanism(ExchangeMechanism value) {
-		getRepresentativeElement().setExchangeMechanism(value);		
-	}
+  @Override
+  public void setExchangeMechanism(ExchangeMechanism value) {
+    getRepresentativeElement().setExchangeMechanism(value);
+  }
 
-	@Override
-	public EList<ExchangeItemElement> getOwnedElements() {
-		return getRepresentativeElement().getOwnedElements();
-	}
+  @Override
+  public EList<ExchangeItemElement> getOwnedElements() {
+    return getRepresentativeElement().getOwnedElements();
+  }
 
-	@Override
-	public EList<InformationRealization> getOwnedInformationRealizations() {
-		return getRepresentativeElement().getOwnedInformationRealizations();
-	}
+  @Override
+  public EList<InformationRealization> getOwnedInformationRealizations() {
+    return getRepresentativeElement().getOwnedInformationRealizations();
+  }
 
-	@Override
-	public EList<ExchangeItemInstance> getOwnedExchangeItemInstances() {
-		return getRepresentativeElement().getOwnedExchangeItemInstances();
-	}
+  @Override
+  public EList<ExchangeItemInstance> getOwnedExchangeItemInstances() {
+    return getRepresentativeElement().getOwnedExchangeItemInstances();
+  }
 
-	@Override
-	public EList<Interface> getAllocatorInterfaces() {
-		return getRepresentativeElement().getAllocatorInterfaces();
-	}
+  @Override
+  public EList<Interface> getAllocatorInterfaces() {
+    return getRepresentativeElement().getAllocatorInterfaces();
+  }
 
-	@Override
-	public EList<ExchangeItem> getRealizedExchangeItems() {
-		return getRepresentativeElement().getRealizedExchangeItems();
-	}
+  @Override
+  public EList<ExchangeItem> getRealizedExchangeItems() {
+    return getRepresentativeElement().getRealizedExchangeItems();
+  }
 
-	@Override
-	public EList<ExchangeItem> getRealizingExchangeItems() {
-		return getRepresentativeElement().getRealizingExchangeItems();
-	}
+  @Override
+  public EList<ExchangeItem> getRealizingExchangeItems() {
+    return getRepresentativeElement().getRealizingExchangeItems();
+  }
 
-	@Override
-	public EList<Operation> getRealizingOperations() {
-		return getRepresentativeElement().getRealizingOperations();
-	}
+  @Override
+  public EList<Operation> getRealizingOperations() {
+    return getRepresentativeElement().getRealizingOperations();
+  }
 
   @Override
   public EList<ModelElement> getOwnedMigratedElements() {

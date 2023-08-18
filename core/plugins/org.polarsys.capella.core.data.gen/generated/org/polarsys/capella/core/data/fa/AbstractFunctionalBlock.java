@@ -46,22 +46,22 @@ public interface AbstractFunctionalBlock extends ModellingBlock {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Functional Allocation</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation}.
+   * Returns the value of the '<em><b>Owned Functional Allocation</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Functional Allocation</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Functional Allocation</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock_OwnedFunctionalAllocation()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='allocation relationships between Functions and Blocks, that are owned by this Block\r\n[source: Capella study]\r\n' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='Some elements on which ComponentFunctionalAllocation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Functional Allocation</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock_OwnedFunctionalAllocation()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='allocation relationships between Functions and Blocks, that are owned by this Block\r\n[source: Capella study]\r\n' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='Some elements on which ComponentFunctionalAllocation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<ComponentFunctionalAllocation> getOwnedFunctionalAllocation();
 
@@ -72,24 +72,24 @@ public interface AbstractFunctionalBlock extends ModellingBlock {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Component Exchanges</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ComponentExchange}.
+   * Returns the value of the '<em><b>Owned Component Exchanges</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ComponentExchange}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Component Exchanges</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Component Exchanges</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock_OwnedComponentExchanges()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedConnector' featureOwner='StructuredClassifier'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the connections associated with this block\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='In uml::Element::nearestPackage, exchanges between two elements contained by this block. Thoses exchanges are packaged elements on which ComponentExchange stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Component Exchanges</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock_OwnedComponentExchanges()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedConnector' featureOwner='StructuredClassifier'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the connections associated with this block\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='In uml::Element::nearestPackage, exchanges between two elements contained by this block. Thoses exchanges are packaged elements on which ComponentExchange stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<ComponentExchange> getOwnedComponentExchanges();
 
@@ -100,22 +100,22 @@ public interface AbstractFunctionalBlock extends ModellingBlock {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Component Exchange Categories</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ComponentExchangeCategory}.
+   * Returns the value of the '<em><b>Owned Component Exchange Categories</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ComponentExchangeCategory}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Component Exchange Categories</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Component Exchange Categories</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock_OwnedComponentExchangeCategories()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Component Exchange Categories</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock_OwnedComponentExchangeCategories()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<ComponentExchangeCategory> getOwnedComponentExchangeCategories();
 
@@ -126,25 +126,25 @@ public interface AbstractFunctionalBlock extends ModellingBlock {
 
 
 	/**
-	 * Returns the value of the '<em><b>Functional Allocations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation#getBlock <em>Block</em>}'.
+   * Returns the value of the '<em><b>Functional Allocations</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation#getBlock <em>Block</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Functional Allocations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Functional Allocations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock_FunctionalAllocations()
-	 * @see org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation#getBlock
-	 * @model opposite="block" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingTraces'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the allocation links between this block, and the functions that are allocated to it.\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Functional Allocations</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock_FunctionalAllocations()
+   * @see org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation#getBlock
+   * @model opposite="block" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingTraces'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the allocation links between this block, and the functions that are allocated to it.\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<ComponentFunctionalAllocation> getFunctionalAllocations();
 
@@ -155,25 +155,25 @@ public interface AbstractFunctionalBlock extends ModellingBlock {
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocated Functions</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.AbstractFunction}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.AbstractFunction#getAllocationBlocks <em>Allocation Blocks</em>}'.
+   * Returns the value of the '<em><b>Allocated Functions</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.AbstractFunction}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.AbstractFunction#getAllocationBlocks <em>Allocation Blocks</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocated Functions</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocated Functions</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock_AllocatedFunctions()
-	 * @see org.polarsys.capella.core.data.fa.AbstractFunction#getAllocationBlocks
-	 * @model opposite="allocationBlocks" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='functionalAllocations.function'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of functions allocated to this block\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Allocated Functions</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock_AllocatedFunctions()
+   * @see org.polarsys.capella.core.data.fa.AbstractFunction#getAllocationBlocks
+   * @model opposite="allocationBlocks" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='functionalAllocations.function'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of functions allocated to this block\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<AbstractFunction> getAllocatedFunctions();
 
@@ -184,23 +184,23 @@ public interface AbstractFunctionalBlock extends ModellingBlock {
 
 
 	/**
-	 * Returns the value of the '<em><b>In Exchange Links</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeLink}.
+   * Returns the value of the '<em><b>In Exchange Links</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeLink}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>In Exchange Links</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>In Exchange Links</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock_InExchangeLinks()
-	 * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='inFunctionalLinks'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the (functional) exchanges that have this block as their target/destination\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>In Exchange Links</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock_InExchangeLinks()
+   * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='inFunctionalLinks'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the (functional) exchanges that have this block as their target/destination\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	EList<ExchangeLink> getInExchangeLinks();
 
@@ -211,23 +211,23 @@ public interface AbstractFunctionalBlock extends ModellingBlock {
 
 
 	/**
-	 * Returns the value of the '<em><b>Out Exchange Links</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeLink}.
+   * Returns the value of the '<em><b>Out Exchange Links</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeLink}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Out Exchange Links</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Out Exchange Links</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock_OutExchangeLinks()
-	 * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='outFunctionalLinks'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the (functional) exchanges that have this block as their source\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Out Exchange Links</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock_OutExchangeLinks()
+   * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='outFunctionalLinks'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the (functional) exchanges that have this block as their source\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	EList<ExchangeLink> getOutExchangeLinks();
 

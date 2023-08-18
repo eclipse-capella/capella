@@ -39,13 +39,13 @@ import org.polarsys.capella.core.data.oa.OrganisationalUnit;
 public class CommunityOfInterestCompositionImpl extends NamedElementImpl implements CommunityOfInterestComposition {
 
 	/**
-	 * The cached value of the '{@link #getCommunityOfInterest() <em>Community Of Interest</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getCommunityOfInterest() <em>Community Of Interest</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCommunityOfInterest()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getCommunityOfInterest()
+   * @generated
+   * @ordered
+   */
 	protected CommunityOfInterest communityOfInterest;
 
 
@@ -53,91 +53,91 @@ public class CommunityOfInterestCompositionImpl extends NamedElementImpl impleme
 
 
 	/**
-	 * The cached value of the '{@link #getInterestedOrganisationUnit() <em>Interested Organisation Unit</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getInterestedOrganisationUnit() <em>Interested Organisation Unit</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInterestedOrganisationUnit()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getInterestedOrganisationUnit()
+   * @generated
+   * @ordered
+   */
 	protected OrganisationalUnit interestedOrganisationUnit;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CommunityOfInterestCompositionImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OaPackage.Literals.COMMUNITY_OF_INTEREST_COMPOSITION;
-	}
+    return OaPackage.Literals.COMMUNITY_OF_INTEREST_COMPOSITION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public CommunityOfInterest getCommunityOfInterest() {
 
-		if (communityOfInterest != null && communityOfInterest.eIsProxy()) {
-			InternalEObject oldCommunityOfInterest = (InternalEObject)communityOfInterest;
-			communityOfInterest = (CommunityOfInterest)eResolveProxy(oldCommunityOfInterest);
-			if (communityOfInterest != oldCommunityOfInterest) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__COMMUNITY_OF_INTEREST, oldCommunityOfInterest, communityOfInterest));
-			}
-		}
-		return communityOfInterest;
-	}
+    if (communityOfInterest != null && communityOfInterest.eIsProxy()) {
+      InternalEObject oldCommunityOfInterest = (InternalEObject)communityOfInterest;
+      communityOfInterest = (CommunityOfInterest)eResolveProxy(oldCommunityOfInterest);
+      if (communityOfInterest != oldCommunityOfInterest) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__COMMUNITY_OF_INTEREST, oldCommunityOfInterest, communityOfInterest));
+      }
+    }
+    return communityOfInterest;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public CommunityOfInterest basicGetCommunityOfInterest() {
 
-		return communityOfInterest;
-	}
+    return communityOfInterest;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setCommunityOfInterest(CommunityOfInterest newCommunityOfInterest) {
 
-		CommunityOfInterest oldCommunityOfInterest = communityOfInterest;
-		communityOfInterest = newCommunityOfInterest;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__COMMUNITY_OF_INTEREST, oldCommunityOfInterest, communityOfInterest));
+    CommunityOfInterest oldCommunityOfInterest = communityOfInterest;
+    communityOfInterest = newCommunityOfInterest;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__COMMUNITY_OF_INTEREST, oldCommunityOfInterest, communityOfInterest));
 
-	}
+  }
 
 
 
@@ -145,129 +145,129 @@ public class CommunityOfInterestCompositionImpl extends NamedElementImpl impleme
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public OrganisationalUnit getInterestedOrganisationUnit() {
 
-		if (interestedOrganisationUnit != null && interestedOrganisationUnit.eIsProxy()) {
-			InternalEObject oldInterestedOrganisationUnit = (InternalEObject)interestedOrganisationUnit;
-			interestedOrganisationUnit = (OrganisationalUnit)eResolveProxy(oldInterestedOrganisationUnit);
-			if (interestedOrganisationUnit != oldInterestedOrganisationUnit) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__INTERESTED_ORGANISATION_UNIT, oldInterestedOrganisationUnit, interestedOrganisationUnit));
-			}
-		}
-		return interestedOrganisationUnit;
-	}
+    if (interestedOrganisationUnit != null && interestedOrganisationUnit.eIsProxy()) {
+      InternalEObject oldInterestedOrganisationUnit = (InternalEObject)interestedOrganisationUnit;
+      interestedOrganisationUnit = (OrganisationalUnit)eResolveProxy(oldInterestedOrganisationUnit);
+      if (interestedOrganisationUnit != oldInterestedOrganisationUnit) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__INTERESTED_ORGANISATION_UNIT, oldInterestedOrganisationUnit, interestedOrganisationUnit));
+      }
+    }
+    return interestedOrganisationUnit;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public OrganisationalUnit basicGetInterestedOrganisationUnit() {
 
-		return interestedOrganisationUnit;
-	}
+    return interestedOrganisationUnit;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setInterestedOrganisationUnit(OrganisationalUnit newInterestedOrganisationUnit) {
 
-		OrganisationalUnit oldInterestedOrganisationUnit = interestedOrganisationUnit;
-		interestedOrganisationUnit = newInterestedOrganisationUnit;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__INTERESTED_ORGANISATION_UNIT, oldInterestedOrganisationUnit, interestedOrganisationUnit));
+    OrganisationalUnit oldInterestedOrganisationUnit = interestedOrganisationUnit;
+    interestedOrganisationUnit = newInterestedOrganisationUnit;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__INTERESTED_ORGANISATION_UNIT, oldInterestedOrganisationUnit, interestedOrganisationUnit));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__COMMUNITY_OF_INTEREST:
-				if (resolve) return getCommunityOfInterest();
-				return basicGetCommunityOfInterest();
-			case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__INTERESTED_ORGANISATION_UNIT:
-				if (resolve) return getInterestedOrganisationUnit();
-				return basicGetInterestedOrganisationUnit();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__COMMUNITY_OF_INTEREST:
+        if (resolve) return getCommunityOfInterest();
+        return basicGetCommunityOfInterest();
+      case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__INTERESTED_ORGANISATION_UNIT:
+        if (resolve) return getInterestedOrganisationUnit();
+        return basicGetInterestedOrganisationUnit();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__COMMUNITY_OF_INTEREST:
-					setCommunityOfInterest((CommunityOfInterest)newValue);
-				return;
-			case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__INTERESTED_ORGANISATION_UNIT:
-					setInterestedOrganisationUnit((OrganisationalUnit)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__COMMUNITY_OF_INTEREST:
+          setCommunityOfInterest((CommunityOfInterest)newValue);
+        return;
+      case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__INTERESTED_ORGANISATION_UNIT:
+          setInterestedOrganisationUnit((OrganisationalUnit)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__COMMUNITY_OF_INTEREST:
-				setCommunityOfInterest((CommunityOfInterest)null);
-				return;
-			case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__INTERESTED_ORGANISATION_UNIT:
-				setInterestedOrganisationUnit((OrganisationalUnit)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__COMMUNITY_OF_INTEREST:
+        setCommunityOfInterest((CommunityOfInterest)null);
+        return;
+      case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__INTERESTED_ORGANISATION_UNIT:
+        setInterestedOrganisationUnit((OrganisationalUnit)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__COMMUNITY_OF_INTEREST:
-				return communityOfInterest != null;
-			case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__INTERESTED_ORGANISATION_UNIT:
-				return interestedOrganisationUnit != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__COMMUNITY_OF_INTEREST:
+        return communityOfInterest != null;
+      case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION__INTERESTED_ORGANISATION_UNIT:
+        return interestedOrganisationUnit != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

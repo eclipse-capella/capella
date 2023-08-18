@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
  */
 public class PartDeploymentLinkImpl extends AbstractDeploymentLinkImpl implements PartDeploymentLink {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PartDeploymentLinkImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return DeploymentPackage.Literals.PART_DEPLOYMENT_LINK;
-	}
+    return DeploymentPackage.Literals.PART_DEPLOYMENT_LINK;
+  }
 
 
 

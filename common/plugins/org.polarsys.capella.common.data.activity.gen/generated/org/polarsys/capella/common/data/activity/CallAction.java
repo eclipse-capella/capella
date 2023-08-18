@@ -39,22 +39,22 @@ public interface CallAction extends InvocationAction {
 
 
 	/**
-	 * Returns the value of the '<em><b>Results</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.activity.OutputPin}.
+   * Returns the value of the '<em><b>Results</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.activity.OutputPin}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Results</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Results</em>' containment reference list.
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getCallAction_Results()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A list of output pins where the results of performing the invocation are placed\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::CallAction::result' explanation='' constraints=''"
-	 * @generated
-	 */
+   * @return the value of the '<em>Results</em>' containment reference list.
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getCallAction_Results()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A list of output pins where the results of performing the invocation are placed\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::CallAction::result' explanation='' constraints=''"
+   * @generated
+   */
 
 	EList<OutputPin> getResults();
 

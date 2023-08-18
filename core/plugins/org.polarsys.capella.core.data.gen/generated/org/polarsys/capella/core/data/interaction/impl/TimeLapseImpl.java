@@ -38,13 +38,13 @@ import org.polarsys.capella.core.data.interaction.TimeLapse;
 public abstract class TimeLapseImpl extends NamedElementImpl implements TimeLapse {
 
 	/**
-	 * The cached value of the '{@link #getStart() <em>Start</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getStart() <em>Start</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStart()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getStart()
+   * @generated
+   * @ordered
+   */
 	protected InteractionFragment start;
 
 
@@ -52,91 +52,91 @@ public abstract class TimeLapseImpl extends NamedElementImpl implements TimeLaps
 
 
 	/**
-	 * The cached value of the '{@link #getFinish() <em>Finish</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getFinish() <em>Finish</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFinish()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getFinish()
+   * @generated
+   * @ordered
+   */
 	protected InteractionFragment finish;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected TimeLapseImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.TIME_LAPSE;
-	}
+    return InteractionPackage.Literals.TIME_LAPSE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InteractionFragment getStart() {
 
-		if (start != null && start.eIsProxy()) {
-			InternalEObject oldStart = (InternalEObject)start;
-			start = (InteractionFragment)eResolveProxy(oldStart);
-			if (start != oldStart) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.TIME_LAPSE__START, oldStart, start));
-			}
-		}
-		return start;
-	}
+    if (start != null && start.eIsProxy()) {
+      InternalEObject oldStart = (InternalEObject)start;
+      start = (InteractionFragment)eResolveProxy(oldStart);
+      if (start != oldStart) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.TIME_LAPSE__START, oldStart, start));
+      }
+    }
+    return start;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InteractionFragment basicGetStart() {
 
-		return start;
-	}
+    return start;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setStart(InteractionFragment newStart) {
 
-		InteractionFragment oldStart = start;
-		start = newStart;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.TIME_LAPSE__START, oldStart, start));
+    InteractionFragment oldStart = start;
+    start = newStart;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.TIME_LAPSE__START, oldStart, start));
 
-	}
+  }
 
 
 
@@ -144,129 +144,129 @@ public abstract class TimeLapseImpl extends NamedElementImpl implements TimeLaps
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InteractionFragment getFinish() {
 
-		if (finish != null && finish.eIsProxy()) {
-			InternalEObject oldFinish = (InternalEObject)finish;
-			finish = (InteractionFragment)eResolveProxy(oldFinish);
-			if (finish != oldFinish) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.TIME_LAPSE__FINISH, oldFinish, finish));
-			}
-		}
-		return finish;
-	}
+    if (finish != null && finish.eIsProxy()) {
+      InternalEObject oldFinish = (InternalEObject)finish;
+      finish = (InteractionFragment)eResolveProxy(oldFinish);
+      if (finish != oldFinish) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.TIME_LAPSE__FINISH, oldFinish, finish));
+      }
+    }
+    return finish;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InteractionFragment basicGetFinish() {
 
-		return finish;
-	}
+    return finish;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setFinish(InteractionFragment newFinish) {
 
-		InteractionFragment oldFinish = finish;
-		finish = newFinish;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.TIME_LAPSE__FINISH, oldFinish, finish));
+    InteractionFragment oldFinish = finish;
+    finish = newFinish;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.TIME_LAPSE__FINISH, oldFinish, finish));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.TIME_LAPSE__START:
-				if (resolve) return getStart();
-				return basicGetStart();
-			case InteractionPackage.TIME_LAPSE__FINISH:
-				if (resolve) return getFinish();
-				return basicGetFinish();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.TIME_LAPSE__START:
+        if (resolve) return getStart();
+        return basicGetStart();
+      case InteractionPackage.TIME_LAPSE__FINISH:
+        if (resolve) return getFinish();
+        return basicGetFinish();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InteractionPackage.TIME_LAPSE__START:
-					setStart((InteractionFragment)newValue);
-				return;
-			case InteractionPackage.TIME_LAPSE__FINISH:
-					setFinish((InteractionFragment)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InteractionPackage.TIME_LAPSE__START:
+          setStart((InteractionFragment)newValue);
+        return;
+      case InteractionPackage.TIME_LAPSE__FINISH:
+          setFinish((InteractionFragment)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.TIME_LAPSE__START:
-				setStart((InteractionFragment)null);
-				return;
-			case InteractionPackage.TIME_LAPSE__FINISH:
-				setFinish((InteractionFragment)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.TIME_LAPSE__START:
+        setStart((InteractionFragment)null);
+        return;
+      case InteractionPackage.TIME_LAPSE__FINISH:
+        setFinish((InteractionFragment)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.TIME_LAPSE__START:
-				return start != null;
-			case InteractionPackage.TIME_LAPSE__FINISH:
-				return finish != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.TIME_LAPSE__START:
+        return start != null;
+      case InteractionPackage.TIME_LAPSE__FINISH:
+        return finish != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

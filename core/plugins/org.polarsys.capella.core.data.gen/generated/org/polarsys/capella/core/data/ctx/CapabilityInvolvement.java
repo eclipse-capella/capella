@@ -46,21 +46,21 @@ public interface CapabilityInvolvement extends Involvement {
 
 
 	/**
-	 * Returns the value of the '<em><b>System Component</b></em>' reference.
+   * Returns the value of the '<em><b>System Component</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>System Component</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>System Component</em>' reference.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getCapabilityInvolvement_SystemComponent()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to a system component that is involved in the system capability.' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involved'"
-	 * @generated
-	 */
+   * @return the value of the '<em>System Component</em>' reference.
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getCapabilityInvolvement_SystemComponent()
+   * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to a system component that is involved in the system capability.' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involved'"
+   * @generated
+   */
 
 	SystemComponent getSystemComponent();
 
@@ -71,25 +71,25 @@ public interface CapabilityInvolvement extends Involvement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Capability</b></em>' reference.
+   * Returns the value of the '<em><b>Capability</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Capability</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Capability</em>' reference.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getCapabilityInvolvement_Capability()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='client' featureOwner='Dependency'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='capability'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involver'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the system capability involving the actor\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Capability</em>' reference.
+   * @see org.polarsys.capella.core.data.ctx.CtxPackage#getCapabilityInvolvement_Capability()
+   * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='client' featureOwner='Dependency'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='capability'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involver'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the system capability involving the actor\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	Capability getCapability();
 

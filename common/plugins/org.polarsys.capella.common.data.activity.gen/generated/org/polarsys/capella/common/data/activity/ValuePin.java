@@ -39,22 +39,22 @@ public interface ValuePin extends InputPin {
 
 
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' containment reference.
+   * Returns the value of the '<em><b>Value</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' containment reference.
-	 * @see #setValue(ValueSpecification)
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getValuePin_Value()
-	 * @model containment="true" resolveProxies="true" required="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Value that the pin will provide\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ValuePin::value' explanation='' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Value</em>' containment reference.
+   * @see #setValue(ValueSpecification)
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getValuePin_Value()
+   * @model containment="true" resolveProxies="true" required="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Value that the pin will provide\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ValuePin::value' explanation='' constraints='none'"
+   * @generated
+   */
 
 	ValueSpecification getValue();
 
@@ -62,14 +62,14 @@ public interface ValuePin extends InputPin {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.activity.ValuePin#getValue <em>Value</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.activity.ValuePin#getValue <em>Value</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' containment reference.
-	 * @see #getValue()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Value</em>' containment reference.
+   * @see #getValue()
+   * @generated
+   */
 
 	void setValue(ValueSpecification value);
 

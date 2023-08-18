@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.cs.PhysicalPortRealization;
  */
 public class PhysicalPortRealizationImpl extends AllocationImpl implements PhysicalPortRealization {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalPortRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.PHYSICAL_PORT_REALIZATION;
-	}
+    return CsPackage.Literals.PHYSICAL_PORT_REALIZATION;
+  }
 
 
 

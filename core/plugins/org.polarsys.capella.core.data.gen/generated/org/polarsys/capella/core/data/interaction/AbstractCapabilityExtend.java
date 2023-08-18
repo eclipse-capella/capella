@@ -43,25 +43,25 @@ public interface AbstractCapabilityExtend extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Extended</b></em>' reference.
+   * Returns the value of the '<em><b>Extended</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Extended</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Extended</em>' reference.
-	 * @see #setExtended(AbstractCapability)
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityExtend_Extended()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='extendedCase' featureOwner='Extend'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extended'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability being extended\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Extend::extendedCase' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Extended</em>' reference.
+   * @see #setExtended(AbstractCapability)
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityExtend_Extended()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='extendedCase' featureOwner='Extend'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extended'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability being extended\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Extend::extendedCase' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	AbstractCapability getExtended();
 
@@ -69,14 +69,14 @@ public interface AbstractCapabilityExtend extends Relationship {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend#getExtended <em>Extended</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend#getExtended <em>Extended</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Extended</em>' reference.
-	 * @see #getExtended()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Extended</em>' reference.
+   * @see #getExtended()
+   * @generated
+   */
 
 	void setExtended(AbstractCapability value);
 
@@ -87,25 +87,25 @@ public interface AbstractCapabilityExtend extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Extension</b></em>' reference.
+   * Returns the value of the '<em><b>Extension</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Extension</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Extension</em>' reference.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityExtend_Extension()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='extension' featureOwner='Extend'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extension'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability that realizes the extension\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Extend::extension' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='^extends'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Extension</em>' reference.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityExtend_Extension()
+   * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='extension' featureOwner='Extend'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extension'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability that realizes the extension\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Extend::extension' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='^extends'"
+   * @generated
+   */
 
 	AbstractCapability getExtension();
 
@@ -113,27 +113,27 @@ public interface AbstractCapabilityExtend extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Extension Location</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint#getExtendLinks <em>Extend Links</em>}'.
+   * Returns the value of the '<em><b>Extension Location</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint#getExtendLinks <em>Extend Links</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Extension Location</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Extension Location</em>' reference.
-	 * @see #setExtensionLocation(AbstractCapabilityExtensionPoint)
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityExtend_ExtensionLocation()
-	 * @see org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint#getExtendLinks
-	 * @model opposite="extendLinks"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='extensionLocation' featureOwner='Extend'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extensionLocation'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the extension point to which the extending Capability is attached\r\n[source: Capella study]' constraints='this extension location must be one of the extensions of the Capability pointed by the  \"extended\" reference\r\n' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Extend::extensionLocation' explanation='none' constraints='Multiplicity must be [0..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Extension Location</em>' reference.
+   * @see #setExtensionLocation(AbstractCapabilityExtensionPoint)
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityExtend_ExtensionLocation()
+   * @see org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint#getExtendLinks
+   * @model opposite="extendLinks"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='extensionLocation' featureOwner='Extend'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extensionLocation'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the extension point to which the extending Capability is attached\r\n[source: Capella study]' constraints='this extension location must be one of the extensions of the Capability pointed by the  \"extended\" reference\r\n' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Extend::extensionLocation' explanation='none' constraints='Multiplicity must be [0..1]'"
+   * @generated
+   */
 
 	AbstractCapabilityExtensionPoint getExtensionLocation();
 
@@ -141,14 +141,14 @@ public interface AbstractCapabilityExtend extends Relationship {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend#getExtensionLocation <em>Extension Location</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend#getExtensionLocation <em>Extension Location</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Extension Location</em>' reference.
-	 * @see #getExtensionLocation()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Extension Location</em>' reference.
+   * @see #getExtensionLocation()
+   * @generated
+   */
 
 	void setExtensionLocation(AbstractCapabilityExtensionPoint value);
 

@@ -51,48 +51,48 @@ public class ActivityAllocationImpl extends AllocationImpl implements ActivityAl
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ActivityAllocationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OaPackage.Literals.ACTIVITY_ALLOCATION;
-	}
+    return OaPackage.Literals.ACTIVITY_ALLOCATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Role getRole() {
 
-		Role role = basicGetRole();
-		return role != null && role.eIsProxy() ? (Role)eResolveProxy((InternalEObject)role) : role;
-	}
+    Role role = basicGetRole();
+    return role != null && role.eIsProxy() ? (Role)eResolveProxy((InternalEObject)role) : role;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Role basicGetRole() {
 
@@ -119,15 +119,15 @@ public class ActivityAllocationImpl extends AllocationImpl implements ActivityAl
     // A helper is found, let's use it. 
     EAnnotation annotation = OaPackage.Literals.ACTIVITY_ALLOCATION__ROLE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, OaPackage.Literals.ACTIVITY_ALLOCATION__ROLE, annotation);
-		
-		try {
-			return (Role) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Role) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -135,23 +135,23 @@ public class ActivityAllocationImpl extends AllocationImpl implements ActivityAl
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public OperationalActivity getActivity() {
 
-		OperationalActivity activity = basicGetActivity();
-		return activity != null && activity.eIsProxy() ? (OperationalActivity)eResolveProxy((InternalEObject)activity) : activity;
-	}
+    OperationalActivity activity = basicGetActivity();
+    return activity != null && activity.eIsProxy() ? (OperationalActivity)eResolveProxy((InternalEObject)activity) : activity;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public OperationalActivity basicGetActivity() {
 
@@ -178,53 +178,53 @@ public class ActivityAllocationImpl extends AllocationImpl implements ActivityAl
     // A helper is found, let's use it. 
     EAnnotation annotation = OaPackage.Literals.ACTIVITY_ALLOCATION__ACTIVITY.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, OaPackage.Literals.ACTIVITY_ALLOCATION__ACTIVITY, annotation);
-		
-		try {
-			return (OperationalActivity) result;
-	  } catch (ClassCastException exception) {
-	     exception.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (OperationalActivity) result;
+    } catch (ClassCastException exception) {
+       exception.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OaPackage.ACTIVITY_ALLOCATION__ROLE:
-				if (resolve) return getRole();
-				return basicGetRole();
-			case OaPackage.ACTIVITY_ALLOCATION__ACTIVITY:
-				if (resolve) return getActivity();
-				return basicGetActivity();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case OaPackage.ACTIVITY_ALLOCATION__ROLE:
+        if (resolve) return getRole();
+        return basicGetRole();
+      case OaPackage.ACTIVITY_ALLOCATION__ACTIVITY:
+        if (resolve) return getActivity();
+        return basicGetActivity();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OaPackage.ACTIVITY_ALLOCATION__ROLE:
-				return basicGetRole() != null;
-			case OaPackage.ACTIVITY_ALLOCATION__ACTIVITY:
-				return basicGetActivity() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.ACTIVITY_ALLOCATION__ROLE:
+        return basicGetRole() != null;
+      case OaPackage.ACTIVITY_ALLOCATION__ACTIVITY:
+        return basicGetActivity() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

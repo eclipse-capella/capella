@@ -46,25 +46,25 @@ public interface ExchangeLink extends NamedRelationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Exchanges</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeSpecification}.
+   * Returns the value of the '<em><b>Exchanges</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeSpecification}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Exchanges</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exchanges</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeLink_Exchanges()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='exchanges'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedExchangeContainments.exchange'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the exchanges involved in this exchange link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Exchanges</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeLink_Exchanges()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='exchanges'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedExchangeContainments.exchange'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the exchanges involved in this exchange link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<ExchangeSpecification> getExchanges();
 
@@ -75,27 +75,27 @@ public interface ExchangeLink extends NamedRelationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Exchange Containment Links</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeContainment}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ExchangeContainment#getLink <em>Link</em>}'.
+   * Returns the value of the '<em><b>Exchange Containment Links</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeContainment}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ExchangeContainment#getLink <em>Link</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Exchange Containment Links</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exchange Containment Links</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeLink_ExchangeContainmentLinks()
-	 * @see org.polarsys.capella.core.data.fa.ExchangeContainment#getLink
-	 * @model opposite="link"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='exchangeContainmentLinks'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange containments that are part of this exchange link \r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::clientDependency' explanation='none' constraints='uml::NamedElement::clientDependency elements on which ExchangeContainment stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Exchange Containment Links</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeLink_ExchangeContainmentLinks()
+   * @see org.polarsys.capella.core.data.fa.ExchangeContainment#getLink
+   * @model opposite="link"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='exchangeContainmentLinks'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange containments that are part of this exchange link \r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::clientDependency' explanation='none' constraints='uml::NamedElement::clientDependency elements on which ExchangeContainment stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<ExchangeContainment> getExchangeContainmentLinks();
 
@@ -106,25 +106,25 @@ public interface ExchangeLink extends NamedRelationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Exchange Containments</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeContainment}.
+   * Returns the value of the '<em><b>Owned Exchange Containments</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeContainment}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Exchange Containments</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Exchange Containments</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeLink_OwnedExchangeContainments()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Component'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedExchangeContainments'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange containments that are owned by this exchange link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='Elements are contained in the nearest possible parent container.' constraints='Some elements on which ExchangeContainment stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Exchange Containments</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeLink_OwnedExchangeContainments()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Component'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedExchangeContainments'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange containments that are owned by this exchange link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='Elements are contained in the nearest possible parent container.' constraints='Some elements on which ExchangeContainment stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	EList<ExchangeContainment> getOwnedExchangeContainments();
 
@@ -135,24 +135,24 @@ public interface ExchangeLink extends NamedRelationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Sources</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionSpecification}.
+   * Returns the value of the '<em><b>Sources</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionSpecification}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Sources</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sources</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeLink_Sources()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='sources'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the functions that are at the starting point(s) of this exchange link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InformationFlow::informationSource' explanation='none' constraints='Order must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Sources</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeLink_Sources()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='sources'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the functions that are at the starting point(s) of this exchange link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InformationFlow::informationSource' explanation='none' constraints='Order must be computed'"
+   * @generated
+   */
 
 	EList<FunctionSpecification> getSources();
 
@@ -163,24 +163,24 @@ public interface ExchangeLink extends NamedRelationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Destinations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionSpecification}.
+   * Returns the value of the '<em><b>Destinations</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionSpecification}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Destinations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Destinations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeLink_Destinations()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='destinations'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the functions that are at the destination point(s) of this exchange link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InformationFlow::informationTarget' explanation='none' constraints='Order must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Destinations</em>' reference list.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeLink_Destinations()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='destinations'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the functions that are at the destination point(s) of this exchange link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InformationFlow::informationTarget' explanation='none' constraints='Order must be computed'"
+   * @generated
+   */
 
 	EList<FunctionSpecification> getDestinations();
 

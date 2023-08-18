@@ -41,25 +41,25 @@ public interface PhysicalQuantity extends NumericType {
 
 
 	/**
-	 * Returns the value of the '<em><b>Unit</b></em>' reference.
+   * Returns the value of the '<em><b>Unit</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Unit</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Unit</em>' reference.
-	 * @see #setUnit(Unit)
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getPhysicalQuantity_Unit()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='unit'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the unit of this physical dimension\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Unit</em>' reference.
+   * @see #setUnit(Unit)
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getPhysicalQuantity_Unit()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='unit'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the unit of this physical dimension\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	Unit getUnit();
 
@@ -67,14 +67,14 @@ public interface PhysicalQuantity extends NumericType {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.PhysicalQuantity#getUnit <em>Unit</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.PhysicalQuantity#getUnit <em>Unit</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Unit</em>' reference.
-	 * @see #getUnit()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Unit</em>' reference.
+   * @see #getUnit()
+   * @generated
+   */
 
 	void setUnit(Unit value);
 

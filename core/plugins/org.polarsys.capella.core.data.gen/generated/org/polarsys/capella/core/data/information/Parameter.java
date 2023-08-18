@@ -43,25 +43,25 @@ public interface Parameter extends TypedElement, MultiplicityElement, AbstractPa
 
 
 	/**
-	 * Returns the value of the '<em><b>Direction</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.information.ParameterDirection}.
+   * Returns the value of the '<em><b>Direction</b></em>' attribute.
+   * The literals are from the enumeration {@link org.polarsys.capella.core.data.information.ParameterDirection}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Direction</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Direction</em>' attribute.
-	 * @see org.polarsys.capella.core.data.information.ParameterDirection
-	 * @see #setDirection(ParameterDirection)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getParameter_Direction()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='direction' featureOwner='Parameter'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether the parameter is an input, an output, or both.\r\n[source: Capella study]' constraints='none' type='see ParameterDirection definition' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Parameter::direction' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Direction</em>' attribute.
+   * @see org.polarsys.capella.core.data.information.ParameterDirection
+   * @see #setDirection(ParameterDirection)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getParameter_Direction()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='direction' featureOwner='Parameter'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether the parameter is an input, an output, or both.\r\n[source: Capella study]' constraints='none' type='see ParameterDirection definition' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Parameter::direction' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	ParameterDirection getDirection();
 
@@ -69,15 +69,15 @@ public interface Parameter extends TypedElement, MultiplicityElement, AbstractPa
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.Parameter#getDirection <em>Direction</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.Parameter#getDirection <em>Direction</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Direction</em>' attribute.
-	 * @see org.polarsys.capella.core.data.information.ParameterDirection
-	 * @see #getDirection()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Direction</em>' attribute.
+   * @see org.polarsys.capella.core.data.information.ParameterDirection
+   * @see #getDirection()
+   * @generated
+   */
 
 	void setDirection(ParameterDirection value);
 
@@ -88,25 +88,25 @@ public interface Parameter extends TypedElement, MultiplicityElement, AbstractPa
 
 
 	/**
-	 * Returns the value of the '<em><b>Passing Mode</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.information.PassingMode}.
+   * Returns the value of the '<em><b>Passing Mode</b></em>' attribute.
+   * The literals are from the enumeration {@link org.polarsys.capella.core.data.information.PassingMode}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Passing Mode</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Passing Mode</em>' attribute.
-	 * @see org.polarsys.capella.core.data.information.PassingMode
-	 * @see #setPassingMode(PassingMode)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getParameter_PassingMode()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='passingMode' fromStereotype='true' featureOwner='eng.Parameter'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the way the parameter is passed along from the caller to the callee\r\n[source: Capella study]' constraints='none' type='see PassingMode enumeration definition for possible values' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Passing Mode</em>' attribute.
+   * @see org.polarsys.capella.core.data.information.PassingMode
+   * @see #setPassingMode(PassingMode)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getParameter_PassingMode()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='passingMode' fromStereotype='true' featureOwner='eng.Parameter'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the way the parameter is passed along from the caller to the callee\r\n[source: Capella study]' constraints='none' type='see PassingMode enumeration definition for possible values' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	PassingMode getPassingMode();
 
@@ -114,15 +114,15 @@ public interface Parameter extends TypedElement, MultiplicityElement, AbstractPa
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.Parameter#getPassingMode <em>Passing Mode</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.Parameter#getPassingMode <em>Passing Mode</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Passing Mode</em>' attribute.
-	 * @see org.polarsys.capella.core.data.information.PassingMode
-	 * @see #getPassingMode()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Passing Mode</em>' attribute.
+   * @see org.polarsys.capella.core.data.information.PassingMode
+   * @see #getPassingMode()
+   * @generated
+   */
 
 	void setPassingMode(PassingMode value);
 

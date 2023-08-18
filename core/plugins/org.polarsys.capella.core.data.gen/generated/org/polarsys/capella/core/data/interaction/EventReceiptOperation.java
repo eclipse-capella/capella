@@ -40,24 +40,24 @@ public interface EventReceiptOperation extends Event {
 
 
 	/**
-	 * Returns the value of the '<em><b>Operation</b></em>' reference.
+   * Returns the value of the '<em><b>Operation</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Operation</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Operation</em>' reference.
-	 * @see #setOperation(AbstractEventOperation)
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getEventReceiptOperation_Operation()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='operation' featureOwner='ReceiveOperationEvent'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='operation'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Operation triggered by the reception of this event\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ReceiveOperationEvent::operation' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Operation</em>' reference.
+   * @see #setOperation(AbstractEventOperation)
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getEventReceiptOperation_Operation()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='operation' featureOwner='ReceiveOperationEvent'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='operation'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Operation triggered by the reception of this event\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ReceiveOperationEvent::operation' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	AbstractEventOperation getOperation();
 
@@ -65,14 +65,14 @@ public interface EventReceiptOperation extends Event {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.EventReceiptOperation#getOperation <em>Operation</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.EventReceiptOperation#getOperation <em>Operation</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Operation</em>' reference.
-	 * @see #getOperation()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Operation</em>' reference.
+   * @see #getOperation()
+   * @generated
+   */
 
 	void setOperation(AbstractEventOperation value);
 

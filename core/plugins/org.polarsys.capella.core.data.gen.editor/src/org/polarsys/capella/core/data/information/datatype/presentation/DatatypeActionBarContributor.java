@@ -151,313 +151,313 @@ public class DatatypeActionBarContributor
 	}
 
 	/**
-	 * ExtendedLoadResourceAction.
-	 * <!-- begin-user-doc -->
+   * ExtendedLoadResourceAction.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static class ExtendedLoadResourceAction extends LoadResourceAction {
 		/**
-	 	 * <!-- begin-user-doc -->
+   	 * <!-- begin-user-doc -->
 	 	 * <!-- end-user-doc -->
-	 	 * @generated
-	 	 */	
+   	 * @generated
+   	 */	
 		@Override
 		public void run() {
-			ExtendedLoadResourceDialog loadResourceDialog = new ExtendedLoadResourceDialog(
-				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), domain
-			);    
-			loadResourceDialog.open();
-		} 
+      ExtendedLoadResourceDialog loadResourceDialog = new ExtendedLoadResourceDialog(
+        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), domain
+      );    
+      loadResourceDialog.open();
+    } 
 		   
 		/**
-		 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 	 * <!-- end-user-doc -->
-	 	 * @generated
-	 	 */    
+   	 * @generated
+   	 */    
 		public static class ExtendedLoadResourceDialog extends LoadResourceAction.LoadResourceDialog {
 			/**
-	 		 * <!-- begin-user-doc -->
+   		 * <!-- begin-user-doc -->
 	 		 * <!-- end-user-doc -->
-	 		 * @generated
-	 		 */				
+   		 * @generated
+   		 */				
 			public ExtendedLoadResourceDialog(Shell parent, EditingDomain domain) {
-				super(parent, domain);
-			}
+        super(parent, domain);
+      }
 			
 			/**
-	 		 * <!-- begin-user-doc -->
+   		 * <!-- begin-user-doc -->
 	 		 * <!-- end-user-doc -->
-	 		 * @generated
-	 		 */
+   		 * @generated
+   		 */
 			@Override      		      		
 			protected boolean processResource(Resource resource) {
-		    	ResourceSet resourceSet = domain.getResourceSet();
-				LibraryHelper.add(resourceSet, resourceSet.getResources().get(0).getURI(), resource.getURI());
-		      return true;
-		    }
+        	ResourceSet resourceSet = domain.getResourceSet();
+        LibraryHelper.add(resourceSet, resourceSet.getResources().get(0).getURI(), resource.getURI());
+          return true;
+        }
 		}
     
 		/**
-		 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */    
+     * @generated
+     */    
 		public static class RegisteredPackageDialog extends ElementListSelectionDialog {
 			/**
-	 		 * <!-- begin-user-doc -->
+   		 * <!-- begin-user-doc -->
 	 		 * <!-- end-user-doc -->
-	 		 * @generated
-	 		 */								
+   		 * @generated
+   		 */								
 			public RegisteredPackageDialog(Shell parent) {
-				super(
-					parent, 
-					new LabelProvider() {
-						@Override
-						public Image getImage(Object element) {
-							return ExtendedImageRegistry.getInstance().getImage(EcoreEditPlugin.INSTANCE.getImage("full/obj16/EPackage")); //$NON-NLS-1$
-						}
-					}
-				);        
-				setMultipleSelection(true);
-				setMessage(EcoreEditorPlugin.INSTANCE.getString("_UI_SelectRegisteredPackageURI")); //$NON-NLS-1$
-				setFilter("*");
-				Map<String, URI> ePackageNsURItoGenModelLocationMap = EcorePlugin.getEPackageNsURIToGenModelLocationMap();
-				Object [] result = ePackageNsURItoGenModelLocationMap.keySet().toArray(new Object[ePackageNsURItoGenModelLocationMap.size()]);
-				Arrays.sort(result);
-				setElements(result);
-				setTitle(EcoreEditorPlugin.INSTANCE.getString("_UI_PackageSelection_label")); //$NON-NLS-1$
-			}
+        super(
+          parent, 
+          new LabelProvider() {
+            @Override
+            public Image getImage(Object element) {
+              return ExtendedImageRegistry.getInstance().getImage(EcoreEditPlugin.INSTANCE.getImage("full/obj16/EPackage")); //$NON-NLS-1$
+            }
+          }
+        );        
+        setMultipleSelection(true);
+        setMessage(EcoreEditorPlugin.INSTANCE.getString("_UI_SelectRegisteredPackageURI")); //$NON-NLS-1$
+        setFilter("*");
+        Map<String, URI> ePackageNsURItoGenModelLocationMap = EcorePlugin.getEPackageNsURIToGenModelLocationMap();
+        Object [] result = ePackageNsURItoGenModelLocationMap.keySet().toArray(new Object[ePackageNsURItoGenModelLocationMap.size()]);
+        Arrays.sort(result);
+        setElements(result);
+        setTitle(EcoreEditorPlugin.INSTANCE.getString("_UI_PackageSelection_label")); //$NON-NLS-1$
+      }
 		}
     
 	}
 
 	/**
-	 * This keeps track of the active editor.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the active editor.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IEditorPart activeEditorPart;
 
 	/**
-	 * This keeps track of the current selection provider.
-	 * <!-- begin-user-doc -->
+   * This keeps track of the current selection provider.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ISelectionProvider selectionProvider;
 
 	/**
-	 * This action opens the Properties view.
-	 * <!-- begin-user-doc -->
+   * This action opens the Properties view.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IAction showPropertiesViewAction =
 		new ShowPropertiesViewAction();
 
 	/**
-	 * This action refreshes the viewer of the current editor if the editor
-	 * implements {@link org.eclipse.emf.common.ui.viewer.IViewerProvider}.
-	 * <!-- begin-user-doc -->
+   * This action refreshes the viewer of the current editor if the editor
+   * implements {@link org.eclipse.emf.common.ui.viewer.IViewerProvider}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IAction refreshViewerAction =
 		new RefreshViewerAction();
 
 	/**
-	 * This action load resource from resourcereuse/emfscheme
-	 * <!-- begin-user-doc -->
+   * This action load resource from resourcereuse/emfscheme
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IAction schemeLoadResourceAction = new SchemeLoadResourceAction();
 
 	/**
-	 * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to each descriptor
-	 * generated for the current selection by the item provider.
-	 * <!-- begin-user-doc -->
+   * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to each descriptor
+   * generated for the current selection by the item provider.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected Collection<IAction> createChildActions;
 
 	/**
-	 * This is the menu manager into which menu contribution items should be added for CreateChild actions.
-	 * <!-- begin-user-doc -->
+   * This is the menu manager into which menu contribution items should be added for CreateChild actions.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IMenuManager createChildMenuManager;
 
 	/**
-	 * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} corresponding to each descriptor
-	 * generated for the current selection by the item provider.
-	 * <!-- begin-user-doc -->
+   * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} corresponding to each descriptor
+   * generated for the current selection by the item provider.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected Collection<IAction> createSiblingActions;
 
 	/**
-	 * This is the menu manager into which menu contribution items should be added for CreateSibling actions.
-	 * <!-- begin-user-doc -->
+   * This is the menu manager into which menu contribution items should be added for CreateSibling actions.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IMenuManager createSiblingMenuManager;
 	
 	/**
-	 * This will contain a collection {@link org.polarsys.kitalpha.emde.ui.actions.EmdeViewerFilterAction} applicable
-	 * to the current loaded Resource.
-	 * <!-- begin-user-doc -->
+   * This will contain a collection {@link org.polarsys.kitalpha.emde.ui.actions.EmdeViewerFilterAction} applicable
+   * to the current loaded Resource.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected Collection<EmdeViewerFilterAction> currentResourceEmdeViewerFilterActions;	
 	
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */    
+   * @generated
+   */    
 	protected IMenuManager extensionViewerFilterMenuManager;	
   
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */    
+   * @generated
+   */    
 	protected Resource currentResource;
 	
 	/**
-	 * This creates an instance of the contributor.
-	 * <!-- begin-user-doc -->
+   * This creates an instance of the contributor.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public DatatypeActionBarContributor() {
-		super(ADDITIONS_LAST_STYLE);
-		loadResourceAction = new ExtendedLoadResourceAction();
-		validateAction = new ValidateAction();
-		controlAction = new ControlAction();
-	}
+    super(ADDITIONS_LAST_STYLE);
+    loadResourceAction = new ExtendedLoadResourceAction();
+    validateAction = new ValidateAction();
+    controlAction = new ControlAction();
+  }
 	
 	/**
-	 * @see org.eclipse.jface.util.IPropertyChangeListener#propertyChange(org.eclipse.jface.util.PropertyChangeEvent) 
-	 * <!-- begin-user-doc -->
+   * @see org.eclipse.jface.util.IPropertyChangeListener#propertyChange(org.eclipse.jface.util.PropertyChangeEvent) 
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */	
+   * @generated
+   */	
 	public void propertyChange(PropertyChangeEvent event) {
-		if (event.getSource() instanceof ViewerFilterAction) {
-			// Fake a selection changed event to update the menus.
-			if (selectionProvider.getSelection() != null) {
-				selectionChanged(new SelectionChangedEvent(selectionProvider, selectionProvider.getSelection()));
-			}	    
-		}	  
-	}	
+    if (event.getSource() instanceof ViewerFilterAction) {
+      // Fake a selection changed event to update the menus.
+      if (selectionProvider.getSelection() != null) {
+        selectionChanged(new SelectionChangedEvent(selectionProvider, selectionProvider.getSelection()));
+      }	    
+    }	  
+  }	
  
 	/**
-	 * This adds Separators for editor additions to the tool bar.
-	 * <!-- begin-user-doc -->
+   * This adds Separators for editor additions to the tool bar.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
-		super.contributeToToolBar(toolBarManager);
-		toolBarManager.add(new Separator("datatype-settings")); //$NON-NLS-1$
-		toolBarManager.add(new Separator("datatype-additions")); //$NON-NLS-1$
-	}
+    super.contributeToToolBar(toolBarManager);
+    toolBarManager.add(new Separator("datatype-settings")); //$NON-NLS-1$
+    toolBarManager.add(new Separator("datatype-additions")); //$NON-NLS-1$
+  }
 
 	/**
-	 * This adds to the menu bar a menu and some separators for editor additions,
-	 * as well as the sub-menus for object creation items.
-	 * <!-- begin-user-doc -->
+   * This adds to the menu bar a menu and some separators for editor additions,
+   * as well as the sub-menus for object creation items.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void contributeToMenu(IMenuManager menuManager) {
-		super.contributeToMenu(menuManager);
+    super.contributeToMenu(menuManager);
 
-		IMenuManager submenuManager = new MenuManager(CapellaModellerEditorPlugin.INSTANCE.getString("_UI_DatatypeEditor_menu"), "org.polarsys.capella.core.data.information.datatypeMenuID"); //$NON-NLS-1$ //$NON-NLS-2$
-		menuManager.insertAfter("additions", submenuManager); //$NON-NLS-1$
-		submenuManager.add(new Separator("settings")); //$NON-NLS-1$
-		submenuManager.add(new Separator("actions")); //$NON-NLS-1$
-		submenuManager.add(new Separator("additions")); //$NON-NLS-1$
-		submenuManager.add(new Separator("additions-end")); //$NON-NLS-1$
-		
-		// Prepare Model Extension Menu Manager
-		extensionViewerFilterMenuManager = new MenuManager(Messages._UI_Model_Extensions);
-		submenuManager.insertBefore("additions-end", extensionViewerFilterMenuManager); //$NON-NLS-1$
-		submenuManager.insertBefore("additions-end", new Separator()); //$NON-NLS-1$
-		    		
-		// Prepare for CreateChild item addition or removal.
-		//
-		createChildMenuManager = new MenuManager(CapellaModellerEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
-		submenuManager.insertBefore("additions", createChildMenuManager); //$NON-NLS-1$
+    IMenuManager submenuManager = new MenuManager(CapellaModellerEditorPlugin.INSTANCE.getString("_UI_DatatypeEditor_menu"), "org.polarsys.capella.core.data.information.datatypeMenuID"); //$NON-NLS-1$ //$NON-NLS-2$
+    menuManager.insertAfter("additions", submenuManager); //$NON-NLS-1$
+    submenuManager.add(new Separator("settings")); //$NON-NLS-1$
+    submenuManager.add(new Separator("actions")); //$NON-NLS-1$
+    submenuManager.add(new Separator("additions")); //$NON-NLS-1$
+    submenuManager.add(new Separator("additions-end")); //$NON-NLS-1$
+    
+    // Prepare Model Extension Menu Manager
+    extensionViewerFilterMenuManager = new MenuManager(Messages._UI_Model_Extensions);
+    submenuManager.insertBefore("additions-end", extensionViewerFilterMenuManager); //$NON-NLS-1$
+    submenuManager.insertBefore("additions-end", new Separator()); //$NON-NLS-1$
+        		
+    // Prepare for CreateChild item addition or removal.
+    //
+    createChildMenuManager = new MenuManager(CapellaModellerEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
+    submenuManager.insertBefore("additions", createChildMenuManager); //$NON-NLS-1$
 
-		// Prepare for CreateSibling item addition or removal.
-		//
-		createSiblingMenuManager = new MenuManager(CapellaModellerEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
-		submenuManager.insertBefore("additions", createSiblingMenuManager); //$NON-NLS-1$
+    // Prepare for CreateSibling item addition or removal.
+    //
+    createSiblingMenuManager = new MenuManager(CapellaModellerEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
+    submenuManager.insertBefore("additions", createSiblingMenuManager); //$NON-NLS-1$
 
-		// Force an update because Eclipse hides empty menus now.
-		//
-		submenuManager.addMenuListener
-			(new IMenuListener() {
-				 @Override
-				 public void menuAboutToShow(IMenuManager menuManager) {
-					 menuManager.updateAll(true);
-				 }
-			 });
+    // Force an update because Eclipse hides empty menus now.
+    //
+    submenuManager.addMenuListener
+      (new IMenuListener() {
+         @Override
+         public void menuAboutToShow(IMenuManager menuManager) {
+           menuManager.updateAll(true);
+         }
+       });
 
-		addGlobalActions(submenuManager);
-	}
+    addGlobalActions(submenuManager);
+  }
 
 	/**
-	 * When the active editor changes, this remembers the change and registers with it as a selection provider.
-	 * <!-- begin-user-doc -->
+   * When the active editor changes, this remembers the change and registers with it as a selection provider.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void setActiveEditor(IEditorPart part) {
-		super.setActiveEditor(part);
-		activeEditorPart = part;
+    super.setActiveEditor(part);
+    activeEditorPart = part;
 
 
-		if (part instanceof DatatypeEditor == false) {
-			if (currentResourceEmdeViewerFilterActions != null) {
-				for (EmdeViewerFilterAction filterAction : currentResourceEmdeViewerFilterActions) {      
-					filterAction.setEnabled(false);
-				}
-			}
-		}
+    if (part instanceof DatatypeEditor == false) {
+      if (currentResourceEmdeViewerFilterActions != null) {
+        for (EmdeViewerFilterAction filterAction : currentResourceEmdeViewerFilterActions) {      
+          filterAction.setEnabled(false);
+        }
+      }
+    }
 
-		// Switch to the new selection provider.
-		//
-		if (selectionProvider != null) {
-			selectionProvider.removeSelectionChangedListener(this);
-		}
-		if (part == null) {
-			selectionProvider = null;
-		}
-		else {
-			selectionProvider = part.getSite().getSelectionProvider();
-			selectionProvider.addSelectionChangedListener(this);
+    // Switch to the new selection provider.
+    //
+    if (selectionProvider != null) {
+      selectionProvider.removeSelectionChangedListener(this);
+    }
+    if (part == null) {
+      selectionProvider = null;
+    }
+    else {
+      selectionProvider = part.getSite().getSelectionProvider();
+      selectionProvider.addSelectionChangedListener(this);
 
-			// Fake a selection changed event to update the menus.
-			//
-			if (selectionProvider.getSelection() != null) {
-				selectionChanged(new SelectionChangedEvent(selectionProvider, selectionProvider.getSelection()));
-			}
-		}
-	}
+      // Fake a selection changed event to update the menus.
+      //
+      if (selectionProvider.getSelection() != null) {
+        selectionChanged(new SelectionChangedEvent(selectionProvider, selectionProvider.getSelection()));
+      }
+    }
+  }
 
 	/**
 	 * @see org.eclipse.ui.part.EditorActionBarContributor#dispose()
@@ -465,233 +465,233 @@ public class DatatypeActionBarContributor
 	 */
 	@Override
 	public void dispose() {
-		super.dispose();
-		if (currentResourceEmdeViewerFilterActions != null) {
-			currentResourceEmdeViewerFilterActions.clear();
-			currentResourceEmdeViewerFilterActions = null;
-		}
-		if (extensionViewerFilterMenuManager != null) {
-			extensionViewerFilterMenuManager.dispose();
-			extensionViewerFilterMenuManager = null;
-		}
-	}	
+    super.dispose();
+    if (currentResourceEmdeViewerFilterActions != null) {
+      currentResourceEmdeViewerFilterActions.clear();
+      currentResourceEmdeViewerFilterActions = null;
+    }
+    if (extensionViewerFilterMenuManager != null) {
+      extensionViewerFilterMenuManager.dispose();
+      extensionViewerFilterMenuManager = null;
+    }
+  }	
 
 	/**
-	 * This implements {@link org.eclipse.jface.viewers.ISelectionChangedListener},
-	 * handling {@link org.eclipse.jface.viewers.SelectionChangedEvent}s by querying for the children and siblings
-	 * that can be added to the selected object and updating the menus accordingly.
-	 * <!-- begin-user-doc -->
+   * This implements {@link org.eclipse.jface.viewers.ISelectionChangedListener},
+   * handling {@link org.eclipse.jface.viewers.SelectionChangedEvent}s by querying for the children and siblings
+   * that can be added to the selected object and updating the menus accordingly.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
-		// Current Selection
-		ISelection selection = event.getSelection();
-		Object selectedObject = null;
-		if (selection instanceof IStructuredSelection && ((IStructuredSelection) selection).size() == 1) {
-			selectedObject = ((IStructuredSelection) selection).getFirstElement();
-		}
-			
-		Resource resource = null;
-		if (selectedObject instanceof EObject) {
-			resource = ((EObject) selectedObject).eResource();
-		} else if (selectedObject instanceof Resource) {
-			resource = (Resource) selectedObject;
-		}
-		if (resource != null) {
-			if (resource.equals(currentResource) == false) {
-				if (currentResource != null) {
-					if (extensionViewerFilterMenuManager != null) {
-						depopulateManager(extensionViewerFilterMenuManager, currentResourceEmdeViewerFilterActions);
-					}
-					currentResourceEmdeViewerFilterActions = null;
-				}
-				currentResource = resource;
-			}
-		}
+    // Current Selection
+    ISelection selection = event.getSelection();
+    Object selectedObject = null;
+    if (selection instanceof IStructuredSelection && ((IStructuredSelection) selection).size() == 1) {
+      selectedObject = ((IStructuredSelection) selection).getFirstElement();
+    }
+      
+    Resource resource = null;
+    if (selectedObject instanceof EObject) {
+      resource = ((EObject) selectedObject).eResource();
+    } else if (selectedObject instanceof Resource) {
+      resource = (Resource) selectedObject;
+    }
+    if (resource != null) {
+      if (resource.equals(currentResource) == false) {
+        if (currentResource != null) {
+          if (extensionViewerFilterMenuManager != null) {
+            depopulateManager(extensionViewerFilterMenuManager, currentResourceEmdeViewerFilterActions);
+          }
+          currentResourceEmdeViewerFilterActions = null;
+        }
+        currentResource = resource;
+      }
+    }
     		
-		// Remove any menu items for old selection.
-		//
-		if (createChildMenuManager != null) {
-			depopulateManager(createChildMenuManager, createChildActions);
-		}
-		if (createSiblingMenuManager != null) {
-			depopulateManager(createSiblingMenuManager, createSiblingActions);
-		}
+    // Remove any menu items for old selection.
+    //
+    if (createChildMenuManager != null) {
+      depopulateManager(createChildMenuManager, createChildActions);
+    }
+    if (createSiblingMenuManager != null) {
+      depopulateManager(createSiblingMenuManager, createSiblingActions);
+    }
 
-		// Populate EmdeViewerFilterActions if necessary
-		if (currentResourceEmdeViewerFilterActions == null) {
-			currentResourceEmdeViewerFilterActions = ((DatatypeEditor) activeEditorPart).getEmdeViewerFilterActions(currentResource);
-			if (extensionViewerFilterMenuManager != null) {
-				populateManager(extensionViewerFilterMenuManager, currentResourceEmdeViewerFilterActions, null);
-				extensionViewerFilterMenuManager.update(true);
-			}		  
-		}		
+    // Populate EmdeViewerFilterActions if necessary
+    if (currentResourceEmdeViewerFilterActions == null) {
+      currentResourceEmdeViewerFilterActions = ((DatatypeEditor) activeEditorPart).getEmdeViewerFilterActions(currentResource);
+      if (extensionViewerFilterMenuManager != null) {
+        populateManager(extensionViewerFilterMenuManager, currentResourceEmdeViewerFilterActions, null);
+        extensionViewerFilterMenuManager.update(true);
+      }		  
+    }		
 
-		// Query the new selection for appropriate new child/sibling descriptors
-		//
-		Collection<?> newChildDescriptors = null;
-		Collection<?> newSiblingDescriptors = null;
+    // Query the new selection for appropriate new child/sibling descriptors
+    //
+    Collection<?> newChildDescriptors = null;
+    Collection<?> newSiblingDescriptors = null;
 
-		if (selectedObject != null) {
-			EditingDomain domain = ((IEditingDomainProvider)activeEditorPart).getEditingDomain();
+    if (selectedObject != null) {
+      EditingDomain domain = ((IEditingDomainProvider)activeEditorPart).getEditingDomain();
 
-			newChildDescriptors = domain.getNewChildDescriptors(selectedObject, null);
-			newSiblingDescriptors = domain.getNewChildDescriptors(null, selectedObject);
-		}
+      newChildDescriptors = domain.getNewChildDescriptors(selectedObject, null);
+      newSiblingDescriptors = domain.getNewChildDescriptors(null, selectedObject);
+    }
 
-		// Generate actions for selection; populate and redraw the menus.
-		//
-		createChildActions = generateCreateChildActions(newChildDescriptors, selection);
-		createSiblingActions = generateCreateSiblingActions(newSiblingDescriptors, selection);
+    // Generate actions for selection; populate and redraw the menus.
+    //
+    createChildActions = generateCreateChildActions(newChildDescriptors, selection);
+    createSiblingActions = generateCreateSiblingActions(newSiblingDescriptors, selection);
 
-		if (createChildMenuManager != null) {
-			populateManager(createChildMenuManager, createChildActions, null);
-			createChildMenuManager.update(true);
-		}
-		if (createSiblingMenuManager != null) {
-			populateManager(createSiblingMenuManager, createSiblingActions, null);
-			createSiblingMenuManager.update(true);
-		}
-	}
+    if (createChildMenuManager != null) {
+      populateManager(createChildMenuManager, createChildActions, null);
+      createChildMenuManager.update(true);
+    }
+    if (createSiblingMenuManager != null) {
+      populateManager(createSiblingMenuManager, createSiblingActions, null);
+      createSiblingMenuManager.update(true);
+    }
+  }
 
 	/**
-	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateChildAction} for each object in <code>descriptors</code>,
-	 * and returns the collection of these actions.
-	 * <!-- begin-user-doc -->
+   * This generates a {@link org.eclipse.emf.edit.ui.action.CreateChildAction} for each object in <code>descriptors</code>,
+   * and returns the collection of these actions.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected Collection<IAction> generateCreateChildActions(Collection<?> descriptors, ISelection selection) {
-		Collection<IAction> actions = new ArrayList<IAction>();
-		if (descriptors != null) {
-			for (Object descriptor : descriptors) {
-				actions.add(new CreateChildAction(activeEditorPart, selection, descriptor));
-			}
-		}
-		return actions;
-	}
+    Collection<IAction> actions = new ArrayList<IAction>();
+    if (descriptors != null) {
+      for (Object descriptor : descriptors) {
+        actions.add(new CreateChildAction(activeEditorPart, selection, descriptor));
+      }
+    }
+    return actions;
+  }
 
 	/**
-	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each object in <code>descriptors</code>,
-	 * and returns the collection of these actions.
-	 * <!-- begin-user-doc -->
+   * This generates a {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each object in <code>descriptors</code>,
+   * and returns the collection of these actions.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected Collection<IAction> generateCreateSiblingActions(Collection<?> descriptors, ISelection selection) {
-		Collection<IAction> actions = new ArrayList<IAction>();
-		if (descriptors != null) {
-			for (Object descriptor : descriptors) {
-				actions.add(new CreateSiblingAction(activeEditorPart, selection, descriptor));
-			}
-		}
-		return actions;
-	}
+    Collection<IAction> actions = new ArrayList<IAction>();
+    if (descriptors != null) {
+      for (Object descriptor : descriptors) {
+        actions.add(new CreateSiblingAction(activeEditorPart, selection, descriptor));
+      }
+    }
+    return actions;
+  }
 
 	/**
-	 * This populates the specified <code>manager</code> with {@link org.eclipse.jface.action.ActionContributionItem}s
-	 * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection,
-	 * by inserting them before the specified contribution item <code>contributionID</code>.
-	 * If <code>contributionID</code> is <code>null</code>, they are simply added.
-	 * <!-- begin-user-doc -->
+   * This populates the specified <code>manager</code> with {@link org.eclipse.jface.action.ActionContributionItem}s
+   * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection,
+   * by inserting them before the specified contribution item <code>contributionID</code>.
+   * If <code>contributionID</code> is <code>null</code>, they are simply added.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void populateManager(IContributionManager manager, Collection<? extends IAction> actions, String contributionID) {
-		if (actions != null) {
-			for (IAction action : actions) {
-				if (contributionID != null) {
-					manager.insertBefore(contributionID, action);
-				}
-				else {
-					manager.add(action);
-				}
-			}
-		}
-	}
+    if (actions != null) {
+      for (IAction action : actions) {
+        if (contributionID != null) {
+          manager.insertBefore(contributionID, action);
+        }
+        else {
+          manager.add(action);
+        }
+      }
+    }
+  }
 		
 	/**
-	 * This removes from the specified <code>manager</code> all {@link org.eclipse.jface.action.ActionContributionItem}s
-	 * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection.
-	 * <!-- begin-user-doc -->
+   * This removes from the specified <code>manager</code> all {@link org.eclipse.jface.action.ActionContributionItem}s
+   * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void depopulateManager(IContributionManager manager, Collection<? extends IAction> actions) {
-		if (actions != null) {
-			IContributionItem[] items = manager.getItems();
-			for (int i = 0; i < items.length; i++) {
-				// Look into SubContributionItems
-				//
-				IContributionItem contributionItem = items[i];
-				while (contributionItem instanceof SubContributionItem) {
-					contributionItem = ((SubContributionItem)contributionItem).getInnerItem();
-				}
+    if (actions != null) {
+      IContributionItem[] items = manager.getItems();
+      for (int i = 0; i < items.length; i++) {
+        // Look into SubContributionItems
+        //
+        IContributionItem contributionItem = items[i];
+        while (contributionItem instanceof SubContributionItem) {
+          contributionItem = ((SubContributionItem)contributionItem).getInnerItem();
+        }
 
-				// Delete the ActionContributionItems with matching action.
-				//
-				if (contributionItem instanceof ActionContributionItem) {
-					IAction action = ((ActionContributionItem)contributionItem).getAction();
-					if (actions.contains(action)) {
-						manager.remove(contributionItem);
-					}
-				}
-			}
-		}
-	}
+        // Delete the ActionContributionItems with matching action.
+        //
+        if (contributionItem instanceof ActionContributionItem) {
+          IAction action = ((ActionContributionItem)contributionItem).getAction();
+          if (actions.contains(action)) {
+            manager.remove(contributionItem);
+          }
+        }
+      }
+    }
+  }
 
 	/**
-	 * This populates the pop-up menu before it appears.
-	 * <!-- begin-user-doc -->
+   * This populates the pop-up menu before it appears.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void menuAboutToShow(IMenuManager menuManager) {
-		super.menuAboutToShow(menuManager);
-		MenuManager submenuManager = null;
+    super.menuAboutToShow(menuManager);
+    MenuManager submenuManager = null;
 
-		submenuManager = new MenuManager(CapellaModellerEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
-		populateManager(submenuManager, createChildActions, null);
-		menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$
+    submenuManager = new MenuManager(CapellaModellerEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
+    populateManager(submenuManager, createChildActions, null);
+    menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$
 
-		submenuManager = new MenuManager(CapellaModellerEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
-		populateManager(submenuManager, createSiblingActions, null);
-		menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$
+    submenuManager = new MenuManager(CapellaModellerEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
+    populateManager(submenuManager, createSiblingActions, null);
+    menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$
 
-		MenuManager extensionMenuManager = new MenuManager(Messages._UI_Model_Extensions);
-		populateManager(extensionMenuManager, currentResourceEmdeViewerFilterActions, null);
-		menuManager.insertAfter("additions", extensionMenuManager); //$NON-NLS-1$		
-		menuManager.insertAfter("additions", new Separator()); //$NON-NLS-1$    
-	}
+    MenuManager extensionMenuManager = new MenuManager(Messages._UI_Model_Extensions);
+    populateManager(extensionMenuManager, currentResourceEmdeViewerFilterActions, null);
+    menuManager.insertAfter("additions", extensionMenuManager); //$NON-NLS-1$		
+    menuManager.insertAfter("additions", new Separator()); //$NON-NLS-1$    
+  }
 
 	/**
-	 * This inserts global actions before the "additions-end" separator.
-	 * <!-- begin-user-doc -->
+   * This inserts global actions before the "additions-end" separator.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void addGlobalActions(IMenuManager menuManager) {
-		menuManager.insertAfter("additions-end", new Separator("ui-actions")); //$NON-NLS-1$ //$NON-NLS-2$
-		menuManager.insertAfter("ui-actions", showPropertiesViewAction); //$NON-NLS-1$
-		menuManager.insertBefore("additions-end", schemeLoadResourceAction); //$NON-NLS-1$
-		menuManager.insertAfter("ui-actions", refreshViewerAction); //$NON-NLS-1$
+    menuManager.insertAfter("additions-end", new Separator("ui-actions")); //$NON-NLS-1$ //$NON-NLS-2$
+    menuManager.insertAfter("ui-actions", showPropertiesViewAction); //$NON-NLS-1$
+    menuManager.insertBefore("additions-end", schemeLoadResourceAction); //$NON-NLS-1$
+    menuManager.insertAfter("ui-actions", refreshViewerAction); //$NON-NLS-1$
 
-		super.addGlobalActions(menuManager);
-	}
+    super.addGlobalActions(menuManager);
+  }
 
 	/**
-	 * This ensures that a delete action will clean up all references to deleted objects.
-	 * <!-- begin-user-doc -->
+   * This ensures that a delete action will clean up all references to deleted objects.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected boolean removeAllReferencesOnDelete() {
-		return true;
-	}
+    return true;
+  }
 
 }

@@ -38,22 +38,22 @@ public interface AbstractSignalEvent extends AbstractMessageEvent {
 
 
 	/**
-	 * Returns the value of the '<em><b>Signal</b></em>' reference.
+   * Returns the value of the '<em><b>Signal</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Signal</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Signal</em>' reference.
-	 * @see #setSignal(AbstractSignal)
-	 * @see org.polarsys.capella.common.data.behavior.BehaviorPackage#getAbstractSignalEvent_Signal()
-	 * @model required="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The specific signal that is associated with this event\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::SignalEvent::signal' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Signal</em>' reference.
+   * @see #setSignal(AbstractSignal)
+   * @see org.polarsys.capella.common.data.behavior.BehaviorPackage#getAbstractSignalEvent_Signal()
+   * @model required="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The specific signal that is associated with this event\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::SignalEvent::signal' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	AbstractSignal getSignal();
 
@@ -61,14 +61,14 @@ public interface AbstractSignalEvent extends AbstractMessageEvent {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.behavior.AbstractSignalEvent#getSignal <em>Signal</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.behavior.AbstractSignalEvent#getSignal <em>Signal</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Signal</em>' reference.
-	 * @see #getSignal()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Signal</em>' reference.
+   * @see #getSignal()
+   * @generated
+   */
 
 	void setSignal(AbstractSignal value);
 

@@ -42,189 +42,189 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 public class InteractionOperandImpl extends InteractionFragmentImpl implements InteractionOperand {
 
 	/**
-	 * The cached value of the '{@link #getReferencedInteractionFragments() <em>Referenced Interaction Fragments</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getReferencedInteractionFragments() <em>Referenced Interaction Fragments</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReferencedInteractionFragments()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getReferencedInteractionFragments()
+   * @generated
+   * @ordered
+   */
 	protected EList<InteractionFragment> referencedInteractionFragments;
 
 	/**
-	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getGuard() <em>Guard</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getGuard()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getGuard()
+   * @generated
+   * @ordered
+   */
 	protected Constraint guard;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected InteractionOperandImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.INTERACTION_OPERAND;
-	}
+    return InteractionPackage.Literals.INTERACTION_OPERAND;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Constraint getGuard() {
 
-		if (guard != null && guard.eIsProxy()) {
-			InternalEObject oldGuard = (InternalEObject)guard;
-			guard = (Constraint)eResolveProxy(oldGuard);
-			if (guard != oldGuard) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.INTERACTION_OPERAND__GUARD, oldGuard, guard));
-			}
-		}
-		return guard;
-	}
+    if (guard != null && guard.eIsProxy()) {
+      InternalEObject oldGuard = (InternalEObject)guard;
+      guard = (Constraint)eResolveProxy(oldGuard);
+      if (guard != oldGuard) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.INTERACTION_OPERAND__GUARD, oldGuard, guard));
+      }
+    }
+    return guard;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Constraint basicGetGuard() {
 
-		return guard;
-	}
+    return guard;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setGuard(Constraint newGuard) {
 
-		Constraint oldGuard = guard;
-		guard = newGuard;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.INTERACTION_OPERAND__GUARD, oldGuard, guard));
+    Constraint oldGuard = guard;
+    guard = newGuard;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.INTERACTION_OPERAND__GUARD, oldGuard, guard));
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<InteractionFragment> getReferencedInteractionFragments() {
 
-		if (referencedInteractionFragments == null) {
-			referencedInteractionFragments = new EObjectResolvingEList<InteractionFragment>(InteractionFragment.class, this, InteractionPackage.INTERACTION_OPERAND__REFERENCED_INTERACTION_FRAGMENTS);
-		}
-		return referencedInteractionFragments;
-	}
+    if (referencedInteractionFragments == null) {
+      referencedInteractionFragments = new EObjectResolvingEList<InteractionFragment>(InteractionFragment.class, this, InteractionPackage.INTERACTION_OPERAND__REFERENCED_INTERACTION_FRAGMENTS);
+    }
+    return referencedInteractionFragments;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_OPERAND__REFERENCED_INTERACTION_FRAGMENTS:
-				return getReferencedInteractionFragments();
-			case InteractionPackage.INTERACTION_OPERAND__GUARD:
-				if (resolve) return getGuard();
-				return basicGetGuard();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_OPERAND__REFERENCED_INTERACTION_FRAGMENTS:
+        return getReferencedInteractionFragments();
+      case InteractionPackage.INTERACTION_OPERAND__GUARD:
+        if (resolve) return getGuard();
+        return basicGetGuard();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_OPERAND__REFERENCED_INTERACTION_FRAGMENTS:
-				getReferencedInteractionFragments().clear();
-				getReferencedInteractionFragments().addAll((Collection<? extends InteractionFragment>)newValue);
-				return;
-			case InteractionPackage.INTERACTION_OPERAND__GUARD:
-					setGuard((Constraint)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_OPERAND__REFERENCED_INTERACTION_FRAGMENTS:
+        getReferencedInteractionFragments().clear();
+        getReferencedInteractionFragments().addAll((Collection<? extends InteractionFragment>)newValue);
+        return;
+      case InteractionPackage.INTERACTION_OPERAND__GUARD:
+          setGuard((Constraint)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_OPERAND__REFERENCED_INTERACTION_FRAGMENTS:
-				getReferencedInteractionFragments().clear();
-				return;
-			case InteractionPackage.INTERACTION_OPERAND__GUARD:
-				setGuard((Constraint)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_OPERAND__REFERENCED_INTERACTION_FRAGMENTS:
+        getReferencedInteractionFragments().clear();
+        return;
+      case InteractionPackage.INTERACTION_OPERAND__GUARD:
+        setGuard((Constraint)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_OPERAND__REFERENCED_INTERACTION_FRAGMENTS:
-				return referencedInteractionFragments != null && !referencedInteractionFragments.isEmpty();
-			case InteractionPackage.INTERACTION_OPERAND__GUARD:
-				return guard != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_OPERAND__REFERENCED_INTERACTION_FRAGMENTS:
+        return referencedInteractionFragments != null && !referencedInteractionFragments.isEmpty();
+      case InteractionPackage.INTERACTION_OPERAND__GUARD:
+        return guard != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 } //InteractionOperandImpl

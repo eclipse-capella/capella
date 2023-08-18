@@ -25,25 +25,25 @@ import org.polarsys.capella.common.re.RePackage;
  */
 public class CompliancyDefinitionImpl extends ReDescriptionElementImpl implements CompliancyDefinition {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CompliancyDefinitionImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return RePackage.Literals.COMPLIANCY_DEFINITION;
-	}
+    return RePackage.Literals.COMPLIANCY_DEFINITION;
+  }
 
 
 

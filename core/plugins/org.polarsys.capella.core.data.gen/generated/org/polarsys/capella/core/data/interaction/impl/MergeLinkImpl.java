@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.interaction.MergeLink;
  */
 public class MergeLinkImpl extends TraceImpl implements MergeLink {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected MergeLinkImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.MERGE_LINK;
-	}
+    return InteractionPackage.Literals.MERGE_LINK;
+  }
 
 
 

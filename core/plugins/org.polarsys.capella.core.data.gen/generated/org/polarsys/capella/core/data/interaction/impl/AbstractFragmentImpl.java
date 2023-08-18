@@ -40,135 +40,135 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 public abstract class AbstractFragmentImpl extends TimeLapseImpl implements AbstractFragment {
 
 	/**
-	 * The cached value of the '{@link #getOwnedGates() <em>Owned Gates</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedGates() <em>Owned Gates</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedGates()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedGates()
+   * @generated
+   * @ordered
+   */
 	protected EList<Gate> ownedGates;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractFragmentImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.ABSTRACT_FRAGMENT;
-	}
+    return InteractionPackage.Literals.ABSTRACT_FRAGMENT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Gate> getOwnedGates() {
 
-		if (ownedGates == null) {
-			ownedGates = new EObjectContainmentEList.Resolving<Gate>(Gate.class, this, InteractionPackage.ABSTRACT_FRAGMENT__OWNED_GATES);
-		}
-		return ownedGates;
-	}
+    if (ownedGates == null) {
+      ownedGates = new EObjectContainmentEList.Resolving<Gate>(Gate.class, this, InteractionPackage.ABSTRACT_FRAGMENT__OWNED_GATES);
+    }
+    return ownedGates;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_FRAGMENT__OWNED_GATES:
-				return ((InternalEList<?>)getOwnedGates()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_FRAGMENT__OWNED_GATES:
+        return ((InternalEList<?>)getOwnedGates()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_FRAGMENT__OWNED_GATES:
-				return getOwnedGates();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_FRAGMENT__OWNED_GATES:
+        return getOwnedGates();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_FRAGMENT__OWNED_GATES:
-				getOwnedGates().clear();
-				getOwnedGates().addAll((Collection<? extends Gate>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_FRAGMENT__OWNED_GATES:
+        getOwnedGates().clear();
+        getOwnedGates().addAll((Collection<? extends Gate>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_FRAGMENT__OWNED_GATES:
-				getOwnedGates().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_FRAGMENT__OWNED_GATES:
+        getOwnedGates().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_FRAGMENT__OWNED_GATES:
-				return ownedGates != null && !ownedGates.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.ABSTRACT_FRAGMENT__OWNED_GATES:
+        return ownedGates != null && !ownedGates.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

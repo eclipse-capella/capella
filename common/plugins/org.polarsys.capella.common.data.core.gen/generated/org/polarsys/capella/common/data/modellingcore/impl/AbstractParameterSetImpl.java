@@ -47,13 +47,13 @@ import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
 public abstract class AbstractParameterSetImpl extends AbstractNamedElementImpl implements AbstractParameterSet {
 
 	/**
-	 * The cached value of the '{@link #getOwnedConditions() <em>Owned Conditions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedConditions() <em>Owned Conditions</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedConditions()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedConditions()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractConstraint> ownedConditions;
 
 
@@ -61,13 +61,13 @@ public abstract class AbstractParameterSetImpl extends AbstractNamedElementImpl 
 
 
 	/**
-	 * The cached value of the '{@link #getProbability() <em>Probability</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getProbability() <em>Probability</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProbability()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getProbability()
+   * @generated
+   * @ordered
+   */
 	protected ValueSpecification probability;
 
 
@@ -75,142 +75,142 @@ public abstract class AbstractParameterSetImpl extends AbstractNamedElementImpl 
 
 
 	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getParameters()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getParameters()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractParameter> parameters;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractParameterSetImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET;
-	}
+    return ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractConstraint> getOwnedConditions() {
 
-		if (ownedConditions == null) {
-			ownedConditions = new EObjectContainmentEList.Resolving<AbstractConstraint>(AbstractConstraint.class, this, ModellingcorePackage.ABSTRACT_PARAMETER_SET__OWNED_CONDITIONS);
-		}
-		return ownedConditions;
-	}
+    if (ownedConditions == null) {
+      ownedConditions = new EObjectContainmentEList.Resolving<AbstractConstraint>(AbstractConstraint.class, this, ModellingcorePackage.ABSTRACT_PARAMETER_SET__OWNED_CONDITIONS);
+    }
+    return ownedConditions;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ValueSpecification getProbability() {
 
-		if (probability != null && probability.eIsProxy()) {
-			InternalEObject oldProbability = (InternalEObject)probability;
-			probability = (ValueSpecification)eResolveProxy(oldProbability);
-			if (probability != oldProbability) {
-				InternalEObject newProbability = (InternalEObject)probability;
-				NotificationChain msgs = oldProbability.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY, null, null);
-				if (newProbability.eInternalContainer() == null) {
-					msgs = newProbability.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY, oldProbability, probability));
-			}
-		}
-		return probability;
-	}
+    if (probability != null && probability.eIsProxy()) {
+      InternalEObject oldProbability = (InternalEObject)probability;
+      probability = (ValueSpecification)eResolveProxy(oldProbability);
+      if (probability != oldProbability) {
+        InternalEObject newProbability = (InternalEObject)probability;
+        NotificationChain msgs = oldProbability.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY, null, null);
+        if (newProbability.eInternalContainer() == null) {
+          msgs = newProbability.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY, null, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY, oldProbability, probability));
+      }
+    }
+    return probability;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ValueSpecification basicGetProbability() {
 
-		return probability;
-	}
+    return probability;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetProbability(ValueSpecification newProbability, NotificationChain msgs) {
 
-		ValueSpecification oldProbability = probability;
-		probability = newProbability;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY, oldProbability, newProbability);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    ValueSpecification oldProbability = probability;
+    probability = newProbability;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY, oldProbability, newProbability);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	@Override
 	public void setProbability(ValueSpecification newProbability) {
 
-		if (newProbability != probability) {
-			NotificationChain msgs = null;
-			if (probability != null)
-				msgs = ((InternalEObject)probability).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY, null, msgs);
-			if (newProbability != null)
-				msgs = ((InternalEObject)newProbability).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY, null, msgs);
-			msgs = basicSetProbability(newProbability, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY, newProbability, newProbability));
+    if (newProbability != probability) {
+      NotificationChain msgs = null;
+      if (probability != null)
+        msgs = ((InternalEObject)probability).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY, null, msgs);
+      if (newProbability != null)
+        msgs = ((InternalEObject)newProbability).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY, null, msgs);
+      msgs = basicSetProbability(newProbability, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY, newProbability, newProbability));
 
-	}
+  }
 
 
 
@@ -218,138 +218,138 @@ public abstract class AbstractParameterSetImpl extends AbstractNamedElementImpl 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractParameter> getParameters() {
 
-		if (parameters == null) {
-			parameters = new EObjectWithInverseResolvingEList.ManyInverse<AbstractParameter>(AbstractParameter.class, this, ModellingcorePackage.ABSTRACT_PARAMETER_SET__PARAMETERS, ModellingcorePackage.ABSTRACT_PARAMETER__PARAMETER_SET);
-		}
-		return parameters;
-	}
+    if (parameters == null) {
+      parameters = new EObjectWithInverseResolvingEList.ManyInverse<AbstractParameter>(AbstractParameter.class, this, ModellingcorePackage.ABSTRACT_PARAMETER_SET__PARAMETERS, ModellingcorePackage.ABSTRACT_PARAMETER__PARAMETER_SET);
+    }
+    return parameters;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PARAMETERS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getParameters()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PARAMETERS:
+        return ((InternalEList<InternalEObject>)(InternalEList<?>)getParameters()).basicAdd(otherEnd, msgs);
+    }
+    return super.eInverseAdd(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ModellingcorePackage.ABSTRACT_PARAMETER_SET__OWNED_CONDITIONS:
-				return ((InternalEList<?>)getOwnedConditions()).basicRemove(otherEnd, msgs);
-			case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY:
-				return basicSetProbability(null, msgs);
-			case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PARAMETERS:
-				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case ModellingcorePackage.ABSTRACT_PARAMETER_SET__OWNED_CONDITIONS:
+        return ((InternalEList<?>)getOwnedConditions()).basicRemove(otherEnd, msgs);
+      case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY:
+        return basicSetProbability(null, msgs);
+      case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PARAMETERS:
+        return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ModellingcorePackage.ABSTRACT_PARAMETER_SET__OWNED_CONDITIONS:
-				return getOwnedConditions();
-			case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY:
-				if (resolve) return getProbability();
-				return basicGetProbability();
-			case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PARAMETERS:
-				return getParameters();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case ModellingcorePackage.ABSTRACT_PARAMETER_SET__OWNED_CONDITIONS:
+        return getOwnedConditions();
+      case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY:
+        if (resolve) return getProbability();
+        return basicGetProbability();
+      case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PARAMETERS:
+        return getParameters();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ModellingcorePackage.ABSTRACT_PARAMETER_SET__OWNED_CONDITIONS:
-				getOwnedConditions().clear();
-				getOwnedConditions().addAll((Collection<? extends AbstractConstraint>)newValue);
-				return;
-			case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY:
-					setProbability((ValueSpecification)newValue);
-				return;
-			case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PARAMETERS:
-				getParameters().clear();
-				getParameters().addAll((Collection<? extends AbstractParameter>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case ModellingcorePackage.ABSTRACT_PARAMETER_SET__OWNED_CONDITIONS:
+        getOwnedConditions().clear();
+        getOwnedConditions().addAll((Collection<? extends AbstractConstraint>)newValue);
+        return;
+      case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY:
+          setProbability((ValueSpecification)newValue);
+        return;
+      case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PARAMETERS:
+        getParameters().clear();
+        getParameters().addAll((Collection<? extends AbstractParameter>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ModellingcorePackage.ABSTRACT_PARAMETER_SET__OWNED_CONDITIONS:
-				getOwnedConditions().clear();
-				return;
-			case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY:
-				setProbability((ValueSpecification)null);
-				return;
-			case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PARAMETERS:
-				getParameters().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case ModellingcorePackage.ABSTRACT_PARAMETER_SET__OWNED_CONDITIONS:
+        getOwnedConditions().clear();
+        return;
+      case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY:
+        setProbability((ValueSpecification)null);
+        return;
+      case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PARAMETERS:
+        getParameters().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ModellingcorePackage.ABSTRACT_PARAMETER_SET__OWNED_CONDITIONS:
-				return ownedConditions != null && !ownedConditions.isEmpty();
-			case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY:
-				return probability != null;
-			case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PARAMETERS:
-				return parameters != null && !parameters.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case ModellingcorePackage.ABSTRACT_PARAMETER_SET__OWNED_CONDITIONS:
+        return ownedConditions != null && !ownedConditions.isEmpty();
+      case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PROBABILITY:
+        return probability != null;
+      case ModellingcorePackage.ABSTRACT_PARAMETER_SET__PARAMETERS:
+        return parameters != null && !parameters.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

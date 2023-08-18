@@ -37,22 +37,22 @@ public interface FragmentEnd extends InteractionFragment {
 
 
 	/**
-	 * Returns the value of the '<em><b>Abstract Fragment</b></em>' reference.
+   * Returns the value of the '<em><b>Abstract Fragment</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Abstract Fragment</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Abstract Fragment</em>' reference.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getFragmentEnd_AbstractFragment()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='AbstractFragment.start(target, self);\r\n} or {\r\n\tAbstractFragment.finish(target, self);'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Abstract Fragment</em>' reference.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getFragmentEnd_AbstractFragment()
+   * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='AbstractFragment.start(target, self);\r\n} or {\r\n\tAbstractFragment.finish(target, self);'"
+   * @generated
+   */
 
 	AbstractFragment getAbstractFragment();
 

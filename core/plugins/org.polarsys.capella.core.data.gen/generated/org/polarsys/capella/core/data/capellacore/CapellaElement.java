@@ -54,22 +54,22 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Summary</b></em>' attribute.
+   * Returns the value of the '<em><b>Summary</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Summary</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Summary</em>' attribute.
-	 * @see #setSummary(String)
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_Summary()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Summary of the element\r\n[Capella study]' constraints='None' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Summary</em>' attribute.
+   * @see #setSummary(String)
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_Summary()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Summary of the element\r\n[Capella study]' constraints='None' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	String getSummary();
 
@@ -77,14 +77,14 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.CapellaElement#getSummary <em>Summary</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.CapellaElement#getSummary <em>Summary</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Summary</em>' attribute.
-	 * @see #getSummary()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Summary</em>' attribute.
+   * @see #getSummary()
+   * @generated
+   */
 
 	void setSummary(String value);
 
@@ -95,22 +95,22 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Description</b></em>' attribute.
+   * Returns the value of the '<em><b>Description</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Description</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Description</em>' attribute.
-	 * @see #setDescription(String)
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_Description()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Description of the Capella element\r\n[Capella study]' constraints='None' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Description</em>' attribute.
+   * @see #setDescription(String)
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_Description()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Description of the Capella element\r\n[Capella study]' constraints='None' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	String getDescription();
 
@@ -118,14 +118,14 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.CapellaElement#getDescription <em>Description</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.CapellaElement#getDescription <em>Description</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Description</em>' attribute.
-	 * @see #getDescription()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Description</em>' attribute.
+   * @see #getDescription()
+   * @generated
+   */
 
 	void setDescription(String value);
 
@@ -136,22 +136,22 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Review</b></em>' attribute.
+   * Returns the value of the '<em><b>Review</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Review</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Review</em>' attribute.
-	 * @see #setReview(String)
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_Review()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Review description on the Capella element' constraints='None' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Review</em>' attribute.
+   * @see #setReview(String)
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_Review()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Review description on the Capella element' constraints='None' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	String getReview();
 
@@ -159,14 +159,14 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.CapellaElement#getReview <em>Review</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.CapellaElement#getReview <em>Review</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Review</em>' attribute.
-	 * @see #getReview()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Review</em>' attribute.
+   * @see #getReview()
+   * @generated
+   */
 
 	void setReview(String value);
 
@@ -177,23 +177,23 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Property Values</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.AbstractPropertyValue}.
+   * Returns the value of the '<em><b>Owned Property Values</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.AbstractPropertyValue}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Property Values</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Property Values</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_OwnedPropertyValues()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the property values that are contained in this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Element::ownedComment' explanation='none' constraints='uml::Element::ownedComment elements on which AbstractPropertyValue stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Property Values</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_OwnedPropertyValues()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the property values that are contained in this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Element::ownedComment' explanation='none' constraints='uml::Element::ownedComment elements on which AbstractPropertyValue stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<AbstractPropertyValue> getOwnedPropertyValues();
 
@@ -204,23 +204,23 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.EnumerationPropertyType}.
+   * Returns the value of the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.EnumerationPropertyType}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Enumeration Property Types</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Enumeration Property Types</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_OwnedEnumerationPropertyTypes()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the enumeration property types that are contained in this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='elements on which EnumerationPropertyType stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Enumeration Property Types</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_OwnedEnumerationPropertyTypes()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the enumeration property types that are contained in this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='elements on which EnumerationPropertyType stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<EnumerationPropertyType> getOwnedEnumerationPropertyTypes();
 
@@ -231,22 +231,22 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Applied Property Values</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.AbstractPropertyValue}.
+   * Returns the value of the '<em><b>Applied Property Values</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.AbstractPropertyValue}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Applied Property Values</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Applied Property Values</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_AppliedPropertyValues()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the property values that are applied on this element (whether they are actually stored under this element or not)\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Applied Property Values</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_AppliedPropertyValues()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the property values that are applied on this element (whether they are actually stored under this element or not)\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<AbstractPropertyValue> getAppliedPropertyValues();
 
@@ -257,23 +257,23 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.PropertyValueGroup}.
+   * Returns the value of the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.PropertyValueGroup}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Property Value Groups</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Property Value Groups</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_OwnedPropertyValueGroups()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the property value groups that are stored/contained in this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Element::ownedComment' explanation='none' constraints='uml::Element::ownedComment elements on which PropertyValueGroup stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Property Value Groups</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_OwnedPropertyValueGroups()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the property value groups that are stored/contained in this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Element::ownedComment' explanation='none' constraints='uml::Element::ownedComment elements on which PropertyValueGroup stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<PropertyValueGroup> getOwnedPropertyValueGroups();
 
@@ -284,22 +284,22 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Applied Property Value Groups</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.PropertyValueGroup}.
+   * Returns the value of the '<em><b>Applied Property Value Groups</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.PropertyValueGroup}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Applied Property Value Groups</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Applied Property Value Groups</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_AppliedPropertyValueGroups()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the property value groups that apply to this element (whether or not they are actually stored under this element)\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Applied Property Value Groups</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_AppliedPropertyValueGroups()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the property value groups that apply to this element (whether or not they are actually stored under this element)\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<PropertyValueGroup> getAppliedPropertyValueGroups();
 
@@ -310,22 +310,22 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Status</b></em>' reference.
+   * Returns the value of the '<em><b>Status</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Status</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Status</em>' reference.
-	 * @see #setStatus(EnumerationPropertyLiteral)
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_Status()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the enumeration property literal that applies to this element' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Status</em>' reference.
+   * @see #setStatus(EnumerationPropertyLiteral)
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_Status()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the enumeration property literal that applies to this element' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EnumerationPropertyLiteral getStatus();
 
@@ -333,14 +333,14 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.CapellaElement#getStatus <em>Status</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.CapellaElement#getStatus <em>Status</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Status</em>' reference.
-	 * @see #getStatus()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Status</em>' reference.
+   * @see #getStatus()
+   * @generated
+   */
 
 	void setStatus(EnumerationPropertyLiteral value);
 
@@ -351,21 +351,21 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Features</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral}.
+   * Returns the value of the '<em><b>Features</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Features</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Features</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_Features()
-	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Features</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_Features()
+   * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<EnumerationPropertyLiteral> getFeatures();
 
@@ -376,23 +376,23 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Applied Requirements</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.requirement.Requirement}.
+   * Returns the value of the '<em><b>Applied Requirements</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.requirement.Requirement}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Applied Requirements</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Applied Requirements</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_AppliedRequirements()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='RequirementsTrace.sourceElement(rt, self);\r\nRequirementsTrace.targetElement(rt, target);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Applied Requirements</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_AppliedRequirements()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='RequirementsTrace.sourceElement(rt, self);\r\nRequirementsTrace.targetElement(rt, target);'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<Requirement> getAppliedRequirements();
 

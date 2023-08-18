@@ -42,26 +42,26 @@ public interface Signal extends CommunicationItem, AbstractSignal {
 
 
 	/**
-	 * Returns the value of the '<em><b>Signal Instances</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.communication.SignalInstance}.
+   * Returns the value of the '<em><b>Signal Instances</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.communication.SignalInstance}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Signal Instances</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Signal Instances</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getSignal_SignalInstances()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedAttribute' featureOwner='Signal'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='signalInstances'"
-	 *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='list of signal instances associated with this Signal\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Signal::ownedAttribute' explanation='none' constraints='uml::Signal::ownedAttribute elements on which SignalInstance stereotype or any stereotype that inherits from it is applied'"
-	 *        annotation="http://www.polarsys.org/capella/semantic"
-	 * @generated
-	 */
+   * @return the value of the '<em>Signal Instances</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getSignal_SignalInstances()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedAttribute' featureOwner='Signal'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='signalInstances'"
+   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='list of signal instances associated with this Signal\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Signal::ownedAttribute' explanation='none' constraints='uml::Signal::ownedAttribute elements on which SignalInstance stereotype or any stereotype that inherits from it is applied'"
+   *        annotation="http://www.polarsys.org/capella/semantic"
+   * @generated
+   */
 
 	EList<SignalInstance> getSignalInstances();
 

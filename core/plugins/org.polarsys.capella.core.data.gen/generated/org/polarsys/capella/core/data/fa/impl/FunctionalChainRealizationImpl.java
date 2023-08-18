@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.fa.FunctionalChainRealization;
  */
 public class FunctionalChainRealizationImpl extends AllocationImpl implements FunctionalChainRealization {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionalChainRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FaPackage.Literals.FUNCTIONAL_CHAIN_REALIZATION;
-	}
+    return FaPackage.Literals.FUNCTIONAL_CHAIN_REALIZATION;
+  }
 
 
 
