@@ -147,7 +147,8 @@ public class DynamicCreationAction extends DynamicModelElementAction {
     return generateCreateChildActions(newChildDescriptors, editingDomain, new AbstractCondition() {
       @Override
       public boolean isValid() {
-        return getValue() instanceof Structure;
+        Object value = getValue();
+        return isStructureRelated(value) && !isExtensionRelated(value);
       }
     });
   }
@@ -164,8 +165,7 @@ public class DynamicCreationAction extends DynamicModelElementAction {
       @Override
       public boolean isValid() {
         Object value = getValue();
-        return (value instanceof AbstractPropertyValue) || (value instanceof EnumerationPropertyType)
-            || (value instanceof PropertyValueGroup);
+        return isPropertyRelated(value);
       }
     });
   }
@@ -181,7 +181,8 @@ public class DynamicCreationAction extends DynamicModelElementAction {
     return generateCreateChildActions(newChildDescriptors, editingDomain, new AbstractCondition() {
       @Override
       public boolean isValid() {
-        return getValue() instanceof ElementExtension;
+        Object value = getValue();
+        return isExtensionRelated(value) && !isRelationshipButNotCMOrFCIRelated(value);
       }
     });
   }
@@ -198,14 +199,29 @@ public class DynamicCreationAction extends DynamicModelElementAction {
       @Override
       public boolean isValid() {
         Object value = getValue();
-        return (!(value instanceof Relationship) || (value instanceof CommunicationMean)
-            || (value instanceof FunctionalChainInvolvement)) && !(value instanceof Structure)
-            && !(value instanceof AbstractPropertyValue) && !(value instanceof EnumerationPropertyType)
-            && !(value instanceof PropertyValueGroup) && !(value instanceof ElementExtension);
+        return !isRelationshipButNotCMOrFCIRelated(value) && !isStructureRelated(value) && !isPropertyRelated(value)
+            && !isExtensionRelated(value);
       }
     });
   }
+  
+  private boolean isStructureRelated(Object value) {
+    return value instanceof Structure;
+  }
+  
+  private boolean isPropertyRelated(Object value) {
+    return value instanceof AbstractPropertyValue || value instanceof EnumerationPropertyType
+    || value instanceof PropertyValueGroup;
+  }
 
+  private boolean isExtensionRelated(Object value) {
+    return value instanceof ElementExtension;
+  }
+  
+  private boolean isRelationshipButNotCMOrFCIRelated(Object value) {
+    return (value instanceof Relationship)
+        && !(value instanceof CommunicationMean || value instanceof FunctionalChainInvolvement);
+  }
   /**
    * Generate create child actions.
    * 
