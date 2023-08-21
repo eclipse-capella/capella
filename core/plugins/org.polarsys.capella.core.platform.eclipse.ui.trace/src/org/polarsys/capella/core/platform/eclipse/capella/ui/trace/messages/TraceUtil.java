@@ -28,13 +28,13 @@ import org.polarsys.capella.common.ui.toolkit.ToolkitPlugin;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.Trace;
-import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.commands.AddSrcElementToTrace;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.commands.AddTgtElementToTrace;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.commands.AddTrace;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.commands.DeleteTrace;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.commands.RemoveSourceTraceElement;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.commands.RemoveTargetTraceElement;
+import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.extension.TraceExtensionManager;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.components.TraceTreeViewer.TraceType;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.SourceElementContentProvider;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.TargetElementContentProvider;
@@ -43,8 +43,8 @@ public class TraceUtil {
 
   private static boolean _isVoidTrace = false;
 
-  public static void addTraces(TraceableElement workingElement_p, TraceableElement currentElement_p, String traceType_p, TraceType traceDestinationType_p,
-      Object element_p) {
+  public static void addTraces(TraceableElement workingElement_p, TraceableElement currentElement_p, String traceType_p,
+      TraceType traceDestinationType_p, Object element_p) {
     if ((element_p == null) || !(element_p instanceof TraceableElement)) {
       if (element_p instanceof Trace) {
         Trace trace = (Trace) element_p;
@@ -66,18 +66,19 @@ public class TraceUtil {
       }
     }
   }
-  
+
   public static void removeTraces(TraceType traceDestinationType_p, TreeViewer treeViewer_p) {
     Object selectedElement = treeViewer_p.getSelection();
     if ((selectedElement instanceof IStructuredSelection) && (((IStructuredSelection) selectedElement).size() == 1)) {
       boolean isSourceElement = traceDestinationType_p.equals(TraceType.SOURCE_ELEMENT);
-      ITreeContentProvider provider =
-          isSourceElement ? (SourceElementContentProvider) treeViewer_p.getContentProvider() : (TargetElementContentProvider) treeViewer_p.getContentProvider();
+      ITreeContentProvider provider = isSourceElement ? (SourceElementContentProvider) treeViewer_p.getContentProvider()
+          : (TargetElementContentProvider) treeViewer_p.getContentProvider();
       Object elem = ((IStructuredSelection) selectedElement).getFirstElement();
 
       if (elem instanceof Trace) {
         Trace traceToDelete = (Trace) elem;
-        boolean confirmDeletion = MessageDialog.openConfirm(Display.getCurrent().getActiveShell(), Messages.getString("TraceTreeViewer.confirmation"), //$NON-NLS-1$
+        boolean confirmDeletion = MessageDialog.openConfirm(Display.getCurrent().getActiveShell(),
+            Messages.getString("TraceTreeViewer.confirmation"), //$NON-NLS-1$
             Messages.getString("TraceTreeViewer.delete_trace_question")); //$NON-NLS-1$
         if (confirmDeletion) {
           removeTrace(traceToDelete, isSourceElement);
@@ -85,8 +86,10 @@ public class TraceUtil {
         }
       } else if (elem instanceof TraceableElement) {
         TraceableElement eltToDelete = (TraceableElement) elem;
-        boolean confirmDeletion = MessageDialog.openConfirm(Display.getCurrent().getActiveShell(), Messages.getString("TraceTreeViewer.confirmation"), //$NON-NLS-1$
-            Messages.getString("TraceTreeViewer.delete_src_named_elt_question") + " " + Messages.getString("TraceTreeViewer.question_end")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        boolean confirmDeletion = MessageDialog.openConfirm(Display.getCurrent().getActiveShell(),
+            Messages.getString("TraceTreeViewer.confirmation"), //$NON-NLS-1$
+            Messages.getString("TraceTreeViewer.delete_src_named_elt_question") + " " //$NON-NLS-1$ //$NON-NLS-2$
+                + Messages.getString("TraceTreeViewer.question_end")); //$NON-NLS-1$
         if (confirmDeletion) {
           Object parent = provider.getParent(elem);
           if (parent instanceof Trace) {
@@ -104,7 +107,8 @@ public class TraceUtil {
           }
         }
       } else if (elem instanceof Class) {
-        boolean confirmDeletion = MessageDialog.openConfirm(Display.getCurrent().getActiveShell(), Messages.getString("TraceTreeViewer.confirmation"), //$NON-NLS-1$
+        boolean confirmDeletion = MessageDialog.openConfirm(Display.getCurrent().getActiveShell(),
+            Messages.getString("TraceTreeViewer.confirmation"), //$NON-NLS-1$
             Messages.getString("TraceTreeViewer.delete_traceinstance_question")); //$NON-NLS-1$
         if (confirmDeletion) {
           Object[] traces = provider.getChildren(elem);
@@ -125,16 +129,20 @@ public class TraceUtil {
   private static void removeTrace(Trace traceToDelete, boolean isSourceElementTraceType) {
     TraceableElement owningElt = (TraceableElement) traceToDelete.eContainer();
     executeCommand(owningElt, new DeleteTrace(traceToDelete));
-    boolean containsFlag =
-        isSourceElementTraceType ? owningElt.getIncomingTraces().contains(traceToDelete) : owningElt.getOutgoingTraces().contains(traceToDelete);
-    boolean emptyFlag = isSourceElementTraceType ? traceToDelete.getSourceElement() == null : traceToDelete.getTargetElement() == null;
+    boolean containsFlag = isSourceElementTraceType ? owningElt.getIncomingTraces().contains(traceToDelete)
+        : owningElt.getOutgoingTraces().contains(traceToDelete);
+    boolean emptyFlag = isSourceElementTraceType ? traceToDelete.getSourceElement() == null
+        : traceToDelete.getTargetElement() == null;
     setIsVoidTrace(containsFlag && emptyFlag);
   }
 
   /**
    * Checks whether the current NamedElement contains a trace to element
-   * @param currentElement_p the current element
-   * @param element_p the element to check
+   * 
+   * @param currentElement_p
+   *          the current element
+   * @param element_p
+   *          the element to check
    * @return true if currentElement has a trace to element
    */
   public static boolean containsTraceElement(TraceableElement currentElement_p, TraceableElement element_p) {
@@ -164,15 +172,15 @@ public class TraceUtil {
    * @param element_p
    */
   public static boolean canAddRemoveItemsToTrace(Object element_p) {
-    if ((element_p instanceof GenericTrace) || (element_p instanceof RequirementsTrace)) {
+    if ((element_p instanceof GenericTrace) || TraceExtensionManager.eINSTANCE.canAddRemoveItemsToTrace(element_p)) {
       return true;
     }
     if (element_p instanceof Class) {
       Class<?> clazz = (Class<?>) element_p;
-      if (GenericTrace.class.isAssignableFrom(clazz)) {
+      if (TraceExtensionManager.eINSTANCE.isAssignableFrom(clazz)) {
         return true;
       }
-      if (RequirementsTrace.class.isAssignableFrom(clazz)) {
+      if (GenericTrace.class.isAssignableFrom(clazz)) {
         return true;
       }
     }
@@ -193,7 +201,8 @@ public class TraceUtil {
   }
 
   /**
-   * @param _isVoidTrace_p the _isVoidTrace to set
+   * @param _isVoidTrace_p
+   *          the _isVoidTrace to set
    */
   public static void setIsVoidTrace(boolean _isVoidTrace_p) {
     TraceUtil._isVoidTrace = _isVoidTrace_p;

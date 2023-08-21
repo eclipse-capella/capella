@@ -53,10 +53,10 @@ import org.polarsys.capella.core.data.capellacommon.GenericTrace;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.Trace;
 import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.MDTrace;
+import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.extension.TraceExtensionManager;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.Messages;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.TraceNameHelper;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.TraceUtil;
@@ -108,7 +108,7 @@ public class TraceTreeViewer implements IDoubleClickListener {
   public TraceType _traceType;
   /** UI - Treeviewer */
   public TreeViewer _treeViewer;
-  
+
   public TreeViewer getClientViewer() {
     return _treeViewer;
   }
@@ -138,6 +138,7 @@ public class TraceTreeViewer implements IDoubleClickListener {
 
   /**
    * Add a listener
+   * 
    * @param listener_p
    */
   public void addListener(IDoubleClickListener listener_p) {
@@ -156,7 +157,8 @@ public class TraceTreeViewer implements IDoubleClickListener {
         // get selection
         Object selectedElement = _treeViewer.getSelection();
         Object elem = null;
-        if ((selectedElement instanceof IStructuredSelection) && (((IStructuredSelection) selectedElement).size() == 1)) {
+        if ((selectedElement instanceof IStructuredSelection)
+            && (((IStructuredSelection) selectedElement).size() == 1)) {
           elem = ((IStructuredSelection) selectedElement).getFirstElement();
         }
         if (e.detail == SWT.ARROW) {
@@ -169,7 +171,8 @@ public class TraceTreeViewer implements IDoubleClickListener {
         } else {
           boolean flag = false;
           if (elem instanceof Class) {
-            flag = GenericTrace.class.isAssignableFrom((Class<?>) elem) || RequirementsTrace.class.isAssignableFrom((Class<?>) elem);
+            flag = TraceExtensionManager.eINSTANCE.isAssignableFrom((Class<?>) elem)
+                || GenericTrace.class.isAssignableFrom((Class<?>) elem);
           }
           if ((elem instanceof Trace) || ((elem instanceof Class) && flag)) {
             String traceType = null;
@@ -234,7 +237,9 @@ public class TraceTreeViewer implements IDoubleClickListener {
 
   /**
    * <code>getControl</code> render a composite displaying src or target trace elements
-   * @param parent_p parent composite
+   * 
+   * @param parent_p
+   *          parent composite
    * @return composite
    */
   public Composite getControl(Composite parent_p) {
@@ -260,7 +265,8 @@ public class TraceTreeViewer implements IDoubleClickListener {
 
     _addItem = new ToolItem(toolBar, SWT.DROP_DOWN);
     _addItem.setToolTipText(Messages.getString("TraceTreeViewer.addTrace_tooltip")); //$NON-NLS-1$
-    _addItem.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(MDTrace.PLUGIN_ID, IImageKeys.ACTION_ADD).createImage());
+    _addItem
+        .setImage(AbstractUIPlugin.imageDescriptorFromPlugin(MDTrace.PLUGIN_ID, IImageKeys.ACTION_ADD).createImage());
     prepareMenuItems();
 
     _removeItem = new ToolItem(toolBar, SWT.PUSH);
@@ -369,6 +375,7 @@ public class TraceTreeViewer implements IDoubleClickListener {
 
   /**
    * Notify all listener of the current event
+   * 
    * @param event_p
    */
   private void notifyObservers(EventObject event_p) {
@@ -392,6 +399,7 @@ public class TraceTreeViewer implements IDoubleClickListener {
 
   /**
    * Remove a listener
+   * 
    * @param listener_p
    */
   public void removeListener(IDoubleClickListener listener_p) {
@@ -422,7 +430,8 @@ public class TraceTreeViewer implements IDoubleClickListener {
   }
 
   /**
-   * @param wizardPage_p the wizardPage to set
+   * @param wizardPage_p
+   *          the wizardPage to set
    */
   public void setWizardPage(ViewEditPage wizardPage_p) {
     _wizardPage = wizardPage_p;
@@ -442,10 +451,10 @@ public class TraceTreeViewer implements IDoubleClickListener {
 
     boolean expandViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandSingleViewerContent();
     int viewerExpandLevel = expandViewer ? AbstractTreeViewer.ALL_LEVELS : 0;
-    
-    TraceTreeSelectionDialog dlg =
-        new TraceTreeSelectionDialog(_treeViewer.getControl().getShell(), new CapellaModelLabelProvider((CapellaElement) _currentNamedElement, isNewTrace_p),
-            contentProvider, _currentNamedElement, isNewTrace_p);
+
+    TraceTreeSelectionDialog dlg = new TraceTreeSelectionDialog(_treeViewer.getControl().getShell(),
+        new CapellaModelLabelProvider((CapellaElement) _currentNamedElement, isNewTrace_p), contentProvider,
+        _currentNamedElement, isNewTrace_p);
     EObject container = root instanceof Project ? root : root.eContainer();
     dlg.setInput(container);
     dlg.setHelpAvailable(true);
@@ -460,7 +469,8 @@ public class TraceTreeViewer implements IDoubleClickListener {
           // get selection
           Object selectedElement = _treeViewer.getSelection();
           Object elem = null;
-          if ((selectedElement instanceof IStructuredSelection) && (((IStructuredSelection) selectedElement).size() == 1)) {
+          if ((selectedElement instanceof IStructuredSelection)
+              && (((IStructuredSelection) selectedElement).size() == 1)) {
             elem = ((IStructuredSelection) selectedElement).getFirstElement();
           }
           // perform add trace

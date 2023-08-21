@@ -13,6 +13,7 @@
        Thales - initial API and implementation
 -->
 <plugin>
+   <extension-point id="org.polarsys.capella.core.platform.eclipse.capella.ui.trace.extension" name="traceExtension" schema="schema/org.polarsys.capella.core.platform.eclipse.capella.ui.trace.extension.exsd"/>
     <extension
       point="org.eclipse.ui.commands">
 
