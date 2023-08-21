@@ -270,15 +270,6 @@ public interface InteractionPackage extends EPackage {
 	int SEQUENCE_MESSAGE__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int SEQUENCE_MESSAGE__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Kind</b></em>' attribute.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -586,15 +577,6 @@ public interface InteractionPackage extends EPackage {
 	int SCENARIO__FEATURES = CapellacorePackage.NAMESPACE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int SCENARIO__APPLIED_REQUIREMENTS = CapellacorePackage.NAMESPACE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -611,15 +593,6 @@ public interface InteractionPackage extends EPackage {
    * @ordered
    */
 	int SCENARIO__CONTAINED_GENERIC_TRACES = CapellacorePackage.NAMESPACE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int SCENARIO__CONTAINED_REQUIREMENTS_TRACES = CapellacorePackage.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -1019,15 +992,6 @@ public interface InteractionPackage extends EPackage {
 	int INTERACTION_FRAGMENT__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int INTERACTION_FRAGMENT__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Covered Instance Roles</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1243,15 +1207,6 @@ public interface InteractionPackage extends EPackage {
    * @ordered
    */
 	int ABSTRACT_END__FEATURES = INTERACTION_FRAGMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_END__APPLIED_REQUIREMENTS = INTERACTION_FRAGMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Covered Instance Roles</b></em>' reference list.
@@ -1487,15 +1442,6 @@ public interface InteractionPackage extends EPackage {
    * @ordered
    */
 	int MESSAGE_END__FEATURES = ABSTRACT_END__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int MESSAGE_END__APPLIED_REQUIREMENTS = ABSTRACT_END__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Covered Instance Roles</b></em>' reference list.
@@ -1742,15 +1688,6 @@ public interface InteractionPackage extends EPackage {
 	int TIME_LAPSE__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int TIME_LAPSE__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Start</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1975,15 +1912,6 @@ public interface InteractionPackage extends EPackage {
    * @ordered
    */
 	int EXECUTION__FEATURES = TIME_LAPSE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int EXECUTION__APPLIED_REQUIREMENTS = TIME_LAPSE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Start</b></em>' reference.
@@ -2219,15 +2147,6 @@ public interface InteractionPackage extends EPackage {
    * @ordered
    */
 	int EXECUTION_END__FEATURES = ABSTRACT_END__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int EXECUTION_END__APPLIED_REQUIREMENTS = ABSTRACT_END__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Covered Instance Roles</b></em>' reference list.
@@ -2474,15 +2393,6 @@ public interface InteractionPackage extends EPackage {
 	int EVENT__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int EVENT__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2698,15 +2608,6 @@ public interface InteractionPackage extends EPackage {
    * @ordered
    */
 	int CREATION_EVENT__FEATURES = EVENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CREATION_EVENT__APPLIED_REQUIREMENTS = EVENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -2926,15 +2827,6 @@ public interface InteractionPackage extends EPackage {
 	int DESTRUCTION_EVENT__FEATURES = EVENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DESTRUCTION_EVENT__APPLIED_REQUIREMENTS = EVENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3152,15 +3044,6 @@ public interface InteractionPackage extends EPackage {
 	int EXECUTION_EVENT__FEATURES = EVENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int EXECUTION_EVENT__APPLIED_REQUIREMENTS = EVENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3376,15 +3259,6 @@ public interface InteractionPackage extends EPackage {
    * @ordered
    */
 	int INSTANCE_ROLE__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int INSTANCE_ROLE__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Abstract Ends</b></em>' reference list.
@@ -3613,15 +3487,6 @@ public interface InteractionPackage extends EPackage {
 	int EVENT_RECEIPT_OPERATION__FEATURES = EVENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int EVENT_RECEIPT_OPERATION__APPLIED_REQUIREMENTS = EVENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3846,15 +3711,6 @@ public interface InteractionPackage extends EPackage {
    * @ordered
    */
 	int EVENT_SENT_OPERATION__FEATURES = EVENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int EVENT_SENT_OPERATION__APPLIED_REQUIREMENTS = EVENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -4083,15 +3939,6 @@ public interface InteractionPackage extends EPackage {
 	int MERGE_LINK__FEATURES = CapellacorePackage.TRACE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int MERGE_LINK__APPLIED_REQUIREMENTS = CapellacorePackage.TRACE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4318,15 +4165,6 @@ public interface InteractionPackage extends EPackage {
 	int REFINEMENT_LINK__FEATURES = CapellacorePackage.TRACE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int REFINEMENT_LINK__APPLIED_REQUIREMENTS = CapellacorePackage.TRACE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4551,15 +4389,6 @@ public interface InteractionPackage extends EPackage {
    * @ordered
    */
 	int ABSTRACT_CAPABILITY_REALIZATION__FEATURES = CapellacorePackage.ALLOCATION__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_CAPABILITY_REALIZATION__APPLIED_REQUIREMENTS = CapellacorePackage.ALLOCATION__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
@@ -4806,15 +4635,6 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_CAPABILITY__FEATURES = CapellacorePackage.STRUCTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_CAPABILITY__APPLIED_REQUIREMENTS = CapellacorePackage.STRUCTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4831,15 +4651,6 @@ public interface InteractionPackage extends EPackage {
    * @ordered
    */
 	int ABSTRACT_CAPABILITY__CONTAINED_GENERIC_TRACES = CapellacorePackage.STRUCTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_CAPABILITY__CONTAINED_REQUIREMENTS_TRACES = CapellacorePackage.STRUCTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -5302,15 +5113,6 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_CAPABILITY_EXTEND__FEATURES = CapellacorePackage.RELATIONSHIP__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_CAPABILITY_EXTEND__APPLIED_REQUIREMENTS = CapellacorePackage.RELATIONSHIP__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Extended</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5544,15 +5346,6 @@ public interface InteractionPackage extends EPackage {
    * @ordered
    */
 	int ABSTRACT_CAPABILITY_EXTENSION_POINT__FEATURES = CapellacorePackage.NAMED_RELATIONSHIP__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_CAPABILITY_EXTENSION_POINT__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_RELATIONSHIP__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -5799,15 +5592,6 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_CAPABILITY_GENERALIZATION__FEATURES = CapellacorePackage.RELATIONSHIP__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_CAPABILITY_GENERALIZATION__APPLIED_REQUIREMENTS = CapellacorePackage.RELATIONSHIP__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Super</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6034,15 +5818,6 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_CAPABILITY_INCLUDE__FEATURES = CapellacorePackage.RELATIONSHIP__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_CAPABILITY_INCLUDE__APPLIED_REQUIREMENTS = CapellacorePackage.RELATIONSHIP__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Included</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6267,15 +6042,6 @@ public interface InteractionPackage extends EPackage {
    * @ordered
    */
 	int INTERACTION_STATE__FEATURES = INTERACTION_FRAGMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int INTERACTION_STATE__APPLIED_REQUIREMENTS = INTERACTION_FRAGMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Covered Instance Roles</b></em>' reference list.
@@ -6526,15 +6292,6 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_FRAGMENT__FEATURES = TIME_LAPSE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_FRAGMENT__APPLIED_REQUIREMENTS = TIME_LAPSE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Start</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6768,15 +6525,6 @@ public interface InteractionPackage extends EPackage {
    * @ordered
    */
 	int INTERACTION_USE__FEATURES = ABSTRACT_FRAGMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int INTERACTION_USE__APPLIED_REQUIREMENTS = ABSTRACT_FRAGMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Start</b></em>' reference.
@@ -7030,15 +6778,6 @@ public interface InteractionPackage extends EPackage {
    * @ordered
    */
 	int COMBINED_FRAGMENT__FEATURES = ABSTRACT_FRAGMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int COMBINED_FRAGMENT__APPLIED_REQUIREMENTS = ABSTRACT_FRAGMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Start</b></em>' reference.
@@ -7303,15 +7042,6 @@ public interface InteractionPackage extends EPackage {
 	int GATE__FEATURES = MESSAGE_END__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int GATE__APPLIED_REQUIREMENTS = MESSAGE_END__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Covered Instance Roles</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7556,15 +7286,6 @@ public interface InteractionPackage extends EPackage {
 	int INTERACTION_OPERAND__FEATURES = INTERACTION_FRAGMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int INTERACTION_OPERAND__APPLIED_REQUIREMENTS = INTERACTION_FRAGMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Covered Instance Roles</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7800,15 +7521,6 @@ public interface InteractionPackage extends EPackage {
 	int FRAGMENT_END__FEATURES = INTERACTION_FRAGMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int FRAGMENT_END__APPLIED_REQUIREMENTS = INTERACTION_FRAGMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Covered Instance Roles</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8033,15 +7745,6 @@ public interface InteractionPackage extends EPackage {
    * @ordered
    */
 	int FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__FEATURES = CapellacorePackage.INVOLVEMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__APPLIED_REQUIREMENTS = CapellacorePackage.INVOLVEMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Involver</b></em>' reference.
@@ -8288,15 +7991,6 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_FUNCTION_ABSTRACT_CAPABILITY_INVOLVEMENT__FEATURES = CapellacorePackage.INVOLVEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_FUNCTION_ABSTRACT_CAPABILITY_INVOLVEMENT__APPLIED_REQUIREMENTS = CapellacorePackage.INVOLVEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Involver</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8539,15 +8233,6 @@ public interface InteractionPackage extends EPackage {
    * @ordered
    */
 	int SCENARIO_REALIZATION__FEATURES = CapellacorePackage.ALLOCATION__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int SCENARIO_REALIZATION__APPLIED_REQUIREMENTS = CapellacorePackage.ALLOCATION__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
@@ -8794,15 +8479,6 @@ public interface InteractionPackage extends EPackage {
 	int STATE_FRAGMENT__FEATURES = TIME_LAPSE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int STATE_FRAGMENT__APPLIED_REQUIREMENTS = TIME_LAPSE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Start</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9047,15 +8723,6 @@ public interface InteractionPackage extends EPackage {
 	int ARM_TIMER_EVENT__FEATURES = EVENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ARM_TIMER_EVENT__APPLIED_REQUIREMENTS = EVENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9273,15 +8940,6 @@ public interface InteractionPackage extends EPackage {
 	int CANCEL_TIMER_EVENT__FEATURES = EVENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CANCEL_TIMER_EVENT__APPLIED_REQUIREMENTS = EVENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9497,15 +9155,6 @@ public interface InteractionPackage extends EPackage {
    * @ordered
    */
 	int CONSTRAINT_DURATION__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CONSTRAINT_DURATION__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -9732,15 +9381,6 @@ public interface InteractionPackage extends EPackage {
    * @ordered
    */
 	int SEQUENCE_MESSAGE_VALUATION__FEATURES = CapellacorePackage.CAPELLA_ELEMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int SEQUENCE_MESSAGE_VALUATION__APPLIED_REQUIREMENTS = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Exchange Item Element</b></em>' reference.

@@ -16,7 +16,6 @@ import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
 import org.polarsys.capella.core.data.information.DataPkg;
-import org.polarsys.capella.core.data.requirement.RequirementsPkg;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +26,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsPkg;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.cs.BlockArchitecture#getOwnedRequirementPkgs <em>Owned Requirement Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.BlockArchitecture#getOwnedAbstractCapabilityPkg <em>Owned Abstract Capability Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.BlockArchitecture#getOwnedInterfacePkg <em>Owned Interface Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.BlockArchitecture#getOwnedDataPkg <em>Owned Data Pkg</em>}</li>
@@ -47,36 +45,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsPkg;
  * @generated
  */
 public interface BlockArchitecture extends AbstractFunctionalArchitecture {
-
-
-
-
-
-	/**
-   * Returns the value of the '<em><b>Owned Requirement Pkgs</b></em>' containment reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.requirement.RequirementsPkg}.
-
-   * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Owned Requirement Pkgs</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Owned Requirement Pkgs</em>' containment reference list.
-   * @see org.polarsys.capella.core.data.cs.CsPackage#getBlockArchitecture_OwnedRequirementPkgs()
-   * @model containment="true" resolveProxies="true"
-   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedRequirementPkgs'"
-   *        annotation="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to packages that contain requirements\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which RequirementsPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-   *        annotation="http://www.polarsys.org/capella/semantic"
-   * @generated
-   */
-
-	EList<RequirementsPkg> getOwnedRequirementPkgs();
-
-
 
 
 

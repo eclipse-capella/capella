@@ -85,7 +85,6 @@ import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
 import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
-import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 
 /**
  * <!-- begin-user-doc -->
@@ -99,7 +98,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getAbstractTypedElements <em>Abstract Typed Elements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getContainedRequirementsTraces <em>Contained Requirements Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getNamingRules <em>Naming Rules</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getTypedElements <em>Typed Elements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getOwnedFunctionalAllocation <em>Owned Functional Allocation</em>}</li>
@@ -692,49 +690,6 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
     @SuppressWarnings("unchecked")
     Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
     return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException exception) {
-    	exception.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-
-	public EList<RequirementsTrace> getContainedRequirementsTraces() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
-    return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
     } catch (ClassCastException exception) {
     	exception.printStackTrace();
     	return org.eclipse.emf.common.util.ECollections.emptyEList();
@@ -2901,8 +2856,6 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
         return getOwnedTraces();
       case EpbsPackage.CONFIGURATION_ITEM__CONTAINED_GENERIC_TRACES:
         return getContainedGenericTraces();
-      case EpbsPackage.CONFIGURATION_ITEM__CONTAINED_REQUIREMENTS_TRACES:
-        return getContainedRequirementsTraces();
       case EpbsPackage.CONFIGURATION_ITEM__NAMING_RULES:
         return getNamingRules();
       case EpbsPackage.CONFIGURATION_ITEM__TYPED_ELEMENTS:
@@ -3277,8 +3230,6 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
         return ownedTraces != null && !ownedTraces.isEmpty();
       case EpbsPackage.CONFIGURATION_ITEM__CONTAINED_GENERIC_TRACES:
         return !getContainedGenericTraces().isEmpty();
-      case EpbsPackage.CONFIGURATION_ITEM__CONTAINED_REQUIREMENTS_TRACES:
-        return !getContainedRequirementsTraces().isEmpty();
       case EpbsPackage.CONFIGURATION_ITEM__NAMING_RULES:
         return namingRules != null && !namingRules.isEmpty();
       case EpbsPackage.CONFIGURATION_ITEM__TYPED_ELEMENTS:
@@ -3434,7 +3385,6 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
       switch (derivedFeatureID) {
         case EpbsPackage.CONFIGURATION_ITEM__OWNED_TRACES: return CapellacorePackage.NAMESPACE__OWNED_TRACES;
         case EpbsPackage.CONFIGURATION_ITEM__CONTAINED_GENERIC_TRACES: return CapellacorePackage.NAMESPACE__CONTAINED_GENERIC_TRACES;
-        case EpbsPackage.CONFIGURATION_ITEM__CONTAINED_REQUIREMENTS_TRACES: return CapellacorePackage.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES;
         case EpbsPackage.CONFIGURATION_ITEM__NAMING_RULES: return CapellacorePackage.NAMESPACE__NAMING_RULES;
         default: return -1;
       }
@@ -3569,7 +3519,6 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
       switch (baseFeatureID) {
         case CapellacorePackage.NAMESPACE__OWNED_TRACES: return EpbsPackage.CONFIGURATION_ITEM__OWNED_TRACES;
         case CapellacorePackage.NAMESPACE__CONTAINED_GENERIC_TRACES: return EpbsPackage.CONFIGURATION_ITEM__CONTAINED_GENERIC_TRACES;
-        case CapellacorePackage.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES: return EpbsPackage.CONFIGURATION_ITEM__CONTAINED_REQUIREMENTS_TRACES;
         case CapellacorePackage.NAMESPACE__NAMING_RULES: return EpbsPackage.CONFIGURATION_ITEM__NAMING_RULES;
         default: return -1;
       }

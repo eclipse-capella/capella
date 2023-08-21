@@ -272,15 +272,6 @@ public interface CsPackage extends EPackage {
 	int BLOCK_ARCHITECTURE_PKG__FEATURES = CapellacorePackage.MODELLING_ARCHITECTURE_PKG__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int BLOCK_ARCHITECTURE_PKG__APPLIED_REQUIREMENTS = CapellacorePackage.MODELLING_ARCHITECTURE_PKG__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -297,15 +288,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int BLOCK_ARCHITECTURE_PKG__CONTAINED_GENERIC_TRACES = CapellacorePackage.MODELLING_ARCHITECTURE_PKG__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int BLOCK_ARCHITECTURE_PKG__CONTAINED_REQUIREMENTS_TRACES = CapellacorePackage.MODELLING_ARCHITECTURE_PKG__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -534,15 +516,6 @@ public interface CsPackage extends EPackage {
 	int BLOCK_ARCHITECTURE__FEATURES = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int BLOCK_ARCHITECTURE__APPLIED_REQUIREMENTS = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -559,15 +532,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int BLOCK_ARCHITECTURE__CONTAINED_GENERIC_TRACES = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int BLOCK_ARCHITECTURE__CONTAINED_REQUIREMENTS_TRACES = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -642,22 +606,13 @@ public interface CsPackage extends EPackage {
 	int BLOCK_ARCHITECTURE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS;
 
 	/**
-   * The feature id for the '<em><b>Owned Requirement Pkgs</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int BLOCK_ARCHITECTURE__OWNED_REQUIREMENT_PKGS = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT + 0;
-
-	/**
    * The feature id for the '<em><b>Owned Abstract Capability Pkg</b></em>' containment reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT + 1;
+	int BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT + 0;
 
 	/**
    * The feature id for the '<em><b>Owned Interface Pkg</b></em>' containment reference.
@@ -666,7 +621,7 @@ public interface CsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT + 2;
+	int BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT + 1;
 
 	/**
    * The feature id for the '<em><b>Owned Data Pkg</b></em>' containment reference.
@@ -675,7 +630,7 @@ public interface CsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int BLOCK_ARCHITECTURE__OWNED_DATA_PKG = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT + 3;
+	int BLOCK_ARCHITECTURE__OWNED_DATA_PKG = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT + 2;
 
 	/**
    * The feature id for the '<em><b>Provisioned Architecture Allocations</b></em>' reference list.
@@ -684,7 +639,7 @@ public interface CsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int BLOCK_ARCHITECTURE__PROVISIONED_ARCHITECTURE_ALLOCATIONS = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT + 4;
+	int BLOCK_ARCHITECTURE__PROVISIONED_ARCHITECTURE_ALLOCATIONS = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT + 3;
 
 	/**
    * The feature id for the '<em><b>Provisioning Architecture Allocations</b></em>' reference list.
@@ -693,7 +648,7 @@ public interface CsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int BLOCK_ARCHITECTURE__PROVISIONING_ARCHITECTURE_ALLOCATIONS = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT + 5;
+	int BLOCK_ARCHITECTURE__PROVISIONING_ARCHITECTURE_ALLOCATIONS = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT + 4;
 
 	/**
    * The feature id for the '<em><b>Allocated Architectures</b></em>' reference list.
@@ -702,7 +657,7 @@ public interface CsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int BLOCK_ARCHITECTURE__ALLOCATED_ARCHITECTURES = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT + 6;
+	int BLOCK_ARCHITECTURE__ALLOCATED_ARCHITECTURES = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT + 5;
 
 	/**
    * The feature id for the '<em><b>Allocating Architectures</b></em>' reference list.
@@ -711,7 +666,7 @@ public interface CsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int BLOCK_ARCHITECTURE__ALLOCATING_ARCHITECTURES = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT + 7;
+	int BLOCK_ARCHITECTURE__ALLOCATING_ARCHITECTURES = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT + 6;
 
 	/**
    * The feature id for the '<em><b>System</b></em>' reference.
@@ -720,7 +675,7 @@ public interface CsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int BLOCK_ARCHITECTURE__SYSTEM = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT + 8;
+	int BLOCK_ARCHITECTURE__SYSTEM = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT + 7;
 
 	/**
    * The number of structural features of the '<em>Block Architecture</em>' class.
@@ -729,7 +684,7 @@ public interface CsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int BLOCK_ARCHITECTURE_FEATURE_COUNT = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT + 9;
+	int BLOCK_ARCHITECTURE_FEATURE_COUNT = FaPackage.ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT + 8;
 
 	/**
    * The meta object id for the '{@link org.polarsys.capella.core.data.cs.impl.BlockImpl <em>Block</em>}' class.
@@ -940,15 +895,6 @@ public interface CsPackage extends EPackage {
 	int BLOCK__FEATURES = CapellacorePackage.MODELLING_BLOCK__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int BLOCK__APPLIED_REQUIREMENTS = CapellacorePackage.MODELLING_BLOCK__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -965,15 +911,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int BLOCK__CONTAINED_GENERIC_TRACES = CapellacorePackage.MODELLING_BLOCK__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int BLOCK__CONTAINED_REQUIREMENTS_TRACES = CapellacorePackage.MODELLING_BLOCK__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -1301,15 +1238,6 @@ public interface CsPackage extends EPackage {
 	int COMPONENT_ARCHITECTURE__FEATURES = BLOCK_ARCHITECTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int COMPONENT_ARCHITECTURE__APPLIED_REQUIREMENTS = BLOCK_ARCHITECTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1326,15 +1254,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int COMPONENT_ARCHITECTURE__CONTAINED_GENERIC_TRACES = BLOCK_ARCHITECTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int COMPONENT_ARCHITECTURE__CONTAINED_REQUIREMENTS_TRACES = BLOCK_ARCHITECTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -1407,15 +1326,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int COMPONENT_ARCHITECTURE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS = BLOCK_ARCHITECTURE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS;
-
-	/**
-   * The feature id for the '<em><b>Owned Requirement Pkgs</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int COMPONENT_ARCHITECTURE__OWNED_REQUIREMENT_PKGS = BLOCK_ARCHITECTURE__OWNED_REQUIREMENT_PKGS;
 
 	/**
    * The feature id for the '<em><b>Owned Abstract Capability Pkg</b></em>' containment reference.
@@ -1707,15 +1617,6 @@ public interface CsPackage extends EPackage {
 	int COMPONENT__FEATURES = BLOCK__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int COMPONENT__APPLIED_REQUIREMENTS = BLOCK__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1732,15 +1633,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int COMPONENT__CONTAINED_GENERIC_TRACES = BLOCK__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int COMPONENT__CONTAINED_REQUIREMENTS_TRACES = BLOCK__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -2446,15 +2338,6 @@ public interface CsPackage extends EPackage {
 	int PART__FEATURES = InformationPackage.ABSTRACT_INSTANCE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PART__APPLIED_REQUIREMENTS = InformationPackage.ABSTRACT_INSTANCE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2987,15 +2870,6 @@ public interface CsPackage extends EPackage {
 	int ARCHITECTURE_ALLOCATION__FEATURES = CapellacorePackage.ALLOCATION__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ARCHITECTURE_ALLOCATION__APPLIED_REQUIREMENTS = CapellacorePackage.ALLOCATION__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3238,15 +3112,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int COMPONENT_REALIZATION__FEATURES = CapellacorePackage.ALLOCATION__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int COMPONENT_REALIZATION__APPLIED_REQUIREMENTS = CapellacorePackage.ALLOCATION__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
@@ -3493,15 +3358,6 @@ public interface CsPackage extends EPackage {
 	int INTERFACE_PKG__FEATURES = CommunicationPackage.MESSAGE_REFERENCE_PKG__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int INTERFACE_PKG__APPLIED_REQUIREMENTS = CommunicationPackage.MESSAGE_REFERENCE_PKG__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3518,15 +3374,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int INTERFACE_PKG__CONTAINED_GENERIC_TRACES = CommunicationPackage.MESSAGE_REFERENCE_PKG__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int INTERFACE_PKG__CONTAINED_REQUIREMENTS_TRACES = CommunicationPackage.MESSAGE_REFERENCE_PKG__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -3800,15 +3647,6 @@ public interface CsPackage extends EPackage {
 	int INTERFACE__FEATURES = CapellacorePackage.GENERAL_CLASS__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int INTERFACE__APPLIED_REQUIREMENTS = CapellacorePackage.GENERAL_CLASS__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3825,15 +3663,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int INTERFACE__CONTAINED_GENERIC_TRACES = CapellacorePackage.GENERAL_CLASS__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int INTERFACE__CONTAINED_REQUIREMENTS_TRACES = CapellacorePackage.GENERAL_CLASS__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -4368,15 +4197,6 @@ public interface CsPackage extends EPackage {
 	int INTERFACE_IMPLEMENTATION__FEATURES = CapellacorePackage.RELATIONSHIP__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int INTERFACE_IMPLEMENTATION__APPLIED_REQUIREMENTS = CapellacorePackage.RELATIONSHIP__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Interface Implementor</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4601,15 +4421,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int INTERFACE_USE__FEATURES = CapellacorePackage.RELATIONSHIP__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int INTERFACE_USE__APPLIED_REQUIREMENTS = CapellacorePackage.RELATIONSHIP__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Interface User</b></em>' reference.
@@ -4838,15 +4649,6 @@ public interface CsPackage extends EPackage {
 	int PROVIDED_INTERFACE_LINK__FEATURES = CapellacorePackage.RELATIONSHIP__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PROVIDED_INTERFACE_LINK__APPLIED_REQUIREMENTS = CapellacorePackage.RELATIONSHIP__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Interface</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5064,15 +4866,6 @@ public interface CsPackage extends EPackage {
 	int REQUIRED_INTERFACE_LINK__FEATURES = CapellacorePackage.RELATIONSHIP__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int REQUIRED_INTERFACE_LINK__APPLIED_REQUIREMENTS = CapellacorePackage.RELATIONSHIP__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Interface</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5288,15 +5081,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int INTERFACE_ALLOCATION__FEATURES = CapellacorePackage.ALLOCATION__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int INTERFACE_ALLOCATION__APPLIED_REQUIREMENTS = CapellacorePackage.ALLOCATION__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
@@ -5534,15 +5318,6 @@ public interface CsPackage extends EPackage {
 	int INTERFACE_ALLOCATOR__FEATURES = CapellacorePackage.CAPELLA_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int INTERFACE_ALLOCATOR__APPLIED_REQUIREMENTS = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Interface Allocations</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5776,15 +5551,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int EXCHANGE_ITEM_ALLOCATION__FEATURES = CapellacorePackage.RELATIONSHIP__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int EXCHANGE_ITEM_ALLOCATION__APPLIED_REQUIREMENTS = CapellacorePackage.RELATIONSHIP__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -6058,15 +5824,6 @@ public interface CsPackage extends EPackage {
 	int DEPLOYABLE_ELEMENT__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DEPLOYABLE_ELEMENT__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Deploying Links</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6282,15 +6039,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int DEPLOYMENT_TARGET__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DEPLOYMENT_TARGET__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Deployment Links</b></em>' reference list.
@@ -6510,15 +6258,6 @@ public interface CsPackage extends EPackage {
 	int ABSTRACT_DEPLOYMENT_LINK__FEATURES = CapellacorePackage.RELATIONSHIP__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_DEPLOYMENT_LINK__APPLIED_REQUIREMENTS = CapellacorePackage.RELATIONSHIP__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Deployed Element</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6736,15 +6475,6 @@ public interface CsPackage extends EPackage {
 	int ABSTRACT_PATH_INVOLVED_ELEMENT__FEATURES = CapellacorePackage.INVOLVED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_PATH_INVOLVED_ELEMENT__APPLIED_REQUIREMENTS = CapellacorePackage.INVOLVED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Involving Involvements</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6953,15 +6683,6 @@ public interface CsPackage extends EPackage {
 	int ABSTRACT_PHYSICAL_ARTIFACT__FEATURES = CapellacorePackage.CAPELLA_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_PHYSICAL_ARTIFACT__APPLIED_REQUIREMENTS = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Allocator Configuration Items</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7168,15 +6889,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int ABSTRACT_PHYSICAL_LINK_END__FEATURES = CapellacorePackage.CAPELLA_ELEMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_PHYSICAL_LINK_END__APPLIED_REQUIREMENTS = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Involved Links</b></em>' reference list.
@@ -7394,15 +7106,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int ABSTRACT_PHYSICAL_PATH_LINK__FEATURES = FaPackage.COMPONENT_EXCHANGE_ALLOCATOR__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_PHYSICAL_PATH_LINK__APPLIED_REQUIREMENTS = FaPackage.COMPONENT_EXCHANGE_ALLOCATOR__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Owned Component Exchange Allocations</b></em>' containment reference list.
@@ -7629,15 +7332,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int PHYSICAL_LINK__FEATURES = ABSTRACT_PHYSICAL_PATH_LINK__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PHYSICAL_LINK__APPLIED_REQUIREMENTS = ABSTRACT_PHYSICAL_PATH_LINK__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Owned Component Exchange Allocations</b></em>' containment reference list.
@@ -7965,15 +7659,6 @@ public interface CsPackage extends EPackage {
 	int PHYSICAL_LINK_CATEGORY__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PHYSICAL_LINK_CATEGORY__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Links</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8180,15 +7865,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int PHYSICAL_LINK_END__FEATURES = ABSTRACT_PHYSICAL_LINK_END__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PHYSICAL_LINK_END__APPLIED_REQUIREMENTS = ABSTRACT_PHYSICAL_LINK_END__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Involved Links</b></em>' reference list.
@@ -8426,15 +8102,6 @@ public interface CsPackage extends EPackage {
 	int PHYSICAL_LINK_REALIZATION__FEATURES = CapellacorePackage.ALLOCATION__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PHYSICAL_LINK_REALIZATION__APPLIED_REQUIREMENTS = CapellacorePackage.ALLOCATION__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8659,15 +8326,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int PHYSICAL_PATH__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PHYSICAL_PATH__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Owned Component Exchange Allocations</b></em>' containment reference list.
@@ -8970,15 +8628,6 @@ public interface CsPackage extends EPackage {
 	int PHYSICAL_PATH_INVOLVEMENT__FEATURES = CapellacorePackage.INVOLVEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PHYSICAL_PATH_INVOLVEMENT__APPLIED_REQUIREMENTS = CapellacorePackage.INVOLVEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Involver</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9239,15 +8888,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int PHYSICAL_PATH_REFERENCE__FEATURES = PHYSICAL_PATH_INVOLVEMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PHYSICAL_PATH_REFERENCE__APPLIED_REQUIREMENTS = PHYSICAL_PATH_INVOLVEMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Involver</b></em>' reference.
@@ -9521,15 +9161,6 @@ public interface CsPackage extends EPackage {
 	int PHYSICAL_PATH_REALIZATION__FEATURES = CapellacorePackage.ALLOCATION__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PHYSICAL_PATH_REALIZATION__APPLIED_REQUIREMENTS = CapellacorePackage.ALLOCATION__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9754,15 +9385,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int PHYSICAL_PORT__FEATURES = InformationPackage.PORT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PHYSICAL_PORT__APPLIED_REQUIREMENTS = InformationPackage.PORT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Incoming Port Realizations</b></em>' reference list.
@@ -10351,15 +9973,6 @@ public interface CsPackage extends EPackage {
 	int PHYSICAL_PORT_REALIZATION__FEATURES = CapellacorePackage.ALLOCATION__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PHYSICAL_PORT_REALIZATION__APPLIED_REQUIREMENTS = CapellacorePackage.ALLOCATION__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10587,15 +10200,6 @@ public interface CsPackage extends EPackage {
 	int COMPONENT_PKG__FEATURES = CapellacorePackage.STRUCTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int COMPONENT_PKG__APPLIED_REQUIREMENTS = CapellacorePackage.STRUCTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10612,15 +10216,6 @@ public interface CsPackage extends EPackage {
    * @ordered
    */
 	int COMPONENT_PKG__CONTAINED_GENERIC_TRACES = CapellacorePackage.STRUCTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int COMPONENT_PKG__CONTAINED_REQUIREMENTS_TRACES = CapellacorePackage.STRUCTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -10750,17 +10345,6 @@ public interface CsPackage extends EPackage {
    * @generated
    */
 	EClass getBlockArchitecture();
-
-	/**
-   * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.cs.BlockArchitecture#getOwnedRequirementPkgs <em>Owned Requirement Pkgs</em>}'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Owned Requirement Pkgs</em>'.
-   * @see org.polarsys.capella.core.data.cs.BlockArchitecture#getOwnedRequirementPkgs()
-   * @see #getBlockArchitecture()
-   * @generated
-   */
-	EReference getBlockArchitecture_OwnedRequirementPkgs();
 
 	/**
    * Returns the meta object for the containment reference '{@link org.polarsys.capella.core.data.cs.BlockArchitecture#getOwnedAbstractCapabilityPkg <em>Owned Abstract Capability Pkg</em>}'.
@@ -12466,14 +12050,6 @@ public interface CsPackage extends EPackage {
      * @generated
      */
 		EClass BLOCK_ARCHITECTURE = eINSTANCE.getBlockArchitecture();
-
-		/**
-     * The meta object literal for the '<em><b>Owned Requirement Pkgs</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EReference BLOCK_ARCHITECTURE__OWNED_REQUIREMENT_PKGS = eINSTANCE.getBlockArchitecture_OwnedRequirementPkgs();
 
 		/**
      * The meta object literal for the '<em><b>Owned Abstract Capability Pkg</b></em>' containment reference feature.

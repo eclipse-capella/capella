@@ -260,15 +260,6 @@ public interface DeploymentPackage extends EPackage {
 	int ABSTRACT_PHYSICAL_INSTANCE__FEATURES = CapellacorePackage.CAPELLA_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_PHYSICAL_INSTANCE__APPLIED_REQUIREMENTS = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The number of structural features of the '<em>Abstract Physical Instance</em>' class.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -466,15 +457,6 @@ public interface DeploymentPackage extends EPackage {
    * @ordered
    */
 	int COMPONENT_INSTANCE__FEATURES = ABSTRACT_PHYSICAL_INSTANCE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int COMPONENT_INSTANCE__APPLIED_REQUIREMENTS = ABSTRACT_PHYSICAL_INSTANCE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -739,15 +721,6 @@ public interface DeploymentPackage extends EPackage {
 	int CONNECTION_INSTANCE__FEATURES = ABSTRACT_PHYSICAL_INSTANCE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CONNECTION_INSTANCE__APPLIED_REQUIREMENTS = ABSTRACT_PHYSICAL_INSTANCE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Connection Ends</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -974,15 +947,6 @@ public interface DeploymentPackage extends EPackage {
 	int DEPLOYMENT_ASPECT__FEATURES = CapellacorePackage.STRUCTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DEPLOYMENT_ASPECT__APPLIED_REQUIREMENTS = CapellacorePackage.STRUCTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -999,15 +963,6 @@ public interface DeploymentPackage extends EPackage {
    * @ordered
    */
 	int DEPLOYMENT_ASPECT__CONTAINED_GENERIC_TRACES = CapellacorePackage.STRUCTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DEPLOYMENT_ASPECT__CONTAINED_REQUIREMENTS_TRACES = CapellacorePackage.STRUCTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -1254,15 +1209,6 @@ public interface DeploymentPackage extends EPackage {
 	int DEPLOYMENT_CONFIGURATION__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DEPLOYMENT_CONFIGURATION__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Deployment Links</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1487,15 +1433,6 @@ public interface DeploymentPackage extends EPackage {
    * @ordered
    */
 	int INSTANCE_DEPLOYMENT_LINK__FEATURES = CsPackage.ABSTRACT_DEPLOYMENT_LINK__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int INSTANCE_DEPLOYMENT_LINK__APPLIED_REQUIREMENTS = CsPackage.ABSTRACT_DEPLOYMENT_LINK__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Deployed Element</b></em>' reference.
@@ -1724,15 +1661,6 @@ public interface DeploymentPackage extends EPackage {
 	int PART_DEPLOYMENT_LINK__FEATURES = CsPackage.ABSTRACT_DEPLOYMENT_LINK__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PART_DEPLOYMENT_LINK__APPLIED_REQUIREMENTS = CsPackage.ABSTRACT_DEPLOYMENT_LINK__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Deployed Element</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1948,15 +1876,6 @@ public interface DeploymentPackage extends EPackage {
    * @ordered
    */
 	int PORT_INSTANCE__FEATURES = ABSTRACT_PHYSICAL_INSTANCE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PORT_INSTANCE__APPLIED_REQUIREMENTS = ABSTRACT_PHYSICAL_INSTANCE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Connections</b></em>' reference list.
@@ -2192,15 +2111,6 @@ public interface DeploymentPackage extends EPackage {
    * @ordered
    */
 	int TYPE_DEPLOYMENT_LINK__FEATURES = CsPackage.ABSTRACT_DEPLOYMENT_LINK__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int TYPE_DEPLOYMENT_LINK__APPLIED_REQUIREMENTS = CsPackage.ABSTRACT_DEPLOYMENT_LINK__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Deployed Element</b></em>' reference.

@@ -119,13 +119,6 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated CapellaModeller -->
-      <factory class="org.polarsys.capella.core.data.requirement.provider.RequirementItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/requirement/7.0.0"/>
-   </extension>
-
-   
-<!--@generated-->
-  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated CapellaModeller -->
       <factory class="org.polarsys.capella.core.data.capellacommon.provider.CapellacommonItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/core/common/7.0.0"/>
    </extension>
 

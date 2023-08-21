@@ -26,8 +26,6 @@ Export-Package: org.polarsys.capella.core.data.capellacommon.provider,
  org.polarsys.capella.core.data.oa.provider,
  org.polarsys.capella.core.data.pa.deployment.provider,
  org.polarsys.capella.core.data.pa.provider,
- org.polarsys.capella.core.data.requirement.provider,
- org.polarsys.capella.core.data.requirement.util,
  org.polarsys.capella.core.data.sharedmodel.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.data.gen;visibility:=reexport,

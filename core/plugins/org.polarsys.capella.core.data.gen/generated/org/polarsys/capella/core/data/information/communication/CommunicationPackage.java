@@ -280,15 +280,6 @@ public interface CommunicationPackage extends EPackage {
 	int COMMUNICATION_ITEM__FEATURES = CapellacorePackage.CLASSIFIER__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int COMMUNICATION_ITEM__APPLIED_REQUIREMENTS = CapellacorePackage.CLASSIFIER__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -305,15 +296,6 @@ public interface CommunicationPackage extends EPackage {
    * @ordered
    */
 	int COMMUNICATION_ITEM__CONTAINED_GENERIC_TRACES = CapellacorePackage.CLASSIFIER__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int COMMUNICATION_ITEM__CONTAINED_REQUIREMENTS_TRACES = CapellacorePackage.CLASSIFIER__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -668,15 +650,6 @@ public interface CommunicationPackage extends EPackage {
 	int EXCEPTION__FEATURES = COMMUNICATION_ITEM__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int EXCEPTION__APPLIED_REQUIREMENTS = COMMUNICATION_ITEM__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -693,15 +666,6 @@ public interface CommunicationPackage extends EPackage {
    * @ordered
    */
 	int EXCEPTION__CONTAINED_GENERIC_TRACES = COMMUNICATION_ITEM__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int EXCEPTION__CONTAINED_REQUIREMENTS_TRACES = COMMUNICATION_ITEM__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -1056,15 +1020,6 @@ public interface CommunicationPackage extends EPackage {
 	int MESSAGE__FEATURES = COMMUNICATION_ITEM__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int MESSAGE__APPLIED_REQUIREMENTS = COMMUNICATION_ITEM__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1081,15 +1036,6 @@ public interface CommunicationPackage extends EPackage {
    * @ordered
    */
 	int MESSAGE__CONTAINED_GENERIC_TRACES = COMMUNICATION_ITEM__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int MESSAGE__CONTAINED_REQUIREMENTS_TRACES = COMMUNICATION_ITEM__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -1435,15 +1381,6 @@ public interface CommunicationPackage extends EPackage {
 	int MESSAGE_REFERENCE__FEATURES = CapellacorePackage.RELATIONSHIP__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int MESSAGE_REFERENCE__APPLIED_REQUIREMENTS = CapellacorePackage.RELATIONSHIP__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Message</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1661,15 +1598,6 @@ public interface CommunicationPackage extends EPackage {
 	int MESSAGE_REFERENCE_PKG__FEATURES = CapellacorePackage.STRUCTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int MESSAGE_REFERENCE_PKG__APPLIED_REQUIREMENTS = CapellacorePackage.STRUCTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1686,15 +1614,6 @@ public interface CommunicationPackage extends EPackage {
    * @ordered
    */
 	int MESSAGE_REFERENCE_PKG__CONTAINED_GENERIC_TRACES = CapellacorePackage.STRUCTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int MESSAGE_REFERENCE_PKG__CONTAINED_REQUIREMENTS_TRACES = CapellacorePackage.STRUCTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -1941,15 +1860,6 @@ public interface CommunicationPackage extends EPackage {
 	int SIGNAL__FEATURES = COMMUNICATION_ITEM__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int SIGNAL__APPLIED_REQUIREMENTS = COMMUNICATION_ITEM__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1966,15 +1876,6 @@ public interface CommunicationPackage extends EPackage {
    * @ordered
    */
 	int SIGNAL__CONTAINED_GENERIC_TRACES = COMMUNICATION_ITEM__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int SIGNAL__CONTAINED_REQUIREMENTS_TRACES = COMMUNICATION_ITEM__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -2327,15 +2228,6 @@ public interface CommunicationPackage extends EPackage {
    * @ordered
    */
 	int SIGNAL_INSTANCE__FEATURES = InformationPackage.ABSTRACT_INSTANCE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int SIGNAL_INSTANCE__APPLIED_REQUIREMENTS = InformationPackage.ABSTRACT_INSTANCE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
@@ -2751,15 +2643,6 @@ public interface CommunicationPackage extends EPackage {
    * @ordered
    */
 	int COMMUNICATION_LINK__FEATURES = CapellacorePackage.CAPELLA_ELEMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int COMMUNICATION_LINK__APPLIED_REQUIREMENTS = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Kind</b></em>' attribute.

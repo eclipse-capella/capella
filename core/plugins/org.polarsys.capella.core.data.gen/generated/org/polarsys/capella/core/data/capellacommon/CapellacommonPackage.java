@@ -271,15 +271,6 @@ public interface CapellacommonPackage extends EPackage {
 	int ABSTRACT_CAPABILITY_PKG__FEATURES = CapellacorePackage.STRUCTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_CAPABILITY_PKG__APPLIED_REQUIREMENTS = CapellacorePackage.STRUCTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -296,15 +287,6 @@ public interface CapellacommonPackage extends EPackage {
    * @ordered
    */
 	int ABSTRACT_CAPABILITY_PKG__CONTAINED_GENERIC_TRACES = CapellacorePackage.STRUCTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_CAPABILITY_PKG__CONTAINED_REQUIREMENTS_TRACES = CapellacorePackage.STRUCTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -531,15 +513,6 @@ public interface CapellacommonPackage extends EPackage {
    * @ordered
    */
 	int GENERIC_TRACE__FEATURES = CapellacorePackage.TRACE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int GENERIC_TRACE__APPLIED_REQUIREMENTS = CapellacorePackage.TRACE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
@@ -795,15 +768,6 @@ public interface CapellacommonPackage extends EPackage {
 	int TRANSFO_LINK__FEATURES = GENERIC_TRACE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int TRANSFO_LINK__APPLIED_REQUIREMENTS = GENERIC_TRACE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1055,15 +1019,6 @@ public interface CapellacommonPackage extends EPackage {
    * @ordered
    */
 	int JUSTIFICATION_LINK__FEATURES = GENERIC_TRACE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int JUSTIFICATION_LINK__APPLIED_REQUIREMENTS = GENERIC_TRACE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
@@ -1319,15 +1274,6 @@ public interface CapellacommonPackage extends EPackage {
 	int CAPABILITY_REALIZATION_INVOLVEMENT__FEATURES = CapellacorePackage.INVOLVEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CAPABILITY_REALIZATION_INVOLVEMENT__APPLIED_REQUIREMENTS = CapellacorePackage.INVOLVEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Involver</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1554,15 +1500,6 @@ public interface CapellacommonPackage extends EPackage {
 	int CAPABILITY_REALIZATION_INVOLVED_ELEMENT__FEATURES = CapellacorePackage.INVOLVED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CAPABILITY_REALIZATION_INVOLVED_ELEMENT__APPLIED_REQUIREMENTS = CapellacorePackage.INVOLVED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Involving Involvements</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1787,15 +1724,6 @@ public interface CapellacommonPackage extends EPackage {
    * @ordered
    */
 	int STATE_MACHINE__FEATURES = CapellacorePackage.CAPELLA_ELEMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int STATE_MACHINE__APPLIED_REQUIREMENTS = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2060,15 +1988,6 @@ public interface CapellacommonPackage extends EPackage {
 	int REGION__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int REGION__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned States</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2302,15 +2221,6 @@ public interface CapellacommonPackage extends EPackage {
    * @ordered
    */
 	int ABSTRACT_STATE__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_STATE__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Referenced States</b></em>' reference list.
@@ -2591,15 +2501,6 @@ public interface CapellacommonPackage extends EPackage {
    * @ordered
    */
 	int STATE__FEATURES = ABSTRACT_STATE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int STATE__APPLIED_REQUIREMENTS = ABSTRACT_STATE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Referenced States</b></em>' reference list.
@@ -2963,15 +2864,6 @@ public interface CapellacommonPackage extends EPackage {
 	int MODE__FEATURES = STATE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int MODE__APPLIED_REQUIREMENTS = STATE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Referenced States</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3331,15 +3223,6 @@ public interface CapellacommonPackage extends EPackage {
    * @ordered
    */
 	int FINAL_STATE__FEATURES = STATE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int FINAL_STATE__APPLIED_REQUIREMENTS = STATE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Referenced States</b></em>' reference list.
@@ -3703,15 +3586,6 @@ public interface CapellacommonPackage extends EPackage {
 	int STATE_TRANSITION__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int STATE_TRANSITION__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Realized Flow</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4019,15 +3893,6 @@ public interface CapellacommonPackage extends EPackage {
 	int PSEUDOSTATE__FEATURES = ABSTRACT_STATE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PSEUDOSTATE__APPLIED_REQUIREMENTS = ABSTRACT_STATE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Referenced States</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4306,15 +4171,6 @@ public interface CapellacommonPackage extends EPackage {
    * @ordered
    */
 	int INITIAL_PSEUDO_STATE__FEATURES = PSEUDOSTATE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int INITIAL_PSEUDO_STATE__APPLIED_REQUIREMENTS = PSEUDOSTATE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Referenced States</b></em>' reference list.
@@ -4597,15 +4453,6 @@ public interface CapellacommonPackage extends EPackage {
 	int JOIN_PSEUDO_STATE__FEATURES = PSEUDOSTATE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int JOIN_PSEUDO_STATE__APPLIED_REQUIREMENTS = PSEUDOSTATE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Referenced States</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4884,15 +4731,6 @@ public interface CapellacommonPackage extends EPackage {
    * @ordered
    */
 	int FORK_PSEUDO_STATE__FEATURES = PSEUDOSTATE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int FORK_PSEUDO_STATE__APPLIED_REQUIREMENTS = PSEUDOSTATE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Referenced States</b></em>' reference list.
@@ -5175,15 +5013,6 @@ public interface CapellacommonPackage extends EPackage {
 	int CHOICE_PSEUDO_STATE__FEATURES = PSEUDOSTATE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CHOICE_PSEUDO_STATE__APPLIED_REQUIREMENTS = PSEUDOSTATE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Referenced States</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5462,15 +5291,6 @@ public interface CapellacommonPackage extends EPackage {
    * @ordered
    */
 	int TERMINATE_PSEUDO_STATE__FEATURES = PSEUDOSTATE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int TERMINATE_PSEUDO_STATE__APPLIED_REQUIREMENTS = PSEUDOSTATE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Referenced States</b></em>' reference list.
@@ -5753,15 +5573,6 @@ public interface CapellacommonPackage extends EPackage {
 	int ABSTRACT_STATE_REALIZATION__FEATURES = CapellacorePackage.ALLOCATION__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_STATE_REALIZATION__APPLIED_REQUIREMENTS = CapellacorePackage.ALLOCATION__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6006,15 +5817,6 @@ public interface CapellacommonPackage extends EPackage {
 	int STATE_TRANSITION_REALIZATION__FEATURES = CapellacorePackage.ALLOCATION__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int STATE_TRANSITION_REALIZATION__APPLIED_REQUIREMENTS = CapellacorePackage.ALLOCATION__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6257,15 +6059,6 @@ public interface CapellacommonPackage extends EPackage {
    * @ordered
    */
 	int SHALLOW_HISTORY_PSEUDO_STATE__FEATURES = PSEUDOSTATE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int SHALLOW_HISTORY_PSEUDO_STATE__APPLIED_REQUIREMENTS = PSEUDOSTATE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Referenced States</b></em>' reference list.
@@ -6548,15 +6341,6 @@ public interface CapellacommonPackage extends EPackage {
 	int DEEP_HISTORY_PSEUDO_STATE__FEATURES = PSEUDOSTATE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DEEP_HISTORY_PSEUDO_STATE__APPLIED_REQUIREMENTS = PSEUDOSTATE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Referenced States</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6835,15 +6619,6 @@ public interface CapellacommonPackage extends EPackage {
    * @ordered
    */
 	int ENTRY_POINT_PSEUDO_STATE__FEATURES = PSEUDOSTATE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ENTRY_POINT_PSEUDO_STATE__APPLIED_REQUIREMENTS = PSEUDOSTATE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Referenced States</b></em>' reference list.
@@ -7126,15 +6901,6 @@ public interface CapellacommonPackage extends EPackage {
 	int EXIT_POINT_PSEUDO_STATE__FEATURES = PSEUDOSTATE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int EXIT_POINT_PSEUDO_STATE__APPLIED_REQUIREMENTS = PSEUDOSTATE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Referenced States</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7415,15 +7181,6 @@ public interface CapellacommonPackage extends EPackage {
 	int STATE_EVENT_REALIZATION__FEATURES = CapellacorePackage.ALLOCATION__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int STATE_EVENT_REALIZATION__APPLIED_REQUIREMENTS = CapellacorePackage.ALLOCATION__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7668,15 +7425,6 @@ public interface CapellacommonPackage extends EPackage {
 	int STATE_EVENT__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int STATE_EVENT__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7910,15 +7658,6 @@ public interface CapellacommonPackage extends EPackage {
    * @ordered
    */
 	int CHANGE_EVENT__FEATURES = STATE_EVENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CHANGE_EVENT__APPLIED_REQUIREMENTS = STATE_EVENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -8163,15 +7902,6 @@ public interface CapellacommonPackage extends EPackage {
    * @ordered
    */
 	int TIME_EVENT__FEATURES = STATE_EVENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int TIME_EVENT__APPLIED_REQUIREMENTS = STATE_EVENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.

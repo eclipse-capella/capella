@@ -182,24 +182,6 @@
 <!--@generated-->
   <extension point="org.eclipse.ui.newWizards">
       <!-- @generated CapellaModeller -->
-      <wizard category="org.polarsys.kitalpha.wizard.category/org.polarsys.kitalpha.mdeCoreTechnology.wizard.category" class="org.polarsys.capella.core.data.requirement.presentation.RequirementModelWizard" icon="icons/full/obj16/RequirementModelFile.gif" id="org.polarsys.capella.core.data.requirement.presentation.RequirementModelWizardID" name="%_UI_RequirementModelWizard_label">
-         <description>%_UI_RequirementModelWizard_description</description>
-         <selection class="org.eclipse.core.resources.IResource"/>
-      </wizard>
-   </extension>
-
-   
-<!--@generated-->
-  <extension point="org.eclipse.ui.editors">
-      <!-- @generated CapellaModeller -->
-      <editor class="org.polarsys.capella.core.data.requirement.presentation.RequirementEditor" contributorClass="org.polarsys.capella.core.data.requirement.presentation.RequirementActionBarContributor" extensions="requirement" icon="icons/full/obj16/RequirementModelFile.gif" id="org.polarsys.capella.core.data.requirement.presentation.RequirementEditorID" name="%_UI_RequirementEditor_label">
-      </editor>
-   </extension>
-
-   
-<!--@generated-->
-  <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated CapellaModeller -->
       <wizard category="org.polarsys.kitalpha.wizard.category/org.polarsys.kitalpha.mdeCoreTechnology.wizard.category" class="org.polarsys.capella.core.data.capellacommon.presentation.CapellacommonModelWizard" icon="icons/full/obj16/CapellacommonModelFile.gif" id="org.polarsys.capella.core.data.capellacommon.presentation.CapellacommonModelWizardID" name="%_UI_CapellacommonModelWizard_label">
          <description>%_UI_CapellacommonModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>

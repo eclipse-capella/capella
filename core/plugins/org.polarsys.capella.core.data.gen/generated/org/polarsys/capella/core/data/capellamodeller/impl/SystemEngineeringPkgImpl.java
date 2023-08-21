@@ -37,7 +37,6 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineeringPkg;
-import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 
 /**
  * <!-- begin-user-doc -->
@@ -49,7 +48,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.impl.SystemEngineeringPkgImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.impl.SystemEngineeringPkgImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.capellamodeller.impl.SystemEngineeringPkgImpl#getContainedRequirementsTraces <em>Contained Requirements Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.impl.SystemEngineeringPkgImpl#getNamingRules <em>Naming Rules</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.impl.SystemEngineeringPkgImpl#getOwnedPropertyValuePkgs <em>Owned Property Value Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.impl.SystemEngineeringPkgImpl#getOwnedSystemEngineerings <em>Owned System Engineerings</em>}</li>
@@ -218,53 +216,6 @@ public class SystemEngineeringPkgImpl extends NamedElementImpl implements System
    * @generated
    */
 
-	public EList<RequirementsTrace> getContainedRequirementsTraces() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
-    return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException exception) {
-    	exception.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
-
-
-
-
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-
 	public EList<NamingRule> getNamingRules() {
 
     if (namingRules == null) {
@@ -343,8 +294,6 @@ public class SystemEngineeringPkgImpl extends NamedElementImpl implements System
         return getOwnedTraces();
       case CapellamodellerPackage.SYSTEM_ENGINEERING_PKG__CONTAINED_GENERIC_TRACES:
         return getContainedGenericTraces();
-      case CapellamodellerPackage.SYSTEM_ENGINEERING_PKG__CONTAINED_REQUIREMENTS_TRACES:
-        return getContainedRequirementsTraces();
       case CapellamodellerPackage.SYSTEM_ENGINEERING_PKG__NAMING_RULES:
         return getNamingRules();
       case CapellamodellerPackage.SYSTEM_ENGINEERING_PKG__OWNED_PROPERTY_VALUE_PKGS:
@@ -423,8 +372,6 @@ public class SystemEngineeringPkgImpl extends NamedElementImpl implements System
         return ownedTraces != null && !ownedTraces.isEmpty();
       case CapellamodellerPackage.SYSTEM_ENGINEERING_PKG__CONTAINED_GENERIC_TRACES:
         return !getContainedGenericTraces().isEmpty();
-      case CapellamodellerPackage.SYSTEM_ENGINEERING_PKG__CONTAINED_REQUIREMENTS_TRACES:
-        return !getContainedRequirementsTraces().isEmpty();
       case CapellamodellerPackage.SYSTEM_ENGINEERING_PKG__NAMING_RULES:
         return namingRules != null && !namingRules.isEmpty();
       case CapellamodellerPackage.SYSTEM_ENGINEERING_PKG__OWNED_PROPERTY_VALUE_PKGS:

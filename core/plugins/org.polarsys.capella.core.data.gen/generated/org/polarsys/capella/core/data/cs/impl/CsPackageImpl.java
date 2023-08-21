@@ -87,8 +87,6 @@ import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentPackage;
 import org.polarsys.capella.core.data.pa.deployment.impl.DeploymentPackageImpl;
 import org.polarsys.capella.core.data.pa.impl.PaPackageImpl;
-import org.polarsys.capella.core.data.requirement.RequirementPackage;
-import org.polarsys.capella.core.data.requirement.impl.RequirementPackageImpl;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 import org.polarsys.capella.core.data.sharedmodel.impl.SharedmodelPackageImpl;
 import org.polarsys.kitalpha.emde.model.EmdePackage;
@@ -417,8 +415,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
     EpbsPackageImpl theEpbsPackage = (EpbsPackageImpl)(registeredPackage instanceof EpbsPackageImpl ? registeredPackage : EpbsPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(SharedmodelPackage.eNS_URI);
     SharedmodelPackageImpl theSharedmodelPackage = (SharedmodelPackageImpl)(registeredPackage instanceof SharedmodelPackageImpl ? registeredPackage : SharedmodelPackage.eINSTANCE);
-    registeredPackage = EPackage.Registry.INSTANCE.getEPackage(RequirementPackage.eNS_URI);
-    RequirementPackageImpl theRequirementPackage = (RequirementPackageImpl)(registeredPackage instanceof RequirementPackageImpl ? registeredPackage : RequirementPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI);
     CapellacommonPackageImpl theCapellacommonPackage = (CapellacommonPackageImpl)(registeredPackage instanceof CapellacommonPackageImpl ? registeredPackage : CapellacommonPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI);
@@ -445,7 +441,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
     theDeploymentPackage.createPackageContents();
     theEpbsPackage.createPackageContents();
     theSharedmodelPackage.createPackageContents();
-    theRequirementPackage.createPackageContents();
     theCapellacommonPackage.createPackageContents();
     theInformationPackage.createPackageContents();
     theCommunicationPackage.createPackageContents();
@@ -465,7 +460,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
     theDeploymentPackage.initializePackageContents();
     theEpbsPackage.initializePackageContents();
     theSharedmodelPackage.initializePackageContents();
-    theRequirementPackage.initializePackageContents();
     theCapellacommonPackage.initializePackageContents();
     theInformationPackage.initializePackageContents();
     theCommunicationPackage.initializePackageContents();
@@ -508,7 +502,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
    * @generated
    */
 	@Override
-	public EReference getBlockArchitecture_OwnedRequirementPkgs() {
+	public EReference getBlockArchitecture_OwnedAbstractCapabilityPkg() {
     return (EReference)blockArchitectureEClass.getEStructuralFeatures().get(0);
   }
 
@@ -518,7 +512,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
    * @generated
    */
 	@Override
-	public EReference getBlockArchitecture_OwnedAbstractCapabilityPkg() {
+	public EReference getBlockArchitecture_OwnedInterfacePkg() {
     return (EReference)blockArchitectureEClass.getEStructuralFeatures().get(1);
   }
 
@@ -528,7 +522,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
    * @generated
    */
 	@Override
-	public EReference getBlockArchitecture_OwnedInterfacePkg() {
+	public EReference getBlockArchitecture_OwnedDataPkg() {
     return (EReference)blockArchitectureEClass.getEStructuralFeatures().get(2);
   }
 
@@ -538,7 +532,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
    * @generated
    */
 	@Override
-	public EReference getBlockArchitecture_OwnedDataPkg() {
+	public EReference getBlockArchitecture_ProvisionedArchitectureAllocations() {
     return (EReference)blockArchitectureEClass.getEStructuralFeatures().get(3);
   }
 
@@ -548,7 +542,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
    * @generated
    */
 	@Override
-	public EReference getBlockArchitecture_ProvisionedArchitectureAllocations() {
+	public EReference getBlockArchitecture_ProvisioningArchitectureAllocations() {
     return (EReference)blockArchitectureEClass.getEStructuralFeatures().get(4);
   }
 
@@ -558,7 +552,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
    * @generated
    */
 	@Override
-	public EReference getBlockArchitecture_ProvisioningArchitectureAllocations() {
+	public EReference getBlockArchitecture_AllocatedArchitectures() {
     return (EReference)blockArchitectureEClass.getEStructuralFeatures().get(5);
   }
 
@@ -568,7 +562,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
    * @generated
    */
 	@Override
-	public EReference getBlockArchitecture_AllocatedArchitectures() {
+	public EReference getBlockArchitecture_AllocatingArchitectures() {
     return (EReference)blockArchitectureEClass.getEStructuralFeatures().get(6);
   }
 
@@ -578,18 +572,8 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
    * @generated
    */
 	@Override
-	public EReference getBlockArchitecture_AllocatingArchitectures() {
-    return (EReference)blockArchitectureEClass.getEStructuralFeatures().get(7);
-  }
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
 	public EReference getBlockArchitecture_System() {
-    return (EReference)blockArchitectureEClass.getEStructuralFeatures().get(8);
+    return (EReference)blockArchitectureEClass.getEStructuralFeatures().get(7);
   }
 
 	/**
@@ -2087,7 +2071,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
     blockArchitecturePkgEClass = createEClass(BLOCK_ARCHITECTURE_PKG);
 
     blockArchitectureEClass = createEClass(BLOCK_ARCHITECTURE);
-    createEReference(blockArchitectureEClass, BLOCK_ARCHITECTURE__OWNED_REQUIREMENT_PKGS);
     createEReference(blockArchitectureEClass, BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG);
     createEReference(blockArchitectureEClass, BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG);
     createEReference(blockArchitectureEClass, BLOCK_ARCHITECTURE__OWNED_DATA_PKG);
@@ -2303,7 +2286,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
     // Obtain other dependent packages
     CapellacorePackage theCapellacorePackage = (CapellacorePackage)EPackage.Registry.INSTANCE.getEPackage(CapellacorePackage.eNS_URI);
     FaPackage theFaPackage = (FaPackage)EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI);
-    RequirementPackage theRequirementPackage = (RequirementPackage)EPackage.Registry.INSTANCE.getEPackage(RequirementPackage.eNS_URI);
     CapellacommonPackage theCapellacommonPackage = (CapellacommonPackage)EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI);
     InformationPackage theInformationPackage = (InformationPackage)EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI);
     CommunicationPackage theCommunicationPackage = (CommunicationPackage)EPackage.Registry.INSTANCE.getEPackage(CommunicationPackage.eNS_URI);
@@ -2377,7 +2359,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
     initEClass(blockArchitecturePkgEClass, BlockArchitecturePkg.class, "BlockArchitecturePkg", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
     initEClass(blockArchitectureEClass, BlockArchitecture.class, "BlockArchitecture", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-    initEReference(getBlockArchitecture_OwnedRequirementPkgs(), theRequirementPackage.getRequirementsPkg(), null, "ownedRequirementPkgs", null, 0, -1, BlockArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(getBlockArchitecture_OwnedAbstractCapabilityPkg(), theCapellacommonPackage.getAbstractCapabilityPkg(), null, "ownedAbstractCapabilityPkg", null, 0, 1, BlockArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(getBlockArchitecture_OwnedInterfacePkg(), this.getInterfacePkg(), null, "ownedInterfacePkg", null, 0, 1, BlockArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(getBlockArchitecture_OwnedDataPkg(), theInformationPackage.getDataPkg(), null, "ownedDataPkg", null, 0, 1, BlockArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -2633,14 +2614,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
          "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
          "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
          "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-       });
-    addAnnotation
-      (getBlockArchitecture_OwnedRequirementPkgs(),
-       source,
-       new String[] {
-         "description", "Link to packages that contain requirements\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
        });
     addAnnotation
       (getBlockArchitecture_OwnedAbstractCapabilityPkg(),
@@ -3763,11 +3736,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
        new String[] {
        });
     addAnnotation
-      (getBlockArchitecture_OwnedRequirementPkgs(),
-       source,
-       new String[] {
-       });
-    addAnnotation
       (getBlockArchitecture_OwnedInterfacePkg(),
        source,
        new String[] {
@@ -4259,14 +4227,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
          "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
          "explanation", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
          "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-       });
-    addAnnotation
-      (getBlockArchitecture_OwnedRequirementPkgs(),
-       source,
-       new String[] {
-         "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-         "constraints", "uml::Package::nestedPackage elements on which RequirementsPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
        });
     addAnnotation
       (getBlockArchitecture_OwnedAbstractCapabilityPkg(),
@@ -5347,12 +5307,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
          "Label", "BlockArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
        });
     addAnnotation
-      (getBlockArchitecture_OwnedRequirementPkgs(),
-       source,
-       new String[] {
-         "Label", "ownedRequirementPkgs" //$NON-NLS-1$ //$NON-NLS-2$
-       });
-    addAnnotation
       (getBlockArchitecture_OwnedAbstractCapabilityPkg(),
        source,
        new String[] {
@@ -5669,13 +5623,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
          "metaclass", "Package" //$NON-NLS-1$ //$NON-NLS-2$
        });
     addAnnotation
-      (getBlockArchitecture_OwnedRequirementPkgs(),
-       source,
-       new String[] {
-         "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-         "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-       });
-    addAnnotation
       (getBlockArchitecture_OwnedAbstractCapabilityPkg(),
        source,
        new String[] {
@@ -5987,11 +5934,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
    */
 	protected void createSegmentAnnotations() {
     String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$
-    addAnnotation
-      (getBlockArchitecture_OwnedRequirementPkgs(),
-       source,
-       new String[] {
-       });
     addAnnotation
       (getBlockArchitecture_OwnedAbstractCapabilityPkg(),
        source,

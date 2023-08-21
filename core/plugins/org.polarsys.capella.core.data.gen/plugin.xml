@@ -146,20 +146,6 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CapellaModeller -->
-      <package class="org.polarsys.capella.core.data.requirement.RequirementPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/requirement/7.0.0"/>
-   </extension>
-
-   
-<!--@generated-->
-  <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated CapellaModeller -->
-      <parser class="org.polarsys.capella.core.data.requirement.util.RequirementResourceFactoryImpl" type="requirement"/>
-   </extension>
-
-   
-<!--@generated-->
-  <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated CapellaModeller -->
       <package class="org.polarsys.capella.core.data.capellacommon.CapellacommonPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/common/7.0.0"/>
    </extension>
 

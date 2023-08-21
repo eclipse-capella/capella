@@ -45,11 +45,9 @@ import org.polarsys.capella.core.data.capellacommon.Pseudostate;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
 import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
 import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
-import org.polarsys.capella.core.data.requirement.Requirement;
 
 /**
  * <!-- begin-user-doc -->
@@ -73,7 +71,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getAppliedPropertyValueGroups <em>Applied Property Value Groups</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getFeatures <em>Features</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getAppliedRequirements <em>Applied Requirements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#isIsControlOperator <em>Is Control Operator</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getOwnedParameterSet <em>Owned Parameter Set</em>}</li>
@@ -870,53 +867,6 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
    * @generated
    */
 
-	public EList<Requirement> getAppliedRequirements() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Requirement> resultAsList = (Collection<Requirement>) result;
-    return new EcoreEList.UnmodifiableEList<Requirement>(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException exception) {
-    	exception.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
-
-
-
-
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-
 	public String getName() {
 
     return name;
@@ -1102,8 +1052,6 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
         return basicGetStatus();
       case CapellacommonPackage.STATE_MACHINE__FEATURES:
         return getFeatures();
-      case CapellacommonPackage.STATE_MACHINE__APPLIED_REQUIREMENTS:
-        return getAppliedRequirements();
       case CapellacommonPackage.STATE_MACHINE__NAME:
         return getName();
       case CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR:
@@ -1302,8 +1250,6 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
         return status != null;
       case CapellacommonPackage.STATE_MACHINE__FEATURES:
         return features != null && !features.isEmpty();
-      case CapellacommonPackage.STATE_MACHINE__APPLIED_REQUIREMENTS:
-        return !getAppliedRequirements().isEmpty();
       case CapellacommonPackage.STATE_MACHINE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR:

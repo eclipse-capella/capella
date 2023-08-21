@@ -37,7 +37,6 @@ import org.polarsys.capella.common.data.modellingcore.PublishableElement;
 import org.polarsys.capella.common.data.modellingcore.impl.ModelElementImpl;
 import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
@@ -48,7 +47,6 @@ import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.fa.ReferenceHierarchyContext;
 import org.polarsys.capella.core.data.fa.SequenceLink;
 import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
-import org.polarsys.capella.core.data.requirement.Requirement;
 
 /**
  * <!-- begin-user-doc -->
@@ -72,7 +70,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.SequenceLinkImpl#getAppliedPropertyValueGroups <em>Applied Property Value Groups</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.SequenceLinkImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.SequenceLinkImpl#getFeatures <em>Features</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.fa.impl.SequenceLinkImpl#getAppliedRequirements <em>Applied Requirements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.SequenceLinkImpl#getSourceReferenceHierarchy <em>Source Reference Hierarchy</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.SequenceLinkImpl#getTargetReferenceHierarchy <em>Target Reference Hierarchy</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.SequenceLinkImpl#getCondition <em>Condition</em>}</li>
@@ -788,49 +785,6 @@ public class SequenceLinkImpl extends ModelElementImpl implements SequenceLink {
    * @generated
    */
 
-	public EList<Requirement> getAppliedRequirements() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Requirement> resultAsList = (Collection<Requirement>) result;
-    return new EcoreEList.UnmodifiableEList<Requirement>(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException exception) {
-    	exception.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-
 	public EList<FunctionalChainReference> getSourceReferenceHierarchy() {
 
     if (sourceReferenceHierarchy == null) {
@@ -1086,8 +1040,6 @@ public class SequenceLinkImpl extends ModelElementImpl implements SequenceLink {
         return basicGetStatus();
       case FaPackage.SEQUENCE_LINK__FEATURES:
         return getFeatures();
-      case FaPackage.SEQUENCE_LINK__APPLIED_REQUIREMENTS:
-        return getAppliedRequirements();
       case FaPackage.SEQUENCE_LINK__SOURCE_REFERENCE_HIERARCHY:
         return getSourceReferenceHierarchy();
       case FaPackage.SEQUENCE_LINK__TARGET_REFERENCE_HIERARCHY:
@@ -1288,8 +1240,6 @@ public class SequenceLinkImpl extends ModelElementImpl implements SequenceLink {
         return status != null;
       case FaPackage.SEQUENCE_LINK__FEATURES:
         return features != null && !features.isEmpty();
-      case FaPackage.SEQUENCE_LINK__APPLIED_REQUIREMENTS:
-        return !getAppliedRequirements().isEmpty();
       case FaPackage.SEQUENCE_LINK__SOURCE_REFERENCE_HIERARCHY:
         return sourceReferenceHierarchy != null && !sourceReferenceHierarchy.isEmpty();
       case FaPackage.SEQUENCE_LINK__TARGET_REFERENCE_HIERARCHY:

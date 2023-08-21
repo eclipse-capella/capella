@@ -36,7 +36,6 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.Trace;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalChainContainer;
-import org.polarsys.capella.core.data.interaction.*;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint;

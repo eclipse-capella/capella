@@ -67,8 +67,6 @@ import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentPackage;
 import org.polarsys.capella.core.data.pa.deployment.impl.DeploymentPackageImpl;
 import org.polarsys.capella.core.data.pa.impl.PaPackageImpl;
-import org.polarsys.capella.core.data.requirement.RequirementPackage;
-import org.polarsys.capella.core.data.requirement.impl.RequirementPackageImpl;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 import org.polarsys.capella.core.data.sharedmodel.impl.SharedmodelPackageImpl;
 import org.polarsys.kitalpha.emde.model.EmdePackage;
@@ -255,8 +253,6 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
     EpbsPackageImpl theEpbsPackage = (EpbsPackageImpl)(registeredPackage instanceof EpbsPackageImpl ? registeredPackage : EpbsPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(SharedmodelPackage.eNS_URI);
     SharedmodelPackageImpl theSharedmodelPackage = (SharedmodelPackageImpl)(registeredPackage instanceof SharedmodelPackageImpl ? registeredPackage : SharedmodelPackage.eINSTANCE);
-    registeredPackage = EPackage.Registry.INSTANCE.getEPackage(RequirementPackage.eNS_URI);
-    RequirementPackageImpl theRequirementPackage = (RequirementPackageImpl)(registeredPackage instanceof RequirementPackageImpl ? registeredPackage : RequirementPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI);
     CapellacommonPackageImpl theCapellacommonPackage = (CapellacommonPackageImpl)(registeredPackage instanceof CapellacommonPackageImpl ? registeredPackage : CapellacommonPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI);
@@ -284,7 +280,6 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
     theDeploymentPackage.createPackageContents();
     theEpbsPackage.createPackageContents();
     theSharedmodelPackage.createPackageContents();
-    theRequirementPackage.createPackageContents();
     theCapellacommonPackage.createPackageContents();
     theInformationPackage.createPackageContents();
     theCommunicationPackage.createPackageContents();
@@ -304,7 +299,6 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
     theDeploymentPackage.initializePackageContents();
     theEpbsPackage.initializePackageContents();
     theSharedmodelPackage.initializePackageContents();
-    theRequirementPackage.initializePackageContents();
     theCapellacommonPackage.initializePackageContents();
     theInformationPackage.initializePackageContents();
     theCommunicationPackage.initializePackageContents();
