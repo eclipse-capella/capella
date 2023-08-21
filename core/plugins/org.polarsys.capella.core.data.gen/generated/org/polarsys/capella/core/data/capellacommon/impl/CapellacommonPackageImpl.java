@@ -85,8 +85,6 @@ import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentPackage;
 import org.polarsys.capella.core.data.pa.deployment.impl.DeploymentPackageImpl;
 import org.polarsys.capella.core.data.pa.impl.PaPackageImpl;
-import org.polarsys.capella.core.data.requirement.RequirementPackage;
-import org.polarsys.capella.core.data.requirement.impl.RequirementPackageImpl;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 import org.polarsys.capella.core.data.sharedmodel.impl.SharedmodelPackageImpl;
 import org.polarsys.kitalpha.emde.model.EmdePackage;
@@ -394,8 +392,6 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
     EpbsPackageImpl theEpbsPackage = (EpbsPackageImpl)(registeredPackage instanceof EpbsPackageImpl ? registeredPackage : EpbsPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(SharedmodelPackage.eNS_URI);
     SharedmodelPackageImpl theSharedmodelPackage = (SharedmodelPackageImpl)(registeredPackage instanceof SharedmodelPackageImpl ? registeredPackage : SharedmodelPackage.eINSTANCE);
-    registeredPackage = EPackage.Registry.INSTANCE.getEPackage(RequirementPackage.eNS_URI);
-    RequirementPackageImpl theRequirementPackage = (RequirementPackageImpl)(registeredPackage instanceof RequirementPackageImpl ? registeredPackage : RequirementPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI);
     InformationPackageImpl theInformationPackage = (InformationPackageImpl)(registeredPackage instanceof InformationPackageImpl ? registeredPackage : InformationPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CommunicationPackage.eNS_URI);
@@ -422,7 +418,6 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
     theDeploymentPackage.createPackageContents();
     theEpbsPackage.createPackageContents();
     theSharedmodelPackage.createPackageContents();
-    theRequirementPackage.createPackageContents();
     theInformationPackage.createPackageContents();
     theCommunicationPackage.createPackageContents();
     theDatatypePackage.createPackageContents();
@@ -442,7 +437,6 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
     theDeploymentPackage.initializePackageContents();
     theEpbsPackage.initializePackageContents();
     theSharedmodelPackage.initializePackageContents();
-    theRequirementPackage.initializePackageContents();
     theInformationPackage.initializePackageContents();
     theCommunicationPackage.initializePackageContents();
     theDatatypePackage.initializePackageContents();

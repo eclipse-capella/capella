@@ -275,15 +275,6 @@ public interface OaPackage extends EPackage {
 	int OPERATIONAL_ANALYSIS__FEATURES = CsPackage.BLOCK_ARCHITECTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int OPERATIONAL_ANALYSIS__APPLIED_REQUIREMENTS = CsPackage.BLOCK_ARCHITECTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -300,15 +291,6 @@ public interface OaPackage extends EPackage {
    * @ordered
    */
 	int OPERATIONAL_ANALYSIS__CONTAINED_GENERIC_TRACES = CsPackage.BLOCK_ARCHITECTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int OPERATIONAL_ANALYSIS__CONTAINED_REQUIREMENTS_TRACES = CsPackage.BLOCK_ARCHITECTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -381,15 +363,6 @@ public interface OaPackage extends EPackage {
    * @ordered
    */
 	int OPERATIONAL_ANALYSIS__OWNED_COMPONENT_EXCHANGE_REALIZATIONS = CsPackage.BLOCK_ARCHITECTURE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS;
-
-	/**
-   * The feature id for the '<em><b>Owned Requirement Pkgs</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int OPERATIONAL_ANALYSIS__OWNED_REQUIREMENT_PKGS = CsPackage.BLOCK_ARCHITECTURE__OWNED_REQUIREMENT_PKGS;
 
 	/**
    * The feature id for the '<em><b>Owned Abstract Capability Pkg</b></em>' containment reference.
@@ -726,15 +699,6 @@ public interface OaPackage extends EPackage {
 	int OPERATIONAL_SCENARIO__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int OPERATIONAL_SCENARIO__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Context</b></em>' attribute.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -961,15 +925,6 @@ public interface OaPackage extends EPackage {
 	int OPERATIONAL_ACTIVITY_PKG__FEATURES = FaPackage.FUNCTION_PKG__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int OPERATIONAL_ACTIVITY_PKG__APPLIED_REQUIREMENTS = FaPackage.FUNCTION_PKG__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -986,15 +941,6 @@ public interface OaPackage extends EPackage {
    * @ordered
    */
 	int OPERATIONAL_ACTIVITY_PKG__CONTAINED_GENERIC_TRACES = FaPackage.FUNCTION_PKG__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int OPERATIONAL_ACTIVITY_PKG__CONTAINED_REQUIREMENTS_TRACES = FaPackage.FUNCTION_PKG__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -1286,15 +1232,6 @@ public interface OaPackage extends EPackage {
 	int OPERATIONAL_ACTIVITY__FEATURES = FaPackage.ABSTRACT_FUNCTION__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int OPERATIONAL_ACTIVITY__APPLIED_REQUIREMENTS = FaPackage.ABSTRACT_FUNCTION__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1311,15 +1248,6 @@ public interface OaPackage extends EPackage {
    * @ordered
    */
 	int OPERATIONAL_ACTIVITY__CONTAINED_GENERIC_TRACES = FaPackage.ABSTRACT_FUNCTION__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int OPERATIONAL_ACTIVITY__CONTAINED_REQUIREMENTS_TRACES = FaPackage.ABSTRACT_FUNCTION__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -2133,15 +2061,6 @@ public interface OaPackage extends EPackage {
 	int OPERATIONAL_PROCESS__FEATURES = FaPackage.FUNCTIONAL_CHAIN__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int OPERATIONAL_PROCESS__APPLIED_REQUIREMENTS = FaPackage.FUNCTIONAL_CHAIN__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Involved Involvements</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2548,15 +2467,6 @@ public interface OaPackage extends EPackage {
 	int SWIMLANE__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int SWIMLANE__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Super Group</b></em>' container reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2855,15 +2765,6 @@ public interface OaPackage extends EPackage {
 	int OPERATIONAL_CAPABILITY_PKG__FEATURES = CapellacommonPackage.ABSTRACT_CAPABILITY_PKG__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int OPERATIONAL_CAPABILITY_PKG__APPLIED_REQUIREMENTS = CapellacommonPackage.ABSTRACT_CAPABILITY_PKG__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2880,15 +2781,6 @@ public interface OaPackage extends EPackage {
    * @ordered
    */
 	int OPERATIONAL_CAPABILITY_PKG__CONTAINED_GENERIC_TRACES = CapellacommonPackage.ABSTRACT_CAPABILITY_PKG__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int OPERATIONAL_CAPABILITY_PKG__CONTAINED_REQUIREMENTS_TRACES = CapellacommonPackage.ABSTRACT_CAPABILITY_PKG__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -3153,15 +3045,6 @@ public interface OaPackage extends EPackage {
 	int OPERATIONAL_CAPABILITY__FEATURES = InteractionPackage.ABSTRACT_CAPABILITY__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int OPERATIONAL_CAPABILITY__APPLIED_REQUIREMENTS = InteractionPackage.ABSTRACT_CAPABILITY__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3178,15 +3061,6 @@ public interface OaPackage extends EPackage {
    * @ordered
    */
 	int OPERATIONAL_CAPABILITY__CONTAINED_GENERIC_TRACES = InteractionPackage.ABSTRACT_CAPABILITY__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int OPERATIONAL_CAPABILITY__CONTAINED_REQUIREMENTS_TRACES = InteractionPackage.ABSTRACT_CAPABILITY__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -3694,15 +3568,6 @@ public interface OaPackage extends EPackage {
 	int ACTIVITY_ALLOCATION__FEATURES = CapellacorePackage.ALLOCATION__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ACTIVITY_ALLOCATION__APPLIED_REQUIREMENTS = CapellacorePackage.ALLOCATION__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3947,15 +3812,6 @@ public interface OaPackage extends EPackage {
 	int ROLE_PKG__FEATURES = CapellacorePackage.STRUCTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ROLE_PKG__APPLIED_REQUIREMENTS = CapellacorePackage.STRUCTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3972,15 +3828,6 @@ public interface OaPackage extends EPackage {
    * @ordered
    */
 	int ROLE_PKG__CONTAINED_GENERIC_TRACES = CapellacorePackage.STRUCTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ROLE_PKG__CONTAINED_REQUIREMENTS_TRACES = CapellacorePackage.STRUCTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -4225,15 +4072,6 @@ public interface OaPackage extends EPackage {
    * @ordered
    */
 	int ROLE__FEATURES = InformationPackage.ABSTRACT_INSTANCE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ROLE__APPLIED_REQUIREMENTS = InformationPackage.ABSTRACT_INSTANCE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
@@ -4714,15 +4552,6 @@ public interface OaPackage extends EPackage {
 	int ROLE_ASSEMBLY_USAGE__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ROLE_ASSEMBLY_USAGE__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Child</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4938,15 +4767,6 @@ public interface OaPackage extends EPackage {
    * @ordered
    */
 	int ROLE_ALLOCATION__FEATURES = CapellacorePackage.ALLOCATION__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ROLE_ALLOCATION__APPLIED_REQUIREMENTS = CapellacorePackage.ALLOCATION__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
@@ -5193,15 +5013,6 @@ public interface OaPackage extends EPackage {
 	int ENTITY_PKG__FEATURES = CsPackage.COMPONENT_PKG__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ENTITY_PKG__APPLIED_REQUIREMENTS = CsPackage.COMPONENT_PKG__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5218,15 +5029,6 @@ public interface OaPackage extends EPackage {
    * @ordered
    */
 	int ENTITY_PKG__CONTAINED_GENERIC_TRACES = CsPackage.COMPONENT_PKG__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ENTITY_PKG__CONTAINED_REQUIREMENTS_TRACES = CsPackage.COMPONENT_PKG__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -5581,15 +5383,6 @@ public interface OaPackage extends EPackage {
 	int ABSTRACT_CONCEPT_ITEM__FEATURES = CsPackage.COMPONENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_CONCEPT_ITEM__APPLIED_REQUIREMENTS = CsPackage.COMPONENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5606,15 +5399,6 @@ public interface OaPackage extends EPackage {
    * @ordered
    */
 	int ABSTRACT_CONCEPT_ITEM__CONTAINED_GENERIC_TRACES = CsPackage.COMPONENT__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_CONCEPT_ITEM__CONTAINED_REQUIREMENTS_TRACES = CsPackage.COMPONENT__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -6338,15 +6122,6 @@ public interface OaPackage extends EPackage {
 	int ENTITY__FEATURES = ABSTRACT_CONCEPT_ITEM__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ENTITY__APPLIED_REQUIREMENTS = ABSTRACT_CONCEPT_ITEM__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6363,15 +6138,6 @@ public interface OaPackage extends EPackage {
    * @ordered
    */
 	int ENTITY__CONTAINED_GENERIC_TRACES = ABSTRACT_CONCEPT_ITEM__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ENTITY__CONTAINED_REQUIREMENTS_TRACES = ABSTRACT_CONCEPT_ITEM__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -7221,15 +6987,6 @@ public interface OaPackage extends EPackage {
 	int CONCEPT_PKG__FEATURES = CapellacorePackage.STRUCTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CONCEPT_PKG__APPLIED_REQUIREMENTS = CapellacorePackage.STRUCTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7246,15 +7003,6 @@ public interface OaPackage extends EPackage {
    * @ordered
    */
 	int CONCEPT_PKG__CONTAINED_GENERIC_TRACES = CapellacorePackage.STRUCTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CONCEPT_PKG__CONTAINED_REQUIREMENTS_TRACES = CapellacorePackage.STRUCTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -7501,15 +7249,6 @@ public interface OaPackage extends EPackage {
 	int CONCEPT__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CONCEPT__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Compliances</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7734,15 +7473,6 @@ public interface OaPackage extends EPackage {
    * @ordered
    */
 	int CONCEPT_COMPLIANCE__FEATURES = CapellacorePackage.RELATIONSHIP__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CONCEPT_COMPLIANCE__APPLIED_REQUIREMENTS = CapellacorePackage.RELATIONSHIP__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Comply With Concept</b></em>' reference.
@@ -7971,15 +7701,6 @@ public interface OaPackage extends EPackage {
 	int ITEM_IN_CONCEPT__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ITEM_IN_CONCEPT__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Concept</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8206,15 +7927,6 @@ public interface OaPackage extends EPackage {
 	int COMMUNITY_OF_INTEREST__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int COMMUNITY_OF_INTEREST__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Community Of Interest Compositions</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8430,15 +8142,6 @@ public interface OaPackage extends EPackage {
    * @ordered
    */
 	int COMMUNITY_OF_INTEREST_COMPOSITION__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int COMMUNITY_OF_INTEREST_COMPOSITION__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Community Of Interest</b></em>' reference.
@@ -8667,15 +8370,6 @@ public interface OaPackage extends EPackage {
 	int ORGANISATIONAL_UNIT__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ORGANISATIONAL_UNIT__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Organisational Unit Compositions</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8900,15 +8594,6 @@ public interface OaPackage extends EPackage {
    * @ordered
    */
 	int ORGANISATIONAL_UNIT_COMPOSITION__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ORGANISATIONAL_UNIT_COMPOSITION__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Organisational Unit</b></em>' reference.
@@ -9146,15 +8831,6 @@ public interface OaPackage extends EPackage {
 	int LOCATION__FEATURES = ABSTRACT_CONCEPT_ITEM__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int LOCATION__APPLIED_REQUIREMENTS = ABSTRACT_CONCEPT_ITEM__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9171,15 +8847,6 @@ public interface OaPackage extends EPackage {
    * @ordered
    */
 	int LOCATION__CONTAINED_GENERIC_TRACES = ABSTRACT_CONCEPT_ITEM__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int LOCATION__CONTAINED_REQUIREMENTS_TRACES = ABSTRACT_CONCEPT_ITEM__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -9921,15 +9588,6 @@ public interface OaPackage extends EPackage {
 	int CAPABILITY_CONFIGURATION__FEATURES = ABSTRACT_CONCEPT_ITEM__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CAPABILITY_CONFIGURATION__APPLIED_REQUIREMENTS = ABSTRACT_CONCEPT_ITEM__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9946,15 +9604,6 @@ public interface OaPackage extends EPackage {
    * @ordered
    */
 	int CAPABILITY_CONFIGURATION__CONTAINED_GENERIC_TRACES = ABSTRACT_CONCEPT_ITEM__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CAPABILITY_CONFIGURATION__CONTAINED_REQUIREMENTS_TRACES = ABSTRACT_CONCEPT_ITEM__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -10678,15 +10327,6 @@ public interface OaPackage extends EPackage {
 	int COMMUNICATION_MEAN__FEATURES = CapellacorePackage.NAMED_RELATIONSHIP__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int COMMUNICATION_MEAN__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_RELATIONSHIP__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11181,15 +10821,6 @@ public interface OaPackage extends EPackage {
    * @ordered
    */
 	int ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__FEATURES = CapellacorePackage.INVOLVEMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__APPLIED_REQUIREMENTS = CapellacorePackage.INVOLVEMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Involver</b></em>' reference.

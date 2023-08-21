@@ -159,7 +159,6 @@ public class SequenceMessageValuationItemProvider
       addAppliedPropertyValueGroupsPropertyDescriptor(object);
       addStatusPropertyDescriptor(object);
       addFeaturesPropertyDescriptor(object);
-      addAppliedRequirementsPropertyDescriptor(object);
       addExchangeItemElementPropertyDescriptor(object);
       addValuePropertyDescriptor(object);
     }
@@ -458,33 +457,6 @@ public class SequenceMessageValuationItemProvider
          true,
          false,
          true,
-         null,
-         null,
-    // begin-extension-code
-         null));
-    // end-extension-code
-  }
-
-	/**
-   * This adds a property descriptor for the Applied Requirements feature.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected void addAppliedRequirementsPropertyDescriptor(Object object) {
-
-    // begin-extension-code
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-    // end-extension-code
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_CapellaElement_appliedRequirements_feature"), //$NON-NLS-1$
-         getString("_UI_PropertyDescriptor_description", "_UI_CapellaElement_appliedRequirements_feature", "_UI_CapellaElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-         CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS,
-         false,
-         false,
-         false,
          null,
          null,
     // begin-extension-code

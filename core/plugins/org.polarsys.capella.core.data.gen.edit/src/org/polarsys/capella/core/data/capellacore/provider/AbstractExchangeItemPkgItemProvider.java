@@ -39,7 +39,6 @@ import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.interaction.InteractionFactory;
-import org.polarsys.capella.core.data.requirement.RequirementFactory;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**
@@ -78,7 +77,6 @@ public class AbstractExchangeItemPkgItemProvider
       super.getPropertyDescriptors(object);
 
       addContainedGenericTracesPropertyDescriptor(object);
-      addContainedRequirementsTracesPropertyDescriptor(object);
     }
     // begin-extension-code
     checkChildCreationExtender(object);
@@ -103,33 +101,6 @@ public class AbstractExchangeItemPkgItemProvider
          getString("_UI_Namespace_containedGenericTraces_feature"), //$NON-NLS-1$
          getString("_UI_PropertyDescriptor_description", "_UI_Namespace_containedGenericTraces_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
          CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES,
-         false,
-         false,
-         false,
-         null,
-         null,
-    // begin-extension-code
-         null));
-    // end-extension-code
-  }
-
-	/**
-   * This adds a property descriptor for the Contained Requirements Traces feature.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected void addContainedRequirementsTracesPropertyDescriptor(Object object) {
-
-    // begin-extension-code
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-    // end-extension-code
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Namespace_containedRequirementsTraces_feature"), //$NON-NLS-1$
-         getString("_UI_PropertyDescriptor_description", "_UI_Namespace_containedRequirementsTraces_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-         CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES,
          false,
          false,
          false,
@@ -229,18 +200,6 @@ public class AbstractExchangeItemPkgItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
     super.collectNewChildDescriptors(newChildDescriptors, object);
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
-                         RequirementFactory.eINSTANCE.createRequirementsTrace());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter

@@ -26,9 +26,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.cs.ArchitectureAllocation;
@@ -38,7 +36,6 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.fa.impl.AbstractFunctionalArchitectureImpl;
 import org.polarsys.capella.core.data.information.DataPkg;
-import org.polarsys.capella.core.data.requirement.RequirementsPkg;
 
 /**
  * <!-- begin-user-doc -->
@@ -48,7 +45,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsPkg;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.cs.impl.BlockArchitectureImpl#getOwnedRequirementPkgs <em>Owned Requirement Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.BlockArchitectureImpl#getOwnedAbstractCapabilityPkg <em>Owned Abstract Capability Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.BlockArchitectureImpl#getOwnedInterfacePkg <em>Owned Interface Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.BlockArchitectureImpl#getOwnedDataPkg <em>Owned Data Pkg</em>}</li>
@@ -62,20 +58,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsPkg;
  * @generated
  */
 public abstract class BlockArchitectureImpl extends AbstractFunctionalArchitectureImpl implements BlockArchitecture {
-
-	/**
-   * The cached value of the '{@link #getOwnedRequirementPkgs() <em>Owned Requirement Pkgs</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @see #getOwnedRequirementPkgs()
-   * @generated
-   * @ordered
-   */
-	protected EList<RequirementsPkg> ownedRequirementPkgs;
-
-
-
-
 
 	/**
    * The cached value of the '{@link #getOwnedAbstractCapabilityPkg() <em>Owned Abstract Capability Pkg</em>}' containment reference.
@@ -153,24 +135,6 @@ public abstract class BlockArchitectureImpl extends AbstractFunctionalArchitectu
 	@Override
 	protected EClass eStaticClass() {
     return CsPackage.Literals.BLOCK_ARCHITECTURE;
-  }
-
-
-
-
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-
-	public EList<RequirementsPkg> getOwnedRequirementPkgs() {
-
-    if (ownedRequirementPkgs == null) {
-      ownedRequirementPkgs = new EObjectContainmentEList.Resolving<RequirementsPkg>(RequirementsPkg.class, this, CsPackage.BLOCK_ARCHITECTURE__OWNED_REQUIREMENT_PKGS);
-    }
-    return ownedRequirementPkgs;
   }
 
 
@@ -685,8 +649,6 @@ public abstract class BlockArchitectureImpl extends AbstractFunctionalArchitectu
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
     switch (featureID) {
-      case CsPackage.BLOCK_ARCHITECTURE__OWNED_REQUIREMENT_PKGS:
-        return ((InternalEList<?>)getOwnedRequirementPkgs()).basicRemove(otherEnd, msgs);
       case CsPackage.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG:
         return basicSetOwnedAbstractCapabilityPkg(null, msgs);
       case CsPackage.BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG:
@@ -705,8 +667,6 @@ public abstract class BlockArchitectureImpl extends AbstractFunctionalArchitectu
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
     switch (featureID) {
-      case CsPackage.BLOCK_ARCHITECTURE__OWNED_REQUIREMENT_PKGS:
-        return getOwnedRequirementPkgs();
       case CsPackage.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG:
         if (resolve) return getOwnedAbstractCapabilityPkg();
         return basicGetOwnedAbstractCapabilityPkg();
@@ -740,10 +700,6 @@ public abstract class BlockArchitectureImpl extends AbstractFunctionalArchitectu
 	@Override
 	public void eSet(int featureID, Object newValue) {
     switch (featureID) {
-      case CsPackage.BLOCK_ARCHITECTURE__OWNED_REQUIREMENT_PKGS:
-        getOwnedRequirementPkgs().clear();
-        getOwnedRequirementPkgs().addAll((Collection<? extends RequirementsPkg>)newValue);
-        return;
       case CsPackage.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG:
           setOwnedAbstractCapabilityPkg((AbstractCapabilityPkg)newValue);
         return;
@@ -766,9 +722,6 @@ public abstract class BlockArchitectureImpl extends AbstractFunctionalArchitectu
 	@Override
 	public void eUnset(int featureID) {
     switch (featureID) {
-      case CsPackage.BLOCK_ARCHITECTURE__OWNED_REQUIREMENT_PKGS:
-        getOwnedRequirementPkgs().clear();
-        return;
       case CsPackage.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG:
         setOwnedAbstractCapabilityPkg((AbstractCapabilityPkg)null);
         return;
@@ -792,8 +745,6 @@ public abstract class BlockArchitectureImpl extends AbstractFunctionalArchitectu
 	@Override
 	public boolean eIsSet(int featureID) {
     switch (featureID) {
-      case CsPackage.BLOCK_ARCHITECTURE__OWNED_REQUIREMENT_PKGS:
-        return ownedRequirementPkgs != null && !ownedRequirementPkgs.isEmpty();
       case CsPackage.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG:
         return ownedAbstractCapabilityPkg != null;
       case CsPackage.BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG:

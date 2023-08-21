@@ -45,7 +45,6 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
-import org.polarsys.capella.core.data.requirement.Requirement;
 
 /**
  * <!-- begin-user-doc -->
@@ -69,7 +68,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.TypedElementImpl#getAppliedPropertyValueGroups <em>Applied Property Value Groups</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.TypedElementImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.TypedElementImpl#getFeatures <em>Features</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.TypedElementImpl#getAppliedRequirements <em>Applied Requirements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.TypedElementImpl#getType <em>Type</em>}</li>
  * </ul>
  *
@@ -762,53 +760,6 @@ public abstract class TypedElementImpl extends AbstractTypedElementImpl implemen
    * @generated
    */
 
-	public EList<Requirement> getAppliedRequirements() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Requirement> resultAsList = (Collection<Requirement>) result;
-    return new EcoreEList.UnmodifiableEList<Requirement>(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException exception) {
-    	exception.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
-
-
-
-
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-
 	public Type getType() {
 
     Type type = basicGetType();
@@ -915,8 +866,6 @@ public abstract class TypedElementImpl extends AbstractTypedElementImpl implemen
         return basicGetStatus();
       case CapellacorePackage.TYPED_ELEMENT__FEATURES:
         return getFeatures();
-      case CapellacorePackage.TYPED_ELEMENT__APPLIED_REQUIREMENTS:
-        return getAppliedRequirements();
       case CapellacorePackage.TYPED_ELEMENT__TYPE:
         if (resolve) return getType();
         return basicGetType();
@@ -1066,8 +1015,6 @@ public abstract class TypedElementImpl extends AbstractTypedElementImpl implemen
         return status != null;
       case CapellacorePackage.TYPED_ELEMENT__FEATURES:
         return features != null && !features.isEmpty();
-      case CapellacorePackage.TYPED_ELEMENT__APPLIED_REQUIREMENTS:
-        return !getAppliedRequirements().isEmpty();
       case CapellacorePackage.TYPED_ELEMENT__TYPE:
         return basicGetType() != null;
     }
@@ -1108,7 +1055,6 @@ public abstract class TypedElementImpl extends AbstractTypedElementImpl implemen
         case CapellacorePackage.TYPED_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS: return CapellacorePackage.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS;
         case CapellacorePackage.TYPED_ELEMENT__STATUS: return CapellacorePackage.CAPELLA_ELEMENT__STATUS;
         case CapellacorePackage.TYPED_ELEMENT__FEATURES: return CapellacorePackage.CAPELLA_ELEMENT__FEATURES;
-        case CapellacorePackage.TYPED_ELEMENT__APPLIED_REQUIREMENTS: return CapellacorePackage.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
         default: return -1;
       }
     }
@@ -1153,7 +1099,6 @@ public abstract class TypedElementImpl extends AbstractTypedElementImpl implemen
         case CapellacorePackage.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS: return CapellacorePackage.TYPED_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS;
         case CapellacorePackage.CAPELLA_ELEMENT__STATUS: return CapellacorePackage.TYPED_ELEMENT__STATUS;
         case CapellacorePackage.CAPELLA_ELEMENT__FEATURES: return CapellacorePackage.TYPED_ELEMENT__FEATURES;
-        case CapellacorePackage.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS: return CapellacorePackage.TYPED_ELEMENT__APPLIED_REQUIREMENTS;
         default: return -1;
       }
     }

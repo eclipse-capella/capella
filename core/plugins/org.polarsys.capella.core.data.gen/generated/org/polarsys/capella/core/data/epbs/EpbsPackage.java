@@ -272,15 +272,6 @@ public interface EpbsPackage extends EPackage {
 	int EPBS_ARCHITECTURE_PKG__FEATURES = CsPackage.BLOCK_ARCHITECTURE_PKG__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int EPBS_ARCHITECTURE_PKG__APPLIED_REQUIREMENTS = CsPackage.BLOCK_ARCHITECTURE_PKG__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -297,15 +288,6 @@ public interface EpbsPackage extends EPackage {
    * @ordered
    */
 	int EPBS_ARCHITECTURE_PKG__CONTAINED_GENERIC_TRACES = CsPackage.BLOCK_ARCHITECTURE_PKG__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int EPBS_ARCHITECTURE_PKG__CONTAINED_REQUIREMENTS_TRACES = CsPackage.BLOCK_ARCHITECTURE_PKG__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -543,15 +525,6 @@ public interface EpbsPackage extends EPackage {
 	int EPBS_ARCHITECTURE__FEATURES = CsPackage.COMPONENT_ARCHITECTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int EPBS_ARCHITECTURE__APPLIED_REQUIREMENTS = CsPackage.COMPONENT_ARCHITECTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -568,15 +541,6 @@ public interface EpbsPackage extends EPackage {
    * @ordered
    */
 	int EPBS_ARCHITECTURE__CONTAINED_GENERIC_TRACES = CsPackage.COMPONENT_ARCHITECTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int EPBS_ARCHITECTURE__CONTAINED_REQUIREMENTS_TRACES = CsPackage.COMPONENT_ARCHITECTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -649,15 +613,6 @@ public interface EpbsPackage extends EPackage {
    * @ordered
    */
 	int EPBS_ARCHITECTURE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS = CsPackage.COMPONENT_ARCHITECTURE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS;
-
-	/**
-   * The feature id for the '<em><b>Owned Requirement Pkgs</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int EPBS_ARCHITECTURE__OWNED_REQUIREMENT_PKGS = CsPackage.COMPONENT_ARCHITECTURE__OWNED_REQUIREMENT_PKGS;
 
 	/**
    * The feature id for the '<em><b>Owned Abstract Capability Pkg</b></em>' containment reference.
@@ -985,15 +940,6 @@ public interface EpbsPackage extends EPackage {
 	int CONFIGURATION_ITEM_PKG__FEATURES = CsPackage.COMPONENT_PKG__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CONFIGURATION_ITEM_PKG__APPLIED_REQUIREMENTS = CsPackage.COMPONENT_PKG__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1010,15 +956,6 @@ public interface EpbsPackage extends EPackage {
    * @ordered
    */
 	int CONFIGURATION_ITEM_PKG__CONTAINED_GENERIC_TRACES = CsPackage.COMPONENT_PKG__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CONFIGURATION_ITEM_PKG__CONTAINED_REQUIREMENTS_TRACES = CsPackage.COMPONENT_PKG__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -1337,15 +1274,6 @@ public interface EpbsPackage extends EPackage {
 	int CONFIGURATION_ITEM__FEATURES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CONFIGURATION_ITEM__APPLIED_REQUIREMENTS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Involving Involvements</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1409,22 +1337,13 @@ public interface EpbsPackage extends EPackage {
 	int CONFIGURATION_ITEM__CONTAINED_GENERIC_TRACES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CONFIGURATION_ITEM__CONTAINED_REQUIREMENTS_TRACES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__NAMING_RULES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 5;
+	int CONFIGURATION_ITEM__NAMING_RULES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
    * The feature id for the '<em><b>Typed Elements</b></em>' reference list.
@@ -1433,7 +1352,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__TYPED_ELEMENTS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 6;
+	int CONFIGURATION_ITEM__TYPED_ELEMENTS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
    * The feature id for the '<em><b>Owned Functional Allocation</b></em>' containment reference list.
@@ -1442,7 +1361,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_FUNCTIONAL_ALLOCATION = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 7;
+	int CONFIGURATION_ITEM__OWNED_FUNCTIONAL_ALLOCATION = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
    * The feature id for the '<em><b>Owned Component Exchanges</b></em>' containment reference list.
@@ -1451,7 +1370,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_COMPONENT_EXCHANGES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 8;
+	int CONFIGURATION_ITEM__OWNED_COMPONENT_EXCHANGES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
    * The feature id for the '<em><b>Owned Component Exchange Categories</b></em>' containment reference list.
@@ -1460,7 +1379,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_COMPONENT_EXCHANGE_CATEGORIES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 9;
+	int CONFIGURATION_ITEM__OWNED_COMPONENT_EXCHANGE_CATEGORIES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
    * The feature id for the '<em><b>Functional Allocations</b></em>' reference list.
@@ -1469,7 +1388,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__FUNCTIONAL_ALLOCATIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 10;
+	int CONFIGURATION_ITEM__FUNCTIONAL_ALLOCATIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
    * The feature id for the '<em><b>Allocated Functions</b></em>' reference list.
@@ -1478,7 +1397,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__ALLOCATED_FUNCTIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 11;
+	int CONFIGURATION_ITEM__ALLOCATED_FUNCTIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
    * The feature id for the '<em><b>In Exchange Links</b></em>' reference list.
@@ -1487,7 +1406,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__IN_EXCHANGE_LINKS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 12;
+	int CONFIGURATION_ITEM__IN_EXCHANGE_LINKS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
    * The feature id for the '<em><b>Out Exchange Links</b></em>' reference list.
@@ -1496,7 +1415,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OUT_EXCHANGE_LINKS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 13;
+	int CONFIGURATION_ITEM__OUT_EXCHANGE_LINKS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
    * The feature id for the '<em><b>Owned Abstract Capability Pkg</b></em>' containment reference.
@@ -1505,7 +1424,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_ABSTRACT_CAPABILITY_PKG = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 14;
+	int CONFIGURATION_ITEM__OWNED_ABSTRACT_CAPABILITY_PKG = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 13;
 
 	/**
    * The feature id for the '<em><b>Owned Interface Pkg</b></em>' containment reference.
@@ -1514,7 +1433,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_INTERFACE_PKG = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 15;
+	int CONFIGURATION_ITEM__OWNED_INTERFACE_PKG = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
    * The feature id for the '<em><b>Owned Data Pkg</b></em>' containment reference.
@@ -1523,7 +1442,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_DATA_PKG = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 16;
+	int CONFIGURATION_ITEM__OWNED_DATA_PKG = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 15;
 
 	/**
    * The feature id for the '<em><b>Owned State Machines</b></em>' containment reference list.
@@ -1532,7 +1451,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_STATE_MACHINES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 17;
+	int CONFIGURATION_ITEM__OWNED_STATE_MACHINES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 16;
 
 	/**
    * The feature id for the '<em><b>Abstract</b></em>' attribute.
@@ -1541,7 +1460,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__ABSTRACT = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 18;
+	int CONFIGURATION_ITEM__ABSTRACT = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 17;
 
 	/**
    * The feature id for the '<em><b>Owned Generalizations</b></em>' containment reference list.
@@ -1550,7 +1469,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_GENERALIZATIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 19;
+	int CONFIGURATION_ITEM__OWNED_GENERALIZATIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 18;
 
 	/**
    * The feature id for the '<em><b>Super Generalizations</b></em>' reference list.
@@ -1559,7 +1478,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__SUPER_GENERALIZATIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 20;
+	int CONFIGURATION_ITEM__SUPER_GENERALIZATIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 19;
 
 	/**
    * The feature id for the '<em><b>Sub Generalizations</b></em>' reference list.
@@ -1568,7 +1487,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__SUB_GENERALIZATIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 21;
+	int CONFIGURATION_ITEM__SUB_GENERALIZATIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 20;
 
 	/**
    * The feature id for the '<em><b>Super</b></em>' reference list.
@@ -1577,7 +1496,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__SUPER = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 22;
+	int CONFIGURATION_ITEM__SUPER = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 21;
 
 	/**
    * The feature id for the '<em><b>Sub</b></em>' reference list.
@@ -1586,7 +1505,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__SUB = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 23;
+	int CONFIGURATION_ITEM__SUB = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 22;
 
 	/**
    * The feature id for the '<em><b>Owned Features</b></em>' containment reference list.
@@ -1595,7 +1514,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_FEATURES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 24;
+	int CONFIGURATION_ITEM__OWNED_FEATURES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 23;
 
 	/**
    * The feature id for the '<em><b>Contained Properties</b></em>' reference list.
@@ -1604,7 +1523,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__CONTAINED_PROPERTIES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 25;
+	int CONFIGURATION_ITEM__CONTAINED_PROPERTIES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 24;
 
 	/**
    * The feature id for the '<em><b>Owned Interface Allocations</b></em>' containment reference list.
@@ -1613,7 +1532,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_INTERFACE_ALLOCATIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 26;
+	int CONFIGURATION_ITEM__OWNED_INTERFACE_ALLOCATIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 25;
 
 	/**
    * The feature id for the '<em><b>Provisioned Interface Allocations</b></em>' reference list.
@@ -1622,7 +1541,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__PROVISIONED_INTERFACE_ALLOCATIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 27;
+	int CONFIGURATION_ITEM__PROVISIONED_INTERFACE_ALLOCATIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 26;
 
 	/**
    * The feature id for the '<em><b>Allocated Interfaces</b></em>' reference list.
@@ -1631,7 +1550,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__ALLOCATED_INTERFACES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 28;
+	int CONFIGURATION_ITEM__ALLOCATED_INTERFACES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 27;
 
 	/**
    * The feature id for the '<em><b>Owned Communication Links</b></em>' containment reference list.
@@ -1640,7 +1559,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_COMMUNICATION_LINKS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 29;
+	int CONFIGURATION_ITEM__OWNED_COMMUNICATION_LINKS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 28;
 
 	/**
    * The feature id for the '<em><b>Produce</b></em>' reference list.
@@ -1649,7 +1568,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__PRODUCE = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 30;
+	int CONFIGURATION_ITEM__PRODUCE = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 29;
 
 	/**
    * The feature id for the '<em><b>Consume</b></em>' reference list.
@@ -1658,7 +1577,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__CONSUME = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 31;
+	int CONFIGURATION_ITEM__CONSUME = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 30;
 
 	/**
    * The feature id for the '<em><b>Send</b></em>' reference list.
@@ -1667,7 +1586,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__SEND = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 32;
+	int CONFIGURATION_ITEM__SEND = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 31;
 
 	/**
    * The feature id for the '<em><b>Receive</b></em>' reference list.
@@ -1676,7 +1595,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__RECEIVE = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 33;
+	int CONFIGURATION_ITEM__RECEIVE = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 32;
 
 	/**
    * The feature id for the '<em><b>Call</b></em>' reference list.
@@ -1685,7 +1604,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__CALL = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 34;
+	int CONFIGURATION_ITEM__CALL = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 33;
 
 	/**
    * The feature id for the '<em><b>Execute</b></em>' reference list.
@@ -1694,7 +1613,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__EXECUTE = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 35;
+	int CONFIGURATION_ITEM__EXECUTE = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 34;
 
 	/**
    * The feature id for the '<em><b>Write</b></em>' reference list.
@@ -1703,7 +1622,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__WRITE = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 36;
+	int CONFIGURATION_ITEM__WRITE = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 35;
 
 	/**
    * The feature id for the '<em><b>Access</b></em>' reference list.
@@ -1712,7 +1631,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__ACCESS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 37;
+	int CONFIGURATION_ITEM__ACCESS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 36;
 
 	/**
    * The feature id for the '<em><b>Acquire</b></em>' reference list.
@@ -1721,7 +1640,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__ACQUIRE = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 38;
+	int CONFIGURATION_ITEM__ACQUIRE = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 37;
 
 	/**
    * The feature id for the '<em><b>Transmit</b></em>' reference list.
@@ -1730,7 +1649,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__TRANSMIT = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 39;
+	int CONFIGURATION_ITEM__TRANSMIT = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 38;
 
 	/**
    * The feature id for the '<em><b>Actor</b></em>' attribute.
@@ -1739,7 +1658,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__ACTOR = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 40;
+	int CONFIGURATION_ITEM__ACTOR = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 39;
 
 	/**
    * The feature id for the '<em><b>Human</b></em>' attribute.
@@ -1748,7 +1667,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__HUMAN = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 41;
+	int CONFIGURATION_ITEM__HUMAN = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 40;
 
 	/**
    * The feature id for the '<em><b>Owned Interface Uses</b></em>' containment reference list.
@@ -1757,7 +1676,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_INTERFACE_USES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 42;
+	int CONFIGURATION_ITEM__OWNED_INTERFACE_USES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 41;
 
 	/**
    * The feature id for the '<em><b>Used Interface Links</b></em>' reference list.
@@ -1766,7 +1685,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__USED_INTERFACE_LINKS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 43;
+	int CONFIGURATION_ITEM__USED_INTERFACE_LINKS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 42;
 
 	/**
    * The feature id for the '<em><b>Used Interfaces</b></em>' reference list.
@@ -1775,7 +1694,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__USED_INTERFACES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 44;
+	int CONFIGURATION_ITEM__USED_INTERFACES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 43;
 
 	/**
    * The feature id for the '<em><b>Owned Interface Implementations</b></em>' containment reference list.
@@ -1784,7 +1703,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_INTERFACE_IMPLEMENTATIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 45;
+	int CONFIGURATION_ITEM__OWNED_INTERFACE_IMPLEMENTATIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 44;
 
 	/**
    * The feature id for the '<em><b>Implemented Interface Links</b></em>' reference list.
@@ -1793,7 +1712,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__IMPLEMENTED_INTERFACE_LINKS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 46;
+	int CONFIGURATION_ITEM__IMPLEMENTED_INTERFACE_LINKS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 45;
 
 	/**
    * The feature id for the '<em><b>Implemented Interfaces</b></em>' reference list.
@@ -1802,7 +1721,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__IMPLEMENTED_INTERFACES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 47;
+	int CONFIGURATION_ITEM__IMPLEMENTED_INTERFACES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 46;
 
 	/**
    * The feature id for the '<em><b>Owned Component Realizations</b></em>' containment reference list.
@@ -1811,7 +1730,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_COMPONENT_REALIZATIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 48;
+	int CONFIGURATION_ITEM__OWNED_COMPONENT_REALIZATIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 47;
 
 	/**
    * The feature id for the '<em><b>Realized Components</b></em>' reference list.
@@ -1820,7 +1739,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__REALIZED_COMPONENTS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 49;
+	int CONFIGURATION_ITEM__REALIZED_COMPONENTS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 48;
 
 	/**
    * The feature id for the '<em><b>Realizing Components</b></em>' reference list.
@@ -1829,7 +1748,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__REALIZING_COMPONENTS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 50;
+	int CONFIGURATION_ITEM__REALIZING_COMPONENTS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 49;
 
 	/**
    * The feature id for the '<em><b>Provided Interfaces</b></em>' reference list.
@@ -1838,7 +1757,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__PROVIDED_INTERFACES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 51;
+	int CONFIGURATION_ITEM__PROVIDED_INTERFACES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 50;
 
 	/**
    * The feature id for the '<em><b>Required Interfaces</b></em>' reference list.
@@ -1847,7 +1766,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__REQUIRED_INTERFACES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 52;
+	int CONFIGURATION_ITEM__REQUIRED_INTERFACES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 51;
 
 	/**
    * The feature id for the '<em><b>Contained Component Ports</b></em>' reference list.
@@ -1856,7 +1775,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__CONTAINED_COMPONENT_PORTS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 53;
+	int CONFIGURATION_ITEM__CONTAINED_COMPONENT_PORTS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 52;
 
 	/**
    * The feature id for the '<em><b>Contained Parts</b></em>' reference list.
@@ -1865,7 +1784,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__CONTAINED_PARTS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 54;
+	int CONFIGURATION_ITEM__CONTAINED_PARTS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 53;
 
 	/**
    * The feature id for the '<em><b>Contained Physical Ports</b></em>' reference list.
@@ -1874,7 +1793,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__CONTAINED_PHYSICAL_PORTS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 55;
+	int CONFIGURATION_ITEM__CONTAINED_PHYSICAL_PORTS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 54;
 
 	/**
    * The feature id for the '<em><b>Owned Physical Path</b></em>' containment reference list.
@@ -1883,7 +1802,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_PHYSICAL_PATH = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 56;
+	int CONFIGURATION_ITEM__OWNED_PHYSICAL_PATH = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 55;
 
 	/**
    * The feature id for the '<em><b>Owned Physical Links</b></em>' containment reference list.
@@ -1892,7 +1811,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_PHYSICAL_LINKS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 57;
+	int CONFIGURATION_ITEM__OWNED_PHYSICAL_LINKS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 56;
 
 	/**
    * The feature id for the '<em><b>Owned Physical Link Categories</b></em>' containment reference list.
@@ -1901,7 +1820,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_PHYSICAL_LINK_CATEGORIES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 58;
+	int CONFIGURATION_ITEM__OWNED_PHYSICAL_LINK_CATEGORIES = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 57;
 
 	/**
    * The feature id for the '<em><b>Representing Parts</b></em>' reference list.
@@ -1910,7 +1829,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__REPRESENTING_PARTS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 59;
+	int CONFIGURATION_ITEM__REPRESENTING_PARTS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 58;
 
 	/**
    * The feature id for the '<em><b>Item Identifier</b></em>' attribute.
@@ -1919,7 +1838,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__ITEM_IDENTIFIER = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 60;
+	int CONFIGURATION_ITEM__ITEM_IDENTIFIER = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 59;
 
 	/**
    * The feature id for the '<em><b>Kind</b></em>' attribute.
@@ -1928,7 +1847,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__KIND = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 61;
+	int CONFIGURATION_ITEM__KIND = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 60;
 
 	/**
    * The feature id for the '<em><b>Owned Configuration Items</b></em>' containment reference list.
@@ -1937,7 +1856,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 62;
+	int CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 61;
 
 	/**
    * The feature id for the '<em><b>Owned Configuration Item Pkgs</b></em>' containment reference list.
@@ -1946,7 +1865,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 63;
+	int CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 62;
 
 	/**
    * The feature id for the '<em><b>Owned Physical Artifact Realizations</b></em>' containment reference list.
@@ -1955,7 +1874,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 64;
+	int CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 63;
 
 	/**
    * The feature id for the '<em><b>Allocated Physical Artifacts</b></em>' reference list.
@@ -1964,7 +1883,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM__ALLOCATED_PHYSICAL_ARTIFACTS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 65;
+	int CONFIGURATION_ITEM__ALLOCATED_PHYSICAL_ARTIFACTS = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 64;
 
 	/**
    * The number of structural features of the '<em>Configuration Item</em>' class.
@@ -1973,7 +1892,7 @@ public interface EpbsPackage extends EPackage {
    * @generated
    * @ordered
    */
-	int CONFIGURATION_ITEM_FEATURE_COUNT = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 66;
+	int CONFIGURATION_ITEM_FEATURE_COUNT = CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT + 65;
 
 	/**
    * The meta object id for the '{@link org.polarsys.capella.core.data.epbs.impl.PhysicalArchitectureRealizationImpl <em>Physical Architecture Realization</em>}' class.
@@ -2173,15 +2092,6 @@ public interface EpbsPackage extends EPackage {
    * @ordered
    */
 	int PHYSICAL_ARCHITECTURE_REALIZATION__FEATURES = CsPackage.ARCHITECTURE_ALLOCATION__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PHYSICAL_ARCHITECTURE_REALIZATION__APPLIED_REQUIREMENTS = CsPackage.ARCHITECTURE_ALLOCATION__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
@@ -2426,15 +2336,6 @@ public interface EpbsPackage extends EPackage {
    * @ordered
    */
 	int PHYSICAL_ARTIFACT_REALIZATION__FEATURES = CapellacorePackage.ALLOCATION__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PHYSICAL_ARTIFACT_REALIZATION__APPLIED_REQUIREMENTS = CapellacorePackage.ALLOCATION__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.

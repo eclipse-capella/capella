@@ -45,7 +45,6 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.InterfaceAllocator;
-import org.polarsys.capella.core.data.epbs.*;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;

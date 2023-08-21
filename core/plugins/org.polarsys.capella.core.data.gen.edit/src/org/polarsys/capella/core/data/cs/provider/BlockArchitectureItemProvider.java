@@ -41,7 +41,6 @@ import org.polarsys.capella.core.data.fa.provider.AbstractFunctionalArchitecture
 import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.oa.OaFactory;
-import org.polarsys.capella.core.data.requirement.RequirementFactory;
 import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
@@ -270,7 +269,6 @@ public class BlockArchitectureItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
     if (childrenFeatures == null) {
       super.getChildrenFeatures(object);
-      childrenFeatures.add(CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_REQUIREMENT_PKGS);
       childrenFeatures.add(CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG);
       childrenFeatures.add(CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG);
       childrenFeatures.add(CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_DATA_PKG);
@@ -327,7 +325,6 @@ public class BlockArchitectureItemProvider
     updateChildren(notification);
 
     switch (notification.getFeatureID(BlockArchitecture.class)) {
-      case CsPackage.BLOCK_ARCHITECTURE__OWNED_REQUIREMENT_PKGS:
       case CsPackage.BLOCK_ARCHITECTURE__OWNED_ABSTRACT_CAPABILITY_PKG:
       case CsPackage.BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG:
       case CsPackage.BLOCK_ARCHITECTURE__OWNED_DATA_PKG:
@@ -347,18 +344,6 @@ public class BlockArchitectureItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
     super.collectNewChildDescriptors(newChildDescriptors, object);
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_REQUIREMENT_PKGS,
-                         RequirementFactory.eINSTANCE.createRequirementsPkg());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter

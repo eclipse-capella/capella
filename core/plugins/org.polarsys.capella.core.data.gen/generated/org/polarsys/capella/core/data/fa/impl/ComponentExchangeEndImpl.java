@@ -46,7 +46,6 @@ import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.ComponentExchangeEnd;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.information.Port;
-import org.polarsys.capella.core.data.requirement.Requirement;
 
 /**
  * <!-- begin-user-doc -->
@@ -70,7 +69,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentExchangeEndImpl#getAppliedPropertyValueGroups <em>Applied Property Value Groups</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentExchangeEndImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentExchangeEndImpl#getFeatures <em>Features</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentExchangeEndImpl#getAppliedRequirements <em>Applied Requirements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentExchangeEndImpl#getPort <em>Port</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentExchangeEndImpl#getPart <em>Part</em>}</li>
  * </ul>
@@ -788,53 +786,6 @@ public class ComponentExchangeEndImpl extends InformationsExchangerImpl implemen
    * @generated
    */
 
-	public EList<Requirement> getAppliedRequirements() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Requirement> resultAsList = (Collection<Requirement>) result;
-    return new EcoreEList.UnmodifiableEList<Requirement>(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException exception) {
-    	exception.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
-
-
-
-
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-
 	public Port getPort() {
 
     if (port != null && port.eIsProxy()) {
@@ -987,8 +938,6 @@ public class ComponentExchangeEndImpl extends InformationsExchangerImpl implemen
         return basicGetStatus();
       case FaPackage.COMPONENT_EXCHANGE_END__FEATURES:
         return getFeatures();
-      case FaPackage.COMPONENT_EXCHANGE_END__APPLIED_REQUIREMENTS:
-        return getAppliedRequirements();
       case FaPackage.COMPONENT_EXCHANGE_END__PORT:
         if (resolve) return getPort();
         return basicGetPort();
@@ -1153,8 +1102,6 @@ public class ComponentExchangeEndImpl extends InformationsExchangerImpl implemen
         return status != null;
       case FaPackage.COMPONENT_EXCHANGE_END__FEATURES:
         return features != null && !features.isEmpty();
-      case FaPackage.COMPONENT_EXCHANGE_END__APPLIED_REQUIREMENTS:
-        return !getAppliedRequirements().isEmpty();
       case FaPackage.COMPONENT_EXCHANGE_END__PORT:
         return port != null;
       case FaPackage.COMPONENT_EXCHANGE_END__PART:
@@ -1197,7 +1144,6 @@ public class ComponentExchangeEndImpl extends InformationsExchangerImpl implemen
         case FaPackage.COMPONENT_EXCHANGE_END__APPLIED_PROPERTY_VALUE_GROUPS: return CapellacorePackage.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS;
         case FaPackage.COMPONENT_EXCHANGE_END__STATUS: return CapellacorePackage.CAPELLA_ELEMENT__STATUS;
         case FaPackage.COMPONENT_EXCHANGE_END__FEATURES: return CapellacorePackage.CAPELLA_ELEMENT__FEATURES;
-        case FaPackage.COMPONENT_EXCHANGE_END__APPLIED_REQUIREMENTS: return CapellacorePackage.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
         default: return -1;
       }
     }
@@ -1237,7 +1183,6 @@ public class ComponentExchangeEndImpl extends InformationsExchangerImpl implemen
         case CapellacorePackage.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS: return FaPackage.COMPONENT_EXCHANGE_END__APPLIED_PROPERTY_VALUE_GROUPS;
         case CapellacorePackage.CAPELLA_ELEMENT__STATUS: return FaPackage.COMPONENT_EXCHANGE_END__STATUS;
         case CapellacorePackage.CAPELLA_ELEMENT__FEATURES: return FaPackage.COMPONENT_EXCHANGE_END__FEATURES;
-        case CapellacorePackage.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS: return FaPackage.COMPONENT_EXCHANGE_END__APPLIED_REQUIREMENTS;
         default: return -1;
       }
     }

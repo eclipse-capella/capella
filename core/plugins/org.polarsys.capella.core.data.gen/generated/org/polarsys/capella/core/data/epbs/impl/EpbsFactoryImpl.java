@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
-import org.polarsys.capella.core.data.epbs.*;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemKind;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;

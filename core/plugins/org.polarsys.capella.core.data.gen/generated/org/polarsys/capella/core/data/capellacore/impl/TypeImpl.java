@@ -49,8 +49,6 @@ import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.capellacore.Trace;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
-import org.polarsys.capella.core.data.requirement.Requirement;
-import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 
 /**
  * <!-- begin-user-doc -->
@@ -74,10 +72,8 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.TypeImpl#getAppliedPropertyValueGroups <em>Applied Property Value Groups</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.TypeImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.TypeImpl#getFeatures <em>Features</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.TypeImpl#getAppliedRequirements <em>Applied Requirements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.TypeImpl#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.TypeImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.TypeImpl#getContainedRequirementsTraces <em>Contained Requirements Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.TypeImpl#getNamingRules <em>Naming Rules</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.impl.TypeImpl#getTypedElements <em>Typed Elements</em>}</li>
  * </ul>
@@ -807,53 +803,6 @@ public abstract class TypeImpl extends AbstractTypeImpl implements Type {
    * @generated
    */
 
-	public EList<Requirement> getAppliedRequirements() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Requirement> resultAsList = (Collection<Requirement>) result;
-    return new EcoreEList.UnmodifiableEList<Requirement>(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException exception) {
-    	exception.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
-
-
-
-
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-
 	public EList<Trace> getOwnedTraces() {
 
     if (ownedTraces == null) {
@@ -902,53 +851,6 @@ public abstract class TypeImpl extends AbstractTypeImpl implements Type {
     @SuppressWarnings("unchecked")
     Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
     return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException exception) {
-    	exception.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
-
-
-
-
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-
-	public EList<RequirementsTrace> getContainedRequirementsTraces() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
-    return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
     } catch (ClassCastException exception) {
     	exception.printStackTrace();
     	return org.eclipse.emf.common.util.ECollections.emptyEList();
@@ -1082,14 +984,10 @@ public abstract class TypeImpl extends AbstractTypeImpl implements Type {
         return basicGetStatus();
       case CapellacorePackage.TYPE__FEATURES:
         return getFeatures();
-      case CapellacorePackage.TYPE__APPLIED_REQUIREMENTS:
-        return getAppliedRequirements();
       case CapellacorePackage.TYPE__OWNED_TRACES:
         return getOwnedTraces();
       case CapellacorePackage.TYPE__CONTAINED_GENERIC_TRACES:
         return getContainedGenericTraces();
-      case CapellacorePackage.TYPE__CONTAINED_REQUIREMENTS_TRACES:
-        return getContainedRequirementsTraces();
       case CapellacorePackage.TYPE__NAMING_RULES:
         return getNamingRules();
       case CapellacorePackage.TYPE__TYPED_ELEMENTS:
@@ -1254,14 +1152,10 @@ public abstract class TypeImpl extends AbstractTypeImpl implements Type {
         return status != null;
       case CapellacorePackage.TYPE__FEATURES:
         return features != null && !features.isEmpty();
-      case CapellacorePackage.TYPE__APPLIED_REQUIREMENTS:
-        return !getAppliedRequirements().isEmpty();
       case CapellacorePackage.TYPE__OWNED_TRACES:
         return ownedTraces != null && !ownedTraces.isEmpty();
       case CapellacorePackage.TYPE__CONTAINED_GENERIC_TRACES:
         return !getContainedGenericTraces().isEmpty();
-      case CapellacorePackage.TYPE__CONTAINED_REQUIREMENTS_TRACES:
-        return !getContainedRequirementsTraces().isEmpty();
       case CapellacorePackage.TYPE__NAMING_RULES:
         return namingRules != null && !namingRules.isEmpty();
       case CapellacorePackage.TYPE__TYPED_ELEMENTS:
@@ -1304,7 +1198,6 @@ public abstract class TypeImpl extends AbstractTypeImpl implements Type {
         case CapellacorePackage.TYPE__APPLIED_PROPERTY_VALUE_GROUPS: return CapellacorePackage.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS;
         case CapellacorePackage.TYPE__STATUS: return CapellacorePackage.CAPELLA_ELEMENT__STATUS;
         case CapellacorePackage.TYPE__FEATURES: return CapellacorePackage.CAPELLA_ELEMENT__FEATURES;
-        case CapellacorePackage.TYPE__APPLIED_REQUIREMENTS: return CapellacorePackage.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
         default: return -1;
       }
     }
@@ -1317,7 +1210,6 @@ public abstract class TypeImpl extends AbstractTypeImpl implements Type {
       switch (derivedFeatureID) {
         case CapellacorePackage.TYPE__OWNED_TRACES: return CapellacorePackage.NAMESPACE__OWNED_TRACES;
         case CapellacorePackage.TYPE__CONTAINED_GENERIC_TRACES: return CapellacorePackage.NAMESPACE__CONTAINED_GENERIC_TRACES;
-        case CapellacorePackage.TYPE__CONTAINED_REQUIREMENTS_TRACES: return CapellacorePackage.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES;
         case CapellacorePackage.TYPE__NAMING_RULES: return CapellacorePackage.NAMESPACE__NAMING_RULES;
         default: return -1;
       }
@@ -1358,7 +1250,6 @@ public abstract class TypeImpl extends AbstractTypeImpl implements Type {
         case CapellacorePackage.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS: return CapellacorePackage.TYPE__APPLIED_PROPERTY_VALUE_GROUPS;
         case CapellacorePackage.CAPELLA_ELEMENT__STATUS: return CapellacorePackage.TYPE__STATUS;
         case CapellacorePackage.CAPELLA_ELEMENT__FEATURES: return CapellacorePackage.TYPE__FEATURES;
-        case CapellacorePackage.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS: return CapellacorePackage.TYPE__APPLIED_REQUIREMENTS;
         default: return -1;
       }
     }
@@ -1371,7 +1262,6 @@ public abstract class TypeImpl extends AbstractTypeImpl implements Type {
       switch (baseFeatureID) {
         case CapellacorePackage.NAMESPACE__OWNED_TRACES: return CapellacorePackage.TYPE__OWNED_TRACES;
         case CapellacorePackage.NAMESPACE__CONTAINED_GENERIC_TRACES: return CapellacorePackage.TYPE__CONTAINED_GENERIC_TRACES;
-        case CapellacorePackage.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES: return CapellacorePackage.TYPE__CONTAINED_REQUIREMENTS_TRACES;
         case CapellacorePackage.NAMESPACE__NAMING_RULES: return CapellacorePackage.TYPE__NAMING_RULES;
         default: return -1;
       }

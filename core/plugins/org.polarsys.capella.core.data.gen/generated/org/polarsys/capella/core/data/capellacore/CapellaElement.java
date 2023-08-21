@@ -15,7 +15,6 @@ package org.polarsys.capella.core.data.capellacore;
 import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.common.data.modellingcore.PublishableElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.core.data.requirement.Requirement;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,7 +35,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.capellacore.CapellaElement#getAppliedPropertyValueGroups <em>Applied Property Value Groups</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.CapellaElement#getStatus <em>Status</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.CapellaElement#getFeatures <em>Features</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.capellacore.CapellaElement#getAppliedRequirements <em>Applied Requirements</em>}</li>
  * </ul>
  *
  * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement()
@@ -368,33 +366,6 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
    */
 
 	EList<EnumerationPropertyLiteral> getFeatures();
-
-
-
-
-
-
-
-	/**
-   * Returns the value of the '<em><b>Applied Requirements</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.requirement.Requirement}.
-
-   * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Applied Requirements</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Applied Requirements</em>' reference list.
-   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_AppliedRequirements()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='RequirementsTrace.sourceElement(rt, self);\r\nRequirementsTrace.targetElement(rt, target);'"
-   *        annotation="http://www.polarsys.org/capella/semantic"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
-
-	EList<Requirement> getAppliedRequirements();
 
 
 

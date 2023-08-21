@@ -262,22 +262,13 @@ public interface CapellacorePackage extends EPackage {
 	int CAPELLA_ELEMENT__FEATURES = ModellingcorePackage.TRACEABLE_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CAPELLA_ELEMENT__APPLIED_REQUIREMENTS = ModellingcorePackage.TRACEABLE_ELEMENT_FEATURE_COUNT + 12;
-
-	/**
    * The number of structural features of the '<em>Capella Element</em>' class.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int CAPELLA_ELEMENT_FEATURE_COUNT = ModellingcorePackage.TRACEABLE_ELEMENT_FEATURE_COUNT + 13;
+	int CAPELLA_ELEMENT_FEATURE_COUNT = ModellingcorePackage.TRACEABLE_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
    * The meta object id for the '{@link org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl <em>Named Element</em>}' class.
@@ -479,22 +470,13 @@ public interface CapellacorePackage extends EPackage {
 	int NAMED_ELEMENT__FEATURES = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT_FEATURE_COUNT + 13;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int NAMED_ELEMENT__APPLIED_REQUIREMENTS = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT_FEATURE_COUNT + 14;
-
-	/**
    * The number of structural features of the '<em>Named Element</em>' class.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int NAMED_ELEMENT_FEATURE_COUNT = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT_FEATURE_COUNT + 15;
+	int NAMED_ELEMENT_FEATURE_COUNT = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
    * The meta object id for the '{@link org.polarsys.capella.core.data.capellacore.impl.RelationshipImpl <em>Relationship</em>}' class.
@@ -696,22 +678,13 @@ public interface CapellacorePackage extends EPackage {
 	int RELATIONSHIP__FEATURES = ModellingcorePackage.ABSTRACT_RELATIONSHIP_FEATURE_COUNT + 13;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int RELATIONSHIP__APPLIED_REQUIREMENTS = ModellingcorePackage.ABSTRACT_RELATIONSHIP_FEATURE_COUNT + 14;
-
-	/**
    * The number of structural features of the '<em>Relationship</em>' class.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int RELATIONSHIP_FEATURE_COUNT = ModellingcorePackage.ABSTRACT_RELATIONSHIP_FEATURE_COUNT + 15;
+	int RELATIONSHIP_FEATURE_COUNT = ModellingcorePackage.ABSTRACT_RELATIONSHIP_FEATURE_COUNT + 14;
 
 	/**
    * The meta object id for the '{@link org.polarsys.capella.core.data.capellacore.Namespace <em>Namespace</em>}' class.
@@ -913,15 +886,6 @@ public interface CapellacorePackage extends EPackage {
 	int NAMESPACE__FEATURES = NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int NAMESPACE__APPLIED_REQUIREMENTS = NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -940,22 +904,13 @@ public interface CapellacorePackage extends EPackage {
 	int NAMESPACE__CONTAINED_GENERIC_TRACES = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int NAMESPACE__CONTAINED_REQUIREMENTS_TRACES = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int NAMESPACE__NAMING_RULES = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int NAMESPACE__NAMING_RULES = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
    * The number of structural features of the '<em>Namespace</em>' class.
@@ -964,7 +919,7 @@ public interface CapellacorePackage extends EPackage {
    * @generated
    * @ordered
    */
-	int NAMESPACE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int NAMESPACE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
    * The meta object id for the '{@link org.polarsys.capella.core.data.capellacore.NamedRelationship <em>Named Relationship</em>}' class.
@@ -1164,15 +1119,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int NAMED_RELATIONSHIP__FEATURES = RELATIONSHIP__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int NAMED_RELATIONSHIP__APPLIED_REQUIREMENTS = RELATIONSHIP__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1401,15 +1347,6 @@ public interface CapellacorePackage extends EPackage {
 	int STRUCTURE__FEATURES = NAMESPACE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int STRUCTURE__APPLIED_REQUIREMENTS = NAMESPACE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1426,15 +1363,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int STRUCTURE__CONTAINED_GENERIC_TRACES = NAMESPACE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int STRUCTURE__CONTAINED_REQUIREMENTS_TRACES = NAMESPACE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -1663,15 +1591,6 @@ public interface CapellacorePackage extends EPackage {
 	int REUSER_STRUCTURE__FEATURES = STRUCTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int REUSER_STRUCTURE__APPLIED_REQUIREMENTS = STRUCTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1688,15 +1607,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int REUSER_STRUCTURE__CONTAINED_GENERIC_TRACES = STRUCTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int REUSER_STRUCTURE__CONTAINED_REQUIREMENTS_TRACES = STRUCTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -1943,15 +1853,6 @@ public interface CapellacorePackage extends EPackage {
 	int ABSTRACT_MODELLING_STRUCTURE__FEATURES = REUSER_STRUCTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_MODELLING_STRUCTURE__APPLIED_REQUIREMENTS = REUSER_STRUCTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1968,15 +1869,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int ABSTRACT_MODELLING_STRUCTURE__CONTAINED_GENERIC_TRACES = REUSER_STRUCTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_MODELLING_STRUCTURE__CONTAINED_REQUIREMENTS_TRACES = REUSER_STRUCTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -2250,22 +2142,13 @@ public interface CapellacorePackage extends EPackage {
 	int TYPE__FEATURES = ModellingcorePackage.ABSTRACT_TYPE_FEATURE_COUNT + 13;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int TYPE__APPLIED_REQUIREMENTS = ModellingcorePackage.ABSTRACT_TYPE_FEATURE_COUNT + 14;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TYPE__OWNED_TRACES = ModellingcorePackage.ABSTRACT_TYPE_FEATURE_COUNT + 15;
+	int TYPE__OWNED_TRACES = ModellingcorePackage.ABSTRACT_TYPE_FEATURE_COUNT + 14;
 
 	/**
    * The feature id for the '<em><b>Contained Generic Traces</b></em>' reference list.
@@ -2274,16 +2157,7 @@ public interface CapellacorePackage extends EPackage {
    * @generated
    * @ordered
    */
-	int TYPE__CONTAINED_GENERIC_TRACES = ModellingcorePackage.ABSTRACT_TYPE_FEATURE_COUNT + 16;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int TYPE__CONTAINED_REQUIREMENTS_TRACES = ModellingcorePackage.ABSTRACT_TYPE_FEATURE_COUNT + 17;
+	int TYPE__CONTAINED_GENERIC_TRACES = ModellingcorePackage.ABSTRACT_TYPE_FEATURE_COUNT + 15;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -2292,7 +2166,7 @@ public interface CapellacorePackage extends EPackage {
    * @generated
    * @ordered
    */
-	int TYPE__NAMING_RULES = ModellingcorePackage.ABSTRACT_TYPE_FEATURE_COUNT + 18;
+	int TYPE__NAMING_RULES = ModellingcorePackage.ABSTRACT_TYPE_FEATURE_COUNT + 16;
 
 	/**
    * The feature id for the '<em><b>Typed Elements</b></em>' reference list.
@@ -2301,7 +2175,7 @@ public interface CapellacorePackage extends EPackage {
    * @generated
    * @ordered
    */
-	int TYPE__TYPED_ELEMENTS = ModellingcorePackage.ABSTRACT_TYPE_FEATURE_COUNT + 19;
+	int TYPE__TYPED_ELEMENTS = ModellingcorePackage.ABSTRACT_TYPE_FEATURE_COUNT + 17;
 
 	/**
    * The number of structural features of the '<em>Type</em>' class.
@@ -2310,7 +2184,7 @@ public interface CapellacorePackage extends EPackage {
    * @generated
    * @ordered
    */
-	int TYPE_FEATURE_COUNT = ModellingcorePackage.ABSTRACT_TYPE_FEATURE_COUNT + 20;
+	int TYPE_FEATURE_COUNT = ModellingcorePackage.ABSTRACT_TYPE_FEATURE_COUNT + 18;
 
 	/**
    * The meta object id for the '{@link org.polarsys.capella.core.data.capellacore.ModellingBlock <em>Modelling Block</em>}' class.
@@ -2521,15 +2395,6 @@ public interface CapellacorePackage extends EPackage {
 	int MODELLING_BLOCK__FEATURES = TYPE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int MODELLING_BLOCK__APPLIED_REQUIREMENTS = TYPE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2546,15 +2411,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int MODELLING_BLOCK__CONTAINED_GENERIC_TRACES = TYPE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int MODELLING_BLOCK__CONTAINED_REQUIREMENTS_TRACES = TYPE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -2783,15 +2639,6 @@ public interface CapellacorePackage extends EPackage {
 	int MODELLING_ARCHITECTURE__FEATURES = STRUCTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int MODELLING_ARCHITECTURE__APPLIED_REQUIREMENTS = STRUCTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2808,15 +2655,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int MODELLING_ARCHITECTURE__CONTAINED_GENERIC_TRACES = STRUCTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int MODELLING_ARCHITECTURE__CONTAINED_REQUIREMENTS_TRACES = STRUCTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -3045,15 +2883,6 @@ public interface CapellacorePackage extends EPackage {
 	int MODELLING_ARCHITECTURE_PKG__FEATURES = STRUCTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int MODELLING_ARCHITECTURE_PKG__APPLIED_REQUIREMENTS = STRUCTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3070,15 +2899,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int MODELLING_ARCHITECTURE_PKG__CONTAINED_GENERIC_TRACES = STRUCTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int MODELLING_ARCHITECTURE_PKG__CONTAINED_REQUIREMENTS_TRACES = STRUCTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -3316,22 +3136,13 @@ public interface CapellacorePackage extends EPackage {
 	int TYPED_ELEMENT__FEATURES = ModellingcorePackage.ABSTRACT_TYPED_ELEMENT_FEATURE_COUNT + 13;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int TYPED_ELEMENT__APPLIED_REQUIREMENTS = ModellingcorePackage.ABSTRACT_TYPED_ELEMENT_FEATURE_COUNT + 14;
-
-	/**
    * The feature id for the '<em><b>Type</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TYPED_ELEMENT__TYPE = ModellingcorePackage.ABSTRACT_TYPED_ELEMENT_FEATURE_COUNT + 15;
+	int TYPED_ELEMENT__TYPE = ModellingcorePackage.ABSTRACT_TYPED_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
    * The number of structural features of the '<em>Typed Element</em>' class.
@@ -3340,7 +3151,7 @@ public interface CapellacorePackage extends EPackage {
    * @generated
    * @ordered
    */
-	int TYPED_ELEMENT_FEATURE_COUNT = ModellingcorePackage.ABSTRACT_TYPED_ELEMENT_FEATURE_COUNT + 16;
+	int TYPED_ELEMENT_FEATURE_COUNT = ModellingcorePackage.ABSTRACT_TYPED_ELEMENT_FEATURE_COUNT + 15;
 
 	/**
    * The meta object id for the '{@link org.polarsys.capella.core.data.capellacore.impl.TraceImpl <em>Trace</em>}' class.
@@ -3540,15 +3351,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int TRACE__FEATURES = RELATIONSHIP__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int TRACE__APPLIED_REQUIREMENTS = RELATIONSHIP__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
@@ -3768,15 +3570,6 @@ public interface CapellacorePackage extends EPackage {
 	int ABSTRACT_ANNOTATION__FEATURES = CAPELLA_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_ANNOTATION__APPLIED_REQUIREMENTS = CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Content</b></em>' attribute.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3983,15 +3776,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int NAMING_RULE__FEATURES = ABSTRACT_ANNOTATION__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int NAMING_RULE__APPLIED_REQUIREMENTS = ABSTRACT_ANNOTATION__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Content</b></em>' attribute.
@@ -4220,15 +4004,6 @@ public interface CapellacorePackage extends EPackage {
 	int CONSTRAINT__FEATURES = NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CONSTRAINT__APPLIED_REQUIREMENTS = NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Constrained Elements</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4453,15 +4228,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int KEY_VALUE__FEATURES = CAPELLA_ELEMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int KEY_VALUE__APPLIED_REQUIREMENTS = CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -4690,15 +4456,6 @@ public interface CapellacorePackage extends EPackage {
 	int REUSE_LINK__FEATURES = RELATIONSHIP__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int REUSE_LINK__APPLIED_REQUIREMENTS = RELATIONSHIP__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Reused</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4925,15 +4682,6 @@ public interface CapellacorePackage extends EPackage {
 	int REUSEABLE_STRUCTURE__FEATURES = STRUCTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int REUSEABLE_STRUCTURE__APPLIED_REQUIREMENTS = STRUCTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4950,15 +4698,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int REUSEABLE_STRUCTURE__CONTAINED_GENERIC_TRACES = STRUCTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int REUSEABLE_STRUCTURE__CONTAINED_REQUIREMENTS_TRACES = STRUCTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -5205,15 +4944,6 @@ public interface CapellacorePackage extends EPackage {
 	int GENERALIZABLE_ELEMENT__FEATURES = TYPE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int GENERALIZABLE_ELEMENT__APPLIED_REQUIREMENTS = TYPE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5230,15 +4960,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int GENERALIZABLE_ELEMENT__CONTAINED_GENERIC_TRACES = TYPE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int GENERALIZABLE_ELEMENT__CONTAINED_REQUIREMENTS_TRACES = TYPE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -5530,15 +5251,6 @@ public interface CapellacorePackage extends EPackage {
 	int CLASSIFIER__FEATURES = GENERALIZABLE_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CLASSIFIER__APPLIED_REQUIREMENTS = GENERALIZABLE_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5555,15 +5267,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int CLASSIFIER__CONTAINED_GENERIC_TRACES = GENERALIZABLE_ELEMENT__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CLASSIFIER__CONTAINED_REQUIREMENTS_TRACES = GENERALIZABLE_ELEMENT__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -5873,15 +5576,6 @@ public interface CapellacorePackage extends EPackage {
 	int GENERAL_CLASS__FEATURES = CLASSIFIER__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int GENERAL_CLASS__APPLIED_REQUIREMENTS = CLASSIFIER__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5898,15 +5592,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int GENERAL_CLASS__CONTAINED_GENERIC_TRACES = CLASSIFIER__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int GENERAL_CLASS__CONTAINED_REQUIREMENTS_TRACES = CLASSIFIER__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -6243,15 +5928,6 @@ public interface CapellacorePackage extends EPackage {
 	int GENERALIZATION__FEATURES = RELATIONSHIP__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int GENERALIZATION__APPLIED_REQUIREMENTS = RELATIONSHIP__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Super</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6476,15 +6152,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int FEATURE__FEATURES = NAMED_ELEMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int FEATURE__APPLIED_REQUIREMENTS = NAMED_ELEMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
@@ -6722,15 +6389,6 @@ public interface CapellacorePackage extends EPackage {
 	int ABSTRACT_EXCHANGE_ITEM_PKG__FEATURES = STRUCTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_EXCHANGE_ITEM_PKG__APPLIED_REQUIREMENTS = STRUCTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6747,15 +6405,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int ABSTRACT_EXCHANGE_ITEM_PKG__CONTAINED_GENERIC_TRACES = STRUCTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_EXCHANGE_ITEM_PKG__CONTAINED_REQUIREMENTS_TRACES = STRUCTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -6993,15 +6642,6 @@ public interface CapellacorePackage extends EPackage {
 	int ALLOCATION__FEATURES = RELATIONSHIP__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ALLOCATION__APPLIED_REQUIREMENTS = RELATIONSHIP__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7228,15 +6868,6 @@ public interface CapellacorePackage extends EPackage {
 	int INVOLVEMENT__FEATURES = RELATIONSHIP__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int INVOLVEMENT__APPLIED_REQUIREMENTS = RELATIONSHIP__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Involver</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7454,15 +7085,6 @@ public interface CapellacorePackage extends EPackage {
 	int INVOLVER_ELEMENT__FEATURES = CAPELLA_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int INVOLVER_ELEMENT__APPLIED_REQUIREMENTS = CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Involved Involvements</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7669,15 +7291,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int INVOLVED_ELEMENT__FEATURES = CAPELLA_ELEMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int INVOLVED_ELEMENT__APPLIED_REQUIREMENTS = CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Involving Involvements</b></em>' reference list.
@@ -7895,15 +7508,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int ABSTRACT_PROPERTY_VALUE__FEATURES = NAMED_ELEMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_PROPERTY_VALUE__APPLIED_REQUIREMENTS = NAMED_ELEMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Involved Elements</b></em>' reference list.
@@ -8130,15 +7734,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int STRING_PROPERTY_VALUE__FEATURES = ABSTRACT_PROPERTY_VALUE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int STRING_PROPERTY_VALUE__APPLIED_REQUIREMENTS = ABSTRACT_PROPERTY_VALUE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Involved Elements</b></em>' reference list.
@@ -8376,15 +7971,6 @@ public interface CapellacorePackage extends EPackage {
 	int INTEGER_PROPERTY_VALUE__FEATURES = ABSTRACT_PROPERTY_VALUE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int INTEGER_PROPERTY_VALUE__APPLIED_REQUIREMENTS = ABSTRACT_PROPERTY_VALUE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Involved Elements</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8618,15 +8204,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int BOOLEAN_PROPERTY_VALUE__FEATURES = ABSTRACT_PROPERTY_VALUE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int BOOLEAN_PROPERTY_VALUE__APPLIED_REQUIREMENTS = ABSTRACT_PROPERTY_VALUE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Involved Elements</b></em>' reference list.
@@ -8864,15 +8441,6 @@ public interface CapellacorePackage extends EPackage {
 	int FLOAT_PROPERTY_VALUE__FEATURES = ABSTRACT_PROPERTY_VALUE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int FLOAT_PROPERTY_VALUE__APPLIED_REQUIREMENTS = ABSTRACT_PROPERTY_VALUE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Involved Elements</b></em>' reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9106,15 +8674,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int ENUMERATION_PROPERTY_VALUE__FEATURES = ABSTRACT_PROPERTY_VALUE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ENUMERATION_PROPERTY_VALUE__APPLIED_REQUIREMENTS = ABSTRACT_PROPERTY_VALUE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Involved Elements</b></em>' reference list.
@@ -9361,15 +8920,6 @@ public interface CapellacorePackage extends EPackage {
 	int ENUMERATION_PROPERTY_TYPE__FEATURES = NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ENUMERATION_PROPERTY_TYPE__APPLIED_REQUIREMENTS = NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Literals</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9587,15 +9137,6 @@ public interface CapellacorePackage extends EPackage {
 	int ENUMERATION_PROPERTY_LITERAL__FEATURES = NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ENUMERATION_PROPERTY_LITERAL__APPLIED_REQUIREMENTS = NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The number of structural features of the '<em>Enumeration Property Literal</em>' class.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9804,15 +9345,6 @@ public interface CapellacorePackage extends EPackage {
 	int PROPERTY_VALUE_GROUP__FEATURES = NAMESPACE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PROPERTY_VALUE_GROUP__APPLIED_REQUIREMENTS = NAMESPACE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9829,15 +9361,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int PROPERTY_VALUE_GROUP__CONTAINED_GENERIC_TRACES = NAMESPACE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PROPERTY_VALUE_GROUP__CONTAINED_REQUIREMENTS_TRACES = NAMESPACE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -10066,15 +9589,6 @@ public interface CapellacorePackage extends EPackage {
 	int PROPERTY_VALUE_PKG__FEATURES = STRUCTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PROPERTY_VALUE_PKG__APPLIED_REQUIREMENTS = STRUCTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10091,15 +9605,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int PROPERTY_VALUE_PKG__CONTAINED_GENERIC_TRACES = STRUCTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PROPERTY_VALUE_PKG__CONTAINED_REQUIREMENTS_TRACES = STRUCTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -10328,15 +9833,6 @@ public interface CapellacorePackage extends EPackage {
 	int ABSTRACT_DEPENDENCIES_PKG__FEATURES = STRUCTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_DEPENDENCIES_PKG__APPLIED_REQUIREMENTS = STRUCTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10353,15 +9849,6 @@ public interface CapellacorePackage extends EPackage {
    * @ordered
    */
 	int ABSTRACT_DEPENDENCIES_PKG__CONTAINED_GENERIC_TRACES = STRUCTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_DEPENDENCIES_PKG__CONTAINED_REQUIREMENTS_TRACES = STRUCTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -10522,17 +10009,6 @@ public interface CapellacorePackage extends EPackage {
 	EReference getCapellaElement_Features();
 
 	/**
-   * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.capellacore.CapellaElement#getAppliedRequirements <em>Applied Requirements</em>}'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Applied Requirements</em>'.
-   * @see org.polarsys.capella.core.data.capellacore.CapellaElement#getAppliedRequirements()
-   * @see #getCapellaElement()
-   * @generated
-   */
-	EReference getCapellaElement_AppliedRequirements();
-
-	/**
    * Returns the meta object for class '{@link org.polarsys.capella.core.data.capellacore.NamedElement <em>Named Element</em>}'.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10583,17 +10059,6 @@ public interface CapellacorePackage extends EPackage {
    * @generated
    */
 	EReference getNamespace_ContainedGenericTraces();
-
-	/**
-   * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.capellacore.Namespace#getContainedRequirementsTraces <em>Contained Requirements Traces</em>}'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Contained Requirements Traces</em>'.
-   * @see org.polarsys.capella.core.data.capellacore.Namespace#getContainedRequirementsTraces()
-   * @see #getNamespace()
-   * @generated
-   */
-	EReference getNamespace_ContainedRequirementsTraces();
 
 	/**
    * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.capellacore.Namespace#getNamingRules <em>Naming Rules</em>}'.
@@ -11605,14 +11070,6 @@ public interface CapellacorePackage extends EPackage {
 		EReference CAPELLA_ELEMENT__FEATURES = eINSTANCE.getCapellaElement_Features();
 
 		/**
-     * The meta object literal for the '<em><b>Applied Requirements</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EReference CAPELLA_ELEMENT__APPLIED_REQUIREMENTS = eINSTANCE.getCapellaElement_AppliedRequirements();
-
-		/**
      * The meta object literal for the '{@link org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl <em>Named Element</em>}' class.
      * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -11657,14 +11114,6 @@ public interface CapellacorePackage extends EPackage {
      * @generated
      */
 		EReference NAMESPACE__CONTAINED_GENERIC_TRACES = eINSTANCE.getNamespace_ContainedGenericTraces();
-
-		/**
-     * The meta object literal for the '<em><b>Contained Requirements Traces</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EReference NAMESPACE__CONTAINED_REQUIREMENTS_TRACES = eINSTANCE.getNamespace_ContainedRequirementsTraces();
 
 		/**
      * The meta object literal for the '<em><b>Naming Rules</b></em>' containment reference list feature.

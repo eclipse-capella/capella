@@ -271,15 +271,6 @@ public interface LaPackage extends EPackage {
 	int LOGICAL_ARCHITECTURE_PKG__FEATURES = CsPackage.BLOCK_ARCHITECTURE_PKG__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int LOGICAL_ARCHITECTURE_PKG__APPLIED_REQUIREMENTS = CsPackage.BLOCK_ARCHITECTURE_PKG__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -296,15 +287,6 @@ public interface LaPackage extends EPackage {
    * @ordered
    */
 	int LOGICAL_ARCHITECTURE_PKG__CONTAINED_GENERIC_TRACES = CsPackage.BLOCK_ARCHITECTURE_PKG__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int LOGICAL_ARCHITECTURE_PKG__CONTAINED_REQUIREMENTS_TRACES = CsPackage.BLOCK_ARCHITECTURE_PKG__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -542,15 +524,6 @@ public interface LaPackage extends EPackage {
 	int LOGICAL_ARCHITECTURE__FEATURES = CsPackage.COMPONENT_ARCHITECTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int LOGICAL_ARCHITECTURE__APPLIED_REQUIREMENTS = CsPackage.COMPONENT_ARCHITECTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -567,15 +540,6 @@ public interface LaPackage extends EPackage {
    * @ordered
    */
 	int LOGICAL_ARCHITECTURE__CONTAINED_GENERIC_TRACES = CsPackage.COMPONENT_ARCHITECTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int LOGICAL_ARCHITECTURE__CONTAINED_REQUIREMENTS_TRACES = CsPackage.COMPONENT_ARCHITECTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -648,15 +612,6 @@ public interface LaPackage extends EPackage {
    * @ordered
    */
 	int LOGICAL_ARCHITECTURE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS = CsPackage.COMPONENT_ARCHITECTURE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS;
-
-	/**
-   * The feature id for the '<em><b>Owned Requirement Pkgs</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int LOGICAL_ARCHITECTURE__OWNED_REQUIREMENT_PKGS = CsPackage.COMPONENT_ARCHITECTURE__OWNED_REQUIREMENT_PKGS;
 
 	/**
    * The feature id for the '<em><b>Owned Abstract Capability Pkg</b></em>' containment reference.
@@ -1002,15 +957,6 @@ public interface LaPackage extends EPackage {
 	int LOGICAL_FUNCTION__FEATURES = FaPackage.ABSTRACT_FUNCTION__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int LOGICAL_FUNCTION__APPLIED_REQUIREMENTS = FaPackage.ABSTRACT_FUNCTION__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1027,15 +973,6 @@ public interface LaPackage extends EPackage {
    * @ordered
    */
 	int LOGICAL_FUNCTION__CONTAINED_GENERIC_TRACES = FaPackage.ABSTRACT_FUNCTION__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int LOGICAL_FUNCTION__CONTAINED_REQUIREMENTS_TRACES = FaPackage.ABSTRACT_FUNCTION__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -1822,15 +1759,6 @@ public interface LaPackage extends EPackage {
 	int LOGICAL_FUNCTION_PKG__FEATURES = FaPackage.FUNCTION_PKG__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int LOGICAL_FUNCTION_PKG__APPLIED_REQUIREMENTS = FaPackage.FUNCTION_PKG__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1847,15 +1775,6 @@ public interface LaPackage extends EPackage {
    * @ordered
    */
 	int LOGICAL_FUNCTION_PKG__CONTAINED_GENERIC_TRACES = FaPackage.FUNCTION_PKG__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int LOGICAL_FUNCTION_PKG__CONTAINED_REQUIREMENTS_TRACES = FaPackage.FUNCTION_PKG__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -2156,15 +2075,6 @@ public interface LaPackage extends EPackage {
 	int LOGICAL_COMPONENT__FEATURES = CsPackage.COMPONENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int LOGICAL_COMPONENT__APPLIED_REQUIREMENTS = CsPackage.COMPONENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2181,15 +2091,6 @@ public interface LaPackage extends EPackage {
    * @ordered
    */
 	int LOGICAL_COMPONENT__CONTAINED_GENERIC_TRACES = CsPackage.COMPONENT__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int LOGICAL_COMPONENT__CONTAINED_REQUIREMENTS_TRACES = CsPackage.COMPONENT__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -2985,15 +2886,6 @@ public interface LaPackage extends EPackage {
 	int LOGICAL_COMPONENT_PKG__FEATURES = CsPackage.COMPONENT_PKG__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int LOGICAL_COMPONENT_PKG__APPLIED_REQUIREMENTS = CsPackage.COMPONENT_PKG__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3010,15 +2902,6 @@ public interface LaPackage extends EPackage {
    * @ordered
    */
 	int LOGICAL_COMPONENT_PKG__CONTAINED_GENERIC_TRACES = CsPackage.COMPONENT_PKG__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int LOGICAL_COMPONENT_PKG__CONTAINED_REQUIREMENTS_TRACES = CsPackage.COMPONENT_PKG__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -3346,15 +3229,6 @@ public interface LaPackage extends EPackage {
 	int CAPABILITY_REALIZATION__FEATURES = InteractionPackage.ABSTRACT_CAPABILITY__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CAPABILITY_REALIZATION__APPLIED_REQUIREMENTS = InteractionPackage.ABSTRACT_CAPABILITY__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3371,15 +3245,6 @@ public interface LaPackage extends EPackage {
    * @ordered
    */
 	int CAPABILITY_REALIZATION__CONTAINED_GENERIC_TRACES = InteractionPackage.ABSTRACT_CAPABILITY__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CAPABILITY_REALIZATION__CONTAINED_REQUIREMENTS_TRACES = InteractionPackage.ABSTRACT_CAPABILITY__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -3887,15 +3752,6 @@ public interface LaPackage extends EPackage {
 	int CAPABILITY_REALIZATION_PKG__FEATURES = CapellacommonPackage.ABSTRACT_CAPABILITY_PKG__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CAPABILITY_REALIZATION_PKG__APPLIED_REQUIREMENTS = CapellacommonPackage.ABSTRACT_CAPABILITY_PKG__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3912,15 +3768,6 @@ public interface LaPackage extends EPackage {
    * @ordered
    */
 	int CAPABILITY_REALIZATION_PKG__CONTAINED_GENERIC_TRACES = CapellacommonPackage.ABSTRACT_CAPABILITY_PKG__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CAPABILITY_REALIZATION_PKG__CONTAINED_REQUIREMENTS_TRACES = CapellacommonPackage.ABSTRACT_CAPABILITY_PKG__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -4167,15 +4014,6 @@ public interface LaPackage extends EPackage {
 	int SYSTEM_ANALYSIS_REALIZATION__FEATURES = CsPackage.ARCHITECTURE_ALLOCATION__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int SYSTEM_ANALYSIS_REALIZATION__APPLIED_REQUIREMENTS = CsPackage.ARCHITECTURE_ALLOCATION__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4418,15 +4256,6 @@ public interface LaPackage extends EPackage {
    * @ordered
    */
 	int CONTEXT_INTERFACE_REALIZATION__FEATURES = CsPackage.INTERFACE_ALLOCATION__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int CONTEXT_INTERFACE_REALIZATION__APPLIED_REQUIREMENTS = CsPackage.INTERFACE_ALLOCATION__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Target Element</b></em>' reference.

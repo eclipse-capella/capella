@@ -270,15 +270,6 @@ public interface DatavaluePackage extends EPackage {
 	int DATA_VALUE__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DATA_VALUE__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Abstract Type</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -514,15 +505,6 @@ public interface DatavaluePackage extends EPackage {
 	int DATA_VALUE_CONTAINER__FEATURES = CapellacorePackage.STRUCTURE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DATA_VALUE_CONTAINER__APPLIED_REQUIREMENTS = CapellacorePackage.STRUCTURE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -539,15 +521,6 @@ public interface DatavaluePackage extends EPackage {
    * @ordered
    */
 	int DATA_VALUE_CONTAINER__CONTAINED_GENERIC_TRACES = CapellacorePackage.STRUCTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DATA_VALUE_CONTAINER__CONTAINED_REQUIREMENTS_TRACES = CapellacorePackage.STRUCTURE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -783,15 +756,6 @@ public interface DatavaluePackage extends EPackage {
    * @ordered
    */
 	int ABSTRACT_BOOLEAN_VALUE__FEATURES = DATA_VALUE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_BOOLEAN_VALUE__APPLIED_REQUIREMENTS = DATA_VALUE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Abstract Type</b></em>' reference.
@@ -1036,15 +1000,6 @@ public interface DatavaluePackage extends EPackage {
    * @ordered
    */
 	int LITERAL_BOOLEAN_VALUE__FEATURES = ABSTRACT_BOOLEAN_VALUE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int LITERAL_BOOLEAN_VALUE__APPLIED_REQUIREMENTS = ABSTRACT_BOOLEAN_VALUE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Abstract Type</b></em>' reference.
@@ -1298,15 +1253,6 @@ public interface DatavaluePackage extends EPackage {
    * @ordered
    */
 	int BOOLEAN_REFERENCE__FEATURES = ABSTRACT_BOOLEAN_VALUE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int BOOLEAN_REFERENCE__APPLIED_REQUIREMENTS = ABSTRACT_BOOLEAN_VALUE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Abstract Type</b></em>' reference.
@@ -1571,15 +1517,6 @@ public interface DatavaluePackage extends EPackage {
 	int ABSTRACT_ENUMERATION_VALUE__FEATURES = DATA_VALUE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_ENUMERATION_VALUE__APPLIED_REQUIREMENTS = DATA_VALUE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Abstract Type</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1822,15 +1759,6 @@ public interface DatavaluePackage extends EPackage {
    * @ordered
    */
 	int ENUMERATION_LITERAL__FEATURES = ABSTRACT_ENUMERATION_VALUE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ENUMERATION_LITERAL__APPLIED_REQUIREMENTS = ABSTRACT_ENUMERATION_VALUE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Abstract Type</b></em>' reference.
@@ -2084,15 +2012,6 @@ public interface DatavaluePackage extends EPackage {
    * @ordered
    */
 	int ENUMERATION_REFERENCE__FEATURES = ABSTRACT_ENUMERATION_VALUE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ENUMERATION_REFERENCE__APPLIED_REQUIREMENTS = ABSTRACT_ENUMERATION_VALUE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Abstract Type</b></em>' reference.
@@ -2357,15 +2276,6 @@ public interface DatavaluePackage extends EPackage {
 	int ABSTRACT_STRING_VALUE__FEATURES = DATA_VALUE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_STRING_VALUE__APPLIED_REQUIREMENTS = DATA_VALUE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Abstract Type</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2608,15 +2518,6 @@ public interface DatavaluePackage extends EPackage {
    * @ordered
    */
 	int LITERAL_STRING_VALUE__FEATURES = ABSTRACT_STRING_VALUE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int LITERAL_STRING_VALUE__APPLIED_REQUIREMENTS = ABSTRACT_STRING_VALUE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Abstract Type</b></em>' reference.
@@ -2870,15 +2771,6 @@ public interface DatavaluePackage extends EPackage {
    * @ordered
    */
 	int STRING_REFERENCE__FEATURES = ABSTRACT_STRING_VALUE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int STRING_REFERENCE__APPLIED_REQUIREMENTS = ABSTRACT_STRING_VALUE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Abstract Type</b></em>' reference.
@@ -3143,15 +3035,6 @@ public interface DatavaluePackage extends EPackage {
 	int NUMERIC_VALUE__FEATURES = DATA_VALUE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int NUMERIC_VALUE__APPLIED_REQUIREMENTS = DATA_VALUE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Abstract Type</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3403,15 +3286,6 @@ public interface DatavaluePackage extends EPackage {
    * @ordered
    */
 	int LITERAL_NUMERIC_VALUE__FEATURES = NUMERIC_VALUE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int LITERAL_NUMERIC_VALUE__APPLIED_REQUIREMENTS = NUMERIC_VALUE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Abstract Type</b></em>' reference.
@@ -3674,15 +3548,6 @@ public interface DatavaluePackage extends EPackage {
    * @ordered
    */
 	int NUMERIC_REFERENCE__FEATURES = NUMERIC_VALUE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int NUMERIC_REFERENCE__APPLIED_REQUIREMENTS = NUMERIC_VALUE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Abstract Type</b></em>' reference.
@@ -3956,15 +3821,6 @@ public interface DatavaluePackage extends EPackage {
 	int ABSTRACT_COMPLEX_VALUE__FEATURES = DATA_VALUE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_COMPLEX_VALUE__APPLIED_REQUIREMENTS = DATA_VALUE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Abstract Type</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4207,15 +4063,6 @@ public interface DatavaluePackage extends EPackage {
    * @ordered
    */
 	int COMPLEX_VALUE__FEATURES = ABSTRACT_COMPLEX_VALUE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int COMPLEX_VALUE__APPLIED_REQUIREMENTS = ABSTRACT_COMPLEX_VALUE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Abstract Type</b></em>' reference.
@@ -4471,15 +4318,6 @@ public interface DatavaluePackage extends EPackage {
 	int COMPLEX_VALUE_REFERENCE__FEATURES = ABSTRACT_COMPLEX_VALUE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int COMPLEX_VALUE_REFERENCE__APPLIED_REQUIREMENTS = ABSTRACT_COMPLEX_VALUE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Abstract Type</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4733,15 +4571,6 @@ public interface DatavaluePackage extends EPackage {
 	int VALUE_PART__FEATURES = CapellacorePackage.CAPELLA_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int VALUE_PART__APPLIED_REQUIREMENTS = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Referenced Property</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4966,15 +4795,6 @@ public interface DatavaluePackage extends EPackage {
    * @ordered
    */
 	int ABSTRACT_EXPRESSION_VALUE__FEATURES = ABSTRACT_BOOLEAN_VALUE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ABSTRACT_EXPRESSION_VALUE__APPLIED_REQUIREMENTS = ABSTRACT_BOOLEAN_VALUE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Abstract Type</b></em>' reference.
@@ -5291,15 +5111,6 @@ public interface DatavaluePackage extends EPackage {
    * @ordered
    */
 	int BINARY_EXPRESSION__FEATURES = ABSTRACT_EXPRESSION_VALUE__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int BINARY_EXPRESSION__APPLIED_REQUIREMENTS = ABSTRACT_EXPRESSION_VALUE__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Abstract Type</b></em>' reference.
@@ -5645,15 +5456,6 @@ public interface DatavaluePackage extends EPackage {
 	int UNARY_EXPRESSION__FEATURES = ABSTRACT_EXPRESSION_VALUE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int UNARY_EXPRESSION__APPLIED_REQUIREMENTS = ABSTRACT_EXPRESSION_VALUE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Abstract Type</b></em>' reference.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5977,15 +5779,6 @@ public interface DatavaluePackage extends EPackage {
    * @ordered
    */
 	int OPAQUE_EXPRESSION__FEATURES = CapellacorePackage.CAPELLA_ELEMENT__FEATURES;
-
-	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int OPAQUE_EXPRESSION__APPLIED_REQUIREMENTS = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
 
 	/**
    * The feature id for the '<em><b>Name</b></em>' attribute.

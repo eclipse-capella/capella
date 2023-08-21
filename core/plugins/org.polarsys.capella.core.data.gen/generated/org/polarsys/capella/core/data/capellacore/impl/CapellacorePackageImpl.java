@@ -95,8 +95,6 @@ import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentPackage;
 import org.polarsys.capella.core.data.pa.deployment.impl.DeploymentPackageImpl;
 import org.polarsys.capella.core.data.pa.impl.PaPackageImpl;
-import org.polarsys.capella.core.data.requirement.RequirementPackage;
-import org.polarsys.capella.core.data.requirement.impl.RequirementPackageImpl;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 import org.polarsys.capella.core.data.sharedmodel.impl.SharedmodelPackageImpl;
 import org.polarsys.kitalpha.emde.model.EmdePackage;
@@ -472,8 +470,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
     EpbsPackageImpl theEpbsPackage = (EpbsPackageImpl)(registeredPackage instanceof EpbsPackageImpl ? registeredPackage : EpbsPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(SharedmodelPackage.eNS_URI);
     SharedmodelPackageImpl theSharedmodelPackage = (SharedmodelPackageImpl)(registeredPackage instanceof SharedmodelPackageImpl ? registeredPackage : SharedmodelPackage.eINSTANCE);
-    registeredPackage = EPackage.Registry.INSTANCE.getEPackage(RequirementPackage.eNS_URI);
-    RequirementPackageImpl theRequirementPackage = (RequirementPackageImpl)(registeredPackage instanceof RequirementPackageImpl ? registeredPackage : RequirementPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI);
     CapellacommonPackageImpl theCapellacommonPackage = (CapellacommonPackageImpl)(registeredPackage instanceof CapellacommonPackageImpl ? registeredPackage : CapellacommonPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI);
@@ -501,7 +497,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
     theDeploymentPackage.createPackageContents();
     theEpbsPackage.createPackageContents();
     theSharedmodelPackage.createPackageContents();
-    theRequirementPackage.createPackageContents();
     theCapellacommonPackage.createPackageContents();
     theInformationPackage.createPackageContents();
     theCommunicationPackage.createPackageContents();
@@ -521,7 +516,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
     theDeploymentPackage.initializePackageContents();
     theEpbsPackage.initializePackageContents();
     theSharedmodelPackage.initializePackageContents();
-    theRequirementPackage.initializePackageContents();
     theCapellacommonPackage.initializePackageContents();
     theInformationPackage.initializePackageContents();
     theCommunicationPackage.initializePackageContents();
@@ -655,16 +649,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
    * @generated
    */
 	@Override
-	public EReference getCapellaElement_AppliedRequirements() {
-    return (EReference)capellaElementEClass.getEStructuralFeatures().get(10);
-  }
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
 	public EClass getNamedElement() {
     return namedElementEClass;
   }
@@ -715,18 +699,8 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
    * @generated
    */
 	@Override
-	public EReference getNamespace_ContainedRequirementsTraces() {
-    return (EReference)namespaceEClass.getEStructuralFeatures().get(2);
-  }
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
 	public EReference getNamespace_NamingRules() {
-    return (EReference)namespaceEClass.getEStructuralFeatures().get(3);
+    return (EReference)namespaceEClass.getEStructuralFeatures().get(2);
   }
 
 	/**
@@ -1609,7 +1583,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
     createEReference(capellaElementEClass, CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS);
     createEReference(capellaElementEClass, CAPELLA_ELEMENT__STATUS);
     createEReference(capellaElementEClass, CAPELLA_ELEMENT__FEATURES);
-    createEReference(capellaElementEClass, CAPELLA_ELEMENT__APPLIED_REQUIREMENTS);
 
     namedElementEClass = createEClass(NAMED_ELEMENT);
 
@@ -1618,7 +1591,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
     namespaceEClass = createEClass(NAMESPACE);
     createEReference(namespaceEClass, NAMESPACE__OWNED_TRACES);
     createEReference(namespaceEClass, NAMESPACE__CONTAINED_GENERIC_TRACES);
-    createEReference(namespaceEClass, NAMESPACE__CONTAINED_REQUIREMENTS_TRACES);
     createEReference(namespaceEClass, NAMESPACE__NAMING_RULES);
 
     namedRelationshipEClass = createEClass(NAMED_RELATIONSHIP);
@@ -1770,7 +1742,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 
     // Obtain other dependent packages
     ModellingcorePackage theModellingcorePackage = (ModellingcorePackage)EPackage.Registry.INSTANCE.getEPackage(ModellingcorePackage.eNS_URI);
-    RequirementPackage theRequirementPackage = (RequirementPackage)EPackage.Registry.INSTANCE.getEPackage(RequirementPackage.eNS_URI);
     CapellacommonPackage theCapellacommonPackage = (CapellacommonPackage)EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI);
     InformationPackage theInformationPackage = (InformationPackage)EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI);
 
@@ -1843,7 +1814,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
     initEReference(getCapellaElement_AppliedPropertyValueGroups(), this.getPropertyValueGroup(), null, "appliedPropertyValueGroups", null, 0, -1, CapellaElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(getCapellaElement_Status(), this.getEnumerationPropertyLiteral(), null, "status", null, 0, 1, CapellaElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(getCapellaElement_Features(), this.getEnumerationPropertyLiteral(), null, "features", null, 0, -1, CapellaElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEReference(getCapellaElement_AppliedRequirements(), theRequirementPackage.getRequirement(), null, "appliedRequirements", null, 0, -1, CapellaElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
@@ -1852,7 +1822,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
     initEClass(namespaceEClass, Namespace.class, "Namespace", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(getNamespace_OwnedTraces(), this.getTrace(), null, "ownedTraces", null, 0, -1, Namespace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(getNamespace_ContainedGenericTraces(), theCapellacommonPackage.getGenericTrace(), null, "containedGenericTraces", null, 0, -1, Namespace.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEReference(getNamespace_ContainedRequirementsTraces(), theRequirementPackage.getRequirementsTrace(), null, "containedRequirementsTraces", null, 0, -1, Namespace.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(getNamespace_NamingRules(), this.getNamingRule(), null, "namingRules", null, 0, -1, Namespace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(namedRelationshipEClass, NamedRelationship.class, "NamedRelationship", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -1999,10 +1968,10 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
     createBusinessInformationAnnotations();
     // http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping
     createMappingAnnotations();
-    // http://www.polarsys.org/capella/derived
-    createDerivedAnnotations();
     // http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment
     createSegmentAnnotations();
+    // http://www.polarsys.org/capella/derived
+    createDerivedAnnotations();
     // http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore
     createIgnoreAnnotations();
   }
@@ -2388,14 +2357,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
        });
     addAnnotation
       (getNamespace_ContainedGenericTraces(),
-       source,
-       new String[] {
-         "description", "Link to the set of typed elements which eAttribute type value is the owner type.\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-         "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
-         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-       });
-    addAnnotation
-      (getNamespace_ContainedRequirementsTraces(),
        source,
        new String[] {
          "description", "Link to the set of typed elements which eAttribute type value is the owner type.\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
@@ -3344,18 +3305,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
        new String[] {
        });
     addAnnotation
-      (getCapellaElement_AppliedRequirements(),
-       source,
-       new String[] {
-       });
-    addAnnotation
       (getNamespace_ContainedGenericTraces(),
-       source,
-       new String[] {
-         "feature", "ownedTraces" //$NON-NLS-1$ //$NON-NLS-2$
-       });
-    addAnnotation
-      (getNamespace_ContainedRequirementsTraces(),
        source,
        new String[] {
          "feature", "ownedTraces" //$NON-NLS-1$ //$NON-NLS-2$
@@ -3847,14 +3797,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
          "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
        });
     addAnnotation
-      (getCapellaElement_AppliedRequirements(),
-       source,
-       new String[] {
-         "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-         "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-       });
-    addAnnotation
       (namedElementEClass,
        source,
        new String[] {
@@ -3891,14 +3833,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
        });
     addAnnotation
       (getNamespace_ContainedGenericTraces(),
-       source,
-       new String[] {
-         "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-         "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-       });
-    addAnnotation
-      (getNamespace_ContainedRequirementsTraces(),
        source,
        new String[] {
          "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
@@ -4673,21 +4607,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	protected void createDerivedAnnotations() {
     String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$
     addAnnotation
-      (getCapellaElement_AppliedRequirements(),
-       source,
-       new String[] {
-         "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-         "viatra.expression", "RequirementsTrace.sourceElement(rt, self);\r\nRequirementsTrace.targetElement(rt, target);" //$NON-NLS-1$ //$NON-NLS-2$
-       });
-    addAnnotation
       (getNamespace_ContainedGenericTraces(),
-       source,
-       new String[] {
-         "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-         "viatra.expression", "ownedTraces" //$NON-NLS-1$ //$NON-NLS-2$
-       });
-    addAnnotation
-      (getNamespace_ContainedRequirementsTraces(),
        source,
        new String[] {
          "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$

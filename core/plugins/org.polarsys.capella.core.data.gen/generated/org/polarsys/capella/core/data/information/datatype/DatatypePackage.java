@@ -279,15 +279,6 @@ public interface DatatypePackage extends EPackage {
 	int DATA_TYPE__FEATURES = CapellacorePackage.GENERALIZABLE_ELEMENT__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DATA_TYPE__APPLIED_REQUIREMENTS = CapellacorePackage.GENERALIZABLE_ELEMENT__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -304,15 +295,6 @@ public interface DatatypePackage extends EPackage {
    * @ordered
    */
 	int DATA_TYPE__CONTAINED_GENERIC_TRACES = CapellacorePackage.GENERALIZABLE_ELEMENT__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DATA_TYPE__CONTAINED_REQUIREMENTS_TRACES = CapellacorePackage.GENERALIZABLE_ELEMENT__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -721,15 +703,6 @@ public interface DatatypePackage extends EPackage {
 	int BOOLEAN_TYPE__FEATURES = DATA_TYPE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int BOOLEAN_TYPE__APPLIED_REQUIREMENTS = DATA_TYPE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -746,15 +719,6 @@ public interface DatatypePackage extends EPackage {
    * @ordered
    */
 	int BOOLEAN_TYPE__CONTAINED_GENERIC_TRACES = DATA_TYPE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int BOOLEAN_TYPE__CONTAINED_REQUIREMENTS_TRACES = DATA_TYPE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -1181,15 +1145,6 @@ public interface DatatypePackage extends EPackage {
 	int ENUMERATION__FEATURES = DATA_TYPE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ENUMERATION__APPLIED_REQUIREMENTS = DATA_TYPE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1206,15 +1161,6 @@ public interface DatatypePackage extends EPackage {
    * @ordered
    */
 	int ENUMERATION__CONTAINED_GENERIC_TRACES = DATA_TYPE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int ENUMERATION__CONTAINED_REQUIREMENTS_TRACES = DATA_TYPE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -1677,15 +1623,6 @@ public interface DatatypePackage extends EPackage {
 	int STRING_TYPE__FEATURES = DATA_TYPE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int STRING_TYPE__APPLIED_REQUIREMENTS = DATA_TYPE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1702,15 +1639,6 @@ public interface DatatypePackage extends EPackage {
    * @ordered
    */
 	int STRING_TYPE__CONTAINED_GENERIC_TRACES = DATA_TYPE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int STRING_TYPE__CONTAINED_REQUIREMENTS_TRACES = DATA_TYPE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -2155,15 +2083,6 @@ public interface DatatypePackage extends EPackage {
 	int NUMERIC_TYPE__FEATURES = DATA_TYPE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int NUMERIC_TYPE__APPLIED_REQUIREMENTS = DATA_TYPE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2180,15 +2099,6 @@ public interface DatatypePackage extends EPackage {
    * @ordered
    */
 	int NUMERIC_TYPE__CONTAINED_GENERIC_TRACES = DATA_TYPE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int NUMERIC_TYPE__CONTAINED_REQUIREMENTS_TRACES = DATA_TYPE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
@@ -2642,15 +2552,6 @@ public interface DatatypePackage extends EPackage {
 	int PHYSICAL_QUANTITY__FEATURES = NUMERIC_TYPE__FEATURES;
 
 	/**
-   * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PHYSICAL_QUANTITY__APPLIED_REQUIREMENTS = NUMERIC_TYPE__APPLIED_REQUIREMENTS;
-
-	/**
    * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2667,15 +2568,6 @@ public interface DatatypePackage extends EPackage {
    * @ordered
    */
 	int PHYSICAL_QUANTITY__CONTAINED_GENERIC_TRACES = NUMERIC_TYPE__CONTAINED_GENERIC_TRACES;
-
-	/**
-   * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int PHYSICAL_QUANTITY__CONTAINED_REQUIREMENTS_TRACES = NUMERIC_TYPE__CONTAINED_REQUIREMENTS_TRACES;
 
 	/**
    * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
