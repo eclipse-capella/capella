@@ -48,9 +48,9 @@ import org.polarsys.capella.common.ui.toolkit.viewers.menu.ModalContextMenuExten
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
 import org.polarsys.capella.core.data.capellacore.Trace;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.MDTrace;
+import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.extension.TraceExtensionManager;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.Messages;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.components.TraceTreeViewer;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.components.TraceTreeViewer.TraceType;
@@ -117,7 +117,7 @@ public class ViewEditPage extends WizardPage {
       IStructuredSelection selection = (IStructuredSelection) getSelection();
       if (!selection.isEmpty()) {
         Object a = selection.getFirstElement();
-        return (a instanceof GenericTrace) || (a instanceof RequirementsTrace);
+        return (a instanceof GenericTrace) || TraceExtensionManager.eINSTANCE.canEdit(a);
       }
       return false;
     }
@@ -129,10 +129,10 @@ public class ViewEditPage extends WizardPage {
       ISelection source = getSelection();
 
       final Trace currentTrace = (Trace) ((IStructuredSelection) source).getFirstElement();
-      
+
       IWorkbenchPart part = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart();
       EditCapellaCustomPropertyWizard traceEditor = new EditCapellaCustomPropertyWizard(part, currentTrace);
-          
+
       CapellaWizardDialog dlg = new CapellaWizardDialog(getShell(), traceEditor);
       dlg.open();
     }
@@ -332,7 +332,7 @@ public class ViewEditPage extends WizardPage {
     @SuppressWarnings("synthetic-access")
     @Override
     public void mouseUp(MouseEvent e_p) {
-      
+
     }
   }
 

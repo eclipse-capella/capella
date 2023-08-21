@@ -13,14 +13,13 @@
 package org.polarsys.capella.core.platform.eclipse.capella.ui.trace.commands;
 
 import org.apache.log4j.Logger;
-
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
 import org.polarsys.capella.core.data.capellacore.Trace;
-import org.polarsys.capella.core.data.requirement.RequirementsTrace;
+import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.extension.TraceExtensionManager;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.Messages;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  */
@@ -45,7 +44,7 @@ public class RemoveTargetTraceElement extends AbstractReadWriteCommand {
    * @see org.polarsys.capella.common.services.command.IBusinessCommand#execute()
    */
   public void run() {
-    if ((_currentTrace instanceof GenericTrace) || (_currentTrace instanceof RequirementsTrace)) {
+    if ((_currentTrace instanceof GenericTrace) || TraceExtensionManager.eINSTANCE.canRemoveTarget(_currentTrace)) {
       _currentTrace.setTargetElement(null);
     } else {
       __logger.info(Messages.getString("DeleteTrace.0")); //$NON-NLS-1$
