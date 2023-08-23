@@ -14,6 +14,7 @@ package org.polarsys.capella.core.projection.exchanges;
 
 import static org.polarsys.capella.common.helpers.cache.ModelCache.getCache;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -25,6 +26,7 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
@@ -135,7 +137,7 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
   protected void createPLsFromCEDiffLevels(Component container) {
     List<Component> subComponents = ComponentExt.getSubDefinedComponents(container);
     if (!subComponents.isEmpty()) {
-      subComponents.stream().filter(c -> ComponentExt.isActor(c)).forEach(actor -> {
+      subComponents.stream().filter(ComponentExt::isActor).forEach(actor -> {
         createPhysicalLinksFromCExchanges(container, actor);
       });
     }
@@ -183,14 +185,26 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
       ComponentExchange componentExchange) {
     if ((componentExchange.getKind() == ComponentExchangeKind.DELEGATION)
         || (componentExchange.getKind() == ComponentExchangeKind.UNSET)
-        || doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(sourceContainer, componentExchange)) {
+        || doesNodeAlreadyHasAPhysicalLinkForComponentExchange(sourceContainer, componentExchange)) {
+      String message = "Component exchange " + componentExchange.getName()
+          + " already has a physical link or the kind is not suitable.";
+      EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName(), componentExchange);
+      logger.error(eMessage);
       return;
     }
 
     Component targetContained = findTheTargetComponent(componentExchange, port);
     Component target = computePhysicalLinkBound(targetContained);
     Component source = computePhysicalLinkBound(sourceContained);
-    if (!isValidPhysicalLinkBound(source) || !isValidPhysicalLinkBound(target)) {
+    if (!isValidPhysicalLinkBound(source)) {
+      String message = "Component " + source.getName() + " cannot host a Physical Link.";
+      EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName(), source);
+      logger.error(eMessage);
+      return;
+    } else if (!isValidPhysicalLinkBound(target)) {
+      String message = "Component " + target.getName() + " cannot host a Physical Link.";
+      EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName(), target);
+      logger.error(eMessage);
       return;
     }
 
@@ -249,12 +263,12 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
 
     Component targetContained = bound;
     // the target is not valid if it's not a Physical, Logical or System Component
-    if (!(targetContained instanceof Component && isValidBound((Component) targetContained)))
+    if (!(targetContained instanceof Component && isValidBound(targetContained)))
       return false;
 
     // for LogicalComponent, the target is not valid if it's not an actor or the logical system
     if ((targetContained instanceof LogicalComponent || targetContained instanceof SystemComponent)
-        && (!ComponentExt.isActor(targetContained) && !isSystemOrLogicalSystem((Component) targetContained)))
+        && (!ComponentExt.isActor(targetContained) && !isSystemOrLogicalSystem(targetContained)))
       return false;
 
     if (isBehaviourComponent(targetContained)) {
@@ -283,7 +297,7 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
     }
     // Returns the deploying Node Component if its deployed on a Node
     for (Part partition : componentExchangeBound.getRepresentingParts()) {
-      for (DeploymentTarget deploying : getCache(PartExt::getDeployingElements, (Part) partition)) {
+      for (DeploymentTarget deploying : getCache(PartExt::getDeployingElements, partition)) {
         if (deploying instanceof Part) {
           Part deployingPart = (Part) deploying;
           if (deployingPart.getAbstractType() instanceof PhysicalComponent
@@ -360,6 +374,11 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
 
     exchangeInput.getOwnedPhysicalLinks().add(physicalLink);
     exchangeOutput.getOwnedPhysicalLinks().add(physicalLink);
+    String message = "The Physical link " + physicalLink.getName() + " has been succefully created between the source "
+        + exchangeInput.getLabel() + " and the target " + exchangeOutput.getLabel();
+    EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName(),
+        Arrays.asList(physicalLink, exchangeInput, exchangeOutput));
+    logger.info(eMessage);
   }
 
   /**
@@ -387,7 +406,7 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
    *          the component exchange
    * @return true if its has already been allocated, false otherwise
    */
-  protected boolean doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(Component physicalComponent,
+  protected boolean doesNodeAlreadyHasAPhysicalLinkForComponentExchange(Component physicalComponent,
       ComponentExchange componentExchange) {
     boolean result = false;
     // Get the semantic editing domain to access the cross referencer.

@@ -13,14 +13,19 @@
 package org.polarsys.capella.core.projection.exchanges;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.activity.ActivityNode;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.tools.report.EmbeddedMessage;
+import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
+import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.capellacommon.TransfoLink;
 import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.cs.Component;
@@ -45,9 +50,13 @@ import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 
 /**
- * The default <code>IExchangesCreator</code>. Its behavior is to create component exchanges related to functional exchanges.
+ * The default <code>IExchangesCreator</code>. Its behavior is to create component exchanges related to functional
+ * exchanges.
  */
 public class DefaultExchangesCreator implements IExchangesCreator {
+
+  protected static final Logger logger = ReportManagerRegistry.getInstance()
+      .subscribe(IReportManagerDefaultComponents.DEFAULT);
   /**
    * The component which will be the starting point of the exchanges creation
    */
@@ -55,7 +64,9 @@ public class DefaultExchangesCreator implements IExchangesCreator {
 
   /**
    * Constructor
-   * @param component_p the component which will be the starting point of the exchanges creation
+   * 
+   * @param component_p
+   *          the component which will be the starting point of the exchanges creation
    */
   public DefaultExchangesCreator(Component component_p) {
     _component = component_p;
@@ -63,6 +74,7 @@ public class DefaultExchangesCreator implements IExchangesCreator {
 
   /**
    * This implementation create component exchanges.
+   * 
    * @see org.polarsys.capella.core.projection.commands.utils.IExchangesCreator#createExchanges()
    */
   @Override
@@ -70,7 +82,7 @@ public class DefaultExchangesCreator implements IExchangesCreator {
 
     // Retrieve all functions allocated in component and sub-components
     // > we'll disable creation between internal functions
-    List<AbstractFunction> lf = new ArrayList<AbstractFunction>();
+    List<AbstractFunction> lf = new ArrayList<>();
     Collection<Component> components = ComponentExt.getAllSubUsedComponents(_component);
     components.add(_component);
     for (Component subComponent : components) {
@@ -94,9 +106,11 @@ public class DefaultExchangesCreator implements IExchangesCreator {
               targetF = (AbstractFunction) targetObject.eContainer();
             }
 
-            for (ComponentFunctionalAllocation componentFunctionalAllocation : targetF.getComponentFunctionalAllocations()) {
+            for (ComponentFunctionalAllocation componentFunctionalAllocation : targetF
+                .getComponentFunctionalAllocations()) {
               TraceableElement allocating = componentFunctionalAllocation.getSourceElement();
-              if ((allocating instanceof Component) && !lf.contains(targetF) && isValidCreation(fe, component, (Component) allocating)) {
+              if ((allocating instanceof Component) && !lf.contains(targetF)
+                  && isValidCreation(fe, component, (Component) allocating)) {
                 doCreateExchange(fe, component, (Component) allocating);
               }
             }
@@ -113,9 +127,11 @@ public class DefaultExchangesCreator implements IExchangesCreator {
             } else {
               sourceF = (AbstractFunction) sourceObject.eContainer();
             }
-            for (ComponentFunctionalAllocation componentFunctionalAllocation : sourceF.getComponentFunctionalAllocations()) {
+            for (ComponentFunctionalAllocation componentFunctionalAllocation : sourceF
+                .getComponentFunctionalAllocations()) {
               TraceableElement allocating = componentFunctionalAllocation.getSourceElement();
-              if ((allocating instanceof Component) && !lf.contains(sourceF) && isValidCreation(fe, component, (Component) allocating)) {
+              if ((allocating instanceof Component) && !lf.contains(sourceF)
+                  && isValidCreation(fe, component, (Component) allocating)) {
                 doCreateExchange(fe, (Component) allocating, component);
               }
             }
@@ -127,12 +143,13 @@ public class DefaultExchangesCreator implements IExchangesCreator {
 
   /**
    * Returns whether a component which will be a bound of a created exchange is valid or not
+   * 
    * @param component_p
    * @return
    */
   protected boolean isValidBound(Component component_p) {
     if (component_p instanceof PhysicalComponent) {
-        return true;
+      return true;
     }
     if (component_p instanceof LogicalComponent) {
       return true;
@@ -144,7 +161,9 @@ public class DefaultExchangesCreator implements IExchangesCreator {
   }
 
   /**
-   * Returns whether both given component are valid for a creation of a realizing exchange of the given functional exchange
+   * Returns whether both given component are valid for a creation of a realizing exchange of the given functional
+   * exchange
+   * 
    * @param fe_p
    * @param component_p
    * @param allocating_p
@@ -155,13 +174,18 @@ public class DefaultExchangesCreator implements IExchangesCreator {
   }
 
   /**
-   * Create an exchange related to the given functional exchange between the given components. For this implementation, creates a component exchange. Subclasses
-   * implementations may create different exchanges types.
-   * @param functionalExchange_p the functional exchange
-   * @param exchangeOutput_p the exchange output component
-   * @param exchangeInput_p the exchange input component
+   * Create an exchange related to the given functional exchange between the given components. For this implementation,
+   * creates a component exchange. Subclasses implementations may create different exchanges types.
+   * 
+   * @param functionalExchange_p
+   *          the functional exchange
+   * @param exchangeOutput_p
+   *          the exchange output component
+   * @param exchangeInput_p
+   *          the exchange input component
    */
-  protected void doCreateExchange(FunctionalExchange functionalExchange_p, Component exchangeOutput_p, Component exchangeInput_p) {
+  protected void doCreateExchange(FunctionalExchange functionalExchange_p, Component exchangeOutput_p,
+      Component exchangeInput_p) {
     ComponentExchange ce = FaFactory.eINSTANCE.createComponentExchange(functionalExchange_p.getName());
 
     if (TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(functionalExchange_p))) {
@@ -171,17 +195,27 @@ public class DefaultExchangesCreator implements IExchangesCreator {
     }
 
     // Retrieve (or create) ports and set bounds of connections
-    ComponentPort outP = getRelatedProvidingPort(exchangeOutput_p, functionalExchange_p.getSource(), functionalExchange_p);
-    ComponentPort inP = getRelatedRequiringPort(exchangeInput_p, functionalExchange_p.getTarget(), functionalExchange_p);
+    ComponentPort outP = getRelatedProvidingPort(exchangeOutput_p, functionalExchange_p.getSource(),
+        functionalExchange_p);
+    ComponentPort inP = getRelatedRequiringPort(exchangeInput_p, functionalExchange_p.getTarget(),
+        functionalExchange_p);
     ce.setSource(outP);
     ce.setTarget(inP);
     ComponentExchangeExt.attachToDefaultContainer(ce);
 
     // Creates the exchange allocation
-    ComponentExchangeFunctionalExchangeAllocation cfea = FaFactory.eINSTANCE.createComponentExchangeFunctionalExchangeAllocation();
+    ComponentExchangeFunctionalExchangeAllocation cfea = FaFactory.eINSTANCE
+        .createComponentExchangeFunctionalExchangeAllocation();
     cfea.setSourceElement(ce);
     cfea.setTargetElement(functionalExchange_p);
     ce.getOwnedComponentExchangeFunctionalExchangeAllocations().add(cfea);
+
+    String message = "The Component exchange " + ce.getName()
+        + " has been succefully created between the exchange input component " + exchangeInput_p.getLabel()
+        + " and the exchange output component " + exchangeOutput_p.getLabel();
+    EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName(),
+        Arrays.asList(ce, exchangeInput_p, exchangeOutput_p));
+    logger.info(eMessage);
   }
 
   /**
