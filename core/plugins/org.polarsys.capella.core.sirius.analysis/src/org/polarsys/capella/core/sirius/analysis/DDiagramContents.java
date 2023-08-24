@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -30,8 +30,10 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.sirius.analysis.helpers.EdgeMappingHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -295,8 +297,15 @@ public class DDiagramContents {
 
     ArrayList<DDiagramElement> result = new ArrayList<>();
     for (DDiagramElement view : getMapDiagramElements().get(target)) {
-      if (mapping != null && mapping.equals(view.getDiagramElementMapping())) {
+      DiagramElementMapping diagramElementMapping = view.getDiagramElementMapping();
+      if (mapping != null && mapping.equals(diagramElementMapping)) {
         result.add(view);
+      } else if (mapping instanceof IEdgeMapping && diagramElementMapping instanceof IEdgeMapping) {
+        IEdgeMapping unwrappedMapping = EdgeMappingHelper.unwrapEdgeMapping((IEdgeMapping) mapping);
+        IEdgeMapping unwrappedDiagramElementMapping = EdgeMappingHelper.unwrapEdgeMapping((IEdgeMapping) diagramElementMapping);
+        if (unwrappedMapping.equals(unwrappedDiagramElementMapping)) {
+          result.add(view);
+        }
       }
     }
     return result;
