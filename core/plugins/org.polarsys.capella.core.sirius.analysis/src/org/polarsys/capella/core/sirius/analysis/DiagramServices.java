@@ -1253,7 +1253,7 @@ public class DiagramServices {
     }
 
     public boolean validMapping(DiagramElementMapping mapping, DDiagramElement element) {
-      return isSameDomain(mapping, element) && mapping.equals(element.getDiagramElementMapping());
+      return isSameDomain(mapping, element) && checkMappingConsistency(mapping, element);
     }
 
     public boolean isSameDomain(DiagramElementMapping mapping, DDiagramElement element) {
@@ -1263,6 +1263,17 @@ public class DiagramServices {
         return true;
       }
       return false;
+    }
+
+    private boolean checkMappingConsistency(DiagramElementMapping mapping, DDiagramElement element) {
+      DiagramElementMapping elementMapping = element.getDiagramElementMapping();
+      if (mapping instanceof IEdgeMapping && elementMapping instanceof IEdgeMapping) {
+        IEdgeMapping unwrappedMapping = org.polarsys.capella.core.sirius.analysis.helpers.EdgeMappingHelper.unwrapEdgeMapping((IEdgeMapping) mapping);
+        IEdgeMapping unwrappedDiagramElementMapping = org.polarsys.capella.core.sirius.analysis.helpers.EdgeMappingHelper.unwrapEdgeMapping((IEdgeMapping) elementMapping);
+        return unwrappedMapping.equals(unwrappedDiagramElementMapping);
+      } else {
+        return mapping.equals(element.getDiagramElementMapping());
+      }
     }
 
   }
