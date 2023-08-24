@@ -58,7 +58,7 @@ public class PhysicalPathDisplay extends AbstractDiagramTestCase {
    * PhysicalPathDisplay model. Each time a path is displayed, we test that the physical link (connecting 2 composed
    * paths) is colored and internal links are created.
    */
-  protected void testCompositePhysicalPaths() {
+  public void testCompositePhysicalPaths() {
     XABDiagram diagram = XABDiagram.openDiagram(context, PA__PAB_DIAGRAM, BlockArchitectureExt.Type.PA);
     PhysicalComponent physicalSystem = (PhysicalComponent) context.getSemanticElement(PHYSICAL_SYSTEM);
     for (PhysicalPath path : physicalSystem.getOwnedPhysicalPath()) {
@@ -104,7 +104,7 @@ public class PhysicalPathDisplay extends AbstractDiagramTestCase {
    * Test that internal links between every physical ports belonging to a displayed physical path are created. This kind
    * of network of internal links looks like a "noodle bag".
    */
-  protected void testNoodleBagPhysicalPath() {
+  public void testNoodleBagPhysicalPath() {
     XABDiagram diagram = XABDiagram.openDiagram(context, PA__PAB_NOODLE_BAG_DIAGRAM, BlockArchitectureExt.Type.PA);
     PhysicalPath physicalPath = (PhysicalPath) context.getSemanticElement(NOODLE_BAG_PHYSICAL_PATH);
     diagram.insertPhysicalPath(physicalPath.getId());
