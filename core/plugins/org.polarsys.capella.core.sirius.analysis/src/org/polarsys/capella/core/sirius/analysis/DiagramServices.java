@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2024 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -1261,7 +1261,7 @@ public class DiagramServices {
     }
 
     public boolean validMapping(DiagramElementMapping mapping, DDiagramElement element) {
-      return isSameDomain(mapping, element) && isMapping(element, mapping);
+      return isSameDomain(mapping, element) && checkMappingConsistency(mapping, element);
     }
 
     public boolean isSameDomain(DiagramElementMapping mapping, DDiagramElement element) {
@@ -1271,6 +1271,17 @@ public class DiagramServices {
         return true;
       }
       return false;
+    }
+
+    private boolean checkMappingConsistency(DiagramElementMapping mapping, DDiagramElement element) {
+      DiagramElementMapping elementMapping = element.getDiagramElementMapping();
+      if (mapping instanceof IEdgeMapping && elementMapping instanceof IEdgeMapping) {
+        IEdgeMapping unwrappedMapping = org.polarsys.capella.core.sirius.analysis.helpers.EdgeMappingHelper.unwrapEdgeMapping((IEdgeMapping) mapping);
+        IEdgeMapping unwrappedDiagramElementMapping = org.polarsys.capella.core.sirius.analysis.helpers.EdgeMappingHelper.unwrapEdgeMapping((IEdgeMapping) elementMapping);
+        return unwrappedMapping.equals(unwrappedDiagramElementMapping);
+      } else {
+        return mapping.equals(element.getDiagramElementMapping());
+      }
     }
 
   }
