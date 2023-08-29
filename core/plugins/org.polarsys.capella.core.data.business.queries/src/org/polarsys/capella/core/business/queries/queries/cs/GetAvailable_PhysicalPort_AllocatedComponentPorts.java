@@ -12,88 +12,106 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.queries.cs;
 
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.LogicalComponentExt;
-import org.polarsys.capella.core.model.utils.ListExt;
+import org.polarsys.capella.core.model.helpers.PartExt;
+import org.polarsys.capella.core.model.helpers.PortExt;
 
 public class GetAvailable_PhysicalPort_AllocatedComponentPorts extends AbstractQuery {
 
-  @SuppressWarnings({ "rawtypes", "unchecked" })
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
     CapellaElement capellaElement = (CapellaElement) input;
-    List<CapellaElement> availableElements = getAvailableElements(capellaElement);
-    return (List) availableElements;
+    return getAvailableElements(capellaElement);
   }
 
   /**
    * {@inheritDoc}
    */
-  public List<CapellaElement> getAvailableElements(CapellaElement element) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+  public List<Object> getAvailableElements(CapellaElement element) {
     if (element instanceof PhysicalPort) {
-      for (EObject port : getRule_MQRY_Port_AllocatedPorts_11((Port) element)) {
-        availableElements.add((CapellaElement) port);
-      }
+      return List.copyOf(getAvailablePorts((PhysicalPort) element));
     }
-    availableElements.remove(element);
-    return availableElements;
+    return Collections.emptyList();
   }
 
   /**
    * {@inheritDoc}
    */
   public List<EObject> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
-    List<EObject> currentElements = new ArrayList<EObject>();
-    if (element instanceof PhysicalPort) {
-      PhysicalPort elt = (PhysicalPort) element;
-      for (AbstractTrace trace : elt.getOutgoingTraces()) {
-        if (trace instanceof ComponentPortAllocation) {
-          if (((ComponentPortAllocation) trace).getAllocatedPort() != null) {
-            currentElements.add(((ComponentPortAllocation) trace).getAllocatedPort());
-          }
+    if (!(element instanceof PhysicalPort))
+      return Collections.emptyList();
+    Set<Port> currentElements = new HashSet<>();
+    PhysicalPort elt = (PhysicalPort) element;
+    for (AbstractTrace trace : elt.getOutgoingTraces()) {
+      if (trace instanceof ComponentPortAllocation) {
+        ComponentPortAllocation portAllocation = (ComponentPortAllocation) trace;
+        if (portAllocation.getAllocatedPort() != null) {
+          currentElements.add(portAllocation.getAllocatedPort());
         }
       }
-      currentElements = ListExt.removeDuplicates(currentElements);
-      currentElements.remove(elt);
     }
-    return currentElements;
+    currentElements.remove(elt);
+    return List.copyOf(currentElements);
   }
 
   /** 
    */
-  protected List<EObject> getRule_MQRY_Port_AllocatedPorts_11(Port element) {
-    List<EObject> allPorts = new ArrayList<EObject>();
-    EObject ownerObj = element.eContainer();
-    if (ownerObj instanceof SystemComponent) {
-      allPorts.addAll(((SystemComponent) ownerObj).getContainedComponentPorts());
-      
-    } else if (ownerObj instanceof LogicalComponent) {
-      for (LogicalComponent lc : LogicalComponentExt.getAllSubComponents((LogicalComponent) ownerObj)) {
-        allPorts.addAll(lc.getContainedComponentPorts());
-      }
-    } else if (ownerObj instanceof PhysicalComponent) {
-      for (Component deployedCpnt : ComponentExt.getSubUsedAndDeployedComponents((Component) ownerObj)) {
-        allPorts.addAll(deployedCpnt.getContainedComponentPorts());
+  private Set<ComponentPort> getAvailablePorts(PhysicalPort port) {
+    Component container = PortExt.getRelatedComponent(port);
+    if (container == null)
+      return Collections.emptySet();
+    Collection<Component> components = ComponentExt.getAllSubUsedComponents(container);
+    components.add(container);
+
+    Set<Component> deployedComponents = new HashSet<>();
+    for (Component component : components) {
+      if (component instanceof SystemComponent) {
+        deployedComponents.add(component);
+      } else if (component instanceof LogicalComponent) {
+        deployedComponents.addAll(LogicalComponentExt.getAllSubComponents((LogicalComponent) component));
+      } else if (component instanceof PhysicalComponent) {
+        deployedComponents.add(component);
+        for (AbstractTypedElement abstractTypedElement : component.getAbstractTypedElements()) {
+          if (abstractTypedElement instanceof Part) {
+            Part typedPart = (Part) abstractTypedElement;
+            Stream
+                .concat(PartExt.getSubUsedParts(typedPart).stream(),
+                    PartExt.getAllDeployableElements(typedPart).stream())
+                .filter(Part.class::isInstance).map(p -> PartExt.getComponentOfPart((Part) p))
+                .filter(Objects::nonNull)
+                .forEachOrdered(deployedComponents::add);
+          }
+        }
       }
     }
-    allPorts = ListExt.removeDuplicates(allPorts);
-    return allPorts;
+
+    return deployedComponents.stream().flatMap(c -> c.getContainedComponentPorts().stream())
+        .collect(Collectors.toSet());
   }
 
 }
