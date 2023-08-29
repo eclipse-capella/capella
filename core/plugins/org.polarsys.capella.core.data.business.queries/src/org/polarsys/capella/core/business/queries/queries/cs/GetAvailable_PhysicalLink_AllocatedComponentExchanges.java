@@ -14,26 +14,28 @@ package org.polarsys.capella.core.business.queries.queries.cs;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeAllocation;
+import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
@@ -41,112 +43,56 @@ import org.polarsys.capella.core.model.helpers.LogicalComponentExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.core.model.utils.ListExt;
 
 public class GetAvailable_PhysicalLink_AllocatedComponentExchanges extends AbstractQuery {
 
-  @SuppressWarnings({ "rawtypes", "unchecked" })
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
     CapellaElement capellaElement = (CapellaElement) input;
-    List<EObject> availableElements = getAvailableElements(capellaElement);
-    return (List) availableElements;
+    return getAvailableElements(capellaElement);
   }
 
   /**
    * {@inheritDoc}
    */
-  public List<EObject> getAvailableElements(CapellaElement element) {
-    List<EObject> availableElements = new ArrayList<EObject>();
+  public List<Object> getAvailableElements(CapellaElement element) {
     BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(element);
     if (null == arch) {
-      return availableElements;
+      return Collections.emptyList();
     }
-    if (element instanceof PhysicalLink) {
-      PhysicalLink link = (PhysicalLink) element;
-      Component sourceComponent = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt
-          .getSourceComponent(link);
-      Component targetComponent = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt
-          .getTargetComponent(link);
-      if (null != sourceComponent && null != targetComponent) {
-        availableElements.addAll(getAvailableExchanges(sourceComponent, targetComponent));
-      }
-      List<EObject> allReadyAllocatedConnection = new ArrayList<EObject>();
-      for (EObject capellaElement : availableElements) {
-        if (capellaElement instanceof ComponentExchange) {
-          ComponentExchange connection = (ComponentExchange) capellaElement;
-          EList<AbstractTrace> incomingTraces = connection.getIncomingTraces();
-          for (AbstractTrace abstractTrace : incomingTraces) {
-            if (abstractTrace instanceof ComponentExchangeAllocation
-                && (((ComponentExchangeAllocation) abstractTrace).getComponentExchangeAllocator() != element)) {
-              allReadyAllocatedConnection.add(capellaElement);
-            }
-          }
+    if (!(element instanceof PhysicalLink))
+      return Collections.emptyList();
+
+    PhysicalLink link = (PhysicalLink) element;
+    Component sourceComponent = PhysicalLinkExt.getSourceComponent(link);
+    Component targetComponent = PhysicalLinkExt.getTargetComponent(link);
+    if (null == sourceComponent || null == targetComponent) {
+      return Collections.emptyList();
+    }
+    Set<ComponentExchange> availableElements = getAvailableExchanges(sourceComponent, targetComponent);
+    Iterator<ComponentExchange> it = availableElements.iterator();
+    while (it.hasNext()) {
+      ComponentExchange connection = it.next();
+      EList<AbstractTrace> incomingTraces = connection.getIncomingTraces();
+      for (AbstractTrace abstractTrace : incomingTraces) {
+        if (abstractTrace instanceof ComponentExchangeAllocation
+            && (((ComponentExchangeAllocation) abstractTrace).getComponentExchangeAllocator() != link)) {
+          it.remove();
         }
       }
-      availableElements.removeAll(allReadyAllocatedConnection);
     }
-    availableElements = ListExt.removeDuplicates(availableElements);
-    return availableElements;
+    return List.copyOf(availableElements);
   }
 
-  public static List<CapellaElement> getAvailableExchanges(Component sourceComponent, Component targetComponent) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    List<Component> sourceDeployedElements = new ArrayList<Component>(1);
-    List<Component> targetDeployedElements = new ArrayList<Component>(1);
+  private Set<ComponentExchange> getAvailableExchanges(Component sourceComponent, Component targetComponent) {
+    Set<ComponentExchange> availableElements = new HashSet<>();
     Collection<Component> sourceComponents = ComponentExt.getAllSubUsedComponents(sourceComponent);
     sourceComponents.add(sourceComponent);
     Collection<Component> targetComponents = ComponentExt.getAllSubUsedComponents(targetComponent);
     targetComponents.add(targetComponent);
-    
-    for (Component component : sourceComponents) {
-      if (component instanceof SystemComponent) {
-        sourceDeployedElements.add(component);
-      } else if (component instanceof LogicalComponent) {
-        sourceDeployedElements.addAll(LogicalComponentExt.getAllSubComponents((LogicalComponent) component));
-      } else if (component instanceof PhysicalComponent) {
-        sourceDeployedElements.add(component);
-        for (AbstractTypedElement abstractTypedElement : component.getAbstractTypedElements()) {
-          if (abstractTypedElement instanceof Part) {
-            for (DeployableElement deployableElement : Stream
-                .concat(PartExt.getSubUsedParts((Part) abstractTypedElement).stream(),
-                    PartExt.getAllDeployableElements((Part) abstractTypedElement).stream())
-                .collect(Collectors.toList())) {
-              if (deployableElement instanceof Part) {
-                AbstractType abstractType = ((Part) deployableElement).getAbstractType();
-                if (abstractType instanceof Component) {
-                  sourceDeployedElements.add((Component) abstractType);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    for (Component component : targetComponents) {
-      if (component instanceof SystemComponent) {
-        targetDeployedElements.add(component);
-      } else if (component instanceof LogicalComponent) {
-        targetDeployedElements.addAll(LogicalComponentExt.getAllSubComponents((LogicalComponent) component));
-      } else if (component instanceof PhysicalComponent) {
-        targetDeployedElements.add(component);
-        for (AbstractTypedElement abstractTypedElement : component.getAbstractTypedElements()) {
-          if (abstractTypedElement instanceof Part) {
-            for (DeployableElement deployableElement : Stream
-                .concat(PartExt.getSubUsedParts((Part) abstractTypedElement).stream(),
-                    PartExt.getAllDeployableElements((Part) abstractTypedElement).stream())
-                .collect(Collectors.toList())) {
-              if (deployableElement instanceof Part) {
-                AbstractType abstractType = ((Part) deployableElement).getAbstractType();
-                if (abstractType instanceof Component) {
-                  targetDeployedElements.add((Component) abstractType);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+    List<Component> sourceDeployedElements = getDeployedElements(sourceComponents);
+    List<Component> targetDeployedElements = getDeployedElements(targetComponents);
+
     availableElements.addAll(
         PhysicalComponentExt.findConnectionsBetweenPhysicalComponentes(sourceDeployedElements, targetDeployedElements));
     availableElements.addAll(
@@ -154,11 +100,36 @@ public class GetAvailable_PhysicalLink_AllocatedComponentExchanges extends Abstr
     return availableElements;
   }
 
+  private List<Component> getDeployedElements(Collection<Component> components) {
+    Set<Component> deployedComponents = new HashSet<>();
+    for (Component component : components) {
+      if (component instanceof SystemComponent) {
+        deployedComponents.add(component);
+      } else if (component instanceof LogicalComponent) {
+        deployedComponents.addAll(LogicalComponentExt.getAllSubComponents((LogicalComponent) component));
+      } else if (component instanceof PhysicalComponent) {
+        deployedComponents.add(component);
+        for (AbstractTypedElement abstractTypedElement : component.getAbstractTypedElements()) {
+          if (abstractTypedElement instanceof Part) {
+            Part typedPart = (Part) abstractTypedElement;
+            Stream
+                .concat(PartExt.getSubUsedParts(typedPart).stream(),
+                    PartExt.getAllDeployableElements(typedPart).stream())
+                .filter(Part.class::isInstance).map(p -> PartExt.getComponentOfPart((Part) p))
+                .filter(Objects::nonNull)
+                .forEachOrdered(deployedComponents::add);
+          }
+        }
+      }
+    }
+    return List.copyOf(deployedComponents);
+  }
+
   /**
    * {@inheritDoc}
    */
   public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
-    List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
+    List<CapellaElement> currentElements = new ArrayList<>();
     if (element instanceof PhysicalLink) {
       PhysicalLink ele = (PhysicalLink) element;
       EList<ComponentExchangeAllocation> ownedComponentExchangeAllocation = ele.getOwnedComponentExchangeAllocations();

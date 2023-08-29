@@ -244,6 +244,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalPort_AllocatedComponentPorts-getAvailableElements
 inputId = 262b0e5d-5c77-40d9-8488-a976192de0b3
 resultIds = {
+	5476d67d-0e3f-40d8-9654-e5cdaf96e1b3
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalPort_AllocatedComponentPorts-getCurrentElements
@@ -443,6 +444,11 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalPort_AllocatedComponentPorts-getAvailableElements
 inputId = be06501a-0321-4f6c-9a01-29a8cc5c1c37
 resultIds = {
+	c204ce7c-db6e-4bba-999a-ab0fef6c7263
+	9db8729d-325a-4714-8317-a6fc0f5333e5
+	f9313e24-b0d1-4c00-94c2-c16d028ae183
+	f7b011f5-965e-4d06-b46f-f725834d7563
+	a9d6303f-0e2b-43b6-a5a9-85b36525ac96
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalPort_AllocatedComponentPorts-getCurrentElements
@@ -455,6 +461,9 @@ inputId = 78dadbdf-4a15-4f74-ad7c-ad5c54777707
 resultIds = {
     a9d6303f-0e2b-43b6-a5a9-85b36525ac96
     f9313e24-b0d1-4c00-94c2-c16d028ae183
+    c204ce7c-db6e-4bba-999a-ab0fef6c7263
+	9db8729d-325a-4714-8317-a6fc0f5333e5
+	f7b011f5-965e-4d06-b46f-f725834d7563
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalPort_AllocatedComponentPorts-getCurrentElements
@@ -2386,6 +2395,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalPort_AllocatedComponentPorts-getAvailableElements
 inputId = 2dcf8af0-48bd-4f25-9a45-3ef4181d5ca1
 resultIds = {
+	32346cfa-9a94-40ef-916c-6ba279d7054d
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalPort_AllocatedComponentPorts-getCurrentElements
