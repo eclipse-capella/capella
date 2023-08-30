@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -188,11 +188,6 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    * Text of the label for Referencing Elements browser.
    */
   private static final String REFERENCING_ELEMENTS_LABEL_TXT = Messages.SemanticBrowserView_Referencing_Elements_Title;
-
-  /**
-   * Semantic browser id.
-   */
-  public static final String SEMANTIC_BROWSER_ID = "org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID"; //$NON-NLS-1$
   /**
    * Memento persistence tag.
    */
@@ -251,12 +246,21 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   private TabbedPropertySheetPage propertySheetPage;
   private IDoubleClickListener viewerDoubleClickListener;
   private ISelectionChangedListener viewerSelectionListener;
+  private SemanticBrowserModelChangeListener modelChangeListener;
+
+  protected Runnable viewRefreshRunnable = new Runnable() {
+    @Override
+    public void run() {
+      refresh(true);
+    }
+  };
 
   /**
    * Constructor.
    */
   public SemanticBrowserView() {
     model = new SemanticBrowserModel();
+    this.modelChangeListener = new SemanticBrowserModelChangeListener(this);
   }
 
   @Override
@@ -353,6 +357,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
           updateSelectionProvider(provider);
           refreshPropertyPage(provider);
           updateStatusLine(provider.getSelection());
+          modelChangeListener.resourceSetChanged(null);
         }
       };
     }
@@ -588,6 +593,8 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     removeSessionListener();
 
     getSite().getPage().removeSelectionListener(getSelectionListener());
+
+    modelChangeListener.dispose();
 
     model = null;
     super.dispose();
@@ -1175,6 +1182,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
         setFocusOnViewer();
       }
       SiriusReferenceFinderCache.INSTANCE.disable();
+      modelChangeListener.changeContext(this);
     }
   }
 
