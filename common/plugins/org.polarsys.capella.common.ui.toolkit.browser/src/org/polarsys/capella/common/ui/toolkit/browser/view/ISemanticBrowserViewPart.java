@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -25,6 +25,11 @@ import org.polarsys.capella.common.ui.toolkit.browser.model.ISemanticBrowserMode
  * element. This interface gives an access to the root element.
  */
 public interface ISemanticBrowserViewPart extends IViewPart {
+
+  /**
+   * Semantic browser id.
+   */
+  public static final String SEMANTIC_BROWSER_ID = "org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID"; //$NON-NLS-1$
 
   /**
    * Sets the input of the Semantic Browser and <b>ALWAYS</b> triggers a refresh of the associated queries.
@@ -97,4 +102,8 @@ public interface ISemanticBrowserViewPart extends IViewPart {
   public ISemanticBrowserModel getModel();
 
   public void setInputOnViewers(Object input);
+
+  public static String getSemanticBrowserID() {
+    return SEMANTIC_BROWSER_ID;
+  };
 }
