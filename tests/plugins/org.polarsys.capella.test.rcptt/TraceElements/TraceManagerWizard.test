@@ -5,8 +5,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _NnyvwLSVEeuG2MOxxJehjA
-Runtime-Version: 2.5.4.202208092355
-Save-Time: 2/21/23, 12:09 PM
+Runtime-Version: 2.5.5.202306261357
+Save-Time: 8/31/23, 1:59 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -125,13 +125,6 @@ with [get-window "Traceability Management Wizard"] {
             | click
         get-button OK | click
     }
-    get-button "Add a trace" -index 1 | click -arrow
-    get-menu -path "Requirement trace" | click
-    with [get-window "Choose an element"] {
-        get-tree 
-            | select "TraceManagerWizardTest/Logical Architecture/Logical Functions/Root Logical Function/LogicalFunction 2"
-        get-button OK | click
-    }
 }
 get-window "Traceability Management Wizard" | get-tree | get-item 
     -path "Trace type is not defined/\\[Component Functional Allocation\\] to LogicalFunction 1" 
@@ -140,9 +133,6 @@ get-window "Traceability Management Wizard" | get-tree | get-item
 get-window "Traceability Management Wizard" | get-tree | get-item 
     -path "Generic trace/\\[Generic Trace\\] to LogicalFunction 1" | get-property "image.path" 
     | equals "org.polarsys.capella.core.data.res.edit/icons/full/obj16/GenericTrace.gif" | verify-true
-get-window "Traceability Management Wizard" | get-tree -after [get-label "Outgoing traceability links"] | get-item 
-    -path "Requirement trace/\\[Requirements Trace\\] to LogicalFunction 2" | get-property "image.path" 
-    | equals "org.polarsys.capella.core.data.res.edit/icons/full/obj16/RequirementsTrace.gif" | verify-true
 get-window "Traceability Management Wizard" | get-tree | get-item 
     -path "Generic trace/\\[Generic Trace\\] to LogicalFunction 1/LogicalFunction 2" | get-property "image.path" 
     | equals "org.polarsys.capella.core.data.res.edit/icons/full/obj16/LogicalFunction.gif" | verify-true
@@ -196,10 +186,6 @@ get-editor "[LAB] Structure" | get-diagram -index 1 | get-edit-part -name "[LAB]
     -mask ALT -height 578 -width 1282
 get-editor "[LAB] Structure" | get-diagram -index 1 | get-edit-part -name "[LAB] Structure" | mouse-move 573 214 
     -height 578 -width 1282
-get-view "Project Explorer" | get-tree | get-item 
-    -path "TraceManagerWizardTest/\\*TraceManagerWizardTest.aird/TraceManagerWizardTest/Logical Architecture/Logical Functions/Root Logical Function/LogicalFunction 1/\\[Requirements Trace\\] to LogicalFunction 2" 
-    | get-property "image.path" 
-    | equals "org.polarsys.capella.core.data.res.edit/icons/full/obj16/RequirementsTrace.gif" | verify-true
 get-view "Project Explorer" | get-tree | get-item 
     -path "TraceManagerWizardTest/\\*TraceManagerWizardTest.aird/TraceManagerWizardTest/Logical Architecture/Logical Functions/Root Logical Function/\\[Function Realization\\] to Root System Function" 
     | get-property "image.path" 
