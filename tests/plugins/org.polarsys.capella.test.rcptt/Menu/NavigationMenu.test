@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _x3yKIJrrEeiYyJV_j_AxhQ
-Runtime-Version: 2.5.4.202208092355
-Save-Time: 2/21/23, 12:00 PM
+Runtime-Version: 2.5.5.202306261357
+Save-Time: 8/31/23, 1:59 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -146,7 +146,6 @@ with [get-view "Semantic Browser" | get-tree] {
 get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/Structure/IFE System"
 with [get-view "Project Explorer" | get-tree] {
-    get-menu -path "Wizards/Requirement Manager" | get-property enablement | equals true | verify-true
     get-menu -path "Wizards/Trace Manager" | get-property enablement | equals true | verify-true
 }
 
