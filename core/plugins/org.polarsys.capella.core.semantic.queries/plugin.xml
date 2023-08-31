@@ -3066,20 +3066,6 @@
          		</itemQueries>
             </category>
             <category
-                  id="org.polarsys.capella.core.semantic.queries.basic.queries.RequirementTracedElements"
-                  isTopLevel="true"
-                  name="Traced Elements">
-               <availableForType
-                     class="org.polarsys.capella.core.data.requirement.Requirement">
-               </availableForType>
-               <categoryQuery>
-                  <basicQuery
-                        class="org.polarsys.capella.core.semantic.queries.basic.queries.RequirementTracedElements"></basicQuery></categoryQuery>
-               <targetBrowserId
-                     id="ReferencingElementBrowser">
-               </targetBrowserId>
-            </category>
-            <category
                   id="org.polarsys.capella.core.semantic.queries.basic.queries.CapabilityAvailableInState"
                   isTopLevel="true"
                   name="Active In States">

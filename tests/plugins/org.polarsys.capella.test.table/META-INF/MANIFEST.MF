@@ -15,6 +15,7 @@ Require-Bundle: org.polarsys.capella.test.framework,
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Bundle-Vendor: %providerName
-Export-Package: org.polarsys.capella.test.table.ju.testsuite
+Export-Package: org.polarsys.capella.test.table.ju.testsuite,
+ org.polarsys.capella.test.table.ju.utils
 
 
