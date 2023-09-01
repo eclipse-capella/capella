@@ -47,7 +47,6 @@
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.TimeEvent_Expression" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.CapellaElement_AppliedPropertyValueGroups" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.CapellaElement_AppliedPropertyValues" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.CapellaElement_OutgoingRequirement" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.CapellaElement_Status" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.Constraint_ConstrainedElements" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.EnumerationPropertyValue_Type" />

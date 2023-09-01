@@ -27,9 +27,6 @@ public class Messages extends NLS {
   public static String MDGenerateConnectionsAction_DiagramRefresh;
   public static String MDGenerateConnectionsAction_refreshingDiagrams;
   public static String GenerateInterfacesAction_CreatingInterfaces;
-  public static String RequirementManagerWizardAction_Command_Label;
-  public static String RequirementManagerWizardAction_Message;
-  public static String RequirementManagerWizardAction_Title;
   public static String AllocationManagementWizardAction_Title;
   public static String AllocationManagementWizardAction_Command_Label;
   public static String AllocationManagementWizardAction_Warning_Message;

@@ -65,14 +65,14 @@ import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 
 /**
- * A match policy that generates a unique predictable match ID for every element of the Capella Project Skeleton,
- * and uses the element ID for every other element, so it has these properties:
+ * A match policy that generates a unique predictable match ID for every element of the Capella Project Skeleton, and
+ * uses the element ID for every other element, so it has these properties:
  *
- * - Comparing a new Capella Project A with a new Capella Project B yields no difference
- * - Comparing a Project X with a new Capella Project Y yields the elements that were added to X after the project was created.
+ * - Comparing a new Capella Project A with a new Capella Project B yields no difference - Comparing a Project X with a
+ * new Capella Project Y yields the elements that were added to X after the project was created.
  *
- * FIXME this match policy exists also in the SSS Multiphase Transition Addon, as MultiphaseMatchpolicy. It's a pretty useful match policy,
- * so this should be unified and added to capella core.
+ * FIXME this match policy exists also in the SSS Multiphase Transition Addon, as MultiphaseMatchpolicy. It's a pretty
+ * useful match policy, so this should be unified and added to capella core.
  */
 public class SkeletonMatchPolicy implements IMatchPolicy<EObject> {
 
@@ -80,20 +80,35 @@ public class SkeletonMatchPolicy implements IMatchPolicy<EObject> {
 
   private enum PredefinedType {
 
-    PREDEFINED_DATA_PKG(NamingConstants.PredefinedTypesCmd_predefinedDataTypePkg_name, InformationPackage.Literals.DATA_PKG), PREDEFINED_BOOLEAN(
-        NamingConstants.PredefinedTypesCmd_boolean_name, DatatypePackage.Literals.BOOLEAN_TYPE), PREDEFINED_BYTE(NamingConstants.PredefinedTypesCmd_byte_name,
-        DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_CHAR(NamingConstants.PredefinedTypesCmd_char_name, DatatypePackage.Literals.STRING_TYPE), PREDEFINED_DOUBLE(
-        NamingConstants.PredefinedTypesCmd_double_name, DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_FLOAT(NamingConstants.PredefinedTypesCmd_float_name,
-        DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_HEXADECIMAL(NamingConstants.PredefinedTypesCmd_hexadecimal_name,
-        DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_INTEGER(NamingConstants.PredefinedTypesCmd_integer_name, DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_LONG(
-        NamingConstants.PredefinedTypesCmd_long_name, DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_LONGLONG(
-        NamingConstants.PredefinedTypesCmd_longLong_name, DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_SHORT(
-        NamingConstants.PredefinedTypesCmd_short_name, DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_STRING(
-        NamingConstants.PredefinedTypesCmd_string_name, DatatypePackage.Literals.STRING_TYPE), PREDEFINED_UNSIGNED_INTEGER(
-        NamingConstants.PredefinedTypesCmd_unsignedInteger_name, DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_UNSIGNED_SHORT(
-        NamingConstants.PredefinedTypesCmd_unsignedShort_name, DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_UNSIGNED_LONG_LONG(
-        NamingConstants.PredefinedTypesCmd_unsignedLongLong_name, DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_UNSIGNED_LONG(
-        NamingConstants.PredefinedTypesCmd_unsignedLong_name, DatatypePackage.Literals.NUMERIC_TYPE);
+    PREDEFINED_DATA_PKG(NamingConstants.PredefinedTypesCmd_predefinedDataTypePkg_name,
+        InformationPackage.Literals.DATA_PKG), PREDEFINED_BOOLEAN(NamingConstants.PredefinedTypesCmd_boolean_name,
+            DatatypePackage.Literals.BOOLEAN_TYPE), PREDEFINED_BYTE(NamingConstants.PredefinedTypesCmd_byte_name,
+                DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_CHAR(NamingConstants.PredefinedTypesCmd_char_name,
+                    DatatypePackage.Literals.STRING_TYPE), PREDEFINED_DOUBLE(
+                        NamingConstants.PredefinedTypesCmd_double_name,
+                        DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_FLOAT(
+                            NamingConstants.PredefinedTypesCmd_float_name,
+                            DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_HEXADECIMAL(
+                                NamingConstants.PredefinedTypesCmd_hexadecimal_name,
+                                DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_INTEGER(
+                                    NamingConstants.PredefinedTypesCmd_integer_name,
+                                    DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_LONG(
+                                        NamingConstants.PredefinedTypesCmd_long_name,
+                                        DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_LONGLONG(
+                                            NamingConstants.PredefinedTypesCmd_longLong_name,
+                                            DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_SHORT(
+                                                NamingConstants.PredefinedTypesCmd_short_name,
+                                                DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_STRING(
+                                                    NamingConstants.PredefinedTypesCmd_string_name,
+                                                    DatatypePackage.Literals.STRING_TYPE), PREDEFINED_UNSIGNED_INTEGER(
+                                                        NamingConstants.PredefinedTypesCmd_unsignedInteger_name,
+                                                        DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_UNSIGNED_SHORT(
+                                                            NamingConstants.PredefinedTypesCmd_unsignedShort_name,
+                                                            DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_UNSIGNED_LONG_LONG(
+                                                                NamingConstants.PredefinedTypesCmd_unsignedLongLong_name,
+                                                                DatatypePackage.Literals.NUMERIC_TYPE), PREDEFINED_UNSIGNED_LONG(
+                                                                    NamingConstants.PredefinedTypesCmd_unsignedLong_name,
+                                                                    DatatypePackage.Literals.NUMERIC_TYPE);
 
     private final String name;
     private final EClass type;
@@ -112,7 +127,8 @@ public class SkeletonMatchPolicy implements IMatchPolicy<EObject> {
 
       if (result == null && ((e instanceof NumericType) || (e instanceof StringType) || (e instanceof BooleanType))) {
         for (PredefinedType key : values()) {
-          if (key.name.equals(((NamedElement) e).getName()) && key.type.isInstance(e) && (getPredefinedType(e.eContainer()) == PREDEFINED_DATA_PKG)) {
+          if (key.name.equals(((NamedElement) e).getName()) && key.type.isInstance(e)
+              && (getPredefinedType(e.eContainer()) == PREDEFINED_DATA_PKG)) {
             result = key;
           }
         }
@@ -146,29 +162,26 @@ public class SkeletonMatchPolicy implements IMatchPolicy<EObject> {
     }
 
     private static boolean isRootFunction(EObject eObject) {
-      return (eObject instanceof AbstractFunction) && (EcoreUtil2.getFirstContainer(eObject, FaPackage.Literals.ABSTRACT_FUNCTION) == null);
+      return (eObject instanceof AbstractFunction)
+          && (EcoreUtil2.getFirstContainer(eObject, FaPackage.Literals.ABSTRACT_FUNCTION) == null);
     }
   }
 
   public SkeletonMatchPolicy() {
 
     Collection<ENamedElement> uniqueKeys = Arrays.asList(CapellamodellerPackage.Literals.PROJECT,
-        CapellamodellerPackage.Literals.LIBRARY, 
-        OaPackage.Literals.OPERATIONAL_ANALYSIS, 
+        CapellamodellerPackage.Literals.LIBRARY, OaPackage.Literals.OPERATIONAL_ANALYSIS,
         OaPackage.Literals.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG,
         OaPackage.Literals.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG,
-        OaPackage.Literals.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG,
-        CtxPackage.Literals.SYSTEM_ANALYSIS,
+        OaPackage.Literals.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG, CtxPackage.Literals.SYSTEM_ANALYSIS,
         CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_MISSION_PKG,
         CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG,
         CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_OPERATIONAL_ANALYSIS_REALIZATIONS,
-        LaPackage.Literals.LOGICAL_ARCHITECTURE,
-        LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT_PKG,
+        LaPackage.Literals.LOGICAL_ARCHITECTURE, LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT_PKG,
         LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_SYSTEM_ANALYSIS_REALIZATIONS,
-        PaPackage.Literals.PHYSICAL_ARCHITECTURE, 
+        PaPackage.Literals.PHYSICAL_ARCHITECTURE,
         PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_LOGICAL_ARCHITECTURE_REALIZATIONS,
-        PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG,
-        EpbsPackage.Literals.EPBS_ARCHITECTURE,
+        PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG, EpbsPackage.Literals.EPBS_ARCHITECTURE,
         EpbsPackage.Literals.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM_PKG,
         EpbsPackage.Literals.EPBS_ARCHITECTURE__OWNED_PHYSICAL_ARCHITECTURE_REALIZATIONS,
         CapellamodellerPackage.Literals.PROJECT__OWNED_MODEL_ROOTS, LibrariesPackage.Literals.MODEL_INFORMATION);
@@ -177,9 +190,9 @@ public class SkeletonMatchPolicy implements IMatchPolicy<EObject> {
       matchIDs.put(o, EcoreUtil.getURI(o).toString());
     }
 
-    Collection<EClass> allBlockArchitectures =
-        Arrays.asList(OaPackage.Literals.OPERATIONAL_ANALYSIS, CtxPackage.Literals.SYSTEM_ANALYSIS, LaPackage.Literals.LOGICAL_ARCHITECTURE,
-            PaPackage.Literals.PHYSICAL_ARCHITECTURE, EpbsPackage.Literals.EPBS_ARCHITECTURE);
+    Collection<EClass> allBlockArchitectures = Arrays.asList(OaPackage.Literals.OPERATIONAL_ANALYSIS,
+        CtxPackage.Literals.SYSTEM_ANALYSIS, LaPackage.Literals.LOGICAL_ARCHITECTURE,
+        PaPackage.Literals.PHYSICAL_ARCHITECTURE, EpbsPackage.Literals.EPBS_ARCHITECTURE);
 
     for (EClass c : allBlockArchitectures) {
 
@@ -190,9 +203,6 @@ public class SkeletonMatchPolicy implements IMatchPolicy<EObject> {
       matchIDs.put(key, key.toString());
 
       key = new Key(c, CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG);
-      matchIDs.put(key, key.toString());
-
-      key = new Key(c, CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_REQUIREMENT_PKGS);
       matchIDs.put(key, key.toString());
 
       key = new Key(c, FaPackage.Literals.ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_FUNCTION_PKG);
@@ -231,7 +241,8 @@ public class SkeletonMatchPolicy implements IMatchPolicy<EObject> {
     public boolean equals(Object obj) {
       boolean result = false;
       if (obj != null && obj.getClass() == Key.class) {
-        result = (eContainerClass == ((Key) obj).eContainerClass) && (eContainingFeature == ((Key) obj).eContainingFeature);
+        result = (eContainerClass == ((Key) obj).eContainerClass)
+            && (eContainingFeature == ((Key) obj).eContainingFeature);
       }
       return result;
     }
@@ -249,9 +260,8 @@ public class SkeletonMatchPolicy implements IMatchPolicy<EObject> {
 
     if ((element_p instanceof AbstractTrace) && (((AbstractTrace) element_p).getSourceElement() != null)
         && (((AbstractTrace) element_p).getTargetElement() != null)) {
-      result =
-          String.format("t[(%s)%s=>%s]", element_p.eClass().getName(), getMatchID(((AbstractTrace) element_p).getSourceElement(), scope_p), //$NON-NLS-1$
-              getMatchID(((AbstractTrace) element_p).getTargetElement(), scope_p));
+      result = String.format("t[(%s)%s=>%s]", element_p.eClass().getName(), //$NON-NLS-1$
+          getMatchID(((AbstractTrace) element_p).getSourceElement(), scope_p), getMatchID(((AbstractTrace) element_p).getTargetElement(), scope_p));
     }
 
     // otherwise we test for some unique characteristics
@@ -278,34 +288,40 @@ public class SkeletonMatchPolicy implements IMatchPolicy<EObject> {
     }
 
     // or the root system
-    if (element_p instanceof Component && element_p.equals(BlockArchitectureExt.getRootBlockArchitecture(element_p).getSystem())) {
-      result = matchIDs.get(new Key(BlockArchitectureExt.getRootBlockArchitecture(element_p).eClass(), CsPackage.Literals.BLOCK_ARCHITECTURE__SYSTEM));
+    if (element_p instanceof Component
+        && element_p.equals(BlockArchitectureExt.getRootBlockArchitecture(element_p).getSystem())) {
+      result = matchIDs.get(new Key(BlockArchitectureExt.getRootBlockArchitecture(element_p).eClass(),
+          CsPackage.Literals.BLOCK_ARCHITECTURE__SYSTEM));
     }
-    
+
     if ((result == null) && (element_p.eContainer() != null)) {
 
       if (element_p instanceof LiteralBooleanValue) {
         String parentMatch = getMatchID(element_p.eContainer(), scope_p);
         if (parentMatch != null) {
-          result = parentMatch + ";" + element_p.eContainingFeature().getName() + "@boolean:" + ((LiteralBooleanValue) element_p).getName(); //$NON-NLS-1$ //$NON-NLS-2$
+          result = parentMatch + ";" + element_p.eContainingFeature().getName() + "@boolean:" //$NON-NLS-1$ //$NON-NLS-2$
+              + ((LiteralBooleanValue) element_p).getName();
         }
       }
       if (element_p instanceof LiteralStringValue) {
         String parentMatch = getMatchID(element_p.eContainer(), scope_p);
         if (parentMatch != null) {
-          result = parentMatch + ";" + element_p.eContainingFeature().getName() + ";string:" + ((LiteralStringValue) element_p).getName(); //$NON-NLS-1$ //$NON-NLS-2$
+          result = parentMatch + ";" + element_p.eContainingFeature().getName() + ";string:" //$NON-NLS-1$ //$NON-NLS-2$
+              + ((LiteralStringValue) element_p).getName();
         }
       }
       if (element_p instanceof LiteralNumericValue) {
         String parentMatch = getMatchID(element_p.eContainer(), scope_p);
         if (parentMatch != null) {
-          result = parentMatch + ";" + element_p.eContainingFeature().getName() + ";numeric: " + ((LiteralNumericValue) element_p).getValue(); //$NON-NLS-1$ //$NON-NLS-2$
+          result = parentMatch + ";" + element_p.eContainingFeature().getName() + ";numeric: " //$NON-NLS-1$ //$NON-NLS-2$
+              + ((LiteralNumericValue) element_p).getValue();
         }
       }
       if (element_p instanceof BinaryExpression) {
         String parentMatch = getMatchID(element_p.eContainer(), scope_p);
         if (parentMatch != null) {
-          result = parentMatch + ";" + (((InternalEObject) element_p.eContainer()).eURIFragmentSegment(element_p.eContainingFeature(), element_p)); //$NON-NLS-1$
+          result = parentMatch + ";" + (((InternalEObject) element_p.eContainer()) //$NON-NLS-1$
+              .eURIFragmentSegment(element_p.eContainingFeature(), element_p));
         }
       }
       if (element_p instanceof EnumerationPropertyLiteral) {

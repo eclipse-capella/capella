@@ -146,13 +146,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.polarsys.capella.core.data.requirement.properties"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.polarsys.capella.core.data.ctx.properties"
          download-size="0"
          install-size="0"

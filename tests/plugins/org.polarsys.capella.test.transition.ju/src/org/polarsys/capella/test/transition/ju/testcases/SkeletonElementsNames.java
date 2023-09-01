@@ -32,7 +32,6 @@ import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
-import org.polarsys.capella.core.data.requirement.RequirementsPkg;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 import org.polarsys.capella.core.transition.system.topdown.commands.TransitionCommandHelper;
 import org.polarsys.capella.test.framework.helpers.EObjectHelper;
@@ -249,9 +248,6 @@ public class SkeletonElementsNames extends EmptySkeletonProject {
 
     } else if (result instanceof InterfacePkg) {
       mustBeNamed(result, NamingConstants.CreateCommonCmd_interfaces_pkg_name);
-
-    } else if (result instanceof RequirementsPkg) {
-      mustBeNamed(result, NamingConstants.CreateCommonCmd_requirements_pkg_name);
 
     }
   }

@@ -37,8 +37,6 @@ Export-Package: org.polarsys.capella.core.data.helpers.capellacommon,
  org.polarsys.capella.core.data.helpers.pa,
  org.polarsys.capella.core.data.helpers.pa.delegates,
  org.polarsys.capella.core.data.helpers.pa.services,
- org.polarsys.capella.core.data.helpers.requirement,
- org.polarsys.capella.core.data.helpers.requirement.delegates,
  org.polarsys.capella.core.data.helpers.sharedmodel
 Require-Bundle: org.polarsys.capella.core.data.gen;visibility:=reexport,
  org.polarsys.capella.common.data.helpers;visibility:=reexport,

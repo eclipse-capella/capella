@@ -1576,19 +1576,10 @@ public interface IToolNameConstants {
   // 1. Create a cell value with "X" and delete the cell value -- which is an
   // empty string ""
 
-  // FIXME -- IDiagramNameConstants.REQUIREMENTS_DIAGRAM_NAME required
-  String REQUIREMENTS_DIAGRAM_NAME = "Requirements";
   String INTERFACES_SCENARIOS_DIAGRAM_NAME = "Interfaces - Scenarios";
 
   String TABLE_TOOL_CREATE_CELL_VALUE = "X";
   String TABLE_TOOL_DELETE_CELL_VALUE = ICommonConstants.EMPTY_STRING;
-
-  String TABLE_TOOL_REQ_REQ_PKG = "Requirement Pkg";
-  String TABLE_TOOL_REQ_SUR = "System User Requirement";
-  String TABLE_TOOL_REQ_SFR = "System Functional Requirement";
-  String TABLE_TOOL_REQ_SFIR = "System Functional Interface Requirement";
-  String TABLE_TOOL_REQ_SNFR = "System Non Functional Requirement";
-  String TABLE_TOOL_REQ_SNFIR = "System Non Functional Interface Requirement";
 
   /**
    * Tool on IS, ES diagrams to create multiple instance roles for identical represented

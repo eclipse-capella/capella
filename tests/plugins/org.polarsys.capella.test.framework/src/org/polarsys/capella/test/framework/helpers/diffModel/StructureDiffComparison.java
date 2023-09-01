@@ -17,10 +17,7 @@ import java.util.HashMap;
 import org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope;
 import org.eclipse.emf.diffmerge.impl.policies.DefaultMatchPolicy;
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
-import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 
 /**
  * Generic implementation of DefaultMatchPolicy used to compare Capella models. The comparison is not based on IDs but only on the model structure.<br>
@@ -85,21 +82,6 @@ public class StructureDiffComparison extends DefaultMatchPolicy {
 	public Object getMatchID(EObject element_p, ITreeDataScope<EObject> scope_p) {		
 		String identifier = getIdentifier(element_p, scope_p);
 		if (identifier == null) {
-			identifier = getSpecificIdentifier(element_p, scope_p);						
-			if (identifier == null) {
-					identifier = ""; //$NON-NLS-1$
-					EObject container = element_p.eContainer();
-					if (container != null) {
-						identifier = (String) getMatchID(container, scope_p) + '/';
-					}
-					identifier += getLocalIdentifier(element_p);
-			}
-			// special case when local identifier is blank (typically if the object or one of its container is not contained by the project (DanglingHREFException is raised in that case if the model is saved) 
-			if (identifier.equals("/")) {//$NON-NLS-1$
-				identifier = NO_NAME;
-				if (element_p instanceof NamedElement)
-					identifier += ((NamedElement) element_p).getName();				
-			}
 			// dismiss identical id for one scope
 			identifier = saveIdentifier(element_p, scope_p, identifier);
 		}
@@ -109,15 +91,6 @@ public class StructureDiffComparison extends DefaultMatchPolicy {
 	private static final String NULL_VALUE = "[null]"; //$NON-NLS-1$
 	private static final String NO_NAME = "$$[NO_LOCAL_NAME]"; //$NON-NLS-1$
 	
-	private String getSpecificIdentifier(Object element, ITreeDataScope<EObject> scope_p) {
-		if (element instanceof RequirementsTrace) {
-			RequirementsTrace trace = (RequirementsTrace) element;
-			TraceableElement source = trace.getSourceElement();
-			TraceableElement target = trace.getTargetElement();
-			return "RequirementsTrace["+(source != null ? getMatchID(source, scope_p).toString() : NULL_VALUE) + " => " + (target != null ? getMatchID(target, scope_p).toString() : NULL_VALUE)+"]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		}
-		return null;
-	}
 	
 	private String getLocalIdentifier(EObject element) {
 		return EObjectLabelProviderHelper.getText(element);

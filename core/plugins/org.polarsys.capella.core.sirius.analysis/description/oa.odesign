@@ -1,68 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" version="12.0.0.2017041100">
-  <ownedViewpoints name="Operational Analysis" label="%oa" modelFileExtension="capella">
-    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Operational Activities - Requirements" domainClass="OperationalAnalysis">
-      <ownedLineMappings name="Operational Activity" domainClass="OperationalActivity" semanticCandidatesExpression="aql:self.getTableRootAbstractFunctions()" headerLabelExpression="feature:name">
-        <ownedSubLines name="Sub Operational Activity" reusedSubLines="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']/@ownedSubLines[name='Sub%20Operational%20Activity%20Pkg'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']/@ownedSubLines[name='Sub%20Operational%20Activity']" reusedInMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']/@ownedSubLines[name='Sub%20Operational%20Activity'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='FunctionPkgs'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']/@ownedSubLines[name='Sub%20Operational%20Activity%20Pkg']" domainClass="OperationalActivity" semanticCandidatesExpression="aql:self.getOwnedAbstractFunctions()" headerLabelExpression="feature:name">
-          <delete name="No delete" precondition="false">
-            <variables name="element" documentation="The currently edited element."/>
-            <variables name="root" documentation="The semantic element corresponding to the current table."/>
-          </delete>
-        </ownedSubLines>
-        <ownedSubLines name="Sub Operational Activity Pkg" reusedSubLines="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']/@ownedSubLines[name='Sub%20Operational%20Activity'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']/@ownedSubLines[name='Sub%20Operational%20Activity%20Pkg']" reusedInMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']/@ownedSubLines[name='Sub%20Operational%20Activity'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']/@ownedSubLines[name='Sub%20Operational%20Activity%20Pkg'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='FunctionPkgs']" domainClass="FunctionPkg" semanticCandidatesExpression="aql:self.getOwnedAbstractFunctionPkgs()" headerLabelExpression="feature:name">
-          <delete name="No delete" precondition="false">
-            <variables name="element" documentation="The currently edited element."/>
-            <variables name="root" documentation="The semantic element corresponding to the current table."/>
-          </delete>
-        </ownedSubLines>
-        <delete name="No delete" precondition="false">
-          <variables name="element" documentation="The currently edited element."/>
-          <variables name="root" documentation="The semantic element corresponding to the current table."/>
-        </delete>
-      </ownedLineMappings>
-      <ownedLineMappings name="FunctionPkgs" reusedSubLines="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']/@ownedSubLines[name='Sub%20Operational%20Activity'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']/@ownedSubLines[name='Sub%20Operational%20Activity%20Pkg']" domainClass="FunctionPkg" semanticCandidatesExpression="aql:self.getTableRootAbstractFunctionPkgs()">
-        <delete name="No delete" precondition="false">
-          <variables name="element" documentation="The currently edited element."/>
-          <variables name="root" documentation="The semantic element corresponding to the current table."/>
-        </delete>
-      </ownedLineMappings>
-      <ownedColumnMappings name="Requirements 3" headerLabelExpression="aql:self.getRequirementElementLabel()" domainClass="Requirement">
-        <delete name="No delete" precondition="false">
-          <variables name="element" documentation="The currently edited element."/>
-          <variables name="root" documentation="The semantic element corresponding to the current table."/>
-        </delete>
-      </ownedColumnMappings>
-      <intersection name="Trace 3" canEdit="true" lineMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedLineMappings[name='Operational%20Activity']/@ownedSubLines[name='Sub%20Operational%20Activity']" columnMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="feature:targetElement" lineFinderExpression="feature:sourceElement" domainClass="RequirementsTrace">
-        <directEdit>
-          <variables name="table" documentation="The current DTable."/>
-          <variables name="line" documentation="The DLine of the current DCell."/>
-          <variables name="element" documentation="The currently edited element."/>
-          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
-          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
-          <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and lineSemantic.ownedTraces->filter(requirement::RequirementsTrace)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->size() > 0">
-            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:lineSemantic.ownedTraces->filter(requirement::RequirementsTrace)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->first()">
-              <subModelOperations xsi:type="tool:RemoveElement"/>
-            </subModelOperations>
-          </firstModelOperation>
-          <mask mask="{0}"/>
-        </directEdit>
-        <create name="TR3" forceRefresh="true">
-          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
-          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
-          <variables name="root" documentation="The semantic root element of the table."/>
-          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:lineSemantic">
-            <subModelOperations xsi:type="tool:If" conditionExpression="aql:arg0 = 'X'">
-              <subModelOperations xsi:type="tool:CreateInstance" typeName="RequirementsTrace" referenceName="ownedTraces">
-                <subModelOperations xsi:type="tool:SetValue" featureName="sourceElement" valueExpression="aql:lineSemantic"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="targetElement" valueExpression="aql:columnSemantic"/>
-              </subModelOperations>
-            </subModelOperations>
-          </firstModelOperation>
-          <mask mask="{0}"/>
-        </create>
-      </intersection>
-    </ownedRepresentations>
+  <ownedViewpoints name="Operational Analysis" label="%oa" modelFileExtension="capella">    
     <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Entity Breakdown" label="%oa.oebd" titleExpression="aql:'[OEBD] ' + self.name" domainClass="Namespace" preconditionExpression="aql:self.oclIsKindOf(oa::Entity) or self.oclIsKindOf(oa::EntityPkg)">
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
@@ -81,7 +19,6 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
@@ -323,7 +260,6 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
@@ -785,7 +721,6 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
@@ -1865,7 +1800,6 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
@@ -6480,62 +6414,6 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Requirements - Operational Activities" preconditionExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture).oclIsKindOf(oa::OperationalAnalysis)" domainClass="RequirementsPkg">
-      <ownedLineMappings name="Requirements" domainClass="NamedElement" semanticCandidatesExpression="aql:self" headerLabelExpression="aql:self.getRequirementElementLabel()">
-        <ownedSubLines name="Sub Requirements" reusedSubLines="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements']" reusedInMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements%20Pkg'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements']" domainClass="NamedElement" semanticCandidatesExpression="aql:self.ownedRequirements" headerLabelExpression="aql:self.getRequirementElementLabel()">
-          <delete name="No delete" precondition="false">
-            <variables name="element" documentation="The currently edited element."/>
-            <variables name="root" documentation="The semantic element corresponding to the current table."/>
-          </delete>
-        </ownedSubLines>
-        <ownedSubLines name="Sub Requirements Pkg" reusedSubLines="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements%20Pkg']" reusedInMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements%20Pkg']" domainClass="NamedElement" semanticCandidatesExpression="feature:extended" headerLabelExpression="aql:self.getRequirementElementLabel()">
-          <delete name="No delete" precondition="false">
-            <variables name="element" documentation="The currently edited element."/>
-            <variables name="root" documentation="The semantic element corresponding to the current table."/>
-          </delete>
-        </ownedSubLines>
-        <delete name="No delete" precondition="false">
-          <variables name="element" documentation="The currently edited element."/>
-          <variables name="root" documentation="The semantic element corresponding to the current table."/>
-        </delete>
-      </ownedLineMappings>
-      <ownedColumnMappings name="Functions" headerLabelExpression="feature:name" domainClass="NamedElement" semanticCandidatesExpression="aql:self.getRFColumnCandidates()">
-        <delete name="No delete" precondition="false">
-          <variables name="element" documentation="The currently edited element."/>
-          <variables name="root" documentation="The semantic element corresponding to the current table."/>
-        </delete>
-      </ownedColumnMappings>
-      <intersection name="Trace Function" semanticElements="aql:self.makeUnion(self, self.eContainer())" lineMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements']" columnMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedColumnMappings.0" labelExpression="aql:self.getRFLabel(lineSemantic,columnSemantic)" useDomainClass="true" columnFinderExpression="feature:sourceElement" lineFinderExpression="feature:targetElement" semanticCandidatesExpression="aql:self.getRFColumnCandidates().outgoingTraces->select(outgoingTrace | outgoingTrace.oclIsKindOf(requirement::RequirementsTrace))" domainClass="RequirementsTrace">
-        <directEdit>
-          <variables name="table" documentation="The current DTable."/>
-          <variables name="line" documentation="The DLine of the current DCell."/>
-          <variables name="element" documentation="The currently edited element."/>
-          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
-          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
-          <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = ''">
-            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.void2Null(element)">
-              <subModelOperations xsi:type="tool:RemoveElement"/>
-            </subModelOperations>
-          </firstModelOperation>
-          <mask mask="{0}"/>
-        </directEdit>
-        <create name="TR6" forceRefresh="true">
-          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
-          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
-          <variables name="root" documentation="The semantic root element of the table."/>
-          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:columnSemantic">
-            <subModelOperations xsi:type="tool:If" conditionExpression="aql:arg0 = 'X' and lineSemantic.incomingTraces->select(incomingTrace | incomingTrace.sourceElement = columnSemantic)->size() = 0">
-              <subModelOperations xsi:type="tool:CreateInstance" typeName="RequirementsTrace" referenceName="ownedTraces">
-                <subModelOperations xsi:type="tool:SetValue" featureName="sourceElement" valueExpression="aql:columnSemantic"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="targetElement" valueExpression="aql:lineSemantic"/>
-              </subModelOperations>
-            </subModelOperations>
-          </firstModelOperation>
-          <mask mask="{0}"/>
-        </create>
-      </intersection>
-    </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Contextual Operational Capability" label="%oa.coc" titleExpression="aql:'[COC] ' + self.name" domainClass="OperationalCapability">
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Entities%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
@@ -6934,7 +6812,6 @@
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sequencediag.ScenarioContraintsService"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.SequenceDiagramServices"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.FaServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.RequirementServices"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.CsServices"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.DiagramServices"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.DFServices"/>

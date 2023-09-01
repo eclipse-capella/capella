@@ -217,23 +217,8 @@
        
    </extension>
    
-      <extension
+   <extension
          point="org.eclipse.core.expressions.definitions">
-      <definition
-            id="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizard.expression">
-            <with
-                  variable="selection">
-                  <iterate
-                        ifEmpty="false">
-                    <test
-		                  forcePluginActivation="true"
-		                  property="org.polarsys.capella.core.platform.sirius.ui.actionMode"
-		                  value="requirementManagerWizard">
-		            </test>
-                  </iterate>
-            </with>
-      </definition>
-      
       <definition
             id="org.polarsys.capella.core.platform.sirius.ui.actions.TraceManager.expression">
             <with
@@ -434,10 +419,7 @@
                 </and>
                 </iterate>
       </definition>
-      
-   </extension>
-   
-   
+    </extension>
     <extension point="org.eclipse.ui.menus">
     
       <menuContribution
@@ -508,22 +490,7 @@
       
       
       <!-- Allocation Management -->
-      <!-- Requirement Manager -->
       <!-- Trace Manager -->
-      <menuContribution
-            locationURI="popup:org.polarsys.capella.core.wizards?after=additions">
-         <command commandId="org.polarsys.capella.core.platform.sirius.ui.actions.wizard.RequirementManagerWizardAction" >  
-         <visibleWhen
-                       checkEnabled="false">
-                       <reference
-                                 definitionId="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizard.expression">
-                           </reference>
-                 </visibleWhen>
-        </command> 
-        
-        
-      </menuContribution>
-      
        <menuContribution
             locationURI="popup:org.eclipse.ui.popup.any?after=group.allocation">
          <command
@@ -746,14 +713,6 @@
                >
       </command>
       <command
-         	   categoryId="org.polarsys.capella.core.wizards"
-               defaultHandler="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizardAction"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.wizard.RequirementManagerWizardAction"
-               name="%RequirementManager"
-               >
-      </command>
-      
-      <command
             defaultHandler="org.polarsys.capella.core.platform.sirius.ui.actions.CreateCategoriesWizardAction"
             id="org.polarsys.capella.core.platform.sirius.ui.actions.CreateCategoriesWizardAction"
             name="%CreateCategories"
@@ -807,10 +766,6 @@
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_manage.gif">
       </image>
       <image
-            commandId="org.polarsys.capella.core.platform.sirius.ui.actions.wizard.RequirementManagerWizardAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif">
-      </image>
-      <image
             commandId="org.polarsys.capella.core.platform.sirius.ui.actions.CopyPath"
                icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_copy_path.gif">
       </image>
@@ -834,11 +789,6 @@
                enableByDefault="true"
                id="org.polarsys.capella.core.platform.sirius.ui.actions.wizard.AllocationManagementWizardAction"
                name="Allocation Management">
-         </item>
-         <item
-               enableByDefault="true"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.wizard.RequirementManagerWizardAction"
-               name="Requirement Manager">
          </item>
       </category>
       <category

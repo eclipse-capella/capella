@@ -40,7 +40,6 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.requirement.RequirementPackage;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 
 /**
@@ -101,7 +100,6 @@ public class CapellaValidatorAdapter extends EValidatorAdapter {
     EValidator.Registry.INSTANCE.put(CapellamodellerPackage.eINSTANCE, this);
     EValidator.Registry.INSTANCE.put(OaPackage.eINSTANCE, this);
     EValidator.Registry.INSTANCE.put(PaPackage.eINSTANCE, this);
-    EValidator.Registry.INSTANCE.put(RequirementPackage.eINSTANCE, this);
     EValidator.Registry.INSTANCE.put(SharedmodelPackage.eINSTANCE, this);
     // re meta-model
     EValidator.Registry.INSTANCE.put(RePackage.eINSTANCE, this);

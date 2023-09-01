@@ -20,7 +20,6 @@ import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.table.ju.function.FunctionTableTestSuite;
 import org.polarsys.capella.test.table.ju.interfaces.InterfaceTableTestSuite;
-import org.polarsys.capella.test.table.ju.requirements.RequirementsTableTestSuite;
 import org.polarsys.capella.test.table.ju.state.StateModeTableTestSuite;
 import org.polarsys.capella.test.table.ju.state.contextual.ContextualStateModeTableTestSuite;
 
@@ -41,7 +40,6 @@ public class TableTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     ArrayList<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new FunctionTableTestSuite());
-    tests.add(new RequirementsTableTestSuite());
     tests.add(new InterfaceTableTestSuite());
     tests.add(new StateModeTableTestSuite());
     tests.add(new ContextualStateModeTableTestSuite());
