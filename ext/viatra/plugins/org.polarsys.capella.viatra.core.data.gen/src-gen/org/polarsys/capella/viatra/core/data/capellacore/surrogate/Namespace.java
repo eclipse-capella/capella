@@ -32,7 +32,6 @@ import org.eclipse.viatra.query.runtime.matchers.ViatraQueryRuntimeException;
  * following patterns:
  * <ul>
  * <li>Namespace__containedGenericTraces</li>
- * <li>Namespace__containedRequirementsTraces</li>
  * </ul>
  * 
  * @see IQueryGroup

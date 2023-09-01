@@ -304,7 +304,6 @@ public class ReconciliationTraceabilityHandler extends LevelBasedTraceabilityHan
     addMapping(map, BlockArchitectureExt.getActorPkg(source, false), BlockArchitectureExt.getActorPkg(target, false), context);
     addMapping(map, BlockArchitectureExt.getContext(source, false), BlockArchitectureExt.getContext(target, false), context);
     addMapping(map, BlockArchitectureExt.getInterfacePkg(source, false), BlockArchitectureExt.getInterfacePkg(target, false), context);
-    addMapping(map, BlockArchitectureExt.getRequirementsPkg(source, false), BlockArchitectureExt.getRequirementsPkg(target, false), context);
     addMapping(map, BlockArchitectureExt.getAbstractCapabilityPkg(source, false), BlockArchitectureExt.getAbstractCapabilityPkg(target, false), context);
   }
 
