@@ -16,7 +16,6 @@
     xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/7.0.0"
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/7.0.0"
     xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/7.0.0"
-    xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/7.0.0"
     id="fa2c0e54-4cfd-4965-bbd3-eee558e03e9c"
     name="RulesOnIntegrityTest">
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
@@ -45,8 +44,6 @@
         <ownedOperationalActivities xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
             id="2df967dd-4c34-4ae3-a55b-c78e99be076e" name="Root Operational Activity"/>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="b75fd177-752d-4291-a9b9-d5af2e22d427" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="202d905a-4c15-4958-b6f9-12f0b73aff63" name="Operational Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -69,8 +66,6 @@
               sourceElement="#43a48be8-408b-4844-b956-cb26f3ca3368"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="8774e464-cc56-4bab-bcbd-996ac2ba1d8d" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="6726fad9-2802-49cb-94ea-4204475288af" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -247,8 +242,6 @@
               sourceElement="#162331d6-0e82-425e-ab0e-bf9323bf26a8"/>
         </ownedLogicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="49eb1819-5e94-4e2f-be25-7551eef03a97" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="a2d0bc3f-4bb9-41fc-92dd-5fa5f08f7b31" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -281,8 +274,6 @@
               sourceElement="#93bb7d2f-d0e4-4e4f-88cf-97c66c02d6da"/>
         </ownedPhysicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="3710160e-e7a7-46fd-9616-b48fa4a6e58f" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="aa82c787-ebdb-4e42-9aae-0d7870e719c2" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -306,8 +297,6 @@
     </ownedArchitectures>
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.epbs:EPBSArchitecture"
         id="e2f41271-8b66-4acc-bd8d-561a0a63d863" name="EPBS Architecture">
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="6e5e3244-affc-4bb9-a31f-e17f642cc43e" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="e51e3edf-7fec-40b8-bfe1-c29ef4a4e3fa" name="Capabilities"/>
       <ownedConfigurationItemPkg xsi:type="org.polarsys.capella.core.data.epbs:ConfigurationItemPkg"
@@ -335,8 +324,6 @@
         <ownedSystemFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
             id="e5f035b7-fcea-4203-bc0b-21e617859626" name="Root System Function"/>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="66c2c170-cc58-4cdf-a9e2-0ec93fedde5d" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="1fca0402-e132-49be-afc0-6bdab43c304b" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -467,8 +454,6 @@
               sourceElement="#d76a85df-526f-49a9-8b4f-8ef48be232dd"/>
         </ownedLogicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="03b0a020-8d3c-4216-b197-459ee1164aba" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="b64efea4-da29-4a55-953f-f702be962f39" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -518,8 +503,6 @@
         <ownedOperationalActivities xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
             id="3a8bff02-0707-4293-b309-7869b554ef41" name="Root Operational Activity"/>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="d66347cb-3a0a-480f-81c9-78777fcdb296" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="3a45ea70-8ef2-424f-827e-87ccc99d9e60" name="Operational Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -547,8 +530,6 @@
               sourceElement="#ca71f7da-32c7-4ce6-9c20-170936b72299"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="59ba959a-9991-48a0-9ea6-706f02f77c37" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="3c401dc7-05b6-43ef-9410-8de87b562010" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -695,8 +676,6 @@
         <ownedOperationalActivities xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
             id="1da0e16f-f336-49e5-9ddd-f4b46ddec620" name="Root Operational Activity"/>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="2acbc694-12d1-41a2-b3bd-1d0007eb57a5" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="b5a90770-4447-4fc6-87d2-26500f22b000" name="Operational Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -728,8 +707,6 @@
               sourceElement="#93d4898f-e0f8-48d6-9e95-c3d7b4c0928c"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="decc314a-d3b7-43d3-8b20-1c8973b6603a" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="7362d1ce-1f17-46e2-b804-206e0a6fa1fb" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -870,8 +847,6 @@
               sourceElement="#f3b3122c-79ba-4931-894b-0d8a6149cdd8"/>
         </ownedLogicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="484073f5-6f10-49b8-b5ec-591dfd2ef49d" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="8d8f8d5a-389f-41a7-abd5-e70dee31b235" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -907,8 +882,6 @@
         <ownedSystemFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
             id="b2ba9f3d-0330-4b59-bd21-460df247734a" name="Root System Function"/>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="99508c61-501d-4502-bafd-653b23222b01" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="f08c0112-bc20-4e62-b17b-9ccbdc1bd07a" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -1039,8 +1012,6 @@
               sourceElement="#51ad4d21-9064-4065-b369-3bfbd19e7485"/>
         </ownedLogicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="51dd90c8-3de1-455f-b117-f9086c0b7fbf" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="bdb1f438-1090-4c28-8ddb-d32b63a20691" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -1081,8 +1052,6 @@
               sourceElement="#269d8f15-8769-4ca3-a729-beb30abc81ea"/>
         </ownedPhysicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="cf5dcf95-a823-43f3-ae68-ac74bd92d1b6" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="18b429e2-2495-420a-9ac4-424eb971573b" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -1144,8 +1113,6 @@
               id="80a27dd5-d928-485b-95f8-0ca078ae5877" name="KO_OA"/>
         </ownedOperationalActivities>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="fede5443-c3fe-4b93-afba-fe21b40ff573" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="2f99590a-5f0d-4877-8b93-9344df1ee22b" name="Operational Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -1180,8 +1147,6 @@
               sourceElement="#a1b94213-4bac-4eb1-8a4c-0b4d9975ae18"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="6a280730-1750-47db-8ccc-74b4482b3e50" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="20e50164-3858-4393-a7f6-61630d95cb87" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -1323,8 +1288,6 @@
               sourceElement="#968ec2d0-7e85-44d4-b0c7-939a82a93a7e"/>
         </ownedLogicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="9a726baf-ad6d-4a15-9011-6c383955ffac" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="c8c958fc-59ba-486b-a214-d29c609b9ca3" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -1369,8 +1332,6 @@
               sourceElement="#ea27d939-adb4-4eb8-a21e-e632f70db03d"/>
         </ownedPhysicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="9b95e35d-50a1-4656-9d45-5bdd9240a6d5" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="f8845f3e-6364-42f6-9a9c-51df85bdd624" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -1444,8 +1405,6 @@
               target="#e6248107-696b-4a9e-aeb3-864ad694527f" source="#4d8ffff2-c453-4e2b-a99e-453a3dcf85df"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="f8a972dd-a157-4f73-914c-645559567212" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="2c207092-56c8-41a8-a371-f3caadd9edb7" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -1571,8 +1530,6 @@
         <ownedLogicalFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
             id="e4407645-4736-4796-8452-253f81938dbb" name="Root Logical Function"/>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="b0c996fd-9b51-4909-8b5b-b9391f0960e5" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="f4f569dd-3a8f-4d39-a79d-3f977a387b11" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -1635,8 +1592,6 @@
         <ownedOperationalActivities xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
             id="c3f69bf1-c3f9-4bd6-ace4-18aea539bdf4" name="Root Operational Activity"/>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="4c26d428-ed48-4a44-b356-7a062790e660" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="d21bbb57-12f4-4782-beaa-0cd1672bcdbe" name="Operational Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -1659,8 +1614,6 @@
               sourceElement="#dae83bb3-0f7e-4018-86a2-689ce53227a8"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="09a2742c-fae6-401d-a933-64c887f03591" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="526b92dc-31a5-4a06-bda5-9128b8348c26" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -1794,8 +1747,6 @@
               sourceElement="#7820f039-4407-45b0-aba4-900f2c0e13c7"/>
         </ownedLogicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="f774ff51-7f91-46ac-873c-a2f338e31b02" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="36058b6c-ab08-405e-b798-1bd207c3271b" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -1825,8 +1776,6 @@
         <ownedOperationalActivities xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
             id="9fee0bab-a2d1-43d9-aa4a-81cfd72901c8" name="Root Operational Activity"/>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="04b3758d-8bc1-4a7a-8a56-46e8c15104f5" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="d1c49375-b8b3-4cc4-abc5-0c1207500c4a" name="Operational Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -1849,8 +1798,6 @@
               sourceElement="#79b74fc3-570b-4a1f-b1c5-b3f1fd887b7a"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="add90a36-2b92-4b28-bd2a-91d30160bc9d" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="42c1e1f1-707a-41ff-8aef-70fb41aee082" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -1974,8 +1921,6 @@
               sourceElement="#5aab0f3c-2ac3-4827-972e-4556727cdacc"/>
         </ownedLogicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="f5f37c7a-5cf4-4e4b-ac51-18275c7c08d2" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="9d514dc0-aaf7-45be-a43c-fc7631360d3d" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -2001,8 +1946,6 @@
         <ownedLogicalFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
             id="82fcf4e7-45ee-4cb1-84cf-2c6e2fa96e8a" name="Root Logical Function"/>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="27308029-3df7-4310-932d-da50015027c7" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="0f7542ec-813e-4f91-bde5-3262787b7891" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -2042,8 +1985,6 @@
         <ownedOperationalActivities xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
             id="a99b3f7c-4d57-4c9b-a9d3-dc7302c123bd" name="Root Operational Activity"/>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="df68a2d6-4a5a-41de-89d7-f417a096cec9" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="a813cab2-536e-4c6f-bd17-3b1bb7095299" name="Operational Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -2066,8 +2007,6 @@
               sourceElement="#0874220e-4776-4625-b5a4-e592bb1e11de"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="e3fe4284-b53f-4f6d-ae50-6e1f286854f8" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="c2fdc286-16df-45e7-a40e-076db98381dd" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -2193,8 +2132,6 @@
         <ownedOperationalActivities xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
             id="c6fe0532-f61d-4722-bade-2bd294202ca1" name="Root Operational Activity"/>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="40c0a128-a5fd-4133-b3c1-2cc3b244b96a" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="42b00061-93d1-46f2-83ff-cf59fad35232" name="Operational Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -2217,8 +2154,6 @@
               sourceElement="#a46f0bd3-b138-4a4b-877c-b64ce9071b3a"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="0849afcc-7b70-4841-ac53-928fc7cc4a58" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="89947edf-c930-4c66-b027-d29300b982ae" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -2350,8 +2285,6 @@
               href="fragments/OA-Operational%20Activities-Root%20Operational%20Activity-OperationalActivity%201.capellafragment#a0c7858c-8d15-438b-9007-c7b04adfdb9f"/>
         </ownedOperationalActivities>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="04cabde3-e964-4770-a347-08d2ec1f9da8" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="04a683ab-64ad-4de1-8104-8061e52c45ea" name="Operational Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -2374,8 +2307,6 @@
               sourceElement="#bd2fafd9-8d28-4077-b012-23c9f210ac7e"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="fca37ac4-1ea9-472e-a21c-621da9935fdc" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="275993c3-6ad2-4b44-9cbd-8115e1ed7c1b" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -2504,15 +2435,6 @@
         <ownedOperationalActivities xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
             id="5447c301-fa2a-407a-a62c-117ef2c928ec" name="Root Operational Activity"/>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="9d42ed60-5383-4a15-b3a1-f871166933be" name="Requirements">
-        <ownedRequirements xsi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalInterfaceRequirement"
-            id="5f33fb57-fe5a-4992-9e6c-90e5107f4a94" name="Req1" requirementId="Id1"/>
-        <ownedRequirements xsi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement"
-            id="97ab4bb0-bc71-4f3e-a72e-bf7409097d80" name="Req 2" requirementId="Id1"/>
-        <ownedRequirements xsi:type="org.polarsys.capella.core.data.requirement:SystemNonFunctionalInterfaceRequirement"
-            id="b401472e-1dc0-4421-9a77-ea30ceb83f71" name="Req 3" requirementId="Id 2"/>
-      </ownedRequirementPkgs>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="7010fe8b-bed4-4674-9647-21d266437f4a" name="Operational Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -2534,17 +2456,6 @@
         <ownedOperationalActivities xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
             id="7afbb2bc-c2a1-445c-87b9-57c18771d0b8" name="Root Operational Activity"/>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="a3a1d84e-9509-40a3-a15a-ad4b2cede957" name="Requirements">
-        <ownedRequirements xsi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalInterfaceRequirement"
-            id="52ba2b31-3e48-41a9-9520-5b3b98ca8790" name="Req 1" requirementId="Id1 "/>
-        <ownedRequirements xsi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement"
-            id="868bac03-07fe-4fd8-8a27-eeb72dafe56e" name="Req 2" requirementId="Id2"/>
-        <ownedRequirements xsi:type="org.polarsys.capella.core.data.requirement:SystemNonFunctionalInterfaceRequirement"
-            id="d442f528-ee0e-48f3-bb74-6c073732e9ed" name="Req 3" requirementId="Id3"/>
-        <ownedRequirements xsi:type="org.polarsys.capella.core.data.requirement:SystemNonFunctionalRequirement"
-            id="bf5ff14c-c504-4bce-a509-07d2bb582421" name="Req 4"/>
-      </ownedRequirementPkgs>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="2a65e3aa-fd2b-4736-88aa-7ae4e33ade2e" name="Operational Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -2609,8 +2520,6 @@
           </ownedFunctions>
         </ownedPhysicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="46a42205-94df-4771-a3c4-7b98d266ef85" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="65a87b4a-6967-4ca2-9d22-49a125c76796" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -2750,8 +2659,6 @@
         <ownedSystemFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
             id="fbf72772-7342-4350-86ef-a95d0a788990" name="Root System Function"/>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="b6836d9d-af6d-4273-8a8a-297d41540ceb" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="6fb09733-f0aa-4059-b7c4-2ec3a42d9533" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -2887,8 +2794,6 @@
               id="eaca9cfa-ce88-4c8e-9a7b-740d3624a615" name="KO_OA" summary="CapellaElement containing diagrams with same name"/>
         </ownedOperationalActivities>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="6878be80-5c46-42b3-a8ba-740c561b9f6d" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="5e2a28de-25cc-4a1d-a7d5-a2bc03db8910" name="Operational Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -2913,8 +2818,6 @@
               sourceElement="#98a63b89-fd26-47bc-b367-1016a110f564"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="a1d66524-8ae9-470a-8dec-0570bc2f6a7d" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="0de67c43-a12e-4b81-badd-e07af3265a98" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -3056,8 +2959,6 @@
               id="2e46ca9d-395b-4832-8fc8-fa0ffe0fd207" name="OK_OA_Diagram" description="&lt;p>&lt;a href=&quot;hlink://_LgLVYK7YEe2dGb1QZGN1VA&quot;>[OABD] Diagram&amp;nbsp;&amp;nbsp; to&amp;nbsp;&amp;nbsp; be linked &amp;eacute;&amp;agrave;&amp;auml;&lt;/a>&lt;/p>&#xA;"/>
         </ownedOperationalActivities>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="aa4cc727-ec95-4541-bbf7-ca2443f6e00b" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="b3274ec6-d3b9-421c-8edb-3a1ace44dd91" name="Operational Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -3088,8 +2989,6 @@
               description="&lt;a&#xD;&#xA;href=&quot;hlink://d29276c9-0fe2-4407-a5b8-4b28ceb322a9&quot;>OA_to_be_linked&lt;/a>"/>
         </ownedOperationalActivities>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="cda58cc7-8253-47a9-92e8-2306c0590cfd" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="3af6b05f-9d74-4a82-94fb-fd89b1011465" name="Operational Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -3132,8 +3031,6 @@
               target="#737725a8-078c-41b8-8f6d-53853d5c50c7" source="#efb73ce9-39e5-4480-804d-4101b4a5e55a"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="d7540827-bac6-4baf-b498-977dc072eef4" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="759c7415-4f1a-44de-bdca-9fa8e7d45791" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -3288,8 +3185,6 @@
           </ownedFunctionalExchanges>
         </ownedLogicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="294e854d-1632-4970-a67b-6a426fee304e" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="ee240649-b97b-45e2-a579-b95e075c2875" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -3345,8 +3240,6 @@
               target="#bdb32452-299b-4690-88f3-2e246e94a309" source="#599f3f8b-7fc0-422c-af14-aa902c2df1b7"/>
         </ownedLogicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="8932696a-a55f-425f-9775-2123d87d0804" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="06a39eea-ba8b-453b-8af4-7e1e9fac02fc" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -3433,8 +3326,6 @@
         <ownedSystemFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
             id="97d2c2e4-e494-456a-a4c1-a539b0f35547" name="Root System Function"/>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="6b7012d2-f856-470c-840e-5674e0cabfa4" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="31b2ab9a-35ef-4065-9754-5b89f6df3d88" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -3571,8 +3462,6 @@
               id="908674aa-1d85-4ce3-92db-28f504bbb2c8" name="OK_OA"/>
         </ownedOperationalActivities>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="2ce4d22f-f0ea-414b-81ad-ee6812953a89" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="d2cab0b2-2966-4249-8a31-17289af0a9d9" name="Operational Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -3616,8 +3505,6 @@
               sourceElement="#827a1715-761a-4ef2-aa8e-64d167abf2ee"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="cbca14b5-f122-43da-92ad-5c015858adb3" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="ee3a3991-b63a-43a5-a3bb-0c8756f4484b" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -3802,8 +3689,6 @@
               target="#a3f24bb3-d8c4-4e73-a390-23e1e8ecc4f5" source="#f631245b-de0e-4977-b76b-3d7801dea949"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="0e8cb4b4-59af-4f8c-9133-633ed80ffcbc" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="589f1b28-d735-4910-9260-a6c63bec12d2" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -3981,8 +3866,6 @@
               target="#dd869736-c064-4cfd-ad23-43445ed81364" source="#fbc4a32d-2bff-433c-ace5-88abbf51ae8b"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="b0a594cd-a482-49ac-9aa5-fa0e0eb99ea5" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="b07cf5a1-85ab-4e43-9278-c16060af80d7" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -4113,8 +3996,6 @@
               id="c6d3982b-ff0e-46fb-aba0-c7980252cdf3" sourceElement="#849d8262-bb6c-434d-863c-8854695c29f9"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="1553bb26-cc8d-45d7-b7cc-9ad530b10df1" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="51bc34bb-9e71-48f3-b63f-abba4edd4cee" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -4266,8 +4147,6 @@
               id="98365e22-71b0-4b51-99e9-e28a86d1f26a" sourceElement="#8a9a264d-cc76-47e3-bc8c-eecf08fb533b"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="03874400-abdb-4dd2-8548-af04187256ef" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="fb53dba4-66e5-4408-944c-c2fd690c6935" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -4442,8 +4321,6 @@
               id="d7332ed9-b810-436e-bcf6-dccbcaf84a28" sourceElement="#a76e05a1-e1cd-48af-b68e-7eb4cde7e32b"/>
         </ownedPhysicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="5ff2c4f9-1e28-4175-8ac8-9249c352a624" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="5f7271bd-4919-4ff8-94a3-45901d6eecc8" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -4530,8 +4407,6 @@
               id="5b74adb1-6204-4549-ab0f-dd8367e95c6b" sourceElement="#8c1c36fa-7417-409e-922e-1236e5181255"/>
         </ownedPhysicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="bb949bb6-accd-445e-82a1-ef49ce94c6a6" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="ca285cb7-70bf-4df9-b5b2-5d6ece752d29" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -4576,8 +4451,6 @@
         <ownedLogicalFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
             id="e294b96d-272c-4780-aae7-63e1b4b1d177" name="Root Logical Function"/>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="05533cfb-4fc6-4627-9254-268cf9ca6387" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="f85f7dba-cdf4-4806-8283-6e367c78b95c" name="Capabilities">
         <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
@@ -4761,8 +4634,6 @@
         <ownedOperationalActivities xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
             id="3505b904-1c0e-46bf-b3bf-b74023c149d4" name="Root Operational Activity"/>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="2da594f1-b45a-4681-adda-f6e40170372b" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="6c2fd1c7-dcc0-4025-b63e-a15492a23a9b" name="Operational Capabilities">
         <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
@@ -4807,8 +4678,6 @@
               sourceElement="#e7c33dd3-a989-4287-8484-9ac08802a219"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="025d29f7-1d5c-4fa5-a149-8fc9aa2d0c25" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="4370b8ac-36b0-4891-912e-48692bcb9dfe" name="Capabilities">
         <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
@@ -4980,8 +4849,6 @@
               id="1412bfa6-6c26-4bb3-b9a8-0f8b46a7d415" sourceElement="#be96d45c-a12f-4563-b8b8-c1f195417d01"/>
         </ownedPhysicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="fd88a542-9b36-4367-88e6-14f9c07a84ba" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="96f8f031-fd99-48da-9be2-8ffbd9de0e9c" name="Capabilities"/>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
@@ -5012,8 +4879,6 @@
               sourceElement="#ce17efc5-3e8f-49c7-9d8e-3c6a16d5499b"/>
         </ownedLogicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="609023f6-d4b9-4154-b677-8fd1fde63a9b" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="7bee9e95-108d-4eda-97e8-c24cbd3ce161" name="Capabilities">
         <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"

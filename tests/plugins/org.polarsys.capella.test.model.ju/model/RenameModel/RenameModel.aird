@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_3pqlQe5iEeS0c5i7gFSkhg" selectedViews="_4blxcO5iEeS0c5i7gFSkhg _4cB2UO5iEeS0c5i7gFSkhg _4cLnUO5iEeS0c5i7gFSkhg _4cVYUO5iEeS0c5i7gFSkhg _4coTQO5iEeS0c5i7gFSkhg _4c7OMO5iEeS0c5i7gFSkhg _4dE_MO5iEeS0c5i7gFSkhg" version="15.0.0.202201261500">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_3pqlQe5iEeS0c5i7gFSkhg" selectedViews="_4blxcO5iEeS0c5i7gFSkhg _4cB2UO5iEeS0c5i7gFSkhg _4cLnUO5iEeS0c5i7gFSkhg _4cVYUO5iEeS0c5i7gFSkhg _4coTQO5iEeS0c5i7gFSkhg _4c7OMO5iEeS0c5i7gFSkhg _4dE_MO5iEeS0c5i7gFSkhg" version="15.2.0.202303281325">
   <semanticResources>RenameModel.capella</semanticResources>
   <semanticResources>RenameModel.afm</semanticResources>
+  <eAnnotations xmi:type="description:DAnnotationEntry" uid="_qzjzAED3Ee68Sfo6HwrLLg" source="ImagesDependencies">
+    <details>RichText:images_library</details>
+  </eAnnotations>
   <ownedViews xmi:type="viewpoint:DView" uid="_4blxcO5iEeS0c5i7gFSkhg">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
   </ownedViews>

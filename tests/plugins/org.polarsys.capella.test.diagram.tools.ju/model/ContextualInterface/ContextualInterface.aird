@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/7.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_RrP1INuvEeqdae6AuBCEhA" selectedViews="_Rr_cANuvEeqdae6AuBCEhA _RtLu0NuvEeqdae6AuBCEhA _R4EJINuvEeqdae6AuBCEhA _R52R0NuvEeqdae6AuBCEhA _R6l4sNuvEeqdae6AuBCEhA _R65asNuvEeqdae6AuBCEhA _R9IPUNuvEeqdae6AuBCEhA" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_RrP1INuvEeqdae6AuBCEhA" selectedViews="_Rr_cANuvEeqdae6AuBCEhA _RtLu0NuvEeqdae6AuBCEhA _R4EJINuvEeqdae6AuBCEhA _R52R0NuvEeqdae6AuBCEhA _R6l4sNuvEeqdae6AuBCEhA _R65asNuvEeqdae6AuBCEhA _R9IPUNuvEeqdae6AuBCEhA" version="15.2.0.202303281325">
     <semanticResources>ContextualInterface.afm</semanticResources>
     <semanticResources>ContextualInterface.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_Rr_cANuvEeqdae6AuBCEhA">
@@ -20,11 +20,11 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_R65asNuvEeqdae6AuBCEhA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_hxm0sduvEeqdae6AuBCEhA" name="[CII] LC 1" repPath="#_hxff8NuvEeqdae6AuBCEhA" changeId="30f26229-b406-4e21-99ad-dd7784e1f671">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_hxm0sduvEeqdae6AuBCEhA" name="[CII] LC 1" repPath="#_hxff8NuvEeqdae6AuBCEhA" changeId="1692709422372">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ContextualInterface.capella#7f544336-d382-40a9-8cd3-156414b8f4e6"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BgrRsNu0EeqL_ZzjgkN6Pg" name="[CEI] LC 1" repPath="#_BgfrgNu0EeqL_ZzjgkN6Pg" changeId="67d86129-15f2-4fc5-b906-92f4ccfc75a6">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BgrRsNu0EeqL_ZzjgkN6Pg" name="[CEI] LC 1" repPath="#_BgfrgNu0EeqL_ZzjgkN6Pg" changeId="1692709422372">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ContextualInterface.capella#7f544336-d382-40a9-8cd3-156414b8f4e6"/>
       </ownedRepresentationDescriptors>

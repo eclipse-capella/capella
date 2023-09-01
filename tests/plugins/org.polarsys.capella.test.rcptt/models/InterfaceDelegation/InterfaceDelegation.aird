@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/7.0.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/7.0.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/7.0.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/7.0.0" xmlns:org.polarsys.capella.core.data.information.communication="http://www.polarsys.org/capella/core/information/communication/7.0.0" xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/7.0.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/7.0.0" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.polarsys.org/capella/core/information/communication/7.0.0 http://www.polarsys.org/capella/core/information/7.0.0#//communication http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_hvVCES0ZEeSqNLS88GP7-Q" selectedViews="_igNFYC0ZEeSqNLS88GP7-Q _iggAUC0ZEeSqNLS88GP7-Q _ig8sQC0ZEeSqNLS88GP7-Q _ihZYMC0ZEeSqNLS88GP7-Q _ihjJMC0ZEeSqNLS88GP7-Q _ihsTIC0ZEeSqNLS88GP7-Q _ih2EIC0ZEeSqNLS88GP7-Q" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_hvVCES0ZEeSqNLS88GP7-Q" selectedViews="_igNFYC0ZEeSqNLS88GP7-Q _iggAUC0ZEeSqNLS88GP7-Q _ig8sQC0ZEeSqNLS88GP7-Q _ihZYMC0ZEeSqNLS88GP7-Q _ihjJMC0ZEeSqNLS88GP7-Q _ihsTIC0ZEeSqNLS88GP7-Q _ih2EIC0ZEeSqNLS88GP7-Q" version="15.2.0.202303281325">
     <semanticResources>InterfaceDelegation.capella</semanticResources>
     <semanticResources>InterfaceDelegation.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_igNFYC0ZEeSqNLS88GP7-Q">
@@ -8,31 +8,31 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_iggAUC0ZEeSqNLS88GP7-Q">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BpmQ4K56Eeey29p5ElqJMw" name="[IS] All Possible Sequence Messages" repPath="#_tPeEcC0ZEeSqNLS88GP7-Q" changeId="e4f88019-a514-42e1-8e13-d6ab59b54709">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BpmQ4K56Eeey29p5ElqJMw" name="[IS] All Possible Sequence Messages" repPath="#_tPeEcC0ZEeSqNLS88GP7-Q" changeId="1692713138768">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="InterfaceDelegation.capella#ed146020-53e4-417b-b226-6c97d05f6034"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BpmQ4a56Eeey29p5ElqJMw" name="[IDB] All Possible Communication links" repPath="#_gD3IUC0lEeSqNLS88GP7-Q" changeId="f0bc9f54-c4f2-43c5-80dc-0b59b25d3c1d">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BpmQ4a56Eeey29p5ElqJMw" name="[IDB] All Possible Communication links" repPath="#_gD3IUC0lEeSqNLS88GP7-Q" changeId="1692713138768">
         <description xmi:type="description_2:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="InterfaceDelegation.capella#d90d6b4e-9141-4dd5-bb81-99009ca63bf4"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BpmQ4q56Eeey29p5ElqJMw" name="[IS] Testing" repPath="#_tmVj8C0nEeSqNLS88GP7-Q" changeId="3fd56690-deb3-407c-86ab-fc4ba33374be">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BpmQ4q56Eeey29p5ElqJMw" name="[IS] Testing" repPath="#_tmVj8C0nEeSqNLS88GP7-Q" changeId="1692713138768">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="InterfaceDelegation.capella#6e4b8c0b-a7b6-42f0-b586-c2cf3ec9ef5a"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BpmQ4656Eeey29p5ElqJMw" name="[IDB] Partial Comunication links" repPath="#_eD-sgC0rEeSqNLS88GP7-Q" changeId="7e11b3bd-6ff0-4a87-afcd-0e132346557f">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BpmQ4656Eeey29p5ElqJMw" name="[IDB] Partial Comunication links" repPath="#_eD-sgC0rEeSqNLS88GP7-Q" changeId="1692713138768">
         <description xmi:type="description_2:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="InterfaceDelegation.capella#d90d6b4e-9141-4dd5-bb81-99009ca63bf4"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BpmQ5K56Eeey29p5ElqJMw" name="[IDB] Interfaces with EIA" repPath="#_VzhMwC3cEeSqNLS88GP7-Q" changeId="3c6e0da0-ff51-4e8a-b630-dbbe345851f6">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BpmQ5K56Eeey29p5ElqJMw" name="[IDB] Interfaces with EIA" repPath="#_VzhMwC3cEeSqNLS88GP7-Q" changeId="1692713138768">
         <description xmi:type="description_2:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="InterfaceDelegation.capella#d90d6b4e-9141-4dd5-bb81-99009ca63bf4"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BpmQ5a56Eeey29p5ElqJMw" name="[IDB] Testing Filters" repPath="#_R_JTgC3tEeS2Y7qOx3ruIg" changeId="4fe206e3-50fa-4e4e-a1e5-7c15cee4fc7b">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BpmQ5a56Eeey29p5ElqJMw" name="[IDB] Testing Filters" repPath="#_R_JTgC3tEeS2Y7qOx3ruIg" changeId="1692713138768">
         <description xmi:type="description_2:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="InterfaceDelegation.capella#5ba62f64-5cc2-42b3-8cac-37fe4b4f9ffe"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BpmQ5q56Eeey29p5ElqJMw" name="[IDB] Logical System - Test logical component decomposition" repPath="#_35-hoCSmEeWtMvr5z5yBiQ" changeId="5e598ad9-d827-4c8f-99be-9c73d102b326">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BpmQ5q56Eeey29p5ElqJMw" name="[IDB] Logical System - Test logical component decomposition" repPath="#_35-hoCSmEeWtMvr5z5yBiQ" changeId="1692713138768">
         <description xmi:type="description_2:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="InterfaceDelegation.capella#5ba62f64-5cc2-42b3-8cac-37fe4b4f9ffe"/>
       </ownedRepresentationDescriptors>
@@ -86,7 +86,7 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_tPn1cS0ZEeSqNLS88GP7-Q" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tPn1ci0ZEeSqNLS88GP7-Q"/>
           </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_tPeEhy0ZEeSqNLS88GP7-Q" fontName="Segoe UI" fontHeight="8"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_tPeEhy0ZEeSqNLS88GP7-Q" fontColor="9914954" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tPeEiC0ZEeSqNLS88GP7-Q" x="50" y="50" width="150" height="50"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_uM3g0C0ZEeSqNLS88GP7-Q" type="2001" element="_C2YNEK56Eeey29p5ElqJMw">
@@ -2119,7 +2119,7 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_tmVkES0nEeSqNLS88GP7-Q" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tmVkEi0nEeSqNLS88GP7-Q"/>
           </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_tmVkBy0nEeSqNLS88GP7-Q" fontName="Segoe UI" fontHeight="8"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_tmVkBy0nEeSqNLS88GP7-Q" fontColor="9914954" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tmVkCC0nEeSqNLS88GP7-Q" x="50" y="50" width="150" height="50"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_upY8YC0nEeSqNLS88GP7-Q" type="2001" element="_C6Tq0K56Eeey29p5ElqJMw">

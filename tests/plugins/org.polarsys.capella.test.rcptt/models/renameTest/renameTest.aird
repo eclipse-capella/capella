@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/7.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_gXlSMezOEeiYm_kNG_G0NA" selectedViews="_gYLvIOzOEeiYm_kNG_G0NA _gkGrQOzOEeiYm_kNG_G0NA _gkQcQOzOEeiYm_kNG_G0NA _gkQcQezOEeiYm_kNG_G0NA _gkjXMOzOEeiYm_kNG_G0NA _glJNEOzOEeiYm_kNG_G0NA _glS-EOzOEeiYm_kNG_G0NA" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_gXlSMezOEeiYm_kNG_G0NA" selectedViews="_gYLvIOzOEeiYm_kNG_G0NA _gkGrQOzOEeiYm_kNG_G0NA _gkQcQOzOEeiYm_kNG_G0NA _gkQcQezOEeiYm_kNG_G0NA _gkjXMOzOEeiYm_kNG_G0NA _glJNEOzOEeiYm_kNG_G0NA _glS-EOzOEeiYm_kNG_G0NA" version="15.2.0.202303281325">
     <semanticResources>renameTest.afm</semanticResources>
     <semanticResources>renameTest.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_gYLvIOzOEeiYm_kNG_G0NA">
@@ -17,7 +17,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_gkjXMOzOEeiYm_kNG_G0NA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_t9YZg-zOEeiYm_kNG_G0NA" name="[SDFB] Root System Function" repPath="#_t8MGsOzOEeiYm_kNG_G0NA" changeId="07d41038-ab27-40c9-bb37-7acff18ba1fe">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_t9YZg-zOEeiYm_kNG_G0NA" name="[SDFB] Root System Function" repPath="#_t8MGsOzOEeiYm_kNG_G0NA" changeId="1692714298026">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="renameTest.capella#77a39698-b614-4efc-87a2-d44563073ce4"/>
       </ownedRepresentationDescriptors>

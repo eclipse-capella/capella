@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/7.0.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/7.0.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/7.0.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/7.0.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/7.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_HsjoAObfEeqg-uUChMfc-w" selectedViews="_Htc_4ObfEeqg-uUChMfc-w _HupSsObfEeqg-uUChMfc-w _H5X8AObfEeqg-uUChMfc-w _H7KEsObfEeqg-uUChMfc-w _H9PvYObfEeqg-uUChMfc-w _H9PvYebfEeqg-uUChMfc-w _H-u9IObfEeqg-uUChMfc-w" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_HsjoAObfEeqg-uUChMfc-w" selectedViews="_Htc_4ObfEeqg-uUChMfc-w _HupSsObfEeqg-uUChMfc-w _H5X8AObfEeqg-uUChMfc-w _H7KEsObfEeqg-uUChMfc-w _H9PvYObfEeqg-uUChMfc-w _H9PvYebfEeqg-uUChMfc-w _H-u9IObfEeqg-uUChMfc-w" version="15.2.0.202303281325">
     <semanticResources>Component-DragAndDrop.afm</semanticResources>
     <semanticResources>Component-DragAndDrop.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_Htc_4ObfEeqg-uUChMfc-w">
@@ -8,7 +8,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_HupSsObfEeqg-uUChMfc-w">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_JuBekebhEeqg-uUChMfc-w" name="[PAB] PhysicalComponentPkg 1" repPath="#_Jt3tkObhEeqg-uUChMfc-w" changeId="9df706d4-1e0d-433b-954e-4a4e751f7f82">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_JuBekebhEeqg-uUChMfc-w" name="[PAB] PhysicalComponentPkg 1" repPath="#_Jt3tkObhEeqg-uUChMfc-w" changeId="1692709203879">
         <eAnnotations xmi:type="description:DAnnotation" uid="_JuBelebhEeqg-uUChMfc-w" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JuBelubhEeqg-uUChMfc-w" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JuBel-bhEeqg-uUChMfc-w" key="hide.computed.physical.links.filter" value="true"/>
@@ -19,18 +19,18 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_H5X8AObfEeqg-uUChMfc-w">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_jiP8gubfEeqg-uUChMfc-w" name="[OAB] Operational Entities" repPath="#_jiGLgObfEeqg-uUChMfc-w" changeId="f4694f4a-0e4a-4a4d-8bcf-4c14fc3cbda8">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_jiP8gubfEeqg-uUChMfc-w" name="[OAB] Operational Entities" repPath="#_jiGLgObfEeqg-uUChMfc-w" changeId="1692709203879">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:EntityPkg" href="Component-DragAndDrop.capella#7d1d584a-73cb-4914-aee8-7a83c0a3578b"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_rHSbQebfEeqg-uUChMfc-w" name="[OAB] OE 2" repPath="#_rHJRUObfEeqg-uUChMfc-w" changeId="2f7feff6-2300-4407-82ec-748a138f9a4f">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_rHSbQebfEeqg-uUChMfc-w" name="[OAB] OE 2" repPath="#_rHJRUObfEeqg-uUChMfc-w" changeId="1692709203879">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Component-DragAndDrop.capella#0731f364-1d25-44b6-a19b-e0ea305c7332"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_H7KEsObfEeqg-uUChMfc-w">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_wrOIc-bgEeqg-uUChMfc-w" name="[LAB] LogicalComponentPkg 1" repPath="#_wrOIcObgEeqg-uUChMfc-w" changeId="2488836d-987a-4e04-bb3a-429d6b6ce319">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_wrOIc-bgEeqg-uUChMfc-w" name="[LAB] LogicalComponentPkg 1" repPath="#_wrOIcObgEeqg-uUChMfc-w" changeId="1692709203879">
         <eAnnotations xmi:type="description:DAnnotation" uid="_wrOId-bgEeqg-uUChMfc-w" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wrOIeObgEeqg-uUChMfc-w" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wrOIeebgEeqg-uUChMfc-w" key="hide.computed.physical.links.filter" value="true"/>
@@ -47,23 +47,23 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_H-u9IObfEeqg-uUChMfc-w">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ERZTQ-bgEeqg-uUChMfc-w" name="[IDB] Structure" repPath="#_ERZTQObgEeqg-uUChMfc-w" changeId="c38f50f2-4576-48c0-9b2b-369e92ba5577">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ERZTQ-bgEeqg-uUChMfc-w" name="[IDB] Structure" repPath="#_ERZTQObgEeqg-uUChMfc-w" changeId="1692709203879">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponentPkg" href="Component-DragAndDrop.capella#ef28c732-c08a-4a27-a6cc-25427f5318b4"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_j9vwQ-bgEeqg-uUChMfc-w" name="[IDB] SA 1" repPath="#_j9vwQObgEeqg-uUChMfc-w" changeId="c2b54987-52f7-4dd9-9056-31087d5eaf85">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_j9vwQ-bgEeqg-uUChMfc-w" name="[IDB] SA 1" repPath="#_j9vwQObgEeqg-uUChMfc-w" changeId="1692709203879">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Component-DragAndDrop.capella#4a993ca2-d877-4191-9e89-8db11b44700c"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_5bg5YebgEeqg-uUChMfc-w" name="[IDB] LogicalComponentPkg 1" repPath="#_5bXIYObgEeqg-uUChMfc-w" changeId="a3931c0c-2a00-4b96-9ca0-905569a86ed4">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_5bg5YebgEeqg-uUChMfc-w" name="[IDB] LogicalComponentPkg 1" repPath="#_5bXIYObgEeqg-uUChMfc-w" changeId="1692709203879">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg" href="Component-DragAndDrop.capella#010531e6-2706-4d75-a8b3-8950aa0b2e0e"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ZyuJ4ebkEeqg-uUChMfc-w" name="[IDB] PhysicalComponentPkg 1" repPath="#_Zyk_8ObkEeqg-uUChMfc-w" changeId="197bddf1-9d8c-4acc-99b7-5eb928cef1b5">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ZyuJ4ebkEeqg-uUChMfc-w" name="[IDB] PhysicalComponentPkg 1" repPath="#_Zyk_8ObkEeqg-uUChMfc-w" changeId="1692709203879">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponentPkg" href="Component-DragAndDrop.capella#4a9299a2-e7d2-44e5-8d43-177d6799a5f8"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_oq7UQ-bkEeqg-uUChMfc-w" name="[IDB] Physical System" repPath="#_oq7UQObkEeqg-uUChMfc-w" changeId="66257dc5-5ac8-4012-8795-8bfcb4262d77">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_oq7UQ-bkEeqg-uUChMfc-w" name="[IDB] Physical System" repPath="#_oq7UQObkEeqg-uUChMfc-w" changeId="1692709203879">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="Component-DragAndDrop.capella#d20e6507-8f39-4c75-ad92-f2c2084a861b"/>
       </ownedRepresentationDescriptors>

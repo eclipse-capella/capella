@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/7.0.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/7.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_jdae4AJnEeid6-hE0Y2Esw" selectedViews="_jhUugAJnEeid6-hE0Y2Esw _kGNkQAJnEeid6-hE0Y2Esw _kHXa0AJnEeid6-hE0Y2Esw _kHkPIAJnEeid6-hE0Y2Esw _kIBiIAJnEeid6-hE0Y2Esw _kIgDQAJnEeid6-hE0Y2Esw _kKSzAAJnEeid6-hE0Y2Esw" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_jdae4AJnEeid6-hE0Y2Esw" selectedViews="_jhUugAJnEeid6-hE0Y2Esw _kGNkQAJnEeid6-hE0Y2Esw _kHXa0AJnEeid6-hE0Y2Esw _kHkPIAJnEeid6-hE0Y2Esw _kIBiIAJnEeid6-hE0Y2Esw _kIgDQAJnEeid6-hE0Y2Esw _kKSzAAJnEeid6-hE0Y2Esw" version="15.2.0.202303281325">
     <semanticResources>bug1917.afm</semanticResources>
     <semanticResources>bug1917.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_jhUugAJnEeid6-hE0Y2Esw">
@@ -11,63 +11,63 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_kHXa0AJnEeid6-hE0Y2Esw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_qF510AJnEeid6-hE0Y2Esw" name="[PAB] Physical System 1" repPath="#_qF0WQAJnEeid6-hE0Y2Esw" changeId="0d966d9e-c86d-494d-b589-75a1d4bcf930">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_qF510AJnEeid6-hE0Y2Esw" name="[PAB] Physical System 1" repPath="#_qF0WQAJnEeid6-hE0Y2Esw" changeId="1692708967751">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="bug1917.capella#7709fc2a-52ec-4c0a-9c81-d6dd4b2c4aa6"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_04VdoAJnEeid6-hE0Y2Esw" name="[PPD] PhysicalPath 1" repPath="#_04U2kAJnEeid6-hE0Y2Esw" changeId="23a5abe6-2bd4-4556-a267-7d3de7eeecf1">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_04VdoAJnEeid6-hE0Y2Esw" name="[PPD] PhysicalPath 1" repPath="#_04U2kAJnEeid6-hE0Y2Esw" changeId="1692708967751">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Path%20Description']"/>
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="bug1917.capella#f1eb702f-19ca-42b7-9c33-ad1c30aa08a8"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_CouEUAJoEeid6-hE0Y2Esw" name="[PAB] Physical System 2" repPath="#_CotdQAJoEeid6-hE0Y2Esw" changeId="b663f0e9-4905-4752-9918-8c539e7757e5">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_CouEUAJoEeid6-hE0Y2Esw" name="[PAB] Physical System 2" repPath="#_CotdQAJoEeid6-hE0Y2Esw" changeId="1692708967751">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="bug1917.capella#7709fc2a-52ec-4c0a-9c81-d6dd4b2c4aa6"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_UFckcAJpEeid6-hE0Y2Esw" name="[PAB] Physical System 3" repPath="#_UFbWUAJpEeid6-hE0Y2Esw" changeId="68d65124-8cf2-4ba8-bad2-e13639ac5a5d">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_UFckcAJpEeid6-hE0Y2Esw" name="[PAB] Physical System 3" repPath="#_UFbWUAJpEeid6-hE0Y2Esw" changeId="1692708967751">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="bug1917.capella#7709fc2a-52ec-4c0a-9c81-d6dd4b2c4aa6"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_d0zTwAJrEeid6-hE0Y2Esw" name="[PAB] Physical System 4" repPath="#_d0yssAJrEeid6-hE0Y2Esw" changeId="1bd18b52-8191-42f9-b0f2-1f42188dac57">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_d0zTwAJrEeid6-hE0Y2Esw" name="[PAB] Physical System 4" repPath="#_d0yssAJrEeid6-hE0Y2Esw" changeId="1692708967751">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="bug1917.capella#7709fc2a-52ec-4c0a-9c81-d6dd4b2c4aa6"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_qLVLkAJrEeid6-hE0Y2Esw" name="[PPD] PhysicalPath 4" repPath="#_qLT9cAJrEeid6-hE0Y2Esw" changeId="76183cdd-a0cd-4307-b6ff-77b359f937df">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_qLVLkAJrEeid6-hE0Y2Esw" name="[PPD] PhysicalPath 4" repPath="#_qLT9cAJrEeid6-hE0Y2Esw" changeId="1692708967751">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Path%20Description']"/>
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="bug1917.capella#6dbeca21-fa71-4ee1-8343-8feecc1d421f"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_52vj1RZcEeijk96alZRYIQ" name="[PAB] Physical System 5" repPath="#_52vj0BZcEeijk96alZRYIQ" changeId="af543e82-8b29-4263-93a2-21e358048da6">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_52vj1RZcEeijk96alZRYIQ" name="[PAB] Physical System 5" repPath="#_52vj0BZcEeijk96alZRYIQ" changeId="1692708967751">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="bug1917.capella#7709fc2a-52ec-4c0a-9c81-d6dd4b2c4aa6"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_FDDrUhZdEeijk96alZRYIQ" name="[PPD] PhysicalPath 5" repPath="#_FDDrQRZdEeijk96alZRYIQ" changeId="2428e912-64be-45dc-af87-845ce81aaf8d">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_FDDrUhZdEeijk96alZRYIQ" name="[PPD] PhysicalPath 5" repPath="#_FDDrQRZdEeijk96alZRYIQ" changeId="1692708967751">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Path%20Description']"/>
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="bug1917.capella#d43c5f37-39ac-4791-8cd3-9923eacec5c5"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_JkEkYBxoEeiKT4AM1bIVQw" name="[PAB] Physical System 6" repPath="#_JkA6ABxoEeiKT4AM1bIVQw" changeId="2bad0705-5cf3-4aaa-b46c-97896045ba05">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_JkEkYBxoEeiKT4AM1bIVQw" name="[PAB] Physical System 6" repPath="#_JkA6ABxoEeiKT4AM1bIVQw" changeId="1692708967751">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="bug1917.capella#7709fc2a-52ec-4c0a-9c81-d6dd4b2c4aa6"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_iOL4QBxpEeiKT4AM1bIVQw" name="[PPD] PhysicalPath 6" repPath="#_iOLRMBxpEeiKT4AM1bIVQw" changeId="854d1ae9-847f-4034-8fac-020039c84a8d">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_iOL4QBxpEeiKT4AM1bIVQw" name="[PPD] PhysicalPath 6" repPath="#_iOLRMBxpEeiKT4AM1bIVQw" changeId="1692708967751">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Path%20Description']"/>
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="bug1917.capella#9bde36db-9d27-4c96-bad2-30c7e34f2b3c"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_fIr0ABx2EeimMZmuHQGHVA" name="[PPD] PhysicalPath 3" repPath="#_fIoJoBx2EeimMZmuHQGHVA" changeId="0a6ef21c-acd4-4be5-a9f8-c4d8916d9148">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_fIr0ABx2EeimMZmuHQGHVA" name="[PPD] PhysicalPath 3" repPath="#_fIoJoBx2EeimMZmuHQGHVA" changeId="1692708967751">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Path%20Description']"/>
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="bug1917.capella#2499f831-e0d5-4233-bc1d-00ae4ef7eb8c"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_x0CXgByEEeiILJQ3asB9hw" name="[PAB] Physical System 7" repPath="#_xz_UMByEEeiILJQ3asB9hw" changeId="57968d65-87db-4595-9af1-8db1f4ba1bde">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_x0CXgByEEeiILJQ3asB9hw" name="[PAB] Physical System 7" repPath="#_xz_UMByEEeiILJQ3asB9hw" changeId="1692708967751">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="bug1917.capella#7709fc2a-52ec-4c0a-9c81-d6dd4b2c4aa6"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_PnEigRyFEeiILJQ3asB9hw" name="[PPD] PhysicalPath 7" repPath="#_PnEicByFEeiILJQ3asB9hw" changeId="1b45c0f5-2709-4139-a825-ec54480ff5e4">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_PnEigRyFEeiILJQ3asB9hw" name="[PPD] PhysicalPath 7" repPath="#_PnEicByFEeiILJQ3asB9hw" changeId="1692708967751">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Path%20Description']"/>
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="bug1917.capella#d879eaa6-aa0e-4470-b74f-010ac8b8e6b0"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_HDRY8C3qEeiaPpXfFTU5OQ" name="[PAB] Physical System 8" repPath="#_HDHn8C3qEeiaPpXfFTU5OQ" changeId="2192fb0c-a224-4889-bd4d-a97484038604">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_HDRY8C3qEeiaPpXfFTU5OQ" name="[PAB] Physical System 8" repPath="#_HDHn8C3qEeiaPpXfFTU5OQ" changeId="1692708967751">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="bug1917.capella#7709fc2a-52ec-4c0a-9c81-d6dd4b2c4aa6"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_lkYx4C3qEeiaPpXfFTU5OQ" name="[PPD] PhysicalPath 8" repPath="#_lkPA4C3qEeiaPpXfFTU5OQ" changeId="acc54e7c-0bc4-4473-ad14-fde38b4f71f0">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_lkYx4C3qEeiaPpXfFTU5OQ" name="[PPD] PhysicalPath 8" repPath="#_lkPA4C3qEeiaPpXfFTU5OQ" changeId="1692708967751">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Path%20Description']"/>
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="bug1917.capella#41942eee-e040-442c-bc4e-6ab957b12a5d"/>
       </ownedRepresentationDescriptors>

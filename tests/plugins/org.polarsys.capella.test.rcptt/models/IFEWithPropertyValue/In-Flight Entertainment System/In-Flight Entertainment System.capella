@@ -18,7 +18,6 @@
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/7.0.0"
     xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/7.0.0"
     xmlns:org.polarsys.capella.core.data.pa.deployment="http://www.polarsys.org/capella/core/pa/deployment/7.0.0"
-    xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/7.0.0"
     xmlns:re="http://www.polarsys.org/capella/common/re/7.0.0" id="bd182435-e290-42ce-b99f-6dd06e7ae7c7"
     name="In-Flight Entertainment System" summary="Version 1.0">
   <ownedExtensions xsi:type="libraries:ModelInformation" id="7197cfa8-b8fb-4ea3-b38f-f6fcd961dee8"/>
@@ -342,8 +341,6 @@
               target="#60dc5173-5420-44c0-bedf-ad3f6958a79d" source="#cc39bfa2-731b-448d-a8b7-a45d1cf45a97"/>
         </ownedOperationalActivities>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="2fa1be6d-d359-4a83-9c81-1fcc746244a9" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="58cb491f-bea3-445b-aaa6-05879e858cb7" name="Operational Capabilities">
         <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
@@ -1557,8 +1554,6 @@
               source="#b9ace19f-2d94-412d-ae1e-34b6fe329b6f"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="027d60c2-a487-4344-9a58-f32e7ec3854d" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="7fdc15cd-094b-4f7c-bd92-6c8d001fb5e7" name="Capabilities">
         <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
@@ -5167,8 +5162,6 @@
               target="#a4a24937-7365-4018-8951-9aeb80e8d835" source="#8a4862f6-3229-4eae-80db-0f324420cb6d"/>
         </ownedLogicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="cd3c068f-b05f-4749-9a8b-8b6c7b87a9d3" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="75619fc8-f3c7-4415-8824-6c9457c7ed7b" name="Capabilities">
         <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
@@ -12553,15 +12546,6 @@
           </ownedPhysicalFunctionPkgs>
         </ownedPhysicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="54c1210d-498a-4504-ac86-16910a5a01d8" name="Requirements">
-        <ownedRequirements xsi:type="org.polarsys.capella.core.data.requirement:SystemNonFunctionalRequirement"
-            id="c3afdc35-4e05-49b2-ab26-a686c7649984" name="REQ_NFR" description="&lt;p>&#xD;&#xA;    Upon &quot;Video On Demand&quot; PLAY command, the System shall display movie within 1 second&#xD;&#xA;&lt;/p>"
-            requirementId="001"/>
-        <ownedRequirements xsi:type="org.polarsys.capella.core.data.requirement:SystemNonFunctionalRequirement"
-            id="610dce09-dfce-4eb6-98be-a4e2461b3719" name="REQ_NFR" description="&lt;p>&#xD;&#xA;    The System shall serve &quot;Video On Demand&quot; to up to 650 passengers&#xD;&#xA;&lt;/p>"
-            requirementId="002"/>
-      </ownedRequirementPkgs>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="e45249fb-f1c4-44c8-aaa4-482ac55dd8fb" name="Capabilities">
         <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"

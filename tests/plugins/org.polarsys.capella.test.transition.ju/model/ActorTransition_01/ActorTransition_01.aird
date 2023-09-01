@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/7.0.0" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/7.0.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/7.0.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/7.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_TP5cENt8Ed-UYrFg-39ozA" selectedViews="_TSuGkNt8Ed-UYrFg-39ozA _TTnecNt8Ed-UYrFg-39ozA _TUNUUNt8Ed-UYrFg-39ozA _TXVg0Nt8Ed-UYrFg-39ozA _TXyMwNt8Ed-UYrFg-39ozA _TYO4sNt8Ed-UYrFg-39ozA _M9EmkLCqEeKR0an6CER6Bg" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_TP5cENt8Ed-UYrFg-39ozA" selectedViews="_TSuGkNt8Ed-UYrFg-39ozA _TTnecNt8Ed-UYrFg-39ozA _TUNUUNt8Ed-UYrFg-39ozA _TXVg0Nt8Ed-UYrFg-39ozA _TXyMwNt8Ed-UYrFg-39ozA _TYO4sNt8Ed-UYrFg-39ozA _M9EmkLCqEeKR0an6CER6Bg" version="15.2.0.202303281325">
     <semanticResources>ActorTransition_01.capella</semanticResources>
     <semanticResources>ActorTransition_01.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_TSuGkNt8Ed-UYrFg-39ozA">
@@ -11,7 +11,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_TUNUUNt8Ed-UYrFg-39ozA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LoVRM29zEeaRiLEB1c1Ygg" name="[IDB] System - Interfaces Diagram Blank" repPath="#_bzPWINt8Ed-UYrFg-39ozA" changeId="2c43ed7d-1240-4f41-b3a6-515ec7d159c8">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LoVRM29zEeaRiLEB1c1Ygg" name="[IDB] System - Interfaces Diagram Blank" repPath="#_bzPWINt8Ed-UYrFg-39ozA" changeId="1692708910198">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="ActorTransition_01.capella#1eac2938-054e-4485-8c7e-e7d556f2460b"/>
       </ownedRepresentationDescriptors>
@@ -21,15 +21,15 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_TXyMwNt8Ed-UYrFg-39ozA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LoVRMG9zEeaRiLEB1c1Ygg" name="[SAB] System - System Architecture Blank" repPath="#_6fytkNt9Ed-UYrFg-39ozA" changeId="3389d514-6621-4319-82ce-d825aa1f1e58">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LoVRMG9zEeaRiLEB1c1Ygg" name="[SAB] System - System Architecture Blank" repPath="#_6fytkNt9Ed-UYrFg-39ozA" changeId="1692708910198">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="ActorTransition_01.capella#1eac2938-054e-4485-8c7e-e7d556f2460b"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LoVRMW9zEeaRiLEB1c1Ygg" name="[SAB] System - System Architecture Blank" repPath="#_fAatsduFEd-lcfIA9NJGsw" changeId="9fcf2c77-7171-4ddb-b548-71b7f9829d06">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LoVRMW9zEeaRiLEB1c1Ygg" name="[SAB] System - System Architecture Blank" repPath="#_fAatsduFEd-lcfIA9NJGsw" changeId="1692708910198">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="ActorTransition_01.capella#ccc84099-16b7-44bc-ad11-5e9655ac4df3"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LoVRMm9zEeaRiLEB1c1Ygg" name="[CSA] System - Contextual System Actors" repPath="#_m8pBscNJEeST9qSqftFy1g" changeId="f5f9a461-ba48-43d6-b3ef-f8858748d6bb">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LoVRMm9zEeaRiLEB1c1Ygg" name="[CSA] System - Contextual System Actors" repPath="#_m8pBscNJEeST9qSqftFy1g" changeId="1692708910198">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="ActorTransition_01.capella#b1b1cdfc-2e6d-433b-80ed-49d335a1dfac"/>
       </ownedRepresentationDescriptors>
@@ -1092,7 +1092,7 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_nDf3tcNJEeST9qSqftFy1g" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nDf3tsNJEeST9qSqftFy1g"/>
           </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_m9O3kcNJEeST9qSqftFy1g" fontName="Segoe UI" fontHeight="8"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_m9O3kcNJEeST9qSqftFy1g" fontColor="9914954" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_m9O3ksNJEeST9qSqftFy1g" x="70" y="80" width="100" height="80"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_m9iZkMNJEeST9qSqftFy1g" type="2001" element="_L15MEW9zEeaRiLEB1c1Ygg">

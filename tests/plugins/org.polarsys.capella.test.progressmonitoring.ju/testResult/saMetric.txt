@@ -30,7 +30,6 @@ Mode,24
 Opaque Expression,7
 Part,5
 Region,27
-Requirements Pkg,1
 Scenario,6
 Sequence Message,25
 State,36

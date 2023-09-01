@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/7.0.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/7.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_rnutAFB0EembLZuYOQDZyg" selectedViews="_sggIEFB0EembLZuYOQDZyg _s5YiIFB0EembLZuYOQDZyg _s5YiIVB0EembLZuYOQDZyg _s5iTIFB0EembLZuYOQDZyg _s51OEFB0EembLZuYOQDZyg _s6R6AFB0EembLZuYOQDZyg _s7nWwFB0EembLZuYOQDZyg" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_rnutAFB0EembLZuYOQDZyg" selectedViews="_sggIEFB0EembLZuYOQDZyg _s5YiIFB0EembLZuYOQDZyg _s5YiIVB0EembLZuYOQDZyg _s5iTIFB0EembLZuYOQDZyg _s51OEFB0EembLZuYOQDZyg _s6R6AFB0EembLZuYOQDZyg _s7nWwFB0EembLZuYOQDZyg" version="15.2.0.202303281325">
     <semanticResources>ElementLabelFilterModel.afm</semanticResources>
     <semanticResources>ElementLabelFilterModel.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_sggIEFB0EembLZuYOQDZyg">
@@ -11,15 +11,15 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_s5YiIVB0EembLZuYOQDZyg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Wx2PAFCPEemJ35r2qIwMNw" name="[OAIB] Root Operational Activity" repPath="#_WxZjEFCPEemJ35r2qIwMNw" changeId="79939293-e7bc-4cae-9467-8175211929bc">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Wx2PAFCPEemJ35r2qIwMNw" name="[OAIB] Root Operational Activity" repPath="#_WxZjEFCPEemJ35r2qIwMNw" changeId="1692709559070">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="ElementLabelFilterModel.capella#719267bd-dbfb-41c7-9ebf-fa8839f7dc53"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_dTTw41CPEemJ35r2qIwMNw" name="Test Operational Process Description Diagram" repPath="#_dTA18FCPEemJ35r2qIwMNw" changeId="9fb3d762-4ac7-43db-9cc2-11434d89884b">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_dTTw41CPEemJ35r2qIwMNw" name="Test Operational Process Description Diagram" repPath="#_dTA18FCPEemJ35r2qIwMNw" changeId="1692709559070">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="ElementLabelFilterModel.capella#1186fe6b-5394-4c4f-9402-820d079706c2"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_zK7Rg1CcEemdJrVTlDFAJg" name="Test Operational Process Description With Exchange Items Shown" repPath="#_zKyHkFCcEemdJrVTlDFAJg" changeId="21e7f7c0-6720-4f27-bc16-813d662461a6">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_zK7Rg1CcEemdJrVTlDFAJg" name="Test Operational Process Description With Exchange Items Shown" repPath="#_zKyHkFCcEemdJrVTlDFAJg" changeId="1692709559070">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="ElementLabelFilterModel.capella#1186fe6b-5394-4c4f-9402-820d079706c2"/>
       </ownedRepresentationDescriptors>

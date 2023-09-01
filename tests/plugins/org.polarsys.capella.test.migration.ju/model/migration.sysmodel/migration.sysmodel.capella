@@ -19,7 +19,6 @@
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/5.0.0"
     xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/5.0.0"
     xmlns:org.polarsys.capella.core.data.pa.deployment="http://www.polarsys.org/capella/core/pa/deployment/5.0.0"
-    xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/5.0.0"
     xmlns:re="http://www.polarsys.org/capella/common/re/5.0.0" id="ebd6a4dd-f1d3-4b5f-bb8b-c5ff6c5cfed2"
     name="migration">
   <ownedExtensions xsi:type="libraries:ModelInformation" id="4c8e4d9e-92bc-4dca-a6b4-6af23b11da71"/>
@@ -303,9 +302,6 @@
               id="7004d3bd-a68d-47dc-9ca6-6dbf18c40c1e" name="OA1">
             <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
                 id="28b7a614-2eb7-46a1-8f9f-3c096092b26d" name="OA1_1">
-              <ownedTraces xsi:type="org.polarsys.capella.core.data.requirement:RequirementsTrace"
-                  id="9fd5c3fb-0321-4a6a-b2d5-3340cad26a02" targetElement="#efff9f40-b7fb-412f-8bc8-eb86bc696c91"
-                  sourceElement="#28b7a614-2eb7-46a1-8f9f-3c096092b26d"/>
             </ownedFunctions>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
@@ -320,9 +316,6 @@
             </ownedConstraints>
             <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
                 id="1cda633f-074d-48ef-b671-41268be9ee05" name="OA2_1">
-              <ownedTraces xsi:type="org.polarsys.capella.core.data.requirement:RequirementsTrace"
-                  id="6b8bffce-58c1-4865-a15f-77e0fd7e9593" targetElement="#0b136fd6-60dd-44af-9b48-ffd9ad92d47c"
-                  sourceElement="#1cda633f-074d-48ef-b671-41268be9ee05"/>
             </ownedFunctions>
             <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
                 id="d2e0ce90-abc6-4f36-aae7-5d6c1d3d49ce" name="OA2_2"/>
@@ -390,16 +383,6 @@
               source="#03bc0ff5-5218-4342-a013-5fd18047d932"/>
         </ownedOperationalActivities>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="cfe7307f-f3e1-493b-b6b6-511cca2ecf6c" name="Requirements">
-        <ownedRequirements xsi:type="org.polarsys.capella.core.data.requirement:SystemFunctionalRequirement"
-            id="efff9f40-b7fb-412f-8bc8-eb86bc696c91" name="SFR1"/>
-        <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-            id="3d915f73-b7f5-46d7-bbfb-26dd30057ec0" name="RPkg1">
-          <ownedRequirements xsi:type="org.polarsys.capella.core.data.requirement:SystemUserRequirement"
-              id="0b136fd6-60dd-44af-9b48-ffd9ad92d47c" name="SUR1"/>
-        </ownedRequirementPkgs>
-      </ownedRequirementPkgs>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="9f215950-aa38-42df-b479-e21a993c2df7" name="Operational Capabilities">
         <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
@@ -1859,9 +1842,6 @@
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="1e4876cd-8cc0-4a97-a2fd-8d32f0c65848" name="SF1" availableInStates="#7e970ef4-dec9-4629-8204-7c481ed99ddd">
-            <ownedTraces xsi:type="org.polarsys.capella.core.data.requirement:RequirementsTrace"
-                id="4a95adc1-f103-4982-b520-96c12a805c3f" targetElement="#69318d75-8e62-44eb-bcdf-50382228eba2"
-                sourceElement="#1e4876cd-8cc0-4a97-a2fd-8d32f0c65848"/>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                 id="8525ceb5-7cd0-4c24-a712-0e94a84caf66" name="FOP 1"/>
           </ownedFunctions>
@@ -2028,11 +2008,6 @@
               target="#a8bc60a8-a2aa-4638-82d9-1ae88c0547c7" source="#f4039ee4-bc26-4e1b-ab84-e7540f522b67"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="6c0ce9b3-a3c9-4805-82c6-d04efe1c6e1d" name="Requirements">
-        <ownedRequirements xsi:type="org.polarsys.capella.core.data.requirement:SystemUserRequirement"
-            id="69318d75-8e62-44eb-bcdf-50382228eba2" name="SUR2"/>
-      </ownedRequirementPkgs>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="dd4c7a1f-ff13-4d1b-83eb-b9bd6e25588c" name="Capabilities">
         <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
@@ -4880,9 +4855,7 @@ Stop the event</bodies>
           </ownedLogicalFunctionPkgs>
         </ownedLogicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="02b009a6-2560-4007-8fc9-218312c5e024" name="Requirements"/>
-      <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
+            <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="a7f5d57c-4d1b-4c59-929f-742093609cfc" name="Capabilities">
         <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
             id="1b4437ac-907f-47f0-bef7-d1c3ab8a84a8" targetElement="#dd4c7a1f-ff13-4d1b-83eb-b9bd6e25588c"
@@ -8643,9 +8616,7 @@ stop sequence</bodies>
               target="#08f0a069-8b4a-46af-9bfe-be51fc424e7d" source="#e0734f82-8c24-46e4-9dfa-fa2b02cb32d1"/>
         </ownedPhysicalFunctions>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="51ea0974-69ed-4c96-9293-ec357c8ce48a" name="Requirements"/>
-      <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
+            <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="21cddb1b-603b-4daf-9831-78921df45a66" name="Capabilities">
         <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
             id="dfe7e101-d228-4010-8d5f-30e2ef7c0d1b" targetElement="#a7f5d57c-4d1b-4c59-929f-742093609cfc"
@@ -12201,9 +12172,7 @@ stop sequence</bodies>
     </ownedArchitectures>
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.epbs:EPBSArchitecture"
         id="8e357f50-ebf2-4df3-a274-488e94528cf0" name="EPBS Architecture">
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="7f01a00a-5feb-4af8-85bb-97e595e920ec" name="Requirements"/>
-      <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
+            <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="72e2cb60-f950-4f16-9457-0f5c32d0bc74" name="Capabilities">
         <ownedTraces xsi:type="org.polarsys.capella.core.data.interaction:RefinementLink"
             id="2bd8765e-73f1-478d-bcb5-ef0f64545f5c" targetElement="#21cddb1b-603b-4daf-9831-78921df45a66"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/7.0.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/7.0.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/7.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_fLINwZF-EeeWAIhVXZef_g" selectedViews="_fL30oJF-EeeWAIhVXZef_g _fUWbMJF-EeeWAIhVXZef_g _fUgMMJF-EeeWAIhVXZef_g _fUp9MJF-EeeWAIhVXZef_g _fUzHIJF-EeeWAIhVXZef_g _fUzHIZF-EeeWAIhVXZef_g _fVPzEJF-EeeWAIhVXZef_g" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_fLINwZF-EeeWAIhVXZef_g" selectedViews="_fL30oJF-EeeWAIhVXZef_g _fUWbMJF-EeeWAIhVXZef_g _fUgMMJF-EeeWAIhVXZef_g _fUp9MJF-EeeWAIhVXZef_g _fUzHIJF-EeeWAIhVXZef_g _fUzHIZF-EeeWAIhVXZef_g _fVPzEJF-EeeWAIhVXZef_g" version="15.2.0.202303281325">
     <semanticResources>model3_multpart.afm</semanticResources>
     <semanticResources>model3_multpart.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_fL30oJF-EeeWAIhVXZef_g">
@@ -17,11 +17,11 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_fUzHIJF-EeeWAIhVXZef_g">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_iOeC9ZF-EeeWAIhVXZef_g" name="PB5" repPath="#_iOeC8JF-EeeWAIhVXZef_g" changeId="b88d96b1-0d6b-4595-9eb2-5dd9342c784b">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_iOeC9ZF-EeeWAIhVXZef_g" name="PB5" repPath="#_iOeC8JF-EeeWAIhVXZef_g" changeId="1692713464294">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="model3_multpart.capella#b0901f52-0aa1-47f3-9a59-d43635c47925"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_jC5h1ZGEEeev-LL1uDbdsQ" name="PB6" repPath="#_jC5h0JGEEeev-LL1uDbdsQ" changeId="d39d9919-3db3-472c-b5ec-3f686ab05e69">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_jC5h1ZGEEeev-LL1uDbdsQ" name="PB6" repPath="#_jC5h0JGEEeev-LL1uDbdsQ" changeId="1692713464294">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="model3_multpart.capella#b0901f52-0aa1-47f3-9a59-d43635c47925"/>
       </ownedRepresentationDescriptors>

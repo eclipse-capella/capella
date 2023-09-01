@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/7.0.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/7.0.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/7.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_hBLyAYgeEeeGKdJkiNW8jQ" selectedViews="_hCq_wIgeEeeGKdJkiNW8jQ _hR35YIgeEeeGKdJkiNW8jQ _hSBDUIgeEeeGKdJkiNW8jQ _hSK0UIgeEeeGKdJkiNW8jQ _hSUlUIgeEeeGKdJkiNW8jQ _hSdvQIgeEeeGKdJkiNW8jQ _hSwqMIgeEeeGKdJkiNW8jQ" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_hBLyAYgeEeeGKdJkiNW8jQ" selectedViews="_hCq_wIgeEeeGKdJkiNW8jQ _hR35YIgeEeeGKdJkiNW8jQ _hSBDUIgeEeeGKdJkiNW8jQ _hSK0UIgeEeeGKdJkiNW8jQ _hSUlUIgeEeeGKdJkiNW8jQ _hSdvQIgeEeeGKdJkiNW8jQ _hSwqMIgeEeeGKdJkiNW8jQ" version="15.2.0.202303281325">
     <semanticResources>StatusLine.afm</semanticResources>
     <semanticResources>StatusLine.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_hCq_wIgeEeeGKdJkiNW8jQ">
@@ -11,7 +11,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_hSBDUIgeEeeGKdJkiNW8jQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_EG_N8IiqEee3HYoViZ79Dw" name="[SDFB] Root System Function" repPath="#_EG8xsIiqEee3HYoViZ79Dw" changeId="278d6a95-ab31-4824-9a00-27080a3c6485">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_EG_N8IiqEee3HYoViZ79Dw" name="[SDFB] Root System Function" repPath="#_EG8xsIiqEee3HYoViZ79Dw" changeId="1692714458363">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="StatusLine.capella#10ea7dd3-5406-4f0b-b083-95b3bce87a2f"/>
       </ownedRepresentationDescriptors>
@@ -27,7 +27,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_hSwqMIgeEeeGKdJkiNW8jQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_HeK5oBemEeuXj8DqNYJzwA" name="[OAIB] Root Operational Activity" repPath="#_Hds_kBemEeuXj8DqNYJzwA" changeId="9f78dcf3-3f77-4c59-90ef-25fd7bc1a2ff">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_HeK5oBemEeuXj8DqNYJzwA" name="[OAIB] Root Operational Activity" repPath="#_Hds_kBemEeuXj8DqNYJzwA" changeId="1692714458363">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="StatusLine.capella#34097d08-be27-4326-9fcf-c7f7772c9f33"/>
       </ownedRepresentationDescriptors>

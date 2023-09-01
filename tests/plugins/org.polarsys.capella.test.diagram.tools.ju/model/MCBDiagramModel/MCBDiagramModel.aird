@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/7.0.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/7.0.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/7.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_vi2hENPeEeWTaM8H4vFUOQ" selectedViews="_vp_q4NPeEeWTaM8H4vFUOQ _vqSl0NPeEeWTaM8H4vFUOQ _vqvRwNPeEeWTaM8H4vFUOQ _vrL9sNPeEeWTaM8H4vFUOQ _vre4oNPeEeWTaM8H4vFUOQ _vr7kkNPeEeWTaM8H4vFUOQ _vsOfgNPeEeWTaM8H4vFUOQ" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_vi2hENPeEeWTaM8H4vFUOQ" selectedViews="_vp_q4NPeEeWTaM8H4vFUOQ _vqSl0NPeEeWTaM8H4vFUOQ _vqvRwNPeEeWTaM8H4vFUOQ _vrL9sNPeEeWTaM8H4vFUOQ _vre4oNPeEeWTaM8H4vFUOQ _vr7kkNPeEeWTaM8H4vFUOQ _vsOfgNPeEeWTaM8H4vFUOQ" version="15.2.0.202303281325">
     <semanticResources>MCBDiagramModel.capella</semanticResources>
     <semanticResources>MCBDiagramModel.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_vp_q4NPeEeWTaM8H4vFUOQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__yk1hns2EeaIfY15UCx5Ag" name="[OCB] Operational Capabilities - Operational Capabilities Blank" repPath="#_xzj7cNQKEeWUOJnCGL-26A" changeId="8f0e5533-cbb2-48fa-bf02-6eeaf15f1675">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__yk1hns2EeaIfY15UCx5Ag" name="[OCB] Operational Capabilities - Operational Capabilities Blank" repPath="#_xzj7cNQKEeWUOJnCGL-26A" changeId="1692713410240">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg" href="MCBDiagramModel.capella#aba8d0c0-48d3-47fe-8174-6f9aa062e009"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__yk1h3s2EeaIfY15UCx5Ag" name="[COC] OperationalCapability 1 - Contextual Operational Capabilty" repPath="#_C7uWQNQLEeWUOJnCGL-26A" changeId="1d7be496-0a03-4c2d-88b4-c3de8a257ffa">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__yk1h3s2EeaIfY15UCx5Ag" name="[COC] OperationalCapability 1 - Contextual Operational Capabilty" repPath="#_C7uWQNQLEeWUOJnCGL-26A" changeId="1692713410240">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalCapability" href="MCBDiagramModel.capella#a715dd23-ba27-4bde-b58e-4fb26833359e"/>
       </ownedRepresentationDescriptors>
@@ -19,11 +19,11 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_vqvRwNPeEeWTaM8H4vFUOQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__yk1gHs2EeaIfY15UCx5Ag" name="[CRB] Capabilities - Capability Realization Blank" repPath="#_02L-8NQKEeWUOJnCGL-26A" changeId="f91e6861-2760-4f7a-a3f7-4793ec7102c5">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__yk1gHs2EeaIfY15UCx5Ag" name="[CRB] Capabilities - Capability Realization Blank" repPath="#_02L-8NQKEeWUOJnCGL-26A" changeId="1692713410240">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg" href="MCBDiagramModel.capella#935cf506-f1fb-462d-acc2-5882517bd6de"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__yk1gXs2EeaIfY15UCx5Ag" name="[CRI] CapabilityRealization 1 - Contextual Capability Realization Involvement" repPath="#_AIUagNQLEeWUOJnCGL-26A" changeId="bd2b7d97-9078-49fa-94fd-0f0bcc99c40d">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__yk1gXs2EeaIfY15UCx5Ag" name="[CRI] CapabilityRealization 1 - Contextual Capability Realization Involvement" repPath="#_AIUagNQLEeWUOJnCGL-26A" changeId="1692713410240">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:CapabilityRealization" href="MCBDiagramModel.capella#2f74a886-f84f-49d1-94e8-432e37a06d06"/>
       </ownedRepresentationDescriptors>
@@ -39,19 +39,19 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_vsOfgNPeEeWTaM8H4vFUOQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__yk1gns2EeaIfY15UCx5Ag" name="[MCB] Capabilities - Mission Capabilities Blank" repPath="#_w5I-kNPeEeWTaM8H4vFUOQ" changeId="f28f2086-9336-4fe1-a9a7-d1e9002405ff">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__yk1gns2EeaIfY15UCx5Ag" name="[MCB] Capabilities - Mission Capabilities Blank" repPath="#_w5I-kNPeEeWTaM8H4vFUOQ" changeId="1692713410240">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg" href="MCBDiagramModel.capella#e29b536b-5073-486e-b5e5-797c9b774d53"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__yk1g3s2EeaIfY15UCx5Ag" name="[MB] Missions - Missions Blank" repPath="#_Mpd40NQJEeWUOJnCGL-26A" changeId="76c8e087-5c0b-45ce-97fb-fc5a0532f7c6">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__yk1g3s2EeaIfY15UCx5Ag" name="[MB] Missions - Missions Blank" repPath="#_Mpd40NQJEeWUOJnCGL-26A" changeId="1692713410240">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:MissionPkg" href="MCBDiagramModel.capella#da48f8e7-d4ac-4f95-b10f-233d731d3662"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__yk1hHs2EeaIfY15UCx5Ag" name="[CM] Mission 1 - Contextual Mission" repPath="#_I87gMNQKEeWUOJnCGL-26A" changeId="0500abb0-eaa4-4d4a-ae9b-4446bf59294a">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__yk1hHs2EeaIfY15UCx5Ag" name="[CM] Mission 1 - Contextual Mission" repPath="#_I87gMNQKEeWUOJnCGL-26A" changeId="1692713410240">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:Mission" href="MCBDiagramModel.capella#505f1f08-04d7-41bd-92ca-507246f999f2"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__yk1hXs2EeaIfY15UCx5Ag" name="[CC] Capability 1 - Contextual Capabilty" repPath="#_QLKogNQKEeWUOJnCGL-26A" changeId="56ad4eda-acac-4fdd-8315-b99980a86b35">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__yk1hXs2EeaIfY15UCx5Ag" name="[CC] Capability 1 - Contextual Capabilty" repPath="#_QLKogNQKEeWUOJnCGL-26A" changeId="1692713410240">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:Capability" href="MCBDiagramModel.capella#ba42a62f-953b-4266-bb0a-20a9e6116c37"/>
       </ownedRepresentationDescriptors>

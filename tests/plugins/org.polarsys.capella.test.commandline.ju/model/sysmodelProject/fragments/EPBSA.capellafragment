@@ -10,11 +10,8 @@
     xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/7.0.0"
     xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/7.0.0"
     xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/7.0.0"
-    xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/7.0.0"
     id="8e357f50-ebf2-4df3-a274-488e94528cf0"
     name="EPBS Architecture">
-  <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-      id="7f01a00a-5feb-4af8-85bb-97e595e920ec" name="Requirements"/>
   <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
       id="72e2cb60-f950-4f16-9457-0f5c32d0bc74" name="Capabilities">
     <ownedTraces xsi:type="org.polarsys.capella.core.data.interaction:RefinementLink"
