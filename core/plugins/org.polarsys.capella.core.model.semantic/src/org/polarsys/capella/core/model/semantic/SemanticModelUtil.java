@@ -45,7 +45,6 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.requirement.RequirementPackage;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 
 /**
@@ -397,7 +396,6 @@ public class SemanticModelUtil {
     capellaSemanticClasses.addAll(getSemanticClasses(CapellamodellerPackage.eINSTANCE));
     capellaSemanticClasses.addAll(getSemanticClasses(OaPackage.eINSTANCE));
     capellaSemanticClasses.addAll(getSemanticClasses(PaPackage.eINSTANCE));
-    capellaSemanticClasses.addAll(getSemanticClasses(RequirementPackage.eINSTANCE));
     capellaSemanticClasses.addAll(getSemanticClasses(SharedmodelPackage.eINSTANCE));
     capellaSemanticClasses.addAll(getSemanticClasses(ActivityPackage.eINSTANCE));
     capellaSemanticClasses.addAll(getSemanticClasses(BehaviorPackage.eINSTANCE));
@@ -425,7 +423,6 @@ public class SemanticModelUtil {
     capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(CapellamodellerPackage.eINSTANCE));
     capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(OaPackage.eINSTANCE));
     capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(PaPackage.eINSTANCE));
-    capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(RequirementPackage.eINSTANCE));
     capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(SharedmodelPackage.eINSTANCE));
     capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(ActivityPackage.eINSTANCE));
     capellaSemanticStructuralFeatures.addAll(getSemanticStructuralFeatures(BehaviorPackage.eINSTANCE));

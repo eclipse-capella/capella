@@ -60,9 +60,6 @@ public class ActionPropertyTester extends PropertyTester {
         if ("transformLiteralNumericValue".equals(actionName)) { //$NON-NLS-1$
           return element instanceof LiteralNumericValue;
         }
-        if ("requirementManagerWizard".equals(actionName)) { //$NON-NLS-1$
-          return isRequirementManagerWizard(element);
-        }
         if ("traceManager".equals(actionName)) { //$NON-NLS-1$
           return isTraceManager(element);
         }
@@ -86,10 +83,6 @@ public class ActionPropertyTester extends PropertyTester {
   }
 
   private boolean isTraceManager(ModelElement element) {
-    return true;
-  }
-
-  private boolean isRequirementManagerWizard(ModelElement element) {
     return true;
   }
 

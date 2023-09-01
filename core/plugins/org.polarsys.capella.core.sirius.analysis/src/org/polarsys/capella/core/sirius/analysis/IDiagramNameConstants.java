@@ -54,10 +54,8 @@ public interface IDiagramNameConstants extends DiagramDescriptionConstants {
   String OPERATIONAL_ENTITY_BREAKDOWN_DIAGRAM_NAME = "Operational Entity Breakdown"; //$NON-NLS-1$
   String OPERATIONAL_INTERACTION_SCENARIO_DIAGRAM_NAME = "Operational Interaction Scenario"; //$NON-NLS-1$
   String OPERATIONAL_ROLE_BLANK_DIAGRAM_NAME = "Operational Role Blank"; //$NON-NLS-1$
-  String OPERATIONAL_ACTIVITIES_REQUIREMENTS_DIAGRAM_NAME = "Operational Activities - Requirements"; //$NON-NLS-1$
   String OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME = "Operational Capabilities Blank"; //$NON-NLS-1$
   String OPERATIONAL_ACTIVITY_INTERACTION_SCENARIO_DIAGRAM_NAME = "Activity Interaction Scenario"; //$NON-NLS-1$
-  String REQUIREMENTS_OPERATIONAL_ACTIVITIES__DIAGRAM_NAME = "Requirements - Operational Activities"; //$NON-NLS-1$
   String OPERATIONAL_PROCESS_DESCRIPTION_DIAGRAM_NAME = "Operational Process Description"; //$NON-NLS-1$
   String CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME = "Contextual Operational Capability"; //$NON-NLS-1$
 
@@ -76,8 +74,6 @@ public interface IDiagramNameConstants extends DiagramDescriptionConstants {
   String SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME = "System " + DATA_FLOW_BLANK_DIAGRAM_NAME; //$NON-NLS-1$
   String SYSTEM_FUNCTION_BREAKDOWN_DIAGRAM_NAME = "System Function Breakdown"; //$NON-NLS-1$
   String SYSTEM_FUNCTIONS_OPERATIONAL_ACTIVITIES_DIAGRAM_NAME = "System Functions - Operational Activities"; //$NON-NLS-1$
-  String SYSTEM_FUNCTIONS_REQUIREMENTS_DIAGRAM_NAME = "System Functions - Requirements"; //$NON-NLS-1$
-  String REQUIREMENTS_SYSTEM_FUNCTIONS_DIAGRAM_NAME = "Requirements - System Functions"; //$NON-NLS-1$
   String CONTEXTUAL_OC_DIAGRAM_NAME = "Contextual Operational Capability"; //$NON-NLS-1$
   /**
    * Logical Architecture diagrams
@@ -85,16 +81,12 @@ public interface IDiagramNameConstants extends DiagramDescriptionConstants {
   String CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME = "Contextual Logical Data Flow"; //$NON-NLS-1$
   String LOGICAL_ACTOR_CONTEXT_ACTOR_DIAGRAM_NAME = "Logical Actor - Context Actor"; //$NON-NLS-1$
   String LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME = "Logical " + ARCHITECTURE_BLANK_DIAGRAM_NAME; //$NON-NLS-1$
-  String LOGICAL_ARCHITECTURE_REQUIREMENT_REFINEMENTS_DIAGRAM_NAME = "Logical Architecture Requirement Refinements"; //$NON-NLS-1$
   String LOGICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME = "Logical Component Breakdown"; //$NON-NLS-1$
   String LOGICAL_COMPONENTS_LOGICAL_FUNCTIONS_DIAGRAM_NAME = "Logical Components - Logical Functions"; //$NON-NLS-1$
-  String LOGICAL_COMPONENTS_REQUIREMENTS_DIAGRAM_NAME = "Logical Components - Requirements"; //$NON-NLS-1$
   String LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME = "Logical " + DATA_FLOW_BLANK_DIAGRAM_NAME; //$NON-NLS-1$
   String LOGICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME = "Logical Function Breakdown"; //$NON-NLS-1$
-  String LOGICAL_FUNCTIONS_REQUIREMENTS_DIAGRAM_NAME = "Logical Functions - Requirements"; //$NON-NLS-1$
   String LOGICAL_FUNCTIONS_SYSTEM_FUNCTIONS_DIAGRAM_NAME = "Logical Functions - System Functions"; //$NON-NLS-1$
   String LOGICAL_INTERFACE_CONTEXT_INTERFACE_DIAGRAM_NAME = "Logical Interface - Context Interface"; //$NON-NLS-1$
-  String REQUIREMENTS_LOGICAL_FUNCTIONS_DIAGRAM_NAME = "Requirements - Logical Functions"; //$NON-NLS-1$
 
   /**
    * Physical Architecture diagrams
@@ -105,21 +97,16 @@ public interface IDiagramNameConstants extends DiagramDescriptionConstants {
   String PHYSICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME = "Physical Component Breakdown"; //$NON-NLS-1$
   String PHYSICAL_COMPONENTS_LOGICAL_COMPONENTS_DIAGRAM_NAME = "Physical Components - Logical Components"; //$NON-NLS-1$
   String PHYSICAL_COMPONENTS_PHYSICAL_FUNCTIONS_DIAGRAM_NAME = "Physical Components - Physical Functions"; //$NON-NLS-1$
-  String PHYSICAL_COMPONENTS_REQUIREMENTS_DIAGRAM_NAME = "Physical Components - Requirements"; //$NON-NLS-1$
   String PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME = "Physical " + DATA_FLOW_BLANK_DIAGRAM_NAME; //$NON-NLS-1$
   String PHYSICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME = "Physical Function Breakdown"; //$NON-NLS-1$
   String PHYSICAL_FUNCTIONS_LOGICAL_FUNCTIONS_DIAGRAM_NAME = "Physical Functions - Logical Functions"; //$NON-NLS-1$
-  String PHYSICAL_FUNCTIONS_REQUIREMENTS_DIAGRAM_NAME = "Physical Functions - Requirements"; //$NON-NLS-1$
   String PHYSICAL_INTERFACE_LOGICAL_INTERFACE_DIAGRAM_NAME = "Physical Interface - Logical Interface"; //$NON-NLS-1$
-  String REQUIREMENTS_PHYSICAL_FUNCTIONS_DIAGRAM_NAME = "Requirements - Physical Functions"; //$NON-NLS-1$
   String PHYSICAL_PATH_DESCRIPTION_DIAGRAM_NAME = "Physical Path Description"; //$NON-NLS-1$
 
   /**
    * EPBS Architecture diagrams
    */
-  String CONFIGURATION_ITEMS_REQUIREMENTS_DIAGRAM_NAME = "Configuration Items - Requirements"; //$NON-NLS-1$
   String CONFIGURATION_ITEMS_PHYSICAL_COMPONENTS_DIAGRAM_NAME = "Configuration Items - Physical Artifacts"; //$NON-NLS-1$
   String CONFIGURATION_ITEMS_BREAKDOWN_DIAGRAM_NAME = "Configuration Items Breakdown"; //$NON-NLS-1$
   String EPBS_ARCHITECTURE_BLANK_DIAGRAM_NAME = "EPBS " + ARCHITECTURE_BLANK_DIAGRAM_NAME; //$NON-NLS-1$
-  String EPBS_REQUIREMENT_REFINEMENTS_DIAGRAM_NAME = "EPBS Requirement Refinements"; //$NON-NLS-1$
 }

@@ -90,7 +90,6 @@
         <module>org.polarsys.capella.core.data.pa.properties</module>
         <module>org.polarsys.capella.core.data.pa.ui.quickfix</module>
         <module>org.polarsys.capella.core.data.pa.validation</module>
-        <module>org.polarsys.capella.core.data.requirement.properties</module>
         <module>org.polarsys.capella.core.data.res.edit</module>
         <module>org.polarsys.capella.core.data.res.editor</module>
         <module>org.polarsys.capella.core.data.selection.queries</module>

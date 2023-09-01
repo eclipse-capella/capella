@@ -17,7 +17,6 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
@@ -900,7 +899,6 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
@@ -1751,7 +1749,6 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
@@ -5349,7 +5346,6 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
@@ -5422,56 +5418,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="description_3:TableCreationDescription" name="Requirements" precondition="aql:self.isInLib()" browseExpression="aql:self" tableDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']">
-            <containerViewVariable name="containerView"/>
-            <representationNameVariable name="diagramName"/>
-          </ownedTools>
-          <ownedTools xsi:type="description_3:TableCreationDescription" name="Operational Activities - Requirements" precondition="aql:self.isInLib()">
-            <containerViewVariable name="containerView"/>
-            <representationNameVariable name="diagramName"/>
-            <tableDescription xsi:type="description_3:CrossTableDescription" href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activities%20-%20Requirements']"/>
-          </ownedTools>
-          <ownedTools xsi:type="description_3:TableCreationDescription" name="System Functions - Requirements" precondition="aql:self.isInLib()">
-            <containerViewVariable name="containerView"/>
-            <representationNameVariable name="diagramName"/>
-            <tableDescription xsi:type="description_3:CrossTableDescription" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Requirements']"/>
-          </ownedTools>
-          <ownedTools xsi:type="description_3:TableCreationDescription" name="Logical Functions - Requirements" precondition="aql:self.isInLib()">
-            <containerViewVariable name="containerView"/>
-            <representationNameVariable name="diagramName"/>
-            <tableDescription xsi:type="description_3:CrossTableDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Functions%20-%20Requirements']"/>
-          </ownedTools>
-          <ownedTools xsi:type="description_3:TableCreationDescription" name="Logical Components - Requirements" precondition="aql:self.isInLib()">
-            <containerViewVariable name="containerView"/>
-            <representationNameVariable name="diagramName"/>
-            <tableDescription xsi:type="description_3:CrossTableDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Components%20-%20Requirements']"/>
-          </ownedTools>
-          <ownedTools xsi:type="description_3:TableCreationDescription" name="Physical Functions - Requirements" precondition="aql:self.isInLib()">
-            <containerViewVariable name="containerView"/>
-            <representationNameVariable name="diagramName"/>
-            <tableDescription xsi:type="description_3:CrossTableDescription" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Functions%20-%20Requirements']"/>
-          </ownedTools>
-          <ownedTools xsi:type="description_3:TableCreationDescription" name="Physical Components - Requirements" precondition="aql:self.isInLib()">
-            <containerViewVariable name="containerView"/>
-            <representationNameVariable name="diagramName"/>
-            <tableDescription xsi:type="description_3:CrossTableDescription" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Requirements']"/>
-          </ownedTools>
-          <ownedTools xsi:type="description_3:TableCreationDescription" name="Configuration Items - Requirements" precondition="aql:self.isInLib()">
-            <containerViewVariable name="containerView"/>
-            <representationNameVariable name="diagramName"/>
-            <tableDescription xsi:type="description_3:CrossTableDescription" href="EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20-%20Requirements']"/>
-          </ownedTools>
-          <ownedTools xsi:type="description_3:TableCreationDescription" name="EPBS Requirement Refinements" precondition="aql:self.isInLib()">
-            <containerViewVariable name="containerView"/>
-            <representationNameVariable name="diagramName"/>
-            <tableDescription xsi:type="description_3:CrossTableDescription" href="EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Requirement%20Refinements']"/>
-          </ownedTools>
-          <ownedTools xsi:type="description_3:TableCreationDescription" name="Logical Architecture Requirement Refinements" precondition="aql:self.isInLib()">
-            <containerViewVariable name="containerView"/>
-            <representationNameVariable name="diagramName"/>
-            <tableDescription xsi:type="description_3:CrossTableDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Requirement%20Refinements']"/>
-          </ownedTools>
-          <ownedTools xsi:type="description_3:TableCreationDescription" name="System Functions - Operational Activities" precondition="aql:self.isInLib()">
+         <ownedTools xsi:type="description_3:TableCreationDescription" name="System Functions - Operational Activities" precondition="aql:self.isInLib()">
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
             <tableDescription xsi:type="description_3:CrossTableDescription" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']"/>
@@ -5729,7 +5676,6 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
@@ -7224,7 +7170,6 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
@@ -12188,248 +12133,7 @@
           </ownedTools>
         </toolSections>
       </defaultLayer>
-    </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_3:EditionTableDescription" name="Requirements" domainClass="RequirementsPkg">
-      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
-      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-      <ownedLineMappings name="Requirement Pkg" domainClass="RequirementsPkg" semanticCandidatesExpression="aql:self" headerLabelExpression="feature:name">
-        <ownedSubLines name="requirements 1" reusedInMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']" domainClass="Requirement" semanticCandidatesExpression="aql:self.ownedRequirements" headerLabelExpression="aql:if (self.eClass().name = 'SystemUserRequirement') then 'SUR' else if (self.eClass().name = 'SystemFunctionalInterfaceRequirement') then 'SFIR' else if (self.eClass().name = 'SystemFunctionalRequirement') then 'SFR' else if (self.eClass().name = 'SystemNonFunctionalInterfaceRequirement') then 'SNFIR' else if (self.eClass().name = 'SystemNonFunctionalRequirement') then 'SNFR' else self.eClass().name endif endif endif endif endif">
-          <delete name="delete requirement" precondition="false">
-            <variables name="element" documentation="The currently edited element."/>
-            <variables name="root" documentation="The semantic element corresponding to the current table."/>
-          </delete>
-        </ownedSubLines>
-        <ownedSubLines name="Sub Requirement Pkg" reusedSubLines="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']" reusedInMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']" domainClass="RequirementsPkg" semanticCandidatesExpression="aql:self.ownedRequirementPkgs" headerLabelExpression="feature:name">
-          <create name="System User Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
-            <variables name="root" documentation="The semantic element of the table."/>
-            <variables name="element" documentation="The semantic currently edited element."/>
-            <variables name="container" documentation="The semantic element corresponding to the view container."/>
-            <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
-              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemUserRequirement" referenceName="ownedRequirements">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="requirement"/>
-              </subModelOperations>
-            </firstModelOperation>
-          </create>
-          <create name="System Functional Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
-            <variables name="root" documentation="The semantic element of the table."/>
-            <variables name="element" documentation="The semantic currently edited element."/>
-            <variables name="container" documentation="The semantic element corresponding to the view container."/>
-            <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
-              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemFunctionalRequirement" referenceName="ownedRequirements">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="requirement"/>
-              </subModelOperations>
-            </firstModelOperation>
-          </create>
-          <create name="System Functional Interface Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
-            <variables name="root" documentation="The semantic element of the table."/>
-            <variables name="element" documentation="The semantic currently edited element."/>
-            <variables name="container" documentation="The semantic element corresponding to the view container."/>
-            <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
-              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemFunctionalInterfaceRequirement" referenceName="ownedRequirements">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="requirement"/>
-              </subModelOperations>
-            </firstModelOperation>
-          </create>
-          <create name="System Non Functional Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
-            <variables name="root" documentation="The semantic element of the table."/>
-            <variables name="element" documentation="The semantic currently edited element."/>
-            <variables name="container" documentation="The semantic element corresponding to the view container."/>
-            <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
-              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemNonFunctionalRequirement" referenceName="ownedRequirements">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="requirement"/>
-              </subModelOperations>
-            </firstModelOperation>
-          </create>
-          <create name="System Non Functional Interface Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
-            <variables name="root" documentation="The semantic element of the table."/>
-            <variables name="element" documentation="The semantic currently edited element."/>
-            <variables name="container" documentation="The semantic element corresponding to the view container."/>
-            <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
-              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemNonFunctionalInterfaceRequirement" referenceName="ownedRequirements">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="requirement"/>
-              </subModelOperations>
-            </firstModelOperation>
-          </create>
-          <create name="Requirement Pkg" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']">
-            <variables name="root" documentation="The semantic element of the table."/>
-            <variables name="element" documentation="The semantic currently edited element."/>
-            <variables name="container" documentation="The semantic element corresponding to the view container."/>
-            <firstModelOperation xsi:type="tool_1:CreateInstance" typeName="RequirementsPkg" referenceName="ownedRequirementPkgs">
-              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Req Pkg"/>
-            </firstModelOperation>
-          </create>
-          <delete name="delete sub requirement pkg" precondition="false">
-            <variables name="element" documentation="The currently edited element."/>
-            <variables name="root" documentation="The semantic element corresponding to the current table."/>
-          </delete>
-        </ownedSubLines>
-        <create name="Requirement Pkg" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']">
-          <variables name="root" documentation="The semantic element of the table."/>
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="container" documentation="The semantic element corresponding to the view container."/>
-          <firstModelOperation xsi:type="tool_1:CreateInstance" typeName="RequirementsPkg" referenceName="ownedRequirementPkgs">
-            <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Req Pkg"/>
-          </firstModelOperation>
-        </create>
-        <create name="System User Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
-          <variables name="root" documentation="The semantic element of the table."/>
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="container" documentation="The semantic element corresponding to the view container."/>
-          <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
-            <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemUserRequirement" referenceName="ownedRequirements">
-              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="requirement"/>
-            </subModelOperations>
-          </firstModelOperation>
-        </create>
-        <create name="System Functional Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
-          <variables name="root" documentation="The semantic element of the table."/>
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="container" documentation="The semantic element corresponding to the view container."/>
-          <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
-            <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemFunctionalRequirement" referenceName="ownedRequirements">
-              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="requirement"/>
-            </subModelOperations>
-          </firstModelOperation>
-        </create>
-        <create name="System Functional Interface Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
-          <variables name="root" documentation="The semantic element of the table."/>
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="container" documentation="The semantic element corresponding to the view container."/>
-          <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
-            <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemFunctionalInterfaceRequirement" referenceName="ownedRequirements">
-              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="requirement"/>
-            </subModelOperations>
-          </firstModelOperation>
-        </create>
-        <create name="System Non Functional Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
-          <variables name="root" documentation="The semantic element of the table."/>
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="container" documentation="The semantic element corresponding to the view container."/>
-          <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
-            <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemNonFunctionalRequirement" referenceName="ownedRequirements">
-              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="requirement"/>
-            </subModelOperations>
-          </firstModelOperation>
-        </create>
-        <create name="System Non Functional Interface Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
-          <variables name="root" documentation="The semantic element of the table."/>
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="container" documentation="The semantic element corresponding to the view container."/>
-          <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
-            <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemNonFunctionalInterfaceRequirement" referenceName="ownedRequirements">
-              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="requirement"/>
-            </subModelOperations>
-          </firstModelOperation>
-        </create>
-        <delete name="no delete" precondition="false">
-          <variables name="element" documentation="The currently edited element."/>
-          <variables name="root" documentation="The semantic element corresponding to the current table."/>
-        </delete>
-      </ownedLineMappings>
-      <ownedColumnMappings name="Name" headerLabelExpression="Name" featureName="name" labelExpression="feature:name">
-        <directEdit>
-          <variables name="table" documentation="The current DTable."/>
-          <variables name="line" documentation="The DLine of the current DCell."/>
-          <variables name="element" documentation="The currently edited element."/>
-          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
-          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
-          <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
-          <mask mask="{0}"/>
-        </directEdit>
-      </ownedColumnMappings>
-      <ownedColumnMappings name="Requirement Id" headerLabelExpression="Requirement Id" canEdit="aql:self->filter(requirement::Requirement)->size() > 0" featureName="requirementId" labelExpression="feature:requirementId">
-        <directEdit>
-          <variables name="table" documentation="The current DTable."/>
-          <variables name="line" documentation="The DLine of the current DCell."/>
-          <variables name="element" documentation="The currently edited element."/>
-          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
-          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
-          <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool_1:SetValue" featureName="requirementId" valueExpression="aql:arg0"/>
-          <mask mask="{0}"/>
-        </directEdit>
-      </ownedColumnMappings>
-      <ownedColumnMappings name="Summary" headerLabelExpression="Summary" canEdit="aql:self->filter(requirement::Requirement)->size() > 0" featureName="summary" labelExpression="feature:summary">
-        <directEdit>
-          <variables name="table" documentation="The current DTable."/>
-          <variables name="line" documentation="The DLine of the current DCell."/>
-          <variables name="element" documentation="The currently edited element."/>
-          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
-          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
-          <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool_1:SetValue" featureName="summary" valueExpression="aql:arg0"/>
-          <mask mask="{0}"/>
-        </directEdit>
-      </ownedColumnMappings>
-      <ownedColumnMappings name="Description" headerLabelExpression="Description" canEdit="aql:self->filter(requirement::Requirement)->size() > 0" featureName="description" labelExpression="feature:description">
-        <directEdit>
-          <variables name="table" documentation="The current DTable."/>
-          <variables name="line" documentation="The DLine of the current DCell."/>
-          <variables name="element" documentation="The currently edited element."/>
-          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
-          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
-          <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool_1:SetValue" featureName="description" valueExpression="aql:arg0"/>
-          <mask mask="{0}"/>
-        </directEdit>
-      </ownedColumnMappings>
-      <ownedColumnMappings name="Additional Information" headerLabelExpression="Additional Information" canEdit="aql:self->filter(requirement::Requirement)->size() > 0" featureName="additionalInformation" labelExpression="feature:additionalInformation">
-        <directEdit>
-          <variables name="table" documentation="The current DTable."/>
-          <variables name="line" documentation="The DLine of the current DCell."/>
-          <variables name="element" documentation="The currently edited element."/>
-          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
-          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
-          <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool_1:SetValue" featureName="additionalInformation" valueExpression="aql:arg0"/>
-          <mask mask="{0}"/>
-        </directEdit>
-      </ownedColumnMappings>
-      <ownedColumnMappings name="Verification Method" headerLabelExpression="Verification Method" canEdit="aql:self->filter(requirement::Requirement)->size() > 0" featureName="verificationMethod" labelExpression="feature:verificationMethod">
-        <directEdit>
-          <variables name="table" documentation="The current DTable."/>
-          <variables name="line" documentation="The DLine of the current DCell."/>
-          <variables name="element" documentation="The currently edited element."/>
-          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
-          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
-          <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool_1:SetValue" featureName="verificationMethod" valueExpression="aql:arg0"/>
-          <mask mask="{0}"/>
-        </directEdit>
-      </ownedColumnMappings>
-      <ownedColumnMappings name="Verification Phase" headerLabelExpression="Verification Phase" canEdit="aql:self->filter(requirement::Requirement)->size() > 0" featureName="verificationPhase" labelExpression="feature:verificationPhase">
-        <directEdit>
-          <variables name="table" documentation="The current DTable."/>
-          <variables name="line" documentation="The DLine of the current DCell."/>
-          <variables name="element" documentation="The currently edited element."/>
-          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
-          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
-          <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool_1:SetValue" featureName="verificationPhase" valueExpression="aql:arg0"/>
-          <mask mask="{0}"/>
-        </directEdit>
-      </ownedColumnMappings>
-    </ownedRepresentations>
+    </ownedRepresentations>    
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']" name="Contextual Capability Realization Involvement" label="%common.cri" titleExpression="aql:'[CRI] ' + self.name" domainClass="CapabilityRealization">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
@@ -12446,7 +12150,6 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
@@ -13550,7 +13253,6 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
-      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>

@@ -68,7 +68,6 @@ public class NamingConstants extends NLS {
 	public static String CreateCommonCmd_data_pkg_name;
 	public static String CreateCommonCmd_types_pkg_name;
 	public static String CreateCommonCmd_interfaces_pkg_name;
-	public static String CreateCommonCmd_requirements_pkg_name;
 	public static String CreateCommonCmd_capability_realisation_pkg_name;
 
 	// Operational Analysis

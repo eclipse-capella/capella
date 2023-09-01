@@ -19,7 +19,6 @@ import "http://www.polarsys.org/capella/core/core/7.0.0"
 
 // Start of user code for imports 
 import "http://www.polarsys.org/capella/core/common/7.0.0"
-import "http://www.polarsys.org/capella/core/requirement/7.0.0"
 
 // End of user code
 
@@ -28,9 +27,5 @@ pattern Namespace__containedGenericTraces(self : Namespace, target : GenericTrac
 	Namespace.ownedTraces(self, target);
 }
 
-@Surrogate(feature="containedRequirementsTraces")
-pattern Namespace__containedRequirementsTraces(self : Namespace, target : RequirementsTrace) {
-	Namespace.ownedTraces(self, target);
-}
 
 

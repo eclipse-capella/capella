@@ -128,13 +128,6 @@
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
-            class="org.polarsys.capella.core.data.helpers.requirement.RequirementHelper"
-            nsURI="http://www.polarsys.org/capella/core/requirement/7.0.0">
-      </helperImpl>
-   </extension>
-   <extension
-         point="org.polarsys.capella.common.model.helpers.helper">
-      <helperImpl
             class="org.polarsys.capella.core.data.helpers.sharedmodel.SharedModelHelper"
             nsURI="http://www.polarsys.org/capella/core/sharedmodel/7.0.0">
       </helperImpl>

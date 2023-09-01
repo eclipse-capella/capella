@@ -21,8 +21,7 @@ Export-Package: org.polarsys.capella.viatra.core.data.capellacommon.surrogate,
  org.polarsys.capella.viatra.core.data.la.surrogate,
  org.polarsys.capella.viatra.core.data.oa.surrogate,
  org.polarsys.capella.viatra.core.data.pa.deployment.surrogate,
- org.polarsys.capella.viatra.core.data.pa.surrogate,
- org.polarsys.capella.viatra.core.data.requirement.surrogate
+ org.polarsys.capella.viatra.core.data.pa.surrogate
 Require-Bundle: org.polarsys.capella.common.data.core.gen,
  org.polarsys.capella.core.data.gen,
  org.eclipse.emf.ecore,

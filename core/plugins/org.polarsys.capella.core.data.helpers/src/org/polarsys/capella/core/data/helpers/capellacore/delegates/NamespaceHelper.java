@@ -17,12 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Namespace;
 import org.polarsys.capella.core.data.capellacore.Trace;
-import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 
 public class NamespaceHelper {
 	private static NamespaceHelper instance;
@@ -41,8 +39,6 @@ public class NamespaceHelper {
 
     if (feature.equals(CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES)) {
       ret = getContainedGenericTraces(element);
-    } else if (feature.equals(CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES)) {
-      ret = getContainedRequirementsTraces(element);
     }
 
 		// no helper found... searching in super classes...
@@ -63,13 +59,4 @@ public class NamespaceHelper {
     return traces;
   }
 
-  protected List<RequirementsTrace> getContainedRequirementsTraces(Namespace element) {
-    List<RequirementsTrace> traces = new ArrayList<>();
-    for (Trace trace : element.getOwnedTraces()) {
-      if (trace instanceof RequirementsTrace) {
-        traces.add((RequirementsTrace) trace);
-      }
-    }
-    return traces;
-  }
 }

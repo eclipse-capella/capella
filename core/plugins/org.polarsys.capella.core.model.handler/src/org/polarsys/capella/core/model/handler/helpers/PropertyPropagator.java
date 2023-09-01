@@ -35,7 +35,6 @@ import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.datatype.DatatypePackage;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.oa.OaPackage;
-import org.polarsys.capella.core.data.requirement.RequirementPackage;
 
 /**
  *
@@ -213,7 +212,6 @@ public abstract class PropertyPropagator {
     withSpecializationTypes.add(InformationPackage.Literals.EXCHANGE_ITEM);
     withSpecializationTypes.add(DatatypePackage.Literals.DATA_TYPE);
     withSpecializationTypes.add(InformationPackage.Literals.UNIT);
-    withSpecializationTypes.add(RequirementPackage.Literals.REQUIREMENT);
     withSpecializationTypes.add(CapellacommonPackage.Literals.REGION);
     return withSpecializationTypes;
   }

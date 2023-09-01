@@ -43,7 +43,6 @@ import org.polarsys.capella.core.data.migration.contribution.AbstractMigrationCo
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentPackage;
-import org.polarsys.capella.core.data.requirement.RequirementPackage;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 
 /**
@@ -75,7 +74,6 @@ public class CapellaMigrationContribution extends AbstractMigrationContribution 
     prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.PHYSICAL_ARCHITECTURE_PREFIX, PaPackage.eINSTANCE);
     prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.PHYSICAL_ARCHITECTURE_DEPLOYMENT_PREFIX,
         DeploymentPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.REQUIREMENT_PREFIX, RequirementPackage.eINSTANCE);
     prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.SHARED_MODEL_PREFIX, SharedmodelPackage.eINSTANCE);
     prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.ACTIVITY_PREFIX, ActivityPackage.eINSTANCE);
     prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.BEHAVIOR_PREFIX, BehaviorPackage.eINSTANCE);
@@ -103,7 +101,6 @@ public class CapellaMigrationContribution extends AbstractMigrationContribution 
     pkgs.put(MigrationConstants.OPERATIONAL_ANALYSIS_OLD_6_NSURI, OaPackage.eINSTANCE);
     pkgs.put(MigrationConstants.PHYSICAL_ARCHITECTURE_OLD_6_NSURI, PaPackage.eINSTANCE);
     pkgs.put(MigrationConstants.PHYSICAL_ARCHITECTURE_DEPLOYMENT_OLD_6_NSURI, DeploymentPackage.eINSTANCE);
-    pkgs.put(MigrationConstants.REQUIREMENT_OLD_6_NSURI, RequirementPackage.eINSTANCE);
     pkgs.put(MigrationConstants.SHARED_MODEL_OLD_6_NSURI, SharedmodelPackage.eINSTANCE);
     pkgs.put(MigrationConstants.ACTIVITY_OLD_6_NSURI, ActivityPackage.eINSTANCE);
     pkgs.put(MigrationConstants.BEHAVIOR_OLD_6_NSURI, BehaviorPackage.eINSTANCE);
@@ -127,7 +124,6 @@ public class CapellaMigrationContribution extends AbstractMigrationContribution 
     pkgs.put(MigrationConstants.OPERATIONAL_ANALYSIS_OLD_5_NSURI, OaPackage.eINSTANCE);
     pkgs.put(MigrationConstants.PHYSICAL_ARCHITECTURE_OLD_5_NSURI, PaPackage.eINSTANCE);
     pkgs.put(MigrationConstants.PHYSICAL_ARCHITECTURE_DEPLOYMENT_OLD_5_NSURI, DeploymentPackage.eINSTANCE);
-    pkgs.put(MigrationConstants.REQUIREMENT_OLD_5_NSURI, RequirementPackage.eINSTANCE);
     pkgs.put(MigrationConstants.SHARED_MODEL_OLD_5_NSURI, SharedmodelPackage.eINSTANCE);
     pkgs.put(MigrationConstants.ACTIVITY_OLD_5_NSURI, ActivityPackage.eINSTANCE);
     pkgs.put(MigrationConstants.BEHAVIOR_OLD_5_NSURI, BehaviorPackage.eINSTANCE);
@@ -151,7 +147,6 @@ public class CapellaMigrationContribution extends AbstractMigrationContribution 
     pkgs.put(MigrationConstants.OPERATIONAL_ANALYSIS_OLD_1_4_NSURI, OaPackage.eINSTANCE);
     pkgs.put(MigrationConstants.PHYSICAL_ARCHITECTURE_OLD_1_4_NSURI, PaPackage.eINSTANCE);
     pkgs.put(MigrationConstants.PHYSICAL_ARCHITECTURE_DEPLOYMENT_OLD_1_4_NSURI, DeploymentPackage.eINSTANCE);
-    pkgs.put(MigrationConstants.REQUIREMENT_OLD_1_4_NSURI, RequirementPackage.eINSTANCE);
     pkgs.put(MigrationConstants.SHARED_MODEL_OLD_1_4_NSURI, SharedmodelPackage.eINSTANCE);
     pkgs.put(MigrationConstants.ACTIVITY_OLD_1_4_NSURI, ActivityPackage.eINSTANCE);
     pkgs.put(MigrationConstants.BEHAVIOR_OLD_1_4_NSURI, BehaviorPackage.eINSTANCE);

@@ -516,11 +516,6 @@ ReferenceModelFile.gif
 RefinementLink.gif
 Region.gif
 Require.gif
-RequirementAction.gif
-RequirementModelFile.gif
-RequirementPkg.gif
-RequirementsPkg.gif
-RequirementsTrace.gif
 ReuseLink.gif
 Role.gif
 RoleAllocation.gif
@@ -566,15 +561,10 @@ SystemComponentCapabilityRealizationInvolvment.gif
 SystemEngineering.gif
 SystemEngineeringPkg.gif
 SystemFunction.gif
-SystemFunctionalInterfaceRequirement.gif
-SystemFunctionalRequirement.gif
 SystemFunctionPkg.gif
 SystemFunction_WB.gif
 SystemInterfaceDiagram.gif
-SystemNonFunctionalInterfaceRequirement.gif
-SystemNonFunctionalRequirement.gif
 SystemRealisation.gif
-SystemUserRequirement.gif
 TerminateNode.gif
 TerminatePseudoState.gif
 TransfoLink.gif

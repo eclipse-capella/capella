@@ -42,7 +42,6 @@ public class MigrationConstants {
   public static final String OPERATIONAL_ANALYSIS_PREFIX = CAPELLA_PREFIX + "oa"; //$NON-NLS-1$
   public static final String PHYSICAL_ARCHITECTURE_PREFIX = CAPELLA_PREFIX + "pa"; //$NON-NLS-1$
   public static final String PHYSICAL_ARCHITECTURE_DEPLOYMENT_PREFIX = PHYSICAL_ARCHITECTURE_PREFIX + ".deployment"; //$NON-NLS-1$
-  public static final String REQUIREMENT_PREFIX = CAPELLA_PREFIX + "requirement"; //$NON-NLS-1$
   public static final String SHARED_MODEL_PREFIX = CAPELLA_PREFIX + "sharedmodel"; //$NON-NLS-1$
   public static final String ACTIVITY_PREFIX = SHARED_PREFIX + "activity"; //$NON-NLS-1$
   public static final String BEHAVIOR_PREFIX = SHARED_PREFIX + "behavior"; //$NON-NLS-1$
@@ -66,7 +65,6 @@ public class MigrationConstants {
   public static final String OPERATIONAL_ANALYSIS_OLD_6_NSURI = "http://www.polarsys.org/capella/core/oa/6.0.0";
   public static final String PHYSICAL_ARCHITECTURE_OLD_6_NSURI = "http://www.polarsys.org/capella/core/pa/6.0.0";
   public static final String PHYSICAL_ARCHITECTURE_DEPLOYMENT_OLD_6_NSURI = "http://www.polarsys.org/capella/core/pa/deployment/6.0.0";
-  public static final String REQUIREMENT_OLD_6_NSURI = "http://www.polarsys.org/capella/core/requirement/6.0.0";
   public static final String SHARED_MODEL_OLD_6_NSURI = "http://www.polarsys.org/capella/core/sharedmodel/6.0.0";
 
   public static final String ACTIVITY_OLD_6_NSURI = "http://www.polarsys.org/capella/common/activity/6.0.0";
@@ -92,7 +90,6 @@ public class MigrationConstants {
   public static final String OPERATIONAL_ANALYSIS_OLD_5_NSURI = "http://www.polarsys.org/capella/core/oa/5.0.0";
   public static final String PHYSICAL_ARCHITECTURE_OLD_5_NSURI = "http://www.polarsys.org/capella/core/pa/5.0.0";
   public static final String PHYSICAL_ARCHITECTURE_DEPLOYMENT_OLD_5_NSURI = "http://www.polarsys.org/capella/core/pa/deployment/5.0.0";
-  public static final String REQUIREMENT_OLD_5_NSURI = "http://www.polarsys.org/capella/core/requirement/5.0.0";
   public static final String SHARED_MODEL_OLD_5_NSURI = "http://www.polarsys.org/capella/core/sharedmodel/5.0.0";
 
   public static final String ACTIVITY_OLD_5_NSURI = "http://www.polarsys.org/capella/common/activity/5.0.0";
@@ -118,7 +115,6 @@ public class MigrationConstants {
   public static final String OPERATIONAL_ANALYSIS_OLD_1_4_NSURI = "http://www.polarsys.org/capella/core/oa/1.4.0";
   public static final String PHYSICAL_ARCHITECTURE_OLD_1_4_NSURI = "http://www.polarsys.org/capella/core/pa/1.4.0";
   public static final String PHYSICAL_ARCHITECTURE_DEPLOYMENT_OLD_1_4_NSURI = "http://www.polarsys.org/capella/core/pa/deployment/1.4.0";
-  public static final String REQUIREMENT_OLD_1_4_NSURI = "http://www.polarsys.org/capella/core/requirement/1.4.0";
   public static final String SHARED_MODEL_OLD_1_4_NSURI = "http://www.polarsys.org/capella/core/sharedmodel/1.4.0";
 
   public static final String ACTIVITY_OLD_1_4_NSURI = "http://www.polarsys.org/capella/common/activity/1.4.0";

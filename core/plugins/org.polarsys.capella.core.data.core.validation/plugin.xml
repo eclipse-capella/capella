@@ -538,28 +538,6 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
             </constraint>
          </constraints> 
            
-         <constraints
-               categories="capella.category/integrity">
-            <constraint
-                  class="org.polarsys.capella.core.data.core.validation.constraint.Requirement_ID"
-                  id="I_11"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="I_11 - Requirement ID check"
-                  severity="ERROR"
-                  statusCode="1">
-               <message>
-                  Requirement Id conflict ({0}) on&quot;{1}&quot; and &quot;{2}&quot;
-               </message>
-               <description>
-                  This rule checks that all Requirements have a unique ID attribute.
-               </description>
-               <target
-                     class="SystemEngineering">
-               </target>
-            </constraint>
-         </constraints>
       </constraintProvider>
       <constraintProvider>
          <package

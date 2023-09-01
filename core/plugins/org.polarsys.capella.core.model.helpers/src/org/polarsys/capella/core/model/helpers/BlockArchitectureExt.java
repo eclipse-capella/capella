@@ -90,8 +90,6 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
-import org.polarsys.capella.core.data.requirement.RequirementFactory;
-import org.polarsys.capella.core.data.requirement.RequirementsPkg;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 
 /**
@@ -440,36 +438,6 @@ public class BlockArchitectureExt {
    */
   public static DataPkg getDataPkg(BlockArchitecture architecture) {
     return getDataPkg(architecture, true);
-  }
-
-  /**
-   * Retrieve the Requirement pkg from the given architecture
-   */
-  public static Structure getRequirementsPkg(BlockArchitecture architecture, boolean create) {
-    if (architecture.getOwnedRequirementPkgs().isEmpty() && create) {
-      // to externalize when constants in skeleton will be into helpers.
-      RequirementsPkg pkg = RequirementFactory.eINSTANCE
-          .createRequirementsPkg(NamingConstants.CreateCommonCmd_requirements_pkg_name); // $NON-NLS-1$
-      architecture.getOwnedRequirementPkgs().add(pkg);
-    }
-    if (architecture.getOwnedRequirementPkgs().isEmpty()) {
-      return null;
-    }
-    return architecture.getOwnedRequirementPkgs().get(0);
-  }
-
-  /**
-   * Returns whether the element use a default RequirementPkg name
-   */
-  public static boolean isDefaultNameRequirementsPkg(AbstractNamedElement pkg) {
-    return NamingConstants.CreateCommonCmd_requirements_pkg_name.equals(pkg.getName());
-  }
-
-  /**
-   * Retrieve the Requirement pkg from the given architecture
-   */
-  public static Structure getRequirementsPkg(BlockArchitecture architecture) {
-    return getRequirementsPkg(architecture, true);
   }
 
   /**
