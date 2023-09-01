@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/7.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_9UwGcEgcEeGF0tSxsnyXbQ" selectedViews="_9WGKQEgcEeGF0tSxsnyXbQ _9WGKQUgcEeGF0tSxsnyXbQ _9WPUMEgcEeGF0tSxsnyXbQ _9WZFMEgcEeGF0tSxsnyXbQ _9WiPIEgcEeGF0tSxsnyXbQ _9W1xIEgcEeGF0tSxsnyXbQ _SZSa0LCuEeK-_ZCenGT04A" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_9UwGcEgcEeGF0tSxsnyXbQ" selectedViews="_9WGKQEgcEeGF0tSxsnyXbQ _9WGKQUgcEeGF0tSxsnyXbQ _9WPUMEgcEeGF0tSxsnyXbQ _9WZFMEgcEeGF0tSxsnyXbQ _9WiPIEgcEeGF0tSxsnyXbQ _9W1xIEgcEeGF0tSxsnyXbQ _SZSa0LCuEeK-_ZCenGT04A" version="15.2.0.202303281325">
     <semanticResources>PackageCycleTest4.capella</semanticResources>
     <semanticResources>PackageCycleTest4.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_9WGKQEgcEeGF0tSxsnyXbQ">
@@ -17,7 +17,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_9WiPIEgcEeGF0tSxsnyXbQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Fuu8MHQ3EeaVgPeL-Ht88A" name="[CDB] Data - Class Diagram Blank" repPath="#_-FBs0EgcEeGF0tSxsnyXbQ" changeId="5f68305c-7fd4-4afa-937b-eb04a2f97ebc">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Fuu8MHQ3EeaVgPeL-Ht88A" name="[CDB] Data - Class Diagram Blank" repPath="#_-FBs0EgcEeGF0tSxsnyXbQ" changeId="1692713726367">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="PackageCycleTest4.capella#49b57b87-b6d5-4917-a57e-1851e7307b3d"/>
       </ownedRepresentationDescriptors>

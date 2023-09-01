@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/7.0.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/7.0.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/7.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_CPYAsAP2EeuO89rUpdYbCA" selectedViews="_CQBg8AP2EeuO89rUpdYbCA _CRncYAP2EeuO89rUpdYbCA _CXHncAP2EeuO89rUpdYbCA _CX2nQAP2EeuO89rUpdYbCA _CZOgQAP2EeuO89rUpdYbCA _CZQ8gAP2EeuO89rUpdYbCA _CZjQYAP2EeuO89rUpdYbCA" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_CPYAsAP2EeuO89rUpdYbCA" selectedViews="_CQBg8AP2EeuO89rUpdYbCA _CRncYAP2EeuO89rUpdYbCA _CXHncAP2EeuO89rUpdYbCA _CX2nQAP2EeuO89rUpdYbCA _CZOgQAP2EeuO89rUpdYbCA _CZQ8gAP2EeuO89rUpdYbCA _CZjQYAP2EeuO89rUpdYbCA" version="15.2.0.202303281325">
     <semanticResources>NonLeafAllocation.afm</semanticResources>
     <semanticResources>NonLeafAllocation.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_CQBg8AP2EeuO89rUpdYbCA">
@@ -11,7 +11,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_CXHncAP2EeuO89rUpdYbCA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_D6rr8QP2EeuO89rUpdYbCA" name="[LAB] Logical System" repPath="#_D5DUQAP2EeuO89rUpdYbCA" changeId="cb1a2c56-b57c-48f5-9cca-fd67fc07a6ad">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_D6rr8QP2EeuO89rUpdYbCA" name="[LAB] Logical System" repPath="#_D5DUQAP2EeuO89rUpdYbCA" changeId="1692713512127">
         <eAnnotations xmi:type="description:DAnnotation" uid="_EDaKIAP2EeuO89rUpdYbCA" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_EDaxMAP2EeuO89rUpdYbCA" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_EDaxMQP2EeuO89rUpdYbCA" key="hide.computed.physical.links.filter" value="true"/>
@@ -28,7 +28,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_CZQ8gAP2EeuO89rUpdYbCA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_GwFy0AP2EeuO89rUpdYbCA" name="[PAB] Structure" repPath="#_Gv0tEAP2EeuO89rUpdYbCA" changeId="d35c328a-b58f-442a-9c75-b2952c0f01c4">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_GwFy0AP2EeuO89rUpdYbCA" name="[PAB] Structure" repPath="#_Gv0tEAP2EeuO89rUpdYbCA" changeId="1692713512127">
         <eAnnotations xmi:type="description:DAnnotation" uid="_GzS30AP2EeuO89rUpdYbCA" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GzS30QP2EeuO89rUpdYbCA" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GzS30gP2EeuO89rUpdYbCA" key="hide.computed.physical.links.filter" value="true"/>

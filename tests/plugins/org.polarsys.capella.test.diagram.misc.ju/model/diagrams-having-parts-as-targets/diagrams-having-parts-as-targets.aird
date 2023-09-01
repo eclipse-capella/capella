@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/7.0.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter">
-  <viewpoint:DAnalysis uid="_89eJkKKjEeuz-ecGGIJjJg" selectedViews="_8-9-YKKjEeuz-ecGGIJjJg _9CArUKKjEeuz-ecGGIJjJg _9UW_kKKjEeuz-ecGGIJjJg _9VGmcKKjEeuz-ecGGIJjJg _9X-UQKKjEeuz-ecGGIJjJg _9an_oKKjEeuz-ecGGIJjJg _9bF5sKKjEeuz-ecGGIJjJg" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_89eJkKKjEeuz-ecGGIJjJg" selectedViews="_8-9-YKKjEeuz-ecGGIJjJg _9CArUKKjEeuz-ecGGIJjJg _9UW_kKKjEeuz-ecGGIJjJg _9VGmcKKjEeuz-ecGGIJjJg _9X-UQKKjEeuz-ecGGIJjJg _9an_oKKjEeuz-ecGGIJjJg _9bF5sKKjEeuz-ecGGIJjJg" version="15.2.0.202303281325">
     <semanticResources>diagrams-having-parts-as-targets.afm</semanticResources>
     <semanticResources>diagrams-having-parts-as-targets.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_8-9-YKKjEeuz-ecGGIJjJg">
@@ -11,7 +11,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_9UW_kKKjEeuz-ecGGIJjJg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_DBwAMKKkEeuz-ecGGIJjJg" name="[PAB] Physical System" repPath="#_DBmPMKKkEeuz-ecGGIJjJg" changeId="47973962-6c50-49a8-9e10-96cf149226aa">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_DBwAMKKkEeuz-ecGGIJjJg" name="[PAB] Physical System" repPath="#_DBmPMKKkEeuz-ecGGIJjJg" changeId="1692709510476">
         <eAnnotations xmi:type="description:DAnnotation" uid="_DB04sKKkEeuz-ecGGIJjJg" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_DB04saKkEeuz-ecGGIJjJg" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_DB04sqKkEeuz-ecGGIJjJg" key="hide.computed.physical.links.filter" value="true"/>
@@ -25,7 +25,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_9X-UQKKjEeuz-ecGGIJjJg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BSg3MKKkEeuz-ecGGIJjJg" name="[LAB] Logical System" repPath="#_BSXGMKKkEeuz-ecGGIJjJg" changeId="f8bb4505-adec-4994-b5cb-29bc8980b6ac">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BSg3MKKkEeuz-ecGGIJjJg" name="[LAB] Logical System" repPath="#_BSXGMKKkEeuz-ecGGIJjJg" changeId="1692709510476">
         <eAnnotations xmi:type="description:DAnnotation" uid="_BStEcKKkEeuz-ecGGIJjJg" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_BStEcaKkEeuz-ecGGIJjJg" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_BStEcqKkEeuz-ecGGIJjJg" key="hide.computed.physical.links.filter" value="true"/>
@@ -36,7 +36,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_9an_oKKjEeuz-ecGGIJjJg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_G3VKoKKkEeuz-ecGGIJjJg" name="[EAB] System" repPath="#_G3RgQKKkEeuz-ecGGIJjJg" changeId="67e21ea1-71d2-4818-8f80-bc55fb7e641d">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_G3VKoKKkEeuz-ecGGIJjJg" name="[EAB] System" repPath="#_G3RgQKKkEeuz-ecGGIJjJg" changeId="1692709510476">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="diagrams-having-parts-as-targets.capella#ca0cb6e1-bc49-4548-91ad-e63268dc92ef"/>
       </ownedRepresentationDescriptors>

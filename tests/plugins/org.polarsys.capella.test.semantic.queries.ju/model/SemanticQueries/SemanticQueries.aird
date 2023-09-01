@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/7.0.0" xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/7.0.0" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/7.0.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/7.0.0" xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/7.0.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/7.0.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/7.0.0" xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/7.0.0" xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/7.0.0" xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/7.0.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/7.0.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/7.0.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/7.0.0" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.polarsys.org/capella/core/information/datatype/7.0.0 http://www.polarsys.org/capella/core/information/7.0.0#//datatype http://www.polarsys.org/capella/core/information/datavalue/7.0.0 http://www.polarsys.org/capella/core/information/7.0.0#//datavalue http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_cuHrkOVJEeWC_cpFfVotog" selectedViews="_c7gnUOVJEeWC_cpFfVotog _c79TQOVJEeWC_cpFfVotog _c8HEQOVJEeWC_cpFfVotog _c8jwMOVJEeWC_cpFfVotog _c82rIOVJEeWC_cpFfVotog _c9chAOVJEeWC_cpFfVotog _c-MH4OVJEeWC_cpFfVotog" version="15.1.0.202211301600">
+  <viewpoint:DAnalysis uid="_cuHrkOVJEeWC_cpFfVotog" selectedViews="_c7gnUOVJEeWC_cpFfVotog _c79TQOVJEeWC_cpFfVotog _c8HEQOVJEeWC_cpFfVotog _c8jwMOVJEeWC_cpFfVotog _c82rIOVJEeWC_cpFfVotog _c9chAOVJEeWC_cpFfVotog _c-MH4OVJEeWC_cpFfVotog" version="15.2.0.202303281325">
     <semanticResources>SemanticQueries.capella</semanticResources>
     <semanticResources>SemanticQueries.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_c7gnUOVJEeWC_cpFfVotog">
@@ -1323,7 +1323,7 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="__LvRkaCDEeyH1e85yB73sQ" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="__LvRkqCDEeyH1e85yB73sQ"/>
           </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_ibIssfPREeir7dIEry0zuQ" fontColor="9914954" fontName="Segoe UI" fontHeight="8"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_ibIssfPREeir7dIEry0zuQ" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ibIssvPREeir7dIEry0zuQ" x="50" y="50" width="150" height="50"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_iZ8Z4vPREeir7dIEry0zuQ"/>
@@ -4188,7 +4188,7 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_2oerQaOdEey1dYif9iaz1A" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2oerQqOdEey1dYif9iaz1A"/>
           </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_iI6Ha_orEei1PqIazvMT4w" fontColor="9914954" fontName="Segoe UI" fontHeight="8"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_iI6Ha_orEei1PqIazvMT4w" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_iI6HbPorEei1PqIazvMT4w" x="50" y="50" width="150" height="50"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_j3B2HPorEei1PqIazvMT4w" type="2001" element="_j2u7IPorEei1PqIazvMT4w">
@@ -4391,7 +4391,7 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_rf2J8aOdEey1dYif9iaz1A" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rf2J8qOdEey1dYif9iaz1A"/>
           </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_t-k-gf-1EeibmO7DR_zulA" fontColor="9914954" fontName="Segoe UI" fontHeight="8"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_t-k-gf-1EeibmO7DR_zulA" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_t-k-gv-1EeibmO7DR_zulA" x="50" y="50" width="150" height="50"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_swHfAKOdEey1dYif9iaz1A" type="2001" element="_svt2YKOdEey1dYif9iaz1A">
@@ -7953,7 +7953,7 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_kknocaxJEey6aJ2JO1bq9Q" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kknocqxJEey6aJ2JO1bq9Q"/>
           </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_ho8boaE_EeyBJ7H5UdZsew" fontColor="3038217" fontName="Segoe UI" fontHeight="8"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_ho8boaE_EeyBJ7H5UdZsew" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ho8boqE_EeyBJ7H5UdZsew" x="310" y="50" width="100" height="50"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_ho8bpaE_EeyBJ7H5UdZsew" type="2001" element="_hor886E_EeyBJ7H5UdZsew">
@@ -14205,7 +14205,7 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_UuemQTTtEe2g6rtd7Hf7cA" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UuemQjTtEe2g6rtd7Hf7cA"/>
           </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_Er24caQ4Eey1dYif9iaz1A" fontColor="3038217" fontName="Segoe UI" fontHeight="8"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_Er24caQ4Eey1dYif9iaz1A" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Er24cqQ4Eey1dYif9iaz1A" x="180" y="50" width="100" height="50"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_Wr0csDTtEe2g6rtd7Hf7cA" type="2002" element="_WqqmIDTtEe2g6rtd7Hf7cA">

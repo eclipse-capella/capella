@@ -20,7 +20,6 @@ Operational Entity,8
 Operational Process,2
 Part,8
 Region,7
-Requirements Pkg,1
 Role Pkg,1
 Scenario,1
 Sequence Message,15

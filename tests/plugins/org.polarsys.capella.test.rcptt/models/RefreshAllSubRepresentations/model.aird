@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/7.0.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/7.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_ko3l4PxHEee96NUz6nGUCg" selectedViews="_kpQncPxHEee96NUz6nGUCg _kuIgYPxHEee96NUz6nGUCg _kuVUsfxHEee96NUz6nGUCg _kudQgPxHEee96NUz6nGUCg _kuiwEPxHEee96NUz6nGUCg _kutIIPxHEee96NUz6nGUCg _kuz10PxHEee96NUz6nGUCg" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_ko3l4PxHEee96NUz6nGUCg" selectedViews="_kpQncPxHEee96NUz6nGUCg _kuIgYPxHEee96NUz6nGUCg _kuVUsfxHEee96NUz6nGUCg _kudQgPxHEee96NUz6nGUCg _kuiwEPxHEee96NUz6nGUCg _kutIIPxHEee96NUz6nGUCg _kuz10PxHEee96NUz6nGUCg" version="15.2.0.202303281325">
     <semanticResources>model.afm</semanticResources>
     <semanticResources>model.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_kpQncPxHEee96NUz6nGUCg">
@@ -8,7 +8,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_kuIgYPxHEee96NUz6nGUCg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_mPF80PxHEee96NUz6nGUCg" name="[OAIB] Root Operational Activity" repPath="#_mPHK8PxHEee96NUz6nGUCg" changeId="d863c008-3281-4e2c-b196-93f593a61fee">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_mPF80PxHEee96NUz6nGUCg" name="[OAIB] Root Operational Activity" repPath="#_mPHK8PxHEee96NUz6nGUCg" changeId="1692709426614">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="model.capella#af8c44ef-1155-4346-8ba0-fe394a99a387"/>
       </ownedRepresentationDescriptors>

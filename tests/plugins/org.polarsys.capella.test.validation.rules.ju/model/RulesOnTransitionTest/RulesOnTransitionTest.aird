@@ -1,143 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/7.0.0" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/7.0.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/7.0.0" xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/7.0.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/7.0.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/7.0.0" xmlns:org.polarsys.capella.core.data.information.communication="http://www.polarsys.org/capella/core/information/communication/7.0.0" xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/7.0.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/7.0.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/7.0.0" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.polarsys.org/capella/core/information/communication/7.0.0 http://www.polarsys.org/capella/core/information/7.0.0#//communication http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_uGkL0SNkEeK5yf6fVtp2Wg" selectedViews="_uMqMwCNkEeK5yf6fVtp2Wg _uM9uwCNkEeK5yf6fVtp2Wg _uNG4sCNkEeK5yf6fVtp2Wg _uNG4sSNkEeK5yf6fVtp2Wg _uNZzoCNkEeK5yf6fVtp2Wg _uNjkoCNkEeK5yf6fVtp2Wg _dxwdACppEeKPsKKQfARhIg" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_uGkL0SNkEeK5yf6fVtp2Wg" selectedViews="_uMqMwCNkEeK5yf6fVtp2Wg _uM9uwCNkEeK5yf6fVtp2Wg _uNG4sCNkEeK5yf6fVtp2Wg _uNG4sSNkEeK5yf6fVtp2Wg _uNZzoCNkEeK5yf6fVtp2Wg _uNjkoCNkEeK5yf6fVtp2Wg _dxwdACppEeKPsKKQfARhIg" version="15.2.0.202303281325">
     <semanticResources>RulesOnTransitionTest.capella</semanticResources>
     <semanticResources>RulesOnTransitionTest.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_uMqMwCNkEeK5yf6fVtp2Wg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7YnQvEeamAMxs9g9ZYQ" name="[IDB] Physical System - Interfaces Diagram Blank" repPath="#_SllqESf5EeKKpYsDnorq1A" changeId="a93461b6-086f-46d6-9b18-0a3b3affb7d8">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7YnQvEeamAMxs9g9ZYQ" name="[IDB] Physical System - Interfaces Diagram Blank" repPath="#_SllqESf5EeKKpYsDnorq1A" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="RulesOnTransitionTest.capella#a5eb5f5f-3360-4adf-984a-128d67e6d9a3"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7Y3QvEeamAMxs9g9ZYQ" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_AjpcsCf7EeKKpYsDnorq1A" changeId="766c4d20-4cd2-4682-9c3a-9976043d35f9">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7Y3QvEeamAMxs9g9ZYQ" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_AjpcsCf7EeKKpYsDnorq1A" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="RulesOnTransitionTest.capella#c5ceb3d1-72e7-448c-bff5-d3ea750bd6f7"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7ZHQvEeamAMxs9g9ZYQ" name="[M&amp;S] Default Region - Modes &amp; States" repPath="#_zHYfUCgPEeKKpYsDnorq1A" changeId="fde0f376-1c3c-44e6-b39d-e3bdc94c32fb">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7ZHQvEeamAMxs9g9ZYQ" name="[M&amp;S] Default Region - Modes &amp; States" repPath="#_zHYfUCgPEeKKpYsDnorq1A" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']"/>
         <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="RulesOnTransitionTest.capella#53ca36c8-077f-4be3-a3dd-80a8c87a4edd"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7ZXQvEeamAMxs9g9ZYQ" name="[M&amp;S] Default Region - Modes &amp; States" repPath="#_6w_VACgPEeKKpYsDnorq1A" changeId="c97efc2e-0a9c-4ab8-9d35-75211b37bb9c">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7ZXQvEeamAMxs9g9ZYQ" name="[M&amp;S] Default Region - Modes &amp; States" repPath="#_6w_VACgPEeKKpYsDnorq1A" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']"/>
         <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="RulesOnTransitionTest.capella#ad880b2f-d439-497a-a3ec-6b2500039efc"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7ZnQvEeamAMxs9g9ZYQ" name="[IS] OK_CR - Interface Scenario" repPath="#_qfFO8CgeEeKKpYsDnorq1A" changeId="56186183-29c6-4673-8056-da8e69ee1d7c">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7ZnQvEeamAMxs9g9ZYQ" name="[IS] OK_CR - Interface Scenario" repPath="#_qfFO8CgeEeKKpYsDnorq1A" changeId="1692714359177">
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="RulesOnTransitionTest.capella#0d65a4b2-9859-4402-8cb2-d22f133f3c65"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7Z3QvEeamAMxs9g9ZYQ" name="[IS] Scenario 1 - Interface Scenario" repPath="#_GIqKMCm4EeKzfokmsyVSJA" changeId="c8fe1920-4ef0-424d-a48c-7fcb15fb5fe2">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7Z3QvEeamAMxs9g9ZYQ" name="[IS] Scenario 1 - Interface Scenario" repPath="#_GIqKMCm4EeKzfokmsyVSJA" changeId="1692714359177">
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="RulesOnTransitionTest.capella#50bc1f73-81c9-4871-b8d2-3148add7cd39"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7aHQvEeamAMxs9g9ZYQ" name="[IDB] Physical System - Interfaces Diagram Blank" repPath="#_J56EcCpLEeK6neFbfqzKEA" changeId="da38b7cc-73c3-4aa6-a204-65b1d13408a0">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7aHQvEeamAMxs9g9ZYQ" name="[IDB] Physical System - Interfaces Diagram Blank" repPath="#_J56EcCpLEeK6neFbfqzKEA" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="RulesOnTransitionTest.capella#3875b213-2ac3-44ad-a9b1-cced648b22d4"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7aXQvEeamAMxs9g9ZYQ" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_4mJrYCpPEeK6neFbfqzKEA" changeId="810f8bf7-d696-42d6-a4ad-fcfafe1170ea">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7aXQvEeamAMxs9g9ZYQ" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_4mJrYCpPEeK6neFbfqzKEA" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="RulesOnTransitionTest.capella#246b53bc-bac9-4664-bf66-414acf42f306"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7anQvEeamAMxs9g9ZYQ" name="[IDB] Physical System - Interfaces Diagram Blank" repPath="#_wKkJsCpQEeK6neFbfqzKEA" changeId="efe66f0b-0e90-40af-80c7-d6163b6f93e4">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7anQvEeamAMxs9g9ZYQ" name="[IDB] Physical System - Interfaces Diagram Blank" repPath="#_wKkJsCpQEeK6neFbfqzKEA" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="RulesOnTransitionTest.capella#389a1584-785d-4289-b0ed-8cf7ce7bd69a"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7a3QvEeamAMxs9g9ZYQ" name="[IS] OK_Capability - Interface Scenario" repPath="#_f9-VkCpsEeKPsKKQfARhIg" changeId="ec3d2401-34bb-4357-b23c-9e7410d0a321">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7a3QvEeamAMxs9g9ZYQ" name="[IS] OK_Capability - Interface Scenario" repPath="#_f9-VkCpsEeKPsKKQfARhIg" changeId="1692714359177">
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="RulesOnTransitionTest.capella#fe515cbe-e62e-492c-8d6e-496a9dccb4aa"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7bHQvEeamAMxs9g9ZYQ" name="[M&amp;S] Default Region - Modes &amp; States" repPath="#_GJJeEBfBEeSmi_0EcubcNw" changeId="3081ebeb-1d0c-47c0-b3b7-14d697c1bb52">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7bHQvEeamAMxs9g9ZYQ" name="[M&amp;S] Default Region - Modes &amp; States" repPath="#_GJJeEBfBEeSmi_0EcubcNw" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']"/>
         <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="RulesOnTransitionTest.capella#b77a8b58-69f6-4a49-a672-b713c226ac76"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7bXQvEeamAMxs9g9ZYQ" name="[M&amp;S] KO1 - Modes &amp; States" repPath="#_XzUZwBfBEeSmi_0EcubcNw" changeId="62aff3fb-9528-4a6c-bee7-32915462e275">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7bXQvEeamAMxs9g9ZYQ" name="[M&amp;S] KO1 - Modes &amp; States" repPath="#_XzUZwBfBEeSmi_0EcubcNw" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']"/>
         <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="RulesOnTransitionTest.capella#963c548b-14bb-4e92-9c28-fae79ec15b73"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_uM9uwCNkEeK5yf6fVtp2Wg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7V3QvEeamAMxs9g9ZYQ" name="[EAB] System - EPBS Architecture Blank" repPath="#_b4FvkCNsEeKGQ5Vaqd_ErA" changeId="01a5d56a-a782-410b-bd90-49e24ab29f4c">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7V3QvEeamAMxs9g9ZYQ" name="[EAB] System - EPBS Architecture Blank" repPath="#_b4FvkCNsEeKGQ5Vaqd_ErA" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem" href="RulesOnTransitionTest.capella#861baac1-96ae-41d5-95cb-e94c240a3c5d"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_uNG4sCNkEeK5yf6fVtp2Wg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7WHQvEeamAMxs9g9ZYQ" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_u7nY8CNuEeKGQ5Vaqd_ErA" changeId="6a71928c-affb-46a4-8648-5ad2708c500f">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7WHQvEeamAMxs9g9ZYQ" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_u7nY8CNuEeKGQ5Vaqd_ErA" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="RulesOnTransitionTest.capella#21fee32c-061d-4a3d-a148-db688c4c95d5"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7WXQvEeamAMxs9g9ZYQ" name="[LDFB] Root Logical Function - Logical Data Flow Blank" repPath="#_yRzt0CdBEeK1R8JB6mNNPA" changeId="4645cad6-a245-467e-8e04-59b90289f6d1">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7WXQvEeamAMxs9g9ZYQ" name="[LDFB] Root Logical Function - Logical Data Flow Blank" repPath="#_yRzt0CdBEeK1R8JB6mNNPA" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="RulesOnTransitionTest.capella#35f9f893-450c-414b-ac85-8124f068472f"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7WnQvEeamAMxs9g9ZYQ" name="[LDFB] Root Logical Function - Logical Data Flow Blank" repPath="#_juXyMCdEEeK1R8JB6mNNPA" changeId="08963b05-68c7-45f5-954c-9e72227966ad">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7WnQvEeamAMxs9g9ZYQ" name="[LDFB] Root Logical Function - Logical Data Flow Blank" repPath="#_juXyMCdEEeK1R8JB6mNNPA" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="RulesOnTransitionTest.capella#9911b023-eb3e-4709-a6b5-709c1c52e300"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7W3QvEeamAMxs9g9ZYQ" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_9mCZICdXEeKqwrAw6_Z-EA" changeId="932a304b-697a-42fd-9ef6-a9921c6e0019">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7W3QvEeamAMxs9g9ZYQ" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_9mCZICdXEeKqwrAw6_Z-EA" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="RulesOnTransitionTest.capella#045701d1-7163-42c6-b3d6-43b220822267"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7XHQvEeamAMxs9g9ZYQ" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_jrjhMCdkEeKqwrAw6_Z-EA" changeId="7e2959df-17db-4e11-8d9e-f8f7ba5da26f">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7XHQvEeamAMxs9g9ZYQ" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_jrjhMCdkEeKqwrAw6_Z-EA" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="RulesOnTransitionTest.capella#af92ba60-9b9f-4c50-bf17-ec741e0ebfe1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7XXQvEeamAMxs9g9ZYQ" name="[LDFB] Root Logical Function - Logical Data Flow Blank" repPath="#_t38AMCdlEeKqwrAw6_Z-EA" changeId="dbf70a13-7717-41fd-b3d9-567cb3e5ac96">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7XXQvEeamAMxs9g9ZYQ" name="[LDFB] Root Logical Function - Logical Data Flow Blank" repPath="#_t38AMCdlEeKqwrAw6_Z-EA" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="RulesOnTransitionTest.capella#a723d542-1ee9-43d6-86a8-d00f439a69c3"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7XnQvEeamAMxs9g9ZYQ" name="[LDFB] Root Logical Function - Logical Data Flow Blank" repPath="#_12KQYCgoEeKKpYsDnorq1A" changeId="8919257f-cd41-4d5d-8388-6b2d8f898398">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7XnQvEeamAMxs9g9ZYQ" name="[LDFB] Root Logical Function - Logical Data Flow Blank" repPath="#_12KQYCgoEeKKpYsDnorq1A" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="RulesOnTransitionTest.capella#7ea9301b-709d-4e7f-907c-18a0b6edb9a4"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7X3QvEeamAMxs9g9ZYQ" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_aMo2wCjEEeK_kc7qud1bpg" changeId="9cfe0be3-5fdc-4f3b-8b7b-a0f9e557e900">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7X3QvEeamAMxs9g9ZYQ" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_aMo2wCjEEeK_kc7qud1bpg" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="RulesOnTransitionTest.capella#eba9bf72-90b5-4c73-a8b6-f5f47682667f"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7YHQvEeamAMxs9g9ZYQ" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_hvkqEDJDEeKjIqJlNPd2Ow" changeId="ea9777bf-244a-4a2b-ba8b-7021f04e26cb">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7YHQvEeamAMxs9g9ZYQ" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_hvkqEDJDEeKjIqJlNPd2Ow" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="RulesOnTransitionTest.capella#9c919581-978a-45ca-a20f-fa8de2bace4a"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7YXQvEeamAMxs9g9ZYQ" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_MGjfkHtHEeKsfb9BMv-rPA" changeId="0dc9a96b-44f8-4034-83fc-a5d760a45c40">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7YXQvEeamAMxs9g9ZYQ" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_MGjfkHtHEeKsfb9BMv-rPA" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="RulesOnTransitionTest.capella#b4a12c92-1b83-4e9d-8aae-543035bc7254"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_uNG4sSNkEeK5yf6fVtp2Wg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7bnQvEeamAMxs9g9ZYQ" name="[PAB] Physical System - Physical Architecture Blank" repPath="#_1LHoICNuEeKGQ5Vaqd_ErA" changeId="3e54cea2-769d-4c9b-8582-e4f7e4ce92dc">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7bnQvEeamAMxs9g9ZYQ" name="[PAB] Physical System - Physical Architecture Blank" repPath="#_1LHoICNuEeKGQ5Vaqd_ErA" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="RulesOnTransitionTest.capella#0283531b-32bb-4b36-9b67-23cc39e937a0"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_uNZzoCNkEeK5yf6fVtp2Wg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7UHQvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - System Data Flow Blank" repPath="#_3f0q0CdBEeK1R8JB6mNNPA" changeId="dc4c2b21-a029-4076-b795-8c2261cf2f76">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7UHQvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - System Data Flow Blank" repPath="#_3f0q0CdBEeK1R8JB6mNNPA" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="RulesOnTransitionTest.capella#9d51f65b-f92d-4ce3-95b4-ed90a2a149c1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7UXQvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - System Data Flow Blank" repPath="#_goEIkCdEEeK1R8JB6mNNPA" changeId="a9b95548-260a-411e-88b7-fbaefd0d6f54">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7UXQvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - System Data Flow Blank" repPath="#_goEIkCdEEeK1R8JB6mNNPA" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="RulesOnTransitionTest.capella#0c11fbf1-1f2f-41e1-aa53-2fe031cb193d"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7UnQvEeamAMxs9g9ZYQ" name="[SAB] System - System Architecture Blank" repPath="#_RnA0ICdYEeKqwrAw6_Z-EA" changeId="8ea8a700-813e-4f06-b249-e6a68ae1785a">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7UnQvEeamAMxs9g9ZYQ" name="[SAB] System - System Architecture Blank" repPath="#_RnA0ICdYEeKqwrAw6_Z-EA" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="RulesOnTransitionTest.capella#cd4f5e29-f016-479b-abc3-a904f508914a"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7U3QvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - System Data Flow Blank" repPath="#_kFr4YCgoEeKKpYsDnorq1A" changeId="96c8e1d8-e7b2-49b4-b75f-9f42162d3dc8">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7U3QvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - System Data Flow Blank" repPath="#_kFr4YCgoEeKKpYsDnorq1A" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="RulesOnTransitionTest.capella#fad0f68f-7f11-4213-a281-5be04298a4d0"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7VHQvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - System Data Flow Blank" repPath="#_7rNPYCiwEeK_kc7qud1bpg" changeId="9596509b-e743-4467-a780-9792d5deeb9b">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7VHQvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - System Data Flow Blank" repPath="#_7rNPYCiwEeK_kc7qud1bpg" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="RulesOnTransitionTest.capella#284fd735-f8aa-4c80-93ce-4892d61b0863"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7VXQvEeamAMxs9g9ZYQ" name="[SAB] System - System Architecture Blank" repPath="#_RAepMCjEEeK_kc7qud1bpg" changeId="1cc0c148-2f73-4a54-bb4f-3d5b660c7641">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7VXQvEeamAMxs9g9ZYQ" name="[SAB] System - System Architecture Blank" repPath="#_RAepMCjEEeK_kc7qud1bpg" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="RulesOnTransitionTest.capella#2f1b9be5-bff9-44e4-b936-f75ecc258926"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7VnQvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - System Data Flow Blank" repPath="#_VmPbYDIwEeKjIqJlNPd2Ow" changeId="92ab232c-cf09-4bc2-b891-860246027213">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7VnQvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - System Data Flow Blank" repPath="#_VmPbYDIwEeKjIqJlNPd2Ow" changeId="1692714359177">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="RulesOnTransitionTest.capella#a6cc4f14-e429-401b-adb7-5a98a3170a44"/>
       </ownedRepresentationDescriptors>
@@ -2908,7 +2908,7 @@
                     <styles xmi:type="notation:ShapeStyle" xmi:id="_SBLWMTJREeKjIqJlNPd2Ow" fontHeight="8"/>
                     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_SBLWMjJREeKjIqJlNPd2Ow" x="48" y="33" width="10" height="10"/>
                   </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_j3XdATJDEeKjIqJlNPd2Ow" fontHeight="8"/>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_j3XdATJDEeKjIqJlNPd2Ow" fontColor="3038217" fontHeight="8"/>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_j3XdAjJDEeKjIqJlNPd2Ow" x="20" y="34" width="96" height="41"/>
                 </children>
                 <styles xmi:type="notation:SortingStyle" xmi:id="_jUhOpTJDEeKjIqJlNPd2Ow"/>
@@ -3104,7 +3104,7 @@
                     <styles xmi:type="notation:ShapeStyle" xmi:id="_UJWRUXtHEeKsfb9BMv-rPA" fontHeight="8"/>
                     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UJWRUntHEeKsfb9BMv-rPA" x="58" y="21" width="10" height="10"/>
                   </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_PLq2YXtHEeKsfb9BMv-rPA" fontHeight="8"/>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_PLq2YXtHEeKsfb9BMv-rPA" fontColor="3038217" fontHeight="8"/>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PLq2YntHEeKsfb9BMv-rPA" x="45" y="18" width="66" height="50"/>
                 </children>
                 <styles xmi:type="notation:SortingStyle" xmi:id="_NCPEtXtHEeKsfb9BMv-rPA"/>
@@ -3146,7 +3146,7 @@
                     <styles xmi:type="notation:ShapeStyle" xmi:id="_UJWRWXtHEeKsfb9BMv-rPA" fontHeight="8"/>
                     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UJWRWntHEeKsfb9BMv-rPA" x="-2" y="21" width="10" height="10"/>
                   </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_P2n34XtHEeKsfb9BMv-rPA" fontHeight="8"/>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_P2n34XtHEeKsfb9BMv-rPA" fontColor="3038217" fontHeight="8"/>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_P2n34ntHEeKsfb9BMv-rPA" x="20" y="24" width="75" height="50"/>
                 </children>
                 <styles xmi:type="notation:SortingStyle" xmi:id="_Na0j1XtHEeKsfb9BMv-rPA"/>
@@ -3188,7 +3188,7 @@
                     <styles xmi:type="notation:ShapeStyle" xmi:id="_V31MYXtHEeKsfb9BMv-rPA" fontHeight="8"/>
                     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_V31MYntHEeKsfb9BMv-rPA" x="68" y="30" width="10" height="10"/>
                   </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_QqTXkXtHEeKsfb9BMv-rPA" fontHeight="8"/>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_QqTXkXtHEeKsfb9BMv-rPA" fontColor="3038217" fontHeight="8"/>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QqTXkntHEeKsfb9BMv-rPA" x="20" y="20" width="76" height="50"/>
                 </children>
                 <styles xmi:type="notation:SortingStyle" xmi:id="_N1LklXtHEeKsfb9BMv-rPA"/>
@@ -3230,7 +3230,7 @@
                     <styles xmi:type="notation:ShapeStyle" xmi:id="_V3-WVHtHEeKsfb9BMv-rPA" fontHeight="8"/>
                     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_V3-WVXtHEeKsfb9BMv-rPA" x="-2" y="22" width="10" height="10"/>
                   </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_RMqdwXtHEeKsfb9BMv-rPA" fontHeight="8"/>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_RMqdwXtHEeKsfb9BMv-rPA" fontColor="3038217" fontHeight="8"/>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RMqdwntHEeKsfb9BMv-rPA" x="20" y="21" width="68" height="50"/>
                 </children>
                 <styles xmi:type="notation:SortingStyle" xmi:id="_OLP7NXtHEeKsfb9BMv-rPA"/>
@@ -6190,7 +6190,7 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_f9-VsSpsEeKPsKKQfARhIg"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_f9-VsipsEeKPsKKQfARhIg"/>
           </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_f9-VpypsEeKPsKKQfARhIg" fontHeight="8"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_f9-VpypsEeKPsKKQfARhIg" fontColor="9914954" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_f9-VqCpsEeKPsKKQfARhIg" x="50" y="50" width="150" height="50"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_f9-VpSpsEeKPsKKQfARhIg"/>

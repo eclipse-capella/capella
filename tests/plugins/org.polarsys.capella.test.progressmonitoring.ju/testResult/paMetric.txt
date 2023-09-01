@@ -30,8 +30,6 @@ Physical Link,21
 Physical Path,2
 Physical Port,37
 Physical Quantity,3
-Requirements Pkg,1
 String Type,1
-System Non Functional Requirement,2
 Unit,3
 undefined,39

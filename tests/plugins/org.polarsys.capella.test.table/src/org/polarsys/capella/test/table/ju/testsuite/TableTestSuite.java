@@ -33,7 +33,7 @@ public class TableTestSuite extends BasicTestSuite {
 
   @Override
   public List<String> getRequiredTestModels() {
-    return Arrays.asList("SF-OA", "CrossTable-OA", "InterfaceTable");
+    return Arrays.asList("SF-OA", "InterfaceTable");
   }
 
   @Override

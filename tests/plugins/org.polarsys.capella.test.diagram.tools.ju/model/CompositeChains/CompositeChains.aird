@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/7.0.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/7.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_nKLKsDEGEemiJKacZt74eQ" selectedViews="_nThT8DEGEemiJKacZt74eQ _nrOCQDEGEemiJKacZt74eQ _nrZBYDEGEemiJKacZt74eQ _nrnD0DEGEemiJKacZt74eQ _nsyIgDEGEemiJKacZt74eQ _ntQCkDEGEemiJKacZt74eQ _ntdd8DEGEemiJKacZt74eQ" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_nKLKsDEGEemiJKacZt74eQ" selectedViews="_nThT8DEGEemiJKacZt74eQ _nrOCQDEGEemiJKacZt74eQ _nrZBYDEGEemiJKacZt74eQ _nrnD0DEGEemiJKacZt74eQ _nsyIgDEGEemiJKacZt74eQ _ntQCkDEGEemiJKacZt74eQ _ntdd8DEGEemiJKacZt74eQ" version="15.2.0.202303281325">
     <semanticResources>CompositeChains.afm</semanticResources>
     <semanticResources>CompositeChains.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_nThT8DEGEemiJKacZt74eQ">
@@ -11,7 +11,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_nrZBYDEGEemiJKacZt74eQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_IGdvADUMEemj_efF4T16lg" name="[LFCD] FunctionalChain 6" repPath="#_IGWaQDUMEemj_efF4T16lg" changeId="025e4a67-8f9a-4443-bf99-266d133f9183">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_IGdvADUMEemj_efF4T16lg" name="[LFCD] FunctionalChain 6" repPath="#_IGWaQDUMEemj_efF4T16lg" changeId="1692709390294">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']"/>
         <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="CompositeChains.capella#7b949ee1-223b-46ce-a8c7-fd2093028efd"/>
       </ownedRepresentationDescriptors>
@@ -21,11 +21,11 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_nsyIgDEGEemiJKacZt74eQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_AOrTYDUMEemj_efF4T16lg" name="[LDFB] Root Logical Function" repPath="#_AOd4ADUMEemj_efF4T16lg" changeId="03ebe472-07d7-469c-92a8-87d9da22123e">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_AOrTYDUMEemj_efF4T16lg" name="[LDFB] Root Logical Function" repPath="#_AOd4ADUMEemj_efF4T16lg" changeId="1692709390294">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="CompositeChains.capella#34d30df9-4af8-4e56-8fb8-8d3c1199b2fc"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_KVi6EDUqEem8pfs0hO7glw" name="[LDFB] Parent Functions" repPath="#_KVVesDUqEem8pfs0hO7glw" changeId="329c0467-c2e9-4f97-9d8b-9eb838a14190">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_KVi6EDUqEem8pfs0hO7glw" name="[LDFB] Parent Functions" repPath="#_KVVesDUqEem8pfs0hO7glw" changeId="1692709390294">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="CompositeChains.capella#34d30df9-4af8-4e56-8fb8-8d3c1199b2fc"/>
       </ownedRepresentationDescriptors>

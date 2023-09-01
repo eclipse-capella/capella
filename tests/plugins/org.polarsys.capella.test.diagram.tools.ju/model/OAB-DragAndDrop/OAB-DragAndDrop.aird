@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/7.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_IU1GwObQEeqUc8Y6CrCvEA" selectedViews="_IVsCYObQEeqUc8Y6CrCvEA _IWukMObQEeqUc8Y6CrCvEA _IfhT0ObQEeqUc8Y6CrCvEA _IgtmoObQEeqUc8Y6CrCvEA _IhAhkObQEeqUc8Y6CrCvEA _IhwIcObQEeqUc8Y6CrCvEA _IiWlYObQEeqUc8Y6CrCvEA" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_IU1GwObQEeqUc8Y6CrCvEA" selectedViews="_IVsCYObQEeqUc8Y6CrCvEA _IWukMObQEeqUc8Y6CrCvEA _IfhT0ObQEeqUc8Y6CrCvEA _IgtmoObQEeqUc8Y6CrCvEA _IhAhkObQEeqUc8Y6CrCvEA _IhwIcObQEeqUc8Y6CrCvEA _IiWlYObQEeqUc8Y6CrCvEA" version="15.2.0.202303281325">
     <semanticResources>OAB-DragAndDrop.afm</semanticResources>
     <semanticResources>OAB-DragAndDrop.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_IVsCYObQEeqUc8Y6CrCvEA">
@@ -11,11 +11,11 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_IfhT0ObQEeqUc8Y6CrCvEA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LaYicebQEeqUc8Y6CrCvEA" name="[OAB] Operational Entities Package" repPath="#_LZ72gObQEeqUc8Y6CrCvEA" changeId="8340ea7f-45d8-4307-bedf-e8c4e078e1b9">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LaYicebQEeqUc8Y6CrCvEA" name="[OAB] Operational Entities Package" repPath="#_LZ72gObQEeqUc8Y6CrCvEA" changeId="1692713520022">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:EntityPkg" href="OAB-DragAndDrop.capella#2ae0ea1d-3afb-4b36-af9f-0660ee566f74"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_5xtmIebQEeqUc8Y6CrCvEA" name="[OAB] Operational Entities" repPath="#_5xkcMObQEeqUc8Y6CrCvEA" changeId="9b330136-d552-490d-8913-55fb27c88723">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_5xtmIebQEeqUc8Y6CrCvEA" name="[OAB] Operational Entities" repPath="#_5xkcMObQEeqUc8Y6CrCvEA" changeId="1692713520022">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="OAB-DragAndDrop.capella#2b881abc-1497-43ee-be6b-a7eda9b85609"/>
       </ownedRepresentationDescriptors>

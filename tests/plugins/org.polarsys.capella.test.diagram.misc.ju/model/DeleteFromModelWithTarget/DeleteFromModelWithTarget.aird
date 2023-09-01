@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/7.0.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/7.0.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/7.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_7um58O51EemYsuV8o_AG9Q" selectedViews="_7vrQ8O51EemYsuV8o_AG9Q _7xt4UO51EemYsuV8o_AG9Q _765pgO51EemYsuV8o_AG9Q _7-5YsO51EemYsuV8o_AG9Q _8BfZsO51EemYsuV8o_AG9Q _8BvRUO51EemYsuV8o_AG9Q _8B7ekO51EemYsuV8o_AG9Q" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_7um58O51EemYsuV8o_AG9Q" selectedViews="_7vrQ8O51EemYsuV8o_AG9Q _7xt4UO51EemYsuV8o_AG9Q _765pgO51EemYsuV8o_AG9Q _7-5YsO51EemYsuV8o_AG9Q _8BfZsO51EemYsuV8o_AG9Q _8BvRUO51EemYsuV8o_AG9Q _8B7ekO51EemYsuV8o_AG9Q" version="15.2.0.202303281325">
     <semanticResources>DeleteFromModelWithTarget.afm</semanticResources>
     <semanticResources>DeleteFromModelWithTarget.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_7vrQ8O51EemYsuV8o_AG9Q">
@@ -11,7 +11,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_765pgO51EemYsuV8o_AG9Q">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_IGkqQO54EemYsuV8o_AG9Q" name="[LAB] LC 1" repPath="#_IF1qcO54EemYsuV8o_AG9Q" changeId="9bc88c54-41b2-423d-a1e6-9472fb0932dc">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_IGkqQO54EemYsuV8o_AG9Q" name="[LAB] LC 1" repPath="#_IF1qcO54EemYsuV8o_AG9Q" changeId="1692709483783">
         <eAnnotations xmi:type="description:DAnnotation" uid="_ILGk8O54EemYsuV8o_AG9Q" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ILHMAO54EemYsuV8o_AG9Q" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ILHMAe54EemYsuV8o_AG9Q" key="hide.computed.physical.links.filter" value="true"/>
@@ -19,7 +19,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="DeleteFromModelWithTarget.capella#cd647ac3-9216-4434-b11d-fec028b56044"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_zXpHoO54EemYsuV8o_AG9Q" name="[LAB] Structure" repPath="#_zXGVEO54EemYsuV8o_AG9Q" changeId="236c3c41-7e1b-47ae-9d0a-cd7760f1589a">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_zXpHoO54EemYsuV8o_AG9Q" name="[LAB] Structure" repPath="#_zXGVEO54EemYsuV8o_AG9Q" changeId="1692709483783">
         <eAnnotations xmi:type="description:DAnnotation" uid="_zZMm0O54EemYsuV8o_AG9Q" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zZNN4O54EemYsuV8o_AG9Q" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zZNN4e54EemYsuV8o_AG9Q" key="hide.computed.physical.links.filter" value="true"/>
@@ -33,7 +33,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_8BfZsO51EemYsuV8o_AG9Q">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_-_ajYe51EemYsuV8o_AG9Q" name="[PDFB] PhysicalFunction 1" repPath="#_--um4O51EemYsuV8o_AG9Q" changeId="aa193465-8bc1-47b6-9a63-9a59f5233610">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_-_ajYe51EemYsuV8o_AG9Q" name="[PDFB] PhysicalFunction 1" repPath="#_--um4O51EemYsuV8o_AG9Q" changeId="1692709483783">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalFunction" href="DeleteFromModelWithTarget.capella#33bba6a8-e9da-4c5b-9b97-ec76e63e0dc3"/>
       </ownedRepresentationDescriptors>

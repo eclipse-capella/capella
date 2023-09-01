@@ -39,7 +39,6 @@ Operand,4
 Part,23
 Physical Quantity,1
 Region,27
-Requirements Pkg,1
 Scenario,6
 Sequence Message,40
 State,46

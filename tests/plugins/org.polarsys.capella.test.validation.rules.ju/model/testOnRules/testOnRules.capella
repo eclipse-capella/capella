@@ -18,7 +18,6 @@
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/7.0.0"
     xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/7.0.0"
     xmlns:org.polarsys.capella.core.data.pa.deployment="http://www.polarsys.org/capella/core/pa/deployment/7.0.0"
-    xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/7.0.0"
     id="7350744c-5196-4b14-bfad-50a9e840be18"
     name="testOnRules">
   <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue" id="5f092e02-b663-41f4-a89c-9f5acd818430"
@@ -3312,8 +3311,6 @@
         <ownedOperationalActivities xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
             id="3da72142-3591-4943-967b-0b4c83d8a27e" name="Root Operational Activity"/>
       </ownedFunctionPkg>
-      <ownedRequirementPkgs xsi:type="org.polarsys.capella.core.data.requirement:RequirementsPkg"
-          id="040b4127-0e37-4c3c-9bff-d49c55dbd943" name="Requirements"/>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="b4934bf3-f189-411f-b763-0e799ffef77d" name="OperationalCapabilityPkg">
         <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/7.0.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/7.0.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/7.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_JedLMHpWEeam2Za7kAFLHQ" selectedViews="_JkfhwHpWEeam2Za7kAFLHQ _KHaBkHpWEeam2Za7kAFLHQ _KHruYHpWEeam2Za7kAFLHQ _KH37oHpWEeam2Za7kAFLHQ _KIPvEHpWEeam2Za7kAFLHQ _KIaHIHpWEeam2Za7kAFLHQ _KIoJkHpWEeam2Za7kAFLHQ" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_JedLMHpWEeam2Za7kAFLHQ" selectedViews="_JkfhwHpWEeam2Za7kAFLHQ _KHaBkHpWEeam2Za7kAFLHQ _KHruYHpWEeam2Za7kAFLHQ _KH37oHpWEeam2Za7kAFLHQ _KIPvEHpWEeam2Za7kAFLHQ _KIaHIHpWEeam2Za7kAFLHQ _KIoJkHpWEeam2Za7kAFLHQ" version="15.2.0.202303281325">
     <semanticResources>testPortSize.afm</semanticResources>
     <semanticResources>testPortSize.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_JkfhwHpWEeam2Za7kAFLHQ">
@@ -14,19 +14,19 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_KH37oHpWEeam2Za7kAFLHQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_MidHsHpWEeam2Za7kAFLHQ" name="[CDI] Logical System" repPath="#_MiztAHpWEeam2Za7kAFLHQ" changeId="c2667afe-b3dc-4b30-9bad-87c3b23cf8a2">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_MidHsHpWEeam2Za7kAFLHQ" name="[CDI] Logical System" repPath="#_MiztAHpWEeam2Za7kAFLHQ" changeId="1692714564148">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="testPortSize.capella#961e0090-d416-4cbb-a2c8-699758fc999d"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_NpRl0HpWEeam2Za7kAFLHQ" name="[CEI] Logical System" repPath="#_NpSM4HpWEeam2Za7kAFLHQ" changeId="6e0f0730-33e4-4c1e-808a-d6383c82b482">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_NpRl0HpWEeam2Za7kAFLHQ" name="[CEI] Logical System" repPath="#_NpSM4HpWEeam2Za7kAFLHQ" changeId="1692714564148">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="testPortSize.capella#961e0090-d416-4cbb-a2c8-699758fc999d"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_OzrjcHpWEeam2Za7kAFLHQ" name="[CII] Logical System" repPath="#_OzsxkHpWEeam2Za7kAFLHQ" changeId="224d5956-f68f-4b75-8cd7-2744af3fd732">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_OzrjcHpWEeam2Za7kAFLHQ" name="[CII] Logical System" repPath="#_OzsxkHpWEeam2Za7kAFLHQ" changeId="1692714564148">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="testPortSize.capella#961e0090-d416-4cbb-a2c8-699758fc999d"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_nczsIHqUEea48fyJEK3uMg" name="[IDB] Logical System" repPath="#_nc0TMHqUEea48fyJEK3uMg" changeId="af796e4f-924d-474c-b63b-70d7f4de4f54">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_nczsIHqUEea48fyJEK3uMg" name="[IDB] Logical System" repPath="#_nc0TMHqUEea48fyJEK3uMg" changeId="1692714564148">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="testPortSize.capella#961e0090-d416-4cbb-a2c8-699758fc999d"/>
       </ownedRepresentationDescriptors>
