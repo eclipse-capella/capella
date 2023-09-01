@@ -16,8 +16,12 @@ package org.polarsys.capella.core.transition.system.domain;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EPackage;
-
-import org.polarsys.kitalpha.emde.model.Element;
+import org.polarsys.capella.common.data.activity.ActivityPackage;
+import org.polarsys.capella.common.data.behavior.BehaviorPackage;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
@@ -28,18 +32,12 @@ import org.polarsys.capella.core.data.information.datatype.DatatypePackage;
 import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentPackage;
-import org.polarsys.capella.core.data.requirement.RequirementPackage;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 import org.polarsys.capella.core.transition.common.domain.DomainHelper;
-import org.polarsys.capella.common.data.activity.ActivityPackage;
-import org.polarsys.capella.common.data.behavior.BehaviorPackage;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.kitalpha.emde.model.Element;
 
 /**
  * 
@@ -57,7 +55,6 @@ public class CapellaTransitionDomainHelper extends DomainHelper {
     ePackages.add(CapellacorePackage.eINSTANCE);
     ePackages.add(BehaviorPackage.eINSTANCE);
     ePackages.add(ActivityPackage.eINSTANCE);
-    ePackages.add(RequirementPackage.eINSTANCE);
     ePackages.add(CapellacommonPackage.eINSTANCE);
     ePackages.add(InteractionPackage.eINSTANCE);
     ePackages.add(DatavaluePackage.eINSTANCE);

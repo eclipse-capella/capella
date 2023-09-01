@@ -19,7 +19,6 @@ import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.transition.common.constants.ISchemaConstants;
-import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.config.ExtendedTraceabilityConfiguration;
 import org.polarsys.capella.core.transition.system.handlers.traceability.LibraryTraceabilityHandler;
@@ -71,8 +70,6 @@ public class TransformationConfiguration extends ExtendedTraceabilityConfigurati
           addMapping(map, BlockArchitectureExt.getInterfacePkg(source, false),
               BlockArchitectureExt.getInterfacePkg(target, false), context);
         }
-        addMapping(map, BlockArchitectureExt.getRequirementsPkg(source, false),
-            BlockArchitectureExt.getRequirementsPkg(target, false), context);
         addMapping(map, BlockArchitectureExt.getAbstractCapabilityPkg(source, false),
             BlockArchitectureExt.getAbstractCapabilityPkg(target, false), context);
         addMapping(map, source.getSystem(), target.getSystem(), context);

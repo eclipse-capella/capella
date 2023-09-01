@@ -15,7 +15,6 @@ package org.polarsys.capella.core.transition.system.topdown.handlers.traceabilit
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
-import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
@@ -23,17 +22,13 @@ import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.model.helpers.ProjectExt;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.transition.common.constants.ISchemaConstants;
-import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.config.ExtendedTraceabilityConfiguration;
 import org.polarsys.capella.core.transition.system.handlers.traceability.LibraryTraceabilityHandler;
 import org.polarsys.capella.core.transition.system.handlers.traceability.RealizationLinkTraceabilityHandler;
 import org.polarsys.capella.core.transition.system.handlers.traceability.ReconciliationTraceabilityHandler;
 import org.polarsys.capella.core.transition.system.helpers.ContextHelper;
-import org.polarsys.capella.core.transition.system.topdown.handlers.transformation.TopDownTransformationHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -87,8 +82,6 @@ public class MergeSourceConfiguration extends ExtendedTraceabilityConfiguration 
             BlockArchitectureExt.getInterfacePkg(target, false), context);
       }
 
-      addMapping(map, BlockArchitectureExt.getRequirementsPkg(source, false),
-          BlockArchitectureExt.getRequirementsPkg(target, false), context);
       addMapping(map, BlockArchitectureExt.getAbstractCapabilityPkg(source, false),
           BlockArchitectureExt.getAbstractCapabilityPkg(target, false), context);
       addMapping(map, source.getSystem(), target.getSystem(), context);

@@ -209,8 +209,6 @@ public class MergeTargetConfiguration extends ExtendedTraceabilityConfiguration 
             BlockArchitectureExt.getInterfacePkg(target, false), context);
       }
 
-      addMapping(map, BlockArchitectureExt.getRequirementsPkg(source, false),
-          BlockArchitectureExt.getRequirementsPkg(target, false), context);
       addMapping(map, BlockArchitectureExt.getAbstractCapabilityPkg(source, false),
           BlockArchitectureExt.getAbstractCapabilityPkg(target, false), context);
       addMapping(map, source.getSystem(), target.getSystem(), context);

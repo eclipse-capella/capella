@@ -7,7 +7,6 @@ http://www.eclipse.org/legal/epl-2.0
 /icons/full/obj16/CtxModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
 /icons/full/obj16/OaModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
 /icons/full/obj16/LaModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
-/icons/full/obj16/RequirementModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
 /icons/full/obj16/PaModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
 /icons/full/obj16/CapellacommonModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
 /icons/full/obj16/SharedmodelModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
