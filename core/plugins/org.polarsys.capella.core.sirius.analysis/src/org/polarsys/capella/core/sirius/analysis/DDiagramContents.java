@@ -298,7 +298,7 @@ public class DDiagramContents {
     ArrayList<DDiagramElement> result = new ArrayList<>();
     for (DDiagramElement view : getMapDiagramElements().get(target)) {
       DiagramElementMapping diagramElementMapping = view.getDiagramElementMapping();
-      if (mapping != null && mapping.equals(diagramElementMapping)) {
+      if (DiagramServices.getDiagramServices().isMapping(view, mapping)) {
         result.add(view);
       } else if (mapping instanceof IEdgeMapping && diagramElementMapping instanceof IEdgeMapping) {
         IEdgeMapping unwrappedMapping = EdgeMappingHelper.unwrapEdgeMapping((IEdgeMapping) mapping);
