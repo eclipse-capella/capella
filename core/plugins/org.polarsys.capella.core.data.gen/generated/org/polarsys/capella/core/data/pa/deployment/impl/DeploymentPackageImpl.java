@@ -60,125 +60,126 @@ import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
 import org.polarsys.capella.core.data.pa.deployment.PortInstance;
 import org.polarsys.capella.core.data.pa.deployment.TypeDeploymentLink;
 import org.polarsys.capella.core.data.pa.impl.PaPackageImpl;
+
+
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 import org.polarsys.capella.core.data.sharedmodel.impl.SharedmodelPackageImpl;
 import org.polarsys.kitalpha.emde.model.EmdePackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
- * 
+ * <!-- begin-user-doc -->
+ * An implementation of the model <b>Package</b>.
+ * <!-- end-user-doc -->
  * @generated
  */
 public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPackage {
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass componentInstanceEClass = null;
+	private EClass componentInstanceEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass connectionInstanceEClass = null;
+	private EClass connectionInstanceEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass deploymentAspectEClass = null;
+	private EClass deploymentAspectEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass deploymentConfigurationEClass = null;
+	private EClass deploymentConfigurationEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass instanceDeploymentLinkEClass = null;
+	private EClass instanceDeploymentLinkEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass partDeploymentLinkEClass = null;
+	private EClass partDeploymentLinkEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass abstractPhysicalInstanceEClass = null;
+	private EClass abstractPhysicalInstanceEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass portInstanceEClass = null;
+	private EClass portInstanceEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass typeDeploymentLinkEClass = null;
+	private EClass typeDeploymentLinkEClass = null;
 
-  /**
-   * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
-   * EPackage.Registry} by the package package URI value.
-   * <p>
-   * Note: the correct way to create the package is via the static factory method {@link #init init()}, which also
-   * performs initialization of the package, or returns the registered package, if one already exists. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * Creates an instance of the model <b>Package</b>, registered with
+   * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
+   * package URI value.
+   * <p>Note: the correct way to create the package is via the static
+   * factory method {@link #init init()}, which also performs
+   * initialization of the package, or returns the registered package,
+   * if one already exists.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @see org.eclipse.emf.ecore.EPackage.Registry
    * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#eNS_URI
    * @see #init()
    * @generated
    */
-  private DeploymentPackageImpl() {
+	private DeploymentPackageImpl() {
     super(eNS_URI, DeploymentFactory.eINSTANCE);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private static boolean isInited = false;
+	private static boolean isInited = false;
 
-  /**
+	/**
    * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
    *
-   * <p>
-   * This method is used to initialize {@link DeploymentPackage#eINSTANCE} when that field is accessed. Clients should
-   * not invoke it directly. Instead, they should simply access that field to obtain the package. <!-- begin-user-doc
-   * --> <!-- end-user-doc -->
-   * 
+   * <p>This method is used to initialize {@link DeploymentPackage#eINSTANCE} when that field is accessed.
+   * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @see #eNS_URI
    * @see #createPackageContents()
    * @see #initializePackageContents()
    * @generated
    */
-  public static DeploymentPackage init() {
-    if (isInited)
-      return (DeploymentPackage) EPackage.Registry.INSTANCE.getEPackage(DeploymentPackage.eNS_URI);
+	public static DeploymentPackage init() {
+    if (isInited) return (DeploymentPackage)EPackage.Registry.INSTANCE.getEPackage(DeploymentPackage.eNS_URI);
 
     // Obtain or create and register package
     Object registeredDeploymentPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-    DeploymentPackageImpl theDeploymentPackage = registeredDeploymentPackage instanceof DeploymentPackageImpl
-        ? (DeploymentPackageImpl) registeredDeploymentPackage
-        : new DeploymentPackageImpl();
+    DeploymentPackageImpl theDeploymentPackage = registeredDeploymentPackage instanceof DeploymentPackageImpl ? (DeploymentPackageImpl)registeredDeploymentPackage : new DeploymentPackageImpl();
 
     isInited = true;
 
@@ -190,62 +191,37 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 
     // Obtain or create and register interdependencies
     Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CapellamodellerPackage.eNS_URI);
-    CapellamodellerPackageImpl theCapellamodellerPackage = (CapellamodellerPackageImpl) (registeredPackage instanceof CapellamodellerPackageImpl
-        ? registeredPackage
-        : CapellamodellerPackage.eINSTANCE);
+    CapellamodellerPackageImpl theCapellamodellerPackage = (CapellamodellerPackageImpl)(registeredPackage instanceof CapellamodellerPackageImpl ? registeredPackage : CapellamodellerPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CapellacorePackage.eNS_URI);
-    CapellacorePackageImpl theCapellacorePackage = (CapellacorePackageImpl) (registeredPackage instanceof CapellacorePackageImpl
-        ? registeredPackage
-        : CapellacorePackage.eINSTANCE);
+    CapellacorePackageImpl theCapellacorePackage = (CapellacorePackageImpl)(registeredPackage instanceof CapellacorePackageImpl ? registeredPackage : CapellacorePackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(OaPackage.eNS_URI);
-    OaPackageImpl theOaPackage = (OaPackageImpl) (registeredPackage instanceof OaPackageImpl ? registeredPackage
-        : OaPackage.eINSTANCE);
+    OaPackageImpl theOaPackage = (OaPackageImpl)(registeredPackage instanceof OaPackageImpl ? registeredPackage : OaPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CtxPackage.eNS_URI);
-    CtxPackageImpl theCtxPackage = (CtxPackageImpl) (registeredPackage instanceof CtxPackageImpl ? registeredPackage
-        : CtxPackage.eINSTANCE);
+    CtxPackageImpl theCtxPackage = (CtxPackageImpl)(registeredPackage instanceof CtxPackageImpl ? registeredPackage : CtxPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(LaPackage.eNS_URI);
-    LaPackageImpl theLaPackage = (LaPackageImpl) (registeredPackage instanceof LaPackageImpl ? registeredPackage
-        : LaPackage.eINSTANCE);
+    LaPackageImpl theLaPackage = (LaPackageImpl)(registeredPackage instanceof LaPackageImpl ? registeredPackage : LaPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(PaPackage.eNS_URI);
-    PaPackageImpl thePaPackage = (PaPackageImpl) (registeredPackage instanceof PaPackageImpl ? registeredPackage
-        : PaPackage.eINSTANCE);
+    PaPackageImpl thePaPackage = (PaPackageImpl)(registeredPackage instanceof PaPackageImpl ? registeredPackage : PaPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(EpbsPackage.eNS_URI);
-    EpbsPackageImpl theEpbsPackage = (EpbsPackageImpl) (registeredPackage instanceof EpbsPackageImpl ? registeredPackage
-        : EpbsPackage.eINSTANCE);
+    EpbsPackageImpl theEpbsPackage = (EpbsPackageImpl)(registeredPackage instanceof EpbsPackageImpl ? registeredPackage : EpbsPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(SharedmodelPackage.eNS_URI);
-    SharedmodelPackageImpl theSharedmodelPackage = (SharedmodelPackageImpl) (registeredPackage instanceof SharedmodelPackageImpl
-        ? registeredPackage
-        : SharedmodelPackage.eINSTANCE);
+    SharedmodelPackageImpl theSharedmodelPackage = (SharedmodelPackageImpl)(registeredPackage instanceof SharedmodelPackageImpl ? registeredPackage : SharedmodelPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI);
-    CapellacommonPackageImpl theCapellacommonPackage = (CapellacommonPackageImpl) (registeredPackage instanceof CapellacommonPackageImpl
-        ? registeredPackage
-        : CapellacommonPackage.eINSTANCE);
+    CapellacommonPackageImpl theCapellacommonPackage = (CapellacommonPackageImpl)(registeredPackage instanceof CapellacommonPackageImpl ? registeredPackage : CapellacommonPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI);
-    InformationPackageImpl theInformationPackage = (InformationPackageImpl) (registeredPackage instanceof InformationPackageImpl
-        ? registeredPackage
-        : InformationPackage.eINSTANCE);
+    InformationPackageImpl theInformationPackage = (InformationPackageImpl)(registeredPackage instanceof InformationPackageImpl ? registeredPackage : InformationPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CommunicationPackage.eNS_URI);
-    CommunicationPackageImpl theCommunicationPackage = (CommunicationPackageImpl) (registeredPackage instanceof CommunicationPackageImpl
-        ? registeredPackage
-        : CommunicationPackage.eINSTANCE);
+    CommunicationPackageImpl theCommunicationPackage = (CommunicationPackageImpl)(registeredPackage instanceof CommunicationPackageImpl ? registeredPackage : CommunicationPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(DatatypePackage.eNS_URI);
-    DatatypePackageImpl theDatatypePackage = (DatatypePackageImpl) (registeredPackage instanceof DatatypePackageImpl
-        ? registeredPackage
-        : DatatypePackage.eINSTANCE);
+    DatatypePackageImpl theDatatypePackage = (DatatypePackageImpl)(registeredPackage instanceof DatatypePackageImpl ? registeredPackage : DatatypePackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(DatavaluePackage.eNS_URI);
-    DatavaluePackageImpl theDatavaluePackage = (DatavaluePackageImpl) (registeredPackage instanceof DatavaluePackageImpl
-        ? registeredPackage
-        : DatavaluePackage.eINSTANCE);
+    DatavaluePackageImpl theDatavaluePackage = (DatavaluePackageImpl)(registeredPackage instanceof DatavaluePackageImpl ? registeredPackage : DatavaluePackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CsPackage.eNS_URI);
-    CsPackageImpl theCsPackage = (CsPackageImpl) (registeredPackage instanceof CsPackageImpl ? registeredPackage
-        : CsPackage.eINSTANCE);
+    CsPackageImpl theCsPackage = (CsPackageImpl)(registeredPackage instanceof CsPackageImpl ? registeredPackage : CsPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI);
-    FaPackageImpl theFaPackage = (FaPackageImpl) (registeredPackage instanceof FaPackageImpl ? registeredPackage
-        : FaPackage.eINSTANCE);
+    FaPackageImpl theFaPackage = (FaPackageImpl)(registeredPackage instanceof FaPackageImpl ? registeredPackage : FaPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InteractionPackage.eNS_URI);
-    InteractionPackageImpl theInteractionPackage = (InteractionPackageImpl) (registeredPackage instanceof InteractionPackageImpl
-        ? registeredPackage
-        : InteractionPackage.eINSTANCE);
+    InteractionPackageImpl theInteractionPackage = (InteractionPackageImpl)(registeredPackage instanceof InteractionPackageImpl ? registeredPackage : InteractionPackage.eINSTANCE);
 
     // Create package meta-data objects
     theDeploymentPackage.createPackageContents();
@@ -293,252 +269,252 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
     return theDeploymentPackage;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getComponentInstance() {
+	@Override
+	public EClass getComponentInstance() {
     return componentInstanceEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getComponentInstance_PortInstances() {
-    return (EReference) componentInstanceEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EReference getComponentInstance_PortInstances() {
+    return (EReference)componentInstanceEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getComponentInstance_OwnedAbstractPhysicalInstances() {
-    return (EReference) componentInstanceEClass.getEStructuralFeatures().get(1);
+	@Override
+	public EReference getComponentInstance_OwnedAbstractPhysicalInstances() {
+    return (EReference)componentInstanceEClass.getEStructuralFeatures().get(1);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getComponentInstance_OwnedInstanceDeploymentLinks() {
-    return (EReference) componentInstanceEClass.getEStructuralFeatures().get(2);
+	@Override
+	public EReference getComponentInstance_OwnedInstanceDeploymentLinks() {
+    return (EReference)componentInstanceEClass.getEStructuralFeatures().get(2);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getComponentInstance_Type() {
-    return (EReference) componentInstanceEClass.getEStructuralFeatures().get(3);
+	@Override
+	public EReference getComponentInstance_Type() {
+    return (EReference)componentInstanceEClass.getEStructuralFeatures().get(3);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getConnectionInstance() {
+	@Override
+	public EClass getConnectionInstance() {
     return connectionInstanceEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getConnectionInstance_ConnectionEnds() {
-    return (EReference) connectionInstanceEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EReference getConnectionInstance_ConnectionEnds() {
+    return (EReference)connectionInstanceEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getConnectionInstance_Type() {
-    return (EReference) connectionInstanceEClass.getEStructuralFeatures().get(1);
+	@Override
+	public EReference getConnectionInstance_Type() {
+    return (EReference)connectionInstanceEClass.getEStructuralFeatures().get(1);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getDeploymentAspect() {
+	@Override
+	public EClass getDeploymentAspect() {
     return deploymentAspectEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getDeploymentAspect_OwnedConfigurations() {
-    return (EReference) deploymentAspectEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EReference getDeploymentAspect_OwnedConfigurations() {
+    return (EReference)deploymentAspectEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getDeploymentAspect_OwnedDeploymentAspects() {
-    return (EReference) deploymentAspectEClass.getEStructuralFeatures().get(1);
+	@Override
+	public EReference getDeploymentAspect_OwnedDeploymentAspects() {
+    return (EReference)deploymentAspectEClass.getEStructuralFeatures().get(1);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getDeploymentConfiguration() {
+	@Override
+	public EClass getDeploymentConfiguration() {
     return deploymentConfigurationEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getDeploymentConfiguration_OwnedDeploymentLinks() {
-    return (EReference) deploymentConfigurationEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EReference getDeploymentConfiguration_OwnedDeploymentLinks() {
+    return (EReference)deploymentConfigurationEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getDeploymentConfiguration_OwnedPhysicalInstances() {
-    return (EReference) deploymentConfigurationEClass.getEStructuralFeatures().get(1);
+	@Override
+	public EReference getDeploymentConfiguration_OwnedPhysicalInstances() {
+    return (EReference)deploymentConfigurationEClass.getEStructuralFeatures().get(1);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getInstanceDeploymentLink() {
+	@Override
+	public EClass getInstanceDeploymentLink() {
     return instanceDeploymentLinkEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getPartDeploymentLink() {
+	@Override
+	public EClass getPartDeploymentLink() {
     return partDeploymentLinkEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getAbstractPhysicalInstance() {
+	@Override
+	public EClass getAbstractPhysicalInstance() {
     return abstractPhysicalInstanceEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getPortInstance() {
+	@Override
+	public EClass getPortInstance() {
     return portInstanceEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getPortInstance_Connections() {
-    return (EReference) portInstanceEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EReference getPortInstance_Connections() {
+    return (EReference)portInstanceEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getPortInstance_Component() {
-    return (EReference) portInstanceEClass.getEStructuralFeatures().get(1);
+	@Override
+	public EReference getPortInstance_Component() {
+    return (EReference)portInstanceEClass.getEStructuralFeatures().get(1);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getPortInstance_Type() {
-    return (EReference) portInstanceEClass.getEStructuralFeatures().get(2);
+	@Override
+	public EReference getPortInstance_Type() {
+    return (EReference)portInstanceEClass.getEStructuralFeatures().get(2);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getTypeDeploymentLink() {
+	@Override
+	public EClass getTypeDeploymentLink() {
     return typeDeploymentLinkEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public DeploymentFactory getDeploymentFactory() {
-    return (DeploymentFactory) getEFactoryInstance();
+	@Override
+	public DeploymentFactory getDeploymentFactory() {
+    return (DeploymentFactory)getEFactoryInstance();
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private boolean isCreated = false;
+	private boolean isCreated = false;
 
-  /**
-   * Creates the meta-model objects for the package. This method is guarded to have no affect on any invocation but its
-   * first. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * Creates the meta-model objects for the package.  This method is
+   * guarded to have no affect on any invocation but its first.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  public void createPackageContents() {
-    if (isCreated)
-      return;
+	public void createPackageContents() {
+    if (isCreated) return;
     isCreated = true;
 
     // Create classes and their features
@@ -574,22 +550,22 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
     typeDeploymentLinkEClass = createEClass(TYPE_DEPLOYMENT_LINK);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private boolean isInitialized = false;
+	private boolean isInitialized = false;
 
-  /**
-   * Complete the initialization of the package and its meta-model. This method is guarded to have no affect on any
-   * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * Complete the initialization of the package and its meta-model.  This
+   * method is guarded to have no affect on any invocation but its first.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  public void initializePackageContents() {
-    if (isInitialized)
-      return;
+	public void initializePackageContents() {
+    if (isInitialized) return;
     isInitialized = true;
 
     // Initialize package
@@ -598,11 +574,10 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
     setNsURI(eNS_URI);
 
     // Obtain other dependent packages
-    CsPackage theCsPackage = (CsPackage) EPackage.Registry.INSTANCE.getEPackage(CsPackage.eNS_URI);
-    PaPackage thePaPackage = (PaPackage) EPackage.Registry.INSTANCE.getEPackage(PaPackage.eNS_URI);
-    FaPackage theFaPackage = (FaPackage) EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI);
-    CapellacorePackage theCapellacorePackage = (CapellacorePackage) EPackage.Registry.INSTANCE
-        .getEPackage(CapellacorePackage.eNS_URI);
+    CsPackage theCsPackage = (CsPackage)EPackage.Registry.INSTANCE.getEPackage(CsPackage.eNS_URI);
+    PaPackage thePaPackage = (PaPackage)EPackage.Registry.INSTANCE.getEPackage(PaPackage.eNS_URI);
+    FaPackage theFaPackage = (FaPackage)EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI);
+    CapellacorePackage theCapellacorePackage = (CapellacorePackage)EPackage.Registry.INSTANCE.getEPackage(CapellacorePackage.eNS_URI);
 
     // Create type parameters
 
@@ -622,72 +597,36 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
     typeDeploymentLinkEClass.getESuperTypes().add(theCsPackage.getAbstractDeploymentLink());
 
     // Initialize classes and features; add operations and parameters
-    initEClass(componentInstanceEClass, ComponentInstance.class, "ComponentInstance", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getComponentInstance_PortInstances(), this.getPortInstance(), null, "portInstances", null, 0, -1, //$NON-NLS-1$
-        ComponentInstance.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-        !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-    initEReference(getComponentInstance_OwnedAbstractPhysicalInstances(), this.getAbstractPhysicalInstance(), null,
-        "ownedAbstractPhysicalInstances", null, 0, -1, ComponentInstance.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
-        IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getComponentInstance_OwnedInstanceDeploymentLinks(), this.getInstanceDeploymentLink(), null,
-        "ownedInstanceDeploymentLinks", null, 0, -1, ComponentInstance.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
-        IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getComponentInstance_Type(), thePaPackage.getPhysicalComponent(), null, "type", null, 0, 1, //$NON-NLS-1$
-        ComponentInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-        !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(componentInstanceEClass, ComponentInstance.class, "ComponentInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(getComponentInstance_PortInstances(), this.getPortInstance(), null, "portInstances", null, 0, -1, ComponentInstance.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getComponentInstance_OwnedAbstractPhysicalInstances(), this.getAbstractPhysicalInstance(), null, "ownedAbstractPhysicalInstances", null, 0, -1, ComponentInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getComponentInstance_OwnedInstanceDeploymentLinks(), this.getInstanceDeploymentLink(), null, "ownedInstanceDeploymentLinks", null, 0, -1, ComponentInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getComponentInstance_Type(), thePaPackage.getPhysicalComponent(), null, "type", null, 0, 1, ComponentInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(connectionInstanceEClass, ConnectionInstance.class, "ConnectionInstance", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getConnectionInstance_ConnectionEnds(), this.getPortInstance(), this.getPortInstance_Connections(),
-        "connectionEnds", null, 0, -1, ConnectionInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
-        !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConnectionInstance_Type(), theFaPackage.getComponentExchange(), null, "type", null, 0, 1, //$NON-NLS-1$
-        ConnectionInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-        !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(connectionInstanceEClass, ConnectionInstance.class, "ConnectionInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(getConnectionInstance_ConnectionEnds(), this.getPortInstance(), this.getPortInstance_Connections(), "connectionEnds", null, 0, -1, ConnectionInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getConnectionInstance_Type(), theFaPackage.getComponentExchange(), null, "type", null, 0, 1, ConnectionInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(deploymentAspectEClass, DeploymentAspect.class, "DeploymentAspect", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getDeploymentAspect_OwnedConfigurations(), this.getDeploymentConfiguration(), null,
-        "ownedConfigurations", null, 0, -1, DeploymentAspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
-        IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDeploymentAspect_OwnedDeploymentAspects(), this.getDeploymentAspect(), null,
-        "ownedDeploymentAspects", null, 0, -1, DeploymentAspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
-        IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(deploymentAspectEClass, DeploymentAspect.class, "DeploymentAspect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(getDeploymentAspect_OwnedConfigurations(), this.getDeploymentConfiguration(), null, "ownedConfigurations", null, 0, -1, DeploymentAspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getDeploymentAspect_OwnedDeploymentAspects(), this.getDeploymentAspect(), null, "ownedDeploymentAspects", null, 0, -1, DeploymentAspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(deploymentConfigurationEClass, DeploymentConfiguration.class, "DeploymentConfiguration", !IS_ABSTRACT, //$NON-NLS-1$
-        !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getDeploymentConfiguration_OwnedDeploymentLinks(), theCsPackage.getAbstractDeploymentLink(), null,
-        "ownedDeploymentLinks", null, 0, -1, DeploymentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
-        IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDeploymentConfiguration_OwnedPhysicalInstances(), this.getAbstractPhysicalInstance(), null,
-        "ownedPhysicalInstances", null, 0, -1, DeploymentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
-        IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(deploymentConfigurationEClass, DeploymentConfiguration.class, "DeploymentConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(getDeploymentConfiguration_OwnedDeploymentLinks(), theCsPackage.getAbstractDeploymentLink(), null, "ownedDeploymentLinks", null, 0, -1, DeploymentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getDeploymentConfiguration_OwnedPhysicalInstances(), this.getAbstractPhysicalInstance(), null, "ownedPhysicalInstances", null, 0, -1, DeploymentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(instanceDeploymentLinkEClass, InstanceDeploymentLink.class, "InstanceDeploymentLink", !IS_ABSTRACT, //$NON-NLS-1$
-        !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(instanceDeploymentLinkEClass, InstanceDeploymentLink.class, "InstanceDeploymentLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-    initEClass(partDeploymentLinkEClass, PartDeploymentLink.class, "PartDeploymentLink", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
+    initEClass(partDeploymentLinkEClass, PartDeploymentLink.class, "PartDeploymentLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-    initEClass(abstractPhysicalInstanceEClass, AbstractPhysicalInstance.class, "AbstractPhysicalInstance", IS_ABSTRACT, //$NON-NLS-1$
-        !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(abstractPhysicalInstanceEClass, AbstractPhysicalInstance.class, "AbstractPhysicalInstance", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-    initEClass(portInstanceEClass, PortInstance.class, "PortInstance", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getPortInstance_Connections(), this.getConnectionInstance(),
-        this.getConnectionInstance_ConnectionEnds(), "connections", null, 0, -1, PortInstance.class, !IS_TRANSIENT, //$NON-NLS-1$
-        !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-        IS_ORDERED);
-    initEReference(getPortInstance_Component(), this.getComponentInstance(), null, "component", null, 1, 1, //$NON-NLS-1$
-        PortInstance.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-        !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-    initEReference(getPortInstance_Type(), theFaPackage.getComponentPort(), null, "type", null, 0, 1, //$NON-NLS-1$
-        PortInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-        !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(portInstanceEClass, PortInstance.class, "PortInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(getPortInstance_Connections(), this.getConnectionInstance(), this.getConnectionInstance_ConnectionEnds(), "connections", null, 0, -1, PortInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getPortInstance_Component(), this.getComponentInstance(), null, "component", null, 1, 1, PortInstance.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getPortInstance_Type(), theFaPackage.getComponentPort(), null, "type", null, 0, 1, PortInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(typeDeploymentLinkEClass, TypeDeploymentLink.class, "TypeDeploymentLink", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
+    initEClass(typeDeploymentLinkEClass, TypeDeploymentLink.class, "TypeDeploymentLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
     // Create annotations
     // http://www.polarsys.org/kitalpha/emde/1.0.0/extension
@@ -708,364 +647,636 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
     createSegmentAnnotations();
   }
 
-  /**
-   * Initializes the annotations for <b>http://www.polarsys.org/kitalpha/ecore/documentation</b>. <!-- begin-user-doc
-   * --> <!-- end-user-doc -->
-   * 
+	/**
+   * Initializes the annotations for <b>http://www.polarsys.org/kitalpha/ecore/documentation</b>.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  protected void createDocumentationAnnotations() {
+	protected void createDocumentationAnnotations() {
     String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$
-    addAnnotation(this, source, new String[] { "description", //$NON-NLS-1$
-        "PhysicalArchitecture aims at defining the system\'s software, middleware and hardware architecture modelling language (close to the OMG\'s Platform Independent Model (PIM) in addition to OMG\'s Platform Model (PM)) using notions close to OMG\'s MARTE Resource concept. It adds the Deployment concern.\r\nThis concern aggregates a lot of concepts regarding the others. A re-engineering of this concern should make sense.\r\n[source: Capella study]", //$NON-NLS-1$
-        "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "used in levels", "physical", //$NON-NLS-1$ //$NON-NLS-2$
-        "usage examples", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "This package depends on the model CompositeStructure.ecore", //$NON-NLS-1$ //$NON-NLS-2$
-        "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(componentInstanceEClass, source,
-        new String[] { "description", "An instance of a component for deployment purposes.", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "physical", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(deploymentAspectEClass, source,
-        new String[] { "description", //$NON-NLS-1$
-            "a grouping of deployment configurations, with a specific applicative meaning\r\n[source: Capella study]", //$NON-NLS-1$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "physical", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getDeploymentAspect_OwnedConfigurations(), source,
-        new String[] { "description", //$NON-NLS-1$
-            "the deployment configurations associated to this deployment aspect\r\n[source: Capella study]", //$NON-NLS-1$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getDeploymentAspect_OwnedDeploymentAspects(), source,
-        new String[] { "description", "the sub packages contained under this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(deploymentConfigurationEClass, source,
-        new String[] { "description", "a consistent set of deployment specifications\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "physical", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getDeploymentConfiguration_OwnedDeploymentLinks(), source,
-        new String[] { "description", //$NON-NLS-1$
-            "the deployment specifications that are part of this deployment configuration\r\n[source: Capella study]", //$NON-NLS-1$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(instanceDeploymentLinkEClass, source,
-        new String[] { "description", //$NON-NLS-1$
-            "link between a physical object and its deployment element\r\n[source: Capella study]", //$NON-NLS-1$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(partDeploymentLinkEClass, source,
-        new String[] { "description", "link between a part and its deployment element", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(abstractPhysicalInstanceEClass, source,
-        new String[] { "description", "an instance of a physical component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "physical", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(typeDeploymentLinkEClass, source,
-        new String[] { "description", //$NON-NLS-1$
-            "deployment link between a data type and the model element that deploys it\r\n[source: Capella study]", //$NON-NLS-1$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
+    addAnnotation
+      (this,
+       source,
+       new String[] {
+         "description", "PhysicalArchitecture aims at defining the system\'s software, middleware and hardware architecture modelling language (close to the OMG\'s Platform Independent Model (PIM) in addition to OMG\'s Platform Model (PM)) using notions close to OMG\'s MARTE Resource concept. It adds the Deployment concern.\r\nThis concern aggregates a lot of concepts regarding the others. A re-engineering of this concern should make sense.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "physical", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "This package depends on the model CompositeStructure.ecore", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (componentInstanceEClass,
+       source,
+       new String[] {
+         "description", "An instance of a component for deployment purposes.", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "physical", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (deploymentAspectEClass,
+       source,
+       new String[] {
+         "description", "a grouping of deployment configurations, with a specific applicative meaning\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "physical", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDeploymentAspect_OwnedConfigurations(),
+       source,
+       new String[] {
+         "description", "the deployment configurations associated to this deployment aspect\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDeploymentAspect_OwnedDeploymentAspects(),
+       source,
+       new String[] {
+         "description", "the sub packages contained under this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (deploymentConfigurationEClass,
+       source,
+       new String[] {
+         "description", "a consistent set of deployment specifications\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "physical", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDeploymentConfiguration_OwnedDeploymentLinks(),
+       source,
+       new String[] {
+         "description", "the deployment specifications that are part of this deployment configuration\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (instanceDeploymentLinkEClass,
+       source,
+       new String[] {
+         "description", "link between a physical object and its deployment element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (partDeploymentLinkEClass,
+       source,
+       new String[] {
+         "description", "link between a part and its deployment element", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (abstractPhysicalInstanceEClass,
+       source,
+       new String[] {
+         "description", "an instance of a physical component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "physical", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (typeDeploymentLinkEClass,
+       source,
+       new String[] {
+         "description", "deployment link between a data type and the model element that deploys it\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
   }
 
-  /**
-   * Initializes the annotations for <b>http://www.polarsys.org/capella/semantic</b>. <!-- begin-user-doc --> <!--
-   * end-user-doc -->
-   * 
+	/**
+   * Initializes the annotations for <b>http://www.polarsys.org/capella/semantic</b>.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  protected void createSemanticAnnotations() {
+	protected void createSemanticAnnotations() {
     String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$
-    addAnnotation(this, source, new String[] {});
-    addAnnotation(componentInstanceEClass, source, new String[] {});
-    addAnnotation(getComponentInstance_PortInstances(), source, new String[] {});
-    addAnnotation(getComponentInstance_OwnedAbstractPhysicalInstances(), source, new String[] {});
-    addAnnotation(getComponentInstance_OwnedInstanceDeploymentLinks(), source, new String[] {});
-    addAnnotation(getComponentInstance_Type(), source, new String[] {});
-    addAnnotation(connectionInstanceEClass, source, new String[] {});
-    addAnnotation(getConnectionInstance_ConnectionEnds(), source, new String[] { "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getConnectionInstance_Type(), source, new String[] {});
-    addAnnotation(deploymentAspectEClass, source, new String[] {});
-    addAnnotation(getDeploymentAspect_OwnedConfigurations(), source, new String[] {});
-    addAnnotation(getDeploymentAspect_OwnedDeploymentAspects(), source, new String[] {});
-    addAnnotation(deploymentConfigurationEClass, source, new String[] {});
-    addAnnotation(getDeploymentConfiguration_OwnedDeploymentLinks(), source, new String[] {});
-    addAnnotation(getDeploymentConfiguration_OwnedPhysicalInstances(), source, new String[] {});
-    addAnnotation(portInstanceEClass, source, new String[] {});
-    addAnnotation(getPortInstance_Connections(), source, new String[] {});
-    addAnnotation(getPortInstance_Component(), source, new String[] {});
-    addAnnotation(getPortInstance_Type(), source, new String[] {});
+    addAnnotation
+      (this,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (componentInstanceEClass,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getComponentInstance_PortInstances(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getComponentInstance_OwnedAbstractPhysicalInstances(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getComponentInstance_OwnedInstanceDeploymentLinks(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getComponentInstance_Type(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (connectionInstanceEClass,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getConnectionInstance_ConnectionEnds(),
+       source,
+       new String[] {
+         "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getConnectionInstance_Type(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (deploymentAspectEClass,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getDeploymentAspect_OwnedConfigurations(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getDeploymentAspect_OwnedDeploymentAspects(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (deploymentConfigurationEClass,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getDeploymentConfiguration_OwnedDeploymentLinks(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getDeploymentConfiguration_OwnedPhysicalInstances(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (portInstanceEClass,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getPortInstance_Connections(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getPortInstance_Component(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getPortInstance_Type(),
+       source,
+       new String[] {
+       });
   }
 
-  /**
-   * Initializes the annotations for <b>http://www.polarsys.org/kitalpha/emde/1.0.0/extension</b>. <!-- begin-user-doc
-   * --> <!-- end-user-doc -->
-   * 
+	/**
+   * Initializes the annotations for <b>http://www.polarsys.org/kitalpha/emde/1.0.0/extension</b>.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  protected void createExtensionAnnotations() {
+	protected void createExtensionAnnotations() {
     String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$
-    addAnnotation(this, source, new String[] { "trackResourceModification", "true", //$NON-NLS-1$ //$NON-NLS-2$
-        "useUUIDs", "false", //$NON-NLS-1$ //$NON-NLS-2$
-        "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
-        "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
-        "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-    });
+    addAnnotation
+      (this,
+       source,
+       new String[] {
+         "trackResourceModification", "true", //$NON-NLS-1$ //$NON-NLS-2$
+         "useUUIDs", "false", //$NON-NLS-1$ //$NON-NLS-2$
+         "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
+         "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
+         "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
+       });
   }
 
-  /**
-   * Initializes the annotations for <b>http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping</b>. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * Initializes the annotations for <b>http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping</b>.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  protected void createMappingAnnotations() {
+	protected void createMappingAnnotations() {
     String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$
-    addAnnotation(componentInstanceEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getComponentInstance_PortInstances(), source,
-        new String[] { "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getComponentInstance_OwnedAbstractPhysicalInstances(), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getComponentInstance_OwnedInstanceDeploymentLinks(), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getComponentInstance_Type(), source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(connectionInstanceEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getConnectionInstance_ConnectionEnds(), source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getConnectionInstance_Type(), source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(deploymentAspectEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getDeploymentAspect_OwnedConfigurations(), source, new String[] { "UML/SysML semantic equivalences", //$NON-NLS-1$
-        "uml::Package::packagedElement", //$NON-NLS-1$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", //$NON-NLS-1$
-        "uml::Package::packagedElement elements on which DeploymentConfiguration stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$
-    });
-    addAnnotation(getDeploymentAspect_OwnedDeploymentAspects(), source, new String[] {
-        "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", //$NON-NLS-1$
-        "uml::Package::nestedPackage elements on which AbstractCapabilityPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$
-    });
-    addAnnotation(deploymentConfigurationEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getDeploymentConfiguration_OwnedDeploymentLinks(), source, new String[] {
-        "UML/SysML semantic equivalences", "uml::Namespace::elementImport", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", //$NON-NLS-1$
-        "uml::Namespace::elementImport elements on which AbstractDeployment stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$
-    });
-    addAnnotation(getDeploymentConfiguration_OwnedPhysicalInstances(), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(instanceDeploymentLinkEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(partDeploymentLinkEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(abstractPhysicalInstanceEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(portInstanceEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getPortInstance_Connections(), source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getPortInstance_Component(), source,
-        new String[] { "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getPortInstance_Type(), source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(typeDeploymentLinkEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
+    addAnnotation
+      (componentInstanceEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getComponentInstance_PortInstances(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getComponentInstance_OwnedAbstractPhysicalInstances(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getComponentInstance_OwnedInstanceDeploymentLinks(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getComponentInstance_Type(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (connectionInstanceEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getConnectionInstance_ConnectionEnds(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getConnectionInstance_Type(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (deploymentAspectEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDeploymentAspect_OwnedConfigurations(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "uml::Package::packagedElement elements on which DeploymentConfiguration stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDeploymentAspect_OwnedDeploymentAspects(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "uml::Package::nestedPackage elements on which AbstractCapabilityPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (deploymentConfigurationEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDeploymentConfiguration_OwnedDeploymentLinks(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "uml::Namespace::elementImport", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "uml::Namespace::elementImport elements on which AbstractDeployment stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDeploymentConfiguration_OwnedPhysicalInstances(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (instanceDeploymentLinkEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (partDeploymentLinkEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (abstractPhysicalInstanceEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (portInstanceEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getPortInstance_Connections(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getPortInstance_Component(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getPortInstance_Type(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (typeDeploymentLinkEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
   }
 
-  /**
-   * Initializes the annotations for <b>http://www.polarsys.org/capella/derived</b>. <!-- begin-user-doc --> <!--
-   * end-user-doc -->
-   * 
+	/**
+   * Initializes the annotations for <b>http://www.polarsys.org/capella/derived</b>.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  protected void createDerivedAnnotations() {
+	protected void createDerivedAnnotations() {
     String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$
-    addAnnotation(getComponentInstance_PortInstances(), source, new String[] { "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-        "viatra.expression", "ownedAbstractPhysicalInstances" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getPortInstance_Component(), source, new String[] { "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
-        "viatra.expression", "portInstances" //$NON-NLS-1$ //$NON-NLS-2$
-    });
+    addAnnotation
+      (getComponentInstance_PortInstances(),
+       source,
+       new String[] {
+         "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+         "viatra.expression", "ownedAbstractPhysicalInstances" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getPortInstance_Component(),
+       source,
+       new String[] {
+         "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+         "viatra.expression", "portInstances" //$NON-NLS-1$ //$NON-NLS-2$
+       });
   }
 
-  /**
-   * Initializes the annotations for <b>http://www.polarsys.org/capella/2007/BusinessInformation</b>. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * Initializes the annotations for <b>http://www.polarsys.org/capella/2007/BusinessInformation</b>.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  protected void createBusinessInformationAnnotations() {
+	protected void createBusinessInformationAnnotations() {
     String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$
-    addAnnotation(deploymentAspectEClass, source, new String[] { "Label", "DeploymentAspect" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getDeploymentAspect_OwnedConfigurations(), source, new String[] { "Label", "ownedConfigurations" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getDeploymentAspect_OwnedDeploymentAspects(), source, new String[] { "Label", "ownedAspects" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(deploymentConfigurationEClass, source, new String[] { "Label", "DeploymentConfiguration" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getDeploymentConfiguration_OwnedDeploymentLinks(), source, new String[] { "Label", "deployments" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(instanceDeploymentLinkEClass, source, new String[] { "Label", "InstanceDeploymentLink" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(partDeploymentLinkEClass, source, new String[] { "Label", "PartDeploymentLink" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(abstractPhysicalInstanceEClass, source, new String[] { "Label", "PhysicalObject" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(typeDeploymentLinkEClass, source, new String[] { "Label", "TypeDeploymentLink" //$NON-NLS-1$ //$NON-NLS-2$
-    });
+    addAnnotation
+      (deploymentAspectEClass,
+       source,
+       new String[] {
+         "Label", "DeploymentAspect" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDeploymentAspect_OwnedConfigurations(),
+       source,
+       new String[] {
+         "Label", "ownedConfigurations" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDeploymentAspect_OwnedDeploymentAspects(),
+       source,
+       new String[] {
+         "Label", "ownedAspects" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (deploymentConfigurationEClass,
+       source,
+       new String[] {
+         "Label", "DeploymentConfiguration" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDeploymentConfiguration_OwnedDeploymentLinks(),
+       source,
+       new String[] {
+         "Label", "deployments" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (instanceDeploymentLinkEClass,
+       source,
+       new String[] {
+         "Label", "InstanceDeploymentLink" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (partDeploymentLinkEClass,
+       source,
+       new String[] {
+         "Label", "PartDeploymentLink" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (abstractPhysicalInstanceEClass,
+       source,
+       new String[] {
+         "Label", "PhysicalObject" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (typeDeploymentLinkEClass,
+       source,
+       new String[] {
+         "Label", "TypeDeploymentLink" //$NON-NLS-1$ //$NON-NLS-2$
+       });
   }
 
-  /**
-   * Initializes the annotations for <b>http://www.polarsys.org/capella/2007/UML2Mapping</b>. <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * 
+	/**
+   * Initializes the annotations for <b>http://www.polarsys.org/capella/2007/UML2Mapping</b>.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  protected void createUML2MappingAnnotations() {
+	protected void createUML2MappingAnnotations() {
     String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$
-    addAnnotation(deploymentAspectEClass, source, new String[] { "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
-        "stereotype", "eng.DeploymentAspect" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getDeploymentAspect_OwnedConfigurations(), source, new String[] { "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getDeploymentAspect_OwnedDeploymentAspects(), source, new String[] { "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(deploymentConfigurationEClass, source, new String[] { "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
-        "stereotype", "eng.DeploymentConfiguration" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getDeploymentConfiguration_OwnedDeploymentLinks(), source,
-        new String[] { "featureName", "elementImport", //$NON-NLS-1$ //$NON-NLS-2$
-            "featureOwner", "Namespace" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(instanceDeploymentLinkEClass, source, new String[] { "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
-        "stereotype", "eng.InstanceDeploymentLink" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(partDeploymentLinkEClass, source, new String[] { "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
-        "stereotype", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(abstractPhysicalInstanceEClass, source, new String[] { "metaclass", "InstanceSpecification", //$NON-NLS-1$ //$NON-NLS-2$
-        "stereotype", "eng.PhysicalObject" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(typeDeploymentLinkEClass, source, new String[] { "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
-        "stereotype", "eng.TypeDeploymentLink" //$NON-NLS-1$ //$NON-NLS-2$
-    });
+    addAnnotation
+      (deploymentAspectEClass,
+       source,
+       new String[] {
+         "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
+         "stereotype", "eng.DeploymentAspect" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDeploymentAspect_OwnedConfigurations(),
+       source,
+       new String[] {
+         "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDeploymentAspect_OwnedDeploymentAspects(),
+       source,
+       new String[] {
+         "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (deploymentConfigurationEClass,
+       source,
+       new String[] {
+         "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
+         "stereotype", "eng.DeploymentConfiguration" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDeploymentConfiguration_OwnedDeploymentLinks(),
+       source,
+       new String[] {
+         "featureName", "elementImport", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "Namespace" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (instanceDeploymentLinkEClass,
+       source,
+       new String[] {
+         "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
+         "stereotype", "eng.InstanceDeploymentLink" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (partDeploymentLinkEClass,
+       source,
+       new String[] {
+         "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
+         "stereotype", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (abstractPhysicalInstanceEClass,
+       source,
+       new String[] {
+         "metaclass", "InstanceSpecification", //$NON-NLS-1$ //$NON-NLS-2$
+         "stereotype", "eng.PhysicalObject" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (typeDeploymentLinkEClass,
+       source,
+       new String[] {
+         "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
+         "stereotype", "eng.TypeDeploymentLink" //$NON-NLS-1$ //$NON-NLS-2$
+       });
   }
 
-  /**
-   * Initializes the annotations for <b>http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment</b>. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * Initializes the annotations for <b>http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment</b>.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  protected void createSegmentAnnotations() {
+	protected void createSegmentAnnotations() {
     String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$
-    addAnnotation(getDeploymentAspect_OwnedConfigurations(), source, new String[] {});
-    addAnnotation(getDeploymentAspect_OwnedDeploymentAspects(), source, new String[] {});
+    addAnnotation
+      (getDeploymentAspect_OwnedConfigurations(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getDeploymentAspect_OwnedDeploymentAspects(),
+       source,
+       new String[] {
+       });
   }
 
-} // DeploymentPackageImpl
+} //DeploymentPackageImpl

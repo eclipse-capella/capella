@@ -77,230 +77,231 @@ import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentPackage;
 import org.polarsys.capella.core.data.pa.deployment.impl.DeploymentPackageImpl;
 import org.polarsys.capella.core.data.pa.impl.PaPackageImpl;
+
+
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 import org.polarsys.capella.core.data.sharedmodel.impl.SharedmodelPackageImpl;
 import org.polarsys.kitalpha.emde.model.EmdePackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
- * 
+ * <!-- begin-user-doc -->
+ * An implementation of the model <b>Package</b>.
+ * <!-- end-user-doc -->
  * @generated
  */
 public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePackage {
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass dataValueEClass = null;
+	private EClass dataValueEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass dataValueContainerEClass = null;
+	private EClass dataValueContainerEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass abstractBooleanValueEClass = null;
+	private EClass abstractBooleanValueEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass literalBooleanValueEClass = null;
+	private EClass literalBooleanValueEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass booleanReferenceEClass = null;
+	private EClass booleanReferenceEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass abstractEnumerationValueEClass = null;
+	private EClass abstractEnumerationValueEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass enumerationLiteralEClass = null;
+	private EClass enumerationLiteralEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass enumerationReferenceEClass = null;
+	private EClass enumerationReferenceEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass abstractStringValueEClass = null;
+	private EClass abstractStringValueEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass literalStringValueEClass = null;
+	private EClass literalStringValueEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass stringReferenceEClass = null;
+	private EClass stringReferenceEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass numericValueEClass = null;
+	private EClass numericValueEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass literalNumericValueEClass = null;
+	private EClass literalNumericValueEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass numericReferenceEClass = null;
+	private EClass numericReferenceEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass abstractComplexValueEClass = null;
+	private EClass abstractComplexValueEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass complexValueEClass = null;
+	private EClass complexValueEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass complexValueReferenceEClass = null;
+	private EClass complexValueReferenceEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass valuePartEClass = null;
+	private EClass valuePartEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass abstractExpressionValueEClass = null;
+	private EClass abstractExpressionValueEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass binaryExpressionEClass = null;
+	private EClass binaryExpressionEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass unaryExpressionEClass = null;
+	private EClass unaryExpressionEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EClass opaqueExpressionEClass = null;
+	private EClass opaqueExpressionEClass = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum binaryOperatorEEnum = null;
+	private EEnum binaryOperatorEEnum = null;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum unaryOperatorEEnum = null;
+	private EEnum unaryOperatorEEnum = null;
 
-  /**
-   * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
-   * EPackage.Registry} by the package package URI value.
-   * <p>
-   * Note: the correct way to create the package is via the static factory method {@link #init init()}, which also
-   * performs initialization of the package, or returns the registered package, if one already exists. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * Creates an instance of the model <b>Package</b>, registered with
+   * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
+   * package URI value.
+   * <p>Note: the correct way to create the package is via the static
+   * factory method {@link #init init()}, which also performs
+   * initialization of the package, or returns the registered package,
+   * if one already exists.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @see org.eclipse.emf.ecore.EPackage.Registry
    * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#eNS_URI
    * @see #init()
    * @generated
    */
-  private DatavaluePackageImpl() {
+	private DatavaluePackageImpl() {
     super(eNS_URI, DatavalueFactory.eINSTANCE);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private static boolean isInited = false;
+	private static boolean isInited = false;
 
-  /**
+	/**
    * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
    *
-   * <p>
-   * This method is used to initialize {@link DatavaluePackage#eINSTANCE} when that field is accessed. Clients should
-   * not invoke it directly. Instead, they should simply access that field to obtain the package. <!-- begin-user-doc
-   * --> <!-- end-user-doc -->
-   * 
+   * <p>This method is used to initialize {@link DatavaluePackage#eINSTANCE} when that field is accessed.
+   * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @see #eNS_URI
    * @see #createPackageContents()
    * @see #initializePackageContents()
    * @generated
    */
-  public static DatavaluePackage init() {
-    if (isInited)
-      return (DatavaluePackage) EPackage.Registry.INSTANCE.getEPackage(DatavaluePackage.eNS_URI);
+	public static DatavaluePackage init() {
+    if (isInited) return (DatavaluePackage)EPackage.Registry.INSTANCE.getEPackage(DatavaluePackage.eNS_URI);
 
     // Obtain or create and register package
     Object registeredDatavaluePackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-    DatavaluePackageImpl theDatavaluePackage = registeredDatavaluePackage instanceof DatavaluePackageImpl
-        ? (DatavaluePackageImpl) registeredDatavaluePackage
-        : new DatavaluePackageImpl();
+    DatavaluePackageImpl theDatavaluePackage = registeredDatavaluePackage instanceof DatavaluePackageImpl ? (DatavaluePackageImpl)registeredDatavaluePackage : new DatavaluePackageImpl();
 
     isInited = true;
 
@@ -312,62 +313,37 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 
     // Obtain or create and register interdependencies
     Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CapellamodellerPackage.eNS_URI);
-    CapellamodellerPackageImpl theCapellamodellerPackage = (CapellamodellerPackageImpl) (registeredPackage instanceof CapellamodellerPackageImpl
-        ? registeredPackage
-        : CapellamodellerPackage.eINSTANCE);
+    CapellamodellerPackageImpl theCapellamodellerPackage = (CapellamodellerPackageImpl)(registeredPackage instanceof CapellamodellerPackageImpl ? registeredPackage : CapellamodellerPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CapellacorePackage.eNS_URI);
-    CapellacorePackageImpl theCapellacorePackage = (CapellacorePackageImpl) (registeredPackage instanceof CapellacorePackageImpl
-        ? registeredPackage
-        : CapellacorePackage.eINSTANCE);
+    CapellacorePackageImpl theCapellacorePackage = (CapellacorePackageImpl)(registeredPackage instanceof CapellacorePackageImpl ? registeredPackage : CapellacorePackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(OaPackage.eNS_URI);
-    OaPackageImpl theOaPackage = (OaPackageImpl) (registeredPackage instanceof OaPackageImpl ? registeredPackage
-        : OaPackage.eINSTANCE);
+    OaPackageImpl theOaPackage = (OaPackageImpl)(registeredPackage instanceof OaPackageImpl ? registeredPackage : OaPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CtxPackage.eNS_URI);
-    CtxPackageImpl theCtxPackage = (CtxPackageImpl) (registeredPackage instanceof CtxPackageImpl ? registeredPackage
-        : CtxPackage.eINSTANCE);
+    CtxPackageImpl theCtxPackage = (CtxPackageImpl)(registeredPackage instanceof CtxPackageImpl ? registeredPackage : CtxPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(LaPackage.eNS_URI);
-    LaPackageImpl theLaPackage = (LaPackageImpl) (registeredPackage instanceof LaPackageImpl ? registeredPackage
-        : LaPackage.eINSTANCE);
+    LaPackageImpl theLaPackage = (LaPackageImpl)(registeredPackage instanceof LaPackageImpl ? registeredPackage : LaPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(PaPackage.eNS_URI);
-    PaPackageImpl thePaPackage = (PaPackageImpl) (registeredPackage instanceof PaPackageImpl ? registeredPackage
-        : PaPackage.eINSTANCE);
+    PaPackageImpl thePaPackage = (PaPackageImpl)(registeredPackage instanceof PaPackageImpl ? registeredPackage : PaPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(DeploymentPackage.eNS_URI);
-    DeploymentPackageImpl theDeploymentPackage = (DeploymentPackageImpl) (registeredPackage instanceof DeploymentPackageImpl
-        ? registeredPackage
-        : DeploymentPackage.eINSTANCE);
+    DeploymentPackageImpl theDeploymentPackage = (DeploymentPackageImpl)(registeredPackage instanceof DeploymentPackageImpl ? registeredPackage : DeploymentPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(EpbsPackage.eNS_URI);
-    EpbsPackageImpl theEpbsPackage = (EpbsPackageImpl) (registeredPackage instanceof EpbsPackageImpl ? registeredPackage
-        : EpbsPackage.eINSTANCE);
+    EpbsPackageImpl theEpbsPackage = (EpbsPackageImpl)(registeredPackage instanceof EpbsPackageImpl ? registeredPackage : EpbsPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(SharedmodelPackage.eNS_URI);
-    SharedmodelPackageImpl theSharedmodelPackage = (SharedmodelPackageImpl) (registeredPackage instanceof SharedmodelPackageImpl
-        ? registeredPackage
-        : SharedmodelPackage.eINSTANCE);
+    SharedmodelPackageImpl theSharedmodelPackage = (SharedmodelPackageImpl)(registeredPackage instanceof SharedmodelPackageImpl ? registeredPackage : SharedmodelPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI);
-    CapellacommonPackageImpl theCapellacommonPackage = (CapellacommonPackageImpl) (registeredPackage instanceof CapellacommonPackageImpl
-        ? registeredPackage
-        : CapellacommonPackage.eINSTANCE);
+    CapellacommonPackageImpl theCapellacommonPackage = (CapellacommonPackageImpl)(registeredPackage instanceof CapellacommonPackageImpl ? registeredPackage : CapellacommonPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI);
-    InformationPackageImpl theInformationPackage = (InformationPackageImpl) (registeredPackage instanceof InformationPackageImpl
-        ? registeredPackage
-        : InformationPackage.eINSTANCE);
+    InformationPackageImpl theInformationPackage = (InformationPackageImpl)(registeredPackage instanceof InformationPackageImpl ? registeredPackage : InformationPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CommunicationPackage.eNS_URI);
-    CommunicationPackageImpl theCommunicationPackage = (CommunicationPackageImpl) (registeredPackage instanceof CommunicationPackageImpl
-        ? registeredPackage
-        : CommunicationPackage.eINSTANCE);
+    CommunicationPackageImpl theCommunicationPackage = (CommunicationPackageImpl)(registeredPackage instanceof CommunicationPackageImpl ? registeredPackage : CommunicationPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(DatatypePackage.eNS_URI);
-    DatatypePackageImpl theDatatypePackage = (DatatypePackageImpl) (registeredPackage instanceof DatatypePackageImpl
-        ? registeredPackage
-        : DatatypePackage.eINSTANCE);
+    DatatypePackageImpl theDatatypePackage = (DatatypePackageImpl)(registeredPackage instanceof DatatypePackageImpl ? registeredPackage : DatatypePackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CsPackage.eNS_URI);
-    CsPackageImpl theCsPackage = (CsPackageImpl) (registeredPackage instanceof CsPackageImpl ? registeredPackage
-        : CsPackage.eINSTANCE);
+    CsPackageImpl theCsPackage = (CsPackageImpl)(registeredPackage instanceof CsPackageImpl ? registeredPackage : CsPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI);
-    FaPackageImpl theFaPackage = (FaPackageImpl) (registeredPackage instanceof FaPackageImpl ? registeredPackage
-        : FaPackage.eINSTANCE);
+    FaPackageImpl theFaPackage = (FaPackageImpl)(registeredPackage instanceof FaPackageImpl ? registeredPackage : FaPackage.eINSTANCE);
     registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InteractionPackage.eNS_URI);
-    InteractionPackageImpl theInteractionPackage = (InteractionPackageImpl) (registeredPackage instanceof InteractionPackageImpl
-        ? registeredPackage
-        : InteractionPackage.eINSTANCE);
+    InteractionPackageImpl theInteractionPackage = (InteractionPackageImpl)(registeredPackage instanceof InteractionPackageImpl ? registeredPackage : InteractionPackage.eINSTANCE);
 
     // Create package meta-data objects
     theDatavaluePackage.createPackageContents();
@@ -415,632 +391,632 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
     return theDatavaluePackage;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getDataValue() {
+	@Override
+	public EClass getDataValue() {
     return dataValueEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EAttribute getDataValue_Abstract() {
-    return (EAttribute) dataValueEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EAttribute getDataValue_Abstract() {
+    return (EAttribute)dataValueEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getDataValue_Type() {
-    return (EReference) dataValueEClass.getEStructuralFeatures().get(1);
+	@Override
+	public EReference getDataValue_Type() {
+    return (EReference)dataValueEClass.getEStructuralFeatures().get(1);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getDataValueContainer() {
+	@Override
+	public EClass getDataValueContainer() {
     return dataValueContainerEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getDataValueContainer_OwnedDataValues() {
-    return (EReference) dataValueContainerEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EReference getDataValueContainer_OwnedDataValues() {
+    return (EReference)dataValueContainerEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getAbstractBooleanValue() {
+	@Override
+	public EClass getAbstractBooleanValue() {
     return abstractBooleanValueEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getAbstractBooleanValue_BooleanType() {
-    return (EReference) abstractBooleanValueEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EReference getAbstractBooleanValue_BooleanType() {
+    return (EReference)abstractBooleanValueEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getLiteralBooleanValue() {
+	@Override
+	public EClass getLiteralBooleanValue() {
     return literalBooleanValueEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EAttribute getLiteralBooleanValue_Value() {
-    return (EAttribute) literalBooleanValueEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EAttribute getLiteralBooleanValue_Value() {
+    return (EAttribute)literalBooleanValueEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getBooleanReference() {
+	@Override
+	public EClass getBooleanReference() {
     return booleanReferenceEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getBooleanReference_ReferencedValue() {
-    return (EReference) booleanReferenceEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EReference getBooleanReference_ReferencedValue() {
+    return (EReference)booleanReferenceEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getBooleanReference_ReferencedProperty() {
-    return (EReference) booleanReferenceEClass.getEStructuralFeatures().get(1);
+	@Override
+	public EReference getBooleanReference_ReferencedProperty() {
+    return (EReference)booleanReferenceEClass.getEStructuralFeatures().get(1);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getAbstractEnumerationValue() {
+	@Override
+	public EClass getAbstractEnumerationValue() {
     return abstractEnumerationValueEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getAbstractEnumerationValue_EnumerationType() {
-    return (EReference) abstractEnumerationValueEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EReference getAbstractEnumerationValue_EnumerationType() {
+    return (EReference)abstractEnumerationValueEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getEnumerationLiteral() {
+	@Override
+	public EClass getEnumerationLiteral() {
     return enumerationLiteralEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getEnumerationLiteral_DomainValue() {
-    return (EReference) enumerationLiteralEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EReference getEnumerationLiteral_DomainValue() {
+    return (EReference)enumerationLiteralEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getEnumerationReference() {
+	@Override
+	public EClass getEnumerationReference() {
     return enumerationReferenceEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getEnumerationReference_ReferencedValue() {
-    return (EReference) enumerationReferenceEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EReference getEnumerationReference_ReferencedValue() {
+    return (EReference)enumerationReferenceEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getEnumerationReference_ReferencedProperty() {
-    return (EReference) enumerationReferenceEClass.getEStructuralFeatures().get(1);
+	@Override
+	public EReference getEnumerationReference_ReferencedProperty() {
+    return (EReference)enumerationReferenceEClass.getEStructuralFeatures().get(1);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getAbstractStringValue() {
+	@Override
+	public EClass getAbstractStringValue() {
     return abstractStringValueEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getAbstractStringValue_StringType() {
-    return (EReference) abstractStringValueEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EReference getAbstractStringValue_StringType() {
+    return (EReference)abstractStringValueEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getLiteralStringValue() {
+	@Override
+	public EClass getLiteralStringValue() {
     return literalStringValueEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EAttribute getLiteralStringValue_Value() {
-    return (EAttribute) literalStringValueEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EAttribute getLiteralStringValue_Value() {
+    return (EAttribute)literalStringValueEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getStringReference() {
+	@Override
+	public EClass getStringReference() {
     return stringReferenceEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getStringReference_ReferencedValue() {
-    return (EReference) stringReferenceEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EReference getStringReference_ReferencedValue() {
+    return (EReference)stringReferenceEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getStringReference_ReferencedProperty() {
-    return (EReference) stringReferenceEClass.getEStructuralFeatures().get(1);
+	@Override
+	public EReference getStringReference_ReferencedProperty() {
+    return (EReference)stringReferenceEClass.getEStructuralFeatures().get(1);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getNumericValue() {
+	@Override
+	public EClass getNumericValue() {
     return numericValueEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getNumericValue_Unit() {
-    return (EReference) numericValueEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EReference getNumericValue_Unit() {
+    return (EReference)numericValueEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getNumericValue_NumericType() {
-    return (EReference) numericValueEClass.getEStructuralFeatures().get(1);
+	@Override
+	public EReference getNumericValue_NumericType() {
+    return (EReference)numericValueEClass.getEStructuralFeatures().get(1);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getLiteralNumericValue() {
+	@Override
+	public EClass getLiteralNumericValue() {
     return literalNumericValueEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EAttribute getLiteralNumericValue_Value() {
-    return (EAttribute) literalNumericValueEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EAttribute getLiteralNumericValue_Value() {
+    return (EAttribute)literalNumericValueEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getNumericReference() {
+	@Override
+	public EClass getNumericReference() {
     return numericReferenceEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getNumericReference_ReferencedValue() {
-    return (EReference) numericReferenceEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EReference getNumericReference_ReferencedValue() {
+    return (EReference)numericReferenceEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getNumericReference_ReferencedProperty() {
-    return (EReference) numericReferenceEClass.getEStructuralFeatures().get(1);
+	@Override
+	public EReference getNumericReference_ReferencedProperty() {
+    return (EReference)numericReferenceEClass.getEStructuralFeatures().get(1);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getAbstractComplexValue() {
+	@Override
+	public EClass getAbstractComplexValue() {
     return abstractComplexValueEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getAbstractComplexValue_ComplexType() {
-    return (EReference) abstractComplexValueEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EReference getAbstractComplexValue_ComplexType() {
+    return (EReference)abstractComplexValueEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getComplexValue() {
+	@Override
+	public EClass getComplexValue() {
     return complexValueEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getComplexValue_OwnedParts() {
-    return (EReference) complexValueEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EReference getComplexValue_OwnedParts() {
+    return (EReference)complexValueEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getComplexValueReference() {
+	@Override
+	public EClass getComplexValueReference() {
     return complexValueReferenceEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getComplexValueReference_ReferencedValue() {
-    return (EReference) complexValueReferenceEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EReference getComplexValueReference_ReferencedValue() {
+    return (EReference)complexValueReferenceEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getComplexValueReference_ReferencedProperty() {
-    return (EReference) complexValueReferenceEClass.getEStructuralFeatures().get(1);
+	@Override
+	public EReference getComplexValueReference_ReferencedProperty() {
+    return (EReference)complexValueReferenceEClass.getEStructuralFeatures().get(1);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getValuePart() {
+	@Override
+	public EClass getValuePart() {
     return valuePartEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getValuePart_ReferencedProperty() {
-    return (EReference) valuePartEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EReference getValuePart_ReferencedProperty() {
+    return (EReference)valuePartEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getValuePart_OwnedValue() {
-    return (EReference) valuePartEClass.getEStructuralFeatures().get(1);
+	@Override
+	public EReference getValuePart_OwnedValue() {
+    return (EReference)valuePartEClass.getEStructuralFeatures().get(1);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getAbstractExpressionValue() {
+	@Override
+	public EClass getAbstractExpressionValue() {
     return abstractExpressionValueEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EAttribute getAbstractExpressionValue_Expression() {
-    return (EAttribute) abstractExpressionValueEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EAttribute getAbstractExpressionValue_Expression() {
+    return (EAttribute)abstractExpressionValueEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EAttribute getAbstractExpressionValue_UnparsedExpression() {
-    return (EAttribute) abstractExpressionValueEClass.getEStructuralFeatures().get(1);
+	@Override
+	public EAttribute getAbstractExpressionValue_UnparsedExpression() {
+    return (EAttribute)abstractExpressionValueEClass.getEStructuralFeatures().get(1);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getAbstractExpressionValue_ExpressionType() {
-    return (EReference) abstractExpressionValueEClass.getEStructuralFeatures().get(2);
+	@Override
+	public EReference getAbstractExpressionValue_ExpressionType() {
+    return (EReference)abstractExpressionValueEClass.getEStructuralFeatures().get(2);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getBinaryExpression() {
+	@Override
+	public EClass getBinaryExpression() {
     return binaryExpressionEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EAttribute getBinaryExpression_Operator() {
-    return (EAttribute) binaryExpressionEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EAttribute getBinaryExpression_Operator() {
+    return (EAttribute)binaryExpressionEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getBinaryExpression_OwnedLeftOperand() {
-    return (EReference) binaryExpressionEClass.getEStructuralFeatures().get(1);
+	@Override
+	public EReference getBinaryExpression_OwnedLeftOperand() {
+    return (EReference)binaryExpressionEClass.getEStructuralFeatures().get(1);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getBinaryExpression_OwnedRightOperand() {
-    return (EReference) binaryExpressionEClass.getEStructuralFeatures().get(2);
+	@Override
+	public EReference getBinaryExpression_OwnedRightOperand() {
+    return (EReference)binaryExpressionEClass.getEStructuralFeatures().get(2);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getUnaryExpression() {
+	@Override
+	public EClass getUnaryExpression() {
     return unaryExpressionEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EAttribute getUnaryExpression_Operator() {
-    return (EAttribute) unaryExpressionEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EAttribute getUnaryExpression_Operator() {
+    return (EAttribute)unaryExpressionEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EReference getUnaryExpression_OwnedOperand() {
-    return (EReference) unaryExpressionEClass.getEStructuralFeatures().get(1);
+	@Override
+	public EReference getUnaryExpression_OwnedOperand() {
+    return (EReference)unaryExpressionEClass.getEStructuralFeatures().get(1);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EClass getOpaqueExpression() {
+	@Override
+	public EClass getOpaqueExpression() {
     return opaqueExpressionEClass;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EAttribute getOpaqueExpression_Bodies() {
-    return (EAttribute) opaqueExpressionEClass.getEStructuralFeatures().get(0);
+	@Override
+	public EAttribute getOpaqueExpression_Bodies() {
+    return (EAttribute)opaqueExpressionEClass.getEStructuralFeatures().get(0);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EAttribute getOpaqueExpression_Languages() {
-    return (EAttribute) opaqueExpressionEClass.getEStructuralFeatures().get(1);
+	@Override
+	public EAttribute getOpaqueExpression_Languages() {
+    return (EAttribute)opaqueExpressionEClass.getEStructuralFeatures().get(1);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EEnum getBinaryOperator() {
+	@Override
+	public EEnum getBinaryOperator() {
     return binaryOperatorEEnum;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public EEnum getUnaryOperator() {
+	@Override
+	public EEnum getUnaryOperator() {
     return unaryOperatorEEnum;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public DatavalueFactory getDatavalueFactory() {
-    return (DatavalueFactory) getEFactoryInstance();
+	@Override
+	public DatavalueFactory getDatavalueFactory() {
+    return (DatavalueFactory)getEFactoryInstance();
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private boolean isCreated = false;
+	private boolean isCreated = false;
 
-  /**
-   * Creates the meta-model objects for the package. This method is guarded to have no affect on any invocation but its
-   * first. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * Creates the meta-model objects for the package.  This method is
+   * guarded to have no affect on any invocation but its first.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  public void createPackageContents() {
-    if (isCreated)
-      return;
+	public void createPackageContents() {
+    if (isCreated) return;
     isCreated = true;
 
     // Create classes and their features
@@ -1129,22 +1105,22 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
     unaryOperatorEEnum = createEEnum(UNARY_OPERATOR);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  private boolean isInitialized = false;
+	private boolean isInitialized = false;
 
-  /**
-   * Complete the initialization of the package and its meta-model. This method is guarded to have no affect on any
-   * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * Complete the initialization of the package and its meta-model.  This
+   * method is guarded to have no affect on any invocation but its first.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  public void initializePackageContents() {
-    if (isInitialized)
-      return;
+	public void initializePackageContents() {
+    if (isInitialized) return;
     isInitialized = true;
 
     // Initialize package
@@ -1153,14 +1129,10 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
     setNsURI(eNS_URI);
 
     // Obtain other dependent packages
-    CapellacorePackage theCapellacorePackage = (CapellacorePackage) EPackage.Registry.INSTANCE
-        .getEPackage(CapellacorePackage.eNS_URI);
-    ModellingcorePackage theModellingcorePackage = (ModellingcorePackage) EPackage.Registry.INSTANCE
-        .getEPackage(ModellingcorePackage.eNS_URI);
-    DatatypePackage theDatatypePackage = (DatatypePackage) EPackage.Registry.INSTANCE
-        .getEPackage(DatatypePackage.eNS_URI);
-    InformationPackage theInformationPackage = (InformationPackage) EPackage.Registry.INSTANCE
-        .getEPackage(InformationPackage.eNS_URI);
+    CapellacorePackage theCapellacorePackage = (CapellacorePackage)EPackage.Registry.INSTANCE.getEPackage(CapellacorePackage.eNS_URI);
+    ModellingcorePackage theModellingcorePackage = (ModellingcorePackage)EPackage.Registry.INSTANCE.getEPackage(ModellingcorePackage.eNS_URI);
+    DatatypePackage theDatatypePackage = (DatatypePackage)EPackage.Registry.INSTANCE.getEPackage(DatatypePackage.eNS_URI);
+    InformationPackage theInformationPackage = (InformationPackage)EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI);
 
     // Create type parameters
 
@@ -1198,175 +1170,84 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 
     // Initialize classes and features; add operations and parameters
     initEClass(dataValueEClass, DataValue.class, "DataValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-    initEAttribute(getDataValue_Abstract(), ecorePackage.getEBoolean(), "abstract", null, 0, 1, DataValue.class, //$NON-NLS-1$
-        !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDataValue_Type(), theCapellacorePackage.getType(), null, "type", null, 0, 1, DataValue.class, //$NON-NLS-1$
-        IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-        IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDataValue_Abstract(), ecorePackage.getEBoolean(), "abstract", null, 0, 1, DataValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getDataValue_Type(), theCapellacorePackage.getType(), null, "type", null, 0, 1, DataValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(dataValueContainerEClass, DataValueContainer.class, "DataValueContainer", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getDataValueContainer_OwnedDataValues(), this.getDataValue(), null, "ownedDataValues", null, 0, -1, //$NON-NLS-1$
-        DataValueContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-        !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(dataValueContainerEClass, DataValueContainer.class, "DataValueContainer", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(getDataValueContainer_OwnedDataValues(), this.getDataValue(), null, "ownedDataValues", null, 0, -1, DataValueContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(abstractBooleanValueEClass, AbstractBooleanValue.class, "AbstractBooleanValue", IS_ABSTRACT, //$NON-NLS-1$
-        !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAbstractBooleanValue_BooleanType(), theDatatypePackage.getBooleanType(), null, "booleanType", //$NON-NLS-1$
-        null, 0, 1, AbstractBooleanValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE,
-        IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+    initEClass(abstractBooleanValueEClass, AbstractBooleanValue.class, "AbstractBooleanValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(getAbstractBooleanValue_BooleanType(), theDatatypePackage.getBooleanType(), null, "booleanType", null, 0, 1, AbstractBooleanValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(literalBooleanValueEClass, LiteralBooleanValue.class, "LiteralBooleanValue", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getLiteralBooleanValue_Value(), ecorePackage.getEBoolean(), "value", null, 0, 1, //$NON-NLS-1$
-        LiteralBooleanValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-        !IS_DERIVED, IS_ORDERED);
+    initEClass(literalBooleanValueEClass, LiteralBooleanValue.class, "LiteralBooleanValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEAttribute(getLiteralBooleanValue_Value(), ecorePackage.getEBoolean(), "value", null, 0, 1, LiteralBooleanValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(booleanReferenceEClass, BooleanReference.class, "BooleanReference", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getBooleanReference_ReferencedValue(), this.getAbstractBooleanValue(), null, "referencedValue", null, //$NON-NLS-1$
-        0, 1, BooleanReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-        !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBooleanReference_ReferencedProperty(), theInformationPackage.getProperty(), null,
-        "referencedProperty", null, 0, 1, BooleanReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
-        !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(booleanReferenceEClass, BooleanReference.class, "BooleanReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(getBooleanReference_ReferencedValue(), this.getAbstractBooleanValue(), null, "referencedValue", null, 0, 1, BooleanReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getBooleanReference_ReferencedProperty(), theInformationPackage.getProperty(), null, "referencedProperty", null, 0, 1, BooleanReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(abstractEnumerationValueEClass, AbstractEnumerationValue.class, "AbstractEnumerationValue", IS_ABSTRACT, //$NON-NLS-1$
-        !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAbstractEnumerationValue_EnumerationType(), theDatatypePackage.getEnumeration(), null,
-        "enumerationType", null, 0, 1, AbstractEnumerationValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, //$NON-NLS-1$
-        !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+    initEClass(abstractEnumerationValueEClass, AbstractEnumerationValue.class, "AbstractEnumerationValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(getAbstractEnumerationValue_EnumerationType(), theDatatypePackage.getEnumeration(), null, "enumerationType", null, 0, 1, AbstractEnumerationValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(enumerationLiteralEClass, EnumerationLiteral.class, "EnumerationLiteral", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getEnumerationLiteral_DomainValue(), this.getDataValue(), null, "domainValue", null, 0, 1, //$NON-NLS-1$
-        EnumerationLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-        !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(enumerationLiteralEClass, EnumerationLiteral.class, "EnumerationLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(getEnumerationLiteral_DomainValue(), this.getDataValue(), null, "domainValue", null, 0, 1, EnumerationLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(enumerationReferenceEClass, EnumerationReference.class, "EnumerationReference", !IS_ABSTRACT, //$NON-NLS-1$
-        !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getEnumerationReference_ReferencedValue(), this.getAbstractEnumerationValue(), null,
-        "referencedValue", null, 0, 1, EnumerationReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
-        !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEnumerationReference_ReferencedProperty(), theInformationPackage.getProperty(), null,
-        "referencedProperty", null, 0, 1, EnumerationReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
-        !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(enumerationReferenceEClass, EnumerationReference.class, "EnumerationReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(getEnumerationReference_ReferencedValue(), this.getAbstractEnumerationValue(), null, "referencedValue", null, 0, 1, EnumerationReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getEnumerationReference_ReferencedProperty(), theInformationPackage.getProperty(), null, "referencedProperty", null, 0, 1, EnumerationReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(abstractStringValueEClass, AbstractStringValue.class, "AbstractStringValue", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAbstractStringValue_StringType(), theDatatypePackage.getStringType(), null, "stringType", null, 0, //$NON-NLS-1$
-        1, AbstractStringValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-        !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+    initEClass(abstractStringValueEClass, AbstractStringValue.class, "AbstractStringValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(getAbstractStringValue_StringType(), theDatatypePackage.getStringType(), null, "stringType", null, 0, 1, AbstractStringValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(literalStringValueEClass, LiteralStringValue.class, "LiteralStringValue", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getLiteralStringValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, //$NON-NLS-1$
-        LiteralStringValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-        !IS_DERIVED, IS_ORDERED);
+    initEClass(literalStringValueEClass, LiteralStringValue.class, "LiteralStringValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEAttribute(getLiteralStringValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, LiteralStringValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(stringReferenceEClass, StringReference.class, "StringReference", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getStringReference_ReferencedValue(), this.getAbstractStringValue(), null, "referencedValue", null, //$NON-NLS-1$
-        0, 1, StringReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-        !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getStringReference_ReferencedProperty(), theInformationPackage.getProperty(), null,
-        "referencedProperty", null, 0, 1, StringReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
-        !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(stringReferenceEClass, StringReference.class, "StringReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(getStringReference_ReferencedValue(), this.getAbstractStringValue(), null, "referencedValue", null, 0, 1, StringReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getStringReference_ReferencedProperty(), theInformationPackage.getProperty(), null, "referencedProperty", null, 0, 1, StringReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(numericValueEClass, NumericValue.class, "NumericValue", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getNumericValue_Unit(), theInformationPackage.getUnit(), null, "unit", null, 0, 1, //$NON-NLS-1$
-        NumericValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-        !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getNumericValue_NumericType(), theDatatypePackage.getNumericType(), null, "numericType", null, 0, 1, //$NON-NLS-1$
-        NumericValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-        !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+    initEClass(numericValueEClass, NumericValue.class, "NumericValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(getNumericValue_Unit(), theInformationPackage.getUnit(), null, "unit", null, 0, 1, NumericValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getNumericValue_NumericType(), theDatatypePackage.getNumericType(), null, "numericType", null, 0, 1, NumericValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(literalNumericValueEClass, LiteralNumericValue.class, "LiteralNumericValue", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getLiteralNumericValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, //$NON-NLS-1$
-        LiteralNumericValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-        !IS_DERIVED, IS_ORDERED);
+    initEClass(literalNumericValueEClass, LiteralNumericValue.class, "LiteralNumericValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEAttribute(getLiteralNumericValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, LiteralNumericValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(numericReferenceEClass, NumericReference.class, "NumericReference", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getNumericReference_ReferencedValue(), this.getNumericValue(), null, "referencedValue", null, 0, 1, //$NON-NLS-1$
-        NumericReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-        !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getNumericReference_ReferencedProperty(), theInformationPackage.getProperty(), null,
-        "referencedProperty", null, 0, 1, NumericReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
-        !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(numericReferenceEClass, NumericReference.class, "NumericReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(getNumericReference_ReferencedValue(), this.getNumericValue(), null, "referencedValue", null, 0, 1, NumericReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getNumericReference_ReferencedProperty(), theInformationPackage.getProperty(), null, "referencedProperty", null, 0, 1, NumericReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(abstractComplexValueEClass, AbstractComplexValue.class, "AbstractComplexValue", IS_ABSTRACT, //$NON-NLS-1$
-        !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAbstractComplexValue_ComplexType(), theCapellacorePackage.getClassifier(), null, "complexType", //$NON-NLS-1$
-        null, 0, 1, AbstractComplexValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE,
-        IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+    initEClass(abstractComplexValueEClass, AbstractComplexValue.class, "AbstractComplexValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(getAbstractComplexValue_ComplexType(), theCapellacorePackage.getClassifier(), null, "complexType", null, 0, 1, AbstractComplexValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(complexValueEClass, ComplexValue.class, "ComplexValue", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getComplexValue_OwnedParts(), this.getValuePart(), null, "ownedParts", null, 0, -1, //$NON-NLS-1$
-        ComplexValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-        !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(complexValueEClass, ComplexValue.class, "ComplexValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(getComplexValue_OwnedParts(), this.getValuePart(), null, "ownedParts", null, 0, -1, ComplexValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(complexValueReferenceEClass, ComplexValueReference.class, "ComplexValueReference", !IS_ABSTRACT, //$NON-NLS-1$
-        !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getComplexValueReference_ReferencedValue(), this.getAbstractComplexValue(), null, "referencedValue", //$NON-NLS-1$
-        null, 0, 1, ComplexValueReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-        IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getComplexValueReference_ReferencedProperty(), theInformationPackage.getProperty(), null,
-        "referencedProperty", null, 0, 1, ComplexValueReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
-        !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(complexValueReferenceEClass, ComplexValueReference.class, "ComplexValueReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(getComplexValueReference_ReferencedValue(), this.getAbstractComplexValue(), null, "referencedValue", null, 0, 1, ComplexValueReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getComplexValueReference_ReferencedProperty(), theInformationPackage.getProperty(), null, "referencedProperty", null, 0, 1, ComplexValueReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(valuePartEClass, ValuePart.class, "ValuePart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-    initEReference(getValuePart_ReferencedProperty(), theInformationPackage.getProperty(), null, "referencedProperty", //$NON-NLS-1$
-        null, 0, 1, ValuePart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-        !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getValuePart_OwnedValue(), this.getDataValue(), null, "ownedValue", null, 0, 1, ValuePart.class, //$NON-NLS-1$
-        !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-        !IS_DERIVED, IS_ORDERED);
+    initEReference(getValuePart_ReferencedProperty(), theInformationPackage.getProperty(), null, "referencedProperty", null, 0, 1, ValuePart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getValuePart_OwnedValue(), this.getDataValue(), null, "ownedValue", null, 0, 1, ValuePart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(abstractExpressionValueEClass, AbstractExpressionValue.class, "AbstractExpressionValue", IS_ABSTRACT, //$NON-NLS-1$
-        !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getAbstractExpressionValue_Expression(), ecorePackage.getEString(), "expression", null, 0, 1, //$NON-NLS-1$
-        AbstractExpressionValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-        IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAbstractExpressionValue_UnparsedExpression(), ecorePackage.getEString(), "unparsedExpression", //$NON-NLS-1$
-        null, 0, 1, AbstractExpressionValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-        IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAbstractExpressionValue_ExpressionType(), theDatatypePackage.getDataType(), null,
-        "expressionType", null, 0, 1, AbstractExpressionValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, //$NON-NLS-1$
-        !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+    initEClass(abstractExpressionValueEClass, AbstractExpressionValue.class, "AbstractExpressionValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEAttribute(getAbstractExpressionValue_Expression(), ecorePackage.getEString(), "expression", null, 0, 1, AbstractExpressionValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEAttribute(getAbstractExpressionValue_UnparsedExpression(), ecorePackage.getEString(), "unparsedExpression", null, 0, 1, AbstractExpressionValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getAbstractExpressionValue_ExpressionType(), theDatatypePackage.getDataType(), null, "expressionType", null, 0, 1, AbstractExpressionValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(binaryExpressionEClass, BinaryExpression.class, "BinaryExpression", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBinaryExpression_Operator(), this.getBinaryOperator(), "operator", null, 0, 1, //$NON-NLS-1$
-        BinaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-        !IS_DERIVED, IS_ORDERED);
-    initEReference(getBinaryExpression_OwnedLeftOperand(), this.getDataValue(), null, "ownedLeftOperand", null, 0, 1, //$NON-NLS-1$
-        BinaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-        !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBinaryExpression_OwnedRightOperand(), this.getDataValue(), null, "ownedRightOperand", null, 0, 1, //$NON-NLS-1$
-        BinaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-        !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(binaryExpressionEClass, BinaryExpression.class, "BinaryExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEAttribute(getBinaryExpression_Operator(), this.getBinaryOperator(), "operator", null, 0, 1, BinaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getBinaryExpression_OwnedLeftOperand(), this.getDataValue(), null, "ownedLeftOperand", null, 0, 1, BinaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getBinaryExpression_OwnedRightOperand(), this.getDataValue(), null, "ownedRightOperand", null, 0, 1, BinaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(unaryExpressionEClass, UnaryExpression.class, "UnaryExpression", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getUnaryExpression_Operator(), this.getUnaryOperator(), "operator", null, 0, 1, //$NON-NLS-1$
-        UnaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-        !IS_DERIVED, IS_ORDERED);
-    initEReference(getUnaryExpression_OwnedOperand(), this.getDataValue(), null, "ownedOperand", null, 0, 1, //$NON-NLS-1$
-        UnaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-        !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(unaryExpressionEClass, UnaryExpression.class, "UnaryExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEAttribute(getUnaryExpression_Operator(), this.getUnaryOperator(), "operator", null, 0, 1, UnaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(getUnaryExpression_OwnedOperand(), this.getDataValue(), null, "ownedOperand", null, 0, 1, UnaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(opaqueExpressionEClass, OpaqueExpression.class, "OpaqueExpression", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-        IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getOpaqueExpression_Bodies(), ecorePackage.getEString(), "bodies", null, 0, -1, //$NON-NLS-1$
-        OpaqueExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
-        !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getOpaqueExpression_Languages(), ecorePackage.getEString(), "languages", null, 0, -1, //$NON-NLS-1$
-        OpaqueExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-        !IS_DERIVED, IS_ORDERED);
+    initEClass(opaqueExpressionEClass, OpaqueExpression.class, "OpaqueExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEAttribute(getOpaqueExpression_Bodies(), ecorePackage.getEString(), "bodies", null, 0, -1, OpaqueExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEAttribute(getOpaqueExpression_Languages(), ecorePackage.getEString(), "languages", null, 0, -1, OpaqueExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     // Initialize enums and add enum literals
     initEEnum(binaryOperatorEEnum, BinaryOperator.class, "BinaryOperator"); //$NON-NLS-1$
@@ -1410,1258 +1291,2313 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
     createSegmentAnnotations();
   }
 
-  /**
-   * Initializes the annotations for <b>http://www.polarsys.org/kitalpha/ecore/documentation</b>. <!-- begin-user-doc
-   * --> <!-- end-user-doc -->
-   * 
+	/**
+   * Initializes the annotations for <b>http://www.polarsys.org/kitalpha/ecore/documentation</b>.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  protected void createDocumentationAnnotations() {
+	protected void createDocumentationAnnotations() {
     String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$
-    addAnnotation(this, source,
-        new String[] { "description", //$NON-NLS-1$
-            "sub-package containing the definition of all predefined kinds of data values\r\n[source: Capella study]", //$NON-NLS-1$
-            "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "n/a" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(dataValueEClass, source,
-        new String[] { "description", //$NON-NLS-1$
-            "Generic class for the specification of value for data of a given type\r\n[source: Capella study]", //$NON-NLS-1$
-            "usage guideline", "n/a (Abstract)", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "operational,system,logical,physical,epbs", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getDataValue_Abstract(), source, new String[] { "description", "whether or not the value is abstract", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getDataValue_Type(), source,
-        new String[] { "description", "The type of the TypedElement\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(dataValueContainerEClass, source,
-        new String[] { "description", "container for DataValue elements\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage guideline", "Use DataValue packages to provide an appropriate structure to the data model", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "operational,system,logical,physical,epbs", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getDataValueContainer_OwnedDataValues(), source,
-        new String[] { "description", "DataValue elements contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(abstractBooleanValueEClass, source,
-        new String[] { "description", //$NON-NLS-1$
-            "Base class for defining type-specific boolean values\r\n[source: Capella light-light study]\r\n", //$NON-NLS-1$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getAbstractBooleanValue_BooleanType(), source,
-        new String[] { "description", "the type of the data being valued\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(literalBooleanValueEClass, source,
-        new String[] { "description", //$NON-NLS-1$
-            "A literal Boolean is a specification of a Boolean value\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getLiteralBooleanValue_Value(), source,
-        new String[] { "description", "the value \"true\" or \"false\"\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-                                                                                                    // //$NON-NLS-3$
-                                                                                                    // //$NON-NLS-4$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "type", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(booleanReferenceEClass, source, new String[] { "description", //$NON-NLS-1$
-        "A reference to a boolean value, allowing the reuse of boolean values across data value structures\r\n[source: Capella study]", //$NON-NLS-1$
-        "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
-        "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getBooleanReference_ReferencedValue(), source,
-        new String[] { "description", "the boolean value that this reference points to\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getBooleanReference_ReferencedProperty(), source,
-        new String[] { "description", "the property that is using this reference\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(abstractEnumerationValueEClass, source,
-        new String[] { "description", //$NON-NLS-1$
-            "Base class for defining type-specific enumeration values\r\n[source: Capella light-light study]", //$NON-NLS-1$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getAbstractEnumerationValue_EnumerationType(), source,
-        new String[] { "description", "the type of the data being valued\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(enumerationLiteralEClass, source,
-        new String[] { "description", //$NON-NLS-1$
-            "A value specification composed of a finite list of predefined values\r\n[source: Capella study]", //$NON-NLS-1$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getEnumerationLiteral_DomainValue(), source, new String[] { "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(enumerationReferenceEClass, source, new String[] { "description", //$NON-NLS-1$
-        "A reference to an abstract enumeration value, allowing the reuse of enumeration values across data value structures", //$NON-NLS-1$
-        "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
-        "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getEnumerationReference_ReferencedValue(), source,
-        new String[] { "description", "the abstract enumeration value that this reference points to", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getEnumerationReference_ReferencedProperty(), source,
-        new String[] { "description", "the property that is using this reference\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(abstractStringValueEClass, source,
-        new String[] { "description", "A value defined by an ordered set of characters\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getAbstractStringValue_StringType(), source,
-        new String[] { "description", "the type of the data being valued\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(literalStringValueEClass, source,
-        new String[] { "description", //$NON-NLS-1$
-            "A literal string is a specification of a string value\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getLiteralStringValue_Value(), source,
-        new String[] { "description", "the specific string\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(stringReferenceEClass, source, new String[] { "description", //$NON-NLS-1$
-        "A reference to a string value, allowing the reuse of string values across data value structures\r\n[source: Capella study]", //$NON-NLS-1$
-        "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
-        "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getStringReference_ReferencedValue(), source,
-        new String[] { "description", "the string value that this reference points to\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getStringReference_ReferencedProperty(), source,
-        new String[] { "description", "the property that uses this reference\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(numericValueEClass, source,
-        new String[] { "description", "A value expressed as a number\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getNumericValue_Unit(), source, new String[] { "description", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getNumericValue_NumericType(), source,
-        new String[] { "description", "the type of the data being valued\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(literalNumericValueEClass, source,
-        new String[] { "description", //$NON-NLS-1$
-            "A literal value expressed as a number (ordered set of digits)\r\n[source: Capella study]", //$NON-NLS-1$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getLiteralNumericValue_Value(), source,
-        new String[] { "description", //$NON-NLS-1$
-            "the number defining this value, expressed as a string\r\n[source: Capella study]", //$NON-NLS-1$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(numericReferenceEClass, source, new String[] { "description", //$NON-NLS-1$
-        "a reference to a numeric value, allowing the reuse of numeric values across data value structures\r\n[source: Capella study]", //$NON-NLS-1$
-        "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
-        "usage examples", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getNumericReference_ReferencedValue(), source,
-        new String[] { "description", "the numeric value being referenced\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getNumericReference_ReferencedProperty(), source,
-        new String[] { "description", "the property that uses this reference\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(abstractComplexValueEClass, source,
-        new String[] { "description", //$NON-NLS-1$
-            "Base class for defining complex value type\r\n[source: Capella light-light study]", //$NON-NLS-1$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getAbstractComplexValue_ComplexType(), source,
-        new String[] { "description", "the type of the data being valued\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(complexValueEClass, source,
-        new String[] { "description", //$NON-NLS-1$
-            "Data type characterizing a complex number\r\n[source: Capella light-light study]", //$NON-NLS-1$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getComplexValue_OwnedParts(), source,
-        new String[] { "description", //$NON-NLS-1$
-            "stores the different parts that make a complex value\r\n[source: Capella light-light study]", //$NON-NLS-1$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(complexValueReferenceEClass, source,
-        new String[] { "description", "A reference to a complex value\r\n[source: Capella light-light study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getComplexValueReference_ReferencedValue(), source,
-        new String[] { "description", "the complex value being referenced", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getComplexValueReference_ReferencedProperty(), source,
-        new String[] { "description", "the property that uses this reference\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(valuePartEClass, source, new String[] { "description", //$NON-NLS-1$
-        "Used in the decomposition of complex values into smaller unitary elements\r\n[source: Capella light-light study]", //$NON-NLS-1$
-        "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getValuePart_ReferencedProperty(), source, new String[] { "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getValuePart_OwnedValue(), source, new String[] { "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(abstractExpressionValueEClass, source,
-        new String[] { "description", //$NON-NLS-1$
-            "Abstract class to support the implementation of Expression specifications\r\n[source: Capella study]", //$NON-NLS-1$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getAbstractExpressionValue_Expression(), source,
-        new String[] { "description", "textual specification of the expression\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getAbstractExpressionValue_UnparsedExpression(), source,
-        new String[] { "description", "raw textual specification of the expression\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getAbstractExpressionValue_ExpressionType(), source,
-        new String[] { "description", "the type of the data being valued\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryExpressionEClass, source,
-        new String[] { "description", //$NON-NLS-1$
-            "Specification of a condition that can only evaluate to \"true\" or \"false\"\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-3$
-                                                                                                                       // //$NON-NLS-4$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getBinaryExpression_Operator(), source,
-        new String[] { "description", "the operator between the left and right operands\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getBinaryExpression_OwnedLeftOperand(), source,
-        new String[] { "description", //$NON-NLS-1$
-            "list of the operands being part of the boolean expression\r\n[source: Capella study]", //$NON-NLS-1$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getBinaryExpression_OwnedRightOperand(), source,
-        new String[] { "description", //$NON-NLS-1$
-            "list of the operands being part of the boolean expression\r\n[source: Capella study]", //$NON-NLS-1$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(unaryExpressionEClass, source,
-        new String[] { "description", //$NON-NLS-1$
-            "Specification of a condition that can only evaluate to \"true\" or \"false\"\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-3$
-                                                                                                                       // //$NON-NLS-4$
-            "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getUnaryExpression_Operator(), source,
-        new String[] { "description", "the operator applying to the operand\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getUnaryExpression_OwnedOperand(), source,
-        new String[] { "description", //$NON-NLS-1$
-            "list of the operands being part of the boolean expression\r\n[source: Capella study]", //$NON-NLS-1$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum, source,
-        new String[] { "description", "Specifies the kind of this binary operator", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(0), source,
-        new String[] { "description", "Used when the binary operator is not initialized", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(1), source,
-        new String[] { "description", "Used when the binary operator refers to an addition", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(2), source,
-        new String[] { "description", "Used when the binary operator refers to a multiplication", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(3), source,
-        new String[] { "description", "Used when the binary operator refers to a substraction", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(4), source,
-        new String[] { "description", "Used when the binary operator refers to a division", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(5), source,
-        new String[] { "description", "Used when the binary operator refers to a power operation", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(6), source,
-        new String[] { "description", "Used when the binary operator refers to a min operation", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(7), source,
-        new String[] { "description", "Used when the binary operator refers to a max operation", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(8), source,
-        new String[] { "description", "Used when the binary operator refers to an equal operation", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(9), source,
-        new String[] { "description", "Used when the binary operator refers to a logical inclusive OR operation", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(10), source,
-        new String[] { "description", "Used when the binary operator refers to a logical exclusive OR operation", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(11), source,
-        new String[] { "description", "Used when the binary operator refers to a logical AND operation", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(unaryOperatorEEnum, source, new String[] { "description", "Specifies the kind of this unary operator", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(unaryOperatorEEnum.getELiterals().get(0), source,
-        new String[] { "description", "Used when the unary operator is not initialized", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(unaryOperatorEEnum.getELiterals().get(1), source,
-        new String[] { "description", "Used when the unary operator refers to a NOT operation", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(unaryOperatorEEnum.getELiterals().get(2), source,
-        new String[] { "description", "Used when the unary operator refers to a position operation", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(unaryOperatorEEnum.getELiterals().get(3), source,
-        new String[] { "description", "Used when the unary operator refers to a value operation", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(unaryOperatorEEnum.getELiterals().get(4), source,
-        new String[] { "description", "Used when the unary operator refers to a successor operation", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(unaryOperatorEEnum.getELiterals().get(5), source,
-        new String[] { "description", "Used when the unary operator refers to a predecessor operation", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(opaqueExpressionEClass, source, new String[] { "description", //$NON-NLS-1$
-        "An opaque expression contains language-specific text strings used to describe a value or values, and an optional specification of\r\nthe languages.\r\nOne predefined language for specifying expressions is OCL. Natural language or programming languages may also be\r\nused.", //$NON-NLS-1$
-        "constraints", //$NON-NLS-1$
-        "If the language attribute is not empty, then the size of the body and language arrays must be the same." //$NON-NLS-1$
-    });
-    addAnnotation(getOpaqueExpression_Bodies(), source,
-        new String[] { "description", "The text of the expression, possibly in multiple languages." //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getOpaqueExpression_Languages(), source, new String[] { "description", //$NON-NLS-1$
-        "Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the\r\nlanguages. If the languages are unspecified, they might be implicit from the expression body or the context.\r\nLanguages are matched to body strings by order." //$NON-NLS-1$
-    });
+    addAnnotation
+      (this,
+       source,
+       new String[] {
+         "description", "sub-package containing the definition of all predefined kinds of data values\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "n/a" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (dataValueEClass,
+       source,
+       new String[] {
+         "description", "Generic class for the specification of value for data of a given type\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a (Abstract)", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "operational,system,logical,physical,epbs", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDataValue_Abstract(),
+       source,
+       new String[] {
+         "description", "whether or not the value is abstract", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDataValue_Type(),
+       source,
+       new String[] {
+         "description", "The type of the TypedElement\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (dataValueContainerEClass,
+       source,
+       new String[] {
+         "description", "container for DataValue elements\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "Use DataValue packages to provide an appropriate structure to the data model", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "operational,system,logical,physical,epbs", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDataValueContainer_OwnedDataValues(),
+       source,
+       new String[] {
+         "description", "DataValue elements contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (abstractBooleanValueEClass,
+       source,
+       new String[] {
+         "description", "Base class for defining type-specific boolean values\r\n[source: Capella light-light study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractBooleanValue_BooleanType(),
+       source,
+       new String[] {
+         "description", "the type of the data being valued\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (literalBooleanValueEClass,
+       source,
+       new String[] {
+         "description", "A literal Boolean is a specification of a Boolean value\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getLiteralBooleanValue_Value(),
+       source,
+       new String[] {
+         "description", "the value \"true\" or \"false\"\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "type", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (booleanReferenceEClass,
+       source,
+       new String[] {
+         "description", "A reference to a boolean value, allowing the reuse of boolean values across data value structures\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getBooleanReference_ReferencedValue(),
+       source,
+       new String[] {
+         "description", "the boolean value that this reference points to\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getBooleanReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "description", "the property that is using this reference\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (abstractEnumerationValueEClass,
+       source,
+       new String[] {
+         "description", "Base class for defining type-specific enumeration values\r\n[source: Capella light-light study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractEnumerationValue_EnumerationType(),
+       source,
+       new String[] {
+         "description", "the type of the data being valued\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (enumerationLiteralEClass,
+       source,
+       new String[] {
+         "description", "A value specification composed of a finite list of predefined values\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getEnumerationLiteral_DomainValue(),
+       source,
+       new String[] {
+         "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (enumerationReferenceEClass,
+       source,
+       new String[] {
+         "description", "A reference to an abstract enumeration value, allowing the reuse of enumeration values across data value structures", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getEnumerationReference_ReferencedValue(),
+       source,
+       new String[] {
+         "description", "the abstract enumeration value that this reference points to", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getEnumerationReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "description", "the property that is using this reference\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (abstractStringValueEClass,
+       source,
+       new String[] {
+         "description", "A value defined by an ordered set of characters\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractStringValue_StringType(),
+       source,
+       new String[] {
+         "description", "the type of the data being valued\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (literalStringValueEClass,
+       source,
+       new String[] {
+         "description", "A literal string is a specification of a string value\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getLiteralStringValue_Value(),
+       source,
+       new String[] {
+         "description", "the specific string\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (stringReferenceEClass,
+       source,
+       new String[] {
+         "description", "A reference to a string value, allowing the reuse of string values across data value structures\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getStringReference_ReferencedValue(),
+       source,
+       new String[] {
+         "description", "the string value that this reference points to\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getStringReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "description", "the property that uses this reference\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (numericValueEClass,
+       source,
+       new String[] {
+         "description", "A value expressed as a number\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getNumericValue_Unit(),
+       source,
+       new String[] {
+         "description", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getNumericValue_NumericType(),
+       source,
+       new String[] {
+         "description", "the type of the data being valued\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (literalNumericValueEClass,
+       source,
+       new String[] {
+         "description", "A literal value expressed as a number (ordered set of digits)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getLiteralNumericValue_Value(),
+       source,
+       new String[] {
+         "description", "the number defining this value, expressed as a string\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (numericReferenceEClass,
+       source,
+       new String[] {
+         "description", "a reference to a numeric value, allowing the reuse of numeric values across data value structures\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getNumericReference_ReferencedValue(),
+       source,
+       new String[] {
+         "description", "the numeric value being referenced\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getNumericReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "description", "the property that uses this reference\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (abstractComplexValueEClass,
+       source,
+       new String[] {
+         "description", "Base class for defining complex value type\r\n[source: Capella light-light study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractComplexValue_ComplexType(),
+       source,
+       new String[] {
+         "description", "the type of the data being valued\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (complexValueEClass,
+       source,
+       new String[] {
+         "description", "Data type characterizing a complex number\r\n[source: Capella light-light study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getComplexValue_OwnedParts(),
+       source,
+       new String[] {
+         "description", "stores the different parts that make a complex value\r\n[source: Capella light-light study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (complexValueReferenceEClass,
+       source,
+       new String[] {
+         "description", "A reference to a complex value\r\n[source: Capella light-light study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getComplexValueReference_ReferencedValue(),
+       source,
+       new String[] {
+         "description", "the complex value being referenced", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getComplexValueReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "description", "the property that uses this reference\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (valuePartEClass,
+       source,
+       new String[] {
+         "description", "Used in the decomposition of complex values into smaller unitary elements\r\n[source: Capella light-light study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getValuePart_ReferencedProperty(),
+       source,
+       new String[] {
+         "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getValuePart_OwnedValue(),
+       source,
+       new String[] {
+         "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (abstractExpressionValueEClass,
+       source,
+       new String[] {
+         "description", "Abstract class to support the implementation of Expression specifications\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractExpressionValue_Expression(),
+       source,
+       new String[] {
+         "description", "textual specification of the expression\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractExpressionValue_UnparsedExpression(),
+       source,
+       new String[] {
+         "description", "raw textual specification of the expression\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractExpressionValue_ExpressionType(),
+       source,
+       new String[] {
+         "description", "the type of the data being valued\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryExpressionEClass,
+       source,
+       new String[] {
+         "description", "Specification of a condition that can only evaluate to \"true\" or \"false\"\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getBinaryExpression_Operator(),
+       source,
+       new String[] {
+         "description", "the operator between the left and right operands\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getBinaryExpression_OwnedLeftOperand(),
+       source,
+       new String[] {
+         "description", "list of the operands being part of the boolean expression\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getBinaryExpression_OwnedRightOperand(),
+       source,
+       new String[] {
+         "description", "list of the operands being part of the boolean expression\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (unaryExpressionEClass,
+       source,
+       new String[] {
+         "description", "Specification of a condition that can only evaluate to \"true\" or \"false\"\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+         "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getUnaryExpression_Operator(),
+       source,
+       new String[] {
+         "description", "the operator applying to the operand\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getUnaryExpression_OwnedOperand(),
+       source,
+       new String[] {
+         "description", "list of the operands being part of the boolean expression\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum,
+       source,
+       new String[] {
+         "description", "Specifies the kind of this binary operator", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(0),
+       source,
+       new String[] {
+         "description", "Used when the binary operator is not initialized", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(1),
+       source,
+       new String[] {
+         "description", "Used when the binary operator refers to an addition", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(2),
+       source,
+       new String[] {
+         "description", "Used when the binary operator refers to a multiplication", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(3),
+       source,
+       new String[] {
+         "description", "Used when the binary operator refers to a substraction", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(4),
+       source,
+       new String[] {
+         "description", "Used when the binary operator refers to a division", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(5),
+       source,
+       new String[] {
+         "description", "Used when the binary operator refers to a power operation", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(6),
+       source,
+       new String[] {
+         "description", "Used when the binary operator refers to a min operation", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(7),
+       source,
+       new String[] {
+         "description", "Used when the binary operator refers to a max operation", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(8),
+       source,
+       new String[] {
+         "description", "Used when the binary operator refers to an equal operation", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(9),
+       source,
+       new String[] {
+         "description", "Used when the binary operator refers to a logical inclusive OR operation", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(10),
+       source,
+       new String[] {
+         "description", "Used when the binary operator refers to a logical exclusive OR operation", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(11),
+       source,
+       new String[] {
+         "description", "Used when the binary operator refers to a logical AND operation", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (unaryOperatorEEnum,
+       source,
+       new String[] {
+         "description", "Specifies the kind of this unary operator", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (unaryOperatorEEnum.getELiterals().get(0),
+       source,
+       new String[] {
+         "description", "Used when the unary operator is not initialized", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (unaryOperatorEEnum.getELiterals().get(1),
+       source,
+       new String[] {
+         "description", "Used when the unary operator refers to a NOT operation", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (unaryOperatorEEnum.getELiterals().get(2),
+       source,
+       new String[] {
+         "description", "Used when the unary operator refers to a position operation", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (unaryOperatorEEnum.getELiterals().get(3),
+       source,
+       new String[] {
+         "description", "Used when the unary operator refers to a value operation", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (unaryOperatorEEnum.getELiterals().get(4),
+       source,
+       new String[] {
+         "description", "Used when the unary operator refers to a successor operation", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (unaryOperatorEEnum.getELiterals().get(5),
+       source,
+       new String[] {
+         "description", "Used when the unary operator refers to a predecessor operation", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (opaqueExpressionEClass,
+       source,
+       new String[] {
+         "description", "An opaque expression contains language-specific text strings used to describe a value or values, and an optional specification of\r\nthe languages.\r\nOne predefined language for specifying expressions is OCL. Natural language or programming languages may also be\r\nused.", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "If the language attribute is not empty, then the size of the body and language arrays must be the same." //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getOpaqueExpression_Bodies(),
+       source,
+       new String[] {
+         "description", "The text of the expression, possibly in multiple languages." //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getOpaqueExpression_Languages(),
+       source,
+       new String[] {
+         "description", "Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the\r\nlanguages. If the languages are unspecified, they might be implicit from the expression body or the context.\r\nLanguages are matched to body strings by order." //$NON-NLS-1$ //$NON-NLS-2$
+       });
   }
 
-  /**
-   * Initializes the annotations for <b>http://www.polarsys.org/capella/semantic</b>. <!-- begin-user-doc --> <!--
-   * end-user-doc -->
-   * 
+	/**
+   * Initializes the annotations for <b>http://www.polarsys.org/capella/semantic</b>.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  protected void createSemanticAnnotations() {
+	protected void createSemanticAnnotations() {
     String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$
-    addAnnotation(this, source, new String[] {});
-    addAnnotation(getDataValue_Abstract(), source, new String[] {});
-    addAnnotation(getDataValue_Type(), source, new String[] { "feature", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getDataValueContainer_OwnedDataValues(), source, new String[] {});
-    addAnnotation(getAbstractBooleanValue_BooleanType(), source, new String[] { "feature", "abstractType", //$NON-NLS-1$ //$NON-NLS-2$
-        "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(literalBooleanValueEClass, source, new String[] {});
-    addAnnotation(getLiteralBooleanValue_Value(), source, new String[] {});
-    addAnnotation(booleanReferenceEClass, source, new String[] {});
-    addAnnotation(getBooleanReference_ReferencedValue(), source, new String[] {});
-    addAnnotation(getBooleanReference_ReferencedProperty(), source, new String[] {});
-    addAnnotation(getAbstractEnumerationValue_EnumerationType(), source, new String[] { "feature", "abstractType", //$NON-NLS-1$ //$NON-NLS-2$
-        "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(enumerationLiteralEClass, source, new String[] {});
-    addAnnotation(getEnumerationLiteral_DomainValue(), source, new String[] {});
-    addAnnotation(enumerationReferenceEClass, source, new String[] {});
-    addAnnotation(getEnumerationReference_ReferencedValue(), source, new String[] {});
-    addAnnotation(getEnumerationReference_ReferencedProperty(), source, new String[] {});
-    addAnnotation(getAbstractStringValue_StringType(), source, new String[] { "feature", "abstractType", //$NON-NLS-1$ //$NON-NLS-2$
-        "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(literalStringValueEClass, source, new String[] {});
-    addAnnotation(getLiteralStringValue_Value(), source, new String[] {});
-    addAnnotation(stringReferenceEClass, source, new String[] {});
-    addAnnotation(getStringReference_ReferencedValue(), source, new String[] {});
-    addAnnotation(getStringReference_ReferencedProperty(), source, new String[] {});
-    addAnnotation(getNumericValue_Unit(), source, new String[] {});
-    addAnnotation(getNumericValue_NumericType(), source, new String[] { "feature", "abstractType", //$NON-NLS-1$ //$NON-NLS-2$
-        "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(literalNumericValueEClass, source, new String[] {});
-    addAnnotation(getLiteralNumericValue_Value(), source, new String[] {});
-    addAnnotation(numericReferenceEClass, source, new String[] {});
-    addAnnotation(getNumericReference_ReferencedValue(), source, new String[] {});
-    addAnnotation(getNumericReference_ReferencedProperty(), source, new String[] {});
-    addAnnotation(getAbstractComplexValue_ComplexType(), source, new String[] { "feature", "abstractType", //$NON-NLS-1$ //$NON-NLS-2$
-        "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(complexValueEClass, source, new String[] {});
-    addAnnotation(getComplexValue_OwnedParts(), source, new String[] {});
-    addAnnotation(complexValueReferenceEClass, source, new String[] {});
-    addAnnotation(getComplexValueReference_ReferencedValue(), source, new String[] {});
-    addAnnotation(getComplexValueReference_ReferencedProperty(), source, new String[] {});
-    addAnnotation(valuePartEClass, source, new String[] {});
-    addAnnotation(getValuePart_ReferencedProperty(), source, new String[] {});
-    addAnnotation(getValuePart_OwnedValue(), source, new String[] {});
-    addAnnotation(getAbstractExpressionValue_Expression(), source, new String[] {});
-    addAnnotation(getAbstractExpressionValue_UnparsedExpression(), source, new String[] {});
-    addAnnotation(getAbstractExpressionValue_ExpressionType(), source, new String[] { "feature", "abstractType", //$NON-NLS-1$ //$NON-NLS-2$
-        "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(binaryExpressionEClass, source, new String[] {});
-    addAnnotation(getBinaryExpression_Operator(), source, new String[] {});
-    addAnnotation(getBinaryExpression_OwnedLeftOperand(), source, new String[] {});
-    addAnnotation(getBinaryExpression_OwnedRightOperand(), source, new String[] {});
-    addAnnotation(unaryExpressionEClass, source, new String[] {});
-    addAnnotation(getUnaryExpression_Operator(), source, new String[] {});
-    addAnnotation(getUnaryExpression_OwnedOperand(), source, new String[] {});
-    addAnnotation(binaryOperatorEEnum, source, new String[] {});
-    addAnnotation(unaryOperatorEEnum, source, new String[] {});
-    addAnnotation(opaqueExpressionEClass, source, new String[] {});
-    addAnnotation(getOpaqueExpression_Bodies(), source, new String[] {});
-    addAnnotation(getOpaqueExpression_Languages(), source, new String[] {});
+    addAnnotation
+      (this,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getDataValue_Abstract(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getDataValue_Type(),
+       source,
+       new String[] {
+         "feature", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDataValueContainer_OwnedDataValues(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getAbstractBooleanValue_BooleanType(),
+       source,
+       new String[] {
+         "feature", "abstractType", //$NON-NLS-1$ //$NON-NLS-2$
+         "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (literalBooleanValueEClass,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getLiteralBooleanValue_Value(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (booleanReferenceEClass,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getBooleanReference_ReferencedValue(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getBooleanReference_ReferencedProperty(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getAbstractEnumerationValue_EnumerationType(),
+       source,
+       new String[] {
+         "feature", "abstractType", //$NON-NLS-1$ //$NON-NLS-2$
+         "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (enumerationLiteralEClass,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getEnumerationLiteral_DomainValue(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (enumerationReferenceEClass,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getEnumerationReference_ReferencedValue(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getEnumerationReference_ReferencedProperty(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getAbstractStringValue_StringType(),
+       source,
+       new String[] {
+         "feature", "abstractType", //$NON-NLS-1$ //$NON-NLS-2$
+         "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (literalStringValueEClass,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getLiteralStringValue_Value(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (stringReferenceEClass,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getStringReference_ReferencedValue(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getStringReference_ReferencedProperty(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getNumericValue_Unit(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getNumericValue_NumericType(),
+       source,
+       new String[] {
+         "feature", "abstractType", //$NON-NLS-1$ //$NON-NLS-2$
+         "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (literalNumericValueEClass,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getLiteralNumericValue_Value(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (numericReferenceEClass,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getNumericReference_ReferencedValue(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getNumericReference_ReferencedProperty(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getAbstractComplexValue_ComplexType(),
+       source,
+       new String[] {
+         "feature", "abstractType", //$NON-NLS-1$ //$NON-NLS-2$
+         "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (complexValueEClass,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getComplexValue_OwnedParts(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (complexValueReferenceEClass,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getComplexValueReference_ReferencedValue(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getComplexValueReference_ReferencedProperty(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (valuePartEClass,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getValuePart_ReferencedProperty(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getValuePart_OwnedValue(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getAbstractExpressionValue_Expression(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getAbstractExpressionValue_UnparsedExpression(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getAbstractExpressionValue_ExpressionType(),
+       source,
+       new String[] {
+         "feature", "abstractType", //$NON-NLS-1$ //$NON-NLS-2$
+         "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryExpressionEClass,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getBinaryExpression_Operator(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getBinaryExpression_OwnedLeftOperand(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getBinaryExpression_OwnedRightOperand(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (unaryExpressionEClass,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getUnaryExpression_Operator(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getUnaryExpression_OwnedOperand(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (binaryOperatorEEnum,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (unaryOperatorEEnum,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (opaqueExpressionEClass,
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getOpaqueExpression_Bodies(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getOpaqueExpression_Languages(),
+       source,
+       new String[] {
+       });
   }
 
-  /**
-   * Initializes the annotations for <b>http://www.polarsys.org/kitalpha/emde/1.0.0/extension</b>. <!-- begin-user-doc
-   * --> <!-- end-user-doc -->
-   * 
+	/**
+   * Initializes the annotations for <b>http://www.polarsys.org/kitalpha/emde/1.0.0/extension</b>.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  protected void createExtensionAnnotations() {
+	protected void createExtensionAnnotations() {
     String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$
-    addAnnotation(this, source, new String[] { "trackResourceModification", "true", //$NON-NLS-1$ //$NON-NLS-2$
-        "useUUIDs", "false", //$NON-NLS-1$ //$NON-NLS-2$
-        "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
-        "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
-        "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-    });
+    addAnnotation
+      (this,
+       source,
+       new String[] {
+         "trackResourceModification", "true", //$NON-NLS-1$ //$NON-NLS-2$
+         "useUUIDs", "false", //$NON-NLS-1$ //$NON-NLS-2$
+         "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
+         "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
+         "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
+       });
   }
 
-  /**
-   * Initializes the annotations for <b>http://www.polarsys.org/capella/2007/BusinessInformation</b>. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * Initializes the annotations for <b>http://www.polarsys.org/capella/2007/BusinessInformation</b>.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  protected void createBusinessInformationAnnotations() {
+	protected void createBusinessInformationAnnotations() {
     String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$
-    addAnnotation(dataValueEClass, source, new String[] { "Label", "DataValue" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(dataValueContainerEClass, source, new String[] { "Label", "DataTypePkg" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getDataValueContainer_OwnedDataValues(), source, new String[] { "Label", "ownedDataValues" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractBooleanValue_BooleanType(), source, new String[] { "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(literalBooleanValueEClass, source, new String[] { "Label", "LiteralBooleanValue" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(booleanReferenceEClass, source, new String[] { "Label", "BooleanReference" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getBooleanReference_ReferencedValue(), source, new String[] { "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getBooleanReference_ReferencedProperty(), source, new String[] { "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractEnumerationValue_EnumerationType(), source, new String[] { "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(enumerationLiteralEClass, source, new String[] { "Label", "EnumerationLiteral" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getEnumerationReference_ReferencedProperty(), source, new String[] { "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(abstractStringValueEClass, source, new String[] { "Label", "StringValue" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractStringValue_StringType(), source, new String[] { "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(literalStringValueEClass, source, new String[] { "Label", "LiteralStringValue" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(stringReferenceEClass, source, new String[] { "Label", "StringReference" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getStringReference_ReferencedValue(), source, new String[] { "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getStringReference_ReferencedProperty(), source, new String[] { "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(numericValueEClass, source, new String[] { "Label", "NumericValue" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getNumericValue_NumericType(), source, new String[] { "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(literalNumericValueEClass, source, new String[] { "Label", "LiteralNumericValue" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(numericReferenceEClass, source, new String[] { "Label", "NumericReference" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getNumericReference_ReferencedValue(), source, new String[] { "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getNumericReference_ReferencedProperty(), source, new String[] { "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractComplexValue_ComplexType(), source, new String[] { "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getComplexValueReference_ReferencedProperty(), source, new String[] { "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractExpressionValue_ExpressionType(), source, new String[] { "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(binaryExpressionEClass, source, new String[] { "Label", "BinaryExpression" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getBinaryExpression_OwnedLeftOperand(), source, new String[] { "Label", "operands" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getBinaryExpression_OwnedRightOperand(), source, new String[] { "Label", "operands" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(unaryExpressionEClass, source, new String[] { "Label", "UnaryExpression" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getUnaryExpression_OwnedOperand(), source, new String[] { "Label", "operands" //$NON-NLS-1$ //$NON-NLS-2$
-    });
+    addAnnotation
+      (dataValueEClass,
+       source,
+       new String[] {
+         "Label", "DataValue" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (dataValueContainerEClass,
+       source,
+       new String[] {
+         "Label", "DataTypePkg" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDataValueContainer_OwnedDataValues(),
+       source,
+       new String[] {
+         "Label", "ownedDataValues" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractBooleanValue_BooleanType(),
+       source,
+       new String[] {
+         "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (literalBooleanValueEClass,
+       source,
+       new String[] {
+         "Label", "LiteralBooleanValue" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (booleanReferenceEClass,
+       source,
+       new String[] {
+         "Label", "BooleanReference" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getBooleanReference_ReferencedValue(),
+       source,
+       new String[] {
+         "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getBooleanReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractEnumerationValue_EnumerationType(),
+       source,
+       new String[] {
+         "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (enumerationLiteralEClass,
+       source,
+       new String[] {
+         "Label", "EnumerationLiteral" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getEnumerationReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (abstractStringValueEClass,
+       source,
+       new String[] {
+         "Label", "StringValue" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractStringValue_StringType(),
+       source,
+       new String[] {
+         "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (literalStringValueEClass,
+       source,
+       new String[] {
+         "Label", "LiteralStringValue" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (stringReferenceEClass,
+       source,
+       new String[] {
+         "Label", "StringReference" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getStringReference_ReferencedValue(),
+       source,
+       new String[] {
+         "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getStringReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (numericValueEClass,
+       source,
+       new String[] {
+         "Label", "NumericValue" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getNumericValue_NumericType(),
+       source,
+       new String[] {
+         "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (literalNumericValueEClass,
+       source,
+       new String[] {
+         "Label", "LiteralNumericValue" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (numericReferenceEClass,
+       source,
+       new String[] {
+         "Label", "NumericReference" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getNumericReference_ReferencedValue(),
+       source,
+       new String[] {
+         "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getNumericReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractComplexValue_ComplexType(),
+       source,
+       new String[] {
+         "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getComplexValueReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractExpressionValue_ExpressionType(),
+       source,
+       new String[] {
+         "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryExpressionEClass,
+       source,
+       new String[] {
+         "Label", "BinaryExpression" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getBinaryExpression_OwnedLeftOperand(),
+       source,
+       new String[] {
+         "Label", "operands" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getBinaryExpression_OwnedRightOperand(),
+       source,
+       new String[] {
+         "Label", "operands" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (unaryExpressionEClass,
+       source,
+       new String[] {
+         "Label", "UnaryExpression" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getUnaryExpression_OwnedOperand(),
+       source,
+       new String[] {
+         "Label", "operands" //$NON-NLS-1$ //$NON-NLS-2$
+       });
   }
 
-  /**
-   * Initializes the annotations for <b>http://www.polarsys.org/capella/2007/UML2Mapping</b>. <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * 
+	/**
+   * Initializes the annotations for <b>http://www.polarsys.org/capella/2007/UML2Mapping</b>.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  protected void createUML2MappingAnnotations() {
+	protected void createUML2MappingAnnotations() {
     String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$
-    addAnnotation(dataValueEClass, source, new String[] { "metaclass", "LiteralSpecification", //$NON-NLS-1$ //$NON-NLS-2$
-        "stereotype", "eng.DataValue" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(dataValueContainerEClass, source, new String[] { "metaclass", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getDataValueContainer_OwnedDataValues(), source, new String[] { "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractBooleanValue_BooleanType(), source, new String[] { "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(literalBooleanValueEClass, source, new String[] { "metaclass", "LiteralBoolean", //$NON-NLS-1$ //$NON-NLS-2$
-        "stereotype", "eng.LiteralBooleanValue" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getLiteralBooleanValue_Value(), source, new String[] { "featureName", "value", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "LiteralBoolean" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(booleanReferenceEClass, source, new String[] { "metaclass", "Expression", //$NON-NLS-1$ //$NON-NLS-2$
-        "stereotype", "eng.BooleanReference" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getBooleanReference_ReferencedValue(), source, new String[] { "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getBooleanReference_ReferencedProperty(), source, new String[] { "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractEnumerationValue_EnumerationType(), source, new String[] { "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(enumerationLiteralEClass, source, new String[] { "metaclass", "EnumerationLiteral", //$NON-NLS-1$ //$NON-NLS-2$
-        "stereotype", "eng.EnumerationLiteral" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getEnumerationReference_ReferencedProperty(), source,
-        new String[] { "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
-            "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(abstractStringValueEClass, source, new String[] { "metaclass", "ValueSpecification" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractStringValue_StringType(), source, new String[] { "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(literalStringValueEClass, source, new String[] { "metaclass", "LiteralString", //$NON-NLS-1$ //$NON-NLS-2$
-        "stereotype", "eng.LiteralStringValue" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getLiteralStringValue_Value(), source, new String[] { "featureName", "value", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "LiteralString" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(stringReferenceEClass, source, new String[] { "metaclass", "Expression", //$NON-NLS-1$ //$NON-NLS-2$
-        "stereotype", "eng.StringReference" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getStringReference_ReferencedValue(), source, new String[] { "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getStringReference_ReferencedProperty(), source, new String[] { "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(numericValueEClass, source, new String[] { "metaclass", "ValueSpecification" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getNumericValue_NumericType(), source, new String[] { "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(literalNumericValueEClass, source, new String[] { "metaclass", "Expression", //$NON-NLS-1$ //$NON-NLS-2$
-        "stereotype", "eng.LiteralNumericValue" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getLiteralNumericValue_Value(), source, new String[] { "featureName", "symbol", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "Expression" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(numericReferenceEClass, source, new String[] { "metaclass", "Expression", //$NON-NLS-1$ //$NON-NLS-2$
-        "stereotype", "eng.NumericReference" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getNumericReference_ReferencedValue(), source, new String[] { "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getNumericReference_ReferencedProperty(), source, new String[] { "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractComplexValue_ComplexType(), source, new String[] { "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getComplexValueReference_ReferencedProperty(), source,
-        new String[] { "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
-            "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getAbstractExpressionValue_ExpressionType(), source, new String[] { "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(binaryExpressionEClass, source, new String[] { "metaclass", "Expression", //$NON-NLS-1$ //$NON-NLS-2$
-        "stereotype", "eng.BinaryExpression" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getBinaryExpression_OwnedLeftOperand(), source, new String[] { "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getBinaryExpression_OwnedRightOperand(), source, new String[] { "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(unaryExpressionEClass, source, new String[] { "metaclass", "Expression", //$NON-NLS-1$ //$NON-NLS-2$
-        "stereotype", "eng.UnaryExpression" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getUnaryExpression_OwnedOperand(), source, new String[] { "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
-        "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-    });
+    addAnnotation
+      (dataValueEClass,
+       source,
+       new String[] {
+         "metaclass", "LiteralSpecification", //$NON-NLS-1$ //$NON-NLS-2$
+         "stereotype", "eng.DataValue" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (dataValueContainerEClass,
+       source,
+       new String[] {
+         "metaclass", "Package" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDataValueContainer_OwnedDataValues(),
+       source,
+       new String[] {
+         "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractBooleanValue_BooleanType(),
+       source,
+       new String[] {
+         "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (literalBooleanValueEClass,
+       source,
+       new String[] {
+         "metaclass", "LiteralBoolean", //$NON-NLS-1$ //$NON-NLS-2$
+         "stereotype", "eng.LiteralBooleanValue" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getLiteralBooleanValue_Value(),
+       source,
+       new String[] {
+         "featureName", "value", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "LiteralBoolean" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (booleanReferenceEClass,
+       source,
+       new String[] {
+         "metaclass", "Expression", //$NON-NLS-1$ //$NON-NLS-2$
+         "stereotype", "eng.BooleanReference" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getBooleanReference_ReferencedValue(),
+       source,
+       new String[] {
+         "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getBooleanReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractEnumerationValue_EnumerationType(),
+       source,
+       new String[] {
+         "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (enumerationLiteralEClass,
+       source,
+       new String[] {
+         "metaclass", "EnumerationLiteral", //$NON-NLS-1$ //$NON-NLS-2$
+         "stereotype", "eng.EnumerationLiteral" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getEnumerationReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (abstractStringValueEClass,
+       source,
+       new String[] {
+         "metaclass", "ValueSpecification" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractStringValue_StringType(),
+       source,
+       new String[] {
+         "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (literalStringValueEClass,
+       source,
+       new String[] {
+         "metaclass", "LiteralString", //$NON-NLS-1$ //$NON-NLS-2$
+         "stereotype", "eng.LiteralStringValue" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getLiteralStringValue_Value(),
+       source,
+       new String[] {
+         "featureName", "value", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "LiteralString" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (stringReferenceEClass,
+       source,
+       new String[] {
+         "metaclass", "Expression", //$NON-NLS-1$ //$NON-NLS-2$
+         "stereotype", "eng.StringReference" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getStringReference_ReferencedValue(),
+       source,
+       new String[] {
+         "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getStringReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (numericValueEClass,
+       source,
+       new String[] {
+         "metaclass", "ValueSpecification" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getNumericValue_NumericType(),
+       source,
+       new String[] {
+         "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (literalNumericValueEClass,
+       source,
+       new String[] {
+         "metaclass", "Expression", //$NON-NLS-1$ //$NON-NLS-2$
+         "stereotype", "eng.LiteralNumericValue" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getLiteralNumericValue_Value(),
+       source,
+       new String[] {
+         "featureName", "symbol", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "Expression" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (numericReferenceEClass,
+       source,
+       new String[] {
+         "metaclass", "Expression", //$NON-NLS-1$ //$NON-NLS-2$
+         "stereotype", "eng.NumericReference" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getNumericReference_ReferencedValue(),
+       source,
+       new String[] {
+         "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getNumericReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractComplexValue_ComplexType(),
+       source,
+       new String[] {
+         "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getComplexValueReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractExpressionValue_ExpressionType(),
+       source,
+       new String[] {
+         "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryExpressionEClass,
+       source,
+       new String[] {
+         "metaclass", "Expression", //$NON-NLS-1$ //$NON-NLS-2$
+         "stereotype", "eng.BinaryExpression" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getBinaryExpression_OwnedLeftOperand(),
+       source,
+       new String[] {
+         "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getBinaryExpression_OwnedRightOperand(),
+       source,
+       new String[] {
+         "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (unaryExpressionEClass,
+       source,
+       new String[] {
+         "metaclass", "Expression", //$NON-NLS-1$ //$NON-NLS-2$
+         "stereotype", "eng.UnaryExpression" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getUnaryExpression_OwnedOperand(),
+       source,
+       new String[] {
+         "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
+         "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
+       });
   }
 
-  /**
-   * Initializes the annotations for <b>http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping</b>. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * Initializes the annotations for <b>http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping</b>.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  protected void createMappingAnnotations() {
+	protected void createMappingAnnotations() {
     String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$
-    addAnnotation(dataValueEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "uml::ValueSpecification", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getDataValue_Abstract(), source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getDataValue_Type(), source, new String[] { "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(dataValueContainerEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getDataValueContainer_OwnedDataValues(), source, new String[] { "UML/SysML semantic equivalences", //$NON-NLS-1$
-        "uml::Package::packagedElement", //$NON-NLS-1$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", //$NON-NLS-1$
-        "uml::Package::packagedElement elements on which DataValue stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$
-    });
-    addAnnotation(abstractBooleanValueEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractBooleanValue_BooleanType(), source,
-        new String[] { "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(literalBooleanValueEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "uml::LiteralBoolean", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getLiteralBooleanValue_Value(), source,
-        new String[] { "UML/SysML semantic equivalences", "uml::LiteralBoolean::value", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(booleanReferenceEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getBooleanReference_ReferencedValue(), source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getBooleanReference_ReferencedProperty(), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(abstractEnumerationValueEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractEnumerationValue_EnumerationType(), source,
-        new String[] { "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(enumerationLiteralEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "uml::EnumerationLiteral", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getEnumerationLiteral_DomainValue(), source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(enumerationReferenceEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getEnumerationReference_ReferencedValue(), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getEnumerationReference_ReferencedProperty(), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(abstractStringValueEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "uml::ValueSpecification", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractStringValue_StringType(), source,
-        new String[] { "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(literalStringValueEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "uml::LiteralString", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getLiteralStringValue_Value(), source,
-        new String[] { "UML/SysML semantic equivalences", "uml::LiteralString::value", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(stringReferenceEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getStringReference_ReferencedValue(), source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getStringReference_ReferencedProperty(), source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(numericValueEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "uml::LiteralSpecification", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getNumericValue_Unit(), source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getNumericValue_NumericType(), source,
-        new String[] { "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(literalNumericValueEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getLiteralNumericValue_Value(), source,
-        new String[] { "UML/SysML semantic equivalences", "uml::LiteralString::value", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(numericReferenceEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getNumericReference_ReferencedValue(), source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getNumericReference_ReferencedProperty(), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(abstractComplexValueEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "uml::ValueSpecification", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractComplexValue_ComplexType(), source,
-        new String[] { "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(complexValueEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "uml::LiteralSpecification", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getComplexValue_OwnedParts(), source,
-        new String[] { "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", //$NON-NLS-1$
-            "***** elements on which ValuePart stereotype or any stereotype that inherits from it is applied\r\n" //$NON-NLS-1$
-        });
-    addAnnotation(complexValueReferenceEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "uml::LiteralSpecification", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getComplexValueReference_ReferencedValue(), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getComplexValueReference_ReferencedProperty(), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(valuePartEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getValuePart_ReferencedProperty(), source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getValuePart_OwnedValue(), source, new String[] { "UML/SysML semantic equivalences", //$NON-NLS-1$
-        "keyword::specific", //$NON-NLS-1$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", //$NON-NLS-1$
-        "****** elements on which DataValue stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$
-    });
-    addAnnotation(abstractExpressionValueEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractExpressionValue_Expression(), source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractExpressionValue_UnparsedExpression(), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(getAbstractExpressionValue_ExpressionType(), source,
-        new String[] { "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryExpressionEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getBinaryExpression_Operator(), source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getBinaryExpression_OwnedLeftOperand(), source, new String[] { "UML/SysML semantic equivalences", //$NON-NLS-1$
-        "uml::Expression::operand", //$NON-NLS-1$
-        "explanation", "_todo_ Check that uml::Expression::operand contains BooleanValue", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", //$NON-NLS-1$
-        "uml::Expression::operand elements on which ValueSpecification stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$
-    });
-    addAnnotation(getBinaryExpression_OwnedRightOperand(), source, new String[] { "UML/SysML semantic equivalences", //$NON-NLS-1$
-        "uml::Expression::operand", //$NON-NLS-1$
-        "explanation", "_todo_ Check that uml::Expression::operand contains BooleanValue", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", //$NON-NLS-1$
-        "uml::Expression::operand elements on which ValueSpecification stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$
-    });
-    addAnnotation(unaryExpressionEClass, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getUnaryExpression_Operator(), source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getUnaryExpression_OwnedOperand(), source, new String[] { "UML/SysML semantic equivalences", //$NON-NLS-1$
-        "uml::Expression::operand", //$NON-NLS-1$
-        "explanation", "_todo_ Check that uml::Expression::operand contains BooleanValue", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", //$NON-NLS-1$
-        "uml::Expression::operand elements on which ValueSpecification stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$
-    });
-    addAnnotation(binaryOperatorEEnum, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(0), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(1), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(2), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(3), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(4), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(5), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(6), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(7), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(8), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(9), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(10), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(binaryOperatorEEnum.getELiterals().get(11), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(unaryOperatorEEnum, source, new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-        "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-        "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(unaryOperatorEEnum.getELiterals().get(0), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(unaryOperatorEEnum.getELiterals().get(1), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(unaryOperatorEEnum.getELiterals().get(2), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(unaryOperatorEEnum.getELiterals().get(3), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(unaryOperatorEEnum.getELiterals().get(4), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(unaryOperatorEEnum.getELiterals().get(5), source,
-        new String[] { "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-            "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-            "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-        });
-    addAnnotation(opaqueExpressionEClass, source,
-        new String[] { "base metaclass in UML/SysML profile ", "uml::OpaqueExpression" //$NON-NLS-1$ //$NON-NLS-2$
-        });
+    addAnnotation
+      (dataValueEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "uml::ValueSpecification", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDataValue_Abstract(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDataValue_Type(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (dataValueContainerEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getDataValueContainer_OwnedDataValues(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "uml::Package::packagedElement elements on which DataValue stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (abstractBooleanValueEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractBooleanValue_BooleanType(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (literalBooleanValueEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "uml::LiteralBoolean", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getLiteralBooleanValue_Value(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "uml::LiteralBoolean::value", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (booleanReferenceEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getBooleanReference_ReferencedValue(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getBooleanReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (abstractEnumerationValueEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractEnumerationValue_EnumerationType(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (enumerationLiteralEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "uml::EnumerationLiteral", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getEnumerationLiteral_DomainValue(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (enumerationReferenceEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getEnumerationReference_ReferencedValue(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getEnumerationReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (abstractStringValueEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "uml::ValueSpecification", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractStringValue_StringType(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (literalStringValueEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "uml::LiteralString", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getLiteralStringValue_Value(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "uml::LiteralString::value", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (stringReferenceEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getStringReference_ReferencedValue(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getStringReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (numericValueEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "uml::LiteralSpecification", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getNumericValue_Unit(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getNumericValue_NumericType(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (literalNumericValueEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getLiteralNumericValue_Value(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "uml::LiteralString::value", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (numericReferenceEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getNumericReference_ReferencedValue(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getNumericReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (abstractComplexValueEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "uml::ValueSpecification", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractComplexValue_ComplexType(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (complexValueEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "uml::LiteralSpecification", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getComplexValue_OwnedParts(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "***** elements on which ValuePart stereotype or any stereotype that inherits from it is applied\r\n" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (complexValueReferenceEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "uml::LiteralSpecification", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getComplexValueReference_ReferencedValue(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getComplexValueReference_ReferencedProperty(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (valuePartEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getValuePart_ReferencedProperty(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getValuePart_OwnedValue(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "****** elements on which DataValue stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (abstractExpressionValueEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractExpressionValue_Expression(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractExpressionValue_UnparsedExpression(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractExpressionValue_ExpressionType(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryExpressionEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getBinaryExpression_Operator(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getBinaryExpression_OwnedLeftOperand(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "uml::Expression::operand", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "_todo_ Check that uml::Expression::operand contains BooleanValue", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "uml::Expression::operand elements on which ValueSpecification stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getBinaryExpression_OwnedRightOperand(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "uml::Expression::operand", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "_todo_ Check that uml::Expression::operand contains BooleanValue", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "uml::Expression::operand elements on which ValueSpecification stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (unaryExpressionEClass,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getUnaryExpression_Operator(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getUnaryExpression_OwnedOperand(),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "uml::Expression::operand", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "_todo_ Check that uml::Expression::operand contains BooleanValue", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "uml::Expression::operand elements on which ValueSpecification stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(0),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(1),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(2),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(3),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(4),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(5),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(6),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(7),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(8),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(9),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(10),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (binaryOperatorEEnum.getELiterals().get(11),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (unaryOperatorEEnum,
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (unaryOperatorEEnum.getELiterals().get(0),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (unaryOperatorEEnum.getELiterals().get(1),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (unaryOperatorEEnum.getELiterals().get(2),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (unaryOperatorEEnum.getELiterals().get(3),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (unaryOperatorEEnum.getELiterals().get(4),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (unaryOperatorEEnum.getELiterals().get(5),
+       source,
+       new String[] {
+         "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+         "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+         "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (opaqueExpressionEClass,
+       source,
+       new String[] {
+         "base metaclass in UML/SysML profile ", "uml::OpaqueExpression" //$NON-NLS-1$ //$NON-NLS-2$
+       });
   }
 
-  /**
-   * Initializes the annotations for <b>http://www.polarsys.org/capella/derived</b>. <!-- begin-user-doc --> <!--
-   * end-user-doc -->
-   * 
+	/**
+   * Initializes the annotations for <b>http://www.polarsys.org/capella/derived</b>.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  protected void createDerivedAnnotations() {
+	protected void createDerivedAnnotations() {
     String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$
-    addAnnotation(getDataValue_Type(), source, new String[] { "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-        "viatra.expression", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractBooleanValue_BooleanType(), source, new String[] { "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-        "viatra.expression", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractEnumerationValue_EnumerationType(), source, new String[] { "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-        "viatra.expression", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractStringValue_StringType(), source, new String[] { "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-        "viatra.expression", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getNumericValue_NumericType(), source, new String[] { "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-        "viatra.expression", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractComplexValue_ComplexType(), source, new String[] { "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-        "viatra.expression", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
-    });
-    addAnnotation(getAbstractExpressionValue_Expression(), source, new String[] {});
-    addAnnotation(getAbstractExpressionValue_ExpressionType(), source, new String[] { "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-        "viatra.expression", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
-    });
+    addAnnotation
+      (getDataValue_Type(),
+       source,
+       new String[] {
+         "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+         "viatra.expression", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractBooleanValue_BooleanType(),
+       source,
+       new String[] {
+         "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+         "viatra.expression", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractEnumerationValue_EnumerationType(),
+       source,
+       new String[] {
+         "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+         "viatra.expression", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractStringValue_StringType(),
+       source,
+       new String[] {
+         "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+         "viatra.expression", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getNumericValue_NumericType(),
+       source,
+       new String[] {
+         "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+         "viatra.expression", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractComplexValue_ComplexType(),
+       source,
+       new String[] {
+         "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+         "viatra.expression", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
+       });
+    addAnnotation
+      (getAbstractExpressionValue_Expression(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getAbstractExpressionValue_ExpressionType(),
+       source,
+       new String[] {
+         "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+         "viatra.expression", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
+       });
   }
 
-  /**
-   * Initializes the annotations for <b>http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment</b>. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * Initializes the annotations for <b>http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment</b>.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  protected void createSegmentAnnotations() {
+	protected void createSegmentAnnotations() {
     String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$
-    addAnnotation(getDataValueContainer_OwnedDataValues(), source, new String[] {});
-    addAnnotation(getAbstractBooleanValue_BooleanType(), source, new String[] {});
-    addAnnotation(getBooleanReference_ReferencedValue(), source, new String[] {});
-    addAnnotation(getBooleanReference_ReferencedProperty(), source, new String[] {});
-    addAnnotation(getAbstractEnumerationValue_EnumerationType(), source, new String[] {});
-    addAnnotation(getEnumerationReference_ReferencedProperty(), source, new String[] {});
-    addAnnotation(getAbstractStringValue_StringType(), source, new String[] {});
-    addAnnotation(getStringReference_ReferencedValue(), source, new String[] {});
-    addAnnotation(getStringReference_ReferencedProperty(), source, new String[] {});
-    addAnnotation(getNumericValue_NumericType(), source, new String[] {});
-    addAnnotation(getNumericReference_ReferencedValue(), source, new String[] {});
-    addAnnotation(getNumericReference_ReferencedProperty(), source, new String[] {});
-    addAnnotation(getAbstractComplexValue_ComplexType(), source, new String[] {});
-    addAnnotation(getComplexValueReference_ReferencedProperty(), source, new String[] {});
-    addAnnotation(getAbstractExpressionValue_ExpressionType(), source, new String[] {});
-    addAnnotation(getBinaryExpression_OwnedLeftOperand(), source, new String[] {});
-    addAnnotation(getBinaryExpression_OwnedRightOperand(), source, new String[] {});
-    addAnnotation(getUnaryExpression_OwnedOperand(), source, new String[] {});
+    addAnnotation
+      (getDataValueContainer_OwnedDataValues(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getAbstractBooleanValue_BooleanType(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getBooleanReference_ReferencedValue(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getBooleanReference_ReferencedProperty(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getAbstractEnumerationValue_EnumerationType(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getEnumerationReference_ReferencedProperty(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getAbstractStringValue_StringType(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getStringReference_ReferencedValue(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getStringReference_ReferencedProperty(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getNumericValue_NumericType(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getNumericReference_ReferencedValue(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getNumericReference_ReferencedProperty(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getAbstractComplexValue_ComplexType(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getComplexValueReference_ReferencedProperty(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getAbstractExpressionValue_ExpressionType(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getBinaryExpression_OwnedLeftOperand(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getBinaryExpression_OwnedRightOperand(),
+       source,
+       new String[] {
+       });
+    addAnnotation
+      (getUnaryExpression_OwnedOperand(),
+       source,
+       new String[] {
+       });
   }
 
-} // DatavaluePackageImpl
+} //DatavaluePackageImpl

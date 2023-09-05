@@ -38,119 +38,147 @@ import org.polarsys.capella.core.data.information.communication.CommunicationPac
 import org.polarsys.capella.core.data.information.communication.MessageReference;
 import org.polarsys.capella.core.data.information.communication.MessageReferencePkg;
 
+
 /**
- * <!-- begin-user-doc --> An implementation of the model object '<em><b>Message Reference Pkg</b></em>'. <!--
- * end-user-doc -->
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Message Reference Pkg</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.polarsys.capella.core.data.information.communication.impl.MessageReferencePkgImpl#getOwnedTraces
- * <em>Owned Traces</em>}</li>
- * <li>{@link org.polarsys.capella.core.data.information.communication.impl.MessageReferencePkgImpl#getContainedGenericTraces
- * <em>Contained Generic Traces</em>}</li>
- * <li>{@link org.polarsys.capella.core.data.information.communication.impl.MessageReferencePkgImpl#getNamingRules
- * <em>Naming Rules</em>}</li>
- * <li>{@link org.polarsys.capella.core.data.information.communication.impl.MessageReferencePkgImpl#getOwnedPropertyValuePkgs
- * <em>Owned Property Value Pkgs</em>}</li>
- * <li>{@link org.polarsys.capella.core.data.information.communication.impl.MessageReferencePkgImpl#getOwnedMessageReferences
- * <em>Owned Message References</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.information.communication.impl.MessageReferencePkgImpl#getOwnedTraces <em>Owned Traces</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.information.communication.impl.MessageReferencePkgImpl#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.information.communication.impl.MessageReferencePkgImpl#getNamingRules <em>Naming Rules</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.information.communication.impl.MessageReferencePkgImpl#getOwnedPropertyValuePkgs <em>Owned Property Value Pkgs</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.information.communication.impl.MessageReferencePkgImpl#getOwnedMessageReferences <em>Owned Message References</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class MessageReferencePkgImpl extends NamedElementImpl implements MessageReferencePkg {
 
-  /**
-   * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @see #getOwnedTraces()
    * @generated
    * @ordered
    */
-  protected EList<Trace> ownedTraces;
+	protected EList<Trace> ownedTraces;
 
-  /**
-   * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+   * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @see #getNamingRules()
    * @generated
    * @ordered
    */
-  protected EList<NamingRule> namingRules;
+	protected EList<NamingRule> namingRules;
 
-  /**
-   * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment
-   * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+
+
+
+
+	/**
+   * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @see #getOwnedPropertyValuePkgs()
    * @generated
    * @ordered
    */
-  protected EList<PropertyValuePkg> ownedPropertyValuePkgs;
+	protected EList<PropertyValuePkg> ownedPropertyValuePkgs;
 
-  /**
-   * The cached value of the '{@link #getOwnedMessageReferences() <em>Owned Message References</em>}' containment
-   * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+
+
+
+
+	/**
+   * The cached value of the '{@link #getOwnedMessageReferences() <em>Owned Message References</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @see #getOwnedMessageReferences()
    * @generated
    * @ordered
    */
-  protected EList<MessageReference> ownedMessageReferences;
+	protected EList<MessageReference> ownedMessageReferences;
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+
+
+
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  protected MessageReferencePkgImpl() {
+	protected MessageReferencePkgImpl() {
 
     super();
 
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
     return CommunicationPackage.Literals.MESSAGE_REFERENCE_PKG;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+
+
+
+
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
 
-  public EList<Trace> getOwnedTraces() {
+	public EList<Trace> getOwnedTraces() {
 
     if (ownedTraces == null) {
-      ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this,
-          CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_TRACES);
+      ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this, CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_TRACES);
     }
     return ownedTraces;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+
+
+
+
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
 
-  public EList<GenericTrace> getContainedGenericTraces() {
+	public EList<GenericTrace> getContainedGenericTraces() {
+
 
     Object result = null;
     // Helper that can get value for current feature.
     IHelper helper = null;
     // If current object is adaptable, ask it to get its IHelper.
     if (this instanceof IAdaptable) {
-      helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
     }
     if (null == helper) {
       // No helper found yet.
@@ -162,186 +190,199 @@ public abstract class MessageReferencePkgImpl extends NamedElementImpl implement
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException(
-          "No helper retrieved for nsURI " + rootPackage.getNsURI()); //$NON-NLS-1$
-    }
-    // A helper is found, let's use it.
-    EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES
-        .getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, annotation);
-
+    
     try {
-      @SuppressWarnings("unchecked")
-      Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
-      return new EcoreEList.UnmodifiableEList<GenericTrace>(this,
-          CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
+    @SuppressWarnings("unchecked")
+    Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
+    return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
     } catch (ClassCastException exception) {
-      exception.printStackTrace();
-      return org.eclipse.emf.common.util.ECollections.emptyEList();
+    	exception.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
     }
-
+    
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+
+
+
+
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
 
-  public EList<NamingRule> getNamingRules() {
+	public EList<NamingRule> getNamingRules() {
 
     if (namingRules == null) {
-      namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this,
-          CommunicationPackage.MESSAGE_REFERENCE_PKG__NAMING_RULES);
+      namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, CommunicationPackage.MESSAGE_REFERENCE_PKG__NAMING_RULES);
     }
     return namingRules;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+
+
+
+
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
 
-  public EList<PropertyValuePkg> getOwnedPropertyValuePkgs() {
+	public EList<PropertyValuePkg> getOwnedPropertyValuePkgs() {
 
     if (ownedPropertyValuePkgs == null) {
-      ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this,
-          CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_PROPERTY_VALUE_PKGS);
+      ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this, CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_PROPERTY_VALUE_PKGS);
     }
     return ownedPropertyValuePkgs;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+
+
+
+
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
 
-  public EList<MessageReference> getOwnedMessageReferences() {
+	public EList<MessageReference> getOwnedMessageReferences() {
 
     if (ownedMessageReferences == null) {
-      ownedMessageReferences = new EObjectContainmentEList<MessageReference>(MessageReference.class, this,
-          CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_MESSAGE_REFERENCES);
+      ownedMessageReferences = new EObjectContainmentEList<MessageReference>(MessageReference.class, this, CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_MESSAGE_REFERENCES);
     }
     return ownedMessageReferences;
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+
+
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
     switch (featureID) {
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_TRACES:
-      return ((InternalEList<?>) getOwnedTraces()).basicRemove(otherEnd, msgs);
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__NAMING_RULES:
-      return ((InternalEList<?>) getNamingRules()).basicRemove(otherEnd, msgs);
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_PROPERTY_VALUE_PKGS:
-      return ((InternalEList<?>) getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_MESSAGE_REFERENCES:
-      return ((InternalEList<?>) getOwnedMessageReferences()).basicRemove(otherEnd, msgs);
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_TRACES:
+        return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__NAMING_RULES:
+        return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        return ((InternalEList<?>)getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_MESSAGE_REFERENCES:
+        return ((InternalEList<?>)getOwnedMessageReferences()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
     switch (featureID) {
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_TRACES:
-      return getOwnedTraces();
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__CONTAINED_GENERIC_TRACES:
-      return getContainedGenericTraces();
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__NAMING_RULES:
-      return getNamingRules();
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_PROPERTY_VALUE_PKGS:
-      return getOwnedPropertyValuePkgs();
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_MESSAGE_REFERENCES:
-      return getOwnedMessageReferences();
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_TRACES:
+        return getOwnedTraces();
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__CONTAINED_GENERIC_TRACES:
+        return getContainedGenericTraces();
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__NAMING_RULES:
+        return getNamingRules();
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        return getOwnedPropertyValuePkgs();
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_MESSAGE_REFERENCES:
+        return getOwnedMessageReferences();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
-  @Override
-  public void eSet(int featureID, Object newValue) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
     switch (featureID) {
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_TRACES:
-      getOwnedTraces().clear();
-      getOwnedTraces().addAll((Collection<? extends Trace>) newValue);
-      return;
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__NAMING_RULES:
-      getNamingRules().clear();
-      getNamingRules().addAll((Collection<? extends NamingRule>) newValue);
-      return;
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_PROPERTY_VALUE_PKGS:
-      getOwnedPropertyValuePkgs().clear();
-      getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>) newValue);
-      return;
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_MESSAGE_REFERENCES:
-      getOwnedMessageReferences().clear();
-      getOwnedMessageReferences().addAll((Collection<? extends MessageReference>) newValue);
-      return;
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_TRACES:
+        getOwnedTraces().clear();
+        getOwnedTraces().addAll((Collection<? extends Trace>)newValue);
+        return;
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__NAMING_RULES:
+        getNamingRules().clear();
+        getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
+        return;
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        getOwnedPropertyValuePkgs().clear();
+        getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
+        return;
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_MESSAGE_REFERENCES:
+        getOwnedMessageReferences().clear();
+        getOwnedMessageReferences().addAll((Collection<? extends MessageReference>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public void eUnset(int featureID) {
+	@Override
+	public void eUnset(int featureID) {
     switch (featureID) {
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_TRACES:
-      getOwnedTraces().clear();
-      return;
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__NAMING_RULES:
-      getNamingRules().clear();
-      return;
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_PROPERTY_VALUE_PKGS:
-      getOwnedPropertyValuePkgs().clear();
-      return;
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_MESSAGE_REFERENCES:
-      getOwnedMessageReferences().clear();
-      return;
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_TRACES:
+        getOwnedTraces().clear();
+        return;
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__NAMING_RULES:
+        getNamingRules().clear();
+        return;
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        getOwnedPropertyValuePkgs().clear();
+        return;
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_MESSAGE_REFERENCES:
+        getOwnedMessageReferences().clear();
+        return;
     }
     super.eUnset(featureID);
   }
 
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+
+
+	/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public boolean eIsSet(int featureID) {
+	@Override
+	public boolean eIsSet(int featureID) {
     switch (featureID) {
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_TRACES:
-      return ownedTraces != null && !ownedTraces.isEmpty();
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__CONTAINED_GENERIC_TRACES:
-      return !getContainedGenericTraces().isEmpty();
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__NAMING_RULES:
-      return namingRules != null && !namingRules.isEmpty();
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_PROPERTY_VALUE_PKGS:
-      return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
-    case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_MESSAGE_REFERENCES:
-      return ownedMessageReferences != null && !ownedMessageReferences.isEmpty();
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_TRACES:
+        return ownedTraces != null && !ownedTraces.isEmpty();
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__CONTAINED_GENERIC_TRACES:
+        return !getContainedGenericTraces().isEmpty();
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__NAMING_RULES:
+        return namingRules != null && !namingRules.isEmpty();
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
+      case CommunicationPackage.MESSAGE_REFERENCE_PKG__OWNED_MESSAGE_REFERENCES:
+        return ownedMessageReferences != null && !ownedMessageReferences.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} // MessageReferencePkgImpl
+
+
+} //MessageReferencePkgImpl
