@@ -24,6 +24,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -92,6 +93,7 @@ import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeEnd;
 import org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation;
@@ -3110,16 +3112,34 @@ public class FaServices {
    * @return
    */
   private boolean isEObjectInHierarchyOfContainer(EObject eObject, NamedElement container) {
-    if (eObject == container) {
+    if (eObject == null || container == null) {
+      return false;
+    } else if (eObject == container) {
       return true;
     } else if (eObject instanceof AbstractFunction) {
-      if (((AbstractFunction) eObject).getComponentFunctionalAllocations().stream().anyMatch(cfa -> isEObjectInHierarchyOfContainer(cfa, container))) {
+      AbstractFunction eFunction = (AbstractFunction) eObject;
+      if (eFunction.getComponentFunctionalAllocations().stream().anyMatch(cfa -> isEObjectInHierarchyOfContainer(cfa, container))) {
         return true;
       }
-    } else if (eObject instanceof ModelElement && eObject.eContainer() != null) {
-      return isEObjectInHierarchyOfContainer(eObject.eContainer(), container);
+    }
+    if (eObject instanceof ModelElement && eObject.eContainer() != null) {
+      return isEObjectInHierarchyOfContainer(getOwningComponent((ModelElement) eObject), container);
     }
     return false;
+  }
+
+  private EObject getOwningComponent(ModelElement eObject) {
+    if (eObject instanceof AbstractFunction) {
+      AbstractFunction eFunction = (AbstractFunction) eObject;
+      Optional<AbstractFunctionalBlock> optional = eFunction.getAllocationBlocks().stream().filter(e -> ComponentExt.getAllSubUsedComponents((Component) e).contains(eObject)).findFirst();
+      if (optional.isPresent()) {
+        return optional.get();
+      }
+    }
+    if (eObject.eContainer() != null) {
+      return eObject.eContainer();
+    }
+    return null;
   }
 
   private Collection<Allocation> retrievePortAllocations(Port port, boolean includeFunctionalRealization, boolean includeComponentRealization) {
