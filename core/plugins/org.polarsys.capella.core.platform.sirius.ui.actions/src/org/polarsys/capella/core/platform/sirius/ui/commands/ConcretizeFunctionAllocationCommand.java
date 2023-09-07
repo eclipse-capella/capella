@@ -46,7 +46,7 @@ public class ConcretizeFunctionAllocationCommand extends AbstractFixCommand {
       AbstractFunction motherFunction = (AbstractFunction) element;
       Component component = resolveMotherFunctionAllocation(motherFunction);
       if (component != null) {
-        createAlloction(component, motherFunction);
+        createAllocation(component, motherFunction);
       }
     }
   }
@@ -74,7 +74,7 @@ public class ConcretizeFunctionAllocationCommand extends AbstractFixCommand {
     return null;
   }
 
-  private void createAlloction(Component component, AbstractFunction function) {
+  private void createAllocation(Component component, AbstractFunction function) {
     ComponentFunctionalAllocation allocation = FaFactory.eINSTANCE.createComponentFunctionalAllocation();
     if (component != null) {
       allocation.setSourceElement(component);
