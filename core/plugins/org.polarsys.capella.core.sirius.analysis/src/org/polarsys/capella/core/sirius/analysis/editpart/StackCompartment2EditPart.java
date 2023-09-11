@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.editpart;
 
+import java.util.List;
+
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
@@ -59,6 +61,7 @@ public class StackCompartment2EditPart extends DNodeContainerViewNodeContainerCo
     }
   }
 
+  @Override
   public Command getCommand(Request request) {
     if (REQ_CREATE.equals(request.getType())) {
       Command command = super.getCommand(request);
@@ -66,7 +69,8 @@ public class StackCompartment2EditPart extends DNodeContainerViewNodeContainerCo
         CompoundCommand ccommand = ((CompoundCommand) command);
         if (ccommand.size() > 0) {
           // We add a command after the Create Command
-          ccommand.getCommands().add(ccommand.size() - 1, new ModeFromRegionLayoutData());
+          List commands = ccommand.getCommands();
+          commands.add(ccommand.size() - 1, new ModeFromRegionLayoutData());
         }
       }
       return command;
