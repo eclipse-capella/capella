@@ -21,12 +21,12 @@ location GMF-Notation-1.13.1 "https://download.eclipse.org/modeling/gmp/gmf-nota
     org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
 }
 
-location GMF-Runtime-1.16 "https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202305230839/" {
+location GMF-Runtime-1.16 "https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202309010720/" {
     org.eclipse.gmf.runtime.sdk.feature.group lazy
     org.eclipse.gmf.runtime.thirdparty.feature.group lazy
 }
 
-location GEF-Classic  "https://download.eclipse.org/tools/gef/classic/releases/3.16.0" {
+location GEF-Classic  "https://download.eclipse.org/tools/gef/classic/releases/3.17.0" {
     org.eclipse.gef.feature.group lazy
 	org.eclipse.gef.source.feature.group
     org.eclipse.gef.sdk.feature.group lazy
@@ -66,7 +66,7 @@ location "https://download.eclipse.org/tools/orbit/downloads/2023-03/" {
 	ch.qos.logback.slf4j
 }
 
-location sirius "https://download.eclipse.org/sirius/updates/releases/7.2.0/2023-03" {
+location sirius "https://download.eclipse.org/sirius/updates/stable/7.3.0-S20230929-065140/2023-03" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
