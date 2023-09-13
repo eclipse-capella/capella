@@ -352,7 +352,7 @@ public interface <%=genClass.getInterfaceName()%><%=genClass.getTypeParameters()
 <%}%>
 <%if (forceDefaultCase) {%>
 			default:
-<%} else { // {%>
+<%} else { %>
 		}
 <%}%>
 <%if (genModel.isMinimalReflectiveMethods()) {%>
@@ -360,9 +360,9 @@ public interface <%=genClass.getInterfaceName()%><%=genClass.getTypeParameters()
 <%} else {%>
 <%=indentDefaultCase%>		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 <%}%>
-<%if (forceDefaultCase) { // {%>
+<%if (forceDefaultCase) { %>
 		}
-<%} // }%>
+<%} %>
 	}
 
 <%}%>
@@ -386,7 +386,7 @@ public interface <%=genClass.getInterfaceName()%><%=genClass.getTypeParameters()
 <%}%>
 <%if (forceDefaultCase) {%>
 			default:
-<%} else { // {%>
+<%} else { %>
 		}
 <%}%>
 <%if (genModel.isMinimalReflectiveMethods()) {%>
@@ -394,9 +394,9 @@ public interface <%=genClass.getInterfaceName()%><%=genClass.getTypeParameters()
 <%} else {%>
 <%=indentDefaultCase%>		return eDynamicBasicRemoveFromContainer(msgs);
 <%}%>
-<%if (forceDefaultCase) { // {%>
+<%if (forceDefaultCase) { %>
 		}
-<%} // }%>
+<%} %>
 	}
 
 <%}%>
@@ -446,7 +446,7 @@ public interface <%=genClass.getInterfaceName()%><%=genClass.getTypeParameters()
 <%}%>
 <%if (forceDefaultCase) {%>
 			default:
-<%} else { // {%>
+<%} else { %>
 		}
 <%}%>
 <%if (genModel.isMinimalReflectiveMethods()) {%>
@@ -454,9 +454,9 @@ public interface <%=genClass.getInterfaceName()%><%=genClass.getTypeParameters()
 <%} else {%>
 <%=indentDefaultCase%>		return eDynamicGet(featureID, resolve, coreType);
 <%}%>
-<%if (forceDefaultCase) { // {%>
+<%if (forceDefaultCase) { %>
 		}
-<%} // }%>
+<%} %>
 	}
 
 <%}%>
@@ -574,7 +574,7 @@ public interface <%=genClass.getInterfaceName()%><%=genClass.getTypeParameters()
   <%}%>
 <%if (forceDefaultCase) {%>
 			default:
-<%} else { // {%>
+<%} else { %>
 		}
 <%}%>
   <%if (genModel.isMinimalReflectiveMethods()) {%>
@@ -588,9 +588,9 @@ public interface <%=genClass.getInterfaceName()%><%=genClass.getTypeParameters()
 				return;
 <%}%>
   <%}%>
-<%if (forceDefaultCase) { // {%>
+<%if (forceDefaultCase) { %>
 		}
-<%} // }%>
+<%} %>
 	}
 
 <%}%>
@@ -839,7 +839,7 @@ public interface <%=genClass.getInterfaceName()%><%=genClass.getTypeParameters()
 <%}%>
 <%if (forceDefaultCase) {%>
 			default:
-<%} else { // {%>
+<%} else { %>
 		}
 <%}%>
 <%if (genModel.isMinimalReflectiveMethods()) {%>
@@ -847,9 +847,9 @@ public interface <%=genClass.getInterfaceName()%><%=genClass.getTypeParameters()
 <%} else {%>
 <%=indentDefaultCase%>		return eDynamicInvoke(operationID, arguments);
 <%}%>
-<%if (forceDefaultCase) { // {%>
+<%if (forceDefaultCase) { %>
 		}
-<%} // }%>
+<%} %>
 	}
 
 <%}%>
