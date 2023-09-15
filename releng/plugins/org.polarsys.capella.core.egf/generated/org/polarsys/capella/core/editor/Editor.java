@@ -1380,7 +1380,6 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
       + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */" + NL
       + "\tprotected boolean showOutlineView()" + NL + "\t{" + NL + "\t\treturn ";
   protected final String TEXT_476 = ";" + NL + "\t}" + NL + "}";
-  protected final String TEXT_477 = NL;
 
   public Editor() {
     //Here is the constructor
@@ -1416,8 +1415,8 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
       ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
     }
 
-    stringBuffer.append(TEXT_477);
-    stringBuffer.append(TEXT_477);
+    stringBuffer.append(TEXT_5);
+    stringBuffer.append(TEXT_5);
     return stringBuffer.toString();
   }
 

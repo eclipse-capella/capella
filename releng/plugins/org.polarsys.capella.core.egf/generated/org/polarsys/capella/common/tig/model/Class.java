@@ -359,7 +359,6 @@ public class Class extends org.polarsys.kitalpha.emde.egf.model.Class {
   protected final String TEXT_281 = " container = eContainer();" + NL + "\t\treturn container == null ? null : (";
   protected final String TEXT_282 = ")container.eGet(eContainmentFeature());" + NL + "\t}" + NL;
   protected final String TEXT_283 = NL + "} //";
-  protected final String TEXT_284 = NL;
 
   public Class() {
     //Here is the constructor
@@ -395,8 +394,8 @@ public class Class extends org.polarsys.kitalpha.emde.egf.model.Class {
       ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
     }
 
-    stringBuffer.append(TEXT_284);
-    stringBuffer.append(TEXT_284);
+    stringBuffer.append(TEXT_4);
+    stringBuffer.append(TEXT_4);
     return stringBuffer.toString();
   }
 
