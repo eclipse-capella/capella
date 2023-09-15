@@ -26,6 +26,7 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellacore.Namespace;
 import org.polarsys.capella.core.data.capellacore.Structure;
+import org.polarsys.capella.core.data.information.datavalue.*;
 import org.polarsys.capella.core.data.information.datavalue.AbstractBooleanValue;
 import org.polarsys.capella.core.data.information.datavalue.AbstractComplexValue;
 import org.polarsys.capella.core.data.information.datavalue.AbstractEnumerationValue;
