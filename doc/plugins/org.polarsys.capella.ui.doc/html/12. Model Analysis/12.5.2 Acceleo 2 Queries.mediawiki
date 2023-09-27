@@ -125,18 +125,6 @@
 | aql: self.getAllDAnalysis().ownedViews.ownedRepresentationDescriptors.'''representation->select(x &#124; x.eInverse('element')->filter(notation::Diagram).eAllContents(notation::Node)->select(x &#124; x.type = 'Note' and x.description.contains('TODO')))->size()'''
 |}
 
-== Requirements ==
-{| cellpadding="7"
-|-
-| '''Description'''
-| '''Workbench Selection'''
-| '''Syntax'''
-|-
-| Query to retrieve the list of non-allocated requirements
-| Requirement Package
-| aql:self.'''eAllContents()->select(x &#124; x.getRelatedCapellaElements()->isEmpty())'''
-|}
-
 == Model Navigation Examples ==
 {| cellpadding="7"
 |-

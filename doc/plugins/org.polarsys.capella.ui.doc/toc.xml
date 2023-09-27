@@ -278,7 +278,6 @@
 		<topic href="html/07. Modelling Wizards and Accelerators/7.2. Contextual Allocations.html#Example:_Allocation_of_Activities_and_Functions_to_Entities.2C_Actors.2C_Components" label="Example: Allocation of Activities and Functions to Entities, Actors, Components"></topic>
 	</topic>
 	<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html" label="Wizards">
-		<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html#Requirement_Manager" label="Requirement Manager"></topic>
 		<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html#Generic_Traceability_Wizard" label="Generic Traceability Wizard"></topic>
 		<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html#Logical_Component_Breakdown_Decomposition_Wizard" label="Logical Component Breakdown Decomposition Wizard">
 			<topic href="html/07. Modelling Wizards and Accelerators/7.3. Modeling Wizards.html#Use_case" label="Use case"></topic>
@@ -332,7 +331,6 @@
 			<topic href="html/12. Model Analysis/12.5.2 Acceleo 2 Queries.html#Basic_Model_Queries" label="Basic Model Queries"></topic>
 			<topic href="html/12. Model Analysis/12.5.2 Acceleo 2 Queries.html#Diagram_Queries" label="Diagram Queries"></topic>
 			<topic href="html/12. Model Analysis/12.5.2 Acceleo 2 Queries.html#Searching_Strings" label="Searching Strings"></topic>
-			<topic href="html/12. Model Analysis/12.5.2 Acceleo 2 Queries.html#Requirements" label="Requirements"></topic>
 			<topic href="html/12. Model Analysis/12.5.2 Acceleo 2 Queries.html#Model_Navigation_Examples" label="Model Navigation Examples"></topic>
 			<topic href="html/12. Model Analysis/12.5.2 Acceleo 2 Queries.html#Metrics" label="Metrics"></topic>
 			<topic href="html/12. Model Analysis/12.5.2 Acceleo 2 Queries.html#Advanced_Queries" label="Advanced Queries"></topic>

@@ -59,13 +59,6 @@ Two exchange items that share a common container have conflicting names if both 
 <br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../Images/error.gif|ERROR]]
-|I_11 - Requirement ID check 
-|-
-| colspan="2"|This rule checks that all Requirements have a unique ID attribute.
-|}
-<br>
-{| class="VALIDATION-RULE"
-!|[[Image:../../Images/error.gif|ERROR]]
 |I_12 - Function Realization 
 |-
 | colspan="2"|This test checks the realization consistency between functions.
