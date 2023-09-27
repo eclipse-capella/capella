@@ -1,32 +1,6 @@
 
 = Wizards =
 
-== Requirement Manager ==
-
-<br>
-<br>
-
-'''Capella offers lightweight requirement management capabilities'''. Allocation is performed through matrices or using the dedicated wizard. On any element, using the contextual menu, select the Requirements Manager as shown below to open the requirement allocation dialog.
-
-
-[[Image:Images/7.3_Wizard_Requirement_Manager.png|600x550px]]
-
-
-A double pane dialog appears, proposing all requirements.
-
-
-[[Image:Images/7.3.%20Modeling%20Wizards_html_m1460320e.png|715x482px]]
-
-
-In this panel, the user can allocate requirements on selected element of the model. The result of the allocation can be seen in a dedicated matrice matrix or in the Semantic Browser.
-
-
-[[Image:Images/7.3.%20Modeling%20Wizards_html_7cc837b4.png|1040x378px]]
-
-
-Note that this requirement allocation capability can be used for requirements in successive engineering phases, '''allowing refinement of requirements'''.
-
-
 == Generic Traceability Wizard ==
 
 Capella offers a lot of semantic justification means from one engineering phase to another (realization of Functions, Exchanges, Components, etc.). In addition, '''a generic traceability capability is also provided.''' '''Such traceability links can be used to''' '''link elements with additional relationships that are not available in Capella'''. Such traceability relies on the concept of '''Generic Traces'''. A dedicated wizard helps creating such Traces, although Capella does not further exploit them.
