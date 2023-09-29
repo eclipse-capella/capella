@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.ui.toolkit,
  org.polarsys.capella.common.ui,
  org.polarsys.capella.core.ui.properties,
- org.polarsys.capella.core.platform.eclipse.ui.trace
+ org.polarsys.capella.core.platform.eclipse.ui.trace,
+ org.polarsys.kitalpha.ad.services
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.platform.eclipse.capella.ui.trace,
  org.polarsys.capella.core.platform.eclipse.capella.ui.trace.commands,

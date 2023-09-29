@@ -14,6 +14,7 @@ package org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
@@ -22,6 +23,7 @@ import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.Messages;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.TraceNameHelper;
 
@@ -64,7 +66,10 @@ public class SelectTraceType extends WizardPage {
 
     // Combo displaying types
     comboType = new Combo(composite, SWT.READ_ONLY | SWT.SINGLE | SWT.BORDER);
-    List<String> traceTypes = TraceNameHelper.getTraceTypes();
+    NamedElement context = parentWizard.getCurrentNamedElement();
+    if(context == null) context = parentWizard.getWorkingNamedElement();
+    ResourceSet rSet = context.eResource().getResourceSet();
+    List<String> traceTypes = TraceNameHelper.getTraceTypes(rSet);
     for (String traceType : traceTypes) {
       comboType.add(traceType);
     }

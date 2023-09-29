@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers;
 
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
@@ -26,7 +27,11 @@ import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.Trac
  */
 public class ElementLabelProvider extends MDEAdapterFactoryLabelProvider {
 
-
+  ResourceSet context = null;
+  public ElementLabelProvider(ResourceSet context) {
+    super();
+    this.context = context ;
+  }
 	/**
 	 * @see org.eclipse.jface.viewers.LabelProvider#getText(java.lang.Object)
 	 */
@@ -34,7 +39,7 @@ public class ElementLabelProvider extends MDEAdapterFactoryLabelProvider {
 	@Override
 	public String getText(Object element) {
 		if (element instanceof Class) {
-			return TraceNameHelper.getTraceNameFromClass((Class<? extends Trace>) element);
+			return TraceNameHelper.getTraceNameFromClass((Class<? extends Trace>) element, context);
 		} 
 		return super.getText(element);
 	}

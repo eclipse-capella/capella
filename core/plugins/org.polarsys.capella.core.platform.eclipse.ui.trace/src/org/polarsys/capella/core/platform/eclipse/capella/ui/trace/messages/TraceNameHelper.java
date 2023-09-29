@@ -15,6 +15,7 @@ package org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
@@ -39,10 +40,10 @@ public class TraceNameHelper {
    * @return a human readable name
    */
   @SuppressWarnings("nls")
-  public static String getTraceNameFromClass(Class<? extends AbstractTrace> clazz_p) {
+  public static String getTraceNameFromClass(Class<? extends AbstractTrace> clazz_p, ResourceSet context) {
     String result = null;
     // Don't use *Impl (it will not work with Capella Team).
-    String extensionTraceName = TraceExtensionManager.eINSTANCE.getTraceName(clazz_p);
+    String extensionTraceName = TraceExtensionManager.eINSTANCE.getTraceName(clazz_p, context);
     if (extensionTraceName != null) {
       result = extensionTraceName;
     } else if (GenericTrace.class.isAssignableFrom(clazz_p)) {
@@ -66,10 +67,11 @@ public class TraceNameHelper {
    * @return new Trace instance for a given readable name clas
    */
   @SuppressWarnings("nls")
-  public static Trace getNewTraceInstanceFromTraceName(String className_p) {
-    Trace result = TraceExtensionManager.eINSTANCE.getNewTraceInstanceFromTraceName(className_p);
-    if (result != null)
+  public static Trace getNewTraceInstanceFromTraceName(String className_p, ResourceSet context) {
+    Trace result = TraceExtensionManager.eINSTANCE.getNewTraceInstanceFromTraceName(className_p, context);
+    if (result != null) {
       return result;
+    }
 
     if (className_p.equals(Messages.getString("TraceType.name.generic"))) {
       result = CapellacommonFactory.eINSTANCE.createGenericTrace();
@@ -88,9 +90,9 @@ public class TraceNameHelper {
    * @return list of readable trace types
    */
   @SuppressWarnings("nls")
-  public static List<String> getTraceTypes() {
+  public static List<String> getTraceTypes(ResourceSet context) {
     List<String> result = new ArrayList<String>();
-    result.addAll(TraceExtensionManager.eINSTANCE.getAllTraceTypes());
+    result.addAll(TraceExtensionManager.eINSTANCE.getAllTraceTypes(context));
     result.add(Messages.getString("TraceType.name.generic"));
     result.add(Messages.getString("TraceType.name.merge"));
     result.add(Messages.getString("TraceType.name.refinement"));
@@ -103,9 +105,9 @@ public class TraceNameHelper {
    * @return list of readable trace types
    */
   @SuppressWarnings("nls")
-  public static List<String> getManualTraceTypes() {
+  public static List<String> getManualTraceTypes(ResourceSet context) {
     List<String> result = new ArrayList<String>();
-    result.addAll(TraceExtensionManager.eINSTANCE.getAllManualTraceTypes());
+    result.addAll(TraceExtensionManager.eINSTANCE.getAllManualTraceTypes(context));
     result.add(Messages.getString("TraceType.name.generic"));
     return result;
   }

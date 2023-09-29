@@ -117,7 +117,7 @@ public class ViewEditPage extends WizardPage {
       IStructuredSelection selection = (IStructuredSelection) getSelection();
       if (!selection.isEmpty()) {
         Object a = selection.getFirstElement();
-        return (a instanceof GenericTrace) || TraceExtensionManager.eINSTANCE.canEdit(a);
+        return (a instanceof GenericTrace) || (( a instanceof EObject) && TraceExtensionManager.eINSTANCE.canEdit((EObject)a));
       }
       return false;
     }
