@@ -74,4 +74,9 @@ public interface ITraceExtension {
    * true if the trace can be edited through the trace wizard
    */
   public boolean canEdit(Object element);
+
+  /**
+   * The viewpoint identifier for the given extension. Allows to be disabled when the viewpoint is not active
+   */
+  public String getViewpointID();
 }

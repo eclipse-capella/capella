@@ -13,6 +13,7 @@
 package org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeContentProvider;
@@ -171,13 +172,16 @@ public class TraceUtil {
   /**
    * @param element_p
    */
-  public static boolean canAddRemoveItemsToTrace(Object element_p) {
-    if ((element_p instanceof GenericTrace) || TraceExtensionManager.eINSTANCE.canAddRemoveItemsToTrace(element_p)) {
-      return true;
+  public static boolean canAddRemoveItemsToTrace(Object element_p, ResourceSet context) {
+    if (element_p instanceof EObject) {
+      if ((element_p instanceof GenericTrace)
+          || TraceExtensionManager.eINSTANCE.canAddRemoveItemsToTrace((EObject) element_p)) {
+        return true;
+      }
     }
     if (element_p instanceof Class) {
       Class<?> clazz = (Class<?>) element_p;
-      if (TraceExtensionManager.eINSTANCE.isAssignableFrom(clazz)) {
+      if (TraceExtensionManager.eINSTANCE.isAssignableFrom(clazz, context)) {
         return true;
       }
       if (GenericTrace.class.isAssignableFrom(clazz)) {

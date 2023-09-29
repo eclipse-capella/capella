@@ -21,22 +21,25 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.core.data.capellacore.Trace;
+import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
 
 public class TraceExtensionManager {
 
   public static TraceExtensionManager eINSTANCE = new TraceExtensionManager();
-  static String EXTENSION_POINT_ID = "org.polarsys.capella.core.platform.eclipse.capella.ui.trace.extension";
-  static String EXTENSION_POINT_CLASS = "traceExtension";
+  String EXTENSION_POINT_ID = "org.polarsys.capella.core.platform.eclipse.capella.ui.trace.extension";
+  String EXTENSION_POINT_CLASS = "traceExtension";
 
   Set<ITraceExtension> extensions;
 
   private TraceExtensionManager() {
-
+    initializeTraceExtensions();
   }
 
-  public Set<ITraceExtension> getTraceExtensions() {
+  private Set<ITraceExtension> initializeTraceExtensions() {
     if (extensions == null) {
       extensions = new HashSet<ITraceExtension>();
       IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
@@ -56,102 +59,125 @@ public class TraceExtensionManager {
     return extensions;
   }
 
+  public boolean isActive(ITraceExtension extension, ResourceSet rSet) {
+    ViewpointManager vpManager = ViewpointManager.getInstance(rSet);
+    return vpManager.isActive(extension.getViewpointID());
+  }
+
   public boolean canDelete(Trace obj) {
-    Set<ITraceExtension> extensions = getTraceExtensions();
     for (ITraceExtension extension : extensions) {
-      if (extension.canDelete(obj))
-        return true;
+      if (isActive(extension, obj.eResource().getResourceSet())) {
+        if (extension.canDelete(obj)) {
+          return true;
+        }
+      }
     }
     return false;
   }
 
   public boolean canRemoveSource(Trace obj) {
-    Set<ITraceExtension> extensions = getTraceExtensions();
     for (ITraceExtension extension : extensions) {
-      if (extension.canRemoveSource(obj))
-        return true;
+      if (isActive(extension, obj.eResource().getResourceSet())) {
+        if (extension.canRemoveSource(obj)) {
+          return true;
+        }
+      }
     }
     return false;
   }
 
   public boolean canRemoveTarget(Trace obj) {
-    Set<ITraceExtension> extensions = getTraceExtensions();
     for (ITraceExtension extension : extensions) {
-      if (extension.canRemoveTarget(obj))
-        return true;
+      if (isActive(extension, obj.eResource().getResourceSet())) {
+        if (extension.canRemoveTarget(obj)) {
+          return true;
+        }
+      }
     }
     return false;
   }
 
-  public boolean isAssignableFrom(Class<?> clazz) {
-    Set<ITraceExtension> extensions = getTraceExtensions();
+  public boolean isAssignableFrom(Class<?> clazz, ResourceSet context) {
     for (ITraceExtension extension : extensions) {
-      if (extension.isAssignableFrom(clazz))
-        return true;
+      if (isActive(extension, context)) {
+        if (extension.isAssignableFrom(clazz)) {
+          return true;
+        }
+      }
     }
     return false;
   }
 
-  public String getTraceName(Class<? extends AbstractTrace> clazz) {
-    Set<ITraceExtension> extensions = getTraceExtensions();
+  public String getTraceName(Class<? extends AbstractTrace> clazz, ResourceSet context) {
     for (ITraceExtension extension : extensions) {
-      if (extension.isAssignableFrom(clazz)) {
-        return extension.getTraceName();
+      if (isActive(extension, context)) {
+        if (extension.isAssignableFrom(clazz)) {
+          return extension.getTraceName();
+        }
       }
     }
     return null;
   }
 
-  public Trace getNewTraceInstanceFromTraceName(String traceName) {
-    if (traceName == null || traceName.isEmpty())
+  public Trace getNewTraceInstanceFromTraceName(String traceName, ResourceSet context) {
+    if (traceName == null || traceName.isEmpty()) {
       return null;
-    Set<ITraceExtension> extensions = getTraceExtensions();
+    }
     for (ITraceExtension extension : extensions) {
-      if (traceName.equals(extension.getTraceName())) {
-        return extension.getNewTraceInstance();
+      if (isActive(extension, context)) {
+        if (traceName.equals(extension.getTraceName())) {
+          return extension.getNewTraceInstance();
+        }
       }
     }
     return null;
   }
 
-  public List<String> getAllTraceTypes() {
-    Set<ITraceExtension> extensions = getTraceExtensions();
+  public List<String> getAllTraceTypes(ResourceSet context) {
     List<String> allTraceTypes = new ArrayList<String>();
     for (ITraceExtension extension : extensions) {
-      allTraceTypes.add(extension.getTraceName());
-    }
-    return allTraceTypes;
-  }
-
-  public List<String> getAllManualTraceTypes() {
-    Set<ITraceExtension> extensions = getTraceExtensions();
-    List<String> allTraceTypes = new ArrayList<String>();
-    for (ITraceExtension extension : extensions) {
-      if (extension.isManualTrace())
+      if (isActive(extension, context)) {
         allTraceTypes.add(extension.getTraceName());
+      }
     }
     return allTraceTypes;
   }
 
-  public boolean canAddRemoveItemsToTrace(Object element) {
-    if (element == null)
-      return false;
-    Set<ITraceExtension> extensions = getTraceExtensions();
+  public List<String> getAllManualTraceTypes(ResourceSet context) {
+    List<String> allTraceTypes = new ArrayList<String>();
     for (ITraceExtension extension : extensions) {
-      if (extension.canAddRemoveItemsToTrace(element)) {
-        return true;
+      if (isActive(extension, context)) {
+        if (extension.isManualTrace()) {
+          allTraceTypes.add(extension.getTraceName());
+        }
+      }
+    }
+    return allTraceTypes;
+  }
+
+  public boolean canAddRemoveItemsToTrace(EObject element) {
+    if (element == null) {
+      return false;
+    }
+    for (ITraceExtension extension : extensions) {
+      if (isActive(extension, element.eResource().getResourceSet())) {
+        if (extension.canAddRemoveItemsToTrace(element)) {
+          return true;
+        }
       }
     }
     return false;
   }
 
-  public boolean canEdit(Object element) {
-    if (element == null)
+  public boolean canEdit(EObject element) {
+    if (element == null) {
       return false;
-    Set<ITraceExtension> extensions = getTraceExtensions();
+    }
     for (ITraceExtension extension : extensions) {
-      if (extension.canEdit(element)) {
-        return true;
+      if (isActive(extension, element.eResource().getResourceSet())) {
+        if (extension.canEdit(element)) {
+          return true;
+        }
       }
     }
     return false;

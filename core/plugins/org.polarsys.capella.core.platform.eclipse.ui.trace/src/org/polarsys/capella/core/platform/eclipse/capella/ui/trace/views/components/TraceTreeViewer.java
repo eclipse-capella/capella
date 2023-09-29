@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IBaseLabelProvider;
@@ -90,7 +91,7 @@ public class TraceTreeViewer implements IDoubleClickListener {
   public TraceableElement _currentNamedElement;
 
   /** View Filter */
-  public TypeElementFilter _eltFilter = new TypeElementFilter();
+  public TypeElementFilter _eltFilter ;
   /** List of listeners subscribers */
   private ListenerList _listeners = new ListenerList();
 
@@ -108,6 +109,8 @@ public class TraceTreeViewer implements IDoubleClickListener {
   public TraceType _traceType;
   /** UI - Treeviewer */
   public TreeViewer _treeViewer;
+  
+  private ResourceSet context;
 
   public TreeViewer getClientViewer() {
     return _treeViewer;
@@ -122,6 +125,8 @@ public class TraceTreeViewer implements IDoubleClickListener {
   public TraceTreeViewer(TraceableElement firstInput_p, TraceType traceType_p) {
     _traceType = traceType_p;
     _currentNamedElement = firstInput_p;
+    context = firstInput_p.eResource().getResourceSet();
+    _eltFilter = new TypeElementFilter(context);
 
     _menuSelectionListener = new SelectionAdapter() {
       @SuppressWarnings("synthetic-access")
@@ -171,7 +176,7 @@ public class TraceTreeViewer implements IDoubleClickListener {
         } else {
           boolean flag = false;
           if (elem instanceof Class) {
-            flag = TraceExtensionManager.eINSTANCE.isAssignableFrom((Class<?>) elem)
+            flag = TraceExtensionManager.eINSTANCE.isAssignableFrom((Class<?>) elem, context)
                 || GenericTrace.class.isAssignableFrom((Class<?>) elem);
           }
           if ((elem instanceof Trace) || ((elem instanceof Class) && flag)) {
@@ -309,7 +314,7 @@ public class TraceTreeViewer implements IDoubleClickListener {
       _treeViewer.setContentProvider(_targetEltContentProvider);
     }
 
-    _treeViewer.setLabelProvider(new ElementLabelProvider());
+    _treeViewer.setLabelProvider(new ElementLabelProvider(context));
     _treeViewer.setInput(_currentNamedElement);
     _treeViewer.addDoubleClickListener(this);
     _treeViewer.expandAll();
@@ -327,7 +332,7 @@ public class TraceTreeViewer implements IDoubleClickListener {
           if (elem instanceof CapellaElement) {
             parent = ((ITreeContentProvider) _treeViewer.getContentProvider()).getParent(elem);
           }
-          boolean canEnableRemoveItem = TraceUtil.canAddRemoveItemsToTrace((null != parent) ? parent : elem);
+          boolean canEnableRemoveItem = TraceUtil.canAddRemoveItemsToTrace((null != parent) ? parent : elem, context);
           _removeItem.setEnabled(canEnableRemoveItem);
 
           boolean canEnableAddItem = TraceUtil.canEnableAddItem(elem);
@@ -389,7 +394,7 @@ public class TraceTreeViewer implements IDoubleClickListener {
 
   public void prepareMenuItems() {
 
-    for (String traceName : TraceNameHelper.getManualTraceTypes()) {
+    for (String traceName : TraceNameHelper.getManualTraceTypes(context)) {
       MenuItem item = new MenuItem(_additionMenu, SWT.PUSH);
       item.setText(traceName);
       item.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(MDTrace.PLUGIN_ID, IImageKeys.MENU_ITEM).createImage());
@@ -419,12 +424,12 @@ public class TraceTreeViewer implements IDoubleClickListener {
     if (_traceType.equals(TraceType.SOURCE_ELEMENT)) {
       traceType = _srcEltContentProvider.getTraceType();
       for (Class<? extends AbstractTrace> class1 : traceType) {
-        _comboType.add(TraceNameHelper.getTraceNameFromClass(class1));
+        _comboType.add(TraceNameHelper.getTraceNameFromClass(class1, context));
       }
     } else {
       traceType = _targetEltContentProvider.getTraceType();
       for (Class<? extends AbstractTrace> class1 : traceType) {
-        _comboType.add(TraceNameHelper.getTraceNameFromClass(class1));
+        _comboType.add(TraceNameHelper.getTraceNameFromClass(class1, context));
       }
     }
   }
