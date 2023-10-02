@@ -27,6 +27,7 @@ public class Messages extends NLS {
   public static String MigrationAction_AnnotationMigration;
   public static String MigrationAction_MissingStatusMigration;
   public static String MigrationAction_MissingContextualElementMigration;
+  public static String MigrationAction_Image_BrowseProjectToFindExistingImagesProject;
   public static String MigrationAction_Image_ImpossibleToCreateImage;
   public static String MigrationAction_Image_ImpossibleToCreateImages;
   public static String MigrationAction_Image_ImpossibleToCreateImageFolder;

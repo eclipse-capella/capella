@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -23,6 +23,7 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -240,13 +241,13 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
 
     Pattern pattern = Pattern.compile(HTML_IMAGE_ABSOLUTE_PATH_PATTERN);
     Matcher matcher = pattern.matcher(strValue);
-    IFolder imageFolder = EcoreUtil2.getProject(notifier).getFolder(ImageManager.IMAGE_FOLDER_NAME);
+    IFolder imageFolder = getExistingImagesFolder(notifier);
     while (matcher.find()) {
       if (matcher.groupCount() >= 1) {
 
         Optional<File> fileWithAbsolutePath = getFileFromString(matcher.group(1));
         if (fileWithAbsolutePath.isPresent()) {
-          IFile fileToCreate = getFileToCreate(imageFolder, fileWithAbsolutePath.get(), notifier);
+          IFile fileToCreate = imageFolder.getFile(fileWithAbsolutePath.get().getName());
           filesToCreate.put(matcher.group(1), fileToCreate);
         } else {
           nonCreatedFiles.add(matcher.group(1));
@@ -275,6 +276,28 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
     return createdFiles;
   }
 
+  private IFolder getExistingImagesFolder(EObject notifier) {
+    IFolder imageFolder;
+    IProject project = EcoreUtil2.getProject(notifier);
+    Optional<IFolder> optImageFolder = Optional.empty();
+    try {
+    optImageFolder = Arrays.stream(project.members())
+              .filter(IFolder.class::isInstance)
+              .map(IFolder.class::cast)
+              .filter(folder -> ImageManager.IMAGE_FOLDER_NAME.equals(folder.getName().toLowerCase()))
+              .findFirst();
+    } catch (CoreException e) {
+      Activator.getDefault().getLog()
+      .error(MessageFormat.format(Messages.MigrationAction_Image_BrowseProjectToFindExistingImagesProject, project.getName()), e);
+    }
+    if (optImageFolder.isEmpty()) {
+      imageFolder = EcoreUtil2.getProject(notifier).getFolder(ImageManager.IMAGE_FOLDER_NAME);
+    } else {
+      imageFolder = optImageFolder.get();
+    }
+    return imageFolder;
+}
+
   private Optional<File> getFileFromString(String fileString) {
     Optional<File> fileOpt = Optional.empty();
     File fileWithAbsolutePath = new File(fileString);
@@ -294,16 +317,6 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
     }
 
     return fileOpt;
-  }
-
-  /**
-   * Get the image file to create in the images folder of the project.
-   */
-  public IFile getFileToCreate(IFolder imageFolder, File fileToCopy, EObject contextObject) {
-    String wsImageName = ImageManager.IMAGE_FOLDER_NAME + File.separator + fileToCopy.getName();
-    IFile targetImageFile = imageFolder.getProject().getFile(wsImageName);
-
-    return targetImageFile;
   }
 
   /**
