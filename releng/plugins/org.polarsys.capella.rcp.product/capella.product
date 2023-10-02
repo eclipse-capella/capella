@@ -16,6 +16,8 @@
 -Xms1000m
 -Xmx3000m
 -Xss4m
+-XX:+UseG1GC
+-XX:+UseStringDeduplication
       </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>

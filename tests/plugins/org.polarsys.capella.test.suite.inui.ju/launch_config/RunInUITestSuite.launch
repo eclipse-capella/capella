@@ -28,7 +28,7 @@
 <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-os ${target.os} -ws ${target.ws} -arch ${target.arch} -nl ${target.nl} -consoleLog"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="org.polarsys.capella.test.suite.inui.ju"/>
 <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.pde.ui.workbenchClasspathProvider"/>
-<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-XX:MaxPermSize=256m -Xms256m -Xmx4000m -enableassertions -javaagent:${tools}/jacoco/lib/jacocoagent.jar=destfile=${result}/jacoco.exec"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-XX:MaxPermSize=256m -Xms256m -Xmx4000m -XX:+UseG1GC -XX:+UseStringDeduplication -enableassertions -javaagent:${tools}/jacoco/lib/jacocoagent.jar=destfile=${result}/jacoco.exec"/>
 <stringAttribute key="pde.version" value="3.3"/>
 <stringAttribute key="product" value="org.polarsys.capella.core.platform.sirius.ui.perspective.product"/>
 <booleanAttribute key="run_in_ui_thread" value="true"/>
