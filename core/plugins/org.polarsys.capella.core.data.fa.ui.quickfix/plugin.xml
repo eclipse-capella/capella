@@ -380,6 +380,15 @@
                     ruleId="DCOM_23">
               </rules>
            </resolver>
+           <resolver
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DWF_DC_45_Resolver"
+                 desc="%quickFix.PhysicalLinkComponentExchangeAllocation.desc"
+                 icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif"
+                 label="%quickFix.PhysicalLinkComponentExchangeAllocation.label">
+              <rules
+                    ruleId="DWF_DC_45">
+              </rules>
+           </resolver>
    </extension>
    <extension
          point="org.eclipse.ui.ide.markerResolution">

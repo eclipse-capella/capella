@@ -757,6 +757,25 @@ NodePC=Physical Component of nature NODE
                   Check if the Component Exchange has an UNSET kind.
                </description>
             </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.ce.MDCHK_ComponentExchange_PhysicalLinkAllocationUnicity"
+                  id="DWF_DC_45"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DC_45 - Non-unicity of Component Exchange allocation"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Non-unicity of Component Exchange allocation for {0}
+               </message>
+               <description>
+                  This rules checks that a Component Exchange is allocated to only one Physical Link
+               </description>
+               <target
+                     class="ComponentExchange">
+               </target>
+            </constraint>
          </constraints>
          <constraints categories="capella.category/transition/consistency/dataflows">
             <constraint class="org.polarsys.capella.core.data.fa.validation.connection.CN01_Connection_RealizingBound" id="TC_DF_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_DF_01 - Component Exchange realization consistency" severity="WARNING" statusCode="1">
