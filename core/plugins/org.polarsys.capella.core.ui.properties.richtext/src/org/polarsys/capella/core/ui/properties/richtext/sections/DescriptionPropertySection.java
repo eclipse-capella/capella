@@ -169,6 +169,8 @@ public abstract class DescriptionPropertySection extends AbstractSection {
   @Override
   public void loadData(EObject object) {
     super.loadData(object);
-    descriptionGroup.setBaseHrefPath(MDERichTextHelper.getProjectPath(object));
+    if (RichtextManager.getInstance().isRichTextEnabled()) {
+      descriptionGroup.setBaseHrefPath(MDERichTextHelper.getProjectPath(object));
+    }
   }
 }
