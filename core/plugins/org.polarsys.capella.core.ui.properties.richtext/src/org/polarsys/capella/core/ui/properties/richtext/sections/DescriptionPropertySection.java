@@ -103,15 +103,17 @@ public abstract class DescriptionPropertySection extends AbstractSection {
 
   @Override
   public void aboutToBeHidden() {
-    if (descriptionGroup != null)
+    if (descriptionGroup != null) {
       descriptionGroup.aboutToBeHidden();
+    }
     super.aboutToBeHidden();
   }
 
   @Override
   public void aboutToBeShown() {
-    if (descriptionGroup != null)
+    if (descriptionGroup != null) {
       descriptionGroup.aboutToBeShown();
+    }
     super.aboutToBeShown();
   }
 
@@ -121,8 +123,12 @@ public abstract class DescriptionPropertySection extends AbstractSection {
   @Override
   public void setEnabled(boolean enabled) {
     // Disable the editor when someone else is editing the same feature
-    if (!enabled && null != descriptionGroup) {
-      descriptionGroup.setEnabled(enabled);
+    if (null != descriptionGroup) {
+      if (!enabled) {
+        descriptionGroup.setEnabled(enabled);
+      }
+    } else {
+      super.setEnabled(enabled);
     }
   }
 
@@ -136,6 +142,8 @@ public abstract class DescriptionPropertySection extends AbstractSection {
       } else {
         descriptionGroup.setEnabled(enabled);
       }
+    } else {
+      super.setInitialEnabledState(enabled);
     }
   }
 
@@ -163,12 +171,16 @@ public abstract class DescriptionPropertySection extends AbstractSection {
 
   @Override
   public void performFinish() {
-    descriptionGroup.save();
+    if (descriptionGroup != null) {
+      descriptionGroup.save();
+    }
   }
   
   @Override
   public void loadData(EObject object) {
     super.loadData(object);
-    descriptionGroup.setBaseHrefPath(MDERichTextHelper.getProjectPath(object));
+    if (descriptionGroup != null) {
+      descriptionGroup.setBaseHrefPath(MDERichTextHelper.getProjectPath(object));
+    }
   }
 }
