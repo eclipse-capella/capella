@@ -119,6 +119,12 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+   <plugin
+         id="org.polarsys.capella.test.library.ui.ju"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.polarsys.capella.test.explorer.activity.ju"

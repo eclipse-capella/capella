@@ -45,6 +45,7 @@
         <module>org.polarsys.capella.test.fastlinker.ju</module>
         <module>org.polarsys.capella.test.framework</module>
         <module>org.polarsys.capella.test.library.ju</module>
+		<module>org.polarsys.capella.test.library.ui.ju</module>
         <module>org.polarsys.capella.test.model.ju</module>
         <module>org.polarsys.capella.test.navigator.ju</module>
         <module>org.polarsys.capella.test.migration.ju</module>
