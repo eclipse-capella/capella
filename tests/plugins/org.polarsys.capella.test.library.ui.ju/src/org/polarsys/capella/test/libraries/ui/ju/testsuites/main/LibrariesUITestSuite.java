@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.libraries.ui.ju.testcases.basic.LibraryBrokenLinkTestCase;
 import org.polarsys.capella.test.libraries.ui.ju.testcases.basic.LibraryManagerWizardTestCase;
 
 import junit.framework.Test;
@@ -34,6 +35,7 @@ public class LibrariesUITestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new LibraryManagerWizardTestCase());
+    tests.add(new LibraryBrokenLinkTestCase());
     return tests;
   }
 

@@ -19,10 +19,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -86,7 +84,7 @@ public class BrokenLinksCheckTestCase extends BasicTestCase {
     assertTrue(errorMessages.stream().collect(Collectors.joining("\n")), errorMessages.isEmpty());
   }
 
-  private String getHelpServer() {
+  protected String getHelpServer() {
     return "http://" //$NON-NLS-1$
         + WebappManager.getHost() + ":" //$NON-NLS-1$
         + WebappManager.getPort() + "/help/topic/";

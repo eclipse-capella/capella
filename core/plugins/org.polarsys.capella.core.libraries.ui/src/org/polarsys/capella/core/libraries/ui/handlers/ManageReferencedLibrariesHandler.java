@@ -52,7 +52,7 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 public class ManageReferencedLibrariesHandler extends AbstractHandler {
 
-  private static String LIBRARY_DETACHMENT_DOC_URI = "org.polarsys.capella.re.doc/html/09.%20Libraries/9.5.%20Advanced%20Operations.html?cp=6_1_20_4";//$NON-NLS-1$
+  public static String LIBRARY_DETACHMENT_DOC_URI = "org.polarsys.capella.re.doc/html/09.%20Libraries/9.5.%20Advanced%20Operations.html?cp=6_1_20_4";//$NON-NLS-1$
 
   @Override
   public void setEnabled(Object evaluationContext) {
