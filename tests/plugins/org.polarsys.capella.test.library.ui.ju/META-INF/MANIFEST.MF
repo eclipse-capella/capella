@@ -10,7 +10,9 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.kitalpha.ad.metadata.model,
  org.polarsys.capella.common.flexibility.properties,
  org.polarsys.capella.common.flexibility.wizards,
- org.polarsys.capella.test.diagram.common.ju
+ org.polarsys.capella.test.diagram.common.ju,
+ org.polarsys.capella.test.doc.ju;bundle-version="7.0.0",
+ org.eclipse.help.base;bundle-version="4.3.1000"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Vendor: %providerName
