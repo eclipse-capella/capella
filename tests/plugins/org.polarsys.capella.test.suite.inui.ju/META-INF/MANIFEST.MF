@@ -7,5 +7,6 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Require-Bundle: org.polarsys.capella.test.suites.ju
+Require-Bundle: org.polarsys.capella.test.suites.ju,
+ org.polarsys.capella.test.library.ui.ju
 Export-Package: org.polarsys.capella.test.suite.inui.ju
