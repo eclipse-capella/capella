@@ -173,6 +173,12 @@
       <reference
             referenceName="ownedTraces">
       </reference>
+      <reference
+            referenceName="ownedComponentExchangeAllocations">
+      </reference>
+      <reference
+            referenceName="ownedComponentExchangeFunctionalExchangeAllocations">
+      </reference>
    </extension>
    
    
