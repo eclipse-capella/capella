@@ -389,6 +389,24 @@
                     ruleId="DWF_DC_45">
               </rules>
            </resolver>
+           <resolver
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DWF_DC_12_Resolver"
+                 desc="%quickFix.ComponentFunctionAllocation.desc"
+                 icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif"
+                 label="%quickFix.ComponentFunctionAllocation.label">
+              <rules
+                    ruleId="DWF_DC_12">
+              </rules>
+           </resolver>
+           <resolver
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DWF_DC_27_Resolver"
+                 desc="%quickFix.ComponentExchangeFunctionalExchangeAllocation.desc"
+                 icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif"
+                 label="%quickFix.ComponentExchangeFunctionalExchangeAllocation.label">
+              <rules
+                    ruleId="DWF_DC_27">
+              </rules>
+           </resolver>
    </extension>
    <extension
          point="org.eclipse.ui.ide.markerResolution">
