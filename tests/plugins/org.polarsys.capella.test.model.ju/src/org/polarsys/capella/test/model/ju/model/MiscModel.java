@@ -153,6 +153,9 @@ public abstract class MiscModel extends NonDirtyTestCase {
   public static final String PA_7_EXPECTED_PL_TARGET = "c82d306d-35dd-4a3a-9a30-133bcbf02be1";
   public static final String PA_8 = "b1c8e398-73a0-4270-bc99-e13c02edf387";
   public static final String PA_8_EXPECTED_PL_TARGET = "38260cd0-2ba1-42b9-9274-a039f6b8b3f0";
+  public static final String PA_FE1 = "c2580e41-a7d9-4ba9-9f73-a64da5ec3329";
+  public static final String PA_CE1 = "55f2fccc-580d-4ade-8b42-0740696aa001";
+  public static final String PA_PL1 = "8ff75e8c-fcaa-4b9b-9a6d-24d99629c28e";
 
   public static final String PA_10 = "42aa1870-e261-4881-a462-eedc17742078";
   
