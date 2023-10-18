@@ -377,17 +377,17 @@ If an Association is on SystemArchitecture layer. It should not associate with a
 <br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
-|DWF_D_58 - Constraint Assignment 
+|DWF_D_58 - Constraint should constrain the Component 
 |-
-| colspan="2"|In monopart mode, this rule ensures that ConstrainedElements value is not Part/PartDeploymentLink. Exception for EAB diagrams.
+| colspan="2"|In monopart mode: This rule ensures that ConstrainedElements value is not Part/PartDeploymentLink.
 |}
 <br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
-|DWF_D_59 - Constraint Location 
+|DWF_D_59 - Constraint should be located under Component 
 |-
-| colspan="2"|In monopart mode : This rule ensures that a constraint is not stored under and doesn't have ConstrainedElements values as a Part/PartDeploymentLink.
-Exception : In EPBS Layer constraint's can be stored under Part
+| colspan="2"|In monopart mode: This rule ensures that a constraint is not stored under and have ConstrainedElements values as a Part/PartDeploymentLink.
+Exception : In EPBS Layer constraint's can be stored under Part.
 
 In multipart mode : This rule ensures that a constraint is not stored under PartDeploymentlink.
 Exception : If first ConstraintElements value is container PartDeploymentlink or empty ConstraintElements value

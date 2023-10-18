@@ -130,7 +130,7 @@
 |}
 <br>
 {| class="VALIDATION-RULE"
-!|[[Image:../../../Images/warning.gif|WARNING]]
+!|[[Image:../../../Images/error.gif|ERROR]]
 |DCOM_20 - Functional Exchange delegation check 
 |-
 | colspan="2"|This rule generates a warning if the the source or target of an Interaction/Functional Exchange is not allocated on a leaf function.
@@ -155,13 +155,6 @@
 |DCOM_23 - Loops on same function check 
 |-
 | colspan="2"|This rule generates an error if there are loops identified on the same Function or Operational Activity.
-|}
-<br>
-{| class="VALIDATION-RULE"
-!|[[Image:../../../Images/error.gif|WARNING]]
-|DCOM_24 - Sequence Message conveys no Exchange Item compared to its Invoked Operation
-|-
-| colspan="2"|This rule generates a warning if a Sequence Message has no Exchange Item while its Invoked Operation has some.
 |}
 <br>
 {| class="VALIDATION-RULE"

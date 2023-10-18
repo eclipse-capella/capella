@@ -3,6 +3,13 @@
 <br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
+|DCOM_24 - Sequence Message conveys no Exchange Item compared to its Invoked Operation 
+|-
+| colspan="2"|This rule generates a warning if a Sequence Message has no Exchange Item while its Invoked Operation has some.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DS_01 - InteractionUse referenced scenario check 
 |-
 | colspan="2"|This rule checks that an Interaction uses correctly references of a scenario.
@@ -163,12 +170,12 @@ Whatever the level, UNSET Scenarios raise an error.
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DS_23 - Invalid referenced scenario 
 |-
-| colspan="2"|Check that the interactionUse is referencing a Scenario that exists at the current Architectural Level.
+| colspan="2"|This rule checks that the interactionUse is referencing a Scenario that exists at the current Architectural Level.
 |}
 <br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|DWF_DS_24 - Instance role has different name compared to represented instance
+|DWF_DS_24 - Instance role has different name compared to represented instance 
 |-
-| colspan="2"|Check that the Instance Role has the same name as its Represented Instance.
+| colspan="2"|This rule checks that the Instance Role has the same name as its Represented Instance.
 |}

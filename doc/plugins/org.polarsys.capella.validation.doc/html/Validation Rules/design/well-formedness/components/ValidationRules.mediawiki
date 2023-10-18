@@ -299,3 +299,17 @@ NodePC=Physical Component of nature NODE
 |-
 | colspan="2"|Check if the Component Exchange has an UNSET kind.
 |}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_DC_44 - Physical Component NODE/BEHAVIOUR is contained and deployed inside the same parent Component 
+|-
+| colspan="2"|This rule ensures that a Physical Component of nature NODE or BEHAVIOUR is not contained and deployed inside the same parent Component.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|DWF_DC_45 - Non-unicity of Component Exchange allocation 
+|-
+| colspan="2"|This rules checks that a Component Exchange is allocated to only one Physical Link
+|}
