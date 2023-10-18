@@ -184,7 +184,7 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new EntityIncomingCommunicationMeans());
     tests.add(new PhysicalPathInvolvedPhysicalLinks());
     tests.add(new PhysicalPathInvolvedComponents());
-
+    tests.add(new PartDeploymentLinkDeployedPart());
     return tests;
   }
 
