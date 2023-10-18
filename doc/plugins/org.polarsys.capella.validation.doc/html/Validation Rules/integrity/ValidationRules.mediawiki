@@ -19,6 +19,13 @@ This rule checks that an element doesn't contain a naming conflict between diffe
 <br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../Images/error.gif|ERROR]]
+|I_03 - Check existence of referenced libraries 
+|-
+| colspan="2"|This rule checks that referenced libraries exist for a given Project.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
 |I_05 - Component Realization consistency 
 |-
 | colspan="2"|This rule ensures that Component Realization Realizations always have consistent Source and Target.

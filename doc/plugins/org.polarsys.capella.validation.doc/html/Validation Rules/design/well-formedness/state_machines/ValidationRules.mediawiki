@@ -108,8 +108,8 @@
 <br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|DWF_SM_16 - State Machine shouldn't have mixed states/modes in different regions 
+|DWF_SM_16 - Mode and State can not be mixed in the same State Machine 
 |-
-| colspan="2"|This rule depends on the Preference option "Mode/State mixed hierarchy allowed". If this option is set to false, the rule checks that a State Machine has not mixed states/modes in different regions.
+| colspan="2"|This rule depends on the Preference option "Mode/State mixed hierarchy allowed". If this option is set to false, the rule checks that a State Machine has no mixed States and Modes.
 |}
 <br>
