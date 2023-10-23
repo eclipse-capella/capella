@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,7 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.libraries.ui.handlers;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -22,10 +24,12 @@ import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.polarsys.capella.common.flexibility.properties.loader.PropertiesLoader;
@@ -47,6 +51,8 @@ import org.polarsys.capella.core.libraries.properties.LibraryManagerModel;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 public class ManageReferencedLibrariesHandler extends AbstractHandler {
+
+  public static String LIBRARY_DETACHMENT_DOC_URI = "org.polarsys.capella.re.doc/html/09.%20Libraries/9.5.%20Advanced%20Operations.html?cp=6_1_20_4";//$NON-NLS-1$
 
   @Override
   public void setEnabled(Object evaluationContext) {
@@ -101,8 +107,9 @@ public class ManageReferencedLibrariesHandler extends AbstractHandler {
     }
     final String modelName = rootModel.getIdentifier().getName();
     IProperties properties = new PropertiesLoader().getProperties(FlexibilityIds.MANAGE_REFERENCES_PROPERTIES);
-    IPropertyContext context = new PropertyContext(properties,
-        new LibraryManagerModel(session.getTransactionalEditingDomain(), (IModel.Edit) rootModel));
+    LibraryManagerModel managerModel = new LibraryManagerModel(session.getTransactionalEditingDomain(),
+        (IModel.Edit) rootModel);
+    IPropertyContext context = new PropertyContext(properties, managerModel);
     IRenderers renderers = new RenderersLoader().getRenderers(properties);
     IRendererContext rendererContext = new RendererContext(renderers, context);
 
@@ -125,7 +132,19 @@ public class ManageReferencedLibrariesHandler extends AbstractHandler {
     dialog.create();
     int result = dialog.open();
 
+    Collection<IModel> newReferencedLibraries = managerModel.getAllReferencedLibrariesByRootModel();
+    List<IModel> removedLibraries = new ArrayList<IModel>(managerModel.getInitialAllReferencedLibrariesByRootModel());
+    removedLibraries.removeAll(newReferencedLibraries);
+
     if (result == Window.OK) {
+      if (!removedLibraries.isEmpty()) {
+        if (MessageDialog.openQuestion(Display.getDefault().getActiveShell(), "Read the documentation", //$NON-NLS-1$
+            "Unreferencing libraries may corrupt your model if not done in the proper way.\nMake sure to follow the procedure\nWould you like to open the documentation?")) {//$NON-NLS-1$
+          String localHRef = PlatformUI.getWorkbench().getHelpSystem().resolve(LIBRARY_DETACHMENT_DOC_URI, true)
+              .toExternalForm();
+          PlatformUI.getWorkbench().getHelpSystem().displayHelpResource(localHRef);
+        }
+      }
       session.save(new NullProgressMonitor());
       return Status.OK_STATUS;
     }

@@ -142,6 +142,7 @@ pipeline {
 		        			 
 		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'LibRecTransition', 'org.polarsys.capella.test.suites.ju', 
 		        			['org.polarsys.capella.test.libraries.ju.testsuites.main.LibrariesTestSuite',
+							  'org.polarsys.capella.test.libraries.ui.ju.testsuites.main.LibrariesUITestSuite',
 		        			  'org.polarsys.capella.test.recrpl.ju.testsuites.main.RecRplTestSuite',
 		        			  'org.polarsys.capella.test.transition.ju.testsuites.main.TransitionTestSuite',
 		        			  'org.polarsys.capella.test.re.updateconnections.ju.UpdateConnectionsTestSuite'])
