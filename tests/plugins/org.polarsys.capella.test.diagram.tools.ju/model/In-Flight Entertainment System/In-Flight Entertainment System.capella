@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_7.0.0-->
+<!--Capella_Version_null-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/7.0.0"
     xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/7.0.0"
@@ -341,7 +341,7 @@
               target="#60dc5173-5420-44c0-bedf-ad3f6958a79d" source="#cc39bfa2-731b-448d-a8b7-a45d1cf45a97"/>
         </ownedOperationalActivities>
       </ownedFunctionPkg>
-            <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
+      <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="58cb491f-bea3-445b-aaa6-05879e858cb7" name="Operational Capabilities">
         <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
             id="2569c843-e368-451c-b7be-67af191a35a3" name="Entertain During Flight">
@@ -1533,7 +1533,7 @@
               source="#b9ace19f-2d94-412d-ae1e-34b6fe329b6f"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-            <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
+      <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="7fdc15cd-094b-4f7c-bd92-6c8d001fb5e7" name="Capabilities">
         <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
             id="291fb362-9ae5-4779-8405-1281ea3709f6" name="Provide Audio and Video Intercommunication Means"
@@ -5139,7 +5139,7 @@
               target="#a4a24937-7365-4018-8951-9aeb80e8d835" source="#8a4862f6-3229-4eae-80db-0f324420cb6d"/>
         </ownedLogicalFunctions>
       </ownedFunctionPkg>
-            <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
+      <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="75619fc8-f3c7-4415-8824-6c9457c7ed7b" name="Capabilities">
         <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
             id="1e4331eb-1825-4c48-85b4-dbe2109ea37e" targetElement="#7fdc15cd-094b-4f7c-bd92-6c8d001fb5e7"
@@ -10217,8 +10217,25 @@
         <ownedCategories xsi:type="org.polarsys.capella.core.data.fa:ExchangeCategory"
             id="a8e67c5e-c76a-4a19-82ad-aa08fed7c860" name="Passenger Service Selection"
             exchanges="#e207d8b6-c76d-494d-9519-b7f0cac18956 #a91fa283-42a3-4415-9274-9d09244ab3e6"/>
+        <ownedCategories xsi:type="org.polarsys.capella.core.data.fa:ExchangeCategory"
+            id="931993e9-058d-42c9-90f7-ece80b7fff43" name="ExchangeCategory 13" exchanges="#fabe2bde-f0f1-4275-a0b0-82bf22e55819"/>
         <ownedPhysicalFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
             id="0f09b41e-1e38-4d34-abb0-ba31a0eedd58" name="Root Physical Function">
+          <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
+              id="3ba5658d-1416-4928-bb63-bf26a021cc34" name="FunctionalChain 1">
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
+                id="0a2fc326-6ec9-49ec-88db-f3ab20ba6faf" involved="#fa61847f-3abe-4ab2-a857-72bd5e6b4d01"
+                source="#9c7ed163-21df-48dc-bdc2-04fe2f34f0a1" target="#54c1d41d-a476-409b-b768-9cf51ddc47ee"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                id="54c1d41d-a476-409b-b768-9cf51ddc47ee" involved="#b4c36894-10af-4166-9da7-099de70ad0f6"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                id="9c7ed163-21df-48dc-bdc2-04fe2f34f0a1" involved="#4c237128-0cf3-4074-8af4-5e63e4994e02"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
+                id="9b2041dd-9d94-44b6-ab81-9fc6d83fb938" involved="#fabe2bde-f0f1-4275-a0b0-82bf22e55819"
+                source="#a705f180-49c4-4e2c-b7ca-28865f9b7c77" target="#54c1d41d-a476-409b-b768-9cf51ddc47ee"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                id="a705f180-49c4-4e2c-b7ca-28865f9b7c77" involved="#75e214e4-74f8-4c44-97f9-f328b8ac3f97"/>
+          </ownedFunctionalChains>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
               id="e22a5c1a-1ee1-4bc4-8b34-b843f4bcf116" name="Perform Cabin Management Activities"
               description="This function is a high-level function gathering all the what is performed by the ground operator actor.">
@@ -14262,6 +14279,23 @@
                   id="bfeea72a-bbf4-420e-8d52-8e8dcab06454" deployedElement="#cd2fb612-0f9d-4ca1-9335-65e958b672be"
                   location="#8347cdfc-8694-471e-bcb3-f9966e02ca39"/>
             </ownedFeatures>
+            <ownedPhysicalPath xsi:type="org.polarsys.capella.core.data.cs:PhysicalPath"
+                id="727d2255-e536-40e5-97d8-43628029b2b3" name="PhysicalPath 1">
+              <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
+                  id="5c616751-c015-44fc-8fd1-4857267119d9" involved="#4eef8a22-7266-46cf-9061-cc1c94486121"
+                  nextInvolvements="#fc36d99d-d680-42a8-b72e-2d8c0a71c226"/>
+              <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
+                  id="fc36d99d-d680-42a8-b72e-2d8c0a71c226" involved="#c4de8d15-7a19-4de0-aad6-0ec1b74be12d"
+                  nextInvolvements="#6923ba1b-6f28-433a-99af-a86300dce1da"/>
+              <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
+                  id="6923ba1b-6f28-433a-99af-a86300dce1da" involved="#cfba64e6-4385-4eb3-950f-723ed69347b9"
+                  nextInvolvements="#eb3e715f-4c8d-4345-92a3-8764bcd2f167"/>
+              <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
+                  id="eb3e715f-4c8d-4345-92a3-8764bcd2f167" involved="#b897b8a1-0131-4e85-8ee3-fd7d981dc583"
+                  nextInvolvements="#9ec82ed4-f2c5-4913-8fc9-686e8c78bf9b"/>
+              <ownedPhysicalPathInvolvements xsi:type="org.polarsys.capella.core.data.cs:PhysicalPathInvolvement"
+                  id="9ec82ed4-f2c5-4913-8fc9-686e8c78bf9b" involved="#b6ba930f-90f5-4805-b54c-f3c48e32b0b0"/>
+            </ownedPhysicalPath>
             <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
                 id="c4de8d15-7a19-4de0-aad6-0ec1b74be12d" name="Gigabit Ethernet"
                 summary="" description="" linkEnds="#5aa6b85b-52c3-4070-9f7e-d68ffa00c50d #23f6362b-85a2-4823-8ef9-131c26f8567f"/>
@@ -14280,6 +14314,9 @@
             <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
                 id="b897b8a1-0131-4e85-8ee3-fd7d981dc583" name="Gigabit Ethernet"
                 linkEnds="#62d9e0f0-2b41-422a-aa33-02dd03925ed0 #87083a2b-9b2a-4246-b5ba-e2d46771628e"/>
+            <ownedPhysicalLinkCategories xsi:type="org.polarsys.capella.core.data.cs:PhysicalLinkCategory"
+                id="e72a1517-a8ef-4ecc-9c62-cb929938b1a4" name="PhysicalLinkCategory 1"
+                links="#c4de8d15-7a19-4de0-aad6-0ec1b74be12d"/>
             <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
                 id="a850426c-c425-4c85-85fa-cd85b0c066e5" summary="" description=""
                 name="Video Server Unit" nature="NODE">

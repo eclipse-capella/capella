@@ -51,6 +51,26 @@ public class SelectionHelper {
     return DiagramServices.getDiagramServices().getViewsRepresentingSameEType(diagram, semanticDecorators);
   }
 
+  public Collection<DDiagramElement> getRelatedFunctionalChainElements(IStructuredSelection selection) {
+    List<DSemanticDecorator> semanticDecorators = getDSemanticDecoratorsFromSelection(selection);
+    if (semanticDecorators.isEmpty() || semanticDecorators.size() != selection.size())
+      return new ArrayList<DDiagramElement>();
+
+    DSemanticDiagram diagram = (DSemanticDiagram) DiagramHelper.getService()
+        .getDiagramContainer(semanticDecorators.get(0));
+    return DiagramServices.getDiagramServices().getRelatedFunctionalChainElements(diagram, semanticDecorators);
+  }
+
+  public Collection<DDiagramElement> getRelatedPhysicalPathElements(IStructuredSelection selection) {
+    List<DSemanticDecorator> semanticDecorators = getDSemanticDecoratorsFromSelection(selection);
+    if (semanticDecorators.isEmpty() || semanticDecorators.size() != selection.size())
+      return new ArrayList<DDiagramElement>();
+
+    DSemanticDiagram diagram = (DSemanticDiagram) DiagramHelper.getService()
+        .getDiagramContainer(semanticDecorators.get(0));
+    return DiagramServices.getDiagramServices().getRelatedPhysicalPathElements(diagram, semanticDecorators);
+  }
+
   public boolean hasResemblingElements(IStructuredSelection selection) {
     return !getResemblingElements(selection).isEmpty();
   }
@@ -83,7 +103,7 @@ public class SelectionHelper {
         .map(editPart -> ((GraphicalEditPart) editPart).getModel()).filter(model -> model instanceof View)
         .map(model -> ((View) model).getElement()).filter(element -> element instanceof DSemanticDecorator)
         .map(DSemanticDecorator.class::cast).collect(Collectors.toList());
-    
+
     return semanticDecorators;
   }
 

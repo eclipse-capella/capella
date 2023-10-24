@@ -41,6 +41,12 @@ The available tools are:
 |'''Elements of Same Type'''
 |Select all elements on the active diagram which have the '''same type''' as the current selected element(s)
 |-
+|'''Related Functional Chain Elements'''
+|Select all functional exchanges, exchange categories and ports on the active diagram which are '''related to''' as the current selected Functional Chain
+|-
+|'''Related Physical Path Elements'''
+|Select all physical links, categories and ports on the active diagram which are '''related to''' as the current selected Physical Path
+|-
 |'''Resembling Elements'''
 |Select all elements on the active diagram which have the '''same mapping''' as the current selected element(s)
 |-

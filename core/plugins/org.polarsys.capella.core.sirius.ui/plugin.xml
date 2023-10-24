@@ -422,7 +422,29 @@
                 definitionId="org.polarsys.capella.core.sirius.ui.isValidElementsOfSameTypeMenu">
           </reference>
        </visibleWhen>
-  	  </command>  
+  	  </command>
+  	  <command
+          commandId="org.polarsys.capella.core.sirius.ui.select.fc.related.elements"
+          label="Related Functional Chain Elements"
+          style="push">
+       <visibleWhen
+             checkEnabled="true">
+          <reference
+                definitionId="org.polarsys.capella.core.sirius.ui.isValidFCSelectionMenu">
+          </reference>
+       </visibleWhen>
+  	  </command>   
+  	  <command
+          commandId="org.polarsys.capella.core.sirius.ui.select.pp.related.elements"
+          label="Related Physical Path Elements"
+          style="push">
+       <visibleWhen
+             checkEnabled="true">
+          <reference
+                definitionId="org.polarsys.capella.core.sirius.ui.isValidPPSelectionMenu">
+          </reference>
+       </visibleWhen>
+  	  </command>   
   	  <command
           commandId="org.polarsys.capella.core.sirius.ui.select.resembling.elements"
           label="Resembling Elements"
@@ -478,6 +500,16 @@
             name="Select Elements of same type">
       </command>
       <command
+            defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.SelectRelatedFCElementsCommandHandler"
+            id="org.polarsys.capella.core.sirius.ui.select.fc.related.elements"
+            name="Select Related Functional Chain Elements">
+      </command>
+      <command
+            defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.SelectRelatedPPElementsCommandHandler"
+            id="org.polarsys.capella.core.sirius.ui.select.pp.related.elements"
+            name="Select Related Physical Path Elements">
+      </command>
+      <command
             defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.SelectResemblingElementsCommandHandler"
             id="org.polarsys.capella.core.sirius.ui.select.resembling.elements"
             name="Select Resembling Elements">
@@ -507,6 +539,20 @@
             properties="isValidElementsOfSameTypeMenu"
             type="java.lang.Object">
       </propertyTester>   
+      <propertyTester
+            class="org.polarsys.capella.core.sirius.ui.testers.ValidFCSelectionMenuTargetTester"
+            id="org.polarsys.capella.core.sirius.ui.ValidFCSelectionMenuTargetTester"
+            namespace="org.polarsys.capella.core.sirius.ui"
+            properties="isValidFCSelectionMenu"
+            type="java.lang.Object">
+      </propertyTester>   
+      <propertyTester
+            class="org.polarsys.capella.core.sirius.ui.testers.ValidPPSelectionMenuTargetTester"
+            id="org.polarsys.capella.core.sirius.ui.ValidPPSelectionMenuTargetTester"
+            namespace="org.polarsys.capella.core.sirius.ui"
+            properties="isValidPPSelectionMenu"
+            type="java.lang.Object">
+      </propertyTester>  
       <propertyTester
             class="org.polarsys.capella.core.sirius.ui.testers.ValidResemblingElementsMenuTargetTester"
             id="org.polarsys.capella.core.sirius.ui.ValidResemblingElementsMenuTargetTester"
@@ -544,6 +590,24 @@
                variable="activeMenuSelection">
                   <test
                         property="org.polarsys.capella.core.sirius.ui.isValidElementsOfSameTypeMenu">
+                  </test>
+         </with>
+      </definition>
+      <definition
+            id="org.polarsys.capella.core.sirius.ui.isValidFCSelectionMenu">
+         <with
+               variable="activeMenuSelection">
+                  <test
+                        property="org.polarsys.capella.core.sirius.ui.isValidFCSelectionMenu">
+                  </test>
+         </with>
+      </definition>
+      <definition
+            id="org.polarsys.capella.core.sirius.ui.isValidPPSelectionMenu">
+         <with
+               variable="activeMenuSelection">
+                  <test
+                        property="org.polarsys.capella.core.sirius.ui.isValidPPSelectionMenu">
                   </test>
          </with>
       </definition>
