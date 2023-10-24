@@ -105,8 +105,14 @@ import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.cs.PhysicalLink;
+import org.polarsys.capella.core.data.cs.PhysicalPath;
+import org.polarsys.capella.core.data.fa.FunctionalChain;
+import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
+import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
+import org.polarsys.capella.core.model.helpers.PhysicalPathExt;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 
 import com.google.common.collect.Lists;
@@ -1745,6 +1751,68 @@ public class DiagramServices {
     Collection<DDiagramElement> diagramElements = new DDiagramQuery(currentDiagram).getAllDiagramElements();
 
     return diagramElements.stream().filter(element -> eclassesToSelect.contains(element.getTarget().eClass()))
+        .collect(Collectors.toList());
+  }
+
+  /**
+   * Returns a collection of all Functional Exchanges, Exchange Categories and Ports involved in the FunctionalChains as
+   * <code>selectedViews</code> in the <code>currentDiagram</code>.
+   * 
+   * @param currentDiagram
+   *          The current {@link DSemanticDiagram}
+   * @param selectedViews
+   *          The selected FunctionalChain decorators.
+   * @return a collection of all DDiagramElement involved in the FunctionalChain as the selectedViews.
+   */
+  public Collection<DDiagramElement> getRelatedFunctionalChainElements(DSemanticDiagram currentDiagram,
+      List<DSemanticDecorator> selectedViews) {
+
+    Collection<DDiagramElement> diagramElements = new DDiagramQuery(currentDiagram).getAllDiagramElements();
+    Set<EObject> toBeSelected = new HashSet<EObject>();
+    for (DSemanticDecorator selectedView : selectedViews) {
+      FunctionalChain selectedFC = (FunctionalChain) selectedView.getTarget();
+      Set<FunctionalExchange> involvedFEs = FunctionalChainExt.getFlatFunctionalExchanges(selectedFC);
+
+      toBeSelected.addAll(involvedFEs);
+      for (FunctionalExchange involvedFE : involvedFEs) {
+        toBeSelected.add(involvedFE.getSource());
+        toBeSelected.add(involvedFE.getTarget());
+        toBeSelected.addAll(involvedFE.getCategories());
+      }
+    }
+
+    return diagramElements.stream().filter(element -> toBeSelected.contains(element.getTarget()))
+        .collect(Collectors.toList());
+  }
+
+  /**
+   * Returns a collection of all Physical Links, Physical Links Categories and Ports involved in a Physical Path as
+   * <code>selectedViews</code> in the <code>currentDiagram</code>.
+   * 
+   * @param currentDiagram
+   *          The current {@link DSemanticDiagram}
+   * @param selectedPPDecorator
+   *          The selected PhysicalPath decorator.
+   * @return a collection of all DDiagramElement involved in the PhysicalPath as the selectedViews.
+   */
+  public Collection<DDiagramElement> getRelatedPhysicalPathElements(DSemanticDiagram currentDiagram,
+      List<DSemanticDecorator> selectedViews) {
+
+    Collection<DDiagramElement> diagramElements = new DDiagramQuery(currentDiagram).getAllDiagramElements();
+    Set<EObject> toBeSelected = new HashSet<EObject>();
+    for (DSemanticDecorator selectedView : selectedViews) {
+      PhysicalPath selectedFC = (PhysicalPath) selectedView.getTarget();
+      Collection<PhysicalLink> involvedPLs = PhysicalPathExt.getFlatPhysicalLinks(selectedFC);
+
+      toBeSelected.addAll(involvedPLs);
+      for (PhysicalLink involvedPL : involvedPLs) {
+        toBeSelected.add(involvedPL.getSourcePhysicalPort());
+        toBeSelected.add(involvedPL.getTargetPhysicalPort());
+        toBeSelected.addAll(involvedPL.getCategories());
+      }
+    }
+
+    return diagramElements.stream().filter(element -> toBeSelected.contains(element.getTarget()))
         .collect(Collectors.toList());
   }
 

@@ -55,6 +55,8 @@ import org.polarsys.capella.core.sirius.ui.handlers.SelectElementsOfSameTypeComm
 import org.polarsys.capella.core.sirius.ui.handlers.SelectOwnedElementsCommandHandler;
 import org.polarsys.capella.core.sirius.ui.handlers.SelectOwnedPortsCommandHandler;
 import org.polarsys.capella.core.sirius.ui.handlers.SelectRelatedConnectionsCommandHandler;
+import org.polarsys.capella.core.sirius.ui.handlers.SelectRelatedFCElementsCommandHandler;
+import org.polarsys.capella.core.sirius.ui.handlers.SelectRelatedPPElementsCommandHandler;
 import org.polarsys.capella.core.sirius.ui.handlers.SelectResemblingElementsCommandHandler;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
@@ -306,6 +308,38 @@ public class CommonDiagram extends DiagramContext {
       }
 
     }
+  }
+
+  public void selectRelatedFCElements(String initialElement, String... expectedSelection) {
+    DSemanticDecorator decorator = getView(initialElement);
+    EditPart correspondingEditPart = DiagramServices.getDiagramServices().getEditPart((DDiagramElement) decorator);
+
+    ExecutionEvent event = createExecutionEvent(correspondingEditPart);
+
+    SelectRelatedFCElementsCommandHandler handler = new SelectRelatedFCElementsCommandHandler() {
+      @Override
+      protected IStructuredSelection getSelection() {
+        StructuredSelection selection = new StructuredSelection(correspondingEditPart);
+        return selection;
+      }
+    };
+    assertSelectionWorked(event, handler);
+  }
+
+  public void selectRelatedPPElements(String initialElement, String... expectedSelection) {
+    DSemanticDecorator decorator = getView(initialElement);
+    EditPart correspondingEditPart = DiagramServices.getDiagramServices().getEditPart((DDiagramElement) decorator);
+
+    ExecutionEvent event = createExecutionEvent(correspondingEditPart);
+
+    SelectRelatedPPElementsCommandHandler handler = new SelectRelatedPPElementsCommandHandler() {
+      @Override
+      protected IStructuredSelection getSelection() {
+        StructuredSelection selection = new StructuredSelection(correspondingEditPart);
+        return selection;
+      }
+    };
+    assertSelectionWorked(event, handler);
   }
 
   public void selectOwnedPorts(String initialElement) {
