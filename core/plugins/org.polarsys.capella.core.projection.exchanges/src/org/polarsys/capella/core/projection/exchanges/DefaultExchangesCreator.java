@@ -79,7 +79,7 @@ public class DefaultExchangesCreator implements IExchangesCreator {
    */
   @Override
   public void createExchanges() {
-
+    boolean exchangeCreated = false;
     // Retrieve all functions allocated in component and sub-components
     // > we'll disable creation between internal functions
     List<AbstractFunction> lf = new ArrayList<>();
@@ -112,6 +112,7 @@ public class DefaultExchangesCreator implements IExchangesCreator {
               if ((allocating instanceof Component) && !lf.contains(targetF)
                   && isValidCreation(fe, component, (Component) allocating)) {
                 doCreateExchange(fe, component, (Component) allocating);
+                exchangeCreated = true;
               }
             }
           }
@@ -133,11 +134,17 @@ public class DefaultExchangesCreator implements IExchangesCreator {
               if ((allocating instanceof Component) && !lf.contains(sourceF)
                   && isValidCreation(fe, component, (Component) allocating)) {
                 doCreateExchange(fe, (Component) allocating, component);
+                exchangeCreated = true;
               }
             }
           }
         }
       }
+    }
+    if (!exchangeCreated) {
+      String message = "No component exchange has been created.";
+      EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName());
+      logger.info(eMessage);
     }
   }
 
@@ -211,8 +218,8 @@ public class DefaultExchangesCreator implements IExchangesCreator {
     ce.getOwnedComponentExchangeFunctionalExchangeAllocations().add(cfea);
 
     String message = "The Component exchange " + ce.getName()
-        + " has been succefully created between the exchange input component " + exchangeInput_p.getLabel()
-        + " and the exchange output component " + exchangeOutput_p.getLabel();
+        + " has been succefully created between the exchange source component " + exchangeInput_p.getLabel()
+        + " and the exchange target component " + exchangeOutput_p.getLabel();
     EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName(),
         Arrays.asList(ce, exchangeInput_p, exchangeOutput_p));
     logger.info(eMessage);

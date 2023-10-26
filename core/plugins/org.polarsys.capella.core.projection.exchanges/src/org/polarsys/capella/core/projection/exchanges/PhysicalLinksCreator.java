@@ -82,7 +82,12 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
   @Override
   public void createExchanges() {
     if (isValidBound(_component)) {
-      createPhysicalLinksFromCExchanges(_component);
+      boolean physicalLinkCreated = createPhysicalLinksFromCExchanges(_component);
+      if (!physicalLinkCreated) {
+        String message = "No physical Link has been created.";
+        EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName());
+        logger.info(eMessage);
+      }
     }
   }
 
@@ -102,71 +107,79 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
    *          contained level component exchanges If the container hasn't subcomponent, it will try to create a PL and
    *          allocate to a CE at the same level
    */
-  protected void createPhysicalLinksFromCExchanges(Component container) {
-    if (container != null) {
-      if (container instanceof PhysicalComponent) {
-        // Gets the deployments of the node
-        EList<AbstractDeploymentLink> deployments = part.getDeploymentLinks();
+  protected boolean createPhysicalLinksFromCExchanges(Component container) {
+    boolean physicalLinkCreated = false;
+    if (container instanceof PhysicalComponent) {
+      // Gets the deployments of the node
+      EList<AbstractDeploymentLink> deployments = part.getDeploymentLinks();
 
-        for (AbstractDeploymentLink deployment : deployments) {
-          if (deployment instanceof PartDeploymentLink) {
-            PartDeploymentLink deploymentLink = (PartDeploymentLink) deployment;
-            DeployableElement deployedElement = deploymentLink.getDeployedElement();
-            if (deployedElement instanceof Part) {
-              Type containedPC = ((Part) deployedElement).getType();
-              if (containedPC instanceof PhysicalComponent) {
-                createPhysicalLinksFromCExchanges(container, (PhysicalComponent) containedPC);
-              }
-            } else if (deployedElement instanceof PhysicalComponent) {
-              createPhysicalLinksFromCExchanges(container, (PhysicalComponent) deployedElement);
+      for (AbstractDeploymentLink deployment : deployments) {
+        if (deployment instanceof PartDeploymentLink) {
+          PartDeploymentLink deploymentLink = (PartDeploymentLink) deployment;
+          DeployableElement deployedElement = deploymentLink.getDeployedElement();
+          if (deployedElement instanceof Part) {
+            Type containedPC = ((Part) deployedElement).getType();
+            if (containedPC instanceof PhysicalComponent) {
+              physicalLinkCreated |= createPhysicalLinksFromCExchanges(container, (PhysicalComponent) containedPC);
             }
+          } else if (deployedElement instanceof PhysicalComponent) {
+            physicalLinkCreated |= createPhysicalLinksFromCExchanges(container, (PhysicalComponent) deployedElement);
           }
         }
       }
-      if (!isContainedByALogicalNonActorComponent(container)) {
-        // Process contained actors
-        createPLsFromCEDiffLevels(container);
-        createPLsFromCESameLevel(container);
-      }
     }
+    if (!isContainedByALogicalNonActorComponent(container)) {
+      // Process contained actors
+      physicalLinkCreated |= createPLsFromCEDiffLevels(container);
+      physicalLinkCreated |= createPLsFromCESameLevel(container);
+    }
+    return physicalLinkCreated;
   }
 
   /**
    * Create Physical Links from Component Exchanges at different levels
+   * 
+   * @return
    */
-  protected void createPLsFromCEDiffLevels(Component container) {
+  protected boolean createPLsFromCEDiffLevels(Component container) {
     List<Component> subComponents = ComponentExt.getSubDefinedComponents(container);
     if (!subComponents.isEmpty()) {
-      subComponents.stream().filter(ComponentExt::isActor).forEach(actor -> {
-        createPhysicalLinksFromCExchanges(container, actor);
-      });
+      return subComponents.stream().filter(ComponentExt::isActor)
+          .map(actor -> createPhysicalLinksFromCExchanges(container, actor)).reduce(Boolean.FALSE, Boolean::logicalOr);
     }
+    return false;
   }
 
   /**
    * Create Physical Links from Component Exchanges at the same level
    */
-  protected void createPLsFromCESameLevel(Component container) {
+  protected boolean createPLsFromCESameLevel(Component container) {
     if (ComponentExt.isActor(container) || !isNodeComponent(container)) {
-      createPhysicalLinksFromCExchanges(container, container);
+      return createPhysicalLinksFromCExchanges(container, container);
     }
+    return false;
   }
 
   /**
    * @param sourceContainer
    * @param sourceContained
+   * 
+   * @return boolean if a physicalLink has been created
    */
-  protected void createPhysicalLinksFromCExchanges(Component sourceContainer, Component sourceContained) {
+  protected boolean createPhysicalLinksFromCExchanges(Component sourceContainer, Component sourceContained) {
+    boolean physicalLinkCreated = false;
     if (isValidBound(sourceContained)) {
       // Process the contained component
       // This reference will allows to handle the processed CEs
       for (ComponentPort port : ComponentExt.getOwnedComponentPort(sourceContained)) {
         // get all the CEs of the port
         for (ComponentExchange componentExchange : port.getComponentExchanges()) {
-          processComponentExchange(sourceContainer, sourceContained, port, componentExchange);
+          physicalLinkCreated |= processComponentExchange(sourceContainer, sourceContained, port,
+              componentExchange) != null;
         }
       }
     }
+    return physicalLinkCreated;
   }
 
   /**
@@ -181,8 +194,8 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
     return false;
   }
 
-  private void processComponentExchange(Component sourceContainer, Component sourceContained, ComponentPort port,
-      ComponentExchange componentExchange) {
+  private PhysicalLink processComponentExchange(Component sourceContainer, Component sourceContained,
+      ComponentPort port, ComponentExchange componentExchange) {
     if ((componentExchange.getKind() == ComponentExchangeKind.DELEGATION)
         || (componentExchange.getKind() == ComponentExchangeKind.UNSET)
         || doesNodeAlreadyHasAPhysicalLinkForComponentExchange(sourceContainer, componentExchange)) {
@@ -190,7 +203,7 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
           + " already has a physical link or the kind is not suitable.";
       EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName(), componentExchange);
       logger.error(eMessage);
-      return;
+      return null;
     }
 
     Component targetContained = findTheTargetComponent(componentExchange, port);
@@ -200,15 +213,15 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
       String message = "Component " + source.getName() + " cannot host a Physical Link.";
       EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName(), source);
       logger.error(eMessage);
-      return;
+      return null;
     } else if (!isValidPhysicalLinkBound(target)) {
       String message = "Component " + target.getName() + " cannot host a Physical Link.";
       EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName(), target);
       logger.error(eMessage);
-      return;
+      return null;
     }
 
-    doCreatePhysicalLink(componentExchange, source, target, port);
+    return doCreatePhysicalLink(componentExchange, source, target, port);
   }
 
   /**
@@ -316,13 +329,12 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
     return componentExchangeBound;
   }
 
-  private void doCreatePhysicalLink(ComponentExchange componentExchange, Component exchangeOutput,
+  private PhysicalLink doCreatePhysicalLink(ComponentExchange componentExchange, Component exchangeOutput,
       Component exchangeInput, ComponentPort sourcePort) {
     if (componentExchange.getSource().equals(sourcePort)) {
-      doCreatePhysicalLink(componentExchange, exchangeOutput, exchangeInput);
-    } else {
-      doCreatePhysicalLink(componentExchange, exchangeInput, exchangeOutput);
+      return doCreatePhysicalLink(componentExchange, exchangeOutput, exchangeInput);
     }
+    return doCreatePhysicalLink(componentExchange, exchangeInput, exchangeOutput);
   }
 
   /**
@@ -335,13 +347,13 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
    * @param exchangeInput
    *          the input component
    */
-  protected void doCreatePhysicalLink(ComponentExchange componentExchange, Component exchangeOutput,
+  protected PhysicalLink doCreatePhysicalLink(ComponentExchange componentExchange, Component exchangeOutput,
       Component exchangeInput) {
     // Precondition:
     if (exchangeOutput == exchangeInput) {
       // Not necessary to create a physical link for exchanges inside the
       // same container.
-      return;
+      return null;
     }
     PhysicalLink physicalLink = CsFactory.eINSTANCE.createPhysicalLink(componentExchange.getLabel());
     PhysicalPort outP = CsFactory.eINSTANCE.createPhysicalPort(componentExchange.getSource().getLabel());
@@ -375,10 +387,11 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
     exchangeInput.getOwnedPhysicalLinks().add(physicalLink);
     exchangeOutput.getOwnedPhysicalLinks().add(physicalLink);
     String message = "The Physical link " + physicalLink.getName() + " has been succefully created between the source "
-        + exchangeInput.getLabel() + " and the target " + exchangeOutput.getLabel();
+        + exchangeOutput.getLabel() + " and the target " + exchangeInput.getLabel();
     EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName(),
-        Arrays.asList(physicalLink, exchangeInput, exchangeOutput));
+        Arrays.asList(physicalLink, exchangeOutput, exchangeInput));
     logger.info(eMessage);
+    return physicalLink;
   }
 
   /**

@@ -58,6 +58,7 @@ public class EntityExchangesCreator extends DefaultExchangesCreator {
    */
   @Override
   public void createExchanges() {
+    boolean comMeanCreated = false;
     List<AbstractFunction> lf = new ArrayList<>();
     if (_component instanceof Entity) {
       Entity entity = (Entity) _component;
@@ -72,11 +73,16 @@ public class EntityExchangesCreator extends DefaultExchangesCreator {
       for (Component component : subComponents) {
         EList<AbstractFunction> laf = component.getAllocatedFunctions();
         for (AbstractFunction abstractFunction : laf) {
-          handleFunction(abstractFunction, entity);
+          comMeanCreated |= handleFunction(abstractFunction, entity);
         }
       }
       // Now test whether some Roles are allocated to the entity on which the action has been launched or not
-      computeRoles(entity);
+      comMeanCreated |= computeRoles(entity);
+    }
+    if (!comMeanCreated) {
+      String message = "No Communication mean has been created.";
+      EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName());
+      logger.info(eMessage);
     }
   }
 
@@ -86,7 +92,8 @@ public class EntityExchangesCreator extends DefaultExchangesCreator {
    * @param entity_p
    *          the entity
    */
-  protected void computeRoles(Entity entity_p) {
+  protected boolean computeRoles(Entity entity_p) {
+    boolean comMeanCreated = false;
     EList<RoleAllocation> roleAllocations = EntitiesExchangesHelper.getRoleAllocations(entity_p);
 
     for (RoleAllocation roleAllocation : roleAllocations) {
@@ -94,9 +101,10 @@ public class EntityExchangesCreator extends DefaultExchangesCreator {
           .getActivityAllocations(roleAllocation.getRole());
       for (ActivityAllocation activityAllocation : activityAllocations) {
         OperationalActivity activity = activityAllocation.getActivity();
-        handleFunction(activity, entity_p);
+        comMeanCreated |= handleFunction(activity, entity_p);
       }
     }
+    return comMeanCreated;
   }
 
   /**
@@ -107,10 +115,8 @@ public class EntityExchangesCreator extends DefaultExchangesCreator {
    * @param entity_p
    *          the entity
    */
-  protected void handleFunction(AbstractFunction function_p, Entity entity_p) {
-    //
-    // Handles function outputs
-    //
+  protected boolean handleFunction(AbstractFunction function_p, Entity entity_p) {
+    boolean comMeanCreated = false;
     for (ActivityEdge output : function_p.getOutgoing()) {
       if (output instanceof FunctionalExchange) {
         FunctionalExchange fe = (FunctionalExchange) output;
@@ -132,6 +138,7 @@ public class EntityExchangesCreator extends DefaultExchangesCreator {
               Entity allocationBlockAsEntity = (Entity) allocationBlock;
               if (!doesFunctionalExchangeAlreadyHaveACommunicationMean(fe, entity_p, allocationBlockAsEntity)) {
                 createCommunicationMean(fe, entity_p, allocationBlockAsEntity);
+                comMeanCreated = true;
               }
             } catch (ClassCastException exception_p) {
               // FIXME maybe something should be logged here...
@@ -164,6 +171,7 @@ public class EntityExchangesCreator extends DefaultExchangesCreator {
               Entity allocationBlockAsEntity = (Entity) allocationBlock;
               if (!doesFunctionalExchangeAlreadyHaveACommunicationMean(fe, allocationBlockAsEntity, entity_p)) {
                 createCommunicationMean(fe, allocationBlockAsEntity, entity_p);
+                comMeanCreated = true;
               }
             } catch (ClassCastException exception_p) {
               // FIXME maybe something should be logged here...
@@ -173,6 +181,7 @@ public class EntityExchangesCreator extends DefaultExchangesCreator {
 
       }
     }
+    return comMeanCreated;
   }
 
   /**

@@ -83,13 +83,13 @@ public class ComponentExchangesCreator extends DefaultExchangesCreator {
    * @param exchangeInput_p
    *          the input component
    */
-  protected void doCreatePhysicalLink(ComponentExchange componentExchange_p, Component exchangeOutput_p,
+  protected PhysicalLink doCreatePhysicalLink(ComponentExchange componentExchange_p, Component exchangeOutput_p,
       Component exchangeInput_p) {
     // Precondition:
     if (exchangeOutput_p == exchangeInput_p) {
       // Not necessary to create a physical link for exchanges inside the
       // same container.
-      return;
+      return null;
     }
     PhysicalLink physicalLink = CsFactory.eINSTANCE.createPhysicalLink(componentExchange_p.getLabel());
     PhysicalPort outP = CsFactory.eINSTANCE.createPhysicalPort(componentExchange_p.getSource().getLabel());
@@ -120,10 +120,11 @@ public class ComponentExchangesCreator extends DefaultExchangesCreator {
     InformationsExchanger source = componentExchange_p.getSource();
     createComponentPortAllocation(source, outP);
     String message = "The Physical link " + physicalLink.getName() + " has been succefully created between the source "
-        + exchangeInput_p.getLabel() + " and the target " + exchangeOutput_p.getLabel();
+        + exchangeOutput_p.getLabel() + " and the target " + exchangeInput_p.getLabel();
     EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName(),
-        Arrays.asList(physicalLink, exchangeInput_p, exchangeOutput_p));
+        Arrays.asList(physicalLink, exchangeOutput_p, exchangeInput_p));
     logger.info(eMessage);
+    return physicalLink;
   }
 
   /**
