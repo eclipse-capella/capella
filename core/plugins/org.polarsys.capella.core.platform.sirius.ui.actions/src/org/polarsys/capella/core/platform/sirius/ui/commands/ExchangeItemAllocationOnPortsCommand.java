@@ -105,28 +105,28 @@ public class ExchangeItemAllocationOnPortsCommand extends AbstractFixCommand {
 
   @Override
   protected boolean process(ModelElement element) {
-    Collection<ExchangeItem> flows;
+    boolean portProcessed = false;
 
     if (element instanceof FunctionInputPort) {
       FunctionInputPort fp = (FunctionInputPort) element;
-      return processPort(fp, getLinkedItems(fp));
+      portProcessed |= processPort(fp, getLinkedItems(fp));
 
     } else if (element instanceof FunctionOutputPort) {
       FunctionOutputPort fp = (FunctionOutputPort) element;
-      return processPort(fp, getLinkedItems(fp));
+      portProcessed |= processPort(fp, getLinkedItems(fp));
 
     } else if (element instanceof FunctionalExchange) {
       FunctionalExchange fe = (FunctionalExchange) element;
-      flows = ((FunctionalExchange) element).getExchangedItems();
+      Collection<ExchangeItem> flows = ((FunctionalExchange) element).getExchangedItems();
 
       if (fe.getSource() instanceof FunctionOutputPort) {
-        return processPort((FunctionOutputPort) fe.getSource(), flows);
+        portProcessed |= processPort((FunctionOutputPort) fe.getSource(), flows);
       }
       if (fe.getTarget() instanceof FunctionInputPort) {
-        return processPort((FunctionInputPort) fe.getTarget(), flows);
+        portProcessed |= processPort((FunctionInputPort) fe.getTarget(), flows);
       }
     }
-    return false;
+    return portProcessed;
   }
 
   /**
