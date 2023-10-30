@@ -18,7 +18,9 @@ import java.util.Collections;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-
+import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -26,7 +28,6 @@ import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 public class ComponentExchangeThroughDelegationsCommand extends AbstractFixCommand {
 
@@ -49,12 +50,14 @@ public class ComponentExchangeThroughDelegationsCommand extends AbstractFixComma
    * @param modelElement
    * @param progressMonitor
    */
-  public ComponentExchangeThroughDelegationsCommand(Collection<ModelElement> selection, IProgressMonitor progressMonitor) {
+  public ComponentExchangeThroughDelegationsCommand(Collection<ModelElement> selection,
+      IProgressMonitor progressMonitor) {
     super(selection, progressMonitor);
   }
 
   /**
    * Returns a list of model elements on which a transition should be applied
+   * 
    * @param modelElement
    * @return
    */
@@ -64,7 +67,7 @@ public class ComponentExchangeThroughDelegationsCommand extends AbstractFixComma
   }
 
   @Override
-  protected void process(ModelElement element) {
+  protected boolean process(ModelElement element) {
 
     if (element instanceof ComponentExchange) {
       ComponentExchange exchange = (ComponentExchange) element;
@@ -86,13 +89,23 @@ public class ComponentExchangeThroughDelegationsCommand extends AbstractFixComma
         if ((targetPort == null) || (targetPort instanceof ComponentPort)) {
           if ((sourcePart != null) && (targetPart != null) && !ComponentExt.isBrothers(sourcePart, targetPart)) {
             if (!ComponentExt.isComponentExchangeThroughDelegationsExists(sourcePart, targetPart, sourcePort, targetPort)) {
-              ComponentExt.createComponentExchangeThroughDelegations(sourcePart, (ComponentPort) sourcePort, targetPart, (ComponentPort) targetPort);
+              Collection<EObject> result = ComponentExt.createComponentExchangeThroughDelegations(sourcePart,
+                  (ComponentPort) sourcePort, targetPart, (ComponentPort) targetPort);
+              for (EObject object : result) {
+                ComponentExchange ce = (ComponentExchange) object;
+                String message = "The Component exchange " + ce.getName()
+                    + " has been succefully created between the exchange input component " + ce.getSource().getLabel()
+                    + " and the exchange output component " + ce.getTarget().getLabel();
+                EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName(), ce);
+                logger.info(eMessage);
+              }
             }
           }
         }
+
       }
     }
-
+    return false;
   }
 
 }

@@ -16,14 +16,20 @@ package org.polarsys.capella.core.platform.sirius.ui.commands;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-
-import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
+import org.polarsys.capella.common.tools.report.EmbeddedMessage;
+import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
+import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 
 public abstract class AbstractFixCommand extends AbstractReadWriteCommand {
+
+  protected static final Logger logger = ReportManagerRegistry.getInstance()
+      .subscribe(IReportManagerDefaultComponents.DEFAULT);
 
   /** the modelElement */
   protected Collection<ModelElement> selection = null;
@@ -60,21 +66,28 @@ public abstract class AbstractFixCommand extends AbstractReadWriteCommand {
   /**
    * @see org.polarsys.capella.common.ef.command.command.ICommand#execute(org.eclipse.core.runtime.IProgressMonitor)
    */
+  @Override
   public void run() {
 
     // Send long running operation events.
     // Operation is starting.
     LongRunningListenersRegistry.getInstance().operationStarting(getClass());
     try {
-
       for (ModelElement selectedElement : selection) {
         Collection<ModelElement> elements = retrieveModelElements(selectedElement);
         progressMonitor.beginTask(getName(), elements.size());
 
         // Perform a transition for all retrieved elements
+        boolean elementProcessed = false;
         for (ModelElement element : elements) {
-          process(element);
+          elementProcessed |= process(element);
           progressMonitor.worked(1);
+        }
+        if (!elementProcessed) {
+          String message = getName() + " command has faild to process the elements "
+              + (elements.isEmpty() ? "" : elements.toString());
+          EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName(), elements.toString());
+          logger.info(eMessage);
         }
       }
     } finally {
@@ -84,6 +97,10 @@ public abstract class AbstractFixCommand extends AbstractReadWriteCommand {
     }
   }
 
-  abstract protected void process(ModelElement element);
+  /**
+   * @param element
+   * @return boolean command has successfully processed the element
+   */
+  protected abstract boolean process(ModelElement element);
 
 }
