@@ -84,7 +84,7 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
     if (isValidBound(_component)) {
       boolean physicalLinkCreated = createPhysicalLinksFromCExchanges(_component);
       if (!physicalLinkCreated) {
-        String message = "No physical Link has been created.";
+        String message = "No physical link has been created.";
         EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName());
         logger.info(eMessage);
       }
