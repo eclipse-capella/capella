@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -68,9 +68,13 @@ public class SiriusViewActivator extends AbstractUIPlugin {
     viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin("/" + ID + "/description/EPBS.odesign")); //$NON-NLS-1$ //$NON-NLS-2$
 
     // Modify palette tool name with a custom end user label
+    Messages.ArrangeBorderNodesAction_actionDiagramText = CapellaMessages.ArrangeBorderNodesAction_actionDiagramText;
     Messages.ArrangeBorderNodesAction_actionText = CapellaMessages.ArrangeBorderNodesAction_actionText;
     Messages.ArrangeBorderNodesAction_commandLabel = CapellaMessages.ArrangeBorderNodesAction_commandLabel;
+    Messages.ArrangeBorderNodesAction_toolbarActionDiagramText = CapellaMessages.ArrangeBorderNodesAction_toolbarActionDiagramText;
     Messages.ArrangeBorderNodesAction_toolbarActionText = CapellaMessages.ArrangeBorderNodesAction_toolbarActionText;
+    Messages.ArrangeBorderNodesAction_toolTipDiagramText = CapellaMessages.ArrangeBorderNodesAction_toolTipDiagramText;
+    Messages.ArrangeBorderNodesAction_toolTipText = CapellaMessages.ArrangeBorderNodesAction_toolTipText;
 
     // Initialize preference values
     new DiagramProcessChainPathPreferenceInitializer();
