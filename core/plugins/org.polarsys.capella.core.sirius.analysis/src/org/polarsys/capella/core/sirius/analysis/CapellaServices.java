@@ -121,6 +121,8 @@ import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.cs.PhysicalLink;
+import org.polarsys.capella.core.data.cs.PhysicalLinkCategory;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityExploitation;
 import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
@@ -133,6 +135,8 @@ import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
+import org.polarsys.capella.core.data.fa.ComponentExchange;
+import org.polarsys.capella.core.data.fa.ComponentExchangeCategory;
 import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.fa.FaPackage;
@@ -1456,45 +1460,73 @@ public class CapellaServices {
     return parent;
   }
 
-  /**
-   * used in context, logical, physical
-   * 
-   * @param context
-   * @param view
-   * @return
-   */
-  public List<EObject> getEdgeExchangeCategorySemanticElements(EObject context, DEdge view) {
-    List<EObject> returnedList = new ArrayList<>();
-    if (context instanceof ExchangeCategory) {
-      returnedList.add(context);
-      ExchangeCategory currentCategory = (ExchangeCategory) context;
-      EObject targetNodeContainer = ((DSemanticDecorator) view.getTargetNode().eContainer()).getTarget();
-      EObject sourceNodeContainer = ((DSemanticDecorator) view.getSourceNode().eContainer()).getTarget();
-      for (FunctionalExchange anExchange : currentCategory.getExchanges()) {
-        boolean toAdd = false;
-        EObject sourceContainer = anExchange.getSource().eContainer();
-        while (sourceContainer instanceof AbstractFunction) {
-          if (sourceContainer.equals(sourceNodeContainer)) {
-            toAdd = true;
-            break;
-          }
-          sourceContainer = sourceContainer.eContainer();
+  public Set<EObject> getEdgeExchangeCategorySemanticElements(ExchangeCategory context, DEdge view) {
+    Set<EObject> returnedList = new HashSet<>();
+    returnedList.add(context);
+    EObject targetNodeContainer = ((DSemanticDecorator) view.getTargetNode().eContainer()).getTarget();
+    EObject sourceNodeContainer = ((DSemanticDecorator) view.getSourceNode().eContainer()).getTarget();
+    for (FunctionalExchange anExchange : context.getExchanges()) {
+      boolean toAdd = false;
+      EObject sourceContainer = anExchange.getSource().eContainer();
+      while (sourceContainer instanceof AbstractFunction) {
+        if (sourceContainer.equals(sourceNodeContainer)) {
+          toAdd = true;
+          break;
         }
-        if (!toAdd) {
-          continue;
+        sourceContainer = sourceContainer.eContainer();
+      }
+      if (!toAdd) {
+        continue;
+      }
+      toAdd = false;
+      EObject targetContainer = anExchange.getTarget().eContainer();
+      while (targetContainer instanceof AbstractFunction) {
+        if (targetContainer.equals(targetNodeContainer)) {
+          toAdd = true;
+          break;
         }
-        toAdd = false;
-        EObject targetContainer = anExchange.getTarget().eContainer();
-        while (targetContainer instanceof AbstractFunction) {
-          if (targetContainer.equals(targetNodeContainer)) {
-            toAdd = true;
-            break;
-          }
-          targetContainer = targetContainer.eContainer();
-        }
-        if (toAdd && !returnedList.contains(anExchange)) {
-          returnedList.add(anExchange);
-        }
+        targetContainer = targetContainer.eContainer();
+      }
+      if (toAdd && !returnedList.contains(anExchange)) {
+        returnedList.add(anExchange);
+      }
+    }
+    return returnedList;
+  }
+
+  public Set<EObject> getEdgeExchangeCategorySemanticElements(ComponentExchangeCategory context, DEdge view) {
+    Set<EObject> returnedList = new HashSet<>();
+    returnedList.add(context);
+    EObject targetNodeContainer = ((DSemanticDecorator) view.getTargetNode().eContainer()).getTarget();
+    if (targetNodeContainer instanceof Part)
+      targetNodeContainer = ((Part) targetNodeContainer).getAbstractType();
+    EObject sourceNodeContainer = ((DSemanticDecorator) view.getSourceNode().eContainer()).getTarget();
+    if (sourceNodeContainer instanceof Part)
+      sourceNodeContainer = ((Part) sourceNodeContainer).getAbstractType();
+    for (ComponentExchange anExchange : context.getExchanges()) {
+      EObject sourceContainer = anExchange.getSource().eContainer();
+      EObject targetContainer = anExchange.getTarget().eContainer();
+      if (sourceContainer.equals(sourceNodeContainer) && targetContainer.equals(targetNodeContainer)) {
+        returnedList.add(anExchange);
+      }
+    }
+    return returnedList;
+  }
+
+  public Set<EObject> getEdgeExchangeCategorySemanticElements(PhysicalLinkCategory context, DEdge view) {
+    Set<EObject> returnedList = new HashSet<>();
+    returnedList.add(context);
+    EObject targetNodeContainer = ((DSemanticDecorator) view.getTargetNode().eContainer()).getTarget();
+    if (targetNodeContainer instanceof Part)
+      targetNodeContainer = ((Part) targetNodeContainer).getAbstractType();
+    EObject sourceNodeContainer = ((DSemanticDecorator) view.getSourceNode().eContainer()).getTarget();
+    if (sourceNodeContainer instanceof Part)
+      sourceNodeContainer = ((Part) sourceNodeContainer).getAbstractType();
+    for (PhysicalLink anExchange : context.getLinks()) {
+      EObject sourceContainer = anExchange.getSourcePhysicalPort().eContainer();
+      EObject targetContainer = anExchange.getTargetPhysicalPort().eContainer();
+      if (sourceContainer.equals(sourceNodeContainer) && targetContainer.equals(targetNodeContainer)) {
+        returnedList.add(anExchange);
       }
     }
     return returnedList;
@@ -1860,6 +1892,38 @@ public class CapellaServices {
 
   public Set<DDiagramElement> getSetOfDiagramElements(DDiagram diagram) {
     return DiagramServices.getDiagramServices().getSetOfDiagramElements(diagram);
+  }
+
+  public Set<EObject> getPinCategorySemanticElements(ComponentExchangeCategory context, DSemanticDecorator view) {
+    Set<EObject> returnedList = new HashSet<>();
+    returnedList.add(context);
+    EObject container = ((DSemanticDecorator) view.eContainer()).getTarget();
+    if (container instanceof Part)
+      container = ((Part) container).getAbstractType();
+    for (ComponentExchange anExchange : context.getExchanges()) {
+      EObject sourceContainer = anExchange.getSource().eContainer();
+      EObject targetContainer = anExchange.getTarget().eContainer();
+      if (sourceContainer.equals(container) || targetContainer.equals(container)) {
+        returnedList.add(anExchange);
+      }
+    }
+    return returnedList;
+  }
+
+  public Set<EObject> getPinCategorySemanticElements(PhysicalLinkCategory context, DSemanticDecorator view) {
+    Set<EObject> returnedList = new HashSet<>();
+    returnedList.add(context);
+    EObject container = ((DSemanticDecorator) view.eContainer()).getTarget();
+    if (container instanceof Part)
+      container = ((Part) container).getAbstractType();
+    for (PhysicalLink anExchange : context.getLinks()) {
+      EObject sourceContainer = anExchange.getSourcePhysicalPort().eContainer();
+      EObject targetContainer = anExchange.getTargetPhysicalPort().eContainer();
+      if (sourceContainer.equals(container) || targetContainer.equals(container)) {
+        returnedList.add(anExchange);
+      }
+    }
+    return returnedList;
   }
 
   /**
