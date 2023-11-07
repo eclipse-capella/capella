@@ -21,7 +21,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
@@ -41,7 +40,7 @@ public abstract class AbstractSelectOneResolver extends AbstractCapellaMarkerRes
 
     if (!modelElements.isEmpty()) {
       if (isAvailableFor(modelElements.get(0))) {
-        openSelectionDialog((ComponentExchange) modelElements.get(0), marker);
+        openSelectionDialog(modelElements.get(0), marker);
       }
     }
   }
