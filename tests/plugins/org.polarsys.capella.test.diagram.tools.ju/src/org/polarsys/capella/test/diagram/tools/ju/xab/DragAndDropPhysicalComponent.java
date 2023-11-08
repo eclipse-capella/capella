@@ -245,9 +245,4 @@ public class DragAndDropPhysicalComponent extends XABDiagramsProject {
     }
     throw new Exception("DragAndDropPhysicalComponent: semanticElement's abstractType is not a PhysicalComponent");
   }
-
-  @Override
-  protected String getRequiredTestModel() {
-    return "XABDiagrams";
-  }
 }

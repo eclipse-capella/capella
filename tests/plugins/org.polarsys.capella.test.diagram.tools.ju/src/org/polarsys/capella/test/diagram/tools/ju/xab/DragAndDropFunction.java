@@ -75,9 +75,4 @@ public class DragAndDropFunction extends XABDiagramsProject {
           beforeDnDRed == afterDnDRed && beforeDnDGreen == afterDnDGreen && beforeDnDBlue == afterDnDBlue);
     }
   }
-
-  @Override
-  protected String getRequiredTestModel() {
-    return "XABDiagrams";
-  }
 }
