@@ -15,7 +15,6 @@ package org.polarsys.capella.test.diagram.tools.ju.xab;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.framework.context.SessionContext;
@@ -27,6 +26,7 @@ import junit.framework.Test;
  */
 public class ShowHidePortAllocations extends XABDiagramsProject {
 
+  @Override
   public void test() throws Exception {
     Session session = getSessionForTestModel(getRequiredTestModel());
     SessionContext context = new SessionContext(session);
@@ -52,11 +52,6 @@ public class ShowHidePortAllocations extends XABDiagramsProject {
 
     // Refresh the Diagram
     diagramContext.refreshDiagram();
-  }
-  
-  @Override
-  protected String getRequiredTestModel() {
-    return "XABDiagrams";
   }
 
   public static Test suite() {
