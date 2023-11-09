@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -145,8 +146,10 @@ import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionPkgExt;
+import org.polarsys.capella.core.data.helpers.fa.services.FunctionalExt;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.AggregationKind;
 import org.polarsys.capella.core.data.information.Association;
@@ -189,8 +192,10 @@ import org.polarsys.capella.core.linkedtext.ui.CapellaEmbeddedLinkedTextEditorIn
 import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
+import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
@@ -241,8 +246,9 @@ public class CapellaServices {
 
   /** used by aql queries */
   public Object void2Null(EObject eObject, Object object) {
-    if (object instanceof Collection && ((Collection<?>) object).isEmpty())
+    if (object instanceof Collection && ((Collection<?>) object).isEmpty()) {
       return null;
+    }
     return object;
   }
 
@@ -251,14 +257,16 @@ public class CapellaServices {
   public Object makeIntersection(EObject eObject, Object obj1, Object obj2) {
     try {
       List<Object> result = new ArrayList<>();
-      if (obj1 instanceof Collection)
+      if (obj1 instanceof Collection) {
         result.addAll((Collection) obj1);
-      else if (obj1 != null)
+      } else if (obj1 != null) {
         result.add(obj1);
-      if (obj2 instanceof Collection)
+      }
+      if (obj2 instanceof Collection) {
         result.retainAll((Collection) obj2);
-      else if (obj2 != null && !result.contains(obj2))
+      } else if (obj2 != null && !result.contains(obj2)) {
         result.remove(obj2);
+      }
       return result;
     } catch (Exception e) {
       throw new UnsupportedOperationException();
@@ -270,19 +278,21 @@ public class CapellaServices {
   public Object makeDiff(EObject eObject, Object obj1, Object obj2) {
     try {
       List<Object> result = new ArrayList<Object>();
-      if (obj1 instanceof Collection)
+      if (obj1 instanceof Collection) {
         result.addAll((Collection) obj1);
-      else if (obj1 != null)
+      } else if (obj1 != null) {
         result.add(obj1);
+      }
 
-      if (obj2 instanceof Collection)
+      if (obj2 instanceof Collection) {
         result.removeAll((Collection) obj2);
-      else if (obj2 instanceof Object[]) {
+      } else if (obj2 instanceof Object[]) {
         for (Object o : (Object[]) obj2) {
           result.remove(o);
         }
-      } else if (obj2 != null)
+      } else if (obj2 != null) {
         result.remove(obj2);
+      }
       // if (result.size() == 1)
       // return result.get(0);
       return result;
@@ -296,14 +306,16 @@ public class CapellaServices {
   public Object makeUnion(EObject eObject, Object obj1, Object obj2) {
     try {
       List<Object> result = new ArrayList<>();
-      if (obj1 instanceof Collection)
+      if (obj1 instanceof Collection) {
         result.addAll((Collection) obj1);
-      else if (obj1 != null)
+      } else if (obj1 != null) {
         result.add(obj1);
-      if (obj2 instanceof Collection)
+      }
+      if (obj2 instanceof Collection) {
         result.addAll((Collection) obj2);
-      else if (obj2 != null)
+      } else if (obj2 != null) {
         result.add(obj2);
+      }
       return result;
     } catch (Exception e) {
       throw new UnsupportedOperationException();
@@ -315,18 +327,21 @@ public class CapellaServices {
   public Object makeUnion(EObject eObject, Object obj1, Object obj2, Object obj3) {
     try {
       List<Object> result = new ArrayList<>();
-      if (obj1 instanceof Collection)
+      if (obj1 instanceof Collection) {
         result.addAll((Collection) obj1);
-      else if (obj1 != null)
+      } else if (obj1 != null) {
         result.add(obj1);
-      if (obj2 instanceof Collection)
+      }
+      if (obj2 instanceof Collection) {
         result.addAll((Collection) obj2);
-      else if (obj2 != null)
+      } else if (obj2 != null) {
         result.add(obj2);
-      if (obj3 instanceof Collection)
+      }
+      if (obj3 instanceof Collection) {
         result.addAll((Collection) obj3);
-      else if (obj3 != null)
+      } else if (obj3 != null) {
         result.add(obj3);
+      }
       return result;
     } catch (Exception e) {
       throw new UnsupportedOperationException();
@@ -338,22 +353,26 @@ public class CapellaServices {
   public Object makeUnion(EObject eObject, Object obj1, Object obj2, Object obj3, Object obj4) {
     try {
       List<Object> result = new ArrayList<>();
-      if (obj1 instanceof Collection)
+      if (obj1 instanceof Collection) {
         result.addAll((Collection) obj1);
-      else if (obj1 != null)
+      } else if (obj1 != null) {
         result.add(obj1);
-      if (obj2 instanceof Collection)
+      }
+      if (obj2 instanceof Collection) {
         result.addAll((Collection) obj2);
-      else if (obj2 != null)
+      } else if (obj2 != null) {
         result.add(obj2);
-      if (obj3 instanceof Collection)
+      }
+      if (obj3 instanceof Collection) {
         result.addAll((Collection) obj3);
-      else if (obj3 != null)
+      } else if (obj3 != null) {
         result.add(obj3);
-      if (obj4 instanceof Collection)
+      }
+      if (obj4 instanceof Collection) {
         result.addAll((Collection) obj4);
-      else if (obj4 != null)
+      } else if (obj4 != null) {
         result.add(obj4);
+      }
       return result;
     } catch (Exception e) {
       throw new UnsupportedOperationException();
@@ -1459,35 +1478,30 @@ public class CapellaServices {
 
     return parent;
   }
-
+  
+  public boolean isOrIsChildFunction(AbstractFunction child, EObject parent) {
+    EObject childContainer = child;
+    while (childContainer instanceof AbstractFunction) {
+      if (childContainer.equals(parent)) {
+        return true;
+      }
+      childContainer = childContainer.eContainer();
+    }
+    return false;
+  }
+  
   public Set<EObject> getEdgeExchangeCategorySemanticElements(ExchangeCategory context, DEdge view) {
-    Set<EObject> returnedList = new HashSet<>();
+    Set<EObject> returnedList = new LinkedHashSet<>();
     returnedList.add(context);
-    EObject targetNodeContainer = ((DSemanticDecorator) view.getTargetNode().eContainer()).getTarget();
-    EObject sourceNodeContainer = ((DSemanticDecorator) view.getSourceNode().eContainer()).getTarget();
+    EObject targetViewFunction = ((DSemanticDecorator) view.getTargetNode().eContainer()).getTarget();
+    EObject sourceViewFunction = ((DSemanticDecorator) view.getSourceNode().eContainer()).getTarget();
+    
     for (FunctionalExchange anExchange : context.getExchanges()) {
-      boolean toAdd = false;
-      EObject sourceContainer = anExchange.getSource().eContainer();
-      while (sourceContainer instanceof AbstractFunction) {
-        if (sourceContainer.equals(sourceNodeContainer)) {
-          toAdd = true;
-          break;
-        }
-        sourceContainer = sourceContainer.eContainer();
-      }
-      if (!toAdd) {
-        continue;
-      }
-      toAdd = false;
-      EObject targetContainer = anExchange.getTarget().eContainer();
-      while (targetContainer instanceof AbstractFunction) {
-        if (targetContainer.equals(targetNodeContainer)) {
-          toAdd = true;
-          break;
-        }
-        targetContainer = targetContainer.eContainer();
-      }
-      if (toAdd && !returnedList.contains(anExchange)) {
+      AbstractFunction sourceContainer = FunctionalExchangeExt.getSourceFunction(anExchange);
+      AbstractFunction targetContainer = FunctionalExchangeExt.getTargetFunction(anExchange);
+      
+      if (isOrIsChildFunction(sourceContainer, sourceViewFunction) && 
+          isOrIsChildFunction(targetContainer, targetViewFunction)) {
         returnedList.add(anExchange);
       }
     }
@@ -1495,38 +1509,42 @@ public class CapellaServices {
   }
 
   public Set<EObject> getEdgeExchangeCategorySemanticElements(ComponentExchangeCategory context, DEdge view) {
-    Set<EObject> returnedList = new HashSet<>();
+    Set<EObject> returnedList = new LinkedHashSet<>();
     returnedList.add(context);
-    EObject targetNodeContainer = ((DSemanticDecorator) view.getTargetNode().eContainer()).getTarget();
-    if (targetNodeContainer instanceof Part)
-      targetNodeContainer = ((Part) targetNodeContainer).getAbstractType();
-    EObject sourceNodeContainer = ((DSemanticDecorator) view.getSourceNode().eContainer()).getTarget();
-    if (sourceNodeContainer instanceof Part)
-      sourceNodeContainer = ((Part) sourceNodeContainer).getAbstractType();
-    for (ComponentExchange anExchange : context.getExchanges()) {
-      EObject sourceContainer = anExchange.getSource().eContainer();
-      EObject targetContainer = anExchange.getTarget().eContainer();
-      if (sourceContainer.equals(sourceNodeContainer) && targetContainer.equals(targetNodeContainer)) {
-        returnedList.add(anExchange);
+    EObject sourceViewComponent = CsServices.getService().getComponentType((DSemanticDecorator) view.getSourceNode().eContainer());
+    EObject targetViewComponent = CsServices.getService().getComponentType((DSemanticDecorator) view.getTargetNode().eContainer());
+    
+    for (ComponentExchange exchange : context.getExchanges()) {
+      EObject sourceComponent = ComponentExchangeExt.getSourceComponent(exchange);
+      EObject targetComponent = ComponentExchangeExt.getTargetComponent(exchange);
+      
+      if (sourceComponent.equals(sourceViewComponent) && targetComponent.equals(targetViewComponent)) {
+        returnedList.add(exchange);
+        
+      } else if (targetComponent.equals(sourceViewComponent) && sourceComponent.equals(targetViewComponent)) {
+        // A Component Category is merging both ways of links
+        returnedList.add(exchange);
       }
     }
     return returnedList;
   }
 
   public Set<EObject> getEdgeExchangeCategorySemanticElements(PhysicalLinkCategory context, DEdge view) {
-    Set<EObject> returnedList = new HashSet<>();
+    Set<EObject> returnedList = new LinkedHashSet<>();
     returnedList.add(context);
-    EObject targetNodeContainer = ((DSemanticDecorator) view.getTargetNode().eContainer()).getTarget();
-    if (targetNodeContainer instanceof Part)
-      targetNodeContainer = ((Part) targetNodeContainer).getAbstractType();
-    EObject sourceNodeContainer = ((DSemanticDecorator) view.getSourceNode().eContainer()).getTarget();
-    if (sourceNodeContainer instanceof Part)
-      sourceNodeContainer = ((Part) sourceNodeContainer).getAbstractType();
-    for (PhysicalLink anExchange : context.getLinks()) {
-      EObject sourceContainer = anExchange.getSourcePhysicalPort().eContainer();
-      EObject targetContainer = anExchange.getTargetPhysicalPort().eContainer();
-      if (sourceContainer.equals(sourceNodeContainer) && targetContainer.equals(targetNodeContainer)) {
-        returnedList.add(anExchange);
+    EObject sourceViewComponent = CsServices.getService().getComponentType((DSemanticDecorator) view.getSourceNode().eContainer());
+    EObject targetViewComponent = CsServices.getService().getComponentType((DSemanticDecorator) view.getTargetNode().eContainer());
+    
+    for (PhysicalLink link : context.getLinks()) {
+      EObject sourceComponent = PhysicalLinkExt.getSourceComponent(link);
+      EObject targetComponent = PhysicalLinkExt.getTargetComponent(link);
+      
+      if (sourceComponent.equals(sourceViewComponent) && targetComponent.equals(targetViewComponent)) {
+        returnedList.add(link);
+        
+      } else if (targetComponent.equals(sourceViewComponent) && sourceComponent.equals(targetViewComponent)) {
+        // A Physical Category is merging both ways of links
+        returnedList.add(link);
       }
     }
     return returnedList;
@@ -1750,16 +1768,7 @@ public class CapellaServices {
       ExchangeCategory currentCategory = (ExchangeCategory) context;
       EObject container = ((DSemanticDecorator) view.eContainer()).getTarget();
       for (FunctionalExchange anExchange : currentCategory.getExchanges()) {
-        boolean toAdd = false;
-        EObject targetContainer = anExchange.getTarget().eContainer();
-        while (targetContainer instanceof AbstractFunction) {
-          if (targetContainer.equals(container)) {
-            toAdd = true;
-            break;
-          }
-          targetContainer = targetContainer.eContainer();
-        }
-        if (toAdd && !returnedList.contains(anExchange)) {
+        if (isOrIsChildFunction(FunctionalExchangeExt.getTargetFunction(anExchange), container) && !returnedList.contains(anExchange)) {
           returnedList.add(anExchange);
         }
       }
@@ -1857,16 +1866,7 @@ public class CapellaServices {
       ExchangeCategory currentCategory = (ExchangeCategory) context;
       EObject container = ((DSemanticDecorator) view.eContainer()).getTarget();
       for (FunctionalExchange anExchange : currentCategory.getExchanges()) {
-        boolean toAdd = false;
-        EObject sourceContainer = anExchange.getSource().eContainer();
-        while (sourceContainer instanceof AbstractFunction) {
-          if (sourceContainer.equals(container)) {
-            toAdd = true;
-            break;
-          }
-          sourceContainer = sourceContainer.eContainer();
-        }
-        if (toAdd && !returnedList.contains(anExchange)) {
+        if (isOrIsChildFunction(FunctionalExchangeExt.getSourceFunction(anExchange), container) && !returnedList.contains(anExchange)) {
           returnedList.add(anExchange);
         }
       }
@@ -1897,14 +1897,12 @@ public class CapellaServices {
   public Set<EObject> getPinCategorySemanticElements(ComponentExchangeCategory context, DSemanticDecorator view) {
     Set<EObject> returnedList = new HashSet<>();
     returnedList.add(context);
-    EObject container = ((DSemanticDecorator) view.eContainer()).getTarget();
-    if (container instanceof Part)
-      container = ((Part) container).getAbstractType();
-    for (ComponentExchange anExchange : context.getExchanges()) {
-      EObject sourceContainer = anExchange.getSource().eContainer();
-      EObject targetContainer = anExchange.getTarget().eContainer();
-      if (sourceContainer.equals(container) || targetContainer.equals(container)) {
-        returnedList.add(anExchange);
+    EObject viewComponent = CsServices.getService().getComponentType((DSemanticDecorator) view.eContainer());
+    for (ComponentExchange exchange : context.getExchanges()) {
+      EObject sourceComponent = ComponentExchangeExt.getSourceComponent(exchange);
+      EObject targetComponent = ComponentExchangeExt.getTargetComponent(exchange);
+      if (sourceComponent.equals(viewComponent) || targetComponent.equals(viewComponent)) {
+        returnedList.add(exchange);
       }
     }
     return returnedList;
@@ -1913,14 +1911,12 @@ public class CapellaServices {
   public Set<EObject> getPinCategorySemanticElements(PhysicalLinkCategory context, DSemanticDecorator view) {
     Set<EObject> returnedList = new HashSet<>();
     returnedList.add(context);
-    EObject container = ((DSemanticDecorator) view.eContainer()).getTarget();
-    if (container instanceof Part)
-      container = ((Part) container).getAbstractType();
-    for (PhysicalLink anExchange : context.getLinks()) {
-      EObject sourceContainer = anExchange.getSourcePhysicalPort().eContainer();
-      EObject targetContainer = anExchange.getTargetPhysicalPort().eContainer();
-      if (sourceContainer.equals(container) || targetContainer.equals(container)) {
-        returnedList.add(anExchange);
+    EObject viewComponent = CsServices.getService().getComponentType((DSemanticDecorator) view.eContainer());
+    for (PhysicalLink link : context.getLinks()) {
+      EObject sourceComponent = PhysicalLinkExt.getSourceComponent(link);
+      EObject targetComponent = PhysicalLinkExt.getTargetComponent(link);
+      if (sourceComponent.equals(viewComponent) || targetComponent.equals(viewComponent)) {
+        returnedList.add(link);
       }
     }
     return returnedList;
@@ -3070,12 +3066,14 @@ public class CapellaServices {
   }
 
   public boolean isLibraryElementOf(EObject source, EObject target) {
-    if (source == null || target == null)
+    if (source == null || target == null) {
       return false;
+    }
     IModel srcModel = LibraryManager.INSTANCE.getModel(source);
     IModel targetModel = LibraryManager.INSTANCE.getModel(target);
-    if (srcModel == null || targetModel == null)
+    if (srcModel == null || targetModel == null) {
       return false;
+    }
     return !targetModel.equals(srcModel);
   }
 }
