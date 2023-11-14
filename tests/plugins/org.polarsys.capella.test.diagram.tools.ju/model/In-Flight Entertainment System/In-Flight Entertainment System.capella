@@ -1018,11 +1018,17 @@
         <ownedCategories xsi:type="org.polarsys.capella.core.data.fa:ExchangeCategory"
             id="b9c288d6-0678-4a88-af2a-d847b7530882" name="VOD Movie Control Commands"
             exchanges="#0ce48a3f-6a6d-498c-b41e-280d1bc64928 #7531be55-55d9-44a9-8077-727417cf4f0e #136ac12c-9e93-43b9-bc3d-4253ea48233a"/>
+        <ownedCategories xsi:type="org.polarsys.capella.core.data.fa:ExchangeCategory"
+            id="c3a5698a-98e8-4318-b9cb-dc0a05ea9f61" name="ExchangeCategory 8" exchanges="#bcc99ef8-ea8a-4926-9d6f-4d6ca6c12fc1"/>
+        <ownedCategories xsi:type="org.polarsys.capella.core.data.fa:ExchangeCategory"
+            id="01ad36d4-7802-4317-ae4c-787823a980f3" name="ExchangeCategory 9" exchanges="#3a5b3611-9455-470f-a88f-e27e34700f7f"/>
         <ownedSystemFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
             id="411a501a-5522-4fca-8b18-edbeecb501a1" name="Root System Function"
             summary="" description="">
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="3398fdbf-3415-4d03-a457-477324d2e091" name="Perform Cabin Management Activities">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="55bd9d0c-f0b7-44d8-9b21-6d0c1e205c80" name="FIP 1"/>
             <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
                 id="cfde8bb1-4df9-4573-a516-41df984ac753" name="Play Airline-Imposed Videos"
                 summary="" description="This function consists in triggering the play of pre-recorded airline videos. In particular, these imposed videos inclure pre-flight safety instructions (detailed explanation given before takeoff to airline passengers about the safety features of a commercial aircraft). Such imposed videos can also be commercial ads.">
@@ -1115,7 +1121,10 @@
               id="7de3b04b-6291-4098-afbd-2fb72cd25022" name="Provide Aircraft Information, Commands and Means">
             <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
                 id="82ab0ab9-2c03-4689-989a-530aae6fcf94" name="Provide Satellite Communication Means"
-                description="This function consists in providing satellite network, typically for telephony or in-cabin wifi systems."/>
+                description="This function consists in providing satellite network, typically for telephony or in-cabin wifi systems.">
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="41f51fe0-72af-4b95-9ffc-e359a4f2cf4f" name="FOP 1"/>
+            </ownedFunctions>
             <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
                 id="6ce8f26a-ef90-4420-94e1-acf6b2393720" name="Provide Navigation Data"
                 description="Navigation is the determination of position and direction on or above the surface of the Earth. Avionics can use&#xD;&#xA;satellite-based systems (such as GPS and WAAS), ground-based systems (such as VOR or LORAN), or any combination thereof.&#xD;&#xA;The IFE system requires this data to run the moving-map service.">
@@ -1135,6 +1144,8 @@
             <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
                 id="8f279b07-26aa-46f6-8c9a-2a132f0b1177" name="Send Audio Announcement"
                 description="Audio announcement include: boarding, pre-flight announcements, captain's announcements, safety briefing, turbulence,&#xD;&#xA;take-off/ascent, descent/final, landing, etc.">
+              <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                  id="6c35a2f0-ffb8-410f-9659-88ef142acef0" name="FIP 1"/>
               <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                   id="8ea7d204-dd52-4e80-b384-f4de886461c1" name="FOP 5"/>
               <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
@@ -1158,6 +1169,9 @@
               <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                   id="c4122b7e-b3d5-48ad-a61e-4cbdd25c5693" name="FOP 1"/>
             </ownedFunctions>
+            <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+                id="bcc99ef8-ea8a-4926-9d6f-4d6ca6c12fc1" name="FunctionalExchange 1"
+                target="#6c35a2f0-ffb8-410f-9659-88ef142acef0" source="#41f51fe0-72af-4b95-9ffc-e359a4f2cf4f"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="cd62e8fb-8a89-4f33-bd0f-a2bb935a5e08" name="Perform Maintenance, Configuration and Test Operations">
@@ -1226,6 +1240,8 @@
             <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
                 id="8a4b7443-4f73-49c2-a175-940a5d8accea" name="Manage Passenger Services Lifecycle"
                 description="This function is responsible for controling the launch of services such as VOD, gaming, moving-map, etc. It determines the&#xD;&#xA;availability of the services given the airline company authorization scheme and the constraints received from the&#xD;&#xA;aircraft.&amp;nbsp;This function&amp;nbsp;provides means to select among a predefined list of services.">
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="a274c027-4925-4a1e-b40e-f5a7699e9bca" name="FOP 1"/>
               <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
                   id="b7244d6a-08ab-4455-bbd9-aa5f1bbc9b5b" name="Determine Service Availability"
                   description="This function is responsible for computing the availability of passenger services based on the authorization scheme&#xD;&#xA;(airline business strategy) and the aircraft contraints."
@@ -1531,6 +1547,9 @@
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="883d204e-69ff-40e9-80e4-e4d5845bb2d2" name="Audio Signal" target="#e0522dc7-4350-4299-b398-fa415a948976"
               source="#b9ace19f-2d94-412d-ae1e-34b6fe329b6f"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="3a5b3611-9455-470f-a88f-e27e34700f7f" name="FunctionalExchange 38"
+              target="#55bd9d0c-f0b7-44d8-9b21-6d0c1e205c80" source="#a274c027-4925-4a1e-b40e-f5a7699e9bca"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
@@ -3011,6 +3030,20 @@
             name="Aircraft" abstractType="#c8b78c78-5b11-4fc0-87b7-3ca84622efea"/>
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="213830fc-c679-44e9-89c2-73d5034d8029"
             name="Ground Operator" abstractType="#d475ed7d-4644-4461-97d4-b52772c9b425"/>
+        <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
+            id="88a2fcbf-83c5-47e6-878f-29022a69536e" name="C 1" source="#764ac643-c57d-4cdd-be7c-b5c9fc93871c"
+            target="#e68b42bf-b677-4b89-9b56-1530e1f8b864" kind="FLOW"/>
+        <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
+            id="a3b8046f-cb0e-4104-814e-dd592b8d1be6" name="C 2" source="#3268b6c9-1cc4-4bee-bfec-352773c2dbaf"
+            target="#c61817d7-0cb7-459e-a165-61b1a2257643" kind="FLOW"/>
+        <ownedComponentExchangeCategories xsi:type="org.polarsys.capella.core.data.fa:ComponentExchangeCategory"
+            id="4fd16531-1c47-49ca-ba93-5fe70530f2d5" name="ComponentExchangeCategory 1"
+            exchanges="#a3b8046f-cb0e-4104-814e-dd592b8d1be6"/>
+        <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
+            id="9d603b5f-f114-4556-8d84-5a93d6d98aa7" name="PL 1" linkEnds="#42700068-2d5d-4328-8c13-60ac14698bc5 #f159e926-b568-4d38-9ecc-b985f5042009"/>
+        <ownedPhysicalLinkCategories xsi:type="org.polarsys.capella.core.data.cs:PhysicalLinkCategory"
+            id="44acd9e6-b8cc-4f6f-a983-99bdb464d4e4" name="PhysicalLinkCategory 1"
+            links="#9d603b5f-f114-4556-8d84-5a93d6d98aa7"/>
         <ownedSystemComponents xsi:type="org.polarsys.capella.core.data.ctx:SystemComponent"
             id="e0a46739-7e50-4ea6-b198-0e5efb9ce68f" name="IFE System">
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
@@ -3393,6 +3426,14 @@
                   triggers="#8016239b-3648-4d04-85d4-76305d740490"/>
             </ownedRegions>
           </ownedStateMachines>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+              id="764ac643-c57d-4cdd-be7c-b5c9fc93871c" name="CP 1" orientation="OUT"
+              kind="FLOW"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+              id="3268b6c9-1cc4-4bee-bfec-352773c2dbaf" name="CP 2" orientation="OUT"
+              kind="FLOW"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+              id="42700068-2d5d-4328-8c13-60ac14698bc5" name="PP 3"/>
         </ownedSystemComponents>
         <ownedSystemComponents xsi:type="org.polarsys.capella.core.data.ctx:SystemComponent"
             id="181a678c-dca9-46c1-9d18-b5a0c457c0de" name="Passenger" summary=""
@@ -3425,6 +3466,14 @@
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
               id="2e172d8b-d26a-4c98-b86a-b9bd079f1836" targetElement="#64847aed-d627-4812-a2de-a5dd8d7ce573"
               sourceElement="#4890eae8-7a62-4d7b-bf8a-1590a199eebf"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+              id="e68b42bf-b677-4b89-9b56-1530e1f8b864" name="CP 1" orientation="IN"
+              kind="FLOW"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+              id="c61817d7-0cb7-459e-a165-61b1a2257643" name="CP 2" orientation="IN"
+              kind="FLOW"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+              id="f159e926-b568-4d38-9ecc-b985f5042009" name="PP 3"/>
           <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
               id="8c7c2a74-86f4-41f6-87c3-f281295f5e87" targetElement="#87bfb1b6-b85e-4497-950d-663dd78c4502"
               sourceElement="#4890eae8-7a62-4d7b-bf8a-1590a199eebf"/>
@@ -3618,6 +3667,10 @@
             exchanges="#fc741435-84fa-457c-b116-13d8c0f15249 #7b1d7bc7-ec98-4f52-a99c-418a36980d63 #89c75525-66d8-4da4-a704-9641017c30d1 #9a9a0ba6-1725-4026-92da-dcb18e1b0f4e #b00d3b7f-56ac-4491-921e-fe1785c1c228"/>
         <ownedCategories xsi:type="org.polarsys.capella.core.data.fa:ExchangeCategory"
             id="1f8cb8ad-a903-4c2e-aab0-b002ffd9a863" name="Played Media" exchanges="#2c650bc2-d254-4026-b5cf-c2a001f289bd #654aacca-49b2-49fc-949c-ed6a871c6e42 #86d0f636-e27f-436d-9e58-0ce047bd6cdd #d8ae3120-7282-4314-bf35-41dd4c2e82f6"/>
+        <ownedCategories xsi:type="org.polarsys.capella.core.data.fa:ExchangeCategory"
+            id="664aa8e3-8e72-45b5-ae3a-a7d55746bd41" name="ExchangeCategory 14" exchanges="#3e233685-06b6-42a9-925e-f9dd0c43b753"/>
+        <ownedCategories xsi:type="org.polarsys.capella.core.data.fa:ExchangeCategory"
+            id="9badd06b-4bfa-46f9-995c-7816fd93a261" name="ExchangeCategory 15" exchanges="#b073eb42-1859-4a4d-9dde-06903707b4a9"/>
         <ownedLogicalFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
             id="0f580227-c543-436e-979f-ee70432656e2" name="Root Logical Function">
           <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
@@ -3632,6 +3685,8 @@
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
               id="bca11666-f58a-41e4-9a16-5964771b55b0" name="Perform Cabin Management Activities"
               description="This function is a high-level function gathering all the what is performed by the ground operator actor.">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="97d561d0-7023-4413-992a-17c5d668957a" name="FIP 1"/>
             <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
                 id="37c0f280-8012-4736-82df-4e9114fc61d4" name="Command Airline-Imposed Video Broadcast"
                 description="This function consists in triggering the play of pre-recorded airline videos. In particular, these imposed videos inclure pre-flight safety instructions (detailed explanation given before takeoff to airline passengers about the safety features of a commercial aircraft). Such imposed videos can also be commercial ads.">
@@ -3786,6 +3841,10 @@
             <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
                 id="55e3b1b8-dea2-4fbf-b78f-0f270009b56a" name="Provide Satellite Communication Means"
                 description="This function consists in providing satellite network, typically for telephony or in-cabin wifi systems.">
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="db2b79ff-b4ad-4147-9e0c-0b369c2ed118" name="FOP 1"/>
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="b0090e98-2ad0-45a0-8506-74d3d69e8111" name="FOP 2"/>
               <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
                   id="1a464335-f04b-413c-b590-836f4518efe1" targetElement="#82ab0ab9-2c03-4689-989a-530aae6fcf94"
                   sourceElement="#55e3b1b8-dea2-4fbf-b78f-0f270009b56a"/>
@@ -3831,6 +3890,10 @@
                 description="This function receives digital audio streams and play them on the aricraft speakers.">
               <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                   id="f5eef474-f4e0-4de2-bbd2-feeb9a3275c8" name="FIP 1"/>
+              <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                  id="497a04fe-afe7-4a24-9c6d-42f366b6e2ca" name="FIP 2"/>
+              <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                  id="6019f8d5-73ad-4037-8abe-d50ce82d5e40" name="FIP 3"/>
               <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                   id="34180189-9aaf-4c20-a861-49999b5bf55d" name="FOP1">
                 <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
@@ -3853,6 +3916,9 @@
             <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
                 id="b10740eb-bdce-49b7-998e-9beaae1685be" targetElement="#7de3b04b-6291-4098-afbd-2fb72cd25022"
                 sourceElement="#cd4b1bad-e12e-45eb-96fd-dfec5b483457"/>
+            <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+                id="3e233685-06b6-42a9-925e-f9dd0c43b753" name="FunctionalExchange 2"
+                target="#6019f8d5-73ad-4037-8abe-d50ce82d5e40" source="#b0090e98-2ad0-45a0-8506-74d3d69e8111"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
               id="bf6388c4-3549-46a6-af08-48412581967e" name="Perform Maintenance, Configuration and Test Operations"
@@ -4072,6 +4138,8 @@
             <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
                 id="95495bbc-987c-4b17-95d0-9aa5a87f0344" name="Manage Audio and Video Diffusion"
                 description="This function is responsible for broadcasting audio and video streams, should they be VOD movies, imposed videos, on-demand&#xD;&#xA;or imposed music. This function also covers the transmission of audio announcements (coming from the aircraft) and the IFE&#xD;&#xA;passenger service interruptions triggered by these announcements.">
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="74bfd04c-9ede-4f17-bead-4cd84b40e96b" name="FOP 1"/>
               <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
                   id="a8452b58-3135-457b-8d85-59bd23240297" name="Process Audio Video Requests"
                   description="&lt;p>&#xD;&#xA;    This function groups sub functions that are responsible for tranforming the end-user (passenger, cabin crew) selections&#xD;&#xA;    in&amp;nbsp;applicative&amp;nbsp;commands.&#xD;&#xA;&lt;/p>">
@@ -5137,6 +5205,9 @@
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="4d2e526a-2166-4430-96e4-93e87b447b02" name="Passenger Homepage Selection"
               target="#a4a24937-7365-4018-8951-9aeb80e8d835" source="#8a4862f6-3229-4eae-80db-0f324420cb6d"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="b073eb42-1859-4a4d-9dde-06903707b4a9" name="FunctionalExchange 47"
+              target="#97d561d0-7023-4413-992a-17c5d668957a" source="#74bfd04c-9ede-4f17-bead-4cd84b40e96b"/>
         </ownedLogicalFunctions>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
@@ -8752,6 +8823,17 @@
               id="eacdfcce-e606-492f-a86a-888b9468e4a3" targetElement="#8ab8e6a5-2c1f-4046-8aab-b44dd550b833"
               sourceElement="#8ae83bf8-69e8-4318-8771-fb8627b576f2"/>
         </ownedComponentExchanges>
+        <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
+            id="eb07cb8d-8ee6-4c6f-ab31-bcb2977ffaa9" name="C 4" source="#4cd088fd-94ac-487b-83c7-d752ae6a7167"
+            target="#dbc71eff-e586-4ee1-b5a3-95ccb7893431" kind="FLOW"/>
+        <ownedComponentExchangeCategories xsi:type="org.polarsys.capella.core.data.fa:ComponentExchangeCategory"
+            id="a1b10c3e-bd46-4433-9257-48170f5ef09e" name="ComponentExchangeCategory 1"
+            exchanges="#eb07cb8d-8ee6-4c6f-ab31-bcb2977ffaa9"/>
+        <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
+            id="bac94c68-e1b4-494c-a2ea-84ce2d43f3ae" name="PL 2" linkEnds="#df465db0-5dd0-4ebc-8c0e-ee6d681cc0f6 #a0d7617d-0efb-4452-a4eb-4840ae7aa952"/>
+        <ownedPhysicalLinkCategories xsi:type="org.polarsys.capella.core.data.cs:PhysicalLinkCategory"
+            id="9396522f-e187-4437-acfa-efc1a25b5b3f" name="PhysicalLinkCategory 1"
+            links="#bac94c68-e1b4-494c-a2ea-84ce2d43f3ae"/>
         <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
             id="724d6db9-9175-450b-8f05-023fcffec79c" name="IFE System">
           <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
@@ -9905,6 +9987,12 @@
                   id="ef8e64a3-dead-47ab-9291-58d8b7b2af38" targetElement="#cde0b963-94c4-4ac9-91f5-a86f9bacb6af"
                   sourceElement="#2570d77c-ed3a-4483-8e12-c43610f0c4d8"/>
             </ownedFeatures>
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+                id="d70418f7-40d7-4544-a5c0-95e513b34c4c" name="CP 2" orientation="IN"
+                kind="FLOW"/>
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+                id="dbc71eff-e586-4ee1-b5a3-95ccb7893431" name="CP 3" orientation="IN"
+                kind="FLOW"/>
           </ownedLogicalComponents>
           <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
               id="8dbc153d-c9e8-4cb5-93af-ecf9a0fc939c" name="Cabin Terminal" summary=""
@@ -10011,6 +10099,16 @@
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
               id="02e9a3a9-a44f-483c-acd7-9fc90e01f83e" targetElement="#18da001e-dd8b-4041-ba4c-eb2211c624c4"
               sourceElement="#395ee0ab-cb3d-48e8-a411-09a98053292f"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+              id="0791808b-4393-46ef-b568-c70a492ab1d7" name="CP 1" orientation="OUT"
+              kind="FLOW"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+              id="4cd088fd-94ac-487b-83c7-d752ae6a7167" name="CP 2" orientation="OUT"
+              kind="FLOW"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+              id="7ae45216-5de8-4508-8cff-5013c877143b" name="PP 3"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+              id="df465db0-5dd0-4ebc-8c0e-ee6d681cc0f6" name="PP 4"/>
           <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
               id="df0ea7ea-a4f1-4cab-8488-4cf0e7671552" targetElement="#181a678c-dca9-46c1-9d18-b5a0c457c0de"
               sourceElement="#395ee0ab-cb3d-48e8-a411-09a98053292f"/>
@@ -10098,6 +10196,10 @@
                 id="75803404-a063-45a3-a6b6-9be56ec06e72" targetElement="#c16e6c8f-a0b0-4cb3-b748-f2785b450814"
                 sourceElement="#f9a5f664-0853-4704-8ed6-2cf7fc0cf47e"/>
           </ownedFeatures>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+              id="a303df6f-f5ef-4ba4-8910-b10f9c95067d" name="PP 3"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+              id="a0d7617d-0efb-4452-a4eb-4840ae7aa952" name="PP 4"/>
           <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
               id="dfea72ad-f89d-4267-92a9-63635e5f8b25" targetElement="#c8b78c78-5b11-4fc0-87b7-3ca84622efea"
               sourceElement="#a0ceff37-72a6-4da7-a646-89425a748235"/>
@@ -10218,7 +10320,9 @@
             id="a8e67c5e-c76a-4a19-82ad-aa08fed7c860" name="Passenger Service Selection"
             exchanges="#e207d8b6-c76d-494d-9519-b7f0cac18956 #a91fa283-42a3-4415-9274-9d09244ab3e6"/>
         <ownedCategories xsi:type="org.polarsys.capella.core.data.fa:ExchangeCategory"
-            id="931993e9-058d-42c9-90f7-ece80b7fff43" name="ExchangeCategory 13" exchanges="#fabe2bde-f0f1-4275-a0b0-82bf22e55819"/>
+            id="931993e9-058d-42c9-90f7-ece80b7fff43" name="ExchangeCategory 13" exchanges="#fabe2bde-f0f1-4275-a0b0-82bf22e55819 #2198eb3c-c766-4abb-b2bb-5e5e57db86aa"/>
+        <ownedCategories xsi:type="org.polarsys.capella.core.data.fa:ExchangeCategory"
+            id="bf08add7-f0bb-42b7-9973-5c8659723977" name="ExchangeCategory 14" exchanges="#85240d00-9922-4206-aea9-3f330fdac4d5"/>
         <ownedPhysicalFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
             id="0f09b41e-1e38-4d34-abb0-ba31a0eedd58" name="Root Physical Function">
           <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
@@ -10515,6 +10619,8 @@
                     id="0b395bf3-016c-4b1a-b8ab-9ea04e708dc7" targetElement="#08d1a082-bf7f-41ac-bd51-e8f1201bf7f9"
                     sourceElement="#a1277e72-90ac-45ef-82c6-84dd5009b55c"/>
               </outputs>
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="510a25e6-11d9-4a2d-9df7-da3036546e49" name="FOP 2"/>
               <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
                   id="b0da00d6-4ba0-415f-a9ec-1de254e12a50" targetElement="#e01b39c5-f018-4d9c-af36-c83f1b9a8a81"
                   sourceElement="#75e214e4-74f8-4c44-97f9-f328b8ac3f97"/>
@@ -11255,6 +11361,8 @@
                     review="Modéliser le décodage" status="#f62d582d-0006-4923-af59-d6ff202a8ec1">
                   <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                       id="1dba4c09-f51b-47db-9e69-a2e8e2c8639d" name="FIP 2"/>
+                  <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                      id="2ec1d8d4-f670-4eb2-b3d1-befddb40da97" name="FIP 3"/>
                   <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                       id="cb346dbd-5582-47a9-938e-fe65c2d921b6" name="FOP 1"/>
                   <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
@@ -11394,6 +11502,8 @@
               <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
                   id="f9353538-3fcb-4697-8591-daf861b7a164" name="Run Video-On-Demand Service"
                   description="VOD Service is a passenger service. This function gathers all functions in charge of managing the VOD-related interactions&#xD;&#xA;of the passenger (selection of movies, play/pause/stop controls, display of movie data, etc.).">
+                <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                    id="625d8d63-5884-4621-a64d-38a98df4cc7d" name="FOP 1"/>
                 <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
                     id="c7edaab3-11bc-4409-b300-13c4b4192742" name="Display VOD Movie Data"
                     description="This function is responsible for displaying all the VOD service information on the Seat TV.">
@@ -11723,6 +11833,8 @@
               <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
                   id="46a33304-1338-4fc0-a9cb-dc3fe19e5ed4" name="Run Cabin Intercommunication Service"
                   description="Cabin intercommunication is a&amp;nbsp;cabin crew&amp;nbsp;service. This function gathers all functions in charge of managing the&#xD;&#xA;interactions of the&amp;nbsp;cabin crew related to imposed&amp;nbsp;videos&amp;nbsp;(selection of videos, play/pause/stop controls,&#xD;&#xA;display of&amp;nbsp;video data, etc.).">
+                <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                    id="6a1204cf-3bfc-4a31-bb0e-0a3119c79e1d" name="FIP 1"/>
                 <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
                     id="9b798c7d-2d5a-43f9-867d-b26c3f4c1337" name="Capture Imposed Video Selections"
                     description="This function&amp;#160;handles the interactions with the&amp;#160;cabin crew on the cabin management terminal.&amp;#160;The terminal&amp;#160;displays&amp;#160;interaction widgets (typically buttons&amp;#160;and slide bars). This typically airline-specifc, because user interface typically is. This function is responsible&amp;#160;for&amp;#160;capturing these selections and forwarding them to&amp;#160;a more generic function&amp;#160;(a controler) that will transform the selection into an internal system command.">
@@ -11861,6 +11973,9 @@
               <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
                   id="0839c69b-cdb6-49c6-ad68-900e54419d8c" targetElement="#355a6d2b-8c53-46f8-8c0b-38356b4d4271"
                   sourceElement="#196af4c5-87f3-44b7-8cc6-74d91d4d1c9a"/>
+              <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+                  id="85240d00-9922-4206-aea9-3f330fdac4d5" name="FunctionalExchange 1"
+                  target="#6a1204cf-3bfc-4a31-bb0e-0a3119c79e1d" source="#625d8d63-5884-4621-a64d-38a98df4cc7d"/>
             </ownedFunctions>
             <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
                 id="cf7dca25-2250-4339-9501-eaf3557a644c" name="Manage Passenger Services Lifecycle"
@@ -12520,6 +12635,9 @@
                 id="a231fe60-a879-4bfe-a123-8058d0bd1e95" targetElement="#9615df54-b339-4ff1-bd73-b16fb15ae35f"
                 sourceElement="#cd8c1d42-d6a0-413b-b741-ff42f3d6a375"/>
           </ownedFunctionalExchanges>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="2198eb3c-c766-4abb-b2bb-5e5e57db86aa" name="FunctionalExchange 52"
+              target="#2ec1d8d4-f670-4eb2-b3d1-befddb40da97" source="#510a25e6-11d9-4a2d-9df7-da3036546e49"/>
           <ownedPhysicalFunctionPkgs xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunctionPkg"
               id="3e35f75e-142f-4215-b12f-ba44447dfde3" name="REC DEFINITION">
             <ownedPhysicalFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
@@ -15001,6 +15119,12 @@
                     id="514e880e-2ecf-4f3e-a88c-2f3ced8ca714" name="Packet Transmission"
                     source="#5c8f6d97-2879-48d9-a1c9-04584f93e1eb" target="#6912b6da-a7f6-4881-999e-a31249583b32"
                     kind="FLOW"/>
+                <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
+                    id="18f32d5e-221a-44ab-b7dd-3c99f65a7dce" name="C 2" source="#fac3dcc8-49c3-4a71-ad9d-474322998e30"
+                    target="#3d331248-db29-4305-b24f-2769568eecdb" kind="FLOW"/>
+                <ownedComponentExchangeCategories xsi:type="org.polarsys.capella.core.data.fa:ComponentExchangeCategory"
+                    id="99bbe3c5-3423-4779-8f9d-fc3264759ba2" name="ComponentExchangeCategory 1"
+                    exchanges="#18f32d5e-221a-44ab-b7dd-3c99f65a7dce"/>
                 <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="d5fb8bc2-1d5a-4d2a-8721-85647931d7d7"
                     name="PTV Video Player " abstractType="#819adf3f-da1d-4d2b-8faf-3b1d7b99503d"/>
                 <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="f2738fa8-34a4-450f-a836-f34b56425e99"
@@ -15048,6 +15172,9 @@
                   <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
                       id="6912b6da-a7f6-4881-999e-a31249583b32" name="CP 1" orientation="IN"
                       kind="FLOW"/>
+                  <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+                      id="fac3dcc8-49c3-4a71-ad9d-474322998e30" name="CP 2" orientation="OUT"
+                      kind="FLOW"/>
                 </ownedPhysicalComponents>
                 <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
                     id="3de7180a-c2f0-48ea-9a9e-6f6e6849c651" name="PVDU Audio Decoder"
@@ -15058,6 +15185,9 @@
                   <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
                       id="c6494f4c-fb4f-4dfa-8c5b-d670972f2b0d" targetElement="#07823fa4-38c9-43fe-8b4b-8aa5588b7c46"
                       sourceElement="#3de7180a-c2f0-48ea-9a9e-6f6e6849c651"/>
+                  <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+                      id="3d331248-db29-4305-b24f-2769568eecdb" name="CP 1" orientation="IN"
+                      kind="FLOW"/>
                 </ownedPhysicalComponents>
               </ownedPhysicalComponents>
               <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"

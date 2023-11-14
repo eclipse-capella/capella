@@ -106,7 +106,9 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
+import org.polarsys.capella.core.data.cs.PhysicalLinkCategory;
 import org.polarsys.capella.core.data.cs.PhysicalPath;
+import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
@@ -1768,21 +1770,60 @@ public class DiagramServices {
       List<DSemanticDecorator> selectedViews) {
 
     Collection<DDiagramElement> diagramElements = new DDiagramQuery(currentDiagram).getAllDiagramElements();
+    Collection<DDiagramElement> diagramElementsToBeSelected = new HashSet<DDiagramElement>();
+
     Set<EObject> toBeSelected = new HashSet<EObject>();
+    Set<ExchangeCategory> exchangeCategories = new HashSet<ExchangeCategory>();
     for (DSemanticDecorator selectedView : selectedViews) {
       FunctionalChain selectedFC = (FunctionalChain) selectedView.getTarget();
+      toBeSelected.add(selectedFC);
+
       Set<FunctionalExchange> involvedFEs = FunctionalChainExt.getFlatFunctionalExchanges(selectedFC);
 
       toBeSelected.addAll(involvedFEs);
       for (FunctionalExchange involvedFE : involvedFEs) {
         toBeSelected.add(involvedFE.getSource());
         toBeSelected.add(involvedFE.getTarget());
-        toBeSelected.addAll(involvedFE.getCategories());
+        exchangeCategories.addAll(involvedFE.getCategories());
       }
     }
 
-    return diagramElements.stream().filter(element -> toBeSelected.contains(element.getTarget()))
-        .collect(Collectors.toList());
+    diagramElementsToBeSelected.addAll(diagramElements.stream()
+        .filter(element -> toBeSelected.contains(element.getTarget())).collect(Collectors.toList()));
+
+    for (DDiagramElement diagramElement : diagramElements) {
+      if (diagramElement instanceof DEdge) {
+        DEdge edge = (DEdge) diagramElement;
+        EObject edgeTarget = edge.getTarget();
+        if (exchangeCategories.contains(edgeTarget)) {
+          boolean shallBeSelected = false;
+          for (EObject semanticElement : edge.getSemanticElements()) {
+            if (toBeSelected.contains(semanticElement)) {
+              // Only add categories edge that represents a CE in "toBeSelected"
+              shallBeSelected = true;
+              break;
+            }
+          }
+          if (shallBeSelected) {
+            EdgeTarget target = edge.getTargetNode();
+            EdgeTarget source = edge.getSourceNode();
+
+            if (source instanceof DDiagramElement) {
+              diagramElementsToBeSelected.add((DDiagramElement) source);
+            }
+            if (target instanceof DDiagramElement) {
+              diagramElementsToBeSelected.add((DDiagramElement) target);
+            }
+
+            diagramElementsToBeSelected.add(edge);
+          }
+
+        }
+      }
+
+    }
+
+    return diagramElementsToBeSelected;
   }
 
   /**
@@ -1799,21 +1840,56 @@ public class DiagramServices {
       List<DSemanticDecorator> selectedViews) {
 
     Collection<DDiagramElement> diagramElements = new DDiagramQuery(currentDiagram).getAllDiagramElements();
-    Set<EObject> toBeSelected = new HashSet<EObject>();
-    for (DSemanticDecorator selectedView : selectedViews) {
-      PhysicalPath selectedFC = (PhysicalPath) selectedView.getTarget();
-      Collection<PhysicalLink> involvedPLs = PhysicalPathExt.getFlatPhysicalLinks(selectedFC);
+    Collection<DDiagramElement> diagramElementsToBeSelected = new HashSet<DDiagramElement>();
 
+    Set<EObject> toBeSelected = new HashSet<EObject>();
+    Set<PhysicalLinkCategory> exchangeCategories = new HashSet<PhysicalLinkCategory>();
+    for (DSemanticDecorator selectedView : selectedViews) {
+      PhysicalPath selectedPP = (PhysicalPath) selectedView.getTarget();
+      Collection<PhysicalLink> involvedPLs = PhysicalPathExt.getFlatPhysicalLinks(selectedPP);
+
+      toBeSelected.add(selectedPP);
       toBeSelected.addAll(involvedPLs);
       for (PhysicalLink involvedPL : involvedPLs) {
         toBeSelected.add(involvedPL.getSourcePhysicalPort());
         toBeSelected.add(involvedPL.getTargetPhysicalPort());
-        toBeSelected.addAll(involvedPL.getCategories());
+        exchangeCategories.addAll(involvedPL.getCategories());
+      }
+    }
+    diagramElementsToBeSelected.addAll(diagramElements.stream()
+        .filter(element -> toBeSelected.contains(element.getTarget())).collect(Collectors.toList()));
+
+    for (DDiagramElement diagramElement : diagramElements) {
+      if (diagramElement instanceof DEdge) {
+        DEdge edge = (DEdge) diagramElement;
+        EObject edgeTarget = edge.getTarget();
+        if (exchangeCategories.contains(edgeTarget)) {
+          boolean shallBeSelected = false;
+          for (EObject semanticElement : edge.getSemanticElements()) {
+            if (toBeSelected.contains(semanticElement)) {
+              // Only add Category edge that concerns a PL in "toBeSelected"
+              shallBeSelected = true;
+              break;
+            }
+          }
+          if (shallBeSelected) {
+            EdgeTarget target = edge.getTargetNode();
+            EdgeTarget source = edge.getSourceNode();
+
+            if (source instanceof DDiagramElement) {
+              diagramElementsToBeSelected.add((DDiagramElement) source);
+            }
+            if (target instanceof DDiagramElement) {
+              diagramElementsToBeSelected.add((DDiagramElement) target);
+            }
+
+            diagramElementsToBeSelected.add(edge);
+          }
+        }
       }
     }
 
-    return diagramElements.stream().filter(element -> toBeSelected.contains(element.getTarget()))
-        .collect(Collectors.toList());
+    return diagramElementsToBeSelected;
   }
 
   /**

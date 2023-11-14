@@ -317,6 +317,25 @@ public class DiagramHelper {
     }
     return null;
   }
+  
+  /**
+   * Return the first {@link DDiagramElement} corresponding to the first occurrence found for a given UID, null otherwise
+   * 
+   * @param diagram
+   *          the target diagram
+   * @param anUID
+   *          , the Uid of the object to reach
+   * @return null if not represented on the diagram
+   */
+  public static DDiagramElement getOnDiagramByUID(final DDiagram diagram, final String anUID) {
+    List<DDiagramElement> elements = new LinkedList<DDiagramElement>(diagram.getDiagramElements());
+    for (DDiagramElement element : elements) {
+      if (element.getUid().equals(anUID)) {
+        return element;
+      }
+    }
+    return null;
+  }
 
   /**
    * Return the first {@link DDiagramElement} corresponding to the first occurrence found for a given ID, null otherwise

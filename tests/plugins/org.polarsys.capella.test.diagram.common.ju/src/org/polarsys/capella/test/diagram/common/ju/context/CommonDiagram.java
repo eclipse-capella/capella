@@ -169,7 +169,7 @@ public class CommonDiagram extends DiagramContext {
   public void deleteAllSemantic() {
     new DeleteElementTool(this).deleteAll();
   }
-  
+
   public void createConstrainedElement(String sourceId, String targetId) {
     // All diagrams shared the same tool
     String name = IToolNameConstants.TOOL_CC_CREATE_CONSTRAINTELEMENT;
@@ -230,7 +230,7 @@ public class CommonDiagram extends DiagramContext {
     };
     assertSelectionWorked(event, handler);
   }
-  
+
   public void selectRelatedRecs(String initialElement, String... expectedSelection) {
 
     // Get edit part from initial selected Semantic element
@@ -245,7 +245,7 @@ public class CommonDiagram extends DiagramContext {
       // In our test model there is only one
       CatalogElement commonRec = commonRecs.iterator().next();
       EList<EObject> refs = commonRec.getReferencedElements();
-      
+
       // Run the ShowInDiagramAction
       ShowInDiagramAction action = new ShowInDiagramAction();
       action.selectionChanged(new StructuredSelection(refs));
@@ -255,12 +255,12 @@ public class CommonDiagram extends DiagramContext {
       // displayed
       IStructuredSelection selec = (IStructuredSelection) PlatformUI.getWorkbench().getActiveWorkbenchWindow()
           .getActivePage().getSelection();
-      
+
       // Collect Semantic elements from selection
       List<Object> selectedElements = ((List<Object>) selec.toList()).stream().map(EditPart.class::cast)
-          .map(elem -> elem.getModel())
-          .map(View.class::cast).map(view -> view.getElement()).map(DDiagramElement.class::cast)
-          .map(diagramElement -> diagramElement.getTarget()).collect(Collectors.toList());
+          .map(elem -> elem.getModel()).map(View.class::cast).map(view -> view.getElement())
+          .map(DDiagramElement.class::cast).map(diagramElement -> diagramElement.getTarget())
+          .collect(Collectors.toList());
 
       List<EObject> expectedElements = Arrays.stream(expectedSelection).map(sel -> getView(sel))
           .map(view -> view.getTarget()).collect(Collectors.toList());
@@ -324,6 +324,25 @@ public class CommonDiagram extends DiagramContext {
       }
     };
     assertSelectionWorked(event, handler);
+    // Get the selection set after the the action is ran, this ensure that we've filtered out all items that are not
+    // displayed
+    IStructuredSelection selec = (IStructuredSelection) PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+        .getActivePage().getSelection();
+
+    // Collect Semantic elements from selection
+    List<DDiagramElement> selectedElements = ((List<Object>) selec.toList()).stream().map(EditPart.class::cast)
+        .map(elem -> elem.getModel()).map(View.class::cast).map(view -> view.getElement())
+        .map(DDiagramElement.class::cast)
+        .collect(Collectors.toList());
+
+    List<EObject> expectedElements = Arrays.stream(expectedSelection)
+        .map(sel -> org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper
+            .getOnDiagramByUID(getDiagram(), sel))
+        .collect(Collectors.toList());
+
+    if (!(selectedElements.size() == expectedElements.size() && selectedElements.containsAll(expectedElements))) {
+      fail("Selection didn't correspond to expected selection");
+    }
   }
 
   public void selectRelatedPPElements(String initialElement, String... expectedSelection) {
@@ -340,6 +359,23 @@ public class CommonDiagram extends DiagramContext {
       }
     };
     assertSelectionWorked(event, handler);
+    // Get the selection set after the the action is ran, this ensure that we've filtered out all items that are not
+    // displayed
+    IStructuredSelection selec = (IStructuredSelection) PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+        .getActivePage().getSelection();
+
+    // Collect Semantic elements from selection
+    List<DDiagramElement> selectedElements = ((List<Object>) selec.toList()).stream().map(EditPart.class::cast)
+        .map(elem -> elem.getModel()).map(View.class::cast).map(view -> view.getElement())
+        .map(DDiagramElement.class::cast).collect(Collectors.toList());
+
+    List<EObject> expectedElements = Arrays.stream(expectedSelection)
+        .map(sel -> org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper
+            .getOnDiagramByUID(getDiagram(), sel))
+        .collect(Collectors.toList());
+    if (!(selectedElements.size() == expectedElements.size() && selectedElements.containsAll(expectedElements))) {
+      fail("Selection didn't correspond to expected selection");
+    }
   }
 
   public void selectOwnedPorts(String initialElement) {
@@ -509,7 +545,7 @@ public class CommonDiagram extends DiagramContext {
 
     return ((CapellaElement) semanticElement).getId();
   }
-  
+
   protected ExecutionEvent createExecutionEvent(Object... elements) {
     IEvaluationContext context = new EvaluationContext(null, new Object());
     Map<String, String> parameters = new HashMap<>();
