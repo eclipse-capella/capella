@@ -59,6 +59,7 @@ public class SelectToolsTest extends AbstractDiagramTestCase {
   public final String RPL_PHYSICAL_FUNCTION_2 = "238797f1-c012-446a-9b79-e94cf88bd180";//$NON-NLS-1$
   public final String RPL_FIP1_PF2 = "78736f13-8b41-4119-b0b4-48e733598c85";//$NON-NLS-1$
 
+  public final String OAB_DIAGRAM = "_x0W387OIEemYUPV0pY7feg";//$NON-NLS-1$
   public final String PAB_DIAGRAM = "_yYiSoHjqEea__MYrXGSERA";//$NON-NLS-1$
   public final String SAB_DIAGRAM = "_yYhranjqEea__MYrXGSERA";//$NON-NLS-1$
   public final String LAB_DIAGRAM = "_yYhrgHjqEea__MYrXGSERA";//$NON-NLS-1$
@@ -120,6 +121,15 @@ public class SelectToolsTest extends AbstractDiagramTestCase {
   public final String PHYSICAL_LINK_CATEGORY_1_PORT1 = "_rqm90HfAEe6OhIHMRH8U5Q";//$NON-NLS-1$
   public final String PHYSICAL_LINK_CATEGORY_1_PORT2 = "_rqpaEXfAEe6OhIHMRH8U5Q";//$NON-NLS-1$
 
+  public final String OP1 = "c27f6524-d09e-4962-8f71-c347796bfe6f";//$NON-NLS-1$
+  public final String OP1_EDGE1 = "_6VUMebOIEemYUPV0pY7feg";//$NON-NLS-1$
+  public final String OP1_EDGE2 = "_6Vd9b7OIEemYUPV0pY7feg";//$NON-NLS-1$
+  public final String OP1_NODE1 = "_6UbbobOIEemYUPV0pY7feg";//$NON-NLS-1$
+  public final String OP1_DECORATOR = "_r8DgcLOLEemYUPV0pY7feg";//$NON-NLS-1$
+  public final String OP1_NODE2 = "_6UuWg7OIEemYUPV0pY7feg";//$NON-NLS-1$
+  public final String OP1_NODE3 = "_6URqkLOIEemYUPV0pY7feg";//$NON-NLS-1$
+
+
   public final String FC1 = "3ba5658d-1416-4928-bb63-bf26a021cc34";//$NON-NLS-1$
   public final String FC1_Node_Decorator = "_8czq8HJ2Ee6MRMSmk5q7sQ";//$NON-NLS-1$
   public final String FE1 = "_nNBT4IoPEeaQmcRqIfTB6w";//$NON-NLS-1$
@@ -148,6 +158,8 @@ public class SelectToolsTest extends AbstractDiagramTestCase {
         PHYSICAL_LINK_1_PORT2);
     testSelectRelatedFCElements(sc, PAB_DIAGRAM, FC1, FC1_Node_Decorator, FCAT1_EDGE, FCAT1_PORT1, FCAT1_PORT2, FE1,
         FE1_PORT1, FE1_PORT2);
+    testSelectRelatedFCElements(sc, OAB_DIAGRAM, OP1, OP1_NODE1, OP1_EDGE1, OP1_NODE2, OP1_EDGE2, OP1_NODE3,
+        OP1_DECORATOR);
 
 
     testSelectRelatedRecs(sc, REC_DIAGRAM, REC_PHYSICAL_COMPONENT, REC_FIP1_PF2, REC_PHYSICAL_COMPONENT,
@@ -171,6 +183,8 @@ public class SelectToolsTest extends AbstractDiagramTestCase {
   }
 
   protected void testCategoriesSemanticElements(SessionContext sc) {
+    // No categories nor category ports for OAB
+
     // SAB
     testSemanticElements(sc, SAB_DIAGRAM, FCAT_SAB, FCAT_SAB, FCAT_FE_SAB);
     testSemanticElements(sc, SAB_DIAGRAM, FCAT_PORT_SAB, FCAT_SAB, FCAT_FE_SAB);

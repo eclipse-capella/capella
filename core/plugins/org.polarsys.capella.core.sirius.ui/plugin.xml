@@ -423,6 +423,17 @@
           </reference>
        </visibleWhen>
   	  </command>
+  	   <command
+          commandId="org.polarsys.capella.core.sirius.ui.select.op.related.elements"
+          label="Related Operational Process Elements"
+          style="push">
+       <visibleWhen
+             checkEnabled="true">
+          <reference
+                definitionId="org.polarsys.capella.core.sirius.ui.isValidOPSelectionMenu">
+          </reference>
+       </visibleWhen>
+  	  </command>   
   	  <command
           commandId="org.polarsys.capella.core.sirius.ui.select.fc.related.elements"
           label="Related Functional Chain Elements"
@@ -501,6 +512,11 @@
       </command>
       <command
             defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.SelectRelatedFCElementsCommandHandler"
+            id="org.polarsys.capella.core.sirius.ui.select.op.related.elements"
+            name="Select Related Operational Process Elements">
+      </command>
+      <command
+            defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.SelectRelatedFCElementsCommandHandler"
             id="org.polarsys.capella.core.sirius.ui.select.fc.related.elements"
             name="Select Related Functional Chain Elements">
       </command>
@@ -539,6 +555,13 @@
             properties="isValidElementsOfSameTypeMenu"
             type="java.lang.Object">
       </propertyTester>   
+       <propertyTester
+            class="org.polarsys.capella.core.sirius.ui.testers.ValidOPSelectionMenuTargetTester"
+            id="org.polarsys.capella.core.sirius.ui.ValidOPSelectionMenuTargetTester"
+            namespace="org.polarsys.capella.core.sirius.ui"
+            properties="isValidOPSelectionMenu"
+            type="java.lang.Object">
+      </propertyTester>  
       <propertyTester
             class="org.polarsys.capella.core.sirius.ui.testers.ValidFCSelectionMenuTargetTester"
             id="org.polarsys.capella.core.sirius.ui.ValidFCSelectionMenuTargetTester"
@@ -599,6 +622,15 @@
                variable="activeMenuSelection">
                   <test
                         property="org.polarsys.capella.core.sirius.ui.isValidFCSelectionMenu">
+                  </test>
+         </with>
+      </definition>
+       <definition
+            id="org.polarsys.capella.core.sirius.ui.isValidOPSelectionMenu">
+         <with
+               variable="activeMenuSelection">
+                  <test
+                        property="org.polarsys.capella.core.sirius.ui.isValidOPSelectionMenu">
                   </test>
          </with>
       </definition>

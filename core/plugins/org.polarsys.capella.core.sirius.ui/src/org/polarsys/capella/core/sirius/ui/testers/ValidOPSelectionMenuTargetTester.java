@@ -13,16 +13,15 @@
 package org.polarsys.capella.core.sirius.ui.testers;
 
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.oa.OperationalProcess;
 
-public class ValidFCSelectionMenuTargetTester extends AbstractValidSelectionMenuTarget {
+public class ValidOPSelectionMenuTargetTester extends AbstractValidSelectionMenuTarget {
 
-  protected String PROPERTY_ID = "isValidFCSelectionMenu";
+  protected String PROPERTY_ID = "isValidOPSelectionMenu";
 
   @Override
   protected boolean isValid(EObject element) {
-    return element instanceof FunctionalChain && !(element instanceof OperationalProcess);
+    return element instanceof OperationalProcess;
   }
 
   @Override
