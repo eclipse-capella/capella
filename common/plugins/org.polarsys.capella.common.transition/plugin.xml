@@ -14,7 +14,7 @@
 -->
 <plugin>
    <extension-point id="org.polarsys.capella.core.transition.handlers" name="Transitions handlers" schema="schema/org.polarsys.capella.core.transition.handlers.exsd"/>
-
+   <extension-point id="org.polarsys.capella.core.transition.extension" name="Transitions extensions" schema="schema/org.polarsys.capella.core.transition.extension.exsd"/>
     <extension
          point="org.polarsys.kitalpha.cadence.core.activity.declaration">
       <ActivityDeclaration

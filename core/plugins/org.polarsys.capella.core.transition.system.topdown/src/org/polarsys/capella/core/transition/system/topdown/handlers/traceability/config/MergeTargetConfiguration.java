@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -36,6 +38,7 @@ import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.transition.common.constants.ISchemaConstants;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
+import org.polarsys.capella.core.transition.common.handlers.extension.TransitionExtensionManager;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.TraceabilityHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.traceability.config.ExtendedTraceabilityConfiguration;
@@ -208,6 +211,9 @@ public class MergeTargetConfiguration extends ExtendedTraceabilityConfiguration 
         addMapping(map, BlockArchitectureExt.getInterfacePkg(source, false),
             BlockArchitectureExt.getInterfacePkg(target, false), context);
       }
+
+      Set<Entry<EObject, EObject>> additionalMappings = TransitionExtensionManager.eINSTANCE
+          .initializeBlockArchitecture(source, target, false);
 
       addMapping(map, BlockArchitectureExt.getAbstractCapabilityPkg(source, false),
           BlockArchitectureExt.getAbstractCapabilityPkg(target, false), context);

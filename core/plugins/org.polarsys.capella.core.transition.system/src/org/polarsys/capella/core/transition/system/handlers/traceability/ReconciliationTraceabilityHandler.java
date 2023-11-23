@@ -13,7 +13,9 @@
 
 package org.polarsys.capella.core.transition.system.handlers.traceability;
 
+import java.util.Map.Entry;
 import java.util.Optional;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -32,6 +34,7 @@ import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
+import org.polarsys.capella.core.transition.common.handlers.extension.TransitionExtensionManager;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.LevelBasedTraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.TraceabilityHandlerHelper;
@@ -305,6 +308,13 @@ public class ReconciliationTraceabilityHandler extends LevelBasedTraceabilityHan
     addMapping(map, BlockArchitectureExt.getContext(source, false), BlockArchitectureExt.getContext(target, false), context);
     addMapping(map, BlockArchitectureExt.getInterfacePkg(source, false), BlockArchitectureExt.getInterfacePkg(target, false), context);
     addMapping(map, BlockArchitectureExt.getAbstractCapabilityPkg(source, false), BlockArchitectureExt.getAbstractCapabilityPkg(target, false), context);
+
+    Set<Entry<EObject, EObject>> additionalMappings = TransitionExtensionManager.eINSTANCE
+        .initializeBlockArchitecture(source, target, false);
+
+    for (Entry<EObject, EObject> additionalMapping : additionalMappings) {
+      addMapping(map, additionalMapping.getKey(), additionalMapping.getValue(), context);
+    }
   }
 
 }

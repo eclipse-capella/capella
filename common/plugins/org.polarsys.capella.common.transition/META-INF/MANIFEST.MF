@@ -15,7 +15,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.kitalpha.transposer.transformation.emf;visibility:=reexport,
  org.polarsys.capella.common.tools.report.appenders.usage,
  org.eclipse.emf.diffmerge.sirius,
- org.polarsys.capella.core.compare
+ org.polarsys.capella.core.compare,
+ com.google.guava,
+ org.polarsys.kitalpha.ad.services
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.transition.common,
@@ -30,6 +32,7 @@ Export-Package: org.polarsys.capella.core.transition.common,
  org.polarsys.capella.core.transition.common.handlers.activity,
  org.polarsys.capella.core.transition.common.handlers.attachment,
  org.polarsys.capella.core.transition.common.handlers.contextscope,
+ org.polarsys.capella.core.transition.common.handlers.extension,
  org.polarsys.capella.core.transition.common.handlers.log,
  org.polarsys.capella.core.transition.common.handlers.merge,
  org.polarsys.capella.core.transition.common.handlers.notify,
