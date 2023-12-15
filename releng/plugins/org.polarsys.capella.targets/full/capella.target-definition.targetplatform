@@ -21,7 +21,7 @@ location GMF-Notation-1.13.1 "https://download.eclipse.org/modeling/gmp/gmf-nota
     org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
 }
 
-location GMF-Runtime-1.16 "https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202309010720/" {
+location GMF-Runtime-1.16 "https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/interim/I202312121900/" {
     org.eclipse.gmf.runtime.sdk.feature.group lazy
     org.eclipse.gmf.runtime.thirdparty.feature.group lazy
 }
@@ -62,11 +62,14 @@ location Mylyn-3.26 "https://download.eclipse.org/mylyn/releases/3.26/" {
 	org.eclipse.mylyn.help.ui [3.26.0,3.27.0)
 }
 
-location "https://download.eclipse.org/tools/orbit/downloads/2023-03/" {
+location Orbit-2023-03 "https://download.eclipse.org/tools/orbit/downloads/drops/R20230302014618/repository/" {
+	org.slf4j.api
 	ch.qos.logback.slf4j
+    ch.qos.logback.classic
+    ch.qos.logback.core
 }
 
-location sirius "https://download.eclipse.org/sirius/updates/stable/7.3.0-S20230929-065140/2023-03" {
+location sirius "https://download.eclipse.org/sirius/updates/stable/7.4.0-S20240102-123506/2023-03" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
