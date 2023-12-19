@@ -17,6 +17,7 @@ import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.IFontProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.IToolTipProvider;
+import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
@@ -24,17 +25,28 @@ import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
-import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
+import org.eclipse.ui.internal.navigator.NavigatorContentService;
+import org.eclipse.ui.internal.navigator.NavigatorContentServiceLabelProvider;
+import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryImpl;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.BrowserElementWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.CategoryWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.PrimitiveWrapper;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator;
 import org.polarsys.capella.core.ui.semantic.browser.IImageKeys;
 
-public class SemanticBrowserLabelProvider extends MDEAdapterFactoryLabelProvider
+public class SemanticBrowserLabelProvider extends NavigatorContentServiceLabelProvider
     implements ILabelProvider, IColorProvider, IFontProvider, IToolTipProvider {
+  
+  protected static NavigatorContentService contentService = new NavigatorContentService(CapellaCommonNavigator.ID);
+
+  
+  public SemanticBrowserLabelProvider() {
+    super(contentService);
+  }
+
   /**
    * The font used for category, to not forget to dispose it
    */
@@ -90,6 +102,24 @@ public class SemanticBrowserLabelProvider extends MDEAdapterFactoryLabelProvider
       result = super.getText(modelElement);
     }
     return result;
+  }
+  
+  @Override
+  public StyledString getStyledText(Object element) {
+    // Precondition.
+    if (null == element) {
+      return null;
+    }
+    
+    if (element instanceof EObjectWrapper) {
+        element = ((BrowserElementWrapper) element).getElement();      
+    }
+    
+    if (element instanceof BrowserElementWrapper) {
+      return new StyledString(getText(element));
+    }
+    
+    return super.getStyledText(element);
   }
 
   /**
@@ -154,5 +184,7 @@ public class SemanticBrowserLabelProvider extends MDEAdapterFactoryLabelProvider
   public String getToolTipText(Object element) {
     return null;
   }
+  
+  
 
 }

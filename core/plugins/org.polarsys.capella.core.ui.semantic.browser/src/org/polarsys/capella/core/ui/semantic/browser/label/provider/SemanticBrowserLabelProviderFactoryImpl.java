@@ -13,27 +13,27 @@
 package org.polarsys.capella.core.ui.semantic.browser.label.provider;
 
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.ui.toolkit.browser.label.provider.factory.AbstractLabelProviderFactory;
 
 public class SemanticBrowserLabelProviderFactoryImpl extends AbstractLabelProviderFactory {
   /**
    * Singleton label provider
    */
-  private ILabelProvider labelProvider;
-
-  private ILabelProvider getLabelProvider() {
-    if (null == labelProvider) {
-      labelProvider = new SemanticBrowserLabelProvider();
-    }
-    return labelProvider;
-  }
+  private ILabelProvider currentLabelProvider;
+  private ILabelProvider diagramLabelProvider;
+  private ILabelProvider referencingLabelProvider;
+  private ILabelProvider referencedLabelProvider;
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.browser.label.provider.factory.AbstractLabelProviderFactory#getCurrentLabelProvider()
    */
   @Override
   public ILabelProvider getCurrentLabelProvider() {
-    return getLabelProvider();
+    if (null == currentLabelProvider) {
+      currentLabelProvider = new SemanticBrowserDecoratingLabelProvider(new SemanticBrowserLabelProvider());
+    }
+    return currentLabelProvider;
   }
 
   /**
@@ -41,7 +41,10 @@ public class SemanticBrowserLabelProviderFactoryImpl extends AbstractLabelProvid
    */
   @Override
   public ILabelProvider getDiagramLabelProvider() {
-    return getLabelProvider();
+    if (null == diagramLabelProvider) {
+      diagramLabelProvider = new SemanticBrowserDecoratingLabelProvider(new SemanticBrowserLabelProvider());
+    }
+    return diagramLabelProvider;
   }
 
   /**
@@ -49,7 +52,10 @@ public class SemanticBrowserLabelProviderFactoryImpl extends AbstractLabelProvid
    */
   @Override
   public ILabelProvider getReferencedLabelProvider() {
-    return getLabelProvider();
+    if (null == referencingLabelProvider) {
+      referencingLabelProvider = new SemanticBrowserDecoratingLabelProvider(new SemanticBrowserLabelProvider());
+    }
+    return referencingLabelProvider;
   }
 
   /**
@@ -57,6 +63,9 @@ public class SemanticBrowserLabelProviderFactoryImpl extends AbstractLabelProvid
    */
   @Override
   public ILabelProvider getReferencingLabelProvider() {
-    return getLabelProvider();
+    if (null == referencedLabelProvider) {
+      referencedLabelProvider = new SemanticBrowserDecoratingLabelProvider(new SemanticBrowserLabelProvider());
+    }
+    return referencedLabelProvider;
   }
 }
