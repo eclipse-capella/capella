@@ -3090,15 +3090,22 @@ public class FaServices {
       boolean includeComponentRealization, boolean topDelegation, boolean bottomDelegation) {
     Collection<Allocation> elements = new HashSet<Allocation>();
     Collection<Allocation> allocations = retrievePortAllocations(movingPort, includeFunctionalRealization, includeComponentRealization);
-    Component instanciatedComponent = null;
     if (newContainer instanceof Part) {
-      instanciatedComponent = PartExt.getComponentOfPart((Part) newContainer);
-    }
-    for (Allocation allocation : allocations) {
-      Port delegatedPort = (allocation.getSourceElement() == movingPort) ? (Port) allocation.getTargetElement() : (Port) allocation.getSourceElement();
-      if (instanciatedComponent == null || !isEObjectInHierarchyOfContainer(delegatedPort.eContainer(), instanciatedComponent)) {
+      // case where moving the component's port
+      Component instanciatedComponent = PartExt.getComponentOfPart((Part) newContainer);
+      for (Allocation allocation : allocations) {
+        Port delegatedPort = (allocation.getSourceElement() == movingPort) ? (Port) allocation.getTargetElement() : (Port) allocation.getSourceElement();
+        if (instanciatedComponent == null || !isEObjectInHierarchyOfContainer(delegatedPort.eContainer(), instanciatedComponent)) {
           elements.add(allocation);
         }
+      }
+    } else if (newContainer instanceof AbstractFunction) {
+      // case where moving the function's port
+      for (Allocation allocation : allocations) {
+        if (!isEObjectInHierarchyOfContainer(newContainer, allocation.getSourceElement().eContainer())) {
+          elements.add(allocation);
+        }
+      }
     }
     return elements;
   }
@@ -3111,7 +3118,7 @@ public class FaServices {
    * @param container
    * @return
    */
-  private boolean isEObjectInHierarchyOfContainer(EObject eObject, NamedElement container) {
+  private boolean isEObjectInHierarchyOfContainer(EObject eObject, EObject container) {
     if (eObject == null || container == null) {
       return false;
     } else if (eObject == container) {
