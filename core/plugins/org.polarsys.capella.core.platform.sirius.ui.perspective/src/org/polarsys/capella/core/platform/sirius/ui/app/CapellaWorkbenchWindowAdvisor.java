@@ -13,6 +13,7 @@
 package org.polarsys.capella.core.platform.sirius.ui.app;
 
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPreferenceConstants;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -25,7 +26,9 @@ import org.eclipse.ui.internal.intro.impl.IntroPlugin;
 import org.eclipse.ui.internal.intro.impl.model.IntroModelRoot;
 import org.eclipse.ui.internal.util.PrefUtil;
 import org.eclipse.ui.intro.IIntroManager;
+import org.eclipse.ui.intro.IIntroPart;
 import org.eclipse.ui.intro.config.CustomizableIntroPart;
+import org.eclipse.ui.part.IntroPart;
 import org.polarsys.capella.common.bundle.FeatureHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.platform.sirius.ui.PerspectivePreferences;
@@ -75,13 +78,12 @@ public class CapellaWorkbenchWindowAdvisor extends IDEWorkbenchWindowAdvisor {
     // the page was not found in the current model, look for it in loaded
     // models. return false if failed.
     // avoid flicker.
-    CustomizableIntroPart currentIntroPart = (CustomizableIntroPart) IntroPlugin.getIntro();
-    currentIntroPart.getControl().setRedraw(false);
-
+    IIntroPart introPart = IntroPlugin.getIntro();
+    setRedraw(introPart, false);
     IntroModelRoot modelRoot = IntroPlugin.getDefault().getIntroModelRoot();
     boolean success = modelRoot.setCurrentPageId(pageId);
     // we turned drawing off. Turn it on again.
-    currentIntroPart.getControl().setRedraw(true);
+    setRedraw(introPart, true);
 
     if (success) {
       // found page. Set the history
@@ -141,5 +143,13 @@ public class CapellaWorkbenchWindowAdvisor extends IDEWorkbenchWindowAdvisor {
       updated = true;
     }
     return updated;
+  }
+
+  private void setRedraw(IIntroPart part, boolean redraw) {
+    if (part instanceof IWelcomeView) {
+      ((IWelcomeView) part).getControl().setRedraw(redraw);
+    } else if (part instanceof CustomizableIntroPart) {
+      ((CustomizableIntroPart) part).getControl().setRedraw(redraw);
+    }
   }
 }

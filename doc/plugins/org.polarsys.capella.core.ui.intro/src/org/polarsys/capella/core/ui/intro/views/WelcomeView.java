@@ -47,9 +47,10 @@ import org.eclipse.ui.internal.intro.impl.model.loader.ContentProviderManager;
 import org.eclipse.ui.intro.IIntroSite;
 import org.eclipse.ui.part.IntroPart;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.polarsys.capella.core.platform.sirius.ui.app.IWelcomeView;
 
 
-public class WelcomeView extends IntroPart{
+public class WelcomeView extends IntroPart implements IWelcomeView{
 
 	/**
 	 * The ID of the view as specified by the extension.
@@ -63,6 +64,8 @@ public class WelcomeView extends IntroPart{
 	Font titleTextFont = null;
 	Font introTextFont = null;
 	Font hyperLinkFont = null;
+	
+	ScrolledComposite container = null;
 
 	public WelcomeView() {
 	}
@@ -81,14 +84,14 @@ public class WelcomeView extends IntroPart{
 	@Override
 	public void createPartControl(Composite parent) {
 
-		ScrolledComposite mainComposite = new ScrolledComposite(parent, SWT.FILL | SWT.H_SCROLL | SWT.V_SCROLL);
-		mainComposite.setExpandHorizontal(true);
-		mainComposite.setExpandVertical(true);
-		mainComposite.setMinHeight(1000);
-		mainComposite.setMinWidth(900);
+		container = new ScrolledComposite(parent, SWT.FILL | SWT.H_SCROLL | SWT.V_SCROLL);
+		container.setExpandHorizontal(true);
+		container.setExpandVertical(true);
+		container.setMinHeight(1000);
+		container.setMinWidth(900);
 
-		Composite intermediaryComposite = new Composite(mainComposite, SWT.FILL);
-		mainComposite.setContent(intermediaryComposite);
+		Composite intermediaryComposite = new Composite(container, SWT.FILL);
+		container.setContent(intermediaryComposite);
 
 		parent.setBackground(parent.getDisplay().getSystemColor(SWT.COLOR_WHITE));
 		intermediaryComposite.setBackground(parent.getDisplay().getSystemColor(SWT.COLOR_WHITE));
@@ -398,5 +401,9 @@ public class WelcomeView extends IntroPart{
 	@Override
 	public void saveState(IMemento memento) {
 	}
+
+  public Composite getControl() {
+    return container;
+  }
 
 }
