@@ -625,6 +625,13 @@ public interface IToolNameConstants {
   String TOOL_IS_DURATION = TOOL_DURATION;
   String TOOL_IS_EXCHANGE_CONTEXT = TOOL_EXCHANGE_CONTEXT;
   String TOOL_IS_EI_EXCHANGE_CONTEXT = TOOL_EXCHANGE_CONTEXT;
+  String TOOL_IS_RECONNECT_CONSTRAINT = "IS Reconnect Constraint Elements";
+  String TOOL_ES_RECONNECT_CONSTRAINT = "ES Reconnect Constraint Elements";
+  String TOOL_FS_RECONNECT_CONSTRAINT = "FS Reconnect Constraint Elements";
+  
+  String TOOL_OES_RECONNECT_CONSTRAINT = "OES Reconnect Constraint Elements";
+  String TOOL_OAS_RECONNECT_CONSTRAINT = "OAS Reconnect Constraint Elements";
+  
 
   // id tools
   String TOOL_IS_CREATE_CONSTRAINTELEMENTSCENARIO = "constraint.element.scenario";

@@ -5418,7 +5418,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-         <ownedTools xsi:type="description_3:TableCreationDescription" name="System Functions - Operational Activities" precondition="aql:self.isInLib()">
+          <ownedTools xsi:type="description_3:TableCreationDescription" name="System Functions - Operational Activities" precondition="aql:self.isInLib()">
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
             <tableDescription xsi:type="description_3:CrossTableDescription" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']"/>
@@ -12133,7 +12133,7 @@
           </ownedTools>
         </toolSections>
       </defaultLayer>
-    </ownedRepresentations>    
+    </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']" name="Contextual Capability Realization Involvement" label="%common.cri" titleExpression="aql:'[CRI] ' + self.name" domainClass="CapabilityRealization">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
@@ -14236,6 +14236,11 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
+          <reconnections href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.1/@ownedTools[name='IS%20Reconnect%20Constraint%20Elements']"/>
+          <reconnections href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@toolSections.1/@ownedTools[name='FS%20Reconnect%20Constraint%20Elements']"/>
+          <reconnections href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.1/@ownedTools[name='ES%20Reconnect%20Constraint%20Elements']"/>
+          <reconnections href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.1/@ownedTools[name='OES%20Reconnect%20Constraint%20Elements']"/>
+          <reconnections href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@toolSections.1/@ownedTools[name='OAS%20Reconnect%20Constraint%20Elements']"/>
         </edgeMappings>
         <edgeMappings name="Scenario_ExchangeContext" preconditionExpression="aql:not self.exchangeContext->isEmpty()" semanticCandidatesExpression="feature:eAllContents" semanticElements="aql:self" synchronizationLock="true" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Scenario_Constraint']" targetFinderExpression="feature:exchangeContext">
           <sourceMapping xsi:type="description_2:BasicMessageMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping']"/>
@@ -16097,6 +16102,20 @@
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
               </firstModelOperations>
             </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" documentation="This Reconnect is reused in diffrent diagrams" name="IS Reconnect Constraint Elements" precondition="aql:not (self.constrainedElements->includes(target)) and not (target.oclIsKindOf(capellacore::Constraint))">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:edgeView.sourceNode.target">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
+                <subModelOperations xsi:type="tool_1:Unset" featureName="constrainedElements" elementExpression="aql:source"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
           </ownedTools>
         </toolSections>
       </defaultLayer>
@@ -17993,6 +18012,20 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" documentation="This Reconnect is reused in diffrent diagrams" name="ES Reconnect Constraint Elements" precondition="aql:not (self.constrainedElements->includes(target)) and not (target.oclIsKindOf(capellacore::Constraint))">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:edgeView.sourceNode.target">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
+                <subModelOperations xsi:type="tool_1:Unset" featureName="constrainedElements" elementExpression="aql:source"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
@@ -19071,6 +19104,20 @@
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
               </firstModelOperations>
             </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" documentation="This Reconnect is reused in diffrent diagrams" name="FS Reconnect Constraint Elements" precondition="aql:not (self.constrainedElements->includes(target)) and not (target.oclIsKindOf(capellacore::Constraint))">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:edgeView.sourceNode.target">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
+                <subModelOperations xsi:type="tool_1:Unset" featureName="constrainedElements" elementExpression="aql:source"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
           </ownedTools>
         </toolSections>
       </defaultLayer>

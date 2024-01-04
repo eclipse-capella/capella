@@ -329,13 +329,49 @@
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.epbs:EPBSArchitecture"
         id="38f9a505-2d82-4963-8b93-2f5226a4f057" name="EPBS Architecture">
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
-          id="eff0c767-1e47-441f-ab17-2515e90346db" name="Capabilities"/>
+          id="eff0c767-1e47-441f-ab17-2515e90346db" name="Capabilities">
+        <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
+            id="70dfd691-a325-47ac-9143-79a715896edf" name="CapabilityRealization 1">
+          <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
+              id="f45291ed-85b6-4f9f-bf27-d259cf6d1c8d" name="[IS] Scenario 1" kind="INTERFACE">
+            <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
+                id="6e76f474-d410-4f1a-a4c4-dc07997b9ffa" name="PrimeItemCI 1" representedInstance="#78710ed6-534d-4bea-b2eb-b716787c9fcb">
+              <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
+                  id="df297b99-c86e-4df3-8b7c-b273af873b84" name="" constrainedElements="#6e76f474-d410-4f1a-a4c4-dc07997b9ffa">
+                <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:OpaqueExpression"
+                    id="9cd1b9b6-1867-4050-b5c1-069687129718">
+                  <bodies></bodies>
+                  <languages>capella:linkedText</languages>
+                </ownedSpecification>
+              </ownedConstraints>
+            </ownedInstanceRoles>
+            <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
+                id="ef3da0af-cb12-4d73-8320-c838f8de7924" name="SystemCI 2" representedInstance="#67af654e-21fb-4f36-a9a9-6777f16cb500"/>
+          </ownedScenarios>
+          <ownedCapabilityRealizationInvolvements xsi:type="org.polarsys.capella.core.data.capellacommon:CapabilityRealizationInvolvement"
+              id="92e1590d-a60c-422f-a2d8-49ba7fe3f875" involved="#301f6b2c-b7dd-4af0-9399-73a2cc8cc0d0"/>
+          <ownedCapabilityRealizationInvolvements xsi:type="org.polarsys.capella.core.data.capellacommon:CapabilityRealizationInvolvement"
+              id="b4f4688a-b402-4da0-bd55-d4b49762a1b9" involved="#29c55a74-0754-484c-8ffb-017dce77cfb6"/>
+        </ownedCapabilityRealizations>
+      </ownedAbstractCapabilityPkg>
       <ownedConfigurationItemPkg xsi:type="org.polarsys.capella.core.data.epbs:ConfigurationItemPkg"
           id="21136eb8-5933-4b30-ac29-ca20f0ef4ba8" name="Structure">
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="df9e2025-ed4c-4387-a520-325d2124e1c7"
             name="System" abstractType="#00ed7f24-a97b-45e5-922e-27d8aa3d8e12"/>
         <ownedConfigurationItems xsi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem"
             id="00ed7f24-a97b-45e5-922e-27d8aa3d8e12" name="System" kind="SystemCI">
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="78710ed6-534d-4bea-b2eb-b716787c9fcb"
+              name="PrimeItemCI 1" abstractType="#301f6b2c-b7dd-4af0-9399-73a2cc8cc0d0"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="803446fd-2ada-462e-9ff4-27de9460588e"
+              name="PrimeItemCI 1" abstractType="#301f6b2c-b7dd-4af0-9399-73a2cc8cc0d0"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="67af654e-21fb-4f36-a9a9-6777f16cb500"
+              name="SystemCI 2" abstractType="#29c55a74-0754-484c-8ffb-017dce77cfb6"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="46d0a1e7-1270-4c12-a007-e1256ca2fa91"
+              name="SystemCI 2" abstractType="#29c55a74-0754-484c-8ffb-017dce77cfb6"/>
+          <ownedConfigurationItems xsi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem"
+              id="301f6b2c-b7dd-4af0-9399-73a2cc8cc0d0" name="PrimeItemCI 1" kind="PrimeItemCI"/>
+          <ownedConfigurationItems xsi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem"
+              id="29c55a74-0754-484c-8ffb-017dce77cfb6" name="SystemCI 2" kind="SystemCI"/>
           <ownedPhysicalArtifactRealizations xsi:type="org.polarsys.capella.core.data.epbs:PhysicalArtifactRealization"
               id="92a030d2-168c-429a-bbe0-675417994c8a" targetElement="#16953dc7-be25-45ef-9da9-32869d0cb53f"
               sourceElement="#00ed7f24-a97b-45e5-922e-27d8aa3d8e12"/>

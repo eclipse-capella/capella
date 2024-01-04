@@ -170,10 +170,12 @@ public class CommonDiagram extends DiagramContext {
     new DeleteElementTool(this).deleteAll();
   }
 
-  public void createConstrainedElement(String sourceId, String targetId) {
+  public String createConstrainedElement(String sourceId, String targetId) {
     // All diagrams shared the same tool
     String name = IToolNameConstants.TOOL_CC_CREATE_CONSTRAINTELEMENT;
-    new CreateDEdgeTool(this, name, sourceId, targetId).run();
+    DEdge edge =  new CreateDEdgeTool(this, name, sourceId, targetId).run();
+    
+    return getSemanticIdFromView(edge);
   }
 
   public void removeConstraint(String id, String containerId) {
@@ -539,7 +541,7 @@ public class CommonDiagram extends DiagramContext {
   }
 
   @Override
-  protected String getSemanticIdFromView(DDiagramElement view) {
+  public String getSemanticIdFromView(DDiagramElement view) {
 
     EObject semanticElement = view.getTarget();
 
