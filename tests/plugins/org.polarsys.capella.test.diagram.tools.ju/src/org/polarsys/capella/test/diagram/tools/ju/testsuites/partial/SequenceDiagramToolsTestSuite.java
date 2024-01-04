@@ -46,6 +46,7 @@ import org.polarsys.capella.test.diagram.tools.ju.sequence.InsertRemoveConstrain
 import org.polarsys.capella.test.diagram.tools.ju.sequence.InsertRemoveExchangeContext;
 import org.polarsys.capella.test.diagram.tools.ju.sequence.InsertRemoveFunctions;
 import org.polarsys.capella.test.diagram.tools.ju.sequence.LostAndFoundFunctionalExchange;
+import org.polarsys.capella.test.diagram.tools.ju.sequence.ReconnectConstraint;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -90,6 +91,7 @@ public class SequenceDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new CreateReference());
     tests.add(new CreateOperand());
     tests.add(new CreateDuration());
+    tests.add(new ReconnectConstraint());
 
     tests.add(new InsertRemoveActors());
     tests.add(new InsertRemoveComponents());

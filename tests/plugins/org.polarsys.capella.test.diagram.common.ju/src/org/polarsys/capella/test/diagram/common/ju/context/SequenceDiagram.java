@@ -43,6 +43,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNod
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeWithSelectionTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.ReconnectTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.sequence.CombinedFragmentCreationTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.sequence.MessageCreationTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.sequence.TimerCreationTool;
@@ -186,6 +187,11 @@ public class SequenceDiagram extends CommonDiagram {
     }
     return result;
   }
+  
+  public void reconnectConstraint(String toolName, String id, String oldTargetId, String newTargetId) {
+    new ReconnectTool(this,toolName, id, oldTargetId, newTargetId).run();
+  }
+
 
   /*
    * TOOLS

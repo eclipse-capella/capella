@@ -41,7 +41,7 @@ public abstract class SequenceTest extends SequenceDiagramProject {
   protected String function1 = "";
   protected String function2 = "";
   
-  public enum SequenceType {ES, FS, IS}
+  public enum SequenceType {ES, FS, IS, OES, OAS}
   
   public void testOnAllLevels(BlockArchitectureExt.Type[] types, SequenceType seqType) {
     for (BlockArchitectureExt.Type type : types) {
