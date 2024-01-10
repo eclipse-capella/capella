@@ -3211,8 +3211,7 @@ public class FaServices {
     }
 
     moveFunctionalExchanges(port);
-    removeComponentExchangeAllocations(getFunctionalExchanges(port));
-
+    
     return port;
   }
 
@@ -3457,8 +3456,6 @@ public class FaServices {
     for (FunctionalExchange exchange : functionalExchanges) {
       moveFunctionalExchange(exchange);
     }
-
-    removeComponentExchangeAllocations(functionalExchanges);
   }
 
   /**
