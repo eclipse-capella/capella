@@ -14,17 +14,11 @@
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature.Setting;
-
-import org.polarsys.capella.core.data.cs.PhysicalLink;
-import org.polarsys.capella.core.data.cs.PhysicalPath;
-import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
-import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.data.cs.PhysicalLink;
+import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
 
 /**
  * Return physical paths in which current physical link is involved
@@ -37,18 +31,7 @@ public class PhysicalLinksInvolvedInPhysicalPaths implements IQuery {
     List<Object> result = new ArrayList<Object>(0);
     if (object instanceof PhysicalLink) {
       // retrieve all inverse references elements
-      Collection<Setting> invRefs = CapellaElementExt.getInverseReferencesOfEObject((PhysicalLink) object);
-      for (Setting setting : invRefs) {
-        EObject eObject = setting.getEObject();
-        // add to result if physical path
-        if (null != eObject && eObject instanceof PhysicalPathInvolvement) {
-          PhysicalPathInvolvement inv = (PhysicalPathInvolvement) eObject;
-          EObject container = inv.eContainer();
-          if (null != container && container instanceof PhysicalPath) {
-            result.add(container);
-          }
-        }
-      }
+      result.addAll(PhysicalLinkExt.getInvolvingPhysicalPaths((PhysicalLink) object));
     }
     return result;
   }

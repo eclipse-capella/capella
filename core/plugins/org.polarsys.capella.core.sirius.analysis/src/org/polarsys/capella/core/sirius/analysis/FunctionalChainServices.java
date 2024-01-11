@@ -355,18 +355,23 @@ public class FunctionalChainServices {
     for (Map.Entry<DEdge, Set<FunctionalChain>> entry : coloredLinks.entrySet()) {
       DEdge edge = entry.getKey();
       Set<FunctionalChain> chains = entry.getValue();
-      List<RGBValues> fcColors = chains.stream().map(displayedFCs::get).map(ShapeUtil::getNodeColorStyle)
-          .collect(Collectors.toList());
-      if (fcColors.size() > 1) {
-        DEdgeIconCache.getInstance().setIcon(edge, fcColors.stream().collect(Collectors.toList()));
-        DEdgeIconCache.getInstance().setLabel(edge, DiagramServices.getDiagramServices()
-            .getOverlappedLabels(chains.stream().map(AbstractNamedElement::getName).collect(Collectors.toList())));
-      } else {
-        DEdgeIconCache.getInstance().removeIcon(edge);
-        DEdgeIconCache.getInstance().setLabel(edge, ICommonConstants.EMPTY_STRING);
-      }
+      updateFunctionalExchangePieIcon(edge, chains, displayedFCs);
       DiagramServices.getDiagramServices().refreshBeginEndLabels(edge);
       CapellaServices.getService().refreshElement(edge);
+    }
+  }
+
+  public void updateFunctionalExchangePieIcon(DEdge edge, Set<FunctionalChain> chains,
+      Map<FunctionalChain, DNode> displayedChains) {
+    List<RGBValues> pathColors = chains.stream().map(displayedChains::get).map(ShapeUtil::getNodeColorStyle)
+        .collect(Collectors.toList());
+    if (pathColors.size() > 1) {
+      DEdgeIconCache.getInstance().setIcon(edge, pathColors);
+      DEdgeIconCache.getInstance().setLabel(edge, DiagramServices.getDiagramServices()
+          .getOverlappedLabels(chains.stream().map(AbstractNamedElement::getName).collect(Collectors.toList())));
+    } else {
+      DEdgeIconCache.getInstance().removeIcon(edge);
+      DEdgeIconCache.getInstance().setLabel(edge, ICommonConstants.EMPTY_STRING);
     }
   }
 
