@@ -20,12 +20,14 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.TimeZone;
@@ -124,6 +126,7 @@ import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalLinkCategory;
+import org.polarsys.capella.core.data.cs.PhysicalPath;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityExploitation;
 import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
@@ -149,7 +152,6 @@ import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionPkgExt;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionalExt;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.AggregationKind;
 import org.polarsys.capella.core.data.information.Association;
@@ -1488,6 +1490,32 @@ public class CapellaServices {
       childContainer = childContainer.eContainer();
     }
     return false;
+  }
+   
+  public Set<PhysicalPath> getDisplayedInvolvingPhysicalPaths(DEdge view) {
+    Set<PhysicalPath> displayedInvolvingPhysicalPaths = new HashSet<PhysicalPath>();
+    EObject target = view.getTarget();
+    if(target instanceof PhysicalLink) {
+      PhysicalLink targetPL = (PhysicalLink) target;
+      DDiagram diagram = view.getParentDiagram();
+      Map<PhysicalPath, DNode> displayedPhysicalPaths = PhysicalServices.getService().getDisplayedPhysicalPathsAndNodes(diagram);
+      displayedInvolvingPhysicalPaths.addAll(PhysicalLinkExt.getInvolvingPhysicalPaths(targetPL));
+      displayedInvolvingPhysicalPaths.retainAll(displayedPhysicalPaths.keySet());      
+    }
+    return displayedInvolvingPhysicalPaths;    
+  }
+  
+  public Set<FunctionalChain> getDisplayedInvolvingFunctionalChains(DEdge view){
+    Set<FunctionalChain> displayedInvolvingFunctionalChains = new HashSet<FunctionalChain>();
+    EObject target = view.getTarget();
+    if(target instanceof FunctionalExchange) {
+      FunctionalExchange targetFE = (FunctionalExchange) target;
+      DDiagram diagram = view.getParentDiagram();
+      HashMap<FunctionalChain, DNode> displayedFunctionalChains = FunctionalChainServices.getFunctionalChainServices().getDisplayedFunctionalChains(diagram);
+      displayedInvolvingFunctionalChains.addAll(targetFE.getInvolvingFunctionalChains());
+      displayedInvolvingFunctionalChains.retainAll(displayedFunctionalChains.keySet());      
+    }
+    return displayedInvolvingFunctionalChains;    
   }
   
   public Set<EObject> getEdgeExchangeCategorySemanticElements(ExchangeCategory context, DEdge view) {

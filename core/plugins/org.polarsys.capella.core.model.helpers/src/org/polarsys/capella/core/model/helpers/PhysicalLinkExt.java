@@ -22,21 +22,15 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.capellacore.Namespace;
-import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.AbstractPhysicalLinkEnd;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.cs.DeployableElement;
-import org.polarsys.capella.core.data.cs.DeploymentTarget;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalLinkEnd;
@@ -359,7 +353,7 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
     pPort.getOwnedComponentPortAllocations().add(allocation);
     CapellaElementExt.creationService(allocation);
   }
-  
+
   /**
    * 
    * @param pl

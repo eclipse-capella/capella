@@ -19,23 +19,27 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
 import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.cs.AbstractPhysicalLinkEnd;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalLinkEnd;
+import org.polarsys.capella.core.data.cs.PhysicalPath;
+import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.information.Port;
 /**
  */
 public class PhysicalLinkExt {
-  
+
 
   public static Collection<PhysicalLinkEnd> getRelatedPhysicalLinkEnds(Port element) {
     HashSet<PhysicalLinkEnd> result = new HashSet<>();
@@ -285,5 +289,21 @@ public class PhysicalLinkExt {
       return ((PhysicalLinkEnd) end).getPort();
     }
     return null;
+  }
+
+  public static Set<PhysicalPath> getInvolvingPhysicalPaths(PhysicalLink targetPL) {
+    Set<PhysicalPath> involvingPhysicalPaths = new HashSet<PhysicalPath>();
+
+    List<Involvement> involvments = targetPL.getInvolvingInvolvements();
+    for (Involvement involvingInvolvement : involvments) {
+      if (null != involvingInvolvement && involvingInvolvement instanceof PhysicalPathInvolvement) {
+        PhysicalPathInvolvement inv = (PhysicalPathInvolvement) involvingInvolvement;
+        EObject container = inv.eContainer();
+        if (null != container && container instanceof PhysicalPath) {
+          involvingPhysicalPaths.add((PhysicalPath) container);
+        }
+      }
+    }
+    return involvingPhysicalPaths;
   }
 }

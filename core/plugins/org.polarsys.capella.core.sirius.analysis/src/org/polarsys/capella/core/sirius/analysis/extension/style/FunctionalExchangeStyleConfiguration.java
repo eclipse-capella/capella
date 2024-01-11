@@ -12,9 +12,16 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.extension.style;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
@@ -24,6 +31,8 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SimpleStyle
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.swt.graphics.Image;
+import org.polarsys.capella.core.data.fa.FunctionalChain;
+import org.polarsys.capella.core.sirius.analysis.FunctionalChainServices;
 import org.polarsys.capella.core.sirius.analysis.cache.DEdgeIconCache;
 
 /**
@@ -41,7 +50,26 @@ public class FunctionalExchangeStyleConfiguration extends SimpleStyleConfigurati
     if (representationElement instanceof DEdge
         && (editPart instanceof DEdgeBeginNameEditPart || editPart instanceof DEdgeEndNameEditPart)
         && isShowIcon(representationElement, editPart)) {
-      return DEdgeIconCache.getInstance().getIcon((DEdge) representationElement);
+      Image labelIcon = DEdgeIconCache.getInstance().getIcon((DEdge) representationElement);
+
+      if (labelIcon == null) {
+        DEdge edge = (DEdge) representationElement;
+        Set<FunctionalChain> chains = new HashSet<FunctionalChain>();
+
+        // If semanticElements is the Functional Exchange as before Capella 7, don't try to compute an image
+        EObject firstSemanticElement = edge.getSemanticElements().get(0);
+        if (firstSemanticElement == null || !(firstSemanticElement instanceof FunctionalChain)) {
+          return null;
+        }
+
+        chains.addAll((Collection<? extends FunctionalChain>) edge.getSemanticElements());
+        HashMap<FunctionalChain, DNode> functionalChains = FunctionalChainServices.getFunctionalChainServices()
+            .getDisplayedFunctionalChains(representationElement.getParentDiagram());
+        FunctionalChainServices.getFunctionalChainServices().updateFunctionalExchangePieIcon(edge, chains,
+            functionalChains);
+        labelIcon = DEdgeIconCache.getInstance().getIcon((DEdge) representationElement);
+      }
+      return labelIcon;
     }
     return super.getLabelIcon(representationElement, editPart);
   }

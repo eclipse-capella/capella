@@ -599,7 +599,7 @@ public class PhysicalServices {
     }
     return context instanceof PhysicalPort;
   }
-  
+
   public boolean isValidCreationPhysicalLink(EObject source, EObject target) {
     if (source instanceof PhysicalPort && source.equals(target)) {
       return false;
@@ -691,6 +691,16 @@ public class PhysicalServices {
       }
     }
     return returnedList;
+  }
+
+  public Map<PhysicalPath, DNode> getDisplayedPhysicalPathsAndNodes(DDiagram diagram) {
+    Map<PhysicalPath, DNode> returnedMap = new HashMap<>();
+    for (DNode aNode : diagram.getNodes()) {
+      if (aNode.getTarget() instanceof PhysicalPath) {
+        returnedMap.put((PhysicalPath) aNode.getTarget(), aNode);
+      }
+    }
+    return returnedMap;
   }
 
   public EObject reconnectPhysicalLink(PhysicalLink link, AbstractPhysicalLinkEnd source,
@@ -809,10 +819,12 @@ public class PhysicalServices {
     for (Entry<PhysicalPath, Set<DEdge>> entry : physicalPathToVisibleInternalEdges.entrySet()) {
       Set<DEdge> edges = entry.getValue();
       for (DEdge edge : edges) {
-        if (!isValidInternalLinkEdge(entry.getKey(), edge.getSourceNode(), edge.getTargetNode()) && entry.getKey().equals(edge.getTarget())) {
+        if (!isValidInternalLinkEdge(entry.getKey(), edge.getSourceNode(), edge.getTargetNode())
+            && entry.getKey().equals(edge.getTarget())) {
           edge.getSemanticElements().remove(entry.getKey());
           if (edge.getSemanticElements().isEmpty()) {
-            DiagramServices.getDiagramServices().removeEdgeView(edge); // We remove the edge view here, on FC this is done in precondition of the edge
+            DiagramServices.getDiagramServices().removeEdgeView(edge); // We remove the edge view here, on FC this is
+                                                                       // done in precondition of the edge
           }
         }
       }
@@ -824,7 +836,7 @@ public class PhysicalServices {
     Collection<PhysicalPath> displayedPaths = getDisplayedPhysicalPaths(view.getParentDiagram());
     return view.getSemanticElements().stream().filter(x -> displayedPaths.contains(x)).collect(Collectors.toList());
   }
-  
+
   public void updatePhysicalPathStyles(DDiagram diagram) {
     // Find displayed physical paths
     HashMap<PhysicalPath, DNode> displayedPaths = computePhysicalPathToNodeMap(diagram);
@@ -835,7 +847,7 @@ public class PhysicalServices {
     HashMap<DEdge, Set<PhysicalPath>> coloredLinks = computeEdgeToPhysicalPathsMap(displayedPaths,
         displayedPhysicalLinks);
     ArrayList<DEdge> displayedLinks = new ArrayList<>();
-    
+
     for (Entry<PhysicalPath, DNode> entry : displayedPaths.entrySet()) {
       DNode node = entry.getValue();
       PhysicalPath path = entry.getKey();
@@ -856,15 +868,17 @@ public class PhysicalServices {
           }
         }
       }
-      
+
       // Create and highlight internal links
       PhysicalPathInternalLinksGraph linksGraph = PhysicalPathCache.getInstance().getInternalLinksGraph(graph);
       for (InternalLinkEdge edge : linksGraph.getEdges().values()) {
         PhysicalPort source = edge.getSource().getSemantic();
         PhysicalPort target = edge.getTarget().getSemantic();
         // In multi-part mode, there can be many nodes in a diagram for the same physical port
-        Collection<DSemanticDecorator> sourceNodes = DiagramServices.getDiagramServices().getDiagramElements(diagram, source);
-        Collection<DSemanticDecorator> targetNodes = DiagramServices.getDiagramServices().getDiagramElements(diagram, target);
+        Collection<DSemanticDecorator> sourceNodes = DiagramServices.getDiagramServices().getDiagramElements(diagram,
+            source);
+        Collection<DSemanticDecorator> targetNodes = DiagramServices.getDiagramServices().getDiagramElements(diagram,
+            target);
         for (DSemanticDecorator sourceNode : sourceNodes) {
           for (DSemanticDecorator targetNode : targetNodes) {
             DEdge link = createInternalLink((DNode) sourceNode, (DNode) targetNode, path);
@@ -875,7 +889,7 @@ public class PhysicalServices {
         }
       }
     }
-    
+
     for (DEdge link : displayedLinks) {
       ArrayList<RGBValues> pathColors = new ArrayList<>();
       for (EObject pp : link.getSemanticElements()) {
@@ -886,7 +900,7 @@ public class PhysicalServices {
       }
       customizeInternalLinksEdgeStyle(link, pathColors.size() == 1 ? pathColors.get(0) : ShapeUtil.getBlackColor());
     }
-    
+
     customizePhysicalLinkEdgeLabels(coloredLinks, displayedPaths);
 
     // Update all physical links
@@ -921,19 +935,25 @@ public class PhysicalServices {
     for (Map.Entry<DEdge, Set<PhysicalPath>> entry : coloredLinks.entrySet()) {
       DEdge edge = entry.getKey();
       Set<PhysicalPath> paths = entry.getValue();
-      List<RGBValues> pathColors = paths.stream().map(displayedPaths::get).map(ShapeUtil::getNodeColorStyle)
-          .collect(Collectors.toList());
-      if (pathColors.size() > 1) {
-        DEdgeIconCache.getInstance().setIcon(edge, pathColors);
-        DEdgeIconCache.getInstance().setLabel(edge, DiagramServices.getDiagramServices()
-            .getOverlappedLabels(paths.stream().map(AbstractNamedElement::getName).collect(Collectors.toList())));
-      } else {
-        DEdgeIconCache.getInstance().removeIcon(edge);
-        DEdgeIconCache.getInstance().setLabel(edge, ICommonConstants.EMPTY_STRING);
-      }
+      updatePhysicalLinkPieIcon(edge, paths, displayedPaths);
       DiagramServices.getDiagramServices().refreshBeginEndLabels(edge);
       CapellaServices.getService().refreshElement(edge);
     }
+
+  }
+
+  public void updatePhysicalLinkPieIcon(DEdge edge, Set<PhysicalPath> paths, Map<PhysicalPath, DNode> displayedPaths) {
+    List<RGBValues> pathColors = paths.stream().map(displayedPaths::get).map(ShapeUtil::getNodeColorStyle)
+        .collect(Collectors.toList());
+    if (pathColors.size() > 1) {
+      DEdgeIconCache.getInstance().setIcon(edge, pathColors);
+      DEdgeIconCache.getInstance().setLabel(edge, DiagramServices.getDiagramServices()
+          .getOverlappedLabels(paths.stream().map(AbstractNamedElement::getName).collect(Collectors.toList())));
+    } else {
+      DEdgeIconCache.getInstance().removeIcon(edge);
+      DEdgeIconCache.getInstance().setLabel(edge, ICommonConstants.EMPTY_STRING);
+    }
+
   }
 
   private HashMap<DEdge, Set<PhysicalPath>> computeEdgeToPhysicalPathsMap(HashMap<PhysicalPath, DNode> displayedPaths,
@@ -962,14 +982,15 @@ public class PhysicalServices {
    */
   private HashMap<PhysicalPath, Set<DEdge>> computePhysicalPathToEdgesMap(DDiagram diagram) {
     HashMap<PhysicalPath, Set<DEdge>> displayedIL = new HashMap<>();
-    for (DEdge anEdge : DDiagramSpecOperations.getEdgesFromMapping(diagram, getPhysicalPathInternLinkEdgeMapping(diagram))) {
+    for (DEdge anEdge : DDiagramSpecOperations.getEdgesFromMapping(diagram,
+        getPhysicalPathInternLinkEdgeMapping(diagram))) {
       for (EObject semantic : anEdge.getSemanticElements()) {
         if (semantic instanceof PhysicalPath) {
-            displayedIL.computeIfAbsent((PhysicalPath) semantic, x -> new HashSet<>()).add(anEdge);
+          displayedIL.computeIfAbsent((PhysicalPath) semantic, x -> new HashSet<>()).add(anEdge);
         }
       }
     }
-    
+
     return displayedIL;
   }
 
@@ -1029,7 +1050,8 @@ public class PhysicalServices {
     return result;
   }
 
-  public boolean isValidInternalLinkEdge(PhysicalPath path, EdgeTarget currentSourceNode, EdgeTarget currentTargetNode) {
+  public boolean isValidInternalLinkEdge(PhysicalPath path, EdgeTarget currentSourceNode,
+      EdgeTarget currentTargetNode) {
     if (currentSourceNode == null) {
       return false;
     }
@@ -1053,7 +1075,7 @@ public class PhysicalServices {
     if (sourceParent == null || targetParent == null || !sourceParent.equals(targetParent)) {
       return false;
     }
-    
+
     DDiagram diagram = ((DDiagramElement) currentSourceNode).getParentDiagram();
     DEdge anotherEdge = DiagramServices.getDiagramServices().findInternalLinkEdge(diagram, currentSourceNode,
         currentTargetNode, getPhysicalPathInternLinkEdgeMapping(diagram));
