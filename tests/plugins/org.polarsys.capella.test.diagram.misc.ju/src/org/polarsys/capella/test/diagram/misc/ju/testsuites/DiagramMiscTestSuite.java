@@ -38,6 +38,7 @@ import org.polarsys.capella.test.diagram.misc.ju.testcases.InterfacePortSizeTest
 import org.polarsys.capella.test.diagram.misc.ju.testcases.LexicographicOrderInSBClassPropertiesTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.LexicographicOrderInSBSequenceInvokedMessagesTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.PABStyleChecksDiagramElements;
+import org.polarsys.capella.test.diagram.misc.ju.testcases.PieIconTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.RefreshFCContextualElementsTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.SemanticBrowserRefreshTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.StatusLineTestCase;
@@ -83,6 +84,7 @@ public class DiagramMiscTestSuite extends BasicTestSuite {
     tests.add(new BreakdownDiagramElements());
     tests.add(new InsertRemoveComponentsWithNoParts());
     tests.add(new PABStyleChecksDiagramElements());
+    tests.add(new PieIconTest());
     tests.add(new DecompositionWizardTestCase());
     tests.add(new CheckPhysCompNatureOptionTestCase());
     tests.add(new DeleteFromModelSemanticTarget());
