@@ -220,6 +220,30 @@ public class DiagramHelper {
   }
 
   /**
+   * Return the DRepresention with the given diagram ID, null otherwise To be used if several diagrams have the same
+   * name
+   * 
+   * @param session
+   *          the current Session.
+   * @param id
+   * @return <code>null</code> if an error occurred.
+   */
+  public static DRepresentation getDRepresentationByUID(final Session session, final String id) {
+    DRepresentation result = null;
+    Collection<DRepresentationDescriptor> dRepresentations = DialectManager.INSTANCE
+        .getAllRepresentationDescriptors(session);
+    for (DRepresentationDescriptor dRepresentation : dRepresentations) {
+      // check the diagram id with the id given in input
+      if (dRepresentation.getUid().equals(id)) {
+        // if the diagram id is the same than the given id, the
+        // current DRepresentation is the right one
+        result = dRepresentation.getRepresentation();
+      }
+    }
+    return result;
+  }
+
+  /**
    * Checks if the session given by its AIRD file path contains the given representation (Diagram)
    * 
    * @param representation
