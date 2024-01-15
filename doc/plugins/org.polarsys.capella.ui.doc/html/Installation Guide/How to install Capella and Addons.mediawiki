@@ -14,7 +14,7 @@ For a successful installation of Capella, your computer must meet the following 
 
 Starting from Capella 6.0, a JDK [https://adoptium.net Temurin (from adoptium.net)] is directly embedded in the product. Having an additional Java environment on your machine is no longer a requirement.
 
-'''Note:''' This distribution is a production-ready open-source build without legal requirement to subscribe to a commercial support contract and distributed under [https://openjdk.java.net/legal/gplv2+ce.html GNU General Public License, version 2, with the Classpath Exception].
+'''Note:''' This distribution is a production-ready open-source build without legal requirement to subscribe to a commercial support contract and distributed under GNU General Public License, version 2, with the Classpath Exception (see https://adoptium.net/about/)
 
 '''Note:''' Notice that only the embedded JDK has been field-tested.
 
