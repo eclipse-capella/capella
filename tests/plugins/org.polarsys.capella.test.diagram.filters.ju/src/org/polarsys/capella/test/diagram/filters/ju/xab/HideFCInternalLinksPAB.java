@@ -32,7 +32,6 @@ public class HideFCInternalLinksPAB extends InternalLinks {
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { PA_FUNCTIONALCHAIN_1, PA_FUNCTIONALCHAIN_2, PA_FUNCTIONALCHAIN_3,
-        PA_FUNCTIONALCHAIN_4, PA_FUNCTIONALCHAIN_5 });
+    return Arrays.asList(new String[] { PA_FUNCTIONALCHAIN_1, PA_FUNCTIONALCHAIN_2, PA_FUNCTIONALCHAIN_3 });
   }
 }

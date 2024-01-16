@@ -20,15 +20,15 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_xgUH0NhhEd-MB9TCx5TaEw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_NxIwwG9zEeaRiLEB1c1Ygg" name="[OEB] Operational Entity - Operational Entity Blank" repPath="#_2t8DQNhhEd-MB9TCx5TaEw" changeId="1692709413032">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_NxIwwG9zEeaRiLEB1c1Ygg" name="[OEB] Operational Entity - Operational Entity Blank" repPath="#_2t8DQNhhEd-MB9TCx5TaEw" changeId="1705344977816">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="CreateRule_RA01_01.capella#dec12f71-dc8e-4b67-9fad-9951ab5efab0"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_NxIwwW9zEeaRiLEB1c1Ygg" name="[OEB] E1 - Operational Entity Blank" repPath="#_XwQeYNq3Ed-ST86Gd4AW4A" changeId="1692709413032">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_NxIwwW9zEeaRiLEB1c1Ygg" name="[OEB] E1 - Operational Entity Blank" repPath="#_XwQeYNq3Ed-ST86Gd4AW4A" changeId="1705344978344">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="CreateRule_RA01_01.capella#43acd6b4-3c66-4739-b0a7-f783b2914ff6"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_NxIwwm9zEeaRiLEB1c1Ygg" name="[OEB] E1 - Operational Entity Blank" repPath="#_syezoNq6Ed-ST86Gd4AW4A" changeId="1692709413032">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_NxIwwm9zEeaRiLEB1c1Ygg" name="[OEB] E1 - Operational Entity Blank" repPath="#_syezoNq6Ed-ST86Gd4AW4A" changeId="1705344978882">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="CreateRule_RA01_01.capella#882c751c-2531-4303-ad04-cf179d01bcec"/>
       </ownedRepresentationDescriptors>
@@ -122,13 +122,7 @@
       </data>
     </ownedAnnotationEntries>
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_we490EaMEeWataBnM8mpkg" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_we490UaMEeWataBnM8mpkg">
-        <computedStyleDescriptions xmi:type="style:SquareDescription" xmi:id="_N7tpEG9zEeaRiLEB1c1Ygg" borderSizeComputationExpression="1" borderLineStyle="dash" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
-          <borderColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
-          <labelColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Activity_Label_Orange']"/>
-          <color xmi:type="description:UserFixedColor" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
-        </computedStyleDescriptions>
-      </data>
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_we490UaMEeWataBnM8mpkg"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_3NYYUNhhEd-MB9TCx5TaEw" name="E2">
       <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="CreateRule_RA01_01.capella#60aa3278-48db-48f2-b2f3-34d04f56c00b"/>
@@ -248,13 +242,7 @@
       </data>
     </ownedAnnotationEntries>
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_wfcXckaMEeWataBnM8mpkg" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_wfcXc0aMEeWataBnM8mpkg">
-        <computedStyleDescriptions xmi:type="style:SquareDescription" xmi:id="_N73aEG9zEeaRiLEB1c1Ygg" borderSizeComputationExpression="1" borderLineStyle="dash" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
-          <borderColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
-          <labelColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Activity_Label_Orange']"/>
-          <color xmi:type="description:UserFixedColor" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
-        </computedStyleDescriptions>
-      </data>
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_wfcXc0aMEeWataBnM8mpkg"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_ZIsQ8Nq3Ed-ST86Gd4AW4A" name="E3">
       <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="CreateRule_RA01_01.capella#8a12341a-e720-476e-8dc8-27b362e8598e"/>
@@ -322,13 +310,7 @@
       </data>
     </ownedAnnotationEntries>
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_wfcXdkaMEeWataBnM8mpkg" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_wfcXd0aMEeWataBnM8mpkg">
-        <computedStyleDescriptions xmi:type="style:SquareDescription" xmi:id="_N8AkAG9zEeaRiLEB1c1Ygg" borderSizeComputationExpression="1" borderLineStyle="dash" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
-          <borderColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
-          <labelColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Activity_Label_Orange']"/>
-          <color xmi:type="description:UserFixedColor" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
-        </computedStyleDescriptions>
-      </data>
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_wfcXd0aMEeWataBnM8mpkg"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_tPopsNq6Ed-ST86Gd4AW4A" name="E3">
       <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="CreateRule_RA01_01.capella#f6abd717-314d-459f-b4e2-18f4a54adfc6"/>

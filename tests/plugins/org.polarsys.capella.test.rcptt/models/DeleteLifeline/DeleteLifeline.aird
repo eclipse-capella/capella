@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/7.0.0" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/7.0.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/7.0.0" xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/7.0.0" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
   <viewpoint:DAnalysis uid="_Bi6pUDWVEeegO75wgtaLyw" selectedViews="_Bjq3QDWVEeegO75wgtaLyw _Bult0DWVEeegO75wgtaLyw _BuwF4DWVEeegO75wgtaLyw _Bu7sEDWVEeegO75wgtaLyw _BvIgYDWVEeegO75wgtaLyw _BvNY4DWVEeegO75wgtaLyw _BvYYADWVEeegO75wgtaLyw" version="15.2.0.202303281325">
     <semanticResources>DeleteLifeline.afm</semanticResources>
     <semanticResources>DeleteLifeline.capella</semanticResources>
@@ -11,7 +11,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_BuwF4DWVEeegO75wgtaLyw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Of1ywDWVEeegO75wgtaLyw" name="[IS] Capability 1" repPath="#_Of3A4DWVEeegO75wgtaLyw" changeId="1692709487964">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Of1ywDWVEeegO75wgtaLyw" name="[IS] Capability 1" repPath="#_Of3A4DWVEeegO75wgtaLyw" changeId="1705345335783">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="DeleteLifeline.capella#9ef65f3d-89f0-427b-8870-38d0929f9e3c"/>
       </ownedRepresentationDescriptors>
@@ -61,9 +61,9 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_Of4PAzWVEeegO75wgtaLyw" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Of4PBDWVEeegO75wgtaLyw" y="42" width="10" height="395"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_Of42EjWVEeegO75wgtaLyw" type="3003" element="_Of3A6DWVEeegO75wgtaLyw">
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_Of42EzWVEeegO75wgtaLyw"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Of42FDWVEeegO75wgtaLyw"/>
+          <children xmi:type="notation:Node" xmi:id="_mRdBULPYEe6NAMw5pQd-Iw" type="3003" element="_mRYv4bPYEe6NAMw5pQd-Iw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_mRdBUbPYEe6NAMw5pQd-Iw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mRdBUrPYEe6NAMw5pQd-Iw"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_Of3n9DWVEeegO75wgtaLyw" fontColor="9914954" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Of3n9TWVEeegO75wgtaLyw" x="50" y="50" width="150" height="50"/>
@@ -172,13 +172,19 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_Of3A4zWVEeegO75wgtaLyw" name="System" width="15" height="5" resizeKind="EAST_WEST">
       <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DeleteLifeline.capella#7622e42c-49bb-4f9d-a53a-b5664a8a60bd"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DeleteLifeline.capella#7622e42c-49bb-4f9d-a53a-b5664a8a60bd"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DeleteLifeline.capella#96b1028c-e626-4180-b627-de86abe0deb3"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="DeleteLifeline.capella#a38c7673-0a65-4837-8869-b163db79f047"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_OiNKQDWVEeegO75wgtaLyw" x="50" y="50" height="50" width="150"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_Of3A5DWVEeegO75wgtaLyw" outgoingEdges="_WIBsIDWVEeegO75wgtaLyw _YivbEDWVEeegO75wgtaLyw" width="1" height="40" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DeleteLifeline.capella#7622e42c-49bb-4f9d-a53a-b5664a8a60bd"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DeleteLifeline.capella#7622e42c-49bb-4f9d-a53a-b5664a8a60bd"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DeleteLifeline.capella#96b1028c-e626-4180-b627-de86abe0deb3"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="DeleteLifeline.capella#a38c7673-0a65-4837-8869-b163db79f047"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_Of3A5TWVEeegO75wgtaLyw" width="1" height="1">
           <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DeleteLifeline.capella#7622e42c-49bb-4f9d-a53a-b5664a8a60bd"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DeleteLifeline.capella#7622e42c-49bb-4f9d-a53a-b5664a8a60bd"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DeleteLifeline.capella#96b1028c-e626-4180-b627-de86abe0deb3"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="DeleteLifeline.capella#a38c7673-0a65-4837-8869-b163db79f047"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_Of3A5jWVEeegO75wgtaLyw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']/@style"/>
           </ownedStyle>
@@ -189,21 +195,27 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']"/>
       </ownedBorderedNodes>
-      <ownedStyle xmi:type="diagram:Square" uid="_Of3A6DWVEeegO75wgtaLyw" labelColor="74,74,151" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" labelPosition="node" width="15" height="5" color="150,177,218">
-        <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@conditionnalStyles.4/@style"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_mRYv4bPYEe6NAMw5pQd-Iw" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" labelPosition="node" width="15" height="5" color="150,177,218">
+        <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@conditionnalStyles.5/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_SPdfIDWVEeegO75wgtaLyw" name="Actor 1" incomingEdges="_WIBsIDWVEeegO75wgtaLyw" width="10" height="5" resizeKind="EAST_WEST">
       <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DeleteLifeline.capella#014cc3b7-8fce-4e62-bb92-0d1508c7d00d"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DeleteLifeline.capella#014cc3b7-8fce-4e62-bb92-0d1508c7d00d"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DeleteLifeline.capella#568cfdb1-1182-4aba-9407-2bff9bfe6e97"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="DeleteLifeline.capella#3d14a361-9d05-403f-b9fe-3d07a631eb78"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_SPiXoDWVEeegO75wgtaLyw" x="363" y="183" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_SPhwkDWVEeegO75wgtaLyw" width="1" height="40" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DeleteLifeline.capella#014cc3b7-8fce-4e62-bb92-0d1508c7d00d"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DeleteLifeline.capella#014cc3b7-8fce-4e62-bb92-0d1508c7d00d"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DeleteLifeline.capella#568cfdb1-1182-4aba-9407-2bff9bfe6e97"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="DeleteLifeline.capella#3d14a361-9d05-403f-b9fe-3d07a631eb78"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_SPhwkTWVEeegO75wgtaLyw" width="1" height="1">
           <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DeleteLifeline.capella#014cc3b7-8fce-4e62-bb92-0d1508c7d00d"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DeleteLifeline.capella#014cc3b7-8fce-4e62-bb92-0d1508c7d00d"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DeleteLifeline.capella#568cfdb1-1182-4aba-9407-2bff9bfe6e97"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="DeleteLifeline.capella#3d14a361-9d05-403f-b9fe-3d07a631eb78"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_SPhwkjWVEeegO75wgtaLyw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']/@style"/>
           </ownedStyle>
@@ -222,13 +234,19 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_SoNWUDWVEeegO75wgtaLyw" name="Actor 2" width="10" height="5" resizeKind="EAST_WEST">
       <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DeleteLifeline.capella#7a28e5a2-a1fb-44a7-a5d9-898ac9ef8d00"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DeleteLifeline.capella#7a28e5a2-a1fb-44a7-a5d9-898ac9ef8d00"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DeleteLifeline.capella#6d924569-2b10-43d2-bf09-ef4bf5e7fd9c"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="DeleteLifeline.capella#745a5360-dbdd-4cae-b861-01c59b46da14"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_SoPylDWVEeegO75wgtaLyw" x="666" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_SoPykDWVEeegO75wgtaLyw" width="1" height="40" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DeleteLifeline.capella#7a28e5a2-a1fb-44a7-a5d9-898ac9ef8d00"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DeleteLifeline.capella#7a28e5a2-a1fb-44a7-a5d9-898ac9ef8d00"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DeleteLifeline.capella#6d924569-2b10-43d2-bf09-ef4bf5e7fd9c"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="DeleteLifeline.capella#745a5360-dbdd-4cae-b861-01c59b46da14"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_YirwsDWVEeegO75wgtaLyw" incomingEdges="_YivbEDWVEeegO75wgtaLyw" width="3" height="3">
           <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DeleteLifeline.capella#7a28e5a2-a1fb-44a7-a5d9-898ac9ef8d00"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="DeleteLifeline.capella#7a28e5a2-a1fb-44a7-a5d9-898ac9ef8d00"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DeleteLifeline.capella#6d924569-2b10-43d2-bf09-ef4bf5e7fd9c"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="DeleteLifeline.capella#745a5360-dbdd-4cae-b861-01c59b46da14"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_YirwsTWVEeegO75wgtaLyw" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/eol.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='Lifeline%20deletion%20mapping']/@style"/>
           </ownedStyle>
@@ -247,6 +265,9 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WIBsIDWVEeegO75wgtaLyw" name="create()" sourceNode="_Of3A5DWVEeegO75wgtaLyw" targetNode="_SPdfIDWVEeegO75wgtaLyw">
       <target xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="DeleteLifeline.capella#445eb171-2efb-4fd8-8c37-169160258fd9"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="DeleteLifeline.capella#445eb171-2efb-4fd8-8c37-169160258fd9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:MessageEnd" href="DeleteLifeline.capella#0f4e7273-addc-452e-879a-f9be7426f22c"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:MessageEnd" href="DeleteLifeline.capella#3fc1e7f8-d919-451c-af8a-b7622ccad0d7"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:ExchangeItemAllocation" href="DeleteLifeline.capella#c9668feb-b1b4-4639-a4b9-d4a4e0633135"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_WIHLsDWVEeegO75wgtaLyw" y="208" height="0"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_WIC6QDWVEeegO75wgtaLyw" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='creation%20message%20mapping']/@style"/>
@@ -257,6 +278,9 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_YivbEDWVEeegO75wgtaLyw" name="delete()" sourceNode="_Of3A5DWVEeegO75wgtaLyw" targetNode="_YirwsDWVEeegO75wgtaLyw">
       <target xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="DeleteLifeline.capella#ae7899e5-2f3c-4d9c-8b97-97a4b815d00e"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:SequenceMessage" href="DeleteLifeline.capella#ae7899e5-2f3c-4d9c-8b97-97a4b815d00e"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:MessageEnd" href="DeleteLifeline.capella#5ae0d9c2-0566-440b-ab81-565cd6c3408e"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:MessageEnd" href="DeleteLifeline.capella#0c2f65b4-e71b-41a9-b0e5-f7556161909b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:ExchangeItemAllocation" href="DeleteLifeline.capella#e40f2a46-3fb1-478f-97f2-712c7950668f"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_YixQQDWVEeegO75wgtaLyw" y="398" height="0"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_YivbETWVEeegO75wgtaLyw" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='destruction%20message%20mapping']/@style"/>

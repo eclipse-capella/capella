@@ -31,7 +31,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="RefreshRemoveExport.capella#5389b66a-9473-4ecf-8de2-5fe4eb1c6515"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_g_cC01fXEeqln-XhR7jU9A" name="Refresh" repPath="#_g_SR0FfXEeqln-XhR7jU9A" changeId="1692714289019">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_g_cC01fXEeqln-XhR7jU9A" name="Refresh" repPath="#_g_SR0FfXEeqln-XhR7jU9A" changeId="1705400677858">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="RefreshRemoveExport.capella#5389b66a-9473-4ecf-8de2-5fe4eb1c6515"/>
       </ownedRepresentationDescriptors>
@@ -173,15 +173,6 @@
           <styles xmi:type="notation:ShapeStyle" xmi:id="_hco8OFfXEeqln-XhR7jU9A" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hco8OVfXEeqln-XhR7jU9A" x="170" y="90"/>
         </children>
-        <children xmi:type="notation:Node" xmi:id="_hzvNkVfXEeqln-XhR7jU9A" type="2002" element="_hzlckFfXEeqln-XhR7jU9A">
-          <children xmi:type="notation:Node" xmi:id="_hzvNlFfXEeqln-XhR7jU9A" type="5006"/>
-          <children xmi:type="notation:Node" xmi:id="_hzvNlVfXEeqln-XhR7jU9A" type="7001">
-            <styles xmi:type="notation:SortingStyle" xmi:id="_hzvNllfXEeqln-XhR7jU9A"/>
-            <styles xmi:type="notation:FilteringStyle" xmi:id="_hzvNl1fXEeqln-XhR7jU9A"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_hzvNklfXEeqln-XhR7jU9A" fontName="Segoe UI" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hzvNk1fXEeqln-XhR7jU9A" x="430" y="110"/>
-        </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_g_cC1lfXEeqln-XhR7jU9A"/>
       </data>
     </ownedAnnotationEntries>
@@ -200,15 +191,6 @@
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_hcDGVVfXEeqln-XhR7jU9A" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" backgroundStyle="GradientTopToBottom" backgroundColor="244,255,224" foregroundColor="197,255,166">
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_hzlckFfXEeqln-XhR7jU9A" name="SystemFunction 3">
-      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_hzlckVfXEeqln-XhR7jU9A" borderSize="1" borderSizeComputationExpression="1" borderColor="77,137,20" backgroundStyle="GradientTopToBottom" backgroundColor="244,255,224" foregroundColor="197,255,166">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']"/>

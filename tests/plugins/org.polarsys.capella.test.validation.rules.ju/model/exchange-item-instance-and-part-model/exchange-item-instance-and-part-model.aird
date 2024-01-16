@@ -18,7 +18,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="exchange-item-instance-and-part-model.capella#105cd58a-1e0a-4f14-be59-88fcd5e93a8d"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_m0RY5CgEEeuc881X317kNw" name="[IS] Capability 1" repPath="#_m0Hn4CgEEeuc881X317kNw" changeId="1684506464717">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_m0RY5CgEEeuc881X317kNw" name="[IS] Capability 1" repPath="#_m0Hn4CgEEeuc881X317kNw" changeId="1705394029898">
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="exchange-item-instance-and-part-model.capella#684b973d-e383-4b4a-b595-f076680fd83c"/>
       </ownedRepresentationDescriptors>
@@ -230,9 +230,9 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_qJY6mSgEEeuc881X317kNw" fontName="Segoe UI" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qJY6migEEeuc881X317kNw" y="42" width="10" height="395"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_qJY6nSgEEeuc881X317kNw" type="3003" element="_qIpTsSgEEeuc881X317kNw">
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_qJY6nigEEeuc881X317kNw" fontName="Segoe UI"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qJY6nygEEeuc881X317kNw"/>
+          <children xmi:type="notation:Node" xmi:id="_-QuzkLRJEe6NAMw5pQd-Iw" type="3003" element="_-QsXU7RJEe6NAMw5pQd-Iw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_-QuzkbRJEe6NAMw5pQd-Iw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-QuzkrRJEe6NAMw5pQd-Iw"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_qJPJmygEEeuc881X317kNw" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qJPJnCgEEeuc881X317kNw" x="244" y="50" width="150" height="50"/>
@@ -274,7 +274,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_qIpTsCgEEeuc881X317kNw" name="ExchangeItem 1" width="15" height="5" resizeKind="EAST_WEST">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_qIpTsCgEEeuc881X317kNw" name="[Instance Role]" width="15" height="5" resizeKind="EAST_WEST">
       <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="exchange-item-instance-and-part-model.capella#d0de2024-3ff0-4df2-8e94-20efe5de11d3"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="exchange-item-instance-and-part-model.capella#d0de2024-3ff0-4df2-8e94-20efe5de11d3"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_qIydpygEEeuc881X317kNw" x="244" y="50" height="50" width="150"/>
@@ -294,12 +294,12 @@
         </ownedStyle>
         <actualMapping xmi:type="description_2:ExecutionMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']"/>
       </ownedBorderedNodes>
-      <ownedStyle xmi:type="diagram:Square" uid="_qIpTsSgEEeuc881X317kNw" borderSize="1" borderSizeComputationExpression="1" borderColor="124,61,61" labelPosition="node" width="15" height="5" color="246,235,235">
-        <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@conditionnalStyles.0/@style"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_-QsXU7RJEe6NAMw5pQd-Iw" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" labelPosition="node" width="15" height="5" color="150,177,218">
+        <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@conditionnalStyles.5/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_qIpTtygEEeuc881X317kNw" name="ExchangeItem 2" width="15" height="5" resizeKind="EAST_WEST">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_qIpTtygEEeuc881X317kNw" name="ExchangeItem1" width="15" height="5" resizeKind="EAST_WEST">
       <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="exchange-item-instance-and-part-model.capella#c8124936-287d-4029-a4ac-47fa65784d1d"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="exchange-item-instance-and-part-model.capella#c8124936-287d-4029-a4ac-47fa65784d1d"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.information:ExchangeItemInstance" href="exchange-item-instance-and-part-model.capella#4f7a6106-ee35-4dc0-87e2-74b67f2b5aae"/>

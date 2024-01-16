@@ -31,7 +31,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="opd-fcd-exchange-tool-cycle-model.capella#4ea18578-1b46-422e-b72c-74670d05661c"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_zEDpc7FpEeq-EJ4697_U6Q" name="[OAIB] Root Operational Activity" repPath="#_zD6fgLFpEeq-EJ4697_U6Q" changeId="1692713532768">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_zEDpc7FpEeq-EJ4697_U6Q" name="[OAIB] Root Operational Activity" repPath="#_zD6fgLFpEeq-EJ4697_U6Q" changeId="1705400050926">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="opd-fcd-exchange-tool-cycle-model.capella#40054bc1-d432-4792-a9c6-df6076f2b8ca"/>
       </ownedRepresentationDescriptors>
@@ -1101,7 +1101,20 @@
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_zD6fgLFpEeq-EJ4697_U6Q">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_zEDpcLFpEeq-EJ4697_U6Q" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_zEDpcbFpEeq-EJ4697_U6Q"/>
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_zEDpcbFpEeq-EJ4697_U6Q">
+        <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="__dtbsLRXEe6bJ_qW7OCvSA">
+          <strokeColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
+          <beginLabelStyleDescription xmi:type="style:BeginLabelStyleDescription" xmi:id="__dtbsbRXEe6bJ_qW7OCvSA" labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </beginLabelStyleDescription>
+          <centerLabelStyleDescription xmi:type="style:CenterLabelStyleDescription" xmi:id="__dtbsrRXEe6bJ_qW7OCvSA" labelExpression="aql:self.getFunctionalExchangeLabel(diagram)">
+            <labelColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
+          </centerLabelStyleDescription>
+          <endLabelStyleDescription xmi:type="style:EndLabelStyleDescription" xmi:id="__dtbs7RXEe6bJ_qW7OCvSA" labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </endLabelStyleDescription>
+        </computedStyleDescriptions>
+      </data>
     </ownedAnnotationEntries>
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_zEDpdLFpEeq-EJ4697_U6Q" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_zEDpdbFpEeq-EJ4697_U6Q" type="Sirius" element="_zD6fgLFpEeq-EJ4697_U6Q" measurementUnit="Pixel">
@@ -1259,45 +1272,50 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_0BT79LFpEeq-EJ4697_U6Q" name="Interaction 1" sourceNode="_0BT74LFpEeq-EJ4697_U6Q" targetNode="_0BT747FpEeq-EJ4697_U6Q">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-exchange-tool-cycle-model.capella#58fb1882-022e-4630-b77e-04abcafe470e"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-exchange-tool-cycle-model.capella#58fb1882-022e-4630-b77e-04abcafe470e"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_0BT79bFpEeq-EJ4697_U6Q" strokeColor="91,64,64">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_0BT79rFpEeq-EJ4697_U6Q" labelColor="91,64,64"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="__dtbtLRXEe6bJ_qW7OCvSA" description="__dtbsLRXEe6bJ_qW7OCvSA" strokeColor="91,64,64">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="__dtbtbRXEe6bJ_qW7OCvSA"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="__dtbt7RXEe6bJ_qW7OCvSA" labelColor="91,64,64"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="__dtbtrRXEe6bJ_qW7OCvSA"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_0BT7-bFpEeq-EJ4697_U6Q" name="Interaction 2" sourceNode="_0BT747FpEeq-EJ4697_U6Q" targetNode="_0BT75rFpEeq-EJ4697_U6Q">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-exchange-tool-cycle-model.capella#45120058-d7ca-490f-b193-0b19bb5c55c5"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-exchange-tool-cycle-model.capella#45120058-d7ca-490f-b193-0b19bb5c55c5"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_0Bm20LFpEeq-EJ4697_U6Q" strokeColor="91,64,64">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_0Bm20bFpEeq-EJ4697_U6Q" labelColor="91,64,64"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="__dtbvLRXEe6bJ_qW7OCvSA" description="__dtbsLRXEe6bJ_qW7OCvSA" strokeColor="91,64,64">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="__dtbvbRXEe6bJ_qW7OCvSA"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="__dtbv7RXEe6bJ_qW7OCvSA" labelColor="91,64,64"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="__dtbvrRXEe6bJ_qW7OCvSA"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_0Bm21LFpEeq-EJ4697_U6Q" name="Interaction 3" sourceNode="_0BT75rFpEeq-EJ4697_U6Q" targetNode="_0BT76bFpEeq-EJ4697_U6Q">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-exchange-tool-cycle-model.capella#4d3f7b63-a39f-481c-9ffe-e8777168f396"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-exchange-tool-cycle-model.capella#4d3f7b63-a39f-481c-9ffe-e8777168f396"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_0Bm21bFpEeq-EJ4697_U6Q" strokeColor="91,64,64">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_0Bm21rFpEeq-EJ4697_U6Q" labelColor="91,64,64"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="__dtbzLRXEe6bJ_qW7OCvSA" description="__dtbsLRXEe6bJ_qW7OCvSA" strokeColor="91,64,64">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="__dtbzbRXEe6bJ_qW7OCvSA"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="__dtbz7RXEe6bJ_qW7OCvSA" labelColor="91,64,64"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="__dtbzrRXEe6bJ_qW7OCvSA"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_0Bm22bFpEeq-EJ4697_U6Q" name="Interaction 4" sourceNode="_0BT76bFpEeq-EJ4697_U6Q" targetNode="_0BT74LFpEeq-EJ4697_U6Q">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-exchange-tool-cycle-model.capella#e72649ac-622a-466d-9485-0b68d7b8d0e0"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-exchange-tool-cycle-model.capella#e72649ac-622a-466d-9485-0b68d7b8d0e0"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_0CMssLFpEeq-EJ4697_U6Q" strokeColor="91,64,64">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_0CMssbFpEeq-EJ4697_U6Q" labelColor="91,64,64"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="__duCwLRXEe6bJ_qW7OCvSA" description="__dtbsLRXEe6bJ_qW7OCvSA" strokeColor="91,64,64">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="__duCwbRXEe6bJ_qW7OCvSA"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="__duCw7RXEe6bJ_qW7OCvSA" labelColor="91,64,64"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="__duCwrRXEe6bJ_qW7OCvSA"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_A6IBYLFqEeq-EJ4697_U6Q" name="Interaction 5" sourceNode="_0BT747FpEeq-EJ4697_U6Q" targetNode="_0BT74LFpEeq-EJ4697_U6Q">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-exchange-tool-cycle-model.capella#944e93fb-57bb-4053-bb3b-489b48f9e891"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-exchange-tool-cycle-model.capella#944e93fb-57bb-4053-bb3b-489b48f9e891"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_A6IBYbFqEeq-EJ4697_U6Q" strokeColor="91,64,64">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_A6IBYrFqEeq-EJ4697_U6Q" labelColor="91,64,64"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="__dtbxLRXEe6bJ_qW7OCvSA" description="__dtbsLRXEe6bJ_qW7OCvSA" strokeColor="91,64,64">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="__dtbxbRXEe6bJ_qW7OCvSA"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="__dtbx7RXEe6bJ_qW7OCvSA" labelColor="91,64,64"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="__dtbxrRXEe6bJ_qW7OCvSA"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']"/>
     </ownedDiagramElements>

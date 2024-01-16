@@ -8,7 +8,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_QOg6AOYsEee0WpinHtEUew">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_UiyLkOYsEee0WpinHtEUew" name="[PAB] 1" repPath="#_UiyLkeYsEee0WpinHtEUew" changeId="1692709475523">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_UiyLkOYsEee0WpinHtEUew" name="[PAB] 1" repPath="#_UiyLkeYsEee0WpinHtEUew" changeId="1705345286484">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="DashFunctionBug.capella#3a4f06b6-2a57-4cc1-88d8-6df866462cff"/>
       </ownedRepresentationDescriptors>
@@ -27,7 +27,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_QRMakOYsEee0WpinHtEUew">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RaryMOYsEee0WpinHtEUew" name="[LAB] 1" repPath="#_Ra1jMOYsEee0WpinHtEUew" changeId="1692709475523">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RaryMOYsEee0WpinHtEUew" name="[LAB] 1" repPath="#_Ra1jMOYsEee0WpinHtEUew" changeId="1705345287173">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="DashFunctionBug.capella#7f7406b6-0432-4d18-b3e3-6f407eaa482e"/>
       </ownedRepresentationDescriptors>
@@ -35,11 +35,11 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="DashFunctionBug.capella#7b0b50bd-3d10-4858-8cc1-f08a5b431c4d"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_vsoGsOYsEee0WpinHtEUew" name="[LAB] 2" repPath="#_vsx3sOYsEee0WpinHtEUew" changeId="1692709475523">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_vsoGsOYsEee0WpinHtEUew" name="[LAB] 2" repPath="#_vsx3sOYsEee0WpinHtEUew" changeId="1705345288285">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="DashFunctionBug.capella#7f7406b6-0432-4d18-b3e3-6f407eaa482e"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_OuimkVtpEemGG-PnhtJyHA" name="[LAB] 3" repPath="#_OtfdsFtpEemGG-PnhtJyHA" changeId="1692709475523">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_OuimkVtpEemGG-PnhtJyHA" name="[LAB] 3" repPath="#_OtfdsFtpEemGG-PnhtJyHA" changeId="1705345288810">
         <eAnnotations xmi:type="description:DAnnotation" uid="_dOea4FtpEemGG-PnhtJyHA" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_eE0NMMlrEemrYZGlCyIT9A" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_eE0NMclrEemrYZGlCyIT9A" key="hide.computed.physical.links.filter" value="true"/>
@@ -82,7 +82,7 @@
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="DashFunctionBug.capella#69260d5d-f103-49a2-9e3f-046f86043346"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DashFunctionBug.capella#69260d5d-f103-49a2-9e3f-046f86043346"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="DashFunctionBug.capella#94174829-a775-4e0a-8ce0-c4bd4f8bccc2"/>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_R9MpYeYsEee0WpinHtEUew" labelColor="74,74,151" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_R9MpYeYsEee0WpinHtEUew" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']"/>
@@ -164,14 +164,15 @@
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="DashFunctionBug.capella#31702488-936f-45e7-8a42-81697b2a4166"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DashFunctionBug.capella#31702488-936f-45e7-8a42-81697b2a4166"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="DashFunctionBug.capella#45264f5d-94f1-48f0-b11d-a6d30fde74d8"/>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_VOrBMeYsEee0WpinHtEUew" borderSize="1" borderSizeComputationExpression="1" borderColor="123,105,79" backgroundStyle="GradientTopToBottom" backgroundColor="255,255,220" foregroundColor="255,252,183">
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@style"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_e7Q24bPYEe6NAMw5pQd-Iw" borderSize="1" borderSizeComputationExpression="1" borderColor="123,105,79" backgroundStyle="GradientTopToBottom" backgroundColor="255,255,220" foregroundColor="255,252,183">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@conditionnalStyles.2/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_VwvzgOYsEee0WpinHtEUew" name="PC 2">
         <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="DashFunctionBug.capella#dd2be67b-fab7-414a-a99c-8484893ffee6"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DashFunctionBug.capella#dd2be67b-fab7-414a-a99c-8484893ffee6"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_VwvzgeYsEee0WpinHtEUew" labelColor="74,74,151" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="DashFunctionBug.capella#ba5c85db-b4f6-42a0-99ed-a2622dc20141"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_VwvzgeYsEee0WpinHtEUew" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
           <labelFormat>italic</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']/@style"/>
         </ownedStyle>
@@ -324,7 +325,7 @@
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="DashFunctionBug.capella#5fa5fd2d-c9a5-46c4-9a5f-e77c758cdbad"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DashFunctionBug.capella#5fa5fd2d-c9a5-46c4-9a5f-e77c758cdbad"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="DashFunctionBug.capella#e20d9729-106c-4a8b-8179-0ad9bd091805"/>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_vsx3x-YsEee0WpinHtEUew" labelColor="74,74,151" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_vsx3x-YsEee0WpinHtEUew" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']"/>
@@ -416,7 +417,7 @@
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="DashFunctionBug.capella#aa2b6d28-d6c9-4c01-806b-483bf25cdef1"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="DashFunctionBug.capella#aa2b6d28-d6c9-4c01-806b-483bf25cdef1"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="DashFunctionBug.capella#7f7406b6-0432-4d18-b3e3-6f407eaa482e"/>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Oty_sFtpEemGG-PnhtJyHA" labelColor="74,74,151" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Oty_sFtpEemGG-PnhtJyHA" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']"/>
