@@ -20,11 +20,19 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_WEdOEMICEeaGI5VBGb9-SQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_2HHSAMKhEeauot5tGHaSnw" name="[PAB] Physical System" repPath="#_2HOmwMKhEeauot5tGHaSnw" changeId="1692714547034">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_2HHSAMKhEeauot5tGHaSnw" name="[PAB] Physical System" repPath="#_2HOmwMKhEeauot5tGHaSnw" changeId="1705402409310">
+        <eAnnotations xmi:type="description:DAnnotation" uid="_e4424LRdEe6bJ_qW7OCvSA" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_e4424bRdEe6bJ_qW7OCvSA" key="hide.computed.component.exchanges.filter" value="true"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_e4424rRdEe6bJ_qW7OCvSA" key="hide.computed.physical.links.filter" value="true"/>
+        </eAnnotations>
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="testFunctionalExchangeNameConsistency.capella#ae0f42fb-02a8-4304-a013-eaf252cee742"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_29QaYMKiEeauot5tGHaSnw" name="[PAB] Physical System" repPath="#_29RogMKiEeauot5tGHaSnw" changeId="1692714547034">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_29QaYMKiEeauot5tGHaSnw" name="[PAB] Physical System" repPath="#_29RogMKiEeauot5tGHaSnw" changeId="1705402410129">
+        <eAnnotations xmi:type="description:DAnnotation" uid="_fAtWILRdEe6bJ_qW7OCvSA" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fAtWIbRdEe6bJ_qW7OCvSA" key="hide.computed.component.exchanges.filter" value="true"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fAtWIrRdEe6bJ_qW7OCvSA" key="hide.computed.physical.links.filter" value="true"/>
+        </eAnnotations>
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="testFunctionalExchangeNameConsistency.capella#ae0f42fb-02a8-4304-a013-eaf252cee742"/>
       </ownedRepresentationDescriptors>
@@ -35,7 +43,22 @@
   </viewpoint:DAnalysis>
   <diagram:DSemanticDiagram uid="_2HOmwMKhEeauot5tGHaSnw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_2HOmwcKhEeauot5tGHaSnw" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_2HOmwsKhEeauot5tGHaSnw"/>
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_2HOmwsKhEeauot5tGHaSnw">
+        <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="_e476MLRdEe6bJ_qW7OCvSA" targetArrow="NoDecoration">
+          <strokeColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
+          <beginLabelStyleDescription xmi:type="style:BeginLabelStyleDescription" xmi:id="_e476MbRdEe6bJ_qW7OCvSA" labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </beginLabelStyleDescription>
+          <centerLabelStyleDescription xmi:type="style:CenterLabelStyleDescription" xmi:id="_e476MrRdEe6bJ_qW7OCvSA" labelExpression="aql:self.getFunctionalExchangeLabel(diagram)">
+            <labelColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
+          </centerLabelStyleDescription>
+          <endLabelStyleDescription xmi:type="style:EndLabelStyleDescription" xmi:id="_e476M7RdEe6bJ_qW7OCvSA" labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </endLabelStyleDescription>
+          <centeredSourceMappings xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']/@borderedNodeMappings[name='PAB_Pin']"/>
+          <centeredTargetMappings xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']/@borderedNodeMappings[name='PAB_Pin']"/>
+        </computedStyleDescriptions>
+      </data>
     </ownedAnnotationEntries>
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_2HS4MMKhEeauot5tGHaSnw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_2HS4McKhEeauot5tGHaSnw" type="Sirius" element="_2HOmwMKhEeauot5tGHaSnw" measurementUnit="Pixel">
@@ -365,14 +388,15 @@
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_3KfakMKhEeauot5tGHaSnw" borderSize="1" borderSizeComputationExpression="1" borderColor="123,105,79" backgroundStyle="GradientTopToBottom" backgroundColor="255,255,220" foregroundColor="255,252,183">
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@style"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_e46FAbRdEe6bJ_qW7OCvSA" borderSize="1" borderSizeComputationExpression="1" borderColor="123,105,79" backgroundStyle="GradientTopToBottom" backgroundColor="255,255,220" foregroundColor="255,252,183">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@conditionnalStyles.2/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_4GyDsMKhEeauot5tGHaSnw" name="PC 2">
         <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="testFunctionalExchangeNameConsistency.capella#0baff293-b1bf-4cff-8c15-6b830c6e9bbe"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="testFunctionalExchangeNameConsistency.capella#0baff293-b1bf-4cff-8c15-6b830c6e9bbe"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_4GyqwMKhEeauot5tGHaSnw" labelColor="74,74,151" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="testFunctionalExchangeNameConsistency.capella#e1be08b0-83fc-45c0-8438-583a5928f100"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_4GyqwMKhEeauot5tGHaSnw" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
           <labelFormat>italic</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']/@style"/>
         </ownedStyle>
@@ -533,54 +557,60 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-wtk4CkGEeeN0Jj8LM0KEQ" name="FunctionalExchange 1" sourceNode="_-wka8CkGEeeN0Jj8LM0KEQ" targetNode="_-wm3MSkGEeeN0Jj8LM0KEQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#9d687927-c44c-401e-905c-3cf6f4512bc0"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#9d687927-c44c-401e-905c-3cf6f4512bc0"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-w8OYCkGEeeN0Jj8LM0KEQ" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']/@conditionnalStyles.0/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-w8OYSkGEeeN0Jj8LM0KEQ" labelColor="9,92,46"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_e476NLRdEe6bJ_qW7OCvSA" description="_e476MLRdEe6bJ_qW7OCvSA" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_e476NbRdEe6bJ_qW7OCvSA"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_e476N7RdEe6bJ_qW7OCvSA" labelColor="9,92,46"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_e476NrRdEe6bJ_qW7OCvSA"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-w81cCkGEeeN0Jj8LM0KEQ" name="FunctionalExchange 2" sourceNode="_-wlCACkGEeeN0Jj8LM0KEQ" targetNode="_-wneQSkGEeeN0Jj8LM0KEQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#f4187e14-7980-43a8-9051-f134f08736a8"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#f4187e14-7980-43a8-9051-f134f08736a8"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-w81cSkGEeeN0Jj8LM0KEQ" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']/@conditionnalStyles.0/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-w81cikGEeeN0Jj8LM0KEQ" labelColor="9,92,46"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_e476PLRdEe6bJ_qW7OCvSA" description="_e476MLRdEe6bJ_qW7OCvSA" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_e476PbRdEe6bJ_qW7OCvSA"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_e476P7RdEe6bJ_qW7OCvSA" labelColor="9,92,46"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_e476PrRdEe6bJ_qW7OCvSA"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-w9cgCkGEeeN0Jj8LM0KEQ" name="FunctionalExchange 2" sourceNode="_-wlCACkGEeeN0Jj8LM0KEQ" targetNode="_-woFUSkGEeeN0Jj8LM0KEQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#3b184acc-eee5-41a8-b269-23efc9d8ffba"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#3b184acc-eee5-41a8-b269-23efc9d8ffba"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-w-DkCkGEeeN0Jj8LM0KEQ" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']/@conditionnalStyles.0/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-w-DkSkGEeeN0Jj8LM0KEQ" labelColor="9,92,46"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_e48hQLRdEe6bJ_qW7OCvSA" description="_e476MLRdEe6bJ_qW7OCvSA" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_e48hQbRdEe6bJ_qW7OCvSA"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_e48hQ7RdEe6bJ_qW7OCvSA" labelColor="9,92,46"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_e48hQrRdEe6bJ_qW7OCvSA"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-w-DkikGEeeN0Jj8LM0KEQ" name="FunctionalExchange 2" sourceNode="_-wlCAykGEeeN0Jj8LM0KEQ" targetNode="_-woFUSkGEeeN0Jj8LM0KEQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#32727d7a-de3f-49a5-84a8-cb9a8d9d949e"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#32727d7a-de3f-49a5-84a8-cb9a8d9d949e"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-w-DkykGEeeN0Jj8LM0KEQ" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']/@conditionnalStyles.0/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-w-DlCkGEeeN0Jj8LM0KEQ" labelColor="9,92,46"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_e48hSLRdEe6bJ_qW7OCvSA" description="_e476MLRdEe6bJ_qW7OCvSA" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_e48hSbRdEe6bJ_qW7OCvSA"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_e48hS7RdEe6bJ_qW7OCvSA" labelColor="9,92,46"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_e48hSrRdEe6bJ_qW7OCvSA"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-w-DlSkGEeeN0Jj8LM0KEQ" name="[Functional Exchange]" sourceNode="_-wmQICkGEeeN0Jj8LM0KEQ" targetNode="_-wosYCkGEeeN0Jj8LM0KEQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#ab641063-3bec-4380-8836-59b0e96e405a"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#ab641063-3bec-4380-8836-59b0e96e405a"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-w-qoCkGEeeN0Jj8LM0KEQ" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']/@conditionnalStyles.0/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-w-qoSkGEeeN0Jj8LM0KEQ" labelColor="9,92,46"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_e48hULRdEe6bJ_qW7OCvSA" description="_e476MLRdEe6bJ_qW7OCvSA" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_e48hUbRdEe6bJ_qW7OCvSA"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_e48hU7RdEe6bJ_qW7OCvSA" labelColor="9,92,46"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_e48hUrRdEe6bJ_qW7OCvSA"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-w-qoikGEeeN0Jj8LM0KEQ" name="[Functional Exchange]" sourceNode="_-wmQIykGEeeN0Jj8LM0KEQ" targetNode="_-wosYCkGEeeN0Jj8LM0KEQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#04922591-ed7a-4f75-b5de-2a0aaf955467"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#04922591-ed7a-4f75-b5de-2a0aaf955467"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-w_RsCkGEeeN0Jj8LM0KEQ" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']/@conditionnalStyles.0/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-w_RsSkGEeeN0Jj8LM0KEQ" labelColor="9,92,46"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_e48hWLRdEe6bJ_qW7OCvSA" description="_e476MLRdEe6bJ_qW7OCvSA" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_e48hWbRdEe6bJ_qW7OCvSA"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_e48hW7RdEe6bJ_qW7OCvSA" labelColor="9,92,46"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_e48hWrRdEe6bJ_qW7OCvSA"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']"/>
     </ownedDiagramElements>
@@ -596,7 +626,22 @@
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_29RogMKiEeauot5tGHaSnw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_29RogcKiEeauot5tGHaSnw" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_29RogsKiEeauot5tGHaSnw"/>
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_29RogsKiEeauot5tGHaSnw">
+        <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="_fAwZcLRdEe6bJ_qW7OCvSA" targetArrow="NoDecoration">
+          <strokeColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
+          <beginLabelStyleDescription xmi:type="style:BeginLabelStyleDescription" xmi:id="_fAwZcbRdEe6bJ_qW7OCvSA" labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </beginLabelStyleDescription>
+          <centerLabelStyleDescription xmi:type="style:CenterLabelStyleDescription" xmi:id="_fAwZcrRdEe6bJ_qW7OCvSA" labelExpression="aql:self.getFunctionalExchangeLabel(diagram)">
+            <labelColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
+          </centerLabelStyleDescription>
+          <endLabelStyleDescription xmi:type="style:EndLabelStyleDescription" xmi:id="_fAwZc7RdEe6bJ_qW7OCvSA" labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </endLabelStyleDescription>
+          <centeredSourceMappings xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']/@borderedNodeMappings[name='PAB_Pin']"/>
+          <centeredTargetMappings xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']/@borderedNodeMappings[name='PAB_Pin']"/>
+        </computedStyleDescriptions>
+      </data>
     </ownedAnnotationEntries>
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_29RohMKiEeauot5tGHaSnw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_29RohcKiEeauot5tGHaSnw" type="Sirius" element="_29RogMKiEeauot5tGHaSnw" measurementUnit="Pixel">
@@ -991,14 +1036,15 @@
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_4yUekMKiEeauot5tGHaSnw" borderSize="1" borderSizeComputationExpression="1" borderColor="123,105,79" backgroundStyle="GradientTopToBottom" backgroundColor="255,255,220" foregroundColor="255,252,183">
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@style"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_fAukQbRdEe6bJ_qW7OCvSA" borderSize="1" borderSizeComputationExpression="1" borderColor="123,105,79" backgroundStyle="GradientTopToBottom" backgroundColor="255,255,220" foregroundColor="255,252,183">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@conditionnalStyles.2/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_9ZNKIMKiEeauot5tGHaSnw" name="PC 4">
         <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="testFunctionalExchangeNameConsistency.capella#499c55d3-fbb2-439a-a86c-2a74060cca1e"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="testFunctionalExchangeNameConsistency.capella#499c55d3-fbb2-439a-a86c-2a74060cca1e"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_9ZNKIcKiEeauot5tGHaSnw" labelColor="74,74,151" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
+        <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="testFunctionalExchangeNameConsistency.capella#3456fa03-4d9b-4b50-a9fc-13700d790adb"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_9ZNKIcKiEeauot5tGHaSnw" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
           <labelFormat>italic</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']/@style"/>
         </ownedStyle>
@@ -1178,72 +1224,80 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-xuRgCkGEeeN0Jj8LM0KEQ" name="FunctionalExchange 7" sourceNode="_-xXsMCkGEeeN0Jj8LM0KEQ" targetNode="_-xY6USkGEeeN0Jj8LM0KEQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#a6e21cb4-9d3d-44f4-853d-e798ad1c08da"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#a6e21cb4-9d3d-44f4-853d-e798ad1c08da"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-xu4kCkGEeeN0Jj8LM0KEQ" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']/@conditionnalStyles.0/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-xu4kSkGEeeN0Jj8LM0KEQ" labelColor="9,92,46"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_fAwZdLRdEe6bJ_qW7OCvSA" description="_fAwZcLRdEe6bJ_qW7OCvSA" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_fAwZdbRdEe6bJ_qW7OCvSA"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_fAwZd7RdEe6bJ_qW7OCvSA" labelColor="9,92,46"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_fAwZdrRdEe6bJ_qW7OCvSA"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-xu4kikGEeeN0Jj8LM0KEQ" name="FunctionalExchange 8" sourceNode="_-xXsMCkGEeeN0Jj8LM0KEQ" targetNode="_-xZhYSkGEeeN0Jj8LM0KEQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#c3eb3b71-e033-41f4-92c1-f8cf519a74d5"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#c3eb3b71-e033-41f4-92c1-f8cf519a74d5"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-xvfoCkGEeeN0Jj8LM0KEQ" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']/@conditionnalStyles.0/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-xvfoSkGEeeN0Jj8LM0KEQ" labelColor="9,92,46"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_fAwZfLRdEe6bJ_qW7OCvSA" description="_fAwZcLRdEe6bJ_qW7OCvSA" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_fAwZfbRdEe6bJ_qW7OCvSA"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_fAwZf7RdEe6bJ_qW7OCvSA" labelColor="9,92,46"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_fAwZfrRdEe6bJ_qW7OCvSA"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-xvfoikGEeeN0Jj8LM0KEQ" name="FunctionalExchange 9" sourceNode="_-xXsMykGEeeN0Jj8LM0KEQ" targetNode="_-xaIcSkGEeeN0Jj8LM0KEQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#f60df985-7311-46c9-a8e3-26de01da6fc8"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#f60df985-7311-46c9-a8e3-26de01da6fc8"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-xwGsCkGEeeN0Jj8LM0KEQ" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']/@conditionnalStyles.0/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-xwGsSkGEeeN0Jj8LM0KEQ" labelColor="9,92,46"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_fAwZhLRdEe6bJ_qW7OCvSA" description="_fAwZcLRdEe6bJ_qW7OCvSA" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_fAwZhbRdEe6bJ_qW7OCvSA"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_fAwZh7RdEe6bJ_qW7OCvSA" labelColor="9,92,46"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_fAwZhrRdEe6bJ_qW7OCvSA"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-xwGsikGEeeN0Jj8LM0KEQ" name="FunctionalExchange 12" sourceNode="_-xXsMykGEeeN0Jj8LM0KEQ" targetNode="_-xavgSkGEeeN0Jj8LM0KEQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#92ace62e-b717-4ac2-9aa9-95d9d20ed040"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#92ace62e-b717-4ac2-9aa9-95d9d20ed040"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-xwtwCkGEeeN0Jj8LM0KEQ" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']/@conditionnalStyles.0/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-xwtwSkGEeeN0Jj8LM0KEQ" labelColor="9,92,46"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_fAwZjLRdEe6bJ_qW7OCvSA" description="_fAwZcLRdEe6bJ_qW7OCvSA" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_fAwZjbRdEe6bJ_qW7OCvSA"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_fAwZj7RdEe6bJ_qW7OCvSA" labelColor="9,92,46"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_fAwZjrRdEe6bJ_qW7OCvSA"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-xwtwikGEeeN0Jj8LM0KEQ" name="FunctionalExchange 10" sourceNode="_-xYTQSkGEeeN0Jj8LM0KEQ" targetNode="_-xaIcSkGEeeN0Jj8LM0KEQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#f2975aac-d741-4149-805f-4b665459ea89"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#f2975aac-d741-4149-805f-4b665459ea89"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-xwtwykGEeeN0Jj8LM0KEQ" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']/@conditionnalStyles.0/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-xwtxCkGEeeN0Jj8LM0KEQ" labelColor="9,92,46"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_fAwZlLRdEe6bJ_qW7OCvSA" description="_fAwZcLRdEe6bJ_qW7OCvSA" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_fAwZlbRdEe6bJ_qW7OCvSA"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_fAwZl7RdEe6bJ_qW7OCvSA" labelColor="9,92,46"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_fAwZlrRdEe6bJ_qW7OCvSA"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-xwtxSkGEeeN0Jj8LM0KEQ" name="FunctionalExchange 11" sourceNode="_-xYTQSkGEeeN0Jj8LM0KEQ" targetNode="_-xavgSkGEeeN0Jj8LM0KEQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#012e73c2-aac4-4714-82b6-97aa0f4a5808"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#012e73c2-aac4-4714-82b6-97aa0f4a5808"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-xxU0CkGEeeN0Jj8LM0KEQ" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']/@conditionnalStyles.0/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-xxU0SkGEeeN0Jj8LM0KEQ" labelColor="9,92,46"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_fAwZnLRdEe6bJ_qW7OCvSA" description="_fAwZcLRdEe6bJ_qW7OCvSA" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_fAwZnbRdEe6bJ_qW7OCvSA"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_fAwZn7RdEe6bJ_qW7OCvSA" labelColor="9,92,46"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_fAwZnrRdEe6bJ_qW7OCvSA"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-xxU0ikGEeeN0Jj8LM0KEQ" name="[Functional Exchange]" sourceNode="_-xbWkSkGEeeN0Jj8LM0KEQ" targetNode="_-xb9oSkGEeeN0Jj8LM0KEQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#a731810b-f703-4366-bd9a-40c0e04d5bd5"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#a731810b-f703-4366-bd9a-40c0e04d5bd5"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-xx74CkGEeeN0Jj8LM0KEQ" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']/@conditionnalStyles.0/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-xx74SkGEeeN0Jj8LM0KEQ" labelColor="9,92,46"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_fAwZpLRdEe6bJ_qW7OCvSA" description="_fAwZcLRdEe6bJ_qW7OCvSA" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_fAwZpbRdEe6bJ_qW7OCvSA"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_fAwZp7RdEe6bJ_qW7OCvSA" labelColor="9,92,46"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_fAwZprRdEe6bJ_qW7OCvSA"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-xx74ikGEeeN0Jj8LM0KEQ" name="[Functional Exchange]" sourceNode="_-xbWkSkGEeeN0Jj8LM0KEQ" targetNode="_-xcksSkGEeeN0Jj8LM0KEQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#5152e603-644c-413b-ab31-e7f9d8a518bd"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testFunctionalExchangeNameConsistency.capella#5152e603-644c-413b-ab31-e7f9d8a518bd"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-xyi8CkGEeeN0Jj8LM0KEQ" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']/@conditionnalStyles.0/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-xyi8SkGEeeN0Jj8LM0KEQ" labelColor="9,92,46"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_fAwZrLRdEe6bJ_qW7OCvSA" description="_fAwZcLRdEe6bJ_qW7OCvSA" targetArrow="NoDecoration" centered="Both" strokeColor="9,92,46">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_fAwZrbRdEe6bJ_qW7OCvSA"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_fAwZr7RdEe6bJ_qW7OCvSA" labelColor="9,92,46"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_fAwZrrRdEe6bJ_qW7OCvSA"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FunctionExchange']"/>
     </ownedDiagramElements>

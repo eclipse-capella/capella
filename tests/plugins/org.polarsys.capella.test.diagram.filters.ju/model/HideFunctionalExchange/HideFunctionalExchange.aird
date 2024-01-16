@@ -20,7 +20,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_fakeAe2XEeijUcDJRyD7mg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_hXlkUO2XEeijUcDJRyD7mg" name="[SDFB] Root System Function" repPath="#_hVzboO2XEeijUcDJRyD7mg" changeId="1692713073767">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_hXlkUO2XEeijUcDJRyD7mg" name="[SDFB] Root System Function" repPath="#_hVzboO2XEeijUcDJRyD7mg" changeId="1705394556609">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="HideFunctionalExchange.capella#5290cc74-b4d8-4c5e-9503-24ef8110ed9b"/>
       </ownedRepresentationDescriptors>
@@ -31,7 +31,22 @@
   </viewpoint:DAnalysis>
   <diagram:DSemanticDiagram uid="_hVzboO2XEeijUcDJRyD7mg">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_hXcaYO2XEeijUcDJRyD7mg" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_hXcaYe2XEeijUcDJRyD7mg"/>
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_hXcaYe2XEeijUcDJRyD7mg">
+        <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="_MvyosLRLEe6NAMw5pQd-Iw" targetArrow="NoDecoration">
+          <strokeColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
+          <beginLabelStyleDescription xmi:type="style:BeginLabelStyleDescription" xmi:id="_MvyosbRLEe6NAMw5pQd-Iw" labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </beginLabelStyleDescription>
+          <centerLabelStyleDescription xmi:type="style:CenterLabelStyleDescription" xmi:id="_MvyosrRLEe6NAMw5pQd-Iw" labelExpression="aql:self.getFunctionalExchangeLabel(diagram)">
+            <labelColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
+          </centerLabelStyleDescription>
+          <endLabelStyleDescription xmi:type="style:EndLabelStyleDescription" xmi:id="_Mvyos7RLEe6NAMw5pQd-Iw" labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </endLabelStyleDescription>
+          <centeredSourceMappings xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']"/>
+          <centeredTargetMappings xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']"/>
+        </computedStyleDescriptions>
+      </data>
     </ownedAnnotationEntries>
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_hX5GUO2XEeijUcDJRyD7mg" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_hX5GUe2XEeijUcDJRyD7mg" type="Sirius" element="_hVzboO2XEeijUcDJRyD7mg" measurementUnit="Pixel">
@@ -246,23 +261,25 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_llTh8-2XEeijUcDJRyD7mg" name="FunctionalExchange 1" sourceNode="_llJw8O2XEeijUcDJRyD7mg" targetNode="_llJw9O2XEeijUcDJRyD7mg">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="HideFunctionalExchange.capella#ad7c0244-0750-43a3-b419-b14a7a5f1185"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="HideFunctionalExchange.capella#ad7c0244-0750-43a3-b419-b14a7a5f1185"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_llTh9O2XEeijUcDJRyD7mg" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
-        <customFeatures>strokeColor</customFeatures>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="HideFunctionalExchange.capella#a9a4e3f1-b8c5-40ee-a54d-00c9e74be514"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_MvyotLRLEe6NAMw5pQd-Iw" description="_MvyosLRLEe6NAMw5pQd-Iw" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']/@conditionnalStyles.0/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_llcr4O2XEeijUcDJRyD7mg" labelColor="9,92,46"/>
+        <customFeatures>strokeColor</customFeatures>
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_MvyotbRLEe6NAMw5pQd-Iw"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_Mvyot7RLEe6NAMw5pQd-Iw" labelColor="9,92,46"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_MvyotrRLEe6NAMw5pQd-Iw"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_mMpOyO2XEeijUcDJRyD7mg" name="FunctionalExchange 2" sourceNode="_mMpOwO2XEeijUcDJRyD7mg" targetNode="_mMpOxO2XEeijUcDJRyD7mg">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="HideFunctionalExchange.capella#d31f4c61-c647-4768-9986-d6c8fde6b700"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="HideFunctionalExchange.capella#d31f4c61-c647-4768-9986-d6c8fde6b700"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_mMpOye2XEeijUcDJRyD7mg" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
-        <customFeatures>strokeColor</customFeatures>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="HideFunctionalExchange.capella#a9a4e3f1-b8c5-40ee-a54d-00c9e74be514"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_MvyourRLEe6NAMw5pQd-Iw" description="_MvyosLRLEe6NAMw5pQd-Iw" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']/@conditionnalStyles.0/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_mMpOyu2XEeijUcDJRyD7mg" labelColor="9,92,46"/>
+        <customFeatures>strokeColor</customFeatures>
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_Mvyou7RLEe6NAMw5pQd-Iw"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_MvyovbRLEe6NAMw5pQd-Iw" labelColor="9,92,46"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_MvyovLRLEe6NAMw5pQd-Iw"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='SDFB_Exchange']"/>
     </ownedDiagramElements>

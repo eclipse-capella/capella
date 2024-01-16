@@ -5,15 +5,15 @@
     <semanticResources>reconciliation.communicationlinks.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_2joeME_yEeWYOYp6IHwA3Q">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_4QahEHs1EeaIfY15UCx5Ag" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_3OesUFFCEeWTo_sFebnhNg" changeId="1692714271891">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_4QahEHs1EeaIfY15UCx5Ag" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_3OesUFFCEeWTo_sFebnhNg" changeId="1705400615051">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="reconciliation.communicationlinks.capella#0405bcc1-0f91-4aff-b423-b721d8c9ada5"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_4QahEXs1EeaIfY15UCx5Ag" name="[IDB] System - Interfaces Diagram Blank" repPath="#_h0lYkFYOEeWQlsgDn-S-Sg" changeId="1692714271891">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_4QahEXs1EeaIfY15UCx5Ag" name="[IDB] System - Interfaces Diagram Blank" repPath="#_h0lYkFYOEeWQlsgDn-S-Sg" changeId="1705400615732">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="reconciliation.communicationlinks.capella#7a581275-a180-44dc-9526-b6b0b3636288"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_4QahEns1EeaIfY15UCx5Ag" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_bGJmIFYYEeWQlsgDn-S-Sg" changeId="1692714271891">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_4QahEns1EeaIfY15UCx5Ag" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_bGJmIFYYEeWQlsgDn-S-Sg" changeId="1705400616358">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="reconciliation.communicationlinks.capella#0405bcc1-0f91-4aff-b423-b721d8c9ada5"/>
       </ownedRepresentationDescriptors>
@@ -252,8 +252,8 @@
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_3otKMVFCEeWTo_sFebnhNg" labelColor="74,74,151" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']/@conditionnalStyles.5/@style"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_ThmyYbRZEe6bJ_qW7OCvSA" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']/@conditionnalStyles.8/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']"/>
     </ownedDiagramElements>
@@ -311,8 +311,8 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_HCtaEFFDEeWTo_sFebnhNg" name="LC2" outgoingEdges="_4hWgEHs1EeaIfY15UCx5Ag _4hYVQHs1EeaIfY15UCx5Ag">
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="reconciliation.communicationlinks.capella#fbab55de-5522-4a5f-870e-17e786848ce2"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="reconciliation.communicationlinks.capella#fbab55de-5522-4a5f-870e-17e786848ce2"/>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_HCtaEVFDEeWTo_sFebnhNg" labelColor="74,74,151" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']/@conditionnalStyles.5/@style"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_ThnZcrRZEe6bJ_qW7OCvSA" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']/@conditionnalStyles.8/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']"/>
     </ownedDiagramElements>
@@ -619,8 +619,8 @@
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_k6jD8FYOEeWQlsgDn-S-Sg" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="218,253,255" foregroundColor="198,230,255">
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']/@conditionnalStyles.8/@style"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_ToGb8bRZEe6bJ_qW7OCvSA" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="218,253,255" foregroundColor="198,230,255">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']/@conditionnalStyles.5/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']"/>
     </ownedDiagramElements>
@@ -990,8 +990,8 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_bZ0wEFYYEeWQlsgDn-S-Sg" name="LA1" outgoingEdges="_4i8bgHs1EeaIfY15UCx5Ag _4i-QsHs1EeaIfY15UCx5Ag _4i_e0Hs1EeaIfY15UCx5Ag _4jAF4Hs1EeaIfY15UCx5Ag _4jAs8Hs1EeaIfY15UCx5Ag _4jB7EHs1EeaIfY15UCx5Ag _4jCiIHs1EeaIfY15UCx5Ag _4jE-YHs1EeaIfY15UCx5Ag _4jHaoHs1EeaIfY15UCx5Ag" incomingEdges="_4jE-YHs1EeaIfY15UCx5Ag _4jHaoHs1EeaIfY15UCx5Ag">
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="reconciliation.communicationlinks.capella#e7948242-876d-4b01-b1c7-f25dff9e0c05"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="reconciliation.communicationlinks.capella#e7948242-876d-4b01-b1c7-f25dff9e0c05"/>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_bZ0wEVYYEeWQlsgDn-S-Sg" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="218,253,255" foregroundColor="198,230,255">
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']/@conditionnalStyles.8/@style"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_TuEhEbRZEe6bJ_qW7OCvSA" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="218,253,255" foregroundColor="198,230,255">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']/@conditionnalStyles.5/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']"/>
     </ownedDiagramElements>

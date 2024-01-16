@@ -8,7 +8,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_N7dwMB4mEemefoIC0oWX6A">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_SLQxeB4mEemefoIC0oWX6A" name="[SAB] System" repPath="#_SLQxcB4mEemefoIC0oWX6A" changeId="1675701715257">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_SLQxeB4mEemefoIC0oWX6A" name="[SAB] System" repPath="#_SLQxcB4mEemefoIC0oWX6A" changeId="1705402956250">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="XABDiagrams.capella#b4fd3a2f-a53d-4da7-bec4-8fd7169d2caa"/>
       </ownedRepresentationDescriptors>
@@ -19,7 +19,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_N8zM8B4mEemefoIC0oWX6A">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_QbDYEx4mEemefoIC0oWX6A" name="[OAB] Operational Context" repPath="#_Qa6OIB4mEemefoIC0oWX6A" changeId="1675701908202">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_QbDYEx4mEemefoIC0oWX6A" name="[OAB] Operational Context" repPath="#_Qa6OIB4mEemefoIC0oWX6A" changeId="1705402957522">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:EntityPkg" href="XABDiagrams.capella#64605af7-0cfd-47f4-99ef-0c0afa52304e"/>
       </ownedRepresentationDescriptors>
@@ -38,7 +38,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_N8898B4mEemefoIC0oWX6A">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Uig8sx4mEemefoIC0oWX6A" name="[PAB] Physical System" repPath="#_UiXLsB4mEemefoIC0oWX6A" changeId="1675701523185">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Uig8sx4mEemefoIC0oWX6A" name="[PAB] Physical System" repPath="#_UiXLsB4mEemefoIC0oWX6A" changeId="1705402960367">
         <eAnnotations xmi:type="description:DAnnotation" uid="_g05CUsTwEemtX5KI0HaNmg" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_g05CU8TwEemtX5KI0HaNmg" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_g05CVMTwEemtX5KI0HaNmg" key="hide.computed.physical.links.filter" value="true"/>
@@ -92,7 +92,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_N9Zp4B4mEemefoIC0oWX6A">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Tjehkx4mEemefoIC0oWX6A" name="[LAB] Logical System" repPath="#_TjVXoB4mEemefoIC0oWX6A" changeId="1675700652898">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Tjehkx4mEemefoIC0oWX6A" name="[LAB] Logical System" repPath="#_TjVXoB4mEemefoIC0oWX6A" changeId="1705402966285">
         <eAnnotations xmi:type="description:DAnnotation" uid="_hc-WAMTwEemtX5KI0HaNmg" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_hc-WAcTwEemtX5KI0HaNmg" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_hc-WAsTwEemtX5KI0HaNmg" key="hide.computed.physical.links.filter" value="true"/>
@@ -394,7 +394,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_90cL0B4xEemefoIC0oWX6A" name="Interaction 1" sourceNode="_9Cz6kB4xEemefoIC0oWX6A" targetNode="_9SwbEB4xEemefoIC0oWX6A">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="XABDiagrams.capella#aec1d1e2-5023-4142-bf88-1ecdb64a8200"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="XABDiagrams.capella#aec1d1e2-5023-4142-bf88-1ecdb64a8200"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="XABDiagrams.capella#0f4ce543-36f9-4753-b7af-f1d869525218"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_m7tI5I8vEeyVedvSXHAXrw" description="_m7tI4I8vEeyVedvSXHAXrw" targetArrow="InputFillClosedArrow" size="4" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
         <customFeatures>strokeColor</customFeatures>
@@ -1575,7 +1575,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_a_3kGCScEemn8Zqlufez4g" name="FunctionalExchange 3" sourceNode="_a_3kECScEemn8Zqlufez4g" targetNode="_a_3kFCScEemn8Zqlufez4g">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="XABDiagrams.capella#bd355142-97fa-4425-b3d5-f66ec399aeb3"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="XABDiagrams.capella#bd355142-97fa-4425-b3d5-f66ec399aeb3"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="XABDiagrams.capella#6c38aab1-8647-4e08-b97a-7956d98cbf14"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_mDIiII8vEeyVedvSXHAXrw" description="_mDEQsI8vEeyVedvSXHAXrw" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
         <customFeatures>strokeColor</customFeatures>
@@ -1596,7 +1596,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_jO7HhCh-EemWztoTWKhzPw" name="FunctionalExchange 1" sourceNode="_jO7HgCh-EemWztoTWKhzPw" targetNode="_InRZFB4uEemefoIC0oWX6A">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="XABDiagrams.capella#67aacd13-5813-4030-9fec-8a6b8ee536b0"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="XABDiagrams.capella#67aacd13-5813-4030-9fec-8a6b8ee536b0"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="XABDiagrams.capella#6c38aab1-8647-4e08-b97a-7956d98cbf14"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_mDE3w48vEeyVedvSXHAXrw" description="_mDEQsI8vEeyVedvSXHAXrw" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
         <customFeatures>strokeColor</customFeatures>
@@ -1619,7 +1619,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_ZCm4-CiIEemWztoTWKhzPw" name="PL 2" sourceNode="_ZCm48CiIEemWztoTWKhzPw" targetNode="_ZCm49CiIEemWztoTWKhzPw">
       <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="XABDiagrams.capella#754f1936-c414-478c-acca-e26f699fce2a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="XABDiagrams.capella#754f1936-c414-478c-acca-e26f699fce2a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="XABDiagrams.capella#4797a74b-6abc-44aa-bb72-3516bb891a84"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_mCyj4I8vEeyVedvSXHAXrw" description="_mCtrYI8vEeyVedvSXHAXrw" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
         <customFeatures>strokeColor</customFeatures>
@@ -1643,7 +1643,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_HOGgECiJEemWztoTWKhzPw" name="PL 1" sourceNode="_73Dz8B5DEemefoIC0oWX6A" targetNode="_73Dz9B5DEemefoIC0oWX6A">
       <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="XABDiagrams.capella#ac6fba92-d508-421c-84bf-9b8eb87ddedc"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="XABDiagrams.capella#ac6fba92-d508-421c-84bf-9b8eb87ddedc"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="XABDiagrams.capella#4797a74b-6abc-44aa-bb72-3516bb891a84"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_mCuScI8vEeyVedvSXHAXrw" description="_mCtrYI8vEeyVedvSXHAXrw" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
         <customFeatures>strokeColor</customFeatures>
@@ -2657,7 +2657,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_YyecYR4uEemefoIC0oWX6A" name="FunctionalExchange 1" sourceNode="_YyVScB4uEemefoIC0oWX6A" targetNode="_YyVSdB4uEemefoIC0oWX6A">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="XABDiagrams.capella#b03f7d07-9f37-4982-a9b0-248d83ed48fe"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="XABDiagrams.capella#b03f7d07-9f37-4982-a9b0-248d83ed48fe"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="XABDiagrams.capella#9cabe4bb-cd04-47b9-83b3-29ed69ac87e0"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_pER-9I8vEeyVedvSXHAXrw" description="_pER-8I8vEeyVedvSXHAXrw" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
         <customFeatures>strokeColor</customFeatures>
@@ -2678,7 +2678,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_90X1OB5DEemefoIC0oWX6A" name="PL 1" sourceNode="_90X1MB5DEemefoIC0oWX6A" targetNode="_90X1NB5DEemefoIC0oWX6A">
       <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="XABDiagrams.capella#343a04f9-1a83-4c09-b712-7cf783899849"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="XABDiagrams.capella#343a04f9-1a83-4c09-b712-7cf783899849"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="XABDiagrams.capella#70b81a6e-1ef4-42d5-b94d-838068cd7658"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_pEYFlI8vEeyVedvSXHAXrw" description="_pEYFkI8vEeyVedvSXHAXrw" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
         <customFeatures>strokeColor</customFeatures>
@@ -2908,7 +2908,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_EnE72Ch7EemWztoTWKhzPw" name="FunctionalExchange 3" sourceNode="_EnE70Ch7EemWztoTWKhzPw" targetNode="_EnE71Ch7EemWztoTWKhzPw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="XABDiagrams.capella#fdff017c-c649-4451-a789-0008492c90f2"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="XABDiagrams.capella#fdff017c-c649-4451-a789-0008492c90f2"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="XABDiagrams.capella#9cabe4bb-cd04-47b9-83b3-29ed69ac87e0"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_pESmAo8vEeyVedvSXHAXrw" description="_pER-8I8vEeyVedvSXHAXrw" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
         <customFeatures>strokeColor</customFeatures>
@@ -2943,7 +2943,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Go2TaCiIEemWztoTWKhzPw" name="PL 2" sourceNode="_Go2TYCiIEemWztoTWKhzPw" targetNode="_Go2TZCiIEemWztoTWKhzPw">
       <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="XABDiagrams.capella#30e0e9ba-4da4-4707-8d74-bdeaaa40f02e"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="XABDiagrams.capella#30e0e9ba-4da4-4707-8d74-bdeaaa40f02e"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="XABDiagrams.capella#70b81a6e-1ef4-42d5-b94d-838068cd7658"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_pEYsoo8vEeyVedvSXHAXrw" description="_pEYFkI8vEeyVedvSXHAXrw" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
         <customFeatures>strokeColor</customFeatures>
@@ -4492,7 +4492,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_PgAkgSYbEem3aKmJSykT0g" name="PL 1" sourceNode="_Pfj4kCYbEem3aKmJSykT0g" targetNode="_fTRCJB4pEemefoIC0oWX6A">
       <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="XABDiagrams.capella#6b7f564b-580d-445b-ac86-43a0be249007"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="XABDiagrams.capella#6b7f564b-580d-445b-ac86-43a0be249007"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="XABDiagrams.capella#e1f1ad01-c08a-4cbb-bb7b-a7f364098608"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_nkve0o8vEeyVedvSXHAXrw" description="_nku3wI8vEeyVedvSXHAXrw" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
         <customFeatures>strokeColor</customFeatures>
@@ -4504,7 +4504,8 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_AorSJCZCEemWztoTWKhzPw" name="FunctionalExchange 1" sourceNode="_AorSICZCEemWztoTWKhzPw" targetNode="_gc4VlB4pEemefoIC0oWX6A" beginLabel="FunctionalChain 1             &#xA;FunctionalChain 2             " endLabel="FunctionalChain 1             &#xA;FunctionalChain 2             ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="XABDiagrams.capella#0e536993-3ef6-4061-9c59-6292a1b0a837"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="XABDiagrams.capella#0e536993-3ef6-4061-9c59-6292a1b0a837"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="XABDiagrams.capella#6452654d-c7b2-4359-be47-1544eaeca639"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="XABDiagrams.capella#c06f9196-de5f-43dc-baec-a75faf60fdfe"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_nkzJNI8vEeyVedvSXHAXrw" description="_nkzJMI8vEeyVedvSXHAXrw" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="0,0,0">
         <customFeatures>size</customFeatures>
         <customFeatures>strokeColor</customFeatures>
@@ -4516,7 +4517,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Nys_6ChlEemWztoTWKhzPw" name="FunctionalExchange 2" sourceNode="_Nys_4ChlEemWztoTWKhzPw" targetNode="_Nys_5ChlEemWztoTWKhzPw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="XABDiagrams.capella#e6ec2097-3ca1-4849-b09e-0c175f595964"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="XABDiagrams.capella#e6ec2097-3ca1-4849-b09e-0c175f595964"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="XABDiagrams.capella#6452654d-c7b2-4359-be47-1544eaeca639"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_nkzwQo8vEeyVedvSXHAXrw" description="_nkzJMI8vEeyVedvSXHAXrw" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
         <customFeatures>strokeColor</customFeatures>
@@ -4578,7 +4579,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_FstsCChsEemWztoTWKhzPw" name="FunctionalExchange 4" sourceNode="_FstsAChsEemWztoTWKhzPw" targetNode="_FstsBChsEemWztoTWKhzPw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="XABDiagrams.capella#9718992b-76dc-4246-b792-ab5ebce1ced8"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="XABDiagrams.capella#9718992b-76dc-4246-b792-ab5ebce1ced8"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="XABDiagrams.capella#c06f9196-de5f-43dc-baec-a75faf60fdfe"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_nk0XUo8vEeyVedvSXHAXrw" description="_nkzJMI8vEeyVedvSXHAXrw" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="165,42,42">
         <customFeatures>size</customFeatures>
         <customFeatures>strokeColor</customFeatures>
@@ -4601,7 +4602,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_JhHBUCiFEemWztoTWKhzPw" name="PL 3" sourceNode="_Jg9QUCiFEemWztoTWKhzPw" targetNode="_Jg9QVCiFEemWztoTWKhzPw">
       <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="XABDiagrams.capella#3724a688-bdd7-469e-a0c8-21de49945ddd"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="XABDiagrams.capella#3724a688-bdd7-469e-a0c8-21de49945ddd"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="XABDiagrams.capella#e1f1ad01-c08a-4cbb-bb7b-a7f364098608"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_nkwF4o8vEeyVedvSXHAXrw" description="_nku3wI8vEeyVedvSXHAXrw" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
         <customFeatures>strokeColor</customFeatures>

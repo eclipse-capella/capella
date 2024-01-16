@@ -18,7 +18,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_jAEVYDNYEeieBf4kJpEPiQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0UTOkTNeEeieBf4kJpEPiQ" name="New State Machine and Capability Function Matrix" repPath="#_0URZYDNeEeieBf4kJpEPiQ" changeId="1692714321205">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0UTOkTNeEeieBf4kJpEPiQ" name="New State Machine and Capability Function Matrix" repPath="#_0URZYDNeEeieBf4kJpEPiQ" changeId="1705400743648">
         <description xmi:type="description_2:CrossTableDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='State%20And%20Mode%20-%20Matrix']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponentPkg" href="RichtextTestModel.capella#b6c80674-92d0-4643-94d6-5edba89aac98"/>
       </ownedRepresentationDescriptors>
@@ -50,11 +50,6 @@
   </diagram:DSemanticDiagram>
   <table:DTable uid="_0URZYDNeEeieBf4kJpEPiQ" headerColumnWidth="127">
     <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponentPkg" href="RichtextTestModel.capella#b6c80674-92d0-4643-94d6-5edba89aac98"/>
-    <lines xmi:type="table:DLine" uid="_0UTOkDNeEeieBf4kJpEPiQ" label="System Context">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponentPkg" href="RichtextTestModel.capella#b6c80674-92d0-4643-94d6-5edba89aac98"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponentPkg" href="RichtextTestModel.capella#b6c80674-92d0-4643-94d6-5edba89aac98"/>
-      <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='SAM%20Components']"/>
-    </lines>
     <description xmi:type="description_2:CrossTableDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='State%20And%20Mode%20-%20Matrix']"/>
   </table:DTable>
 </xmi:XMI>

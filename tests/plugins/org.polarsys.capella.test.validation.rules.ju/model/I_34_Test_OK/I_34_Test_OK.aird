@@ -19,7 +19,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_-RFRkLxDEeSC5uxsBRe41Q">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_mZXiMHQ-Eea1QKmGa7FbBw" name="[MCB] Capabilities - Mission Capabilities Blank" repPath="#_AS28ELxEEeSC5uxsBRe41Q" changeId="1692713082956">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_mZXiMHQ-Eea1QKmGa7FbBw" name="[MCB] Capabilities - Mission Capabilities Blank" repPath="#_AS28ELxEEeSC5uxsBRe41Q" changeId="1705394622288">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg" href="I_34_Test_OK.capella#8dd9a64f-d1d8-45a9-b314-10de73487f16"/>
       </ownedRepresentationDescriptors>
@@ -49,9 +49,9 @@
           <children xmi:type="notation:Node" xmi:id="_BefowLxEEeSC5uxsBRe41Q" type="5002">
             <layoutConstraint xmi:type="notation:Location" xmi:id="_BefowbxEEeSC5uxsBRe41Q" y="-21"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_BejTILxEEeSC5uxsBRe41Q" type="3005" element="_BeS0cLxEEeSC5uxsBRe41Q">
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_BejTIbxEEeSC5uxsBRe41Q" fontName="Segoe UI"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BejTIrxEEeSC5uxsBRe41Q"/>
+          <children xmi:type="notation:Node" xmi:id="_WiMW4LRLEe6NAMw5pQd-Iw" type="3005" element="_WiIsgLRLEe6NAMw5pQd-Iw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_WiMW4bRLEe6NAMw5pQd-Iw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WiMW4rRLEe6NAMw5pQd-Iw"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_BeeaobxEEeSC5uxsBRe41Q" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BeeaorxEEeSC5uxsBRe41Q" x="560" y="80" width="70" height="48"/>
@@ -184,8 +184,8 @@
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_BeS0cLxEEeSC5uxsBRe41Q" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
-        <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']/@style"/>
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_WiIsgLRLEe6NAMw5pQd-Iw" showIcon="false" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/svg/SystemActor.svg">
+        <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']"/>
     </ownedDiagramElements>

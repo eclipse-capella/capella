@@ -32,7 +32,6 @@ public class HideFCInternalLinksSAB extends InternalLinks {
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { SA_FUNCTIONALCHAIN_1, SA_FUNCTIONALCHAIN_2, SA_FUNCTIONALCHAIN_3,
-        SA_FUNCTIONALCHAIN_4, SA_FUNCTIONALCHAIN_5 });
+    return Arrays.asList(new String[] { SA_FUNCTIONALCHAIN_1, SA_FUNCTIONALCHAIN_2, SA_FUNCTIONALCHAIN_3 });
   }
 }

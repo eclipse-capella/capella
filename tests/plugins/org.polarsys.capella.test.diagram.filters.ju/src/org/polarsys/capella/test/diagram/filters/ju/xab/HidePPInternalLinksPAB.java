@@ -32,7 +32,6 @@ public class HidePPInternalLinksPAB extends InternalLinks {
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { PA_PHYSICALPATH_1, PA_PHYSICALPATH_2, PA_PHYSICALPATH_3,
-        PA_PHYSICALPATH_4, PA_PHYSICALPATH_5 });
+    return Arrays.asList(new String[] { PA_PHYSICALPATH_1, PA_PHYSICALPATH_2, PA_PHYSICALPATH_3 });
   }
 }

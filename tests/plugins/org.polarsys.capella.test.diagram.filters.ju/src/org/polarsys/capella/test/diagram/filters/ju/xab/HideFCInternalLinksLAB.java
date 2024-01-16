@@ -32,7 +32,6 @@ public class HideFCInternalLinksLAB extends InternalLinks {
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { LA_FUNCTIONALCHAIN_1, LA_FUNCTIONALCHAIN_2, LA_FUNCTIONALCHAIN_3,
-        LA_FUNCTIONALCHAIN_4, LA_FUNCTIONALCHAIN_5 });
+    return Arrays.asList(new String[] { LA_FUNCTIONALCHAIN_1, LA_FUNCTIONALCHAIN_2, LA_FUNCTIONALCHAIN_3 });
   }
 }

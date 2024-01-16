@@ -11,7 +11,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_QeZisNcpEeq4Rv6nnvMhKA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_aDaVI9cpEeq4Rv6nnvMhKA" name="[LAB] Structure" repPath="#_aDSZUNcpEeq4Rv6nnvMhKA" changeId="1692709398713">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_aDaVI9cpEeq4Rv6nnvMhKA" name="[LAB] Structure" repPath="#_aDSZUNcpEeq4Rv6nnvMhKA" changeId="1705344936094">
         <eAnnotations xmi:type="description:DAnnotation" uid="_aFdjkNcpEeq4Rv6nnvMhKA" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_aFdjkdcpEeq4Rv6nnvMhKA" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_aFdjktcpEeq4Rv6nnvMhKA" key="hide.computed.physical.links.filter" value="true"/>
@@ -31,7 +31,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_QgIBANcpEeq4Rv6nnvMhKA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RnYkAdcpEeq4Rv6nnvMhKA" name="[SAB] Structure" repPath="#_RnGQINcpEeq4Rv6nnvMhKA" changeId="1692709398713">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RnYkAdcpEeq4Rv6nnvMhKA" name="[SAB] Structure" repPath="#_RnGQINcpEeq4Rv6nnvMhKA" changeId="1705344936717">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponentPkg" href="Context_CEPL.capella#7f1c4bc8-4df0-42cf-ba28-6de94da732ef"/>
       </ownedRepresentationDescriptors>
@@ -39,7 +39,22 @@
   </viewpoint:DAnalysis>
   <diagram:DSemanticDiagram uid="_RnGQINcpEeq4Rv6nnvMhKA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_RnX88NcpEeq4Rv6nnvMhKA" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_RnX88dcpEeq4Rv6nnvMhKA"/>
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_RnX88dcpEeq4Rv6nnvMhKA">
+        <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="_qzoogLPXEe6NAMw5pQd-Iw" targetArrow="NoDecoration">
+          <strokeColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          <beginLabelStyleDescription xmi:type="style:BeginLabelStyleDescription" xmi:id="_qzoogbPXEe6NAMw5pQd-Iw" labelExpression="aql:self.getOverlappedPhysicalPathsLabel(view, diagram)">
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </beginLabelStyleDescription>
+          <centerLabelStyleDescription xmi:type="style:CenterLabelStyleDescription" xmi:id="_qzoogrPXEe6NAMw5pQd-Iw" labelExpression="aql:self.getPhysicalLinkCenterLabel(diagram)">
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </centerLabelStyleDescription>
+          <endLabelStyleDescription xmi:type="style:EndLabelStyleDescription" xmi:id="_qzoog7PXEe6NAMw5pQd-Iw" labelExpression="aql:self.getOverlappedPhysicalPathsLabel(view, diagram)">
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </endLabelStyleDescription>
+          <centeredSourceMappings xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort']"/>
+          <centeredTargetMappings xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort']"/>
+        </computedStyleDescriptions>
+      </data>
     </ownedAnnotationEntries>
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_RnZyINcpEeq4Rv6nnvMhKA" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_RnZyIdcpEeq4Rv6nnvMhKA" type="Sirius" element="_RnGQINcpEeq4Rv6nnvMhKA" measurementUnit="Pixel">
@@ -260,7 +275,7 @@
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="Context_CEPL.capella#8c5212e8-f1fd-4ba6-94b6-752d4cba8ea0"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="Context_CEPL.capella#8c5212e8-f1fd-4ba6-94b6-752d4cba8ea0"/>
         <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_WEzKgNcpEeq4Rv6nnvMhKA"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_WEyjcdcpEeq4Rv6nnvMhKA" showIcon="false" borderColor="239,41,41" hideLabelByDefault="true" color="252,233,79">
+        <ownedStyle xmi:type="diagram:Square" uid="_WEyjcdcpEeq4Rv6nnvMhKA" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="123,105,79" hideLabelByDefault="true" color="255,244,119">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort']"/>
@@ -269,7 +284,7 @@
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="Context_CEPL.capella#082a4108-c625-4c65-a0c4-f326e0b559e0"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="Context_CEPL.capella#082a4108-c625-4c65-a0c4-f326e0b559e0"/>
         <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_YQV1AtcpEeq4Rv6nnvMhKA"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_YQV1ANcpEeq4Rv6nnvMhKA" showIcon="false" borderColor="239,41,41" hideLabelByDefault="true" color="252,233,79">
+        <ownedStyle xmi:type="diagram:Square" uid="_YQV1ANcpEeq4Rv6nnvMhKA" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="123,105,79" hideLabelByDefault="true" color="255,244,119">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort']"/>
@@ -308,7 +323,7 @@
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="Context_CEPL.capella#2c36da6c-cc3a-4e91-b561-870d4c286b23"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="Context_CEPL.capella#2c36da6c-cc3a-4e91-b561-870d4c286b23"/>
         <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_WMpe8dcpEeq4Rv6nnvMhKA"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_WMo34dcpEeq4Rv6nnvMhKA" showIcon="false" borderColor="239,41,41" hideLabelByDefault="true" color="252,233,79">
+        <ownedStyle xmi:type="diagram:Square" uid="_WMo34dcpEeq4Rv6nnvMhKA" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="123,105,79" hideLabelByDefault="true" color="255,244,119">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort']"/>
@@ -317,7 +332,7 @@
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="Context_CEPL.capella#1e30316c-17d1-41b4-b9dc-1c4f15e9d1c9"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="Context_CEPL.capella#1e30316c-17d1-41b4-b9dc-1c4f15e9d1c9"/>
         <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_YQXDItcpEeq4Rv6nnvMhKA"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_YQXDINcpEeq4Rv6nnvMhKA" showIcon="false" borderColor="239,41,41" hideLabelByDefault="true" color="252,233,79">
+        <ownedStyle xmi:type="diagram:Square" uid="_YQXDINcpEeq4Rv6nnvMhKA" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="123,105,79" hideLabelByDefault="true" color="255,244,119">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort']"/>
@@ -339,9 +354,10 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_YQXqMNcpEeq4Rv6nnvMhKA" name="PL 2" sourceNode="_YQVN8NcpEeq4Rv6nnvMhKA" targetNode="_YQWcENcpEeq4Rv6nnvMhKA">
       <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="Context_CEPL.capella#b9a3e19d-8205-40f2-abb8-c9a6e77d447e"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="Context_CEPL.capella#b9a3e19d-8205-40f2-abb8-c9a6e77d447e"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_YQYRQNcpEeq4Rv6nnvMhKA" targetArrow="NoDecoration" centered="Both" strokeColor="239,41,41">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='SAB_PhysicalLink']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_YQYRQdcpEeq4Rv6nnvMhKA" labelColor="239,41,41"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_qzoohLPXEe6NAMw5pQd-Iw" description="_qzoogLPXEe6NAMw5pQd-Iw" targetArrow="NoDecoration" centered="Both" strokeColor="239,41,41">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_qzoohbPXEe6NAMw5pQd-Iw"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_qzooh7PXEe6NAMw5pQd-Iw" labelColor="239,41,41"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_qzoohrPXEe6NAMw5pQd-Iw"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='SAB_PhysicalLink']"/>
     </ownedDiagramElements>
@@ -366,7 +382,22 @@
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_aDSZUNcpEeq4Rv6nnvMhKA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_aDaVINcpEeq4Rv6nnvMhKA" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_aDaVIdcpEeq4Rv6nnvMhKA"/>
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_aDaVIdcpEeq4Rv6nnvMhKA">
+        <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="_qtp8ULPXEe6NAMw5pQd-Iw" targetArrow="NoDecoration">
+          <strokeColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          <beginLabelStyleDescription xmi:type="style:BeginLabelStyleDescription" xmi:id="_qtp8UbPXEe6NAMw5pQd-Iw" labelExpression="aql:self.getOverlappedPhysicalPathsLabel(view, diagram)">
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </beginLabelStyleDescription>
+          <centerLabelStyleDescription xmi:type="style:CenterLabelStyleDescription" xmi:id="_qtp8UrPXEe6NAMw5pQd-Iw" labelExpression="aql:self.getPhysicalLinkCenterLabel(diagram)">
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </centerLabelStyleDescription>
+          <endLabelStyleDescription xmi:type="style:EndLabelStyleDescription" xmi:id="_qtp8U7PXEe6NAMw5pQd-Iw" labelExpression="aql:self.getOverlappedPhysicalPathsLabel(view, diagram)">
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </endLabelStyleDescription>
+          <centeredSourceMappings xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']"/>
+          <centeredTargetMappings xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']"/>
+        </computedStyleDescriptions>
+      </data>
     </ownedAnnotationEntries>
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_aDbjQNcpEeq4Rv6nnvMhKA" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_aDbjQdcpEeq4Rv6nnvMhKA" type="Sirius" element="_aDSZUNcpEeq4Rv6nnvMhKA" measurementUnit="Pixel">
@@ -519,7 +550,7 @@
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="Context_CEPL.capella#7688811f-52df-425a-94c0-e648c26c3feb"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="Context_CEPL.capella#7688811f-52df-425a-94c0-e648c26c3feb"/>
         <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_dNaL8dcpEeq4Rv6nnvMhKA"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_dNZk4dcpEeq4Rv6nnvMhKA" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="239,41,41" hideLabelByDefault="true" color="252,233,79">
+        <ownedStyle xmi:type="diagram:Square" uid="_dNZk4dcpEeq4Rv6nnvMhKA" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="123,105,79" hideLabelByDefault="true" color="255,244,119">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']"/>
@@ -537,7 +568,7 @@
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="Context_CEPL.capella#fb04e387-8c2b-4558-aebb-c4a1b6b5d724"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="Context_CEPL.capella#fb04e387-8c2b-4558-aebb-c4a1b6b5d724"/>
         <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_eknPcNcpEeq4Rv6nnvMhKA"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_ekmoYdcpEeq4Rv6nnvMhKA" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="239,41,41" hideLabelByDefault="true" color="252,233,79">
+        <ownedStyle xmi:type="diagram:Square" uid="_ekmoYdcpEeq4Rv6nnvMhKA" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="123,105,79" hideLabelByDefault="true" color="255,244,119">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']"/>
@@ -567,7 +598,7 @@
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="Context_CEPL.capella#f07e94a0-445b-4213-ac3d-2d7ad2c0f1a4"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="Context_CEPL.capella#f07e94a0-445b-4213-ac3d-2d7ad2c0f1a4"/>
         <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_dNazA9cpEeq4Rv6nnvMhKA"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_dNazAdcpEeq4Rv6nnvMhKA" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="239,41,41" hideLabelByDefault="true" color="252,233,79">
+        <ownedStyle xmi:type="diagram:Square" uid="_dNazAdcpEeq4Rv6nnvMhKA" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="123,105,79" hideLabelByDefault="true" color="255,244,119">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']"/>
@@ -585,7 +616,7 @@
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="Context_CEPL.capella#f73c1bab-13e3-417d-916b-13339ffa7634"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="Context_CEPL.capella#f73c1bab-13e3-417d-916b-13339ffa7634"/>
         <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_ep9pgNcpEeq4Rv6nnvMhKA"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_ep9CcdcpEeq4Rv6nnvMhKA" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="239,41,41" hideLabelByDefault="true" color="252,233,79">
+        <ownedStyle xmi:type="diagram:Square" uid="_ep9CcdcpEeq4Rv6nnvMhKA" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="123,105,79" hideLabelByDefault="true" color="255,244,119">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']"/>
@@ -613,9 +644,10 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_dNbaENcpEeq4Rv6nnvMhKA" name="PLL 1" sourceNode="_dNZk4NcpEeq4Rv6nnvMhKA" targetNode="_dNazANcpEeq4Rv6nnvMhKA">
       <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="Context_CEPL.capella#3de3e35c-6df9-462f-89aa-ea04ad2f9fb6"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="Context_CEPL.capella#3de3e35c-6df9-462f-89aa-ea04ad2f9fb6"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_dNbaEdcpEeq4Rv6nnvMhKA" targetArrow="NoDecoration" centered="Both" strokeColor="239,41,41">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB_PhysicalLink']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_dNbaEtcpEeq4Rv6nnvMhKA" labelColor="239,41,41"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_qtp8VLPXEe6NAMw5pQd-Iw" description="_qtp8ULPXEe6NAMw5pQd-Iw" targetArrow="NoDecoration" centered="Both" strokeColor="239,41,41">
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_qtp8VbPXEe6NAMw5pQd-Iw"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_qtp8V7PXEe6NAMw5pQd-Iw" labelColor="239,41,41"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_qtp8VrPXEe6NAMw5pQd-Iw"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB_PhysicalLink']"/>
     </ownedDiagramElements>

@@ -18,14 +18,14 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_i1GK0EWEEe24t8fF29Jotw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_o9fscEWEEe24t8fF29Jotw" name="[LDFB] Root Logical Function" repPath="#_o9cpIEWEEe24t8fF29Jotw" changeId="1692712802397">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_o9fscEWEEe24t8fF29Jotw" name="[LDFB] Root Logical Function" repPath="#_o9cpIEWEEe24t8fF29Jotw" changeId="1705394334986">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="FunctionalChain.capella#75c2ce79-47eb-4edd-b40d-4a9a9af94b2c"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_i2FpUEWEEe24t8fF29Jotw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_rej20EWLEe24t8fF29Jotw" name="[OAIB] Root Operational Activity" repPath="#_regzgEWLEe24t8fF29Jotw" changeId="1692712802397">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_rej20EWLEe24t8fF29Jotw" name="[OAIB] Root Operational Activity" repPath="#_regzgEWLEe24t8fF29Jotw" changeId="1705394335796">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="FunctionalChain.capella#a739f267-7b19-474e-b986-cf07b91dc3c0"/>
       </ownedRepresentationDescriptors>
@@ -347,7 +347,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_qBhVRUWEEe24t8fF29Jotw" name="FunctionalExchange 1" sourceNode="_qBgHIEWEEe24t8fF29Jotw" targetNode="_qBhVQUWEEe24t8fF29Jotw" beginLabel="." endLabel=".">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="FunctionalChain.capella#b564e9f7-6e79-4084-ba27-c4bf24a22912"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="FunctionalChain.capella#b564e9f7-6e79-4084-ba27-c4bf24a22912"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="FunctionalChain.capella#eaee0573-c9c0-4d7a-8017-c4da1e3e83bf"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_qBh8UEWEEe24t8fF29Jotw" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>strokeColor</customFeatures>
         <customFeatures>size</customFeatures>
@@ -360,7 +360,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_qNYnA0WEEe24t8fF29Jotw" name="FunctionalExchange 2" sourceNode="_qNX_8EWEEe24t8fF29Jotw" targetNode="_qNX_9EWEEe24t8fF29Jotw" beginLabel="." endLabel=".">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="FunctionalChain.capella#37a6431b-2628-4c13-ab56-11ff4d9dee6a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="FunctionalChain.capella#37a6431b-2628-4c13-ab56-11ff4d9dee6a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="FunctionalChain.capella#eaee0573-c9c0-4d7a-8017-c4da1e3e83bf"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_qNZOEEWEEe24t8fF29Jotw" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>strokeColor</customFeatures>
         <customFeatures>size</customFeatures>
@@ -373,7 +373,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_qYMv5UWEEe24t8fF29Jotw" name="FunctionalExchange 3" sourceNode="_qYMI0EWEEe24t8fF29Jotw" targetNode="_qYMv4UWEEe24t8fF29Jotw" beginLabel="." endLabel=".">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="FunctionalChain.capella#752f9c61-8ea4-4ded-b695-cb9a07b43c43"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="FunctionalChain.capella#752f9c61-8ea4-4ded-b695-cb9a07b43c43"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="FunctionalChain.capella#eaee0573-c9c0-4d7a-8017-c4da1e3e83bf"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_qYNW8EWEEe24t8fF29Jotw" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>strokeColor</customFeatures>
         <customFeatures>size</customFeatures>
@@ -575,7 +575,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_td8UoEWLEe24t8fF29Jotw" name="Interaction 1" sourceNode="_sCXugEWLEe24t8fF29Jotw" targetNode="_sJTc8EWLEe24t8fF29Jotw" beginLabel="." endLabel=".">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="FunctionalChain.capella#ebf57412-e41e-4060-84f6-5a6aac37635a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="FunctionalChain.capella#ebf57412-e41e-4060-84f6-5a6aac37635a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="FunctionalChain.capella#2c176c1f-b034-4756-b360-b7c8b03b94de"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_td87sEWLEe24t8fF29Jotw" size="4" strokeColor="24,114,248">
         <customFeatures>strokeColor</customFeatures>
         <customFeatures>size</customFeatures>
@@ -588,7 +588,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_toQHMEWLEe24t8fF29Jotw" name="Interaction 2" sourceNode="_sJTc8EWLEe24t8fF29Jotw" targetNode="_sPx4YEWLEe24t8fF29Jotw" beginLabel="." endLabel=".">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="FunctionalChain.capella#cfc78f82-9e21-4bac-9a83-4a88e27de891"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="FunctionalChain.capella#cfc78f82-9e21-4bac-9a83-4a88e27de891"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="FunctionalChain.capella#2c176c1f-b034-4756-b360-b7c8b03b94de"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_toQHMUWLEe24t8fF29Jotw" size="4" strokeColor="24,114,248">
         <customFeatures>strokeColor</customFeatures>
         <customFeatures>size</customFeatures>
@@ -601,7 +601,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_t0J1MEWLEe24t8fF29Jotw" name="Interaction 3" sourceNode="_sPx4YEWLEe24t8fF29Jotw" targetNode="_tIUC4EWLEe24t8fF29Jotw" beginLabel="." endLabel=".">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="FunctionalChain.capella#e961ab47-433e-4249-9a77-7d37585b6365"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="FunctionalChain.capella#e961ab47-433e-4249-9a77-7d37585b6365"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="FunctionalChain.capella#2c176c1f-b034-4756-b360-b7c8b03b94de"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_t0J1MUWLEe24t8fF29Jotw" size="4" strokeColor="24,114,248">
         <customFeatures>strokeColor</customFeatures>
         <customFeatures>size</customFeatures>
