@@ -2068,7 +2068,7 @@
           <reusedTools xsi:type="tool_1:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']"/>
         </toolSections>
       </defaultLayer>
-    </ownedRepresentations>    
+    </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="System Functions - Operational Activities" domainClass="SystemAnalysis">
       <ownedLineMappings name="System Functions 1" domainClass="AbstractFunction" semanticCandidatesExpression="aql:self.getRootFunction().getOwnedAbstractFunctions()" headerLabelExpression="feature:name">
         <ownedSubLines name="Sub System Function 1" reusedSubLines="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']/@ownedLineMappings[name='System%20Functions%201']/@ownedSubLines[name='Sub%20Function%20Pkg'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']/@ownedLineMappings[name='System%20Functions%201']/@ownedSubLines[name='Sub%20System%20Function%201']" reusedInMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']/@ownedLineMappings[name='FunctionPkgs'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']/@ownedLineMappings[name='System%20Functions%201']/@ownedSubLines[name='Sub%20Function%20Pkg'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']/@ownedLineMappings[name='System%20Functions%201']/@ownedSubLines[name='Sub%20System%20Function%201']" domainClass="SystemFunction" semanticCandidatesExpression="aql:self.getOwnedAbstractFunctions()" headerLabelExpression="feature:name">
@@ -2171,27 +2171,27 @@
       <layout xsi:type="description_1:OrderedTreeLayout" childrenExpression="feature:subFunctions" nodeMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']"/>
       <defaultLayer name="default">
         <nodeMappings name="SFB_SystemFunction" detailDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='System%20Function%20Breakdown'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='System%20Data%20Flow%20Blank']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20System%20Function']" semanticCandidatesExpression="service:getFBDSemanticFunctions()" domainClass="SystemFunction">
-          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW" width="-1" height="-1">
             <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
           </style>
           <conditionnalStyles predicateExpression="service:isControlNode()">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW" width="-1" height="-1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xBD_ControlNode']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="service:isAllocatedInActor()">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW" width="-1" height="-1">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="service:isNotLeafAndisAllLeavesFunctionActorAllocated()">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW" width="-1" height="-1">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
@@ -3720,7 +3720,7 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="-1" height="-1">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Label_Green']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
@@ -3756,7 +3756,7 @@
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="service:isNotLeaf()">
-              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="-1" height="-1">
                 <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
                 <labelFormat>italic</labelFormat>
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Label_Green']"/>
@@ -5612,7 +5612,7 @@
           <mask mask="{0}"/>
         </create>
       </intersection>
-    </ownedRepresentations>    
+    </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.PhysicalServices"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.showhide.ShowHideService"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.CapellaServices"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" version="12.0.0.2017041100">
-  <ownedViewpoints name="EPBS architecture" label="%epbs" modelFileExtension="capella">    
+  <ownedViewpoints name="EPBS architecture" label="%epbs" modelFileExtension="capella">
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Configuration Items - Physical Artifacts" domainClass="EPBSArchitecture">
       <ownedLineMappings name="Configuration Item 1" domainClass="ConfigurationItem" semanticCandidatesExpression="aql:self.eAllContents()->filter(epbs::ConfigurationItem)->select(x | not (x.eContainer().oclIsKindOf(epbs::EPBSArchitecture)))" headerLabelExpression="aql:self.computeComponentLabel()">
         <delete name="No delete" precondition="false">
@@ -46,7 +46,7 @@
           <mask mask="{0}"/>
         </create>
       </intersection>
-    </ownedRepresentations>    
+    </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:DiagramDescription" name="EPBS Architecture Blank" label="%epbs.eab" titleExpression="aql:'[EAB] ' + self.name" domainClass="NamedElement" preconditionExpression="aql:self.oclIsKindOf(epbs::ConfigurationItemPkg) or self.oclIsKindOf(epbs::ConfigurationItem) or (self.oclIsKindOf(cs::Part) and self.getComponentType().oclIsKindOf(epbs::ConfigurationItem))">
       <dropDescriptions href="#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
@@ -98,20 +98,20 @@
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Interfaces%20Diagram%20Blank']"/>
           <detailDescriptions xsi:type="description_1:TableCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedRepresentationCreationDescriptions[name='Interface%20delegations']"/>
           <subNodeMappings name="PhysicalComponentInCI mapping" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20PC%20allocation%20in%20CI']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="aql:self.type.outgoingTraces->filter(epbs::PhysicalArtifactRealization).targetElement->select(x | x->filter(pa::PhysicalComponent)->size() > 0)" domainClass="PhysicalComponent">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computeComponentLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computeComponentLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW" width="-1" height="-1">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']"/>
             </style>
             <conditionnalStyles predicateExpression="aql:self.nature = pa::PhysicalComponentNature::NODE">
-              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computeComponentLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computeComponentLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW" width="-1" height="-1">
                 <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']"/>
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']"/>
                 <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="aql:self.nature = pa::PhysicalComponentNature::BEHAVIOR">
-              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computeComponentLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computeComponentLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW" width="-1" height="-1">
                 <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']"/>
                 <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
@@ -606,13 +606,13 @@
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20External%20Interfaces']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Interfaces%20Diagram%20Blank']"/>
           <detailDescriptions xsi:type="description_1:TableCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedRepresentationCreationDescriptions[name='Interface%20delegations']"/>
-          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computeComponentLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computeComponentLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW" width="-1" height="-1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray']"/>
           </style>
           <conditionnalStyles predicateExpression="aql:self = container">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computeComponentLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computeComponentLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW" width="-1" height="-1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -620,7 +620,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:self.abstract = true">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computeComponentLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computeComponentLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW" width="-1" height="-1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
               <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
