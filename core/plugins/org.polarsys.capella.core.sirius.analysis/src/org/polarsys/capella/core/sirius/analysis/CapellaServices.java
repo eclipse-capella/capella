@@ -1491,45 +1491,67 @@ public class CapellaServices {
     }
     return false;
   }
-   
-  public Set<PhysicalPath> getDisplayedInvolvingPhysicalPaths(DEdge view) {
-    Set<PhysicalPath> displayedInvolvingPhysicalPaths = new HashSet<PhysicalPath>();
+
+  public Collection<EObject> getPhysicalLinkSemanticElements(DEdge view) {
+    Collection<EObject> semanticElements = new LinkedList<EObject>();
     EObject target = view.getTarget();
-    if(target instanceof PhysicalLink) {
+    semanticElements.add(target);
+    if (target instanceof PhysicalLink) {
+      semanticElements.addAll(getDisplayedInvolvingPhysicalPaths(view));
+    }
+    return semanticElements;
+  }
+
+  public Collection<PhysicalPath> getDisplayedInvolvingPhysicalPaths(DEdge view) {
+    Collection<PhysicalPath> displayedInvolvingPhysicalPaths = new ArrayList<PhysicalPath>();
+    EObject target = view.getTarget();
+    if (target instanceof PhysicalLink) {
       PhysicalLink targetPL = (PhysicalLink) target;
       DDiagram diagram = view.getParentDiagram();
-      Map<PhysicalPath, DNode> displayedPhysicalPaths = PhysicalServices.getService().getDisplayedPhysicalPathsAndNodes(diagram);
+      Map<PhysicalPath, DNode> displayedPhysicalPaths = PhysicalServices.getService()
+          .getDisplayedPhysicalPathsAndNodes(diagram);
       displayedInvolvingPhysicalPaths.addAll(PhysicalLinkExt.getInvolvingPhysicalPaths(targetPL));
-      displayedInvolvingPhysicalPaths.retainAll(displayedPhysicalPaths.keySet());      
+      displayedInvolvingPhysicalPaths.retainAll(displayedPhysicalPaths.keySet());
     }
-    return displayedInvolvingPhysicalPaths;    
+    return displayedInvolvingPhysicalPaths;
   }
-  
-  public Set<FunctionalChain> getDisplayedInvolvingFunctionalChains(DEdge view){
-    Set<FunctionalChain> displayedInvolvingFunctionalChains = new HashSet<FunctionalChain>();
+
+  public Collection<EObject> getFunctionalExchangeSemanticElements(DEdge view) {
+    Collection<EObject> semanticElements = new LinkedList<EObject>();
     EObject target = view.getTarget();
-    if(target instanceof FunctionalExchange) {
+    semanticElements.add(target);
+    if (target instanceof FunctionalExchange) {
+      semanticElements.addAll(getDisplayedInvolvingFunctionalChains(view));
+    }
+    return semanticElements;
+  }
+
+  public Collection<FunctionalChain> getDisplayedInvolvingFunctionalChains(DEdge view) {
+    Collection<FunctionalChain> displayedInvolvingFunctionalChains = new ArrayList<FunctionalChain>();
+    EObject target = view.getTarget();
+    if (target instanceof FunctionalExchange) {
       FunctionalExchange targetFE = (FunctionalExchange) target;
       DDiagram diagram = view.getParentDiagram();
-      HashMap<FunctionalChain, DNode> displayedFunctionalChains = FunctionalChainServices.getFunctionalChainServices().getDisplayedFunctionalChains(diagram);
+      HashMap<FunctionalChain, DNode> displayedFunctionalChains = FunctionalChainServices.getFunctionalChainServices()
+          .getDisplayedFunctionalChains(diagram);
       displayedInvolvingFunctionalChains.addAll(targetFE.getInvolvingFunctionalChains());
-      displayedInvolvingFunctionalChains.retainAll(displayedFunctionalChains.keySet());      
+      displayedInvolvingFunctionalChains.retainAll(displayedFunctionalChains.keySet());
     }
-    return displayedInvolvingFunctionalChains;    
+    return displayedInvolvingFunctionalChains;
   }
-  
+
   public Set<EObject> getEdgeExchangeCategorySemanticElements(ExchangeCategory context, DEdge view) {
     Set<EObject> returnedList = new LinkedHashSet<>();
     returnedList.add(context);
     EObject targetViewFunction = ((DSemanticDecorator) view.getTargetNode().eContainer()).getTarget();
     EObject sourceViewFunction = ((DSemanticDecorator) view.getSourceNode().eContainer()).getTarget();
-    
+
     for (FunctionalExchange anExchange : context.getExchanges()) {
       AbstractFunction sourceContainer = FunctionalExchangeExt.getSourceFunction(anExchange);
       AbstractFunction targetContainer = FunctionalExchangeExt.getTargetFunction(anExchange);
-      
-      if (isOrIsChildFunction(sourceContainer, sourceViewFunction) && 
-          isOrIsChildFunction(targetContainer, targetViewFunction)) {
+
+      if (isOrIsChildFunction(sourceContainer, sourceViewFunction)
+          && isOrIsChildFunction(targetContainer, targetViewFunction)) {
         returnedList.add(anExchange);
       }
     }

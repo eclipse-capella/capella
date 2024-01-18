@@ -5,7 +5,7 @@
     <semanticResources>CreateRule_Scenario.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_0KPDoBjcEeCQfsnBufmDOw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_OENd529zEeaRiLEB1c1Ygg" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_Q5MWoBmGEeC9U4RN-iwGyg" changeId="1705345156220">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_OENd529zEeaRiLEB1c1Ygg" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_Q5MWoBmGEeC9U4RN-iwGyg" changeId="1705592804849">
         <eAnnotations xmi:type="description:DAnnotation" uid="_Le_rcLPYEe6NAMw5pQd-Iw" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Le_rcbPYEe6NAMw5pQd-Iw" key="hide.simplified.diagram.based.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Le_rcrPYEe6NAMw5pQd-Iw" key="hide.simplified.group.of.component.exchanges.filter" value="true"/>
@@ -18179,22 +18179,7 @@
       </data>
     </ownedAnnotationEntries>
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_xxDJQEaMEeWataBnM8mpkg" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_xxDJQUaMEeWataBnM8mpkg">
-        <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="_LgRd0LPYEe6NAMw5pQd-Iw" targetArrow="NoDecoration">
-          <strokeColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
-          <beginLabelStyleDescription xmi:type="style:BeginLabelStyleDescription" xmi:id="_LgRd0bPYEe6NAMw5pQd-Iw" labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
-            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          </beginLabelStyleDescription>
-          <centerLabelStyleDescription xmi:type="style:CenterLabelStyleDescription" xmi:id="_LgRd0rPYEe6NAMw5pQd-Iw" labelExpression="aql:self.getFunctionalExchangeLabel(diagram)">
-            <labelColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
-          </centerLabelStyleDescription>
-          <endLabelStyleDescription xmi:type="style:EndLabelStyleDescription" xmi:id="_LgRd07PYEe6NAMw5pQd-Iw" labelExpression="aql:self.getOverlappedFunctionalChainsLabel(view, diagram)">
-            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          </endLabelStyleDescription>
-          <centeredSourceMappings xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']"/>
-          <centeredTargetMappings xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']"/>
-        </computedStyleDescriptions>
-      </data>
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_xxDJQUaMEeWataBnM8mpkg"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_THy8MBmGEeC9U4RN-iwGyg" name=" part_P1 : LC1">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="CreateRule_Scenario.capella#91eb4d9f-51bd-4585-9771-cf3273f0f5f0"/>
@@ -18210,7 +18195,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_hvVNUBmGEeC9U4RN-iwGyg" name="SF1" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="CreateRule_Scenario.capella#231fc2ac-ebe5-4140-9bec-8981278acbe4"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="CreateRule_Scenario.capella#231fc2ac-ebe5-4140-9bec-8981278acbe4"/>
-        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_OSg_nW9zEeaRiLEB1c1Ygg" name="FOP11" outgoingEdges="_OSz6cG9zEeaRiLEB1c1Ygg" width="1" height="1">
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_OSg_nW9zEeaRiLEB1c1Ygg" name="FOP11" width="1" height="1">
           <target xmi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort" href="CreateRule_Scenario.capella#987b8b5b-75f3-45a3-8f38-a0db5c5fac16"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort" href="CreateRule_Scenario.capella#987b8b5b-75f3-45a3-8f38-a0db5c5fac16"/>
           <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_OSg_n29zEeaRiLEB1c1Ygg"/>
@@ -18219,7 +18204,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']"/>
         </ownedBorderedNodes>
-        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_OSg_oG9zEeaRiLEB1c1Ygg" name="FOP12" outgoingEdges="_OSz6eW9zEeaRiLEB1c1Ygg" width="1" height="1">
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_OSg_oG9zEeaRiLEB1c1Ygg" name="FOP12" width="1" height="1">
           <target xmi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort" href="CreateRule_Scenario.capella#ca8414bb-8cfe-4e40-98bb-fdd136005932"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort" href="CreateRule_Scenario.capella#ca8414bb-8cfe-4e40-98bb-fdd136005932"/>
           <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_OSqJcG9zEeaRiLEB1c1Ygg"/>
@@ -18248,7 +18233,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_iM_ZsBmGEeC9U4RN-iwGyg" name="SF6" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="CreateRule_Scenario.capella#7e19a93f-265b-49fb-bd45-91ca23f4199b"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="CreateRule_Scenario.capella#7e19a93f-265b-49fb-bd45-91ca23f4199b"/>
-        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_OSqJcW9zEeaRiLEB1c1Ygg" name="FIP11" incomingEdges="_OSz6dm9zEeaRiLEB1c1Ygg" width="1" height="1">
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_OSqJcW9zEeaRiLEB1c1Ygg" name="FIP11" width="1" height="1">
           <target xmi:type="org.polarsys.capella.core.data.fa:FunctionInputPort" href="CreateRule_Scenario.capella#645a09ef-f8c8-465e-8f13-ee4ac1161cbd"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionInputPort" href="CreateRule_Scenario.capella#645a09ef-f8c8-465e-8f13-ee4ac1161cbd"/>
           <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_OSqJc29zEeaRiLEB1c1Ygg"/>
@@ -18262,56 +18247,6 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']"/>
       </ownedDiagramElements>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_OSz6cG9zEeaRiLEB1c1Ygg" name="FE1" sourceNode="_OSg_nW9zEeaRiLEB1c1Ygg">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CreateRule_Scenario.capella#91123bc0-3fdf-436c-9ce8-a41405383612"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CreateRule_Scenario.capella#91123bc0-3fdf-436c-9ce8-a41405383612"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_LgRd1LPYEe6NAMw5pQd-Iw" description="_LgRd0LPYEe6NAMw5pQd-Iw" targetArrow="NoDecoration" centered="Source" strokeColor="9,92,46">
-        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_LgRd1bPYEe6NAMw5pQd-Iw"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_LgRd17PYEe6NAMw5pQd-Iw" labelColor="9,92,46"/>
-        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_LgRd1rPYEe6NAMw5pQd-Iw"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Function']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_OSz6c29zEeaRiLEB1c1Ygg" name="FE2">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CreateRule_Scenario.capella#fe3bf4ea-b164-492a-9fc6-b7c10db87af4"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CreateRule_Scenario.capella#fe3bf4ea-b164-492a-9fc6-b7c10db87af4"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Lgb14LPYEe6NAMw5pQd-Iw" description="_LgRd0LPYEe6NAMw5pQd-Iw" targetArrow="NoDecoration" strokeColor="9,92,46">
-        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_Lgb14bPYEe6NAMw5pQd-Iw"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_Lgb147PYEe6NAMw5pQd-Iw" labelColor="9,92,46"/>
-        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_Lgb14rPYEe6NAMw5pQd-Iw"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Function']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_OSz6dm9zEeaRiLEB1c1Ygg" name="FE3" targetNode="_OSqJcW9zEeaRiLEB1c1Ygg">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CreateRule_Scenario.capella#06d2b8f3-87c5-4b5d-9a0a-67d74373d40b"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CreateRule_Scenario.capella#06d2b8f3-87c5-4b5d-9a0a-67d74373d40b"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Lglm4LPYEe6NAMw5pQd-Iw" description="_LgRd0LPYEe6NAMw5pQd-Iw" targetArrow="NoDecoration" centered="Target" strokeColor="9,92,46">
-        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_Lglm4bPYEe6NAMw5pQd-Iw"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_Lglm47PYEe6NAMw5pQd-Iw" labelColor="9,92,46"/>
-        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_Lglm4rPYEe6NAMw5pQd-Iw"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Function']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_OSz6eW9zEeaRiLEB1c1Ygg" name="FE4" sourceNode="_OSg_oG9zEeaRiLEB1c1Ygg">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CreateRule_Scenario.capella#f43ca66a-cf9d-4e0d-ac8e-32dae488e320"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CreateRule_Scenario.capella#f43ca66a-cf9d-4e0d-ac8e-32dae488e320"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Lguw0LPYEe6NAMw5pQd-Iw" description="_LgRd0LPYEe6NAMw5pQd-Iw" targetArrow="NoDecoration" centered="Source" strokeColor="9,92,46">
-        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_Lguw0bPYEe6NAMw5pQd-Iw"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_Lguw07PYEe6NAMw5pQd-Iw" labelColor="9,92,46"/>
-        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_Lguw0rPYEe6NAMw5pQd-Iw"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Function']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_OSz6fG9zEeaRiLEB1c1Ygg" name="Exchange 1">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CreateRule_Scenario.capella#9592fd11-b498-42b8-b7a3-27f0559c19ac"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="CreateRule_Scenario.capella#9592fd11-b498-42b8-b7a3-27f0559c19ac"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Lg4h0LPYEe6NAMw5pQd-Iw" description="_LgRd0LPYEe6NAMw5pQd-Iw" targetArrow="NoDecoration" strokeColor="9,92,46">
-        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_Lg4h0bPYEe6NAMw5pQd-Iw"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_Lg4h07PYEe6NAMw5pQd-Iw" labelColor="9,92,46"/>
-        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_Lg4h0rPYEe6NAMw5pQd-Iw"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Function']"/>
     </ownedDiagramElements>
     <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']"/>
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@filters[name='Hide%20Computed%20Physical%20Links']"/>

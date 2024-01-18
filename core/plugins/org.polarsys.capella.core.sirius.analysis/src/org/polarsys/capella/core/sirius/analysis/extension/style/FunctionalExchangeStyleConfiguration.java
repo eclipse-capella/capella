@@ -12,12 +12,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.extension.style;
 
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
@@ -41,6 +39,7 @@ import org.polarsys.capella.core.sirius.analysis.cache.DEdgeIconCache;
 @SuppressWarnings("restriction")
 public class FunctionalExchangeStyleConfiguration extends SimpleStyleConfiguration implements IStyleConfigurationProvider {
 
+  @Override
   public StyleConfiguration createStyleConfiguration(DiagramElementMapping mapping, Style style) {
     return this;
   }
@@ -52,17 +51,9 @@ public class FunctionalExchangeStyleConfiguration extends SimpleStyleConfigurati
         && isShowIcon(representationElement, editPart)) {
       Image labelIcon = DEdgeIconCache.getInstance().getIcon((DEdge) representationElement);
 
-      if (labelIcon == null) {
+      if (labelIcon == null && representationElement.getSemanticElements().size() > 1) {
         DEdge edge = (DEdge) representationElement;
-        Set<FunctionalChain> chains = new HashSet<FunctionalChain>();
-
-        // If semanticElements is the Functional Exchange as before Capella 7, don't try to compute an image
-        EObject firstSemanticElement = edge.getSemanticElements().get(0);
-        if (firstSemanticElement == null || !(firstSemanticElement instanceof FunctionalChain)) {
-          return null;
-        }
-
-        chains.addAll((Collection<? extends FunctionalChain>) edge.getSemanticElements());
+        Set<FunctionalChain> chains = edge.getSemanticElements().stream().filter(FunctionalChain.class::isInstance).map(FunctionalChain.class::cast).collect(Collectors.toSet());
         HashMap<FunctionalChain, DNode> functionalChains = FunctionalChainServices.getFunctionalChainServices()
             .getDisplayedFunctionalChains(representationElement.getParentDiagram());
         FunctionalChainServices.getFunctionalChainServices().updateFunctionalExchangePieIcon(edge, chains,
@@ -74,6 +65,7 @@ public class FunctionalExchangeStyleConfiguration extends SimpleStyleConfigurati
     return super.getLabelIcon(representationElement, editPart);
   }
 
+  @Override
   public boolean provides(DiagramElementMapping mapping, Style style) {
     if (mapping instanceof EdgeMapping) {
       String domainClass = ((EdgeMapping) mapping).getDomainClass();

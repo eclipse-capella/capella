@@ -12,12 +12,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.extension.style;
 
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
@@ -41,6 +39,7 @@ import org.polarsys.capella.core.sirius.analysis.cache.DEdgeIconCache;
 @SuppressWarnings("restriction")
 public class PhysicalLinkStyleConfiguration extends SimpleStyleConfiguration implements IStyleConfigurationProvider {
 
+  @Override
   public StyleConfiguration createStyleConfiguration(DiagramElementMapping mapping, Style style) {
     return this;
   }
@@ -52,17 +51,9 @@ public class PhysicalLinkStyleConfiguration extends SimpleStyleConfiguration imp
         && isShowIcon(representationElement, editPart)) {
       Image labelIcon = DEdgeIconCache.getInstance().getIcon((DEdge) representationElement);
 
-      if (labelIcon == null) {
+      if (labelIcon == null && representationElement.getSemanticElements().size() > 1) {
         DEdge edge = (DEdge) representationElement;
-        Set<PhysicalPath> paths = new HashSet<PhysicalPath>();
-        
-        // If semanticElements is the PhysicalLink as before Capella 7, don't try to compute an image
-        EObject firstSemanticElement = edge.getSemanticElements().get(0);
-        if (firstSemanticElement == null || !(firstSemanticElement instanceof PhysicalPath)) {
-          return null;
-        }
-        
-        paths.addAll((Collection<? extends PhysicalPath>) edge.getSemanticElements());
+        Set<PhysicalPath> paths = edge.getSemanticElements().stream().filter(PhysicalPath.class::isInstance).map(PhysicalPath.class::cast).collect(Collectors.toSet());
         Map<PhysicalPath, DNode> physicalPaths = PhysicalServices.getService()
             .getDisplayedPhysicalPathsAndNodes(representationElement.getParentDiagram());
         PhysicalServices.getService().updatePhysicalLinkPieIcon(edge, paths, physicalPaths);
@@ -74,6 +65,7 @@ public class PhysicalLinkStyleConfiguration extends SimpleStyleConfiguration imp
     return super.getLabelIcon(representationElement, editPart);
   }
 
+  @Override
   public boolean provides(DiagramElementMapping mapping, Style style) {
     if (mapping instanceof EdgeMapping) {
       String domainClass = ((EdgeMapping) mapping).getDomainClass();

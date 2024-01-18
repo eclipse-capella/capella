@@ -31,7 +31,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_e34EEPcZEemoZuTI-rKb9Q">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BJuPs_pnEem_HN7Z_n7bnw" name="[PDFB] Root Physical Function" repPath="#_BIFQ8PpnEem_HN7Z_n7bnw" changeId="1705345892150">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_BJuPs_pnEem_HN7Z_n7bnw" name="[PDFB] Root Physical Function" repPath="#_BIFQ8PpnEem_HN7Z_n7bnw" changeId="1705591711768">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalFunction" href="DiffMergeSourcePrj.capella#104781c4-fc25-4e18-8f1b-e57a807af645"/>
       </ownedRepresentationDescriptors>
@@ -295,6 +295,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_COam6PpnEem_HN7Z_n7bnw" name="FunctionalExchange 1" sourceNode="_COam4PpnEem_HN7Z_n7bnw" targetNode="_COam5PpnEem_HN7Z_n7bnw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="DiffMergeSourcePrj.capella#7cb3d859-c9e3-4e76-b363-adf5709386c2"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="DiffMergeSourcePrj.capella#7cb3d859-c9e3-4e76-b363-adf5709386c2"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="DiffMergeSourcePrj.capella#06fa1726-3307-460c-b4a3-06c21a01bf7a"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_5LX4M7PZEe6NAMw5pQd-Iw" description="_5LWqHLPZEe6NAMw5pQd-Iw" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>

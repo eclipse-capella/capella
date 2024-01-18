@@ -8,7 +8,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_-J7NMNxSEd-KJpi8H7ACiA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_R2W5sG9zEeaRiLEB1c1Ygg" name="[LAB] Logical System - Logical Architecture Blank" repPath="#__1sLcNxSEd-KJpi8H7ACiA" changeId="1705398506958">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_R2W5sG9zEeaRiLEB1c1Ygg" name="[LAB] Logical System - Logical Architecture Blank" repPath="#__1sLcNxSEd-KJpi8H7ACiA" changeId="1705592517758">
         <eAnnotations xmi:type="description:DAnnotation" uid="_ZXbIgLRUEe6bJ_qW7OCvSA" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ZXbIgbRUEe6bJ_qW7OCvSA" key="hide.simplified.diagram.based.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ZXbIgrRUEe6bJ_qW7OCvSA" key="hide.simplified.group.of.component.exchanges.filter" value="true"/>
@@ -557,7 +557,7 @@
         <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="LCPCTransition_01.capella#f80bdd32-eee0-496b-bce8-f82a638ebbaf"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="LCPCTransition_01.capella#f80bdd32-eee0-496b-bce8-f82a638ebbaf"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LCPCTransition_01.capella#77c5e381-3fda-46f8-9fee-28980ff63fd9"/>
-        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_SB-68m9zEeaRiLEB1c1Ygg" name="CP41" incomingEdges="_SCIE0G9zEeaRiLEB1c1Ygg" width="1" height="1">
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_SB-68m9zEeaRiLEB1c1Ygg" name="CP41" width="1" height="1">
           <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LCPCTransition_01.capella#2ec60686-ab76-4e96-acaf-dc339d9bcd1c"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LCPCTransition_01.capella#2ec60686-ab76-4e96-acaf-dc339d9bcd1c"/>
           <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_SB-69G9zEeaRiLEB1c1Ygg"/>
@@ -566,7 +566,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB%20ComponentPort']"/>
         </ownedBorderedNodes>
-        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_SB-69W9zEeaRiLEB1c1Ygg" name="CP43" outgoingEdges="_SCIE1m9zEeaRiLEB1c1Ygg" width="1" height="1">
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_SB-69W9zEeaRiLEB1c1Ygg" name="CP43" width="1" height="1">
           <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LCPCTransition_01.capella#22a480bb-ed72-4b3a-b757-54b15c326f0e"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LCPCTransition_01.capella#22a480bb-ed72-4b3a-b757-54b15c326f0e"/>
           <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_SB-6929zEeaRiLEB1c1Ygg"/>
@@ -586,7 +586,7 @@
           <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="LCPCTransition_01.capella#1cc2cbe0-961a-4429-8aab-0613cbf661b9"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="LCPCTransition_01.capella#1cc2cbe0-961a-4429-8aab-0613cbf661b9"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="LCPCTransition_01.capella#d651c8ce-59a7-4297-a835-e1a5270d35e7"/>
-          <ownedBorderedNodes xmi:type="diagram:DNode" uid="_SB-6-G9zEeaRiLEB1c1Ygg" name="CP411" incomingEdges="_SCIE029zEeaRiLEB1c1Ygg" width="1" height="1">
+          <ownedBorderedNodes xmi:type="diagram:DNode" uid="_SB-6-G9zEeaRiLEB1c1Ygg" name="CP411" width="1" height="1">
             <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LCPCTransition_01.capella#5388db5f-425c-4448-94bf-c05ab56ce179"/>
             <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LCPCTransition_01.capella#5388db5f-425c-4448-94bf-c05ab56ce179"/>
             <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_SB-6-m9zEeaRiLEB1c1Ygg"/>
@@ -595,7 +595,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB%20ComponentPort']"/>
           </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" uid="_SB-6-29zEeaRiLEB1c1Ygg" name="CP412" outgoingEdges="_SCIE2W9zEeaRiLEB1c1Ygg" width="1" height="1">
+          <ownedBorderedNodes xmi:type="diagram:DNode" uid="_SB-6-29zEeaRiLEB1c1Ygg" name="CP412" width="1" height="1">
             <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LCPCTransition_01.capella#d31035fc-8f79-4051-a10c-e3c4b56c88a2"/>
             <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="LCPCTransition_01.capella#d31035fc-8f79-4051-a10c-e3c4b56c88a2"/>
             <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_SB-6_W9zEeaRiLEB1c1Ygg"/>
@@ -610,42 +610,6 @@
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']"/>
         </ownedDiagramElements>
       </ownedDiagramElements>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_SCIE0G9zEeaRiLEB1c1Ygg" name="C1" targetNode="_SB-68m9zEeaRiLEB1c1Ygg">
-      <target xmi:type="org.polarsys.capella.core.data.fa:ComponentExchange" href="LCPCTransition_01.capella#42bd911f-e7a1-42ab-8076-6b33eb89db8b"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentExchange" href="LCPCTransition_01.capella#42bd911f-e7a1-42ab-8076-6b33eb89db8b"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_SCIE0W9zEeaRiLEB1c1Ygg" targetArrow="NoDecoration" centered="Both" strokeColor="74,74,151">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']/@conditionnalStyles.3/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_SCIE0m9zEeaRiLEB1c1Ygg" labelColor="74,74,151"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_SCIE029zEeaRiLEB1c1Ygg" name="C2" targetNode="_SB-6-G9zEeaRiLEB1c1Ygg">
-      <target xmi:type="org.polarsys.capella.core.data.fa:ComponentExchange" href="LCPCTransition_01.capella#03b03303-15ae-4014-8769-faa8e1fd0b82"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentExchange" href="LCPCTransition_01.capella#03b03303-15ae-4014-8769-faa8e1fd0b82"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_SCIE1G9zEeaRiLEB1c1Ygg" targetArrow="NoDecoration" centered="Both" strokeColor="74,74,151">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']/@conditionnalStyles.3/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_SCIE1W9zEeaRiLEB1c1Ygg" labelColor="74,74,151"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_SCIE1m9zEeaRiLEB1c1Ygg" name="C3" sourceNode="_SB-69W9zEeaRiLEB1c1Ygg">
-      <target xmi:type="org.polarsys.capella.core.data.fa:ComponentExchange" href="LCPCTransition_01.capella#dbd1c901-1d0a-4518-be94-23ed1951dc32"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentExchange" href="LCPCTransition_01.capella#dbd1c901-1d0a-4518-be94-23ed1951dc32"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_SCIE129zEeaRiLEB1c1Ygg" targetArrow="NoDecoration" centered="Both" strokeColor="74,74,151">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']/@conditionnalStyles.3/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_SCIE2G9zEeaRiLEB1c1Ygg" labelColor="74,74,151"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_SCIE2W9zEeaRiLEB1c1Ygg" name="C4" sourceNode="_SB-6-29zEeaRiLEB1c1Ygg">
-      <target xmi:type="org.polarsys.capella.core.data.fa:ComponentExchange" href="LCPCTransition_01.capella#dcda4d29-99f2-438a-99f7-05f9e1788f2d"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentExchange" href="LCPCTransition_01.capella#dcda4d29-99f2-438a-99f7-05f9e1788f2d"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_SCIE2m9zEeaRiLEB1c1Ygg" targetArrow="NoDecoration" centered="Both" strokeColor="74,74,151">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']/@conditionnalStyles.3/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_SCIE229zEeaRiLEB1c1Ygg" labelColor="74,74,151"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_SCIE3G9zEeaRiLEB1c1Ygg" name="LSC1" sourceNode="_SB-6429zEeaRiLEB1c1Ygg" targetNode="_SB-6729zEeaRiLEB1c1Ygg">
       <target xmi:type="org.polarsys.capella.core.data.fa:ComponentExchange" href="LCPCTransition_01.capella#dd0e5cce-8006-4248-b3c6-615c605e98e6"/>

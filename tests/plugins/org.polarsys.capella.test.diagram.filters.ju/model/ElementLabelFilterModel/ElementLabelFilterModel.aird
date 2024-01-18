@@ -11,7 +11,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_s5YiIVB0EembLZuYOQDZyg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Wx2PAFCPEemJ35r2qIwMNw" name="[OAIB] Root Operational Activity" repPath="#_WxZjEFCPEemJ35r2qIwMNw" changeId="1705346015021">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Wx2PAFCPEemJ35r2qIwMNw" name="[OAIB] Root Operational Activity" repPath="#_WxZjEFCPEemJ35r2qIwMNw" changeId="1705590969717">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="ElementLabelFilterModel.capella#719267bd-dbfb-41c7-9ebf-fa8839f7dc53"/>
       </ownedRepresentationDescriptors>
@@ -168,6 +168,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_ZDwnQFCPEemJ35r2qIwMNw" name="Interaction 1" sourceNode="_XIplcFCPEemJ35r2qIwMNw" targetNode="_XZyYwFCPEemJ35r2qIwMNw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="ElementLabelFilterModel.capella#5ceff72a-0f34-4903-8c79-bbc320dc0c70"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="ElementLabelFilterModel.capella#5ceff72a-0f34-4903-8c79-bbc320dc0c70"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="ElementLabelFilterModel.capella#1186fe6b-5394-4c4f-9402-820d079706c2"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_LfIjdLPaEe6NAMw5pQd-Iw" description="_LfIjcLPaEe6NAMw5pQd-Iw" size="4" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -180,6 +181,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_ZQ32MFCPEemJ35r2qIwMNw" name="Interaction 2" sourceNode="_XZyYwFCPEemJ35r2qIwMNw" targetNode="_XggEwFCPEemJ35r2qIwMNw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="ElementLabelFilterModel.capella#b577c4c6-875a-4c7b-8a37-272564b7b861"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="ElementLabelFilterModel.capella#b577c4c6-875a-4c7b-8a37-272564b7b861"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="ElementLabelFilterModel.capella#1186fe6b-5394-4c4f-9402-820d079706c2"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_LfJKgrPaEe6NAMw5pQd-Iw" description="_LfIjcLPaEe6NAMw5pQd-Iw" size="4" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
