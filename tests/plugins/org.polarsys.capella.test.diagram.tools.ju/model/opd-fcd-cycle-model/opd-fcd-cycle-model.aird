@@ -60,23 +60,23 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="opd-fcd-cycle-model.capella#f6a35335-04b3-4862-9864-edaee138d48e"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_bVwWA7FGEeqoD5VLzCQ3nw" name="[SDFB] A" repPath="#_bVnMELFGEeqoD5VLzCQ3nw" changeId="1705400019771">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_bVwWA7FGEeqoD5VLzCQ3nw" name="[SDFB] A" repPath="#_bVnMELFGEeqoD5VLzCQ3nw" changeId="1705591691002">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="opd-fcd-cycle-model.capella#f6a35335-04b3-4862-9864-edaee138d48e"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_iy6sGrFGEeqoD5VLzCQ3nw" name="[SDFB] A [Invalid: Cycle]" repPath="#_iynwMLFGEeqoD5VLzCQ3nw" changeId="1705400020282">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_iy6sGrFGEeqoD5VLzCQ3nw" name="[SDFB] A [Invalid: Cycle]" repPath="#_iynwMLFGEeqoD5VLzCQ3nw" changeId="1705591691753">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="opd-fcd-cycle-model.capella#f6a35335-04b3-4862-9864-edaee138d48e"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__nnmo7FGEeqoD5VLzCQ3nw" name="[SDFB] B" repPath="#__nnlkLFGEeqoD5VLzCQ3nw" changeId="1705400020787">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__nnmo7FGEeqoD5VLzCQ3nw" name="[SDFB] B" repPath="#__nnlkLFGEeqoD5VLzCQ3nw" changeId="1705591692931">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="opd-fcd-cycle-model.capella#f6a35335-04b3-4862-9864-edaee138d48e"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Ls3k1rFLEeqoD5VLzCQ3nw" name="[SDFB] B [Invalid: Cycle]" repPath="#_Ls3jULFLEeqoD5VLzCQ3nw" changeId="1705400021296">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Ls3k1rFLEeqoD5VLzCQ3nw" name="[SDFB] B [Invalid: Cycle]" repPath="#_Ls3jULFLEeqoD5VLzCQ3nw" changeId="1705591693891">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="opd-fcd-cycle-model.capella#f6a35335-04b3-4862-9864-edaee138d48e"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ho84wLFOEeq-EJ4697_U6Q" name="[SDFB] Deep" repPath="#_hogM0LFOEeq-EJ4697_U6Q" changeId="1705400021787">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ho84wLFOEeq-EJ4697_U6Q" name="[SDFB] Deep" repPath="#_hogM0LFOEeq-EJ4697_U6Q" changeId="1705591694780">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="opd-fcd-cycle-model.capella#4946d5e9-6057-4c1a-8fd2-94bf7dbb9b78"/>
       </ownedRepresentationDescriptors>
@@ -1337,6 +1337,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_eDXLwLFGEeqoD5VLzCQ3nw" name="FE1" sourceNode="_eDOB4rFGEeqoD5VLzCQ3nw" targetNode="_eDOB5rFGEeqoD5VLzCQ3nw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#acfadcf6-27bb-4c76-8677-3476ed9a2387"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#acfadcf6-27bb-4c76-8677-3476ed9a2387"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="opd-fcd-cycle-model.capella#244de188-1577-407e-933a-ceeb0b553d5b"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_60ktcrRXEe6bJ_qW7OCvSA" description="_60ktbrRXEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -1929,6 +1930,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_iy6rObFGEeqoD5VLzCQ3nw" name="FE1" sourceNode="_iyw6J7FGEeqoD5VLzCQ3nw" targetNode="_iyw6LLFGEeqoD5VLzCQ3nw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#acfadcf6-27bb-4c76-8677-3476ed9a2387"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#acfadcf6-27bb-4c76-8677-3476ed9a2387"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="opd-fcd-cycle-model.capella#6bece3e6-aaae-4c59-980c-665d49d62501"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_65cmU7RXEe6bJ_qW7OCvSA" description="_65b_WrRXEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -1951,6 +1953,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_iy6rP7FGEeqoD5VLzCQ3nw" name="FE6" sourceNode="_iyw6MrFGEeqoD5VLzCQ3nw" targetNode="_iyw6JLFGEeqoD5VLzCQ3nw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#ac5aa36f-82d2-48ef-8f6f-2131d2eac8db"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#ac5aa36f-82d2-48ef-8f6f-2131d2eac8db"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="opd-fcd-cycle-model.capella#6bece3e6-aaae-4c59-980c-665d49d62501"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_65cmYbRXEe6bJ_qW7OCvSA" description="_65b_WrRXEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -3064,6 +3067,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="__nnlxbFGEeqoD5VLzCQ3nw" name="FE2" sourceNode="__nnlo7FGEeqoD5VLzCQ3nw" targetNode="__nnlq7FGEeqoD5VLzCQ3nw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#d3ff572d-14d6-4167-8e64-a3ceb11a976a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#d3ff572d-14d6-4167-8e64-a3ceb11a976a"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="opd-fcd-cycle-model.capella#3104e271-a088-403e-aaac-da34e1658893"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_6-QN17RXEe6bJ_qW7OCvSA" description="_6-Pm2rRXEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -3076,6 +3080,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="__nnlyLFGEeqoD5VLzCQ3nw" name="FE6" sourceNode="__nnlprFGEeqoD5VLzCQ3nw" targetNode="__nnlmLFGEeqoD5VLzCQ3nw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#ac5aa36f-82d2-48ef-8f6f-2131d2eac8db"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#ac5aa36f-82d2-48ef-8f6f-2131d2eac8db"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="opd-fcd-cycle-model.capella#3104e271-a088-403e-aaac-da34e1658893"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_6-QN3bRXEe6bJ_qW7OCvSA" description="_6-Pm2rRXEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -3088,6 +3093,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="__nnly7FGEeqoD5VLzCQ3nw" name="FE3" sourceNode="__nnlrrFGEeqoD5VLzCQ3nw" targetNode="__nnls7FGEeqoD5VLzCQ3nw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#7343c2c1-5697-4ba2-a012-e35f0da35f69"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#7343c2c1-5697-4ba2-a012-e35f0da35f69"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="opd-fcd-cycle-model.capella#3104e271-a088-403e-aaac-da34e1658893"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_6-QN47RXEe6bJ_qW7OCvSA" description="_6-Pm2rRXEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -3100,6 +3106,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="__nnlzrFGEeqoD5VLzCQ3nw" name="FE4" sourceNode="__nnltrFGEeqoD5VLzCQ3nw" targetNode="__nnlu7FGEeqoD5VLzCQ3nw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#f81ca18d-288e-480f-960a-91e53687cb3d"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#f81ca18d-288e-480f-960a-91e53687cb3d"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="opd-fcd-cycle-model.capella#3104e271-a088-403e-aaac-da34e1658893"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_6-QN6bRXEe6bJ_qW7OCvSA" description="_6-Pm2rRXEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -3112,6 +3119,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="__nnl0bFGEeqoD5VLzCQ3nw" name="FE5" sourceNode="__nnlvrFGEeqoD5VLzCQ3nw" targetNode="__nnllbFGEeqoD5VLzCQ3nw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#90f37458-611d-4bcc-b5b5-3637aeebe0e2"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#90f37458-611d-4bcc-b5b5-3637aeebe0e2"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="opd-fcd-cycle-model.capella#3104e271-a088-403e-aaac-da34e1658893"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_6-Q04rRXEe6bJ_qW7OCvSA" description="_6-Pm2rRXEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -4228,6 +4236,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Ls3jgrFLEeqoD5VLzCQ3nw" name="FE1" sourceNode="_Ls3jW7FLEeqoD5VLzCQ3nw" targetNode="_Ls3jYLFLEeqoD5VLzCQ3nw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#acfadcf6-27bb-4c76-8677-3476ed9a2387"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#acfadcf6-27bb-4c76-8677-3476ed9a2387"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="opd-fcd-cycle-model.capella#83141e4a-c734-4adf-9114-5046b288c77d"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_7DG4prRXEe6bJ_qW7OCvSA" description="_7DG4orRXEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -4240,6 +4249,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Ls3jhbFLEeqoD5VLzCQ3nw" name="FE2" sourceNode="_Ls3jY7FLEeqoD5VLzCQ3nw" targetNode="_Ls3ja7FLEeqoD5VLzCQ3nw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#d3ff572d-14d6-4167-8e64-a3ceb11a976a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#d3ff572d-14d6-4167-8e64-a3ceb11a976a"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="opd-fcd-cycle-model.capella#83141e4a-c734-4adf-9114-5046b288c77d"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_7DG4rLRXEe6bJ_qW7OCvSA" description="_7DG4orRXEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -4262,6 +4272,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Ls3ji7FLEeqoD5VLzCQ3nw" name="FE3" sourceNode="_Ls3jbrFLEeqoD5VLzCQ3nw" targetNode="_Ls3jc7FLEeqoD5VLzCQ3nw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#7343c2c1-5697-4ba2-a012-e35f0da35f69"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#7343c2c1-5697-4ba2-a012-e35f0da35f69"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="opd-fcd-cycle-model.capella#83141e4a-c734-4adf-9114-5046b288c77d"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_7DG4urRXEe6bJ_qW7OCvSA" description="_7DG4orRXEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -4274,6 +4285,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Ls3jjrFLEeqoD5VLzCQ3nw" name="FE4" sourceNode="_Ls3jdrFLEeqoD5VLzCQ3nw" targetNode="_Ls3je7FLEeqoD5VLzCQ3nw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#f81ca18d-288e-480f-960a-91e53687cb3d"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#f81ca18d-288e-480f-960a-91e53687cb3d"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="opd-fcd-cycle-model.capella#83141e4a-c734-4adf-9114-5046b288c77d"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_7DHfsrRXEe6bJ_qW7OCvSA" description="_7DG4orRXEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -4286,6 +4298,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Ls3jkbFLEeqoD5VLzCQ3nw" name="FE5" sourceNode="_Ls3jfrFLEeqoD5VLzCQ3nw" targetNode="_Ls3jVbFLEeqoD5VLzCQ3nw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#90f37458-611d-4bcc-b5b5-3637aeebe0e2"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#90f37458-611d-4bcc-b5b5-3637aeebe0e2"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="opd-fcd-cycle-model.capella#83141e4a-c734-4adf-9114-5046b288c77d"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_7DHfuLRXEe6bJ_qW7OCvSA" description="_7DG4orRXEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -4966,6 +4979,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_wOGSWLFQEeq-EJ4697_U6Q" name="FunctionalExchange 6" sourceNode="_wOGSULFQEeq-EJ4697_U6Q" targetNode="_wOGSVLFQEeq-EJ4697_U6Q">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#1df5473f-8a27-4f8f-b9c8-6a503e5950bc"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="opd-fcd-cycle-model.capella#1df5473f-8a27-4f8f-b9c8-6a503e5950bc"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="opd-fcd-cycle-model.capella#073a8e63-5887-4804-b725-9c9723668081"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_7HzLarRXEe6bJ_qW7OCvSA" description="_7HykVbRXEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>

@@ -171,7 +171,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="RulesOnTransitionTest.capella#2f1b9be5-bff9-44e4-b936-f75ecc258926"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7VnQvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - System Data Flow Blank" repPath="#_VmPbYDIwEeKjIqJlNPd2Ow" changeId="1705401142375">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7VnQvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - System Data Flow Blank" repPath="#_VmPbYDIwEeKjIqJlNPd2Ow" changeId="1705592663170">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="RulesOnTransitionTest.capella#a6cc4f14-e429-401b-adb7-5a98a3170a44"/>
       </ownedRepresentationDescriptors>
@@ -1384,6 +1384,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_TAb8cHQvEeamAMxs9g9ZYQ" name="FunctionalExchange 1" sourceNode="_TAWc4HQvEeamAMxs9g9ZYQ" targetNode="_TAWc43QvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="RulesOnTransitionTest.capella#e7efb42e-c2da-4705-aaab-7ac394e9706c"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="RulesOnTransitionTest.capella#e7efb42e-c2da-4705-aaab-7ac394e9706c"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="RulesOnTransitionTest.capella#404eb036-a2fc-4303-897c-9b9b5ee4a11b"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_iGkbPrRaEe6bJ_qW7OCvSA" description="_iGkbOrRaEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>

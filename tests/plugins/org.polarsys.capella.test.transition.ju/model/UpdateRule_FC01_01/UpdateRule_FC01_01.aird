@@ -11,7 +11,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_5oQuENhbEd-aX4asfu-Xbg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_S8sPoG9zEeaRiLEB1c1Ygg" name="[SDFB] Root System Function - System Data Flow Blank" repPath="#_-XW6cNhbEd-aX4asfu-Xbg" changeId="1705402821528">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_S8sPoG9zEeaRiLEB1c1Ygg" name="[SDFB] Root System Function - System Data Flow Blank" repPath="#_-XW6cNhbEd-aX4asfu-Xbg" changeId="1705592674427">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="UpdateRule_FC01_01.capella#4a75cc0c-61e0-4f30-a93a-c2ab6bd0ace8"/>
       </ownedRepresentationDescriptors>
@@ -332,6 +332,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_THtz8m9zEeaRiLEB1c1Ygg" name="FE1" sourceNode="_THtz4G9zEeaRiLEB1c1Ygg" targetNode="_THtz429zEeaRiLEB1c1Ygg">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="UpdateRule_FC01_01.capella#3166706f-b64c-4c7a-a2b2-12ae541dc034"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="UpdateRule_FC01_01.capella#3166706f-b64c-4c7a-a2b2-12ae541dc034"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="UpdateRule_FC01_01.capella#58a308b6-1e2f-4871-92a7-f0aa9750ca28"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_cUOFRrReEe6bJ_qW7OCvSA" description="_cUOFQrReEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>

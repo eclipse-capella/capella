@@ -28,7 +28,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_UkfTECKQEeKsRIUHLBjAyg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Mh9dInQvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - System Data Flow Blank" repPath="#_1o7JYC_uEeKxtYsJvZ53fw" changeId="1705401028785">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Mh9dInQvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - System Data Flow Blank" repPath="#_1o7JYC_uEeKxtYsJvZ53fw" changeId="1705592777480">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="RulesOnIntegrityTest.capella#02eb92ec-60ae-4415-ab1a-9f975022875a"/>
       </ownedRepresentationDescriptors>
@@ -44,19 +44,19 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="RulesOnIntegrityTest.capella#3b107490-3455-4448-b95c-5b247bb8fae0"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Mh9dJnQvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - SDFB I-27" repPath="#_X5MN0GGOEeOeaKsmiXNWnQ" changeId="1705401034521">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Mh9dJnQvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - SDFB I-27" repPath="#_X5MN0GGOEeOeaKsmiXNWnQ" changeId="1705592781387">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="RulesOnIntegrityTest.capella#7f9230d4-2840-49c9-bf76-0113d1ffbe1b"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Mh9dJ3QvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - SDFB I-28" repPath="#_Mr6fQGGdEeOeaKsmiXNWnQ" changeId="1705401035674">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Mh9dJ3QvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - SDFB I-28" repPath="#_Mr6fQGGdEeOeaKsmiXNWnQ" changeId="1705592782133">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="RulesOnIntegrityTest.capella#ab18d9a6-2d7c-435a-8187-a41e90128549"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Mh9dKHQvEeamAMxs9g9ZYQ" name="[SAB] System - System Architecture Blank" repPath="#_t9gawGGoEeOeaKsmiXNWnQ" changeId="1705401036740">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Mh9dKHQvEeamAMxs9g9ZYQ" name="[SAB] System - System Architecture Blank" repPath="#_t9gawGGoEeOeaKsmiXNWnQ" changeId="1705592783439">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="RulesOnIntegrityTest.capella#263bd2ca-3859-47d4-bd95-faebf84b0ba0"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Mh9dKXQvEeamAMxs9g9ZYQ" name="[SAB] System - SAB I_30" repPath="#_iBhfAGGqEeOeaKsmiXNWnQ" changeId="1705401037448">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Mh9dKXQvEeamAMxs9g9ZYQ" name="[SAB] System - SAB I_30" repPath="#_iBhfAGGqEeOeaKsmiXNWnQ" changeId="1705592784158">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="RulesOnIntegrityTest.capella#9649686c-0535-4d34-ba01-978e58d604dc"/>
       </ownedRepresentationDescriptors>
@@ -1101,6 +1101,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MsJ68HQvEeamAMxs9g9ZYQ" name="FunctionalExchange 1" sourceNode="_MsFpgHQvEeamAMxs9g9ZYQ" targetNode="_MsG3oHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="RulesOnIntegrityTest.capella#1257fe59-48bb-4338-8da2-4ada8bbb1c42"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="RulesOnIntegrityTest.capella#1257fe59-48bb-4338-8da2-4ada8bbb1c42"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="RulesOnIntegrityTest.capella#6ab06e16-9217-44cd-8481-6003a898ec9c"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_RLSl1LRaEe6bJ_qW7OCvSA" description="_RLSl0LRaEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -1113,6 +1114,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MsKiAnQvEeamAMxs9g9ZYQ" name="FunctionalExchange 2" sourceNode="_MsGQknQvEeamAMxs9g9ZYQ" targetNode="_MsG3o3QvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="RulesOnIntegrityTest.capella#43402322-e284-442f-b037-c8bb3c15175f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="RulesOnIntegrityTest.capella#43402322-e284-442f-b037-c8bb3c15175f"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="RulesOnIntegrityTest.capella#1e6cffdd-1f94-41a7-a181-c1b7e90eb8d3"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_RLSl2rRaEe6bJ_qW7OCvSA" description="_RLSl0LRaEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="165,42,42">
         <customFeatures>size</customFeatures>
@@ -1630,6 +1632,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Msi8gHQvEeamAMxs9g9ZYQ" name="FunctionalExchange I27_1" sourceNode="_Msf5MHQvEeamAMxs9g9ZYQ" targetNode="_MsfSIHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="RulesOnIntegrityTest.capella#74da3703-8e15-4fd2-a161-dab2803af00c"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="RulesOnIntegrityTest.capella#74da3703-8e15-4fd2-a161-dab2803af00c"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="RulesOnIntegrityTest.capella#0bea2a79-11cb-4e19-b1d5-8662f52a3d77"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_SB9vLLRaEe6bJ_qW7OCvSA" description="_SB9vKLRaEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -1642,6 +1645,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MsjjknQvEeamAMxs9g9ZYQ" name="FunctionalExchange I27_2" sourceNode="_Msf5M3QvEeamAMxs9g9ZYQ" targetNode="_MsggQXQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="RulesOnIntegrityTest.capella#e50b638c-8849-4ab0-9387-a4355a7a3cd1"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="RulesOnIntegrityTest.capella#e50b638c-8849-4ab0-9387-a4355a7a3cd1"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="RulesOnIntegrityTest.capella#9cc7b40c-0107-4bb9-b796-008c365556b2"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_SB-WMrRaEe6bJ_qW7OCvSA" description="_SB9vKLRaEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="165,42,42">
         <customFeatures>size</customFeatures>
@@ -1942,6 +1946,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MsstgHQvEeamAMxs9g9ZYQ" name="FunctionalExchange I28_1" sourceNode="_MspqMXQvEeamAMxs9g9ZYQ" targetNode="_MspDInQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="RulesOnIntegrityTest.capella#0803c31c-b5b6-4ec3-a9b5-f6ce1e72955f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="RulesOnIntegrityTest.capella#0803c31c-b5b6-4ec3-a9b5-f6ce1e72955f"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="RulesOnIntegrityTest.capella#22ad7f95-3616-42e6-8532-7c59337393df"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_SM9eMbRaEe6bJ_qW7OCvSA" description="_SM83IrRaEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -1954,6 +1959,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MstUkHQvEeamAMxs9g9ZYQ" name="FunctionalExchange I28_2" sourceNode="_MsocEHQvEeamAMxs9g9ZYQ" targetNode="_MsqRQHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="RulesOnIntegrityTest.capella#983672a1-8bd0-4b66-8332-0719fdc98012"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="RulesOnIntegrityTest.capella#983672a1-8bd0-4b66-8332-0719fdc98012"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="RulesOnIntegrityTest.capella#eed5f739-a994-4591-814c-706583544f3f"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_SM83JrRaEe6bJ_qW7OCvSA" description="_SM83IrRaEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="165,42,42">
         <customFeatures>size</customFeatures>
@@ -2108,6 +2114,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MtD54HQvEeamAMxs9g9ZYQ" name="PL 1" sourceNode="_MtAPgHQvEeamAMxs9g9ZYQ" targetNode="_MtBdoHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="RulesOnIntegrityTest.capella#454c6e46-be13-4245-9bcb-3369305a18e0"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="RulesOnIntegrityTest.capella#454c6e46-be13-4245-9bcb-3369305a18e0"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="RulesOnIntegrityTest.capella#244f049d-63ad-4ab7-b349-25a6afb8a96e"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_SXIG1rRaEe6bJ_qW7OCvSA" description="_SXIG0rRaEe6bJ_qW7OCvSA" targetArrow="NoDecoration" centered="Both" strokeColor="239,41,41">
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_SXIG17RaEe6bJ_qW7OCvSA"/>
@@ -2366,6 +2373,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MtTxgHQvEeamAMxs9g9ZYQ" name="PL_KO_I30" sourceNode="_MtPgEHQvEeamAMxs9g9ZYQ" targetNode="_MtRVQHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="RulesOnIntegrityTest.capella#9b845718-ffe9-4938-8dbf-0cec9ec8110e"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="RulesOnIntegrityTest.capella#9b845718-ffe9-4938-8dbf-0cec9ec8110e"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="RulesOnIntegrityTest.capella#9a7ee414-886d-4d11-b9f2-ad8fb014a07b"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Sd42MLRaEe6bJ_qW7OCvSA" description="_Sd42LLRaEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -2378,6 +2386,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MtUYknQvEeamAMxs9g9ZYQ" name="PL_OK_I30" sourceNode="_MtRVQ3QvEeamAMxs9g9ZYQ" targetNode="_MtQHIHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="RulesOnIntegrityTest.capella#a7580d2c-15a6-4d08-9012-e9337aeee5e5"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="RulesOnIntegrityTest.capella#a7580d2c-15a6-4d08-9012-e9337aeee5e5"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="RulesOnIntegrityTest.capella#95e9a5a2-d9aa-41e1-aa96-2d53a3cc1a3d"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Sd5dMrRaEe6bJ_qW7OCvSA" description="_Sd42LLRaEe6bJ_qW7OCvSA" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="165,42,42">
         <customFeatures>size</customFeatures>

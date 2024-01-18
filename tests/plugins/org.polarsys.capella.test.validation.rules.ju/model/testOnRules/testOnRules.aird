@@ -60,11 +60,11 @@
         <description xmi:type="description_3:CrossTableDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Logical%20Components']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalArchitecture" href="testOnRules.capella#b560c44c-9a63-4ce2-a936-e5d028a2859f"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_WSimkXQvEeamAMxs9g9ZYQ" name="[PDFB] Root Physical Function - Physical Data Flow Blank" repPath="#_w7GGwdabEd6M_O5NYc6qAg" changeId="1705402486917">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_WSimkXQvEeamAMxs9g9ZYQ" name="[PDFB] Root Physical Function - Physical Data Flow Blank" repPath="#_w7GGwdabEd6M_O5NYc6qAg" changeId="1705592942168">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalFunction" href="testOnRules.capella#1a08229c-5208-4251-ac6e-9b756e40b0dd"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_WSimknQvEeamAMxs9g9ZYQ" name="[PAB] Physical System - Physical Architecture Blank" repPath="#_xIU-oNXkEd609eMaGNBP-A" changeId="1705402487858">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_WSimknQvEeamAMxs9g9ZYQ" name="[PAB] Physical System - Physical Architecture Blank" repPath="#_xIU-oNXkEd609eMaGNBP-A" changeId="1705592943256">
         <eAnnotations xmi:type="description:DAnnotation" uid="_T_x6IKn5EeyCFeq9a6zwrQ" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_T_x6Ian5EeyCFeq9a6zwrQ" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_T_x6Iqn5EeyCFeq9a6zwrQ" key="hide.computed.physical.links.filter" value="true"/>
@@ -72,7 +72,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="testOnRules.capella#48df223a-7b0d-4e8e-8ad6-3bfeb900a91f"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_WSimk3QvEeamAMxs9g9ZYQ" name="[PAB] Physical System - Physical Architecture with Functions" repPath="#_UVprMNXpEd609eMaGNBP-A" changeId="1705402488634">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_WSimk3QvEeamAMxs9g9ZYQ" name="[PAB] Physical System - Physical Architecture with Functions" repPath="#_UVprMNXpEd609eMaGNBP-A" changeId="1705592944248">
         <eAnnotations xmi:type="description:DAnnotation" uid="_UQP_EKn5EeyCFeq9a6zwrQ" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_UQP_Ean5EeyCFeq9a6zwrQ" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_UQP_Eqn5EeyCFeq9a6zwrQ" key="hide.computed.physical.links.filter" value="true"/>
@@ -132,11 +132,11 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="testOnRules.capella#f311cc54-1b0a-4950-bc23-e88ec1ca74c2"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_WSimY3QvEeamAMxs9g9ZYQ" name="[LDFB] EOLE - Logical Data Flow Blank" repPath="#_393y8NObEd6jJYuawuuzSg" changeId="1705402496004">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_WSimY3QvEeamAMxs9g9ZYQ" name="[LDFB] EOLE - Logical Data Flow Blank" repPath="#_393y8NObEd6jJYuawuuzSg" changeId="1705592948766">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="testOnRules.capella#dec071f0-e72a-4bf1-af1e-c86125ccc4e2"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_WSimZHQvEeamAMxs9g9ZYQ" name="[LAB] EOLE - Logical Architecture" repPath="#_SZ_9YNOlEd6jJYuawuuzSg" changeId="1705402496806">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_WSimZHQvEeamAMxs9g9ZYQ" name="[LAB] EOLE - Logical Architecture" repPath="#_SZ_9YNOlEd6jJYuawuuzSg" changeId="1705592949800">
         <eAnnotations xmi:type="description:DAnnotation" uid="_W1bRkKn5EeyCFeq9a6zwrQ" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_W1bRkan5EeyCFeq9a6zwrQ" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_W1bRkqn5EeyCFeq9a6zwrQ" key="hide.computed.physical.links.filter" value="true"/>
@@ -166,7 +166,7 @@
         <description xmi:type="description_3:CrossTableDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemAnalysis" href="testOnRules.capella#f10623c0-f74f-4d49-9236-64aca696500a"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_WSimgHQvEeamAMxs9g9ZYQ" name="[SAB] EOLE - System Architecture" repPath="#_fMk40NN1Ed6jJYuawuuzSg" changeId="1705402500406">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_WSimgHQvEeamAMxs9g9ZYQ" name="[SAB] EOLE - System Architecture" repPath="#_fMk40NN1Ed6jJYuawuuzSg" changeId="1705592953483">
         <eAnnotations xmi:type="description:DAnnotation" uid="_X3t1AKn5EeyCFeq9a6zwrQ" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_X3t1Aan5EeyCFeq9a6zwrQ" key="hide.simplified.group.of.component.exchanges.filter" value="true"/>
         </eAnnotations>
@@ -230,7 +230,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_ak0b4NK3Ed6YKeC37n_2sw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_WSimaHQvEeamAMxs9g9ZYQ" name="[OAIB] EOLE Operational Activity Interaction Blank" repPath="#_bnmBUNLUEd6mrdAviEikbA" changeId="1705402509308">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_WSimaHQvEeamAMxs9g9ZYQ" name="[OAIB] EOLE Operational Activity Interaction Blank" repPath="#_bnmBUNLUEd6mrdAviEikbA" changeId="1705592958544">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="testOnRules.capella#50cde9d2-60ed-43ca-b1ae-84a90cd8bf77"/>
       </ownedRepresentationDescriptors>
@@ -246,7 +246,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="testOnRules.capella#50cde9d2-60ed-43ca-b1ae-84a90cd8bf77"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_WSimbHQvEeamAMxs9g9ZYQ" name="[OEB] EOLE Operational Entity Blank" repPath="#_8-fF0NLaEd6mrdAviEikbA" changeId="1705402511845">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_WSimbHQvEeamAMxs9g9ZYQ" name="[OEB] EOLE Operational Entity Blank" repPath="#_8-fF0NLaEd6mrdAviEikbA" changeId="1705592959581">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="testOnRules.capella#36339f7e-a2c8-444b-96a6-a5dbf9d2c176"/>
       </ownedRepresentationDescriptors>
@@ -3017,6 +3017,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W1W_kHQvEeamAMxs9g9ZYQ" name="Capture Trigger" sourceNode="_W1SuI3QvEeamAMxs9g9ZYQ" targetNode="_W1MngHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#3950f2b9-93f7-4a52-b35f-c003ab390ef3"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#3950f2b9-93f7-4a52-b35f-c003ab390ef3"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#cb3df51b-2d90-44a3-bec5-86082dbedd12"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Wmp1wqn5EeyCFeq9a6zwrQ" description="_Wmonoqn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -3064,6 +3065,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W1YNs3QvEeamAMxs9g9ZYQ" name="Temperature Capture" sourceNode="_W1NOlHQvEeamAMxs9g9ZYQ" targetNode="_W1IWEHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#801c21c1-2a02-43f5-ac15-884013aa5961"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#801c21c1-2a02-43f5-ac15-884013aa5961"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#cb3df51b-2d90-44a3-bec5-86082dbedd12"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Wmqc-qn5EeyCFeq9a6zwrQ" description="_Wmonoqn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -3081,6 +3083,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W1Y0wnQvEeamAMxs9g9ZYQ" name="Formatted Captured Data" sourceNode="_W1RgA3QvEeamAMxs9g9ZYQ" targetNode="_W1SHEHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#203c0dec-9da2-4c23-a6da-b8793d69252c"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#203c0dec-9da2-4c23-a6da-b8793d69252c"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#cb3df51b-2d90-44a3-bec5-86082dbedd12"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_WmrD4qn5EeyCFeq9a6zwrQ" description="_Wmonoqn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -3098,6 +3101,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W1Zb0HQvEeamAMxs9g9ZYQ" name="Meteorological Data for Validation" sourceNode="_W1SHE3QvEeamAMxs9g9ZYQ" targetNode="_W1FSwXQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#26d67752-3ac9-4666-9e89-e7df4e425491"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#26d67752-3ac9-4666-9e89-e7df4e425491"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#cb3df51b-2d90-44a3-bec5-86082dbedd12"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Wmrq8Kn5EeyCFeq9a6zwrQ" description="_Wmonoqn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -3115,6 +3119,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W1Zb03QvEeamAMxs9g9ZYQ" name="Meteorological Report" sourceNode="_W1F50XQvEeamAMxs9g9ZYQ" targetNode="_W1F51HQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#bf9ff114-5fe6-42de-a330-7015e09c2efe"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#bf9ff114-5fe6-42de-a330-7015e09c2efe"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#cb3df51b-2d90-44a3-bec5-86082dbedd12"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_WmpOsqn5EeyCFeq9a6zwrQ" description="_Wmonoqn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -3132,6 +3137,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W1aC4HQvEeamAMxs9g9ZYQ" name="Meteorological Measurements" sourceNode="_W1N1pHQvEeamAMxs9g9ZYQ" targetNode="_W1OcsnQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#185d7976-73fa-404a-bb77-e61d9b2b4a46"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#185d7976-73fa-404a-bb77-e61d9b2b4a46"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#cb3df51b-2d90-44a3-bec5-86082dbedd12"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_WmpOuKn5EeyCFeq9a6zwrQ" description="_Wmonoqn5EeyCFeq9a6zwrQ" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -3154,6 +3160,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W1ap8nQvEeamAMxs9g9ZYQ" name="Campaign Request" sourceNode="_W1Ers3QvEeamAMxs9g9ZYQ" targetNode="_W1SuIHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#eb6f1751-4bda-4c8f-8aa1-b5a913127b29"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#eb6f1751-4bda-4c8f-8aa1-b5a913127b29"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#cb3df51b-2d90-44a3-bec5-86082dbedd12"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Wmonpqn5EeyCFeq9a6zwrQ" description="_Wmonoqn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -3191,6 +3198,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W1b4EHQvEeamAMxs9g9ZYQ" name="Temperature Measurement" sourceNode="_W1I9JHQvEeamAMxs9g9ZYQ" targetNode="_W1N1oXQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#82e42868-b145-4eb9-b7e8-d3dfe39a5510"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#82e42868-b145-4eb9-b7e8-d3dfe39a5510"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#cb3df51b-2d90-44a3-bec5-86082dbedd12"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Wmp1yKn5EeyCFeq9a6zwrQ" description="_Wmonoqn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -5489,6 +5497,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W2UB0HQvEeamAMxs9g9ZYQ" name="Capture Trigger" sourceNode="_W2ExQXQvEeamAMxs9g9ZYQ" targetNode="_W2OiQHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#3950f2b9-93f7-4a52-b35f-c003ab390ef3"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#3950f2b9-93f7-4a52-b35f-c003ab390ef3"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#cb3df51b-2d90-44a3-bec5-86082dbedd12"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_W1lCn6n5EeyCFeq9a6zwrQ" description="_W1imUKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -5536,6 +5545,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W2V3AnQvEeamAMxs9g9ZYQ" name="Temperature Capture" sourceNode="_W2PwYXQvEeamAMxs9g9ZYQ" targetNode="_W2K343QvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#801c21c1-2a02-43f5-ac15-884013aa5961"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#801c21c1-2a02-43f5-ac15-884013aa5961"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#cb3df51b-2d90-44a3-bec5-86082dbedd12"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_W1j0iqn5EeyCFeq9a6zwrQ" description="_W1imUKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -5553,6 +5563,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W2WeEHQvEeamAMxs9g9ZYQ" name="Formatted Captured Data" sourceNode="_W2BG5HQvEeamAMxs9g9ZYQ" targetNode="_W1-DkHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#203c0dec-9da2-4c23-a6da-b8793d69252c"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#203c0dec-9da2-4c23-a6da-b8793d69252c"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#cb3df51b-2d90-44a3-bec5-86082dbedd12"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_W1kbiKn5EeyCFeq9a6zwrQ" description="_W1imUKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -5570,6 +5581,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W2WeE3QvEeamAMxs9g9ZYQ" name="Meteorological Measurements" sourceNode="_W2C8EXQvEeamAMxs9g9ZYQ" targetNode="_W2Af0HQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#cc5edfa7-2b44-419c-aba6-16c49947d0bf"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#cc5edfa7-2b44-419c-aba6-16c49947d0bf"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#cb3df51b-2d90-44a3-bec5-86082dbedd12"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_W1lCkan5EeyCFeq9a6zwrQ" description="_W1imUKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -5597,6 +5609,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W2XsMHQvEeamAMxs9g9ZYQ" name="Meteorological Data for Validation" sourceNode="_W1-qonQvEeamAMxs9g9ZYQ" targetNode="_W12u0HQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#26d67752-3ac9-4666-9e89-e7df4e425491"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#26d67752-3ac9-4666-9e89-e7df4e425491"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#cb3df51b-2d90-44a3-bec5-86082dbedd12"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_W1kbgqn5EeyCFeq9a6zwrQ" description="_W1imUKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -5614,6 +5627,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W2XsM3QvEeamAMxs9g9ZYQ" name="Meteorological Report" sourceNode="_W12u03QvEeamAMxs9g9ZYQ" targetNode="_W1zrgHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#bf9ff114-5fe6-42de-a330-7015e09c2efe"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#bf9ff114-5fe6-42de-a330-7015e09c2efe"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#cb3df51b-2d90-44a3-bec5-86082dbedd12"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_W1imWqn5EeyCFeq9a6zwrQ" description="_W1imUKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -5631,6 +5645,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W2YTQnQvEeamAMxs9g9ZYQ" name="Meteorological Measurements" sourceNode="_W2Gmc3QvEeamAMxs9g9ZYQ" targetNode="_W2CVAnQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#185d7976-73fa-404a-bb77-e61d9b2b4a46"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#185d7976-73fa-404a-bb77-e61d9b2b4a46"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#cb3df51b-2d90-44a3-bec5-86082dbedd12"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_W1lCpan5EeyCFeq9a6zwrQ" description="_W1imUKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -5658,6 +5673,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W2Y6UnQvEeamAMxs9g9ZYQ" name="Campaign Request" sourceNode="_W12Hw3QvEeamAMxs9g9ZYQ" targetNode="_W2EKMHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#eb6f1751-4bda-4c8f-8aa1-b5a913127b29"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#eb6f1751-4bda-4c8f-8aa1-b5a913127b29"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#cb3df51b-2d90-44a3-bec5-86082dbedd12"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_W1imVKn5EeyCFeq9a6zwrQ" description="_W1imUKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -5695,6 +5711,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W2aIcnQvEeamAMxs9g9ZYQ" name="Temperature Measurement" sourceNode="_W2Le9HQvEeamAMxs9g9ZYQ" targetNode="_W2GmcHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#82e42868-b145-4eb9-b7e8-d3dfe39a5510"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#82e42868-b145-4eb9-b7e8-d3dfe39a5510"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#cb3df51b-2d90-44a3-bec5-86082dbedd12"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_W1lpsqn5EeyCFeq9a6zwrQ" description="_W1imUKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -7309,6 +7326,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XCakIHQvEeamAMxs9g9ZYQ" name="Current Situation" sourceNode="_VoOYgNLXEd6mrdAviEikbA" targetNode="_Z189MNLXEd6mrdAviEikbA">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#a890e56b-88a6-40e4-bc2e-05ffd59fedbe"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#a890e56b-88a6-40e4-bc2e-05ffd59fedbe"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="testOnRules.capella#92e9ab97-7a51-4207-9f1e-2a168b373f33"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_avhvqKn5EeyCFeq9a6zwrQ" description="_avhIkqn5EeyCFeq9a6zwrQ" size="4" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -7326,6 +7344,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XCbLMHQvEeamAMxs9g9ZYQ" name="Situation &amp; Trends" sourceNode="_Z189MNLXEd6mrdAviEikbA" targetNode="_XPLvQNLXEd6mrdAviEikbA">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#5b6956c0-605c-48a3-8dea-72930188457a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#5b6956c0-605c-48a3-8dea-72930188457a"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="testOnRules.capella#92e9ab97-7a51-4207-9f1e-2a168b373f33"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_aviWsqn5EeyCFeq9a6zwrQ" description="_avhIkqn5EeyCFeq9a6zwrQ" size="4" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -7343,6 +7362,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XCbLM3QvEeamAMxs9g9ZYQ" name="Raw Report" sourceNode="_XPLvQNLXEd6mrdAviEikbA" targetNode="_cCjXoNLXEd6mrdAviEikbA">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#ced69840-2a3a-4d73-a104-da62902ed7e5"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#ced69840-2a3a-4d73-a104-da62902ed7e5"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="testOnRules.capella#92e9ab97-7a51-4207-9f1e-2a168b373f33"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_avhvrqn5EeyCFeq9a6zwrQ" description="_avhIkqn5EeyCFeq9a6zwrQ" size="4" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -7360,6 +7380,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XCbLNnQvEeamAMxs9g9ZYQ" name="Raw Meteorological Data" sourceNode="_KcuJYNLXEd6mrdAviEikbA" targetNode="_jFqWkNLuEd6KTZyd5MCRXA">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#f5c08ed3-cf4f-473f-bbc3-989256298d35"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#f5c08ed3-cf4f-473f-bbc3-989256298d35"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="testOnRules.capella#92e9ab97-7a51-4207-9f1e-2a168b373f33"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_avhIlqn5EeyCFeq9a6zwrQ" description="_avhIkqn5EeyCFeq9a6zwrQ" size="4" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -7377,6 +7398,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XCbyQnQvEeamAMxs9g9ZYQ" name="Meteorological Report" sourceNode="_cCjXoNLXEd6mrdAviEikbA" targetNode="_epoHkNLXEd6mrdAviEikbA">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#7697a237-df9e-406c-9465-d387dee684db"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#7697a237-df9e-406c-9465-d387dee684db"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="testOnRules.capella#92e9ab97-7a51-4207-9f1e-2a168b373f33"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_aviWuKn5EeyCFeq9a6zwrQ" description="_avhIkqn5EeyCFeq9a6zwrQ" size="4" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -7394,6 +7416,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XCbyRXQvEeamAMxs9g9ZYQ" name="Meteorological Data" sourceNode="_jFqWkNLuEd6KTZyd5MCRXA" targetNode="_VoOYgNLXEd6mrdAviEikbA">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#e7140d20-c2f5-4049-bdec-1a24ed2c5d83"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#e7140d20-c2f5-4049-bdec-1a24ed2c5d83"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="testOnRules.capella#92e9ab97-7a51-4207-9f1e-2a168b373f33"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_avhvoqn5EeyCFeq9a6zwrQ" description="_avhIkqn5EeyCFeq9a6zwrQ" size="4" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -8560,6 +8583,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XDI84HQvEeamAMxs9g9ZYQ" name="Current Situation" sourceNode="_1TDOsNLbEd6mrdAviEikbA" targetNode="__dYUsNLbEd6mrdAviEikbA">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#a890e56b-88a6-40e4-bc2e-05ffd59fedbe"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#a890e56b-88a6-40e4-bc2e-05ffd59fedbe"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="testOnRules.capella#92e9ab97-7a51-4207-9f1e-2a168b373f33"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_bf9HCKn5EeyCFeq9a6zwrQ" description="_bf8f8qn5EeyCFeq9a6zwrQ" size="4" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -8577,6 +8601,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XDJj8nQvEeamAMxs9g9ZYQ" name="Situation &amp; Trends" sourceNode="__dYUsNLbEd6mrdAviEikbA" targetNode="_EMfvMNLcEd6mrdAviEikbA">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#5b6956c0-605c-48a3-8dea-72930188457a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#5b6956c0-605c-48a3-8dea-72930188457a"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="testOnRules.capella#92e9ab97-7a51-4207-9f1e-2a168b373f33"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_bf9uEqn5EeyCFeq9a6zwrQ" description="_bf8f8qn5EeyCFeq9a6zwrQ" size="4" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -8594,6 +8619,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XDKLAHQvEeamAMxs9g9ZYQ" name="Raw Report" sourceNode="_EMfvMNLcEd6mrdAviEikbA" targetNode="_LMtpoNLcEd6mrdAviEikbA">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#ced69840-2a3a-4d73-a104-da62902ed7e5"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#ced69840-2a3a-4d73-a104-da62902ed7e5"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="testOnRules.capella#92e9ab97-7a51-4207-9f1e-2a168b373f33"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_bf9HDqn5EeyCFeq9a6zwrQ" description="_bf8f8qn5EeyCFeq9a6zwrQ" size="4" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -8611,6 +8637,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XDKLA3QvEeamAMxs9g9ZYQ" name="Raw Meteorological Data" sourceNode="_so_ooNLbEd6mrdAviEikbA" targetNode="_ljZ5cNLwEd6KTZyd5MCRXA">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#f5c08ed3-cf4f-473f-bbc3-989256298d35"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#f5c08ed3-cf4f-473f-bbc3-989256298d35"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="testOnRules.capella#92e9ab97-7a51-4207-9f1e-2a168b373f33"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_bf8f9qn5EeyCFeq9a6zwrQ" description="_bf8f8qn5EeyCFeq9a6zwrQ" size="4" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -8628,6 +8655,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XDKyEHQvEeamAMxs9g9ZYQ" name="Meteorological Report" sourceNode="_LMtpoNLcEd6mrdAviEikbA" targetNode="_ms9IANLbEd6mrdAviEikbA">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#7697a237-df9e-406c-9465-d387dee684db"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#7697a237-df9e-406c-9465-d387dee684db"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="testOnRules.capella#92e9ab97-7a51-4207-9f1e-2a168b373f33"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_bf9uGKn5EeyCFeq9a6zwrQ" description="_bf8f8qn5EeyCFeq9a6zwrQ" size="4" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -8645,6 +8673,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XDKyE3QvEeamAMxs9g9ZYQ" name="Meteorological Data" sourceNode="_ljZ5cNLwEd6KTZyd5MCRXA" targetNode="_1TDOsNLbEd6mrdAviEikbA">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#e7140d20-c2f5-4049-bdec-1a24ed2c5d83"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#e7140d20-c2f5-4049-bdec-1a24ed2c5d83"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="testOnRules.capella#92e9ab97-7a51-4207-9f1e-2a168b373f33"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_bf9HAqn5EeyCFeq9a6zwrQ" description="_bf8f8qn5EeyCFeq9a6zwrQ" size="4" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -14832,6 +14861,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W7_MAHQvEeamAMxs9g9ZYQ" name="Meteorological Report" sourceNode="_W7uGQ3QvEeamAMxs9g9ZYQ" targetNode="_W7bLUHQvEeamAMxs9g9ZYQ" beginLabel="ImageFunctionalChain          &#xA;MeasurementFunctionalChain    " endLabel="ImageFunctionalChain          &#xA;MeasurementFunctionalChain    ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#86802873-bfa2-4b2f-a611-026adbb8d433"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#86802873-bfa2-4b2f-a611-026adbb8d433"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#6a45e525-2324-4b8c-bab9-ed75d3fee36a"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#4ec6680a-5282-49dc-90e6-78db1576e0e6"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_X31w1qn5EeyCFeq9a6zwrQ" description="_X31w0qn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="0,0,0">
@@ -15029,6 +15059,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W_7Q0HQvEeamAMxs9g9ZYQ" name="Campaign Request" sourceNode="_W7utUHQvEeamAMxs9g9ZYQ" targetNode="_W_JNsXQvEeamAMxs9g9ZYQ" beginLabel="ImageFunctionalChain          &#xA;MeasurementFunctionalChain    " endLabel="ImageFunctionalChain          &#xA;MeasurementFunctionalChain    ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#523c1637-5894-4fd6-8e80-d2cd903b9524"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#523c1637-5894-4fd6-8e80-d2cd903b9524"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#6a45e525-2324-4b8c-bab9-ed75d3fee36a"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#4ec6680a-5282-49dc-90e6-78db1576e0e6"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_X31w3Kn5EeyCFeq9a6zwrQ" description="_X31w0qn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="0,0,0">
@@ -15047,6 +15078,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W_734HQvEeamAMxs9g9ZYQ" name="Image Request" sourceNode="_W_JNtHQvEeamAMxs9g9ZYQ" targetNode="_W_DHEXQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#1960ef38-4518-406a-8ff7-6fd8cdf5de95"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#1960ef38-4518-406a-8ff7-6fd8cdf5de95"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#4ec6680a-5282-49dc-90e6-78db1576e0e6"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_X33mDKn5EeyCFeq9a6zwrQ" description="_X31w0qn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -15064,6 +15096,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W_7343QvEeamAMxs9g9ZYQ" name="Measure Request" sourceNode="_W_JNt3QvEeamAMxs9g9ZYQ" targetNode="_W_CgAXQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#54403c50-22f4-4329-9e15-9b1db4a10210"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#54403c50-22f4-4329-9e15-9b1db4a10210"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#6a45e525-2324-4b8c-bab9-ed75d3fee36a"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_X33mEqn5EeyCFeq9a6zwrQ" description="_X31w0qn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="165,42,42">
         <customFeatures>sourceArrow</customFeatures>
@@ -15081,6 +15114,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W_8e8HQvEeamAMxs9g9ZYQ" name="Formatted Captured Data" sourceNode="_W_EVN3QvEeamAMxs9g9ZYQ" targetNode="_W_Aq0XQvEeamAMxs9g9ZYQ" beginLabel="ImageFunctionalChain          &#xA;MeasurementFunctionalChain    " endLabel="ImageFunctionalChain          &#xA;MeasurementFunctionalChain    ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#4c215789-d7c9-42b6-96a2-4940153aa008"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#4c215789-d7c9-42b6-96a2-4940153aa008"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#6a45e525-2324-4b8c-bab9-ed75d3fee36a"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#4ec6680a-5282-49dc-90e6-78db1576e0e6"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_X32-8qn5EeyCFeq9a6zwrQ" description="_X31w0qn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="0,0,0">
@@ -15099,6 +15133,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W_8e83QvEeamAMxs9g9ZYQ" name="Meteorological  Measurements" sourceNode="_W_CgB3QvEeamAMxs9g9ZYQ" targetNode="_W_GxcXQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#ab269d7c-b62e-4b01-9082-ca631c75873f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#ab269d7c-b62e-4b01-9082-ca631c75873f"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#6a45e525-2324-4b8c-bab9-ed75d3fee36a"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_X32X8Kn5EeyCFeq9a6zwrQ" description="_X31w0qn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="165,42,42">
         <customFeatures>sourceArrow</customFeatures>
@@ -15116,6 +15151,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W_9GAnQvEeamAMxs9g9ZYQ" name="Meteorological  Measurements" sourceNode="_W_GxdHQvEeamAMxs9g9ZYQ" targetNode="_W_EVMXQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#6a5063e2-ac8b-4c71-8ba9-b8e817294f1e"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#6a5063e2-ac8b-4c71-8ba9-b8e817294f1e"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#6a45e525-2324-4b8c-bab9-ed75d3fee36a"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_X32--Kn5EeyCFeq9a6zwrQ" description="_X31w0qn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="165,42,42">
         <customFeatures>sourceArrow</customFeatures>
@@ -15143,6 +15179,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W_9tEnQvEeamAMxs9g9ZYQ" name="Captured Images" sourceNode="_W_DHFHQvEeamAMxs9g9ZYQ" targetNode="_W_H_kXQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#589b2585-2810-42c5-bd08-e51ad7e19dc9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#589b2585-2810-42c5-bd08-e51ad7e19dc9"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#4ec6680a-5282-49dc-90e6-78db1576e0e6"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_X32X9qn5EeyCFeq9a6zwrQ" description="_X31w0qn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -15170,6 +15207,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W_-UI3QvEeamAMxs9g9ZYQ" name="Captured Images" sourceNode="_W_H_l3QvEeamAMxs9g9ZYQ" targetNode="_W_EVNHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#18d275cc-b506-4fc7-b39e-a621b0b23a5b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#18d275cc-b506-4fc7-b39e-a621b0b23a5b"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#4ec6680a-5282-49dc-90e6-78db1576e0e6"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_X33mBqn5EeyCFeq9a6zwrQ" description="_X31w0qn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -15197,6 +15235,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_W_-7NXQvEeamAMxs9g9ZYQ" name="Meteorological Data for Validation" sourceNode="_W_Aq1HQvEeamAMxs9g9ZYQ" targetNode="_W7uGQHQvEeamAMxs9g9ZYQ" beginLabel="ImageFunctionalChain          &#xA;MeasurementFunctionalChain    " endLabel="ImageFunctionalChain          &#xA;MeasurementFunctionalChain    ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#0771f376-3d19-4202-b967-e4d0440977aa"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#0771f376-3d19-4202-b967-e4d0440977aa"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#6a45e525-2324-4b8c-bab9-ed75d3fee36a"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#4ec6680a-5282-49dc-90e6-78db1576e0e6"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_X32X6qn5EeyCFeq9a6zwrQ" description="_X31w0qn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="0,0,0">
@@ -22428,6 +22467,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WoBuMXQvEeamAMxs9g9ZYQ" name="Temperature Measurement" sourceNode="_WoBHIHQvEeamAMxs9g9ZYQ" targetNode="_Wn3WIHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#ab2139b8-dc83-4c26-9a30-974a6946b937"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#ab2139b8-dc83-4c26-9a30-974a6946b937"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_TvHoAqn5EeyCFeq9a6zwrQ" description="_TvFywKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -22445,6 +22485,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WoirkHQvEeamAMxs9g9ZYQ" name="Capture Trigger" sourceNode="_WoNUYnQvEeamAMxs9g9ZYQ" targetNode="_WoSz8HQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#ec594eed-597a-4be9-b07a-49a312420d40"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#ec594eed-597a-4be9-b07a-49a312420d40"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_TvFyxKn5EeyCFeq9a6zwrQ" description="_TvFywKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -22492,6 +22533,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Woj5s3QvEeamAMxs9g9ZYQ" name="Temperature Capture" sourceNode="_WoTbB3QvEeamAMxs9g9ZYQ" targetNode="_WoQXsHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#30bb24c4-079c-4294-9f97-4c80a907d046"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#30bb24c4-079c-4294-9f97-4c80a907d046"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_TvIPEqn5EeyCFeq9a6zwrQ" description="_TvFywKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -22509,6 +22551,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WokgwnQvEeamAMxs9g9ZYQ" name="Formatted Captured Data" sourceNode="_WoWeVXQvEeamAMxs9g9ZYQ" targetNode="_WoXFYXQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#0906eabf-d7e7-409b-b2fc-142f63dbe92b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#0906eabf-d7e7-409b-b2fc-142f63dbe92b"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_TvGZ-Kn5EeyCFeq9a6zwrQ" description="_TvFywKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -22526,6 +22569,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WolH0HQvEeamAMxs9g9ZYQ" name="Meteorological Measurements" sourceNode="_Woavw3QvEeamAMxs9g9ZYQ" targetNode="_WoV3QnQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#37abf617-3521-4600-bfbb-bf1e2e5419ce"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#37abf617-3521-4600-bfbb-bf1e2e5419ce"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_TvHA9Kn5EeyCFeq9a6zwrQ" description="_TvFywKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -22553,6 +22597,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Wolu4nQvEeamAMxs9g9ZYQ" name="Meteorological Data for Validation" sourceNode="_WoXFZHQvEeamAMxs9g9ZYQ" targetNode="_WoYThHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#8fe859a5-56e5-43a0-8ff1-d773670cb3c6"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#8fe859a5-56e5-43a0-8ff1-d773670cb3c6"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_TvHA4qn5EeyCFeq9a6zwrQ" description="_TvFywKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -22570,6 +22615,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WomV8HQvEeamAMxs9g9ZYQ" name="Meteorological Report" sourceNode="_WoZho3QvEeamAMxs9g9ZYQ" targetNode="_WoaIsHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#59432463-c017-4e2f-8572-0097165806b8"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#59432463-c017-4e2f-8572-0097165806b8"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_TvHA7qn5EeyCFeq9a6zwrQ" description="_TvFywKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -22587,6 +22633,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WomV83QvEeamAMxs9g9ZYQ" name="Meteorological Measurements" sourceNode="_WoVQMHQvEeamAMxs9g9ZYQ" targetNode="_WoavwHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#8d70d583-35d0-4997-b397-660ebc6acdb4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#8d70d583-35d0-4997-b397-660ebc6acdb4"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_TvGZ8qn5EeyCFeq9a6zwrQ" description="_TvFywKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -22604,6 +22651,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Wom9AnQvEeamAMxs9g9ZYQ" name="Campaign Request" sourceNode="_WoUCFHQvEeamAMxs9g9ZYQ" targetNode="_WoMtUHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#ca5d5142-fc52-4edd-a300-35a3099081de"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#ca5d5142-fc52-4edd-a300-35a3099081de"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_TvFyyqn5EeyCFeq9a6zwrQ" description="_TvFywKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -22621,6 +22669,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WonkEHQvEeamAMxs9g9ZYQ" name="Published Meteorological Data" sourceNode="_WoY6knQvEeamAMxs9g9ZYQ" targetNode="_WoZhoHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#6afdce80-f46f-4c06-9223-702a6cfeeeb2"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#6afdce80-f46f-4c06-9223-702a6cfeeeb2"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_TvHA6Kn5EeyCFeq9a6zwrQ" description="_TvFywKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -23806,6 +23855,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WpxaoHQvEeamAMxs9g9ZYQ" name="User Interface" sourceNode="_WpJIgHQvEeamAMxs9g9ZYQ" targetNode="_WpRrYHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="testOnRules.capella#b18f6446-5f45-4ed6-ac5f-48ee4ae5007e"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="testOnRules.capella#b18f6446-5f45-4ed6-ac5f-48ee4ae5007e"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="testOnRules.capella#5452c3b6-ccd5-42cc-b00d-c29fdb190c0c"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_T_6dC6n5EeyCFeq9a6zwrQ" description="_T_6dAan5EeyCFeq9a6zwrQ" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -23833,6 +23883,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WpyBsHQvEeamAMxs9g9ZYQ" name="Down VHF" sourceNode="_WpCa0nQvEeamAMxs9g9ZYQ" targetNode="_WpPPJHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="testOnRules.capella#695b3ac6-186c-4503-bb39-92729612ff3a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="testOnRules.capella#695b3ac6-186c-4503-bb39-92729612ff3a"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="testOnRules.capella#5452c3b6-ccd5-42cc-b00d-c29fdb190c0c"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_T_7EFqn5EeyCFeq9a6zwrQ" description="_T_6dAan5EeyCFeq9a6zwrQ" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -23850,6 +23901,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WpyowHQvEeamAMxs9g9ZYQ" name="Down VHF" sourceNode="_WpOoE3QvEeamAMxs9g9ZYQ" targetNode="_WpJvlHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="testOnRules.capella#13eaf022-a34a-4e3f-9793-c930262e031a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="testOnRules.capella#13eaf022-a34a-4e3f-9793-c930262e031a"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="testOnRules.capella#5452c3b6-ccd5-42cc-b00d-c29fdb190c0c"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_T_7ELKn5EeyCFeq9a6zwrQ" description="_T_6dAan5EeyCFeq9a6zwrQ" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -23887,6 +23939,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WpzP03QvEeamAMxs9g9ZYQ" name="USB" sourceNode="_WpBzwHQvEeamAMxs9g9ZYQ" targetNode="_WpE3EHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="testOnRules.capella#5879fa80-c145-4c45-bce8-bda415f02ef2"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="testOnRules.capella#5879fa80-c145-4c45-bce8-bda415f02ef2"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPath" href="testOnRules.capella#5452c3b6-ccd5-42cc-b00d-c29fdb190c0c"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_T_7rIqn5EeyCFeq9a6zwrQ" description="_T_6dAan5EeyCFeq9a6zwrQ" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -26384,6 +26437,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WqXQgXQvEeamAMxs9g9ZYQ" name="Temperature Measurement" sourceNode="_WqWpcHQvEeamAMxs9g9ZYQ" targetNode="_WqRw8HQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#ab2139b8-dc83-4c26-9a30-974a6946b937"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#ab2139b8-dc83-4c26-9a30-974a6946b937"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_UQq14qn5EeyCFeq9a6zwrQ" description="_UQpAoKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -26480,6 +26534,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WrlYgHQvEeamAMxs9g9ZYQ" name="Capture Trigger" sourceNode="_Wq_io3QvEeamAMxs9g9ZYQ" targetNode="_WrEbJHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#ec594eed-597a-4be9-b07a-49a312420d40"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#ec594eed-597a-4be9-b07a-49a312420d40"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_UQrc6Kn5EeyCFeq9a6zwrQ" description="_UQpAoKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -26527,6 +26582,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WrnNsHQvEeamAMxs9g9ZYQ" name="Temperature Capture" sourceNode="_WrFpRHQvEeamAMxs9g9ZYQ" targetNode="_Wq1xoHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#30bb24c4-079c-4294-9f97-4c80a907d046"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#30bb24c4-079c-4294-9f97-4c80a907d046"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_UQtSGqn5EeyCFeq9a6zwrQ" description="_UQpAoKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -26544,6 +26600,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WrnNs3QvEeamAMxs9g9ZYQ" name="Formatted Captured Data" sourceNode="_WrAwwXQvEeamAMxs9g9ZYQ" targetNode="_WrBX0HQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#0906eabf-d7e7-409b-b2fc-142f63dbe92b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#0906eabf-d7e7-409b-b2fc-142f63dbe92b"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_UQsD8Kn5EeyCFeq9a6zwrQ" description="_UQpAoKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -26561,6 +26618,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Wrn0wnQvEeamAMxs9g9ZYQ" name="Meteorological Measurements" sourceNode="_WrD0E3QvEeamAMxs9g9ZYQ" targetNode="_WrAJsHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#37abf617-3521-4600-bfbb-bf1e2e5419ce"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#37abf617-3521-4600-bfbb-bf1e2e5419ce"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_UQsD_Kn5EeyCFeq9a6zwrQ" description="_UQpAoKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -26588,6 +26646,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Wrob03QvEeamAMxs9g9ZYQ" name="Meteorological Data for Validation" sourceNode="_WrBX03QvEeamAMxs9g9ZYQ" targetNode="_WrLI1HQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#8fe859a5-56e5-43a0-8ff1-d773670cb3c6"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#8fe859a5-56e5-43a0-8ff1-d773670cb3c6"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_UQsD9qn5EeyCFeq9a6zwrQ" description="_UQpAoKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -26605,6 +26664,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WrpC4nQvEeamAMxs9g9ZYQ" name="Meteorological Report" sourceNode="_Wq-7kXQvEeamAMxs9g9ZYQ" targetNode="_WrM-AHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#59432463-c017-4e2f-8572-0097165806b8"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#59432463-c017-4e2f-8572-0097165806b8"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_UQrc4qn5EeyCFeq9a6zwrQ" description="_UQpAoKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -26622,6 +26682,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Wrpp8HQvEeamAMxs9g9ZYQ" name="Meteorological Measurements" sourceNode="_WqvrAHQvEeamAMxs9g9ZYQ" targetNode="_WrD0EHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#8d70d583-35d0-4997-b397-660ebc6acdb4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#8d70d583-35d0-4997-b397-660ebc6acdb4"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_UQqOzKn5EeyCFeq9a6zwrQ" description="_UQpAoKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -26639,6 +26700,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WrqRAHQvEeamAMxs9g9ZYQ" name="Campaign Request" sourceNode="_WrLI0XQvEeamAMxs9g9ZYQ" targetNode="_Wq_ioHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#ca5d5142-fc52-4edd-a300-35a3099081de"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#ca5d5142-fc52-4edd-a300-35a3099081de"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_UQqOwKn5EeyCFeq9a6zwrQ" description="_UQpAoKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>
@@ -26656,6 +26718,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WrqRA3QvEeamAMxs9g9ZYQ" name="Published Meteorological Data" sourceNode="_WrLv4XQvEeamAMxs9g9ZYQ" targetNode="_Wq-UgHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#6afdce80-f46f-4c06-9223-702a6cfeeeb2"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="testOnRules.capella#6afdce80-f46f-4c06-9223-702a6cfeeeb2"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="testOnRules.capella#7971ac1b-8131-4437-99d3-d5b66963bfe4"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_UQqOxqn5EeyCFeq9a6zwrQ" description="_UQpAoKn5EeyCFeq9a6zwrQ" targetArrow="InputFillClosedArrow" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>sourceArrow</customFeatures>

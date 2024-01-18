@@ -109,7 +109,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="StandardDiagramFiltersModel.capella#2a67d691-dfac-4878-8727-4e3fdadeaa4b"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_udsJoCIZEe20a4gO9fwbQQ" name="[LAB] Logical System" repPath="#_udofQCIZEe20a4gO9fwbQQ" changeId="1705401529465">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_udsJoCIZEe20a4gO9fwbQQ" name="[LAB] Logical System" repPath="#_udofQCIZEe20a4gO9fwbQQ" changeId="1705591323965">
         <eAnnotations xmi:type="description:DAnnotation" uid="_udn4MCIZEe20a4gO9fwbQQ" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_udvM8CIZEe20a4gO9fwbQQ" key="hide.simplified.oriented.grouped.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_udvM8SIZEe20a4gO9fwbQQ" key="hide.computed.component.exchanges.filter" value="true"/>
@@ -126,7 +126,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_95lzgXulEemjMuz4grCl9A">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_jezCMZvPEemvz-a2jt2hRw" name="[SAB] System" repPath="#_jegHQJvPEemvz-a2jt2hRw" changeId="1705401530092">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_jezCMZvPEemvz-a2jt2hRw" name="[SAB] System" repPath="#_jegHQJvPEemvz-a2jt2hRw" changeId="1705591324787">
         <eAnnotations xmi:type="description:DAnnotation" uid="_AOAhEKJREemd_7qt4pGTLw" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y07WpcjdEemrYZGlCyIT9A" key="hide.simplified.oriented.grouped.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y07WpsjdEemrYZGlCyIT9A" key="hide.simplified.group.of.component.exchanges.filter" value="true"/>
@@ -161,7 +161,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_96fLYHulEemjMuz4grCl9A">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_5gl_ULOSEemW_MqVZWv0Jg" name="[PAB] Physical System" repPath="#_5gQoILOSEemW_MqVZWv0Jg" changeId="1705401534400">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_5gl_ULOSEemW_MqVZWv0Jg" name="[PAB] Physical System" repPath="#_5gQoILOSEemW_MqVZWv0Jg" changeId="1705591327193">
         <eAnnotations xmi:type="description:DAnnotation" uid="_5kExILOSEemW_MqVZWv0Jg" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y07Wp8jdEemrYZGlCyIT9A" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y07WqMjdEemrYZGlCyIT9A" key="hide.simplified.diagram.based.component.exchanges.filter" value="true"/>
@@ -7533,6 +7533,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_FZTFgKLmEemNk-JvJlKXNg" name="FunctionalExchange 1" sourceNode="_FYvE0aLmEemNk-JvJlKXNg" targetNode="_FYgbUKLmEemNk-JvJlKXNg">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="StandardDiagramFiltersModel.capella#53b67128-c3f7-4de9-b6cc-d0631b32ba8a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="StandardDiagramFiltersModel.capella#53b67128-c3f7-4de9-b6cc-d0631b32ba8a"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="StandardDiagramFiltersModel.capella#12a2a706-a601-4998-8d8b-7f5e84ce433f"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_vTwYWiIAEe20a4gO9fwbQQ" description="_vTwYViIAEe20a4gO9fwbQQ" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -13070,6 +13071,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_4eXekbOYEemW_MqVZWv0Jg" name="FunctionalExchange 1" sourceNode="_4eWQcLOYEemW_MqVZWv0Jg" targetNode="_4eW3g7OYEemW_MqVZWv0Jg">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="StandardDiagramFiltersModel.capella#a875d373-e646-41fb-84d3-e4d331cf6ffd"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="StandardDiagramFiltersModel.capella#a875d373-e646-41fb-84d3-e4d331cf6ffd"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="StandardDiagramFiltersModel.capella#27b5259b-75dc-4806-bfba-af5609651f54"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_A6tuViIJEe20a4gO9fwbQQ" description="_A6tuUiIJEe20a4gO9fwbQQ" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
@@ -15572,6 +15574,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_udq7lCIZEe20a4gO9fwbQQ" name=" " sourceNode="_udqUiiIZEe20a4gO9fwbQQ" targetNode="_udq7hyIZEe20a4gO9fwbQQ">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="StandardDiagramFiltersModel.capella#998a0b1e-5baa-4d8b-84e9-22c13dd22b55"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="StandardDiagramFiltersModel.capella#998a0b1e-5baa-4d8b-84e9-22c13dd22b55"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="StandardDiagramFiltersModel.capella#6f699d46-fd10-49c6-a24b-a3ce309ce5a3"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_udq7lSIZEe20a4gO9fwbQQ" description="_udsJoSIZEe20a4gO9fwbQQ" targetArrow="NoDecoration" size="4" centered="Both" strokeColor="24,114,248">
         <customFeatures>size</customFeatures>
