@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2024 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -20,6 +20,7 @@ import org.eclipse.osgi.util.NLS;
  */
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.data.migration.contribution.messages"; //$NON-NLS-1$
+  public static String MigrationAction_AutoSizeSquareNodes_sizeComputationExpressionEvaluationError;
   public static String MigrationAction_ConfirmationDialog_Title;
   public static String MigrationAction_ConfirmationDialog_Message;
   public static String MigrationAction_ConfirmationDialog_ToggleMessage;
