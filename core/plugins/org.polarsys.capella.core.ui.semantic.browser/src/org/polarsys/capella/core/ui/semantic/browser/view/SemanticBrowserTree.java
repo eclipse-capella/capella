@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jface.viewers.ColumnViewerEditor;
+import org.eclipse.jface.viewers.IBaseLabelProvider;
+import org.eclipse.jface.viewers.LabelProviderChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -144,6 +146,27 @@ public class SemanticBrowserTree extends TreeViewer {
         allItems.add(element);
         getAllItems(element, allItems);
       }
+    }
+  }
+
+  @Override
+  protected void handleLabelProviderChanged(LabelProviderChangedEvent event) {
+    super.handleLabelProviderChanged(event);
+    Object eventTarget = event.getElement();
+    List<Object> additionalElements = new ArrayList<>();
+    for (TreeItem item : getAllItems()) {
+      Object target = item.getData();
+      if (target instanceof EObjectWrapper) {
+        Object wrapped = ((EObjectWrapper) target).getElement();
+        if (wrapped == eventTarget) {
+          additionalElements.add(target);
+        }
+      }
+    }
+    if (!additionalElements.isEmpty()) {
+      LabelProviderChangedEvent delegatedEvent = new LabelProviderChangedEvent((IBaseLabelProvider) event.getSource(),
+          additionalElements.toArray());
+      super.handleLabelProviderChanged(delegatedEvent);
     }
   }
 
