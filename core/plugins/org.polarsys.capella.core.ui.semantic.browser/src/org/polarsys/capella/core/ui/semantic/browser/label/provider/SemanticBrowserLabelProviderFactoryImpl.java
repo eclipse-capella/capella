@@ -13,7 +13,6 @@
 package org.polarsys.capella.core.ui.semantic.browser.label.provider;
 
 import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.ui.toolkit.browser.label.provider.factory.AbstractLabelProviderFactory;
 
 public class SemanticBrowserLabelProviderFactoryImpl extends AbstractLabelProviderFactory {
@@ -48,10 +47,10 @@ public class SemanticBrowserLabelProviderFactoryImpl extends AbstractLabelProvid
   }
 
   /**
-   * @see org.polarsys.capella.common.ui.toolkit.browser.label.provider.factory.AbstractLabelProviderFactory#getReferencedLabelProvider()
+   * @see org.polarsys.capella.common.ui.toolkit.browser.label.provider.factory.AbstractLabelProviderFactory#getReferencingLabelProvider()
    */
   @Override
-  public ILabelProvider getReferencedLabelProvider() {
+  public ILabelProvider getReferencingLabelProvider() {
     if (null == referencingLabelProvider) {
       referencingLabelProvider = new SemanticBrowserDecoratingLabelProvider(new SemanticBrowserLabelProvider());
     }
@@ -59,10 +58,10 @@ public class SemanticBrowserLabelProviderFactoryImpl extends AbstractLabelProvid
   }
 
   /**
-   * @see org.polarsys.capella.common.ui.toolkit.browser.label.provider.factory.AbstractLabelProviderFactory#getReferencingLabelProvider()
+   * @see org.polarsys.capella.common.ui.toolkit.browser.label.provider.factory.AbstractLabelProviderFactory#getReferencedLabelProvider()
    */
   @Override
-  public ILabelProvider getReferencingLabelProvider() {
+  public ILabelProvider getReferencedLabelProvider() {
     if (null == referencedLabelProvider) {
       referencedLabelProvider = new SemanticBrowserDecoratingLabelProvider(new SemanticBrowserLabelProvider());
     }
