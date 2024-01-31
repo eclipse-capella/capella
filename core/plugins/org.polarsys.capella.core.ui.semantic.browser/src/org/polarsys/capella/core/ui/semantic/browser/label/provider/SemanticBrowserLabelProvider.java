@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2024 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -27,7 +27,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.navigator.NavigatorContentService;
 import org.eclipse.ui.internal.navigator.NavigatorContentServiceLabelProvider;
-import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryImpl;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.BrowserElementWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.CategoryWrapper;
@@ -37,6 +36,7 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommon
 import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator;
 import org.polarsys.capella.core.ui.semantic.browser.IImageKeys;
 
+@SuppressWarnings("restriction")
 public class SemanticBrowserLabelProvider extends NavigatorContentServiceLabelProvider
     implements ILabelProvider, IColorProvider, IFontProvider, IToolTipProvider {
   
@@ -61,22 +61,18 @@ public class SemanticBrowserLabelProvider extends NavigatorContentServiceLabelPr
     if (null == element) {
       return null;
     }
-    // Initialize with the category image.
-    Image result = CapellaBrowserActivator.getDefault().getImage(IImageKeys.IMG_CATEGORY);
-    EObject modelElement = null;
+    // Initialize with Category image (so that unknown elements always have at least the category icon
+    Image image = CapellaBrowserActivator.getDefault().getImage(IImageKeys.IMG_CATEGORY);
     // Find out a model element from given element.
-    if (element instanceof EObjectWrapper) {
-      modelElement = ((EObjectWrapper) element).getElement();
+    if (element instanceof PrimitiveWrapper) {
+      image = CapellaBrowserActivator.getDefault().getImage(IImageKeys.IMG_PRIMITIVE_VARIABLES);
     } else if (element instanceof EObject) {
-      modelElement = (EObject) element;
-    } else if (element instanceof PrimitiveWrapper) {
-      return CapellaBrowserActivator.getDefault().getImage(IImageKeys.IMG_PRIMITIVE_VARIABLES);
+      return super.getImage(element);
+    } else if (element instanceof EObjectWrapper) {
+      element = ((EObjectWrapper) element).getElement();
+      return super.getImage(element);
     }
-    // If a model element was found, get its image.
-    if (null != modelElement) {
-      result = super.getImage(modelElement);
-    }
-    return result;
+    return image;
   }
 
   @Override
@@ -87,19 +83,13 @@ public class SemanticBrowserLabelProvider extends NavigatorContentServiceLabelPr
       return result;
     }
     if (element instanceof CategoryWrapper) {
-      Object modelElement = ((BrowserElementWrapper) element).getElement();
-      result = ((ICategory) modelElement).getName();
+      element = ((CategoryWrapper) element).getElement();
+      result = ((ICategory) element).getName();
     } else if (element instanceof PrimitiveWrapper) {
-      Object modelElement = ((PrimitiveWrapper) element).getElement();
-      result = modelElement.toString();
+      element = ((PrimitiveWrapper) element).getElement();
+      result = element.toString();
     } else {
-      Object modelElement = null;
-      if (element instanceof EObjectWrapper) {
-        modelElement = ((BrowserElementWrapper) element).getElement();
-      } else {
-        modelElement = element;
-      }
-      result = super.getText(modelElement);
+      result = super.getText(element);
     }
     return result;
   }
@@ -110,12 +100,10 @@ public class SemanticBrowserLabelProvider extends NavigatorContentServiceLabelPr
     if (null == element) {
       return null;
     }
-    
+    // Do not unwrap category and primitive wrappers
     if (element instanceof EObjectWrapper) {
-        element = ((BrowserElementWrapper) element).getElement();      
-    }
-    
-    if (element instanceof BrowserElementWrapper) {
+      element = ((EObjectWrapper) element).getElement();
+    } else if (element instanceof BrowserElementWrapper) {
       return new StyledString(getText(element));
     }
     
