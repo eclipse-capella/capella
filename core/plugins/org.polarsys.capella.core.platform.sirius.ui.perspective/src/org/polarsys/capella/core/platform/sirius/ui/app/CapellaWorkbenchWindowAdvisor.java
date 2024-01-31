@@ -13,7 +13,6 @@
 package org.polarsys.capella.core.platform.sirius.ui.app;
 
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPreferenceConstants;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -28,7 +27,6 @@ import org.eclipse.ui.internal.util.PrefUtil;
 import org.eclipse.ui.intro.IIntroManager;
 import org.eclipse.ui.intro.IIntroPart;
 import org.eclipse.ui.intro.config.CustomizableIntroPart;
-import org.eclipse.ui.part.IntroPart;
 import org.polarsys.capella.common.bundle.FeatureHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.platform.sirius.ui.PerspectivePreferences;
@@ -81,7 +79,12 @@ public class CapellaWorkbenchWindowAdvisor extends IDEWorkbenchWindowAdvisor {
     IIntroPart introPart = IntroPlugin.getIntro();
     setRedraw(introPart, false);
     IntroModelRoot modelRoot = IntroPlugin.getDefault().getIntroModelRoot();
-    boolean success = modelRoot.setCurrentPageId(pageId);
+    boolean success = false;
+
+    if (modelRoot != null) {
+      success = modelRoot.setCurrentPageId(pageId);
+    }
+
     // we turned drawing off. Turn it on again.
     setRedraw(introPart, true);
 
