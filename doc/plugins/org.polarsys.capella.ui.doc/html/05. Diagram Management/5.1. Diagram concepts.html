@@ -76,7 +76,7 @@
 			<tr>
 				<td>
 					<p>
-						<img height="48" width="48" border="0" src="Images/5.1.%20Diagram%20concepts_html_3c78e109.png"/>
+						<img height="48" width="48" border="0" src="Images/InfoIcon.png"/>
 					</p>
 				</td>
 				<td>
@@ -129,20 +129,104 @@
 			<img height="247" width="1036" border="0" src="Images/5.1.%20Diagram%20concepts_html_68c21683.png"/>
 		</p>
 		<h2 id="Layout_Management">Layout Management</h2>
-		<h3 id="Pin_.2F_Unpin_Diagram_Elements">Pin / Unpin Diagram Elements</h3>
-		<p>Diagram element pinning allows marking specific elements in a diagram as having a fixed location so that they are not moved by the Arrange All action. Once the end user has performed a first layout effort, the Arrange All action can still be called for new elements without risking harming the positioning of existing elements.</p>
-		<p>When diagram elements are selected the diagram toolbar contains two dedicated buttons to pin / unpin selected elements.</p>
+		<p>There are 2 layout action families:</p>
+		<ul>
+			<li>"Layout All" "Layout Selection" and "Layout Children" to layout diagram nodes and node containers</li>
+			<li>"Layout Connected Ports" to layout ports of diagram nodes</li>
+		</ul>
+		<p>The result of all these actions will depend on the 
+			<b>Pin Status</b> of the nodes.
+			If "Move Pinned Elements" is checked then the Pin status is 
+			<b>ignored in layout actions</b>. Otherwise the Pinned elements are let unmoved during layout actions.
+		</p>
+		<p>You can change this value directly from the drop down menu.</p>
 		<p>
-			<img height="180" width="467" border="0" src="Images/5.1.%20Diagram%20concepts_html_5a167562.png"/>
+			<img width="300" border="0" src="Images/move_pinned_elements.png"/>
+		</p>
+		<h3 id="Pin_.2F_Unpin_Diagram_Elements">Pin / Unpin Diagram Elements</h3>
+		<p>Diagram element pinning allows marking specific elements in a diagram as having a fixed location so that they are not moved by the Layout actions. 
+			Once the end user has performed a first layout effort, the Layout actions can still be called for new elements without risking harming the positioning of existing elements.</p>
+		<p>
+			<img border="0" src="Images/pin_status.png"/>
+		</p>
+		<p>It is possible to configure preferences to set the node as "Pinned" as soon as it is moved by the user. By default, this preference is set as disabled.</p>
+		<p>
+			<img width="400" border="0" src="Images/pin_status_preferenceAtMove.png"/>
 		</p>
 		<p>When no diagram element is selected, the diagram toolbar contains a button for displaying a dialog showing the pin / unpin status of all elements.</p>
 		<p>
 			<img height="535" width="370" border="0" src="Images/5.1.%20Diagram%20concepts_html_m17eb4be9.png"/>
 		</p>
-		<h3 id="Arrange_All_Bordered_Nodes">Arrange All Bordered Nodes</h3>
-		<p>In addition to the standard automatic layout, this specific action allows to arrange the edges so that they are as short as possible. This action moves the ports of a node / container when necessary. It is useful when the position of the nodes and containers has already been defined and edges still need a better layout.</p>
+		<h3 id="Layout_All_-_Layout_Selection">Layout All - Layout Selection</h3>
+		<p>For a diagram selection:
+
+			<div class="thumb">
+				<div class="thumbinner" style="width:402px;">
+					<a href="Images/layout_actions_menus_diagSelection.png" class="image">
+						<img class="thumbimage" width="400" border="0" src="Images/layout_actions_menus_diagSelection.png"/>
+					</a>
+				</div>
+			</div>
+			"Layout All" action 
+			<b>layouts all diagram elements</b>.
+			Recommended only the first time the diagram is created because it will have large impacts in the whole diagram.
+		</p>
+		<p>For a selection of nodes
+
+			<div class="thumb">
+				<div class="thumbinner" style="width:402px;">
+					<a href="Images/layout_actions_menus_nodeSelection.png" class="image">
+						<img class="thumbimage" width="400" border="0" src="Images/layout_actions_menus_nodeSelection.png"/>
+					</a>
+				</div>
+			</div>
+			"Layout Selection" action 
+			<b>layouts selected elements</b>. This action move the selected elements itselves in their parent and layout all contained children in the selection.
+		</p>
+		<h3 id="Layout_Children">Layout Children</h3>
+		<p>"Layout Children" action 
+			<b>layouts the direct children of the diagram</b>.
+		</p>
+		<p>"Layout Children" action 
+			<b>layouts the direct children elements of the selection</b>. 
+		</p>
+		<p>The selection may be a diagram or a node container.</p>
 		<p>
-			<img height="250" width="900" border="0" src="Images/5.1.%20Diagram%20concepts_html_m12b23fb.png"/>
+			<div class="thumb">
+				<div class="thumbinner" style="width:702px;">
+					<a href="Images/layout_children.png" class="image">
+						<img class="thumbimage" width="700" border="0" src="Images/layout_children.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="Images/InfoIcon.png"/>
+					</p>
+				</td>
+				<td>
+					<p>Note that if the selected container has been previously manually resized, its size is kept after the layout. It is usefull if you want to keep the global diagram layout coherent.
+						You may use 
+						<a href="/wiki/../help/topic/org.polarsys.capella.tipsandtricks.doc/html/Tips%20and%20tricks/9_Element%20size%20management/9_Element%20size%20management.html#Autosize" title="../help/topic/org.polarsys.capella.tipsandtricks.doc/html/Tips%20and%20tricks/9_Element%20size%20management/9_Element%20size%20management.html#Autosize">Auto Size</a> action to adapt the container size to its content.
+					</p>
+				</td>
+			</tr>
+		</table>
+		<h3 id="Layout_Connected_Ports">Layout Connected Ports</h3>
+		<p>This action will 
+			<b>layout the ports, linked to another port with an edge</b> so that the port is displayed on the proper side of the diagram node.
+			It is useful when the position of the nodes and containers has already been defined and edges still need a better layout.
+		</p>
+		<p>If a diagram is selected, "Layout All Connected ports" action 
+			<b>layouts all the ports in the whole diagram</b>. 
+			If a diagram node element is selected, "Layout Connected ports" action 
+			<b>layouts only the direct ports of the selection (not recursive)</b>. 
+		</p>
+		<p>
+			<img width="700" border="0" src="Images/layout_ports.png"/>
 		</p>
 	</body>
 </html>

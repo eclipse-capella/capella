@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>19_DiagramElementColorManagement</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Diagram_Element_Color_Management">Diagram Element Color Management</h1>
+		<p>There are 3 menu items that allow to change the color of an element:</p>
+		<ul>
+			<li>
+				<b>Font Color</b> menu allows you to change the font color of the label of the selected element(s).
+			</li>
+			<li>
+				<b>Fill Color</b> menu allows you to change the background color of the selected element(s).
+			</li>
+			<li>
+				<b>Line Color</b> menu allows you to change the border color of a Node or Container, or the color of the Edge for the selected element(s).
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="../../Images/color_palette_popup_4_categories.png"/>
+		</p>
+		<p>When one of the color-change menus is clicked, a popup dialog with color palettes appears, allowing you to choose which color to apply among four categories provided:</p>
+		<ul>
+			<li>
+				<b>Last used</b> colors category displays the ten last colors used by the user.
+			</li>
+			<li>
+				<b>Custom</b> colors category displays the ten first colors defined by the user. Additional colors can be created by clicking on the "More..." button. Users can also reorder the set of custom colors, choosing which colors to display in the popup dialog.
+			</li>
+			<li>
+				<b>Suggested</b> colors category displays the ten "preferred colors" defined by the user which are a subset of the colors defined in the Viewpoint Specification Model (odesign). This category is not displayed if no colors are defined in the VSM. Users can modify their ten "preferred colors" by clicking on the "More..." button. Here's an example of colors defined in the VSM: !images/VSM_user_fixed_colors.png!
+			</li>
+			<li>
+				<b>Basic</b> colors category displays ten application-defined colors for use in most contexts. This color palette cannot be modified by the user.
+			</li>
+		</ul>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="../../Images/InfoIcon.png"/>
+					</p>
+				</td>
+				<td>
+					<p>
+						<b>Custom</b> and 
+						<b>Suggested</b> colors categories are persisted in the aird file.
+
+						<b>Last used</b> colors category is persisted in the workspace preferences. 
+					</p>
+				</td>
+			</tr>
+		</table>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="../../Images/InfoIcon.png"/>
+					</p>
+				</td>
+				<td>
+					<p>The colors saved for "Custom" and "Suggested" categories are persisted 
+						<b>separately</b> for "Font Color", "Fill Color" and "Line Color".
+						This is useful because you usually different colors for label and background for example.
+					</p>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

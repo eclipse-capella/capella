@@ -34,18 +34,18 @@
       
       <topic href="html/Tips and tricks/4_Unsynchronize your diagram/4_Unsynchronize your diagram.html" label="4. Unsynchronize Your Diagram">
       </topic>
-      <topic href="html/Tips and tricks/5_Layout management/5_Layout management.html" label="5. Layout Management">
-         <topic href="html/Tips and tricks/5_Layout management/5_Layout management.html#Use_Case:_Diagram_cloning" label="5.1. Use case: diagram cloning">
+      <topic href="html/Tips and tricks/5_Diagram Layout management/5_Diagram Layout management.html" label="5. Layout Management">
+         <topic href="html/Tips and tricks/5_Diagram Layout management/5_Diagram Layout management.html#Diagram_Cloning" label="5.1. Diagram Cloning">
          </topic>
-         <topic href="html/Tips and tricks/5_Layout management/5_Layout management.html#Diagram_Template" label="5.2. Diagram template">
+         <topic href="html/Tips and tricks/5_Diagram Layout management/5_Diagram Layout management.html#Diagram_Template" label="5.2. Diagram template">
          </topic>
-         <topic href="html/Tips and tricks/5_Layout management/5_Layout management.html#Layout_mode" label="5.3. Layout mode">
+         <topic href="html/Tips and tricks/5_Diagram Layout management/5_Diagram Layout management.html#Layout_mode" label="5.3. Layout mode">
          </topic>
-         <topic href="html/Tips and tricks/5_Layout management/5_Layout management.html#Layout.2FStyle_Capella_Copy.2FPaste" label="5.4. Layout/style capella copy/paste">
+         <topic href="html/Tips and tricks/5_Diagram Layout management/5_Diagram Layout management.html#Layout.2FStyle_Capella_Copy.2FPaste_.28semantic.29" label="5.4. Layout/style capella copy/paste (semantic)">
          </topic>
-         <topic href="html/Tips and tricks/5_Layout management/5_Layout management.html#Straighten_to_top" label="5.5. Straighten to top">
+         <topic href="html/Tips and tricks/5_Diagram Layout management/5_Diagram Layout management.html#Straighten_to_top" label="5.5. Straighten to top">
          </topic>
-         <topic href="html/Tips and tricks/5_Layout management/5_Layout management.html#Arrange_All" label="5.6. Arrange all">
+         <topic href="html/Tips and tricks/5_Diagram Layout management/5_Diagram Layout management.html#Layout_actions" label="5.6. Layout actions">
          </topic>
       </topic>
       <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html" label="6. Diagram Exploration">
@@ -89,17 +89,15 @@
          </topic>
          <topic href="html/Tips and tricks/8_Other layout facilities/8_Other layout facilities.html#Layout_commands_to_set_edges_with_connected_ports_vertical_or_horizontal" label="8.3. Layout commands to set edges with connected ports vertical or horizontal">
          </topic>
-         <topic href="html/Tips and tricks/8_Other layout facilities/8_Other layout facilities.html#Arrange_connected_ports" label="8.4. Arrange connected ports">
+         <topic href="html/Tips and tricks/8_Other layout facilities/8_Other layout facilities.html#Multi_selection_for_graphical_move_of_ports.2Bexchanges" label="8.4. Multi selection for graphical move of ports+exchanges">
          </topic>
-         <topic href="html/Tips and tricks/8_Other layout facilities/8_Other layout facilities.html#Multi_selection_for_graphical_move_of_ports.2Bexchanges" label="8.5. Multi selection for graphical move of ports+exchanges">
+         <topic href="html/Tips and tricks/8_Other layout facilities/8_Other layout facilities.html#Snap_back_labels_on_edge_selection" label="8.5. Snap back labels on edge selection">
          </topic>
-         <topic href="html/Tips and tricks/8_Other layout facilities/8_Other layout facilities.html#Snap_back_labels_on_edge_selection" label="8.6. Snap back labels on edge selection">
+         <topic href="html/Tips and tricks/8_Other layout facilities/8_Other layout facilities.html#Display_link_between_an_edge_and_its_label" label="8.6. Display link between an edge and its label">
          </topic>
-         <topic href="html/Tips and tricks/8_Other layout facilities/8_Other layout facilities.html#Display_link_between_an_edge_and_its_label" label="8.7. Display link between an edge and its label">
+         <topic href="html/Tips and tricks/8_Other layout facilities/8_Other layout facilities.html#Copy_Paste_Of_Notes" label="8.7. Copy Paste Of Notes">
          </topic>
-         <topic href="html/Tips and tricks/8_Other layout facilities/8_Other layout facilities.html#Copy_Paste_Of_Notes" label="8.8. Copy Paste Of Notes">
-         </topic>
-         <topic href="html/Tips and tricks/8_Other layout facilities/8_Other layout facilities.html#Add_vertical_blank_space_on_sequence_diagrams" label="8.9. Add vertical blank space on sequence diagrams">
+         <topic href="html/Tips and tricks/8_Other layout facilities/8_Other layout facilities.html#Add_vertical_blank_space_on_sequence_diagrams" label="8.8. Add vertical blank space on sequence diagrams">
          </topic>         
       </topic>
       <topic href="html/Tips and tricks/9_Element size management/9_Element size management.html" label="9. Element Size Management">
@@ -117,7 +115,7 @@
          </topic>
          <topic href="html/Tips and tricks/10_Element Characteristics Management/10_Element Characteristics Management.html#Hide.2Fmodify_container_label" label="10.4. Hide/modify container label">
          </topic>
-         <topic href="html/Tips and tricks/10_Element Characteristics Management/10_Element Characteristics Management.html#Pin_.2F_Unpin_Diagram_Elements" label="10.5. Pin/unpin diagram elements">
+         <topic href="html/Tips and tricks/10_Element Characteristics Management/10_Element Characteristics Management.html#Change_Label_Appearance" label="10.5. Change label appearance">
          </topic>
          <topic href="html/Tips and tricks/10_Element Characteristics Management/10_Element Characteristics Management.html#Hiding_elements" label="10.6. Hiding elements">
          </topic>
@@ -165,6 +163,8 @@
       <topic href="html/Tips and tricks/17_Filtering of Capella capabilities/17_Filtering of Capella capabilities.html" label="17. Filtering of Capella capabilities">
       </topic>
       <topic href="html/Tips and tricks/18_Description Section/18_Description Section.html" label="18. Description Section">
+      </topic>
+      <topic href="html/Tips and tricks/19_DiagramElementColorManagement/19_DiagramElementColorManagement.html" label="19. Diagram Element Color Management">
       </topic>
       	
       </topic>
