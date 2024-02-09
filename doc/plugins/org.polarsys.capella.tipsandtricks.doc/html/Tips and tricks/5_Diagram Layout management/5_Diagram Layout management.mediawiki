@@ -1,5 +1,6 @@
 =Layout Management =
-==Use Case: Diagram Cloning==
+
+==Diagram Cloning==
 
 In order to '''ease the alternative architectures set up''', a cloning diagram functionality exits in Capella. Directly in the ''Capella Project explorer'', right click on the diagram you want to clone and select ''''Clone Diagram''''. A new diagram is created next to the original one.
 
@@ -19,7 +20,7 @@ Example:
 
 [[File:../../Images/Tips13.png|thumbnail|500px|]]
 
-* Step3: On the LAB, paste the template Layout
+* Step3: On the LAB, use "Paste Format (Semantic)" to paste the template layout and style. Use "Paste Layout (Semantic)" to paste the layout only.
 
 [[File:../../Images/Tips15.png|thumbnail|500px|]]
 
@@ -29,9 +30,9 @@ Once all your elements are placed on your diagram, you can activate the Layout M
 
 [[Image:../../Images/TT10.png]]
 
-==Layout/Style Capella Copy/Paste==
+==Layout/Style Capella Copy/Paste (semantic)==
 
-You can Copy/Paste the layout and the style of elements to reuse them in another diagram containing the same elements:
+You can Copy/Paste the layout and the style of elements to reuse them '''in another diagram containing the same Capella semantic elements''':
 
 [[File:../../Images/TT9.png|thumbnail|500px|]]
 
@@ -47,7 +48,7 @@ You can also Copy the layout/style from an upper phase (e.g. System Analysis) an
 
 Layout and style can also be copy-pasted using a different facility, which can be found in contextual menu "Edit" and in the toolbar at the top of the diagram editor
 
-[[File:../../Images/copy_paste_layout_1.png|thumbnail]]
+[[File:../../Images/copy_paste_layout_edit_menu.png|thumbnail]]
 [[File:../../Images/copy_paste_layout_2.png|thumbnail]]
 
 2 selection modes exist for both copy and paste: Global copy, Selection copy, global paste, paste on selection
@@ -60,7 +61,7 @@ Layout of all elements on a diagram can be copied at once, either right-clicking
 
 '''Copy based on selection'''
 
-Format can be copied from a selection of elements, either right-clicking the selection > Edit > copy format, or clicking "Copy the format of the selected diagram elements"
+Format can be copied from a selection of elements, either right-clicking the selection > Edit > Copy format, or clicking "Copy the format of the selected diagram elements"
 
 [[File:../../Images/copy_paste_layout_4.png|thumbnail]]
 
@@ -74,7 +75,7 @@ Format (both Style and Layout) can be pasted directly on a diagram, either right
 
 However, if a semantic element is displayed multiple times, the paste might not be accurate, and may cause these multiple occurrences to be overlapped. To overcome this issue, we recommend to use multiple copy/paste on a fragmented selection instead (See examples)
 
-Style or layout can also be pasted separately, using Edit > Paste Style , or Edit > Paste Layout
+Style or layout can also be pasted separately, using Edit > Paste Style (semantic) , or Edit > Paste Layout (semantic)
 
 '''Paste on selection'''
 
@@ -114,9 +115,27 @@ You can align connectors between two components by selecting them (right-to-left
 
 [[File:../../Images/Tips63.png|thumbnail|600px|]]
 
-==Arrange All==
+==Layout actions==
 
-"Arrange All" action correctly '''arranges automatically diagram elements.'''
+There are 2 [[../help/topic/org.polarsys.capella.ui.doc/html/05.%20Diagram%20Management/5.1.%20Diagram%20concepts.html#Layout_Management|layout actions families]] :
+* "Layout All" "Layout Selection" and "Layout Children" to layout diagram nodes and node containers
+* "Layout Connected Ports" to layout ports of diagram nodes
 
-[[File:../../Images/Tips71.png|thumbnail|400px|]]
+[[File:../../Images/layout_actions_menus_nodeSelection.png|thumbnail|600px|]]
+{| border="1"
+|-
+| 
+[[Image:../../Images/InfoIcon.png|48x48px]]
+| 
+[[../help/topic/org.polarsys.capella.ui.doc/html/05.%20Diagram%20Management/5.1.%20Diagram%20concepts.html#Layout_Children|"Layout Children"]] and [[../help/topic/org.polarsys.capella.ui.doc/html/05.%20Diagram%20Management/5.1.%20Diagram%20concepts.html#Layout_Connected_Ports|"Layout Connected Ports"]] are usefull actions to layout nodes and ports because they layout only children node/ports thus having the most controlled impact.
+|}  
+
+{| border="1"
+|-
+| 
+[[Image:../../Images/InfoIcon.png|48x48px]]
+| 
+Remember the "Move Pinned Elements" button allow to ignore or take into account the Pin status.
+See [[../help/topic/org.polarsys.capella.ui.doc/html/05.%20Diagram%20Management/5.1.%20Diagram%20concepts.html#Layout_Management|Layout Management]] 
+|}
 

@@ -26,6 +26,6 @@ The Auto size tool is available in the diagram editor toolbar.
 
 
 | 
-If you add a lot of elements, you can first use the "Auto Size" and then the "Arrange All" tool to improve your diagram.
+If you add a lot of elements, you can first use the "Auto Size" and then the "Layout All" tool to improve your diagram.
 
 |} 

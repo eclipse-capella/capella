@@ -49,27 +49,11 @@ To hide label element, you have to deselect it.
 
 [[Image:../../Images/Tips52.png]]
 
-* From the Properties View / Appearance tab by setting the font color to white.
-
-If you want to modify it, you can select another color, police, type, size
-
-[[Image:../../Images/Tips36.png]]
-
 * From the shortcut: '''''Ctrl + L'''''. And to reveal it:'''''Ctrl + Shift + L'''''.
 
-==Pin / Unpin Diagram Elements==
+==Change Label Appearance==
 
-Diagram element pinning functionality allows '''marking specific elements in a diagram as having a fixed location so that they are not moved by the Arrange All action'''. Once the end user has performed a first layout effort, the Arrange All action can still be called for new elements without risking harming the positioning of existing elements.
-
-When diagram elements are selected, the diagram toolbar contains two dedicated buttons to pin / unpin selected elements.
-
-[[Image:../../Images/Tips40.png]]
-
-When no diagram element is selected, the diagram toolbar contains a button for displaying a dialog showing the pin / unpin status of all elements.
-
-[[File:../../Images/Tips42.png|thumbnail|700px|]]
-
-In contrast, it can be useful to change the container label appearance '''to highlight a container or a kind of container.'''
+It can be useful to change the container label appearance '''to highlight a container or a kind of container.'''
 
 To modify the label appearance of a node in the diagram, you can select underline, strikethrough functionalities in the '''''Properties View / Appearance tab'''''.
 

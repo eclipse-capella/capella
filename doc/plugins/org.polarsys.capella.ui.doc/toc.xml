@@ -202,7 +202,9 @@
 		</topic>
 		<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#Layout_Management" label="Layout Management">
 			<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#Pin_.2F_Unpin_Diagram_Elements" label="Pin / Unpin Diagram Elements"></topic>
-			<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#Arrange_All_Bordered_Nodes" label="Arrange All Bordered Nodes"></topic>
+			<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#Layout_All_-_Layout_Selection" label="Layout All - Layout Selection"></topic>
+			<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#Layout_Children" label="Layout Children"></topic>
+			<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#Layout_Connected_Ports" label="Layout Connected Ports"></topic>
 		</topic>
 	</topic>
 	<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html" label="Typology of Capella Diagrams">
