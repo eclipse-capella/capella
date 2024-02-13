@@ -841,7 +841,9 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
         .getBoolean(CapellaBrowserPreferences.PREFS_DISABLE_SEMANTIC_BROWSER_SYNC_ON_STARTUP);
 
     if (isListeningOnStartup && null != memento) {
-      isListeningOnStartup = memento.getInteger(LISTENING_TO_WORKBENCH_PAGE_SELECTION_EVENTS) == 1;
+      Integer listeningValue = memento.getInteger(LISTENING_TO_WORKBENCH_PAGE_SELECTION_EVENTS);
+      // From old workbench or linux or macos, null may be provided.
+      isListeningOnStartup = listeningValue != null && listeningValue == 1;
     }
     if (isListeningOnStartup) {
       activateListeningToPageSelectionEvents();
