@@ -74,7 +74,7 @@
                icon="icons/icon_bugzilla.png"
                id="org.polarsys.capella.core.ui.intro.welcome_contribution3"
                label="You have found a problem on Capella, raise a bug in Capella Bug Tracker"
-               link="https://bugs.polarsys.org">
+               link="https://github.com/eclipse/capella/issues">
          </welcome_contribution>
       </provider>
    </extension>
