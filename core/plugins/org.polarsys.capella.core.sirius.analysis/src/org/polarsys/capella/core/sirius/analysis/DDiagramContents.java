@@ -271,7 +271,7 @@ public class DDiagramContents {
     }
 
     for (DDiagramElement view : getDiagramElements(target)) {
-      if (mapping != null && mapping.equals(view.getDiagramElementMapping())) {
+      if (mapping != null && DiagramServices.getDiagramServices().isMapping(view, mapping)) {
         return true;
       }
     }
@@ -295,7 +295,7 @@ public class DDiagramContents {
 
     ArrayList<DDiagramElement> result = new ArrayList<>();
     for (DDiagramElement view : getMapDiagramElements().get(target)) {
-      if (mapping != null && mapping.equals(view.getDiagramElementMapping())) {
+      if (mapping != null && DiagramServices.getDiagramServices().isMapping(view, mapping)) {
         result.add(view);
       }
     }
@@ -320,7 +320,7 @@ public class DDiagramContents {
 
     ArrayList<DDiagramElement> result = new ArrayList<>();
     for (DDiagramElement view : getMapDiagramElements().get(target)) {
-      if ((mapping == null) || mapping.equals(view.getDiagramElementMapping())) {
+      if (mapping == null || DiagramServices.getDiagramServices().isMapping(view, mapping)) {
         if ((containerView == null) || EcoreUtil2.isContainedBy(view, containerView)) {
           result.add(view);
         }
