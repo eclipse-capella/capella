@@ -1261,7 +1261,7 @@ public class DiagramServices {
     }
 
     public boolean validMapping(DiagramElementMapping mapping, DDiagramElement element) {
-      return isSameDomain(mapping, element) && mapping.equals(element.getDiagramElementMapping());
+      return isSameDomain(mapping, element) && isMapping(element, mapping);
     }
 
     public boolean isSameDomain(DiagramElementMapping mapping, DDiagramElement element) {
