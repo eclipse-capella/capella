@@ -992,7 +992,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     new DiagramDialectArrangeOperation().arrange(null, targetDiagram);
 
     // Clean ArrangeLayout shared map to avoid ArrageLayout on opening
-    SiriusLayoutDataManager.INSTANCE.getCreatedViewsToLayout().clear();
+    SiriusLayoutDataManager.INSTANCE.getCreatedViewForLayoutAll().clear();
   }
 
   /**
