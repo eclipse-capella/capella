@@ -59,20 +59,18 @@ pipeline {
 	       		}
 	     	}
 	    }
-	    
-    	stage('Build and Package') {
-      		steps {
-      			script {
-					withCredentials([string(credentialsId: 'sonar-token-capella', variable: 'SONARCLOUD_TOKEN')]) {
-						withEnv(['MAVEN_OPTS=-Xmx4g']) {
-							def sign = github.isPullRequest() ? '' : '-Psign'
-							sh "mvn clean verify -f pom.xml -DjavaDocPhase=none -Pfull ${sign}"
-						}
+
+		stage('Build and Package') {
+			steps {
+				script {
+					withEnv(['MAVEN_OPTS=-Xmx2g']) {
+						def sign = github.isPullRequest() ? '' : '-Psign'
+						sh "mvn verify -Pfull ${sign}"
 					}
-      			}
-	     	}
-	    }
-	    
+				}
+		 	}
+		}
+
 		stage('Deploy to Nightly') {
       		steps {
 				script {		
@@ -82,8 +80,7 @@ pipeline {
 		
 				    deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.zip", deploymentDirName)
 				    deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.gz", deploymentDirName)
-			      	deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/bom.json", deploymentDirName)
-					
+				    
 				    deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.test.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.test.site")
 				    deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.egf.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.egf.site")
 				    deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.rcp.site")
@@ -109,13 +106,12 @@ pipeline {
 			
 					deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.zip", deploymentDirName)
 					deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.gz", deploymentDirName)
-			      	deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/bom.json", deploymentDirName)
-
+					    
 					deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.test.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.test.site")
 					deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.egf.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.egf.site")
 					deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.rcp.site")
 					deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.targets/full/*", "${deploymentDirName}/targets")
-			      	
+			      
 			      	currentBuild.description = "${BUILD_KEY} - <a href=\"https://ci-staging.eclipse.org/capella/view/Capella/job/capella-product/\">build</a> - <a href=\"https://download.eclipse.org/capella/core/products/nightly/${env.BUILD_KEY}\">product</a>" } 
 			}
 		}
@@ -144,6 +140,7 @@ pipeline {
 		        			 
 		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'LibRecTransition', 'org.polarsys.capella.test.suites.ju', 
 		        			['org.polarsys.capella.test.libraries.ju.testsuites.main.LibrariesTestSuite',
+							  'org.polarsys.capella.test.libraries.ui.ju.testsuites.main.LibrariesUITestSuite',
 		        			  'org.polarsys.capella.test.recrpl.ju.testsuites.main.RecRplTestSuite',
 		        			  'org.polarsys.capella.test.transition.ju.testsuites.main.TransitionTestSuite',
 		        			  'org.polarsys.capella.test.re.updateconnections.ju.UpdateConnectionsTestSuite'])
@@ -212,7 +209,7 @@ pipeline {
   
 	post {
     	always {
-       		archiveArtifacts artifacts: '**/*.log, *.log, *.xml, **/*.json, **/*.layout, *.exec'
+       		archiveArtifacts artifacts: '**/*.log, *.log, *.xml, **/*.layout, *.exec'
        		
        		script {
        		    github.removeBuildStartedLabel()

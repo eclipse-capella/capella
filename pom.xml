@@ -43,7 +43,7 @@
 		<os-jvm-flags />
 
 		<!-- for JavaDoc -->
-		<javaDocPhase>generate-resources</javaDocPhase>
+		<javaDocPhase>none</javaDocPhase>
 		
 		<!-- Default target-platform-path -->
 		<target-platform-path>full</target-platform-path>
