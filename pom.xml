@@ -28,6 +28,7 @@
 		<rcptt-version>2.5.3</rcptt-version>
 		<rcptt-runner-version>2.5.3</rcptt-runner-version>
 		<sonar-version>3.0.2</sonar-version>
+		<eclipse-signer-version>1.4.3</eclipse-signer-version>
 
 		<!-- for tycho -->
 		<tycho.scmUrl>scm:git:https://github.com/eclipse/capella.git</tycho.scmUrl>
@@ -304,6 +305,7 @@
 				<module>releng/plugins/org.polarsys.capella.test.site</module>
 			</modules>
 		</profile>
+		
 		<profile>
 			<id>sign</id>
 			<activation>
@@ -317,7 +319,7 @@
 					<plugin>
 						<groupId>org.eclipse.cbi.maven.plugins</groupId>
 						<artifactId>eclipse-jarsigner-plugin</artifactId>
-						<version>1.3.2</version>
+						<version>${eclipse-signer-version}</version>
 						<executions>
 							<execution>
 								<id>sign</id>
@@ -330,18 +332,20 @@
 					</plugin>
 				</plugins>
 			</build>
-			<pluginRepositories>
-				<pluginRepository>
-					<id>cbi</id>
-					<url>https://repo.eclipse.org/content/repositories/cbi-releases/</url>
-					<releases>
-						<enabled>true</enabled>
-					</releases>
-					<snapshots>
-						<enabled>false</enabled>
-					</snapshots>
-				</pluginRepository>
-			</pluginRepositories>
 		</profile>
 	</profiles>
+	
+	<pluginRepositories>
+		<pluginRepository>
+			<id>cbi</id>
+			<url>https://repo.eclipse.org/content/repositories/cbi-releases/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+	
 </project>
