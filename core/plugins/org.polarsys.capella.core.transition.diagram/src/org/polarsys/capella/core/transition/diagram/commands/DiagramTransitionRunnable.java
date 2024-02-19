@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2024 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -11,8 +11,6 @@
  *    Thales - initial API and implementation
  *******************************************************************************/
 package org.polarsys.capella.core.transition.diagram.commands;
-
-import static org.polarsys.capella.common.helpers.cache.ModelCache.getCache;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -91,11 +89,9 @@ import org.polarsys.capella.common.utils.RunnableWithBooleanResult;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
@@ -103,7 +99,6 @@ import org.polarsys.capella.core.sirius.analysis.ShapeUtil;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.diagram.Activator;
-import org.polarsys.capella.core.transition.diagram.commands.DiagramTransitionRunnable.ExtendedViewRefactorHelper;
 import org.polarsys.capella.core.transition.diagram.handlers.DiagramDescriptionHelper;
 import org.polarsys.capella.core.transition.diagram.helpers.TraceabilityHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -977,7 +972,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     }
 
     // --- Sirius SHARED DATA : Clean to avoid ArrangeLayout on diagram opening ---//
-    cleanArrangeLayout(targetDiagram);
+    cleanArrangeLayout(targetDiagram, tgtDiagram);
 
     copyNotes(srcDiagram, tgtDiagram, sourceEditPart, targetEditPart);
   }
@@ -986,13 +981,14 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
    * This method should not exists. Prevent an ArrangeLayout on diagram opening by removing some shared informations
    * stored
    */
-  protected void cleanArrangeLayout(DSemanticDiagram targetDiagram) {
+  protected void cleanArrangeLayout(DSemanticDiagram targetDDiagram, Diagram targetGMFDiagram) {
 
     // Perform an empty arrange layout on target diagram.
-    new DiagramDialectArrangeOperation().arrange(null, targetDiagram);
+    new DiagramDialectArrangeOperation().arrange(null, targetDDiagram);
 
     // Clean ArrangeLayout shared map to avoid ArrageLayout on opening
-    SiriusLayoutDataManager.INSTANCE.getCreatedViewForLayoutAll().clear();
+
+    SiriusLayoutDataManager.INSTANCE.removeLayoutViews(targetGMFDiagram);
   }
 
   /**
