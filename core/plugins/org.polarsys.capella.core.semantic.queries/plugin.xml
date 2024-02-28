@@ -3007,8 +3007,8 @@
                   </basicQuery>
                </categoryQuery>
             </category>
-            <category
-                  id="org.polarsys.capella.core.semantic.queries.PhysicalLinkSouce"
+             <category
+                  id="org.polarsys.capella.core.semantic.queries.PhysicalLinkConnectedNodeComponents"
                   isTopLevel="true"
                   name="Connected Node Components">
                <availableForType
@@ -3019,35 +3019,14 @@
                </targetBrowserId>
                <categoryQuery>
                   <basicQuery
-                        class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkSourceAndTarget">
+                        class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkEndsOwningComponents">
                   </basicQuery>
                </categoryQuery>
             </category>
             <category
-                  id="org.polarsys.capella.core.semantic.queries.PhysicalLinkSource"
+                  id="org.polarsys.capella.core.semantic.queries.PhysicalLinkEnds"
                   isTopLevel="true"
-                  name="Source">
-               <availableForType
-                     class="org.polarsys.capella.core.data.cs.PhysicalLink">
-               </availableForType>
-               <targetBrowserId
-                     id="ReferencingElementBrowser">
-               </targetBrowserId>
-               <categoryQuery>
-                  <basicQuery
-                        class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkSource">
-                  </basicQuery>
-               </categoryQuery>
-               <itemQueries>
-            		<basicQuery
-                 	 	class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalPortOwner">
-            		</basicQuery>
-         		</itemQueries>
-            </category>
-            <category
-                  id="org.polarsys.capella.core.semantic.queries.PhysicalLinkTarget"
-                  isTopLevel="true"
-                  name="Target">
+                  name="Ends">
                <availableForType
                      class="org.polarsys.capella.core.data.cs.PhysicalLink">
                </availableForType>
@@ -3056,7 +3035,7 @@
                </targetBrowserId>
                <categoryQuery>
                   <basicQuery
-                        class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkTarget">
+                        class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkEnds">
                   </basicQuery>
                </categoryQuery>
                <itemQueries>
@@ -3154,7 +3133,7 @@
                   id="---------- PhysicalPort ----------">
             </category>
             <category
-                  id="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalPortIncomingPhysicalLinks"
+                  id="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalPortPhysicalLinks"
                   isTopLevel="true"
                   name="Physical Links">
                <availableForType
@@ -3165,12 +3144,12 @@
                </targetBrowserId>
                <categoryQuery>
                   <basicQuery
-                        class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalPortIncomingPhysicalLinks">
+                        class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalPortPhysicalLinks">
                   </basicQuery>
                </categoryQuery>
                <itemQueries>
                   <basicQuery
-                        class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkSourceAndTarget">
+                        class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkEndsOwningComponents">
                   </basicQuery>
                </itemQueries>
             </category>
@@ -4767,28 +4746,7 @@
             id="---------- Abstract Physical Component ----------NEW">
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.AbstractPhysicalComponentOutgoingPhysicalLink_phylink"
-            isTopLevel="true"
-            name="Physical Links">
-         <availableForType
-               class="org.polarsys.capella.core.data.pa.PhysicalComponent">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalComponent_OutgoingPhysicalLinks">
-            </basicQuery>
-         </categoryQuery>
-         <itemQueries>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkSourceAndTarget">
-            </basicQuery>
-         </itemQueries>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.AbstractPhysicalComponentIncomingPhysicalLink_phylink"
+            id="org.polarsys.capella.core.semantic.queries.PhysicalLink_phylink"
             isTopLevel="true"
             name="Physical Links">
          <availableForType
@@ -4799,10 +4757,10 @@
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalComponent_IncomingPhysicalLinks"></basicQuery></categoryQuery>
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalComponentPhysicalLinks"></basicQuery></categoryQuery>
          <itemQueries>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkSourceAndTarget"></basicQuery></itemQueries>
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkEndsOwningComponents"></basicQuery></itemQueries>
       </category>
       <category
             id="org.polarsys.capella.core.semantic.queries.PhysicalComponent_InternalPhysicalLinks_referenced"
@@ -4819,24 +4777,7 @@
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalComponent_InternalPhysicalLinks"></basicQuery></categoryQuery>
              <itemQueries>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkSourceAndTarget"></basicQuery></itemQueries>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.PhysicalComponent_InternalPhysicalLinks_referencing"
-            isTopLevel="true"
-            name="Internal Physical Links (computed)">
-         <availableForType
-               class="org.polarsys.capella.core.data.pa.PhysicalComponent">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalComponent_InternalPhysicalLinks"></basicQuery></categoryQuery>
-             <itemQueries>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkSourceAndTarget"></basicQuery></itemQueries>
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkEndsOwningComponents"></basicQuery></itemQueries>
       </category>
       <category
             id="org.polarsys.capella.core.semantic.queries.FunctionPortAllocatedExchangeItems"
@@ -5137,7 +5078,7 @@
          </categoryQuery>
          <itemQueries>
 			<basicQuery
-				class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkSourceAndTarget">
+				class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkEndsOwningComponents">
          	</basicQuery>
          </itemQueries>
       </category>

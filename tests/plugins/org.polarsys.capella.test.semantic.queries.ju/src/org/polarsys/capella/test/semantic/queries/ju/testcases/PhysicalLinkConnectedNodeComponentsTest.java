@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (c) 2023 THALES GLOBAL SERVICES.
+* Copyright (c) 2024 THALES GLOBAL SERVICES.
 * 
 * This program and the accompanying materials are made available under the
 * terms of the Eclipse Public License 2.0 which is available at
@@ -14,8 +14,8 @@ package org.polarsys.capella.test.semantic.queries.ju.testcases;
 
 import org.polarsys.capella.test.semantic.queries.ju.model.SemanticQueries;
 
-public class PhysicalLinkTargetTest extends SemanticQueries {
-  private final String QUERY = "org.polarsys.capella.core.semantic.queries.PhysicalLinkTarget";
+public class PhysicalLinkConnectedNodeComponentsTest extends SemanticQueries {
+  private final String QUERY = "org.polarsys.capella.core.semantic.queries.PhysicalLinkConnectedNodeComponents";
 
   @Override
   protected String getQueryCategoryIdentifier() {
@@ -24,6 +24,7 @@ public class PhysicalLinkTargetTest extends SemanticQueries {
 
   @Override
   public void test() throws Exception {
-    testQueryIncludingItemQueries(PA__PHYSICAL_LINK_1, PA__PHYSICAL_PORT_2, PA__PC2);
+    testQuery(PA__PHYSICAL_LINK_1, PA__PC1, PA__PC2);
   }
+
 }

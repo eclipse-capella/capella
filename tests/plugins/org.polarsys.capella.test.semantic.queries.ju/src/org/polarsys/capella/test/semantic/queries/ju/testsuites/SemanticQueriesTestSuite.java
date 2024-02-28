@@ -175,7 +175,9 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new FunctionalExchangeAllocatingComponentExchange());
     tests.add(new FunctionalExchangeAllocatingCommunicationMean());
     tests.add(new PhysicalLinkAllocatedComponentExchanges());
-    tests.add(new PhysicalPortIncomingPhysicalLinks());
+    tests.add(new PhysicalPortPhysicalLinks());
+    tests.add(new PhysicalLinkEndsTest());
+    tests.add(new PhysicalLinkConnectedNodeComponentsTest());    
     tests.add(new FunctionalExchangeConnectedOperationalActivities());
     tests.add(new FunctionalExchangeConnectedFunctions());
     tests.add(new FunctionInputPort_IncomingFunctionalExchanges());

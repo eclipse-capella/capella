@@ -23,15 +23,15 @@ import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.common.helpers.query.IQuery;
 
 /**
- * This query is about PhysicalLink --> SourceComponent and TargetComponent
+ * This query is about PhysicalLink --> Ends Owning Components
  *
  */
-public class PhysicalLinkSourceAndTarget implements IQuery {
+public class PhysicalLinkEndsOwningComponents implements IQuery {
 
 	/**
 	 * 
 	 */
-	public PhysicalLinkSourceAndTarget() {
+	public PhysicalLinkEndsOwningComponents() {
     // do nothing
 	}
 
