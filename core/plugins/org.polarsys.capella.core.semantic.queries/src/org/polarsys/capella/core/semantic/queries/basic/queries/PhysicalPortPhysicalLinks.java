@@ -25,15 +25,15 @@ import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.common.helpers.query.IQuery;
 
 /**
- * Return incoming and outgoing Physical Links of current Physical Port
+ * Return Physical Links of current Physical Port
  *
  */
-public class PhysicalPortIncomingPhysicalLinks  implements IQuery {
+public class PhysicalPortPhysicalLinks  implements IQuery {
 
 	/**
 	 * 
 	 */
-	public PhysicalPortIncomingPhysicalLinks() {
+	public PhysicalPortPhysicalLinks() {
     // do nothing
 	}
 
