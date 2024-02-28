@@ -22,6 +22,8 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.layout.GridLayoutFactory;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTException;
@@ -211,7 +213,7 @@ public abstract class ElementDescriptionGroup {
   public void aboutToBeShown() {
     if (updateDescriptionEditability(semanticElement, semanticFeature)) {
       try {
-        if (semanticElement != null && semanticFeature != null) {
+        if (semanticElement != null && semanticFeature != null) {          
           ((SavingStrategy) descriptionTextField.getSaveStrategy()).ensureLastSave();
           descriptionTextField.bind(semanticElement, semanticFeature);
           descriptionTextField.setSaveStrategy(new SavingStrategy(semanticElement, semanticFeature));
@@ -233,6 +235,12 @@ public abstract class ElementDescriptionGroup {
    * Remove the editor before the Property tab is disposed
    */
   public void aboutToBeHidden() {
+    Session session = SessionManager.INSTANCE.getSession(semanticElement);
+    if(session == null) {
+      //If the semanticElement doesn't belong to a session, clear it 
+      semanticElement = null;
+      semanticFeature = null;
+    }
     hideEditor();
   }
 
