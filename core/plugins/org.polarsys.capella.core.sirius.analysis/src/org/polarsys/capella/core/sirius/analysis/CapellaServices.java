@@ -1493,7 +1493,7 @@ public class CapellaServices {
   }
 
   public Collection<EObject> getPhysicalLinkSemanticElements(DEdge view) {
-    Collection<EObject> semanticElements = new LinkedList<EObject>();
+    Collection<EObject> semanticElements = new LinkedHashSet<EObject>();
     EObject target = view.getTarget();
     semanticElements.add(target);
     if (target instanceof PhysicalLink) {
@@ -1517,7 +1517,7 @@ public class CapellaServices {
   }
 
   public Collection<EObject> getFunctionalExchangeSemanticElements(DEdge view) {
-    Collection<EObject> semanticElements = new LinkedList<EObject>();
+    Collection<EObject> semanticElements = new LinkedHashSet<EObject>();
     EObject target = view.getTarget();
     semanticElements.add(target);
     if (target instanceof FunctionalExchange) {
