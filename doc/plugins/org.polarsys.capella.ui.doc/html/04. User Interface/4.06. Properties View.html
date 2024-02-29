@@ -30,7 +30,31 @@
 		<p>
 			<img height="400" width="600" border="0" src="Images/4.06_Properties_View2.png"/>
 		</p>
-		<p>Capella editors contain 4 sections: semantic properties, description, extensions, management.</p>
+		<p>Capella Properties view provides different tabs in order to access to all the attributes of the selected element:
+			<br/>
+<ul>
+<li>Capella: main Capella attributes and relations of the selected element</li>
+<li>Management: additional attributes for review, visibility in documentation and Traceability</li>
+<li>Description: a rich text description of the element. Can include images, links toward diagrams and model elements...</li>
+<li>Extensions: link with Property Values and Property Group. Users might use PVMT add-on instead of this tab (download link)</li>
+<li>Expert (named "Semantic" on diagram elements): all attributes and relation defined within Capella - disabled by default, please refer to 
+			<a href="/wiki/../help/topic/org.polarsys.capella.doc/html/Filtering%20of%20Capella%20Capabilities/Filtering%20of%20Capella%20Capabilities.html" title="../help/topic/org.polarsys.capella.doc/html/Filtering%20of%20Capella%20Capabilities/Filtering%20of%20Capella%20Capabilities.html">Capella Capabilities</a> <span class="github-link">
+			<a href="/wiki/../../../org.polarsys.capella.doc/Filtering_of_Capella_Capabilities/Filtering_of_Capella_Capabilities.mediawiki" title="../../../org.polarsys.capella.doc/Filtering of Capella Capabilities/Filtering of Capella Capabilities.mediawiki">(online documentation)</a></span>  
+</li>
+</ul>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="34" width="34" border="0" src="Images/Warning_ExclamationPoint.png"/>
+					</p>
+				</td>
+				<td>
+					<p>Expert and Semantic tab must be used with extreme caution as it can break your models and diagrams</p>
+				</td>
+			</tr>
+		</table>
 		<h2 id="Capella_Section_.28Semantic_Properties.29">Capella Section (Semantic Properties)</h2>
 		<p>This section displays the most important semantic information about the current element. It also allows defining relationships between elements.</p>
 		<p>disabled by default, please refer to 
@@ -157,6 +181,31 @@
 		<p>
 			<img border="0" src="Images/RefreshButton.png"/>
 		</p>
+		<ul>
+			<li>On Windows, if these workaround do not solve the issue, it may be caused by a plugin blocked by Windows. So far, the only cause identified is that you have unzipped the Capella archive using windows archive capabilities. This is known to cause problems, and it is strongly advised to use a third party archive tool such as 7zip. It is required to unblock the file to restore rich text capabilities.</li>
+		</ul>
+		<p><hr/>
+
+			<b>Unblock Richtext</b>
+		</p>
+		<p>In the case windows blocked richtext, open your Capella installation folder and navigate to capella\plugins\org.eclipse.nebula.widgets.richtext_X.X.X…\org\eclipse\nebula\widgets\richtext\resources\</p>
+		<p>Right click on the template.html file and select "Unblock"</p>
+		<p>
+			<img border="0" src="Images/UnblockFile.png"/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="34" width="34" border="0" src="Images/Warning_ExclamationPoint.png"/>
+					</p>
+				</td>
+				<td>
+					<p>If your richtext plugin was blocked, it is possible that all of your Capella setups that originate from archives are also affected.</p>
+					<p>In this case, you will need to do this operation for each Capella install.</p>
+				</td>
+			</tr>
+		</table>
 		<p><hr/>
 
 			<b>Disable Richtext</b>
