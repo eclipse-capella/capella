@@ -28,7 +28,22 @@ If the "Navigate to related diagrams on double click" preference is enabled, dou
 [[Image:Images/4.06_Properties_View2.png|600x400px]]
 
 
-Capella editors contain 4 sections: semantic properties, description, extensions, management.
+Capella Properties view provides different tabs in order to access to all the attributes of the selected element:<br>
+<ul>
+<li>Capella: main Capella attributes and relations of the selected element</li>
+<li>Management: additional attributes for review, visibility in documentation and Traceability</li>
+<li>Description: a rich text description of the element. Can include images, links toward diagrams and model elements...</li>
+<li>Extensions: link with Property Values and Property Group. Users might use PVMT add-on instead of this tab (download link)</li>
+<li>Expert (named "Semantic" on diagram elements): all attributes and relation defined within Capella - disabled by default, please refer to [[../help/topic/org.polarsys.capella.doc/html/Filtering%20of%20Capella%20Capabilities/Filtering%20of%20Capella%20Capabilities.html|Capella Capabilities]] <span class="github-link">[[../../../org.polarsys.capella.doc/Filtering of Capella Capabilities/Filtering of Capella Capabilities.mediawiki|(online documentation)]]</span>  
+</li>
+</ul>
+{| border="1"
+|-
+| 
+[[Image:Images/Warning_ExclamationPoint.png|34x34px]]
+| 
+Expert and Semantic tab must be used with extreme caution as it can break your models and diagrams
+|} 
 
 
 == Capella Section (Semantic Properties) ==
@@ -137,6 +152,26 @@ If not activated, there are two possibilities:
 * In case of editor loading problems (e.g. images are not loaded), users can click on the Refresh button to refresh the content of the editor.
 
 [[Image:Images/RefreshButton.png]]
+
+* On Windows, if these workaround do not solve the issue, it may be caused by a plugin blocked by Windows. So far, the only cause identified is that you have unzipped the Capella archive using windows archive capabilities. This is known to cause problems, and it is strongly advised to use a third party archive tool such as 7zip. It is required to unblock the file to restore rich text capabilities.
+
+----
+'''Unblock Richtext'''
+
+In the case windows blocked richtext, open your Capella installation folder and navigate to capella\plugins\org.eclipse.nebula.widgets.richtext_X.X.X…\org\eclipse\nebula\widgets\richtext\resources\
+
+Right click on the template.html file and select "Unblock"
+
+[[Image:Images/UnblockFile.png]]
+{| border="1"
+|-
+| 
+[[Image:Images/Warning_ExclamationPoint.png|34x34px]]
+| 
+If your richtext plugin was blocked, it is possible that all of your Capella setups that originate from archives are also affected.
+
+In this case, you will need to do this operation for each Capella install.
+|} 
 
 ----
 '''Disable Richtext'''
