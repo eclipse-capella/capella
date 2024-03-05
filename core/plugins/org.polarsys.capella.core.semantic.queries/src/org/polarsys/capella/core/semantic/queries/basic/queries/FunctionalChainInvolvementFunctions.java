@@ -47,6 +47,6 @@ public class FunctionalChainInvolvementFunctions implements IQuery {
   }
 
   protected boolean isValidInstanceOf(FunctionalChain object) {
-    return !(object instanceof OperationalProcess);
+    return !(object == null || object instanceof OperationalProcess);
   }
 }

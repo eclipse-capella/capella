@@ -1120,19 +1120,25 @@ public class FunctionalChainExt {
 
   public static Collection<ControlNode> getFlatControlNodes(FunctionalChain functionalChain) {
     List<ControlNode> ownedSequenceNodes = new ArrayList<>();
-    ownedSequenceNodes.addAll(functionalChain.getOwnedSequenceNodes());
-    functionalChain.getOwnedFunctionalChainInvolvements().stream().filter(FunctionalChainReference.class::isInstance)
-        .map(FunctionalChainReference.class::cast).map(FunctionalChainReference::getInvolved)
-        .map(FunctionalChain.class::cast).distinct().forEach(fc -> ownedSequenceNodes.addAll(getFlatControlNodes(fc)));
+    if (functionalChain != null) {
+      ownedSequenceNodes.addAll(functionalChain.getOwnedSequenceNodes());
+      functionalChain.getOwnedFunctionalChainInvolvements().stream().filter(FunctionalChainReference.class::isInstance)
+          .map(FunctionalChainReference.class::cast).map(FunctionalChainReference::getInvolved)
+          .map(FunctionalChain.class::cast).distinct()
+          .forEach(fc -> ownedSequenceNodes.addAll(getFlatControlNodes(fc)));
+    }
     return ownedSequenceNodes;
   }
 
   public static Collection<SequenceLink> getFlatSequenceLinks(FunctionalChain functionalChain) {
     List<SequenceLink> ownedSequenceLinks = new ArrayList<>();
-    ownedSequenceLinks.addAll(functionalChain.getOwnedSequenceLinks());
-    functionalChain.getOwnedFunctionalChainInvolvements().stream().filter(FunctionalChainReference.class::isInstance)
-        .map(FunctionalChainReference.class::cast).map(FunctionalChainReference::getInvolved)
-        .map(FunctionalChain.class::cast).distinct().forEach(fc -> ownedSequenceLinks.addAll(getFlatSequenceLinks(fc)));
+    if (functionalChain != null) {
+      ownedSequenceLinks.addAll(functionalChain.getOwnedSequenceLinks());
+      functionalChain.getOwnedFunctionalChainInvolvements().stream().filter(FunctionalChainReference.class::isInstance)
+          .map(FunctionalChainReference.class::cast).map(FunctionalChainReference::getInvolved)
+          .map(FunctionalChain.class::cast).distinct()
+          .forEach(fc -> ownedSequenceLinks.addAll(getFlatSequenceLinks(fc)));
+    }
     return ownedSequenceLinks;
   }
 }

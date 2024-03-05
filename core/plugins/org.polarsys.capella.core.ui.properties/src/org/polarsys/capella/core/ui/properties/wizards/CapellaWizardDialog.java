@@ -19,7 +19,6 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
-
 import org.polarsys.capella.common.ui.toolkit.dialogs.IDialog;
 
 /**
@@ -69,5 +68,11 @@ public class CapellaWizardDialog extends WizardDialog implements IDialog {
   public void updateButtons() {
     boolean canFinish = getWizard().canFinish();
     _finishButton.setEnabled(canFinish);
+  }
+
+  @Override
+  public boolean close() {
+    _finishButton.dispose();
+    return super.close();
   }
 }
