@@ -26,29 +26,30 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
 
 public class Scenario_RelatedFunctions implements IQuery {
 
-    public Scenario_RelatedFunctions() {
-        // Do nothing
-    }
+  public Scenario_RelatedFunctions() {
+    // Do nothing
+  }
 
-    /**
-     * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
-     */
-    public List<Object> compute(Object object) {
-        List<Object> result = new ArrayList<>();
-        if (object instanceof Scenario) {
-            Scenario af = (Scenario) object;
-            for (TimeLapse element : af.getOwnedTimeLapses().stream().filter(StateFragment.class::isInstance).collect(Collectors.toList())) {
-                StateFragment fragment = (StateFragment) element;
-                AbstractFunction absFunction = fragment.getRelatedAbstractFunction();
-                if (null != absFunction && isValidInstanceOf(absFunction)) {
-                    result.add(absFunction);
-                }
-            }
+  /**
+   * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
+   */
+  public List<Object> compute(Object object) {
+    List<Object> result = new ArrayList<>();
+    if (object instanceof Scenario) {
+      Scenario af = (Scenario) object;
+      for (TimeLapse element : af.getOwnedTimeLapses().stream().filter(StateFragment.class::isInstance)
+          .collect(Collectors.toList())) {
+        StateFragment fragment = (StateFragment) element;
+        AbstractFunction absFunction = fragment.getRelatedAbstractFunction();
+        if (isValidInstanceOf(absFunction)) {
+          result.add(absFunction);
         }
-        return result;
+      }
     }
+    return result;
+  }
 
-    protected boolean isValidInstanceOf(Object absFunction) {
-        return !(absFunction instanceof OperationalActivity);
-    }
+  protected boolean isValidInstanceOf(Object absFunction) {
+    return !(absFunction == null || absFunction instanceof OperationalActivity);
+  }
 }

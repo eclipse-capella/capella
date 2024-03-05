@@ -23,6 +23,7 @@ import org.polarsys.capella.test.platform.ju.testcases.CapellaCDOGenerationOfDer
 import org.polarsys.capella.test.platform.ju.testcases.CapellaCheckAcceleo2NotUsed;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaDefaultEditorEnabled;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaLoggerConfigTestCase;
+import org.polarsys.capella.test.platform.ju.testcases.CapellaNavigateOnDoubleClickTestCase;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaPlatformVersionNotNull;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaSiriusCustomisationEnabled;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaVersionConsistencyTest;
@@ -80,6 +81,7 @@ public class PlatformTestSuite extends BasicTestSuite {
     tests.add(new JobLogTest());
     tests.add(new CapellaLoggerConfigTestCase());
     tests.add(new CustomDAnalysisSelection());
+    tests.add(new CapellaNavigateOnDoubleClickTestCase());
 
     return tests;
   }

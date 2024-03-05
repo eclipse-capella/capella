@@ -119,53 +119,60 @@ public class DynamicOpenRepresentationContributionItem extends CompoundContribut
 
       // create scenarios from capabilities
       if (hasDerivedOpenRepresentationContribution(firstSelectedEObject)) {
-          addDerivedOpenRepresentationActions(firstSelectedEObject, menu, currentSession,
-            selectedViewpoints);
+        addDerivedOpenRepresentationActions(firstSelectedEObject, menu, currentSession, selectedViewpoints);
       }
     }
-    
+
     private boolean hasDerivedOpenRepresentationContribution(EObject semanticElement) {
-        return (semanticElement instanceof AbstractCapability) || 
-                (semanticElement instanceof FunctionalChainReference) || 
-                (semanticElement instanceof PhysicalPathReference) ||
-                (semanticElement instanceof InteractionUse);
-    }
-    
-    private void addDerivedOpenRepresentationActions(EObject semanticElement, IMenuManager menu, Session currentSession, Collection<Viewpoint> selectedViewpoints) {
-        for (Viewpoint vp : selectedViewpoints) {
-            for (RepresentationDescription representationDescription : vp.getOwnedRepresentations()) {
-                Collection<DRepresentationDescriptor> descriptors = DialectManager.INSTANCE.getRepresentationDescriptors(representationDescription, currentSession);
-                if (descriptors != null) {
-                    createOpenRepresentationAction(semanticElement, menu, currentSession, representationDescription, descriptors);
-                }
-            }
-        }
+      return (semanticElement instanceof AbstractCapability) || (semanticElement instanceof FunctionalChainReference)
+          || (semanticElement instanceof PhysicalPathReference) || (semanticElement instanceof InteractionUse);
     }
 
-    private void createOpenRepresentationAction(EObject semanticElement, IMenuManager menu, Session currentSession, RepresentationDescription representationDescription,
-            Collection<DRepresentationDescriptor> descriptors) {
-        Collection<DRepresentationDescriptor> ownedDescriptors = new ArrayList<>();
-        List<EObject> derivedElements = new ArrayList<>();
-        if (semanticElement instanceof AbstractCapability && representationDescription instanceof SequenceDiagramDescription) {
-            derivedElements.addAll(((AbstractCapability) semanticElement).getOwnedScenarios());
-        } else if ((semanticElement instanceof FunctionalChainReference || semanticElement instanceof PhysicalPathReference) && representationDescription instanceof DiagramDescription) {
-            if (semanticElement instanceof FunctionalChainReference) {
-                derivedElements.add(((FunctionalChainReference) semanticElement).getReferencedFunctionalChain());
-            } else if (semanticElement instanceof PhysicalPathReference) {
-                derivedElements.add(((PhysicalPathReference) semanticElement).getReferencedPhysicalPath());
-            }
-        } else if (semanticElement instanceof InteractionUse && representationDescription instanceof SequenceDiagramDescription) {
-            derivedElements.add(((InteractionUse)semanticElement).getReferencedScenario());
+    private void addDerivedOpenRepresentationActions(EObject semanticElement, IMenuManager menu, Session currentSession,
+        Collection<Viewpoint> selectedViewpoints) {
+      for (Viewpoint vp : selectedViewpoints) {
+        for (RepresentationDescription representationDescription : vp.getOwnedRepresentations()) {
+          Collection<DRepresentationDescriptor> descriptors = DialectManager.INSTANCE
+              .getRepresentationDescriptors(representationDescription, currentSession);
+          if (descriptors != null) {
+            createOpenRepresentationAction(semanticElement, menu, currentSession, representationDescription,
+                descriptors);
+          }
         }
-        for (EObject object : derivedElements) {
-            Collection<DRepresentationDescriptor> repDescScenario = DialectManager.INSTANCE.getRepresentationDescriptors(object, currentSession);
-            ownedDescriptors.addAll(repDescScenario);
-        }
-        descriptors.retainAll(ownedDescriptors);
+      }
+    }
 
-        for (DRepresentationDescriptor descriptor : descriptors) {
-            menu.add(new OpenRepresentationsAction(descriptor));
+    private void createOpenRepresentationAction(EObject semanticElement, IMenuManager menu, Session currentSession,
+        RepresentationDescription representationDescription, Collection<DRepresentationDescriptor> descriptors) {
+      Collection<DRepresentationDescriptor> ownedDescriptors = new ArrayList<>();
+      List<EObject> derivedElements = new ArrayList<>();
+      EObject targetSemanticElement = null;
+      if (representationDescription instanceof SequenceDiagramDescription) {
+        if (semanticElement instanceof AbstractCapability) {
+          derivedElements.addAll(((AbstractCapability) semanticElement).getOwnedScenarios());
+        } else if (semanticElement instanceof InteractionUse) {
+          targetSemanticElement = ((InteractionUse) semanticElement).getReferencedScenario();
         }
+      } else if (representationDescription instanceof DiagramDescription) {
+        if (semanticElement instanceof FunctionalChainReference) {
+          targetSemanticElement = ((FunctionalChainReference) semanticElement).getReferencedFunctionalChain();
+        } else if (semanticElement instanceof PhysicalPathReference) {
+          targetSemanticElement = ((PhysicalPathReference) semanticElement).getReferencedPhysicalPath();
+        }
+      }
+      if (targetSemanticElement != null) {
+        derivedElements.add(targetSemanticElement);
+      }
+      for (EObject object : derivedElements) {
+        Collection<DRepresentationDescriptor> repDescScenario = DialectManager.INSTANCE
+            .getRepresentationDescriptors(object, currentSession);
+        ownedDescriptors.addAll(repDescScenario);
+      }
+      descriptors.retainAll(ownedDescriptors);
+
+      for (DRepresentationDescriptor descriptor : descriptors) {
+        menu.add(new OpenRepresentationsAction(descriptor));
+      }
     }
   }
 

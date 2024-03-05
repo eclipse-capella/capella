@@ -39,7 +39,9 @@ public class DoubleClickBehaviourUtil {
   public boolean shouldOpenRelatedDiagramsOnDoubleClick(EObject source) {
     boolean navigateOnDoubleClick = Activator.getDefault().getPreferenceStore()
         .getBoolean(CapellaDiagramPreferences.PREF_DISPLAY_NAVIGATE_ON_DOUBLE_CLICK);
-    return navigateOnDoubleClick && (source instanceof FunctionalChain || source instanceof FunctionalChainReference
+    boolean hasTargetSemanticElement = getTargetSemanticElement(source) != null;
+    return navigateOnDoubleClick && hasTargetSemanticElement && (source instanceof FunctionalChain
+        || source instanceof FunctionalChainReference
         || source instanceof PhysicalPath || source instanceof PhysicalPathReference || source instanceof InteractionUse
         || source instanceof Scenario);
   }

@@ -170,19 +170,19 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage implements I
           ISectionDescriptor sectionDescriptor = (ISectionDescriptor) sd;
           ISection section = sectionDescriptor.getSectionClass();
           if (section != null) {
-              Composite sectionComposite = new Composite(tabItemContent, SWT.NONE);
-              sectionComposite.setLayout(new FillLayout());
-              int style = (section.shouldUseExtraSpace()) ? GridData.FILL_BOTH : GridData.FILL_HORIZONTAL;
-              GridData data = new GridData(style);
-              data.heightHint = section.getMinimumHeight();
-              sectionComposite.setLayoutData(data);
-              section.createControls(sectionComposite, null);
-              section.setInput(part, new StructuredSelection(object));
-              tabItem.setData(section);
-              sections.add(section);
-            }
+            Composite sectionComposite = new Composite(tabItemContent, SWT.NONE);
+            sectionComposite.setLayout(new FillLayout());
+            int style = (section.shouldUseExtraSpace()) ? GridData.FILL_BOTH : GridData.FILL_HORIZONTAL;
+            GridData data = new GridData(style);
+            data.heightHint = section.getMinimumHeight();
+            sectionComposite.setLayoutData(data);
+            section.createControls(sectionComposite, null);
+            section.setInput(part, new StructuredSelection(object));
+            tabItem.setData(section);
+            sections.add(section);
           }
         }
+      }
 
     }
 
@@ -247,7 +247,7 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage implements I
 
       protected String generateHTMLLink(EClass eclass) {
         return "/org.polarsys.capella.core.doc.user/html/editors/" + //$NON-NLS-1$
-        eclass.getEPackage().getName() + ICommonConstants.SLASH_CHARACTER + eclass.getName()
+            eclass.getEPackage().getName() + ICommonConstants.SLASH_CHARACTER + eclass.getName()
             + ICommonConstants.POINT_CHARACTER + "html"; //$NON-NLS-1$
       }
     };
@@ -280,6 +280,7 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage implements I
       sections = null;
     }
 
+    getImage().dispose();
     TabbedPropertyRegistryFactory.getInstance().disposeRegistry(this);
 
   }
@@ -307,5 +308,5 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage implements I
   public String getContributorId() {
     return CapellaUIPropertiesPlugin.PROPERTIES_CONTRIBUTOR;
   }
-  
+
 }
