@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -36,13 +37,13 @@ import org.polarsys.capella.core.data.cs.PhysicalPath;
 import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.information.Port;
+
 /**
  */
 public class PhysicalLinkExt {
 
-
   public static Collection<PhysicalLinkEnd> getRelatedPhysicalLinkEnds(Port element) {
-    HashSet<PhysicalLinkEnd> result = new HashSet<>();
+    LinkedHashSet<PhysicalLinkEnd> result = new LinkedHashSet<>();
     List<EReference> refs = new ArrayList<>();
     refs.add(CsPackage.Literals.PHYSICAL_LINK_END__PORT);
 
@@ -54,7 +55,7 @@ public class PhysicalLinkExt {
   }
 
   public static Collection<PhysicalLinkEnd> getRelatedPhysicalLinkEnds(Part element) {
-    HashSet<PhysicalLinkEnd> result = new HashSet<>();
+    LinkedHashSet<PhysicalLinkEnd> result = new LinkedHashSet<>();
     List<EReference> refs = new ArrayList<>();
     refs.add(CsPackage.Literals.PHYSICAL_LINK_END__PART);
 
@@ -72,7 +73,7 @@ public class PhysicalLinkExt {
    * @return
    */
   public static Collection<PhysicalLink> getAllRelatedPhysicalLinks(PhysicalPort element) {
-    HashSet<PhysicalLink> result = new HashSet<>();
+    LinkedHashSet<PhysicalLink> result = new LinkedHashSet<>();
     result.addAll(element.getInvolvedLinks());
 
     for (PhysicalLinkEnd end : getRelatedPhysicalLinkEnds(element)) {
@@ -83,7 +84,7 @@ public class PhysicalLinkExt {
   }
 
   public static Collection<PhysicalLink> getAllRelatedPhysicalLinks(Component element) {
-    HashSet<PhysicalLink> result = new HashSet<>();
+    LinkedHashSet<PhysicalLink> result = new LinkedHashSet<>();
 
     for (PhysicalPort port : element.getContainedPhysicalPorts()) {
       result.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, (PhysicalPort) port));
