@@ -26,7 +26,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 /**
  * Return physical links of current physical component and physical actor
  */
-public abstract class PhysicalComponentPhysicalLinks implements IQuery {
+public class PhysicalComponentPhysicalLinks implements IQuery {
 
   /** 
    * 
