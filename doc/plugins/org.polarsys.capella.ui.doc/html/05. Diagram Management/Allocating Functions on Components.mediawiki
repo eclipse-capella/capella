@@ -42,7 +42,7 @@ The resulting diagram displays ''"LF A"'' as allocated in ''"LC A"''.
 
 [[Image:Images/AllocatingFunctions_LF_1_and_LF_2_replaced.png|573x182px]]
 
-[[Image:Images/5.1. Diagram concepts_html_3c78e109.png|16x16px]] As a parent function ''"LF A"'' appears in italic to differenciate it from allocated leaves.
+[[Image:Images/InfoIcon.png|16x16px]] As a parent function ''"LF A"'' appears in italic to differenciate it from allocated leaves.
 
 
   === Represent Allocated Functions on parent Components ===
@@ -57,7 +57,7 @@ The resulting diagram displays ''"LF A"'' as allocated in ''"LC A"''.
 
 [[Image:Images/AllocatingFunctions_LF_B_1_and_LF_B_2_displayed_on_LC_B.png|576x174px]]
 
-[[Image:Images/5.1. Diagram concepts_html_3c78e109.png|16x16px]] As Functions allocated on a subcomponent, ''"LF B 1"'' and ''"LF B 2"'' appears with a dashed border to differenciate them from functions allocated on this component.
+[[Image:Images/InfoIcon.png|16x16px]] As Functions allocated on a subcomponent, ''"LF B 1"'' and ''"LF B 2"'' appears with a dashed border to differenciate them from functions allocated on this component.
 
 We can also chose to display ''"LF B"'' in ''"LC B"''.
 
