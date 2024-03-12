@@ -26,21 +26,21 @@ SPDX-License-Identifier: EPL-2.0
 
 The project maintains the following source code repositories:
 
-* https://github.com/eclipse/capella
-* https://github.com/eclipse/capella-basic-vp
-* https://github.com/eclipse/capella-addons
-* https://github.com/eclipse/capella-cybersecurity
-* https://github.com/eclipse/capella-filtering
-* https://github.com/eclipse/capella-gitadapter
-* https://github.com/eclipse/capella-requirements-vp
-* https://github.com/eclipse/capella-sss-transition
-* https://github.com/eclipse/capella-studio
-* https://github.com/eclipse/capella-tools
-* https://github.com/eclipse/capella-xhtml-docgen
-* https://github.com/eclipse/capella-xmlpivot
-* https://github.com/eclipse/capella-vpms
-* https://github.com/eclipse/capella-releng-parent
-* https://github.com/eclipse/capella-pipeline-library
+* https://github.com/eclipse-capella/capella
+* https://github.com/eclipse-capella/capella-basic-vp
+* https://github.com/eclipse-capella/capella-addons
+* https://github.com/eclipse-capella/capella-cybersecurity
+* https://github.com/eclipse-capella/capella-filtering
+* https://github.com/eclipse-capella/capella-gitadapter
+* https://github.com/eclipse-capella/capella-requirements-vp
+* https://github.com/eclipse-capella/capella-sss-transition
+* https://github.com/eclipse-capella/capella-studio
+* https://github.com/eclipse-capella/capella-tools
+* https://github.com/eclipse-capella/capella-xhtml-docgen
+* https://github.com/eclipse-capella/capella-xmlpivot
+* https://github.com/eclipse-capella/capella-vpms
+* https://github.com/eclipse-capella/capella-releng-parent
+* https://github.com/eclipse-capella/capella-pipeline-library
 
 ## Third-party Content
 

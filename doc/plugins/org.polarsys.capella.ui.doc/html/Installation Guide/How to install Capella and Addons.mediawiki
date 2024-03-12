@@ -18,7 +18,7 @@ Starting from Capella 6.0, a JDK [https://adoptium.net Temurin (from adoptium.ne
 
 '''Note:''' Notice that only the embedded JDK has been field-tested.
 
-If however you want to use a different JDK version, you need to modify the <code>capella.ini</code> file at 3 places. The first one is to add on two lines <code>-vm</code> and a reference to your JDK location. The second one is to modify <code>-Dosgi.requiredJavaVersion</code> argument to point to your JDK version. The third one is to adapt the <code>-Dpde.jreProfile=JavaSE-17</code> line either to match the version of your JDK. Please refer to the following [https://wiki.eclipse.org/Eclipse.ini link] for more information and [https://github.com/eclipse/capella/wiki/Dependency%20versions compatibility] page.
+If however you want to use a different JDK version, you need to modify the <code>capella.ini</code> file at 3 places. The first one is to add on two lines <code>-vm</code> and a reference to your JDK location. The second one is to modify <code>-Dosgi.requiredJavaVersion</code> argument to point to your JDK version. The third one is to adapt the <code>-Dpde.jreProfile=JavaSE-17</code> line either to match the version of your JDK. Please refer to the following [https://wiki.eclipse.org/Eclipse.ini link] for more information and [https://github.com/eclipse-capella/capella/wiki/Dependency%20versions compatibility] page.
 
 '''Note:''' If you decide to use a JRE instead of the embedded JDK, please note that some capabilities will be disabled (e.g. the Java development capability in Capella or some capabilities coming from add-ons)
 
@@ -69,7 +69,7 @@ Addons are installable as "update sites" or as "dropins".
 
 <i>'''Note:''' In both cases, dropins or update sites, make sure that the addon/extension is compatible with your current version of Capella and Capella projects lifecycle. (even if update sites seem to provide some consistency for a Capella installation, a ProjectX may require a dedicated x.y.z version of addon, and administrators shall manage their own Compatibility map per projects, to prevent unexpected updates of a shared Capella installation)</i>
 
-<i>Compatibility information is commonly provided by the addon provider or for open source addons, marked aside the download release information (ex: [https://github.com/eclipse/capella-requirements-vp/releases|Requirement addon])</i>
+<i>Compatibility information is commonly provided by the addon provider or for open source addons, marked aside the download release information (ex: [https://github.com/eclipse-capella/capella-requirements-vp/releases|Requirement addon])</i>
 
 <i>'''Note:''' After installation, please see [[#Post-installation steps]]</i>
 
