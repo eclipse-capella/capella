@@ -1,8 +1,8 @@
 = Capella Studio =
 
-[https://github.com/eclipse/capella-studio/wiki Capella Studio] provides a full-integrated development environment which aims at facilitating the development of extensions for Capella.
+[https://github.com/eclipse-capella/capella-studio/wiki Capella Studio] provides a full-integrated development environment which aims at facilitating the development of extensions for Capella.
 
-It can be downloaded on [https://www.eclipse.org/capella/download.html Capella project site].
+It can be downloaded on [https://mbse-capella.org/download.html Capella project site].
 
 It embeds several tools such as VPDSL, a textual definition helping to extends Capella core elements and generate automatically a skeleton Viewpoint with Model and Diagram extensions, Semantic Browser, Property views.
 
@@ -16,6 +16,6 @@ See also the main [https://www.eclipse.org/kitalpha/ Kitalpha project site] and 
 
 == Viewpoint Development ==
 
-For details about viewpoint development consult the [https://github.com/eclipse/capella-studio/wiki#Viewpoint_Development Capella Studio] documentation.
+For details about viewpoint development consult the [https://github.com/eclipse-capella/capella-studio/wiki#Viewpoint_Development Capella Studio] documentation.
 
 

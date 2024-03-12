@@ -2,4 +2,4 @@
 
 Retrieve all known issues by following this link and going to dedicated issue tracker of all Capella components.
 
-* [https://github.com/eclipse/capella/wiki/Repositories Capella repositories]
+* [https://github.com/eclipse-capella/capella/wiki/Repositories Capella repositories]

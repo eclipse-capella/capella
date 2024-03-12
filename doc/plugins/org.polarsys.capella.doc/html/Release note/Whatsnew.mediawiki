@@ -2,4 +2,4 @@
 
 Release notes describing enhancements and fixes done per release are available online on each dedicated release pages.
 
-* [https://github.com/eclipse/capella/releases Capella releases]
+* [https://github.com/eclipse-capella/capella/releases Capella releases]

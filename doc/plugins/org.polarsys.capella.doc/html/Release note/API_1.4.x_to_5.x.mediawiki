@@ -21,7 +21,7 @@ A JDK is now installed under a jre folder in the capella folder
 === Pattern functionality removal ===
 The component Patterns has been removed (replaced with REC/RPL since many versions). 
 
-Its dependency 'Eclipse OCL' has also been removed from Capella packaging. It can be still found in the [https://github.com/eclipse/capella/wiki/Dependency%20versions Eclipse repository]
+Its dependency 'Eclipse OCL' has also been removed from Capella packaging. It can be still found in the [https://github.com/eclipse-capella/capella/wiki/Dependency%20versions Eclipse repository]
 
 === Capella is now compatible with Java 11 ===
 Capella code has been made compatible with Java 11
