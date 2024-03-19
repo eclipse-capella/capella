@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2024 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -61,8 +61,8 @@ public class CapellaSiriusCustomisationEnabled extends BasicTestCase {
     assertTrue("Preference value for 'Scale level on diagram export' is not the intended one",
         defaultScope.getInt(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name(), 99) == 2);
 
-    assertFalse("Preference value for 'Use viewpoint colors' is not the intended one",
-        defaultScope.getBoolean(SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE.name(), true));
+    assertTrue("Preference value for 'Use viewpoint colors' is not the intended one",
+        defaultScope.getBoolean(SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE.name(), false));
     
     assertTrue("Preference value for 'Export semantic id on SVG' is not the intended one",
         defaultScope.getBoolean(SiriusUIPreferencesKeys.PREF_EXPORT_SEMANTIC_TRACEABILITY.name(), false));
