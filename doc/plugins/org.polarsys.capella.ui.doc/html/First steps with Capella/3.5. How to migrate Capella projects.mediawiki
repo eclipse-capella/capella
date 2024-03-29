@@ -44,6 +44,13 @@ At the end of the migration process, we recommend you to run a manual global ref
 
 |}
 
+== Migration of models containing legacy Capella requirements ==
+
+For legacy models coming from older Capella releases that includes such legacy Capella requirements, you have to either: 
+
+*install the new addon <b>Basic Requirement</b> first and then run a standard project migration
+*detach the legacy requirements if they are not used, using model detachment (see [[../help/topic/org.polarsys.capella.ui.doc/html/First%20steps%20with%20Capella/3.6.%20How%20to%20detach%20viewpoints.html| How to detach viewpoints]]) or continue to use this new addon to exploit the legacy requirements.
+
 == Special attention to image used in the project ==
 
 When doing the migration, the image that were previously used with absolute path will be copied into the project in the workspace.

@@ -1,0 +1,28 @@
+= Metamodel changes =
+
+== From Capella 6.x to 7.x ==
+
+=== Modification of all NSURI ===
+
+* http://www.polarsys.org/capella/core/.../6.0.0 to http://www.polarsys.org/capella/core/.../7.0.0
+* http://www.polarsys.org/capella/common/.../6.0.0 to http://www.polarsys.org/capella/common/.../7.0.0
+
+=== Removed Requirements from the Core Metamodel ===
+Requirements.ecore has been moved to Basic Requirement VP
+
+==== Deleted meta-classes ====
+
+* '''RequirementPkg'''
+* '''Requirement'''
+* '''SystemFunctionalInterfaceRequirement'''
+* '''SystemFunctionalRequirement'''
+* '''SystemNonFunctionalInterfaceRequirement'''
+* '''SystemNonFunctionalRequirement'''
+* '''SystemUserRequirement'''
+* '''RequirementTrace'''
+
+==== Deleted attributes/references ====
+
+* '''BlockArchitecture.ownedRequirementPkgs'''
+* '''Namespace.containedRequirementsTraces'''
+* '''CapellaElement.appliedRequirements'''
