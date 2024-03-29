@@ -17,6 +17,22 @@
       <topic href="html/Release note/Whatsnew.html" label="What's new">
       </topic>
       <topic label="API changes">
+         <topic href="html/Release note/API_6.x_to_7.x.html" label="Capella 6.x to 7.x">
+            <topic href="html/Release note/API_6.x_to_7.x.html#Major_changes" label="Major changes">
+               <topic href="html/Release note/API_6.x_to_7.x.html#Migration_to_Eclipse_2023-03" label="Migration to Eclipse 2023-03">
+               </topic>
+               <topic href="html/Release note/API_6.x_to_7.x.html#Version_major_increased" label="Version major increased">
+               </topic>
+               <topic href="html/Release note/API_6.x_to_7.x.html#Diagram_capabilities" label="Diagram capabilities">
+               </topic>
+               <topic href="html/Release note/API_6.x_to_7.x.html#Semantic_Browser" label="Semantic Browser">
+               </topic>
+               <topic href="html/Release note/API_6.x_to_7.x.html#Migration" label="Migration">
+               </topic>
+            </topic>
+            <topic href="html/Release note/API_6.x_to_7.x.html#Raw_API_changes_from_6.1.0_to_7.0.0" label="Raw API changes from 6.1.0 to 7.0.0">
+            </topic>
+         </topic>
          <topic href="html/Release note/API_5.x_to_6.x.html" label="Capella 5.x to 6.x">
             <topic href="html/Release note/API_5.x_to_6.x.html#Major_changes" label="Major changes">
             	<topic href="html/Release note/API_5.x_to_6.x.html#Migration_to_Eclipse_2021-06" label="Migration to Eclipse 2021-06"></topic>
@@ -94,6 +110,8 @@
          </topic>
       </topic>
       <topic label="Metamodel changes">
+         <topic href="html/Release note/M2_6.x_to_7.x.html" label="Capella 6.x to 7.x">
+         </topic>
          <topic href="html/Release note/M2_5.x_to_6.x.html" label="Capella 5.x to 6.x">
          </topic>
          <topic href="html/Release note/M2_1.4.x_to_5.x.html" label="Capella 1.4.x to 5.x">

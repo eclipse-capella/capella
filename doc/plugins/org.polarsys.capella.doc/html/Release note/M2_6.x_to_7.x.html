@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>M2_6.x_to_7.x</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Metamodel_changes">Metamodel changes</h1>
+		<h2 id="From_Capella_6.x_to_7.x">From Capella 6.x to 7.x</h2>
+		<h3 id="Modification_of_all_NSURI">Modification of all NSURI</h3>
+		<ul>
+			<li>
+				<a href="http://www.polarsys.org/capella/core/.../6.0.0">http://www.polarsys.org/capella/core/.../6.0.0</a> to 
+				<a href="http://www.polarsys.org/capella/core/.../7.0.0">http://www.polarsys.org/capella/core/.../7.0.0</a>
+			</li>
+			<li>
+				<a href="http://www.polarsys.org/capella/common/.../6.0.0">http://www.polarsys.org/capella/common/.../6.0.0</a> to 
+				<a href="http://www.polarsys.org/capella/common/.../7.0.0">http://www.polarsys.org/capella/common/.../7.0.0</a>
+			</li>
+		</ul>
+		<h3 id="Removed_Requirements_from_the_Core_Metamodel">Removed Requirements from the Core Metamodel</h3>
+		<p>Requirements.ecore has been moved to Basic Requirement VP</p>
+		<h4 id="Deleted_meta-classes">Deleted meta-classes</h4>
+		<ul>
+			<li>
+				<b>RequirementPkg</b>
+			</li>
+			<li>
+				<b>Requirement</b>
+			</li>
+			<li>
+				<b>SystemFunctionalInterfaceRequirement</b>
+			</li>
+			<li>
+				<b>SystemFunctionalRequirement</b>
+			</li>
+			<li>
+				<b>SystemNonFunctionalInterfaceRequirement</b>
+			</li>
+			<li>
+				<b>SystemNonFunctionalRequirement</b>
+			</li>
+			<li>
+				<b>SystemUserRequirement</b>
+			</li>
+			<li>
+				<b>RequirementTrace</b>
+			</li>
+		</ul>
+		<h4 id="Deleted_attributes.2Freferences">Deleted attributes/references</h4>
+		<ul>
+			<li>
+				<b>BlockArchitecture.ownedRequirementPkgs</b>
+			</li>
+			<li>
+				<b>Namespace.containedRequirementsTraces</b>
+			</li>
+			<li>
+				<b>CapellaElement.appliedRequirements</b>
+			</li>
+		</ul>
+	</body>
+</html>
