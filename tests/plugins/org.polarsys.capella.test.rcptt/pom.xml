@@ -22,7 +22,7 @@
 	</parent>
 	<groupId>org.polarsys</groupId>
 	<artifactId>org.polarsys.capella.test.rcptt</artifactId>
-
+			
 	<pluginRepositories>
 		<pluginRepository>
 			<id>rcptt-releases</id>
@@ -63,16 +63,25 @@
 					<runner>
 						<version>${rcptt-runner-version}</version>
 						<vmArgs>
-							<vmArg>-Xmx2g</vmArg>
+							<vmArg>-Xmx3500m</vmArg>
 						</vmArgs>
 					</runner>
 					<aut>
-						<explicit>../../../releng/plugins/org.polarsys.capella.rcp.product/target/products/org.polarsys.capella.rcp.product-[platform].zip</explicit>
-						<args>
-							<arg>-autArgs</arg>
-							<arg>-EPF;${project.build.directory}/User2Prefs.epf</arg>
-						</args>
+					   <explicit>${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-linux-gtk-x86_64.zip</explicit>
+						
+						<injections>
+							<injection>
+								<site>https://download.eclipse.org/rcptt/milestone/2.5.5/MO/repository</site>
+							</injection>
+						</injections>
 					</aut>
+					<testOptions>
+						<execTimeout>7200</execTimeout>
+						<testExecTimeout>300</testExecTimeout>
+					</testOptions>
+					<suites>
+						<suite>AllTests</suite>
+					</suites>
 				</configuration>
 			</plugin>
 		</plugins>

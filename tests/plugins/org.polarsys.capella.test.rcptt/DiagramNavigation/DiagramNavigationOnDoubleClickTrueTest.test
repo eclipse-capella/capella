@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _VZhxMChyEe2Ke_QVPFchOA
-Runtime-Version: 2.5.2.202204252353
-Save-Time: 9/2/22, 12:26 PM
+Runtime-Version: 2.5.5.202312181455
+Save-Time: 4/16/24, 3:16 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -288,7 +288,7 @@ get-editor "[OPD] OperationalProcess 2 bis" | close
 get-editor "[OPD] OperationalProcess 1" | close
 
 //Test that multi-selection works in Semantic Browser
-get-view "Project Explorer" | get-tree | select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/Operational Analysis/Operational Activities/Root Operational Activity"
+get-view "Project Explorer" | get-tree | select "OnDoubleClick/DiagramNavigationModel.aird/DiagramNavigationModel/Operational Analysis/Operational Activities/Root Operational Activity"| key-type F9 
 
 with [get-view "Semantic Browser" | get-tree -after [get-label "Current Element"]] {
     select "Root Operational Activity/Owned Operational Processes/OperationalProcess 2" "Root Operational Activity/Owned Operational Processes/OperationalProcess 1"
