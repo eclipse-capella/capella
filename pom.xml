@@ -25,8 +25,8 @@
 		<tycho-version>2.7.5</tycho-version>
 		<tycho-extras-version>2.7.5</tycho-extras-version>
 		<antrun-version>3.0.0</antrun-version>
-		<rcptt-version>2.5.3</rcptt-version>
-		<rcptt-runner-version>2.5.3</rcptt-runner-version>
+		<rcptt-version>2.5.5-MO</rcptt-version>
+		<rcptt-runner-version>2.5.5-MO</rcptt-runner-version>
 		<sonar-version>3.0.2</sonar-version>
 
 		<!-- for tycho -->
@@ -342,6 +342,15 @@
 					</snapshots>
 				</pluginRepository>
 			</pluginRepositories>
+		</profile>
+		<profile>
+			<id>rcptt</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>tests/plugins/org.polarsys.capella.test.rcptt</module>
+			</modules>			
 		</profile>
 	</profiles>
 </project>

@@ -68,11 +68,17 @@
 					</runner>
 					<aut>
 						<explicit>../../../releng/plugins/org.polarsys.capella.rcp.product/target/products/org.polarsys.capella.rcp.product-[platform].zip</explicit>
-						<args>
+						 <args>
 							<arg>-autArgs</arg>
 							<arg>-EPF;${project.build.directory}/User2Prefs.epf</arg>
 						</args>
+						<injections>
+							<injection>
+								<site>https://download.eclipse.org/rcptt/milestone/2.5.5/MO/repository</site>
+							</injection>
+						</injections>
 					</aut>
+					
 				</configuration>
 			</plugin>
 		</plugins>
