@@ -88,7 +88,7 @@ pipeline {
         		script {
 					withEnv(['MAVEN_OPTS=-Xmx2g']) {
 						wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
-							tester.runRcptt("-P full -P rcptt")					
+							tester.runRcptt("-P full -P rcptt -Dexplicit.aut=${CAPELLA_PRODUCT_PATH}/")					
 						}
 						tester.publishTests()
 					}

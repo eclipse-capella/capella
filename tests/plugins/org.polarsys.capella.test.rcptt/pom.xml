@@ -22,7 +22,11 @@
 	</parent>
 	<groupId>org.polarsys</groupId>
 	<artifactId>org.polarsys.capella.test.rcptt</artifactId>
-
+	
+	<properties>
+		<explicit.aut>.../../../releng/plugins/org.polarsys.capella.rcp.product/target/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/capella/</explicit.aut>
+	</properties>
+		
 	<pluginRepositories>
 		<pluginRepository>
 			<id>rcptt-releases</id>
@@ -67,7 +71,7 @@
 						</vmArgs>
 					</runner>
 					<aut>
-						<explicit>../../../releng/plugins/org.polarsys.capella.rcp.product/target/products/org.polarsys.capella.rcp.product-[platform].tar.gz</explicit>
+						<explicit>${explicit.aut}</explicit>
 						 <args>
 							<arg>-autArgs</arg>
 							<arg>-EPF;${project.build.directory}/User2Prefs.epf</arg>
