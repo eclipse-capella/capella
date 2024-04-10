@@ -149,7 +149,7 @@
 									</move>
 									
 									<!-- Zip the Linux product  for test purposes-->
-									<zip destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-linux/gtk/x86_64.zip">
+									<zip destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-linux-gtk-x86_64.zip">
 										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64" prefix="capella"/>
 										<zipfileset dir="../../../samples" prefix="samples">
 											<exclude name="target/**"/>
