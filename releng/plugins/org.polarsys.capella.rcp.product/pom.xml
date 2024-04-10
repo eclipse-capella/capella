@@ -26,7 +26,6 @@
 
   <groupId>org.polarsys</groupId>
   <artifactId>org.polarsys.capella.rcp.product</artifactId>
-  <version>7.0.0-SNAPSHOT</version>
   <packaging>eclipse-repository</packaging>
 	<build>
 		<plugins>
@@ -42,11 +41,19 @@
 							<goal>materialize-products</goal>
 						</goals>
 					</execution>
+					<execution>
+						<phase>pre-integration-test</phase>
+						<id>archive-products</id>
+						<goals>
+							<goal>archive-products</goal>
+						</goals>
+					</execution>
 				</executions>
 				<configuration>
 					<products>
-						<product>
+						<product>						
 							<id>org.polarsys.capella.rcp.product</id>
+							<archiveFileName>capella-${qualifiedVersion}</archiveFileName>
 							<rootFolders>
 								<macosx>Capella.app</macosx>
 							</rootFolders>

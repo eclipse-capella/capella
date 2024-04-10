@@ -71,7 +71,9 @@
 						</vmArgs>
 					</runner>
 					<aut>
-						<explicit>${explicit.aut}</explicit>
+					    <groupId>org.polarsys</groupId>
+					    <artifactId>org.polarsys.capella.rcp.product</artifactId>
+						<version>${project.version}</version>
 						 <args>
 							<arg>-autArgs</arg>
 							<arg>-EPF;${project.build.directory}/User2Prefs.epf</arg>
