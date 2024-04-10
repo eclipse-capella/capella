@@ -349,6 +349,7 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<modules>
+				<module>releng/plugins/org.polarsys.capella.rcp.product</module>
 				<module>tests/plugins/org.polarsys.capella.test.rcptt</module>
 			</modules>			
 		</profile>
