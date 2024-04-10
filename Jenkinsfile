@@ -65,7 +65,7 @@ pipeline {
 				script {
 					withEnv(['MAVEN_OPTS=-Xmx3g']) {
 						def sign = github.isPullRequest() ? '' : '-Psign'
-						sh "mvn install -Pfull ${sign}"
+						sh "mvn verify -Pfull ${sign}"
 					}
 				}
 		 	}
