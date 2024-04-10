@@ -63,7 +63,7 @@ pipeline {
 		stage('Build and Package') {
 			steps {
 				script {
-					withEnv(['MAVEN_OPTS=-Xmx2g']) {
+					withEnv(['MAVEN_OPTS=-Xmx3g']) {
 						def sign = github.isPullRequest() ? '' : '-Psign'
 						sh "mvn install -Pfull ${sign}"
 					}
@@ -86,9 +86,9 @@ pipeline {
     		
         	steps {
         		script {
-					withEnv(['MAVEN_OPTS=-Xmx2g']) {
+					withEnv(['MAVEN_OPTS=-Xmx3g']) {
 						wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
-							tester.runRcptt("-P full -P rcptt -Dexplicit.aut=${CAPELLA_PRODUCT_PATH}/")					
+							tester.runRcptt("-P full -P rcptt")					
 						}
 						tester.publishTests()
 					}

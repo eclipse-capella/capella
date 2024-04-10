@@ -22,11 +22,7 @@
 	</parent>
 	<groupId>org.polarsys</groupId>
 	<artifactId>org.polarsys.capella.test.rcptt</artifactId>
-	
-	<properties>
-		<explicit.aut>.../../../releng/plugins/org.polarsys.capella.rcp.product/target/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/capella/</explicit.aut>
-	</properties>
-		
+			
 	<pluginRepositories>
 		<pluginRepository>
 			<id>rcptt-releases</id>
@@ -74,10 +70,6 @@
 					    <groupId>org.polarsys</groupId>
 					    <artifactId>org.polarsys.capella.rcp.product</artifactId>
 						<version>${project.version}</version>
-						 <args>
-							<arg>-autArgs</arg>
-							<arg>-EPF;${project.build.directory}/User2Prefs.epf</arg>
-						</args>
 						<injections>
 							<injection>
 								<site>https://download.eclipse.org/rcptt/milestone/2.5.5/MO/repository</site>
