@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2024 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -133,7 +133,7 @@ public class CreateRule_ScenarioUml2_01 extends TopDownTransitionTestCase {
     assertNotNull(NLS.bind(Messages.NullElement, name), a4);
     EObject a4t = getAllocatingElements(a4).stream()
         .filter(s -> s instanceof Scenario && ((Scenario) s).getKind() == kind && EcoreUtil.isAncestor(container, s))
-        .findAny().orElseGet(null);
+        .findAny().orElse(null);
     String namet = name + "t"; //$NON-NLS-1$
     assertNotNull(NLS.bind(Messages.ShouldBeTransitioned, namet), a4t);
     String containerName = (container instanceof AbstractNamedElement ? ((AbstractNamedElement) container).getName()

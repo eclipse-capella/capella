@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2020, 2024 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -52,7 +52,7 @@ public class MoveRepresentationsAction extends BaseSelectionListenerAction {
   @Override
   protected boolean updateSelection(IStructuredSelection selection) {
     List<DRepresentationDescriptor> validRepresentationDescriptors = getValidRepresentationDescriptors(selection);
-    List<Session> sessions = validRepresentationDescriptors.stream().map(repDesc -> Session.of(repDesc).orElseGet(null))
+    List<Session> sessions = validRepresentationDescriptors.stream().map(repDesc -> Session.of(repDesc).orElse(null))
         .filter(s -> s != null).distinct().collect(Collectors.toList());
     // The move action should be available only if the selections corresponds to the same session.
     if (sessions.size() == 1) {
