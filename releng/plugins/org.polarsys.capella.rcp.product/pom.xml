@@ -123,7 +123,7 @@
 									</move>
 									
 									<!-- Tar.gz the Linux product -->
-									<tar destfile="${project.build.directory}/products/capella-linux-gtk-x86_64.tar.gz" compression="gzip" longfile="gnu">
+									<tar destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-linux-gtk-x86_64.tar.gz" compression="gzip" longfile="gnu">
 										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64" prefix="capella">
 											<include name="**/*" />
 											<exclude name="capella"/>
@@ -148,6 +148,14 @@
 										</fileset>
 									</move>
 									
+									<!-- Zip the Linux product  for test purposes-->
+									<zip destfile="${project.build.directory}/products/capella-linux-gtk-x86_64.zip">
+										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64" prefix="capella"/>
+										<zipfileset dir="../../../samples" prefix="samples">
+											<exclude name="target/**"/>
+											<exclude name="pom.xml"/>
+										</zipfileset>
+									</zip>
 									<!-- Tar.gz the Linux product -->
 									<tar destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-linux-gtk-aarch64.tar.gz" compression="gzip" longfile="gnu">
 										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/aarch64" prefix="capella">
