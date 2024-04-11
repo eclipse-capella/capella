@@ -67,9 +67,8 @@
 						</vmArgs>
 					</runner>
 					<aut>
-					    <groupId>org.polarsys</groupId>
-					    <artifactId>org.polarsys.capella.rcp.product</artifactId>
-						<version>${project.version}</version>
+					   <explicit>../../../releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-linux-gtk-x86_64.zip</explicit>
+						
 						<injections>
 							<injection>
 								<site>https://download.eclipse.org/rcptt/milestone/2.5.5/MO/repository</site>

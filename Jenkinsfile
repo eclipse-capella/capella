@@ -63,7 +63,7 @@ pipeline {
 		stage('Build and Package') {
 			steps {
 				script {
-					withEnv(['MAVEN_OPTS=-Xmx3g']) {
+					withEnv(['MAVEN_OPTS=-Xmx3.5g']) {
 						def sign = github.isPullRequest() ? '' : '-Psign'
 						sh "mvn verify -Pfull ${sign}"
 					}
