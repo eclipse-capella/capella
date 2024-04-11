@@ -86,7 +86,7 @@ pipeline {
     		
         	steps {
         		script {
-					withEnv(['MAVEN_OPTS=-Xmx3g']) {
+					withEnv(['MAVEN_OPTS=-Xmx3500m']) {
 						wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
 							tester.runRcptt("-P rcptt")					
 						}

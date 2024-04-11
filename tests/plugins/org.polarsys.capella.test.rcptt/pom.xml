@@ -63,7 +63,7 @@
 					<runner>
 						<version>${rcptt-runner-version}</version>
 						<vmArgs>
-							<vmArg>-Xmx2g</vmArg>
+							<vmArg>-Xmx3500m</vmArg>
 						</vmArgs>
 					</runner>
 					<aut>
