@@ -82,6 +82,18 @@ pipeline {
 	     	}
 	    }
 		
+		stage('Zip Product for test purposes') {
+    		
+        	steps {
+        		script {
+					def antlrRepoPath = 'https://download.eclipse.org/releases/2020-06'
+					def antlrFeatureName = 'org.antlr.runtime/3.2.0.v201101311130'
+					eclipse.installFeature('${CAPELLA_PRODUCT_PATH}', antlrRepoPath, antlrFeatureName)
+					sh "zip -r ${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-linux-gtk-x86_64.zip ${CAPELLA_PRODUCT_PATH}/* "
+				}
+			}
+		}
+		
 		stage('Run RCPTT tests') {
     		
         	steps {
