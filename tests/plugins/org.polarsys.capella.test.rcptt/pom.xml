@@ -67,7 +67,7 @@
 						</vmArgs>
 					</runner>
 					<aut>
-					   <explicit>../../../releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-linux-gtk-x86_64.zip</explicit>
+					   <explicit>../../../releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-linux-gtk-x86_64</explicit>
 						
 						<injections>
 							<injection>
