@@ -23,6 +23,8 @@
 	<groupId>org.polarsys</groupId>
 	<artifactId>org.polarsys.capella.test.rcptt</artifactId>
 			
+	<packaging>rcpttTest</packaging>
+	
 	<pluginRepositories>
 		<pluginRepository>
 			<id>rcptt-releases</id>
@@ -63,7 +65,7 @@
 					<runner>
 						<version>${rcptt-runner-version}</version>
 						<vmArgs>
-							<vmArg>-Xmx3500m</vmArg>
+							<vmArg>-Xmx3000m</vmArg>
 						</vmArgs>
 					</runner>
 					<aut>

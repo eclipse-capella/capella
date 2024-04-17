@@ -90,38 +90,20 @@ pipeline {
 					def antlrFeatureName = 'org.antlr.runtime/3.2.0.v201101311130'
 					eclipse.installFeature('${CAPELLA_PRODUCT_PATH}', antlrRepoPath, antlrFeatureName)
 					sh "cd ${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/"
-					sh "ls"
 					sh "cd .."
-					sh "ls"
 					sh "mkdir capella"
-					sh "ls"
 					sh "mv ${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/* capella"
-					sh "ls"
 					sh "zip -r ${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-linux-gtk-x86_64.zip capella/"
-				
+					sh "mv capella/* ${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64"
 				}
 			}
 		}
 		
-		stage('Run RCPTT tests') {
-    		
-        	steps {
-        		script {
-					withEnv(['MAVEN_OPTS=-Xmx3500m']) {
-						wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
-							tester.runRcptt("-P rcptt -Dmaven.test.failure.ignore=true -fae")					
-						}
-						tester.publishTests()
-					}
-				}
-			}
-		}
-	    
     	stage('Run tests') {
     		
         	steps {
         		script {
-					withEnv(['MAVEN_OPTS=-Xmx2g']) {
+					withEnv(['MAVEN_OPTS=-Xmx3500m']) {
 						wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
 							
 							tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'ModelQueriesValidation', 'org.polarsys.capella.test.suites.ju', 
@@ -183,7 +165,29 @@ pipeline {
 								
 						}
 	        		}
-	        		tester.publishTests()
+	        		
+				}
+			}
+		}
+		
+		stage('Run RCPTT tests') {
+    		
+        	steps {
+        		script {					
+						wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
+							withEnv(['MAVEN_OPTS=-Xmx3500m']) {
+								tester.runRcptt("-P rcptt -Dmaven.test.failure.ignore=true -fn")
+							}						
+					}
+				}
+			}
+		}
+		
+		stage('Publish tests results') {
+			steps {
+				script {	
+					junit allowEmptyResults: true, testResults: '*.xml,**/target/surefire-reports/*.xml'
+					sh "mvn -Djacoco.dataFile=${WORKSPACE}/jacoco.exec org.jacoco:jacoco-maven-plugin:0.8.10:report -P full -P rcptt -e"
 				}
 			}
 		}
