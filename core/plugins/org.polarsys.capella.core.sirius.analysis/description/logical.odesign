@@ -47,7 +47,7 @@
           </firstModelOperation>
           <mask mask="{0}"/>
         </directEdit>
-        <create name="FR1" precondition="aql:arg0 = 'X'" forceRefresh="true">
+        <create name="FR1" forceRefresh="true">
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic root element of the table."/>
@@ -97,7 +97,7 @@
           </firstModelOperation>
           <mask mask="{0}"/>
         </directEdit>
-        <create name="CFA" precondition="aql:arg0 = 'X'" forceRefresh="true">
+        <create name="CFA" forceRefresh="true">
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic root element of the table."/>
