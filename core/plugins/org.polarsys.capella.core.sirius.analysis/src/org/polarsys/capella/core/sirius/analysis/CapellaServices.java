@@ -95,6 +95,7 @@ import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.helpers.cache.CachedFunction;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManager;
@@ -223,7 +224,13 @@ public class CapellaServices {
   public List<DDiagramElementContainer> getAllContainersNew(EObject container) {
     return getAllContainers(container);
   }
+  
+  /** Cached functions, make sure the cache is enabled before refreshing, and disabled afterwards **/
+  static CachedFunction<PhysicalLink, Set<PhysicalPath>> getInvolvingPhysicalPaths = PhysicalLinkExt::getInvolvingPhysicalPaths;
 
+  static CachedFunction<DDiagram, Map<PhysicalPath, DNode>> getDisplayedPhysicalPathAndNodes = PhysicalServices.getService()::getDisplayedPhysicalPathsAndNodes;
+  static CachedFunction<DDiagram, Map<FunctionalChain, DNode>> getDisplayedFunctionalChainAndNodes = FunctionalChainServices.getFunctionalChainServices()::getDisplayedFunctionalChains;
+  
   // equivalent de <%
   // (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird")
   // + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds")
@@ -1508,9 +1515,8 @@ public class CapellaServices {
     if (target instanceof PhysicalLink) {
       PhysicalLink targetPL = (PhysicalLink) target;
       DDiagram diagram = view.getParentDiagram();
-      Map<PhysicalPath, DNode> displayedPhysicalPaths = PhysicalServices.getService()
-          .getDisplayedPhysicalPathsAndNodes(diagram);
-      displayedInvolvingPhysicalPaths.addAll(PhysicalLinkExt.getInvolvingPhysicalPaths(targetPL));
+      Map<PhysicalPath, DNode> displayedPhysicalPaths = getDisplayedPhysicalPathAndNodes.get(diagram);
+      displayedInvolvingPhysicalPaths.addAll(getInvolvingPhysicalPaths.get(targetPL));
       displayedInvolvingPhysicalPaths.retainAll(displayedPhysicalPaths.keySet());
     }
     return displayedInvolvingPhysicalPaths;
@@ -1532,8 +1538,7 @@ public class CapellaServices {
     if (target instanceof FunctionalExchange) {
       FunctionalExchange targetFE = (FunctionalExchange) target;
       DDiagram diagram = view.getParentDiagram();
-      HashMap<FunctionalChain, DNode> displayedFunctionalChains = FunctionalChainServices.getFunctionalChainServices()
-          .getDisplayedFunctionalChains(diagram);
+      Map<FunctionalChain, DNode> displayedFunctionalChains = getDisplayedFunctionalChainAndNodes.get(diagram);
       displayedInvolvingFunctionalChains.addAll(targetFE.getInvolvingFunctionalChains());
       displayedInvolvingFunctionalChains.retainAll(displayedFunctionalChains.keySet());
     }
