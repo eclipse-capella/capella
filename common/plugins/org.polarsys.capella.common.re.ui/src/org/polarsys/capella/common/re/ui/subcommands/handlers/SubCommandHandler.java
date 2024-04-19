@@ -39,8 +39,8 @@ public abstract class SubCommandHandler extends AbstractHandler {
   protected ISelection getSelection(ExecutionEvent event){
     IEclipseContext eContext = PlatformUI.getWorkbench().getService(IEclipseContext.class);
     IEvaluationContext currentState = ((IHandlerService)eContext.get(IHandlerService.class)).getCurrentState();
-    ISelection selection = (ISelection)currentState.getVariable(ISources.ACTIVE_CURRENT_SELECTION_NAME);
-    return selection != null ? selection : HandlerUtil.getCurrentSelection(event);
+    Object selection = currentState.getVariable(ISources.ACTIVE_CURRENT_SELECTION_NAME);
+    return selection instanceof ISelection ? (ISelection) selection : HandlerUtil.getCurrentSelection(event);
   }
   
   /**
@@ -55,8 +55,8 @@ public abstract class SubCommandHandler extends AbstractHandler {
     IEvaluationContext currentState = ((IHandlerService)eContext.get(IHandlerService.class)).getCurrentState();
     
     // Interrogate the current state first
-    ISelection selection = (ISelection)currentState.getVariable(ISources.ACTIVE_CURRENT_SELECTION_NAME);
-    if(selection != null && selection instanceof IStructuredSelection){
+    Object selection = currentState.getVariable(ISources.ACTIVE_CURRENT_SELECTION_NAME);
+    if(selection instanceof IStructuredSelection){
       IStructuredSelection structuredSelection = (IStructuredSelection)selection;
       if(!structuredSelection.toList().isEmpty()){
         result.addAll(structuredSelection.toList());
