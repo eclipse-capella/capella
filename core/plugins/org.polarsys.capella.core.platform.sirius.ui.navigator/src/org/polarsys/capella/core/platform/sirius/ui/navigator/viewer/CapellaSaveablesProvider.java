@@ -24,6 +24,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
+import org.eclipse.sirius.ui.business.internal.session.SessionSaveable;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.ISaveablesSource;
@@ -176,9 +177,17 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
         runnable = new Runnable() {
           @Override
           public void run() {
-            if (null != saveable[0]) {
+            // Do not fire "dirty" notification asynchronously if session has already been closed at runnable
+            // execution time.
+            // This is done to avoid NPE due to null listener, but the field is private and cannot be tested
+            // here.
+            if (null != saveable[0] && saveable[0] instanceof SessionSaveable ss && ss.getSession() != null && ss.getSession().isOpen()) {
               // Fire a new dirty event.
-              fireSaveablesDirtyChanged(new Saveable[] { saveable[0] });
+              try {
+                fireSaveablesDirtyChanged(new Saveable[] { saveable[0] });
+              } catch (NullPointerException e) {
+                // Private filed listener might be null at execution time even with the non null and open session guard.
+              }
             }
           }
         };
@@ -189,7 +198,11 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
           public void run() {
             if (null != saveable[0]) {
               // Fire a closed event.
-              fireSaveablesClosed(new Saveable[] { saveable[0] });
+              try {
+                fireSaveablesClosed(new Saveable[] { saveable[0] });
+              } catch (NullPointerException e) {
+                // Private filed listener might be null at execution time even with the non null and open session guard.
+              }
             }
           }
         };
@@ -198,9 +211,17 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
         runnable = new Runnable() {
           @Override
           public void run() {
-            if (null != saveable[0]) {
-              // Fire a new dirty state.
-              fireSaveablesClosing(new Saveable[] { saveable[0] }, false);
+            // Do not fire "closing" notification asynchronously if session has already been closed at runnable
+            // execution time.
+            // This is done to avoid NPE due to null listener, but the field is private and cannot be tested
+            // here.
+            if (null != saveable[0] && saveable[0] instanceof SessionSaveable ss && ss.getSession() != null && ss.getSession().isOpen()) {
+              // Fire a new closing state.
+              try {
+                fireSaveablesClosing(new Saveable[] { saveable[0] }, false);
+              } catch (NullPointerException e) {
+                // Private filed listener might be null at execution time even with the non null and open session guard.
+              }
             }
           }
         };
@@ -209,8 +230,18 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
         runnable = new Runnable() {
           @Override
           public void run() {
-            // Fire a new dirty state.
-            fireSaveablesOpened(new Saveable[] { saveable[0] });
+            // Do not fire "opened" notification asynchronously if session has already been closed at runnable
+            // execution time.
+            // This is done to avoid NPE due to null listener, but the field is private and cannot be tested
+            // here.
+            if (null != saveable[0] && saveable[0] instanceof SessionSaveable ss && ss.getSession() != null && ss.getSession().isOpen()) {
+              // Fire a new opened state.
+              try {
+                fireSaveablesOpened(new Saveable[] { saveable[0] });
+              } catch (NullPointerException e) {
+                // Private filed listener might be null at execution time even with the non null and open session guard.
+              }
+            }
           }
         };
       break;
