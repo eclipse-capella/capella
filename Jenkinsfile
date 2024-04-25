@@ -176,7 +176,7 @@ pipeline {
         		script {					
 						wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
 							withEnv(['MAVEN_OPTS=-Xmx3500m']) {
-								tester.runRcptt("-P rcptt -Dmaven.test.failure.ignore=true -fn")
+								tester.runRcptt("-P rcptt -Dmaven.test.failure.ignore=true -fn")								
 							}						
 					}
 				}
@@ -185,9 +185,11 @@ pipeline {
 		
 		stage('Publish tests results') {
 			steps {
-				script {	
-					junit allowEmptyResults: true, testResults: '*.xml,**/target/surefire-reports/*.xml'
-					sh "mvn -Djacoco.dataFile=${WORKSPACE}/jacoco.exec org.jacoco:jacoco-maven-plugin:0.8.10:report -P full -P rcptt -e"
+				script {						
+					withEnv(['MAVEN_OPTS=-Xmx3500m']) {	
+						junit allowEmptyResults: true, testResults: '*.xml,**/target/surefire-reports/*.xml'					
+						sh "mvn -Djacoco.dataFile=${WORKSPACE}/jacoco.exec org.jacoco:jacoco-maven-plugin:0.8.10:report -P full -P rcptt -e"
+					}
 				}
 			}
 		}
