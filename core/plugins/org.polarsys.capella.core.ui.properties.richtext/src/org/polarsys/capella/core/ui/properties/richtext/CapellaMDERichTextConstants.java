@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2024 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -17,15 +17,7 @@ import java.net.URL;
 import org.polarsys.kitalpha.richtext.common.util.MDERichTextHelper;
 
 public class CapellaMDERichTextConstants {
-
-  public static final String PASTE_AS_HYPERLINK_KEY = "PasteAsHyperlink";
   
-  public static final String PASTE_AS_HYPERLINK_LABEL = "Paste as Hyperlink (Ctrl + Shift + V)";
-  
-  public static final URL PASTE_AS_HYPERLINK_ICON = MDERichTextHelper
-      .getURL(CapellaUIPropertiesRichtextPlugin.PLUGIN_ID,
-          "icons/full/obj16/paste_as_hyperlink.gif");
-    
   public static final String OPEN_IN_EDITOR_KEY = "OpenInEditor";
   
   public static final String OPEN_IN_EDITOR_LABEL = "Open in Editor";

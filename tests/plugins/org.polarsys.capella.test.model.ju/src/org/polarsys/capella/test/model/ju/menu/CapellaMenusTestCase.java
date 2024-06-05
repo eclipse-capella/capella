@@ -98,10 +98,10 @@ public class CapellaMenusTestCase extends MiscModel {
   }
   
   protected void testMenus(String selectedElementId, EObject selectedElement) {
-    testDeleteCommand(selectedElementId, selectedElement);
-    testCopyQualifiedNameCommand(selectedElement);
     testCopyAsHyperlinkForDescriptionCommand(selectedElement);
     testCopyAsTextCommand(selectedElement);
+    testCopyQualifiedNameCommand(selectedElement);
+    testDeleteCommand(selectedElementId, selectedElement);
   }
   
   protected void testDiagramMenus(String selectedElementId, DRepresentationDescriptor selectedElement) {

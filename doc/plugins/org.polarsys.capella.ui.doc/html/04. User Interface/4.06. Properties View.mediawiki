@@ -94,7 +94,7 @@ Once you have a selection of elements (from the Project Explorer, Semantic Brows
 [[Image:Images/DescriptionLink3.png]]
 
 
-Then you can directly paste the selected element links in the description section, by using the '''Paste as link''' button, or the associated keyboard shortcut '''Ctrl + Shift + V'''.
+Then you can directly paste the selected element links in the description section, by using the '''Paste''' button, or the associated keyboard shortcut '''Ctrl + V'''. Note that you must not paste links to elements that are not in the same project. A link to an element in another project will not work (except in the case of an imported library).
 
 [[Image:Images/DescriptionLink4.png]]
 
