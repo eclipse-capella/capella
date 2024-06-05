@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2024 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -17,7 +17,7 @@ import java.util.List;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
-import org.polarsys.capella.test.richtext.ju.testcases.RichTextLinksClipboardTest;
+import org.polarsys.capella.test.richtext.ju.testcases.RichTextLinksHelperTest;
 import org.polarsys.capella.test.richtext.ju.testcases.RichtextOpenLinkTest;
 
 import junit.framework.Test;
@@ -34,7 +34,7 @@ public class RichtextTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new RichtextOpenLinkTest());
-    tests.add(new RichTextLinksClipboardTest());
+    tests.add(new RichTextLinksHelperTest());
     // FIXME This test cannot be launched on Linux environment due to the XULRunner bug
     // tests.add(new FinishOnPropertyWizard());
     return tests;

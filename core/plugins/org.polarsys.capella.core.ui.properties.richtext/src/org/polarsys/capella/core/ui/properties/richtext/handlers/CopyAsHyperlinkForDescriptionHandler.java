@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2024 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -21,9 +21,13 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.dnd.Clipboard;
+import org.eclipse.swt.dnd.HTMLTransfer;
+import org.eclipse.swt.dnd.Transfer;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
-import org.polarsys.capella.core.ui.properties.richtext.clipboard.RichTextLinksClipboard;
+import org.polarsys.capella.core.ui.properties.richtext.clipboard.RichTextLinksHelper;
 
 public class CopyAsHyperlinkForDescriptionHandler extends AbstractHandler {
 
@@ -34,10 +38,14 @@ public class CopyAsHyperlinkForDescriptionHandler extends AbstractHandler {
     Collection<EObject> descriptorsOrBusinessObjects = CapellaAdapterHelper
         .resolveDescriptorsOrBusinessObjects(selectedElements);
 
-    RichTextLinksClipboard clipboard = RichTextLinksClipboard.getInstance();
+    RichTextLinksHelper linkHelper = RichTextLinksHelper.getInstance();
 
-    clipboard.clearCopiedElements();
-    clipboard.addCopiedElements(descriptorsOrBusinessObjects);
+    String htmlLinks = linkHelper.getElementsLinksHtml(descriptorsOrBusinessObjects);
+
+    HTMLTransfer htmlTransfer = HTMLTransfer.getInstance();
+    Clipboard systemClipboard = new Clipboard(Display.getCurrent());
+    systemClipboard.setContents(new Object[] { htmlLinks }, new Transfer[] { htmlTransfer });
+    systemClipboard.dispose();
 
     return null;
   }
