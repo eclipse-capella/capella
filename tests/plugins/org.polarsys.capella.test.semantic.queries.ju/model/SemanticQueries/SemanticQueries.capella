@@ -1685,20 +1685,24 @@
           <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
               id="3c0ec0d8-edec-4199-9cdc-5daf3ebb5bd3" name="Default Region" involvedStates="#384597dd-fdbc-4fc4-acae-68451e8f69e2">
             <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:State"
-                id="384597dd-fdbc-4fc4-acae-68451e8f69e2" name="State 1" referencedStates="#de7c3db9-d166-4445-b80d-a2d6a592b3c0">
+                id="384597dd-fdbc-4fc4-acae-68451e8f69e2" name="State 1" referencedStates="#de7c3db9-d166-4445-b80d-a2d6a592b3c0 #4c15290e-ac40-409e-b550-410bc766760b">
               <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
-                  id="a42786bc-6f51-4a8d-8b9c-900e20f2d6f3" name="region" involvedStates="#de7c3db9-d166-4445-b80d-a2d6a592b3c0">
+                  id="a42786bc-6f51-4a8d-8b9c-900e20f2d6f3" name="region" involvedStates="#de7c3db9-d166-4445-b80d-a2d6a592b3c0 #4c15290e-ac40-409e-b550-410bc766760b">
                 <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:State"
-                    id="de7c3db9-d166-4445-b80d-a2d6a592b3c0" name="State 1_1" referencedStates="#7d1233e9-013f-4ae0-a692-f847f6502390">
+                    id="de7c3db9-d166-4445-b80d-a2d6a592b3c0" name="State 1_1" referencedStates="#7d1233e9-013f-4ae0-a692-f847f6502390 #d482e9f6-6cb7-4e07-b791-d860983a9623">
                   <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
-                      id="947aacb8-ab3a-4555-b6f6-0a2b3f826b92" name="region" involvedStates="#7d1233e9-013f-4ae0-a692-f847f6502390">
+                      id="947aacb8-ab3a-4555-b6f6-0a2b3f826b92" name="region" involvedStates="#7d1233e9-013f-4ae0-a692-f847f6502390 #d482e9f6-6cb7-4e07-b791-d860983a9623">
                     <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:State"
                         id="7d1233e9-013f-4ae0-a692-f847f6502390" name="State 1_1_1">
                       <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
                           id="5b1987ef-a1f4-4059-a149-87e2fd226414" name="region"/>
                     </ownedStates>
+                    <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:InitialPseudoState"
+                        id="d482e9f6-6cb7-4e07-b791-d860983a9623" name="Initial 2"/>
                   </ownedRegions>
                 </ownedStates>
+                <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:InitialPseudoState"
+                    id="4c15290e-ac40-409e-b550-410bc766760b" name="Initial 2"/>
               </ownedRegions>
             </ownedStates>
           </ownedRegions>
@@ -1708,20 +1712,24 @@
           <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
               id="0f91e0ae-b07d-4072-83b1-513e716b1276" name="Default Region" involvedStates="#69c99509-e445-46a7-93dc-ee9162790fa2">
             <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
-                id="69c99509-e445-46a7-93dc-ee9162790fa2" name="Mode 1" referencedStates="#8f7ce582-1a8f-499b-a589-066235ca5dfe">
+                id="69c99509-e445-46a7-93dc-ee9162790fa2" name="Mode 1" referencedStates="#8f7ce582-1a8f-499b-a589-066235ca5dfe #d068f8d0-1020-4842-9d10-a4fea81aa997">
               <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
-                  id="a22ff7b4-b414-4459-a080-d21f04f16eec" name="region" involvedStates="#8f7ce582-1a8f-499b-a589-066235ca5dfe">
+                  id="a22ff7b4-b414-4459-a080-d21f04f16eec" name="region" involvedStates="#8f7ce582-1a8f-499b-a589-066235ca5dfe #d068f8d0-1020-4842-9d10-a4fea81aa997">
                 <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
-                    id="8f7ce582-1a8f-499b-a589-066235ca5dfe" name="Mode 1_1" referencedStates="#3bffa8df-2534-4669-8203-0ddb0f13422c">
+                    id="8f7ce582-1a8f-499b-a589-066235ca5dfe" name="Mode 1_1" referencedStates="#3bffa8df-2534-4669-8203-0ddb0f13422c #528bf34a-77ee-4adb-845f-4056e7651c9e">
                   <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
-                      id="6a6c1472-034e-487d-9961-ac4d1e5dca44" name="region" involvedStates="#3bffa8df-2534-4669-8203-0ddb0f13422c">
+                      id="6a6c1472-034e-487d-9961-ac4d1e5dca44" name="region" involvedStates="#3bffa8df-2534-4669-8203-0ddb0f13422c #528bf34a-77ee-4adb-845f-4056e7651c9e">
                     <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
                         id="3bffa8df-2534-4669-8203-0ddb0f13422c" name="Mode 1_1_1">
                       <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
                           id="6133b46b-3c8f-4eff-b3df-c92ec04fd1d4" name="region"/>
                     </ownedStates>
+                    <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:InitialPseudoState"
+                        id="528bf34a-77ee-4adb-845f-4056e7651c9e" name="Initial 2"/>
                   </ownedRegions>
                 </ownedStates>
+                <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:InitialPseudoState"
+                    id="d068f8d0-1020-4842-9d10-a4fea81aa997" name="Initial 2"/>
               </ownedRegions>
             </ownedStates>
           </ownedRegions>

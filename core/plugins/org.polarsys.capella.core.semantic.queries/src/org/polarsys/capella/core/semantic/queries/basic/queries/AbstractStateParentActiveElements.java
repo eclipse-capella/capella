@@ -33,7 +33,7 @@ public class AbstractStateParentActiveElements implements IQuery {
     if (object instanceof State) {
       State state = (State) object;
 
-      List<Object> subStates = StateExt.getRecursiveSubStates(state);
+      List<State> subStates = StateExt.getNonPseudoRecursiveSubStates(state);
       for (Object obj : subStates) {
         result.addAll(StateExt.getActiveElements((State) obj));
       }
