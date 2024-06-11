@@ -16,6 +16,7 @@ package org.polarsys.capella.core.model.helpers;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
@@ -23,6 +24,7 @@ import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.Mode;
+import org.polarsys.capella.core.data.capellacommon.Pseudostate;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -93,13 +95,15 @@ public class StateExt {
     return result;
   }
   
-  public static List<Object> getRecursiveSubStates(State state) {
-    List<Object> result = new ArrayList<Object>();
-    for (Region region : state.getOwnedRegions()) {
-      List<AbstractState> rStates = region.getOwnedStates();
-      for(AbstractState s : rStates) {
+  public static List<State> getNonPseudoRecursiveSubStates(State state) {
+    List<State> result = new ArrayList<State>();
+
+    for (Region region : ((State) state).getOwnedRegions()) {
+      List<State> rStates = region.getOwnedStates().stream().filter(State.class::isInstance).map(State.class::cast)
+          .collect(Collectors.toList());
+      for (State s : rStates) {
         result.add(s);
-        result.addAll(getRecursiveSubStates((State)s));
+        result.addAll(getNonPseudoRecursiveSubStates(s));
       }
     }
     return result;
