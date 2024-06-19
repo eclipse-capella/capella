@@ -69,7 +69,7 @@ location Orbit-2023-03 "https://download.eclipse.org/tools/orbit/downloads/drops
     ch.qos.logback.core
 }
 
-location sirius "https://download.eclipse.org/sirius/updates/releases/7.4.1/2023-03/" {
+location sirius "https://download.eclipse.org/sirius/updates/releases/7.4.1/2023-03" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
@@ -82,7 +82,7 @@ location sirius "https://download.eclipse.org/sirius/updates/releases/7.4.1/2023
 	org.eclipse.sirius.runtime.ide.ui.acceleo.source.feature.group
 }
 
-location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/stable/runtime/7.0.0.20240612/" {
+location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/releases/runtime/7.0.0/" {
 	org.polarsys.kitalpha.ad.runtime.feature.source.feature.group
 	org.polarsys.kitalpha.cadence.feature.source.feature.group
 	org.polarsys.kitalpha.common.feature.source.feature.group
@@ -107,12 +107,12 @@ location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/upd
 	org.polarsys.kitalpha.sirius.rotativeimage.feature.feature.group
 }
 
-location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/stable/sdk/7.0.0.20240612/" {
+location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/releases/sdk/7.0.0/" {
 	org.polarsys.kitalpha.doc.feature.feature.group
 	org.polarsys.kitalpha.emde.sdk.feature.source.feature.group
 }
 
-location diffmerge-core "https://download.eclipse.org/diffmerge/stable/0.15.0-S20230504/emf-diffmerge-site/" {
+location diffmerge-core "https://download.eclipse.org/diffmerge/releases/0.15.0/emf-diffmerge-site/" {
 	org.eclipse.emf.diffmerge.feature.source.feature.group
 	org.eclipse.emf.diffmerge.sirius.feature.source.feature.group
 	org.eclipse.emf.diffmerge.gmf.feature.source.feature.group
@@ -120,7 +120,7 @@ location diffmerge-core "https://download.eclipse.org/diffmerge/stable/0.15.0-S2
 	org.eclipse.emf.diffmerge.egit.feature.source.feature.group
 }
 
-location amalgam "https://download.eclipse.org/modeling/amalgam/updates/stable/1.14.0-S20230503/capella/" {
+location amalgam "https://download.eclipse.org/modeling/amalgam/updates/releases/1.14.0/capella/" {
 	org.eclipse.amalgam.explorer.activity.source.feature.group
 }
 
