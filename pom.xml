@@ -22,9 +22,9 @@
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tycho-version>2.7.5</tycho-version>
-		<tycho-extras-version>2.7.5</tycho-extras-version>
-		<antrun-version>3.0.0</antrun-version>
+		<tycho-version>4.0.5</tycho-version>
+		<tycho-extras-version>4.0.5</tycho-extras-version>
+		<antrun-version>3.1.0</antrun-version>
 		<rcptt-version>2.5.3</rcptt-version>
 		<rcptt-runner-version>2.5.3</rcptt-runner-version>
 		<sonar-version>3.0.2</sonar-version>
@@ -67,7 +67,6 @@
 				<version>${tycho-version}</version>
 				<configuration>
 					<targetDefinitionIncludeSource>force</targetDefinitionIncludeSource>
-					<resolver>p2</resolver>
 					<dependency-resolution>
 						<optionalDependencies>ignore</optionalDependencies>
 					</dependency-resolution>
@@ -110,50 +109,43 @@
 			</plugin>
 			<!-- enable source feature generation -->
 			<plugin>
-				<groupId>org.eclipse.tycho.extras</groupId>
-				<artifactId>tycho-source-feature-plugin</artifactId>
-				<version>${tycho-extras-version}</version>
-				<executions>
-					<execution>
-						<id>source-feature</id>
-						<phase>package</phase>
-						<goals>
-							<goal>source-feature</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<archive>
-						<addMavenDescriptor>false</addMavenDescriptor>
-					</archive>
-					<excludes>
-						<!-- provide bundles not containing any source code -->
-						<plugin id="org.polarsys.capella.core.data.res.edit" />
-						<plugin id="org.polarsys.capella.core.data.res.editor" />
-						<plugin id="org.polarsys.capella.ui.views" />
-						<feature id="org.eclipse.nebula.widgets.richtext.feature" />
-						<feature id="org.polarsys.kitalpha.richtext.widget.feature" />
-						<feature id="org.polarsys.capella.core.mylyn.feature" />
-					</excludes>
-				</configuration>
-			</plugin>
-			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-source-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<executions>
 					<execution>
+						<id>feature-source</id>
+						<phase>package</phase>
+						<goals>
+							<goal>feature-source</goal>
+						</goals>
+						<configuration>
+							<archive>
+								<addMavenDescriptor>false</addMavenDescriptor>
+							</archive>
+							<excludes>
+								<!-- provide bundles not containing any source code -->
+								<plugin id="org.polarsys.capella.core.data.res.edit" />
+								<plugin id="org.polarsys.capella.core.data.res.editor" />
+								<plugin id="org.polarsys.capella.ui.views" />
+								<feature id="org.eclipse.nebula.widgets.richtext.feature" />
+								<feature id="org.polarsys.kitalpha.richtext.widget.feature" />
+								<feature id="org.polarsys.capella.core.mylyn.feature" />
+							</excludes>
+						</configuration>
+					</execution>
+					<execution>
 						<id>plugin-source</id>
 						<goals>
 							<goal>plugin-source</goal>
 						</goals>
+						<configuration>
+							<archive>
+								<addMavenDescriptor>false</addMavenDescriptor>
+							</archive>
+						</configuration>
 					</execution>
 				</executions>
-				<configuration>
-					<archive>
-						<addMavenDescriptor>false</addMavenDescriptor>
-					</archive>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
@@ -170,72 +162,6 @@
 				</executions>
 			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<!-- plugins only called if a descendant need them -->
-				<plugin>
-					<groupId>org.eclipse.tycho.extras</groupId>
-					<artifactId>tycho-eclipserun-plugin</artifactId>
-					<version>${tycho-extras-version}</version>
-					<configuration>
-						<repositories>
-							<repository>
-								<id>eclipse-repo</id>
-								<layout>p2</layout>
-								<url>${eclipse-repo.url}</url>
-							</repository>
-						</repositories>
-						<dependencies>
-							<dependency>
-								<artifactId>org.eclipse.equinox.p2.repository.tools</artifactId>
-								<type>eclipse-plugin</type>
-							</dependency>
-							<dependency>
-								<artifactId>org.eclipse.equinox.p2.core.feature</artifactId>
-								<type>eclipse-feature</type>
-							</dependency>
-							<dependency>
-								<artifactId>org.eclipse.equinox.p2.extras.feature</artifactId>
-								<type>eclipse-feature</type>
-							</dependency>
-							<dependency>
-								<artifactId>org.eclipse.equinox.ds</artifactId>
-								<type>eclipse-plugin</type>
-							</dependency>
-						</dependencies>
-					</configuration>
-					<executions>
-						<execution>
-							<id>create-dropins</id>
-							<phase>package</phase>
-							<goals>
-								<goal>eclipse-run</goal>
-							</goals>
-							<configuration>
-								<appArgLine>-application org.eclipse.equinox.p2.repository.repo2runnable -source file:${project.build.directory}/repository -destination ${project.build.directory}/${packagedSiteName}/eclipse</appArgLine>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-p2-repository-plugin</artifactId>
-					<version>${tycho-version}</version>
-					<executions>
-						<execution>
-							<phase>package</phase>
-							<id>archive-repository</id>
-							<goals>
-								<goal>archive-repository</goal>
-							</goals>
-							<configuration>
-								<finalName>${packagedSiteName}.site-${unqualifiedVersion}.${buildQualifier}</finalName>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 
 	<profiles>
@@ -317,7 +243,7 @@
 					<plugin>
 						<groupId>org.eclipse.cbi.maven.plugins</groupId>
 						<artifactId>eclipse-jarsigner-plugin</artifactId>
-						<version>1.3.2</version>
+						<version>1.4.3</version>
 						<executions>
 							<execution>
 								<id>sign</id>
