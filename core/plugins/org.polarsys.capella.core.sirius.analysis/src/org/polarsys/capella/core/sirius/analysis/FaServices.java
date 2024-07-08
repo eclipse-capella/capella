@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2024 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -2988,7 +2988,10 @@ public class FaServices {
       }
 
       // move all deploying links
-      for (AbstractDeploymentLink link : new ArrayList<AbstractDeploymentLink>(component.getDeployingLinks())) {
+      List<AbstractDeploymentLink> deployingLinksToUpdate = component.getDeployingLinks().stream()
+              .filter(link -> link.getLocation().equals(oldContainer))
+              .toList();
+      for (AbstractDeploymentLink link : deployingLinksToUpdate) {
         link.setLocation(newComponent);
         newComponent.getOwnedDeploymentLinks().add(link);
       }
@@ -3009,7 +3012,10 @@ public class FaServices {
       }
 
       // move all deploying links
-      for (AbstractDeploymentLink link : new ArrayList<AbstractDeploymentLink>(currentPart.getDeployingLinks())) {
+      List<AbstractDeploymentLink> deployingLinksToUpdate = currentPart.getDeployingLinks().stream()
+              .filter(link -> link.getLocation().equals(oldContainer))
+              .toList();
+      for (AbstractDeploymentLink link : deployingLinksToUpdate) {
         link.setLocation(newPart);
         newPart.getOwnedDeploymentLinks().add(link);
       }
