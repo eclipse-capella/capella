@@ -2,7 +2,12 @@ pipeline {
 	agent {
 		label 'migration'
 	}
-  
+
+        options {
+            timeout(time: 8, unit: 'HOURS')
+	    disableConcurrentBuilds()
+        }
+	
 	tools {
 		maven 'apache-maven-latest'
 		jdk 'openjdk-jdk17-latest'
