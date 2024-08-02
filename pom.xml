@@ -131,6 +131,7 @@
 						<plugin id="org.polarsys.capella.core.data.res.edit" />
 						<plugin id="org.polarsys.capella.core.data.res.editor" />
 						<plugin id="org.polarsys.capella.ui.views" />
+						<plugin id="com.google.guava" />
 						<feature id="org.eclipse.nebula.widgets.richtext.feature" />
 						<feature id="org.polarsys.kitalpha.richtext.widget.feature" />
 						<feature id="org.polarsys.capella.core.mylyn.feature" />
