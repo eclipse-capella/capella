@@ -49,7 +49,7 @@ location eclipse "https://download.eclipse.org/releases/2023-03" {
 	org.eclipse.egit.source.feature.group
 	org.apache.log4j
 	org.apache.commons.lang
-	com.google.guava
+	com.google.guava [30.1.0.v20221112-0806, 31.0)
 }
 
 location Mylyn-3.26 "https://download.eclipse.org/mylyn/releases/3.26/" {
