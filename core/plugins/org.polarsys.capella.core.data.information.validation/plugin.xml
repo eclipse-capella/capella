@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2018, 2024 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -582,6 +582,24 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                </target>
             </constraint>
          </constraints>
+         <constraints categories="capella.category/naming.conflicts/target.type.name.conflict">
+           <constraint
+                 class="org.polarsys.capella.core.data.information.validation.property.CNC_Property_TargetType"
+                 id="NC_2-2"
+                 lang="Java"
+                 mode="Batch"
+                 name="NC_2-2 - Property / Referenced Type"
+                 severity="WARNING"
+                 statusCode="1">
+              <message>
+                 {0} name {1} conflicts with it&apos;s referenced type&apos;s name.
+              </message>
+              <description>
+                 Ensure that Property names are different from their Referenced Type name.
+              </description>
+              <target class="Property"></target>
+           </constraint>
+        </constraints>
       </constraintProvider>
      <constraintProvider>
         <package namespaceUri="http://www.polarsys.org/capella/core/information/datavalue/7.0.0">
