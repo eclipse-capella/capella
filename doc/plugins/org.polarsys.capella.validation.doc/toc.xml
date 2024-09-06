@@ -87,4 +87,9 @@
             </topic>
          </topic>
       </topic>
+      <topic label="Naming Conflicts">
+         <topic href="html/Validation Rules/namingConflicts/targetTypeConflict/ValidationRules.html" label="Target Type Conflict">
+         </topic>
+         <anchor id="naming_conflicts"/>
+      </topic>
 </toc>
