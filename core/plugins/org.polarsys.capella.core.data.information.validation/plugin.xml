@@ -582,10 +582,90 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                </target>
             </constraint>
          </constraints>
+         <constraints
+               categories="capella.category/naming.conflicts/container.name.conflict">
+            <constraint
+                  class="org.polarsys.capella.core.data.information.validation.exchangeItemElement.CNC_ExchangeItemElement_ExchangeItem"
+                  id="NC_1-1"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="NC_1-1 - Exchange Item Element / Exchange Item"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} name "{1}" conflicts with it&apos;s container&apos;s name.
+               </message>
+               <description>
+                  Ensure that Exchange Item Element names are different from the containing Exchange Item name.
+               </description>
+               <target
+                     class="ExchangeItemElement">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.information.validation.exchangeitem.CNC_ExchangeItem_Interface"
+                  id="NC_1-2"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="NC_1-2 - Exchange Item / Interface"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} name "{1}" conflicts with it&apos;s container&apos;s name.
+               </message>
+               <description>
+                  Ensure that Exchange Item names are different from the containing Interface name.
+               </description>
+               <target
+                     class="ExchangeItemAllocation">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.information.validation.property.CNC_Property_Class"
+                  id="NC_1-3"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="NC_1-3 - Property / Class"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} name "{1}" conflicts with it&apos;s container&apos;s name.
+               </message>
+               <description>
+                  Ensure that Property names are different from the containing Class name.
+               </description>
+               <target
+                     class="Property">
+               </target>
+            </constraint>
+         </constraints>
          <constraints categories="capella.category/naming.conflicts/target.type.name.conflict">
            <constraint
+                 class="org.polarsys.capella.core.data.information.validation.exchangeItemElement.CNC_ExchangeItemElement_TargetType"
+                 id="NC_2-1"
+                 isEnabledByDefault="false"
+                 lang="Java"
+                 mode="Batch"
+                 name="NC_2-1 - Exchange Item Element / Target Type"
+                 severity="WARNING"
+                 statusCode="1">
+               <message>
+                  {0} name {1} conflicts with it's target type's name.
+               </message>
+               <description>
+                  Ensure that Exchange Item Element names are different from their Target Type name.
+               </description>
+               <target
+                     class="ExchangeItemElement">
+               </target>
+            </constraint>
+            <constraint
                  class="org.polarsys.capella.core.data.information.validation.property.CNC_Property_TargetType"
                  id="NC_2-2"
+                 isEnabledByDefault="false"
                  lang="Java"
                  mode="Batch"
                  name="NC_2-2 - Property / Referenced Type"
@@ -599,6 +679,124 @@ If an Association is on SystemArchitecture layer. It should not associate with a
               </description>
               <target class="Property"></target>
            </constraint>
+        </constraints>
+        <constraints categories="capella.category/description.and.summary/mandatory.description">
+            <constraint
+                  class="org.polarsys.capella.core.data.information.validation.dataType.DSC_DataType"
+                  id="DS_1-2"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DS_1-2 - Data Types"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} "{1}" must have a description
+               </message>
+               <description>
+                  Ensure that Classes have a description
+               </description>
+               <target
+                     class="Class">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.information.validation.exchangeItemElement.DSC_ExchangeItemElement"
+                  id="DS_1-3"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DS_1-3 - Exchange Item Elements"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} "{1}" must have a description
+               </message>
+               <description>
+                  Ensure that Exchange Item Elements have a description
+               </description>
+               <target
+                     class="ExchangeItemElement">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.information.validation.exchangeitem.DSC_ExchangeItem"
+                  id="DS_1-4"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DS_1-4 - Exchange Items"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} "{1}" must have a description
+               </message>
+               <description>
+                  Ensure that Exchange Items have a description
+               </description>
+               <target
+                     class="ExchangeItem">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.information.validation.property.DSC_Property"
+                  id="DS_1-6"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DS_1-6 - Properties"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} "{1}" must have a description
+               </message>
+               <description>
+                  Ensure that Properties have a description
+               </description>
+               <target
+                     class="Property">
+               </target>
+            </constraint>
+        </constraints>
+        <constraints categories="capella.category/description.and.summary/mandatory.summary">
+            <constraint
+                  class="org.polarsys.capella.core.data.information.validation.dataType.SUM_DataType"
+                  id="DS_2-2"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DS_2-2 - Data Types"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} "{1}" must have a summary
+               </message>
+               <description>
+                  Ensure that Data Types have a summary
+               </description>
+               <target
+                     class="Class">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.information.validation.exchangeitem.SUM_ExchangeItem"
+                  id="DS_2-3"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DS_2-3 - Exchange Items"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} "{1}" must have a summary
+               </message>
+               <description>
+                  Ensure that Exchange Items have a summary
+               </description>
+               <target
+                     class="ExchangeItem">
+               </target>
+            </constraint>
         </constraints>
       </constraintProvider>
      <constraintProvider>

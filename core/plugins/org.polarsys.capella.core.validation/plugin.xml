@@ -167,6 +167,50 @@ The difference between Completeness and Coverage can appear subtle. Completeness
                  name="Target Type Conflict">
            </category>
         </category>
+        <category
+              id="description.and.summary"
+              name="Description and Summary">
+           <category
+                 id="mandatory.description"
+                 name="Mandatory Description">
+           </category>
+           <category
+                 id="mandatory.summary"
+                 name="Mandatory Summary">
+           </category>
+        </category>
+        <category
+              id="description.and.summary"
+              name="Description and Summary">
+           <category
+                 id="mandatory.description"
+                 name="Mandatory Description">
+           </category>
+           <category
+                 id="mandatory.summary"
+                 name="Mandatory Summary">
+           </category>
+        </category>
+        <category
+              id="functional"
+              name="Functional">
+           <category
+                 id="coherence"
+                 name="Coherence">
+           </category>
+           <category
+                 id="decomposition"
+                 name="Decomposition">
+           </category>
+           <category
+                 id="functionalchain"
+                 name="Functional Chain">
+           </category>
+           <category
+                 id="status"
+                 name="Status">
+           </category>
+        </category>
       </category>
    </extension>
    <extension
