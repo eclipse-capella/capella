@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>ValidationRules</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Functional">Functional</h1>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th><img title="WARNING" alt="WARNING" border="0" src="../../Images/warning.gif"/></th>
+				<td>F_1 - FunctionPort</td>
+				<td>Ports are not allowed on non-leaf functions (meaning that a functional exchange has not been allocated down to a leaf function).</td>
+			</tr>
+		</table>
+		<br/>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th><img title="WARNING" alt="WARNING" border="0" src="../../Images/warning.gif"/></th>
+				<td>FCH_1 - FunctionalChain</td>
+				<td>FunctionalChain should involve only leaf functions.</td>
+			</tr>
+		</table>
+		<br/>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th><img title="WARNING" alt="WARNING" border="0" src="../../Images/warning.gif"/></th>
+				<td>FC_1 - Component</td>
+				<td>Components and actors should be connected by at least one CE</td>
+			</tr>
+			<tr>
+				<th><img title="WARNING" alt="WARNING" border="0" src="../../Images/warning.gif"/></th>
+				<td>FC_2 - ComponentExchange</td>
+				<td>CE should have at least one allocated FE</td>
+			</tr>
+			<tr>
+				<th><img title="WARNING" alt="WARNING" border="0" src="../../Images/warning.gif"/></th>
+				<td>FC_3 - ComponentExchange</td>
+				<td>FE between components/actors should be allocated to CE<br/>Note: not tested when connected to an actor whose name contains:'User' (case-sensitive).</td>
+			</tr>
+			<tr>
+				<th><img title="WARNING" alt="WARNING" border="0" src="../../Images/warning.gif"/></th>
+				<td>FC_4 - ComponentPort</td>
+				<td>Port with CE should have provided/required Interface</td>
+			</tr>
+			<tr>
+				<th><img title="WARNING" alt="WARNING" border="0" src="../../Images/warning.gif"/></th>
+				<td>FC_5 - FunctionalExchange</td>
+				<td>FunctionalExchange allocated to a CE should have one or more Exchanged Items</td>
+			</tr>
+			<tr>
+				<th><img title="WARNING" alt="WARNING" border="0" src="../../Images/warning.gif"/></th>
+				<td>FC_6 - FunctionalExchange</td>
+				<td>FunctionalExchanges on same input port must have same name</td>
+			</tr>
+			<tr>
+				<th><img title="WARNING" alt="WARNING" border="0" src="../../Images/warning.gif"/></th>
+				<td>FC_7 - FunctionalExchange</td>
+				<td>FunctionalExchanges on same input port must have same EI</td>
+			</tr>
+			<tr>
+				<th><img title="WARNING" alt="WARNING" border="0" src="../../Images/warning.gif"/></th>
+				<td>FC_8 - FunctionalExchange</td>
+				<td>FunctionalExchanges on same output port must have same name</td>
+			</tr>
+			<tr>
+				<th><img title="WARNING" alt="WARNING" border="0" src="../../Images/warning.gif"/></th>
+				<td>FC_9 - FunctionalExchange</td>
+				<td>FunctionalExchanges on same output port must have same EI</td>
+			</tr>
+			<tr>
+				<th><img title="WARNING" alt="WARNING" border="0" src="../../Images/warning.gif"/></th>
+				<td>FC_10 - SystemFunction</td>
+				<td>Function name shall be unique</td>
+			</tr>
+			<tr>
+				<th><img title="WARNING" alt="WARNING" border="0" src="../../Images/warning.gif"/></th>
+				<td>FC_11 - Actor</td>
+				<td>Actors name shall be unique</td>
+			</tr>
+			<tr>
+				<th><img title="WARNING" alt="WARNING" border="0" src="../../Images/warning.gif"/></th>
+				<td>FC_12 - Interface@SA</td>
+				<td>The interface EI shall be identical at SA to the CE EI allocated.</td>
+			</tr>
+			<tr>
+				<th><img title="WARNING" alt="WARNING" border="0" src="../../Images/warning.gif"/></th>
+				<td>FC_13 - ComponentExchange@SA</td>
+				<td>The CE EI shall be the union of the EI of the FE allocated to the CE</td>
+			</tr>
+			<tr>
+				<th><img title="WARNING" alt="WARNING" border="0" src="../../Images/warning.gif"/></th>
+				<td>FC_14 - AbstractFunction</td>
+				<td>FunctionalExchanges incoming with same name must use same port</td>
+			</tr>
+			<tr>
+				<th><img title="WARNING" alt="WARNING" border="0" src="../../Images/warning.gif"/></th>
+				<td>FC_15 - AbstractFunction</td>
+				<td>FunctionalExchanges outgoing with same name must use same port</td>
+			</tr>
+		</table>
+	</body>
+</html>

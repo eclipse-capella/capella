@@ -87,9 +87,16 @@
             </topic>
          </topic>
       </topic>
+      <topic label="DescriptionAndSummary">
+         <topic href="html/Validation Rules/descriptionAndSummary/ValidationRules.html" label="Description and Summary"/>
+         <anchor id="description_and_summary"/>
+      </topic>
       <topic label="Naming Conflicts">
-         <topic href="html/Validation Rules/namingConflicts/targetTypeConflict/ValidationRules.html" label="Target Type Conflict">
-         </topic>
+         <topic href="html/Validation Rules/namingConflicts/targetTypeConflict/ValidationRules.html" label="Target Type Conflict"/>
          <anchor id="naming_conflicts"/>
+      </topic>
+      <topic label="Functional">
+         <topic href="html/Validation Rules/functional/ValidationRules.html" label="Functional"/>
+         <anchor id="functional"/>
       </topic>
 </toc>
