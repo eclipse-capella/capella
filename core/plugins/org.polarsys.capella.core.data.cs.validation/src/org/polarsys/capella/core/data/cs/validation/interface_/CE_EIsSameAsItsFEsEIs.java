@@ -28,7 +28,7 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRuleOnSystemAnalysis;
 
 /**
- * ATM_CMATS_SA_R39 : The CE EI shall be the union of the EI of the FE allocated to the CE
+ * The CE EI shall be the union of the EI of the FE allocated to the CE
  */
 public class CE_EIsSameAsItsFEsEIs extends AbstractValidationRuleOnSystemAnalysis {
 

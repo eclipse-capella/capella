@@ -34,7 +34,7 @@ public class NamingConventionsTestSuite extends BasicTestSuite {
    */
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new Rule_NC_2_2_TestCase());
+    tests.add(new Rule_NC_1_1_TestCase());
     return tests;
   }
 

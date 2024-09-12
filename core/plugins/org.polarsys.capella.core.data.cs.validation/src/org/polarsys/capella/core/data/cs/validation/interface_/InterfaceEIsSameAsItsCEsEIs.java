@@ -28,7 +28,7 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRuleOnSystemAnalysis;
 
 /**
- * ATM_CMATS_SA_R39 : The interface EI shall be identical at SA to the CE EI allocated.
+ * The interface EI shall be identical at SA to the CE EI allocated.
  */
 public class InterfaceEIsSameAsItsCEsEIs extends AbstractValidationRuleOnSystemAnalysis {
 

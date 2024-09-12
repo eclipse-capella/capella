@@ -13,18 +13,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.ctx.validation.systemFunction;
 
-import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.validation.rule.AbstractDescriptionCheckingRule;
-import org.polarsys.capella.core.validation.rule.AbstractValidationRuleOnSystemAnalysis;
 
 /**
  * Functions should have a description
  */
 public class DSC_SystemFunction extends AbstractDescriptionCheckingRule {
-
-  @Override
-  protected boolean isApplicable(final EObject eObj) {
-    return AbstractValidationRuleOnSystemAnalysis.belongsToSA(eObj);
-  }
-
+  // Empty class, needed for reference in the plugin definition.
 }

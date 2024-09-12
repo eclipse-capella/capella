@@ -18,7 +18,7 @@ import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.validation.rule.AbstractNameUnicity;
 
 /**
- * Functional Chains shall start from an End User and finish with an End User
+ * Function name shall be unique
  */
 public class FunctionNameUnicity extends AbstractNameUnicity {
 

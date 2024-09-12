@@ -604,7 +604,7 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                </target>
             </constraint>
             <constraint
-                  class="org.polarsys.capella.core.data.information.validation.exchangeitem.CNC_ExchangeItem_Interface"
+                  class="org.polarsys.capella.core.data.information.validation.exchangeItemAllocation.CNC_ExchangeItem_Interface"
                   id="NC_1-2"
                   isEnabledByDefault="false"
                   lang="Java"

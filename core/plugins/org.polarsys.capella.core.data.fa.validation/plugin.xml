@@ -1205,7 +1205,7 @@ ComponentExchangeFunctionalExchangeAllocation ComponentExchange and FunctionalEx
             <constraint
                   class="org.polarsys.capella.core.data.fa.validation.functionalChain.FunctionalChainInvolvesLeafFunctions"
                   id="FCH_1"
-                  isEnabledByDefault="true"
+                  isEnabledByDefault="false"
                   lang="Java"
                   mode="Batch"
                   name="FCH_1 - FunctionalChain involves leaf functions"
