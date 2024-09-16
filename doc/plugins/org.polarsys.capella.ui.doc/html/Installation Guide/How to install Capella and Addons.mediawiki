@@ -306,11 +306,11 @@ If launching Capella in Windows OS ends up with the following pop-up, it means t
 The solution is to install this Microsoft's update according to your OS version: https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows
 
 == Workaround to open the Help Content when there is problem with the browser ==
-Sometimes due to security policy, the web browser has problem on opening local host web pages. This is the case of the Help Content page when it is accessed via the <code>127.0.0.1</code> IP address. 
+Sometimes due to security policy, the web browser has problem on opening local host web pages. This is the case of the Help Content page when it is accessed via the <code>127.0.1.1</code> IP address. 
 
 Here are 2 possible workarounds to overcome this problem:
 
-* In the URL, replace <code>127.0.0.1</code> by <code>localhost</code>.
+* In the URL, replace <code>127.0.1.1</code> by <code>localhost</code>.
 * Copy the URL and paste it in another web browser without restriction.
 
 = Uninstallation =
