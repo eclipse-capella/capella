@@ -104,7 +104,7 @@ location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/upd
 	org.polarsys.kitalpha.richtext.widget.feature.source.feature.group
 	org.polarsys.kitalpha.richtext.widget.ext.feature.source.feature.group
 	org.polarsys.kitalpha.transposer.feature.source.feature.group
-	org.polarsys.kitalpha.sirius.rotativeimage.feature.feature.group
+	org.polarsys.kitalpha.sirius.rotativeimage.feature.source.feature.group
 }
 
 location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/releases/sdk/7.0.0/" {
