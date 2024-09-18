@@ -34,6 +34,10 @@ location GEF-Classic  "https://download.eclipse.org/tools/gef/classic/releases/3
 	org.eclipse.draw2d.source.feature.group
 }
 
+location eclipse-2 "https://download.eclipse.org/releases/2021-06" {
+	org.eclipse.equinox.p2.reconciler.dropins
+}
+
 location eclipse "https://download.eclipse.org/releases/2023-03" {
 	org.eclipse.sdk.feature.group
 	org.eclipse.platform.feature.group
