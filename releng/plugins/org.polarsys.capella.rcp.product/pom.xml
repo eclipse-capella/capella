@@ -41,6 +41,9 @@
 						<goals>
 							<goal>materialize-products</goal>
 						</goals>
+						<configuration>
+							<parallel>true</parallel>
+						</configuration>
 					</execution>
 				</executions>
 				<configuration>
