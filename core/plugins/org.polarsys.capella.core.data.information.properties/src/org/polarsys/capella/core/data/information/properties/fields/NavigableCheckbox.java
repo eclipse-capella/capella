@@ -21,6 +21,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.ef.command.AbstractCompoundCommand;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Classifier;
@@ -82,8 +83,12 @@ public class NavigableCheckbox extends AbstractSemanticCheckboxGroup {
         if (oppositeMember != null) {
           EObject oppositeTypeElement = (EObject) oppositeMember.eGet(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
           if (oppositeTypeElement != null) {
-            moveDataValue(semanticElement, oppositeTypeElement, CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES);
-            addDataValue(ownerElement, InformationPackage.Literals.ASSOCIATION__NAVIGABLE_MEMBERS, semanticElement);
+            AbstractCompoundCommand command = new AbstractCompoundCommand() {};
+            command.appendIfPresent(createMoveDataValueCommand(semanticElement, oppositeTypeElement,
+                CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES));
+            command.appendIfPresent(createAddDataValueCommand(ownerElement,
+                InformationPackage.Literals.ASSOCIATION__NAVIGABLE_MEMBERS, semanticElement));
+            executeCommand(command);
           }
         }
       }
@@ -96,8 +101,12 @@ public class NavigableCheckbox extends AbstractSemanticCheckboxGroup {
       }
 
       if ((typeElement instanceof Classifier) && (referencerElement instanceof Association)) {
-        moveDataValue(semanticElement, referencerElement, InformationPackage.Literals.ASSOCIATION__OWNED_MEMBERS);
-        removeDataValue(referencerElement, InformationPackage.Literals.ASSOCIATION__NAVIGABLE_MEMBERS, semanticElement);
+        AbstractCompoundCommand command = new AbstractCompoundCommand() {};
+        command.appendIfPresent(createMoveDataValueCommand(semanticElement, referencerElement,
+            InformationPackage.Literals.ASSOCIATION__OWNED_MEMBERS));
+        command.appendIfPresent(createRemoveDataValueCommand(referencerElement,
+            InformationPackage.Literals.ASSOCIATION__NAVIGABLE_MEMBERS, semanticElement));
+        executeCommand(command);
       }
     }
   }
