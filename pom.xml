@@ -22,8 +22,8 @@
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tycho-version>4.0.5</tycho-version>
-		<tycho-extras-version>4.0.5</tycho-extras-version>
+		<tycho-version>5.0.0-SNAPSHOT</tycho-version>
+		<tycho-extras-version>5.0.0-SNAPSHOT</tycho-extras-version>
 		<antrun-version>3.1.0</antrun-version>
 		<rcptt-version>2.5.3</rcptt-version>
 		<rcptt-runner-version>2.5.3</rcptt-runner-version>
@@ -165,6 +165,13 @@
 					<groupId>org.cyclonedx</groupId>
 					<artifactId>cyclonedx-maven-plugin</artifactId>
 					<version>2.8.1</version>
+				    <dependencies>
+				        <dependency>
+				            <groupId>org.eclipse.tycho</groupId>
+				            <artifactId>tycho-sbom</artifactId>
+				            <version>${tycho-version}</version>
+				        </dependency>
+				    </dependencies>
 					<configuration>
 						<schemaVersion>1.5</schemaVersion>
 						<projectType>library</projectType>
@@ -310,6 +317,26 @@
 					</releases>
 					<snapshots>
 						<enabled>false</enabled>
+					</snapshots>
+				</pluginRepository>
+				<pluginRepository>
+					<id>tycho-snap</id>
+					<url>https://repo.eclipse.org/content/repositories/tycho-snapshots/</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+				<pluginRepository>
+					<id>tycho</id>
+					<url>https://repo.eclipse.org/content/repositories/tycho/</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
 					</snapshots>
 				</pluginRepository>
 			</pluginRepositories>
