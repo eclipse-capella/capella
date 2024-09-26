@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.tools.ju.cdb;
 
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
 import org.polarsys.capella.test.diagram.common.ju.context.CDBDiagram;
 import org.polarsys.capella.test.diagram.tools.ju.model.CDBCommunication;
 import org.polarsys.capella.test.diagram.tools.ju.model.settings.CDBProjectSettings;
@@ -54,22 +56,33 @@ public class ReconnectRelationshipGroup extends CDBCommunication {
     String collectionType = cdb.createCollectionType(collection1, collection2);
 
     // reconnect relationships
-    cdb.reconnectRelationshipSource(association1, class1, class3, CDBDiagram.RelationshipType.ASSOCIATION);
-    cdb.reconnectRelationshipTarget(association1, class2, class4, CDBDiagram.RelationshipType.ASSOCIATION);
-    cdb.reconnectRelationshipSource(association1, class3, class4, CDBDiagram.RelationshipType.ASSOCIATION);
-    cdb.reconnectRelationshipSource(generalization1, class2, class5, CDBDiagram.RelationshipType.GENERALIZATION);
-    cdb.reconnectRelationshipTarget(generalization1, class4, class3, CDBDiagram.RelationshipType.GENERALIZATION);
-    cdb.reconnectRelationshipSource(association2, union1, union3, CDBDiagram.RelationshipType.ASSOCIATION);
-    cdb.reconnectRelationshipTarget(association2, union2, class4, CDBDiagram.RelationshipType.ASSOCIATION);
-    cdb.reconnectRelationshipSource(generalization2, union2, union1, CDBDiagram.RelationshipType.GENERALIZATION);
-    cdb.reconnectRelationshipTarget(generalization2, union3, union2, CDBDiagram.RelationshipType.GENERALIZATION);
-    cdb.reconnectRelationshipSource(collectionType, collection2, collection3,
-        CDBDiagram.RelationshipType.COLLECTION_TYPE);
+    cdb.reconnectRelationshipSource(association1, class3, CDBDiagram.RelationshipType.ASSOCIATION);
+    cdb.reconnectRelationshipTarget(association1, class4, CDBDiagram.RelationshipType.ASSOCIATION);
+    cdb.reconnectRelationshipSource(association1, class4, CDBDiagram.RelationshipType.ASSOCIATION);
+    cdb.reconnectRelationshipSource(generalization1, class5, CDBDiagram.RelationshipType.GENERALIZATION);
+    cdb.reconnectRelationshipTarget(generalization1, class3, CDBDiagram.RelationshipType.GENERALIZATION);
+    cdb.reconnectRelationshipSource(association2, union3, CDBDiagram.RelationshipType.ASSOCIATION);
+    cdb.reconnectRelationshipTarget(association2, class4, CDBDiagram.RelationshipType.ASSOCIATION);
+    cdb.reconnectRelationshipSource(generalization2, union1, CDBDiagram.RelationshipType.GENERALIZATION);
+    cdb.reconnectRelationshipTarget(generalization2, union2, CDBDiagram.RelationshipType.GENERALIZATION);
+      // For COLLECTION_TYPE, only one side is tested, adapt it according to the side that has not the same id than the edge.
+    if (cdb.getView(collectionType) instanceof DEdge dEdge) {
+      if (dEdge.getSourceNode() instanceof DDiagramElement dde) {
+        if (collectionType == cdb.getSemanticIdFromView(dde)) {
+          cdb.reconnectRelationshipTarget(collectionType, collection3, CDBDiagram.RelationshipType.COLLECTION_TYPE);
+        } else {
+          cdb.reconnectRelationshipSource(collectionType, collection3, CDBDiagram.RelationshipType.COLLECTION_TYPE);
+        }
+      } else {
+        fail("The source element of the DEdge must be an instance of DDiagramElement.");
+      }
+    } else {
+      fail("The id used for reconnect must correspond to a DEdge element.");
+    }
 
     // cannot reconnect relationships
-    cdb.cannotReconnectRelationshipSource(association1, class4, collection1, CDBDiagram.RelationshipType.ASSOCIATION);
-    cdb.cannotReconnectRelationshipSource(generalization1, class5, class3, CDBDiagram.RelationshipType.GENERALIZATION);
-    cdb.cannotReconnectRelationshipTarget(generalization1, class3, collection1,
-        CDBDiagram.RelationshipType.GENERALIZATION);
+    cdb.cannotReconnectRelationshipSource(association1, collection1, CDBDiagram.RelationshipType.ASSOCIATION);
+    cdb.cannotReconnectRelationshipSource(generalization1, class3, CDBDiagram.RelationshipType.GENERALIZATION);
+    cdb.cannotReconnectRelationshipTarget(generalization1, collection1, CDBDiagram.RelationshipType.GENERALIZATION);
   }
 }
