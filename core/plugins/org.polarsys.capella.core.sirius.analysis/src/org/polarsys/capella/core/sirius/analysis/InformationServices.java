@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -749,16 +750,11 @@ public class InformationServices {
    * @return
    */
   public Property getAssociationSource(Association association) {
-    int navigableMembersSize = association.getNavigableMembers().size();
-    if (1 == navigableMembersSize) {
-      return getOthers(association.getNavigableMembers().get(0), association.getOwnedMembers());
-    } else if (2 == navigableMembersSize) {
-      return association.getNavigableMembers().get(1);
-    } else if (!association.getOwnedMembers().isEmpty()) {
-      return association.getOwnedMembers().get(0);
-    } else {
-      return null;
-    }
+    return Stream.concat(association.getNavigableMembers().stream(), association.getOwnedMembers().stream())
+            // we sort properties by ascending Id to always have the same source
+            .sorted((prop1, prop2) -> prop1.getId().compareTo(prop2.getId()))
+            .findFirst()
+            .orElse(null);
   }
 
   /**
@@ -781,14 +777,11 @@ public class InformationServices {
    * @return
    */
   public Property getAssociationTarget(Association association) {
-    int navigableMembersSize = association.getNavigableMembers().size();
-    if ((1 == navigableMembersSize) || (2 == navigableMembersSize)) {
-      return association.getNavigableMembers().get(0);
-    } else if (association.getOwnedMembers().size() > 1) {
-      return association.getOwnedMembers().get(1);
-    } else {
-      return null;
-    }
+    return Stream.concat(association.getNavigableMembers().stream(), association.getOwnedMembers().stream())
+            // we sort properties by decreasing Id to always have the same target
+            .sorted((prop1, prop2) -> prop2.getId().compareTo(prop1.getId()))
+            .findFirst()
+            .orElse(null);
   }
 
   public AssociationPkg getSourceClassPkg(Class sourceClass) {
