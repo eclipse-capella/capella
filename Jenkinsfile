@@ -116,7 +116,7 @@ pipeline {
 			}
 		}
 
-    	stage('Install test features') {
+    	/*stage('Install test features') {
     		
         	steps {
         		script {
@@ -203,13 +203,13 @@ pipeline {
 					sonar.runSonar("eclipse-capella_capella", "eclipse/capella", "sonar-token-capella")
 				}
 			}
-		}
+		}*/
 		
 	}
   
 	post {
     	always {
-       		archiveArtifacts artifacts: '**/*.log, *.log, *.xml, **/*.layout, *.exec'
+       		archiveArtifacts artifacts: '**/*.log, *.log, *.xml, **/*.layout, **/*.xml, **/*.json, *.exec'
        		
        		script {
        		    github.removeBuildStartedLabel()
