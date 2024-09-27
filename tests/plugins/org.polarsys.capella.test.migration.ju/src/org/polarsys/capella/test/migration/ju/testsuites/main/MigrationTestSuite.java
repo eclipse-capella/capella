@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2024 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -28,15 +28,20 @@ import org.polarsys.capella.test.migration.ju.testcases.basic.InvalidAirdReferen
 import org.polarsys.capella.test.migration.ju.testcases.basic.InvalidAirdReferenceMigrationV5Test;
 import org.polarsys.capella.test.migration.ju.testcases.basic.MigrationDelegatedHandlerTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.MigrationEnabledTest;
+import org.polarsys.capella.test.migration.ju.testcases.basic.RelationStability;
 import org.polarsys.capella.test.migration.ju.testcases.basic.RepresentationDescriptionNonRegressionTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.RepresentationDescriptionNonRegressionV5Test;
 import org.polarsys.capella.test.migration.ju.testcases.basic.SysmodelFilterMigration;
 import org.polarsys.capella.test.migration.ju.testcases.basic.SysmodelMigrationLayout;
 
+import junit.framework.JUnit4TestAdapter;
 import junit.framework.Test;
 
 public class MigrationTestSuite extends BasicTestSuite {
 
+  public MigrationTestSuite() {
+    addTest(new JUnit4TestAdapter(RelationStability.class));
+  }
   /**
    * Returns the suite. This is required to unary launch this test.
    */
