@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2024 THALES GLOBAL SERVICES and others.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -9,6 +9,7 @@
  * 
  * Contributors:
  *    Thales - initial API and implementation
+ *    Maxime Porhel (Obeo) - Avoid potential deadlocks in refresh 
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.misc.ju.testcases;
 
@@ -155,8 +156,7 @@ public class PieIconTest extends BasicTestCase {
   }
 
   private boolean hasPieIconOnFunctionalExchange(DDiagram diagram) {
-    for (DDiagramElement element : diagram.getDiagramElements()) {
-        DEdge edge = (DEdge) element;
+    for (DEdge edge : diagram.getEdges()) {
         EObject target = edge.getTarget();
         if (target instanceof FunctionalExchange) {
           FunctionalExchange fe = (FunctionalExchange) target;
@@ -182,8 +182,7 @@ public class PieIconTest extends BasicTestCase {
   }
   
   private boolean hasPieIconOnPhysicalLink(DDiagram diagram) {
-    for (DDiagramElement element : diagram.getDiagramElements()) {
-        DEdge edge = (DEdge) element;
+      for (DEdge edge : diagram.getEdges()) {
         EObject target = edge.getTarget();
         if (target instanceof PhysicalLink) {
           PhysicalLink fe = (PhysicalLink) target;
