@@ -1,6 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2024 Thales LAS France SA.
- * Copyright (c) 2024, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2024 Thales LAS France SAS.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -38,4 +37,3 @@ public class FunctionalChainInvolvesLeafFunctions extends AbstractValidationRule
 
 		return ctx.createSuccessStatus();
 	}
-}

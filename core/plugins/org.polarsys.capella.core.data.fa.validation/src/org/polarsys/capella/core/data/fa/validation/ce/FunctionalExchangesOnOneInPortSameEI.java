@@ -1,6 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2024 Thales LAS France SA.
- * Copyright (c) 2024, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2024 Thales LAS France SAS.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -45,7 +44,6 @@ public class FunctionalExchangesOnOneInPortSameEI extends AbstractValidationRule
           final List<ExchangeItem> otherFeEi = new ArrayList<ExchangeItem>(otherFe.getExchangedItems());
           final List<ExchangeItem> otherFeEiNotInCheckedEiList = FunctionalExchangesOnOneInPortSameEI
               .removeEiRightListInLeftList(otherFeEi, checkedFeEi);
-
           if (otherFeEiNotInCheckedEiList.size() > 0) {
             return ctx.createFailureStatus(
                 new Object[] { fe.getName(), otherFe.getName(), otherFeEiNotInCheckedEiList.get(0) });

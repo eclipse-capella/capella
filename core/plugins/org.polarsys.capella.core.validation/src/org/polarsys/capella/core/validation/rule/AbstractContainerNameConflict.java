@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2024 Thales LAS France SAS.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -23,7 +23,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
  */
 public abstract class AbstractContainerNameConflict extends AbstractValidationRule {
 
-  /**
+  /**q
    * Verify that the rule is applicable to the given validated element
    * 
    * @param eObj
