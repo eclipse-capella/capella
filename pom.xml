@@ -22,8 +22,8 @@
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tycho-version>2.7.5</tycho-version>
-		<tycho-extras-version>2.7.5</tycho-extras-version>
+		<tycho-version>4.0.9</tycho-version>
+		<tycho-extras-version>4.0.9</tycho-extras-version>
 		<antrun-version>3.0.0</antrun-version>
 		<rcptt-version>2.5.3</rcptt-version>
 		<rcptt-runner-version>2.5.3</rcptt-runner-version>
@@ -110,50 +110,43 @@
 			</plugin>
 			<!-- enable source feature generation -->
 			<plugin>
-				<groupId>org.eclipse.tycho.extras</groupId>
-				<artifactId>tycho-source-feature-plugin</artifactId>
-				<version>${tycho-extras-version}</version>
-				<executions>
-					<execution>
-						<id>source-feature</id>
-						<phase>package</phase>
-						<goals>
-							<goal>source-feature</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<archive>
-						<addMavenDescriptor>false</addMavenDescriptor>
-					</archive>
-					<excludes>
-						<!-- provide bundles not containing any source code -->
-						<plugin id="org.polarsys.capella.core.data.res.edit" />
-						<plugin id="org.polarsys.capella.core.data.res.editor" />
-						<plugin id="org.polarsys.capella.ui.views" />
-						<feature id="org.eclipse.nebula.widgets.richtext.feature" />
-						<feature id="org.polarsys.kitalpha.richtext.widget.feature" />
-						<feature id="org.polarsys.capella.core.mylyn.feature" />
-					</excludes>
-				</configuration>
-			</plugin>
-			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-source-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<executions>
 					<execution>
+						<id>feature-source</id>
+						<phase>package</phase>
+						<goals>
+							<goal>feature-source</goal>
+						</goals>
+						<configuration>
+							<archive>
+								<addMavenDescriptor>false</addMavenDescriptor>
+							</archive>
+							<excludes>
+								<!-- provide bundles not containing any source code -->
+								<plugin id="org.polarsys.capella.core.data.res.edit" />
+								<plugin id="org.polarsys.capella.core.data.res.editor" />
+								<plugin id="org.polarsys.capella.ui.views" />
+								<feature id="org.eclipse.nebula.widgets.richtext.feature" />
+								<feature id="org.polarsys.kitalpha.richtext.widget.feature" />
+								<feature id="org.polarsys.capella.core.mylyn.feature" />
+							</excludes>
+						</configuration>
+					</execution>
+					<execution>
 						<id>plugin-source</id>
 						<goals>
 							<goal>plugin-source</goal>
 						</goals>
+						<configuration>
+							<archive>
+								<addMavenDescriptor>false</addMavenDescriptor>
+							</archive>
+						</configuration>
 					</execution>
 				</executions>
-				<configuration>
-					<archive>
-						<addMavenDescriptor>false</addMavenDescriptor>
-					</archive>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
@@ -231,6 +224,30 @@
 							<configuration>
 								<finalName>${packagedSiteName}.site-${unqualifiedVersion}.${buildQualifier}</finalName>
 							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.cyclonedx</groupId>
+					<artifactId>cyclonedx-maven-plugin</artifactId>
+					<version>2.8.1</version>
+					<configuration>
+						<schemaVersion>1.5</schemaVersion>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.eclipse.tycho</groupId>
+							<artifactId>tycho-sbom</artifactId>
+							<version>${tycho-version}</version>
+						</dependency>
+					</dependencies>
+					<executions>
+						<execution>
+							<id>create-bom</id>
+							<phase>package</phase>
+							<goals>
+								<goal>makeBom</goal>
+							</goals>
 						</execution>
 					</executions>
 				</plugin>
