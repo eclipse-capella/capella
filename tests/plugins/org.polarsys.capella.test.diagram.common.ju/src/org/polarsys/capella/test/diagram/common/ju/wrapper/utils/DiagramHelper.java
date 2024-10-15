@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2024 THALES GLOBAL SERVICES and others.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -9,6 +9,7 @@
  * 
  * Contributors:
  *    Thales - initial API and implementation
+ *    Glenn Plouhinec, Maxime Porhel (Obeo) - Avoid potential deadlocks in refresh
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.wrapper.utils;
 
@@ -671,17 +672,28 @@ public class DiagramHelper {
   }
 
   /**
-   * Close a 'diagram'
+   * Close a diagram editor from the ui session.
    * 
    * @param session
+   *          the Sirius session
    * @param diagram
-   * @return
+   *          the representation associated to the editor to close
    */
   public static void closeEditor(Session session, DDiagram diagram) {
     IEditorPart editor = getDiagramEditor(session, diagram);
     if (editor instanceof ISiriusEditor) {
       SessionUIManager.INSTANCE.getUISession(session).closeEditors(true, Arrays.asList((ISiriusEditor) editor));
     }
+  }
+
+  /**
+   * Close a diagram editor.
+   * 
+   * @param editor
+   *          the editor to close
+   */
+  public static void closeEditor(IEditorPart editor) {
+    DialectUIManager.INSTANCE.closeEditor(editor, true);
   }
 
   /**
