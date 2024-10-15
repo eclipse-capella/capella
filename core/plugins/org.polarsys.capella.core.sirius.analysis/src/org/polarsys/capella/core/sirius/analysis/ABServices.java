@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2024 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -718,7 +718,7 @@ public class ABServices {
    * Returns whether the given part can be dropped into the target element view
    */
   public boolean isValidDndABComponent(Part semanticObjectToDrop, EObject targetContainerView) {
-    EObject context = null;
+    final EObject context;
 
     Component component = (Component) semanticObjectToDrop.getAbstractType();
     if (component.isActor()) {
@@ -727,6 +727,10 @@ public class ABServices {
     }
 
     context = CsServices.getService().getABTarget((DSemanticDecorator) targetContainerView);
+    boolean isSourceAlreadyDeployed = semanticObjectToDrop.getDeployingLinks().stream().anyMatch(link -> link.getLocation().equals(context));
+    if (isSourceAlreadyDeployed) {
+      return false;
+    }
     if (context instanceof BlockArchitecture) {
       return false;
 
