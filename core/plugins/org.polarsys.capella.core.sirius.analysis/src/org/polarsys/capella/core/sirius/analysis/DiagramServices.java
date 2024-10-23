@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2024 THALES GLOBAL SERVICES and others.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -9,6 +9,7 @@
  * 
  * Contributors:
  *    Thales - initial API and implementation
+ *    Glenn Plouhinec, Maxime Porhel (Obeo) - Avoid potential deadlocks in refresh
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
@@ -44,7 +45,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
-import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -93,6 +93,8 @@ import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalView
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.ui.business.api.session.IEditingSession;
+import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -1956,21 +1958,29 @@ public class DiagramServices {
    * @return
    */
   public EditPart getEditPart(DDiagramElement diagramElement) {
-    IEditorPart editor = EclipseUIUtil.getActiveEditor();
-    if (editor instanceof DiagramEditor) {
-      Session session = new EObjectQuery(diagramElement).getSession();
-      View gmfView = SiriusGMFHelper.getGmfView(diagramElement, session);
+      DDiagram parentDiagram = diagramElement == null ? null : diagramElement.getParentDiagram();
+      Session session = parentDiagram == null ? null : new EObjectQuery(parentDiagram).getSession();
+      IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
 
-      if (gmfView != null && editor instanceof DiagramEditor) {
-        final Map<?, ?> editPartRegistry = ((DiagramEditor) editor).getDiagramGraphicalViewer().getEditPartRegistry();
-        final Object editPart = editPartRegistry.get(gmfView);
-        if (editPart instanceof EditPart) {
-          return (EditPart) editPart;
+      DialectEditor editor = null;
+      if (uiSession != null && parentDiagram != null) {
+          editor = uiSession.getEditor(parentDiagram);
+      }
+
+      if (editor instanceof DiagramEditor) {
+          DiagramEditor diagramEditor = (DiagramEditor) editor;
+          View gmfView = SiriusGMFHelper.getGmfView(diagramElement, session);
+
+          if (gmfView != null && diagramEditor.getDiagramGraphicalViewer() != null) {
+              final Map<?, ?> editPartRegistry = diagramEditor.getDiagramGraphicalViewer().getEditPartRegistry();
+              final Object editPart = editPartRegistry.get(gmfView);
+              if (editPart instanceof EditPart) {
+                  return (EditPart) editPart;
+              }
         }
       }
+      return null;
     }
-    return null;
-  }
 
   /**
    * Refresh the begin EditPart and end EditPart of a DEdge
