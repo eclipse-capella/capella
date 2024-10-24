@@ -9,7 +9,7 @@ Capella 7.x is built with Eclipse 2023-03.
 
 === Version major increased ===
 
-Metamodels have been updated to 7.0.0.
+Metamodels have been updated to 7.0.1.
 
 === Diagram capabilities ===
 
@@ -33,7 +33,7 @@ Label decorations in Semantic Browser are now present and consistent with the Pr
 
 Capella 7 supports the migration of Capella models from Capella 1.4 - i.e. from Capella 1.4.x, 5.x, 6.x.
 
-== Raw API changes from 6.1.0 to 7.0.0 ==
+== Raw API changes from 6.1.0 to 7.0.1 ==
 
 ==== Changes in <code>org.polarsys.capella.common.helpers</code>====
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.common.helpers.EObjectExt.getAllFiltered(EObject, EClass, List<EClass>)</code>
