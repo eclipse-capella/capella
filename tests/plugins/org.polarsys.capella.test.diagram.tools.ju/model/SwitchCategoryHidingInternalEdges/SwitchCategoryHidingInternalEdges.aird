@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:ctx_7.0.1="http://www.polarsys.org/capella/core/ctx/7.0.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/7.0.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/7.0.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/7.0.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/7.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_FI8JcZynEeid1qo5XloxBw" selectedViews="_FKwuYJynEeid1qo5XloxBw _FcfXkJynEeid1qo5XloxBw _FdF0gJynEeid1qo5XloxBw _FeIWUJynEeid1qo5XloxBw _Feb4UJynEeid1qo5XloxBw _FelCQJynEeid1qo5XloxBw _FfBuMJynEeid1qo5XloxBw" version="15.2.0.202303281325">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:ctx_7.0.0="http://www.polarsys.org/capella/core/ctx/7.0.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/7.0.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/7.0.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/7.0.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/7.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_FI8JcZynEeid1qo5XloxBw" selectedViews="_FKwuYJynEeid1qo5XloxBw _FcfXkJynEeid1qo5XloxBw _FdF0gJynEeid1qo5XloxBw _FeIWUJynEeid1qo5XloxBw _Feb4UJynEeid1qo5XloxBw _FelCQJynEeid1qo5XloxBw _FfBuMJynEeid1qo5XloxBw" version="15.4.1.202403191723">
     <semanticResources>SwitchCategoryHidingInternalEdges.afm</semanticResources>
     <semanticResources>SwitchCategoryHidingInternalEdges.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_FKwuYJynEeid1qo5XloxBw">
@@ -8,31 +8,47 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_FcfXkJynEeid1qo5XloxBw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Lw7KF5ynEeid1qo5XloxBw" name="[LAB] Logical System" repPath="#_Lw7KEJynEeid1qo5XloxBw" changeId="1692714467073">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Lw7KF5ynEeid1qo5XloxBw" name="[LAB] Logical System" repPath="#_Lw7KEJynEeid1qo5XloxBw" changeId="1730972898522">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="SwitchCategoryHidingInternalEdges.capella#4841d98d-9aae-41c6-bd63-948ab43a9442"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_FdF0gJynEeid1qo5XloxBw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_JtMXx5ynEeid1qo5XloxBw" name="[SAB] System" repPath="#_JtMXwJynEeid1qo5XloxBw" changeId="1692714467073">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_JtMXx5ynEeid1qo5XloxBw" name="[SAB] System" repPath="#_JtMXwJynEeid1qo5XloxBw" changeId="1730972898522">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']"/>
-        <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-        <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-        <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-        <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-        <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-        <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-        <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-        <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-        <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-        <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-        <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-        <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-        <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-        <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-        <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-        <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+        <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_FeIWUJynEeid1qo5XloxBw">
@@ -679,8 +695,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System']"/>
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_Qjm18JynEeid1qo5XloxBw" name="SystemFunction 1" width="5" height="5" resizeKind="NSEW">
-        <target xmi:type="ctx_7.0.1:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#4c905cf3-e534-4462-a1ac-fd85b95b2ad0"/>
-        <semanticElements xmi:type="ctx_7.0.1:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#4c905cf3-e534-4462-a1ac-fd85b95b2ad0"/>
+        <target xmi:type="ctx_7.0.0:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#4c905cf3-e534-4462-a1ac-fd85b95b2ad0"/>
+        <semanticElements xmi:type="ctx_7.0.0:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#4c905cf3-e534-4462-a1ac-fd85b95b2ad0"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_T_ZnYJynEeid1qo5XloxBw" name="FOP 1" outgoingEdges="_T_ZnZpynEeid1qo5XloxBw" width="1" height="1">
           <target xmi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort" href="SwitchCategoryHidingInternalEdges.capella#2d7442ab-7622-4472-8d88-7c0c889d278f"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort" href="SwitchCategoryHidingInternalEdges.capella#2d7442ab-7622-4472-8d88-7c0c889d278f"/>
@@ -690,7 +706,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']"/>
         </ownedBorderedNodes>
-        <ownedStyle xmi:type="diagram:Square" uid="_Qjv_4JynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="4" borderSizeComputationExpression="1" borderColor="24,114,248" labelPosition="node" color="197,255,166">
+        <ownedStyle xmi:type="diagram:Square" uid="_Qjv_4JynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="4" borderSizeComputationExpression="1" borderColor="24,114,248" labelPosition="node" width="-1" height="-1" color="197,255,166">
           <customFeatures>borderColor</customFeatures>
           <customFeatures>borderSize</customFeatures>
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@style"/>
@@ -698,8 +714,8 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_Rq1jwJynEeid1qo5XloxBw" name="SystemFunction 2" width="5" height="5" resizeKind="NSEW">
-        <target xmi:type="ctx_7.0.1:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#183463b9-b970-458f-ad10-690698b8e25b"/>
-        <semanticElements xmi:type="ctx_7.0.1:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#183463b9-b970-458f-ad10-690698b8e25b"/>
+        <target xmi:type="ctx_7.0.0:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#183463b9-b970-458f-ad10-690698b8e25b"/>
+        <semanticElements xmi:type="ctx_7.0.0:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#183463b9-b970-458f-ad10-690698b8e25b"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_T_ZnY5ynEeid1qo5XloxBw" name="FIP 1" outgoingEdges="_cl3t8JynEeid1qo5XloxBw" incomingEdges="_T_ZnZpynEeid1qo5XloxBw" width="1" height="1">
           <target xmi:type="org.polarsys.capella.core.data.fa:FunctionInputPort" href="SwitchCategoryHidingInternalEdges.capella#4fc01691-c609-4549-a179-6ece2e39c047"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionInputPort" href="SwitchCategoryHidingInternalEdges.capella#4fc01691-c609-4549-a179-6ece2e39c047"/>
@@ -727,14 +743,14 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']"/>
         </ownedBorderedNodes>
-        <ownedStyle xmi:type="diagram:Square" uid="_Rq1jwZynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="1" borderSizeComputationExpression="1" borderColor="9,92,46" labelPosition="node" color="197,255,166">
+        <ownedStyle xmi:type="diagram:Square" uid="_Rq1jwZynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="1" borderSizeComputationExpression="1" borderColor="9,92,46" labelPosition="node" width="-1" height="-1" color="197,255,166">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_SMzoYJynEeid1qo5XloxBw" name="SystemFunction 3" width="5" height="5" resizeKind="NSEW">
-        <target xmi:type="ctx_7.0.1:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#b305ba53-5430-4f2d-bad7-defa0eed776a"/>
-        <semanticElements xmi:type="ctx_7.0.1:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#b305ba53-5430-4f2d-bad7-defa0eed776a"/>
+        <target xmi:type="ctx_7.0.0:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#b305ba53-5430-4f2d-bad7-defa0eed776a"/>
+        <semanticElements xmi:type="ctx_7.0.0:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#b305ba53-5430-4f2d-bad7-defa0eed776a"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_VYXlcJynEeid1qo5XloxBw" name="FOP 1" outgoingEdges="_VYgvZJynEeid1qo5XloxBw" width="1" height="1">
           <target xmi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort" href="SwitchCategoryHidingInternalEdges.capella#077ecfb0-2ba4-4036-8200-d2bbbe2a0285"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort" href="SwitchCategoryHidingInternalEdges.capella#077ecfb0-2ba4-4036-8200-d2bbbe2a0285"/>
@@ -744,7 +760,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']"/>
         </ownedBorderedNodes>
-        <ownedStyle xmi:type="diagram:Square" uid="_SMzoYZynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="4" borderSizeComputationExpression="1" borderColor="165,42,42" labelPosition="node" color="197,255,166">
+        <ownedStyle xmi:type="diagram:Square" uid="_SMzoYZynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="4" borderSizeComputationExpression="1" borderColor="165,42,42" labelPosition="node" width="-1" height="-1" color="197,255,166">
           <customFeatures>borderColor</customFeatures>
           <customFeatures>borderSize</customFeatures>
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@style"/>
@@ -752,8 +768,8 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_S5XMYJynEeid1qo5XloxBw" name="SystemFunction 4" width="5" height="5" resizeKind="NSEW">
-        <target xmi:type="ctx_7.0.1:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#880fc25f-5fbc-40ce-b616-26655bd3cd35"/>
-        <semanticElements xmi:type="ctx_7.0.1:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#880fc25f-5fbc-40ce-b616-26655bd3cd35"/>
+        <target xmi:type="ctx_7.0.0:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#880fc25f-5fbc-40ce-b616-26655bd3cd35"/>
+        <semanticElements xmi:type="ctx_7.0.0:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#880fc25f-5fbc-40ce-b616-26655bd3cd35"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_UKk8o5ynEeid1qo5XloxBw" name="FIP 1" outgoingEdges="_cl3t85ynEeid1qo5XloxBw" incomingEdges="_UKk8ppynEeid1qo5XloxBw" width="1" height="1">
           <target xmi:type="org.polarsys.capella.core.data.fa:FunctionInputPort" href="SwitchCategoryHidingInternalEdges.capella#95d0dc89-dc2b-4aea-9a89-603800737958"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionInputPort" href="SwitchCategoryHidingInternalEdges.capella#95d0dc89-dc2b-4aea-9a89-603800737958"/>
@@ -787,7 +803,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']"/>
         </ownedBorderedNodes>
-        <ownedStyle xmi:type="diagram:Square" uid="_S5XMYZynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="4" borderSizeComputationExpression="1" borderColor="165,42,42" labelPosition="node" color="197,255,166">
+        <ownedStyle xmi:type="diagram:Square" uid="_S5XMYZynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="4" borderSizeComputationExpression="1" borderColor="165,42,42" labelPosition="node" width="-1" height="-1" color="197,255,166">
           <customFeatures>borderColor</customFeatures>
           <customFeatures>borderSize</customFeatures>
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@style"/>
@@ -795,8 +811,8 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_ThcgEJynEeid1qo5XloxBw" name="SystemFunction 5" width="5" height="5" resizeKind="NSEW">
-        <target xmi:type="ctx_7.0.1:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#4ba40634-cb85-4cb0-95fb-3b1c3c7ee9df"/>
-        <semanticElements xmi:type="ctx_7.0.1:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#4ba40634-cb85-4cb0-95fb-3b1c3c7ee9df"/>
+        <target xmi:type="ctx_7.0.0:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#4ba40634-cb85-4cb0-95fb-3b1c3c7ee9df"/>
+        <semanticElements xmi:type="ctx_7.0.0:SystemFunction" href="SwitchCategoryHidingInternalEdges.capella#4ba40634-cb85-4cb0-95fb-3b1c3c7ee9df"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_UYljc5ynEeid1qo5XloxBw" name="FIP 1" incomingEdges="_UYljdpynEeid1qo5XloxBw" width="1" height="1">
           <target xmi:type="org.polarsys.capella.core.data.fa:FunctionInputPort" href="SwitchCategoryHidingInternalEdges.capella#aa186ef6-f7f2-46b1-89d8-54f4f743fd0a"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionInputPort" href="SwitchCategoryHidingInternalEdges.capella#aa186ef6-f7f2-46b1-89d8-54f4f743fd0a"/>
@@ -809,29 +825,45 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Square" uid="_ThcgEZynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="4" borderSizeComputationExpression="1" borderColor="24,114,248" labelPosition="node" color="197,255,166">
+        <ownedStyle xmi:type="diagram:Square" uid="_ThcgEZynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="4" borderSizeComputationExpression="1" borderColor="24,114,248" labelPosition="node" width="-1" height="-1" color="197,255,166">
           <customFeatures>borderColor</customFeatures>
           <customFeatures>borderSize</customFeatures>
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']"/>
       </ownedDiagramElements>
-      <semanticElements xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-      <semanticElements xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-      <semanticElements xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-      <semanticElements xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-      <semanticElements xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-      <semanticElements xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-      <semanticElements xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-      <semanticElements xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-      <semanticElements xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-      <semanticElements xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-      <semanticElements xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-      <semanticElements xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-      <semanticElements xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-      <semanticElements xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-      <semanticElements xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-      <semanticElements xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+      <semanticElements xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_T_ZnZpynEeid1qo5XloxBw" name="FunctionalExchange 1" sourceNode="_T_ZnYJynEeid1qo5XloxBw" targetNode="_T_ZnY5ynEeid1qo5XloxBw">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="SwitchCategoryHidingInternalEdges.capella#8f21e646-f639-4606-9cf8-b10e71804f4d"/>
@@ -962,22 +994,38 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#22acfd77-29c8-48e1-b643-9bc6a8650a6d"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_k1-i8JynEeid1qo5XloxBw" name="A 2">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="SwitchCategoryHidingInternalEdges.capella#b8548166-78a1-4409-a8df-a715b73658ed"/>
@@ -1013,22 +1061,38 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#e366f8d4-a09b-4780-9c05-5ed852175e2a"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_lESEsJynEeid1qo5XloxBw" name="A 3">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="SwitchCategoryHidingInternalEdges.capella#a84a9811-f5f0-48f0-aacf-3620927eb018"/>
@@ -1046,22 +1110,38 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#d1eed2a5-f265-49a9-be75-fa3223b4fb0f"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_lPJ38JynEeid1qo5XloxBw" name="A 4">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="SwitchCategoryHidingInternalEdges.capella#1eb3b1c1-e3e3-4ed9-ad33-e88c3f34f5eb"/>
@@ -1100,22 +1180,38 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#9d8bb54c-1ba3-4998-acd6-4a6d4a427073"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_lYsOcJynEeid1qo5XloxBw" name="A 5">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="SwitchCategoryHidingInternalEdges.capella#a75e28d6-e705-4afa-a167-b5e0c2a47f01"/>
@@ -1136,22 +1232,38 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
-      <semanticElements xmi:type="ctx_7.0.1:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
+      <semanticElements xmi:type="ctx_7.0.0:Actor" href="SwitchCategoryHidingInternalEdges.capella#086fa5c5-4afb-4f4c-b71c-ab267c2e447c"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_m7Vs9JynEeid1qo5XloxBw" name="PL 1" sourceNode="_m7MjAJynEeid1qo5XloxBw" targetNode="_m7Vs8ZynEeid1qo5XloxBw">
       <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalLink" href="SwitchCategoryHidingInternalEdges.capella#e18424c4-3526-441d-a71b-6328b137ade4"/>
@@ -1264,22 +1376,38 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_JtMXxpynEeid1qo5XloxBw"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer"/>
-    <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-    <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-    <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-    <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-    <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-    <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-    <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-    <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-    <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-    <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-    <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-    <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-    <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-    <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-    <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
-    <target xmi:type="ctx_7.0.1:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
+    <target xmi:type="ctx_7.0.0:System" href="SwitchCategoryHidingInternalEdges.capella#b3e1202b-4cf1-4cc5-9806-5a482a161916"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_Lw7KEJynEeid1qo5XloxBw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_Lw7KEZynEeid1qo5XloxBw" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -1917,7 +2045,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']"/>
         </ownedBorderedNodes>
-        <ownedStyle xmi:type="diagram:Square" uid="_7aZLEZynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="4" borderSizeComputationExpression="1" borderColor="24,114,248" labelPosition="node" color="197,255,166">
+        <ownedStyle xmi:type="diagram:Square" uid="_7aZLEZynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="4" borderSizeComputationExpression="1" borderColor="24,114,248" labelPosition="node" width="-1" height="-1" color="197,255,166">
           <customFeatures>borderColor</customFeatures>
           <customFeatures>borderSize</customFeatures>
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@style"/>
@@ -1954,7 +2082,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']"/>
         </ownedBorderedNodes>
-        <ownedStyle xmi:type="diagram:Square" uid="_7oji4ZynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="1" borderSizeComputationExpression="1" borderColor="9,92,46" labelPosition="node" color="197,255,166">
+        <ownedStyle xmi:type="diagram:Square" uid="_7oji4ZynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="1" borderSizeComputationExpression="1" borderColor="9,92,46" labelPosition="node" width="-1" height="-1" color="197,255,166">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']"/>
@@ -1974,7 +2102,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Square" uid="_72jioJynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="4" borderSizeComputationExpression="1" borderColor="165,42,42" labelPosition="node" color="197,255,166">
+        <ownedStyle xmi:type="diagram:Square" uid="_72jioJynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="4" borderSizeComputationExpression="1" borderColor="165,42,42" labelPosition="node" width="-1" height="-1" color="197,255,166">
           <customFeatures>borderColor</customFeatures>
           <customFeatures>borderSize</customFeatures>
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@style"/>
@@ -2014,7 +2142,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']"/>
         </ownedBorderedNodes>
-        <ownedStyle xmi:type="diagram:Square" uid="_8Ea_gZynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="4" borderSizeComputationExpression="1" borderColor="165,42,42" labelPosition="node" color="197,255,166">
+        <ownedStyle xmi:type="diagram:Square" uid="_8Ea_gZynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="4" borderSizeComputationExpression="1" borderColor="165,42,42" labelPosition="node" width="-1" height="-1" color="197,255,166">
           <customFeatures>borderColor</customFeatures>
           <customFeatures>borderSize</customFeatures>
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@style"/>
@@ -2033,7 +2161,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']"/>
         </ownedBorderedNodes>
-        <ownedStyle xmi:type="diagram:Square" uid="_8WcjoZynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="4" borderSizeComputationExpression="1" borderColor="24,114,248" labelPosition="node" color="197,255,166">
+        <ownedStyle xmi:type="diagram:Square" uid="_8WcjoZynEeid1qo5XloxBw" labelColor="9,92,46" borderSize="4" borderSizeComputationExpression="1" borderColor="24,114,248" labelPosition="node" width="-1" height="-1" color="197,255,166">
           <customFeatures>borderColor</customFeatures>
           <customFeatures>borderSize</customFeatures>
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@style"/>
@@ -2180,6 +2308,22 @@
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#1c1dcc62-1238-47aa-b2ea-5ce2022b18f4"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#1c1dcc62-1238-47aa-b2ea-5ce2022b18f4"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#1c1dcc62-1238-47aa-b2ea-5ce2022b18f4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#1c1dcc62-1238-47aa-b2ea-5ce2022b18f4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#1c1dcc62-1238-47aa-b2ea-5ce2022b18f4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#1c1dcc62-1238-47aa-b2ea-5ce2022b18f4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#1c1dcc62-1238-47aa-b2ea-5ce2022b18f4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#1c1dcc62-1238-47aa-b2ea-5ce2022b18f4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#1c1dcc62-1238-47aa-b2ea-5ce2022b18f4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#1c1dcc62-1238-47aa-b2ea-5ce2022b18f4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#1c1dcc62-1238-47aa-b2ea-5ce2022b18f4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#1c1dcc62-1238-47aa-b2ea-5ce2022b18f4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#1c1dcc62-1238-47aa-b2ea-5ce2022b18f4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#1c1dcc62-1238-47aa-b2ea-5ce2022b18f4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#1c1dcc62-1238-47aa-b2ea-5ce2022b18f4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#1c1dcc62-1238-47aa-b2ea-5ce2022b18f4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#1c1dcc62-1238-47aa-b2ea-5ce2022b18f4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#1c1dcc62-1238-47aa-b2ea-5ce2022b18f4"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#1c1dcc62-1238-47aa-b2ea-5ce2022b18f4"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Fk4CEJyoEeid1qo5XloxBw" name="LA 2">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="SwitchCategoryHidingInternalEdges.capella#a895075d-796d-4bcc-92ad-224ebb2ec58a"/>
@@ -2234,6 +2378,22 @@
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#b656cdc8-1bfb-48d5-87f6-be5fe5337b3f"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#b656cdc8-1bfb-48d5-87f6-be5fe5337b3f"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#b656cdc8-1bfb-48d5-87f6-be5fe5337b3f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#b656cdc8-1bfb-48d5-87f6-be5fe5337b3f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#b656cdc8-1bfb-48d5-87f6-be5fe5337b3f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#b656cdc8-1bfb-48d5-87f6-be5fe5337b3f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#b656cdc8-1bfb-48d5-87f6-be5fe5337b3f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#b656cdc8-1bfb-48d5-87f6-be5fe5337b3f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#b656cdc8-1bfb-48d5-87f6-be5fe5337b3f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#b656cdc8-1bfb-48d5-87f6-be5fe5337b3f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#b656cdc8-1bfb-48d5-87f6-be5fe5337b3f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#b656cdc8-1bfb-48d5-87f6-be5fe5337b3f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#b656cdc8-1bfb-48d5-87f6-be5fe5337b3f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#b656cdc8-1bfb-48d5-87f6-be5fe5337b3f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#b656cdc8-1bfb-48d5-87f6-be5fe5337b3f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#b656cdc8-1bfb-48d5-87f6-be5fe5337b3f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#b656cdc8-1bfb-48d5-87f6-be5fe5337b3f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#b656cdc8-1bfb-48d5-87f6-be5fe5337b3f"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#b656cdc8-1bfb-48d5-87f6-be5fe5337b3f"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_FsBy8JyoEeid1qo5XloxBw" name="LA 3">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="SwitchCategoryHidingInternalEdges.capella#7335b7f9-3a64-4acc-a86f-83f86bb17bdd"/>
@@ -2251,6 +2411,22 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='Logical%20Actors']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='Logical%20Actors']"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#ec0241b9-48f8-4d97-821e-6ae9a2cffa88"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#ec0241b9-48f8-4d97-821e-6ae9a2cffa88"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#ec0241b9-48f8-4d97-821e-6ae9a2cffa88"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#ec0241b9-48f8-4d97-821e-6ae9a2cffa88"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#ec0241b9-48f8-4d97-821e-6ae9a2cffa88"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#ec0241b9-48f8-4d97-821e-6ae9a2cffa88"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#ec0241b9-48f8-4d97-821e-6ae9a2cffa88"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#ec0241b9-48f8-4d97-821e-6ae9a2cffa88"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#ec0241b9-48f8-4d97-821e-6ae9a2cffa88"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#ec0241b9-48f8-4d97-821e-6ae9a2cffa88"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#ec0241b9-48f8-4d97-821e-6ae9a2cffa88"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#ec0241b9-48f8-4d97-821e-6ae9a2cffa88"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#ec0241b9-48f8-4d97-821e-6ae9a2cffa88"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#ec0241b9-48f8-4d97-821e-6ae9a2cffa88"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#ec0241b9-48f8-4d97-821e-6ae9a2cffa88"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#ec0241b9-48f8-4d97-821e-6ae9a2cffa88"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#ec0241b9-48f8-4d97-821e-6ae9a2cffa88"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#ec0241b9-48f8-4d97-821e-6ae9a2cffa88"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#ec0241b9-48f8-4d97-821e-6ae9a2cffa88"/>
@@ -2324,6 +2500,22 @@
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#47d15fa8-db26-4606-b04d-41ef0a7ad0f9"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#47d15fa8-db26-4606-b04d-41ef0a7ad0f9"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#47d15fa8-db26-4606-b04d-41ef0a7ad0f9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#47d15fa8-db26-4606-b04d-41ef0a7ad0f9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#47d15fa8-db26-4606-b04d-41ef0a7ad0f9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#47d15fa8-db26-4606-b04d-41ef0a7ad0f9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#47d15fa8-db26-4606-b04d-41ef0a7ad0f9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#47d15fa8-db26-4606-b04d-41ef0a7ad0f9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#47d15fa8-db26-4606-b04d-41ef0a7ad0f9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#47d15fa8-db26-4606-b04d-41ef0a7ad0f9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#47d15fa8-db26-4606-b04d-41ef0a7ad0f9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#47d15fa8-db26-4606-b04d-41ef0a7ad0f9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#47d15fa8-db26-4606-b04d-41ef0a7ad0f9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#47d15fa8-db26-4606-b04d-41ef0a7ad0f9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#47d15fa8-db26-4606-b04d-41ef0a7ad0f9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#47d15fa8-db26-4606-b04d-41ef0a7ad0f9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#47d15fa8-db26-4606-b04d-41ef0a7ad0f9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#47d15fa8-db26-4606-b04d-41ef0a7ad0f9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#47d15fa8-db26-4606-b04d-41ef0a7ad0f9"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_F83EQJyoEeid1qo5XloxBw" name="LA 5">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="SwitchCategoryHidingInternalEdges.capella#761bbcd3-695d-4d43-994a-f9d71a66e4bb"/>
@@ -2344,6 +2536,22 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='Logical%20Actors']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='Logical%20Actors']"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#7a4e8283-246b-4231-be89-f03c9655de8b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#7a4e8283-246b-4231-be89-f03c9655de8b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#7a4e8283-246b-4231-be89-f03c9655de8b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#7a4e8283-246b-4231-be89-f03c9655de8b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#7a4e8283-246b-4231-be89-f03c9655de8b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#7a4e8283-246b-4231-be89-f03c9655de8b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#7a4e8283-246b-4231-be89-f03c9655de8b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#7a4e8283-246b-4231-be89-f03c9655de8b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#7a4e8283-246b-4231-be89-f03c9655de8b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#7a4e8283-246b-4231-be89-f03c9655de8b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#7a4e8283-246b-4231-be89-f03c9655de8b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#7a4e8283-246b-4231-be89-f03c9655de8b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#7a4e8283-246b-4231-be89-f03c9655de8b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#7a4e8283-246b-4231-be89-f03c9655de8b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#7a4e8283-246b-4231-be89-f03c9655de8b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#7a4e8283-246b-4231-be89-f03c9655de8b"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#7a4e8283-246b-4231-be89-f03c9655de8b"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#7a4e8283-246b-4231-be89-f03c9655de8b"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategoryHidingInternalEdges.capella#7a4e8283-246b-4231-be89-f03c9655de8b"/>
