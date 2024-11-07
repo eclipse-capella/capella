@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/7.0.0" xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/7.0.0" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/7.0.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/7.0.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/7.0.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/7.0.0" xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/7.0.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/7.0.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/7.0.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/7.0.0" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_UhqokCKQEeKsRIUHLBjAyg" selectedViews="_UkDOMCKQEeKsRIUHLBjAyg _UkMYICKQEeKsRIUHLBjAyg _UkfTECKQEeKsRIUHLBjAyg _UkpEECKQEeKsRIUHLBjAyg _Uky1ECKQEeKsRIUHLBjAyg _Uk7_ACKQEeKsRIUHLBjAyg _QXrDMLMxEeK_zM5FhMocKA" version="15.2.0.202303281325">
+  <viewpoint:DAnalysis uid="_UhqokCKQEeKsRIUHLBjAyg" selectedViews="_UkDOMCKQEeKsRIUHLBjAyg _UkMYICKQEeKsRIUHLBjAyg _UkfTECKQEeKsRIUHLBjAyg _UkpEECKQEeKsRIUHLBjAyg _Uky1ECKQEeKsRIUHLBjAyg _Uk7_ACKQEeKsRIUHLBjAyg _QXrDMLMxEeK_zM5FhMocKA" version="15.4.1.202403191723">
     <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="fragments/OA-Operational%20Activities-Root%20Operational%20Activity-OperationalActivity%201.airdfragment#_xPAiEKMkEeWnZd_rgqfMaw"/>
     <semanticResources>RulesOnIntegrityTest.capella</semanticResources>
     <semanticResources>RulesOnIntegrityTest.afm</semanticResources>
@@ -17,7 +17,7 @@
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="RulesOnIntegrityTest.capella#f3f38e67-cc14-4f88-8cd0-7b75f15a96b6"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_is8n0Cm5EeeMI-hGrn2CTw" name="[MSM] Default Region" repPath="#_is8n0Sm5EeeMI-hGrn2CTw" changeId="1676647831908">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_is8n0Cm5EeeMI-hGrn2CTw" name="[MSM] Default Region" repPath="#_is8n0Sm5EeeMI-hGrn2CTw" changeId="1730972687758">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']"/>
         <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="RulesOnIntegrityTest.capella#b80e6d5e-5b3b-4b5d-a5a9-5bd4d4e9bb92"/>
       </ownedRepresentationDescriptors>
@@ -75,7 +75,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="RulesOnIntegrityTest.capella#05ba5151-e5f4-4eac-b874-c4d0c9a72e3e"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Mh9dK3QvEeamAMxs9g9ZYQ" name="[OABD] OK_OA - Operational Activity Breakdown" repPath="#_fptfgD4lEeKrCu7c08KRvg" changeId="1705401046890">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Mh9dK3QvEeamAMxs9g9ZYQ" name="[OABD] OK_OA - Operational Activity Breakdown" repPath="#_fptfgD4lEeKrCu7c08KRvg" changeId="1730972687758">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="RulesOnIntegrityTest.capella#05ba5151-e5f4-4eac-b874-c4d0c9a72e3e"/>
       </ownedRepresentationDescriptors>
@@ -91,7 +91,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="RulesOnIntegrityTest.capella#eaca9cfa-ce88-4c8e-9a7b-740d3624a615"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Mh9dL3QvEeamAMxs9g9ZYQ" name="[OABD] KO_OA - Operational Activity Breakdown" repPath="#_paA78D4lEeKrCu7c08KRvg" changeId="1705401049146">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Mh9dL3QvEeamAMxs9g9ZYQ" name="[OABD] KO_OA - Operational Activity Breakdown" repPath="#_paA78D4lEeKrCu7c08KRvg" changeId="1730972687758">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="RulesOnIntegrityTest.capella#eaca9cfa-ce88-4c8e-9a7b-740d3624a615"/>
       </ownedRepresentationDescriptors>
@@ -99,7 +99,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg" href="RulesOnIntegrityTest.capella#6c2fd1c7-dcc0-4025-b63e-a15492a23a9b"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LgOYsK7YEe2dGb1QZGN1VA" name="[OABD] Diagram   to   be linked éàä" repPath="#_LgLVYK7YEe2dGb1QZGN1VA" changeId="1679320716571">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LgOYsK7YEe2dGb1QZGN1VA" name="[OABD] Diagram   to   be linked éàä" repPath="#_LgLVYK7YEe2dGb1QZGN1VA" changeId="1730972687758">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="RulesOnIntegrityTest.capella#1236025d-f31f-4a2d-89d7-6d28620281f8"/>
       </ownedRepresentationDescriptors>
@@ -114,7 +114,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="RulesOnIntegrityTest.capella#98742ac2-d79c-49e5-bb45-d12e9405984a"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Mh9dIXQvEeamAMxs9g9ZYQ" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_Z8q9kFwIEeK8o4X9-1v6FA" changeId="1705401052450">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Mh9dIXQvEeamAMxs9g9ZYQ" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_Z8q9kFwIEeK8o4X9-1v6FA" changeId="1730972687758">
         <eAnnotations xmi:type="description:DAnnotation" uid="_Us4dQLRaEe6bJ_qW7OCvSA" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Us5EULRaEe6bJ_qW7OCvSA" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Us5EUbRaEe6bJ_qW7OCvSA" key="hide.computed.physical.links.filter" value="true"/>
@@ -716,7 +716,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']"/>
         </ownedBorderedNodes>
-        <ownedStyle xmi:type="diagram:Square" uid="_bHJMoVwIEeK8o4X9-1v6FA" labelColor="9,92,46" borderSize="1" borderSizeComputationExpression="1" borderColor="9,92,46" labelPosition="node" color="197,255,166">
+        <ownedStyle xmi:type="diagram:Square" uid="_bHJMoVwIEeK8o4X9-1v6FA" labelColor="9,92,46" borderSize="1" borderSizeComputationExpression="1" borderColor="9,92,46" labelPosition="node" width="-1" height="-1" color="197,255,166">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']"/>
@@ -754,7 +754,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']"/>
         </ownedBorderedNodes>
-        <ownedStyle xmi:type="diagram:Square" uid="_bjl4EVwIEeK8o4X9-1v6FA" labelColor="9,92,46" borderSize="1" borderSizeComputationExpression="1" borderColor="9,92,46" labelPosition="node" color="197,255,166">
+        <ownedStyle xmi:type="diagram:Square" uid="_bjl4EVwIEeK8o4X9-1v6FA" labelColor="9,92,46" borderSize="1" borderSizeComputationExpression="1" borderColor="9,92,46" labelPosition="node" width="-1" height="-1" color="197,255,166">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']"/>
@@ -789,7 +789,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']"/>
         </ownedBorderedNodes>
-        <ownedStyle xmi:type="diagram:Square" uid="_leHngFwIEeK8o4X9-1v6FA" labelColor="9,92,46" borderSize="1" borderSizeComputationExpression="1" borderColor="9,92,46" labelPosition="node" color="197,255,166">
+        <ownedStyle xmi:type="diagram:Square" uid="_leHngFwIEeK8o4X9-1v6FA" labelColor="9,92,46" borderSize="1" borderSizeComputationExpression="1" borderColor="9,92,46" labelPosition="node" width="-1" height="-1" color="197,255,166">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']"/>
@@ -2475,7 +2475,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_MuyYMHQvEeamAMxs9g9ZYQ" name="OK_OA" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="RulesOnIntegrityTest.capella#05ba5151-e5f4-4eac-b874-c4d0c9a72e3e"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="RulesOnIntegrityTest.capella#05ba5151-e5f4-4eac-b874-c4d0c9a72e3e"/>
-      <ownedStyle xmi:type="diagram:Square" uid="_T36kILRaEe6bJ_qW7OCvSA" description="_T359ELRaEe6bJ_qW7OCvSA" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" color="247,218,116">
+      <ownedStyle xmi:type="diagram:Square" uid="_T36kILRaEe6bJ_qW7OCvSA" description="_T359ELRaEe6bJ_qW7OCvSA" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" width="-1" height="-1" color="247,218,116">
         <labelFormat>bold</labelFormat>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']"/>
@@ -2561,7 +2561,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_MvAaoHQvEeamAMxs9g9ZYQ" name="KO_OA" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="RulesOnIntegrityTest.capella#eaca9cfa-ce88-4c8e-9a7b-740d3624a615"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="RulesOnIntegrityTest.capella#eaca9cfa-ce88-4c8e-9a7b-740d3624a615"/>
-      <ownedStyle xmi:type="diagram:Square" uid="_UNcvQLRaEe6bJ_qW7OCvSA" description="_UNcIMLRaEe6bJ_qW7OCvSA" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" color="247,218,116">
+      <ownedStyle xmi:type="diagram:Square" uid="_UNcvQLRaEe6bJ_qW7OCvSA" description="_UNcIMLRaEe6bJ_qW7OCvSA" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" width="-1" height="-1" color="247,218,116">
         <labelFormat>bold</labelFormat>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']"/>
@@ -4054,10 +4054,10 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@edgeMappings[name='MSM_Transition']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_RszrICm6EeeMI-hGrn2CTw" width="10" height="5" resizeKind="NSEW">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_RszrICm6EeeMI-hGrn2CTw" width="5" height="5" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.capellacore:Constraint" href="RulesOnIntegrityTest.capella#e57caeaa-086a-4c3b-8149-c42bd1b21a27"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.capellacore:Constraint" href="RulesOnIntegrityTest.capella#e57caeaa-086a-4c3b-8149-c42bd1b21a27"/>
-      <ownedStyle xmi:type="diagram:Square" uid="_RszrISm6EeeMI-hGrn2CTw" borderSize="1" borderSizeComputationExpression="1" borderColor="136,136,136" labelPosition="node" width="10" height="5" color="255,245,181">
+      <ownedStyle xmi:type="diagram:Square" uid="_RszrISm6EeeMI-hGrn2CTw" borderSize="1" borderSizeComputationExpression="1" borderColor="136,136,136" labelPosition="node" width="-1" height="-1" color="255,245,181">
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
@@ -4730,7 +4730,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_M3UHcK7YEe2dGb1QZGN1VA" name="OA  _  to_be_linked éàë" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="RulesOnIntegrityTest.capella#67be48d3-498d-4772-b57d-53919e8536d8"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="RulesOnIntegrityTest.capella#67be48d3-498d-4772-b57d-53919e8536d8"/>
-      <ownedStyle xmi:type="diagram:Square" uid="_M3XKwK7YEe2dGb1QZGN1VA" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" color="247,218,116">
+      <ownedStyle xmi:type="diagram:Square" uid="_M3XKwK7YEe2dGb1QZGN1VA" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" width="-1" height="-1" color="247,218,116">
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']"/>
@@ -4738,7 +4738,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_M3YY4a7YEe2dGb1QZGN1VA" name="KO_OA" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="RulesOnIntegrityTest.capella#58fcff83-081f-49e8-b64d-e503042642ab"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="RulesOnIntegrityTest.capella#58fcff83-081f-49e8-b64d-e503042642ab"/>
-      <ownedStyle xmi:type="diagram:Square" uid="_M3Y_8K7YEe2dGb1QZGN1VA" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" color="247,218,116">
+      <ownedStyle xmi:type="diagram:Square" uid="_M3Y_8K7YEe2dGb1QZGN1VA" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" width="-1" height="-1" color="247,218,116">
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']"/>
@@ -4746,7 +4746,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_M3Y_8q7YEe2dGb1QZGN1VA" name="OK_OA" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="RulesOnIntegrityTest.capella#21f79e9a-700b-4673-9599-58c738a208d2"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="RulesOnIntegrityTest.capella#21f79e9a-700b-4673-9599-58c738a208d2"/>
-      <ownedStyle xmi:type="diagram:Square" uid="_M3ZnAK7YEe2dGb1QZGN1VA" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" color="247,218,116">
+      <ownedStyle xmi:type="diagram:Square" uid="_M3ZnAK7YEe2dGb1QZGN1VA" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" width="-1" height="-1" color="247,218,116">
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']"/>
@@ -4754,7 +4754,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_ORg0la7YEe2dGb1QZGN1VA" name="KO_OA_Diagram" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="RulesOnIntegrityTest.capella#a9972f3e-dcb8-4d59-a0db-56c14a13890f"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="RulesOnIntegrityTest.capella#a9972f3e-dcb8-4d59-a0db-56c14a13890f"/>
-      <ownedStyle xmi:type="diagram:Square" uid="_ORhboK7YEe2dGb1QZGN1VA" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" color="247,218,116">
+      <ownedStyle xmi:type="diagram:Square" uid="_ORhboK7YEe2dGb1QZGN1VA" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" width="-1" height="-1" color="247,218,116">
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']"/>
@@ -4762,7 +4762,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_EtHhd8cnEe2tSJH-SR0Hjw" name="OK_OA_Diagram" width="7" height="7" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="RulesOnIntegrityTest.capella#2e46ca9d-395b-4832-8fc8-fa0ffe0fd207"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="RulesOnIntegrityTest.capella#2e46ca9d-395b-4832-8fc8-fa0ffe0fd207"/>
-      <ownedStyle xmi:type="diagram:Square" uid="_EtKkwMcnEe2tSJH-SR0Hjw" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" color="247,218,116">
+      <ownedStyle xmi:type="diagram:Square" uid="_EtKkwMcnEe2tSJH-SR0Hjw" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" width="-1" height="-1" color="247,218,116">
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']"/>

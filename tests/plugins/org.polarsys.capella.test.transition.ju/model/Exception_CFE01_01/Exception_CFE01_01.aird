@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/7.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_8ROpgNhdEd-aX4asfu-Xbg" selectedViews="_8TUUMNhdEd-aX4asfu-Xbg _8TdeINhdEd-aX4asfu-Xbg _8TnPINhdEd-aX4asfu-Xbg _8UW2ANhdEd-aX4asfu-Xbg _8UW2AdhdEd-aX4asfu-Xbg _8Upw8NhdEd-aX4asfu-Xbg _QaZCALCqEeKR0an6CER6Bg" version="15.2.0.202303281325">
+  <viewpoint:DAnalysis uid="_8ROpgNhdEd-aX4asfu-Xbg" selectedViews="_8TUUMNhdEd-aX4asfu-Xbg _8TdeINhdEd-aX4asfu-Xbg _8TnPINhdEd-aX4asfu-Xbg _8UW2ANhdEd-aX4asfu-Xbg _8UW2AdhdEd-aX4asfu-Xbg _8Upw8NhdEd-aX4asfu-Xbg _QaZCALCqEeKR0an6CER6Bg" version="15.4.1.202403191723">
     <semanticResources>Exception_CFE01_01.capella</semanticResources>
     <semanticResources>Exception_CFE01_01.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_8TUUMNhdEd-aX4asfu-Xbg">
@@ -9,7 +9,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="Exception_CFE01_01.capella#84f31ee4-e392-496e-8847-6916b3f1f62f"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_PBwEEW9zEeaRiLEB1c1Ygg" name="[OEB] Operational Entity - Operational Entity Blank" repPath="#_AmjD8NheEd-aX4asfu-Xbg" changeId="1692710745196">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_PBwEEW9zEeaRiLEB1c1Ygg" name="[OEB] Operational Entity - Operational Entity Blank" repPath="#_AmjD8NheEd-aX4asfu-Xbg" changeId="1730972008777">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="Exception_CFE01_01.capella#0d01117d-2ea1-4603-818a-95524b4fac80"/>
       </ownedRepresentationDescriptors>
@@ -156,7 +156,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_DYoKANheEd-aX4asfu-Xbg" name="OA2" width="7" height="7" labelPosition="node" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="Exception_CFE01_01.capella#3ce1c7e2-cc5e-471f-96ae-19a5369bf16d"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="Exception_CFE01_01.capella#3ce1c7e2-cc5e-471f-96ae-19a5369bf16d"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_DYoKAdheEd-aX4asfu-Xbg" labelColor="91,64,64" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" color="247,218,116">
+        <ownedStyle xmi:type="diagram:Square" uid="_DYoKAdheEd-aX4asfu-Xbg" labelColor="91,64,64" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" width="-1" height="-1" color="247,218,116">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity']"/>
@@ -164,7 +164,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_DlI8ANheEd-aX4asfu-Xbg" name="OA3" width="7" height="7" labelPosition="node" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="Exception_CFE01_01.capella#36a996aa-8efa-4f8c-8334-9eb4d4fd1318"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="Exception_CFE01_01.capella#36a996aa-8efa-4f8c-8334-9eb4d4fd1318"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_DlI8AdheEd-aX4asfu-Xbg" labelColor="91,64,64" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" color="247,218,116">
+        <ownedStyle xmi:type="diagram:Square" uid="_DlI8AdheEd-aX4asfu-Xbg" labelColor="91,64,64" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" width="-1" height="-1" color="247,218,116">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity']"/>
