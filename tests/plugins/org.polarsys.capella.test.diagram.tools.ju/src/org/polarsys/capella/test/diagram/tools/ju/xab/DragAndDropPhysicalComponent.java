@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2024 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -46,6 +46,7 @@ public class DragAndDropPhysicalComponent extends XABDiagramsProject {
 
     testDnDComponentsFromProjectExplorer(context);
     testDnDComponentsBehaviorAndNodeDeployedOrNot(session, context);
+    testDnDComponentsMultipleDeployements(session, context);
   }
 
   public void testDnDComponentsFromProjectExplorer(SessionContext context) {
@@ -64,6 +65,23 @@ public class DragAndDropPhysicalComponent extends XABDiagramsProject {
 
     new DragAndDropFromProjectExplorerTool(diagramContext, "D&D Components From Project Explorer", pc, containerId)
         .run();
+  }
+
+  public void testDnDComponentsMultipleDeployements(Session session, SessionContext context) throws Exception {
+    String PC6 = PA__PAB_COMPONENT_PC6_PART;
+    String PC9 = PA__PAB_PHYSICAL_COMPONENT9;
+    String PC14 = PA__PC_PART_PC14;
+    String PC10 = PA__PAB_PC_COMPONENT10;
+    assertEquals(false, testDnDOnPAB(session, context, PA__PAB_DIAGRAM, PC10, PC9));
+    Runnable checksDnD_PC10toPC6 = () -> {
+      Part semanticPC10 = (Part) context.getSemanticElement(PC10);
+      EObject semanticPC9 = context.getSemanticElement(PC9);
+      EObject semanticPC14 = context.getSemanticElement(PC14);
+
+      assertTrue(semanticPC10.getDeployingParts().contains(semanticPC9));
+      assertFalse(semanticPC10.getDeployingParts().contains(semanticPC14));
+    };
+    assertEquals(true, testDnDOnPAB(session, context, PA__PAB_DIAGRAM, PC10, PC6, checksDnD_PC10toPC6));
   }
 
   public void testDnDComponentsBehaviorAndNodeDeployedOrNot(Session session, SessionContext context) throws Exception {
@@ -124,6 +142,8 @@ public class DragAndDropPhysicalComponent extends XABDiagramsProject {
     expectedNotPossible.add(new Pair<>(NOT_DEPLOYED_BEHAVIOR_DRAGGED, NOT_DEPLOYED_NODE_CONTAINER));
     expectedNotPossible.add(new Pair<>(NOT_DEPLOYED_BEHAVIOR_DRAGGED, DEPLOYED_NODE_CONTAINER));
     expectedNotPossible.add(new Pair<>(NOT_DEPLOYED_BEHAVIOR_DRAGGED, ACTOR_CONTAINER));
+    // Moving PC 8 from PC 1 to PC 1 is not a drag and drop.
+    expectedNotPossible.add(new Pair<>(DEPLOYED_NODE_DRAGGED, NOT_DEPLOYED_NODE_CONTAINER));
 
     // Now testing all combinations of dragged elements and containers
     for (String draggedElement : draggedElements) {
@@ -144,6 +164,11 @@ public class DragAndDropPhysicalComponent extends XABDiagramsProject {
     }
   }
 
+  public boolean testDnDOnPAB(//
+      Session session, SessionContext context, String diagramName, String draggedElement, String containerElement) throws Exception {
+    return testDnDOnPAB(session, context, diagramName, draggedElement, containerElement, null);
+  }
+
   /**
    * Return true if the Drag&Drop of draggedElement into containerElement in PAB diagramName is valid
    * 
@@ -156,7 +181,7 @@ public class DragAndDropPhysicalComponent extends XABDiagramsProject {
    * @throws Exception
    */
   public boolean testDnDOnPAB(//
-      Session session, SessionContext context, String diagramName, String draggedElement, String containerElement)
+      Session session, SessionContext context, String diagramName, String draggedElement, String containerElement, Runnable additionalAssertions)
       throws Exception {
     DiagramContext diagramContext = new OpenDiagramStep(context, diagramName).run();
     XABDiagram diagram = XABDiagram.openDiagram(context, diagramName, BlockArchitectureExt.Type.PA);
@@ -175,6 +200,9 @@ public class DragAndDropPhysicalComponent extends XABDiagramsProject {
     if (containerView instanceof DDiagramElementContainer) {
       DDiagramElementContainer dContainer = (DDiagramElementContainer) containerView;
       boolean result = dContainer.getElements().contains(draggedElementView);
+      if (additionalAssertions != null) {
+        additionalAssertions.run();
+      }
       undo(session, diagramContext);
       return result;
     }
