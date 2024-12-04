@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -16,7 +16,6 @@ import static org.polarsys.capella.common.helpers.cache.ModelCache.getCache;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -25,6 +24,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -93,6 +93,7 @@ import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeEnd;
 import org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation;
@@ -2367,19 +2368,19 @@ public class FaServices {
     // outGoing functiaonalExchages(component
     // Exchange Allocation)
     if (!oldContainer.equals(newComponent)) {
-      removeUseLessPortRealizationAndComponentExchangeAllocation(function, functions);
+      removeUseLessPortRealizationAndComponentExchangeAllocation(function, functions, newContainer);
     }
 
     return function;
   }
 
   private void removeUseLessPortRealizationAndComponentExchangeAllocation(AbstractFunction function,
-      Collection<AbstractFunction> functions) {
+      Collection<AbstractFunction> functions, NamedElement newContainer) {
     Collection<FunctionalExchange> functionalExchanges = new HashSet<>();
     for (AbstractFunction fct : functions) {
       // Find all PortRealization and component exchanges to be deleted
       for (Port port : FunctionExt.getOwnedFunctionPorts(fct)) {
-        removeUselessPortRealizations(port, true, true, false, false);
+        removeUselessPortAllocations(port, newContainer, true, true, false, false);
       }
     }
     // consider incoming and outgoing functionalExchanges of target function
@@ -2985,7 +2986,7 @@ public class FaServices {
 
       // Remove all port outgoing allocations
       for (Port port : ComponentExt.getOwnedComponentPort(component)) {
-        removeUselessPortRealizations(port, false, true, false, false);
+        removeUselessPortAllocations(port, newContainer, false, true, false, false);
       }
 
       // move all deploying links
@@ -3006,7 +3007,7 @@ public class FaServices {
 
       // Remove all port outgoing allocations
       for (Port port : ComponentExt.getOwnedComponentPort(component)) {
-        removeUselessPortRealizations(port, false, true, false, false);
+        removeUselessPortAllocations(port, newContainer, false, true, false, false);
       }
 
       // move all deploying links
@@ -3022,6 +3023,15 @@ public class FaServices {
     return pcMoved;
   }
 
+  EObject removeUselessPortAllocations(Port port, NamedElement newContainer, boolean includeFunctionalRealization, boolean includeComponentRealization,
+      boolean topDelegation, boolean bottomDelegation) {
+    Collection<EObject> elements = new HashSet<>();
+    elements.addAll(retrievePortDelegations(port, topDelegation, bottomDelegation));
+    elements.addAll(retrieveObsoletePortAllocations(port, newContainer, includeFunctionalRealization, includeComponentRealization, bottomDelegation, bottomDelegation));
+    CapellaServices.getService().removeElements(elements);
+    return port;
+  }
+
   /**
    * Perform a dnd of a port.
    * 
@@ -3030,7 +3040,14 @@ public class FaServices {
   EObject removeUselessPortRealizations(Port port, boolean includeFunctionalRealization,
       boolean includeComponentRealization, boolean topDelegation, boolean bottomDelegation) {
     Collection<EObject> elements = new HashSet<>();
+    elements.addAll(retrievePortDelegations(port, topDelegation, bottomDelegation));
+    elements.addAll(retrievePortAllocations(port, includeFunctionalRealization, includeComponentRealization));
+    CapellaServices.getService().removeElements(elements);
+    return port;
+  }
 
+  private Collection<EObject> retrievePortDelegations(Port port, boolean topDelegation, boolean bottomDelegation) {
+    Collection<EObject> delegations = new HashSet<>();
     if (port instanceof ComponentPort) {
       // Retrieve delegation to delete, according to parameters
       for (ComponentExchange exchange : PortExt.getDelegationComponentExchanges((ComponentPort) port)) {
@@ -3046,13 +3063,94 @@ public class FaServices {
         }
 
         if (topDelegation && CsServices.getService().getContainersOfParts(containingPort).contains(delegatedPort)) {
-          elements.add(exchange);
-        } else if (bottomDelegation
-            && CsServices.getService().getContainersOfParts(delegatedPort).contains(containingPort)) {
-          elements.add(exchange);
+          delegations.add(exchange);
+        } else if (bottomDelegation && CsServices.getService().getContainersOfParts(delegatedPort).contains(containingPort)) {
+          delegations.add(exchange);
         }
       }
     }
+    return delegations;
+  }
+
+  /**
+   * This method retrieve all the port's allocations and return those that should be deleted (as they do not make sense
+   * for the new element)
+   * 
+   * @param movingPort
+   *          the port that is being D&Ded
+   * @param newContainer
+   *          the container the port was just Dropped on.
+   * @param includeFunctionalRealization
+   * @param includeComponentRealization
+   * @param topDelegation
+   * @param bottomDelegation
+   * @return
+   */
+  private Collection<Allocation> retrieveObsoletePortAllocations(Port movingPort, NamedElement newContainer, boolean includeFunctionalRealization,
+      boolean includeComponentRealization, boolean topDelegation, boolean bottomDelegation) {
+    Collection<Allocation> elements = new HashSet<Allocation>();
+    Collection<Allocation> allocations = retrievePortAllocations(movingPort, includeFunctionalRealization, includeComponentRealization);
+    if (newContainer instanceof Part) {
+      // case where moving the component's port
+      Component instanciatedComponent = PartExt.getComponentOfPart((Part) newContainer);
+      for (Allocation allocation : allocations) {
+        Port delegatedPort = (allocation.getSourceElement() == movingPort) ? (Port) allocation.getTargetElement() : (Port) allocation.getSourceElement();
+        if (instanciatedComponent == null || !isEObjectInHierarchyOfContainer(delegatedPort.eContainer(), instanciatedComponent)) {
+          elements.add(allocation);
+        }
+      }
+    } else if (newContainer instanceof AbstractFunction) {
+      // case where moving the function's port
+      for (Allocation allocation : allocations) {
+        if (!isEObjectInHierarchyOfContainer(newContainer, allocation.getSourceElement().eContainer())) {
+          elements.add(allocation);
+        }
+      }
+    }
+    return elements;
+  }
+
+  /**
+   * Test two objects to determine if the first one is a subElement of the other. Should eObject be an AbstractFunction,
+   * the test will be done on each of its FunctionalAllocation instead.
+   * 
+   * @param eObject
+   * @param container
+   * @return
+   */
+  private boolean isEObjectInHierarchyOfContainer(EObject eObject, EObject container) {
+    if (eObject == null || container == null) {
+      return false;
+    } else if (eObject == container) {
+      return true;
+    } else if (eObject instanceof AbstractFunction) {
+      AbstractFunction eFunction = (AbstractFunction) eObject;
+      if (eFunction.getComponentFunctionalAllocations().stream().anyMatch(cfa -> isEObjectInHierarchyOfContainer(cfa, container))) {
+        return true;
+      }
+    }
+    if (eObject instanceof ModelElement && eObject.eContainer() != null) {
+      return isEObjectInHierarchyOfContainer(getOwningComponent((ModelElement) eObject), container);
+    }
+    return false;
+  }
+
+  private EObject getOwningComponent(ModelElement eObject) {
+    if (eObject instanceof AbstractFunction) {
+      AbstractFunction eFunction = (AbstractFunction) eObject;
+      Optional<AbstractFunctionalBlock> optional = eFunction.getAllocationBlocks().stream().filter(e -> ComponentExt.getAllSubUsedComponents((Component) e).contains(eObject)).findFirst();
+      if (optional.isPresent()) {
+        return optional.get();
+      }
+    }
+    if (eObject.eContainer() != null) {
+      return eObject.eContainer();
+    }
+    return null;
+  }
+
+  private Collection<Allocation> retrievePortAllocations(Port port, boolean includeFunctionalRealization, boolean includeComponentRealization) {
+    Collection<Allocation> elements = new HashSet<>();
 
     Collection<Allocation> allocations = new HashSet<>();
     allocations.addAll(port.getIncomingPortAllocations());
@@ -3063,27 +3161,21 @@ public class FaServices {
     // Retrieve port allocation according to parameters
     for (Allocation realization : allocations) {
       if (isValidAllocation(realization)) {
-        if ((realization.getSourceElement() != null) && (realization.getTargetElement() != null)) {
 
-          if (includeFunctionalRealization && (realization.getTargetElement() instanceof FunctionPort)) {
-            elements.add(realization);
-          }
+        if (includeFunctionalRealization && (realization.getTargetElement() instanceof FunctionPort)) {
+          elements.add(realization);
+        }
 
-          if ((port instanceof FunctionPort) && includeComponentRealization
-              && (realization.getSourceElement() instanceof FunctionPort)) {
-            elements.add(realization);
-          }
+        if ((port instanceof FunctionPort) && includeComponentRealization && (realization.getSourceElement() instanceof FunctionPort)) {
+          elements.add(realization);
+        }
 
-          if (includeComponentRealization && ((realization.getTargetElement() instanceof ComponentPort)
-              || (realization.getTargetElement() instanceof PhysicalPort))) {
-            elements.add(realization);
-          }
+        if (includeComponentRealization && ((realization.getTargetElement() instanceof ComponentPort) || (realization.getTargetElement() instanceof PhysicalPort))) {
+          elements.add(realization);
         }
       }
     }
-
-    CapellaServices.getService().removeElements(elements);
-    return port;
+    return elements;
   }
 
   /**
@@ -3095,7 +3187,7 @@ public class FaServices {
    */
   public EObject dndABFunctionPort(FunctionPort port, NamedElement oldContainer, NamedElement newContainer) {
 
-    removeUselessPortRealizations(port, true, true, false, false);
+    removeUselessPortAllocations(port, newContainer, true, true, false, false);
 
     // move the port in the new function container
     if (newContainer instanceof AbstractFunction) {
@@ -3119,8 +3211,7 @@ public class FaServices {
     }
 
     moveFunctionalExchanges(port);
-    removeComponentExchangeAllocations(getFunctionalExchanges(port));
-
+    
     return port;
   }
 
@@ -3139,7 +3230,7 @@ public class FaServices {
 
     if (!port.eContainer().equals(newContainer.getType())) {
       removeUselessExchanges(port);
-      removeUselessPortRealizations(port, true, true, false, false);
+      removeUselessPortAllocations(port, newContainer, true, true, false, false);
 
       ((Component) newContainer.getType()).getOwnedFeatures().add(port);
       updateExchanges(port, oldContainer, newContainer);
@@ -3163,7 +3254,7 @@ public class FaServices {
 
     if (!port.eContainer().equals(newContainer.getType())) {
       removeUselessExchanges(port);
-      removeUselessPortRealizations(port, true, true, false, false);
+      removeUselessPortAllocations(port, newContainer, true, true, false, false);
 
       ((Component) newContainer.getType()).getOwnedFeatures().add(port);
       updateComponentExchanges(port, oldContainer, newContainer);
@@ -3365,8 +3456,6 @@ public class FaServices {
     for (FunctionalExchange exchange : functionalExchanges) {
       moveFunctionalExchange(exchange);
     }
-
-    removeComponentExchangeAllocations(functionalExchanges);
   }
 
   /**
