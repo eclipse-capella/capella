@@ -46,6 +46,6 @@ public class HideAssociationLabels extends DefaultActivatedLabelFilterTestCase {
 
   @Override
   protected List<String> getExpectedElementLabels() {
-    return Arrays.asList(new String[] { "& /; ;& /union", "; ;collection 1", "& ; ;class 3" });
+    return Arrays.asList(new String[] { "& /; ;& /union", "collection 1; ;", "class 3; ;& " });
   }
 }

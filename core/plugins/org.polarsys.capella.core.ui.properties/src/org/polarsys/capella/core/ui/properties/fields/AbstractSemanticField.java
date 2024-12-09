@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EDataType;
@@ -427,19 +428,25 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
    * Add data value i.e change given object for given feature with specified value.
    * 
    * @param object
+   *          The EMF EObject to which you want to add the element.
    * @param feature
+   *          The multivalued feature of the EObject to which you want to add the element.
    * @param value
+   *          The value to add to the feature of the object.
+   * @return The command if available, <code>Optional.empty</code> otherwise
    */
-  protected void addDataValue(final EObject object, final EStructuralFeature feature, final Object value) {
+  protected Optional<AbstractReadWriteCommand> createAddDataValueCommand(final EObject object,
+      final EStructuralFeature feature, final Object value) {
     if (NotificationHelper.isNotificationRequired(object, feature, value)) {
-      AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+      return Optional.of(new AbstractReadWriteCommand() {
         @Override
         @SuppressWarnings({ "unchecked", "rawtypes" })
         public void run() {
           ((List) object.eGet(feature)).add(value);
         }
-      };
-      executeCommand(command);
+      });
+    } else {
+      return Optional.empty();
     }
   }
 
@@ -447,12 +454,16 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
    * Move data value.
    * 
    * @param object
+   *          The object to move
    * @param owner
+   *          On which you want to move the object
    * @param feature
+   *          The owner feature in which you want to move the object.
    */
   @SuppressWarnings("unchecked")
-  protected void moveDataValue(final EObject object, final EObject owner, final EStructuralFeature feature) {
-    AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+  protected Optional<AbstractReadWriteCommand> createMoveDataValueCommand(final EObject object, final EObject owner,
+      final EStructuralFeature feature) {
+    return Optional.of(new AbstractReadWriteCommand() {
       @Override
       public void run() {
         if (feature.isMany()) {
@@ -461,20 +472,24 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
           owner.eSet(feature, object);
         }
       }
-    };
-    executeCommand(command);
+    });
   }
 
   /**
    * Remove data value i.e change given object for given feature with specified value.
    * 
    * @param object
+   *          The EMF EObject to which you want to remove the element.
    * @param feature
+   *          The multivalued feature of the EObject to which you want to remove the element.
    * @param value
+   *          The value to remove to the feature of the object.
+   * @return The command if available, <code>Optional.empty</code> otherwise
    */
-  protected void removeDataValue(final EObject object, final EStructuralFeature feature, final Object value) {
+  protected Optional<AbstractReadWriteCommand> createRemoveDataValueCommand(final EObject object,
+      final EStructuralFeature feature, final Object value) {
     if (NotificationHelper.isNotificationRequired(object, feature, value)) {
-      AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+      return Optional.of(new AbstractReadWriteCommand() {
         @Override
         public void run() {
           if ((feature instanceof EReference) && ((EReference) feature).isContainment()) {
@@ -483,8 +498,9 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
             ((List<?>) object.eGet(feature)).remove(value);
           }
         }
-      };
-      executeCommand(command);
+      });
+    } else {
+      return Optional.empty();
     }
   }
 

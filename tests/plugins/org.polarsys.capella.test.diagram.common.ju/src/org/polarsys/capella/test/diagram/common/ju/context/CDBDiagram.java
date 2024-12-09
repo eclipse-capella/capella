@@ -13,14 +13,18 @@
 package org.polarsys.capella.test.diagram.common.ju.context;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.information.Collection;
@@ -29,6 +33,7 @@ import org.polarsys.capella.core.data.information.ExchangeItemElement;
 import org.polarsys.capella.core.data.information.Parameter;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.Service;
+import org.polarsys.capella.core.data.information.impl.ClassImpl;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
@@ -160,26 +165,56 @@ public class CDBDiagram extends CommonDiagram {
     return getSemanticIdFromView(graphicalElement);
   }
 
-  public void reconnectRelationshipSource(String id, String oldSourceId, String newSourceId,
-      RelationshipType relationship) {
-    new ReconnectTool(this, getReconnectSourceRelationshipName(relationship), id, oldSourceId, newSourceId).run();
+  public void reconnectRelationshipSource(String id, String newSourceId, RelationshipType relationship) {
+    if (getView(id) instanceof DEdge dEdge) {
+      if (dEdge.getSourceNode() instanceof DDiagramElement dde) {
+        new ReconnectTool(this, getReconnectSourceRelationshipName(relationship), id, getSemanticIdFromView(dde), newSourceId).run();
+      } else {
+        fail("The source element of the DEdge must be an instance of DDiagramElement.");
+      }
+    } else {
+      fail("The id used for reconnect must correspond to a DEdge element.");
+    }
   }
 
-  public void reconnectRelationshipTarget(String id, String oldTargetId, String newTargetId,
-      RelationshipType relationship) {
-    new ReconnectTool(this, getReconnectTargetRelationshipName(relationship), id, oldTargetId, newTargetId).run();
+  public void reconnectRelationshipTarget(String id, String newTargetId, RelationshipType relationship) {
+    if (getView(id) instanceof DEdge dEdge) {
+      if (dEdge.getTargetNode() instanceof DDiagramElement dde) {
+        new ReconnectTool(this, getReconnectTargetRelationshipName(relationship), id, getSemanticIdFromView(dde), newTargetId).run();
+      } else {
+        fail("The target element of the DEdge must be an instance of DDiagramElement.");
+      }
+    } else {
+      fail("The id used for reconnect must correspond to a DEdge element.");
+    }
   }
 
-  public void cannotReconnectRelationshipSource(String id, String oldSourceId, String newSourceId,
+  public void cannotReconnectRelationshipSource(String id, String newSourceId,
       RelationshipType relationship) {
-    new ReconnectTool(this, getReconnectSourceRelationshipName(relationship), id, oldSourceId, newSourceId)
+    if (getView(id) instanceof DEdge dEdge) {
+      if (dEdge.getSourceNode() instanceof DDiagramElement dde) {
+        new ReconnectTool(this, getReconnectSourceRelationshipName(relationship), id, getSemanticIdFromView(dde), newSourceId)
         .shouldFail();
+      } else {
+        fail("The source element of the DEdge must be an instance of DDiagramElement.");
+      }
+    } else {
+      fail("The id used for reconnect must correspond to a DEdge element.");
+    }
   }
 
-  public void cannotReconnectRelationshipTarget(String id, String oldTargetId, String newTargetId,
+  public void cannotReconnectRelationshipTarget(String id, String newTargetId,
       RelationshipType relationship) {
-    new ReconnectTool(this, getReconnectTargetRelationshipName(relationship), id, oldTargetId, newTargetId)
+    if (getView(id) instanceof DEdge dEdge) {
+      if (dEdge.getTargetNode() instanceof DDiagramElement dde) {
+        new ReconnectTool(this, getReconnectTargetRelationshipName(relationship), id, getSemanticIdFromView(dde), newTargetId)
         .shouldFail();
+      } else {
+        fail("The target element of the DEdge must be an instance of DDiagramElement.");
+      }
+    } else {
+      fail("The id used for reconnect must correspond to a DEdge element.");
+    }
   }
 
   public String createInterfacePackage() {

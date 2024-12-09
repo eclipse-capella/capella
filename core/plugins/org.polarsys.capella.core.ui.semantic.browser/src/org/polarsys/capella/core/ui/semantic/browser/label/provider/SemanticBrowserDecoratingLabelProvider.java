@@ -13,6 +13,7 @@
 package org.polarsys.capella.core.ui.semantic.browser.label.provider;
 
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.internal.navigator.NavigatorDecoratingLabelProvider;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
@@ -32,5 +33,25 @@ public class SemanticBrowserDecoratingLabelProvider extends NavigatorDecoratingL
       return super.getImage(wrappedElement);
     }
     return super.getImage(element);
+  }
+
+  @Override
+  protected StyledString getStyledText(Object element) {
+    if (element instanceof EObjectWrapper) {
+      // Unwrap all other wrappers
+      Object wrappedElement = ((EObjectWrapper) element).getElement();
+      return super.getStyledText(wrappedElement);
+    }
+    return super.getStyledText(element);
+  }
+
+  @Override
+  public String getText(Object element) {
+    if (element instanceof EObjectWrapper) {
+      // Unwrap all other wrappers
+      Object wrappedElement = ((EObjectWrapper) element).getElement();
+      return super.getText(wrappedElement);
+    }
+    return super.getText(element);
   }
 }
