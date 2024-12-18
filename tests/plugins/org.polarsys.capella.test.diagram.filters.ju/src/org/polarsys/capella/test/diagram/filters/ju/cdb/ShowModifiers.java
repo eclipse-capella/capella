@@ -51,8 +51,8 @@ public class ShowModifiers extends LabelFilterTestCase {
   @Override
   protected List<String> getExpectedElementLabels() {
     return Arrays
-        .asList(new String[] { "& / {nonUnique}; ;& /union {nonUnique}", " {nonUnique}; ;collection 1 {nonUnique}",
-            "&  {nonUnique}; ;class 3 {nonUnique}", "; ExchangeItemElement 1 {nonUnique};",
+        .asList(new String[] { "& / {nonUnique}; ;& /union {nonUnique}", "collection 1 {nonUnique}; ; {nonUnique}",
+            "class 3 {nonUnique}; ;&  {nonUnique}", "; ExchangeItemElement 1 {nonUnique};",
             " Property 4 : Double {nonUnique}", " /LongDerivedProperty : LongLong {nonUnique}" });
   }
 }

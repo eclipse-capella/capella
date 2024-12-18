@@ -46,7 +46,7 @@ public class HideRoleNames extends LabelFilterTestCase {
 
   @Override
   protected List<String> getExpectedElementLabels() {
-    return Arrays.asList(new String[] { "& /; ;& /", "; ;", "& ; ;" });
+    return Arrays.asList(new String[] { "& /; ;& /", "; ;", "; ;& " });
   }
 
 }
