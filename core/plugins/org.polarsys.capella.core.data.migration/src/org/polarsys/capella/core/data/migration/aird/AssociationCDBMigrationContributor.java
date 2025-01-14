@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2025 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -139,10 +139,10 @@ public class AssociationCDBMigrationContributor extends AirdMigrationContributor
     dEdge.setTargetNode(sourceNode);
     dEdge.setBeginLabel(endLabel);
     dEdge.setEndLabel(beginLabel);
-    sourceNodeIncommingEdges.add(dEdge);
-    targetNodeOutgoingEdges.add(dEdge);
     sourceNodeOutgoingEdges.remove(dEdge);
     targetNodeIncommingEdges.remove(dEdge);
+    sourceNodeIncommingEdges.add(dEdge);
+    targetNodeOutgoingEdges.add(dEdge);
 
     dEdge.getOwnedStyle().setSourceArrow(targetArrow);
     dEdge.getOwnedStyle().setTargetArrow(sourceArrow);
@@ -286,9 +286,11 @@ public class AssociationCDBMigrationContributor extends AirdMigrationContributor
     Optional<Node> endLabel = edgeChildren.stream().filter(this::isEndLabel).map(Node.class::cast).findAny();
 
     // changes
-    beginLabel.ifPresent(label -> migrateLabelPosition(label, bendpointsList, revBendpointsList));
-    middleLabel.ifPresent(label -> migrateLabelPosition(label, bendpointsList, revBendpointsList));
-    endLabel.ifPresent(label -> migrateLabelPosition(label, bendpointsList, revBendpointsList));
+    if (!bendpointsList.isEmpty()) {
+        beginLabel.ifPresent(label -> migrateLabelPosition(label, bendpointsList, revBendpointsList));
+        middleLabel.ifPresent(label -> migrateLabelPosition(label, bendpointsList, revBendpointsList));
+        endLabel.ifPresent(label -> migrateLabelPosition(label, bendpointsList, revBendpointsList));
+    }
 
     beginLabel.ifPresent(label -> label.setType(SiriusVisualIDRegistry.getType(DEdgeEndNameEditPart.VISUAL_ID)));
     endLabel.ifPresent(label -> label.setType(SiriusVisualIDRegistry.getType(DEdgeBeginNameEditPart.VISUAL_ID)));
