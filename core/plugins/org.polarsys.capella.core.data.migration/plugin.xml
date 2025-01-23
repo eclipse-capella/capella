@@ -201,6 +201,9 @@
       <migrationContributor
             class="org.polarsys.capella.core.data.migration.aird.AutoSizeSquareStyleMigrationContributor">
       </migrationContributor>
+      <migrationContributor
+            class="org.polarsys.capella.core.data.migration.aird.AssociationCDBMigrationContributor">
+      </migrationContributor>
       
    </extension>
    

@@ -24,6 +24,8 @@ public class Messages extends NLS {
   public static String MigrationAction_AutoSizeSquareStyleMigration;
   public static String MigrationAction_DiagramMigration;
   public static String MigrationAction_ImageProjectDependencies;
+  public static String MigrationAction_AssociationCDBMigration;
+  public static String MigrationAction_InvalidEdgeExtremityInvalidType;
 
   static {
     // initialize resource bundle
