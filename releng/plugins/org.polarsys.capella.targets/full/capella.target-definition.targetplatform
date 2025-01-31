@@ -69,7 +69,7 @@ location Orbit-2023-03 "https://download.eclipse.org/tools/orbit/downloads/drops
     ch.qos.logback.core
 }
 
-location sirius "https://download.eclipse.org/sirius/updates/stable/7.4.5-S20241126-110306/2023-03" {
+location sirius "https://download.eclipse.org/sirius/updates/releases/7.4.5/2023-03" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
