@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2025 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -324,19 +324,17 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
     Object[] result = NO_CHILD;
     try {
 
-      if (element instanceof IProject) {
+      if (element instanceof IProject project) {
         // IProjects are top level elements in the tree.
-        result = getIProjectChildren((IProject) element);
+        result = getIProjectChildren(project);
 
-      } else if (element instanceof IFile) {
+      } else if (element instanceof IFile file) {
         // Handle AIRD file case.
-        IFile file = (IFile) element;
         if (CapellaResourceHelper.AIRD_FILE_EXTENSION.equals(file.getFileExtension())) {
           result = getAirdFileChildren(file);
         }
 
-      } else if (element instanceof Session) {
-        Session session = (Session) element;
+      } else if (element instanceof Session session) {
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
 
         IModel referencingModel = ILibraryManager.INSTANCE.getModel(session.getTransactionalEditingDomain());
@@ -349,23 +347,23 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
           HashSet<Resource> resourcesDone = new HashSet<>();
 
           // Add the main model to the top
-          if (referencingModel instanceof CapellaModel) {
-            Project object = ((CapellaModel) referencingModel).getProject(domain);
-            if (object != null) {
-              rootProject.add(object);
+          if (referencingModel instanceof CapellaModel capellaModel) {
+            Project project = capellaModel.getProject(domain);
+            if (project != null) {
+              rootProject.add(project);
+              resourcesDone.add(project.eResource());
             }
-            resourcesDone.add(object.eResource());
           }
 
           // Add referenced libraries
           Collection<IModel> allReferenced = LibraryManagerExt.getAllReferences(referencingModel);
           for (IModel referenced : allReferenced) {
-            if (referenced instanceof CapellaModel) {
-              Project object = ((CapellaModel) referenced).getProject(domain);
-              if (object != null) {
-                resourcesDone.add(object.eResource());
+            if (referenced instanceof CapellaModel capellaModel) {
+              Project project = capellaModel.getProject(domain);
+              if (project != null) {
+                resourcesDone.add(project.eResource());
                 if (referencingModel.isActive(referenced)) {
-                  libraries.add(object);
+                  libraries.add(project);
                 }
               }
             }
@@ -374,10 +372,9 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
           // for any other children from sirius, we add it to the end
           for (Object child : sessionContentProvider.getChildren(element)) {
 
-            if ((child instanceof Resource) && !resourcesDone.contains(child)
-                && (!((Resource) child).getContents().isEmpty())) {
+            if ((child instanceof Resource childResource) && !resourcesDone.contains(child)
+                && (!childResource.getContents().isEmpty())) {
 
-              Resource childResource = (Resource) child;
               // Don't handle semantic fragments as theirs
               // contents are displayed as children of model
               // elements.
@@ -418,15 +415,15 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
         }
         return sessionContentProvider.getChildren(element);
 
-      } else if ((element instanceof Part)
-          && (((Part) element).getOwnedAbstractType() != null && isImplicitView((EObject) element))) {
+      } else if ((element instanceof Part part)
+          && (part.getOwnedAbstractType() != null && isImplicitView(part))) {
         ArrayList<Object> merged = new ArrayList<>();
         merged.addAll(Arrays.asList(sessionContentProvider.getChildren(element)));
-        merged.addAll(Arrays.asList(getChildren(((Part) element).getOwnedAbstractType())));
-        merged.remove(((Part) element).getOwnedAbstractType());
+        merged.addAll(Arrays.asList(getChildren(part.getOwnedAbstractType())));
+        merged.remove(part.getOwnedAbstractType());
         return merged.toArray();
-      } else if (element instanceof RepresentationPackage) {
-        result = ((RepresentationPackage) element).getChildren();
+      } else if (element instanceof RepresentationPackage representationPackage) {
+        result = representationPackage.getChildren();
       } else {
         // Other cases are delegated to the session content provider.
         result = sessionContentProvider.getChildren(element);
