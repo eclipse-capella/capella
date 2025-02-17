@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_7.0.1-->
+<!--Capella_Version_7.0.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/7.0.0"
     xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/7.0.0"
@@ -341,7 +341,7 @@
               target="#60dc5173-5420-44c0-bedf-ad3f6958a79d" source="#cc39bfa2-731b-448d-a8b7-a45d1cf45a97"/>
         </ownedOperationalActivities>
       </ownedFunctionPkg>
-            <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
+      <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
           id="58cb491f-bea3-445b-aaa6-05879e858cb7" name="Operational Capabilities">
         <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
             id="2569c843-e368-451c-b7be-67af191a35a3" name="Entertain During Flight">
@@ -1533,7 +1533,7 @@
               source="#b9ace19f-2d94-412d-ae1e-34b6fe329b6f"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
-            <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
+      <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
           id="7fdc15cd-094b-4f7c-bd92-6c8d001fb5e7" name="Capabilities">
         <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
             id="291fb362-9ae5-4779-8405-1281ea3709f6" name="Provide Audio and Video Intercommunication Means"
@@ -5141,7 +5141,7 @@
               target="#a4a24937-7365-4018-8951-9aeb80e8d835" source="#8a4862f6-3229-4eae-80db-0f324420cb6d"/>
         </ownedLogicalFunctions>
       </ownedFunctionPkg>
-            <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
+      <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="75619fc8-f3c7-4415-8824-6c9457c7ed7b" name="Capabilities">
         <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
             id="1e4331eb-1825-4c48-85b4-dbe2109ea37e" targetElement="#7fdc15cd-094b-4f7c-bd92-6c8d001fb5e7"

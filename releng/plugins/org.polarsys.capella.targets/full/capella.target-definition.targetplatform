@@ -69,7 +69,7 @@ location Orbit-2023-03 "https://download.eclipse.org/tools/orbit/downloads/drops
     ch.qos.logback.core
 }
 
-location sirius "https://download.eclipse.org/sirius/updates/releases/7.4.1/2023-03" {
+location sirius "https://download.eclipse.org/sirius/updates/releases/7.4.5/2023-03" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
@@ -82,7 +82,7 @@ location sirius "https://download.eclipse.org/sirius/updates/releases/7.4.1/2023
 	org.eclipse.sirius.runtime.ide.ui.acceleo.source.feature.group
 }
 
-location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/nightly/runtime/master/" {
+location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/releases/runtime/7.0.1/" {
 	org.polarsys.kitalpha.ad.runtime.feature.source.feature.group
 	org.polarsys.kitalpha.cadence.feature.source.feature.group
 	org.polarsys.kitalpha.common.feature.source.feature.group
@@ -107,7 +107,7 @@ location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/upd
 	org.polarsys.kitalpha.sirius.rotativeimage.feature.source.feature.group
 }
 
-location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/nightly/sdk/master/" {
+location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/releases/sdk/7.0.1/" {
 	org.polarsys.kitalpha.doc.feature.feature.group
 	org.polarsys.kitalpha.emde.sdk.feature.source.feature.group
 }

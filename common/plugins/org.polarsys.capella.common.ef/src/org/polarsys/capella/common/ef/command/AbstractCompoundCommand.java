@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.Assert;
 
@@ -55,8 +56,20 @@ public abstract class AbstractCompoundCommand extends AbstractCommand {
   }
 
   /**
+   * Append specified optional command to this compound command's list of commands if this optional command is present.
+   * 
+   * @param command
+   *          the added command.
+   */
+  public void appendIfPresent(Optional<? extends ICommand> optCommand) {
+    optCommand.ifPresent(command -> _commands.add(command));
+  }
+
+  /**
    * Prepend specified command to this compound command's list of commands.
-   * @param command the added command.
+   * 
+   * @param command
+   *          the added command.
    */
   public void prepend(ICommand command) {
     _commands.add(0, command);
@@ -91,6 +104,7 @@ public abstract class AbstractCompoundCommand extends AbstractCommand {
   /**
    * @see org.polarsys.capella.common.ef.command.ICommand#isReadOnly()
    */
+  @Override
   public boolean isReadOnly() {
     boolean isReadOnly = true;
     // Iterate over contained commands to search one that is not a read only one.
@@ -105,6 +119,7 @@ public abstract class AbstractCompoundCommand extends AbstractCommand {
   /**
    * @see java.lang.Runnable#run()
    */
+  @Override
   public void run() {
     // Iterate over contained commands to run each contained command.
     for (ICommand command : _commands) {

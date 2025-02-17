@@ -1841,7 +1841,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="DT_Association" preconditionExpression="aql:self.getAssociationProperties()->size() = 2 and not (self.hasNonPrimitiveEnds())" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="service:diagram.getCDBAssociationSemanticCandidates" semanticElements="aql:self.makeUnion(self, self.ownedMembers, self.navigableMembers)" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Class']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Class'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Collection']" targetFinderExpression="aql:self.getAssociationTarget().abstractType" sourceFinderExpression="aql:self.getAssociationSource().abstractType" domainClass="Association" useDomainElement="true" reconnections="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Association%20Source'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Association%20Target']">
+        <edgeMappings name="DT_Association" preconditionExpression="aql:self.getAssociationProperties()->size() = 2 and not (self.hasNonPrimitiveEnds())" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="service:diagram.getCDBAssociationSemanticCandidates" semanticElements="aql:self.makeUnion(self, self.ownedMembers, self.navigableMembers)" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Class'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Collection']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Class'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Collection']" targetFinderExpression="aql:self.getAssociationTarget().abstractType" sourceFinderExpression="aql:self.getAssociationSource().abstractType" domainClass="Association" useDomainElement="true" reconnections="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Association%20Source'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Association%20Target']">
           <style targetArrow="NoDecoration">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <beginLabelStyleDescription showIcon="false" labelExpression="aql:self.getAssociationBeginRoleLabel(self,self.getAssociationSource(),view)">
@@ -1868,7 +1868,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.getAssociationTarget().aggregationKind = information::AggregationKind::ASSOCIATION) and (self.getAssociationSource().aggregationKind = information::AggregationKind::ASSOCIATION) and (self.navigableMembers->includes(self.getAssociationSource())) and (not (self.navigableMembers->includes(self.getAssociationTarget())))">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrow" targetArrow="NoDecoration">
               <beginLabelStyleDescription showIcon="false" labelExpression="aql:self.getAssociationBeginRoleLabel(self,self.getAssociationSource(),view)">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1920,7 +1920,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.getAssociationTarget().aggregationKind = information::AggregationKind::ASSOCIATION) and (self.getAssociationSource().aggregationKind = information::AggregationKind::AGGREGATION) and (self.navigableMembers->includes(self.getAssociationSource())) and (not (self.navigableMembers->includes(self.getAssociationTarget())))">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrowWithDiamond" targetArrow="NoDecoration">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrow" targetArrow="Diamond">
               <beginLabelStyleDescription showIcon="false" labelExpression="aql:self.getAssociationBeginRoleLabel(self,self.getAssociationSource(),view)">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1946,7 +1946,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.getAssociationTarget().aggregationKind = information::AggregationKind::ASSOCIATION) and (self.getAssociationSource().aggregationKind = information::AggregationKind::COMPOSITION) and (self.navigableMembers->size() = 0)">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" targetArrow="Diamond">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" targetArrow="FillDiamond">
               <beginLabelStyleDescription showIcon="false" labelExpression="aql:self.getAssociationBeginRoleLabel(self,self.getAssociationSource(),view)">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
@@ -1972,7 +1972,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.getAssociationTarget().aggregationKind = information::AggregationKind::ASSOCIATION) and (self.getAssociationSource().aggregationKind = information::AggregationKind::COMPOSITION) and (self.navigableMembers->includes(self.getAssociationSource())) and (not (self.navigableMembers->includes(self.getAssociationTarget())))">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrowWithDiamond" targetArrow="FillDiamond">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Association_Color']" sourceArrow="InputArrow" targetArrow="FillDiamond">
               <beginLabelStyleDescription showIcon="false" labelExpression="aql:self.getAssociationBeginRoleLabel(self,self.getAssociationSource(),view)">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
