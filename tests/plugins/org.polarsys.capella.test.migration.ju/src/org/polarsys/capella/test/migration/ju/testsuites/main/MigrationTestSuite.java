@@ -21,6 +21,7 @@ import org.polarsys.capella.test.migration.ju.fwk.EFactoryTest;
 import org.polarsys.capella.test.migration.ju.fwk.NsPrefixTest;
 import org.polarsys.capella.test.migration.ju.fwk.PackageRegistryTest;
 import org.polarsys.capella.test.migration.ju.fwk.TestOfTest;
+import org.polarsys.capella.test.migration.ju.testcases.basic.AssociationCDBMigrationNonRegressionTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.EnableFCAndPPFiltersMigrationTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.FunctionalChainNonRegressionTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.ImagePathInRichTextAttributeMigrationTest;
@@ -68,6 +69,7 @@ public class MigrationTestSuite extends BasicTestSuite {
     tests.add(new MigrationEnabledTest());
     tests.add(new EnableFCAndPPFiltersMigrationTest());
     tests.add(new ImagePathInRichTextAttributeMigrationTest());
+    tests.add(new AssociationCDBMigrationNonRegressionTest());
     return tests;
   }
 }
