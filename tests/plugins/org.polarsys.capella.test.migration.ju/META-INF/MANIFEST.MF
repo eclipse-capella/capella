@@ -12,7 +12,8 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.test.diagram.common.ju,
  org.polarsys.capella.test.diagram.layout.ju,
  org.polarsys.capella.core.compare,
- org.polarsys.capella.common.re
+ org.polarsys.capella.common.re,
+ org.polarsys.capella.core.af.integration
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Vendor: %providerName
