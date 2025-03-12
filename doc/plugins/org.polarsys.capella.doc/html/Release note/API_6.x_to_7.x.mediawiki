@@ -9,7 +9,7 @@ Capella 7.x is built with Eclipse 2023-03.
 
 === Version major increased ===
 
-Metamodels have been updated to 7.0.1.
+Metamodels have been updated to 7.0.0.
 
 === Diagram capabilities ===
 
@@ -33,7 +33,10 @@ Label decorations in Semantic Browser are now present and consistent with the Pr
 
 Capella 7 supports the migration of Capella models from Capella 1.4 - i.e. from Capella 1.4.x, 5.x, 6.x.
 
-== Raw API changes from 6.1.0 to 7.0.1 ==
+Models from previous versions and from 7.0.0 have to be migrated.
+
+== Raw API changes from 6.1.0 to 7.0.0 ==
+
 
 ==== Changes in <code>org.polarsys.capella.common.helpers</code>====
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.common.helpers.EObjectExt.getAllFiltered(EObject, EClass, List<EClass>)</code>
@@ -249,6 +252,8 @@ Capella 7 supports the migration of Capella models from Capella 1.4 - i.e. from 
 * <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.model.helpers.BlockArchitectureExt.getRequirementsPkg(BlockArchitecture, boolean)</code>
 * <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.model.helpers.BlockArchitectureExt.isDefaultNameRequirementsPkg(AbstractNamedElement)</code>
 * <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.model.helpers.BlockArchitectureExt.getRequirementsPkg(BlockArchitecture)</code>
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.model.helpers.StateExt.getRecursiveSubStates(State)</code>
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.model.helpers.StateExt.getNonPseudoRecursiveSubStates(State)</code>
 
 ==== Changes in <code>org.polarsys.capella.core.platform.eclipse.ui.trace</code>====
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/jcu_obj.png|16px]] <code>org.polarsys.capella.core.platform.eclipse.capella.ui.trace.extension.ITraceExtension</code>
@@ -343,6 +348,8 @@ Capella 7 supports the migration of Capella models from Capella 1.4 - i.e. from 
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.sirius.analysis.CsServices.isValidCreationPhysicalLink(EObject)</code>
 * <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.sirius.analysis.CsServices.apply(EObject)</code>
 * <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.sirius.analysis.CsServices.compare(CapellaElement, CapellaElement)</code>
+* <span class="labels"><span class="label label-warning">Deprecated</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.sirius.analysis.DDiagramContents.getNode(EObject)</code>
+* <span class="labels"><span class="label label-warning">Deprecated</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.sirius.analysis.DDiagramContents.getEdge(EObject)</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.sirius.analysis.DiagramServices.getRelatedFunctionalChainElements(DSemanticDiagram, List<DSemanticDecorator>)</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.sirius.analysis.DiagramServices.getRelatedPhysicalPathElements(DSemanticDiagram, List<DSemanticDecorator>)</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.sirius.analysis.FunctionalChainServices.updateFunctionalExchangePieIcon(DEdge, Set<FunctionalChain>, Map<FunctionalChain, DNode>)</code>
@@ -360,6 +367,18 @@ Capella 7 supports the migration of Capella models from Capella 1.4 - i.e. from 
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/jcu_obj.png|16px]] <code>org.polarsys.capella.core.sirius.ui.testers.ValidFCSelectionMenuTargetTester</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/jcu_obj.png|16px]] <code>org.polarsys.capella.core.sirius.ui.testers.ValidOPSelectionMenuTargetTester</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/jcu_obj.png|16px]] <code>org.polarsys.capella.core.sirius.ui.testers.ValidPPSelectionMenuTargetTester</code>
+
+==== Changes in <code>org.polarsys.capella.core.ui.properties.richtext</code>====
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.ui.properties.richtext.CapellaMDERichTextFactory.createMinimalRichTextWidget(Composite)</code>
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.ui.properties.richtext.CapellaMDERichTextFactory.createDefaultRichTextWidget(Composite)</code>
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.ui.properties.richtext.CapellaMDERichTextFactory.createEditorRichTextWidget(Composite)</code>
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.ui.properties.richtext.CapellaMDERichTextFactory.keyPressed(KeyEvent)</code>
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.ui.properties.richtext.clipboard.RichTextLinksHelper.addCopiedElements(Collection<EObject>)</code>
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.ui.properties.richtext.clipboard.RichTextLinksHelper.getCopiedElements()</code>
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.ui.properties.richtext.clipboard.RichTextLinksHelper.clearCopiedElements()</code>
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.ui.properties.richtext.clipboard.RichTextLinksHelper.getCopiedElementsLinksHtml()</code>
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.ui.properties.richtext.clipboard.RichTextLinksHelper.getElementsLinksHtml(Collection<EObject>)</code>
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/jcu_obj.png|16px]] <code>org.polarsys.capella.core.ui.properties.richtext.handlers.PasteAsDescriptionLinkHandler</code>
 
 ==== Changes in <code>org.polarsys.capella.core.ui.properties</code>====
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.ui.properties.wizards.CapellaWizardDialog.close()</code>
@@ -409,3 +428,22 @@ Capella 7 supports the migration of Capella models from Capella 1.4 - i.e. from 
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.ui.intro.views.WelcomeView.dispose()</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.ui.intro.views.WelcomeView.saveState(IMemento)</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.ui.intro.views.WelcomeView.getControl()</code>
+
+
+== Raw API changes from 7.0.0 to 7.0.1 ==
+
+==== Changes in <code>org.polarsys.capella.common.ef</code>====
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.common.ef.command.AbstractCompoundCommand.appendIfPresent(Optional<? extends ICommand>)</code>
+
+==== Changes in <code>org.polarsys.capella.core.af.integration</code>====
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.af.integration.CapellaMetadataProvider.isMigrationRequired(Version, Version)</code>
+
+==== Changes in <code>org.polarsys.capella.core.data.migration</code>====
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/jcu_obj.png|16px]] <code>org.polarsys.capella.core.data.migration.aird.AssociationCDBMigrationContributor</code>
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.data.migration.aird.AssociationCDBMigrationContributor.getRunnable(IFile)</code>
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.data.migration.aird.AssociationCDBMigrationContributor.getName()</code>
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.data.migration.aird.AssociationCDBMigrationContributor.run(MigrationContext, boolean)</code>
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.data.migration.aird.AssociationCDBMigrationContributor.getKind()</code>
+
+==== Changes in <code>org.polarsys.capella.core.ui.semantic.browser</code>====
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.ui.semantic.browser.label.provider.SemanticBrowserDecoratingLabelProvider.getText(Object)</code>

@@ -18,6 +18,7 @@ import java.util.List;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.migration.ju.fwk.EFactoryTest;
+import org.polarsys.capella.test.migration.ju.fwk.MigrationRequiredTest;
 import org.polarsys.capella.test.migration.ju.fwk.NsPrefixTest;
 import org.polarsys.capella.test.migration.ju.fwk.PackageRegistryTest;
 import org.polarsys.capella.test.migration.ju.fwk.TestOfTest;
@@ -52,6 +53,7 @@ public class MigrationTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new MigrationRequiredTest());
     tests.add(new EFactoryTest());
     tests.add(new NsPrefixTest());
     tests.add(new PackageRegistryTest());

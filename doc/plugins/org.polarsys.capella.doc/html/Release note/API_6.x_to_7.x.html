@@ -14,7 +14,7 @@
 		<h3 id="Migration_to_Eclipse_2023-03">Migration to Eclipse 2023-03</h3>
 		<p>Capella 7.x is built with Eclipse 2023-03.</p>
 		<h3 id="Version_major_increased">Version major increased</h3>
-		<p>Metamodels have been updated to 7.0.1.</p>
+		<p>Metamodels have been updated to 7.0.0.</p>
 		<h3 id="Diagram_capabilities">Diagram capabilities</h3>
 		<p>Paste options were renamed and a new option Paste Style was added.</p>
 		<p>A new option was added that allow to paste quickly image from clipboard on nodes in diagram.</p>
@@ -26,7 +26,8 @@
 		<p>Label decorations in Semantic Browser are now present and consistent with the Project Explorer.</p>
 		<h3 id="Migration">Migration</h3>
 		<p>Capella 7 supports the migration of Capella models from Capella 1.4 - i.e. from Capella 1.4.x, 5.x, 6.x.</p>
-		<h2 id="Raw_API_changes_from_6.1.0_to_7.0.1">Raw API changes from 6.1.0 to 7.0.1</h2>
+		<p>Models from previous versions and from 7.0.0 have to be migrated.</p>
+		<h2 id="Raw_API_changes_from_6.1.0_to_7.0.0">Raw API changes from 6.1.0 to 7.0.0</h2>
 		<h4 id="Changes_in_org.polarsys.capella.common.helpers">Changes in <code>org.polarsys.capella.common.helpers</code></h4>
 		<ul>
 			<li><span class="labels"><span class="label label-success">Added</span></span>
@@ -639,6 +640,12 @@
 			<li><span class="labels"><span class="label label-error">Removed</span></span>
 				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.model.helpers.BlockArchitectureExt.getRequirementsPkg(BlockArchitecture)</code>
 			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.model.helpers.StateExt.getRecursiveSubStates(State)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.model.helpers.StateExt.getNonPseudoRecursiveSubStates(State)</code>
+			</li>
 		</ul>
 		<h4 id="Changes_in_org.polarsys.capella.core.platform.eclipse.ui.trace">Changes in <code>org.polarsys.capella.core.platform.eclipse.ui.trace</code></h4>
 		<ul>
@@ -906,6 +913,12 @@
 				<img width="16" border="0" src="../Images/methpub_obj.png"/>
 				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.sirius.analysis.CsServices.compare(CapellaElement, CapellaElement)</code>
 			</li>
+			<li><span class="labels"><span class="label label-warning">Deprecated</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.DDiagramContents.getNode(EObject)</code>
+			</li>
+			<li><span class="labels"><span class="label label-warning">Deprecated</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.DDiagramContents.getEdge(EObject)</code>
+			</li>
 			<li><span class="labels"><span class="label label-success">Added</span></span>
 				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.sirius.analysis.DiagramServices.getRelatedFunctionalChainElements(DSemanticDiagram, List&lt;DSemanticDecorator&gt;)</code>
 			</li>
@@ -954,6 +967,43 @@
 			</li>
 			<li><span class="labels"><span class="label label-success">Added</span></span>
 				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.sirius.ui.testers.ValidPPSelectionMenuTargetTester</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.ui.properties.richtext">Changes in <code>org.polarsys.capella.core.ui.properties.richtext</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.ui.properties.richtext.CapellaMDERichTextFactory.createMinimalRichTextWidget(Composite)</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.ui.properties.richtext.CapellaMDERichTextFactory.createDefaultRichTextWidget(Composite)</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.ui.properties.richtext.CapellaMDERichTextFactory.createEditorRichTextWidget(Composite)</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.ui.properties.richtext.CapellaMDERichTextFactory.keyPressed(KeyEvent)</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.ui.properties.richtext.clipboard.RichTextLinksHelper.addCopiedElements(Collection&lt;EObject&gt;)</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.ui.properties.richtext.clipboard.RichTextLinksHelper.getCopiedElements()</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.ui.properties.richtext.clipboard.RichTextLinksHelper.clearCopiedElements()</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.ui.properties.richtext.clipboard.RichTextLinksHelper.getCopiedElementsLinksHtml()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.ui.properties.richtext.clipboard.RichTextLinksHelper.getElementsLinksHtml(Collection&lt;EObject&gt;)</code>
+			</li>
+			<li><span class="labels"><span class="label label-error">Removed</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.ui.properties.richtext.handlers.PasteAsDescriptionLinkHandler</code>
 			</li>
 		</ul>
 		<h4 id="Changes_in_org.polarsys.capella.core.ui.properties">Changes in <code>org.polarsys.capella.core.ui.properties</code></h4>
@@ -1107,6 +1157,48 @@
 			</li>
 			<li><span class="labels"><span class="label label-success">Added</span></span>
 				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.ui.intro.views.WelcomeView.getControl()</code>
+			</li>
+		</ul>
+		<h2 id="Raw_API_changes_from_7.0.0_to_7.0.1">Raw API changes from 7.0.0 to 7.0.1</h2>
+		<h4 id="Changes_in_org.polarsys.capella.common.ef">Changes in <code>org.polarsys.capella.common.ef</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.common.ef.command.AbstractCompoundCommand.appendIfPresent(Optional&lt;? extends ICommand&gt;)</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.af.integration">Changes in <code>org.polarsys.capella.core.af.integration</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/> <code>org.polarsys.capella.core.af.integration.CapellaMetadataProvider.isMigrationRequired(Version, Version)</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.data.migration_2">Changes in <code>org.polarsys.capella.core.data.migration</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/jcu_obj.png"/> <code>org.polarsys.capella.core.data.migration.aird.AssociationCDBMigrationContributor</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.migration.aird.AssociationCDBMigrationContributor.getRunnable(IFile)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.migration.aird.AssociationCDBMigrationContributor.getName()</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.migration.aird.AssociationCDBMigrationContributor.run(MigrationContext, boolean)</code>
+			</li>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.data.migration.aird.AssociationCDBMigrationContributor.getKind()</code>
+			</li>
+		</ul>
+		<h4 id="Changes_in_org.polarsys.capella.core.ui.semantic.browser_2">Changes in <code>org.polarsys.capella.core.ui.semantic.browser</code></h4>
+		<ul>
+			<li><span class="labels"><span class="label label-success">Added</span></span>
+				<img width="16" border="0" src="../Images/methpub_obj.png"/>
+				<img width="8" border="0" src="../Images/over_co.png"/> <code>org.polarsys.capella.core.ui.semantic.browser.label.provider.SemanticBrowserDecoratingLabelProvider.getText(Object)</code>
 			</li>
 		</ul>
 	</body>
