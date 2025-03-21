@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2024 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -930,6 +930,172 @@ Interface should be linked to the realized ExchangeItem.
                </description>
             </constraint>
          </constraints>
+         <constraints
+               categories="capella.category/description.and.summary/mandatory.description">
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.component.DSC_Component"
+                  id="DS_1-1"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DS_1-1 - Components"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} "{1}" must have a description
+               </message>
+               <description>
+                  Ensure that Components have a description
+               </description>
+               <target
+                     class="LogicalComponent">
+               </target>
+               <target
+                     class="PhysicalComponent">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.DSC_Interface"
+                  id="DS_1-5"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DS_1-5 - Interfaces"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} "{1}" must have a description
+               </message>
+               <description>
+                  Ensure that Interfaces have a description
+               </description>
+               <target
+                     class="Interface">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.component.DSC_Actor"
+                  id="DS_1-10"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DS_1-10 - Actors should have a description"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} "{1}" must have a description.
+               </message>
+               <description>
+                  Actors should have a description.
+               </description>
+               <target
+                     class="Component">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/description.and.summary/mandatory.summary">
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.component.SUM_Component"
+                  id="DS_2-1"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DS_2-1 - Components"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} "{1}" must have a summary
+               </message>
+               <description>
+                  Ensure that Components have a summary
+               </description>
+               <target
+                     class="LogicalComponent">
+               </target>
+               <target
+                     class="PhysicalComponent">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.SUM_Interface"
+                  id="DS_2-4"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DS_2-4 - Interfaces"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} "{1}" must have a summary
+               </message>
+               <description>
+                  Ensure that Interfaces have a summary
+               </description>
+               <target
+                     class="Interface">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints categories="capella.category/functional/coherence">
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.component.CompsWithOneCE"
+                  id="FC_1"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="FC_1 - Components and actors should be connected by at least one CE"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  Component/Actor "{0}" should be connected by at least one Component Exchange.
+               </message>
+               <description>
+                  Components and actors should be connected by at least one CE.
+               </description>
+               <target
+                     class="Component">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.component.ActorNameUnicity"
+                  id="FC_11"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="FC_11 - Actors name shall be unique"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  Actor name shall be unique, "{0}" conflicting with "{1}".
+               </message>
+               <description>
+                  Actors name shall be unique.
+               </description>
+               <target
+                     class="Component">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.InterfaceEIsSameAsItsCEsEIs"
+                  id="FC_12"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="FC_12 - The interface EI shall be identical at SA to the CE EI allocated"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  Interface "{0}" has allocated EIs different from it's related ComponentExchanges EIs : EI "{1}" is allocated to {2} only
+               </message>
+               <description>
+                  The interface EI shall be identical at SA to the CE EI allocated.
+               </description>
+               <target
+                     class="Interface">
+               </target>
+            </constraint>
+        </constraints>
       </constraintProvider>
       
       
