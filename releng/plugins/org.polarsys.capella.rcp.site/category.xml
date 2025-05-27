@@ -30,5 +30,8 @@
    <feature id="org.polarsys.capella.viatra.core.feature" version="7.0.1.qualifier">
       <category name="org.polarsys.capella.rcp"/>
    </feature>
+   <feature id="org.polarsys.capella.core.sirius.elk.feature">
+      <category name="org.polarsys.capella.rcp"/>
+   </feature>
    <category-def name="org.polarsys.capella.rcp" label="Capella"/>
 </site>
