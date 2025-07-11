@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>ELK Integration</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="ELK_Integration">ELK Integration</h1>
+		<p>Eclipse Layout Kernel (or ELK) offers a collection of layout algorithms. Sirius diagrams, on the other side, can
+			be extended to use such algorithms when performing 
+			<b>
+				<i>Layout</i>
+			</b> command.
+		</p>
+		<p>Some of those layout algorithms have been integrated in Capella Diagrams to improve 
+			<b>
+				<i>Layout All</i>
+			</b> 
+			action from the diagram toolbar.
+		</p>
+		<p>When using 
+			<b>Capella ELK integration</b> Feature, default layout algorithm is replaced by an ELK algorithm.
+		</p>
+		<h2 id="Selecting_an_algorithm">Selecting an algorithm</h2>
+		<p>To change layout algorithm for a open diagram, select the background of diagram and in the 
+
+			<b>
+				<i>Rulers &amp; Grid</i>
+			</b> tab of 
+			<b>
+				<i>Properties</i>
+			</b> view, pick a choice from 
+			<b>
+				<i>Algorithm</i>
+			</b> list.
+		</p>
+		<p>
+			<center><img width="300" align="middle" border="0" src="Images/captures/AlgorithmProperties.PNG"/></center>
+		</p>
+		<p>
+			<b>
+				<i>Default</i>
+			</b> algorithm will restore the default behavior for 
+			<b>
+				<i>Layout</i>
+			</b> actions implemented by Draw2D.
+		</p>
+		<h2 id="Samples">Samples</h2>
+		<p>This section shows the influence of algorithm on 
+			<b>
+				<i>Layout All</i>
+			</b> action.
+		</p>
+		<p>For the same Architecture Blank diagram, algorithm choice leads to different result.</p>
+		<table>
+			<tr>
+				<th>Algorithm               </th>
+				<th>
+					<b>
+						<i>Layout All</i>
+					</b> result
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<i>ELK Layer Horizontal</i> 
+				</td>
+				<td style="text-align:center;">
+					<img width="443" align="middle" border="0" src="Images/captures/LAB-Result-horizontal.PNG"/> 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<i>ELK Layer Vertical</i>   
+				</td>
+				<td style="text-align:center;">
+					<img width="230" align="middle" border="0" src="Images/captures/LAB-Result-vertical.PNG"/> 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<i>Default</i>              
+				</td>
+				<td style="text-align:center;">
+					<img width="206" align="middle" border="0" src="Images/captures/LAB-Result-default.PNG"/> 
+				</td>
+			</tr>
+		</table>
+		<h2 id="Caveats">Caveats</h2>
+		<p>ELK layouts are not compatible with 
+			<b>
+				<i>Snap to Grid</i>
+			</b> behavior. When using any of them, you should disable 
+			this option otherwise Ports and Lines may be misplaced.
+		</p>
+		<p>This feature is considered as experimental because of remaining bugs concerning the ELK behavior and 
+			integration.</p>
+	</body>
+</html>

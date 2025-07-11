@@ -297,6 +297,7 @@
 				<module>ext/viatra/plugins/org.polarsys.capella.viatra.core.data.gen</module>
 
 				<module>ext/elk/plugins/org.polarsys.capella.core.sirius.elk</module>
+				<module>ext/elk/plugins/org.polarsys.capella.core.sirius.elk.doc</module>
 				<module>ext/elk/features/org.polarsys.capella.core.sirius.elk.feature</module>
 				
 
