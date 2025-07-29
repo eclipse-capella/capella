@@ -7,36 +7,38 @@
 	</head>
 	<body>
 		<h1 id="ELK_Integration">ELK Integration</h1>
-		<p>Eclipse Layout Kernel (or ELK) offers a collection of layout algorithms. Sirius diagrams, on the other side, can
-			be extended to use such algorithms when performing 
+		<p>The Eclipse Layout Kernel (or ELK) provides a collection of layout algorithms. Sirius diagrams, on
+			the other side, can be extended to use such algorithms when performing 
 			<b>
 				<i>Layout</i>
 			</b> command.
 		</p>
-		<p>Some of those layout algorithms have been integrated in Capella Diagrams to improve 
+		<p>Some of these layout algorithms have been integrated into Capella Diagrams to improve 
+
 			<b>
 				<i>Layout All</i>
-			</b> 
-			action from the diagram toolbar.
+			</b> action from the diagram toolbar.
 		</p>
-		<p>When using 
-			<b>Capella ELK integration</b> Feature, default layout algorithm is replaced by an ELK algorithm.
+		<p>When using the 
+			<b>Capella ELK integration</b> Feature, the default layout algorithm is replaced by
+			an ELK algorithm.
 		</p>
 		<h2 id="Selecting_an_algorithm">Selecting an algorithm</h2>
-		<p>To change layout algorithm for a open diagram, select the background of diagram and in the 
+		<p>To change the layout algorithm for an open diagram, select the background of diagram and in the 
 
 			<b>
 				<i>Rulers &amp; Grid</i>
 			</b> tab of 
 			<b>
 				<i>Properties</i>
-			</b> view, pick a choice from 
+			</b> view, select an option from the 
+
 			<b>
 				<i>Algorithm</i>
 			</b> list.
 		</p>
-		<p>
-			<center><img width="300" align="middle" border="0" src="Images/captures/AlgorithmProperties.PNG"/></center>
+		<p><center>
+			<img width="300" border="0" src="Images/captures/AlgorithmProperties.PNG"/></center>
 		</p>
 		<p>
 			<b>
@@ -44,7 +46,8 @@
 			</b> algorithm will restore the default behavior for 
 			<b>
 				<i>Layout</i>
-			</b> actions implemented by Draw2D.
+			</b> actions 
+			implemented by Draw2D.
 		</p>
 		<h2 id="Samples">Samples</h2>
 		<p>This section shows the influence of algorithm on 
@@ -52,7 +55,7 @@
 				<i>Layout All</i>
 			</b> action.
 		</p>
-		<p>For the same Architecture Blank diagram, algorithm choice leads to different result.</p>
+		<p>For the same Architecture Blank diagram, the choice of algorithm leads to different results.</p>
 		<table>
 			<tr>
 				<th>Algorithm               </th>
@@ -88,13 +91,17 @@
 			</tr>
 		</table>
 		<h2 id="Caveats">Caveats</h2>
-		<p>ELK layouts are not compatible with 
+		<p>ELK layouts are not compatible with the 
 			<b>
 				<i>Snap to Grid</i>
-			</b> behavior. When using any of them, you should disable 
-			this option otherwise Ports and Lines may be misplaced.
+			</b> feature. When using any ELK 
+			algorithm, you should disable this option. Otherwise Ports and Lines may be misplaced.
 		</p>
-		<p>This feature is considered as experimental because of remaining bugs concerning the ELK behavior and 
-			integration.</p>
+		<p>This feature is considered experimental due to remaining issues with the ELK behavior and its 
+			integration in Sirius. </p>
+		<p>This feature has primarily been tested on Physical Architecture Blank diagrams.
+			An ELK algorithm is selected for each diagram type, but not all of them have necessarily been 
+			tested. 
+			The sets of choices of algorithm and their corresponding option settings can certainly be improved.</p>
 	</body>
 </html>
