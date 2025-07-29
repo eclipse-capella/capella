@@ -12,47 +12,45 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.elk;
 
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.AB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.CA_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.CCEI_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.CCII_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.CCRI_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.CC_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.CDB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.CDI_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.CIB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.CM_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.COC_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.CRB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.CRR_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.CSA_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.FCD_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.IDB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.ID_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.LAB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.LCB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.LDFB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.LFB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.MASM_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.MB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.MCB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.MSM_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.OAB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.OAIB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.OCB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.OEBLANK_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.OEBREAKDOWN_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.OPD_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.ORB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.PAB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.PCB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.PDFB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.PD_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.PFB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.PPD_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.SAB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.SDFB_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.elk.CapellaDiagramConstants.SFBD_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CAPABILITY_REALIZATION_REFINEMENT;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CLASS_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONFIGURATION_ITEMS_BREAKDOWN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_OC_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_SYSTEM_ACTORS_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.EPBS_ARCHITECTURE_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.FUNCTIONAL_CHAIN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.INTERFACE_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.LOGICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.LOGICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.MODE_STATE_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_ACTIVITY_BREAKDOWN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_ENTITY_BREAKDOWN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_PROCESS_DESCRIPTION_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_ROLE_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PACKAGE_DEPENDENCIES_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_PATH_DESCRIPTION_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.SYSTEM_FUNCTION_BREAKDOWN_DIAGRAM_NAME;
 
 import java.util.HashMap;
 import java.util.List;
@@ -70,6 +68,7 @@ import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.DefaultLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.LayoutProvider;
+import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
 
 /**
  * A specific {@link DefaultLayoutProvider} to enable ELK layout on some Capella diagrams.
@@ -94,88 +93,85 @@ public class CapellaGmfLayoutProvider extends DefaultLayoutProvider {
     private static final boolean DISABLED = Boolean.getBoolean(DISABLE_PROPERTY);
 
     private static final List<String> LIMITED_LAYERED_DIAGRAM_DESCRIPTION_NAMES = List.of(
-            LDFB_DIAGRAM_NAME, OAIB_DIAGRAM_NAME, PAB_DIAGRAM_NAME
+            LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME, OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME, PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME
     );
     
     /** List of diagrams using Layered algorithm. */
     private static final List<String> LAYERED_DIAGRAM_DESCRIPTION_NAMES = List.of(
             // Not classified diagrams
-            PD_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
-            // The Capella Architecture diagram is not tested. 
-            // It is not really used in Capella as the precondition is "false".
-            CA_DIAGRAM_NAME,
+            PACKAGE_DEPENDENCIES_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
 
-            CDI_DIAGRAM_NAME, // OK tested on "[CDI] Streaming Server"
-            CCEI_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
-            CCII_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
-            ID_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
+            CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME, // OK tested on "[CDI] Streaming Server"
+            CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
+            CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
+            INTERFACE_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
 
             // Mode and States diagrams
-            MASM_DIAGRAM_NAME, // KO tested on "[M&S] IFE Operating Modes"
+            MODES_AND_STATES_DIAGRAM_NAME, // KO tested on "[M&S] IFE Operating Modes"
             // Done 1- "Initial" must have a specific size idem for "Final"
             // Done 2- Improvement (initial in first)
             // 3- Improvement : Maybe a top down layout is better
-            MSM_DIAGRAM_NAME, // KO tested on a new diagram in IFE (same root as above diagram)
+            MODE_STATE_DIAGRAM_NAME, // KO tested on a new diagram in IFE (same root as above diagram)
             // 1- "Initial" must have a specific size idem for "Final", "Choice"
             // 2- Wrong location for region (y=21)
             // 3- Improvement (initial in first)
 
             // Capabilities diagrams
-            CCRI_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
-            CRB_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
-            MB_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
-            CC_DIAGRAM_NAME, // KO tested on "[CC] Provide Video Entertainment
+            CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT, // Not tested (no such diagram in IFE sample)
+            CAPABILITY_REALIZATION_BLANK, // Not tested (no such diagram in IFE sample)
+            MISSIONS_BLANK_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
+            CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT, // KO tested on "[CC] Provide Video Entertainment
                                                                     // Services"
             // 1- Specific size for "Mission", "Capability" and "Actor"
             // 2- Improvement : Top down layout is better
-            MCB_DIAGRAM_NAME, // KO tested on "[MCB] All Missions and Capabilities"
+            MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME, // KO tested on "[MCB] All Missions and Capabilities"
             // 1- Specific size for "Mission", "Capability" and "Actor"
-            CRR_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
-            OCB_DIAGRAM_NAME, // KO tested on "[OCB] Operational Capabilities"
+            CAPABILITY_REALIZATION_REFINEMENT, // Not tested (no such diagram in IFE sample)
+            OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME, // KO tested on "[OCB] Operational Capabilities"
             // 1- Specific size for "Entity", "Capability" and "Actor"
             // 2- Improvement : Same size for all actors
-            COC_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
+            CONTEXTUAL_OC_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
 
             // Data flow blank diagrams
-            OAIB_DIAGRAM_NAME, // tested
-            SDFB_DIAGRAM_NAME, // tested
-            LDFB_DIAGRAM_NAME, // tested
-            PDFB_DIAGRAM_NAME, // tested
-            IDB_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
-            OEBLANK_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
+            OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME, // tested
+            SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME, // tested
+            LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME, // tested
+            PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME, // tested
+            INTERFACES_BLANK_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
+            OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
 
             // Architecture blank diagrams
-            SAB_DIAGRAM_NAME, // tested
-            AB_DIAGRAM_NAME, // KO (tested on "[EAB] Configuration Items and Realized
+            SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME, // tested
+            EPBS_ARCHITECTURE_BLANK_DIAGRAM_NAME, // KO (tested on "[EAB] Configuration Items and Realized
                                                                     // Artefacts" of IFE sample)
             // 1- specific size for "PhysicalLinInCI mapping"
             // 2- Wrong container size according to its label (if title on 2 lines)
-            LAB_DIAGRAM_NAME, // OK (tested on IFE sample 
+            LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME, // OK (tested on IFE sample 
                                 // "[LAB] [BUILD] All Components, Functions, CEs, FEs")
-            PAB_DIAGRAM_NAME, // tested
-            ORB_DIAGRAM_NAME // Not tested (no such diagram in IFE sample)
+            PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME, // tested
+            OPERATIONAL_ROLE_BLANK_DIAGRAM_NAME // Not tested (no such diagram in IFE sample)
     );
 
     /** List of diagrams using Mr Tree algorithm. */
     private static final List<String> MR_TREE_DIAGRAM_DESCRIPTION_NAMES = List.of(
             // Breakdown diagrams
-            SFBD_DIAGRAM_NAME, // KO wrong children order
-            CM_DIAGRAM_NAME, // KO (tested on "[CM] Provide Entertainment Solutions" of IFE sample)
+            SYSTEM_FUNCTION_BREAKDOWN_DIAGRAM_NAME, // KO wrong children order
+            CONTEXTUAL_MISSION_DIAGRAM_NAME, // KO (tested on "[CM] Provide Entertainment Solutions" of IFE sample)
             // 1- The space between children does not consider label outside of the node
-            FCD_DIAGRAM_NAME, // KO (tested on "[LFCD] Broadcast Audio Announcement" of IFE sample)
+            FUNCTIONAL_CHAIN_DIAGRAM_NAME, // KO (tested on "[LFCD] Broadcast Audio Announcement" of IFE sample)
             // 1- wrong location of edge's labels
             // 2- space for label on edge is too small
-            CIB_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
-            LCB_DIAGRAM_NAME, // KO (tested on "[LCBD] Architecture Drivers" of IFE sample)
+            CONFIGURATION_ITEMS_BREAKDOWN_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
+            LOGICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME, // KO (tested on "[LCBD] Architecture Drivers" of IFE sample)
             // 1 - wrong children order
-            LFB_DIAGRAM_NAME, // KO (tested on "[LFBD] All Functions" of IFE sample)
+            LOGICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME, // KO (tested on "[LFBD] All Functions" of IFE sample)
                                                                      // wrong children order
-            OEBREAKDOWN_DIAGRAM_NAME, // KO wrong children order
-            OAB_DIAGRAM_NAME, // KO wrong children order
-            PFB_DIAGRAM_NAME, // KO wrong children order and strange result on
+            OPERATIONAL_ENTITY_BREAKDOWN_DIAGRAM_NAME, // KO wrong children order
+            OPERATIONAL_ACTIVITY_BREAKDOWN_DIAGRAM_NAME, // KO wrong children order
+            PHYSICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME, // KO wrong children order and strange result on
                                                                      // "[PFBD] All Physical Functions"
-            PCB_DIAGRAM_NAME, // KO (tested on "[PCBD] Behavioural Components")
-            OPD_DIAGRAM_NAME // KO
+            PHYSICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME, // KO (tested on "[PCBD] Behavioural Components")
+            OPERATIONAL_PROCESS_DESCRIPTION_DIAGRAM_NAME // KO
             // 1- wrong location of edge's labels
             // 2- space for label on edge is too small
             // 3- Maybe a layered diagram desc would be better
@@ -184,9 +180,9 @@ public class CapellaGmfLayoutProvider extends DefaultLayoutProvider {
     /** List of diagrams using Layered algorithm. */
     private static final List<String> DOT_DIAGRAM_DESCRIPTION_NAMES = List.of(
             // Classes
-            CDB_DIAGRAM_NAME, // OK (tested on "[CDB] In-Flight Entertainment Dictionary")
-            CSA_DIAGRAM_NAME, // See with a "star diagram"
-            PPD_DIAGRAM_NAME // See with a "star diagram" and why there is not the same
+            CLASS_BLANK_DIAGRAM_NAME, // OK (tested on "[CDB] In-Flight Entertainment Dictionary")
+            CONTEXTUAL_SYSTEM_ACTORS_DIAGRAM_NAME, // See with a "star diagram"
+            PHYSICAL_PATH_DESCRIPTION_DIAGRAM_NAME // See with a "star diagram" and why there is not the same
                              // kind of result as above CSA_DIAGRAM_NAME
     );
     
@@ -238,7 +234,7 @@ public class CapellaGmfLayoutProvider extends DefaultLayoutProvider {
             return false;
         }
         Resource res = diagramDescription.eResource();
-        return res.getURI().toString().contains(CapellaDiagramConstants.DESIGN_PATH);
+        return res.getURI().toString().contains(SiriusViewActivator.VSM_PATH);
     }
 
     /**

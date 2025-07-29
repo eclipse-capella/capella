@@ -65,6 +65,7 @@ import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
+import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 
 /**
@@ -91,8 +92,8 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
     );
     
     private static final List<String> STATES_DIAGRAMS = List.of(
-        CapellaDiagramConstants.MASM_DIAGRAM_NAME,
-        CapellaDiagramConstants.MSM_DIAGRAM_NAME
+        IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME,
+        IDiagramNameConstants.MODE_STATE_DIAGRAM_NAME
     );
     
     private record EdgeDescription(
@@ -134,7 +135,7 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
 
         extractCircularEdges();
 
-        if (CapellaDiagramConstants.PAB_DIAGRAM_NAME.equals(diagramDescription.getName())) {
+        if (IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramDescription.getName())) {
             beforePabLayout();
         } else if (STATES_DIAGRAMS.contains(diagramDescription.getName())) {
             beforeStateLayout();
@@ -143,7 +144,8 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
     
     private void beforePabLayout() {
         // Fix the size for PAB_FunctionalChainEnd and set the label location to the east side
-        List<ElkNode> nodes = getNodesWithMappingName(layoutMapping.getLayoutGraph(), List.of("PAB_FunctionalChainEnd")); //$NON-NLS-1$
+        List<ElkNode> nodes = getNodesWithMappingName(layoutMapping.getLayoutGraph(), 
+                List.of(IMappingNameConstants.PAB_FUNCTIONAL_CHAIN_END_MAPPING_NAME));
         nodes.forEach(node -> {
             node.setProperty(CoreOptions.NODE_SIZE_CONSTRAINTS, SizeConstraint.fixed());
             // node.getLabels().forEach(label -> {
