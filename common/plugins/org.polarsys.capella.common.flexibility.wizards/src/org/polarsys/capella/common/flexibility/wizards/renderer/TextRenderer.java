@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2025 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -9,6 +9,7 @@
  * 
  * Contributors:
  *    Thales - initial API and implementation
+ *    Obeo - do not dispose system colors
  *******************************************************************************/
 
 package org.polarsys.capella.common.flexibility.wizards.renderer;
@@ -376,18 +377,7 @@ public class TextRenderer extends AbstractRenderer {
     if (imageControl != null) {
       imageControl.dispose();
     }
-    if (defaultColor != null) {
-      defaultColor.dispose();
-    }
-    if (errorColor != null) {
-      errorColor.dispose();
-    }
-    if (warningColor != null) {
-      warningColor.dispose();
-    }
-    if (disabledColor != null) {
-      disabledColor.dispose();
-    }
   }
 
 }
+
