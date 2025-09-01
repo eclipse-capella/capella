@@ -87,6 +87,7 @@ public interface IDiagramNameConstants extends DiagramDescriptionConstants {
   String LOGICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME = "Logical Function Breakdown"; //$NON-NLS-1$
   String LOGICAL_FUNCTIONS_SYSTEM_FUNCTIONS_DIAGRAM_NAME = "Logical Functions - System Functions"; //$NON-NLS-1$
   String LOGICAL_INTERFACE_CONTEXT_INTERFACE_DIAGRAM_NAME = "Logical Interface - Context Interface"; //$NON-NLS-1$
+  String CAPABILITY_REALIZATION_REFINEMENT = "Capability Realization Refinement"; //$NON-NLS-1$
 
   /**
    * Physical Architecture diagrams

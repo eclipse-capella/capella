@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!--
+Copyright (c) 2025 Obeo.
+
+This program and the accompanying materials are made available under the
+terms of the Eclipse Public License 2.0 which is available at
+http://www.eclipse.org/legal/epl-2.0
+
+SPDX-License-Identifier: EPL-2.0
+
+Contributors:
+    Obeo - initial API and implementation
+-->
+
+<toc label="ELK Integration" link_to="PLUGINS_ROOT/org.polarsys.capella.ui.doc/toc.xml#Diagram Management" >
+	<topic href="html/ELK/elk.html" label="ELK Integration">
+		<topic href="html/ELK/elk.html#Selecting_an_algorithm" label="Selecting an algorithm"></topic>
+		<topic href="html/ELK/elk.html#Samples" label="Samples"></topic>
+		<topic href="html/ELK/elk.html#Caveats" label="Caveats"></topic>
+	</topic>
+</toc>

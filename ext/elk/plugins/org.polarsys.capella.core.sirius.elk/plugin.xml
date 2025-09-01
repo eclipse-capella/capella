@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+  Copyright (c) 2025 Obeo.
+  
+  This program and the accompanying materials are made available under the
+  terms of the Eclipse Public License 2.0 which is available at
+  http://www.eclipse.org/legal/epl-2.0
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Contributors:
+       Obeo - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.eclipse.gmf.runtime.diagram.ui.layoutProviders">
+      <layoutProvider
+            class="org.polarsys.capella.core.sirius.elk.CapellaGmfLayoutProvider">
+         <Priority
+               name="High">
+         </Priority>
+      </layoutProvider>
+   </extension>
+  <extension
+        point="org.eclipse.sirius.diagram.elk.layout.extension">
+     <layoutExtension
+           class="org.polarsys.capella.core.sirius.elk.CapellaElkLayoutExtension">
+     </layoutExtension>
+  </extension>
+  
+  <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+     <propertySections contributorId="org.eclipse.sirius.diagram.ui">
+        <propertySection
+              afterSection="property.section.RulerGridPropertySection"
+              class="org.polarsys.capella.core.sirius.elk.properties.DiagramLayoutProperty"
+              filter="org.polarsys.capella.core.sirius.elk.properties.DiagramLayoutProperty$Filter"
+              id="property.elk.section"
+              tab="property.tab.DiagramPropertySection">
+           </propertySection>
+     </propertySections>
+  </extension>
+</plugin>
