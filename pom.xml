@@ -27,7 +27,6 @@
 		<antrun-version>3.0.0</antrun-version>
 		<rcptt-version>2.5.3</rcptt-version>
 		<rcptt-runner-version>2.5.3</rcptt-runner-version>
-		<sonar-version>3.0.2</sonar-version>
 
 		<!-- for tycho -->
 		<tycho.scmUrl>scm:git:https://github.com/eclipse-capella/capella.git</tycho.scmUrl>
