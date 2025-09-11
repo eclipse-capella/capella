@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -107,6 +107,10 @@ public class BooleanValueGroup extends AbstractSemanticField {
   public void setEnabled(boolean enabled) {
     if (null != _valueField && !_valueField.isDisposed()) {
       _valueField.setEnabled(enabled);
+		if (enabled) {
+			// Refresh widget from semantic element in case of remote update
+			loadComboValue();
+		}
     }
   }
 }
