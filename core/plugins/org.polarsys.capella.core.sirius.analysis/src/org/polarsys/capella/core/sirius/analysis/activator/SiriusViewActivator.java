@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2025 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,9 +12,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.activator;
 
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -38,7 +39,23 @@ import org.polarsys.capella.core.sirius.analysis.tool.ActivityEditorUpdater;
 
 public class SiriusViewActivator extends AbstractUIPlugin {
 
+  /** Plug-in ID. */
   public static final String ID = "org.polarsys.capella.core.sirius.analysis"; //$NON-NLS-1$
+  
+  /** Resource Path of VSM files. */
+  public static final String VSM_PATH = '/' + ID + "/description/"; //$NON-NLS-1$
+  
+  /**
+   * List of VSM file names.
+   */
+  public static final List<String> VSM_FILENAMES = List.of(
+      "common.odesign", //$NON-NLS-1$
+      "oa.odesign", //$NON-NLS-1$
+      "context.odesign", //$NON-NLS-1$
+      "logical.odesign", //$NON-NLS-1$
+      "physical.odesign", //$NON-NLS-1$
+      "EPBS.odesign" //$NON-NLS-1$
+  );
 
   private static SiriusViewActivator instance;
 
@@ -59,14 +76,12 @@ public class SiriusViewActivator extends AbstractUIPlugin {
   public void start(BundleContext context) throws Exception {
     super.start(context);
     instance = this;
-    viewpoints = new HashSet<>();
-    viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin("/" + ID + "/description/common.odesign")); //$NON-NLS-1$ //$NON-NLS-2$
-    viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin("/" + ID + "/description/oa.odesign")); //$NON-NLS-1$ //$NON-NLS-2$
-    viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin("/" + ID + "/description/context.odesign")); //$NON-NLS-1$ //$NON-NLS-2$
-    viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin("/" + ID + "/description/logical.odesign")); //$NON-NLS-1$ //$NON-NLS-2$
-    viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin("/" + ID + "/description/physical.odesign")); //$NON-NLS-1$ //$NON-NLS-2$
-    viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin("/" + ID + "/description/EPBS.odesign")); //$NON-NLS-1$ //$NON-NLS-2$
-
+    
+    viewpoints = VSM_FILENAMES.stream() // For all VSM files
+        .map(name -> VSM_PATH + name) // to qualified path 
+        .flatMap(path -> ViewpointRegistry.getInstance().registerFromPlugin(path).stream()) // register
+        .collect(Collectors.toSet());
+    
     // Modify palette tool name with a custom end user label
     Messages.ArrangeBorderNodesAction_actionDiagramText = CapellaMessages.ArrangeBorderNodesAction_actionDiagramText;
     Messages.ArrangeBorderNodesAction_actionText = CapellaMessages.ArrangeBorderNodesAction_actionText;
