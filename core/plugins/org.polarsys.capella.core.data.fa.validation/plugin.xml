@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2022 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2024 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -1120,7 +1120,320 @@ ComponentExchangeFunctionalExchangeAllocation ComponentExchange and FunctionalEx
                </target>
             </constraint>
          </constraints>
-         
+         <constraints
+               categories="capella.category/description.and.summary/mandatory.description">
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionalChain.FunctionalChainsDescription"
+                  id="DS_1-7"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DS_1-7 - FunctionalChains should have a description"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  FunctionalChain "{0}" must have a description.
+               </message>
+               <description>
+                  FunctionalChains should have a description.
+               </description>
+               <target
+                     class="FunctionalChain">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionalExchange.DSC_FunctionalExchange"
+                  id="DS_1-9"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DS_1-9 - FunctionalExchanges should have a description"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} "{1}" must have a description.
+               </message>
+               <description>
+                  FunctionalExchanges should have a description.
+               </description>
+               <target
+                     class="FunctionalExchange">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.ce.DSC_ComponentExchange"
+                  id="DS_1-11"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DS_1-11 - ComponentExchanges should have a description"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} "{1}" must have a description.
+               </message>
+               <description>
+                  ComponentExchanges should have a description.
+               </description>
+               <target
+                     class="ComponentExchange">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints categories="capella.category/functional">
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionPort.PortsOnNonLeafFunctions"
+                  id="F_1"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="F_1 - Ports on non leaf Functions"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  Port &quot;{0}&quot; is on non leaf function.
+               </message>
+               <description>
+                  Ports are not allowed on non-leaf functions (meaning that a functional exchange has not been allocated down to a leaf function).
+               </description>
+               <target
+                     class="FunctionPort">
+               </target>
+            </constraint>
+        </constraints>
+        <constraints categories="capella.category/functional/functionalchain">
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionalChain.FunctionalChainInvolvesLeafFunctions"
+                  id="FCH_1"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="FCH_1 - FunctionalChain involves leaf functions"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  FunctionalChain"{0}" involves a non leaf function ("{1}").
+               </message>
+               <description>
+                  FunctionalChain should involve only leaf functions.
+               </description>
+               <target
+                     class="FunctionalChain">
+               </target>
+            </constraint>
+        </constraints>
+        <constraints categories="capella.category/functional/coherence">
+             <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.ce.ComponentExchangeHasAllocatedFunctionalExchange"
+                  id="FC_2"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="FC_2 - CE should have at least one allocated FE"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  ComponentExchange "{0}" should have at least one allocated FE
+               </message>
+               <description>
+                  CE should have at least one allocated FE
+               </description>
+               <target
+                     class="ComponentExchange">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.ce.FunctionalExchangeAllocatedToCe"
+                  id="FC_3"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="FC_3 - FE between components/actors should be allocated to CE"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  FuntionalExchange "{0}" should be allocated to a ComponentExchange (FE is between different components/actor).
+               </message>
+               <description>
+                  FE between components/actors should be allocated to CE. 
+Note: not tested when connected to an actor whose name contains: &apos;User&apos; (case-sensitive).
+               </description>
+               <target
+                     class="FunctionalExchange">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.componentPort.ComponentPortHasCEAndInterface"
+                  id="FC_4"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="FC_4 - Port with CE should have provided/required Interface"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  ComponentPort "{0}" has a CE, should have provided/required interface.
+               </message>
+               <description>
+                  Port with CE should have provided/required Interface.
+               </description>
+               <target
+                     class="ComponentPort">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.ce.FunctionalExchangeOneOrMoreExchangedItems"
+                  id="FC_5"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="FC_5 - FunctionalExchange allocated to a CE should have one or more Exchanged Items"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  The FunctionalExchange"{0}" must exchange one or more ExchangeItems.
+               </message>
+               <description>
+                  FunctionalExchange allocated to a CE should have one or more Exchanged Items
+               </description>
+               <target
+                     class="FunctionalExchange">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.ce.FunctionalExchangesOnOneInPortSameName"
+                  id="FC_6"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="FC_6 - FunctionalExchanges on same input port must have same name"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  The FunctionalExchange&quot;{0}&quot; must have same name as other FunctionalExchanges &quot;{1}&quot; on same input port
+               </message>
+               <description>
+                  FunctionalExchanges on same input port must have the same name.
+               </description>
+               <target
+                     class="FunctionalExchange">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.ce.FunctionalExchangesOnOneInPortSameEI"
+                  id="FC_7"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="FC_7 - FunctionalExchanges on same input port must have same EI"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  The FunctionalExchange&quot;{0}&quot; must have same EI &quot;{2}&quot; as other FunctionalExchanges &quot;{1}&quot; on same input port
+               </message>
+               <description>
+                  FunctionalExchanges on same input port must have the same EI
+               </description>
+               <target
+                     class="FunctionalExchange">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.ce.FunctionalExchangesOnOneOutPortSameName"
+                  id="FC_8"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="FC_8 - FunctionalExchanges on same output port must have same name"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  The FunctionalExchange"{0}" must have same name as other FunctionalExchanges "{1}" on same output port
+               </message>
+               <description>
+                  FunctionalExchanges on same output port must have the same name.
+               </description>
+               <target
+                     class="FunctionalExchange">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.ce.FunctionalExchangesOnOneOutPortSameEI"
+                  id="FC_9"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="FC_9 - FunctionalExchanges on same output port must have same EI"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  The FunctionalExchange"{0}" must have same EI "{2}" as other FunctionalExchanges "{1}" on same output port
+               </message>
+               <description>
+                  FunctionalExchanges on same output port must have the same EI
+               </description>
+               <target
+                     class="FunctionalExchange">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.ce.CE_EIsSameAsItsFEsEIs"
+                  id="FC_13"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="FC_13 - The CE EI shall be the union of the EI of the FE allocated to the CE"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  ComponentExchange "{0}" has allocated EIs different from it's allocated FunctionalExchange EIs : EI "{1}" is allocated to {2} only
+               </message>
+               <description>
+                  The CE EI shall be the union of the EI of the FE allocated to the CE
+               </description>
+               <target
+                     class="ComponentExchange">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.function.FunctionalExchangesInSameName"
+                  id="FC_14"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="FC_14 - FunctionalExchanges incoming with same name must use same port"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  The FunctionalExchange&quot;{0}&quot; has the same name as another incoming FuntionalExchange. It should be on the same input port.
+               </message>
+               <description>
+                  Incoming FunctionalExchanges on same input port must have the same name.
+               </description>
+               <target
+                     class="AbstractFunction">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.function.FunctionalExchangesOutSameName"
+                  id="FC_15"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="FC_15 - FunctionalExchanges outgoing with same name must use same port"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  The FunctionalExchange&quot;{0}&quot; has the same name as another outgoing FuntionalExchange. It should be on the same output port.
+               </message>
+               <description>
+                  Outgoing FunctionalExchanges on same output port must have the same name.
+               </description>
+               <target
+                     class="AbstractFunction">
+               </target>
+            </constraint>
+        </constraints>
       </constraintProvider>
    </extension>
 </plugin>
