@@ -80,6 +80,7 @@ location sirius "https://download.eclipse.org/sirius/updates/releases/7.4.5/2023
 	org.eclipse.sirius.aql.source.feature.group
 	org.eclipse.acceleo.query.source.feature.group
 	org.eclipse.sirius.runtime.ide.ui.acceleo.source.feature.group
+	org.eclipse.sirius.diagram.elk.feature.source.feature.group
 }
 
 location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/releases/runtime/7.0.1/" {
@@ -140,4 +141,3 @@ location nebula "https://download.eclipse.org/nebula/releases/3.0.0/" {
 location eclipse-shared-license "https://download.eclipse.org/cbi/updates/license" {
 	org.eclipse.license.feature.group lazy
 }
-

@@ -1,0 +1,56 @@
+= ELK Integration =
+
+The Eclipse Layout Kernel (or ELK) provides a collection of layout algorithms. Sirius diagrams, on
+the other side, can be extended to use such algorithms when performing '''''Layout''''' command.
+
+Some of these layout algorithms have been integrated into Capella Diagrams to improve 
+'''''Layout All''''' action from the diagram toolbar.
+
+When using the '''Capella ELK integration''' Feature, the default layout algorithm is replaced by
+an ELK algorithm.
+
+== Selecting an algorithm ==
+
+To change the layout algorithm for an open diagram, select the background of diagram and in the 
+'''''Rulers & Grid''''' tab of '''''Properties''''' view, select an option from the 
+'''''Algorithm''''' list.
+
+<center>[[Image:Images/captures/AlgorithmProperties.PNG|300px]]</center>
+
+'''''Default''''' algorithm will restore the default behavior for '''''Layout''''' actions 
+implemented by Draw2D.
+
+== Samples ==
+
+This section shows the influence of algorithm on '''''Layout All''''' action.
+
+For the same Architecture Blank diagram, the choice of algorithm leads to different results.
+
+{|
+|-
+! Algorithm               
+! '''''Layout All''''' result
+|-
+| ''ELK Layer Horizontal'' 
+| style="text-align:center;" | [[Image:Images/captures/LAB-Result-horizontal.PNG|center|443px]] 
+|-
+| ''ELK Layer Vertical''   
+| style="text-align:center;" | [[Image:Images/captures/LAB-Result-vertical.PNG|center|230px]] 
+|-
+| ''Default''              
+| style="text-align:center;" | [[Image:Images/captures/LAB-Result-default.PNG|center|206px]] 
+|}
+
+
+== Caveats ==
+
+ELK layouts are not compatible with the '''''Snap to Grid''''' feature. When using any ELK 
+algorithm, you should disable this option. Otherwise Ports and Lines may be misplaced.
+
+This feature is considered experimental due to remaining issues with the ELK behavior and its 
+integration in Sirius. 
+
+This feature has primarily been tested on Physical Architecture Blank diagrams.
+An ELK algorithm is selected for each diagram type, but not all of them have necessarily been 
+tested. 
+The sets of choices of algorithm and their corresponding option settings can certainly be improved.

@@ -115,6 +115,21 @@ public class MigrationHelpers implements IMigrationContribution {
    */
   public void trigger(IResource resource, Shell shell, boolean runInJob, boolean skipConfirmation, boolean backupModel,
       boolean checkVersion, String[] kinds) {
+    MigrationContext context = new MigrationContext();
+    context.setName(NLS.bind(Messages.MigrationAction_Title, resource.getName()));
+    context.setShell(shell);
+    context.setSkipConfirmation(skipConfirmation);
+    context.setBackupModel(backupModel);
+
+    // Retrieve all commands that will need to be run to perform the
+    // migration
+    LinkedList<AbstractMigrationRunnable> runnables = createRunnableList(resource, kinds);
+
+    // Run the commands in jobs or not
+    new MigrationJobScheduler().run(runnables, context, runInJob, checkVersion);
+  }
+
+  public LinkedList<AbstractMigrationRunnable> createRunnableList(IResource resource, String[] kinds) {
     Collection<AbstractMigrationContributor> currentContributors = new LinkedList<AbstractMigrationContributor>();
 
     // Retrieve all extensions for the selected kind of migrations
@@ -128,7 +143,8 @@ public class MigrationHelpers implements IMigrationContribution {
 
     Collection<IResource> migrationCandidates = extractMigrationCandidates(resource);
 
-    // This is required for Capella 5.0 and 6.0 (6.0 allows migrations from 1.4.x) since legacy
+    // This is required for Capella 5.0 and 6.0 (6.0 allows migrations from 1.4.x)
+    // since legacy
     // resource must be migrated.
     // TODO remove this in the next version
     migrationCandidates = migrateCandidatesExtensions(migrationCandidates);
@@ -140,12 +156,6 @@ public class MigrationHelpers implements IMigrationContribution {
       Collection<IResource> migrableFiles = contributor.getMigrableFiles(migrationCandidates);
       validMigrationCandidates.addAll(migrableFiles);
     }
-
-    MigrationContext context = new MigrationContext();
-    context.setName(NLS.bind(Messages.MigrationAction_Title, resource.getName()));
-    context.setShell(shell);
-    context.setSkipConfirmation(skipConfirmation);
-    context.setBackupModel(backupModel);
 
     // Retrieve all commands that will need to be run to perform the
     // migration
@@ -159,8 +169,7 @@ public class MigrationHelpers implements IMigrationContribution {
       }
     }
 
-    // Run the commands in jobs or not
-    new MigrationJobScheduler().run(runnables, context, runInJob, checkVersion);
+    return runnables;
   }
 
   private Collection<IResource> extractMigrationCandidates(IResource resource) {
