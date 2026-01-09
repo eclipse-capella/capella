@@ -15,33 +15,33 @@ package org.polarsys.capella.common.tools.report.config;
 @SuppressWarnings("nls")
 public interface ReportManagerConstants {
   
-  String LOG_LEVEL = "Log Level";
+  String LOG_LEVEL = "Log Level"; //$NON-NLS-1$
 
-  String LOG_LEVEL_FATAL = "FATAL";
+  String LOG_LEVEL_FATAL = "FATAL"; //$NON-NLS-1$
 
-  String LOG_LEVEL_ERROR = "ERROR";
+  String LOG_LEVEL_ERROR = "ERROR"; //$NON-NLS-1$
 
-  String LOG_LEVEL_WARN = "WARN";
+  String LOG_LEVEL_WARN = "WARN"; //$NON-NLS-1$
 
-  String LOG_LEVEL_INFO = "INFO";
+  String LOG_LEVEL_INFO = "INFO"; //$NON-NLS-1$
 
-  String LOG_LEVEL_DEBUG = "DEBUG";
+  String LOG_LEVEL_DEBUG = "DEBUG"; //$NON-NLS-1$
 
-  String LOG_OUTPUT_TYPE = "Log Output Type";
+  String LOG_OUTPUT_TYPE = "Log Output Type"; //$NON-NLS-1$
 
-  String LOG_OUTPUT_CONSOLE = "Console";
+  String LOG_OUTPUT_CONSOLE = "Console"; //$NON-NLS-1$
 
-  String LOG_OUTPUT_REPORTWINDOW = "Report Window";
+  String LOG_OUTPUT_REPORTWINDOW = "Report Window"; //$NON-NLS-1$
 
-  String LOG_OUTPUT_PROBLEMS = "Problems View";
+  String LOG_OUTPUT_PROBLEMS = "Problems View"; //$NON-NLS-1$
 
-  String LOG_OUTPUT_DEFAULT = "Default";
+  String LOG_OUTPUT_DEFAULT = "Default"; //$NON-NLS-1$
 
-  String LOG_OUTPUT_FILE = "File";
+  String LOG_OUTPUT_FILE = "File"; //$NON-NLS-1$
 
-  String REPORTMANAGER_VERSION = "1.1";
+  String REPORTMANAGER_VERSION = "1.1"; //$NON-NLS-1$
 
-  String FILEFORMAT_VERSION = "1.0.1";
+  String FILEFORMAT_VERSION = "1.0.1"; //$NON-NLS-1$
 
-  String LOG_OUTPUT_PROBLEMS_VIEW = "Information";
+  String LOG_OUTPUT_PROBLEMS_VIEW = "Information"; //$NON-NLS-1$
 }

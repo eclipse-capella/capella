@@ -18,21 +18,21 @@ import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonito
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 
 public class UsageLogger {
-  private static final String USAGE_LOGGER = "Usage";
+  private static final String USAGE_LOGGER = "Usage"; //$NON-NLS-1$
 
   private String applicationName;
   private String applicationVersion;
   private Logger logger;
 
-  public final static String NONE = "";
-  public final static String OK = "OK";
-  public final static String ERROR = "ERROR";
+  public final static String NONE = ""; //$NON-NLS-1$
+  public final static String OK = "OK"; //$NON-NLS-1$
+  public final static String ERROR = "ERROR"; //$NON-NLS-1$
 
   public Logger getLogger() {
 
     if (logger == null) {
       String defaultConfiguration = ReportManagerRegistry.getConfigurationFile(UsageAppenderPlugin.getDefault().getBundle(),
-          "usageConfiguration.xml");
+          "usageConfiguration.xml"); //$NON-NLS-1$
       logger = ReportManagerRegistry.getInstance().subscribe(UsageLogger.USAGE_LOGGER, defaultConfiguration);
 
       try {

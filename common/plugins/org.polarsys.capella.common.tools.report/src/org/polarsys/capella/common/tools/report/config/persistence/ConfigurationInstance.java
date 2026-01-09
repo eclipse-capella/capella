@@ -38,8 +38,8 @@ public class ConfigurationInstance {
   }
 
   public ConfigurationInstance(Element element) {
-    setComponentName(element.getAttribute("ComponentName"));
-    NodeList outputConfigList = element.getElementsByTagName("OutputConfiguration");
+    setComponentName(element.getAttribute("ComponentName")); //$NON-NLS-1$
+    NodeList outputConfigList = element.getElementsByTagName("OutputConfiguration"); //$NON-NLS-1$
     outputConfiguration = new ArrayList<>();
     for (int i = 0; i < outputConfigList.getLength(); i++) {
       outputConfiguration.add(new OutputConfiguration((Element) outputConfigList.item(i)));
@@ -75,9 +75,9 @@ public class ConfigurationInstance {
   }
   
   public Element convertToElement(Document document) {
-    Element element = document.createElement("ConfigurationInstance");
+    Element element = document.createElement("ConfigurationInstance"); //$NON-NLS-1$
     
-    Attr componentNameAttr = document.createAttribute("ComponentName");
+    Attr componentNameAttr = document.createAttribute("ComponentName"); //$NON-NLS-1$
     componentNameAttr.setValue(getComponentName());
     element.setAttributeNode(componentNameAttr);
     

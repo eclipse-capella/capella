@@ -126,6 +126,6 @@ public class SelectionCommandHandler extends SubCommandHandler {
    * @return
    */
   protected String getScope() {
-    return "";
+    return ""; //$NON-NLS-1$
   }
 }

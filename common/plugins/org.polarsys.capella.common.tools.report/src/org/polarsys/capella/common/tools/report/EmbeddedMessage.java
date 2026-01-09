@@ -70,7 +70,7 @@ public class EmbeddedMessage {
   @Override
   public String toString() {
     StringBuilder containsMessage = new StringBuilder();
-    containsMessage.append("[" + getComponentName() + "]\t");
+    containsMessage.append("[" + getComponentName() + "]\t"); //$NON-NLS-1$ //$NON-NLS-2$
     // Why 9
     if (getComponentName().length() < 9) {
       containsMessage.append('\t');
@@ -78,12 +78,12 @@ public class EmbeddedMessage {
     containsMessage.append(getLabel());
     // Not required in case of console output
     if (capellaElements != null && !capellaElements.isEmpty()) {
-      containsMessage.append(" - Object(s) list : \n");
+      containsMessage.append(" - Object(s) list : \n"); //$NON-NLS-1$
       for (Object theElement : capellaElements) {
         if (theElement != null) {
 
           containsMessage.append(getName(theElement));
-          containsMessage.append("\n");
+          containsMessage.append("\n"); //$NON-NLS-1$
         }
       }
     }

@@ -144,7 +144,7 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
 
         IStatus status = isImportant(object, rendererContext);
         if (!status.isOK() && !status.getMessage().isEmpty()) {
-          return NLS.bind("{0} [{1}]", text, status.getMessage());
+          return NLS.bind(Messages.ReplicaRenderer_0, text, status.getMessage());
         }
 
         return text;
@@ -186,12 +186,12 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
         }
 
         if (!scopeElements.contains(element)) {
-          return new Status(IStatus.INFO, Activator.PLUGIN_ID, "");
+          return new Status(IStatus.INFO, Activator.PLUGIN_ID, ""); //$NON-NLS-1$
         }
 
         IContext ctx = (IContext) context.getPropertyContext().getSource();
         if (AttributesHandlerHelper.getInstance(ctx).isSuffixable(element, ctx)) {
-          return new Status(IStatus.WARNING, Activator.PLUGIN_ID, "+SUFFIX");
+          return new Status(IStatus.WARNING, Activator.PLUGIN_ID, Messages.ReplicaRenderer_2);
         }
 
         return Status.OK_STATUS;
@@ -223,7 +223,7 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
     if (values.isEmpty()) {
       return Status.OK_STATUS;
     }
-    return new Status(IStatus.WARNING, Activator.PLUGIN_ID, "Missing dependencies");
+    return new Status(IStatus.WARNING, Activator.PLUGIN_ID, Messages.ReplicaRenderer_3);
   }
 
   @Override
@@ -243,12 +243,12 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
    */
   @Override
   protected String getToolbarLocation() {
-    return "toolbar:org.polarsys.capella.common.re.createRec";
+    return "toolbar:org.polarsys.capella.common.re.createRec"; //$NON-NLS-1$
   }
 
   @Override
   protected String getPopupLocation() {
-    return "popup:org.polarsys.capella.common.re.createRec";
+    return "popup:org.polarsys.capella.common.re.createRec"; //$NON-NLS-1$
   }
   
   @Override
