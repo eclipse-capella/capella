@@ -239,7 +239,7 @@ public class PropertyValuesFormPage extends org.polarsys.kitalpha.model.detachme
 		new ToolItem(treeManagementBar, SWT.SEPARATOR | SWT.VERTICAL);
 		
 		//Text filter
-		final Text inputFilter = tk.createText(toolbarsComposite, "", SWT.SINGLE | SWT.LEFT | SWT.SEARCH);
+		final Text inputFilter = tk.createText(toolbarsComposite, "", SWT.SINGLE | SWT.LEFT | SWT.SEARCH); //$NON-NLS-1$
 		inputFilter.setToolTipText(Messages.Filter_PropertyValue);
 		inputFilter.setMessage(". = any character, .* = any string"); //$NON-NLS-1$
 		inputFilter.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL | GridData.HORIZONTAL_ALIGN_FILL));
