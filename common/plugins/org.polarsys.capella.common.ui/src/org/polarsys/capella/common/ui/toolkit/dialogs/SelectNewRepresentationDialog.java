@@ -123,7 +123,7 @@ public class SelectNewRepresentationDialog extends AbstractSelectionDialog<Repre
 
     // Create Label next to name input
     Label label = new Label(composite, SWT.NONE);
-    label.setText("Name :");
+    label.setText(Messages.SelectNewRepresentationDialog_0);
     label.setFont(parent.getFont());
 
     GridData data = new GridData(GridData.GRAB_HORIZONTAL | GridData.GRAB_VERTICAL | GridData.HORIZONTAL_ALIGN_FILL
@@ -140,7 +140,7 @@ public class SelectNewRepresentationDialog extends AbstractSelectionDialog<Repre
       public String getText(Object element) {
         RepresentationDescription description = (RepresentationDescription) element;
         IInterpreter interpreter = InterpreterUtil.getInterpreter(description);
-        String newName = "";
+        String newName = ""; //$NON-NLS-1$
 
         String titleExpression = description.getTitleExpression();
         if (!StringUtil.isEmpty(titleExpression)) {

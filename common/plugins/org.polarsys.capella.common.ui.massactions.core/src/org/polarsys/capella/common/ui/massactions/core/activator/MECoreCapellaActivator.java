@@ -27,7 +27,7 @@ public class MECoreCapellaActivator extends AbstractUIPlugin {
   // The plug-in ID
   public static final String PLUGIN_ID = "org.polarsys.capella.common.ui.massactions.core"; //$NON-NLS-1$
 
-  public static final String IMAGE_BROWSE = "IMAGE_BROWSE";
+  public static final String IMAGE_BROWSE = "IMAGE_BROWSE"; //$NON-NLS-1$
 
   // The shared instance
   private static MECoreCapellaActivator plugin;
@@ -67,7 +67,7 @@ public class MECoreCapellaActivator extends AbstractUIPlugin {
   protected void initializeImageRegistry(ImageRegistry reg) {
     super.initializeImageRegistry(reg);
 
-    reg.put(IMAGE_BROWSE, imageDescriptorFromPlugin(PLUGIN_ID, "icons/browse.gif"));
+    reg.put(IMAGE_BROWSE, imageDescriptorFromPlugin(PLUGIN_ID, "icons/browse.gif")); //$NON-NLS-1$
   }
 
 }

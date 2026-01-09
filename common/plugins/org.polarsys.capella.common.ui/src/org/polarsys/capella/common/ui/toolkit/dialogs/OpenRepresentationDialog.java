@@ -55,7 +55,7 @@ public class OpenRepresentationDialog extends AbstractSelectionDialog<DRepresent
 
   @Override
   public void create() {
-    setTitle("Open existing representation");
+    setTitle(Messages.OpenRepresentationDialog_0);
     super.create();
   }
 
@@ -81,7 +81,7 @@ public class OpenRepresentationDialog extends AbstractSelectionDialog<DRepresent
       public String getText(Object element) {
         DRepresentationDescriptor descriptor = (DRepresentationDescriptor) element;
         IInterpreter interpreter = InterpreterUtil.getInterpreter(descriptor);
-        String newName = "";
+        String newName = ""; //$NON-NLS-1$
 
         String titleExpression = descriptor.getName();
         if (!StringUtil.isEmpty(titleExpression)) {

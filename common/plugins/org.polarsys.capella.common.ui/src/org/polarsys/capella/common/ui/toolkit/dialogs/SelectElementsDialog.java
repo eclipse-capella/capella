@@ -45,7 +45,7 @@ import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
  */
 public class SelectElementsDialog extends AbstractViewerDialog {
   
-  public static final String SELECT_ELEMENTS_DIALOG = "org.polarsys.capella.common.ui.toolkit.dialogs.selectElements";
+  public static final String SELECT_ELEMENTS_DIALOG = "org.polarsys.capella.common.ui.toolkit.dialogs.selectElements"; //$NON-NLS-1$
   
   /**
    * Undefined context constant.<br>

@@ -33,16 +33,17 @@ public class ExportCSVPreferences extends AbstractPreferenceInitializer implemen
   @Override
   public char getDelimiterCurrentValue() {
     String delimiterName = getDelimiterCurrentName();
-    switch (delimiterName) {
-    case IExportCSVPreferences.DELIMITER_VALUE_TAB:
+    if (DELIMITER_VALUE_TAB.equals(delimiterName)) {
       return ICommonConstants.TAB_CHARACTER;
-    case IExportCSVPreferences.DELIMITER_VALUE_SEMICOLON:
+    } else if (DELIMITER_VALUE_SEMICOLON.equals(delimiterName)) {
       return ICommonConstants.SEMICOLON_CHARACTER;
-    case IExportCSVPreferences.DELIMITER_VALUE_COMMA:
+    } else if (DELIMITER_VALUE_COMMA.equals(delimiterName)) {
       return ICommonConstants.COMMA_CHARACTER;
-    case IExportCSVPreferences.DELIMITER_VALUE_SPACE:
+    } else if (DELIMITER_VALUE_SPACE.equals(delimiterName)) {
       return ICommonConstants.WHITE_SPACE_CHARACTER;
-    default:
+    } else if (DELIMITER_VALUE_TAB.equals(delimiterName)) {
+      return ICommonConstants.TAB_CHARACTER;
+    } else {
       String valueOther = MdeCommonUiActivator.getDefault().getPreferenceStore()
           .getString(IExportCSVPreferences.OTHER_DELIMITER_KEY);
       if (valueOther != null && !valueOther.isEmpty()) {
