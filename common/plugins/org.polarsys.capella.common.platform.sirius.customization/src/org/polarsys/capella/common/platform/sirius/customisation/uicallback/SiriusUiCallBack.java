@@ -216,7 +216,7 @@ public class SiriusUiCallBack implements UICallBack {
    */
   @Override
   public String getSessionNameToDisplayWhileSaving(Session session) {
-    String name = "Session";
+    String name = Messages.SiriusUiCallBack_0;
     if (session != null) {
       if (session instanceof DAnalysisSessionEObject) {
         name = computeRootDAnalysisName((DAnalysisSessionEObject) session);
@@ -236,21 +236,21 @@ public class SiriusUiCallBack implements UICallBack {
    */
   // SEE VP-1729 : Close diagram and 'Save Resource' dialog window
   private String computeRootDAnalysisName(DAnalysisSessionEObject sessionObj) {
-    final StringBuilder builder = new StringBuilder("Local Session: ");
+    final StringBuilder builder = new StringBuilder(Messages.SiriusUiCallBack_1);
     // We only consider the root DAnalysises of the given session
     for (final DAnalysis analysis : sessionObj.getAnalyses()) {
       final Resource resource = analysis.eResource();
       if (resource != null && resource.getURI() != null) {
         final URI uri = resource.getURI();
         if (uri.segments().length > 0) {
-          builder.append(URI.decode(uri.lastSegment())).append("  ");
+          builder.append(URI.decode(uri.lastSegment())).append("  "); //$NON-NLS-1$
         } else {
-          builder.append(uri.opaquePart()).append(" ");
+          builder.append(uri.opaquePart()).append(" "); //$NON-NLS-1$
         }
       }
     }
     // Remove the last two spaces if needed
-    if ("  ".equals(builder.substring(builder.length() - 2, builder.length()))) {
+    if ("  ".equals(builder.substring(builder.length() - 2, builder.length()))) { //$NON-NLS-1$
       builder.delete(builder.length() - 2, builder.length());
     }
     return builder.toString();

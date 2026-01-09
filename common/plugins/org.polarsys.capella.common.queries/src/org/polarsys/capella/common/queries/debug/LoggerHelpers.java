@@ -66,7 +66,7 @@ public class LoggerHelpers {
     for (int i = 0; i < keysStringsSize; i++) {
       String keyString = keysStrings.get(i);
       buffer.append(normalizeStringLength(keyString, maxKeyStringLentgh));
-      buffer.append(" : ");
+      buffer.append(" : "); //$NON-NLS-1$
       buffer.append(valueStrings.get(i));
       if (i < (keysStringsSize - 1)) {
         buffer.append('\n');

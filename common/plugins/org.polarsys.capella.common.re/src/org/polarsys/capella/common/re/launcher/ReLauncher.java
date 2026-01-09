@@ -48,7 +48,7 @@ public abstract class ReLauncher extends DefaultLauncher {
   
   @Override
   protected String getPurpose() {
-    return "org.polarsys.capella.common.re";
+    return "org.polarsys.capella.common.re"; //$NON-NLS-1$
   }
 
   @Override
@@ -69,6 +69,6 @@ public abstract class ReLauncher extends DefaultLauncher {
 
   @Override
   protected String getReportComponent() {
-    return "REC-RPL";
+    return "REC-RPL"; //$NON-NLS-1$
   }
 }

@@ -50,10 +50,10 @@ public class CatalogElementLinkSuffixProperty
       CatalogElementKind kind = link.getSource().getKind();
       
       if (kind == CatalogElementKind.RPL) {
-        return new Status(IStatus.INFO, Activator.PLUGIN_ID, "This attribute should be changed in the REC link");
+        return new Status(IStatus.INFO, Activator.PLUGIN_ID, Messages.CatalogElementLinkSuffixProperty_0);
         
       } else if (kind == CatalogElementKind.GROUPING) {
-        return new Status(IStatus.INFO, Activator.PLUGIN_ID, "This attribute is not enabled on Grouping element");
+        return new Status(IStatus.INFO, Activator.PLUGIN_ID, Messages.CatalogElementLinkSuffixProperty_1);
         
       }
     }

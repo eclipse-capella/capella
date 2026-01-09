@@ -60,7 +60,7 @@ public class DefaultChildrenCompliancyProperty extends AbstractProperty implemen
   @Override
   public IStatus validate(Object newValue, IPropertyContext context) {
     if ((newValue == null) || !(newValue instanceof CompliancyDefinition)) {
-      return new Status(IStatus.WARNING, getGroupId(), "A default compliancy should be set");
+      return new Status(IStatus.WARNING, getGroupId(), Messages.DefaultChildrenCompliancyProperty_0);
     }
     return Status.OK_STATUS;
   }

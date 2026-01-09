@@ -15,6 +15,6 @@ package org.polarsys.capella.common.queries.exceptions;
 public class EntryAlreadyExistInContextException extends QueryException {
 
   public EntryAlreadyExistInContextException(String entryName) {
-    super("Entry " + entryName + " already exist in the context. Use overwrite(...) instead of setValue(...).");
+    super("Entry " + entryName + " already exist in the context. Use overwrite(...) instead of setValue(...)."); //$NON-NLS-1$ //$NON-NLS-2$
   }
 }

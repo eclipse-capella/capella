@@ -32,7 +32,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class InitialTargetProperty extends AbstractReProperty implements IEditableProperty, ICompoundProperty, IModifiedProperty {
 
-  protected static String TARGET = "RPL";
+  protected static String TARGET = "RPL"; //$NON-NLS-1$
 
   /**
    * {@inheritDoc}

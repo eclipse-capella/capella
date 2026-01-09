@@ -61,7 +61,7 @@ public class InitialSourceProperty extends AbstractContextProperty implements IR
 	  @Override
 	  public IStatus validate(Object newValue, IPropertyContext context) {
 	    if ((newValue == null) || !(newValue instanceof CatalogElement)) {
-	      return new Status(IStatus.ERROR, "n", "Select a RPL to detach");
+	      return new Status(IStatus.ERROR, "n", Messages.InitialSourceProperty_1); //$NON-NLS-1$
 	    }
 	    return Status.OK_STATUS;
 	  }

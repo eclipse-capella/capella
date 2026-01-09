@@ -16,7 +16,7 @@
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
-            name="MDE Reporting"
+            name="%page.name"
             class="org.polarsys.capella.common.platform.eclipse.tools.report.ui.pref.ReportManagerPrefPage"
             id="org.polarsys.capella.common.platform.eclipse.tools.report.ui.preferences.ReportManagerPrefPage">
       </page>

@@ -24,7 +24,7 @@ public abstract class AbstractReProperty extends AbstractProperty {
   }
 
   protected String getUniqueIdentifier() {
-    return getClass().getSimpleName() + "__" + getId();
+    return getClass().getSimpleName() + "__" + getId(); //$NON-NLS-1$
   }
 
 }

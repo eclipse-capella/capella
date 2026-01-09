@@ -38,7 +38,7 @@ public class SourceElementProperty extends AbstractProperty implements IEditable
   @Override
   public Object getValue(IPropertyContext context) {
     IContext ctx = (IContext) context.getSource();
-    Collection result = (Collection) ctx.get("SCOPE_ELEMENTS_PROPERTY");
+    Collection result = (Collection) ctx.get("SCOPE_ELEMENTS_PROPERTY"); //$NON-NLS-1$
 
     if (result == null) {
       result = new HashSet<EObject>();
@@ -48,7 +48,7 @@ public class SourceElementProperty extends AbstractProperty implements IEditable
 
       result.addAll(ReplicableElementHandlerHelper.getInstance(ctx).getElements(element));
       // TODO Add replica elements to scope
-      ctx.put("SCOPE_ELEMENTS_PROPERTY", result);
+      ctx.put("SCOPE_ELEMENTS_PROPERTY", result); //$NON-NLS-1$
 
     }
 
@@ -85,9 +85,9 @@ public class SourceElementProperty extends AbstractProperty implements IEditable
   public IStatus validate(Object newValue, IPropertyContext context) {
     CatalogElement element = (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
     if (element == null || element.eIsProxy()) {
-      return new Status(IStatus.ERROR, getId(), "Your RPL is invalid (no REC), please validate your model.");
+      return new Status(IStatus.ERROR, getId(), Messages.SourceElementProperty_2);
     } else if ((newValue instanceof Collection) && ((Collection) newValue).isEmpty()) {
-      return new Status(IStatus.ERROR, getId(), "Scope should not be empty");
+      return new Status(IStatus.ERROR, getId(), Messages.SourceElementProperty_3);
     }
     return Status.OK_STATUS;
   }
@@ -106,6 +106,6 @@ public class SourceElementProperty extends AbstractProperty implements IEditable
   @Override
   public void updatedValue(IProperty property, IPropertyContext context) {
     IContext ctx = (IContext) context.getSource();
-    ctx.put("SCOPE_ELEMENTS_PROPERTY", null);
+    ctx.put("SCOPE_ELEMENTS_PROPERTY", null); //$NON-NLS-1$
   }
 }

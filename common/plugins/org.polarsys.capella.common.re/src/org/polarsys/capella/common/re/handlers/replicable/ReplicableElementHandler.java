@@ -54,15 +54,15 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class ReplicableElementHandler implements IReplicableElementHandler {
 
-  public static final String SOURCE = "REH_SOURCE";
+  public static final String SOURCE = "REH_SOURCE"; //$NON-NLS-1$
 
-  public static final String TARGET = "REH_TARGET";
+  public static final String TARGET = "REH_TARGET"; //$NON-NLS-1$
 
-  public static final String INITIAL_SOURCE = "REH_INITIAL_SOURCE";
+  public static final String INITIAL_SOURCE = "REH_INITIAL_SOURCE"; //$NON-NLS-1$
 
-  public static final String INITIAL_TARGET = "REH_INITIAL_TARGET";
+  public static final String INITIAL_TARGET = "REH_INITIAL_TARGET"; //$NON-NLS-1$
 
-  public static final String LINKS = "LINKS";
+  public static final String LINKS = "LINKS"; //$NON-NLS-1$
 
   public static final String COMPLIANCY_BLACK_BOX_NAME = "BLACK_BOX"; //$NON-NLS-1$
   public static final String COMPLIANCY_CONSTRAINT_REUSE_NAME = "CONSTRAINT_REUSE"; //$NON-NLS-1$
@@ -97,17 +97,17 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
   }
 
   public LinkedList<CatalogElement> getListSourcesVisited(IContext context) {
-    if (!context.exists("getListSourcesVisited")) {
-      context.put("getListSourcesVisited", new LinkedList<CatalogElement>());
+    if (!context.exists("getListSourcesVisited")) { //$NON-NLS-1$
+      context.put("getListSourcesVisited", new LinkedList<CatalogElement>()); //$NON-NLS-1$
     }
-    return (LinkedList<CatalogElement>) context.get("getListSourcesVisited");
+    return (LinkedList<CatalogElement>) context.get("getListSourcesVisited"); //$NON-NLS-1$
   }
 
   public LinkedList<CatalogElement> getListSources(IContext context) {
-    if (!context.exists("getListSources")) {
-      context.put("getListSources", new LinkedList<CatalogElement>());
+    if (!context.exists("getListSources")) { //$NON-NLS-1$
+      context.put("getListSources", new LinkedList<CatalogElement>()); //$NON-NLS-1$
     }
-    return (LinkedList<CatalogElement>) context.get("getListSources");
+    return (LinkedList<CatalogElement>) context.get("getListSources"); //$NON-NLS-1$
   }
 
   public CatalogElement getInitialSource(IContext context) {
@@ -423,15 +423,15 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
   }
 
   public String getInitialReplicaName(IContext context, CatalogElementPkg pkg) {
-    return ("RPL" + (pkg == null ? "" : pkg.getOwnedElements().size() + 1));
+    return ("RPL" + (pkg == null ? "" : pkg.getOwnedElements().size() + 1)); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   public String getInitialReplicableElementName(IContext context, CatalogElementPkg pkg) {
-    return ("REC" + (pkg == null ? "" : pkg.getOwnedElements().size() + 1));
+    return ("REC" + (pkg == null ? "" : pkg.getOwnedElements().size() + 1)); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   public String getString(IContext context, Collection<?> elements) {
-    String result = "";
+    String result = ""; //$NON-NLS-1$
     Iterator<?> itObject = elements.iterator();
     while (itObject.hasNext()) {
       Object object = itObject.next();
@@ -440,11 +440,11 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
         result += EObjectLabelProviderHelper.getText((EObject) object);
       }
       if (itObject.hasNext()) {
-        result += "; ";
+        result += "; "; //$NON-NLS-1$
       }
     }
     if (result.length() > 30) {
-      result = result.substring(0, 27) + "...";
+      result = result.substring(0, 27) + "..."; //$NON-NLS-1$
     }
     return result;
   }
@@ -704,8 +704,8 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
 
     if (source != null && !source.eIsProxy()) {
       String namea = source.getName();
-      if (namea.startsWith("REC")) {
-        namea = "RPL" + namea.substring(3);
+      if (namea.startsWith("REC")) { //$NON-NLS-1$
+        namea = "RPL" + namea.substring(3); //$NON-NLS-1$
       }
       element.setName(namea);
       element.setOrigin(source);

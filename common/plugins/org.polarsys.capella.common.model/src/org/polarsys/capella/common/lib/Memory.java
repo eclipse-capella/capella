@@ -34,7 +34,7 @@ public class Memory {
     if (reportManager.isDebugEnabled()) {
       StringBuilder loggerMessage = new StringBuilder();
       loggerMessage.append(usedMemory);
-      loggerMessage.append(" bytes used.");
+      loggerMessage.append(" bytes used."); //$NON-NLS-1$
       reportManager.debug(new EmbeddedMessage(loggerMessage.toString(), (componentName == null ? ICommonComponent.COMPONENT_NAME : componentName)));
     }
   }
