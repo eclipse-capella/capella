@@ -13,10 +13,10 @@
 package org.polarsys.capella.common.queries;
 
 public class QuerySchema {
-  public static final String QUERY_IDENTIFIER = "queryIdentifier";
-  public static final String QUERY_EXTENDED_IDENTIFIER = "extendedQueryIdentifier";
-  public static final String QUERY_ALGORITHM = "queryAlgorithm";
-  public static final String FILTER = "filter";
+  public static final String QUERY_IDENTIFIER = "queryIdentifier"; //$NON-NLS-1$
+  public static final String QUERY_EXTENDED_IDENTIFIER = "extendedQueryIdentifier"; //$NON-NLS-1$
+  public static final String QUERY_ALGORITHM = "queryAlgorithm"; //$NON-NLS-1$
+  public static final String FILTER = "filter"; //$NON-NLS-1$
   
   public static String getQueryIdentifier(Class<?> clazz) {
     return clazz.getSimpleName();

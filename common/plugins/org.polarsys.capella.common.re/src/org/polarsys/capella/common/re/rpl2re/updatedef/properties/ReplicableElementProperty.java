@@ -38,7 +38,7 @@ public class ReplicableElementProperty extends AbstractProperty implements IEdit
   @Override
   public Object getValue(IPropertyContext context) {
     IContext ctx = (IContext) context.getSource();
-    CatalogElement rootElement = (CatalogElement) ctx.get("RE");
+    CatalogElement rootElement = (CatalogElement) ctx.get("RE"); //$NON-NLS-1$
 
     if (rootElement == null) {
       Collection<Object> selection = (Collection<Object>) ctx.get(ITransitionConstants.TRANSITION_SOURCES);
@@ -74,7 +74,7 @@ public class ReplicableElementProperty extends AbstractProperty implements IEdit
           pkg.getOwnedElements().add(element);
           rootElement = element;
         }
-        ctx.put("RE", rootElement);
+        ctx.put("RE", rootElement); //$NON-NLS-1$
       }
     }
 
@@ -95,7 +95,7 @@ public class ReplicableElementProperty extends AbstractProperty implements IEdit
   @Override
   public Object toType(Object value, IPropertyContext context) {
     IContext ctx = (IContext) context.getSource();
-    CatalogElement element = (CatalogElement) ctx.get("RE");
+    CatalogElement element = (CatalogElement) ctx.get("RE"); //$NON-NLS-1$
     if (value instanceof String) {
       element.setName((String) value);
       return element;
@@ -110,7 +110,7 @@ public class ReplicableElementProperty extends AbstractProperty implements IEdit
   public IStatus validate(Object newValue, IPropertyContext context) {
     if (newValue instanceof String) {
       if (((String) newValue).length() == 0) {
-        return new Status(IStatus.WARNING, getId(), "Should be not empty");
+        return new Status(IStatus.WARNING, getId(), Messages.ReplicableElementProperty_3);
       }
     }
     return Status.OK_STATUS;

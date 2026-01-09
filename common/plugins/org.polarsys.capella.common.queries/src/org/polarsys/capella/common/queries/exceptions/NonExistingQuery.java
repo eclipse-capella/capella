@@ -15,6 +15,6 @@ package org.polarsys.capella.common.queries.exceptions;
 public class NonExistingQuery extends QueryException {
 
   public NonExistingQuery(String queryIdentifier) {
-    super("No query found for identifier " + queryIdentifier + ". Please check existing query extension.");
+    super("No query found for identifier " + queryIdentifier + ". Please check existing query extension."); //$NON-NLS-1$ //$NON-NLS-2$
   }
 }

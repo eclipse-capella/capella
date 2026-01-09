@@ -80,7 +80,7 @@ public class SharedElementsProperty extends AbstractProperty implements ICompoun
 
     if (newValue instanceof Collection) {
       if (!((Collection) newValue).isEmpty()) {
-        return new Status(IStatus.INFO, getId(), "REC have references to external elements");
+        return new Status(IStatus.INFO, getId(), Messages.SharedElementsProperty_0);
       }
     }
     return Status.OK_STATUS;

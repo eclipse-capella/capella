@@ -35,7 +35,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
  */
 public class SharedInitializeCopyCommand extends InitializeCopyCommand {
 
-  private static final String REFERENCE_NAME_ATTRIBUTE = "referenceName";
+  private static final String REFERENCE_NAME_ATTRIBUTE = "referenceName"; //$NON-NLS-1$
 
 /**
    * Qualifies the source of a link pending after a copy / paste.
@@ -73,7 +73,7 @@ public class SharedInitializeCopyCommand extends InitializeCopyCommand {
 
   }
 
-  private static final String PLUGIN_ID = "org.polarsys.capella.common.model.DroppedReferencesOnCopy";
+  private static final String PLUGIN_ID = "org.polarsys.capella.common.model.DroppedReferencesOnCopy"; //$NON-NLS-1$
 
   private static Map<PendingQualification, Object> pendingReferences = new HashMap<PendingQualification, Object>();
   private static List<String> droppedReferences = null;

@@ -15,6 +15,6 @@ package org.polarsys.capella.common.queries.exceptions;
 public class ContextShallNotBeNullException extends QueryException {
 
   public ContextShallNotBeNullException() {
-    super("The context shall not be null (try to call QueryInterpretor.executeQuery with context=null).");
+    super("The context shall not be null (try to call QueryInterpretor.executeQuery with context=null)."); //$NON-NLS-1$
   }
 }

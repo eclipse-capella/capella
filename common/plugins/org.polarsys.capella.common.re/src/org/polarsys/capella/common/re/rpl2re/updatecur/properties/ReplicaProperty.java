@@ -33,7 +33,7 @@ public class ReplicaProperty extends AbstractProperty implements IEditableProper
     try {
 
       IContext ctx = (IContext) context.getSource();
-      CatalogElement replica = (CatalogElement) ctx.get("RPL");
+      CatalogElement replica = (CatalogElement) ctx.get("RPL"); //$NON-NLS-1$
 
       return replica;
     } catch (Exception e) {
@@ -56,7 +56,7 @@ public class ReplicaProperty extends AbstractProperty implements IEditableProper
   @Override
   public Object toType(Object value, IPropertyContext context) {
     IContext ctx = (IContext) context.getSource();
-    CatalogElement element = (CatalogElement) ctx.get("RPL");
+    CatalogElement element = (CatalogElement) ctx.get("RPL"); //$NON-NLS-1$
     if (element != null) {
 
       if (value instanceof String) {

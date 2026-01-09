@@ -32,7 +32,7 @@ public class StringProperty extends AbstractProperty implements IEditablePropert
    */
   public Object getValue(IPropertyContext context) {
     if (_value == null) {
-      _value = "";
+      _value = ""; //$NON-NLS-1$
     }
     return _value;
   }

@@ -31,12 +31,12 @@ public class UpdateCurLauncher extends ReLauncher {
 
   @Override
   protected String getMapping() {
-    return "org.polarsys.capella.common.re.updateCur";
+    return "org.polarsys.capella.common.re.updateCur"; //$NON-NLS-1$
   }
 
   @Override
   protected String getScope() {
-    return "org.polarsys.capella.common.re.updateCur";
+    return "org.polarsys.capella.common.re.updateCur"; //$NON-NLS-1$
   }
 
   @Override
