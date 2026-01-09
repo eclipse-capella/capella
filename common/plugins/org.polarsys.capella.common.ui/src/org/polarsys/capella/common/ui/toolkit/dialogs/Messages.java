@@ -24,6 +24,8 @@ public class Messages extends NLS {
   public static String AbstractViewerDialog_OK_Title;
   public static String CheckboxTreeDialog_Window_Title;
   public static String SelectElementsDialog_Shell_Title;
+
+  public static String SelectNewRepresentationDialog_0;
   public static String TransferTreeListDialog_Shell_Title;
 
   public static String exportButtonLabel;
@@ -41,6 +43,8 @@ public class Messages extends NLS {
   
   public static String blankName;
   public static String newRepresentationFor;
+
+  public static String OpenRepresentationDialog_0;
   public static String openRepresentationMessage;
 
   static {
