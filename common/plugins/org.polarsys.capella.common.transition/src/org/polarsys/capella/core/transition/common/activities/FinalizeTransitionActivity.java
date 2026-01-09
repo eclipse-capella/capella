@@ -26,7 +26,6 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.polarsys.capella.core.transition.common.constants.IOptionsConstants;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.ITransitionSteps;
-import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
 import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
@@ -73,25 +72,25 @@ public class FinalizeTransitionActivity extends AbstractActivity implements ITra
         if (session.isOpen()) {
           session.save(new NullProgressMonitor());
           LogHelper.getInstance().info(
-              NLS.bind("Session for ''{0}'' has been saved automatically.", targetResource.getURI()),
-              Messages.Activity_Transition);
+              NLS.bind(Messages.FinalizeTransitionActivity_0, targetResource.getURI()),
+              org.polarsys.capella.core.transition.common.constants.Messages.Activity_Transition);
         }
       } else {
         try {
           LogHelper.getInstance().info(
-              NLS.bind("Resource ''{0}'' has been saved automatically.", targetResource.getURI()),
-              Messages.Activity_Transition);
+              NLS.bind(Messages.FinalizeTransitionActivity_1, targetResource.getURI()),
+              org.polarsys.capella.core.transition.common.constants.Messages.Activity_Transition);
           targetResource.save(Collections.EMPTY_MAP);
         } catch (IOException exception) {
           exception.printStackTrace();
-          LogHelper.getInstance().warn(exception.getMessage(), Messages.Activity_Transition);
+          LogHelper.getInstance().warn(exception.getMessage(), org.polarsys.capella.core.transition.common.constants.Messages.Activity_Transition);
         }
       }
     }
 
     GenericParameter<?> parameter = activityParams.getParameter(IOptionsConstants.IS_DRY_RUN);
     if (parameter == null || !Boolean.valueOf(parameter.getValue().toString())) {
-      LogHelper.getInstance().info("Operation has been successful.", Messages.Activity_Transition);
+      LogHelper.getInstance().info(Messages.FinalizeTransitionActivity_2, org.polarsys.capella.core.transition.common.constants.Messages.Activity_Transition);
     }
 
     return Status.OK_STATUS;

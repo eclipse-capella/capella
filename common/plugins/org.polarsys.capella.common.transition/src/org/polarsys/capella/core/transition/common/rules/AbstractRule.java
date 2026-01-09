@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
-import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
 import org.polarsys.capella.core.transition.common.handlers.scope.IScopeHandler;
@@ -142,15 +141,15 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
 
           } else if ((result != null) && (result instanceof EObject) && !scope.isInScope((EObject) result, context)) {
             LogHelper.getInstance().warn(
-                NLS.bind("Element ''{0}'' is premise of ''{1}'' but not in scope.", LogHelper.getInstance().getText(result),
-                    LogHelper.getInstance().getText(element)), Messages.Activity_Transformation);
+                NLS.bind(Messages.AbstractRule_0, LogHelper.getInstance().getText(result),
+                    LogHelper.getInstance().getText(element)), org.polarsys.capella.core.transition.common.constants.Messages.Activity_Transformation);
           }
         }
       }
     }
 
     if (LogHelper.getInstance().hasDebug()) {
-      LogHelper.getInstance().debug(NLS.bind("Premises of ''{0}'' .", LogHelper.getInstance().getText(element)), previous, Messages.Activity_Transformation);
+      LogHelper.getInstance().debug(NLS.bind(Messages.AbstractRule_1, LogHelper.getInstance().getText(element)), previous, org.polarsys.capella.core.transition.common.constants.Messages.Activity_Transformation);
     }
 
     return needed;
@@ -336,7 +335,7 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
               }
             }
           } else {
-            LogHelper.getInstance().log("Element is not transitioned: " + transformRequired.getMessage(), transformRequired, element,
+            LogHelper.getInstance().log(Messages.AbstractRule_2 + transformRequired.getMessage(), transformRequired, element,
                 transformRequired.getPlugin());
           }
         }
@@ -359,7 +358,7 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
       }
 
     } catch (Exception e) {
-      LogHelper.getInstance().error(e.getClass().getName() + " [" + e.getMessage() + "]", e.getCause(), Messages.Activity_Transformation);
+      LogHelper.getInstance().error(e.getClass().getName() + " [" + e.getMessage() + "]", e.getCause(), org.polarsys.capella.core.transition.common.constants.Messages.Activity_Transformation); //$NON-NLS-1$ //$NON-NLS-2$
       e.printStackTrace();
       throw e;
     }
@@ -394,7 +393,7 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
     if ((applyRequired != null) && ((Boolean) applyRequired).booleanValue()) {
       return Status.OK_STATUS;
     }
-    return new Status(IStatus.WARNING, Messages.Activity_Transformation, "Apply is not required for this transition");
+    return new Status(IStatus.WARNING, org.polarsys.capella.core.transition.common.constants.Messages.Activity_Transformation, Messages.AbstractRule_5);
   }
 
   protected Collection<EObject> retrieveTracedElements(EObject source, IContext context) {
@@ -554,12 +553,12 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
     EObject transitioned = transformDirectElement(element, context);
     if (LogHelper.getInstance().hasDebug()) {
       LogHelper.getInstance().debug(
-          NLS.bind("Element ''{0}'' {1} is transformed to ''{2}'' {3} [{4}]", new Object[] { LogHelper.getInstance().getText(element),
+          NLS.bind(Messages.AbstractRule_6, new Object[] { LogHelper.getInstance().getText(element),
                                                                                             EObjectLabelProviderHelper.getMetaclassLabel(element, true),
                                                                                             LogHelper.getInstance().getText(transitioned),
                                                                                             EObjectLabelProviderHelper.getMetaclassLabel(transitioned, true),
                                                                                             getClass().getSimpleName() }),
-          new Object[] { element, transitioned }, Messages.Activity_Transformation);
+          new Object[] { element, transitioned }, org.polarsys.capella.core.transition.common.constants.Messages.Activity_Transformation);
     }
     return Collections.singleton(transitioned);
   }
@@ -607,7 +606,7 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
 
     EClass clazz = getTargetType(source, context);
     if (clazz == null) {
-      return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind("No rule is defined for the element ''{0}'' [{1}]", LogHelper.getInstance()
+      return new Status(IStatus.WARNING, org.polarsys.capella.core.transition.common.constants.Messages.Activity_Transformation, NLS.bind(Messages.AbstractRule_7, LogHelper.getInstance()
           .getText(source), source.eClass().getName()));
     }
 
@@ -617,7 +616,7 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
 
     if (result != null) {
       if (clazz.isInstance(result)) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind("Element ''{0}'' is already transformed [{1}]", LogHelper.getInstance()
+        return new Status(IStatus.WARNING, org.polarsys.capella.core.transition.common.constants.Messages.Activity_Transformation, NLS.bind(Messages.AbstractRule_8, LogHelper.getInstance()
             .getText(source), source.eClass().getName()));
       }
     }

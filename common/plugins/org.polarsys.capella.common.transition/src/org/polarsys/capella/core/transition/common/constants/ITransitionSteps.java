@@ -17,12 +17,12 @@ package org.polarsys.capella.core.transition.common.constants;
  */
 public interface ITransitionSteps {
 
-  static final String INITIALIZE_TRANSITION = "initializeTransition";
+  static final String INITIALIZE_TRANSITION = "initializeTransition"; //$NON-NLS-1$
 
-  static final String INITIALIZE_TRANSFORMATION = "initializeTransformation";
+  static final String INITIALIZE_TRANSFORMATION = "initializeTransformation"; //$NON-NLS-1$
 
-  static final String FINALIZE_TRANSITION = "finalizeTransition";
+  static final String FINALIZE_TRANSITION = "finalizeTransition"; //$NON-NLS-1$
   
-  static final String UNDEFINED_ATIVITY = "";
+  static final String UNDEFINED_ATIVITY = ""; //$NON-NLS-1$
 
 }
