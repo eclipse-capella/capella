@@ -66,7 +66,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <edgeMappings name="containedIn Mapping" label="OEB_Link" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20containment']" semanticCandidatesExpression="aql:self.eAllContents()" semanticElements="aql:self.eContainerOrSelf(oa::OperationalAnalysis).eAllContents()->filter(cs::Part)->select(x | x.abstractType = self)" sourceMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" targetMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" targetFinderExpression="service:getLogicalParent()" sourceFinderExpression="feature:type" domainClass="cs.Part" reconnections="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='changeContainer']">
+        <edgeMappings name="containedIn Mapping" label="%OEB_Link" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20containment']" semanticCandidatesExpression="aql:self.eAllContents()" semanticElements="aql:self.eContainerOrSelf(oa::OperationalAnalysis).eAllContents()->filter(cs::Part)->select(x | x.abstractType = self)" sourceMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" targetMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" targetFinderExpression="service:getLogicalParent()" sourceFinderExpression="feature:type" domainClass="cs.Part" reconnections="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='changeContainer']">
           <style routingStyle="tree" foldingStyle="TARGET">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -2733,7 +2733,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']"/>
-        <toolSections name="tools section" label="Scenarios Elements">
+        <toolSections name="tools section" label="%OES.tools.section">
           <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Entity Scenario " precondition="aql:self.isInLib()" titleExpression="aql:self.name.addScenarioPrefix('[OES]') + ' - Operational Entity Scenario'" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']">
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self">
@@ -4360,7 +4360,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']"/>
-        <toolSections name="tools section" label="Scenario Elements">
+        <toolSections name="tools section" label="%OAS.tools.section">
           <ownedTools xsi:type="tool_2:InstanceRoleCreationTool" name="activity" label="%oa.oas.activity" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='InstanceRoleMaping%20AIS']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OperationalActivity.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -5193,7 +5193,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink_InvolvementLink']"/>
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']"/>
-        <toolSections name="Involvements" label="Involvements">
+        <toolSections name="Involvements" label="%Involvements.label.0">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Involvement referencing the selected Operational Activity." name="involve.function" label="%oa.opd.involve.function" precondition="aql:containerView.isValidFCInvolveFunction()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementFunction_OA.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']"/>
             <variable name="container"/>
@@ -5355,7 +5355,7 @@
           <reusedTools xsi:type="tool_1:DeleteElementDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20FE%20Involvement']"/>
         </toolSections>
         <toolSections name="Sequencing">
-          <ownedTools xsi:type="tool_1:ToolGroup" documentation="Create a new Control Node." name="Create_ControlNode" label="Control Node">
+          <ownedTools xsi:type="tool_1:ToolGroup" documentation="Create a new Control Node." name="Create_ControlNode" label="%Create_ControlNode.label.0">
             <tools xsi:type="tool:ToolDescription" documentation="Create a new AND Control Node." name="and" label="%oa.opd.and" precondition="aql:container.oclIsKindOf(fa::FunctionalChain) or container.oclIsKindOf(fa::FunctionalChainReference) or container.oclIsKindOf(fa::SequenceLink) or container.oclIsKindOf(fa::SequenceLinkEnd)" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ControlNode_And.gif">
               <element name="element"/>
               <elementView name="elementView"/>
@@ -5513,7 +5513,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolGroup" documentation="Create a new Control Node." name="Create_ControlNodeConstruct" label="Control Node Construct">
+          <ownedTools xsi:type="tool_1:ToolGroup" documentation="Create a new Control Node." name="Create_ControlNodeConstruct" label="%Create_ControlNodeConstruct.label.0">
             <tools xsi:type="tool:ToolDescription" documentation="Create a new AND Control Node." name="and.construct" label="%oa.opd.and.construct" precondition="aql:container.oclIsKindOf(fa::FunctionalChain) or container.oclIsKindOf(fa::FunctionalChainReference) or container.oclIsKindOf(fa::SequenceLink) or container.oclIsKindOf(fa::SequenceLinkEnd)" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ControlNode_And.gif">
               <element name="element"/>
               <elementView name="elementView"/>
