@@ -30,7 +30,7 @@
       </filters>
       <defaultLayer name="default" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']">
         <nodeMappings name="SM_ModeState" preconditionExpression="aql:(self.makeUnion(self->filter(capellacommon::FinalState), self->filter(capellacommon::Pseudostate)))->size() > 0" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="feature:involvedStates" domainClass="IState">
-          <borderedNodeMappings name="ModeState_Activity" label="ModeState_Label" preconditionExpression="aql:(self.makeUnion(self->filter(capellacommon::Mode), self->filter(capellacommon::State)))->size() > 0 and (not self.doActivity->isEmpty())" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" semanticCandidatesExpression="aql:self" domainClass="IState">
+          <borderedNodeMappings name="ModeState_Activity" label="%modestate.activity.label" preconditionExpression="aql:(self.makeUnion(self->filter(capellacommon::Mode), self->filter(capellacommon::State)))->size() > 0 and (not self.doActivity->isEmpty())" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" semanticCandidatesExpression="aql:self" domainClass="IState">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:'do / ' + self.doActivity.name->sep(', ')" labelAlignment="LEFT" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Blank.gif">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -706,7 +706,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="SM_CreateDiag_ModeStateMachine" label="Mode State Machine Diagram" precondition="aql:self.isInLib()" titleExpression="aql:'[MSM] ' + self.name" browseExpression="aql:self->filter(capellacommon::State).ownedRegions->first()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="SM_CreateDiag_ModeStateMachine" label="%SM_CreateDiag_ModeStateMachine.label.0" precondition="aql:self.isInLib()" titleExpression="aql:'[MSM] ' + self.name" browseExpression="aql:self->filter(capellacommon::State).ownedRegions->first()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.target">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedRegions->size() = 0">
@@ -719,7 +719,7 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="SM_CreateDiag_ModesAndStates" label="Modes and States [DEPRECATED]" precondition="aql:self.isInLib()" titleExpression="aql:'[M&amp;S] ' + self.name" browseExpression="aql:self->filter(capellacommon::State).ownedRegions->first()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="SM_CreateDiag_ModesAndStates" label="%SM_CreateDiag_ModesAndStates.label.0" precondition="aql:self.isInLib()" titleExpression="aql:'[M&amp;S] ' + self.name" browseExpression="aql:self->filter(capellacommon::State).ownedRegions->first()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.target">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedRegions->size() = 0">
@@ -1527,7 +1527,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="SM_CreateDiag_ModeStateMachine" label="Mode State Machine Diagram" precondition="aql:self.isInLib()" titleExpression="aql:'[MSM] ' + self.name" browseExpression="aql:self->filter(capellacommon::State).ownedRegions->first()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="SM_CreateDiag_ModeStateMachine" label="%SM_CreateDiag_ModeStateMachine.label.1" precondition="aql:self.isInLib()" titleExpression="aql:'[MSM] ' + self.name" browseExpression="aql:self->filter(capellacommon::State).ownedRegions->first()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.target">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedRegions->size() = 0">
@@ -3631,7 +3631,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolGroup" name="DataValue" label="DataValue">
+          <ownedTools xsi:type="tool:ToolGroup" name="DataValue" label="%DataValue.label.0">
             <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Numeric Reference." name="numeric.reference" label="%common.cdb.numeric.reference" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_DataValue'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Class']/@subNodeMappings[name='DT_SubDataValue'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_DataType']/@subNodeMappings[name='Contents'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_BooleanType']/@subNodeMappings[name='BooleanTypeContents'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Enumeration']/@subNodeMappings[name='EnumerationContents']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/NumericReference.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
@@ -5539,7 +5539,7 @@
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Operational Entity Blank" label="Operational Architecture Blank" precondition="aql:self.isInLib()" titleExpression="aql:'[OAB] ' + self.name">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Operational Entity Blank" label="%Operational.Entity.Blank.label.0" precondition="aql:self.isInLib()" titleExpression="aql:'[OAB] ' + self.name">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -5551,7 +5551,7 @@
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Modes &amp;&amp; States" label="Modes and states" precondition="aql:self.isInLib()" titleExpression="aql:'[M&amp;S] ' + self.name" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Modes &amp;&amp; States" label="%Modes.and.States.label.0" precondition="aql:self.isInLib()" titleExpression="aql:'[M&amp;S] ' + self.name" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -5561,7 +5561,7 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" documentation="toto&#xD;&#xA;" name="Component Interfaces Scenario" label="Interface Scenario" precondition="aql:self.isInLib()" titleExpression="aql:self.name.addScenarioPrefix('[IS]')" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" documentation="toto&#xD;&#xA;" name="Component Interfaces Scenario" label="%Component.Interfaces.Scenario.label.0" precondition="aql:self.isInLib()" titleExpression="aql:self.name.addScenarioPrefix('[IS]')" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
@@ -5572,12 +5572,12 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Component Interfaces Scenario" label="Existing Interface Scenario" navigationNameExpression="" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Component Interfaces Scenario" label="%Existing.Component.Interfaces.Scenario.label.0" navigationNameExpression="" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Component Exchanges Scenario" label="Exchange Scenario" precondition="aql:self.isInLib()" titleExpression="aql:self.name.addScenarioPrefix('[ES]')" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Component Exchanges Scenario" label="%Component.Exchanges.Scenario.label.0" precondition="aql:self.isInLib()" titleExpression="aql:self.name.addScenarioPrefix('[ES]')" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
@@ -5588,7 +5588,7 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Component Exchanges Scenario" label="Existing Exchange Scenario" navigationNameExpression="" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Component Exchanges Scenario" label="%Existing.Component.Exchanges.Scenario.label.0" navigationNameExpression="" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
@@ -5624,34 +5624,34 @@
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Interface Scenario Use" label="Existing Interface Scenario Use" browseExpression="feature:referencedScenario" navigationNameExpression="var:diagramName" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Interface Scenario Use" label="%Existing.Interface.Scenario.Use.label.0" browseExpression="feature:referencedScenario" navigationNameExpression="var:diagramName" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Exchange Scenario Use" label="Existing Exchange Scenario Use" browseExpression="feature:referencedScenario" navigationNameExpression="var:diagramName" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Exchange Scenario Use" label="%Existing.Exchange.Scenario.Use.label.0" browseExpression="feature:referencedScenario" navigationNameExpression="var:diagramName" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Functional Scenario Use" label="Existing Functional Scenario Use" browseExpression="feature:referencedScenario" navigationNameExpression="var:diagramName" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Functional Scenario Use" label="%Existing.Functional.Scenario.Use.label.0" browseExpression="feature:referencedScenario" navigationNameExpression="var:diagramName" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Operational Entity Scenario Use" label="Existing Operational Entity Scenario Use" browseExpression="feature:referencedScenario" navigationNameExpression="var:diagramName">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Operational Entity Scenario Use" label="%Existing.Operational.Entity.Scenario.Use.label.0" browseExpression="feature:referencedScenario" navigationNameExpression="var:diagramName">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Operational Activity Scenario Use" label="Existing Operational Activity Scenario Use" browseExpression="feature:referencedScenario" navigationNameExpression="var:diagramName">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Operational Activity Scenario Use" label="%Existing.Operational.Activity.Scenario.Use.label.0" browseExpression="feature:referencedScenario" navigationNameExpression="var:diagramName">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Physical Path Ref" label="Existing Physical Path Ref" browseExpression="feature:referencedPhysicalPath" navigationNameExpression="var:diagramName">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Existing Physical Path Ref" label="%Existing.Physical.Path.Ref.label.0" browseExpression="feature:referencedPhysicalPath" navigationNameExpression="var:diagramName">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
@@ -5735,7 +5735,7 @@
       <concerns>
         <ownedConcernDescriptions name="default" filters="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@filters[name='hide.technical.interfaces.filter']"/>
       </concerns>
-      <defaultLayer name="default layer System Interface 1" label="default" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='constraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='constraint.element'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='constraints'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Constraint%20Elements'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Constraint%20Content'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='CB%20Reconnect%20Constraint%20Elements']">
+      <defaultLayer name="default layer System Interface 1" label="%default.layer.System.Interface.1.label.0" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='constraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='constraint.element'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='constraints'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Constraint%20Elements'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Constraint%20Content'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='CB%20Reconnect%20Constraint%20Elements']">
         <edgeMappings name="use1" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="service:diagram.getIBInterfaceUseSemanticCandidates" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='System%201']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='FullInterface1']" targetFinderExpression="feature:usedInterface" sourceFinderExpression="feature:interfaceUser" domainClass="InterfaceUse" useDomainElement="true" reconnections="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='used-pinrequired%20source'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='uses%20target']">
           <style lineStyle="dash_dot">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -10365,7 +10365,7 @@
       <concerns>
         <ownedConcernDescriptions name="default" filters="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.component.interactions.filter'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.diagram.based.interactions.filter'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.technical.interfaces.filter']"/>
       </concerns>
-      <defaultLayer name="default IDB" label="default" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']">
+      <defaultLayer name="default IDB" label="%default.IDB.label.0" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']">
         <edgeMappings name="IDB_UseInterface" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="service:diagram.getIBInterfaceUseSemanticCandidates" semanticElements="" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']" targetFinderExpression="feature:usedInterface" sourceFinderExpression="feature:interfaceUser" domainClass="InterfaceUse" useDomainElement="true" reconnections="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='uses%20target'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='used-pinrequired%20source']">
           <style lineStyle="dash_dot">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -12261,7 +12261,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <edgeMappings name="CCRI involvement" label="CCRI Involvement" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20CapabilityRealization']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']" targetFinderExpression="feature:involved" sourceFinderExpression="feature:involver" domainClass="CapabilityRealizationInvolvement" useDomainElement="true">
+        <edgeMappings name="CCRI involvement" label="%CCRI.involvement.label.0" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20CapabilityRealization']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']" targetFinderExpression="feature:involved" sourceFinderExpression="feature:involver" domainClass="CapabilityRealizationInvolvement" useDomainElement="true">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -12440,7 +12440,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Constraint From Project Explorer" label="D&amp;D Constraint From Project Explorer" precondition="aql:element.oclIsKindOf(capellacore::Constraint) and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Constraint From Project Explorer" label="%DnD.Constraint.From.Project.Explorer.label.0" precondition="aql:element.oclIsKindOf(capellacore::Constraint) and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -12449,7 +12449,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Diagram Contextual Capability Realization Involvement" label="Contextual Capability Realization InvolvementContextual Capability Realization Involvement" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Diagram Contextual Capability Realization Involvement" label="%Diagram.Contextual.Capability.Realization.Involvement.label.0" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
@@ -12575,7 +12575,7 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.title.blocks.filter" label="%common.crb.hide.element.title.blocks.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:self.isDiagramTitleBlock()"/>
       </filters>
-      <defaultLayer name="default layer CRB" label="default layer" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']">
+      <defaultLayer name="default layer CRB" label="%default.layer.CRB.label.0" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']">
         <nodeMappings name="CRB CapabilityRealization" navigationDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='Diagram%20Contextual%20Capability%20Realization%20Involvement'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='Diagram%20Capability%20Realization%20Refinement'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Component%20Exchanges%20Scenario'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Component%20Interfaces%20Scenario'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Functional%20Scenario']" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" createElements="false" domainClass="CapabilityRealization">
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Capability%20Realization%20Involvement']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='Capability%20Realization%20Refinement']"/>
@@ -14304,7 +14304,7 @@
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
           </style>
         </containerMappings>
-        <toolSections name="tools section" label="Scenario Elements">
+        <toolSections name="tools section" label="%IS.tools.section">
           <ownedTools xsi:type="tool_2:InstanceRoleCreationTool" name="node.pc" label="%common.is.node.pc" precondition="aql:self.eContainerOrSelf(ctx::SystemAnalysis)->size() = 0" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ComponentInstanceNodePC.gif">
             <filters precondition="aql:self.target.eContainerOrSelf(pa::PhysicalArchitecture)->size() = 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
               <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
@@ -16407,7 +16407,7 @@
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
           </style>
         </containerMappings>
-        <toolSections name="tools section" label="Scenario Elements" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='exchange.context']">
+        <toolSections name="tools section" label="%ES.tools.section" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='exchange.context']">
           <ownedTools xsi:type="tool_2:InstanceRoleCreationTool" name="node.pc" label="%common.es.node.pc" precondition="aql:self.eContainerOrSelf(ctx::SystemAnalysis)->size() = 0" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ComponentInstanceNodePC.gif">
             <filters precondition="aql:self.target.eContainerOrSelf(pa::PhysicalArchitecture)->size() = 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)"/>
             <variable name="container"/>
@@ -18210,7 +18210,7 @@
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
           </style>
         </containerMappings>
-        <toolSections name="tools section" label="Scenarios Elements" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='exchange.context']">
+        <toolSections name="tools section" label="%FS.tools.section" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='exchange.context']">
           <ownedTools xsi:type="tool:ToolGroup" name="FunctionCreation">
             <tools xsi:type="tool_2:InstanceRoleCreationTool" documentation=" Creates a new lifeline representing a System Function." name="system.function" label="%common.fs.system.function" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/SystemFunction.gif">
               <filters precondition="aql:self.target.eContainerOrSelf(ctx::SystemAnalysis)->size() = 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
@@ -19474,7 +19474,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Sequencing">
-          <ownedTools xsi:type="tool:ToolGroup" documentation="Create a new Control Node." name="Create_ControlNode" label="Control Node">
+          <ownedTools xsi:type="tool:ToolGroup" documentation="Create a new Control Node." name="Create_ControlNode" label="%Create_ControlNode.label.0">
             <tools xsi:type="tool_1:ToolDescription" documentation="Create a new AND Control Node." name="and" label="%common.fcd.and" precondition="aql:container.oclIsKindOf(fa::FunctionalChain) or container.oclIsKindOf(fa::FunctionalChainReference) or container.oclIsKindOf(fa::SequenceLink) or container.oclIsKindOf(fa::SequenceLinkEnd)" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ControlNode_And.gif">
               <element name="element"/>
               <elementView name="elementView"/>
@@ -19626,7 +19626,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolGroup" documentation="Create a new Control Node." name="Create_ControlNodeConstruct" label="Control Node Construct">
+          <ownedTools xsi:type="tool:ToolGroup" documentation="Create a new Control Node." name="Create_ControlNodeConstruct" label="%Create_ControlNodeConstruct.label.0">
             <tools xsi:type="tool_1:ToolDescription" documentation="Create a new AND Control Node." name="and.construct" label="%common.fcd.and.construct" precondition="aql:container.oclIsKindOf(fa::FunctionalChain) or container.oclIsKindOf(fa::FunctionalChainReference) or container.oclIsKindOf(fa::SequenceLink) or container.oclIsKindOf(fa::SequenceLinkEnd)" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ControlNode_And.gif">
               <element name="element"/>
               <elementView name="elementView"/>
@@ -20096,7 +20096,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_3:CrossTableDescription" name="State And Mode - Matrix" label="State Machine and Capability Function Matrix" preconditionExpression="aql:self->filter(capellacore::ModellingBlock)->size() > 0 or self->filter(capellacore::ModellingArchitecture)->size() > 0" domainClass="capellacore.Namespace">
+    <ownedRepresentations xsi:type="description_3:CrossTableDescription" name="State And Mode - Matrix" label="%State.And.Mode.Matrix" preconditionExpression="aql:self->filter(capellacore::ModellingBlock)->size() > 0 or self->filter(capellacore::ModellingArchitecture)->size() > 0" domainClass="capellacore.Namespace">
       <ownedLineMappings name="SAM Components" domainClass="Component" semanticCandidatesExpression="aql:self.getFirstComponents()" headerLabelExpression="feature:name">
         <ownedSubLines name="SAM Sub Components" reusedSubLines="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='SAM%20Components']/@ownedSubLines[name='SAM%20State%20Machine'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='SAM%20Components']/@ownedSubLines[name='SAM%20Sub%20Components']" reusedInMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='SAM%20Components']/@ownedSubLines[name='SAM%20Sub%20Components']" domainClass="Component" semanticCandidatesExpression="aql:self.getSubComponentsWithStateMachine()" headerLabelExpression="feature:name">
           <delete name="No delete" precondition="false">
@@ -20232,7 +20232,7 @@
         </create>
       </intersection>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_3:CrossTableDescription" name="Contextual State And Mode - Matrix" label="Capability Function and State Machine Matrix" domainClass="StateMachine">
+    <ownedRepresentations xsi:type="description_3:CrossTableDescription" name="Contextual State And Mode - Matrix" label="%Contextual.State.And.Mode.Matrix.label.0" domainClass="StateMachine">
       <ownedLineMappings name="CSAM Root Function" reusedSubLines="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20Functions']/@ownedSubLines[name='CSAM%20function%20package']" domainClass="AbstractFunction" semanticCandidatesExpression="aql:self.ownedRegions.getRootFunction()" headerLabelExpression="feature:name">
         <ownedSubLines name="CSAM Sub Functions" reusedSubLines="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20FunctionalChains%201'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20Functions']" reusedInMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20Functions']/@ownedSubLines[name='CSAM%20function%20package'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20Functions']" domainClass="AbstractFunction" semanticCandidatesExpression="feature:eContents" headerLabelExpression="feature:name">
           <ownedSubLines name="CSAM function package" reusedSubLines="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20Functions'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20Functions']/@ownedSubLines[name='CSAM%20function%20package']" reusedInMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20State%20And%20Mode%20-%20Matrix']/@ownedLineMappings[name='CSAM%20Root%20Function']/@ownedSubLines[name='CSAM%20Sub%20Functions']/@ownedSubLines[name='CSAM%20function%20package']" domainClass="FunctionPkg" semanticCandidatesExpression="feature:eContents" headerLabelExpression="feature:name">
