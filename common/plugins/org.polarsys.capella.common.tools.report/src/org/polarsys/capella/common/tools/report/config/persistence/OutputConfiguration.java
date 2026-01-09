@@ -38,8 +38,8 @@ public class OutputConfiguration {
   }
   
   public OutputConfiguration(Element element) {
-    setOutputName(element.getAttribute("outputName"));
-    NodeList logLevelList = element.getElementsByTagName("LogLevel");
+    setOutputName(element.getAttribute("outputName")); //$NON-NLS-1$
+    NodeList logLevelList = element.getElementsByTagName("LogLevel"); //$NON-NLS-1$
     logLevel = new ArrayList<>();
     for (int i = 0; i < logLevelList.getLength(); i++) {
       logLevel.add(new LogLevel((Element) logLevelList.item(i)));
@@ -75,9 +75,9 @@ public class OutputConfiguration {
   }
 
   public Element convertToElement(Document document) {
-    Element element = document.createElement("OutputConfiguration");
+    Element element = document.createElement("OutputConfiguration"); //$NON-NLS-1$
     
-    Attr outputNameAttr = document.createAttribute("outputName");
+    Attr outputNameAttr = document.createAttribute("outputName"); //$NON-NLS-1$
     outputNameAttr.setValue(getOutputName());
     element.setAttributeNode(outputNameAttr);
     

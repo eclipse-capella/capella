@@ -44,10 +44,10 @@
      <command
            defaultHandler="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.GroupHandler"
            id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.group"
-           name="Group">
+           name="%command.name">
         <commandParameter
               id="org.eclipse.ui.commands.radioStateParameter"
-              name="groupParameter"
+              name="%commandParameter.name"
               optional="false">
         </commandParameter>
         <state
@@ -58,10 +58,10 @@
      <command
            defaultHandler="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.SelectionFilterHandler"
            id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.selectionfilter"
-           name="SelectionFilter">
+           name="%command.name.0">
         <commandParameter
               id="org.eclipse.ui.commands.radioStateParameter"
-              name="selectionFilterParameter"
+              name="%commandParameter.name.0"
               optional="false">
         </commandParameter>
         <state
@@ -120,14 +120,14 @@
            name="%disableConstraintCommand.label">
      </command>
      <command
-           description="Delete Constraint Markers"
+           description="%command.description"
            id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.deleteconstraintmarkers"
-           name="Delete Constraint Markers">
+           name="%command.name.6">
      </command>
      <command
            defaultHandler="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.ExpandHandler"
            id="org.polarsys.capella.common.tools.report.appenders.reportlogview.expandAll"
-           name="Expand All">
+           name="%command.name.7">
         <commandParameter
               id="type"
               name="type"
@@ -276,7 +276,7 @@
          <command
                commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.expandAll"
                icon="icons/show_categories.gif"
-               label="Show categories"
+               label="%command.label"
                style="push"
                tooltip="%tooltip.ShowCategories">
             <parameter
@@ -287,7 +287,7 @@
          <command
                commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.expandAll"
                icon="icons/expandall.gif"
-               label="Expand all"
+               label="%command.label.0"
                style="push"
                tooltip="%tooltip.ExpandAll">
             <parameter
@@ -298,7 +298,7 @@
          <command
                commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.expandAll"
                icon="icons/collapseall.png"
-               label="Collapse all"
+               label="%command.label.1"
                style="push"
                tooltip="%tooltip.CollapseAll">
             <parameter
@@ -372,7 +372,7 @@
       <menuContribution
             locationURI="menu:org.polarsys.capella.common.tools.report.appenders.reportlogview.logview">
          <menu
-               label="Show">
+               label="%show.action.label">
             <command
                   commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.debug"
                   icon="icons/debug.gif"
@@ -409,7 +409,7 @@
             </separator>
             <command
                   commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.selectionfilter"
-                  label="All elements"
+                  label="%selectionFilter.all"
                   style="radio">
                <parameter
                      name="org.eclipse.ui.commands.radioStateParameter"
@@ -418,7 +418,7 @@
             </command>
             <command
                   commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.selectionfilter"
-                  label="Elements for active project"
+                  label="%selectionFilter.project"
                   style="radio">
                <parameter
                      name="org.eclipse.ui.commands.radioStateParameter"
@@ -427,7 +427,7 @@
             </command>
             <command
                   commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.selectionfilter"
-                  label="Elements for active selection"
+                  label="%selectionFilter.selection"
                   style="radio">
                <parameter
                      name="org.eclipse.ui.commands.radioStateParameter"
@@ -436,10 +436,10 @@
             </command>
          </menu>
          <menu
-               label="Group by">
+               label="%groupBy.action.label">
             <command
                   commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.group"
-                  label="Severity"
+                  label="%groupBy.type.1"
                   style="radio">
                <parameter
                      name="org.eclipse.ui.commands.radioStateParameter"
@@ -448,7 +448,7 @@
             </command>
             <command
                   commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.group"
-                  label="Category"
+                  label="%groupBy.type.2"
                   style="radio">
                <parameter
                      name="org.eclipse.ui.commands.radioStateParameter"
@@ -457,7 +457,7 @@
             </command>
             <command
                   commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.group"
-                  label="Rule ID"
+                  label="%groupBy.type.3"
                   style="radio">
                <parameter
                      name="org.eclipse.ui.commands.radioStateParameter"
@@ -466,7 +466,7 @@
             </command>
             <command
                   commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.group"
-                  label="None"
+                  label="%groupBy.type.4"
                   style="radio">
                <parameter
                      name="org.eclipse.ui.commands.radioStateParameter"
@@ -478,7 +478,7 @@
       <menuContribution
             locationURI="popup:org.polarsys.capella.common.tools.report.appenders.reportlogview.logview?after=additions">
          <menu
-               label="Show">
+               label="%show.action.label">
             <command
                   commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.debug"
                   icon="icons/debug.gif"
@@ -515,7 +515,7 @@
             </separator>
             <command
                   commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.selectionfilter"
-                  label="All elements"
+                  label="%selectionFilter.all"
                   style="radio">
                <parameter
                      name="org.eclipse.ui.commands.radioStateParameter"
@@ -524,7 +524,7 @@
             </command>
             <command
                   commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.selectionfilter"
-                  label="Elements for active project"
+                  label="%selectionFilter.project"
                   style="radio">
                <parameter
                      name="org.eclipse.ui.commands.radioStateParameter"
@@ -533,7 +533,7 @@
             </command>
             <command
                   commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.selectionfilter"
-                  label="Elements for active selection"
+                  label="%selectionFilter.selection"
                   style="radio">
                <parameter
                      name="org.eclipse.ui.commands.radioStateParameter"
@@ -542,10 +542,10 @@
             </command>
          </menu>
          <menu
-               label="Group by">
+               label="%groupBy.action.label">
             <command
                   commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.group"
-                  label="Severity"
+                  label="%groupBy.type.1"
                   style="radio">
                <parameter
                      name="org.eclipse.ui.commands.radioStateParameter"
@@ -554,7 +554,7 @@
             </command>
             <command
                   commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.group"
-                  label="Category"
+                  label="%groupBy.type.2"
                   style="radio">
                <parameter
                      name="org.eclipse.ui.commands.radioStateParameter"
@@ -563,7 +563,7 @@
             </command>
             <command
                   commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.group"
-                  label="Rule ID"
+                  label="%groupBy.type.3"
                   style="radio">
                <parameter
                      name="org.eclipse.ui.commands.radioStateParameter"
@@ -572,7 +572,7 @@
             </command>
             <command
                   commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.group"
-                  label="None"
+                  label="%groupBy.type.4"
                   style="radio">
                <parameter
                      name="org.eclipse.ui.commands.radioStateParameter"

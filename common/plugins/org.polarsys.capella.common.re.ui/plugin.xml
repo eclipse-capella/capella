@@ -478,7 +478,7 @@
             adaptable="true"
             class="org.polarsys.capella.common.re.ui.decorators.InstanciationLabelDecorator"
             id="org.polarsys.capella.common.re.ui.decorators.text"
-            label="Instanciation Text Decorator"
+            label="%decorator.label"
             lightweight="false"
             state="true">
          <enablement>
@@ -693,7 +693,7 @@
          
          <menu id="org.polarsys.capella.common.re"
               icon="icons/full/etool16/plugin.gif"
-              label="REC / RPL">
+              label="%menu.label">
          
          <visibleWhen
                checkEnabled="true">
@@ -747,10 +747,10 @@
          <menu
                icon="icons/full/etool16/ReplicableElement.gif"
                id="org.polarsys.capella.common.re.createRecMenu"
-               label="Create REC">
+               label="%menu.label.0">
             <command
                   commandId="org.polarsys.capella.common.re.createRec"
-                  label="From selection..."
+                  label="%command.label"
                   style="push">
                <visibleWhen
                      checkEnabled="true">
@@ -772,10 +772,10 @@
          <menu
                icon="icons/full/etool16/ReplicableElement.gif"
                id="org.polarsys.capella.common.re.updateRecMenu"
-               label="Update REC">
+               label="%menu.label.1">
             <command
                   commandId="org.polarsys.capella.common.re.updateCur"
-                  label="From selection..."
+                  label="%command.label.0"
                   style="push">
                <visibleWhen
                      checkEnabled="true">
@@ -908,62 +908,62 @@
 
     <category
           id="org.polarsys.capella.common.re.subcommands"
-          name="Replicable Elements"
-          description="Replicable Elements manipulation commands">
+          name="%category.name"
+          description="%category.description">
     </category>
     
     <command id="org.polarsys.capella.common.re.subcommands.browse.addElements"
           categoryId="org.polarsys.capella.common.re.subcommands"
-          description="Include selected elements"
-          name="Include selected elements">
+          description="%command.description"
+          name="%command.name">
     </command>
     
     <command id="org.polarsys.capella.common.re.subcommands.browse.allElements"
           categoryId="org.polarsys.capella.common.re.subcommands"
-          description="Include elements from model"
-          name="Include elements from model">
+          description="%command.description.0"
+          name="%command.name.0">
     </command>
     
     <command id="org.polarsys.capella.common.re.subcommands.browse.scopeElements"
           categoryId="org.polarsys.capella.common.re.subcommands"
-          description="Include related elements"
-          name="Include related elements">
+          description="%command.description.1"
+          name="%command.name.1">
     </command>
     
     <command id="org.polarsys.capella.common.re.subcommands.browse.addChildren"
           categoryId="org.polarsys.capella.common.re.subcommands"
-          description="Include children of selected elements"
-          name="Include children of selected elements">
+          description="%command.description.2"
+          name="%command.name.2">
     </command>
     
     <command id="org.polarsys.capella.common.re.subcommands.browse.addSelectionDependencies"
           categoryId="org.polarsys.capella.common.re.subcommands"
-          description="Include required dependencies of selected elements"
-          name="Include required dependencies of selected elements">
+          description="%command.description.3"
+          name="%command.name.3">
     </command>
     
     <command id="org.polarsys.capella.common.re.subcommands.browse.addDependencies"
           categoryId="org.polarsys.capella.common.re.subcommands"
-          description="Include all required dependencies"
-          name="Include all required dependencies">
+          description="%command.description.4"
+          name="%command.name.4">
     </command>
     
     <command id="org.polarsys.capella.common.re.subcommands.delete"
           categoryId="org.polarsys.capella.common.re.subcommands"
-          description="Remove selected elements"
-          name="Remove selected elements">
+          description="%command.description.5"
+          name="%command.name.5">
     </command>
     
     <command id="org.polarsys.capella.common.re.subcommands.deleteChildren"
           categoryId="org.polarsys.capella.common.re.subcommands"
-          description="Remove selected elements and children"
-          name="Remove selected elements and children">
+          description="%command.description.6"
+          name="%command.name.6">
     </command>
     
     <command id="org.polarsys.capella.common.re.subcommands.suffixElement"
           categoryId="org.polarsys.capella.common.re.subcommands"
-          description="Add/remove suffix on elements"
-          name="Add/remove suffix on elements">
+          description="%command.description.7"
+          name="%command.name.7">
     </command>
     
    </extension>
@@ -1074,7 +1074,7 @@
    <extension point="org.eclipse.ui.menus">
     <menuContribution
                 locationURI="popup:BusinessSelectMenuSirius">
-                <menu id="org.polarsys.capella.common.re.ui.related.rec.elements" label="Related REC Elements">
+                <menu id="org.polarsys.capella.common.re.ui.related.rec.elements" label="%menu.label.2">
                    <visibleWhen
                          checkEnabled="false">
                       <reference
@@ -1082,7 +1082,7 @@
                       </reference>
                    </visibleWhen>
                 </menu>
-            	<menu id="org.polarsys.capella.common.re.ui.related.rpl.elements" label="Related RPL Elements">
+            	<menu id="org.polarsys.capella.common.re.ui.related.rpl.elements" label="%menu.label.3">
                 <visibleWhen
                       checkEnabled="false">
                    <reference

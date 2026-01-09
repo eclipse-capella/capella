@@ -134,8 +134,8 @@ public class CreateXmlConfiguration {
       Map<String, ConfigurationInstance> configurationMap = new HashMap<>();
       try {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, ""); //$NON-NLS-1$
+        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, ""); //$NON-NLS-1$
         DocumentBuilder builder;
         builder = factory.newDocumentBuilder();
         Document document = builder.parse(new File(filePath));
@@ -191,18 +191,18 @@ public class CreateXmlConfiguration {
   private void doSaveConfigurationFile(ReportConfigurationFile repConffile) {
     try {
       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-      factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-      factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+      factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, ""); //$NON-NLS-1$
+      factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, ""); //$NON-NLS-1$
       DocumentBuilder documentBuilder = factory.newDocumentBuilder();
       Document document = documentBuilder.newDocument();
       document.setXmlStandalone(true);
       document.appendChild(repConffile.convertToElement(document));
       TransformerFactory transformerFactory = TransformerFactory.newInstance();
-      transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-      transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
+      transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, ""); //$NON-NLS-1$
+      transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, ""); //$NON-NLS-1$
       Transformer transformer = transformerFactory.newTransformer();
-      transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-      transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+      transformer.setOutputProperty(OutputKeys.INDENT, "yes"); //$NON-NLS-1$
+      transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4"); //$NON-NLS-1$ //$NON-NLS-2$
       DOMSource domSource = new DOMSource(document);
       StreamResult streamResult = new StreamResult(new File(filePath));
       transformer.transform(domSource, streamResult);

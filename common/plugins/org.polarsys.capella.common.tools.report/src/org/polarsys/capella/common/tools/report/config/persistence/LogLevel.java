@@ -32,8 +32,8 @@ public class LogLevel {
     }
     
     public LogLevel(Element element) {
-      setName(element.getAttribute("name"));
-      setValue(Boolean.parseBoolean(element.getAttribute("value")));
+      setName(element.getAttribute("name")); //$NON-NLS-1$
+      setValue(Boolean.parseBoolean(element.getAttribute("value"))); //$NON-NLS-1$
     }
 
     /**
@@ -77,13 +77,13 @@ public class LogLevel {
     }
     
     public Element convertToElement(Document document) {
-      Element element = document.createElement("LogLevel");
+      Element element = document.createElement("LogLevel"); //$NON-NLS-1$
       
-      Attr nameAttr = document.createAttribute("name");
+      Attr nameAttr = document.createAttribute("name"); //$NON-NLS-1$
       nameAttr.setValue(getName());
       element.setAttributeNode(nameAttr);
       
-      Attr valueAttr = document.createAttribute("value");
+      Attr valueAttr = document.createAttribute("value"); //$NON-NLS-1$
       valueAttr.setValue(Boolean.toString(isValue()));
       element.setAttributeNode(valueAttr);
       
