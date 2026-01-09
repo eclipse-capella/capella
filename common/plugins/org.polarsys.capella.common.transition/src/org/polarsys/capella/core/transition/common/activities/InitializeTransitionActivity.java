@@ -27,7 +27,6 @@ import org.polarsys.capella.core.transition.common.ExtensionHelper;
 import org.polarsys.capella.core.transition.common.constants.ISchemaConstants;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.ITransitionSteps;
-import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.handlers.attachment.DefaultAttachmentHandler;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.DefaultContextScopeHandler;
@@ -295,7 +294,7 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
       }
 
     } else {
-      return new Status(IStatus.ERROR, Messages.Activity_Transition, "No input selection");
+      return new Status(IStatus.ERROR, org.polarsys.capella.core.transition.common.constants.Messages.Activity_Transition, Messages.InitializeTransitionActivity_NoInput);
     }
 
     return Status.OK_STATUS;

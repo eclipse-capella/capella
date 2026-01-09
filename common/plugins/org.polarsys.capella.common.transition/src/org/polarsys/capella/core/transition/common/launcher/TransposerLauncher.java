@@ -23,7 +23,6 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
 import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
-import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.context.TransitionContext;
 import org.polarsys.capella.core.transition.common.exception.TransitionException;
 import org.polarsys.capella.core.transition.common.handlers.log.DefaultLogHandler;
@@ -151,13 +150,13 @@ public class TransposerLauncher extends ActivitiesLauncher {
       throw e;
 
     } catch (TransitionException e) {
-      LogHelper.getInstance().error(e.getMessage(), Messages.Activity_Transition);
+      LogHelper.getInstance().error(e.getMessage(), org.polarsys.capella.core.transition.common.constants.Messages.Activity_Transition);
       e.printStackTrace();
       UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.ERROR);
       throw e;
 
     } catch (Exception e) {
-      LogHelper.getInstance().error(e.getMessage(), Messages.Activity_Transition);
+      LogHelper.getInstance().error(e.getMessage(), org.polarsys.capella.core.transition.common.constants.Messages.Activity_Transition);
       e.printStackTrace();
       UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.ERROR);
       throw new TransitionException(e);
@@ -169,7 +168,7 @@ public class TransposerLauncher extends ActivitiesLauncher {
 
   protected void initializeParameters() {
     addSharedParameter(new GenericParameter<IContext>(ITransposerWorkflow.TRANSPOSER_CONTEXT,
-        transposer.getContext(), "Context used during rules execution"));
+        transposer.getContext(), Messages.TransposerLauncher_0));
   }
 
   public class DispatcherArrayIterator implements Iterator<String> {

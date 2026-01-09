@@ -64,7 +64,7 @@ public class RuleMappingExtensionService implements IRuleMappingExtensionConstan
     _contributedPurposes.clear();
     _mappingsHashMap.clear();
     if (EMFPlugin.IS_ECLIPSE_RUNNING) {
-      IExtension extensions[] = Platform.getExtensionRegistry().getExtensionPoint("org.polarsys.kitalpha.transposer.rules.handler.mapping").getExtensions();
+      IExtension extensions[] = Platform.getExtensionRegistry().getExtensionPoint("org.polarsys.kitalpha.transposer.rules.handler.mapping").getExtensions(); //$NON-NLS-1$
       IExtension aiextension[];
       int l = (aiextension = extensions).length;
       for (int i = 0; i < l; i++) {
@@ -74,9 +74,9 @@ public class RuleMappingExtensionService implements IRuleMappingExtensionConstan
         int k1 = (aiconfigurationelement = extension.getConfigurationElements()).length;
         for (int i1 = 0; i1 < k1; i1++) {
           IConfigurationElement mappingConfigurationElement = aiconfigurationelement[i1];
-          if (mappingConfigurationElement.getName().equals("mapping")) {
+          if (mappingConfigurationElement.getName().equals("mapping")) { //$NON-NLS-1$
             Mapping currentMapping = createMapping(mappingConfigurationElement);
-            String purpose = mappingConfigurationElement.getAttribute("mappingPurpose");
+            String purpose = mappingConfigurationElement.getAttribute("mappingPurpose"); //$NON-NLS-1$
             ContributedPurpose currentPurpose = getCurrentPurpose(purpose);
             currentPurpose.getMappings().add(currentMapping);
             currentMapping.setId(currentMappingID);
@@ -106,7 +106,7 @@ public class RuleMappingExtensionService implements IRuleMappingExtensionConstan
         int l1 = (aiconfigurationelement1 = extension.getConfigurationElements()).length;
         for (int j1 = 0; j1 < l1; j1++) {
           IConfigurationElement mappingConfigurationElement = aiconfigurationelement1[j1];
-          if (mappingConfigurationElement.getName().equals("mapping") && _mappingsHashMap.containsKey(currentMappingID)) {
+          if (mappingConfigurationElement.getName().equals("mapping") && _mappingsHashMap.containsKey(currentMappingID)) { //$NON-NLS-1$
             Mapping currentMapping = (Mapping) _mappingsHashMap.get(currentMappingID);
             try {
               loadMapping(currentMapping, mappingConfigurationElement);
@@ -169,27 +169,27 @@ public class RuleMappingExtensionService implements IRuleMappingExtensionConstan
   protected String getExtendedMappingID(IExtension extension) {
     IConfigurationElement elements[] = extension.getConfigurationElements();
     IConfigurationElement mappingConfigurationElement = elements[0];
-    if (!mappingConfigurationElement.getName().equals("mapping")) {
+    if (!mappingConfigurationElement.getName().equals("mapping")) { //$NON-NLS-1$
       return null;
     } else {
-      return mappingConfigurationElement.getAttribute("extendedMappingExtensionID");
+      return mappingConfigurationElement.getAttribute("extendedMappingExtensionID"); //$NON-NLS-1$
     }
   }
 
   protected Mapping createMapping(IConfigurationElement mappingConfigurationElement) {
     Mapping currentMapping = CommonFactory.eINSTANCE.createMapping();
-    currentMapping.setName(mappingConfigurationElement.getAttribute("mappingName"));
-    currentMapping.setDescription(mappingConfigurationElement.getAttribute("description"));
-    if (mappingConfigurationElement.getAttribute("domainHelper") != null) {
+    currentMapping.setName(mappingConfigurationElement.getAttribute("mappingName")); //$NON-NLS-1$
+    currentMapping.setDescription(mappingConfigurationElement.getAttribute("description")); //$NON-NLS-1$
+    if (mappingConfigurationElement.getAttribute("domainHelper") != null) { //$NON-NLS-1$
       try {
-        currentMapping.setOwnedDomainHelper((IDomainHelper) mappingConfigurationElement.createExecutableExtension("domainHelper"));
+        currentMapping.setOwnedDomainHelper((IDomainHelper) mappingConfigurationElement.createExecutableExtension("domainHelper")); //$NON-NLS-1$
       } catch (CoreException exception) {
         exception.printStackTrace();
       }
     }
-    if (mappingConfigurationElement.getAttribute("context") != null) {
+    if (mappingConfigurationElement.getAttribute("context") != null) { //$NON-NLS-1$
       try {
-        currentMapping.setOwnedContext((IContext) mappingConfigurationElement.createExecutableExtension("context"));
+        currentMapping.setOwnedContext((IContext) mappingConfigurationElement.createExecutableExtension("context")); //$NON-NLS-1$
       } catch (CoreException exception) {
         exception.printStackTrace();
       }
@@ -203,10 +203,10 @@ public class RuleMappingExtensionService implements IRuleMappingExtensionConstan
     int j = (aiconfigurationelement = mappingChildren).length;
     for (int i = 0; i < j; i++) {
       IConfigurationElement configurationElement = aiconfigurationelement[i];
-      if (configurationElement.getName().equals("mappingElement")) {
+      if (configurationElement.getName().equals("mappingElement")) { //$NON-NLS-1$
         currentMapping.getOwnedMappingElements().add(handleMappingElement(configurationElement, currentMapping));
       }
-      if (configurationElement.getName().equals("mappingPackage")) {
+      if (configurationElement.getName().equals("mappingPackage")) { //$NON-NLS-1$
         currentMapping.getOwnedPackages().add(handleMappingPackage(configurationElement, currentMapping));
       }
     }
@@ -215,16 +215,16 @@ public class RuleMappingExtensionService implements IRuleMappingExtensionConstan
 
   protected MappingPackage handleMappingPackage(IConfigurationElement packageConfigurationElement, Mapping currentMapping) {
     MappingPackage currentPackage = CommonFactory.eINSTANCE.createMappingPackage();
-    currentPackage.setName(packageConfigurationElement.getAttribute("name"));
+    currentPackage.setName(packageConfigurationElement.getAttribute("name")); //$NON-NLS-1$
     IConfigurationElement mappingChildren[] = packageConfigurationElement.getChildren();
     IConfigurationElement aiconfigurationelement[];
     int j = (aiconfigurationelement = mappingChildren).length;
     for (int i = 0; i < j; i++) {
       IConfigurationElement configurationElement = aiconfigurationelement[i];
-      if (configurationElement.getName().equals("mappingElement")) {
+      if (configurationElement.getName().equals("mappingElement")) { //$NON-NLS-1$
         currentPackage.getOwnedMappingElements().add(handleMappingElement(configurationElement, currentMapping));
       }
-      if (configurationElement.getName().equals("mappingPackage")) {
+      if (configurationElement.getName().equals("mappingPackage")) { //$NON-NLS-1$
         currentPackage.getOwnedPackages().add(handleMappingPackage(configurationElement, currentMapping));
       }
     }
@@ -234,15 +234,15 @@ public class RuleMappingExtensionService implements IRuleMappingExtensionConstan
 
   protected MappingElement handleMappingElement(IConfigurationElement configurationElement, Mapping currentMapping) {
     MappingElement currentElement = CommonFactory.eINSTANCE.createMappingElement();
-    String name = configurationElement.getAttribute("name");
+    String name = configurationElement.getAttribute("name"); //$NON-NLS-1$
     currentElement.setName(name);
-    String domainMetaclassName = configurationElement.getAttribute("domainMetaClass");
+    String domainMetaclassName = configurationElement.getAttribute("domainMetaClass"); //$NON-NLS-1$
     currentElement.setDomainMetaClass(currentMapping.getDomainHelper().getDomainMetaclass(domainMetaclassName));
-    String reusedSuperPossibilities = configurationElement.getAttribute("reuseExtendedElementPossibilities");
+    String reusedSuperPossibilities = configurationElement.getAttribute("reuseExtendedElementPossibilities"); //$NON-NLS-1$
     currentElement.setReuseSuperPossibilities(Boolean.parseBoolean(reusedSuperPossibilities));
-    String reusedSuperDefaultPossibility = configurationElement.getAttribute("reuseExtendedElementDefaultPossibility");
+    String reusedSuperDefaultPossibility = configurationElement.getAttribute("reuseExtendedElementDefaultPossibility"); //$NON-NLS-1$
     currentElement.setReuseSuperDefaultPossibility(Boolean.parseBoolean(reusedSuperDefaultPossibility));
-    IConfigurationElement defaultPossibilities[] = configurationElement.getChildren("defaultMappingPossibility");
+    IConfigurationElement defaultPossibilities[] = configurationElement.getChildren("defaultMappingPossibility"); //$NON-NLS-1$
     IConfigurationElement aiconfigurationelement[];
     int j = (aiconfigurationelement = defaultPossibilities).length;
     for (int i = 0; i < j; i++) {
@@ -250,7 +250,7 @@ public class RuleMappingExtensionService implements IRuleMappingExtensionConstan
       currentElement.setOwnedDefaultPossibility(handlePossibility(defaultPossibility));
     }
 
-    IConfigurationElement possibilities[] = configurationElement.getChildren("mappingPossibility");
+    IConfigurationElement possibilities[] = configurationElement.getChildren("mappingPossibility"); //$NON-NLS-1$
     IConfigurationElement aiconfigurationelement1[];
     int l = (aiconfigurationelement1 = possibilities).length;
     for (int k = 0; k < l; k++) {
@@ -263,38 +263,38 @@ public class RuleMappingExtensionService implements IRuleMappingExtensionConstan
 
   protected MappingPossibility handlePossibility(IConfigurationElement possibilityConfigurationElement) {
     MappingPossibility currentPossibility = CommonFactory.eINSTANCE.createMappingPossibility();
-    currentPossibility.setName(possibilityConfigurationElement.getAttribute("name"));
-    String enabled = possibilityConfigurationElement.getAttribute("enabled");
+    currentPossibility.setName(possibilityConfigurationElement.getAttribute("name")); //$NON-NLS-1$
+    String enabled = possibilityConfigurationElement.getAttribute("enabled"); //$NON-NLS-1$
     if (!Boolean.parseBoolean(enabled)) {
       return currentPossibility;
     }
-    String completeRuleClassName = possibilityConfigurationElement.getAttribute("completeRule");
+    String completeRuleClassName = possibilityConfigurationElement.getAttribute("completeRule"); //$NON-NLS-1$
     if (completeRuleClassName != null) {
       if (_classNameToIRule.containsKey(completeRuleClassName)) {
         currentPossibility.setCompleteRule((IRule) _classNameToIRule.get(completeRuleClassName));
       } else {
         try {
-          currentPossibility.setCompleteRule((IRule) possibilityConfigurationElement.createExecutableExtension("completeRule"));
+          currentPossibility.setCompleteRule((IRule) possibilityConfigurationElement.createExecutableExtension("completeRule")); //$NON-NLS-1$
         } catch (CoreException exception) {
           exception.printStackTrace();
         }
       }
     }
-    String incompleteRuleClassName = possibilityConfigurationElement.getAttribute("incompleteRule");
+    String incompleteRuleClassName = possibilityConfigurationElement.getAttribute("incompleteRule"); //$NON-NLS-1$
     if (incompleteRuleClassName != null) {
       if (_classNameToIRule.containsKey(incompleteRuleClassName)) {
         currentPossibility.setIncompleteRule((IRule) _classNameToIRule.get(incompleteRuleClassName));
       } else {
         try {
-          currentPossibility.setIncompleteRule((IRule) possibilityConfigurationElement.createExecutableExtension("incompleteRule"));
+          currentPossibility.setIncompleteRule((IRule) possibilityConfigurationElement.createExecutableExtension("incompleteRule")); //$NON-NLS-1$
         } catch (CoreException exception) {
           exception.printStackTrace();
         }
       }
     }
-    if (possibilityConfigurationElement.getAttribute("context") != null) {
+    if (possibilityConfigurationElement.getAttribute("context") != null) { //$NON-NLS-1$
       try {
-        currentPossibility.setContext((IContext) possibilityConfigurationElement.createExecutableExtension("context"));
+        currentPossibility.setContext((IContext) possibilityConfigurationElement.createExecutableExtension("context")); //$NON-NLS-1$
       } catch (CoreException exception) {
         exception.printStackTrace();
       }

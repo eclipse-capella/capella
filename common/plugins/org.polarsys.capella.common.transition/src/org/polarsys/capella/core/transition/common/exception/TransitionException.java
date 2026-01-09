@@ -35,12 +35,12 @@ public class TransitionException extends RuntimeException {
     if (status.isMultiStatus()) {
       IStatus[] children = status.getChildren();
       StringBuilder builder = new StringBuilder();
-      builder.append(status.getMessage()+ "\n");
+      builder.append(status.getMessage()+ "\n"); //$NON-NLS-1$
       for (IStatus child : children) {
         if (child.isMultiStatus()) {
-          builder.append(getMessage(child) + "\n");
+          builder.append(getMessage(child) + "\n"); //$NON-NLS-1$
         } else {
-          builder.append(child.getMessage() + "\n");
+          builder.append(child.getMessage() + "\n"); //$NON-NLS-1$
         }
       }
       return builder.toString();

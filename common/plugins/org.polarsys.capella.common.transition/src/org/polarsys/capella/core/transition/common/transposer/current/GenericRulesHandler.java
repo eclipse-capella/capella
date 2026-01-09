@@ -115,8 +115,8 @@ public class GenericRulesHandler implements IRulesHandler {
       applicablePossibility.updateContext(object, _context);
     }
     if (monitor != null) {
-      monitor.subTask((new StringBuilder(String.valueOf(applicablePossibility.getName()))).append(" (").append(complete ? "complete" : "incomplete")
-          .append(") ").append(object.getClass().getSimpleName()).toString());
+      monitor.subTask((new StringBuilder(String.valueOf(applicablePossibility.getName()))).append(" (").append(complete ? Messages.GenericRulesHandler_1 : Messages.GenericRulesHandler_2) //$NON-NLS-1$
+          .append(") ").append(object.getClass().getSimpleName()).toString()); //$NON-NLS-1$
     }
     applicablePossibility.applyRule(object, _context, complete);
     return true;

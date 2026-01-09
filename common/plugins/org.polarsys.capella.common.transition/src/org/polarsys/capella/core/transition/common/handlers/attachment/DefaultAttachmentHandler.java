@@ -68,18 +68,18 @@ public class DefaultAttachmentHandler implements IAttachmentHandler {
         LogHelper.getInstance()
             .debug(
                 NLS.bind(
-                    "Element ''{0}'' attached to ''{1}'' [{2}].",
+                    "Element ''{0}'' attached to ''{1}'' [{2}].", //$NON-NLS-1$
                     new Object[] { LogHelper.getInstance().getText(targetAttached), LogHelper.getInstance().getText(targetAttaching),
                                   targetFeature.getName() }), Messages.Activity_Transformation);
 
         return true;
       }
       LogHelper.getInstance().debug(
-          NLS.bind("Feature ''{0}'' of ''{1}'' is not changeable or derived.", targetFeature.getName(), ((EClass) (targetFeature.eContainer())).getName()),
+          NLS.bind("Feature ''{0}'' of ''{1}'' is not changeable or derived.", targetFeature.getName(), ((EClass) (targetFeature.eContainer())).getName()), //$NON-NLS-1$
           Messages.Activity_Transformation);
     } else {
       LogHelper.getInstance().warn(
-          NLS.bind("Feature ''{0}'' of ''{1}'' is not applicable on  ''{1}''.",
+          NLS.bind("Feature ''{0}'' of ''{1}'' is not applicable on  ''{1}''.", //$NON-NLS-1$
               new Object[] { targetFeature.getName(), ((EClass) (targetFeature.eContainer())).getName(), targetAttaching.eClass().getName() }),
           Messages.Activity_Transformation);
     }
