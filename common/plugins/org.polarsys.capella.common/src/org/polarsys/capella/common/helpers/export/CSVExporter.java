@@ -26,7 +26,7 @@ import org.polarsys.capella.common.helpers.export.utils.CSVWriter;
 public class CSVExporter extends AbstractExporter {
   
   protected char delimiter;
-  protected String charset = "UTF-8";
+  protected String charset = "UTF-8"; //$NON-NLS-1$
   
   public CSVExporter(char delimiter) {
     this.delimiter = delimiter;
@@ -46,7 +46,7 @@ public class CSVExporter extends AbstractExporter {
    */
   public void export(OutputStream stream, List<String[]> data) throws IOException  {
         
-    CSVWriter writer = new CSVWriter(stream, this.delimiter, Charset.forName("UTF-8"));
+    CSVWriter writer = new CSVWriter(stream, this.delimiter, Charset.forName(charset));
     
     for (String[] line: data) {
       if (null == line || line.length == 0) {

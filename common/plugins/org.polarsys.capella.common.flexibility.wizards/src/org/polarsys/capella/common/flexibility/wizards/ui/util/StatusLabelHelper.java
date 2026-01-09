@@ -25,16 +25,16 @@ public class StatusLabelHelper {
   public static void updateImage(IStatus status, Label label) {
     if (!label.isDisposed() && status != null) {
       if (status.isOK()) {
-        label.setImage(Activator.getDefault().getImage("full/etool16/empty.gif"));
+        label.setImage(Activator.getDefault().getImage("full/etool16/empty.gif")); //$NON-NLS-1$
 
       } else if (status.matches(IStatus.INFO)) {
-        label.setImage(Activator.getDefault().getImage("full/etool16/info_tsk.gif"));
+        label.setImage(Activator.getDefault().getImage("full/etool16/info_tsk.gif")); //$NON-NLS-1$
 
       } else if (status.matches(IStatus.WARNING)) {
-        label.setImage(Activator.getDefault().getImage("full/etool16/warn_tsk.gif"));
+        label.setImage(Activator.getDefault().getImage("full/etool16/warn_tsk.gif")); //$NON-NLS-1$
 
       } else if (status.matches(IStatus.ERROR)) {
-        label.setImage(Activator.getDefault().getImage("full/etool16/error_tsk.gif"));
+        label.setImage(Activator.getDefault().getImage("full/etool16/error_tsk.gif")); //$NON-NLS-1$
       }
     }
   }

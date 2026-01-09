@@ -42,7 +42,7 @@ public class PropertiesLoader {
     extensions = new ArrayList<IConfigurationElement>();
     extensions.addAll(Arrays.asList(Platform.getExtensionRegistry().getConfigurationElementsFor(PropertiesSchemaConstants.PropertiesSchema_ID)));
     for (IConfigurationElement element : extensions) {
-      System.out.println("flexibility.properties: migration is required for " + element.getNamespaceIdentifier());
+      System.out.println("flexibility.properties: migration is required for " + element.getNamespaceIdentifier()); //$NON-NLS-1$
     }
     extensions.addAll(Arrays.asList(Platform.getExtensionRegistry().getConfigurationElementsFor(PropertiesSchemaConstants.PropertiesSchema_SCHEMA_ID)));
 

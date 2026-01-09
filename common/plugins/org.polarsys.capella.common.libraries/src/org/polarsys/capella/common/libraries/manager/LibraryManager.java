@@ -53,7 +53,7 @@ public class LibraryManager extends ILibraryManager implements ILibraryProviderL
 
       for (IConfigurationElement element : Platform.getExtensionRegistry().getConfigurationElementsFor(PROVIDER_EXTENSION)) {
         try {
-          ILibraryProvider provider = (ILibraryProvider) element.createExecutableExtension("class");
+          ILibraryProvider provider = (ILibraryProvider) element.createExecutableExtension("class"); //$NON-NLS-1$
           if (provider != null) {
             providers.add(provider);
           }

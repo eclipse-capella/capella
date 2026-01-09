@@ -29,9 +29,9 @@ import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
  */
 public class CTabGroupRenderer extends DefaultGroupRenderer {
 
-  public static final String PARAMETER_TAB_FOLDER = "PARAMETER_TAB_FOLDER";
-  public static final String PARAMETER_SCROLL_MINIMAL_WIDTH = "PARAMETER_SCROLL_MINIMAL_WIDTH";
-  public static final String PARAMETER_SCROLL_MINIMAL_HEIGHT = "PARAMETER_SCROLL_MINIMAL_HEIGHT";
+  public static final String PARAMETER_TAB_FOLDER = "PARAMETER_TAB_FOLDER"; //$NON-NLS-1$
+  public static final String PARAMETER_SCROLL_MINIMAL_WIDTH = "PARAMETER_SCROLL_MINIMAL_WIDTH"; //$NON-NLS-1$
+  public static final String PARAMETER_SCROLL_MINIMAL_HEIGHT = "PARAMETER_SCROLL_MINIMAL_HEIGHT"; //$NON-NLS-1$
 
   /**
    * 

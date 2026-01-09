@@ -41,11 +41,11 @@ public class ObjectPropertiesLoader extends PropertiesLoader {
    * @return
    */
   public String getIdentifier(Collection<Object> sources) {
-    String idProperties = "";
+    String idProperties = ""; //$NON-NLS-1$
     //Find common class between all sources.
     if (!sources.isEmpty()) {
       Iterator<Object> sourceIt = sources.iterator();
-      String initialId = "";
+      String initialId = ""; //$NON-NLS-1$
       while (sourceIt.hasNext()) {
         Object source = sourceIt.next();
         if (source == null) {
@@ -74,7 +74,7 @@ public class ObjectPropertiesLoader extends PropertiesLoader {
 
         initialId += adapt(rootClass.getCanonicalName());
         if (sourceIt.hasNext()) {
-          initialId += "__";
+          initialId += "__"; //$NON-NLS-1$
         }
       }
 
@@ -89,7 +89,7 @@ public class ObjectPropertiesLoader extends PropertiesLoader {
    */
   @Override
   protected void initToVisit(LinkedList<String> toVisitId, String idProperties) {
-    for (String id : idProperties.split("__")) {
+    for (String id : idProperties.split("__")) { //$NON-NLS-1$
       toVisitId.add(id);
     }
   }

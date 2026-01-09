@@ -123,11 +123,11 @@ public class SelectListRenderer extends AbstractRenderer {
   }
 
   protected String getPopupLocation() {
-    return "popup";
+    return "popup"; //$NON-NLS-1$
   }
 
   protected String getToolbarLocation() {
-    return "";
+    return ""; //$NON-NLS-1$
   }
 
   protected ILabelProvider createLabelProvider(final IRendererContext rendererContext) {

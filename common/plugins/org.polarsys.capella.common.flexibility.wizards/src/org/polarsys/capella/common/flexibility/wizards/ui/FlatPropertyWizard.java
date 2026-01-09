@@ -30,7 +30,7 @@ public class FlatPropertyWizard extends PropertyWizard {
 
   @Override
   public void addPages() {
-    PropertyWizardPage page = new PropertyWizardPage("propertiesEditor", getContext(), getRendererContext()) {
+    PropertyWizardPage page = new PropertyWizardPage("propertiesEditor", getContext(), getRendererContext()) { //$NON-NLS-1$
 
       @Override
       public void createControl(Composite parent) {

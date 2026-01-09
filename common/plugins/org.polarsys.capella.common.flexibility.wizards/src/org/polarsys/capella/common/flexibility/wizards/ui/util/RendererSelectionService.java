@@ -82,7 +82,7 @@ public class RendererSelectionService extends ContextMenuSelectionService {
    */
   @Override
   public String[] getProvidedSourceNames() {
-    return new String[] { "selection", IRenderer.EXECUTION_EVENT__RENDERER, IRenderer.EXECUTION_EVENT__RENDERER_CONTEXT };
+    return new String[] { "selection", IRenderer.EXECUTION_EVENT__RENDERER, IRenderer.EXECUTION_EVENT__RENDERER_CONTEXT }; //$NON-NLS-1$
   }
 
 }
