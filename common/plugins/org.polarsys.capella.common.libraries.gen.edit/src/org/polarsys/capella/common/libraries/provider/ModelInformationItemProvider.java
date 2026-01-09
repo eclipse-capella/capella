@@ -187,7 +187,7 @@ public class ModelInformationItemProvider extends LibraryAbstractElementItemProv
    */
   @Override
   public String getText(Object object) {
-    String label = "Library Dependencies";
+    String label = Messages.ModelInformationItemProvider_0;
 
     // begin-extension-code
     return (label == null) || (label.length() == 0) ? "[" + getString("_UI_ModelInformation_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$

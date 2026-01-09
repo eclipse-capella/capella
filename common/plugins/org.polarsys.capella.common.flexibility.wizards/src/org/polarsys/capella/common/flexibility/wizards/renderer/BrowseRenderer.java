@@ -81,7 +81,7 @@ public class BrowseRenderer extends TextRenderer {
     if (isBrowseButton()) {
       browse = new ToolItem(toolbar, SWT.PUSH);
       browse.setToolTipText(getBrowseText());
-      browse.setImage(Activator.getDefault().getImage("full/etool16/browse.gif"));
+      browse.setImage(Activator.getDefault().getImage("full/etool16/browse.gif")); //$NON-NLS-1$
       browse.addSelectionListener(new SelectionListener() {
 
         public void widgetSelected(SelectionEvent event) {
@@ -96,8 +96,8 @@ public class BrowseRenderer extends TextRenderer {
 
     if (isDeleteButton()) {
       delete = new ToolItem(toolbar, SWT.PUSH);
-      delete.setToolTipText("Delete all elements");
-      delete.setImage(Activator.getDefault().getImage("full/etool16/delete_edit.gif"));
+      delete.setToolTipText(Messages.BrowseRenderer_1);
+      delete.setImage(Activator.getDefault().getImage("full/etool16/delete_edit.gif")); //$NON-NLS-1$
       delete.addSelectionListener(new SelectionListener() {
 
         public void widgetSelected(SelectionEvent event) {
@@ -115,7 +115,7 @@ public class BrowseRenderer extends TextRenderer {
    * @return
    */
   protected String getBrowseText() {
-    return "Browse available elements";
+    return Messages.BrowseRenderer_3;
   }
 
   protected void proceedDelete(Shell shell, IRendererContext context) {
@@ -174,7 +174,7 @@ public class BrowseRenderer extends TextRenderer {
         right.addAll(current);
         right.remove(null);
 
-        TransferTreeListDialog dialog = new TransferTreeListDialog(shell, "Selection wizard", "Select elements.");//$NON-NLS-2$
+        TransferTreeListDialog dialog = new TransferTreeListDialog(shell, Messages.BrowseRenderer_4, Messages.BrowseRenderer_0);
         dialog.setLeftInput(new ArrayList<EObject>(left), null);
         dialog.setRightInput(new ArrayList<EObject>(right), null);
         if (dialog.open() == Window.OK) {
