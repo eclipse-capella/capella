@@ -87,7 +87,7 @@ public class StateTransitionTriggerField extends ContainmentTableField {
       if (changeEvent.getExpression() != null) {
         res += " " + getConstraintLabel(changeEvent.getExpression()); //$NON-NLS-1$
       } else {
-        res += " " + changeEvent.getName();
+        res += " " + changeEvent.getName(); //$NON-NLS-1$
       }
       return res;
     }
@@ -97,7 +97,7 @@ public class StateTransitionTriggerField extends ContainmentTableField {
       if (timeEvent.getExpression() != null) {
         res += " " + getConstraintLabel(timeEvent.getExpression()); //$NON-NLS-1$
       } else {
-        res += " " + timeEvent.getName();
+        res += " " + timeEvent.getName(); //$NON-NLS-1$
       }
       return res;
     }
@@ -118,7 +118,7 @@ public class StateTransitionTriggerField extends ContainmentTableField {
         handleStateEventButtonClick(CapellacommonPackage.Literals.TIME_EVENT);
       }
     });
-    _timeEventBtn.setToolTipText("Create a Time Event");
+    _timeEventBtn.setToolTipText(Messages.StateTransitionTriggerField_2);
 
     _changeEventBtn = createTableButton(parent, CommonPropertiesPlugin.getDefault().getImage(IImageKeys.CHANGE_EVENT_IMG_16), new Runnable() {
       @Override
@@ -126,7 +126,7 @@ public class StateTransitionTriggerField extends ContainmentTableField {
         handleStateEventButtonClick(CapellacommonPackage.Literals.CHANGE_EVENT);
       }
     });
-    _changeEventBtn.setToolTipText("Create a Change Event");
+    _changeEventBtn.setToolTipText(Messages.StateTransitionTriggerField_3);
 
     ImageRegistry imgRegistry = ToolkitPlugin.getDefault().getImageRegistry();
     Image openImage = imgRegistry.get(ToolkitPlugin.BROWSE_IMAGE_ITEM_ID);
@@ -136,7 +136,7 @@ public class StateTransitionTriggerField extends ContainmentTableField {
         handleOpenButtonClick(_openBtn);
       }
     });
-    _openBtn.setToolTipText("Browse available elements");
+    _openBtn.setToolTipText(Messages.StateTransitionTriggerField_4);
   }
 
   /**

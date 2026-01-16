@@ -16,6 +16,11 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.data.core.validation.constraint.messages"; //$NON-NLS-1$
+  public static String I_36_ConstraintNotReferenced_Guard;
+  public static String I_36_ConstraintNotReferenced_Expression;
+  public static String I_36_ConstraintNotReferenced_Context;
+  public static String I_36_ConstraintNotReferenced_Condition;
+  public static String I_36_ConstraintNotReferenced_Suffix;
   public static String I_38_ReferenceConstraints_detail;
   public static String I_38_ReferenceConstraints_title;
   public static String I_38_ReferenceConstraintsListener_detail;

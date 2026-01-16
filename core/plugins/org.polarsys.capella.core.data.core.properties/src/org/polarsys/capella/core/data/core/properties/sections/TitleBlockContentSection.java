@@ -47,7 +47,7 @@ public class TitleBlockContentSection extends TitleBlockContainerSection {
   
   @Override
   public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createContents(parent, aTabbedPropertySheetPage, Messages.getString("TitleBlock.Content.Label"));
+    super.createContents(parent, aTabbedPropertySheetPage, Messages.getString("TitleBlock.Content.Label")); //$NON-NLS-1$
   }
   
   @Override

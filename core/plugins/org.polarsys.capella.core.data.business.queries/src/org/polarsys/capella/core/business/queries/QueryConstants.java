@@ -302,25 +302,25 @@ import org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_Physical
 
 public class QueryConstants {
 
-  public static final String ECLASS_PARAMETER = "theClass";
-  public static final String ESTRUCTURAL_FEATURE_PARAMETER = "theStructuralFeature";
+  public static final String ECLASS_PARAMETER = "theClass"; //$NON-NLS-1$
+  public static final String ESTRUCTURAL_FEATURE_PARAMETER = "theStructuralFeature"; //$NON-NLS-1$
 
-  public static final String GET_AVAILABLE__ABSTRACT_EXPRESSION_VALUE__TYPE___LIB = "GetAvailable_AbstractExpressionValue_Type__Lib";
-  public static final String GET_AVAILABLE__COMPONENT_EXCHANGE__CONVOYED_INFORMATIONS___LIB = "GetAvailable_ComponentExchange_ConvoyedInformations__Lib";
-  public static final String GET_AVAILABLE__ENUMERATION__DOMAIN_TYPE___LIB = "GetAvailable_Enumeration_DomainType__Lib";
-  public static final String GET_AVAILABLE__EXCHANGE_ITEM__INHERITED_EXCHANGE_ITEM___LIB = "GetAvailable_ExchangeItem_InheritedExchangeItem__Lib";
-  public static final String GET_AVAILABLE__FUNCTION_INPUT_PORT__IN_COMING_EXCHANGE_ITEMS___LIB = "GetAvailable_FunctionInputPort_InComingExchangeItems__Lib";
-  public static final String GET_AVAILABLE__FUNCTION_OUTPUT_PORT__OUT_GOING_EXCHANGE_ITEMS___LIB = "GetAvailable_FunctionOutputPort_OutGoingExchangeItems__Lib";
-  public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__EXCHANGE_ITEMS___LIB = "GetAvailable_FunctionalExchange_ExchangeItems__Lib";
-  public static final String GET_AVAILABLE__INTERFACE__EXCHANGE_ITEMS___LIB = "GetAvailable_Interface_ExchangeItems__Lib";
-  public static final String GET_AVAILABLE__LITERAL_NUMERIC_VALUE__ABSTRACT_TYPE___LIB = "GetAvailable_LiteralNumericValue_AbstractType__Lib";
-  public static final String GET_AVAILABLE__LITERAL_STRING_VALUE__ABSTRACT_TYPE___LIB = "GetAvailable_LiteralStringValue_AbstractType__Lib";
-  public static final String GET_AVAILABLE__COMPONENT_PORT__PROVIDED_INTERFACES___LIB = "GetAvailable_ComponentPort_ProvidedInterfaces__Lib";
-  public static final String GET_AVAILABLE__COMPONENT_PORT__REQUIRED_INTERFACES___LIB = "GetAvailable_ComponentPort_RequiredInterfaces__Lib";
-  public static final String GET_AVAILABLE__COMMUNICATION_LINK__EXCHANGE_ITEM___LIB = "GetAvailable_CommunicationLink_ExchangeItem__Lib";
-  public static final String GET_AVAILABLE__STATE_TRANSITION__EFFECT___LIB = "GetAvailable_StateTransitionEffect__Lib";
-  public static final String GET_AVAILABLE__STATE_TRANSITION_EFFECT___LIB = "GetAvailable_StateTransitionEffect__Lib";
-  public static final String GET_AVAILABLE__STATE_TRANSITION_TRIGGER___LIB = "GetAvailable_StateTransitionTrigger__Lib";
+  public static final String GET_AVAILABLE__ABSTRACT_EXPRESSION_VALUE__TYPE___LIB = "GetAvailable_AbstractExpressionValue_Type__Lib"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__COMPONENT_EXCHANGE__CONVOYED_INFORMATIONS___LIB = "GetAvailable_ComponentExchange_ConvoyedInformations__Lib"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__ENUMERATION__DOMAIN_TYPE___LIB = "GetAvailable_Enumeration_DomainType__Lib"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__EXCHANGE_ITEM__INHERITED_EXCHANGE_ITEM___LIB = "GetAvailable_ExchangeItem_InheritedExchangeItem__Lib"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__FUNCTION_INPUT_PORT__IN_COMING_EXCHANGE_ITEMS___LIB = "GetAvailable_FunctionInputPort_InComingExchangeItems__Lib"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__FUNCTION_OUTPUT_PORT__OUT_GOING_EXCHANGE_ITEMS___LIB = "GetAvailable_FunctionOutputPort_OutGoingExchangeItems__Lib"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__EXCHANGE_ITEMS___LIB = "GetAvailable_FunctionalExchange_ExchangeItems__Lib"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__INTERFACE__EXCHANGE_ITEMS___LIB = "GetAvailable_Interface_ExchangeItems__Lib"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__LITERAL_NUMERIC_VALUE__ABSTRACT_TYPE___LIB = "GetAvailable_LiteralNumericValue_AbstractType__Lib"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__LITERAL_STRING_VALUE__ABSTRACT_TYPE___LIB = "GetAvailable_LiteralStringValue_AbstractType__Lib"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__COMPONENT_PORT__PROVIDED_INTERFACES___LIB = "GetAvailable_ComponentPort_ProvidedInterfaces__Lib"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__COMPONENT_PORT__REQUIRED_INTERFACES___LIB = "GetAvailable_ComponentPort_RequiredInterfaces__Lib"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__COMMUNICATION_LINK__EXCHANGE_ITEM___LIB = "GetAvailable_CommunicationLink_ExchangeItem__Lib"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__STATE_TRANSITION__EFFECT___LIB = "GetAvailable_StateTransitionEffect__Lib"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__STATE_TRANSITION_EFFECT___LIB = "GetAvailable_StateTransitionEffect__Lib"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__STATE_TRANSITION_TRIGGER___LIB = "GetAvailable_StateTransitionTrigger__Lib"; //$NON-NLS-1$
   
   public static final String GET_AVAILABLE__ABSTRACT_EXPRESSION_VALUE__OPERAND___LIB = getQueryIdentifier(GetAvailable_AbstractExpressionValue_Operand__Lib.class);
   public static final String GET_AVAILABLE__ABSTRACT_STATE_PROPERTIES___LIB = getQueryIdentifier(GetAvailable_AbstractStateProperties__Lib.class);

@@ -27,17 +27,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_D_19 - Class Multiple Inheritance"
+                  name="%constraint.name"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} ({1}) should not inherit from multiple class or component
+                  %constraint.message
                </message>
                <target
                      class="GeneralizableElement">
                </target>
                <description>
-                  This rule checks that a Class (or a Component) cannot inherit from multiple classes (resp. Components) if the dedicated configuration option does not allow it.
+                  %constraint.description
                </description>
             </constraint>
             <!--
@@ -67,14 +67,14 @@
                   isEnabledByDefault="false"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_D_41 - Class with an abstract attribute/role"
+                  name="%constraint.name.0"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} with an abstract {1} {2} shall be abstract.
+                  %constraint.message.0
                </message>
                <description>
-                  This rule chekcs if a class has an abstract attribute or a abstract role of an association on the navigable side, the class shall be abstract.
+                  %constraint.description.0
                </description> 
                <target
                      class="CapellaElement">
@@ -86,17 +86,17 @@
                         isEnabledByDefault="true"
                         lang="Java"
                         mode="Batch"
-                        name="DWF_D_47 - Final Inheritance"
+                        name="%constraint.name.1"
                         severity="WARNING"
                         statusCode="1">
                     <message>
-                        {0} have a Final Inheritance ({1}).
+                        %constraint.message.1
                     </message>
                     <target
                         class="GeneralizableElement">
                     </target>
                     <description>
-                        This rule ensures that superTypes are not Final.
+                        %constraint.description.1
                     </description>
             </constraint>
             <constraint
@@ -105,14 +105,14 @@
                   isEnabledByDefault="false"
                   lang="Java"
                   mode="Live"
-                  name="DWF_D_55 [Live] - Validate Data Pkg Dependency Cycle"
+                  name="%constraint.name.2"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  DWF_D_55 [Live]: Some dependency cycle(s) has(ve) been detected that implies the following packages: {0}
+                  %constraint.message.2
                </message>
                <description>
-                  This rule detects Cycle of Dependencies between Data packages.
+                  %constraint.description.2
                </description>
                <target
                      class="AbstractDependenciesPkg"></target>
@@ -123,17 +123,17 @@
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="DWF_D_58 - Constraint should constrain the Component"
+                  name="%constraint.name.3"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0}: ConstrainedElements value should not be {1}.
+                  %constraint.message.3
                </message>
                <target
                      class="Constraint">
                </target>
                <description>
-                  In monopart mode: This rule ensures that ConstrainedElements value is not Part/PartDeploymentLink.
+                  %constraint.description.3
                </description>
             </constraint>
             <constraint
@@ -142,21 +142,17 @@
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="DWF_D_59 - Constraint should be located under Component"
+                  name="%constraint.name.4"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0}should be located under {1}.
+                  %constraint.message.4
                </message>
                <target
                      class="Constraint">
                </target>
                <description>
-                  In monopart mode: This rule ensures that a constraint is not stored under and have ConstrainedElements values as a Part/PartDeploymentLink.
-Exception : In EPBS Layer constraint's can be stored under Part.
-
-In multipart mode : This rule ensures that a constraint is not stored under PartDeploymentlink.
-Exception : If first ConstraintElements value is container PartDeploymentlink or empty ConstraintElements value.
+                  %constraint.description.4
                </description>
             </constraint>
          </constraints>
@@ -168,14 +164,14 @@ Exception : If first ConstraintElements value is container PartDeploymentlink or
                   isEnabledByDefault="falsee"
                   lang="Java"
                   mode="Batch"
-                  name="Q_01 - Mandatory summaries"
+                  name="%constraint.name.5"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {1} ({0})  doesn't have a summary
+                  %constraint.message.5
                </message>
                <description>
-                  This rule checks that Functions, Components, Actors, Functional Exchanges and Component Exchanges must have a summary.
+                  %constraint.description.5
                </description>
                <target
                      class="CapellaElement">
@@ -187,14 +183,14 @@ Exception : If first ConstraintElements value is container PartDeploymentlink or
                   isEnabledByDefault="falsee"
                   lang="Java"
                   mode="Batch"
-                  name="Q_02 - Mandatory descriptions"
+                  name="%constraint.name.6"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {1} ({0})  doesn't have a description
+                  %constraint.message.6
                </message>
                <description>
-                  This rule checks that Functions, Components, Actors, Functional Exchanges and Component Exchanges have a description.
+                  %constraint.description.6
                </description>
                <target
                      class="CapellaElement">
@@ -206,14 +202,14 @@ Exception : If first ConstraintElements value is container PartDeploymentlink or
                   isEnabledByDefault="false"
                   lang="Java"
                   mode="Batch"
-                  name="Q_03 - Review Field Not Empty"
+                  name="%constraint.name.7"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0}
+                  %constraint.message.7
                </message>
                <description>
-                  This rule ensures that review field of an element is always empty.
+                  %constraint.description.7
                </description>
                <target
                      class="CapellaElement">
@@ -228,19 +224,14 @@ Exception : If first ConstraintElements value is container PartDeploymentlink or
                   isEnabledByDefault="false"
                   lang="Java"
                   mode="Batch"
-                  name="I_08 - Naming conflicts check 1"
+                  name="%constraint.name.8"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0}"{1}" content has a naming conflict for: {2}.
+                  %constraint.message.8
                </message>
                <description>
-                  NOTE: This constraint is replaced by &quot;I_19 - Name conflict&quot; and thus disabled by default.
-
-This rule checks that an element doesn&apos;t contain a naming conflict. Usually this means that two elements in the same container cannot have the same name, e.g. one cannot create two classes in a package and assign them identical names. Below we list the special cases:
-
-ExchangeItems
-Two exchange items that share a common container have conflicting names if both have the same name, and the order, number and type of their ExchangeItemElements is identical.
+                  %constraint.description.8
                </description>
                <target
                      class="CapellaElement">
@@ -252,14 +243,14 @@ Two exchange items that share a common container have conflicting names if both 
                   isEnabledByDefault="false"
                   lang="Java"
                   mode="Batch"
-                  name="I_09 - Exchanges Naming conflicts check 1"
+                  name="%constraint.name.9"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0}{1} content has a naming conflict for: {2}.
+                  %constraint.message.9
                </message>
                <description>
-                  This rule ensures that an element doesn&apos;t contain a naming conflict. This rule only applies to exchanges (Component Exchanges, Physical Links and Functional Exchanges) which have the same source (Component / function), the same target (Component / function) and the same name.
+                  %constraint.description.9
                </description>
                <target
                      class="CapellaElement">
@@ -271,14 +262,14 @@ Two exchange items that share a common container have conflicting names if both 
                   isEnabledByDefault="false"
                   lang="Java"
                   mode="Batch"
-                  name="I_10 - Unnamed Element"
+                  name="%constraint.name.10"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} does not have a name.
+                  %constraint.message.10
                </message>
                <description>
-                  This rule checks that an element has a name and does not contain a naming conflict. This rule does not check ExchangeItemAllocations and DataValues.
+                  %constraint.description.10
                </description>
                <target
                      class="CapellaElement">
@@ -290,20 +281,17 @@ Two exchange items that share a common container have conflicting names if both 
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_19 - Name conflict"
+                  name="%constraint.name.11"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} contains {1} elements with conflicting names: {2}
+                  %constraint.message.11
                </message>
                <target
                      class="CapellaElement">
                </target>
                <description>
-                  This rule Finds name conflicts.
-                    NOTE: This constraint include all Naming conflict detection and it is enabled by default.
-
-This rule checks that an capella element doesn&apos;t contain any naming conflict. Usually this means that two elements in the same container cannot have the same name
+                  %constraint.description.11
                </description>
             </constraint>
             <constraint
@@ -312,17 +300,17 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="I_21 - Unique Model Element IDs"
+                  name="%constraint.name.12"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The ID &quot;{0}&quot; of &quot;{1}&quot; collides with that of &quot;{2}&quot;
+                  %constraint.message.12
                </message>
                <target
                      class="CapellaElement">
                </target>
                <description>
-                  This rule checks that all capella elements have a unique ID.
+                  %constraint.description.12
                </description>
             </constraint>
             <constraint
@@ -331,14 +319,14 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_25 - Description is well formed XML"
+                  name="%constraint.name.13"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  Description of"{0}" is not well formed: {1}
+                  %constraint.message.13
                </message>
                <description>
-                  This rule checks whether the description of a model element is well formed XML.
+                  %constraint.description.13
                </description>
                <target
                      class="CapellaElement">
@@ -350,17 +338,17 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_31 - check Null Part"
+                  name="%constraint.name.14"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  [{0}] to {1} has a Null Part.
+                  %constraint.message.14
                </message>
                <target
                      class="CapellaElement">
                </target>
                <description>
-                  This rule checks that a Component Exchange / Physical Link End doesn&apos;t have a part Null.
+                  %constraint.description.14
                </description>
             </constraint>
             <constraint
@@ -369,14 +357,14 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_32 - Check Component Exchange / Physical Link Ends in SingletonComponents mode"
+                  name="%constraint.name.15"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  Component Exchange / Physical Link Ends are dedicated to the reusable mode defined in Key Value&quot;projectApproach&quot;.
+                  %constraint.message.15
                </message>
                <description>
-                  This rule ensures that Component Exchange / Physical Link Ends are restricted to reusable mode defined in Key Value&quot;projectApproach&quot;.
+                  %constraint.description.15
                </description>
                <target
                      class="CapellaElement"></target>
@@ -387,14 +375,14 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_33 - Check  Reused Parts in SingletonComponents mode"
+                  name="%constraint.name.16"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The type {0} ({1}) should not have multiple parts when the project approach is in default mode (not in reusable mode).
+                  %constraint.message.16
                </message>
                <description>
-                  This rule checks that reused parts are not used when the project approach is in default mode (not in reusable mode).
+                  %constraint.description.16
                </description>
                <target
                      class="CapellaElement"></target>
@@ -405,14 +393,14 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_36 - Check whether a Constraint is not used"
+                  name="%constraint.name.17"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  The constraint {0} is not used in the model{1}
+                  %constraint.message.17
                </message>
                <description>
-                  This rule checks that Constraints are used in the model.
+                  %constraint.description.17
                </description>
                <target
                      class="Constraint">
@@ -424,14 +412,14 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   isEnabledByDefault="false"
                   lang="Java"
                   mode="Batch"
-                  name="I_38 - Validate referential constraints"
+                  name="%constraint.name.18"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  ''{0}'' cannot reference ''{1}'' via ''{2}'' 
+                  %constraint.message.18 
                </message>
                <description>
-                  Verifies that an elements outgoing references are valid according to Capella business rules.
+                  %constraint.description.18
                </description>
                <target
                      class="CapellaElement">
@@ -443,14 +431,14 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Live"
-                  name="I_39 [Live] - Validate inter-model references"
+                  name="%constraint.name.19"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  ''{0}'' in model ''{1}'' cannot reference ''{2}'' in model ''{3}'' via ''{4}''
+                  %constraint.message.19
                </message>
                <description>
-                  An element in model A can only reference an element in model B if A has declared a "Library Reference" to B. 
+                  %constraint.description.19 
                </description>
                <target
                      class="CapellaElement">
@@ -476,14 +464,14 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_D_25 - Dependency Cycle Detection"
+                  name="%constraint.name.20"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  Some dependency cycle(s) has(ve) been detected that implies the following packages: {0}
+                  %constraint.message.20
                </message>
                <description>
-                  This rule detects Cycle of Dependencies between packages.
+                  %constraint.description.20
                </description>
                <target
                      class="SystemEngineering">
@@ -501,14 +489,14 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   isEnabledByDefault="false"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_D_42 - Packages visibility problem"
+                  name="%constraint.name.21"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  Some packages visibility problem has been detected between {0} and {1}.
+                  %constraint.message.21
                </message>
                <description>
-                  This rule detects that it is impossible to create an association from Class1 to Class2 if Class2 is in package0, and Class1 in packag1 within package0.
+                  %constraint.description.21
                </description> 
                <target
                      class="SystemEngineering">
@@ -523,14 +511,14 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   isEnabledByDefault="false"
                   lang="Java"
                   mode="Batch"
-                  name="I_34 - Inter-model inconsistency Detection"
+                  name="%constraint.name.22"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} inter-model inconsistency(ies) has(ve) been detected between models
+                  %constraint.message.22
                </message>
                <description>
-                  This rule detects inter-model inconsistencies (dependency violations and inter-model cycles).
+                  %constraint.description.22
                </description>
                <target
                      class="SystemEngineering">
@@ -551,14 +539,14 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   isEnabledByDefault="false"
                   lang="Java"
                   mode="Batch"
-                  name="TJ_G_05 - Trace source and target naming"
+                  name="%constraint.name.23"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  The source &quot;{0}&quot; ({1}) traced a target model element with different name &quot;{2}&quot; ({3})
+                  %constraint.message.23
                </message>
                <description>
-                  This rule ensures that abstract trace&apos;s source and target element names are same.
+                  %constraint.description.23
                </description>
                <target
                      class="TraceableElement">
@@ -573,14 +561,14 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_26 - Equivalent Trace Elements"
+                  name="%constraint.name.24"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  Message body provided by implementation
+                  %constraint.message.24
                </message>
                <description>
-                  Checks that there are no equivalent trace elements. Two trace elements are equivalent if they have identical types and identical source and target elements.
+                  %constraint.description.24
                </description>
                <target
                      class="AbstractTrace">
@@ -592,14 +580,14 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_45 - Typed Element has different name than its Type"
+                  name="%constraint.name.25"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} ({1}) should have the same name as its type {2} ({3})
+                  %constraint.message.25
                </message>
                <description>
-                  This rule checks the Typed Element (Part, Exchange Item Instance) has the same name as its Type (Component, Exchange Item).
+                  %constraint.description.25
                </description>
                <target
                      class="AbstractTypedElement">
@@ -619,14 +607,14 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_40 - Equivalent Involvement Elements"
+                  name="%constraint.name.26"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  Message body provided by implementation
+                  %constraint.message.26
                </message>
                <description>
-                  Checks that there are no equivalent Involvement elements. Two Involvements elements are equivalent if they have identical types and identical source and target elements.
+                  %constraint.description.26
                </description>
                <target
                      class="Involvement">

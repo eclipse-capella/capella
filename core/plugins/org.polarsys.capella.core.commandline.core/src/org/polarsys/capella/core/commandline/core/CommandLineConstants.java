@@ -36,6 +36,6 @@ public class CommandLineConstants {
   @Deprecated
   public static final String FORCEOUTPUTFOLDERCREATION = "-forceoutputfoldercreation"; //$NON-NLS-1$
   public static final String LOG_FILE_PATH = CommonArgumentsConstants.LOG_FILE_PATH;
-  public static final String BACKUP = "-backup";
+  public static final String BACKUP = "-backup"; //$NON-NLS-1$
 
 }

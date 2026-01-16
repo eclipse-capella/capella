@@ -17,36 +17,36 @@
          point="org.polarsys.capella.core.validation.ui.ide.capellaQuickFix">
       <resolver
             class="org.polarsys.capella.core.data.common.ui.quickfix.resolver.DWF_SM_03Resolver"
-            desc="Complete missing states references/involvment into region and enclosing states"
+            desc="%resolver.desc"
             icon="icons/search16.gif"
-            label="Complete state references">
+            label="%resolver.label">
          <rules
                ruleId="DWF_SM_03">
          </rules>
       </resolver>
       <resolver
             class="org.polarsys.capella.core.data.common.ui.quickfix.resolver.DWF_SM_06SiblingResolver"
-            desc="Delete all siblings mixed States/Modes "
+            desc="%resolver.delete.siblings"
             icon="icons/delete_element.gif"
-            label="Delete all siblings mixed States/Modes ">
+            label="%resolver.delete.siblings">
          <rules
                ruleId="DWF_SM_06">
          </rules>
       </resolver>
       <resolver
             class="org.polarsys.capella.core.data.common.ui.quickfix.resolver.DWF_SM_06ChildrenResolver"
-            desc="Delete all children mixed States/Modes "
+            desc="%resolver.delete.children"
             icon="icons/delete_element.gif"
-            label="Delete all children mixed States/Modes ">
+            label="%resolver.delete.children">
          <rules
                ruleId="DWF_SM_06">
          </rules>
       </resolver>
       <resolver
             class="org.polarsys.capella.core.data.common.ui.quickfix.resolver.DWF_SM_15Resolver"
-            desc="Remove all mixed reused States/Modes "
+            desc="%resolver.delete.all"
             icon="icons/delete_element.gif"
-            label="Remove all mixed reused States/Modes ">
+            label="%resolver.delete.all">
          <rules
                ruleId="DWF_SM_15">
          </rules>

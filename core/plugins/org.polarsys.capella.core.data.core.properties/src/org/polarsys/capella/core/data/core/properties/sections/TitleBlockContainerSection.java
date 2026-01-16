@@ -48,7 +48,7 @@ public abstract class TitleBlockContainerSection extends AbstractSection {
     main.setLayoutData(gd);
 
     getWidgetFactory().createCLabel(main, label);
-    valueField = getWidgetFactory().createText(main, "");
+    valueField = getWidgetFactory().createText(main, ""); //$NON-NLS-1$
     valueField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
   }
 
@@ -82,7 +82,7 @@ public abstract class TitleBlockContainerSection extends AbstractSection {
   }
   
   protected String getTextGroup(EObject capellaElement) {
-    String text = "";
+    String text = ""; //$NON-NLS-1$
     EObject refElement = TitleBlockHelper.getReferencedElement(capellaElement);
     if(refElement != null) {
       text = NamingHelper.getDefaultTitle(refElement);
