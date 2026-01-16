@@ -33,7 +33,7 @@ public class AddExchangeItemToFunctionExchange extends AbstractQueryBasedCommand
 	   * @param linkRefInSource
 	   */
 	  public AddExchangeItemToFunctionExchange(EClass linkType, EReference linkRefInSource) {
-	    super("Add ExchangeItem to Function", LinkStyle.LINE_DASHED, linkType, linkRefInSource);
+	    super(Messages.AddExchangeItemToFunctionExchange_Label, LinkStyle.LINE_DASHED, linkType, linkRefInSource);
 	  }
 
 	  /**

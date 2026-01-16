@@ -33,7 +33,7 @@ public class AddExchangeCategoryToFunctionalExchangeCommand extends AbstractQuer
 	   * @param linkRefInSource
 	   */
 	  public AddExchangeCategoryToFunctionalExchangeCommand(EClass linkType, EReference linkRefInSource) {
-	    super("Add Exchange Category to Functional Exchange", LinkStyle.LINE_DASHED, linkType, linkRefInSource);
+	    super(Messages.AddExchangeCategoryToFunctionalExchangeCommand_Label, LinkStyle.LINE_DASHED, linkType, linkRefInSource);
 	  }
 
 	  /**

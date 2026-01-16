@@ -45,7 +45,7 @@ public class LinkDescription {
     if (obj == null || (getClass() != obj.getClass()))
       return false;
     LinkDescription other = (LinkDescription) obj;
-    if (href.replace("hlink://", "").equals(other.getHref().replace("hlink://", "")))
+    if (href.replace("hlink://", "").equals(other.getHref().replace("hlink://", ""))) //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
       return true;
     return false;
   }

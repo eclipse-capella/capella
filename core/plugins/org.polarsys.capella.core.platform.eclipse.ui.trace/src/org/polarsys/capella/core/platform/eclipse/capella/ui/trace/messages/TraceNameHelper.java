@@ -47,13 +47,13 @@ public class TraceNameHelper {
     if (extensionTraceName != null) {
       result = extensionTraceName;
     } else if (GenericTrace.class.isAssignableFrom(clazz_p)) {
-      result = Messages.getString("TraceType.name.generic");
+      result = Messages.getString("TraceType.name.generic"); //$NON-NLS-1$
     } else if (MergeLink.class.isAssignableFrom(clazz_p)) {
-      result = Messages.getString("TraceType.name.merge");
+      result = Messages.getString("TraceType.name.merge"); //$NON-NLS-1$
     } else if (RefinementLink.class.isAssignableFrom(clazz_p)) {
-      result = Messages.getString("TraceType.name.refinement");
+      result = Messages.getString("TraceType.name.refinement"); //$NON-NLS-1$
     } else {
-      result = Messages.getString("TraceType.name.undefined");
+      result = Messages.getString("TraceType.name.undefined"); //$NON-NLS-1$
     }
 
     return result;
@@ -73,11 +73,11 @@ public class TraceNameHelper {
       return result;
     }
 
-    if (className_p.equals(Messages.getString("TraceType.name.generic"))) {
+    if (className_p.equals(Messages.getString("TraceType.name.generic"))) { //$NON-NLS-1$
       result = CapellacommonFactory.eINSTANCE.createGenericTrace();
-    } else if (className_p.equals(Messages.getString("TraceType.name.merge"))) {
+    } else if (className_p.equals(Messages.getString("TraceType.name.merge"))) { //$NON-NLS-1$
       result = InteractionFactory.eINSTANCE.createMergeLink();
-    } else if (className_p.equals(Messages.getString("TraceType.name.refinement"))) {
+    } else if (className_p.equals(Messages.getString("TraceType.name.refinement"))) { //$NON-NLS-1$
       result = InteractionFactory.eINSTANCE.createRefinementLink();
     }
 
@@ -93,9 +93,9 @@ public class TraceNameHelper {
   public static List<String> getTraceTypes(ResourceSet context) {
     List<String> result = new ArrayList<String>();
     result.addAll(TraceExtensionManager.eINSTANCE.getAllTraceTypes(context));
-    result.add(Messages.getString("TraceType.name.generic"));
-    result.add(Messages.getString("TraceType.name.merge"));
-    result.add(Messages.getString("TraceType.name.refinement"));
+    result.add(Messages.getString("TraceType.name.generic")); //$NON-NLS-1$
+    result.add(Messages.getString("TraceType.name.merge")); //$NON-NLS-1$
+    result.add(Messages.getString("TraceType.name.refinement")); //$NON-NLS-1$
     return result;
   }
 
@@ -108,7 +108,7 @@ public class TraceNameHelper {
   public static List<String> getManualTraceTypes(ResourceSet context) {
     List<String> result = new ArrayList<String>();
     result.addAll(TraceExtensionManager.eINSTANCE.getAllManualTraceTypes(context));
-    result.add(Messages.getString("TraceType.name.generic"));
+    result.add(Messages.getString("TraceType.name.generic")); //$NON-NLS-1$
     return result;
   }
 }

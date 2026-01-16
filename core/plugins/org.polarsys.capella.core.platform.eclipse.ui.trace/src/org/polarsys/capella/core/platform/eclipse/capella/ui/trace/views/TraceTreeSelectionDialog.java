@@ -180,7 +180,7 @@ public class TraceTreeSelectionDialog extends ElementTreeSelectionDialog {
           }
         }
       } else if (selection_p.length == 0) {
-        return new Status(IStatus.WARNING, MDTrace.PLUGIN_ID, IStatus.WARNING, Messages.getString("AddTraceWizard.warning_named_element"),
+        return new Status(IStatus.WARNING, MDTrace.PLUGIN_ID, IStatus.WARNING, Messages.getString("AddTraceWizard.warning_named_element"), //$NON-NLS-1$
             null);
       }
       return new Status(IStatus.OK, MDTrace.PLUGIN_ID, IStatus.OK, "", null); //$NON-NLS-1$

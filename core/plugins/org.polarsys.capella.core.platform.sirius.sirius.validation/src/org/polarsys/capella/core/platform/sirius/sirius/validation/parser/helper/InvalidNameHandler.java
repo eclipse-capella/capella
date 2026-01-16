@@ -11,6 +11,7 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.eclipse.emf.validation.service.ConstraintRegistry;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.core.model.utils.NamingHelper;
@@ -39,30 +40,38 @@ public class InvalidNameHandler implements ILinkParser {
 
   @Override
   public void handleParsedLink(LinkDescription parsedLink) {
-    if (parsedLink.getTargetElement() != null && parsedLink.getHref().startsWith("hlink://")) {
+    if (parsedLink.getTargetElement() != null && parsedLink.getHref().startsWith("hlink://")) { //$NON-NLS-1$
       EObject elementFound = parsedLink.getTargetElement();
       boolean isDiagram = elementFound instanceof DRepresentationDescriptor || elementFound instanceof DRepresentation;
       String name = DescriptionParserHelper.getElementName(elementFound);
       String value = MDERichTextToolsHelper.decodeWhiteSpaces(parsedLink.getName());
       value = StringEscapeUtils.unescapeHtml(value);
-      String elementId = parsedLink.getHref().replace("hlink://", "");
+      String elementId = parsedLink.getHref().replace("hlink://", ""); //$NON-NLS-1$ //$NON-NLS-2$
       IConstraintDescriptor desc = ConstraintRegistry.getInstance().getDescriptor(ctx.getCurrentConstraintId());
       if (!name.equals(value)) {
         if (!parsedLinks.contains(parsedLink)) {
           parsedLinks.add(parsedLink);
-          String message = "(Hyperlink) The " + (isDiagram ? "diagram" : "model") + " element named \"" + value
-              + "\" (id: " + elementId + ") found in the rich text description of "
-              + DescriptionParserHelper.getElementName(element) + " is not up to date.";
+          Object[] msgArgs = new Object[] {value, elementId, DescriptionParserHelper.getElementName(element)};
+          String message;
+          if (isDiagram) {
+            message = NLS.bind(Messages.InvalidNameHandler_OutdatedDiagram, msgArgs);
+          } else {
+            message = NLS.bind(Messages.InvalidNameHandler_OutdatedElement, msgArgs);
+          }
           message = SaxParserHelper.unescapeSpecialCharacter(message);
           result.add(ConstraintStatus.createStatus(ctx, element, ctx.getResultLocus(), IStatus.WARNING,
-              desc.getStatusCode(), "{0}", message));
+              desc.getStatusCode(), "{0}", message)); //$NON-NLS-1$
         } else {
           String elementName = value;
           List<IStatus> updatedResult = result.stream().map(sts -> {
             if (sts.getMessage().contains(elementId)) {
-              String message = "(Hyperlink) The " + (isDiagram ? "diagrams" : "models") + " elements named \""
-                  + elementName + ", ...\" (id: " + elementId + ") found in the rich text description of "
-                  + DescriptionParserHelper.getElementName(element) + " are not up to date.";
+              Object[] msgArgs = new Object[] {elementName, elementId, DescriptionParserHelper.getElementName(element)};
+              String message;
+              if (isDiagram) {
+                message = NLS.bind(Messages.InvalidNameHandler_OutdatedDiagrams,msgArgs);
+              } else {
+                message = NLS.bind(Messages.InvalidNameHandler_OutdatedElements,msgArgs);
+              }
               message = SaxParserHelper.unescapeSpecialCharacter(message);
               return ConstraintStatus.createStatus(ctx, element, ctx.getResultLocus(), IStatus.WARNING,
                   desc.getStatusCode(), "{0}", message);

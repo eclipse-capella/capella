@@ -29,7 +29,7 @@ public class CreateGeneralizationsCommand extends AbstractCreateLinksCommand {
   protected Generalization _createdGeneralization;
 
   public CreateGeneralizationsCommand() {
-    super("Generalization", LinkStyle.LINE_SOLID_WITH_EMPTY_ARROW);
+    super(Messages.CreateGeneralizationsCommand_Label, LinkStyle.LINE_SOLID_WITH_EMPTY_ARROW);
   }
 
   /**

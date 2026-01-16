@@ -30,8 +30,8 @@ import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
 public class TraceExtensionManager {
 
   public static TraceExtensionManager eINSTANCE = new TraceExtensionManager();
-  String EXTENSION_POINT_ID = "org.polarsys.capella.core.platform.eclipse.capella.ui.trace.extension";
-  String EXTENSION_POINT_CLASS = "traceExtension";
+  String EXTENSION_POINT_ID = "org.polarsys.capella.core.platform.eclipse.capella.ui.trace.extension"; //$NON-NLS-1$
+  String EXTENSION_POINT_CLASS = "traceExtension"; //$NON-NLS-1$
 
   Set<ITraceExtension> extensions;
 
