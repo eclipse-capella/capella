@@ -39,7 +39,7 @@ public class SemanticBrowserUpdater implements ModelExtensionOverallListener {
 				IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 				if (activePage == null)
 					return;
-				ISemanticBrowserViewPart view = (ISemanticBrowserViewPart) activePage.findView("org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID");
+				ISemanticBrowserViewPart view = (ISemanticBrowserViewPart) activePage.findView("org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID"); //$NON-NLS-1$
 				if (view != null) {
 					refresh(view.getCurrentViewer());
 					refresh(view.getReferencedViewer());

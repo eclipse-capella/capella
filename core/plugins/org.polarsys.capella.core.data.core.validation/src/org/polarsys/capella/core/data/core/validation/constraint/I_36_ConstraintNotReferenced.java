@@ -63,22 +63,22 @@ public class I_36_ConstraintNotReferenced extends AbstractValidationRule {
       if (EObjectExt.getReferencers(constraint, references).isEmpty()) {
         
         if (container instanceof StateTransition) {
-          return failMessage(ctx, constraint, "Guard", container);
+          return failMessage(ctx, constraint, Messages.I_36_ConstraintNotReferenced_Guard, container);
           
         } else if (container instanceof StateEvent) {
-          return failMessage(ctx, constraint, "Expression", container);
+          return failMessage(ctx, constraint, Messages.I_36_ConstraintNotReferenced_Expression, container);
           
         } else if (container instanceof SequenceMessage) {
-          return failMessage(ctx, constraint, "Exchange Context", container);
+          return failMessage(ctx, constraint, Messages.I_36_ConstraintNotReferenced_Context, container);
           
         } else if (container instanceof Scenario) {
-          return failMessage(ctx, constraint, "Pre/Post Condition", container);
+          return failMessage(ctx, constraint, Messages.I_36_ConstraintNotReferenced_Condition, container);
           
         } else if (container instanceof AbstractCapability) {
-          return failMessage(ctx, constraint, "Pre/Post Condition", container);
+          return failMessage(ctx, constraint, Messages.I_36_ConstraintNotReferenced_Condition, container);
           
         } else if (container instanceof InteractionOperand) {
-          return failMessage(ctx, constraint, "Guard", container);
+          return failMessage(ctx, constraint, Messages.I_36_ConstraintNotReferenced_Guard, container);
 
         } else {
           return failMessage(ctx, constraint);
@@ -105,7 +105,7 @@ public class I_36_ConstraintNotReferenced extends AbstractValidationRule {
     String a = EObjectLabelProviderHelper.getText(constraint);
     String b = EObjectLabelProviderHelper.getText(container);
     String c = EObjectLabelProviderHelper.getMetaclassLabel(container, false);
-    String result = NLS.bind(", specifically on {0} of the owning {1} ({2})", new String[] {feature, b, c});
+    String result = NLS.bind(Messages.I_36_ConstraintNotReferenced_Suffix, new String[] {feature, b, c});
     return ctx.createFailureStatus(new Object[] { a, result });
   }
   

@@ -25,7 +25,7 @@ public class AFIntegrationPlugin extends Plugin {
 	private static AFIntegrationPlugin plugin;
 
 	// The identifier of the Capella "virtual" viewpoint
-	public static final String CAPELLA_VIEWPOINT_ID = "org.polarsys.capella.core.viewpoint";
+	public static final String CAPELLA_VIEWPOINT_ID = "org.polarsys.capella.core.viewpoint"; //$NON-NLS-1$
 	
 	/**
 	 * The constructor

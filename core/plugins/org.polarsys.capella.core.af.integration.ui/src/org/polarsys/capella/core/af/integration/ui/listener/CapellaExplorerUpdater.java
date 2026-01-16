@@ -53,7 +53,7 @@ public class CapellaExplorerUpdater implements ModelExtensionOverallListener {
 		IWorkbenchPage activePage = activeWorkbenchWindow.getActivePage();
 		if (activePage == null)
 			return;
-		CommonNavigator view = (CommonNavigator) activePage.findView("capella.project.explorer");
+		CommonNavigator view = (CommonNavigator) activePage.findView("capella.project.explorer"); //$NON-NLS-1$
 		if (view != null && view.getCommonViewer() != null)
 			view.getCommonViewer().refresh();
 	}
