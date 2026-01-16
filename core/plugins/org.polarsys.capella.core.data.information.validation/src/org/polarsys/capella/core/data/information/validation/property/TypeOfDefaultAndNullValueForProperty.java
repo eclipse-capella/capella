@@ -48,14 +48,14 @@ public class TypeOfDefaultAndNullValueForProperty extends AbstractValidationRule
       // if it has a default value, this value must be valid
       DataValue defaultValue = property.getOwnedDefaultValue();
       if (!this.hasValidValue(defaultValue, property)) {
-        IStatus status = ctx.createFailureStatus("default", property.getName(), container.getName());
+        IStatus status = ctx.createFailureStatus(Messages.TypeOfDefaultAndNullValueForProperty_0, property.getName(), container.getName());
         statuses.add(status);
       }
 
       // if it has a null value, this value must be valid
       DataValue nullValue = property.getOwnedNullValue();
       if (!this.hasValidValue(nullValue, property)) {
-        IStatus status = ctx.createFailureStatus("null", property.getName(), container.getName());
+        IStatus status = ctx.createFailureStatus(Messages.TypeOfDefaultAndNullValueForProperty_1, property.getName(), container.getName());
         statuses.add(status);
       }
     }

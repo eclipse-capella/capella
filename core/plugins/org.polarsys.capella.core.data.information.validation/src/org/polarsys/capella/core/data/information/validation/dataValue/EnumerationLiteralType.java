@@ -40,7 +40,7 @@ public class EnumerationLiteralType extends AbstractValidationRule {
 
         Enumeration eNum = (Enumeration) container;
         AbstractType abstractType = enumLiteral.getAbstractType();
-        String typeName = "null";
+        String typeName = "null"; //$NON-NLS-1$
         if (!eNum.equals(abstractType)) {
 
           if (null != abstractType) {
