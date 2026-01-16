@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
@@ -51,20 +52,17 @@ public class DeploymentChildPCChecks extends AbstractValidationRule {
           PhysicalComponent deployingBehaviorPC = getDeployingComponent(currentElement,
               PhysicalComponentNature.BEHAVIOR);
           if (deployingBehaviorPC != null) {
-            return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(currentElement)
-                + "can't be deployed on " + CapellaElementExt.getValidationRuleMessagePrefix(deployingBehaviorPC));
+            return ctx.createFailureStatus(NLS.bind(Messages.DeploymentChildPCChecks_0, CapellaElementExt.getValidationRuleMessagePrefix(currentElement), CapellaElementExt.getValidationRuleMessagePrefix(deployingBehaviorPC)));
           }
           PhysicalComponent behaviorPC = getContainingComponent(currentElement, PhysicalComponentNature.BEHAVIOR);
           if (behaviorPC != null) {
-            return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(currentElement)
-                + "can't be contained in " + CapellaElementExt.getValidationRuleMessagePrefix(behaviorPC));
+              return ctx.createFailureStatus(NLS.bind(Messages.DeploymentChildPCChecks_1, CapellaElementExt.getValidationRuleMessagePrefix(currentElement), CapellaElementExt.getValidationRuleMessagePrefix(behaviorPC)));
           }
         } else if (PhysicalComponentExt.isBehaviour(currentElement)) {
           // 2. check that BEHAVIOR PC/PA can't be contained on NODE PC/PA
           PhysicalComponent nodePC = getContainingComponent(currentElement, PhysicalComponentNature.NODE);
           if (nodePC != null) {
-            return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(currentElement)
-                + "can't be contained in " + CapellaElementExt.getValidationRuleMessagePrefix(nodePC));
+              return ctx.createFailureStatus(NLS.bind(Messages.DeploymentChildPCChecks_1, CapellaElementExt.getValidationRuleMessagePrefix(currentElement), CapellaElementExt.getValidationRuleMessagePrefix(nodePC)));
           }
         }
       }

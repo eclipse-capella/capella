@@ -40,13 +40,13 @@ public class PhysicalSystem_RealizedLogicalSystem extends AbstractValidationRule
         PhysicalComponent component = (PhysicalComponent) eObj;
         if (component.equals(BlockArchitectureExt.getRootBlockArchitecture(component).getSystem())) {
           if (component.getRealizedLogicalComponents().isEmpty()) {
-            String previousRootCompoenentname = "Logical Component";
+            String previousRootCompoenentname = Messages.PhysicalSystem_RealizedLogicalSystem_DefaultRootComponentName;
             BlockArchitecture previousArchitectures = BlockArchitectureExt
                 .getPreviousBlockArchitecture(BlockArchitectureExt.getRootBlockArchitecture(component));
             Component previousRootComponent = previousArchitectures.getSystem();
             if (previousRootComponent != null) {
-              previousRootCompoenentname = "\"" + previousRootComponent.getName() + "\" ("
-                  + previousRootComponent.eClass().getName() + ")";
+              previousRootCompoenentname = "\"" + previousRootComponent.getName() + "\" (" //$NON-NLS-1$ //$NON-NLS-2$
+                  + previousRootComponent.eClass().getName() + ")"; //$NON-NLS-1$
             }
             return ctx.createFailureStatus("Root \"" + component.getName() + "\" (" + component.eClass().getName() + ")"
                 + " does not realize the Root " + previousRootCompoenentname);

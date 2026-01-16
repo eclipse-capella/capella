@@ -22,7 +22,7 @@ import org.osgi.framework.BundleContext;
  */
 public class Activator extends AbstractUIPlugin {
 
-  private static final String ICONS_PATH = "icons/";
+  private static final String ICONS_PATH = "icons/"; //$NON-NLS-1$
 
   // The plug-in ID
   public static final String PLUGIN_ID = "org.polarsys.capella.core.libraries.ui"; //$NON-NLS-1$

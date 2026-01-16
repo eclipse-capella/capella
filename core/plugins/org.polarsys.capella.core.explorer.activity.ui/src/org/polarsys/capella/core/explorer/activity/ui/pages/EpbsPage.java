@@ -21,7 +21,7 @@ import org.polarsys.capella.core.sirius.analysis.IViewpointNameConstants;
 
 public class EpbsPage extends AbstractCapellaPage {
 
-  public static final String PAGE_ID = "org.polarsys.capella.core.explorer.activity.ui.page.epbs";
+  public static final String PAGE_ID = "org.polarsys.capella.core.explorer.activity.ui.page.epbs"; //$NON-NLS-1$
 
   @Override
   protected String getHeaderTitle() {

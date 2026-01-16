@@ -28,7 +28,7 @@ public class ActiveStateLabelProvider extends LabelProvider {
 
   @Override
   public Image getImage(Object element) {
-    ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin("org.polarsys.capella.core.data.gen.edit", "icons/full/obj16/Library.gif");
+    ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin("org.polarsys.capella.core.data.gen.edit", "icons/full/obj16/Library.gif"); //$NON-NLS-1$ //$NON-NLS-2$
     if (desc != null) {
       return desc.createImage();
     }
