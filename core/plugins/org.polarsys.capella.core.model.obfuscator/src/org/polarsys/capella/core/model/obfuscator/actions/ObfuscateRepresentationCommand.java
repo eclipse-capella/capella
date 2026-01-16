@@ -296,7 +296,7 @@ public class ObfuscateRepresentationCommand extends AbstractReadWriteCommand {
 
     // Update name if any
     String value = dElement.getLabel();
-    if ((value != null) && (value.length() > 0) && !("X".equals(value))) {
+    if ((value != null) && (value.length() > 0) && !("X".equals(value))) { //$NON-NLS-1$
       if ((target != null) && !(target.eIsProxy())) {
         if (target instanceof AbstractNamedElement) {
           String semanticName = (((AbstractNamedElement) target).getName());

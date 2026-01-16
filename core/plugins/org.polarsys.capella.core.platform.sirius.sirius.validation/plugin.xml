@@ -122,14 +122,14 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_07 - Diagram Naming conflicts check"
+                  name="%constraint.name"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0}"{1}" content has a naming conflict for: {2}.
+                  %constraint.message
                </message>
                <description>
-                  This rule checks  that a diagram doesn&apos;t contain naming conflict with other diagrams of the same type.
+                  %constraint.description
                </description>
                <target
                      class="CapellaElement">
@@ -141,14 +141,14 @@
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="I_22 - Hyperlink to Model Element or Diagram displayed text check"
+                  name="%constraint.name.0"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0}
+                  %constraint.message.0
                </message>
                <description>
-                  This rule ensures that displayed text of hyperlinks to Model Element or Diagram is up to date.
+                  %constraint.description.0
                </description>
             </constraint>
             <constraint
@@ -157,17 +157,17 @@
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="I_23 - Hyperlink to Model Element or Diagram existance check"
+                  name="%constraint.name.1"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0}
+                  %constraint.message.1
                </message>
                <target
                      class="CapellaElement">
                </target>
                <description>
-                  This rule ensures that hyperlinks to Model Element or Diagram are still refering to existing elements.
+                  %constraint.description.1
                </description>
             </constraint>
             <constraint
@@ -176,22 +176,17 @@
                   isEnabledByDefault="false"
                   lang="java"
                   mode="Batch"
-                  name="I_46 - Check that the image used for diagram nodes is found"
+                  name="%constraint.name.2"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0}
+                  %constraint.message.2
                </message>
                <target
                      class="CapellaElement">
                </target>
                <description>
-                  Warning: This rule applies on diagrams elements of diagram associated to the Capella element and will load the diagram. 
-It is recommended to uncheck this rule by default.
-
-This rule ensures that images, used as background of diagram elements, can be found.
-
-Tip: If some cases are detected (validation markers), it is recommended to check the existence of the image and move it in the right folder according to the used expected image path location. Once done, you can restart the validation. If you have still validation markers, then use the &quot;Quick fix&quot; tool to select a new image.
+                  %constraint.description.2
                </description>
             </constraint>
             <constraint
@@ -200,16 +195,14 @@ Tip: If some cases are detected (validation markers), it is recommended to check
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="I_47 - Check that images used in rich text is found (Capella and diagram descriptions etc)"
+                  name="%constraint.name.3"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0}
+                  %constraint.message.3
                </message>
                <description>
-                  This rule ensures that images, used in rich text editor, for attributes such as Capella elements description or diagram description, can be found.
-
-Tip: If some cases are detected (validation markers), it is recommended to check the existence of the image and move it in the right folder according to the used expected image path location. Once done, you can restart the validation. If you have still validation markers, then use the &quot;Quick fix&quot; tool to select a new image or remove those images from the description.
+                  %constraint.description.3
                </description>
             </constraint>
          </constraints>

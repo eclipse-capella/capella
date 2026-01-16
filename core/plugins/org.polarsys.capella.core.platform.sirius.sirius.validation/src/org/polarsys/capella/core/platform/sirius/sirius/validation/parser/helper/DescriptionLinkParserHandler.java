@@ -47,7 +47,7 @@ public class DescriptionLinkParserHandler extends DefaultHandler {
     if (m.find()) {
       return m.group(1); // return the matched name
     }
-    return ""; // return an empty string if no match was found
+    return ""; // return an empty string if no match was found //$NON-NLS-1$
 
   }
 
@@ -60,7 +60,7 @@ public class DescriptionLinkParserHandler extends DefaultHandler {
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
       if (qName.equalsIgnoreCase(IConstantValidation.XHTML_A_TAG)) {
         currentLinkContent = new StringBuilder(0);
-        currentLinkHref = "";
+        currentLinkHref = ""; //$NON-NLS-1$
         currentTargetElement = null;
         for (int i = 0; i < attributes.getLength(); i++) {
           String attValue = attributes.getValue(i);
@@ -91,7 +91,7 @@ public class DescriptionLinkParserHandler extends DefaultHandler {
       // a tag
       if ((qName.equalsIgnoreCase(IConstantValidation.XHTML_A_TAG))) {
         String formattedLinkContent = currentLinkContent.toString();
-        formattedLinkContent = formattedLinkContent.replaceAll("\\s+", " ");
+        formattedLinkContent = formattedLinkContent.replaceAll("\\s+", " "); //$NON-NLS-1$ //$NON-NLS-2$
         LinkDescription parsedLink = new LinkDescription(formattedLinkContent, currentLinkHref, currentTargetElement,
             (Attributes) new AttributesImpl());
         linkParserHandler.handleParsedLink(parsedLink);
@@ -99,7 +99,7 @@ public class DescriptionLinkParserHandler extends DefaultHandler {
         currentTargetElement = null;
         // empty the value and the id
         currentLinkContent = new StringBuilder();
-        currentLinkHref = "";
+        currentLinkHref = ""; //$NON-NLS-1$
       }
     }
 
@@ -121,8 +121,8 @@ public class DescriptionLinkParserHandler extends DefaultHandler {
         SAXParserFactory saxFactory = SAXParserFactory.newInstance();
         saxFactory.setValidating(false);
         saxParser = saxFactory.newSAXParser();
-        saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-        saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+        saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, ""); //$NON-NLS-1$
+        saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, ""); //$NON-NLS-1$
         // sax data handler
         DefaultHandler handler = new LinkParserHandler();
 

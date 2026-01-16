@@ -74,7 +74,7 @@ public class NamingHelper {
       name = EObjectLabelProviderHelper.getText(modelElement);
     }
     if (title.length() > 0 && name != null) {
-      title = title + " ";
+      title = title + " "; //$NON-NLS-1$
     }
     title = title + (name == null ? ICommonConstants.EMPTY_STRING : name);
     return title;
@@ -92,11 +92,11 @@ public class NamingHelper {
       builder.append(metaclassLabel);
     }
     if (modelElement instanceof Component && ComponentExt.isActor((Component) modelElement)) {
-      builder.append("[Actor]");
+      builder.append("[" + Messages.getString("NamingHelper_ActorInfo") + "]"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
     if (modelElement instanceof PhysicalComponent) {
       String nature = ((PhysicalComponent) modelElement).getNature().getName();
-      builder.append("[" + capitalize(nature) + "]");
+      builder.append("[" + capitalize(nature) + "]"); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     return builder.toString();
@@ -111,7 +111,7 @@ public class NamingHelper {
   public static String getTextForResource(IResource resource) {
     IContainer parent = resource.getParent();
     if (parent != null && parent.getType() != IResource.ROOT) {
-      return resource.getName() + " - " + parent.getFullPath();
+      return resource.getName() + " - " + parent.getFullPath(); //$NON-NLS-1$
 
     }
     return resource.getName();
@@ -182,7 +182,7 @@ public class NamingHelper {
     while (iterator.hasNext()) {
       builder.append(iterator.next().getName());
       if (iterator.hasNext()) {
-        builder.append(", ");
+        builder.append(", "); //$NON-NLS-1$
       }
     }
     return builder.toString();

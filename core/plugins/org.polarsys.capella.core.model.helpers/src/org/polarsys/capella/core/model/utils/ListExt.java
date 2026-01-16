@@ -64,7 +64,7 @@ public class ListExt {
   }
 
   public static <A> String toString(Collection<A> objects, String separator) {
-    String result = "";
+    String result = ""; //$NON-NLS-1$
     Iterator<A> iterator = objects.iterator();
       while (iterator.hasNext()) {
         A string = iterator.next();

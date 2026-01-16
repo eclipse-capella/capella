@@ -33,7 +33,7 @@ public class AddModeStateToCapabilityCommand extends AbstractQueryBasedCommand {
 	   * @param linkRefInSource
 	   */
 	  public AddModeStateToCapabilityCommand(EClass linkType, EReference linkRefInSource) {
-	    super("Add Mode or State to Capability", LinkStyle.LINE_SOLID, linkType, linkRefInSource);
+	    super(Messages.AddModeStateToCapabilityCommand_Label, LinkStyle.LINE_SOLID, linkType, linkRefInSource);
 	  }
 
 	  /**

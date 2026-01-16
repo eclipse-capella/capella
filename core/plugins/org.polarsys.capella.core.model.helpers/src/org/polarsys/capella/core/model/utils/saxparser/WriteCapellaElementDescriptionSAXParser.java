@@ -103,8 +103,8 @@ public class WriteCapellaElementDescriptionSAXParser {
             SAXParserFactory saxFactory = SAXParserFactory.newInstance();
             saxFactory.setValidating(false);
             saxParser = saxFactory.newSAXParser();
-            saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-            saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+            saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, ""); //$NON-NLS-1$
+            saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, ""); //$NON-NLS-1$
             // sax data handler
             DefaultHandler handler = new DefaultHandler() {
               // check the capella name: if same as value do nothing else update the description
@@ -167,7 +167,7 @@ public class WriteCapellaElementDescriptionSAXParser {
                       if (managedObject(eObject)) {
                         // if ok default value will be added else the value will be updated
                         elementFound = eObject;
-                        elementId = attValue.replace("hlink://", "");
+                        elementId = attValue.replace("hlink://", ""); //$NON-NLS-1$ //$NON-NLS-2$
                       }
                     }
                     // add other attribute
@@ -178,8 +178,8 @@ public class WriteCapellaElementDescriptionSAXParser {
                     description.append(attValue);
                     description.append(IConstantValidation.DOUBLE_QUOTES);
                   }
-                  if (qName.equals("img")) {
-                	  description.append("/");
+                  if (qName.equals("img")) { //$NON-NLS-1$
+                	  description.append("/"); //$NON-NLS-1$
                   }
                   // close start Element
                   description.append(IConstantValidation.GREATER_THAN);
@@ -191,7 +191,7 @@ public class WriteCapellaElementDescriptionSAXParser {
                */
               @Override
               public void endElement(String uri, String localName, String qName) throws SAXException {
-            	if (qName.equals("img")) {
+            	if (qName.equals("img")) { //$NON-NLS-1$
             	  return;
                 }
                 // break element
@@ -234,7 +234,7 @@ public class WriteCapellaElementDescriptionSAXParser {
 
                 // empty the element value
                 elementValue = new StringBuilder(0);
-                elementId = "";
+                elementId = ""; //$NON-NLS-1$
 
               }
 

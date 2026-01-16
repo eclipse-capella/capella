@@ -33,7 +33,7 @@ public class AddExchangeCategoryToPhysicalLinkCommand extends AbstractQueryBased
 	   * @param linkRefInSource
 	   */
 	  public AddExchangeCategoryToPhysicalLinkCommand(EClass linkType, EReference linkRefInSource) {
-	    super("Add Exchange Category to Physical Link", LinkStyle.LINE_DASHED, linkType, linkRefInSource);
+	    super(Messages.AddExchangeCategoryToPhysicalLinkCommand_Label, LinkStyle.LINE_DASHED, linkType, linkRefInSource);
 	  }
 
 	  /**

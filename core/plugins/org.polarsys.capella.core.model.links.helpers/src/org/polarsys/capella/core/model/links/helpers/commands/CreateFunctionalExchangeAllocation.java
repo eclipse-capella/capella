@@ -25,6 +25,6 @@ public class CreateFunctionalExchangeAllocation extends CreateTraceCommand {
  * 
  */
   public CreateFunctionalExchangeAllocation(EClass linkType, EReference linkRefInSource) {
-    super("Functional Exchange Allocation", LinkStyle.LINE_DASHED, linkType, linkRefInSource);
+    super(Messages.CreateFunctionalExchangeAllocation_Label, LinkStyle.LINE_DASHED, linkType, linkRefInSource);
   }
 }

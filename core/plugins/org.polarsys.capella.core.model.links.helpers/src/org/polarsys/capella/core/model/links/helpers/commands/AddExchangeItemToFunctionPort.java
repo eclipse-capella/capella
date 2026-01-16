@@ -32,7 +32,7 @@ public class AddExchangeItemToFunctionPort extends AbstractQueryBasedCommand {
    * @param linkRefInSource
    */
   public AddExchangeItemToFunctionPort(EClass linkType, EReference linkRefInSource) {
-    super("Add ExchangeItem to FunctionPort", LinkStyle.LINE_DASHED, linkType, linkRefInSource);
+    super(Messages.AddExchangeItemToFunctionPort_Label, LinkStyle.LINE_DASHED, linkType, linkRefInSource);
   }
 
   /**

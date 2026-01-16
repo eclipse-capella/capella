@@ -30,7 +30,7 @@ public class AddCompExchangeToCompExchangeCat extends AbstractQueryBasedCommand 
    * @param linkRefInSource
    */
   public AddCompExchangeToCompExchangeCat(EClass linkType, EReference linkRefInSource) {
-    super("Add component exchange to category", LinkStyle.LINE_DASHED, linkType, linkRefInSource);
+    super(Messages.AddCompExchangeToCompExchangeCat_Label, LinkStyle.LINE_DASHED, linkType, linkRefInSource);
   }
 
   /**

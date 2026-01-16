@@ -51,7 +51,7 @@ public class ElementLabelProvider extends MDEAdapterFactoryLabelProvider {
   @Override
   public Image getImage(Object element) {
     if (element instanceof Class) {
-      return AbstractUIPlugin.imageDescriptorFromPlugin(MDTrace.PLUGIN_ID, "icons/generic_value.gif").createImage();
+      return AbstractUIPlugin.imageDescriptorFromPlugin(MDTrace.PLUGIN_ID, "icons/generic_value.gif").createImage(); //$NON-NLS-1$
     } 
     return super.getImage(element);
   }

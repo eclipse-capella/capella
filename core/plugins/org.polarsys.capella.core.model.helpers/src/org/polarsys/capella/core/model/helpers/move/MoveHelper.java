@@ -94,8 +94,8 @@ import org.polarsys.kitalpha.emde.model.edit.provider.ExtensibleElementItemProvi
  */
 public class MoveHelper implements IMoveHelper {
 
-  static String PLUGIN_ID = "org.polarsys.capella.core.model.helpers";
-  static String EP_MOVE_HELPER_ID = "moveHelper";
+  static String PLUGIN_ID = "org.polarsys.capella.core.model.helpers"; //$NON-NLS-1$
+  static String EP_MOVE_HELPER_ID = "moveHelper"; //$NON-NLS-1$
   private List<IMoveHelper> moveHelpers;
   private static MoveHelper instance;
 
@@ -230,7 +230,7 @@ public class MoveHelper implements IMoveHelper {
 
         if (!isOK) {
           // We should explain why !
-          return new Status(IStatus.ERROR, "model.helpers", "Semantic rules failed.");
+          return new Status(IStatus.ERROR, "model.helpers", Messages.MoveHelper_0); //$NON-NLS-1$
         }
       }
     }

@@ -60,7 +60,7 @@ public class CapellaModelFilter extends ViewerFilter implements ModifyListener {
 
   @SuppressWarnings("nls")
   private boolean checkPattern(Object element_p, String name_p) {
-    if (name_p == null || name_p.trim().equals("")) {
+    if (name_p == null || name_p.trim().equals("")) { //$NON-NLS-1$
       return false;
     }
 
@@ -130,14 +130,14 @@ public class CapellaModelFilter extends ViewerFilter implements ModifyListener {
       return;
     }
 
-    if (value.contains(".")) {
-      value = value.replace(".", "[.]");
+    if (value.contains(".")) { //$NON-NLS-1$
+      value = value.replace(".", "[.]"); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
-    if (value.contains("\\") && !(value.endsWith("\\"))) {
+    if (value.contains("\\") && !(value.endsWith("\\"))) { //$NON-NLS-1$ //$NON-NLS-2$
       int spos = 0, epos = 0;
-      while ((spos = value.indexOf("\\", epos)) != -1) {
-        value = value.substring(epos, spos) + "[" + value.charAt(spos + 1) + "]" + value.substring(spos + 2);
+      while ((spos = value.indexOf("\\", epos)) != -1) { //$NON-NLS-1$
+        value = value.substring(epos, spos) + "[" + value.charAt(spos + 1) + "]" + value.substring(spos + 2); //$NON-NLS-1$ //$NON-NLS-2$
         epos = spos + 2;
       }
     }
@@ -154,16 +154,16 @@ public class CapellaModelFilter extends ViewerFilter implements ModifyListener {
     // character.
     value = value.replaceAll("^\\[*]", ".*"); //$NON-NLS-1$//$NON-NLS-2$
 
-    if (value.contains("[")) {
+    if (value.contains("[")) { //$NON-NLS-1$
       int spos = 0; 
       int epos = 0;
-      while ((spos = value.indexOf("[", epos)) != -1) {
-        value = value.substring(epos, value.indexOf("[", epos)).replace("*", ".*") + value.substring(spos);
-        epos = value.indexOf("]", spos);
+      while ((spos = value.indexOf("[", epos)) != -1) { //$NON-NLS-1$
+        value = value.substring(epos, value.indexOf("[", epos)).replace("*", ".*") + value.substring(spos); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        epos = value.indexOf("]", spos); //$NON-NLS-1$
       }
-      value = value.substring(0, value.lastIndexOf("]")) + value.substring(value.lastIndexOf("]")).replace("*", ".*");
+      value = value.substring(0, value.lastIndexOf("]")) + value.substring(value.lastIndexOf("]")).replace("*", ".*"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
     } else {
-      value = value.replace("*", ".*");
+      value = value.replace("*", ".*"); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
 
@@ -177,15 +177,15 @@ public class CapellaModelFilter extends ViewerFilter implements ModifyListener {
     // character.
     value = value.replaceAll("^\\[\\?]", "."); //$NON-NLS-1$ //$NON-NLS-2$
 
-    if (value.contains("[")) {
+    if (value.contains("[")) { //$NON-NLS-1$
       int spos = 0, epos = 0;
-      while ((spos = value.indexOf("[", epos)) != -1) {
-        value = value.substring(epos, value.indexOf("[", epos)).replace("?", ".") + value.substring(spos);
-        epos = value.indexOf("]", spos);
+      while ((spos = value.indexOf("[", epos)) != -1) { //$NON-NLS-1$
+        value = value.substring(epos, value.indexOf("[", epos)).replace("?", ".") + value.substring(spos); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        epos = value.indexOf("]", spos); //$NON-NLS-1$
       }
-      value = value.substring(0, value.lastIndexOf("]")) + value.substring(value.lastIndexOf("]")).replace("?", ".");
+      value = value.substring(0, value.lastIndexOf("]")) + value.substring(value.lastIndexOf("]")).replace("?", "."); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
     } else {
-      value = value.replace("?", ".");
+      value = value.replace("?", "."); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     // Adds a '.*' regular expression which means 'any string' in order

@@ -100,9 +100,9 @@ public abstract class Graph<GS, NS, ES, N extends GraphNode<NS, E>, E extends Gr
   }
 
   public String toString() {
-    String n = nodes.values().stream().map(GraphNode::toString).collect(Collectors.joining("\n  "));
-    String e = edges.values().stream().map(GraphEdge::toString).collect(Collectors.joining("\n  "));
-    return "g(\n  " + n + "\n  " + e + "\n)";
+    String n = nodes.values().stream().map(GraphNode::toString).collect(Collectors.joining("\n  ")); //$NON-NLS-1$
+    String e = edges.values().stream().map(GraphEdge::toString).collect(Collectors.joining("\n  ")); //$NON-NLS-1$
+    return "g(\n  " + n + "\n  " + e + "\n)"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
   }
 
 }
