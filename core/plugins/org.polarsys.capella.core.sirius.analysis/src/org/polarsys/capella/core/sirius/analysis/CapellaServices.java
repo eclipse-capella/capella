@@ -389,7 +389,7 @@ public class CapellaServices {
   }
 
   public List<EObject> selectOnlyCreatedView(EObject eObject) {
-    return Collections.singletonList((EObject) InterpreterUtil.getInterpreter(eObject).getVariable("view"));
+    return Collections.singletonList((EObject) InterpreterUtil.getInterpreter(eObject).getVariable("view")); //$NON-NLS-1$
   }
 
   public boolean isInLib(EObject context) {

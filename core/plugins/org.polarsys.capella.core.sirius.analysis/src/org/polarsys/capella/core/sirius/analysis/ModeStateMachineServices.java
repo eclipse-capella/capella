@@ -80,8 +80,8 @@ public class ModeStateMachineServices {
   }
 
   public String getRegionLabel(Region region, DDiagram diagram) {
-    return isDiagramFilterEnable(diagram, IMappingNameConstants.HIDE_REGION_NAMES) ? ""
-        : " [" + EObjectExt.getText(region) + "]";
+    return isDiagramFilterEnable(diagram, IMappingNameConstants.HIDE_REGION_NAMES) ? "" //$NON-NLS-1$
+        : " [" + EObjectExt.getText(region) + "]"; //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   public String getActivityLabel(AbstractEvent abstractEvent) {
@@ -98,9 +98,9 @@ public class ModeStateMachineServices {
       target = target.eContainer();
     }
     if (target instanceof AbstractFunction) {
-      return EObjectExt.getText(fe) + " [-> " + EObjectExt.getText(target) + "]";
+      return EObjectExt.getText(fe) + " [-> " + EObjectExt.getText(target) + "]"; //$NON-NLS-1$ //$NON-NLS-2$
     }
-    return "";
+    return ""; //$NON-NLS-1$
   }
   
   public String getIncomingFunctionalExchangeLabel(FunctionalExchange fe) {
@@ -109,9 +109,9 @@ public class ModeStateMachineServices {
       source = source.eContainer();
     }
     if (source instanceof AbstractFunction) {
-      return "[" + EObjectExt.getText(source) + " ->] " + EObjectExt.getText(fe);
+      return "[" + EObjectExt.getText(source) + " ->] " + EObjectExt.getText(fe); //$NON-NLS-1$ //$NON-NLS-2$
     }
-    return "";
+    return ""; //$NON-NLS-1$
   }
 
   public String getEntryExitPointLabel(Pseudostate pseudostate, DDiagram diagram) {
@@ -120,8 +120,8 @@ public class ModeStateMachineServices {
       EList<Region> regions = pseudostate.getInvolverRegions();
       if (!regions.isEmpty()) {
         Region region = regions.get(0);
-        return EObjectExt.getText(pseudostate) + " (" + EObjectExt.getText(region)
-            + ")";
+        return EObjectExt.getText(pseudostate) + " (" + EObjectExt.getText(region) //$NON-NLS-1$
+            + ")"; //$NON-NLS-1$
       }
     }
 

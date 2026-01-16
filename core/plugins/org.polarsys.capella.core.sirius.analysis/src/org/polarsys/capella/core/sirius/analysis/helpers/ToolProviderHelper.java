@@ -74,9 +74,9 @@ public class ToolProviderHelper {
 
   public static String getTollCreateNodePC(DDiagram diagram_p) {
     if (DDiagramHelper.isSAB(diagram_p)) {
-      return "TOOL_SAB_CREATE_NODE_PHYSICAL_COMPONENT DOES NOT EXIST YES";
+      return "TOOL_SAB_CREATE_NODE_PHYSICAL_COMPONENT DOES NOT EXIST YES"; //$NON-NLS-1$
     } else if (DDiagramHelper.isLAB(diagram_p)) {
-      return "TOOL_LAB_CREATE_NODE_PHYSICAL_COMPONENT DOES NOT EXIST YES";
+      return "TOOL_LAB_CREATE_NODE_PHYSICAL_COMPONENT DOES NOT EXIST YES"; //$NON-NLS-1$
     } else if (DDiagramHelper.isPAB(diagram_p)) {
       return IToolNameConstants.TOOL_PAB_CREATE_NODE_PHYSICAL_COMPONENT;
     }

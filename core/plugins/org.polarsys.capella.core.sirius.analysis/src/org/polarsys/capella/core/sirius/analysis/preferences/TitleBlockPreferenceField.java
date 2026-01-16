@@ -81,7 +81,7 @@ public class TitleBlockPreferenceField extends FieldEditor {
   }
 
   public TitleBlockPreferenceField(Composite parent) {
-    super("", Messages.TitleBlockPreferencePage_Message, parent);
+    super("", Messages.TitleBlockPreferencePage_Message, parent); //$NON-NLS-1$
   }
 
   @Override

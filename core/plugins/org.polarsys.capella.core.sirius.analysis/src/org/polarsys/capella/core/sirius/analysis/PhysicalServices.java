@@ -492,7 +492,7 @@ public class PhysicalServices {
     CapellaServices.getService().creationService(exchange);
     DiagramServices.getDiagramServices().createEdge(FaServices.getFaServices().getMappingABPhysicalLink(diagram),
         nodeSource, nodeTarget, exchange);
-    CsServices.getService().setInterpreterVariable(context, "result", exchange);
+    CsServices.getService().setInterpreterVariable(context, "result", exchange); //$NON-NLS-1$
     return context;
   }
 
