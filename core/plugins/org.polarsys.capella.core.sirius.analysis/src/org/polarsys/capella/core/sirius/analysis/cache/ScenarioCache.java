@@ -670,7 +670,7 @@ public class ScenarioCache {
 
     @Override
     public String toString() {
-      return String.format("%02d\t%s\t%s", getLevel(), element, parent);
+      return String.format("%02d\t%s\t%s", getLevel(), element, parent); //$NON-NLS-1$
     }
   }
 
@@ -713,7 +713,7 @@ public class ScenarioCache {
 
     @Override
     public String toString() {
-      return String.format("%02d\t%s\t%s", combinedFragment, operandEnd);
+      return String.format("%02d\t%s\t%s", combinedFragment, operandEnd); //$NON-NLS-1$
     }
 
   }

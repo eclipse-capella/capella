@@ -43,7 +43,7 @@ public class DCON_02_Rpl2RecConformanceConstraint extends AbstractModelConstrain
     if (catalogElement.getKind() == CatalogElementKind.RPL) {
       CatalogElement rec = catalogElement.getOrigin();
       if (rec == null || rec.eIsProxy()) {
-        return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Your RPL is invalid (no REC), please validate your model.");
+        return new Status(IStatus.ERROR, Activator.PLUGIN_ID, Messages.DCON_02_Rpl2RecConformanceConstraint_0);
       }
       // if rec is valid
       return validateRPL(ctx, catalogElement);
@@ -68,7 +68,7 @@ public class DCON_02_Rpl2RecConformanceConstraint extends AbstractModelConstrain
     Collection<Object> selection = new ArrayList<>();
     selection.add(rpl);
     Rpl2RecConformanceCheckLauncher launcher = new Rpl2RecConformanceCheckLauncher();
-    launcher.addSharedParameter(new GenericParameter<Boolean>(IOptionsConstants.IS_DRY_RUN, true, "This is a flag to indicate a dry run"));
+    launcher.addSharedParameter(new GenericParameter<Boolean>(IOptionsConstants.IS_DRY_RUN, true, Messages.DCON_02_Rpl2RecConformanceConstraint_1));
     launcher.run(selection, false, new NullProgressMonitor());
     if (!launcher.isConform()) {
       // When the target is a REC, we need to set the RPL as target of the created failure status to be able to use it

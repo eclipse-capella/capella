@@ -36,7 +36,7 @@ public class CreateViewAction extends AbstractExternalJavaAction {
       containerView = (DSemanticDecorator) current;
     }
     String toolId = (String) InterpreterUtil.getInterpreter(context).getVariable("tool"); //$NON-NLS-1$
-    CreateViewTask task = new CreateViewTask(context, containerView, create, toolId, "view");
+    CreateViewTask task = new CreateViewTask(context, containerView, create, toolId, "view"); //$NON-NLS-1$
     task.execute();
   }
 }

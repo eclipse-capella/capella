@@ -76,7 +76,7 @@ public class SelectOrCreateFunctionalExchangeDialog extends SelectElementsDialog
 
   AbstractFunction newFESource;
   AbstractFunction newFETarget;
-  String newFEName = "";
+  String newFEName = ""; //$NON-NLS-1$
 
   Shell parentShell;
 
@@ -85,7 +85,7 @@ public class SelectOrCreateFunctionalExchangeDialog extends SelectElementsDialog
 
   public SelectOrCreateFunctionalExchangeDialog(Shell parentShell, Set<FunctionalExchange> availableFEs,
       Set<AbstractFunction> availableSourceFunctions, Set<AbstractFunction> availableTargetFunctions) {
-    super(parentShell, "Select or create Functional Exchange", "Select or create Functional Exchange", availableFEs);
+    super(parentShell, Messages.SelectOrCreateFunctionalExchangeDialog_Title, Messages.SelectOrCreateFunctionalExchangeDialog_Message, availableFEs);
     this.availableFCILinks = availableFEs;
     this.availableFCIFunctions = availableSourceFunctions;
 
@@ -116,12 +116,12 @@ public class SelectOrCreateFunctionalExchangeDialog extends SelectElementsDialog
 
   public void createCreationForm(Composite parent) {
     Group creationGroup = new Group(parent, SWT.NONE);
-    creationGroup.setText("Create a new Functional Exchange");
+    creationGroup.setText(Messages.SelectOrCreateFunctionalExchangeDialog_FEGroup_Name);
     creationGroup.setLayoutData(new GridData(GridData.FILL, GridData.BEGINNING, true, true));
     creationGroup.setLayout(new GridLayout(3, false));
 
     creationChecker = new Button(creationGroup, SWT.CHECK);
-    creationChecker.setText("Create a new Functional Exchange");
+    creationChecker.setText(Messages.SelectOrCreateFunctionalExchangeDialog_CreateFE_Checkbox);
     creationChecker.setLayoutData(new GridData(GridData.FILL, GridData.BEGINNING, true, false, 4, 1));
 
     creationChecker.addSelectionListener(new SelectionListener() {
@@ -140,7 +140,7 @@ public class SelectOrCreateFunctionalExchangeDialog extends SelectElementsDialog
     creationChecker.setSelection(false);
 
     Label feNameLabel = new Label(creationGroup, SWT.NONE);
-    feNameLabel.setText("Name of Functional Exchange");
+    feNameLabel.setText(Messages.SelectOrCreateFunctionalExchangeDialog_5);
     feNameLabel.setLayoutData(new GridData(GridData.FILL, GridData.BEGINNING, false, false));
 
     feNameInputText = new Text(creationGroup, SWT.SINGLE | SWT.BORDER);
@@ -151,7 +151,7 @@ public class SelectOrCreateFunctionalExchangeDialog extends SelectElementsDialog
       updateOKButton();
     });
 
-    String labelTextForSourceFunction = "Select Function as source";
+    String labelTextForSourceFunction = Messages.SelectOrCreateFunctionalExchangeDialog_6;
     createFunctionLabel(creationGroup, labelTextForSourceFunction);
     Text sourceInputText = createFunctionInputText(creationGroup);
     sourceBrowseButton = createFunctionBrowseButton(creationGroup);
@@ -173,7 +173,7 @@ public class SelectOrCreateFunctionalExchangeDialog extends SelectElementsDialog
       }
     });
 
-    String labelTextForTargetFunction = "Select Function as target";
+    String labelTextForTargetFunction = Messages.SelectOrCreateFunctionalExchangeDialog_7;
     createFunctionLabel(creationGroup, labelTextForTargetFunction);
     Text targetInputText = createFunctionInputText(creationGroup);
     targetBrowseButton = createFunctionBrowseButton(creationGroup);
@@ -197,7 +197,7 @@ public class SelectOrCreateFunctionalExchangeDialog extends SelectElementsDialog
   }
   
   private AbstractFunction selectAbstractFunction(Set<AbstractFunction> availableSourceFunctions2, String mesage) {
-    SelectElementsDialog dialog = new SelectElementsDialog(parentShell, "Select a Function", mesage, availableSourceFunctions2);
+    SelectElementsDialog dialog = new SelectElementsDialog(parentShell, Messages.SelectOrCreateFunctionalExchangeDialog_FunctionSelectionDialog_Title, mesage, availableSourceFunctions2);
     if (dialog.open() == OK) {
       EObject selectedElement = dialog.getResult().stream().findFirst().orElse(null);
       if (selectedElement instanceof AbstractFunction) {

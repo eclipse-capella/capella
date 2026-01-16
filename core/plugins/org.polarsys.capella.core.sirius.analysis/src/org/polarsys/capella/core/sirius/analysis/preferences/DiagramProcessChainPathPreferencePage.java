@@ -21,29 +21,29 @@ public class DiagramProcessChainPathPreferencePage extends AbstractDefaultPrefer
 
   public static final String PROPERTY_PAGE_ID = "org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage"; //$NON-NLS-1$
 
-  public static final String LABEL_GROUP_FUNCTIONAL_CHAIN = "Functional Chain";
-  public static final String NAME_PREF_DISPLAY_INCOMPLETE_IN_FUNCTIONAL_CHAIN_LABEL = "org.polarsys.capella.core.sirius.analysis.preferences.diagrams.functionalchain.label.incomplete";
-  public static final String LABEL_PREF_DISPLAY_INCOMPLETE_IN_FUNCTIONAL_CHAIN_LABEL = "Show 'Incomplete' in the chain's label";
-  public static final String TOOLTIP_PREF_DISPLAY_INCOMPLETE_IN_FUNCTIONAL_CHAIN_LABEL = "If one of the exchanges on the chain is not visible";
-  public static final String NAME_PREF_DISPLAY_INVALID_IN_FUNCTIONAL_CHAIN_LABEL = "org.polarsys.capella.core.sirius.analysis.preferences.diagrams.functionalchain.label.invalid";
-  public static final String LABEL_PREF_DISPLAY_INVALID_IN_FUNCTIONAL_CHAIN_LABEL = "Show 'Invalid' in the chain's label";
-  public static final String TOOLTIP_PREF_DISPLAY_INVALID_IN_FUNCTIONAL_CHAIN_LABEL = "If the chain is not valid";
+  public static final String LABEL_GROUP_FUNCTIONAL_CHAIN = Messages.DiagramProcessChainPathPreferencePage_0;
+  public static final String NAME_PREF_DISPLAY_INCOMPLETE_IN_FUNCTIONAL_CHAIN_LABEL = "org.polarsys.capella.core.sirius.analysis.preferences.diagrams.functionalchain.label.incomplete"; //$NON-NLS-1$
+  public static final String LABEL_PREF_DISPLAY_INCOMPLETE_IN_FUNCTIONAL_CHAIN_LABEL = Messages.DiagramProcessChainPathPreferencePage_2;
+  public static final String TOOLTIP_PREF_DISPLAY_INCOMPLETE_IN_FUNCTIONAL_CHAIN_LABEL = Messages.DiagramProcessChainPathPreferencePage_3;
+  public static final String NAME_PREF_DISPLAY_INVALID_IN_FUNCTIONAL_CHAIN_LABEL = "org.polarsys.capella.core.sirius.analysis.preferences.diagrams.functionalchain.label.invalid"; //$NON-NLS-1$
+  public static final String LABEL_PREF_DISPLAY_INVALID_IN_FUNCTIONAL_CHAIN_LABEL = Messages.DiagramProcessChainPathPreferencePage_5;
+  public static final String TOOLTIP_PREF_DISPLAY_INVALID_IN_FUNCTIONAL_CHAIN_LABEL = Messages.DiagramProcessChainPathPreferencePage_6;
 
-  public static final String LABEL_GROUP_PHYSICAL_PATH = "Physical Path";
-  public static final String NAME_PREF_DISPLAY_INCOMPLETE_IN_PHYSICAL_PATH_LABEL = "org.polarsys.capella.core.sirius.analysis.preferences.diagrams.physicalpath.label.incomplete";
-  public static final String LABEL_PREF_DISPLAY_INCOMPLETE_IN_PHYSICAL_PATH_LABEL = "Show 'Incomplete' in the path's label";
-  public static final String TOOLTIP_PREF_DISPLAY_INCOMPLETE_IN_PHYSICAL_PATH_LABEL = "If one of the links on the path is not visible";
-  public static final String NAME_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL = "org.polarsys.capella.core.sirius.analysis.preferences.diagrams.physicalpath.label.invalid";
-  public static final String LABEL_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL = "Show 'Invalid' in the path's label";
-  public static final String TOOLTIP_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL = "If the path is not valid";
+  public static final String LABEL_GROUP_PHYSICAL_PATH = Messages.DiagramProcessChainPathPreferencePage_7;
+  public static final String NAME_PREF_DISPLAY_INCOMPLETE_IN_PHYSICAL_PATH_LABEL = "org.polarsys.capella.core.sirius.analysis.preferences.diagrams.physicalpath.label.incomplete"; //$NON-NLS-1$
+  public static final String LABEL_PREF_DISPLAY_INCOMPLETE_IN_PHYSICAL_PATH_LABEL = Messages.DiagramProcessChainPathPreferencePage_9;
+  public static final String TOOLTIP_PREF_DISPLAY_INCOMPLETE_IN_PHYSICAL_PATH_LABEL = Messages.DiagramProcessChainPathPreferencePage_10;
+  public static final String NAME_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL = "org.polarsys.capella.core.sirius.analysis.preferences.diagrams.physicalpath.label.invalid"; //$NON-NLS-1$
+  public static final String LABEL_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL = Messages.DiagramProcessChainPathPreferencePage_12;
+  public static final String TOOLTIP_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL = Messages.DiagramProcessChainPathPreferencePage_13;
   
-  public static final String LABEL_GROUP_OPERATIONAL_PROCESS = "Operational Process";
-  public static final String NAME_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL = "org.polarsys.capella.core.sirius.analysis.preferences.diagrams.operationalprocess.label.incomplete";
-  public static final String LABEL_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL = "Show 'Incomplete' in the process's label";
-  public static final String TOOLTIP_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL = "If one of the interactions on the process is not visible";
-  public static final String NAME_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL = "org.polarsys.capella.core.sirius.analysis.preferences.diagrams.operationalprocess.label.invalid";
-  public static final String LABEL_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL = "Show 'Invalid' in the process's label";
-  public static final String TOOLTIP_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL = "If the process is not valid";
+  public static final String LABEL_GROUP_OPERATIONAL_PROCESS = Messages.DiagramProcessChainPathPreferencePage_14;
+  public static final String NAME_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL = "org.polarsys.capella.core.sirius.analysis.preferences.diagrams.operationalprocess.label.incomplete"; //$NON-NLS-1$
+  public static final String LABEL_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL = Messages.DiagramProcessChainPathPreferencePage_16;
+  public static final String TOOLTIP_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL = Messages.DiagramProcessChainPathPreferencePage_17;
+  public static final String NAME_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL = "org.polarsys.capella.core.sirius.analysis.preferences.diagrams.operationalprocess.label.invalid"; //$NON-NLS-1$
+  public static final String LABEL_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL = Messages.DiagramProcessChainPathPreferencePage_19;
+  public static final String TOOLTIP_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL = Messages.DiagramProcessChainPathPreferencePage_20;
 
   public DiagramProcessChainPathPreferencePage() {
     super(PROPERTY_PAGE_ID);
@@ -51,12 +51,12 @@ public class DiagramProcessChainPathPreferencePage extends AbstractDefaultPrefer
 
   @Override
   protected String getPageTitle() {
-    return "Diagrams";
+    return Messages.DiagramProcessChainPathPreferencePage_21;
   }
 
   @Override
   protected String getPageDescription() {
-    return "Preferences for displaying diagrams";
+    return Messages.DiagramProcessChainPathPreferencePage_22;
   }
 
   @Override

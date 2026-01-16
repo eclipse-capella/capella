@@ -29,11 +29,11 @@ import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
  */
 public final class ColorNameConstants {
 
-  public static final String ACTOR = "_CAP_Actor_Blue";
+  public static final String ACTOR = "_CAP_Actor_Blue"; //$NON-NLS-1$
 
-  private static final String COLOR_PALETTE = "Migration Palette";
+  private static final String COLOR_PALETTE = "Migration Palette"; //$NON-NLS-1$
 
-  private static final URI COMMON = URI.createURI("viewpoint:/" + SiriusViewActivator.ID + "/Common");
+  private static final URI COMMON = URI.createURI("viewpoint:/" + SiriusViewActivator.ID + "/Common"); //$NON-NLS-1$ //$NON-NLS-2$
 
   private ColorNameConstants() {
     super();

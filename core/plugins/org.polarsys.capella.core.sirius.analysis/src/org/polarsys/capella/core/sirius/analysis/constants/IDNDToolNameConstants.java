@@ -21,25 +21,25 @@ public interface IDNDToolNameConstants {
   // Drag and Drop diagram Tools
   //
 
-  String TOOL_DND_MISSIONS_FROM_EXPLORER = "D&D Missions From Project Explorer";
-  String TOOL_DND_CAPABILITIES_FROM_EXPLORER = "D&D Capabilities From Project Explorer";
-  String TOOL_DND_COMPONENT = "Component from Diagram";
-  String TOOL_DND_CONSTRAINT_FROM_EXPLORER = "D&D Constraint From Project Explorer";
-  String TOOL_DND_CONSTRAINTS_FROM_EXPLORER = "D&D Constraints From Project Explorer";
-  String TOOL_DND_ACTORS_FROM_EXPLORER = "D&D Actors From Project Explorer";
-  String TOOL_DND_ENTITIES_FROM_EXPLORER = "D&D Entities From Project Explorer";
-  String TOOL_DND_OPERATIONAL_CAPABILITIES_FROM_EXPLORER = "D&D Operational Capabilities From Project Explorer";
-  String TOOL_SEQ_DND_COMPONENT = "Drop Component";
-  String TOOL_XDFB_DND_FUNCTIONPORT = "DnD DF FunctionPort";
-  String TOOL_XDFB_DND_ABSTRACTFUNCTION = "DnD DF AbstractFunction";
-  String TOOL_XDFB_DND_FUNCTION_FROM_EXPLORER = "D&D Function From Project Explorer";
-  String TOOL_XAB_DND_ABSTRACTFUNCTION_ALLOCATION = "DnD AB AbstractFunction Allocation"; // done
-  String TOOL_XAB_DND_COMPONENTPORT = "DnD AB ComponentPort";
-  String TOOL_XAB_DND_FUNCTIONPORT = "DnD AB FunctionPort";
-  String TOOL_XAB_DND_FUNCTION_ALLOCATION_FROM_EXPLORER = "D&D Function Allocation From Project Explorer";
-  String TOOL_XAB_DND_PHYSICALPORT = "D&D PhysicalPort";
-  String TOOL_XAB_DND_COMPONENTS_FROM_EXPLORER = "D&D Components From Project Explorer"; // done
-  String TOOL_XAB_DND_COMPONENT = "DnD AB Component";
+  String TOOL_DND_MISSIONS_FROM_EXPLORER = "D&D Missions From Project Explorer"; //$NON-NLS-1$
+  String TOOL_DND_CAPABILITIES_FROM_EXPLORER = "D&D Capabilities From Project Explorer"; //$NON-NLS-1$
+  String TOOL_DND_COMPONENT = "Component from Diagram"; //$NON-NLS-1$
+  String TOOL_DND_CONSTRAINT_FROM_EXPLORER = "D&D Constraint From Project Explorer"; //$NON-NLS-1$
+  String TOOL_DND_CONSTRAINTS_FROM_EXPLORER = "D&D Constraints From Project Explorer"; //$NON-NLS-1$
+  String TOOL_DND_ACTORS_FROM_EXPLORER = "D&D Actors From Project Explorer"; //$NON-NLS-1$
+  String TOOL_DND_ENTITIES_FROM_EXPLORER = "D&D Entities From Project Explorer"; //$NON-NLS-1$
+  String TOOL_DND_OPERATIONAL_CAPABILITIES_FROM_EXPLORER = "D&D Operational Capabilities From Project Explorer"; //$NON-NLS-1$
+  String TOOL_SEQ_DND_COMPONENT = "Drop Component"; //$NON-NLS-1$
+  String TOOL_XDFB_DND_FUNCTIONPORT = "DnD DF FunctionPort"; //$NON-NLS-1$
+  String TOOL_XDFB_DND_ABSTRACTFUNCTION = "DnD DF AbstractFunction"; //$NON-NLS-1$
+  String TOOL_XDFB_DND_FUNCTION_FROM_EXPLORER = "D&D Function From Project Explorer"; //$NON-NLS-1$
+  String TOOL_XAB_DND_ABSTRACTFUNCTION_ALLOCATION = "DnD AB AbstractFunction Allocation"; // done //$NON-NLS-1$
+  String TOOL_XAB_DND_COMPONENTPORT = "DnD AB ComponentPort"; //$NON-NLS-1$
+  String TOOL_XAB_DND_FUNCTIONPORT = "DnD AB FunctionPort"; //$NON-NLS-1$
+  String TOOL_XAB_DND_FUNCTION_ALLOCATION_FROM_EXPLORER = "D&D Function Allocation From Project Explorer"; //$NON-NLS-1$
+  String TOOL_XAB_DND_PHYSICALPORT = "D&D PhysicalPort"; //$NON-NLS-1$
+  String TOOL_XAB_DND_COMPONENTS_FROM_EXPLORER = "D&D Components From Project Explorer"; // done //$NON-NLS-1$
+  String TOOL_XAB_DND_COMPONENT = "DnD AB Component"; //$NON-NLS-1$
 
   // CC
   String TOOL_CC_DND_CONSTRAINTS_FROM_EXPLORER = TOOL_DND_CONSTRAINTS_FROM_EXPLORER; // $NON-NLS-1$
@@ -77,7 +77,7 @@ public interface IDNDToolNameConstants {
   // IDB
   String TOOL_IDB_DND_COMPONENTPORT_FROM_EXPLORER = "ComponentPort from Model"; //$NON-NLS-1$
   String TOOL_IDB_DND_COMPONENTPORT = "ComponentPort from Diagram"; //$NON-NLS-1$
-  String TOOL_IDB_DND_COMPONENT_FROM_EXPLORER = "Component from Model"; // $NON-NLS-1$
+  String TOOL_IDB_DND_COMPONENT_FROM_EXPLORER = "Component from Model"; // $NON-NLS-1$ //$NON-NLS-1$
   String TOOL_IDB_DND_COMPONENT = TOOL_DND_COMPONENT; // $NON-NLS-1$
   String TOOL_IDB_DND_EXCHANGEITEM_ALLOCATION_FROM_EXPLORER = "Allocation ExchangeItem from Model"; //$NON-NLS-1$
   String TOOL_IDB_DND_EXCHANGEITEM_ALLOCATION = "Allocation ExchangeItem from Diagram"; //$NON-NLS-1$
@@ -132,7 +132,7 @@ public interface IDNDToolNameConstants {
 
   // CRB
   String TOOL_CRB_DND_CONSTRAINT_FROM_EXPLORER = TOOL_DND_CONSTRAINT_FROM_EXPLORER; // $NON-NLS-1$
-  String TOOL_CRB_DND_COMPONENT_FROM_EXPLORER = "Component from Model"; // $NON-NLS-1$
+  String TOOL_CRB_DND_COMPONENT_FROM_EXPLORER = "Component from Model"; // $NON-NLS-1$ //$NON-NLS-1$
   String TOOL_CRB_DND_CAPABILITIES_FROM_EXPLORER = TOOL_DND_CAPABILITIES_FROM_EXPLORER; // $NON-NLS-1$
   String TOOL_CRB_DND_COMPONENT = TOOL_DND_COMPONENT; // $NON-NLS-1$
 
