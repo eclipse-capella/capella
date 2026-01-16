@@ -21,9 +21,9 @@
          <commonFilter
             activeByDefault="false"
             visibleInUI="true"
-            description="Hides all Replicable Element Links to Semantic Elements"
+            description="%commonFilter.description"
             id="capella.project.explorer.filters.replicableElementsLinks"
-            name="Replicable Elements Links">
+            name="%commonFilter.name">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.common.re.CatalogElementLink">
@@ -35,9 +35,9 @@
          <commonFilter
             activeByDefault="false"
             visibleInUI="true"
-            description="Hides Compliancy Definitions"
+            description="%commonFilter.description.0"
             id="capella.project.explorer.filters.reEnumerationProperty"
-            name="Replicable Element Compliancy Definitions">
+            name="%commonFilter.name.0">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.common.re.CompliancyDefinitions">

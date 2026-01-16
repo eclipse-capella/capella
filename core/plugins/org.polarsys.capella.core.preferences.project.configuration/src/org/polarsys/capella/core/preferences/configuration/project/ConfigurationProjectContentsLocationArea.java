@@ -103,16 +103,16 @@ public class ConfigurationProjectContentsLocationArea extends ProjectContentsLoc
     String isValid = super.checkValidLocation();
     if (null == isValid) {
       String projectName = getProjectName();
-      if (projectName.contains("" + '&')) {
+      if (projectName.contains("" + '&')) { //$NON-NLS-1$
         isValid =
-            NLS.bind("ForbiddenCharacter", Character.valueOf('&'));
+            NLS.bind(Messages.ConfigurationProjectContentsLocationArea_ForbiddenCharacter, Character.valueOf('&'));
         return isValid;
       }
       // Check a project folder doesn't already exist.
       IPath projectFolder = null;
       String defaultPathDisplayString = getDefaultPathDisplayString();
       if ((null != _defaultProjectLocationProvider) && isUseDefaultButtonChecked()) {
-        if (!"".equals(defaultPathDisplayString)) {
+        if (!"".equals(defaultPathDisplayString)) { //$NON-NLS-1$
           // Project location is provided by a contributor and the use default location is checked.
           // Default Extension location path.
           projectFolder = new Path(defaultPathDisplayString);
@@ -127,7 +127,7 @@ public class ConfigurationProjectContentsLocationArea extends ProjectContentsLoc
         projectFolder = new Path(getProjectLocation()).append(projectName);
       }
       if ((null != projectFolder) && projectFolder.toFile().exists()) {
-        isValid = "FolderAlreadyExists";
+        isValid = Messages.ConfigurationProjectContentsLocationArea_FolderAlreadyExists;
       }
     }
     return isValid;

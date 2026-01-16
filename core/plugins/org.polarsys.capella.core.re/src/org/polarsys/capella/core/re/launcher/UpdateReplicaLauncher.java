@@ -37,12 +37,12 @@ public class UpdateReplicaLauncher extends org.polarsys.capella.common.re.launch
 
   @Override
   protected String getMapping() {
-    return "org.polarsys.capella.core.re.updateReplica";
+    return "org.polarsys.capella.core.re.updateReplica"; //$NON-NLS-1$
   }
 
   @Override
   protected String getScope() {
-    return "org.polarsys.capella.core.re.updateReplica";
+    return "org.polarsys.capella.core.re.updateReplica"; //$NON-NLS-1$
   }
 
   @Override

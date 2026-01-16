@@ -55,7 +55,7 @@
          point="org.eclipse.ui.commands">
       <command
             id="org.polarsys.capella.core.re.updateconnections.ui.command"
-            name="Update Connections">
+            name="%command.name">
       </command>
    </extension>
    <extension

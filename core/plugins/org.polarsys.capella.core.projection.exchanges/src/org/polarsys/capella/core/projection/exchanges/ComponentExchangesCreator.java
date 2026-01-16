@@ -119,8 +119,8 @@ public class ComponentExchangesCreator extends DefaultExchangesCreator {
     // target side Delegation
     InformationsExchanger source = componentExchange_p.getSource();
     createComponentPortAllocation(source, outP);
-    String message = "The Physical link " + physicalLink.getName() + " has been succefully created between the source "
-        + exchangeOutput_p.getLabel() + " and the target " + exchangeInput_p.getLabel();
+    String message = "The Physical link " + physicalLink.getName() + " has been succefully created between the source " //$NON-NLS-1$ //$NON-NLS-2$
+        + exchangeOutput_p.getLabel() + " and the target " + exchangeInput_p.getLabel(); //$NON-NLS-1$
     EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName(),
         Arrays.asList(physicalLink, exchangeOutput_p, exchangeInput_p));
     logger.info(eMessage);

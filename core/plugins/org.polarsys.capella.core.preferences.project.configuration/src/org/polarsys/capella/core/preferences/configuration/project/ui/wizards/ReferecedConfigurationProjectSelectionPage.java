@@ -65,7 +65,7 @@ public final class ReferecedConfigurationProjectSelectionPage extends WizardPage
   /*
 	 * 
 	 */
-  private static final String[] COLUMNS = { " ", "icon", "project name" };
+  private static final String[] COLUMNS = { " ", Messages.ReferecedConfigurationProjectSelectionPage_Icon_Column, Messages.ReferecedConfigurationProjectSelectionPage_Name_Column }; //$NON-NLS-1$
 
   /*
 	 * 
@@ -80,7 +80,7 @@ public final class ReferecedConfigurationProjectSelectionPage extends WizardPage
    * @param pageName_p
    */
   public ReferecedConfigurationProjectSelectionPage(String pageName_p, String[] projectsNaturesIds) {
-    this(pageName_p, "Referenced Capella Configuration Project", ConfigurationPlugin
+    this(pageName_p, Messages.ReferecedConfigurationProjectSelectionPage_Title, ConfigurationPlugin
         .getImageDescriptor(ConfigurationPlugin.PROJECT_WIZARD_CONFIGURATION_FOLDER_IMG), projectsNaturesIds);
     initilizeSelectedProject(projectsNaturesIds);
   }
@@ -312,14 +312,14 @@ public final class ReferecedConfigurationProjectSelectionPage extends WizardPage
       IWorkbench workbench = PlatformUI.getWorkbench();
       ISharedImages sharedImages = workbench.getSharedImages();
       Image image = sharedImages.getImage(SharedImages.IMG_OBJ_PROJECT);
-      image = ConfigurationPlugin.getOverlayedDescriptor(image, "capella_8x8.png").createImage();
+      image = ConfigurationPlugin.getOverlayedDescriptor(image, "capella_8x8.png").createImage(); //$NON-NLS-1$
       return image;
     }
 
     private Image getConfigurationProjectIcon() {
       ISharedImages sharedImages = PlatformUI.getWorkbench().getSharedImages();
       Image image = sharedImages.getImage(SharedImages.IMG_OBJ_PROJECT);
-      image = ConfigurationPlugin.getOverlayedDescriptor(image, "config_8x8.gif").createImage();
+      image = ConfigurationPlugin.getOverlayedDescriptor(image, "config_8x8.gif").createImage(); //$NON-NLS-1$
       return image;
     }
 
@@ -334,9 +334,9 @@ public final class ReferecedConfigurationProjectSelectionPage extends WizardPage
         case 0:
           if (element instanceof ConfigurationProject) {
             final ConfigurationProject vp = (ConfigurationProject) element;
-            image = ConfigurationPlugin.getImageDescriptor("disabled_checkbox.gif").createImage();
+            image = ConfigurationPlugin.getImageDescriptor("disabled_checkbox.gif").createImage(); //$NON-NLS-1$
             if (vp.getIsSelected()) {
-              image = ConfigurationPlugin.getImageDescriptor("enabled_checkbox.gif").createImage();
+              image = ConfigurationPlugin.getImageDescriptor("enabled_checkbox.gif").createImage(); //$NON-NLS-1$
             }
           }
         break;
@@ -385,7 +385,7 @@ public final class ReferecedConfigurationProjectSelectionPage extends WizardPage
 
     @Override
     public String getToolTipText(final Object element) {
-      String toolTip = "";
+      String toolTip = ""; //$NON-NLS-1$
       if ((columnIndex == 2) && (element instanceof ConfigurationProject)) {
         ConfigurationProject viewpoint = (ConfigurationProject) element;
 
@@ -474,7 +474,7 @@ public final class ReferecedConfigurationProjectSelectionPage extends WizardPage
       if (property.equals(COLUMNS[0])) {
 
         if (!tableProjectConfiguration.getProject().isOpen() || !tableProjectConfiguration.getProject().isAccessible()) {
-          MessageDialog.openError(Display.getCurrent().getActiveShell(), "Closed Configuration Project", "The selected Project must be opened and accessible");
+          MessageDialog.openError(Display.getCurrent().getActiveShell(), Messages.ReferecedConfigurationProjectSelectionPage_ErrorTitle, Messages.ReferecedConfigurationProjectSelectionPage_ErrorMessage);
 
         } else {
 

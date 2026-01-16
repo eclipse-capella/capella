@@ -195,10 +195,9 @@ public class WizardProjectCreationPage extends WizardPage {
     Group radioBox = new Group(parent_p, SWT.NONE);
     radioBox.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
     radioBox.setLayout(new GridLayout());
-    radioBox.setText("Description");
-    new Label(radioBox, SWT.None).setText("allow user to create a new Capella Project with Configuration Nature.");
-    new Label(radioBox, SWT.None)
-        .setText("The Capella Configuration project is used as a store of customized capella project preferences.");
+    radioBox.setText(Messages.WizardProjectCreationPage_Description);
+    new Label(radioBox, SWT.None).setText(Messages.WizardProjectCreationPage_Description_1);
+    new Label(radioBox, SWT.None).setText(Messages.WizardProjectCreationPage_Description_2);
 
   }
 

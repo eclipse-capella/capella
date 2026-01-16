@@ -53,7 +53,7 @@ public class InterfaceGenerationResult {
         return ExchangeItemUpdater.getRemovedExchangeItems(i, inf.getExchangeItems(prefs));
       }
     }
-    throw new IllegalArgumentException("Interface is not part of this generation result");
+    throw new IllegalArgumentException("Interface is not part of this generation result"); //$NON-NLS-1$
   }
 
   /**
@@ -65,7 +65,7 @@ public class InterfaceGenerationResult {
         return ExchangeItemUpdater.getAddedExchangeItems(i, inf.getExchangeItems(prefs));
       }
     }
-    throw new IllegalArgumentException("Interface is not part of this generation result");
+    throw new IllegalArgumentException("Interface is not part of this generation result"); //$NON-NLS-1$
   }
 
   public Collection<InterfaceInfo> getInterfaceInfos(){
@@ -78,6 +78,6 @@ public class InterfaceGenerationResult {
         return info;
       }
     }
-    throw new IllegalArgumentException("Interface is not part of this generation result");
+    throw new IllegalArgumentException("Interface is not part of this generation result"); //$NON-NLS-1$
   }
 }
