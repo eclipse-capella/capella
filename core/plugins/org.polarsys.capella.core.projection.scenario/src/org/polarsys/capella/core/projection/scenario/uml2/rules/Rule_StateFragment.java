@@ -25,6 +25,7 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.scenario.Activator;
+import org.polarsys.capella.core.projection.scenario.Messages;
 import org.polarsys.capella.core.projection.scenario.common.rules.Rule_CapellaElement;
 import org.polarsys.capella.core.projection.scenario.helpers.IScenarioHelper;
 import org.polarsys.capella.core.tiger.ITransfo;
@@ -46,7 +47,7 @@ public class Rule_StateFragment extends Rule_CapellaElement {
     StateFragment source = (StateFragment) element_p;
     List<EObject> relatedElements = IScenarioHelper.getInstance(context_p).getTargetRelatedElements(source, context_p);
     if (relatedElements.isEmpty()) {
-      return new Status(IStatus.WARNING, Activator.PLUGIN_ID, "State Fragment is not transitioned");
+      return new Status(IStatus.WARNING, Activator.PLUGIN_ID, Messages.Rule_StateFragment_Error);
     }
     return super.transformRequired(element_p, context_p);
   }

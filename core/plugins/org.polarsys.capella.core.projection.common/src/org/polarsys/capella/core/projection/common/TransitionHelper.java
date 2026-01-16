@@ -490,17 +490,17 @@ public class TransitionHelper {
 
   public boolean isIS2ISSALATransitionAvailable(EObject element) {
     return element instanceof CapellaElement && CapellaLayerCheckingExt.isAOrInContextLayer((CapellaElement) element)
-        && isIS2ISTransitionAvailable(element, "SALA");
+        && isIS2ISTransitionAvailable(element, "SALA"); //$NON-NLS-1$
   }
 
   public boolean isIS2ISLAPATransitionAvailable(EObject element) {
     return element instanceof CapellaElement && CapellaLayerCheckingExt.isAOrInLogicalLayer((CapellaElement) element)
-        && isIS2ISTransitionAvailable(element, "LAPA");
+        && isIS2ISTransitionAvailable(element, "LAPA"); //$NON-NLS-1$
   }
 
   public boolean isIS2ISPAEPBSTransitionAvailable(EObject element) {
     return element instanceof CapellaElement && CapellaLayerCheckingExt.isAOrInPhysicalLayer((CapellaElement) element)
-        && isIS2ISTransitionAvailable(element, "PAEPBS");
+        && isIS2ISTransitionAvailable(element, "PAEPBS"); //$NON-NLS-1$
   }
 
   private boolean isIS2ISTransitionAvailable(EObject object, String transition) {
@@ -516,16 +516,16 @@ public class TransitionHelper {
           // Should be an Interface Scenario
           if (existingScenario.getKind() == ScenarioKind.INTERFACE) {
             BlockArchitecture architectureTarget = BlockArchitectureExt.getRootBlockArchitecture(existingScenario);
-            if ("SALA".equals(transition)) {
+            if ("SALA".equals(transition)) { //$NON-NLS-1$
               if (architectureSource instanceof SystemAnalysis && architectureTarget instanceof LogicalArchitecture) {
                 return false;
               }
-            } else if ("LAPA".equals(transition)) {
+            } else if ("LAPA".equals(transition)) { //$NON-NLS-1$
               if (architectureSource instanceof LogicalArchitecture
                   && architectureTarget instanceof PhysicalArchitecture) {
                 return false;
               }
-            } else if ("PAEPBS".equals(transition)) {
+            } else if ("PAEPBS".equals(transition)) { //$NON-NLS-1$
               if (architectureSource instanceof PhysicalArchitecture
                   && architectureTarget instanceof EPBSArchitecture) {
                 return false;

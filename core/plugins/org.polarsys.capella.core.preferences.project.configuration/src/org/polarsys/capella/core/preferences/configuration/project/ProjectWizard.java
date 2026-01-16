@@ -45,7 +45,7 @@ public class ProjectWizard extends BasicNewResourceWizard {
 
   private static final int STEP_TICK_COUNT = 100;
 
-  private static final String CAPELLA_PROJECT_NATURE_ID = "org.polarsys.capella.project.nature";
+  private static final String CAPELLA_PROJECT_NATURE_ID = "org.polarsys.capella.project.nature"; //$NON-NLS-1$
 
   // Reuse of the new project page provided by the platform UI dialogs.
   protected WizardProjectCreationPage _localProjectDescriptionPage;
@@ -74,7 +74,7 @@ public class ProjectWizard extends BasicNewResourceWizard {
   protected void createReferencersProjectsPages() {
 
     referencersProjectsPage =
-        new ReferecedConfigurationProjectSelectionPage("Capella Configuration Project", "Referencers Capella Project",
+        new ReferecedConfigurationProjectSelectionPage(Messages.ProjectWizard_ReferencersSelection_Name, Messages.ProjectWizard_ReferencersSelection_Title,
             ConfigurationPlugin.getImageDescriptor(ConfigurationPlugin.PROJECT_WIZARD_CONFIGURATION_FOLDER_IMG),
             new String[] { CAPELLA_PROJECT_NATURE_ID });
     addPage(referencersProjectsPage);

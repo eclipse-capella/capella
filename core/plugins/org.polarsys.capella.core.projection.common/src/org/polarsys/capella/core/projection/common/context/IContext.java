@@ -18,7 +18,7 @@ import org.polarsys.capella.core.tiger.ITransfo;
 
 public class IContext extends HashMap<String, Object> {
 
-  private static final String CONTEXT = "CONTEXT";
+  private static final String CONTEXT = "CONTEXT"; //$NON-NLS-1$
 
   ITransfo _transfo = null;
 

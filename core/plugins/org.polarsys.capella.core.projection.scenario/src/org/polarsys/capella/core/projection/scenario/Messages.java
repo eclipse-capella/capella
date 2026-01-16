@@ -64,6 +64,28 @@ public class Messages extends NLS {
   public static String transitionIS2IS_LAtoPA_label;
   public static String transitionIS2IS_PAtoEPBS_label;
   public static String transitionIS2IS_label;
+  public static String FC2FSInitialization_Info_Lookup;
+  public static String FC2FSInitialization_Confirm_Title;
+  public static String FC2FSInitialization_Confirm_Message;
+  public static String FC2FSInitialization_Info_Creating;
+  public static String FC2FSInitialization_Info_Done;
+  public static String FC2FSInitialization_Info_Initializing;
+  public static String FC2FSInitialization_Info_Reordering;
+  public static String FC2FSInitialization_Info_OldOrder;
+  public static String FC2FSInitialization_Info_NewOrder;
+  public static String FC2FSInitialization_Info_FCWithReply;
+  public static String FC2FSInitialization_Info_FCWithoutReply;
+  public static String FC2FSInitialization_Info_CreatingScenarioKind;
+  public static String FC2FSInitialization_Info_CreatingRole;
+  public static String FC2FSInitialization_Info_CreatingSeqMsg;
+  public static String FC2FSInitialization_MessageEnd_Name;
+  public static String FC2FSInitialization_ReceiverEnd_Name;
+  public static String FC2FSInitialization_ExecutionEnd_Name;
+  public static String FC2FSInitialization_Execution_Name;
+  public static String FC2FSInitialization_EventSentOp_Name;
+  public static String FC2FSInitialization_EventReceiptOp_Name;
+  public static String FC2FSInitialization_ExecutionEvent_Name;
+  public static String Rule_StateFragment_Error;
 
   static {
     // initialize resource bundle
