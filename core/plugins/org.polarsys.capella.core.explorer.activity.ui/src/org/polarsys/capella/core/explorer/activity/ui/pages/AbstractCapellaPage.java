@@ -21,6 +21,7 @@ import org.eclipse.amalgam.explorer.activity.ui.api.editor.input.ActivityExplore
 import org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.BasicSessionActivityExplorerPage;
 import org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.viewers.AbstractActivityExplorerViewer;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.core.explorer.activity.ui.viewer.CapellaDiagramViewer;
 
 public abstract class AbstractCapellaPage extends BasicSessionActivityExplorerPage {
@@ -45,7 +46,7 @@ public abstract class AbstractCapellaPage extends BasicSessionActivityExplorerPa
     ActivityExplorerEditorInput editorInput = getEditorInput();
     String richTitle = super.getHeaderTitle();
     if (editorInput != null) {
-      richTitle = richTitle + " of " + editorInput.getName();
+      richTitle = NLS.bind(Messages.AbstractCapellaPage_0, richTitle, editorInput.getName());
     }
     return richTitle;
   }

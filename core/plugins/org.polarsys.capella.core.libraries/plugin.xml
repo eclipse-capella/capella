@@ -27,17 +27,17 @@
          point="org.eclipse.ui.commands">
       <category
             id="org.polarsys.capella.core.libraries.commands.category1"
-            name="libraries commands">
+            name="%category.name">
       </category>
       <command
             categoryId="org.polarsys.capella.core.libraries.commands.category1"
             id="org.polarsys.capella.core.libraries.commands.manageReferences"
-            name="Manage references">
+            name="%command.name">
       </command>
       <command
             categoryId="org.polarsys.capella.core.libraries.commands.category1"
             id="org.polarsys.capella.core.libraries.commands.manageVersion"
-            name="Manage version">
+            name="%command.name.0">
       </command>
    </extension>
    <extension

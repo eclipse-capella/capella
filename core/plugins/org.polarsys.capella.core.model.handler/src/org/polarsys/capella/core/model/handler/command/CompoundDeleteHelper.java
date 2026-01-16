@@ -42,9 +42,9 @@ class CompoundDeleteHelper implements IDeleteHelper {
 
       //Read extension point looking for instances of IDeleteHelper
       for (IConfigurationElement element : ExtensionPointHelper
-          .getConfigurationElements(ModelHandlerPlugin.PLUGIN_ID, "deleteCommandProvider")) {
+          .getConfigurationElements(ModelHandlerPlugin.PLUGIN_ID, "deleteCommandProvider")) { //$NON-NLS-1$
         try {
-          IDeleteHelper helper = (IDeleteHelper) element.createExecutableExtension("class");
+          IDeleteHelper helper = (IDeleteHelper) element.createExecutableExtension("class"); //$NON-NLS-1$
           if (helper != null) {
             helpers.add(helper);
           }

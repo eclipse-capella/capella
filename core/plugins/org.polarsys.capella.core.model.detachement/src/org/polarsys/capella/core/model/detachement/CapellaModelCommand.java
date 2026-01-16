@@ -45,7 +45,7 @@ public class CapellaModelCommand extends ModelCommand {
   @Override
   public void exec(ModelScrutinyRegistry analysis, Resource resource, IProgressMonitor monitor) throws ModelCommandException {
     try {
-      monitor.beginTask("remove library", 1);
+      monitor.beginTask("remove library", 1); //$NON-NLS-1$
       SubMonitor subMonitor = SubMonitor.convert(monitor);
 
       Collection<IModel> modelLibraries = new HashSet<IModel>();

@@ -21,7 +21,7 @@ import org.polarsys.capella.core.sirius.analysis.IViewpointNameConstants;
 
 public class PhysicalArchitecturePage extends AbstractCapellaPage {
 
-  public static final String PAGE_ID = "org.polarsys.capella.core.explorer.activity.ui.page.physical.architecture";
+  public static final String PAGE_ID = "org.polarsys.capella.core.explorer.activity.ui.page.physical.architecture"; //$NON-NLS-1$
 
   @Override
   protected String getHeaderTitle() {

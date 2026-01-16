@@ -31,8 +31,6 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
  * DWF_DC_44 - Physical Component NODE/BEHAVIOUR is contained and deployed inside the same parent Component
  */
 public class PhysicalComponentContainedAndDeployed extends AbstractValidationRule {
-  private String validatorMessage = "{0} (PhysicalComponent) of Nature {1} should not be contained and deployed in the same parent {2} (PhysicalComponent)";
-  
   /**
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
@@ -53,7 +51,7 @@ public class PhysicalComponentContainedAndDeployed extends AbstractValidationRul
           resultLocus.add(physicalComponent);
           resultLocus.add(parent);
           return ConstraintStatus.createStatus(ctx, eObj, resultLocus,
-              validatorMessage,
+              Messages.PhysicalComponentContainedAndDeployed_0,
               physicalComponent.getName(), physicalComponent.getNature(), EObjectLabelProviderHelper.getText(parent));
         }
       }

@@ -55,7 +55,7 @@ public class ReferencesProperty extends AbstractProperty implements IEditablePro
   public IStatus validate(Object newValue_p, IPropertyContext context_p) {
     if (!model.getUnsavedModels().isEmpty()) {
       String unsavedTxt = model.getUnsavedModels().stream().map(m -> m.getIdentifier().getName())
-          .collect(Collectors.joining(", "));
+          .collect(Collectors.joining(", ")); //$NON-NLS-1$
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID, NLS.bind(Messages.otherSessionDirtyMsg, unsavedTxt));
     }
 
@@ -66,14 +66,14 @@ public class ReferencesProperty extends AbstractProperty implements IEditablePro
 
     if (!model.getUnresolvableReferencedLibraries().isEmpty()) {
       String unresolvableLibs = model.getUnresolvableReferencedLibraries().stream()
-          .map(m -> m.getIdentifier().getName()).collect(Collectors.joining(", "));
+          .map(m -> m.getIdentifier().getName()).collect(Collectors.joining(", ")); //$NON-NLS-1$
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
           NLS.bind(Messages.unresolvedLibrariesMsg, unresolvableLibs));
     }
 
     if (!model.getCycles().isEmpty()) {
       Collection<IModel> cycle = model.getCycles().iterator().next();
-      String cycleLibTxt = cycle.stream().map(m -> m.getIdentifier().getName()).collect(Collectors.joining(" "));
+      String cycleLibTxt = cycle.stream().map(m -> m.getIdentifier().getName()).collect(Collectors.joining(" ")); //$NON-NLS-1$
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
           NLS.bind(Messages.cyclesMsg, model.getCycles().size(), cycleLibTxt));
     }

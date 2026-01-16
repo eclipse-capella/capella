@@ -34,22 +34,22 @@ public class ReferencesLabelProvider extends LabelProvider {
     Collection<IModelIdentifier> libraries = library.getReferences();
     Iterator<IModelIdentifier> iterator = libraries.iterator();
     if (libraries.size() > 0) {
-      buffer.append(" (");
+      buffer.append(" ("); //$NON-NLS-1$
       while (iterator.hasNext()) {
         IModelIdentifier referencedLibrary = iterator.next();
         buffer.append(referencedLibrary.getName());
         if (iterator.hasNext()) {
-          buffer.append(", ");
+          buffer.append(", "); //$NON-NLS-1$
         }
       }
-      buffer.append(")");
+      buffer.append(")"); //$NON-NLS-1$
     }
     return buffer.toString();
   }
 
   @Override
   public Image getImage(Object element) {
-    ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin("org.polarsys.capella.core.data.gen.edit", "icons/full/obj16/Library.gif");
+    ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin("org.polarsys.capella.core.data.gen.edit", "icons/full/obj16/Library.gif"); //$NON-NLS-1$ //$NON-NLS-2$
     if (desc != null) {
       return desc.createImage();
     }
