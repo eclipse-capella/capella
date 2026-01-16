@@ -24,13 +24,13 @@ public class CapellaExpressionSourceProvider extends AbstractSourceProvider {
   @SuppressWarnings("rawtypes")
   public Map getCurrentState() {
     Map<Object, Object> result = new HashMap<Object, Object>();
-    result.put("org.polarsys.capella.core.platform.workbench", PlatformUI.getWorkbench());
+    result.put("org.polarsys.capella.core.platform.workbench", PlatformUI.getWorkbench()); //$NON-NLS-1$
     return result;
   }
 
   @Override
   public String[] getProvidedSourceNames() {
-    return new String[] { "org.polarsys.capella.core.platform.workbench" };
+    return new String[] { "org.polarsys.capella.core.platform.workbench" }; //$NON-NLS-1$
   }
 
   @Override

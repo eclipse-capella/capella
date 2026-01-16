@@ -59,7 +59,7 @@ public class XmlPreferencesConfig {
 
   public static final String USER_PROFILE_MODE_NAME = "User Profile";
 
-  public static final String USER_PROFILE_MODE_ID = "com.thalsegroup.mde.capella.preferences.user.expert.profile";
+  public static final String USER_PROFILE_MODE_ID = "com.thalsegroup.mde.capella.preferences.user.expert.profile"; //$NON-NLS-1$
 
   // *********************************************************************************************************//
   //

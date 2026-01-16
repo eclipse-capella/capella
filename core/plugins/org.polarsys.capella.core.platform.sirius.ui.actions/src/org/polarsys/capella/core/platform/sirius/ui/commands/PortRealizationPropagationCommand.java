@@ -174,8 +174,8 @@ public class PortRealizationPropagationCommand extends AbstractFixCommand {
     realization.setSourceElement(current);
     realization.setTargetElement(previous);
     current.getOwnedPortRealizations().add(realization);
-    String message = "Port realization " + realization.getLabel() + " has been propagated from source element "
-        + current.getLabel() + " to target element " + previous.getLabel();
+    String message = "Port realization " + realization.getLabel() + " has been propagated from source element " //$NON-NLS-1$
+        + current.getLabel() + " to target element " + previous.getLabel(); //$NON-NLS-1$
     EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName(),
         Arrays.asList(realization, current, previous));
     logger.info(eMessage);

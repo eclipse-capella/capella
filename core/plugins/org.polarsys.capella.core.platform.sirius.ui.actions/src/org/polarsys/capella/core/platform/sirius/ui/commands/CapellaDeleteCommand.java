@@ -165,8 +165,8 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
 
     long nbRepresentations = elementsToDelete.stream().filter(DRepresentationDescriptor.class::isInstance).count();
     long nbSemanticElements = elementsToDelete.size() - nbRepresentations;
-    String messageNbSemanticElement = "";
-    String messageNbRepresentation = "";
+    String messageNbSemanticElement = ""; //$NON-NLS-1$
+    String messageNbRepresentation = ""; //$NON-NLS-1$
 
     // compute messages for semantic resources and representations
     if (nbSemanticElements == 1) {

@@ -33,7 +33,7 @@ public class GUIUtil {
 			
 			@Override
 			public void focusLost(FocusEvent e_p) {
-				if (text.getText().equals("")) {
+				if (text.getText().equals("")) { //$NON-NLS-1$
 					text.setText(defaultText);
 					text.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_GRAY)); 
 				}
@@ -42,7 +42,7 @@ public class GUIUtil {
 			@Override
 			public void focusGained(FocusEvent e_p) {
 				if (text.getText().equals(defaultText)) {
-					text.setText("");
+					text.setText(""); //$NON-NLS-1$
 					text.setForeground(null);
 				}
 			}

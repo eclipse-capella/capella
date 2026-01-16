@@ -86,7 +86,7 @@ public class RepresentationActionProvider extends CommonActionProvider {
     SelectionHelper.registerToSelectionChanges(_openRepresentation, selectionProvider);
 
     _moveRepresentation = new MoveRepresentationsAction();
-    _moveRepresentation.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/forward.gif"));
+    _moveRepresentation.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/forward.gif")); //$NON-NLS-1$
     SelectionHelper.registerToSelectionChanges(_moveRepresentation, selectionProvider);
 
     _cloneAction = new CloneAction(activePart.getCommonViewer());

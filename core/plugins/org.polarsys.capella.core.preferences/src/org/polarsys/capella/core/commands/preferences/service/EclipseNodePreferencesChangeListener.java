@@ -58,12 +58,12 @@ public class EclipseNodePreferencesChangeListener implements IPreferenceChangeLi
 
     IPreferenceNode[] nodes = preferenceManager.getRootSubNodes();
     for (IPreferenceNode iPreferenceNode : nodes) {
-      if (iPreferenceNode.getId().equals("org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page")) {
+      if (iPreferenceNode.getId().equals("org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page")) { //$NON-NLS-1$
         IPreferenceNode[] subNodes = iPreferenceNode.getSubNodes();
 
         for (IPreferenceNode iPreferenceNode2 : subNodes) {
 
-          if (iPreferenceNode2.getId().equals("org.polarsys.capella.core.platform.sirius.ui.actions.deletion.page")) {
+          if (iPreferenceNode2.getId().equals("org.polarsys.capella.core.platform.sirius.ui.actions.deletion.page")) { //$NON-NLS-1$
             iPreferenceNode2.getPage().setVisible(false);
             iPreferenceNode2.getPage().getControl().setEnabled(false);
           }

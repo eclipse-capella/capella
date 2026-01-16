@@ -406,7 +406,7 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
       Collection<String> instanceKeys = Arrays.asList(instancePreferences.keys());
       for (String name: defaultPreferences.keys()) {
         if (!instanceKeys.contains(name)) {
-          instancePreferences.put(name, defaultPreferences.get(name, ""));
+          instancePreferences.put(name, defaultPreferences.get(name, "")); //$NON-NLS-1$
         }
       }
     } catch (BackingStoreException e) {

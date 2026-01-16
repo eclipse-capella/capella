@@ -44,7 +44,7 @@ public class SemanticFiltersHelper {
    */
   public static boolean isSemanticFilter(ICommonFilterDescriptor descriptor) {
     String id = descriptor.getId();
-    if (!descriptor.getId().contains("capella")) {
+    if (!descriptor.getId().contains("capella")) { //$NON-NLS-1$
       return false;
     }
     return !(id.equals(AFM_FILTER) || id.equals(CAPELLA_FILTER) || id.equals(AIRD_FILTER) || id.equals(EMF_FILTER)

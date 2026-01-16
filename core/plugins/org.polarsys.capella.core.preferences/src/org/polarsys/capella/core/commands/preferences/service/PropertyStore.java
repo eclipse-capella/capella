@@ -98,7 +98,7 @@ public class PropertyStore extends PreferenceStore
         try {
           setProperty(name, getString(name));
         } catch (IOException exception) {
-          logger.warn("PropertyStore : ", exception);
+          logger.warn("PropertyStore : ", exception); //$NON-NLS-1$
         }
       }
     });
@@ -130,7 +130,7 @@ public class PropertyStore extends PreferenceStore
       }
 
     } catch (Exception exception) {
-      logger.warn("PropertyStore : ", exception);
+      logger.warn("PropertyStore : ", exception); //$NON-NLS-1$
     }
   }
 
