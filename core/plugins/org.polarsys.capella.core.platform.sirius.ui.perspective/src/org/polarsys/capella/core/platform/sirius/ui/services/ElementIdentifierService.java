@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 public class ElementIdentifierService implements IElementIdentifierService {
 
-  private static final String SEPARATOR = ".";
+  private static final String SEPARATOR = "."; //$NON-NLS-1$
 
   private Map<String, String> viewpointShortNames;
 
@@ -64,14 +64,14 @@ public class ElementIdentifierService implements IElementIdentifierService {
   private String getDiagramShortName(RepresentationDescription representationDescription) {
     String titleExpression = representationDescription.getTitleExpression();
     if (titleExpression != null) {
-      titleExpression = titleExpression.replace("&", "n");
-      String[] tokens = titleExpression.split("(\\[)|(\\])");
-      if (tokens.length == 3 && !tokens[1].contains("self")) {
+      titleExpression = titleExpression.replace("&", "n"); //$NON-NLS-1$ //$NON-NLS-2$
+      String[] tokens = titleExpression.split("(\\[)|(\\])"); //$NON-NLS-1$ //$NON-NLS-2$
+      if (tokens.length == 3 && !tokens[1].contains("self")) { //$NON-NLS-1$
         return tokens[1].toLowerCase();
       }
     }
 
-    String[] tokens = representationDescription.getName().split(" ");
+    String[] tokens = representationDescription.getName().split(" "); //$NON-NLS-1$
     StringBuilder result = new StringBuilder();
     for (String token : tokens) {
       char letter = Character.toLowerCase(token.charAt(0));

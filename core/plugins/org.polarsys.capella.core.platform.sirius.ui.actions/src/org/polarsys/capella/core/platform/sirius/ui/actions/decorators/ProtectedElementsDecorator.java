@@ -56,7 +56,7 @@ public class ProtectedElementsDecorator implements ILabelDecorator, ILightweight
   @Override
   public void decorate(Object element, IDecoration decoration) {
     if (isProtected(element)) {
-      decoration.addOverlay(CapellaActionsActivator.getDefault().getImageDescriptor("lock.png"));
+      decoration.addOverlay(CapellaActionsActivator.getDefault().getImageDescriptor("lock.png")); //$NON-NLS-1$
     }
   }
 
@@ -95,7 +95,7 @@ public class ProtectedElementsDecorator implements ILabelDecorator, ILightweight
       if (manager == null) {
         manager = new LocalResourceManager(JFaceResources.getResources(PlatformUI.getWorkbench().getDisplay()));
       }
-      ImageDescriptor overlay = CapellaActionsActivator.getDefault().getImageDescriptor("lock.png");
+      ImageDescriptor overlay = CapellaActionsActivator.getDefault().getImageDescriptor("lock.png"); //$NON-NLS-1$
       DecorationOverlayIcon icon = new DecorationOverlayIcon(image, overlay, IDecoration.BOTTOM_LEFT);
       return manager.createImage(icon);
     }

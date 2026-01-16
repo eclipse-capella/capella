@@ -33,7 +33,7 @@ public class CapellaDiagramPreferencesInitializer extends AbstractPreferencesIni
   public void initializeDefaultPreferences() {
     IPreferenceStore store = Activator.getDefault().getPreferenceStore();
     store.setDefault(CapellaDiagramPreferences.PREF_DISPLAY_NAVIGATE_ON_DOUBLE_CLICK, true);
-    store.setDefault(CapellaDiagramPreferences.PREF_DATE_FORMAT, "yyyy-MM-dd HH:mm:ss");
+    store.setDefault(CapellaDiagramPreferences.PREF_DATE_FORMAT, "yyyy-MM-dd HH:mm:ss"); //$NON-NLS-1$
     store.setDefault(CapellaDiagramPreferences.PREF_DATE_TIMEZONE, CapellaDiagramPreferences.PREF_DATE_TIMEZONE_SYSTEM);
   }
 

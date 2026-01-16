@@ -203,12 +203,12 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
       // force start of EMF Validation plugin before initializing the default preferences scope
       ModelValidationService.getInstance().loadXmlConstraintDeclarations();
       PreferencesHelper.initializeCapellaPreferencesFromEPFFile();
-      File systemDirectory = new File(System.getProperty("eclipse.home.location"));
+      File systemDirectory = new File(System.getProperty("eclipse.home.location")); //$NON-NLS-1$
       int lengthDirectory = systemDirectory.toString().substring(fileCharAdd).length();
-      if (System.getProperty("os.name").contains("Windows")) {
+      if (System.getProperty("os.name").contains("Windows")) { //$NON-NLS-1$ //$NON-NLS-2$
         if (lengthDirectory > limitLengthOfPath) {
           IDEWorkbenchPlugin.log(
-              "The current installation path is too long (Windows Maximum Path Length Limitation). Certain components such as Capella Properties description may not work properly.");
+              "The current installation path is too long (Windows Maximum Path Length Limitation). Certain components such as Capella Properties description may not work properly."); //$NON-NLS-1$
         }
       }
     } catch (Exception e) {

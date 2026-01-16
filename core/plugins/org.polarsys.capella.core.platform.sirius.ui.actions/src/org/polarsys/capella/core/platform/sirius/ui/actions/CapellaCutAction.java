@@ -34,7 +34,7 @@ public class CapellaCutAction extends AbstractCommandActionHandler {
    * @param domain The editing domain.
    */
   public CapellaCutAction(StructuredViewer viewer) {
-    super(EMFEditUIPlugin.INSTANCE.getString("_UI_Cut_menu_item"));
+    super(EMFEditUIPlugin.INSTANCE.getString("_UI_Cut_menu_item")); //$NON-NLS-1$
     _viewer = viewer;
   }
 

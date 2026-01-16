@@ -84,9 +84,9 @@ public class RenameResourceAction extends WorkspaceAction {
    * Regex patterns used in the replacement methods.
    * See each the method documentation for more details.
    */
-  private static final String START_COMMON_REGEX_PATTERN = "(>|\\/|\\\")";
-  private static final String END_ENCODED_REGEX_PATTERN = "(#|<)";
-  private static final String END_RAW_REGEX_PATTERN = "(&)";
+  private static final String START_COMMON_REGEX_PATTERN = "(>|\\/|\\\")"; //$NON-NLS-1$
+  private static final String END_ENCODED_REGEX_PATTERN = "(#|<)"; //$NON-NLS-1$
+  private static final String END_RAW_REGEX_PATTERN = "(&)"; //$NON-NLS-1$
   
   private static final String AND_HTML_REPRESENTATION = "&amp;"; //$NON-NLS-1$
   /**
@@ -268,7 +268,7 @@ public class RenameResourceAction extends WorkspaceAction {
             IResource oldAfmResource = workspaceRoot.findMember(oldAfmPath);
             // If AFM exists with same name as old AIRD
             if (oldAfmResource != null) {
-              String airdContent = "";
+              String airdContent = ""; //$NON-NLS-1$
               try {
                 airdContent = FileHelper.readFile(newPath.toString());
               } catch (UnsupportedEncodingException e) {
@@ -277,7 +277,7 @@ public class RenameResourceAction extends WorkspaceAction {
               // Encode the last segment of oldAfmPath
               String oldAfmPathEncode = URI.encodeSegment(oldAfmPath.lastSegment(), true);
               // If the AFM is referenced by the AIRD
-              if (airdContent.contains("<semanticResources>" + oldAfmPathEncode)) {
+              if (airdContent.contains("<semanticResources>" + oldAfmPathEncode)) { //$NON-NLS-1$
                 IPath newAfmPath = changeExtension(newPath, CapellaResourceHelper.AFM_FILE_EXTENSION);
                 // Rename the AFM
                 renameResource(oldAfmResource, newAfmPath, monitor, errorStatus);
@@ -294,7 +294,7 @@ public class RenameResourceAction extends WorkspaceAction {
     String oldExtension = inPath.getFileExtension();
     if (oldExtension != null && !oldExtension.isEmpty()) {
       newPath = inPath.removeLastSegments(1).append(inPath.lastSegment()
-          .replace("." + CapellaResourceHelper.AIRD_FILE_EXTENSION, "." + CapellaResourceHelper.AFM_FILE_EXTENSION));
+          .replace("." + CapellaResourceHelper.AIRD_FILE_EXTENSION, "." + CapellaResourceHelper.AFM_FILE_EXTENSION)); //$NON-NLS-1$ //$NON-NLS-2$
     }
     return newPath;
   }
@@ -324,7 +324,7 @@ public class RenameResourceAction extends WorkspaceAction {
             updateCapellaProjectName);
       } catch (UnsupportedEncodingException e) {
         errorStatus[0] = new Status(IStatus.ERROR, PlatformUI.PLUGIN_ID,
-            "Rename action failed to perform because UTF-8 encoding is not supported", e);
+            "Rename action failed to perform because UTF-8 encoding is not supported", e); //$NON-NLS-1$
       } catch (ExecutionException e) {
         if (e.getCause() instanceof CoreException) {
           errorStatus[0] = ((CoreException) e.getCause()).getStatus();
@@ -846,7 +846,7 @@ public class RenameResourceAction extends WorkspaceAction {
    */
   private String replaceRaw(String content, String oldName, String newName) {
     String regex = START_COMMON_REGEX_PATTERN + Pattern.quote(oldName) + END_RAW_REGEX_PATTERN;
-    String replacement = "$1" + newName + "$2";
+    String replacement = "$1" + newName + "$2"; //$NON-NLS-1$ //$NON-NLS-2$
 
     return content.replaceAll(regex, replacement);
   }
@@ -871,7 +871,7 @@ public class RenameResourceAction extends WorkspaceAction {
     String newNameEncoded = normalizeForContent(newName);
 
     String regex = START_COMMON_REGEX_PATTERN + Pattern.quote(oldNameEncoded) + END_ENCODED_REGEX_PATTERN;
-    String replacement = "$1" + newNameEncoded + "$2";
+    String replacement = "$1" + newNameEncoded + "$2"; //$NON-NLS-1$ //$NON-NLS-2$
 
     return content.replaceAll(regex, replacement);
   }
@@ -894,7 +894,7 @@ public class RenameResourceAction extends WorkspaceAction {
       String newNameEncoded = normalizeForContent(newName);
 
       String regex = START_COMMON_REGEX_PATTERN + Pattern.quote(oldNameEncoded) + END_ENCODED_REGEX_PATTERN;
-      String replacement = "$1" + newNameEncoded + "$2";
+      String replacement = "$1" + newNameEncoded + "$2"; //$NON-NLS-1$ //$NON-NLS-2$
 
       return content.replaceAll(regex, replacement);
     }

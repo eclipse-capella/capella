@@ -24,7 +24,7 @@ public class SearchInDescriptionAction extends Action implements IPropertyListen
   public SearchInDescriptionAction(CapellaCommonNavigator navigator) {
     super(Messages.SearchOptions_InDesc_Title);
     setToolTipText(Messages.SearchOptions_InDesc_Tooltip);
-    setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("SearchInDescription.gif"));
+    setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("SearchInDescription.gif")); //$NON-NLS-1$
     
     this.navigator = navigator;
     setChecked(navigator.isSearchInDescriptionEnabled());

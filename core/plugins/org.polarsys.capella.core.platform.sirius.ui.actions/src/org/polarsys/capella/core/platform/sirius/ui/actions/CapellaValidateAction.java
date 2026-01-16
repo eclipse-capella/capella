@@ -200,7 +200,7 @@ public class CapellaValidateAction extends ValidateAction {
       runnableWithProgress = eclipseResourcesUtil.getWorkspaceModifyOperation(runnableWithProgress);
     }
 
-    String eventName = "Validation";
+    String eventName = "Validation"; //$NON-NLS-1$
   	String eventContext = ICommonConstants.EMPTY_STRING;
   	String addendum = ICommonConstants.EMPTY_STRING;
   	
