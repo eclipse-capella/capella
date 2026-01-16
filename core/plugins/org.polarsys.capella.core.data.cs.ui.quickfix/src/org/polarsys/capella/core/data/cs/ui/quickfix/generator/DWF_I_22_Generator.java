@@ -67,6 +67,6 @@ public class DWF_I_22_Generator extends AbstractMarkerResolutionGenerator {
 
   @Override
   protected String getRuleId() {
-    return "org.polarsys.capella.core.data.cs.validation.DWF_I_22";
+    return "org.polarsys.capella.core.data.cs.validation.DWF_I_22"; //$NON-NLS-1$
   }
 }

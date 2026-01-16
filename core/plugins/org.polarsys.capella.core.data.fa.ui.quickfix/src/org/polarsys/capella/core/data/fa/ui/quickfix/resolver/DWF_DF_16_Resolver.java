@@ -31,7 +31,7 @@ import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarke
  * DWF_DF_16 - SequenceLink has empty condition
  */
 public class DWF_DF_16_Resolver extends AbstractCapellaMarkerResolution {
-  private final String PROCESS_ICON = "icons/full/obj16/capella_process.gif";
+  private final String PROCESS_ICON = "icons/full/obj16/capella_process.gif"; //$NON-NLS-1$
   private String overridenLabel;
 
   public DWF_DF_16_Resolver(String label) {

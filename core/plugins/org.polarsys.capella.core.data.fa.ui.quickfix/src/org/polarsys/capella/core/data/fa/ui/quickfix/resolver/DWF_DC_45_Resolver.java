@@ -45,8 +45,8 @@ public class DWF_DC_45_Resolver extends AbstractSelectOneResolver {
       @Override
       public void run() {
         Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-        SelectElementsDialog dialog = new SelectElementsDialog(activeShell, "Component Exchange Allocation",
-            "Please select a single Physical Link to allocate\nOthers will be deallocated", allocatingPhysicalLinks);
+        SelectElementsDialog dialog = new SelectElementsDialog(activeShell, Messages.DWF_DC_45_Resolver_PhysicalLinkSelectDialog_Title,
+            Messages.DWF_DC_45_Resolver_PhysicalLinkSelectDialog_Message, allocatingPhysicalLinks);
         if (dialog.open() == Dialog.OK) {
           PhysicalLink result = (PhysicalLink) dialog.getResult().get(0);
           allocatingPhysicalLinks.remove(result);

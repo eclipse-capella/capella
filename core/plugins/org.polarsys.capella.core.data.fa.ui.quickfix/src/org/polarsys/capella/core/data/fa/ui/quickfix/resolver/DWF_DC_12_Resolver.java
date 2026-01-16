@@ -47,8 +47,8 @@ public class DWF_DC_12_Resolver extends AbstractSelectOneResolver {
       @Override
       public void run() {
         Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-        SelectElementsDialog dialog = new SelectElementsDialog(activeShell, "Function Allocation",
-            "Please select a single allocating Component\nOther allocations will be removed", allocatingComponents);
+        SelectElementsDialog dialog = new SelectElementsDialog(activeShell, Messages.DWF_DC_12_Resolver_FunctionSelectDialog_Title,
+            Messages.DWF_DC_12_Resolver_FunctionSelectDialog_Message, allocatingComponents);
         if (dialog.open() == Dialog.OK) {
           Component result = (Component) dialog.getResult().get(0);
           allocatingComponents.remove(result);

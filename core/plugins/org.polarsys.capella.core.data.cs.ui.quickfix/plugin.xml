@@ -104,28 +104,28 @@
       <resolver
             class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.DWF_DC_26_Resolver"
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
-            label="Delete all ports">
+            label="%resolver.label">
          <rules
                ruleId="DWF_DC_26">
          </rules>
       </resolver>
       <resolver
             class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.SwitchIsHumanFlag_Resolver"
-            label="Switch to non HUMAN">
+            label="%resolver.label.0">
          <rules
                ruleId="DWF_DC_40">
          </rules>
       </resolver>
       <resolver
             class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.SwitchIsHumanFlag_Resolver"
-            label="Switch to HUMAN">
+            label="%resolver.label.1">
          <rules
                ruleId="DWF_DC_41">
          </rules>
       </resolver>
       <resolver
             class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.SwitchIsHumanFlag_Resolver"
-            label="Switch is HUMAN">
+            label="%resolver.label.2">
          <rules
                ruleId="I_41">
          </rules>

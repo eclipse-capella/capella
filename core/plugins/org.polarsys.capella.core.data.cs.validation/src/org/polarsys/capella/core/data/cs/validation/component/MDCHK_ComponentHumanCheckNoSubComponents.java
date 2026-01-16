@@ -45,12 +45,12 @@ public class MDCHK_ComponentHumanCheckNoSubComponents extends AbstractValidation
       if (eObj instanceof Entity) {
         component = (Component) eObj;
         if (component.isActor()) {
-          message = "cannot be decomposed";
+          message = Messages.getString("MDCHK_ComponentHumanCheckNoSubComponents.0"); //$NON-NLS-1$
         }
       } else if (eObj instanceof Component) {
         component = (Component) eObj;
         if (component.isHuman()) {
-          message = "is HUMAN and cannot be decomposed";
+          message = Messages.getString("MDCHK_ComponentHumanCheckNoSubComponents.1"); //$NON-NLS-1$
         }
       }
 

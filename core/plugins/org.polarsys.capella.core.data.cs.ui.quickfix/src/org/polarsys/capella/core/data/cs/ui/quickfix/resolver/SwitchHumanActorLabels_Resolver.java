@@ -49,7 +49,7 @@ public abstract class SwitchHumanActorLabels_Resolver extends AbstractCapellaMar
           try {
             marker.delete();
           } catch (CoreException e) {
-            CsQuickFixActivator.getDefault().log(IStatus.ERROR, "Error while deleting marker", e);
+            CsQuickFixActivator.getDefault().log(IStatus.ERROR, "Error while deleting marker", e); //$NON-NLS-1$
           }
         }
       };

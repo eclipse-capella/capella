@@ -27,14 +27,14 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="TJ_EPBS_03 - Configuration Physical Artifacts Realization check"
+                  name="%constraint.name"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Configuration Item) does not  realize any Physical Artifact.
+                  %constraint.message
                </message>
                <description>
-                  This rule checks that a Configuration Item realizes at least one Physical Artifact.
+                  %constraint.description
                </description>
                <target
                      class="ConfigurationItem">
@@ -46,14 +46,14 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="TJ_EPBS_04 - EPBS Architecture Realization"
+                  name="%constraint.name.0"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0}.
+                  %constraint.message.0
                </message>
                <description>
-                  This rule ensures the realization consistency between EPBS Architecture and Physical Architecture.
+                  %constraint.description.0
                </description>
                <target
                      class="EPBSArchitecture">
@@ -68,17 +68,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="TC_DC_04 - Physical Artifacts Realization"
+                  name="%constraint.name.1"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  Realization consistency error :{0} (ConfigurationItem) realizes {1} which is not a Physical Artifact but a {2}.
+                  %constraint.message.1
                </message>
                <target
                      class="ConfigurationItem">
                </target>
                <description>
-                  This rule checks that a Physical Artifact Realization from a Configuration Item targets a Physical Artifact.
+                  %constraint.description.1
                </description>
             </constraint>
          </constraints>
