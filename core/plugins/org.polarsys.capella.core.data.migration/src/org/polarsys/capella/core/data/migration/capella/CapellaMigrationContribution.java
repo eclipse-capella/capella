@@ -54,32 +54,32 @@ public class CapellaMigrationContribution extends AbstractMigrationContribution 
 
   static {
 
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.COMPOSITE_STRUCTURE_PREFIX, CsPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.CONTEXT_ARCHITECTURE_PREFIX, CtxPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.EPBS_ARCHITECTURE_PREFIX, EpbsPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.FUNCTIONAL_ANALYSIS_PREFIX, FaPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.INFORMATION_PREFIX, InformationPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.INFORMATION_COMMUNICATION_PREFIX,
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.COMPOSITE_STRUCTURE_PREFIX, CsPackage.eINSTANCE); //$NON-NLS-1$
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.CONTEXT_ARCHITECTURE_PREFIX, CtxPackage.eINSTANCE); //$NON-NLS-1$
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.EPBS_ARCHITECTURE_PREFIX, EpbsPackage.eINSTANCE); //$NON-NLS-1$
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.FUNCTIONAL_ANALYSIS_PREFIX, FaPackage.eINSTANCE); //$NON-NLS-1$
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.INFORMATION_PREFIX, InformationPackage.eINSTANCE); //$NON-NLS-1$
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.INFORMATION_COMMUNICATION_PREFIX, //$NON-NLS-1$
         CommunicationPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.INFORMATION_DATATYPE_PREFIX, DatatypePackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.INFORMATION_DATAVALUE_PREFIX,
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.INFORMATION_DATATYPE_PREFIX, DatatypePackage.eINSTANCE); //$NON-NLS-1$
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.INFORMATION_DATAVALUE_PREFIX, //$NON-NLS-1$
         DatavaluePackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.INTERACTION_PREFIX, InteractionPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.LOGICAL_ARCHITECTURE_PREFIX, LaPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.CAPELLA_COMMON_PREFIX, CapellacommonPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.CAPELLA_CORE_PREFIX, CapellacorePackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.CAPELLA_MODELLER_PREFIX,
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.INTERACTION_PREFIX, InteractionPackage.eINSTANCE); //$NON-NLS-1$
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.LOGICAL_ARCHITECTURE_PREFIX, LaPackage.eINSTANCE); //$NON-NLS-1$
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.CAPELLA_COMMON_PREFIX, CapellacommonPackage.eINSTANCE); //$NON-NLS-1$
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.CAPELLA_CORE_PREFIX, CapellacorePackage.eINSTANCE); //$NON-NLS-1$
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.CAPELLA_MODELLER_PREFIX, //$NON-NLS-1$
         CapellamodellerPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.OPERATIONAL_ANALYSIS_PREFIX, OaPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.PHYSICAL_ARCHITECTURE_PREFIX, PaPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.PHYSICAL_ARCHITECTURE_DEPLOYMENT_PREFIX,
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.OPERATIONAL_ANALYSIS_PREFIX, OaPackage.eINSTANCE); //$NON-NLS-1$
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.PHYSICAL_ARCHITECTURE_PREFIX, PaPackage.eINSTANCE); //$NON-NLS-1$
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.PHYSICAL_ARCHITECTURE_DEPLOYMENT_PREFIX, //$NON-NLS-1$
         DeploymentPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.SHARED_MODEL_PREFIX, SharedmodelPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.ACTIVITY_PREFIX, ActivityPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.BEHAVIOR_PREFIX, BehaviorPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.MODELLING_CORE_PREFIX, ModellingcorePackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.LIBRARIES_PREFIX, LibrariesPackage.eINSTANCE);
-    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.RE_PREFIX, RePackage.eINSTANCE);
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.SHARED_MODEL_PREFIX, SharedmodelPackage.eINSTANCE); //$NON-NLS-1$
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.ACTIVITY_PREFIX, ActivityPackage.eINSTANCE); //$NON-NLS-1$
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.BEHAVIOR_PREFIX, BehaviorPackage.eINSTANCE); //$NON-NLS-1$
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.MODELLING_CORE_PREFIX, ModellingcorePackage.eINSTANCE); //$NON-NLS-1$
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.LIBRARIES_PREFIX, LibrariesPackage.eINSTANCE); //$NON-NLS-1$
+    prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.RE_PREFIX, RePackage.eINSTANCE); //$NON-NLS-1$
   }
 
   public static HashMap<String, EPackage> pkgs = new HashMap<String, EPackage>();
@@ -169,7 +169,7 @@ public class CapellaMigrationContribution extends AbstractMigrationContribution 
   public String getNSPrefix(String prefix, MigrationContext context) {
 
     if (prefixes.containsKey(prefix)) {
-      return XMLResource.XML_NS + ":" + prefixes.get(prefix).getNsPrefix();
+      return XMLResource.XML_NS + ":" + prefixes.get(prefix).getNsPrefix(); //$NON-NLS-1$
     }
 
     return null;
@@ -187,8 +187,8 @@ public class CapellaMigrationContribution extends AbstractMigrationContribution 
 
   @Override
   public EFactory getEFactory(String prefix, Resource resource, MigrationContext context) {
-    if (prefixes.containsKey(XMLResource.XML_NS + ":" + prefix)) {
-      return prefixes.get(XMLResource.XML_NS + ":" + prefix).getEFactoryInstance();
+    if (prefixes.containsKey(XMLResource.XML_NS + ":" + prefix)) { //$NON-NLS-1$
+      return prefixes.get(XMLResource.XML_NS + ":" + prefix).getEFactoryInstance(); //$NON-NLS-1$
     }
     return super.getEFactory(prefix, resource, context);
   }

@@ -43,7 +43,7 @@ public class PatternInstanceDeletionContribution extends AbstractMigrationContri
               .equals(EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS.getName())) {
             if (entry.getValue() instanceof AnyType) {
               AnyType type = (AnyType) entry.getValue();
-              if ("EmdePatternInstanceSet".equals(type.eClass().getName())) {
+              if ("EmdePatternInstanceSet".equals(type.eClass().getName())) { //$NON-NLS-1$
                 entries.remove();
               }
             }
