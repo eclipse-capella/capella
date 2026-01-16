@@ -580,7 +580,7 @@ public class PropertyItemProvider extends FeatureItemProvider implements IEditin
           if (unit != null) {
             String unitName = unit.getName();
             if (unitName != null && !unitName.isEmpty()) {
-              typeName += " (" + unitName + ")";
+              typeName += " (" + unitName + ")"; //$NON-NLS-1$ //$NON-NLS-2$
             }
           }
         }

@@ -18,7 +18,7 @@ import static org.polarsys.capella.core.data.fa.OrientationPortKind.OUT;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
-
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeKind;
 import org.polarsys.capella.core.data.fa.ComponentPort;
@@ -75,15 +75,15 @@ public class MDCHK_ComponentPort_Orientation extends AbstractModelConstraint {
 
     switch (result) {
       case 1:
-    	String sourceCompPortName = sourceCompPort != null ? sourceCompPort.getName() : "Unknown";
-        return ctx.createFailureStatus("Orientation of source component port '" + sourceCompPortName + "' cannot be 'IN'"); //$NON-NLS-1$ //$NON-NLS-2$
+    	String sourceCompPortName = sourceCompPort != null ? sourceCompPort.getName() : Messages.MDCHK_ComponentPort_Orientation_UnknownPort;
+        return ctx.createFailureStatus(NLS.bind(Messages.MDCHK_ComponentPort_Orientation_WrongDirection_IN, sourceCompPortName));
       case 2:
-    	  String targetCompPortName = targetCompPort != null ? targetCompPort.getName() : "Unknown";
-        return ctx.createFailureStatus("Orientation of target component port '" + targetCompPortName + "' cannot be 'OUT'"); //$NON-NLS-1$ //$NON-NLS-2$
+    	  String targetCompPortName = targetCompPort != null ? targetCompPort.getName() : Messages.MDCHK_ComponentPort_Orientation_UnknownPort;
+        return ctx.createFailureStatus(NLS.bind(Messages.MDCHK_ComponentPort_Orientation_WrongDirection_OUT, targetCompPortName));
       case 3:
-        return ctx.createFailureStatus("ComponentExchange '" + exchange.getName() + "' has inconsistent component port orientations"); //$NON-NLS-1$ //$NON-NLS-2$
+        return ctx.createFailureStatus(NLS.bind(Messages.MDCHK_ComponentPort_Orientation_InconsistentDirection, exchange.getName()));
       case 4:
-        return ctx.createFailureStatus("ComponentExchange of kind Delegation '" + exchange.getName() + "' has inconsistent component port orientations"); //$NON-NLS-1$ //$NON-NLS-2$
+        return ctx.createFailureStatus(NLS.bind(Messages.MDCHK_ComponentPort_Orientation_InconsistentDelegationDirection, exchange.getName()));
       default:
         return ctx.createSuccessStatus();
     }

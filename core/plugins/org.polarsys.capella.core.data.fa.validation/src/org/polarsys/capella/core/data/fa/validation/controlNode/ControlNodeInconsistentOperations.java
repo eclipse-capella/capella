@@ -26,16 +26,11 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
  * DWF_DF_21 - Control Nodes inconsistent operations
  */
 public class ControlNodeInconsistentOperations extends AbstractValidationRule {
-  public static final String ControlNode_Inconsistency_No_InOut_Sequence_Links = "has no incoming and outgoing Sequence Links";
-  public static final String ControlNode_Inconsistency_No_In_Sequence_Links = "has no incoming Sequence Links";
-  public static final String ControlNode_Inconsistency_No_Out_Sequence_Links = "has no outgoing Sequence Links";
-  public static final String ControlNode_Inconsistency_Minimum_InOut_Sequence_Links = "has only one incoming and one outgoing Sequence Link";
-
   @Override
   public IStatus validate(IValidationContext ctx) {
 
     if ((ctx.getEventType() == EMFEventType.NULL) && (ctx.getTarget() instanceof ControlNode)) {
-      String className = "ControlNode";
+      String className = Messages.ControlNode_Name;
       ControlNode controlNode = (ControlNode) ctx.getTarget();
 
       // control node without in or out links
@@ -44,16 +39,16 @@ public class ControlNodeInconsistentOperations extends AbstractValidationRule {
       int inCount = inLinks.size();
       int outCount = outLinks.size();
       if (inCount == 0 && outCount == 0) {
-        return ctx.createFailureStatus(className, ControlNode_Inconsistency_No_InOut_Sequence_Links);
+        return ctx.createFailureStatus(className, Messages.ControlNode_Inconsistency_No_InOut_Sequence_Links);
       }
       if (inCount == 0) {
-        return ctx.createFailureStatus(className, ControlNode_Inconsistency_No_In_Sequence_Links);
+        return ctx.createFailureStatus(className, Messages.ControlNode_Inconsistency_No_In_Sequence_Links);
       }
       if (outCount == 0) {
-        return ctx.createFailureStatus(className, ControlNode_Inconsistency_No_Out_Sequence_Links);
+        return ctx.createFailureStatus(className, Messages.ControlNode_Inconsistency_No_Out_Sequence_Links);
       }
       if (inCount == 1 && outCount == 1) {
-        return ctx.createFailureStatus(className, ControlNode_Inconsistency_Minimum_InOut_Sequence_Links);
+        return ctx.createFailureStatus(className, Messages.ControlNode_Inconsistency_Minimum_InOut_Sequence_Links);
       }
       // check that node is closed - graph todo
     }

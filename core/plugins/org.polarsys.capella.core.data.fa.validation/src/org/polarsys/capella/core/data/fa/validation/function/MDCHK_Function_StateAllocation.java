@@ -13,7 +13,6 @@
 
 package org.polarsys.capella.core.data.fa.validation.function;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -38,7 +37,7 @@ public class MDCHK_Function_StateAllocation extends AbstractValidationRule {
       AbstractFunction abstractFunction = (AbstractFunction) eObj;
       List<State> functionStates = abstractFunction.getAvailableInStates();
       Set<State> allChainStates = new HashSet<State>();
-      String chainName = "FunctionalChain";
+      String chainName = Messages.MDCHK_Function_StateAllocation_0;
 
       for (FunctionalChain chain : abstractFunction.getInvolvingFunctionalChains()) {
         allChainStates.addAll(chain.getAvailableInStates());

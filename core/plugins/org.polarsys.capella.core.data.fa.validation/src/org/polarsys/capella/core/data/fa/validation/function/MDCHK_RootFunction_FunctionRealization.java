@@ -44,7 +44,7 @@ public class MDCHK_RootFunction_FunctionRealization extends AbstractValidationRu
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof AbstractFunction) {
         AbstractFunction function = (AbstractFunction) eObj;
-        String currentFunctionName = NLS.bind("Root \"{0}\"{1}", function.getName(),
+        String currentFunctionName = NLS.bind(Messages.MDCHK_RootFunction_FunctionRealization_Root, function.getName(),
             EObjectLabelProviderHelper.getMetaclassLabel(function, true));
         String targetFunctionName = "";
         BlockArchitecture currentLevelArchitecture = BlockArchitectureExt.getRootBlockArchitecture(function);
@@ -53,7 +53,7 @@ public class MDCHK_RootFunction_FunctionRealization extends AbstractValidationRu
         if (previousArchitectures != null) {
           AbstractFunction targetFunction = BlockArchitectureExt.getRootFunction(previousArchitectures);
           if (targetFunction != null) {
-            targetFunctionName = NLS.bind("Root \"{0}\"{1}", targetFunction.getName(),
+            targetFunctionName = NLS.bind(Messages.MDCHK_RootFunction_FunctionRealization_Root, targetFunction.getName(),
                 EObjectLabelProviderHelper.getMetaclassLabel(targetFunction, true));
           }
         }
@@ -64,21 +64,21 @@ public class MDCHK_RootFunction_FunctionRealization extends AbstractValidationRu
             if (((SystemFunction) function).getRealizedOperationalActivities().isEmpty()) {
               if (previousArchitectures == null) {
                 return ctx.createFailureStatus(currentFunctionName,
-                    "the Operational Analysis (Not Found), Please create Operational Analysis");
+                    Messages.MDCHK_RootFunction_FunctionRealization_3);
               }
-              targetFunctionName = (targetFunctionName.isEmpty()) ? "Root Operational Activity (Not Found)"
+              targetFunctionName = (targetFunctionName.isEmpty()) ? Messages.MDCHK_RootFunction_FunctionRealization_4
                   : targetFunctionName;
               return ctx.createFailureStatus(currentFunctionName, targetFunctionName);
             }
           } else if (function instanceof LogicalFunction) {
             if (((LogicalFunction) function).getRealizedSystemFunctions().isEmpty()) {
-              targetFunctionName = (targetFunctionName.isEmpty()) ? "Root System Function (Not Found)"
+              targetFunctionName = (targetFunctionName.isEmpty()) ? Messages.MDCHK_RootFunction_FunctionRealization_5
                   : targetFunctionName;
               return ctx.createFailureStatus(currentFunctionName, targetFunctionName);
             }
           } else if (function instanceof PhysicalFunction) {
             if (((PhysicalFunction) function).getRealizedLogicalFunctions().isEmpty()) {
-              targetFunctionName = (targetFunctionName.isEmpty()) ? "Root Logical Function (Not Found)"
+              targetFunctionName = (targetFunctionName.isEmpty()) ? Messages.MDCHK_RootFunction_FunctionRealization_6
                   : targetFunctionName;
               return ctx.createFailureStatus(currentFunctionName, targetFunctionName);
             }
@@ -91,7 +91,7 @@ public class MDCHK_RootFunction_FunctionRealization extends AbstractValidationRu
               if (!((function instanceof LogicalFunction && sourceElement instanceof PhysicalFunction)
                   || (function instanceof SystemFunction && sourceElement instanceof LogicalFunction)
                   || (function instanceof OperationalActivity && sourceElement instanceof SystemFunction))) {
-                return ctx.createFailureStatus(currentFunctionName, "by accurate Root Function");
+                return ctx.createFailureStatus(currentFunctionName, Messages.MDCHK_RootFunction_FunctionRealization_7);
               }
             }
           }
