@@ -45,15 +45,15 @@ public class LogicalComponentItemProviderDecorator extends ItemProviderAdapterDe
 
     if (component.isActor()) {
       if (component.isHuman()) {
-        imagePath = "full/obj16/LogicalActorHuman";
+        imagePath = "full/obj16/LogicalActorHuman"; //$NON-NLS-1$
       } else {
-        imagePath = "full/obj16/LogicalActor";
+        imagePath = "full/obj16/LogicalActor"; //$NON-NLS-1$
       }
     } else {
       if (component.isHuman()) {
-        imagePath = "full/obj16/LogicalComponentHuman";
+        imagePath = "full/obj16/LogicalComponentHuman"; //$NON-NLS-1$
       } else {
-        imagePath = "full/obj16/LogicalComponent";
+        imagePath = "full/obj16/LogicalComponent"; //$NON-NLS-1$
       }
     }
 

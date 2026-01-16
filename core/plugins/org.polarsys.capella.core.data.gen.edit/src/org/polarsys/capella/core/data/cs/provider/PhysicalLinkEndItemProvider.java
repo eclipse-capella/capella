@@ -268,7 +268,7 @@ public class PhysicalLinkEndItemProvider
       }
     }
     
-    label = "[" + getString("_UI_PhysicalLinkEnd_type") + "] to " + portName + " " + partName ; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    label = "[" + getString("_UI_PhysicalLinkEnd_type") + "] to " + portName + " " + partName ; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
     
     //end-capella-code
       result[0] = label == null || label.length() == 0 ?

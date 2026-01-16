@@ -43,8 +43,8 @@ public class PartItemProviderDecorator extends ItemProviderAdapterDecorator impl
       IItemLabelProvider labelProvider = (IItemLabelProvider) getRootAdapterFactory().adapt(type,
           IItemLabelProvider.class);
       return new ComposedImage(Arrays.asList(labelProvider.getImage(type),
-          CapellaModellerEditPlugin.INSTANCE.getImage("full/ovr16/PartOverlay")));
+          CapellaModellerEditPlugin.INSTANCE.getImage("full/ovr16/PartOverlay"))); //$NON-NLS-1$
     }
-    return overlayImage(object, CapellaModellerEditPlugin.INSTANCE.getImage("full/obj16/Part"));
+    return overlayImage(object, CapellaModellerEditPlugin.INSTANCE.getImage("full/obj16/Part")); //$NON-NLS-1$
   }
 }
