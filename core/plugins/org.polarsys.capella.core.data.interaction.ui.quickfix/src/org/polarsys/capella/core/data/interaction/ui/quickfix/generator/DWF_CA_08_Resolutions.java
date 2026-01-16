@@ -58,7 +58,7 @@ public class DWF_CA_08_Resolutions extends AbstractMarkerResolutionGenerator {
 
   @Override
   protected String getRuleId() {
-    return "org.polarsys.capella.core.data.interaction.validation.DWF_CA_08";
+    return "org.polarsys.capella.core.data.interaction.validation.DWF_CA_08"; //$NON-NLS-1$
   }
 
 }

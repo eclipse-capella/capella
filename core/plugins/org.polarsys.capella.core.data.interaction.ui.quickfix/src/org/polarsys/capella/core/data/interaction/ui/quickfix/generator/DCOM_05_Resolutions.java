@@ -72,6 +72,6 @@ public class DCOM_05_Resolutions extends AbstractMarkerResolutionGenerator {
 
   @Override
   protected String getRuleId() {
-    return "org.polarsys.capella.core.data.interaction.validation.DCOM_05";
+    return "org.polarsys.capella.core.data.interaction.validation.DCOM_05"; //$NON-NLS-1$
   }
 }

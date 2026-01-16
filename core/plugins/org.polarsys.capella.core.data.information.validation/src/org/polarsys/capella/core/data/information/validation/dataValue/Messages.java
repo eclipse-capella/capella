@@ -19,6 +19,10 @@ import org.eclipse.osgi.util.NLS;
  */
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.data.information.validation.dataValue.messages"; //$NON-NLS-1$
+  public static String DataValueContainingFeatureCheck_EnumLiteral_Type;
+  public static String DataValueContainingFeatureCheck_Enumeration_Type;
+  public static String DataValueContainingFeatureCheck_BooleanLiteral_Type;
+  public static String DataValueContainingFeatureCheck_Boolean_Type;
   public static String EnumerationLiteralDomainValueCheck_typedEnum_diagnostic;
   public static String EnumerationLiteralDomainValueCheck_unTypedEnum_diagnostic;
   static {
