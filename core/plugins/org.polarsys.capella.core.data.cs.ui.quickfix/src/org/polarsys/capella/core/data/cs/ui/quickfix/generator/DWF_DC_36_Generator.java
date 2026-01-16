@@ -27,8 +27,8 @@ import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractMarkerResolutionGenerator;
 
 public class DWF_DC_36_Generator extends AbstractMarkerResolutionGenerator {
-  private String switch_OE = "Switch to Operational Entity";
-  private String switch_non_human = "Switch to non HUMAN";
+  private String switch_OE = Messages.DWF_DC_36_Generator_0;
+  private String switch_non_human = Messages.DWF_DC_36_Generator_1;
 
   @Override
   protected IMarkerResolution[] doGetResolutions(IMarker marker) {
@@ -60,6 +60,6 @@ public class DWF_DC_36_Generator extends AbstractMarkerResolutionGenerator {
 
   @Override
   protected String getRuleId() {
-    return "org.polarsys.capella.core.data.cs.validation.DWF_DC_36";
+    return "org.polarsys.capella.core.data.cs.validation.DWF_DC_36"; //$NON-NLS-1$
   }
 }

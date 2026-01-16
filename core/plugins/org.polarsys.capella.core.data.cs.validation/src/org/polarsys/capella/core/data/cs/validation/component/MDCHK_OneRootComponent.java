@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
@@ -41,10 +42,10 @@ public class MDCHK_OneRootComponent extends AbstractValidationRule {
         Collection<Component> components = BlockArchitectureExt.getRootComponents(componentArch);
         int countRoot = components.size();
         if (countRoot > 1) {
-          return ctx.createFailureStatus("Multiple root Components detected in " + componentArch.getName());
+          return ctx.createFailureStatus(NLS.bind(Messages.getString("MDCHK_OneRootComponent.0"), componentArch.getName())); //$NON-NLS-1$
         }
         if (countRoot == 0) {
-          return ctx.createFailureStatus("No root Component detected in " + componentArch.getName());
+          return ctx.createFailureStatus(NLS.bind(Messages.getString("MDCHK_OneRootComponent.1"), componentArch.getName())); //$NON-NLS-1$
         }
       }
     }

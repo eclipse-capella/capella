@@ -38,7 +38,7 @@ import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarke
  * DWF_DF_18 - SequenceLink with no associated FunctionalChainInvolvementLinks
  */
 public class DWF_DF_18_Resolver extends AbstractCapellaMarkerResolution {
-  private final String PROCESS_ICON = "icons/full/obj16/capella_process.gif";
+  private final String PROCESS_ICON = "icons/full/obj16/capella_process.gif"; //$NON-NLS-1$
   private String overridenLabel;
 
   public DWF_DF_18_Resolver(String label) {
@@ -75,7 +75,7 @@ public class DWF_DF_18_Resolver extends AbstractCapellaMarkerResolution {
 
         String title = NamingHelper.getDefaultTitle(semanticElement);
         String message = NamingHelper.getDefaultMessage(semanticElement,
-            (semanticFeature != null) ? semanticFeature.getName() : "");
+            (semanticFeature != null) ? semanticFeature.getName() : ""); //$NON-NLS-1$
 
         // calling selection wizard
         Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();

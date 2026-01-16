@@ -78,8 +78,8 @@ public class MDCHKInterfaceExchangeItemAllocationConsistency extends AbstractVal
 					Collection<Interface> interfaces = ComponentExt.getRelatedInterfaces(currentComponent);
 					boolean isOK =  interfaces.contains(interfaze) && relatedComponentExchangeItems.containsAll(interfaceExchangeItems);
 					if (!isOK) {
-						String COMPONENT_PREFIX = "\"" + currentComponent.getName()  +"\" ( "+ currentComponent.eClass().getName()+ " ) ";
-						String INTARFACE_PREFIX = "\"" + interfaze.getName()  +"\" ( "+ interfaze.eClass().getName()+ " ) ";
+						String COMPONENT_PREFIX = "\"" + currentComponent.getName()  +"\" ( "+ currentComponent.eClass().getName()+ " ) "; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+						String INTARFACE_PREFIX = "\"" + interfaze.getName()  +"\" ( "+ interfaze.eClass().getName()+ " ) "; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 						statuses.add(createFailureStatus(context, new Object[] { INTARFACE_PREFIX, COMPONENT_PREFIX }));
 						break;
 						

@@ -31,7 +31,7 @@ import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.SequenceLink;
 
 public class RemoveSequenceLinksAssociationsResolver extends AbstractCapellaMarkerResolution {
-  private final String PROCESS_ICON = "icons/full/obj16/capella_process.gif";
+  private final String PROCESS_ICON = "icons/full/obj16/capella_process.gif"; //$NON-NLS-1$
   private final SequenceLink sequenceLink;
   private final String overridenLabel;
   private final String ruleId;

@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
@@ -45,8 +46,8 @@ public class MDCHK_EPBSArchitecture_EpbsArchitectureToPaRealization extends Abst
               project);
           PhysicalArchitecture pa = (PhysicalArchitecture) architecture;
           String targetArchitecture = CapellaElementExt.getValidationRuleMessagePrefix(pa);
-          return createFailureStatus(ctx, new Object[] { CapellaElementExt.getValidationRuleMessagePrefix(epbsa)
-              + "does not realize " + targetArchitecture.substring(0, targetArchitecture.length() - 1) });
+          return createFailureStatus(ctx, new Object[] { NLS.bind(
+        		  Messages.MDCHK_EPBSArchitecture_EpbsArchitectureToPaRealization_0, CapellaElementExt.getValidationRuleMessagePrefix(epbsa), targetArchitecture.substring(0, targetArchitecture.length() - 1))});
         }
       }
     }

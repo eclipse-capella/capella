@@ -36,7 +36,7 @@ public class DWF_DC_43_Resolutions extends AbstractMarkerResolutionGenerator {
 
         @Override
         public String getName() {
-          return "Edit kind";
+          return Messages.DWF_DC_43_Resolutions_0;
         }
         
       }));
@@ -47,6 +47,6 @@ public class DWF_DC_43_Resolutions extends AbstractMarkerResolutionGenerator {
 
   @Override
   protected String getRuleId() {
-    return "org.polarsys.capella.core.data.fa.validation.DWF_DC_43";
+    return "org.polarsys.capella.core.data.fa.validation.DWF_DC_43"; //$NON-NLS-1$
   }
 }

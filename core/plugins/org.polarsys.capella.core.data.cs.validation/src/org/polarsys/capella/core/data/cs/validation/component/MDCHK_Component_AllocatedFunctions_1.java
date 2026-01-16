@@ -60,7 +60,7 @@ public class MDCHK_Component_AllocatedFunctions_1 extends AbstractValidationRule
         for (AbstractFunction fct : cpnt.getAllocatedFunctions()) {
           if (!FunctionExt.isLeaf(fct)) {
             return ctx
-                .createFailureStatus(new Object[] { componentInfo + " "
+                .createFailureStatus(new Object[] { componentInfo + " " //$NON-NLS-1$
                     + Messages.getString("MDCHK_Component_AllocatedFunctions_1.allocateNonLeafFunction") + fct.getName() //$NON-NLS-1$
                     + DOT });
           } else if ((cpnt instanceof Entity && !(fct instanceof OperationalActivity))
@@ -68,7 +68,7 @@ public class MDCHK_Component_AllocatedFunctions_1 extends AbstractValidationRule
               || (cpnt instanceof LogicalComponent && !(fct instanceof LogicalFunction))
               || (cpnt instanceof PhysicalComponent && !(fct instanceof PhysicalFunction))) {
             return ctx
-                .createFailureStatus(new Object[] { componentInfo + " "
+                .createFailureStatus(new Object[] { componentInfo + " " //$NON-NLS-1$
                     + Messages.getString("MDCHK_Component_AllocatedFunctions_1.allocatesFunction") + fct.getFullLabel() //$NON-NLS-1$
                     + TYPE_PREFIX + fct.eClass().getName() + TYPE_SUFFIX
                     + Messages.getString("MDCHK_Component_AllocatedFunctions_1.whichIsNotFromTheSameLevel") }); //$NON-NLS-1$
