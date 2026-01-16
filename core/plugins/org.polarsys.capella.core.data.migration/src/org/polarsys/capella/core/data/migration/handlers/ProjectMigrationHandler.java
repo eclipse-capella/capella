@@ -37,7 +37,7 @@ public class ProjectMigrationHandler extends AbstractMigrationHandler {
 
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
-    boolean skipConfirmation = Boolean.valueOf(event.getParameter("skipConfirmation"));
+    boolean skipConfirmation = Boolean.valueOf(event.getParameter("skipConfirmation")); //$NON-NLS-1$
 
     try {
       for (Object selected : getSelection((IEvaluationContext) event.getApplicationContext(), IResource.class)) {

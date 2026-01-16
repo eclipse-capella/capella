@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
@@ -45,10 +46,10 @@ public class MDCHK_LogicalArchitecture_LaToSaRealization extends AbstractValidat
               project);
           SystemAnalysis sa = (SystemAnalysis) architecture;
           String targetArchitecture = CapellaElementExt.getValidationRuleMessagePrefix(sa);
-          targetArchitecture = targetArchitecture.isEmpty() ? "System Analysis"
+          targetArchitecture = targetArchitecture.isEmpty() ? Messages.MDCHK_LogicalArchitecture_LaToSaRealization_DefaultSAName
               : targetArchitecture.substring(0, targetArchitecture.length() - 1);
           return createFailureStatus(ctx, new Object[] {
-              CapellaElementExt.getValidationRuleMessagePrefix(la) + "does not realize " + targetArchitecture });
+              NLS.bind(Messages.MDCHK_LogicalArchitecture_LaToSaRealization_1, CapellaElementExt.getValidationRuleMessagePrefix(la), targetArchitecture)});
         }
       }
     }

@@ -40,7 +40,7 @@ public class PhysicalComponentNatureToBehaviorResolver extends AbstractPhysicalC
 
   @Override
   public String getLabel() {
-    return "Switch to BEHAVIOR";
+    return Messages.PhysicalComponentNatureToBehaviorResolver_0;
   }
 
   @Override
@@ -50,7 +50,7 @@ public class PhysicalComponentNatureToBehaviorResolver extends AbstractPhysicalC
 
   @Override
   protected boolean canResolve(IMarker marker) {
-    String ruleId = "org.polarsys.capella.core.data.pa.validation.DWF_DC_22";
+    String ruleId = "org.polarsys.capella.core.data.pa.validation.DWF_DC_22"; //$NON-NLS-1$
     String markerRuleId = MarkerViewHelper.getRuleID(marker, true);
     return this.multiMarkerQuickFix && ruleId.equals(markerRuleId);
   }

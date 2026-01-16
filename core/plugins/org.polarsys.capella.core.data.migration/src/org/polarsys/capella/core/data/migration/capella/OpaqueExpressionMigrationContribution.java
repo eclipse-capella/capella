@@ -25,7 +25,7 @@ public class OpaqueExpressionMigrationContribution extends AbstractMigrationCont
     if (object instanceof OpaqueExpression) {
       OpaqueExpression expression = (OpaqueExpression) object;
       if (expression.getLanguages().isEmpty()) {
-        expression.getLanguages().add("capella:linkedText");
+        expression.getLanguages().add("capella:linkedText"); //$NON-NLS-1$
       }
       if (expression.getBodies().isEmpty()) {
         expression.getBodies().add(ICommonConstants.EMPTY_STRING);
