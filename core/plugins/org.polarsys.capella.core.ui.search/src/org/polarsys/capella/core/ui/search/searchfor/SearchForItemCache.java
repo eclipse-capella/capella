@@ -101,7 +101,7 @@ public class SearchForItemCache {
 
   private void initModelElements() {
     for (String nsURI : EPackage.Registry.INSTANCE.keySet()) {
-      if (nsURI.startsWith("http://www.polarsys.org/capella")) {
+      if (nsURI.startsWith("http://www.polarsys.org/capella")) { //$NON-NLS-1$
         EPackage ePackage = EPackage.Registry.INSTANCE.getEPackage(nsURI);
 
         if (ePackage != null) {

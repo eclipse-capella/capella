@@ -25,7 +25,7 @@
          point="org.polarsys.capella.core.validation.ui.ide.capellaQuickFix">
       <resolver
             class="org.polarsys.capella.core.validation.ui.ide.quickfix.EObjectMultiplicityResolver"
-            label="Delete element"
+            label="%resolver.label"
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif">
          <rules
                ruleId="org.eclipse.emf.ecore.1">
@@ -33,7 +33,7 @@
       </resolver>
       <resolver
             class="org.polarsys.capella.core.validation.ui.ide.quickfix.DanglingReferenceResolver"
-            label="Delete invalid references"
+            label="%resolver.label.0"
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif">
          <rules
                ruleId="org.eclipse.emf.ecore.4">
@@ -41,7 +41,7 @@
       </resolver>
       <resolver
             class="org.polarsys.capella.core.validation.ui.ide.quickfix.DanglingReferenceResolver"
-            label="Delete invalid references"
+            label="%resolver.label.1"
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif">
          <rules
                ruleId="org.eclipse.emf.ecore.16">

@@ -61,7 +61,7 @@ public class SearchForClassItem implements SearchForItem {
   }
 
   public String getUniqueID() {
-    return ((EClass) obj).getEPackage().getNsURI() + "/" + ((EClass) obj).getName();
+    return ((EClass) obj).getEPackage().getNsURI() + "/" + ((EClass) obj).getName(); //$NON-NLS-1$
   }
 
   @Override

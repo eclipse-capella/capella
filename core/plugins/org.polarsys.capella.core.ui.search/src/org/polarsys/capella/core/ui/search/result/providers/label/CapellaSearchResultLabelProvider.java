@@ -36,7 +36,7 @@ import org.polarsys.capella.core.ui.search.match.SearchMatchChild;
 @SuppressWarnings("restriction")
 public class CapellaSearchResultLabelProvider extends LabelProvider {
   public static final Styler HIGHLIGHT_MATCHED_TEXT_STYLE = StyledString.createColorRegistryStyler(null,
-      "org.eclipse.search.ui.match.highlight");
+      "org.eclipse.search.ui.match.highlight"); //$NON-NLS-1$
 
   private final ILabelProvider capellaNavigatorLabelProvider;
 
@@ -54,7 +54,7 @@ public class CapellaSearchResultLabelProvider extends LabelProvider {
       SearchMatch capellaSearchMatchEntry = (SearchMatch) element;
       EAttribute attribute = (EAttribute) capellaSearchMatchEntry.getAttribute();
       if (capellaSearchMatchEntry.getChildren().isEmpty()) {
-        return attribute.getName() + ": " + capellaSearchMatchEntry.getDisplayText();
+        return attribute.getName() + ": " + capellaSearchMatchEntry.getDisplayText(); //$NON-NLS-1$
       }
       return attribute.getName();
     } else if (element instanceof Shape && ViewType.NOTE.equals(((Shape) element).getType())) {
@@ -68,10 +68,10 @@ public class CapellaSearchResultLabelProvider extends LabelProvider {
     if (element instanceof SearchMatchChild) {
       return null;
     } else if (element instanceof SearchMatch) {
-      return Activator.getDefault().getImage("line_match.png");
+      return Activator.getDefault().getImage("line_match.png"); //$NON-NLS-1$
     } else if (element instanceof Shape && ViewType.NOTE.equals(((Shape) element).getType())) {
       return ExtendedImageRegistry.INSTANCE
-          .getImage(DiagramUIPlugin.getInstance().getBundle().getEntry("icons/note.gif"));
+          .getImage(DiagramUIPlugin.getInstance().getBundle().getEntry("icons/note.gif")); //$NON-NLS-1$
     }
     return capellaNavigatorLabelProvider.getImage(element);
   }

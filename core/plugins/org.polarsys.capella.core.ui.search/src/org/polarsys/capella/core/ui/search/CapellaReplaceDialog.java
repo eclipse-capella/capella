@@ -35,7 +35,7 @@ public class CapellaReplaceDialog extends Dialog {
   private final String title;
 
   private final String pattern;
-  private String replacement = "";
+  private String replacement = ""; //$NON-NLS-1$
 
   private List<CapellaSearchSettings> previousSearchSettings = new ArrayList<>();
 
