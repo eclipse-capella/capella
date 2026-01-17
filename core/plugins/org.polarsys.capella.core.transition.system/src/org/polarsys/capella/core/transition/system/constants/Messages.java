@@ -19,6 +19,11 @@ import org.eclipse.osgi.util.NLS;
  */
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.transition.system.constants.messages"; //$NON-NLS-1$
+  public static String InitializeTransitionActivity_NotCapellaElt;
+  public static String InitializeTransitionActivity_InvalidOutput;
+  
+  public static String OutputModelPreference_InvalidSelection;
+  
   public static String SubSystemLauncher_Title;
 
   public static String TargetBoundNotTransitioned;

@@ -52,7 +52,7 @@ public class PartRule extends org.polarsys.capella.core.transition.system.rules.
     boolean result =
         CsPackage.Literals.COMPONENT.isSuperTypeOf(TransformationHandlerHelper.getInstance(context).getTargetType(partSrc.getAbstractType(), context));
     if (!result) {
-      return new Status(IStatus.WARNING, Messages.Activity_Transition, "Type transitioned to ComponentPackage");
+      return new Status(IStatus.WARNING, Messages.Activity_Transition, org.polarsys.capella.core.transition.system.topdown.constants.Messages.PartRule_TransitionedToPkg);
     }
     return super.transformRequired(element, context);
   }

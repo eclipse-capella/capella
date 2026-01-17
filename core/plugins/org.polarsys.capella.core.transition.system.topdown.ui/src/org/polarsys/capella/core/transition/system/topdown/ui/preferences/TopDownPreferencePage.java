@@ -81,7 +81,7 @@ public class TopDownPreferencePage extends CapellaPropertyPreferencePage {
    */
   @Override
   public String getPageTitle() {
-    return "Transitions/Generation";
+    return Messages.TopDownPreferencePage_Title;
   }
 
   /**
@@ -89,7 +89,7 @@ public class TopDownPreferencePage extends CapellaPropertyPreferencePage {
    */
   @Override
   public String getPageDescription() {
-    return "Transition Preferences";
+    return Messages.TopDownPreferencePage_Description;
   }
 
   /**
