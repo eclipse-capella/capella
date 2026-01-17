@@ -37,7 +37,7 @@ public interface IImageKeys {
   /**
    * Image id used for primitive variables.<br>
    */
-  public final static String IMG_PRIMITIVE_VARIABLES = "variable_tab.gif";
+  public final static String IMG_PRIMITIVE_VARIABLES = "variable_tab.gif"; //$NON-NLS-1$
 
   /**
    * Image id used in semantic browser to action "lexicographic sort" when sorting is enabled.<br>

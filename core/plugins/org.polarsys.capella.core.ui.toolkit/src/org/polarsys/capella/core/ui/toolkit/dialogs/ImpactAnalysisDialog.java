@@ -46,7 +46,7 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
  */
 public class ImpactAnalysisDialog extends AbstractViewerDialog {
 
-  public static final String IMPACT_ANALYSIS_DIALOG = "org.polarsys.capella.core.ui.toolkit.dialogs.impactAnalysis";
+  public static final String IMPACT_ANALYSIS_DIALOG = "org.polarsys.capella.core.ui.toolkit.dialogs.impactAnalysis"; //$NON-NLS-1$
 
   /**
    * Impact analysis label provider.

@@ -324,7 +324,7 @@ public class EPFValidationAction extends CapellaValidateAction {
         // Original reasons to switch: CDO and too many workspace
         // notifications (especially in transitions)
         // can't use resource, see handleDiagnostics below
-        final String epf = getEpf() == null ? "Default" : getEpf().getName();
+        final String epf = getEpf() == null ? "Default" : getEpf().getName(); //$NON-NLS-1$
         LightMarkerRegistry.getInstance().createMarker(getFile(currentResource), diagnostic, getMarkerID(), new LightMarkerRegistry.IMarkerModification() {	
           @Override
           public void modify(IMarker marker) {

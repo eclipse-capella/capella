@@ -24,20 +24,20 @@ import org.polarsys.capella.core.ui.search.searchfor.item.SearchForClassItem;
 public abstract class AbstractCapellaHistory {
   protected static final int HISTORY_SIZE = 5;
 
-  protected static final String SECTION_SEARCH = "org.polarsys.capella.core.ui.search.page.replace";
-  protected static final String SECTION_SEARCH_REPLACE_PATTERN = "replace.pattern";
+  protected static final String SECTION_SEARCH = "org.polarsys.capella.core.ui.search.page.replace"; //$NON-NLS-1$
+  protected static final String SECTION_SEARCH_REPLACE_PATTERN = "replace.pattern"; //$NON-NLS-1$
 
-  protected static final String SECTION_HISTORY_PREFIX = "history.replace";
-  protected static final String SECTION_HISTORY_COUNT = "history.count.replace";
+  protected static final String SECTION_HISTORY_PREFIX = "history.replace"; //$NON-NLS-1$
+  protected static final String SECTION_HISTORY_COUNT = "history.count.replace"; //$NON-NLS-1$
 
-  protected static final String SECTION_SEARCH_ATTRIBUTE_PREFIX = "attribute.replace";
-  protected static final String SECTION_SEARCH_ATTRIBUTE_COUNT = "attribute.count.replace";
+  protected static final String SECTION_SEARCH_ATTRIBUTE_PREFIX = "attribute.replace"; //$NON-NLS-1$
+  protected static final String SECTION_SEARCH_ATTRIBUTE_COUNT = "attribute.count.replace"; //$NON-NLS-1$
 
-  protected static final String SECTION_SEARCH_METACLASS_PREFIX = "metaclass.replace";
-  protected static final String SECTION_SEARCH_METACLASS_COUNT = "metaclass.count.replace";
+  protected static final String SECTION_SEARCH_METACLASS_PREFIX = "metaclass.replace"; //$NON-NLS-1$
+  protected static final String SECTION_SEARCH_METACLASS_COUNT = "metaclass.count.replace"; //$NON-NLS-1$
 
-  protected static final String SECTION_SEARCH_PROJECT_PREFIX = "project.replace";
-  protected static final String SECTION_SEARCH_PROJECT_COUNT = "project.count.replace";
+  protected static final String SECTION_SEARCH_PROJECT_PREFIX = "project.replace"; //$NON-NLS-1$
+  protected static final String SECTION_SEARCH_PROJECT_COUNT = "project.count.replace"; //$NON-NLS-1$
 
   public List<CapellaSearchSettings> getAllSearchSettings() {
     List<CapellaSearchSettings> capellaSearchSettingsInHistory = new ArrayList<>();

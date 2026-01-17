@@ -16,13 +16,13 @@ import org.eclipse.jface.dialogs.IDialogSettings;
 
 public class CapellaSearchSettingsHistory extends AbstractCapellaHistory {
 
-  private static final String SECTION_SEARCH_PATTERN = "pattern";
-  private static final String SECTION_SEARCH_REGEX = "regex";
-  private static final String SECTION_SEARCH_CASE_SENSITIVE = "case.sensitive";
-  private static final String SECTION_SEARCH_WHOLE_WORD = "whole.word";
-  private static final String SECTION_SEARCH_SCOPE = "scope";
-  private static final String SECTION_LEFT_ABSTRACT_FILTER_CHECKED = "abstract.filter";
-  private static final String SECTION_LEFT_NON_SEMANTIC_FILTER_CHECKED = "non.semantic.filter";
+  private static final String SECTION_SEARCH_PATTERN = "pattern"; //$NON-NLS-1$
+  private static final String SECTION_SEARCH_REGEX = "regex"; //$NON-NLS-1$
+  private static final String SECTION_SEARCH_CASE_SENSITIVE = "case.sensitive"; //$NON-NLS-1$
+  private static final String SECTION_SEARCH_WHOLE_WORD = "whole.word"; //$NON-NLS-1$
+  private static final String SECTION_SEARCH_SCOPE = "scope"; //$NON-NLS-1$
+  private static final String SECTION_LEFT_ABSTRACT_FILTER_CHECKED = "abstract.filter"; //$NON-NLS-1$
+  private static final String SECTION_LEFT_NON_SEMANTIC_FILTER_CHECKED = "non.semantic.filter"; //$NON-NLS-1$
 
   private static CapellaSearchSettingsHistory instance;
 
