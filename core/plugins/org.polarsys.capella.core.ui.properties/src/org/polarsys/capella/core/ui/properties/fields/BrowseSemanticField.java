@@ -150,34 +150,34 @@ public class BrowseSemanticField extends AbstractSemanticField {
 
 			if(cardType == 0){
 				menuitem1 = new MenuItem(menu, SWT.NONE);
-				menuitem1.setText("0");
+				menuitem1.setText("0"); //$NON-NLS-1$
 				Image imageMenuItem1 = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MIN_LENGTH_ID);
 				menuitem1.setImage(imageMenuItem1);
 				menuitem2 = new MenuItem(menu, SWT.NONE);
-				menuitem2.setText("1");
+				menuitem2.setText("1"); //$NON-NLS-1$
 				Image imageMenuItem2 = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.ONE_ID);
 				menuitem2.setImage(imageMenuItem2);
 			}else if(cardType == 1){
 
 				menuitem1 = new MenuItem(menu, SWT.NONE);
-				menuitem1.setText("1");
+				menuitem1.setText("1"); //$NON-NLS-1$
 				Image imageMenuItem1 = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.ONE_ID);
 				menuitem1.setImage(imageMenuItem1);
 				menuitem2 = new MenuItem(menu, SWT.NONE);
-				menuitem2.setText("*");
+				menuitem2.setText("*"); //$NON-NLS-1$
 				Image imageMenuItem2 = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MAX_LENGTH_ID);
 				menuitem2.setImage(imageMenuItem2);
 
 			}else if(cardType == 2){
 
 				menuitem1 = new MenuItem(menu, SWT.NONE);
-				menuitem1.setText("0");
+				menuitem1.setText("0"); //$NON-NLS-1$
 				Image imageMenuItem1 = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MIN_LENGTH_ID);
 				menuitem1.setImage(imageMenuItem1);
 			}else if(cardType == 3){
 
 				menuitem1 = new MenuItem(menu, SWT.NONE);
-				menuitem1.setText("*");
+				menuitem1.setText("*"); //$NON-NLS-1$
 				Image imageMenuItem1 = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MAX_LENGTH_ID);
 				menuitem1.setImage(imageMenuItem1);
 			}
@@ -191,7 +191,7 @@ public class BrowseSemanticField extends AbstractSemanticField {
 						setValueTextField(menuitem1.getText());
 						AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
 							public void run() {
-								LiteralNumericValue newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue("");
+								LiteralNumericValue newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue(""); //$NON-NLS-1$
 								newValue.setValue(menuitem1.getText());
 								semanticElement.eSet(semanticFeature, newValue);
 							}
@@ -207,7 +207,7 @@ public class BrowseSemanticField extends AbstractSemanticField {
 						setValueTextField(menuitem2.getText());
 						AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
 							public void run() {
-								LiteralNumericValue newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue("");
+								LiteralNumericValue newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue(""); //$NON-NLS-1$
 								newValue.setValue(menuitem2.getText());
 								semanticElement.eSet(semanticFeature, newValue);
 							}

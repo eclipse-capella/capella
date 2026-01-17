@@ -49,7 +49,7 @@ import org.polarsys.capella.core.ui.toolkit.ToolkitPlugin;
  * Property filed allowing to edit Constraints (or OpaqueExpressions stored in Constraints).
  */
 public class ConstraintReferenceField extends AbstractSemanticField {
-  public static final String DEFAULT_CONSTRAINT_NAME = "";
+  public static final String DEFAULT_CONSTRAINT_NAME = ""; //$NON-NLS-1$
 
   /**
    * Controller associated to this semantic field.
@@ -84,7 +84,7 @@ public class ConstraintReferenceField extends AbstractSemanticField {
 
     // Create a text area with a read only Text field (3 lines height).
     _textArea = widgetFactory.createComposite(parent);
-    Text t = widgetFactory.createText(_textArea, "", SWT.READ_ONLY);
+    Text t = widgetFactory.createText(_textArea, "", SWT.READ_ONLY); //$NON-NLS-1$
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.heightHint = t.getLineHeight() * 3 + 5;
     gd.widthHint = 150;
