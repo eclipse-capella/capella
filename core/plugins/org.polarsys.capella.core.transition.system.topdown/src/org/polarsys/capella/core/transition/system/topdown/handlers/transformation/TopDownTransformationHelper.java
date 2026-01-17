@@ -79,7 +79,7 @@ public class TopDownTransformationHelper extends CapellaTransformationHandler {
       return Status.OK_STATUS;
     }
 
-    return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind("Element ''{0}'' will not be transitioned.",
+    return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind(org.polarsys.capella.core.transition.system.topdown.constants.Messages.TopDownTransformationHelper_Error,
         LogHelper.getInstance().getText(source_p)));
   }
 

@@ -54,8 +54,8 @@ public class ProjectSelectionDialog extends ElementTreeSelectionDialog implement
   public ProjectSelectionDialog(Shell parent, ILabelProvider labelProvider, ITreeContentProvider contentProvider) {
     super(parent, labelProvider, contentProvider);
 
-    setTitle("Target Capella model selection");
-    setMessage("Select the target Capella model for the export:");
+    setTitle(Messages.ProjectSelectionDialog_0);
+    setMessage(Messages.ProjectSelectionDialog_1);
 
     setHelpAvailable(false);
 
@@ -83,7 +83,7 @@ public class ProjectSelectionDialog extends ElementTreeSelectionDialog implement
   protected Control createDialogArea(Composite parent) {
     Composite parentc = (Composite) super.createDialogArea(parent);
     newButton = new Button(parentc, SWT.PUSH);
-    newButton.setText("Create new Project");
+    newButton.setText(Messages.ProjectSelectionDialog_2);
 
     newButton.addSelectionListener(new SelectionListener() {
 
@@ -193,7 +193,7 @@ public class ProjectSelectionDialog extends ElementTreeSelectionDialog implement
 
     // Set the isEmpty field to false
     try {
-      ReflectUtil.setInvisibleFieldValue(this, "fIsEmpty", false);
+      ReflectUtil.setInvisibleFieldValue(this, "fIsEmpty", false); //$NON-NLS-1$
     } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException e) {
       e.printStackTrace();
     }

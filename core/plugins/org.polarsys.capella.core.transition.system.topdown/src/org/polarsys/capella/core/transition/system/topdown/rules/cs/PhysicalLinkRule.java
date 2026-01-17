@@ -70,21 +70,21 @@ public class PhysicalLinkRule extends org.polarsys.capella.core.transition.syste
     if (result.isOK()) {
       PhysicalLink element = (PhysicalLink) element_p;
       if (!ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, element_p, context_p)) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transition, "not in scope");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, org.polarsys.capella.core.transition.system.topdown.constants.Messages.TransitionRule_Error_Scope);
       }
       if (org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSource(element) == null) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transition, "source null");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, org.polarsys.capella.core.transition.system.topdown.constants.Messages.TransitionRule_Error_NullSource);
       }
       if (org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getTarget(element) == null) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transition, "target null");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, org.polarsys.capella.core.transition.system.topdown.constants.Messages.TransitionRule_Error_NullTarget);
       }
       if (!TransformationHandlerHelper.getInstance(context_p)
           .isOrWillBeTransformed(org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSource(element), context_p).isOK()) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transition, "source");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, org.polarsys.capella.core.transition.system.topdown.constants.Messages.TransitionRule_Error_InvalidSource);
       }
       if (!TransformationHandlerHelper.getInstance(context_p)
           .isOrWillBeTransformed(org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getTarget(element), context_p).isOK()) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transition, "target");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, org.polarsys.capella.core.transition.system.topdown.constants.Messages.TransitionRule_Error_InvalidTarget);
       }
       java.util.Collection<EObject> transfoSources = (java.util.Collection<EObject>) context_p.get(ITransitionConstants.TRANSITION_SOURCES);
       if (transfoSources.contains(element_p)) {

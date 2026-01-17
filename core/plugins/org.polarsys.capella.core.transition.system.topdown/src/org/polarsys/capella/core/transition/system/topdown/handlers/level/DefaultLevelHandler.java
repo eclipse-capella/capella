@@ -55,7 +55,7 @@ public class DefaultLevelHandler implements ILevelHandler {
    */
   @Override
   public void addScope(Level index_p, EObject result_p, IContext context_p) {
-    String idContext = "";
+    String idContext = ""; //$NON-NLS-1$
 
     if (Level.PREVIOUS_N2.equals(index_p)) {
       idContext = ITopDownConstants.SOURCE_N2_ARCHITECTURE_ELEMENTS;
@@ -78,7 +78,7 @@ public class DefaultLevelHandler implements ILevelHandler {
    * {@inheritDoc}
    */
   public ISelectionContext getSelectionContext(Level index_p, IContext context_p) {
-    String idContext = "";
+    String idContext = ""; //$NON-NLS-1$
 
     if (Level.PREVIOUS_N2.equals(index_p)) {
       idContext = ITopDownConstants.SELECTION_CONTEXT__PREVIOUS_N2_ARCHITECTURE;

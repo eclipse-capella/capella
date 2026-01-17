@@ -53,18 +53,21 @@ public class AbstractCapabilityGeneralizationRule extends AbstractCapellaElement
       }
 
       if (ce.getSuper() == null) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transformation, "SourceNull");
+        return new Status(IStatus.WARNING, Messages.Activity_Transformation, org.polarsys.capella.core.transition.system.topdown.constants.Messages.TransitionRule_Error_NullSource);
       }
       if (ce.getSub() == null) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transformation, ".TargetNull");
+        return new Status(IStatus.WARNING, Messages.Activity_Transformation, org.polarsys.capella.core.transition.system.topdown.constants.Messages.TransitionRule_Error_NullTarget);
       }
 
       if (!TransformationHandlerHelper.getInstance(context).isOrWillBeTransformed(ce.getSuper(), context).isOK()) {
         return new Status(IStatus.WARNING, Messages.Activity_Transformation,
-            NLS.bind(".SourceBoundNotTransitioned", EObjectLabelProviderHelper.getText(ce.getSuper())));
+            NLS.bind(org.polarsys.capella.core.transition.system.topdown.constants.Messages.AbstractCapabilityGeneralizationRule_SourceNotTransitioned,
+                EObjectLabelProviderHelper.getText(ce.getSuper())));
       }
       if (!TransformationHandlerHelper.getInstance(context).isOrWillBeTransformed(ce.getSub(), context).isOK()) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind(".Target bound not transitioned", EObjectLabelProviderHelper.getText(ce.getSub())));
+        return new Status(IStatus.WARNING, Messages.Activity_Transformation,
+            NLS.bind(org.polarsys.capella.core.transition.system.topdown.constants.Messages.AbstractCapabilityGeneralizationRule_TargetNotTransitioned,
+                EObjectLabelProviderHelper.getText(ce.getSub())));
       }
     }
     return result;

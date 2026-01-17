@@ -201,7 +201,7 @@ public class ComponentRule extends org.polarsys.capella.core.transition.system.r
         context_p)) {
       return Status.OK_STATUS;
     }
-    return new Status(IStatus.WARNING, Messages.Activity_Transition, "Component already transitioned");
+    return new Status(IStatus.WARNING, Messages.Activity_Transition, org.polarsys.capella.core.transition.system.topdown.constants.Messages.ComponentRule_AlreadyTransitioned);
   }
 
 }
