@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -179,43 +180,39 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
       int nbRefreshWithSuccess = repToRefreshNb - nbRefreshWithError;
 
       StringBuilder strBuilder = new StringBuilder();
-      if (nbRefreshWithSuccess > 1) {
-        strBuilder.append(nbRefreshWithSuccess + " representations refreshed");
-      } else {
-        strBuilder.append(nbRefreshWithSuccess + " representation refreshed");
-      }
+      strBuilder.append(NLS.bind(Messages.RefreshDiagramsCommandHandler_RepresentationsRefreshed, nbRefreshWithSuccess));
 
       int severity = IStatus.OK;
       if (nbRefreshWithError > 0) {
         severity = IStatus.WARNING;
-        strBuilder.append(" and " + nbRefreshWithError + " representation(s) failed to refresh");
+        strBuilder.append(NLS.bind(Messages.RefreshDiagramsCommandHandler_FailureAddition, nbRefreshWithError));
         if (representationNotLoadable.size() > 0) {
-          strBuilder.append("\nNot loadable representation(s) (invalid)");
+          strBuilder.append('\n' + Messages.RefreshDiagramsCommandHandler_Failure_NotLoadable);
           representationNotLoadable.stream().forEach(repDesc -> {
             String repDescInfo = addRepDescInfo(strBuilder, repDesc);
 
             Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM)
-                .error(new EmbeddedMessage("The representation can not be loaded (invalid): " + repDescInfo, "",
+                .error(new EmbeddedMessage(NLS.bind(Messages.RefreshDiagramsCommandHandler_Failure_NotLoadable_Log, repDescInfo), "", //$NON-NLS-1$
                     Collections.singletonList(repDesc)));
           });
         }
         if (representationDangling.size() > 0) {
-          strBuilder.append("\nRepresentation(s) with no valid semantic target (invalid)");
+          strBuilder.append('\n' + Messages.RefreshDiagramsCommandHandler_Failure_NoTarget);
           representationDangling.stream().forEach(repDesc -> {
             String repDescInfo = addRepDescInfo(strBuilder, repDesc);
 
             Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM)
-                .error(new EmbeddedMessage("The representation has no valid semantic target (invalid): " + repDescInfo,
-                    "", Collections.singletonList(repDesc)));
+                .error(new EmbeddedMessage(NLS.bind(Messages.RefreshDiagramsCommandHandler_Failure_NoTarget_Log, repDescInfo),
+                    "", Collections.singletonList(repDesc))); //$NON-NLS-1$
           });
         }
         if (representationWithOtherErrors.size() > 0) {
-          strBuilder.append("\nRepresentation(s) that failed to refresh");
+          strBuilder.append('\n' + Messages.RefreshDiagramsCommandHandler_Failure_Refresh);
           representationWithOtherErrors.stream().forEach(repDesc -> {
             String repDescInfo = addRepDescInfo(strBuilder, repDesc);
 
             Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).warn(new EmbeddedMessage(
-                "The representation failed to refresh: " + repDescInfo, "", Collections.singletonList(repDesc)));
+                NLS.bind(Messages.RefreshDiagramsCommandHandler_Failure_Refresh_Log, repDescInfo), "", Collections.singletonList(repDesc))); //$NON-NLS-1$
           });
         }
       }
@@ -224,19 +221,19 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
 
     private String addRepDescInfo(StringBuilder strBuilder, DRepresentationDescriptor repDesc) {
       String repDescInfo = getRepDescInfo(repDesc);
-      strBuilder.append("\n - ");
+      strBuilder.append("\n - "); //$NON-NLS-1$
       strBuilder.append(repDescInfo);
       return repDescInfo;
     }
 
     private String getRepDescInfo(DRepresentationDescriptor repDesc) {
-      StringBuilder strBuilder = new StringBuilder();
-      strBuilder.append("name: " + repDesc.getName());
-      strBuilder.append(", uid: " + repDesc.getUid());
+      String info;
       if (repDesc.getTarget() instanceof ModelElement) {
-        strBuilder.append(", target: " + ((ModelElement) repDesc.getTarget()).getLabel());
+        info = NLS.bind(Messages.RefreshDiagramsCommandHandler_DescInfo, new Object[] {repDesc.getName(), repDesc.getUid(), ((ModelElement) repDesc.getTarget()).getLabel()});
+      } else {
+        info = NLS.bind(Messages.RefreshDiagramsCommandHandler_DescInfo_NoTarget, repDesc.getName(), repDesc.getUid());
       }
-      return strBuilder.toString();
+      return info;
     }
   }
 
@@ -269,7 +266,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
       } else {
         // INFO severity will not be logged in error log view
         return new Status(Status.INFO, SiriusUIPlugin.getDefault().getPluginId(),
-            "Failed to refresh the representation " + dRepresentation.getName());
+            NLS.bind(Messages.RefreshDiagramsCommandHandler_OpenDiagram_RefreshFailed, dRepresentation.getName()));
       }
     }
 

@@ -229,7 +229,7 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
         }
       }
 
-      String eventName = "Close Session";
+      String eventName = "Close Session"; //$NON-NLS-1$
       IFile resourceFile = EcoreUtil2.getFile(session.getSessionResource());
 	  String eventContext = resourceFile != null ? resourceFile.getName() : ICommonConstants.EMPTY_STRING;
 	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE);

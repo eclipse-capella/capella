@@ -103,7 +103,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
       }
       
       Session session = null;
-      String eventName = "Open Session";
+      String eventName = "Open Session"; //$NON-NLS-1$
       String eventContext = selectedFile.getName();
       UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE);
 

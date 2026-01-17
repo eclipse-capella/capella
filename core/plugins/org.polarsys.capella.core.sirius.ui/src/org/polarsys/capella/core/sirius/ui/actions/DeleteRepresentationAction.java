@@ -57,7 +57,7 @@ public class DeleteRepresentationAction extends BaseSelectionListenerAction {
     if (!selectedRepresentations.isEmpty()) {
       int deletedDiagramCount = selectedRepresentations.size();
       String contextualMessage = null;
-      String name = String.join(", ",
+      String name = String.join(", ", //$NON-NLS-1$
           selectedRepresentations.stream().map(d -> d.getName()).collect(Collectors.toList()));
 
       if (deletedDiagramCount == 1) {
