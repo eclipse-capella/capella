@@ -17,7 +17,7 @@ import org.polarsys.capella.core.data.oa.OperationalProcess;
 
 public class ValidOPSelectionMenuTargetTester extends AbstractValidSelectionMenuTarget {
 
-  protected String PROPERTY_ID = "isValidOPSelectionMenu";
+  protected String PROPERTY_ID = "isValidOPSelectionMenu"; //$NON-NLS-1$
 
   @Override
   protected boolean isValid(EObject element) {

@@ -72,6 +72,6 @@ public class ValidFCMenuTargetTester extends PropertyTester {
   }
 
   protected String getPropertyId() {
-    return "isValidFCMenuTarget";
+    return "isValidFCMenuTarget"; //$NON-NLS-1$
   }
 }

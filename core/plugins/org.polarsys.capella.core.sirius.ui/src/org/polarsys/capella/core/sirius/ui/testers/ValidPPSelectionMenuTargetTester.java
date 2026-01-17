@@ -17,7 +17,7 @@ import org.polarsys.capella.core.data.cs.PhysicalPath;
 
 public class ValidPPSelectionMenuTargetTester extends AbstractValidSelectionMenuTarget {
 
-  protected String PROPERTY_ID = "isValidPPSelectionMenu";
+  protected String PROPERTY_ID = "isValidPPSelectionMenu"; //$NON-NLS-1$
 
   @Override
   protected boolean isValid(EObject element) {
