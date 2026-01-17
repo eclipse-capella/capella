@@ -203,44 +203,44 @@ public class CapellaUIResourcesPlugin extends AbstractUIActivator {
     else if (eobject instanceof Component) {
       Component component = (Component) eobject;
       if (component.isActor() && component.isHuman()) {
-        eClassName = "ActorHuman";
+        eClassName = "ActorHuman"; //$NON-NLS-1$
 
       } else if (component instanceof Entity && component.isActor() && !component.isHuman()) {
-        eClassName = "OperationalActor";
+        eClassName = "OperationalActor"; //$NON-NLS-1$
 
       } else if (component instanceof SystemComponent && component.isActor() && !component.isHuman()) {
-        eClassName = "SystemActor";
+        eClassName = "SystemActor"; //$NON-NLS-1$
 
       } else if (component instanceof LogicalComponent) {
         if (!component.isActor() && component.isHuman()) {
-          eClassName = "LogicalComponentHuman";
+          eClassName = "LogicalComponentHuman"; //$NON-NLS-1$
 
         } else if (component.isActor() && !component.isHuman()) {
-          eClassName = "LogicalActor";
+          eClassName = "LogicalActor"; //$NON-NLS-1$
         }
       } else if (component instanceof PhysicalComponent) {
 
         if (component.isActor() && !component.isHuman()) {
-          eClassName = "PhysicalActor";
+          eClassName = "PhysicalActor"; //$NON-NLS-1$
 
         } else {
           PhysicalComponentNature nature = ((PhysicalComponent) component).getNature();
 
           if (nature == PhysicalComponentNature.NODE) {
             if (component.isHuman()) {
-              eClassName = "PhysicalComponentHumanNode";
+              eClassName = "PhysicalComponentHumanNode"; //$NON-NLS-1$
             } else {
-              eClassName = "PhysicalComponentNode";
+              eClassName = "PhysicalComponentNode"; //$NON-NLS-1$
             }
           } else if (nature == PhysicalComponentNature.BEHAVIOR) {
             if (component.isHuman()) {
-              eClassName = "PhysicalComponentHumanBehavior";
+              eClassName = "PhysicalComponentHumanBehavior"; //$NON-NLS-1$
             } else {
-              eClassName = "PhysicalComponentBehavior";
+              eClassName = "PhysicalComponentBehavior"; //$NON-NLS-1$
             }
           } else {
             if (component.isHuman()) {
-              eClassName = "PhysicalComponentHumanUnset";
+              eClassName = "PhysicalComponentHumanUnset"; //$NON-NLS-1$
             }
           }
         }

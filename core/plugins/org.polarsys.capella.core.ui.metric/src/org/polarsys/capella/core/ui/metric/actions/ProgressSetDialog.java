@@ -156,7 +156,7 @@ public class ProgressSetDialog extends Dialog {
     } else {
 
       dlgImage.setImage(null);
-      dlgMessage.setText("");
+      dlgMessage.setText(""); //$NON-NLS-1$
     }
   }
 
@@ -351,7 +351,7 @@ public class ProgressSetDialog extends Dialog {
     }
 
     // Add an empty string, at index 0, so that the user is able to unset the status
-    combo.add("");
+    combo.add(""); //$NON-NLS-1$
     combo.setData(String.valueOf(i), null);
 
     combo.notifyListeners(SWT.Modify, new Event());

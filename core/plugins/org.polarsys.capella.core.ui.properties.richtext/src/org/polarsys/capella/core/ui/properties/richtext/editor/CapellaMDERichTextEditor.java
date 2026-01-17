@@ -18,7 +18,7 @@ import org.polarsys.kitalpha.richtext.widget.factory.MDERichTextFactory;
 
 public class CapellaMDERichTextEditor extends MDERichTextEditor {
 
-  public static final String ID = "org.polarsys.capella.core.ui.properties.richtext.editor";
+  public static final String ID = "org.polarsys.capella.core.ui.properties.richtext.editor"; //$NON-NLS-1$
   
   @Override
   protected MDERichTextFactory getRichTextFactory() {

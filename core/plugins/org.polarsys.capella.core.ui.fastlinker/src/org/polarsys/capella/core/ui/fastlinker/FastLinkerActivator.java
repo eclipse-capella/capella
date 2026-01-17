@@ -58,8 +58,8 @@ public class FastLinkerActivator extends AbstractUIPlugin {
   @SuppressWarnings("nls")
   protected void initializeImageRegistry(ImageRegistry imageRegistry) {
     // Enabled icons.
-    imageRegistry.put(IMG_PIN, imageDescriptorFromPlugin(PLUGIN_ID, "icons/elcl16/pin.gif"));
-    imageRegistry.put(IMG_CLEAR, imageDescriptorFromPlugin(PLUGIN_ID, "icons/elcl16/clear.gif"));
+    imageRegistry.put(IMG_PIN, imageDescriptorFromPlugin(PLUGIN_ID, "icons/elcl16/pin.gif")); //$NON-NLS-1$
+    imageRegistry.put(IMG_CLEAR, imageDescriptorFromPlugin(PLUGIN_ID, "icons/elcl16/clear.gif")); //$NON-NLS-1$
   }
 
   /*
