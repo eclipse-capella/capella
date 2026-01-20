@@ -55,6 +55,8 @@ public interface IToolNameConstants {
   String TOOL_INSERT_REMOVE_PV = "applied.property.values";
   String TOOL_INSERT_REMOVE_PVG = "applied.property.value.groups";
 
+  String TOOL_AB_DND_COMPONENT_PORT = "DnD AB ComponentPort";
+
   // Accelerators
   String TOOL_INITIALIZATION_FROM_EXISTING_DIAGRAM = "initialization.from.existing.diagram";
 
