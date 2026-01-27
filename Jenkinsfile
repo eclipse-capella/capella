@@ -206,7 +206,7 @@ pipeline {
 		stage('Sonar') {
 			steps {
 				script {
-					sonar.runSonar("eclipse-capella_capella", "eclipse/capella", "sonar-token-capella")
+					sonar.runSonar("eclipse-capella_capella", "eclipse/capella", "sonarcloud-token-capella")
 				}
 			}
 		}
