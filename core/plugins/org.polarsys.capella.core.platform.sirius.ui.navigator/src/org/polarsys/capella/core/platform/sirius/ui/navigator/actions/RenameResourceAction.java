@@ -743,8 +743,6 @@ public class RenameResourceAction extends WorkspaceAction {
       // Remove file extensions.
       oldName = oldName.substring(0, oldName.indexOf(ICommonConstants.POINT_CHARACTER));
       newName = newName.substring(0, newName.indexOf(ICommonConstants.POINT_CHARACTER));
-      oldName = normalizeForName(oldName);
-      newName = normalizeForName(newName);
       // We will use StringBuilder to use the method that allow us to replace in a given position with variable length
       StringBuilder content = new StringBuilder(initialContent_p);
       int start = indexOfCapellaProjectName + CAPELLA_PROJECT_NAME_ATT.length();
@@ -847,11 +845,8 @@ public class RenameResourceAction extends WorkspaceAction {
    * @return the new file content.
    */
   private String replaceRaw(String content, String oldName, String newName) {
-    String oldNameRaw = normalizeForName(oldName);
-    String newNameRaw = normalizeForName(newName);
-
-    String regex = START_COMMON_REGEX_PATTERN + Pattern.quote(oldNameRaw) + END_RAW_REGEX_PATTERN;
-    String replacement = "$1" + newNameRaw + "$2";
+    String regex = START_COMMON_REGEX_PATTERN + Pattern.quote(oldName) + END_RAW_REGEX_PATTERN;
+    String replacement = "$1" + newName + "$2";
 
     return content.replaceAll(regex, replacement);
   }
@@ -914,26 +909,8 @@ public class RenameResourceAction extends WorkspaceAction {
    * @return
    */
   private String normalizeForContent(String content) {
-    String _return = normalizeForName(content);
     // Whitespaces etc. (Not all special characters...)
-    return URI.encodeSegment(_return, true);
-  }
-
-  /**
-   * This is how names of elements are serialized in the resource
-   * 
-   * @param content
-   * @return
-   */
-  private String normalizeForName(String content) {
-    String _return = null;
-    try {
-      // Special characters � � etc.
-      _return = new String(content.getBytes("UTF8")); //$NON-NLS-1$
-    } catch (UnsupportedEncodingException e) {
-      e.printStackTrace();
-    }
-    return _return;
+    return URI.encodeSegment(content, true);
   }
 
   /**
