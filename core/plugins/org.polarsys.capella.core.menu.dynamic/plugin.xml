@@ -46,7 +46,7 @@
            code="ADD_CAPELLA_ELEMENT_Preference"
            description="add an Capella Element to the model "
            id="capella.project.explorer.actions.dynamic"
-           name="Other">
+           name="%PreferencesCategoryOther">
         <item
            description="this selected item allow a user to create a new capella element in the model"
            name="%DynamicActionProvider_AddCapellaElement_Title"

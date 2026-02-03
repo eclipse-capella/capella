@@ -33,7 +33,6 @@ public class Messages extends NLS {
   public static String DiagramTransitionRunnable_Error_Unsupported;
   public static String DiagramTransitionRunnable_Error_NoSemanticElt;
   public static String DiagramTransitionRunnable_Error_CannotCreate;
-  public static String DiagramTransitionRunnable_25;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

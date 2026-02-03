@@ -789,28 +789,28 @@
    <extension
          point="org.polarsys.capella.core.preferences.capellaPreferences">
       <category
-            description="Capella Wizards"
-            name="Wizards">
+            description="%PreferencesWizardDescription"
+            name="%PreferencesWizardName">
          <item
                enableByDefault="true"
                id="org.polarsys.capella.core.platform.sirius.ui.actions.wizard.AllocationManagementWizardAction"
-               name="Allocation Management">
+               name="%PreferencesAllocationManagementName">
          </item>
       </category>
       <category
-            description="Managing categories for functional/component exchanges and physical links."
-            name="Category Management">
+            description="%PreferencesCategoryManagementDescription"
+            name="%PreferencesCategoryManagementName">
          <item
-               description="Update categories for communication means, component exchanges, functional exchanges and physical links"
+               description="%PreferencesUpdateCategoryDescription"
                enableByDefault="true"
                id="org.polarsys.capella.core.platform.sirius.ui.actions.UpdateCategoriesWizardAction"
-               name="Update Category">
+               name="%PreferencesUpdateCategoryName">
          </item>
          <item
-               description="Create a category for communication means, component exchanges, functional exchanges and physical links"
+               description="%PreferencesCreateCategoryDescription"
                enableByDefault="true"
                id="org.polarsys.capella.core.platform.sirius.ui.actions.CreateCategoriesWizardAction"
-               name="Create Category">
+               name="%PreferencesCreateCategoryName">
          </item>
       </category>
 
