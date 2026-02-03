@@ -1694,9 +1694,9 @@
          point="org.polarsys.capella.core.preferences.capellaPreferences">
       <category
             description="test"
-            name="Other">
+            name="%CapellaPreferencesCategoryOther">
          <item
-               description="create a new table or diagram in Capella"
+               description="%NewRepresentationActionProvider_NewRepresentationAction_Description"
                enableByDefault="true"
                id="capella.project.explorer.newRepresentationContributor"
                name="%NewRepresentationActionProvider_NewRepresentationAction_Title">

@@ -45,37 +45,37 @@
       <properties
             id="org.polarsys.capella.core.libraries.manageReferences">
          <group
-               name="Manage References"
+               name="%FlexibilityPropertiesGroupManageReferencesName"
                id="org.polarsys.capella.core.libraries.manageReferences.group">
          </group>
          <group
-               name="Active States"
+               name="%FlexibilityPropertiesGroupActiveStatesName"
                id="org.polarsys.capella.core.libraries.activeStates.group">
          </group>
          <group
                id="org.polarsys.capella.core.libraries.accessPolicies.group"
-               name="Access Policies">
+               name="%FlexibilityPropertiesGroupAccesPoliciesName">
          </group>
          <property
                class="org.polarsys.capella.core.libraries.properties.ReferencesProperty"
                enabled="true"
                group="org.polarsys.capella.core.libraries.manageReferences.group"
                id="org.polarsys.capella.core.libraries.manageReferences.referenceProperty"
-               name="Referenced Libraries">
+               name="%FlexibilityPropertiesPropertyReferencedLibrariesName">
          </property>
          <property
                class="org.polarsys.capella.core.libraries.properties.ActiveStateProperty"
                enabled="true"
                group="org.polarsys.capella.core.libraries.activeStates.group"
                id="org.polarsys.capella.core.libraries.manageReferences.activeStateProperty"
-               name="Library States Configuration">
+               name="%FlexibilityPropertiesPropertyLibraryStatesConfigurationName">
          </property>
          <property
                class="org.polarsys.capella.core.libraries.properties.AccessPolicyProperty"
                enabled="true"
                group="org.polarsys.capella.core.libraries.accessPolicies.group"
                id="org.polarsys.capella.core.libraries.manageReferences.accessPolicyProperty"
-               name="Library Access Policy">
+               name="%FlexibilityPropertiesPropertyLibraryAccesPolicyName">
          </property>
       </properties>
    </extension>

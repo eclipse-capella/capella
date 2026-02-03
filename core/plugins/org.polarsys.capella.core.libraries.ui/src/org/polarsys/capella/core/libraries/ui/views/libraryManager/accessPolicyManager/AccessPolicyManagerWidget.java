@@ -34,8 +34,8 @@ import org.polarsys.capella.core.libraries.properties.LibraryManagerModel;
  */
 public class AccessPolicyManagerWidget {
 
-  private static final String LIBRARY_COLUMN_NAME = "Library"; //$NON-NLS-1$
-  private static final String ACCESS_POLICY_COLUMN_NAME = "Access Policy"; //$NON-NLS-1$
+  private static final String LIBRARY_COLUMN_NAME = Messages.LibraryColumnName;
+  private static final String ACCESS_POLICY_COLUMN_NAME = Messages.AccessPolicyColumnName;
 
   protected Table table;
   protected TableViewer tableViewer;
