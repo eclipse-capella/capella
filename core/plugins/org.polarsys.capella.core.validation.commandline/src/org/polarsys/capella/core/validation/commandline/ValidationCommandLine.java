@@ -242,7 +242,7 @@ public class ValidationCommandLine extends AbstractWorkbenchCommandLine {
 
       String result = null;
       result = toHTML(validationMarkers);
-      String fileName = Messages.resultsFileName;
+      String fileName = "validation-results.html"; //$NON-NLS-1$
       IFile file = outputFolder.getFile(new Path(fileName));
       ByteArrayInputStream outputContent = new ByteArrayInputStream(result.getBytes());
       if (file.exists()) {
