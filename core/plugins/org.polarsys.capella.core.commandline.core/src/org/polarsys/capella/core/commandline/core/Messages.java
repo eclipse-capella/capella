@@ -34,7 +34,6 @@ public class Messages extends NLS {
   public static String filepath_point_to_aird;
   public static String generation_done;
   public static String representation_mandatory;
-  public static String resource_prefix;
   public static String displayIsNull;
   public static String already_exist;
   public static String could_not_create_exec;

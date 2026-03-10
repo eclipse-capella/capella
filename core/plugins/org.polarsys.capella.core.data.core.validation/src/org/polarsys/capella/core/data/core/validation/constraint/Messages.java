@@ -24,7 +24,6 @@ public class Messages extends NLS {
   public static String I_38_ReferenceConstraints_detail;
   public static String I_38_ReferenceConstraints_title;
   public static String I_38_ReferenceConstraintsListener_detail;
-  public static String I_38_ReferenceConstraintsListener_ruleID;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);
