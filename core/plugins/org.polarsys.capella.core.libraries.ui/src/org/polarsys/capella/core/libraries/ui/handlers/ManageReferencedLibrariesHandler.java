@@ -139,8 +139,8 @@ public class ManageReferencedLibrariesHandler extends AbstractHandler {
 
     if (result == Window.OK) {
       if (!removedLibraries.isEmpty()) {
-        if (MessageDialog.openQuestion(Display.getDefault().getActiveShell(), "Read the documentation", //$NON-NLS-1$
-            "Unreferencing libraries may corrupt your model if not done in the proper way.\nMake sure to follow the procedure\nWould you like to open the documentation?")) {//$NON-NLS-1$
+        if (MessageDialog.openQuestion(Display.getDefault().getActiveShell(), Messages.ManageReferencedLibrariesHandler_UnreferenceDocDialogTitle,
+            Messages.ManageReferencedLibrariesHandler_UnreferenceDocDialogMessage)) {
           String localHRef = PlatformUI.getWorkbench().getHelpSystem().resolve(LIBRARY_DETACHMENT_DOC_URI, true)
               .toExternalForm();
           PlatformUI.getWorkbench().getHelpSystem().displayHelpResource(localHRef);
