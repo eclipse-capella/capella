@@ -622,7 +622,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
       CompliancyDefinitionPkg definitions = ((RecCatalog) pkg).getOwnedCompliancyDefinitionPkg();
       if (definitions == null) {
         definitions = ReFactory.eINSTANCE.createCompliancyDefinitionPkg();
-        definitions.setName("Compliancy Definitions");
+        definitions.setName(Messages.ReplicableElementHandler_CompliancyDefinitionPackage_Name);
         ((RecCatalog) pkg).setOwnedCompliancyDefinitionPkg(definitions);
       }
 
