@@ -77,13 +77,13 @@ public class NewRepresentationAction extends AbstractNewRepresentationAction {
 
     IInterpreter interpreter = InterpreterUtil.getInterpreter(eObject);
 
-    String newName = "New "; //$NON-NLS-1$
-
+    String label;
     if (!StringUtil.isEmpty(descriptionLabel)) {
-      newName += descriptionLabel;
+      label = descriptionLabel;
     } else {
-      newName += repDescription.getName();
+      label = repDescription.getName();
     }
+    String newName = NLS.bind(Messages.NewRepresentationAction_Dialog_Title, label);
 
     String titleExpression = repDescription.getTitleExpression();
     if (!StringUtil.isEmpty(titleExpression)) {
