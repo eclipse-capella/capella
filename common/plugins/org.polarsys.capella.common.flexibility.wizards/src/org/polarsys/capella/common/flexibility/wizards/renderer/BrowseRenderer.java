@@ -152,8 +152,8 @@ public class BrowseRenderer extends TextRenderer {
         scope.remove(null);
 
         SelectElementsDialog dialog =
-            new SelectElementsDialog(shell, "Selection wizard", //$NON-NLS-1$
-                "Select element.", //$NON-NLS-1$
+            new SelectElementsDialog(shell, Messages.BrowseRenderer_SelectElementWizard_title,
+                Messages.BrowseRenderer_SelectElementWizard_message,
                 new ArrayList<EObject>(scope));
         if (dialog.open() == Window.OK) {
           List<?> dialogResult = dialog.getResult();
