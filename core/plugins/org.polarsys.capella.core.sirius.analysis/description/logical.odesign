@@ -335,7 +335,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']"/>
-        <toolSections name="Components">
+        <toolSections name="Components" label="%la.toolsection.Components">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Logical Component in the target Logical Component" name="logical.component" label="%la.lcbd.logical.component" precondition="aql:containerView.isValidCreationCBComponent()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -495,7 +495,7 @@
             <representationNameVariable name="diagramName"/>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common">
+        <toolSections name="Common" label="%la.toolsection.Common">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%la.lcbd.constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
             <variable name="container"/>
@@ -652,7 +652,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']"/>
-        <toolSections name="Functions">
+        <toolSections name="Functions" label="%la.toolsection.Functions">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Logical Function in the target Function" name="logical.function" label="%la.lfbd.logical.function" precondition="aql:containerView.isValidCreationDFFunction()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']">
             <variable name="container">
               <subVariables xsi:type="tool:AcceleoVariable" name="tool" computationExpression="Logical Function"/>
@@ -808,7 +808,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common">
+        <toolSections name="Common" label="%la.toolsection.Common">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%la.lfbd.constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
             <variable name="container"/>
@@ -1129,7 +1129,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']"/>
-        <toolSections name="Functions">
+        <toolSections name="Functions" label="%la.toolsection.Functions">
           <ownedTools xsi:type="tool_1:ToolGroup" name="FunctionCreation">
             <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Logical Function" name="function" label="%la.ldfb.function" precondition="aql:containerView.isValidCreationDFFunction()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']">
               <variable name="container"/>
@@ -1538,7 +1538,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Accelerators">
+        <toolSections name="Accelerators" label="%la.toolsection.Accelerators">
           <ownedTools xsi:type="tool:ToolDescription" documentation="Insert all the Functions available in a given Mode / State. This tool does not modify the semantic model." name="functions.from.mode.state" label="%la.ldfb.functions.from.mode.state" precondition="aql:elementView.isValidDFInsertStateModes()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Mode.gif">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -1611,7 +1611,7 @@
           </ownedTools>
           <reusedTools xsi:type="tool:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.1/@ownedTools[name='initialization.from.existing.diagram']"/>
         </toolSections>
-        <toolSections name="Common">
+        <toolSections name="Common" label="%la.toolsection.Common">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%la.ldfb.constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
             <variable name="container"/>
@@ -2311,7 +2311,7 @@
         <reusedMappings xsi:type="description_2:NodeMapping" href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']"/>
-        <toolSections name="Components">
+        <toolSections name="Components" label="%la.toolsection.Components">
           <ownedTools xsi:type="tool_1:ToolGroup" name="Component">
             <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Logical Component and a Part typed by this Logical Component. &#xD;&#xA;The Part is created in the Component target of the click." name="logical.component" label="%la.lab.logical.component" precondition="aql:containerView.getABTarget().isValidCreationABComponent()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LogicalComponent.gif">
               <variable name="container">
@@ -3197,7 +3197,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Functions">
+        <toolSections name="Functions" label="%la.toolsection.Functions">
           <ownedTools xsi:type="tool_1:ToolGroup" name="FunctionCreation">
             <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Logical Function and allocates it to the target Logical Component / Actor." name="function" label="%la.lab.function" precondition="aql:self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']">
               <variable name="container">
@@ -3718,7 +3718,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Accelerators">
+        <toolSections name="Accelerators" label="%la.toolsection.Accelerators">
           <ownedTools xsi:type="tool:ToolDescription" documentation="Insert all the Functions available in a given Mode / State. This tool does not modify the semantic model." name="functions.from.mode.state" label="%la.lab.functions.from.mode.state" precondition="aql:elementView.isValidABInsertStateModes()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Mode.gif">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -3757,7 +3757,7 @@
           </ownedTools>
           <reusedTools xsi:type="tool:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.1/@ownedTools[name='initialization.from.existing.diagram']"/>
         </toolSections>
-        <toolSections name="Common">
+        <toolSections name="Common" label="%la.toolsection.Common">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%la.lab.constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
             <variable name="container"/>
@@ -4122,7 +4122,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector']"/>
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
-        <toolSections name="Default">
+        <toolSections name="Default" label="%la.toolsection.Default">
           <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete capella elements">
             <element name="element"/>
             <elementView name="elementView"/>
