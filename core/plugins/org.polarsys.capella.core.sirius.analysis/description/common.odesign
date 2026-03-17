@@ -3494,7 +3494,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <toolSections name="Classes">
+        <toolSections name="Classes" label="%common.toolsection.Classes">
           <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Data Package." name="data.package" label="%common.cdb.data.package" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_DataPkg']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -4418,7 +4418,7 @@
             <representationNameVariable name="diagramName"/>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common">
+        <toolSections name="Common" label="%common.toolsection.Common">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Constraint." name="constraint" label="%common.cdb.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -4763,7 +4763,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <toolSections name="Communication">
+        <toolSections name="Communication" label="%common.toolsection.Communication">
           <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Interface Package." name="interface.package" label="%common.cdb.interface.package" precondition="aql:self.eContainerOrSelf(cs::BlockArchitecture)->filter(epbs::EPBSArchitecture)->size() = 0" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@containerMappings[name='DT_InterfacePkg']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassPkg.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -5305,7 +5305,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Accelerators">
+        <toolSections name="Accelerators" label="%common.toolsection.Accelerators">
           <ownedTools xsi:type="tool_1:ToolDescription" documentation="Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model." name="initialization.from.existing.diagram" label="%common.cdb.initialization.from.existing.diagram" precondition="aql:elementView.isValidInitializeDiagramFromExistingDiagram()" iconPath="/org.eclipse.sirius.ui/icons/full/obj16/DAnalysis.gif">
             <filters precondition="aql:self.isFilterInitializeDiagramFromExistingDiagram()" elementsToListen="aql:self">
               <listeners domainClass="DDiagram" featureName="ownedDiagramElements"/>
@@ -5352,7 +5352,7 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="default">
-        <toolSections name="Architectures">
+        <toolSections name="Architectures" label="%common.toolsection.Architectures">
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="operational.analysis" label="%common.ca.operational.analysis" precondition="aql:self.getRootContainer().eAllContents()->filter(oa::OperationalAnalysis)->size() = 0" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OperationalAnalysis.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -5972,7 +5972,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <toolSections name="Detailed Interfaces">
+        <toolSections name="Detailed Interfaces" label="%common.toolsection.DetailItf">
           <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates an Interface" name="interface" label="%common.cdi.interface" precondition="aql:containerView.isValidCreationCCDIInterface()" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='FullInterface1']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Interface.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -7511,7 +7511,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <toolSections name="External Interfaces">
+        <toolSections name="External Interfaces" label="%common.toolsection.ExternalItf">
           <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Logical / Physical Component (and creates a Part in the selected Container Component)" name="component" label="%common.cei.component" precondition="aql:containerView.getIBTarget(false).isValidCreationABComponent()" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@containerMappings[name='CA_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
             <filters precondition="aql:self.target.eContainerOrSelf(ctx::SystemAnalysis)->size() != 0"/>
             <variable name="container"/>
@@ -9048,7 +9048,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <toolSections name="Internal Interfaces">
+        <toolSections name="Internal Interfaces" label="%common.toolsection.InternalItf">
           <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Logical / Physical Component (and creates a Part in the selected Container Component)" name="component" label="%common.cii.component" precondition="aql:containerView.getIBTarget(false).isValidCreationABComponent()" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
             <variable name="container"/>
             <viewVariable name="containerView">
@@ -10661,7 +10661,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <toolSections name="Interfaces Blank">
+        <toolSections name="Interfaces Blank" label="%common.toolsection.BlankItf">
           <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Logical / Physical Component (and creates a Part in the selected Container Component)" name="component" label="%common.idb.component" precondition="aql:containerView.getIBTarget(false).isValidCreationABComponent()" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
             <filters precondition="aql:self.target.eContainerOrSelf(ctx::SystemAnalysis)->size() != 0"/>
             <variable name="container"/>
@@ -12269,7 +12269,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <toolSections name="Tools">
+        <toolSections name="Tools" label="%common.toolsection.Tools">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Capability Realization" name="capability.realization" label="%common.cri.capability.realization" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20CapabilityRealization']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/CapabilityRealization.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -12733,7 +12733,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <toolSections name="Tools">
+        <toolSections name="Tools" label="%common.toolsection.Tools">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Capability Realization" name="capability.realization" label="%common.crb.capability.realization" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@nodeMappings[name='CRB%20CapabilityRealization']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/CapabilityUseCase.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -13276,7 +13276,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <toolSections name="Dependencies">
+        <toolSections name="Dependencies" label="%common.toolsection.Dependencies">
           <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Data Packages" name="data.packages" label="%common.pd.data.packages" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
@@ -13483,7 +13483,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <toolSections name="Interfaces Blank">
+        <toolSections name="Interfaces Blank" label="%common.toolsection.BlankItf">
           <ownedTools xsi:type="tool:ToolGroup" name="Exchange Items">
             <tools xsi:type="tool:NodeCreationDescription" documentation="Creates an Exchange Item with a Communication Mechanism set to EVENT" name="event" label="%common.id.event" precondition="aql:not (containerView.getViewDiagram().target.oclIsKindOf(epbs::ConfigurationItem))" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@containerMappings[name='ID_Interface']/@subNodeMappings[name='ID_Operation']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ExchangeItemEvent.gif">
               <variable name="container"/>
@@ -19308,7 +19308,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <toolSections name="Involvements">
+        <toolSections name="Involvements" label="%common.toolsection.Involvements">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Involvement Function referencing the selected Function." name="involve.function" label="%common.fcd.involve.function" precondition="aql:containerView.isValidFCInvolveFunction()" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementFunction.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -19473,7 +19473,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Sequencing">
+        <toolSections name="Sequencing" label="%common.toolsection.Sequencing">
           <ownedTools xsi:type="tool:ToolGroup" documentation="Create a new Control Node." name="Create_ControlNode" label="%Create_ControlNode.label.0">
             <tools xsi:type="tool_1:ToolDescription" documentation="Create a new AND Control Node." name="and" label="%common.fcd.and" precondition="aql:container.oclIsKindOf(fa::FunctionalChain) or container.oclIsKindOf(fa::FunctionalChainReference) or container.oclIsKindOf(fa::SequenceLink) or container.oclIsKindOf(fa::SequenceLinkEnd)" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ControlNode_And.gif">
               <element name="element"/>
