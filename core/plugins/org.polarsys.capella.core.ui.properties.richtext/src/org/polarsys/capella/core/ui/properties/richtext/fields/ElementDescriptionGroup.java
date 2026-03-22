@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2025 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -55,11 +55,9 @@ import org.polarsys.kitalpha.richtext.widget.helper.MDERichtextWidgetHelper;
  */
 public abstract class ElementDescriptionGroup {
 
-  private static final String FAMILY_DEFERRED_REFRESH = CapellaUIPropertiesRichtextPlugin.PLUGIN_ID
-      + ".refreshJobFamily";
+  private static final String FAMILY_DEFERRED_REFRESH = CapellaUIPropertiesRichtextPlugin.PLUGIN_ID + ".refreshJobFamily";
 
-  private static final String FAMILY_LOAD_DATA_REFRESH = CapellaUIPropertiesRichtextPlugin.PLUGIN_ID
-      + ".loadDataJobFamily";
+  private static final String FAMILY_LOAD_DATA_REFRESH = CapellaUIPropertiesRichtextPlugin.PLUGIN_ID + ".loadDataJobFamily";
 
   /**
    * Current edited semantic element.
@@ -213,7 +211,8 @@ public abstract class ElementDescriptionGroup {
   public void aboutToBeShown() {
     if (updateDescriptionEditability(semanticElement, semanticFeature)) {
       try {
-        if (semanticElement != null && semanticFeature != null) {          
+        resetSemanticElementWithoutSession();
+        if (semanticElement != null && semanticFeature != null) {
           ((SavingStrategy) descriptionTextField.getSaveStrategy()).ensureLastSave();
           descriptionTextField.bind(semanticElement, semanticFeature);
           descriptionTextField.setSaveStrategy(new SavingStrategy(semanticElement, semanticFeature));
@@ -235,13 +234,17 @@ public abstract class ElementDescriptionGroup {
    * Remove the editor before the Property tab is disposed
    */
   public void aboutToBeHidden() {
+    resetSemanticElementWithoutSession();
+    hideEditor();
+  }
+
+  private void resetSemanticElementWithoutSession() {
     Session session = SessionManager.INSTANCE.getSession(semanticElement);
-    if(session == null) {
-      //If the semanticElement doesn't belong to a session, clear it 
+    if (session == null) {
+      // If the semanticElement doesn't belong to a session, clear it
       semanticElement = null;
       semanticFeature = null;
     }
-    hideEditor();
   }
 
   /**

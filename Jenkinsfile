@@ -2,7 +2,11 @@ pipeline {
 	agent {
 		label 'migration'
 	}
-  
+
+	options {
+		timeout(time: 8, unit: 'HOURS')
+	}
+	
 	tools {
 		maven 'apache-maven-latest'
 		jdk 'openjdk-jdk17-latest'
@@ -202,7 +206,7 @@ pipeline {
 		stage('Sonar') {
 			steps {
 				script {
-					sonar.runSonar("eclipse-capella_capella", "eclipse/capella", "sonar-token-capella")
+					sonar.runSonar("eclipse-capella_capella", "eclipse/capella", "sonarcloud-token-capella")
 				}
 			}
 		}
