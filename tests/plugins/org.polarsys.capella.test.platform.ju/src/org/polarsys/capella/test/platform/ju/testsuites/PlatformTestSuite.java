@@ -38,6 +38,7 @@ import org.polarsys.capella.test.platform.ju.testcases.JobLogTest;
 import org.polarsys.capella.test.platform.ju.testcases.LicenceTest;
 import org.polarsys.capella.test.platform.ju.testcases.ProjectSelectionDialogTest;
 import org.polarsys.capella.test.platform.ju.testcases.PropertiesWizardIconTest;
+import org.polarsys.capella.test.platform.ju.testcases.UIEnvironmentFingerprintTest;
 import org.polarsys.capella.test.platform.ju.testcases.ViatraSurrogateAllDerivedFeaturesImplemented;
 
 import junit.framework.Test;
@@ -78,6 +79,7 @@ public class PlatformTestSuite extends BasicTestSuite {
     tests.add(new DataNotifierBeforeTransactionRecorder());
     tests.add(new AboutInfoTest());
     tests.add(new LicenceTest());
+    tests.add(new UIEnvironmentFingerprintTest());
     tests.add(new JobLogTest());
     tests.add(new CapellaLoggerConfigTestCase());
     tests.add(new CustomDAnalysisSelection());
