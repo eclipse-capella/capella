@@ -16,12 +16,6 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.common.re.merge.scope.messages"; //$NON-NLS-1$
-  public static String ReScope_0;
-  public static String ReScope_1;
-  public static String ReScope_2;
-  public static String ReScope_3;
-  public static String ReScope_4;
-  public static String ReScope_5;
   public static String ReSourceScope_candidateModel;
   public static String ReSourceScope_REC;
   public static String ReSourceScope_selectedRPL;

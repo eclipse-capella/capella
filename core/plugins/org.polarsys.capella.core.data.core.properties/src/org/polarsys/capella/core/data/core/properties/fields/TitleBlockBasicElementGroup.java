@@ -38,8 +38,8 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.helpers.LockHelper;
 
 public class TitleBlockBasicElementGroup extends AbstractSemanticField {
-  private static final String NAME = Messages.getString("TitleBlockBasicElementGroup.0"); //$NON-NLS-1$
-  private static final String CONTENT = Messages.getString("TitleBlockBasicElementGroup.1"); //$NON-NLS-1$
+  private static final String NAME = "Name:"; //$NON-NLS-1$
+  private static final String CONTENT = "Content:"; //$NON-NLS-1$
   private static final String INTERPRETER_ERROR = Messages.getString("TitleBlockBasicElementGroup.2"); //$NON-NLS-1$
   protected Text nameTextField;
   protected Text contentTextField;
