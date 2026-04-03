@@ -4,7 +4,6 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = Messages.class.getPackageName() + ".messages"; //$NON-NLS-1$
-	public static String Renderer_NameColumn;
 	public static String Renderer_CustomLocation;
 	public static String Renderer_NoLocation;
 	public static String Renderer_DefaultLocation;

@@ -112,7 +112,7 @@ public abstract class ReScope extends ReferenceModelScope implements INotifyList
    */
   @Override
   public boolean add(EObject element) {
-    System.out.println(NLS.bind(Messages.ReScope_0, new String[] { EObjectLabelProviderHelper.getText(element) }));
+    System.out.println(NLS.bind("ADD {0}", new String[] { EObjectLabelProviderHelper.getText(element) }));
 
     if (element instanceof CatalogElement) {
 
@@ -131,7 +131,7 @@ public abstract class ReScope extends ReferenceModelScope implements INotifyList
    */
   @Override
   public boolean add(EObject element, boolean includeChildren) {
-    System.out.println(NLS.bind(Messages.ReScope_1, new String[] { EObjectLabelProviderHelper.getText(element) }));
+    System.out.println(NLS.bind("ADD-includeChildren {0}", new String[] { EObjectLabelProviderHelper.getText(element) }));
     return super.add(element, includeChildren);
   }
 
@@ -140,7 +140,7 @@ public abstract class ReScope extends ReferenceModelScope implements INotifyList
    */
   @Override
   public boolean add(EObject source, EReference reference, EObject value) {
-    System.out.println(NLS.bind(Messages.ReScope_2, new String[] { EObjectLabelProviderHelper.getText(source), reference.getName(),
+    System.out.println(NLS.bind("ADD {0} {1} {2}", new String[] { EObjectLabelProviderHelper.getText(source), reference.getName(),
                                                                  EObjectLabelProviderHelper.getText(value) }));
     if (reference.isContainment()) {
       addTraceabilityLink(value, context);
@@ -165,7 +165,7 @@ public abstract class ReScope extends ReferenceModelScope implements INotifyList
    */
   @Override
   public boolean add(EObject source, EAttribute attribute, Object value) {
-    System.out.println(NLS.bind(Messages.ReScope_2, new String[] { EObjectLabelProviderHelper.getText(source), attribute.getName(),
+    System.out.println(NLS.bind("ADD {0} {1} {2}", new String[] { EObjectLabelProviderHelper.getText(source), attribute.getName(),
                                                                  EObjectLabelProviderHelper.getText(value) }));
 
     return super.add(source, attribute, value);
@@ -192,7 +192,7 @@ public abstract class ReScope extends ReferenceModelScope implements INotifyList
    */
   @Override
   public boolean remove(EObject element) {
-    System.out.println(NLS.bind(Messages.ReScope_3, new String[] { EObjectLabelProviderHelper.getText(element) }));
+    System.out.println(NLS.bind("REMOVE {0}", new String[] { EObjectLabelProviderHelper.getText(element) }));
     ReplicableElementHandlerHelper.getInstance(context).addDeletableElement(element, context);
 
     _roots.remove(element);
@@ -205,7 +205,7 @@ public abstract class ReScope extends ReferenceModelScope implements INotifyList
    */
   @Override
   public void removeFromScope(EObject element) {
-    System.out.println(NLS.bind(Messages.ReScope_4, new String[] { EObjectLabelProviderHelper.getText(element) }));
+    System.out.println(NLS.bind("REMOVE-fromScope {0}", new String[] { EObjectLabelProviderHelper.getText(element) }));
     super.removeFromScope(element);
   }
   
@@ -222,7 +222,7 @@ public abstract class ReScope extends ReferenceModelScope implements INotifyList
    */
   @Override
   public boolean remove(EObject source, EAttribute attribute, Object value) {
-    System.out.println(NLS.bind(Messages.ReScope_5, new String[] { EObjectLabelProviderHelper.getText(source), attribute.getName(),
+    System.out.println(NLS.bind("REMOVE {0} {1} {2}", new String[] { EObjectLabelProviderHelper.getText(source), attribute.getName(),
                                                                     EObjectLabelProviderHelper.getText(value) }));
     return super.remove(source, attribute, value);
   }
@@ -232,7 +232,7 @@ public abstract class ReScope extends ReferenceModelScope implements INotifyList
    */
   @Override
   public boolean remove(EObject source, EReference reference, EObject value) {
-    System.out.println(NLS.bind(Messages.ReScope_5, new String[] { EObjectLabelProviderHelper.getText(source), reference.getName(),
+    System.out.println(NLS.bind("REMOVE {0} {1} {2}", new String[] { EObjectLabelProviderHelper.getText(source), reference.getName(),
                                                                     EObjectLabelProviderHelper.getText(value) }));
 
     if (reference.isContainment()) {

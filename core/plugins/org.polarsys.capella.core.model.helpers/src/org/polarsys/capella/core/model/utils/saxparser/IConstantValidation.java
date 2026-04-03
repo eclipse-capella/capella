@@ -79,7 +79,7 @@ public interface IConstantValidation {
   // euro
   String EURO_NAME_CODE = "&euro;"; //$NON-NLS-1$
   // trade
-  String TRADE = "�"; //$NON-NLS-1$
+  String TRADE = "\u2122"; //$NON-NLS-1$
   // replacing string for euro
   String TRADE_NUMBER_CODE = "&#8482;"; //$NON-NLS-1$
   // euro

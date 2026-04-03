@@ -82,7 +82,7 @@ public class ReplicaContentLocationRenderer extends EditListRenderer implements 
     // We allow renaming of elements in this dialog
     final TreeViewer viewer = getViewer().getClientViewer();
 
-    viewer.setColumnProperties(new String[] { Messages.Renderer_NameColumn });
+    viewer.setColumnProperties(new String[] { "name" }); //$NON-NLS-1$
     viewer.setCellModifier(new NameCellModifier(viewer, context));
     viewer.setCellEditors(new CellEditor[] { new TextCellEditor(viewer.getTree()) });
 

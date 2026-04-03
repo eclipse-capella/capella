@@ -84,18 +84,18 @@ public class DifferencesComputingActivity extends AbstractActivity implements IT
     if (displayLog(context)) {
 
       // Logging
-      LogHelper.getInstance().debug(NLS.bind(Messages.DifferencesComputingActivity_0, Role.REFERENCE.toString()),
-    		  org.polarsys.capella.core.transition.common.constants.Messages.Activity_ComputingDifferenceActivity);
+      LogHelper.getInstance().debug(NLS.bind("Differences from {0}", Role.REFERENCE.toString()),
+          org.polarsys.capella.core.transition.common.constants.Messages.Activity_ComputingDifferenceActivity);
       for (IDifference<EObject> diff : toAnalyseFromSource) {
-        LogHelper.getInstance().debug(NLS.bind(Messages.DifferencesComputingActivity_1, diff.toString()),
-        		org.polarsys.capella.core.transition.common.constants.Messages.Activity_ComputingDifferenceActivity);
+        LogHelper.getInstance().debug(NLS.bind(" - {0}", diff.toString()),
+            org.polarsys.capella.core.transition.common.constants.Messages.Activity_ComputingDifferenceActivity);
       }
 
-      LogHelper.getInstance().debug(NLS.bind(Messages.DifferencesComputingActivity_0, Role.TARGET.toString()),
-    		  org.polarsys.capella.core.transition.common.constants.Messages.Activity_ComputingDifferenceActivity);
+      LogHelper.getInstance().debug(NLS.bind("Differences from {0}", Role.TARGET.toString()),
+          org.polarsys.capella.core.transition.common.constants.Messages.Activity_ComputingDifferenceActivity);
       for (IDifference<EObject> diff : toAnalyseFromTarget) {
-        LogHelper.getInstance().debug(NLS.bind(Messages.DifferencesComputingActivity_1, diff.toString()),
-        		org.polarsys.capella.core.transition.common.constants.Messages.Activity_ComputingDifferenceActivity);
+        LogHelper.getInstance().debug(NLS.bind(" - {0}", diff.toString()),
+            org.polarsys.capella.core.transition.common.constants.Messages.Activity_ComputingDifferenceActivity);
       }
 
     }
