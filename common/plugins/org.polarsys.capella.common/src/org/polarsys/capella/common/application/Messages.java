@@ -9,7 +9,7 @@ public class Messages extends NLS {
 
 	static {
 		// initialize resource bundle
-		NLS.initializeMessages(BUNDLE_NAME, CommonArgumentsConstants.class);
+		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
 	}
 
 	private Messages() {
