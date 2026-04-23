@@ -15,6 +15,9 @@ package org.polarsys.capella.test.commandline.ju.testsuites;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.commandline.ju.testcases.CommandLineExportProjectsAsFoldersTest;
+import org.polarsys.capella.test.commandline.ju.testcases.CommandLineExportProjectsAsSingleZipTest;
+import org.polarsys.capella.test.commandline.ju.testcases.CommandLineExportProjectsAsZipsTest;
 import org.polarsys.capella.test.commandline.ju.testcases.CommandLineExportRepresentationsTest;
 import org.polarsys.capella.test.commandline.ju.testcases.CommandLineFolderMigrationTest;
 import org.polarsys.capella.test.commandline.ju.testcases.CommandLineRefreshAirdTest;
@@ -27,17 +30,23 @@ import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import junit.framework.Test;
 
 public class CommandLineTestSuite extends BasicTestSuite {
-
+  
   @Override
   protected List<BasicTestArtefact> getTests() {
-    List<BasicTestArtefact> tests = new ArrayList<>();
-    tests.add(new CommandLineValidationTest());
-    tests.add(new CommandLineZipMigrationTest());
-    tests.add(new CommandLineFolderMigrationTest());
-    tests.add(new CommandLineRemoveHiddenElementsTest());
-    tests.add(new CommandLineExportRepresentationsTest());
-    tests.add(new CommandLineRefreshAirdTest());
-    return tests;
+    return new ArrayList<>(List.of( // result must be mutable for BasicTestSuite.
+      // Common arguments tests
+      new CommandLineExportProjectsAsFoldersTest(),
+      new CommandLineExportProjectsAsSingleZipTest(),
+      new CommandLineExportProjectsAsZipsTest(),
+      
+      // Built-in command line tests
+      new CommandLineValidationTest(), 
+      new CommandLineZipMigrationTest(),
+      new CommandLineFolderMigrationTest(), 
+      new CommandLineRemoveHiddenElementsTest(),
+      new CommandLineExportRepresentationsTest(), 
+      new CommandLineRefreshAirdTest()
+     ));
   }
   
 

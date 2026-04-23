@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -13,6 +13,8 @@
 package org.polarsys.capella.core.commandline.core;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -107,7 +109,7 @@ public class AbstractCommandLine implements ICommandLine {
       logErrorAndThrowException(Messages.outputfolder_mandatory);
     }
     // check -import argument
-    if (isEmtyOrNull(argHelper.getImportProjects())) {
+    if (isEmtyOrNull(argHelper.getImportProjects()) && isEmtyOrNull(argHelper.getImportAllProjects())) {
       setMode(CommandLineMode.NO_IMPORT);
       // project are not imported => check that -filepath and -outputfolder exists into the workspace
       checkFilePath();
@@ -135,9 +137,18 @@ public class AbstractCommandLine implements ICommandLine {
     }
 
     else if (CommandLineMode.IMPORT.equals(mode)) {
+      String projectsToImport = argHelper.getImportProjects();
+      String allProjectsToImport = argHelper.getImportAllProjects();
       try {
-        importProjects(toList(argHelper.getImportProjects()));
-      } catch (CoreException exception) {
+        List<String> projectList = new ArrayList<>();
+        if (projectsToImport != null) {
+          projectList.addAll(toList(projectsToImport));
+        }
+        if (allProjectsToImport != null) {
+          projectList.addAll(getAllProjectsInFolder(allProjectsToImport));
+        }
+        importProjects(projectList);
+      } catch (CoreException | IOException exception) {
         throw new CommandLineException(exception.getMessage());
       }
     }
@@ -365,10 +376,10 @@ public class AbstractCommandLine implements ICommandLine {
   }
 
   /**
-   * Transform a space separated list of strings into a List
+   * Transforms a space separated list of strings into a List
    *
-   * @param string
-   * @return
+   * @param string text to split
+   * @return list of values
    */
   protected List<String> toList(String string) {
     List<String> list = new ArrayList<String>();
@@ -376,6 +387,21 @@ public class AbstractCommandLine implements ICommandLine {
       list.add(path.trim());
     }
     return list;
+  }
+
+  protected List<String> getAllProjectsInFolder(String folder) throws IOException {
+    java.nio.file.Path rootFolderPath = Paths.get(folder);
+
+    List<String> allProjects = Files.list(rootFolderPath).filter(path -> {
+      boolean isProjectDirectory = Files.isDirectory(path) && Files.exists(path.resolve(".project"));
+      boolean isProjectZip = path.toString().endsWith(".zip");
+      return isProjectDirectory || isProjectZip;
+    }).map(java.nio.file.Path::toString)
+        .toList();
+    if (allProjects.isEmpty()) {
+      throw new IOException(String.format("The folder '%s' does not contain any project.", folder));
+    }
+    return allProjects;
   }
 
   /**

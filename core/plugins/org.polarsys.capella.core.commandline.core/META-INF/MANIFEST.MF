@@ -9,7 +9,8 @@ Require-Bundle: org.polarsys.capella.common.tools.report;visibility:=reexport,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.application,
  org.polarsys.capella.core.af.integration,
- org.polarsys.capella.commandline.doc
+ org.polarsys.capella.commandline.doc,
+ org.apache.commons.commons-io
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.commandline.core

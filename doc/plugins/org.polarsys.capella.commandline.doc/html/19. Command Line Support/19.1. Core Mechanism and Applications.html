@@ -29,12 +29,24 @@
 			<tr>
 				<td>input</td>
 				<td>mandatory</td>
-				<td>defines a list of the relative paths (to the workspace) of the Eclipse projects or aird files to use as input of the command line. The list have to be placed into quotes "" and separated by a &#124; character. Use /all to specify that all projects in the workspace are used as input.</td>
+				<td>defines a list of the relative paths (to the workspace) of the Eclipse projects or aird files to use as input of the command line. The list have to be placed into quotes "" and separated by a 
+					<b>&#124;</b> character. Use 
+					<b>/all</b> to specify that all projects in the workspace are used as input.
+				</td>
 			</tr>
 			<tr>
 				<td>import</td>
 				<td>optional</td>
-				<td>defines a list of the path of the Eclipse projects to import into the workspace before doing the actual job. The list have to be placed into quotes "" and separated by a &#124; character</td>
+				<td>defines a list of the path of the Eclipse projects to import into the workspace before doing the actual job. The list have to be placed into quotes "" and separated by a 
+					<b>&#124;</b> character
+				</td>
+			</tr>
+			<tr>
+				<td>importAll</td>
+				<td>optional</td>
+				<td>defines a folder containing Eclipse Projects. The Eclipse projects can be a folder with a 
+					<i>.project</i> file or in a ZIP file.
+				</td>
 			</tr>
 			<tr>
 				<td>forceimport</td>
@@ -47,9 +59,47 @@
 				<td>defines the relative path (to the workspace) of the output folder</td>
 			</tr>
 			<tr>
+				<td>exportProjects</td>
+				<td>optional</td>
+				<td>defines a list of Eclipse projects to export by their names. The list have to be placed into quotes "" and separated by a 
+					<b>&#124;</b> character. Use 
+					<b>/all</b> to specify that all projects in the workspace are exported. The export behavior depends of 
+					<b>-exportCopy</b> and 
+					<b>-singleZip</b>. This parameter must be used with 
+					<b>-exportTarget</b> to specify where projects are exported.
+				</td>
+			</tr>
+			<tr>
+				<td>singleZip</td>
+				<td>optional</td>
+				<td>defines the location export. The location is a file if 
+					<b>-singleZip</b> is defined
+				</td>
+			</tr>
+			<tr>
+				<td>exportCopy</td>
+				<td>optional</td>
+				<td>defines the location export. The location is a file if 
+					<b>-singleZip</b> is defined
+				</td>
+			</tr>
+			<tr>
+				<td>exportTarget</td>
+				<td>optional</td>
+				<td>defines the location export. The location is a file if 
+					<b>-singleZip</b> is defined. Otherwize 
+				</td>
+			</tr>
+			<tr>
 				<td>exportZip</td>
 				<td>optional</td>
-				<td>defines a list of the relative paths of the Eclipse projects to export as zip. The list have to be placed into quotes "" and separated by a &#124; character. Use /all to specify that all projects in the workspace are exported. This parameter must be used with -outputfolder to specify the folder that contains the zips.</td>
+				<td>(Deprecated, see exportProjects option)
+					<p>defines a list of the relative paths of the Eclipse projects to export as zip. The list have to be placed into quotes "" and separated by a 
+						<b>&#124;</b> character. Use 
+						<b>/all</b> to specify that all projects in the workspace are exported. This parameter must be used with 
+						<b>-outputfolder</b> to specify the folder that contains the zips.
+					</p>
+				</td>
 			</tr>
 			<tr>
 				<td>nosplash</td>

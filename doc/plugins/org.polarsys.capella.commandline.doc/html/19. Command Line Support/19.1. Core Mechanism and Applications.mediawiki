@@ -22,11 +22,15 @@ The core mechanism provides the following parameters:
 |-
 |input
 |mandatory
-|defines a list of the relative paths (to the workspace) of the Eclipse projects or aird files to use as input of the command line. The list have to be placed into quotes "" and separated by a &#124; character. Use /all to specify that all projects in the workspace are used as input.
+|defines a list of the relative paths (to the workspace) of the Eclipse projects or aird files to use as input of the command line. The list have to be placed into quotes "" and separated by a '''&#124;''' character. Use '''/all''' to specify that all projects in the workspace are used as input.
 |-
 |import
 |optional
-|defines a list of the path of the Eclipse projects to import into the workspace before doing the actual job. The list have to be placed into quotes "" and separated by a &#124; character
+|defines a list of the path of the Eclipse projects to import into the workspace before doing the actual job. The list have to be placed into quotes "" and separated by a '''&#124;''' character
+|-
+|importAll
+|optional
+|defines a folder containing Eclipse Projects. The Eclipse projects can be a folder with a ''.project'' file or in a ZIP file.
 |-
 |forceimport
 |optional
@@ -36,9 +40,26 @@ The core mechanism provides the following parameters:
 |optional
 |defines the relative path (to the workspace) of the output folder
 |-
+|exportProjects
+|optional
+|defines a list of Eclipse projects to export by their names. The list have to be placed into quotes "" and separated by a '''&#124;''' character. Use '''/all''' to specify that all projects in the workspace are exported. The export behavior depends of '''-exportCopy''' and '''-singleZip'''. This parameter must be used with '''-exportTarget''' to specify where projects are exported.
+|-
+|singleZip
+|optional
+|defines the location export. The location is a file if '''-singleZip''' is defined
+|-
+|exportCopy
+|optional
+|defines the location export. The location is a file if '''-singleZip''' is defined
+|-
+|exportTarget
+|optional
+|defines the location export. The location is a file if '''-singleZip''' is defined. Otherwize 
+|-
 |exportZip
 |optional
-|defines a list of the relative paths of the Eclipse projects to export as zip. The list have to be placed into quotes "" and separated by a &#124; character. Use /all to specify that all projects in the workspace are exported. This parameter must be used with -outputfolder to specify the folder that contains the zips.
+|(Deprecated, see exportProjects option)
+defines a list of the relative paths of the Eclipse projects to export as zip. The list have to be placed into quotes "" and separated by a '''&#124;''' character. Use '''/all''' to specify that all projects in the workspace are exported. This parameter must be used with '''-outputfolder''' to specify the folder that contains the zips.
 |-
 |nosplash
 |optional

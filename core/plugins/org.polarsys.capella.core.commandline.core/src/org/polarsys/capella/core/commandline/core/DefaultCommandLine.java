@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2020, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -17,12 +17,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -36,10 +36,12 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import org.apache.commons.io.FileUtils;
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
@@ -58,7 +60,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class DefaultCommandLine extends AbstractCommandLine {
-  public static String ALL_ARGUMENT = "/all"; //$NON-NLS-1$
+  public static final String ALL_ARGUMENT = CommandLineConstants.ALL_ARGUMENT;
 
   public DefaultCommandLine() {
     argHelper = CommandLineArgumentHelper.getInstance();
@@ -74,59 +76,183 @@ public class DefaultCommandLine extends AbstractCommandLine {
   }
 
   protected void importProjects() throws CommandLineException {
-    String projectsToImport = argHelper.getImportProjects();
-    if (projectsToImport != null) {
-      try {
-        importProjects(toList(projectsToImport));
-      } catch (CoreException exception) {
-        throw new CommandLineException(exception.getMessage());
+    List<String> projectList = new ArrayList<>();
+    try {
+      String projectsToImport = argHelper.getImportProjects();
+      if (projectsToImport != null) {
+        projectList.addAll(toList(projectsToImport));
       }
+      String allProjectsToImport = argHelper.getImportAllProjects();
+      if (allProjectsToImport != null) {
+        projectList.addAll(getAllProjectsInFolder(allProjectsToImport));
+      }
+      importProjects(projectList);
+    } catch (CoreException | IOException exception) {
+      throw new CommandLineException(exception.getMessage());
     }
   }
 
   @Override
   public void postExecute(IApplicationContext context) throws CommandLineException {
-    exportZips();
-  }
-
-  protected void exportZips() throws CommandLineException {
-    String projectsToExportZip = argHelper.getExportZips();
-    if (projectsToExportZip != null) {
-      if (projectsToExportZip.equals(ALL_ARGUMENT)) {
-        exportProjectZips(Arrays.stream(ResourcesPlugin.getWorkspace().getRoot().getProjects())
-            .filter(CapellaResourceHelper::isCapellaProject).map(iProject -> iProject.getName())
-            .collect(Collectors.toList()));
-      } else {
-        exportProjectZips(toList(projectsToExportZip));
-      }
-    }
+    legacyExportZips();
+    exportProjects();
   }
 
   /**
-   * @param projectsToExportZip
-   * @throws CoreException
+   * Retrieves projects from a single text using 
+   * 
+   * @param names
+   * @return
    */
-  protected void exportProjectZips(List<String> projectsToExportZip) throws CommandLineException {
+  private List<IProject> getCapellaProjects(String names) {
+    if (names == null) {
+      return List.of();
+    }
+    
+    IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+        
+    if (names.equals(ALL_ARGUMENT)) {
+      return Arrays.stream(root.getProjects())
+          .filter(CapellaResourceHelper::isCapellaProject)
+          .collect(Collectors.toList());
+    }
+    return toList(names)
+        .stream()
+        .map(root::getProject)
+        .filter(project -> {
+          boolean result = project.exists() && project.isOpen();
+          if (!result) {
+            logger.error(Messages.export_zip_not_found + project);
+          }
+          return result;
+        })
+        .collect(Collectors.toList());
+  }
+
+  
+  /**
+   * Exports specified projects using legacy options.
+   * 
+   * @throws CommandLineException if export fails
+   */
+  protected void legacyExportZips() throws CommandLineException {
+    List<IProject> projects = getCapellaProjects(argHelper.getExportZips());
+    if (projects.isEmpty()) { // Nothing to export
+      return;
+    }
+
     IFolder outputFolder = getOrCreateOutputFolder();
     if (outputFolder == null) {
       logger.error(Messages.export_zip_no_ouputfolder);
     } else {
-      IProject[] iProjects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
-      for (String project : projectsToExportZip) {
-        Optional<IProject> anyIProject = Arrays.stream(iProjects).filter(iProject -> iProject.getName().equals(project))
-            .findAny();
-        if (!anyIProject.isPresent()) {
-          logger.error(Messages.export_zip_not_found + project);
-        } else {
-          IWorkspace workspace = ResourcesPlugin.getWorkspace();
-          IFile file = outputFolder.getFile(project + ".zip"); //$NON-NLS-1$
-          IProject newProject = workspace.getRoot().getProject(project);
-          WorkbenchHelper.exportZipFile(newProject, file);
+      for (IProject project : projects) {
+          IFile file = outputFolder.getFile(project.getName() + ".zip"); //$NON-NLS-1$
+          WorkbenchHelper.exportZipFile(project, file);
+      }
+    }
+  }
+  
+  /**
+   * Exports specified projects.
+   * 
+   * @throws CommandLineException if export fails
+   */
+  protected void exportProjects() throws CommandLineException {
+    List<IProject> projectsToExport = getCapellaProjects(argHelper.getExportProjects());
+
+    if (!projectsToExport.isEmpty()) {
+      if (argHelper.isSingleZip()) {
+        exportProjectsAsSingleZip(projectsToExport);
+      } else if (argHelper.isExportCopy()) {
+        exportProjectsAsCopy(projectsToExport);
+      } else { // default export mode
+        exportProjectsAsZip(projectsToExport);
+      }
+    }
+  }
+  
+  /**
+   * Exports all projects as a folder copy.
+   * 
+   * @param projects list of projects
+   * @throws CommandLineException if export fails
+   */
+  protected void exportProjectsAsCopy(List<IProject> projects) throws CommandLineException {
+    File targetFolder = getExportTarget(true);
+    if (targetFolder != null) {
+      for (IProject project : projects) {
+        try {
+          FileUtils.copyDirectory(project.getLocation().toFile(), new File(targetFolder, project.getName()));
+        } catch (IOException e) {
+          throw new CommandLineException(Messages.cannot_create_folder);
         }
       }
     }
   }
+  
+  /**
+   * Exports all projects in a Zip file.
+   * 
+   * @param projects list of projects
+   * @throws CommandLineException if export fails
+   */
+  protected void exportProjectsAsSingleZip(List<IProject> projects) throws CommandLineException {
+    File targetZip = getExportTarget(false);
+    if (targetZip != null) {
+      WorkbenchHelper.exportZipFile(projects, targetZip.getAbsolutePath());
+    }
+  }
+  
+  /**
+   * Exports each projects in Zip file.
+   * 
+   * @param projects list of projects
+   * @throws CommandLineException if export fails
+   */
+  protected void exportProjectsAsZip(List<IProject> projects) throws CommandLineException {
+      File targetFolder = getExportTarget(true);
+      if (targetFolder != null) {
+        for (IProject project : projects) {
+          WorkbenchHelper.exportZipFile(List.of(project), new File(targetFolder, project.getName() + ".zip").getAbsolutePath());
+        }
+      }
+  }
 
+  
+  /**
+   * Gets the target of location for export.
+   * <p>
+   * This method ensures the container exists.
+   * </p>
+   * 
+   * @param isDirectory true if target if a folder.
+   * @return target of export
+   * @throws CommandLineException
+   */
+  private File getExportTarget(boolean isDirectory) throws CommandLineException {
+    String input = argHelper.getExportTarget();
+
+    if (input == null) {
+      logger.error(Messages.export_zip_no_ouputfolder);
+      return null;
+    }
+
+    File result = null;
+    java.nio.file.Path inputValue = Paths.get(input);
+    if (inputValue.isAbsolute()) {
+      result = new File(input);
+      File targetFolder = isDirectory ? result : result.getParentFile();
+      if (!targetFolder.isDirectory() && !targetFolder.mkdirs()) {
+        logger.error(Messages.cannot_create_folder, null);
+        throw new CommandLineException(Messages.cannot_create_folder);
+      }
+    } else {
+      result = getOrCreateOutputContainer(inputValue, isDirectory);
+    }
+    return result;
+  }
+
+  
   protected void checkProject(IProject project) throws CommandLineException {
     if (!project.exists()) {
       logError(Messages.project + project.getName() + Messages.not_exist);
@@ -167,8 +293,17 @@ public class DefaultCommandLine extends AbstractCommandLine {
         }
       }
     }
+    if (!isBlank(argHelper.getExportProjects()) && isBlank(argHelper.getExportTarget())) {
+      throw new CommandLineException(CommandLineConstants.EXPORT_TARGET
+          + " option is required when using "
+          + CommandLineConstants.EXPORT_LIST);
+    }
   }
 
+  private static boolean isBlank(String value) {
+    return value == null || value.isBlank();
+  }
+  
   protected void checkInputProject(String projectPath) throws CommandLineException {
     String projectName = getProjectNameFromPath(projectPath);
     IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
@@ -188,17 +323,49 @@ public class DefaultCommandLine extends AbstractCommandLine {
   }
 
   /**
-   * @param outputFolder
+   * Creates the container if not existing and open it from specified path.
+   * 
+   * @param inputValue path of element to get
+   * @param isDirectory true if the element is folder or project
+   * @return associated file
    * @throws CommandLineException
    */
-  protected IFolder getOrCreateOutputFolder() throws CommandLineException {
-    String outputFolder = argHelper.getOutputFolder();
-    IFolder folder = null;
-    if (outputFolder != null) {
-      folder = ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(outputFolder));
-
-      try {
-        IProject project = folder.getProject();
+  protected File getOrCreateOutputContainer(java.nio.file.Path inputValue, boolean isDirectory) throws CommandLineException {
+    IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+    
+    File result;
+    if (inputValue.getNameCount() == 1) {
+      String filename = inputValue.getFileName().toString();
+      
+      if (!isDirectory) {
+        result = new File(root.getLocation().toFile(), filename);
+      } else {
+        IProject project = openOrCreateContainer(root.getProject(filename));
+        result = project.getLocation().toFile();
+      }
+    } else if (isDirectory) {
+      IFolder folder = openOrCreateContainer(root.getFolder(new Path(inputValue.toString())));
+      result = folder.getLocation().toFile();
+    } else {
+      IFile file = root.getFile(new Path(inputValue.toString()));
+      openOrCreateContainer(file.getParent());
+      result = file.getLocation().toFile();
+    }
+    return result;
+  }
+  
+  /**
+   * Create the container if not existing and open it.
+   * 
+   * @param <C> type of container
+   * @param container element to create
+   * @return provided container
+   * @throws CommandLineException if container cannot be created du to invalid value.
+   */
+  protected <C extends IContainer> C openOrCreateContainer(C container) throws CommandLineException {
+    try {
+      if (container instanceof IProject) {
+        IProject project = (IProject) container;
         if (!project.exists()) {
           project.create(new NullProgressMonitor());
         }
@@ -206,17 +373,38 @@ public class DefaultCommandLine extends AbstractCommandLine {
         if (!project.isOpen()) {
           project.open(new NullProgressMonitor());
         }
+      } else if (container instanceof IFolder) {
+        IFolder folder = (IFolder) container;
+        openOrCreateContainer(folder.getProject());
         if (!folder.exists()) {
           folder.create(true, true, new NullProgressMonitor());
         }
-      } catch (CoreException exception) {
-        StringBuilder message = new StringBuilder(Messages.cannot_create_folder);
-        logger.error(message.toString(), exception);
-        throw new CommandLineException(message.toString());
       }
+
+    } catch (CoreException exception) {
+      logger.error(Messages.cannot_create_folder, exception);
+      throw new CommandLineException(Messages.cannot_create_folder);
+    }
+    return container;
+  }
+
+  
+  /**
+   * Gets the output from argument.
+   * <p>
+   * Folder is created if necessary.
+   * </p>
+   * 
+   * @throws CommandLineException if folder cannot be created du to invalid value.
+   */
+  protected IFolder getOrCreateOutputFolder() throws CommandLineException {
+    String outputFolder = argHelper.getOutputFolder();
+    if (outputFolder != null) {
+      IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+      return openOrCreateContainer(root.getFolder(new Path(outputFolder)));
     }
 
-    return folder;
+    return null;
   }
 
   /**
