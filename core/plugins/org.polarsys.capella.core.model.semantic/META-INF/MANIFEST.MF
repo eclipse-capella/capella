@@ -7,7 +7,6 @@ Bundle-Activator: org.polarsys.capella.core.model.semantic.internal.SemanticMode
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore,
- org.apache.log4j,
  org.polarsys.capella.core.data.gen,
  org.polarsys.capella.common.libraries,
  org.polarsys.capella.common.re
@@ -15,5 +14,6 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.model.semantic,
  org.polarsys.capella.core.model.semantic.internal,
  org.polarsys.capella.core.model.semantic.prefs
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin

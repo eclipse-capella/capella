@@ -13,3 +13,4 @@ Export-Package: org.polarsys.capella.common.platform.eclipse.tools.report.ui,
  org.polarsys.capella.common.platform.eclipse.tools.report.ui.pref
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin
+Import-Package: org.apache.log4j;version="1.2.24"

@@ -29,6 +29,7 @@ Export-Package: org.polarsys.capella.core.sequencediag,
  org.polarsys.capella.core.sirius.analysis.showhide,
  org.polarsys.capella.core.sirius.analysis.task,
  org.polarsys.capella.core.sirius.analysis.tool
+Import-Package: org.apache.log4j;version="1.2.24"
 Require-Bundle: org.eclipse.core.expressions,
  org.eclipse.sirius.ext.base,
  org.eclipse.sirius.diagram.sequence;visibility:=reexport,

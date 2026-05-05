@@ -20,4 +20,5 @@ Export-Package: org.polarsys.capella.core.ui.semantic.browser,
  org.polarsys.capella.core.ui.semantic.browser.label.provider,
  org.polarsys.capella.core.ui.semantic.browser.model,
  org.polarsys.capella.core.ui.semantic.browser.view
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-RequiredExecutionEnvironment: JavaSE-17

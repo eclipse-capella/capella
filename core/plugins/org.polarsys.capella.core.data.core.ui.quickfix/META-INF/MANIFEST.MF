@@ -26,3 +26,4 @@ Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.core.data.core.ui.quickfix,
  org.polarsys.capella.core.data.core.ui.quickfix.messages,
  org.polarsys.capella.core.data.core.ui.quickfix.resolver
+Import-Package: org.apache.log4j;version="1.2.24"

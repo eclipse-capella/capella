@@ -19,4 +19,5 @@ Export-Package: org.polarsys.capella.common.queries,
  org.polarsys.capella.common.queries.interpretor,
  org.polarsys.capella.common.queries.queryContext,
  org.polarsys.capella.common.queries.testGeneration
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-Localization: plugin

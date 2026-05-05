@@ -14,4 +14,5 @@ Export-Package: org.polarsys.capella.common.bundle,
  org.polarsys.capella.common.model,
  org.polarsys.capella.common.model.copypaste,
  org.polarsys.capella.common.model.label
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-Localization: plugin

@@ -33,4 +33,5 @@ Export-Package: org.polarsys.capella.core.commands.preferences,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.core.preferences.commands.exceptions,
  org.polarsys.capella.core.preferences.transferer
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-Localization: plugin
