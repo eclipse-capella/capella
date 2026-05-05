@@ -21,6 +21,7 @@ Export-Package: org.polarsys.capella.core.platform.eclipse.capella.ui.trace,
  org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views,
  org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.components,
  org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Activator: org.polarsys.capella.core.platform.eclipse.capella.ui.trace.MDTrace
 Bundle-Localization: plugin

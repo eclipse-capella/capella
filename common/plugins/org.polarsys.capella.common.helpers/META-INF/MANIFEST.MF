@@ -14,6 +14,7 @@ Export-Package: org.polarsys.capella.common.helpers,
  org.polarsys.capella.common.helpers.selection,
  org.polarsys.capella.common.helpers.validation,
  org.polarsys.capella.common.helpers.validation.xml
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.polarsys.capella.common.helpers.HelperPlugin

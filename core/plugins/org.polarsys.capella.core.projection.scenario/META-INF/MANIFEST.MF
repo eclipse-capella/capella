@@ -22,4 +22,5 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.projection.scenario,
  org.polarsys.capella.core.projection.scenario.commands,
  org.polarsys.capella.core.projection.scenario.fc2fs
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-Localization: plugin

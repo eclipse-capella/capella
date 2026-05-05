@@ -19,5 +19,6 @@ Export-Package: org.polarsys.capella.core.transition.system.topdown.ui,
  org.polarsys.capella.core.transition.system.topdown.ui.handlers,
  org.polarsys.capella.core.transition.system.topdown.ui.handlers.tester,
  org.polarsys.capella.core.transition.system.topdown.ui.preferences
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-17

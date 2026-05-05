@@ -46,4 +46,5 @@ Export-Package: org.polarsys.capella.core.transition.system.topdown,
  org.polarsys.capella.core.transition.system.topdown.rules.oa.oe2actor,
  org.polarsys.capella.core.transition.system.topdown.rules.oa.oe2system,
  org.polarsys.capella.core.transition.system.topdown.rules.pa
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-Localization: plugin
