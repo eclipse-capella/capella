@@ -45,7 +45,6 @@ location eclipse "https://download.eclipse.org/releases/2023-03" {
 	com.ibm.icu
 	org.eclipse.viatra.query.runtime.feature.source.feature.group
 	org.eclipse.xtext.xbase.lib.feature.group
-	org.apache.log4j
 	org.apache.commons.lang
 	com.google.guava [31, 32) //guava version is also defined in org.polarsys.capella.rcp/feature.xml
 }
@@ -60,6 +59,7 @@ location orbit "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregatio
 	ch.qos.logback.classic
 	ch.qos.logback.core
 	org.apache.aries.spifly.dynamic.bundle
+	org.apache.log4j
 }
 
 location sirius "https://download.eclipse.org/sirius/updates/releases/7.4.5/2023-03" {
