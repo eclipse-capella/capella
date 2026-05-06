@@ -53,7 +53,7 @@ public class SearchForNoteItem extends SearchForClassItem {
   @Override
   public Image getImage() {
     return ExtendedImageRegistry.INSTANCE
-        .getImage(DiagramUIPlugin.getInstance().getBundle().getEntry("icons/note.gif"));
+        .getImage(DiagramUIPlugin.getInstance().getBundle().getEntry("icons/note.gif")); //$NON-NLS-1$
   }
 
   @Override

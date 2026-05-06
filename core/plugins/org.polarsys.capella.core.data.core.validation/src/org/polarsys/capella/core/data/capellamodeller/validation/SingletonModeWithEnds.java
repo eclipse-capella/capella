@@ -41,7 +41,7 @@ public class SingletonModeWithEnds extends AbstractValidationRule {
 			Project pro= root.getProject((CapellaElement)eObj);
 			EList<KeyValue> keyvalues = (EList<KeyValue>) pro.getKeyValuePairs();
 			for(KeyValue kv: keyvalues){
-				if(kv.getKey().equals("projectApproach") && kv.getValue().equals("SingletonComponents")){
+				if(kv.getKey().equals("projectApproach") && kv.getValue().equals("SingletonComponents")){ //$NON-NLS-1$ //$NON-NLS-2$
 					return ctx.createFailureStatus(new Object[] {});
 				}
 			}

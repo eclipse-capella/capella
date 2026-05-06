@@ -93,9 +93,9 @@ public class ComponentExchangeThroughDelegationsCommand extends AbstractFixComma
                   (ComponentPort) sourcePort, targetPart, (ComponentPort) targetPort);
               for (EObject object : result) {
                 ComponentExchange ce = (ComponentExchange) object;
-                String message = "The Component exchange " + ce.getName()
-                    + " has been succefully created between the exchange input component " + ce.getSource().getLabel()
-                    + " and the exchange output component " + ce.getTarget().getLabel();
+                String message = "The Component exchange " + ce.getName() //$NON-NLS-1$
+                    + " has been succefully created between the exchange input component " + ce.getSource().getLabel() //$NON-NLS-1$
+                    + " and the exchange output component " + ce.getTarget().getLabel(); //$NON-NLS-1$
                 EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName(), ce);
                 logger.info(eMessage);
               }

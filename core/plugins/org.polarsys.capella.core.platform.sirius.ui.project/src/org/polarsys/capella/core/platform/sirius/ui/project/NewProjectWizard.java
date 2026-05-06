@@ -105,7 +105,7 @@ public class NewProjectWizard extends BasicNewResourceWizard {
   */
   protected void createReferencedConfigurationProjectsPage() {
     referencedConfigurationProjectPage =
-        new ReferecedConfigurationProjectSelectionPage(Messages.getString("NewModelWizard.title"), new String[] { ConfigurationProjectNature.NATURE_ID });
+        new ReferecedConfigurationProjectSelectionPage(Messages.getString("NewModelWizard.title"), new String[] { ConfigurationProjectNature.NATURE_ID }); //$NON-NLS-1$
     addPage(referencedConfigurationProjectPage);
 
   }

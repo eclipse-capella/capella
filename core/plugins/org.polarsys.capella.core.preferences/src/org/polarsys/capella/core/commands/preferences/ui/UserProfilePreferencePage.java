@@ -167,7 +167,7 @@ public class UserProfilePreferencePage extends AbstractDefaultPreferencePage {
     expertUserField = new Button(expertUserComposite, SWT.RADIO | SWT.LEFT);
     expertUserField.setSelection(false);
 
-    new Label(expertUserComposite, SWT.BEGINNING).setText("Expert");
+    new Label(expertUserComposite, SWT.BEGINNING).setText(PreferencesUIMessages.UserProfilePreferencePage_Expert);
 
     expertUserField.addSelectionListener(new SelectionListener() {
 
@@ -188,7 +188,7 @@ public class UserProfilePreferencePage extends AbstractDefaultPreferencePage {
     userField = new Button(userCompsite, SWT.RADIO | SWT.LEFT);
     userField.setSelection(true);
 
-    new Label(userCompsite, SWT.BEGINNING).setText("Standard");
+    new Label(userCompsite, SWT.BEGINNING).setText(PreferencesUIMessages.UserProfilePreferencePage_Standard);
 
     userField.addSelectionListener(new SelectionListener() {
 

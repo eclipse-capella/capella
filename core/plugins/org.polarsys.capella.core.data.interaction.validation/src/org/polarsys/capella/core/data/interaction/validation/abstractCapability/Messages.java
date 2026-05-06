@@ -20,6 +20,8 @@ public class Messages extends NLS {
   public static String DWF_CA_07_Validator_Message;
   public static String DWF_CA_08_Validator_Message;
   public static String DWF_CA_09_Validator_Message;
+  public static String MDCHK_Capability_Components_FuncOrScenario;
+  public static String MDCHK_Capability_Components_ProcOrScenario;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

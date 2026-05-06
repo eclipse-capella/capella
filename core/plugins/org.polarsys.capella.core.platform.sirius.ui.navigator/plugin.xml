@@ -202,7 +202,7 @@
             icon="icons/eview16/project_explorer.png"
             id="capella.project.explorer.content"
             labelProvider="org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorLabelProvider"
-            name="Capella Content"
+            name="%navigatorContent.name"
             priority="normal"
             providesSaveables="true">
          <triggerPoints>
@@ -513,9 +513,9 @@
       </navigatorContent>
       <commonFilter
             activeByDefault="false"
-            description="Hides resources that end with &quot;.capella&quot;"
+            description="%commonFilter.description"
             id="capella.project.explorer.filters.capellaModeller"
-            name="*.capella resources">
+            name="%commonFilter.name">
          <filterExpression>
             <adapt
                   type="org.eclipse.core.resources.IFile">
@@ -529,9 +529,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="false"
-            description="Hides metadata resources that end with &quot;.afm&quot;"
+            description="%commonFilter.description.0"
             id="capella.project.explorer.filters.metadata"
-            name="*.afm resources">
+            name="%commonFilter.name.0">
          <filterExpression>
             <adapt
                   type="org.eclipse.core.resources.IFile">
@@ -545,13 +545,13 @@
       </commonFilter>
       <commonFilter 
       		id="capella.project.explorer.filters.parts"
-      		name="Part with hidden abstract type"
+      		name="%commonFilter.name.1"
       		activeByDefault="true" 
       		visibleInUI="false"
       		class="org.polarsys.capella.core.platform.sirius.ui.navigator.filters.PartFilter"/>
       <commonFilter
             activeByDefault="false"
-            description="Hides resources that end with &quot;.aird&quot;"
+            description="%commonFilter.description.1"
             id="capella.project.explorer.filters.capellaAird"
             name="*.aird">
          <filterExpression>
@@ -567,9 +567,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hide EMF Resources"
+            description="%commonFilter.description.2"
             id="capella.project.explorer.filters.EMFResource"
-            name="EMF Resources">
+            name="%commonFilter.name.3">
          <filterExpression>
             <instanceof
                   value="org.eclipse.emf.ecore.resource.Resource">
@@ -578,9 +578,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="false"
-            description="Hides all Capella merge links"
+            description="%commonFilter.description.3"
             id="capella.project.explorer.filters.mergeLink"
-            name="Merge Links">
+            name="%commonFilter.name.4">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.interaction.MergeLink">
@@ -589,9 +589,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella refinement links"
+            description="%commonFilter.description.4"
             id="capella.project.explorer.filters.refinementLinks"
-            name="Refinement Links">
+            name="%commonFilter.name.5">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.interaction.RefinementLink">
@@ -600,9 +600,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="false"
-            description="Hides all Capella naming rules"
+            description="%commonFilter.description.5"
             id="capella.project.explorer.filters.namingRules"
-            name="Naming Rules">
+            name="%commonFilter.name.6">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.capellacore.NamingRule">
@@ -611,9 +611,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="false"
-            description="Hides all Capella reuse links"
+            description="%commonFilter.description.6"
             id="capella.project.explorer.filters.reuseLinks"
-            name="Reuse Links">
+            name="%commonFilter.name.7">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.capellacore.ReuseLink">
@@ -622,9 +622,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella transformation links"
+            description="%commonFilter.description.7"
             id="capella.project.explorer.filters.transfoLinks"
-            name="Transformation Links">
+            name="%commonFilter.name.8">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.capellacommon.TransfoLink">
@@ -633,9 +633,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella events"
+            description="%commonFilter.description.8"
             id="capella.project.explorer.filters.events"
-            name="Events">
+            name="%commonFilter.name.9">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.interaction.Event">
@@ -655,9 +655,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella system capability and mission involvements"
+            description="%commonFilter.description.9"
             id="capella.project.explorer.filters.systemcapabilitymissioninvolvement"
-            name="Capability and Mission Involvements">
+            name="%commonFilter.name.10">
          <filterExpression>
             <or>
                <instanceof
@@ -677,9 +677,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella functional chain involvements"
+            description="%commonFilter.description.10"
             id="capella.project.explorer.filters.functionalchaininvolvement"
-            name="Functional Chain Involvements">
+            name="%commonFilter.name.11">
          <filterExpression>
             <or>
                <instanceof
@@ -693,9 +693,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella message ends"
+            description="%commonFilter.description.11"
             id="capella.project.explorer.filters.messageEnds"
-            name="Message Ends">
+            name="%commonFilter.name.12">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.interaction.MessageEnd">
@@ -704,9 +704,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella execution ends"
+            description="%commonFilter.description.12"
             id="capella.project.explorer.filters.executionEnd"
-            name="Execution Ends">
+            name="%commonFilter.name.13">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.interaction.ExecutionEnd">
@@ -715,9 +715,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella fragment ends"
+            description="%commonFilter.description.13"
             id="capella.project.explorer.filters.fragmentEnds"
-            name="Fragment Ends">
+            name="%commonFilter.name.14">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.interaction.FragmentEnd">
@@ -726,9 +726,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="false"
-            description="Hides all Capella sequence messages"
+            description="%commonFilter.description.14"
             id="capella.project.explorer.filters.sequenceMessages"
-            name="Sequence Messages">
+            name="%commonFilter.name.15">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.interaction.SequenceMessage">
@@ -737,9 +737,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella combined fragments"
+            description="%commonFilter.description.15"
             id="capella.project.explorer.filters.combinedFragments"
-            name="Combined Fragments">
+            name="%commonFilter.name.16">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.interaction.CombinedFragment">
@@ -748,9 +748,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella interaction operands"
+            description="%commonFilter.description.16"
             id="capella.project.explorer.filters.interactionOperands"
-            name="Interaction Operands">
+            name="%commonFilter.name.17">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.interaction.InteractionOperand">
@@ -759,9 +759,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella interaction states"
+            description="%commonFilter.description.17"
             id="capella.project.explorer.filters.interactionStates"
-            name="Interaction States">
+            name="%commonFilter.name.18">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.interaction.InteractionState">
@@ -770,9 +770,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella interaction uses."
+            description="%commonFilter.description.18"
             id="capella.project.explorer.filters.interactionUses"
-            name="Interaction Uses">
+            name="%commonFilter.name.19">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.interaction.InteractionUse">
@@ -781,9 +781,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella executions."
+            description="%commonFilter.description.19"
             id="capella.project.explorer.filters.execution"
-            name="Executions">
+            name="%commonFilter.name.20">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.interaction.Execution">
@@ -792,9 +792,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella parts."
+            description="%commonFilter.description.20"
             id="capella.project.explorer.filters.part"
-            name="Parts">
+            name="%commonFilter.name.21">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.cs.Part">
@@ -803,9 +803,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella component exchanges."
+            description="%commonFilter.description.21"
             id="capella.project.explorer.filters.componentExchange"
-            name="Component Exchanges">
+            name="%commonFilter.name.22">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.fa.ComponentExchange">
@@ -814,9 +814,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella property value packages."
+            description="%commonFilter.description.22"
             id="capella.project.explorer.filters.propertyValuePkg"
-            name="Property Value Packages">
+            name="%commonFilter.name.23">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.capellacore.PropertyValuePkg">
@@ -825,9 +825,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella component exchange ends."
+            description="%commonFilter.description.23"
             id="capella.project.explorer.filters.componentExchangeEnd"
-            name="Component Exchange Ends">
+            name="%commonFilter.name.24">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.fa.ComponentExchangeEnd">
@@ -836,9 +836,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella functional exchanges."
+            description="%commonFilter.description.24"
             id="capella.project.explorer.filters.functionalExchange"
-            name="Functional Exchanges">
+            name="%commonFilter.name.25">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.fa.FunctionalExchange">
@@ -847,9 +847,9 @@
       </commonFilter>
 	  <commonFilter
             activeByDefault="false"
-            description="Hides all Capella functional exchange categories."
+            description="%commonFilter.description.25"
             id="capella.project.explorer.filters.exchangeCategories"
-            name="Functional Exchange Categories">
+            name="%commonFilter.name.26">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.fa.ExchangeCategory">
@@ -858,9 +858,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="false"
-            description="Hides all Capella physical paths."
+            description="%commonFilter.description.26"
             id="capella.project.explorer.filters.physicalPaths"
-            name="Physical Paths">
+            name="%commonFilter.name.27">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.cs.PhysicalPath">
@@ -869,9 +869,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="false"
-            description="Hides all Capella functional chains."
+            description="%commonFilter.description.27"
             id="capella.project.explorer.filters.functionalChains"
-            name="Functional Chains">
+            name="%commonFilter.name.28">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.fa.FunctionalChain">
@@ -880,9 +880,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="false"
-            description="Hides all Capella operational processes."
+            description="%commonFilter.description.28"
             id="capella.project.explorer.filters.operationalProcesses"
-            name="Operational Processes">
+            name="%commonFilter.name.29">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.oa.OperationalProcess">
@@ -891,9 +891,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="false"
-            description="Hides all Capella component exchange categories."
+            description="%commonFilter.description.29"
             id="capella.project.explorer.filters.componentExchangeCategories"
-            name="Component Exchange Categories">
+            name="%commonFilter.name.30">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.fa.ComponentExchangeCategory">
@@ -902,9 +902,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="false"
-            description="Hides all Capella physical link categories."
+            description="%commonFilter.description.30"
             id="capella.project.explorer.filters.physicalLinkCategories"
-            name="Physical Link Categories">
+            name="%commonFilter.name.31">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.cs.PhysicalLinkCategory">
@@ -913,9 +913,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella communication links."
+            description="%commonFilter.description.31"
             id="capella.project.explorer.filters.communicationLinks"
-            name="Communication Links">
+            name="%commonFilter.name.32">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.information.communication.CommunicationLink">
@@ -924,9 +924,9 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella physical links."
+            description="%commonFilter.description.32"
             id="capella.project.explorer.filters.physicalLink"
-            name="Physical Links">
+            name="%commonFilter.name.33">
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.cs.PhysicalLink">
@@ -1293,7 +1293,7 @@
       <decorator
             class="org.polarsys.capella.core.platform.sirius.ui.navigator.decorator.CapellaScmLabelDecorator"
             id="org.polarsys.capella.common.menu.dynamic.CapellaScmDecorator"
-            label="Capella SCM Decorator"
+            label="%decorator.label"
             lightweight="true"
             location="BOTTOM_RIGHT"
             state="true">
@@ -1667,7 +1667,7 @@
       <page
             class="org.polarsys.capella.core.platform.sirius.ui.navigator.property.CapellaPage"
             id="org.polarsys.capella.core.platform.sirius.ui.navigator.capella.page"
-            name="Capella">
+            name="%page.name">
          <enabledWhen>
             <and>
                <adapt
@@ -1694,9 +1694,9 @@
          point="org.polarsys.capella.core.preferences.capellaPreferences">
       <category
             description="test"
-            name="Other">
+            name="%CapellaPreferencesCategoryOther">
          <item
-               description="create a new table or diagram in Capella"
+               description="%NewRepresentationActionProvider_NewRepresentationAction_Description"
                enableByDefault="true"
                id="capella.project.explorer.newRepresentationContributor"
                name="%NewRepresentationActionProvider_NewRepresentationAction_Title">
@@ -1711,7 +1711,7 @@
    </extension>
    <extension
          id="capellaUISession"
-         name="Capella UI Session"
+         name="%extension.name"
          point="org.eclipse.sirius.ui.uiSessionFactory">
       <uiSessionFactory
             class="org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaUISessionFactory">

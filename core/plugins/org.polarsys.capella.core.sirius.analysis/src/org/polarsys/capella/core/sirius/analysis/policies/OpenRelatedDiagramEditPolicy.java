@@ -29,6 +29,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.window.Window;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
@@ -142,9 +143,9 @@ public class OpenRelatedDiagramEditPolicy extends OpenDiagramEditPolicy {
                   });
 
                   InputDialog dialog = new InputDialog(activeShell,
-                      "New " + MessageTranslator.INSTANCE.getMessage(description,
-                          new IdentifiedElementQuery(description).getLabel()),
-                      Messages.OpenRelatedDiagram_Message + "\nName:", newName, validator);
+                      NLS.bind(Messages.OpenRelatedDiagram_CreateNew, MessageTranslator.INSTANCE.getMessage(description,
+                          new IdentifiedElementQuery(description).getLabel())),
+                      Messages.OpenRelatedDiagram_Message + '\n' + Messages.OpenRelatedDiagram_NewName, newName, validator);
                   dialog.open();
                   if (dialog.getReturnCode() == Window.OK) {
 

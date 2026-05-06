@@ -48,7 +48,7 @@ public class CommunicationLinkProtocolRule extends AbstractValidationRule {
             CommunicationLinkKind expectedKind = LinkCompatibilityDefinition.INSTANCE.getKind(protocol);
             if (kind != expectedKind) {
               Collection<CommunicationLinkProtocol> expectedProtocols = LinkCompatibilityDefinition.INSTANCE.getCompatibleProtocols(kind);
-              String expectedProtocol =  ListExt.toString(expectedProtocols, " || ");
+              String expectedProtocol =  ListExt.toString(expectedProtocols, " || "); //$NON-NLS-1$
               IStatus status = ctx.createFailureStatus(link, kind, expectedProtocol);
               statuses.add(status);
             }

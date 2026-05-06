@@ -88,7 +88,7 @@ public class PropertiesSection extends AbstractPropertySection {
 
             @Override
             protected String getGroupName(IPropertyGroup group) {
-              return "";
+              return ""; //$NON-NLS-1$
             }
           };
         }
@@ -102,7 +102,7 @@ public class PropertiesSection extends AbstractPropertySection {
       AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
         @Override
         public String getName() {
-          return "Model edition";
+          return "Model edition"; //$NON-NLS-1$
         }
 
         public void run() {

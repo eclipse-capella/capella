@@ -73,7 +73,7 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
         return ((AbstractNamedElement)object).getName();
       }
       else if(object instanceof EObject){
-        return "["+((EObject)object).eClass().getName()+"]";
+        return "["+((EObject)object).eClass().getName()+"]"; //$NON-NLS-1$ //$NON-NLS-2$
       }
         return UNAMED;
     }
@@ -85,7 +85,7 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
     NamedElement targetElement = null;
     String sourceLabel = null;
     String targetLabel = null;
-    String sufixLabel = "";
+    String sufixLabel = ""; //$NON-NLS-1$
 
     if ((object instanceof ComponentExchange) && !(object instanceof CommunicationMean)) {
       ComponentExchange connection = (ComponentExchange) object;
@@ -101,8 +101,8 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
           sourceElement = (NamedElement) (!sourceParts.isEmpty() ? sourceParts.toArray()[0] : null);
           targetElement = (NamedElement) (!targetParts.isEmpty() ? targetParts.toArray()[0] : null);
           if(sourceElement != null && targetElement != null) {
-            sourceLabel = sourceElement.getName() + " : " + sourceComponent.getName();
-            targetLabel = targetElement.getName() +  " : " + targetElement.getName();
+            sourceLabel = sourceElement.getName() + " : " + sourceComponent.getName(); //$NON-NLS-1$
+            targetLabel = targetElement.getName() +  " : " + targetElement.getName(); //$NON-NLS-1$
             return super.getText(object) + MessageFormat.format(PATTERN1, sourceLabel, targetLabel, sufixLabel);
           }
         }
@@ -111,7 +111,7 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
         targetElement = ComponentExchangeExt.getTargetComponent(connection);
       }
       if (connection.getKind() == ComponentExchangeKind.DELEGATION) {
-        sufixLabel = " [DELEGATION]";
+        sufixLabel = " [" + Messages.CapellaTransfertViewerLabelProvider_DelegationSuffix + "]"; //$NON-NLS-1$ //$NON-NLS-2$
       }
     } else if (object instanceof CommunicationMean) {
       // Communication mean @OA level

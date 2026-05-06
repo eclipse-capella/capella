@@ -42,7 +42,7 @@
             id="capella.project.wizard.sample"
             name="%CapellaSample">
          <description>
-            Import Capella Project Example
+            %wizard.description
          </description>
       </wizard>
       
@@ -62,7 +62,7 @@
             name="%CapellaProject"
             project="true">
          <description>
-            Create a Capella project
+            %wizard.description.0
          </description>
       </wizard>
       <category

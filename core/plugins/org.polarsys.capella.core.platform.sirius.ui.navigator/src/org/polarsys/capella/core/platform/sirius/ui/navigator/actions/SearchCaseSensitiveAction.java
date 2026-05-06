@@ -24,7 +24,7 @@ public class SearchCaseSensitiveAction extends Action implements IPropertyListen
   public SearchCaseSensitiveAction(CapellaCommonNavigator navigator) {
     super(Messages.SearchOptions_Case_Titlte);
     setToolTipText(Messages.SearchOptions_Case_Tooltip);
-    setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("SearchCaseSensitive.png"));
+    setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("SearchCaseSensitive.png")); //$NON-NLS-1$
 
     this.navigator = navigator;
     setChecked(navigator.isSearchCaseSensitiveEnabled());

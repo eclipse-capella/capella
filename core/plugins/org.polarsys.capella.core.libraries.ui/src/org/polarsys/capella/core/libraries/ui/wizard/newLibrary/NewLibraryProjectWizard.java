@@ -31,7 +31,7 @@ public class NewLibraryProjectWizard extends NewProjectWizard {
   // overrides just to replace GUI text (title and image)
   public void init(IWorkbench workbench, IStructuredSelection currentSelection) {
     super.init(workbench, currentSelection);
-    setWindowTitle("New Capella Library"); //$NON-NLS-1$
+    setWindowTitle(Messages.NewLibraryProjectWizard_window_title);
     ImageDescriptor descriptor = Activator.getDefault().getImageDescriptor("libraryWizard.png"); //$NON-NLS-1$
     if (null == descriptor) {
       descriptor = ImageDescriptor.getMissingImageDescriptor();
@@ -43,8 +43,8 @@ public class NewLibraryProjectWizard extends NewProjectWizard {
   // overrides just to replace GUI text (title and description)
   protected WizardNewProjectCreationPage createLocalProjectDescriptionPage() {
     WizardNewProjectCreationPage mainPage = super.createLocalProjectDescriptionPage();
-    mainPage.setTitle("Capella Library"); //$NON-NLS-1$
-    mainPage.setDescription("Create a new Capella project"); //$NON-NLS-1$
+    mainPage.setTitle(Messages.NewLibraryProjectWizard_page_title);
+    mainPage.setDescription(Messages.NewLibraryProjectWizard_page_description);
     return mainPage;
   }
 

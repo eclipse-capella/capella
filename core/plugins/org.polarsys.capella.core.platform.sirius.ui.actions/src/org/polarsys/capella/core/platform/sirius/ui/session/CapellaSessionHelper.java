@@ -321,7 +321,7 @@ public class CapellaSessionHelper {
         if (packageNotFound.startsWith(SEMANTIC_MODEL_NS_URI_PREFIX)
             || packageNotFound.startsWith(LEGACY_SEMANTIC_MODEL_NS_URI_PREFIX)) {
           String version = new Path(packageNotFound).lastSegment();
-          errorMsg = Messages.CapellaSessionHelper_SemanticModel_Error_Message_WrongVersion_Part1 + ":" + version
+          errorMsg = Messages.CapellaSessionHelper_SemanticModel_Error_Message_WrongVersion_Part1 + ":" + version //$NON-NLS-1$
               + Messages.CapellaSessionHelper_SemanticModel_Error_Message_WrongVersion_Part2;
         } else {
           errorMsg = "A metamodel is missing: " + packageNotFound; //$NON-NLS-1$

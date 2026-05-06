@@ -41,7 +41,7 @@ import com.google.common.collect.LinkedHashMultimap;
  */
 public class ReplicaContentProperty extends AbstractProperty implements ICompoundProperty, IModifiedProperty, IEditableProperty {
 
-  private static String LINKS = "TEMPORARYLINKS";
+  private static String LINKS = "TEMPORARYLINKS"; //$NON-NLS-1$
 
   /**
    * {@inheritDoc}

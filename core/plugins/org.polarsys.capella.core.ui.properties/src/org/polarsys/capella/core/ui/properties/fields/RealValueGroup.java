@@ -60,9 +60,9 @@ public class RealValueGroup extends IntegerValueGroup implements VerifyListener 
     /* Notice how we combine the old and new below */
     String currentText = ((Text) e.widget).getText();
     String newText = currentText.substring(0, e.start) + e.text + currentText.substring(e.end);
-    if ("".equals(newText)) {
+    if ("".equals(newText)) { //$NON-NLS-1$
       e.doit = true;
-      ((Text) e.widget).setText("0.0");
+      ((Text) e.widget).setText("0.0"); //$NON-NLS-1$
       return;
     }
     try {
@@ -80,7 +80,7 @@ public class RealValueGroup extends IntegerValueGroup implements VerifyListener 
    */
   @Override
   protected void handleResetButtonClicked(Button button) {
-    setDataValue(semanticElement, semanticFeature, "0.0");
+    setDataValue(semanticElement, semanticFeature, "0.0"); //$NON-NLS-1$
     setTextValue(valueField, semanticElement, semanticFeature);
   }
 }

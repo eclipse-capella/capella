@@ -53,6 +53,6 @@ public class GraphNode<NS, E extends GraphEdge> {
   }
   
   public String toString() {
-    return "n(" + EObjectLabelProviderHelper.getText(semantic) + ")";
+    return "n(" + EObjectLabelProviderHelper.getText(semantic) + ")"; //$NON-NLS-1$ //$NON-NLS-2$
   }
 }

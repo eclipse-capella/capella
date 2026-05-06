@@ -38,7 +38,7 @@ public class EditCapellaCustomPropertyWizard extends Wizard {
   public EditCapellaCustomPropertyWizard(IWorkbenchPart part, EObject object) {
     this.object = object;
     this.metaclassLabel = EObjectLabelProviderHelper.getMetaclassLabel(object, false);
-    setWindowTitle("Properties");
+    setWindowTitle(Messages.EditCapellaCustomPropertyWizard_Title);
     this.part = part;
   }
 

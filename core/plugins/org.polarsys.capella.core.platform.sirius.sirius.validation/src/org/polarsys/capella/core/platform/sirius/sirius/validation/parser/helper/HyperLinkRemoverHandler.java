@@ -16,12 +16,12 @@ public class HyperLinkRemoverHandler implements ILinkModifier {
 
   @Override
   public void updateParsedLink(LinkDescription parsedLink, StringBuilder description) {
-    String elementId = parsedLink.getHref().replace("hlink://", "");
+    String elementId = parsedLink.getHref().replace("hlink://", ""); //$NON-NLS-1$ //$NON-NLS-2$
     if (!(parsedLink.getTargetElement() == null && !elementId.isEmpty() && elementId.equals(linkId))) {
-      DescriptionLinkModifierHandler.addElementToDescription("a", parsedLink.getAttributes(), description);
+      DescriptionLinkModifierHandler.addElementToDescription("a", parsedLink.getAttributes(), description); //$NON-NLS-1$
       description.append(parsedLink.getName());
       description.append(IConstantValidation.CLOSE_TAB_PREFIX);
-      description.append("a");
+      description.append("a"); //$NON-NLS-1$
       description.append(IConstantValidation.GREATER_THAN);
     }
   }

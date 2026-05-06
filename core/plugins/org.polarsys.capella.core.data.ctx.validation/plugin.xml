@@ -27,14 +27,14 @@
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="DWF_CA_01 - Capability location"
+               name="%constraint.name"
                severity="ERROR"
                statusCode="1">
             <message>
-               {0} (Capability) can only be located in System Context.
+               %constraint.message
             </message>
             <description>
-               This rule checks that an Capability can only be located in System Context.
+               %constraint.description
             </description>
             <target
                   class="Capability">
@@ -46,14 +46,14 @@
                isEnabledByDefault="true"
                lang="java"
                mode="Batch"
-               name="DWF_CA_02 - Capability self extension"
+               name="%constraint.name.0"
                severity="ERROR"
                statusCode="1">
             <message>
-               {0} (Capability) extends itself.
+               %constraint.message.0
             </message>
             <description>
-               This rule ensures that a capability cannot extend itself.
+               %constraint.description.0
             </description>
             <target
                   class="Capability">
@@ -65,17 +65,17 @@
                isEnabledByDefault="true"
                lang="java"
                mode="Batch"
-               name="DWF_CA_03 - Capability self generalization"
+               name="%constraint.name.1"
                severity="ERROR"
                statusCode="1">
             <message>
-               {0} (Capability) generalizes itself.
+               %constraint.message.1
             </message>
             <target
                   class="Capability">
             </target>
             <description>
-               This rule ensures that a capability cannot generalize itself.
+               %constraint.description.1
             </description>
          </constraint>
          <constraint
@@ -84,17 +84,17 @@
                isEnabledByDefault="true"
                lang="java"
                mode="Batch"
-               name="DWF_CA_04 - Capability self inclusion"
+               name="%constraint.name.2"
                severity="ERROR"
                statusCode="1">
             <message>
-               {0} (Capability) includes itself.
+               %constraint.message.2
             </message>
             <target
                   class="Capability">
             </target>
             <description>
-               This rule ensures that a capability does not include itself.
+               %constraint.description.2
             </description>
          </constraint>
          <constraint
@@ -103,14 +103,14 @@
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="DWF_CA_06 - Actor involvement in capabilities related to a mission in which it is involved check"
+               name="%constraint.name.3"
                severity="WARNING"
                statusCode="1">
             <message>
-               {0} is declared to be involved in {1} (Mission) but it is not involved in any of the exploited capabilities of {1} .
+               %constraint.message.3
             </message>
             <description>
-               This rule checks that the current Actor is involved with the Mission, and then involved in any of its Capabilities.
+               %constraint.description.3
             </description>
             <target
                   class="SystemComponent">
@@ -125,14 +125,14 @@
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="DCOM_14 - Implemented interface delegation"
+               name="%constraint.name.4"
                severity="WARNING"
                statusCode="1">
             <message>
-               {0} (System) does not delegate its Implemented Interface {1}.
+               %constraint.message.4
             </message>
             <description>
-               This rule checks that a System delegates its Implemented Interface.
+               %constraint.description.4
             </description>
             <target
                   class="SystemComponent">
@@ -144,14 +144,14 @@
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="DCOM_10 - Used interface delegation"
+               name="%constraint.name.5"
                severity="WARNING"
                statusCode="1">
             <message>
-               {0} (System) does not delegate its Used Interface {1}.
+               %constraint.message.5
             </message>
             <description>
-               This rule checks that a System delegates its used Interface
+               %constraint.description.5
             </description>
             <target
                   class="SystemComponent">
@@ -166,14 +166,14 @@
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="DCOV_02 - Capability exploitation check"
+               name="%constraint.name.6"
                severity="WARNING"
                statusCode="1">
             <message>
-               {0} (Capability) is not exploited by any Mission.
+               %constraint.message.6
             </message>
             <description>
-               This rule checks that a Capability is exploited by at least one Mission.
+               %constraint.description.6
             </description>
             <target
                   class="Capability">
@@ -185,14 +185,14 @@
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="DCOV_03 - Mission capability exploitation test"
+               name="%constraint.name.7"
                severity="ERROR"
                statusCode="1">
             <message>
-               {0} (Mission) does not exploit any Capability.
+               %constraint.message.7
             </message>
             <description>
-               This rule checks that a Mission exploit at least one Capability.
+               %constraint.description.7
             </description>
             <target
                   class="Mission">
@@ -204,14 +204,14 @@
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="DCOV_04 - Mission involves an actor check"
+               name="%constraint.name.8"
                severity="WARNING"
                statusCode="1">
             <message>
-               {0} (Mission) does not involve any Actor.
+               %constraint.message.8
             </message>
             <description>
-               This rule checks that a Mission involves at least one actor.
+               %constraint.description.8
             </description>
             <target
                   class="Mission">
@@ -223,14 +223,14 @@
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="DCOV_05 - System Component involvement in a mission check"
+               name="%constraint.name.9"
                severity="WARNING"
                statusCode="1">
             <message>
-               {0} is not involved in {1} (Mission), although it is involved in {2}
+               %constraint.message.9
             </message>
             <description>
-               This rule checks that an System Component is involved in at least one Mission.
+               %constraint.description.9
             </description>
             <target
                   class="Mission">
@@ -242,14 +242,14 @@
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="DCOV_06 - System Component participation in capabilities minimal number"
+               name="%constraint.name.10"
                severity="WARNING"
                statusCode="1">
             <message>
-               {0} is not involved in any Capability.
+               %constraint.message.10
             </message>
             <description>
-               This rule checks that the minimum number of participation from a Component towards a Capability is one.
+               %constraint.description.10
             </description>
             <target
                   class="SystemComponent">
@@ -261,14 +261,14 @@
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="DCOV_07 - Capability interation with actors"
+               name="%constraint.name.11"
                severity="WARNING"
                statusCode="1">
             <message>
-               {0} (Capability) does not involve any Actor.
+               %constraint.message.11
             </message>
             <description>
-               This rule checks that a Capability is involved by at least one Actor.
+               %constraint.description.11
             </description>
             <target
                   class="Capability">
@@ -280,14 +280,14 @@
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="DCOV_08 - System Component involvement in at least one scenario related to the capabilities it participates"
+               name="%constraint.name.12"
                severity="WARNING"
                statusCode="1">
             <message>
-               {0} is declared to be involved in {1} (Capability) but it does not appear in any of its Scenario(s).
+               %constraint.message.12
             </message>
             <description>
-               This rule checks that the current Component involved with capabilities appears in at least one scenario related to the capabilities it participates.
+               %constraint.description.12
             </description>
             <target
                   class="SystemComponent">
@@ -302,14 +302,14 @@
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="TJ_LA_03 - System Function Realization"
+               name="%constraint.name.13"
                severity="WARNING"
                statusCode="1">
             <message>
-               {0} (System Function) is not realized by any Logical Function.
+               %constraint.message.13
             </message>
             <description>
-               This rule checks that a System Function is realized by at least one Logical Function.
+               %constraint.description.13
             </description>
             <target
                   class="SystemFunction">
@@ -320,17 +320,17 @@
                id="TJ_LA_05"
                lang="Java"
                mode="Batch"
-               name="TJ_LA_05 - System Analysis Realization"
+               name="%constraint.name.14"
                severity="ERROR"
                statusCode="1">
             <message>
-               Realization consistency error for {0}.
+               %constraint.message.14
             </message>
             <target
                   class="SystemAnalysis">
             </target>
             <description>
-               This rule checks the realization consistency between Logical Architecture and System Analysis.
+               %constraint.description.14
             </description>
          </constraint>
       </constraints>
@@ -342,14 +342,14 @@
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="TJ_LA_06 - System Component Realized by Logical Component"
+               name="%constraint.name.15"
                severity="WARNING"
                statusCode="1">
             <message>
-               {0}
+               %constraint.message.15
             </message>
             <description>
-               This rule ensures that an System Component is realized by at least one Logical Component.
+               %constraint.description.15
             </description>
             <target
                   class="SystemComponent">
@@ -364,17 +364,17 @@
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="TJ_SA_02 - System Component to Entity Realization"
+               name="%constraint.name.16"
                severity="WARNING"
                statusCode="1">
             <message>
-               {0}
+               %constraint.message.16
             </message>
             <target
                   class="SystemComponent">
             </target>
             <description>
-               This rule ensures that a System Component Realizes at least one Entity.
+               %constraint.description.16
             </description>
          </constraint>
          <constraint
@@ -383,14 +383,14 @@
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="TJ_SA_04 - System Analysis Realization"
+               name="%constraint.name.17"
                severity="ERROR"
                statusCode="1">
             <message>
-               {0}.
+               %constraint.message.17
             </message>
             <description>
-               This rule ensures the realization consistency between System Analysis and Operational Analysis.
+               %constraint.description.17
             </description>
             <target
                   class="SystemAnalysis">

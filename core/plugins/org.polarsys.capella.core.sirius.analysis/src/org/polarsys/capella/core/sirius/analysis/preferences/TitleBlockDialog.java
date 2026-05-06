@@ -28,11 +28,11 @@ import org.eclipse.swt.widgets.Text;
 import org.polarsys.capella.core.diagram.helpers.TitleBlockHelper;
 
 public class TitleBlockDialog extends TitleAreaDialog {
-  private final String TITLE_NAME = "Add name and content";
-  private final String NAME_LABEL = "Name";
-  private final String CONTENT_LABEL = "Content";
-  private final String INTERPRETOR_ERROR = "The expression is not valid\r\n";
-  private final String INFO_MESSAGE = "The content field can be customized via aql, feature or capella queries.\r\n";
+  private final String TITLE_NAME = Messages.TitleBlockDialog_0;
+  private final String NAME_LABEL = Messages.TitleBlockDialog_1;
+  private final String CONTENT_LABEL = Messages.TitleBlockDialog_2;
+  private final String INTERPRETOR_ERROR = Messages.TitleBlockDialog_3;
+  private final String INFO_MESSAGE = Messages.TitleBlockDialog_4;
   private Text txtName;
   private Text txtContent;
 

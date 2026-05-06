@@ -53,7 +53,7 @@ public class LabelRetriever {
     String result;
     EObject eContainer = object.eContainer();
     if (eContainer == object) 
-      return "";
+      return ""; //$NON-NLS-1$
     if (eContainer != null) {
       result = getFullPath(eContainer) + getLabel(eContainer) + SEPARATOR;
     } else {

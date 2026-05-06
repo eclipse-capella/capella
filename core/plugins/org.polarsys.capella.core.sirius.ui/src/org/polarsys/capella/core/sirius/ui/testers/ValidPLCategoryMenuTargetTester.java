@@ -32,6 +32,6 @@ public class ValidPLCategoryMenuTargetTester extends AbstractValidCategoryMenuTa
 
   @Override
   protected String getPropertyId() {
-    return "isValidPLCategoryMenuTarget";
+    return "isValidPLCategoryMenuTarget"; //$NON-NLS-1$
   }
 }

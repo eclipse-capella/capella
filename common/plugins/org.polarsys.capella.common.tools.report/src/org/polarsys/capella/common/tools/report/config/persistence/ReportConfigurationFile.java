@@ -33,9 +33,9 @@ public class ReportConfigurationFile {
     }
 
     public ReportConfigurationFile(Element element) {
-      setFileFormatVersion(element.getAttribute("fileFormatVersion"));
-      setReportManagerVersion(element.getAttribute("reportManagerVersion"));
-      NodeList configInstanceList = element.getElementsByTagName("ConfigurationInstance");
+      setFileFormatVersion(element.getAttribute("fileFormatVersion")); //$NON-NLS-1$
+      setReportManagerVersion(element.getAttribute("reportManagerVersion")); //$NON-NLS-1$
+      NodeList configInstanceList = element.getElementsByTagName("ConfigurationInstance"); //$NON-NLS-1$
       configurationInstance = new ArrayList<>();
       for (int i = 0; i < configInstanceList.getLength(); i++) {
         configurationInstance.add(new ConfigurationInstance((Element) configInstanceList.item(i)));
@@ -102,13 +102,13 @@ public class ReportConfigurationFile {
     }
     
     public Element convertToElement(Document document) {
-      Element element = document.createElement("ReportConfigurationFile");
+      Element element = document.createElement("ReportConfigurationFile"); //$NON-NLS-1$
       
-      Attr fileFormatVersionAttr = document.createAttribute("fileFormatVersion");
+      Attr fileFormatVersionAttr = document.createAttribute("fileFormatVersion"); //$NON-NLS-1$
       fileFormatVersionAttr.setValue(getFileFormatVersion());
       element.setAttributeNode(fileFormatVersionAttr);
       
-      Attr reportManagerVersionAttr = document.createAttribute("reportManagerVersion");
+      Attr reportManagerVersionAttr = document.createAttribute("reportManagerVersion"); //$NON-NLS-1$
       reportManagerVersionAttr.setValue(getFileFormatVersion());
       element.setAttributeNode(reportManagerVersionAttr);
       

@@ -21,9 +21,9 @@ public class UsageMonitoring {
   private String addendum;
   
   public enum EventStatus {
-    NONE (""),
-    OK ("OK"),
-    ERROR ("ERROR");
+    NONE (""), //$NON-NLS-1$
+    OK ("OK"), //$NON-NLS-1$
+    ERROR ("ERROR"); //$NON-NLS-1$
   
     private final String value;
   
@@ -96,9 +96,9 @@ public class UsageMonitoring {
 
   @Override
   public String toString() {
-    return "UsageMonitoring [applicationName=" + applicationName + ", applicationVersion=" + applicationVersion
-        + ", eventName=" + eventName + ", eventContext=" + eventContext + ", eventStatus=" + eventStatus + ", addendum="
-        + addendum + "]";
+    return "UsageMonitoring [applicationName=" + applicationName + ", applicationVersion=" + applicationVersion //$NON-NLS-1$ //$NON-NLS-2$
+        + ", eventName=" + eventName + ", eventContext=" + eventContext + ", eventStatus=" + eventStatus + ", addendum=" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+        + addendum + "]"; //$NON-NLS-1$
   }
   
 }

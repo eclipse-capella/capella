@@ -78,7 +78,7 @@ public class TraceabilityHandlerMatchPolicy extends ContextMatchPolicy {
     if (handler instanceof ITraceabilityTraceHandler) {
       ITraceabilityTraceHandler tHandler = (ITraceabilityTraceHandler) handler;
       if (tHandler.isTrace(element, context)) {
-        return "TRACE-TO-" + tHandler.getSourceElement(element, context);
+        return "TRACE-TO-" + tHandler.getSourceElement(element, context); //$NON-NLS-1$
       }
     }
 
@@ -103,15 +103,15 @@ public class TraceabilityHandlerMatchPolicy extends ContextMatchPolicy {
           }
         }
 
-        System.out.println("ID = " + handler.getId(commonSource, context) + " " + commonSource);
-        return "TRACED-FROM-" + handler.getId(commonSource, context);
+        System.out.println("ID = " + handler.getId(commonSource, context) + " " + commonSource); //$NON-NLS-1$ //$NON-NLS-2$
+        return "TRACED-FROM-" + handler.getId(commonSource, context); //$NON-NLS-1$
       }
 
     } else {
-      return "UNMATCHABLE-ELEMENT-" + handler.getId(element, context);
+      return "UNMATCHABLE-ELEMENT-" + handler.getId(element, context); //$NON-NLS-1$
     }
 
-    System.out.println("ID = " + handler.getId(element, context) + " " + element);
+    System.out.println("ID = " + handler.getId(element, context) + " " + element); //$NON-NLS-1$ //$NON-NLS-2$
     return handler.getId(element, context);
   }
 }

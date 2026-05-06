@@ -33,6 +33,9 @@ public class Messages extends NLS {
   public static String MigrationAction_Command_ProcessingMigration;
 
   public static String MigrationAction_CapellaMigration;
+  
+  public static String ViewpointMigrationContribution_0;
+  public static String ViewpointMigrationContribution_1;
 
   static {
     // initialize resource bundle

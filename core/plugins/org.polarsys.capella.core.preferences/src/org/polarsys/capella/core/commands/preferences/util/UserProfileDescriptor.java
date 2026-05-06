@@ -13,7 +13,7 @@
 package org.polarsys.capella.core.commands.preferences.util;
 
 import org.eclipse.core.runtime.CoreException;
-
+import org.polarsys.capella.core.commands.preferences.internalization.l10n.PreferencesUIMessages;
 import org.polarsys.capella.core.commands.preferences.preferences.ConfigurabilityPreferences;
 import org.polarsys.capella.core.commands.preferences.service.AbstractItemDescriptor;
 import org.polarsys.capella.core.commands.preferences.service.PreferencesItemsRegistry;
@@ -85,7 +85,7 @@ public class UserProfileDescriptor extends AbstractItemDescriptor implements IUs
 	 */
 	@Override
 	public String getDescription() {
-		return "Expert User";
+		return PreferencesUIMessages.UserProfileDescriptor_Expert;
 	}
 
 }

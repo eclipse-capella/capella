@@ -177,12 +177,12 @@ public class ModelVersionItemProvider extends LibraryAbstractElementItemProvider
   @Override
   public String getText(Object object) {
     ModelVersion modelVersion = (ModelVersion) object;
-    String label = "";
+    String label = ""; //$NON-NLS-1$
 
     label += modelVersion.getMajorVersionNumber();
-    label += ".";
+    label += "."; //$NON-NLS-1$
     label += modelVersion.getMinorVersionNumber();
-    label += ".";
+    label += "."; //$NON-NLS-1$
     label += modelVersion.getLastModifiedFileStamp();
 
     // begin-extension-code

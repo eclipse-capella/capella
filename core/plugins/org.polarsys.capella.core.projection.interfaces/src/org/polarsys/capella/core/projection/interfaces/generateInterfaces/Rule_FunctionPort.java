@@ -88,8 +88,8 @@ abstract class Rule_FunctionPort extends InterfaceGenerationRule {
       if (!result) {
         if(!transfo.isDryRun()){
           // The source function has not been allocated to any component
-          String name = sourceF != null ? sourceF.getName() : "Unknown";
-          String message = name + " has not been allocated to any component";
+          String name = sourceF != null ? sourceF.getName() : "Unknown"; //$NON-NLS-1$
+          String message = name + " has not been allocated to any component"; //$NON-NLS-1$
           logger.warn(new EmbeddedMessage(message, logger.getName(), Arrays.asList(sourceF)));
         }          
         return true;
@@ -98,7 +98,7 @@ abstract class Rule_FunctionPort extends InterfaceGenerationRule {
       if (!result) {
         if(!transfo.isDryRun()){
           // The target function has not been allocated to any component
-          String message = targetF.getName() + " has not been allocated to any component";
+          String message = targetF.getName() + " has not been allocated to any component"; //$NON-NLS-1$
           logger.warn(new EmbeddedMessage(message, logger.getName(), Arrays.asList(targetF)));
         }
         return true;

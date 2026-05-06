@@ -18,12 +18,12 @@ import org.polarsys.kitalpha.richtext.common.util.MDERichTextHelper;
 
 public class CapellaMDERichTextConstants {
   
-  public static final String OPEN_IN_EDITOR_KEY = "OpenInEditor";
+  public static final String OPEN_IN_EDITOR_KEY = "OpenInEditor"; //$NON-NLS-1$
   
-  public static final String OPEN_IN_EDITOR_LABEL = "Open in Editor";
+  public static final String OPEN_IN_EDITOR_LABEL = Messages.CapellaMDERichTextConstants_1;
   
   public static final URL OPEN_IN_EDITOR_ICON = MDERichTextHelper.getURL(CapellaUIPropertiesRichtextPlugin.PLUGIN_ID,
-      "icons/full/obj16/open_in_editor.gif");
+      "icons/full/obj16/open_in_editor.gif"); //$NON-NLS-1$
   
   
 }

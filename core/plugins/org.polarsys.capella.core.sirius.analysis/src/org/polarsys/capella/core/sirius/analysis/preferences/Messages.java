@@ -17,6 +17,50 @@ import org.eclipse.osgi.util.NLS;
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.sirius.analysis.preferences.messages"; //$NON-NLS-1$
 
+  public static String DiagramProcessChainPathPreferencePage_0;
+
+  public static String DiagramProcessChainPathPreferencePage_10;
+
+  public static String DiagramProcessChainPathPreferencePage_12;
+
+  public static String DiagramProcessChainPathPreferencePage_13;
+
+  public static String DiagramProcessChainPathPreferencePage_14;
+
+  public static String DiagramProcessChainPathPreferencePage_16;
+
+  public static String DiagramProcessChainPathPreferencePage_17;
+
+  public static String DiagramProcessChainPathPreferencePage_19;
+
+  public static String DiagramProcessChainPathPreferencePage_2;
+
+  public static String DiagramProcessChainPathPreferencePage_20;
+
+  public static String DiagramProcessChainPathPreferencePage_21;
+
+  public static String DiagramProcessChainPathPreferencePage_22;
+
+  public static String DiagramProcessChainPathPreferencePage_3;
+
+  public static String DiagramProcessChainPathPreferencePage_5;
+
+  public static String DiagramProcessChainPathPreferencePage_6;
+
+  public static String DiagramProcessChainPathPreferencePage_7;
+
+  public static String DiagramProcessChainPathPreferencePage_9;
+
+  public static String TitleBlockDialog_0;
+
+  public static String TitleBlockDialog_1;
+
+  public static String TitleBlockDialog_2;
+
+  public static String TitleBlockDialog_3;
+
+  public static String TitleBlockDialog_4;
+
   public static String TitleBlockPreferencePage_TimeZone;
 
   public static String TitleBlockPreferencePage_AddDefaultTitleBlock;

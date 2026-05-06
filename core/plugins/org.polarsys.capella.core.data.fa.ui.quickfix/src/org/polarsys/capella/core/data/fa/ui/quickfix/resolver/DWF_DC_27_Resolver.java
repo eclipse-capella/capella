@@ -44,8 +44,8 @@ public class DWF_DC_27_Resolver extends AbstractSelectOneResolver {
       @Override
       public void run() {
         Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-        SelectElementsDialog dialog = new SelectElementsDialog(activeShell, "Component Exchange Allocation",
-            "Please select a single ComponentExchange to allocate\nOthers will be deallocated", allocatingCEs);
+        SelectElementsDialog dialog = new SelectElementsDialog(activeShell, Messages.DWF_DC_27_Resolver_ComponentExchangeSelectDialog_Title,
+            Messages.DWF_DC_27_Resolver_ComponentExchangeSelectDialog_Message, allocatingCEs);
         if (dialog.open() == Dialog.OK) {
           ComponentExchange result = (ComponentExchange) dialog.getResult().get(0);
           allocatingCEs.remove(result);

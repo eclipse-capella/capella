@@ -32,7 +32,7 @@ public class SemanticBrowserDisplayConverter extends MADisplayConverter {
 
     if (canonicalValue instanceof Collection<?>) {
       Collection<Object> valueList = (Collection<Object>) canonicalValue;
-      return valueList.stream().map(EObjectLabelProviderHelper::getText).collect(Collectors.joining(", "));
+      return valueList.stream().map(EObjectLabelProviderHelper::getText).collect(Collectors.joining(", ")); //$NON-NLS-1$
     }
 
     // default behavior

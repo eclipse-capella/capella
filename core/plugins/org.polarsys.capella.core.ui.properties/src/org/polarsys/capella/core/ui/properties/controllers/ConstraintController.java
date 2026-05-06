@@ -116,7 +116,7 @@ public class ConstraintController extends AbstractSimpleEditableSemanticFieldCon
         // If OpaqueExpression has no content, create an empty LINKED_TEXT content
         if (expression.getLanguages().isEmpty() || expression.getBodies().isEmpty()) {
           expression.getLanguages().add(ConstraintExt.OPAQUE_EXPRESSION_LINKED_TEXT);
-          expression.getBodies().add("");
+          expression.getBodies().add(""); //$NON-NLS-1$
         }
         expression.getBodies().set(0, text);
       }

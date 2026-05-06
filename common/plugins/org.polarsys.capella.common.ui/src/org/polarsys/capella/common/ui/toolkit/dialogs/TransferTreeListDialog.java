@@ -40,11 +40,11 @@ import org.polarsys.capella.common.ui.toolkit.widgets.handler.SelectionChangedHa
  */
 public class TransferTreeListDialog extends AbstractViewerDialog {
 
-  public static final String TRANSFERT_TREELIST_DIALOG = "org.polarsys.capella.common.ui.toolkit.dialogs.transferTreeListElements";
+  public static final String TRANSFERT_TREELIST_DIALOG = "org.polarsys.capella.common.ui.toolkit.dialogs.transferTreeListElements"; //$NON-NLS-1$
   
-  public static final String TRANSFERT_TREELIST_DIALOG_LEFT = "org.polarsys.capella.common.ui.toolkit.dialogs.transferTreeListElements.leftPane";
+  public static final String TRANSFERT_TREELIST_DIALOG_LEFT = "org.polarsys.capella.common.ui.toolkit.dialogs.transferTreeListElements.leftPane"; //$NON-NLS-1$
   
-  public static final String TRANSFERT_TREELIST_DIALOG_RIGHT = "org.polarsys.capella.common.ui.toolkit.dialogs.transferTreeListElements.rightPane";
+  public static final String TRANSFERT_TREELIST_DIALOG_RIGHT = "org.polarsys.capella.common.ui.toolkit.dialogs.transferTreeListElements.rightPane"; //$NON-NLS-1$
   
   /**
    * Default TreeViewer style bits constant.

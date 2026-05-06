@@ -36,7 +36,7 @@ public class PropertyContext implements IPropertyContext {
   /**
    * This is the key to register a listener which is not mapped to a property.
    */
-  private static final String GLOBAL_LISTENER = "global_listener";
+  private static final String GLOBAL_LISTENER = "global_listener"; //$NON-NLS-1$
 
   Object source;
   boolean shouldNotify;

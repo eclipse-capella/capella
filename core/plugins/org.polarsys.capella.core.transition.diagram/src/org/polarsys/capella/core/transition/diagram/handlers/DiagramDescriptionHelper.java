@@ -178,7 +178,7 @@ public class DiagramDescriptionHelper implements IDiagramHandler {
       //Add a timestamp
       String name = handler.getTargetName(context_p, diagram_p, targetDescription_p);
       String timestamp = new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date()); //$NON-NLS-1$
-      name = name + NLS.bind(" [{0}]", timestamp);
+      name = name + NLS.bind(" [{0}]", timestamp); //$NON-NLS-1$
       return name;
 
     }

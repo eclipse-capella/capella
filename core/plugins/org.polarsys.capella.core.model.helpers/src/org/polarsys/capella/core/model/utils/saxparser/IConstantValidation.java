@@ -73,13 +73,13 @@ public interface IConstantValidation {
   // name code of nbsp("non-breaking space")
   String NON_BREAKING_SPACE_NAME_CODE = "&nbsp;"; //$NON-NLS-1$
   // euro
-  String EURO = "\u20a0";
+  String EURO = "\u20a0"; //$NON-NLS-1$
   // replacing string for euro
   String EURO_NUMBER_CODE = "&#8364;"; //$NON-NLS-1$
   // euro
   String EURO_NAME_CODE = "&euro;"; //$NON-NLS-1$
   // trade
-  String TRADE = "™";
+  String TRADE = "\u2122"; //$NON-NLS-1$
   // replacing string for euro
   String TRADE_NUMBER_CODE = "&#8482;"; //$NON-NLS-1$
   // euro

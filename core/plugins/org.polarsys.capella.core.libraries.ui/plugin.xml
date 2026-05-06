@@ -29,10 +29,10 @@
             hasPages="true"
             icon="icons/full/etool16/capella_library.png"
             id="capella.library.wizard"
-            name="Capella Library"
+            name="%wizard.name"
             project="true">
          <description>  
-            Create a Capella library
+            %wizard.description
          </description>
       </wizard>
    </extension>
@@ -74,12 +74,12 @@
          <menu
                icon="icons/full/etool16/Library.gif"
                id="org.polarsys.capella.core.libraries.menu"
-               label="Libraries">
+               label="%menu.label">
                
             <command
                   commandId="org.polarsys.capella.core.libraries.commands.manageReferences"
                   icon="icons/full/etool16/library_command_manage.png"
-                  label="Manage references"
+                  label="%command.label"
                   style="push">
                <visibleWhen checkEnabled="true">
                   <iterate operator="and" ifEmpty="false">
@@ -91,7 +91,7 @@
             </command>
             <command
                   commandId="org.polarsys.capella.core.libraries.commands.manageVersion"
-                  label="Manage version"
+                  label="%command.label.0"
                   style="push">
                <visibleWhen
                      checkEnabled="true">
@@ -252,7 +252,7 @@
             class="org.polarsys.capella.core.libraries.ui.move.MoveStagingView"
             icon="icons/full/eview16/transfer.png"
             id="org.polarsys.capella.core.libraries.ui.moveview"
-            name="Transfer"
+            name="%view.name"
             restorable="true">
       </view>
    </extension>
@@ -260,9 +260,9 @@
          point="org.eclipse.ui.commands">
       <command
             defaultHandler="org.polarsys.capella.core.libraries.ui.move.MoveResetHandler"
-            description="Reset the view to start from the beginning"
+            description="%command.description"
             id="org.polarsys.capella.core.libraries.ui.moveReset"
-            name="Reset">
+            name="%command.name">
       </command>
       <command
             description="%sendToTransferViewDescription"

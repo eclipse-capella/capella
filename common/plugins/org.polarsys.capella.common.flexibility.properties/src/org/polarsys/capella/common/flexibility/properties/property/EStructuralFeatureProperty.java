@@ -36,7 +36,7 @@ import org.polarsys.capella.common.flexibility.properties.schema.PropertiesSchem
  */
 public class EStructuralFeatureProperty extends AbstractProperty implements IEditableProperty, IEStructuralFeatureProperty {
 
-  private Pattern split = Pattern.compile("\\.");
+  private Pattern split = Pattern.compile("\\."); //$NON-NLS-1$
 
   public String getRelatedEReference() {
 	  return getParameter(PropertiesSchemaConstants.PropertiesSchema_ESTRUCTURAL_FEATURE_PROPERTY__EFEATURE);

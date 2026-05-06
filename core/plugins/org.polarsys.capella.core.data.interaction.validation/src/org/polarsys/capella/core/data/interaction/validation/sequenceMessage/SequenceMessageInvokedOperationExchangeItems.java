@@ -66,11 +66,11 @@ public class SequenceMessageInvokedOperationExchangeItems extends AbstractModelC
     }
     
     private String computeDisplayNameForOperation(AbstractEventOperation invokedOperation) {
-        String result = "";
+        String result = ""; //$NON-NLS-1$
         if (invokedOperation instanceof FunctionalExchange) {
             AbstractFunction srcFunc = FunctionalExchangeExt.getSourceFunction((FunctionalExchange) invokedOperation);
             if (srcFunc instanceof OperationalActivity) {
-              result = "Interaction";
+              result = Messages.SequenceMessageInvokedOperationExchangeItems_1;
             } else {
                 result = EObjectLabelProviderHelper.getMetaclassLabel(invokedOperation, false);
             }

@@ -44,8 +44,8 @@ public final class AccessPolicyLabelProvider extends LabelProvider implements IT
   @Override
   public Image getColumnImage(Object element, int columnIndex) {
     if (columnIndex == 0) {
-      ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin("org.polarsys.capella.core.data.gen.edit",
-          "icons/full/obj16/Library.gif");
+      ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin("org.polarsys.capella.core.data.gen.edit", //$NON-NLS-1$
+          "icons/full/obj16/Library.gif"); //$NON-NLS-1$
       if (desc != null) {
         return desc.createImage();
       }

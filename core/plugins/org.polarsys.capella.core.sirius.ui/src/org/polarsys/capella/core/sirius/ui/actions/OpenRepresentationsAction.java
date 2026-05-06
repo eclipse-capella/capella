@@ -126,7 +126,7 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
    * @param descriptors
    */
   protected void openRepresentations(Collection<DRepresentationDescriptor> descriptors) {
-    String eventName = "Open Representation";
+    String eventName = "Open Representation"; //$NON-NLS-1$
     String eventContext = ICommonConstants.EMPTY_STRING;
     String addendum = ICommonConstants.EMPTY_STRING;
     UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE, addendum);

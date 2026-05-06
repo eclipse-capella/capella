@@ -75,7 +75,7 @@ public class TargetNameProperty extends AbstractProperty implements ICompoundPro
       isValid = false;
     }
     if (!isValid) {
-      return new Status(IStatus.WARNING, IReConstants.PLUGIN_ID, "Name should not be empty");
+      return new Status(IStatus.WARNING, IReConstants.PLUGIN_ID, Messages.TargetNameProperty_0);
     }
     return Status.OK_STATUS;
   }

@@ -55,9 +55,9 @@ import org.polarsys.kitalpha.richtext.widget.helper.MDERichtextWidgetHelper;
  */
 public abstract class ElementDescriptionGroup {
 
-  private static final String FAMILY_DEFERRED_REFRESH = CapellaUIPropertiesRichtextPlugin.PLUGIN_ID + ".refreshJobFamily";
+  private static final String FAMILY_DEFERRED_REFRESH = CapellaUIPropertiesRichtextPlugin.PLUGIN_ID + ".refreshJobFamily"; //$NON-NLS-1$
 
-  private static final String FAMILY_LOAD_DATA_REFRESH = CapellaUIPropertiesRichtextPlugin.PLUGIN_ID + ".loadDataJobFamily";
+  private static final String FAMILY_LOAD_DATA_REFRESH = CapellaUIPropertiesRichtextPlugin.PLUGIN_ID + ".loadDataJobFamily"; //$NON-NLS-1$
 
   /**
    * Current edited semantic element.
@@ -160,7 +160,7 @@ public abstract class ElementDescriptionGroup {
     parentComposite = parent;
 
     infoLabel = widgetFactory.createLabel(parent, EXISTED_EDITOR_TEXT);
-    reloadBtn = widgetFactory.createButton(parent, "Reload", SWT.PUSH);
+    reloadBtn = widgetFactory.createButton(parent, Messages.ElementDescriptionGroup_2, SWT.PUSH);
     reloadBtn.addSelectionListener(new SelectionListener() {
       @Override
       public void widgetSelected(SelectionEvent e) {
@@ -345,7 +345,7 @@ public abstract class ElementDescriptionGroup {
   protected void scheduleDeferredRefresh() {
     Job[] jobs = Job.getJobManager().find(FAMILY_DEFERRED_REFRESH);
     if (section != null && jobs.length == 0) {
-      UIJob job = new UIJob("Refresh of Description editor") {
+      UIJob job = new UIJob(Messages.ElementDescriptionGroup_3) {
 
         @Override
         public IStatus runInUIThread(IProgressMonitor monitor) {
@@ -491,7 +491,7 @@ public abstract class ElementDescriptionGroup {
         int[] counter = { 1 };
         Job[] jobs = Job.getJobManager().find(FAMILY_LOAD_DATA_REFRESH);
         if (jobs.length == 0) {
-          UIJob job = new UIJob("Load editor data") {
+          UIJob job = new UIJob(Messages.ElementDescriptionGroup_4) {
             @Override
             public IStatus runInUIThread(IProgressMonitor monitor) {
               if (descriptionTextField.isLoading()) {

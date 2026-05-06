@@ -53,7 +53,7 @@ public class DynamicNewRepresentationContributionItem extends CompoundContributi
   IServiceLocator locator = null;
 
   class NewRepresentationActionProvider extends DynamicActionProvider {
-    private static final String CAPELLA_PROJECT_DIAGRAMS_MENU_ID = "capella.project.diagrams.menu";
+    private static final String CAPELLA_PROJECT_DIAGRAMS_MENU_ID = "capella.project.diagrams.menu"; //$NON-NLS-1$
 
     @Override
     protected void fillContextMenu(IMenuManager menu, DynamicCreationAction action, String groupId) {

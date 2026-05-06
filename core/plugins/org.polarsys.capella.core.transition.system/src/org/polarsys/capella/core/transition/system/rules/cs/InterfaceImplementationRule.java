@@ -89,7 +89,7 @@ public class InterfaceImplementationRule extends AbstractCapellaElementRule {
     super.premicesRelated(eObject1, needed);
     InterfaceImplementation element = (InterfaceImplementation) eObject1;
     needed.addAll(createDefaultPrecedencePremices(element, CsPackage.Literals.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE));
-    needed.addAll(createDefaultPrecedencePremices(Collections.singletonList(getSource(eObject1, getCurrentContext())), "part"));
+    needed.addAll(createDefaultPrecedencePremices(Collections.singletonList(getSource(eObject1, getCurrentContext())), "part")); //$NON-NLS-1$
   }
 
   @Override

@@ -51,7 +51,7 @@ public abstract class AbstractCapellaNewDiagramHyperlinkAdapter extends Abstract
     IModel model = ILibraryManager.INSTANCE.getModel(session.getTransactionalEditingDomain());
     Project project = ((ICapellaModel) model).getProject(session.getTransactionalEditingDomain());
 
-    String eventName = "Create Representation";
+    String eventName = "Create Representation"; //$NON-NLS-1$
     String eventContext = getRepresentationName();
     EObject modelElement = getModelElement(project);
     String addendum = IdManager.getInstance().getId(modelElement);

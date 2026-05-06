@@ -73,6 +73,6 @@ public abstract class AbstractValidCategoryMenuTargetTester extends PropertyTest
   }
 
   protected String getPropertyId() {
-    return "";
+    return ""; //$NON-NLS-1$
   }
 }

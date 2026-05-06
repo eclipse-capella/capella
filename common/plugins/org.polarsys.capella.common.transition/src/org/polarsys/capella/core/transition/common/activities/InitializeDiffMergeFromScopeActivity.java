@@ -109,7 +109,7 @@ public class InitializeDiffMergeFromScopeActivity extends InitializeDiffMergeFro
         }
 
         if (!result) {
-          LogHelper.getInstance().warn(NLS.bind("{0} is removed from scope", LogHelper.getInstance().getText(source)), "okok");
+          LogHelper.getInstance().warn(NLS.bind(Messages.InitializeDiffMergeFromScopeActivity_0, LogHelper.getInstance().getText(source)), Messages.InitializeDiffMergeFromScopeActivity_1);
         }
         return result;
       }

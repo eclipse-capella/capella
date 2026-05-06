@@ -29,7 +29,7 @@ public class TraceabilityHelper extends RealizationLinkTraceabilityHandler {
    * @param identifier_p
    */
   public TraceabilityHelper() {
-    super("");
+    super(""); //$NON-NLS-1$
   }
 
   private static TraceabilityHelper _instance = null;

@@ -255,7 +255,7 @@ public class AttachmentActivity extends AbstractActivity {
 
     } else {
       LogHelper.getInstance().debug(
-          NLS.bind("Element ''{0}'' has not been attached.", LogHelper.getInstance().getText(target)),
+          NLS.bind("Element ''{0}'' has not been attached.", LogHelper.getInstance().getText(target)), //$NON-NLS-1$
           Messages.Activity_Transformation);
 
     }

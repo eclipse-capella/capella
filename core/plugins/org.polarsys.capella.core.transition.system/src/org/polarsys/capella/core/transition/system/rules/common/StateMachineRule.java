@@ -101,7 +101,7 @@ public class StateMachineRule extends AbstractCapellaElementRule {
           .get(ITransitionConstants.TRANSITION_SOURCES);
       for (EObject transfoSource : transfoSources) {
         if ((transfoSource instanceof Part) || (transfoSource instanceof Component)) {
-          needed.addAll(createDefaultPrecedencePremices(transfoSources, "part"));
+          needed.addAll(createDefaultPrecedencePremices(transfoSources, "part")); //$NON-NLS-1$
         }
       }
     }

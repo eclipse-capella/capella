@@ -31,7 +31,7 @@ public class TransitionContext extends GenericTransformationContext {
    */
   @Override
   public String toString() {
-    return System.identityHashCode(this) + "\n" + super.toString();
+    return System.identityHashCode(this) + "\n" + super.toString(); //$NON-NLS-1$
   }
 
   @Override

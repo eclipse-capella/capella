@@ -62,7 +62,7 @@ public class ReferentialConstraintsResourceSetListener extends ResourceSetListen
     ReferentialConstraintsValidationHelper<Diagnostic> helper = new ReferentialConstraintsValidationHelper<Diagnostic>(true) {
       @Override
       protected Diagnostic createStatus(EObject source, EObject target, EReference ref) {
-        return new BasicDiagnostic(Diagnostic.ERROR, Messages.I_38_ReferenceConstraintsListener_ruleID, 0, NLS.bind(Messages.I_38_ReferenceConstraintsListener_detail,
+        return new BasicDiagnostic(Diagnostic.ERROR, "I_38", 0, NLS.bind(Messages.I_38_ReferenceConstraintsListener_detail, //$NON-NLS-1$
             new Object[] {
                 EObjectLabelProviderHelper.getText(source),
                 EObjectLabelProviderHelper.getText(target),

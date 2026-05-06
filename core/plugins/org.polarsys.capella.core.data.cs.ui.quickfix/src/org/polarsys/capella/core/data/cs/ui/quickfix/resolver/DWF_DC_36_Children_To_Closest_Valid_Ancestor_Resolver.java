@@ -38,10 +38,10 @@ import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarke
  */
 public class DWF_DC_36_Children_To_Closest_Valid_Ancestor_Resolver extends AbstractCapellaMarkerResolution {
 
-  private static final String RULE_ID = "org.polarsys.capella.core.data.cs.validation.DWF_DC_36";
+  private static final String RULE_ID = "org.polarsys.capella.core.data.cs.validation.DWF_DC_36"; //$NON-NLS-1$
 
   public DWF_DC_36_Children_To_Closest_Valid_Ancestor_Resolver() {
-    setLabel("Move children to their closest valid ancestor");
+    setLabel(Messages.DWF_DC_36_Children_To_Closest_Valid_Ancestor_Resolver_1);
   }
 
   @Override

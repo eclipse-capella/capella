@@ -22,6 +22,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.data.activity.ActivityNode;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
@@ -49,6 +50,7 @@ import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.refmap.Pair;
 import org.polarsys.capella.core.model.utils.NamingHelper;
+import org.polarsys.capella.core.projection.scenario.Messages;
 
 public class FC2FSInitialization {
 
@@ -73,13 +75,12 @@ public class FC2FSInitialization {
     boolean isMsgWithReply = FC2FSExt.isCreateMsgWithReply(funcChains.iterator().next());
 
     for (FunctionalChain fc : funcChains) {
-      logInfo("Looking up existing Scenarios...");
+      logInfo(Messages.FC2FSInitialization_Info_Lookup);
       // Look for existing scenarios and ask the user if he want to continue when found Scenarios
       Collection<Scenario> availableInitializedScenarios = FC2FSExt.getAvailableInitializedScenarios(fc);
       if (!availableInitializedScenarios.isEmpty()) {
-        if (MessageDialog.openQuestion(FC2FSExt.getActiveShell(), "Confirm Initialization",
-            "Are you sure you want to initialize new Scenario for " + fc.getName()
-                + "? Initialized Scenario(s) found.")) {
+        if (MessageDialog.openQuestion(FC2FSExt.getActiveShell(), Messages.FC2FSInitialization_Confirm_Title,
+            NLS.bind(Messages.FC2FSInitialization_Confirm_Message, fc.getName()))) {
           doExecute(fc, isMsgWithReply, fc2ScenarioPairs);
         }
       } else {
@@ -89,9 +90,9 @@ public class FC2FSInitialization {
 
     if (!fc2ScenarioPairs.isEmpty()) {
       // Add to the model
-      logInfo("Adding created Scenario to the model");
+      logInfo(Messages.FC2FSInitialization_Info_Creating);
       FC2FSExt.addToModel(fc2ScenarioPairs);
-      logInfo("Initialization finished");
+      logInfo(Messages.FC2FSInitialization_Info_Done);
     }
   }
 
@@ -99,7 +100,7 @@ public class FC2FSInitialization {
   private void doExecute(FunctionalChain fc, boolean isMsgWithReply,
       Collection<Pair<FunctionalChain, Scenario>> fc2ScenarioPairs) {
 
-    logInfo("Perform initialization from " + fc.eClass().getName() + " " + fc.getName());
+    logInfo(NLS.bind(Messages.FC2FSInitialization_Info_Initializing, fc.eClass().getName(), fc.getName()));
     // Functional Chain => Scenario
     Scenario scenario = toScenario(fc);
 
@@ -115,10 +116,10 @@ public class FC2FSInitialization {
       createSequenceMessages(fc, scenario);
     }
     // Reorder the InstanceRoles in the Scenario
-    logInfo("Reordering InstanceRoles...");
-    logInfo("Old order: " + NamingHelper.toString((List) scenario.getOwnedInstanceRoles()));
+    logInfo(Messages.FC2FSInitialization_Info_Reordering);
+    logInfo(NLS.bind(Messages.FC2FSInitialization_Info_OldOrder, NamingHelper.toString((List) scenario.getOwnedInstanceRoles())));
     reorderInstanceRoles(scenario);
-    logInfo("New order: " + NamingHelper.toString((List) scenario.getOwnedInstanceRoles()));
+    logInfo(NLS.bind(Messages.FC2FSInitialization_Info_NewOrder, NamingHelper.toString((List) scenario.getOwnedInstanceRoles())));
 
     // Add the pairs collection
     fc2ScenarioPairs.add(new Pair<FunctionalChain, Scenario>(fc, scenario));
@@ -133,7 +134,7 @@ public class FC2FSInitialization {
   }
 
   private void createSequenceMessagesWithReply(FunctionalChain fc, Scenario scenario) {
-    logInfo("Functional Chain with return branch is enabled");
+    logInfo(Messages.FC2FSInitialization_Info_FCWithReply);
     for (FunctionalChainInvolvement fci : FunctionalChainExt.getFlatInvolvementsOf(fc,
         FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
       FunctionalExchange fe = (FunctionalExchange) fci.getInvolved();
@@ -157,7 +158,7 @@ public class FC2FSInitialization {
   }
 
   private void createSequenceMessages(FunctionalChain fc, Scenario scenario) {
-    logInfo("Functional Chain without return branch is enabled");
+    logInfo(Messages.FC2FSInitialization_Info_FCWithoutReply);
     for (FunctionalChainInvolvement fci : FunctionalChainExt.getFlatInvolvementsOf(fc,
         FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
       FunctionalExchange fe = (FunctionalExchange) fci.getInvolved();
@@ -199,15 +200,15 @@ public class FC2FSInitialization {
     trace.setSourceElement(scenario);
     scenario.getOwnedTraces().add(trace);
     getMapping().put(fc, scenario);
-    logInfo("Create Scenario " + scenario.getName() + " of kind " + scenario.getKind());
+    logInfo(NLS.bind(Messages.FC2FSInitialization_Info_CreatingScenarioKind, scenario.getName(), scenario.getKind()));
     return scenario;
   }
 
   private String getDefaultScenarioName(FunctionalChain fc) {
     if (fc instanceof OperationalProcess) {
-      return "[" + DiagramNamingConstants.ACTIVITY_SCENARIO_PREFIX + "] " + fc.getName();
+      return "[" + DiagramNamingConstants.ACTIVITY_SCENARIO_PREFIX + "] " + fc.getName(); //$NON-NLS-1$ //$NON-NLS-2$
     }
-    return "[" + DiagramNamingConstants.FUNCTION_SCENARIO_PREFIX + "] " + fc.getName();
+    return "[" + DiagramNamingConstants.FUNCTION_SCENARIO_PREFIX + "] " + fc.getName(); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   private ScenarioKind getScenarioKind(FunctionalChain fc) {
@@ -224,7 +225,7 @@ public class FC2FSInitialization {
       scenario.getOwnedInstanceRoles().add(instanceRole);
       instanceRole.setRepresentedInstance(func);
       getMapping().put(func, instanceRole);
-      logInfo("Create InstanceRole " + instanceRole.getName());
+      logInfo(NLS.bind(Messages.FC2FSInitialization_Info_CreatingRole, instanceRole.getName()));
     }
   }
 
@@ -232,12 +233,12 @@ public class FC2FSInitialization {
     SequenceMessage sequenceMessage = InteractionFactory.eINSTANCE.createSequenceMessage(fe.getName());
     scenario.getOwnedMessages().add(sequenceMessage);
     sequenceMessage.setKind(kind);
-    logInfo("Create SequenceMessage " + sequenceMessage.getName() + " of kind " + kind);
+    logInfo(NLS.bind(Messages.FC2FSInitialization_Info_CreatingSeqMsg, sequenceMessage.getName(), kind));
     return sequenceMessage;
   }
 
   private MessageEnd createSendingEnd(Scenario scenario, FunctionalExchange fe, SequenceMessage sequenceMessage) {
-    MessageEnd msgEnd = InteractionFactory.eINSTANCE.createMessageEnd("Send Call Message Call");
+    MessageEnd msgEnd = InteractionFactory.eINSTANCE.createMessageEnd(Messages.FC2FSInitialization_MessageEnd_Name);
     scenario.getOwnedInteractionFragments().add(msgEnd);
     sequenceMessage.setSendingEnd(msgEnd);
     // When it's a reply message use fe's target to find the instance role otherwise use the source
@@ -250,7 +251,7 @@ public class FC2FSInitialization {
   }
 
   private MessageEnd createReceivingEnd(Scenario scenario, FunctionalExchange fe, SequenceMessage sequenceMessage) {
-    MessageEnd receiveEnd = InteractionFactory.eINSTANCE.createMessageEnd("Receive Call Message Call");
+    MessageEnd receiveEnd = InteractionFactory.eINSTANCE.createMessageEnd(Messages.FC2FSInitialization_ReceiverEnd_Name);
     scenario.getOwnedInteractionFragments().add(receiveEnd);
     sequenceMessage.setReceivingEnd(receiveEnd);
     // When it's a reply message use fe's source to find the instance role otherwise use the target
@@ -263,21 +264,21 @@ public class FC2FSInitialization {
   }
 
   private ExecutionEnd crreateExecutionEnd(Scenario scenario, MessageEnd receivingEnd) {
-    ExecutionEnd execEnd = InteractionFactory.eINSTANCE.createExecutionEnd("endExec");
+    ExecutionEnd execEnd = InteractionFactory.eINSTANCE.createExecutionEnd(Messages.FC2FSInitialization_ExecutionEnd_Name);
     scenario.getOwnedInteractionFragments().add(execEnd);
     execEnd.getCoveredInstanceRoles().add(receivingEnd.getCoveredInstanceRoles().get(0));
     return execEnd;
   }
 
   private void createExecution(Scenario scenario, InteractionFragment start, InteractionFragment finish) {
-    Execution exec = InteractionFactory.eINSTANCE.createExecution("execution");
+    Execution exec = InteractionFactory.eINSTANCE.createExecution(Messages.FC2FSInitialization_Execution_Name);
     scenario.getOwnedTimeLapses().add(exec);
     exec.setStart(start);
     exec.setFinish(finish);
   }
 
   private void createEventSentOperation(Scenario scenario, FunctionalExchange fe, MessageEnd sendingEnd) {
-    EventSentOperation eventSentOp = InteractionFactory.eINSTANCE.createEventSentOperation("eventSentOp");
+    EventSentOperation eventSentOp = InteractionFactory.eINSTANCE.createEventSentOperation(Messages.FC2FSInitialization_EventSentOp_Name);
     scenario.getOwnedEvents().add(eventSentOp);
     sendingEnd.setEvent(eventSentOp);
     eventSentOp.setOperation(fe);
@@ -290,7 +291,7 @@ public class FC2FSInitialization {
   }
 
   private void createEventReceiptOperation(Scenario scenario, FunctionalExchange fe, MessageEnd receivingEnd) {
-    EventReceiptOperation eventReceiptOp = InteractionFactory.eINSTANCE.createEventReceiptOperation("eventReceiptOp");
+    EventReceiptOperation eventReceiptOp = InteractionFactory.eINSTANCE.createEventReceiptOperation(Messages.FC2FSInitialization_EventReceiptOp_Name);
     scenario.getOwnedEvents().add(eventReceiptOp);
     receivingEnd.setEvent(eventReceiptOp);
     eventReceiptOp.setOperation(fe);
@@ -298,7 +299,7 @@ public class FC2FSInitialization {
 
   private void createExecutionEvent(Scenario scenario, ExecutionEnd execEnd) {
     org.polarsys.capella.core.data.interaction.ExecutionEvent executionEvent = InteractionFactory.eINSTANCE
-        .createExecutionEvent("executionEvent");
+        .createExecutionEvent(Messages.FC2FSInitialization_ExecutionEvent_Name);
     scenario.getOwnedEvents().add(executionEvent);
     execEnd.setEvent(executionEvent);
   }

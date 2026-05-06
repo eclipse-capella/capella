@@ -56,8 +56,8 @@ public class DescriptionLinkModifierHandler extends DefaultHandler {
         description.append(attValue);
         description.append(IConstantValidation.DOUBLE_QUOTES);
       }
-      if (qName.equals("img")) {
-        description.append("/");
+      if (qName.equals("img")) { //$NON-NLS-1$
+        description.append("/"); //$NON-NLS-1$
       }
       // close start Element
       description.append(IConstantValidation.GREATER_THAN);
@@ -137,7 +137,7 @@ public class DescriptionLinkModifierHandler extends DefaultHandler {
      */
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-      if (qName.equals("img")) {
+      if (qName.equals("img")) { //$NON-NLS-1$
         return;
       }
       // add break element
@@ -149,13 +149,13 @@ public class DescriptionLinkModifierHandler extends DefaultHandler {
       if (qName.equalsIgnoreCase(IConstantValidation.XHTML_A_TAG)) {
         insideLink = false;
         String formattedLinkContent = elementValue.toString();
-        formattedLinkContent = formattedLinkContent.replaceAll("\\s+", " ");
+        formattedLinkContent = formattedLinkContent.replaceAll("\\s+", " "); //$NON-NLS-1$ //$NON-NLS-2$
         LinkDescription parsedLink = new LinkDescription(formattedLinkContent, currentLinkHref, currentTargetElement,
             currentLinkAttributes);
         linkModifierHandler.updateParsedLink(parsedLink, updatedDescription);
         // re-initialize
         currentTargetElement = null;
-        currentLinkHref = "";
+        currentLinkHref = ""; //$NON-NLS-1$
       } else if (!insideLink) {
         // add value
         if (valueToAdd) {
@@ -192,8 +192,8 @@ public class DescriptionLinkModifierHandler extends DefaultHandler {
         SAXParserFactory saxFactory = SAXParserFactory.newInstance();
         saxFactory.setValidating(false);
         saxParser = saxFactory.newSAXParser();
-        saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-        saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+        saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, ""); //$NON-NLS-1$
+        saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, ""); //$NON-NLS-1$
         // sax data handler
         DefaultHandler handler = new LinkParserHandler();
         // input Source
@@ -222,6 +222,6 @@ public class DescriptionLinkModifierHandler extends DefaultHandler {
       result = result.replaceAll(IConstantValidation.ROOT_NODE_END, ICommonConstants.EMPTY_STRING);
       return result;
     }
-    return "";
+    return ""; //$NON-NLS-1$
   }
 }

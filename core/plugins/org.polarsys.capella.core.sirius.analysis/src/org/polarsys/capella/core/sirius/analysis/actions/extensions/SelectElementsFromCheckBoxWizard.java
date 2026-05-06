@@ -51,7 +51,7 @@ public class SelectElementsFromCheckBoxWizard extends AbstractExternalJavaAction
     int physical_category = 3;
     int physical_links__physical_paths = 4;
     
-    final String type = "type";
+    final String type = "type"; //$NON-NLS-1$
 
     AbstractDNode context = (AbstractDNode) parameters.get(CONTEXT);
     DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(context);
@@ -64,7 +64,7 @@ public class SelectElementsFromCheckBoxWizard extends AbstractExternalJavaAction
     } else if ("PHYSICAL_CATEGORY".equals(parameters.get(type))) { //$NON-NLS-1$ //$NON-NLS-2$
       categoryType = physical_category;
 
-    } else if ("PHYSICAL_LINKS__PHYSICAL_PATHS".equals(parameters.get(type))) {
+    } else if ("PHYSICAL_LINKS__PHYSICAL_PATHS".equals(parameters.get(type))) { //$NON-NLS-1$
       categoryType = physical_links__physical_paths;
     }
 
@@ -109,7 +109,7 @@ public class SelectElementsFromCheckBoxWizard extends AbstractExternalJavaAction
 
     // Create a checkBox dialog.
     CheckboxTreeDialog<ExchangeCategory, AbstractFunction> dialog = new CheckboxTreeDialog<ExchangeCategory, AbstractFunction>(getShell(),
-        "Select Elements To Show", wizardMessage);
+        Messages.SelectElementsFromCheckBoxWizard_2, wizardMessage);
     dialog.setInput((Map) scope, (Map) initialSelection);
 
     if (Window.OK == dialog.open()) {

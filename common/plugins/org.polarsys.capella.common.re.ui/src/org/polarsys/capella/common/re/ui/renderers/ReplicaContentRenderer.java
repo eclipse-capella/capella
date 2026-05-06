@@ -166,12 +166,12 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
    */
   @Override
   protected String getToolbarLocation() {
-    return "toolbar:org.polarsys.capella.common.re.createReplica.content";
+    return "toolbar:org.polarsys.capella.common.re.createReplica.content"; //$NON-NLS-1$
   }
 
   @Override
   protected String getPopupLocation() {
-    return "popup:org.polarsys.capella.common.re.createReplica.content";
+    return "popup:org.polarsys.capella.common.re.createReplica.content"; //$NON-NLS-1$
   }
 
   /**
@@ -255,12 +255,12 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
       Object replica = context.getPropertyContext().getCurrentValue(property);
 
       if (!replica.equals(link.getSource())) {
-        return new Status(IStatus.OK, "  ", "custom location");
+        return new Status(IStatus.OK, "  ", Messages.Renderer_CustomLocation); //$NON-NLS-1$
       }
 
       EObject location = LocationHandlerHelper.getInstance(ctx).getCurrentLocation((CatalogElementLink) element, ctx);
       if (location != null) {
-        return new Status(IStatus.INFO, "  ", "custom location");
+        return new Status(IStatus.INFO, "  ", Messages.Renderer_CustomLocation); //$NON-NLS-1$
       }
       location = LocationHandlerHelper.getInstance(ctx).getLocation(link, link.getOrigin(), ctx);
       if (location == null) {
@@ -275,10 +275,10 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
         }
 
         if (defaultLocation == null) {
-          return new Status(IStatus.WARNING, "  ", "no location");
+          return new Status(IStatus.WARNING, "  ", Messages.Renderer_NoLocation); //$NON-NLS-1$
         }
 
-        return new Status(IStatus.INFO, "  ", "default location");
+        return new Status(IStatus.INFO, "  ", Messages.Renderer_DefaultLocation); //$NON-NLS-1$
       }
     }
     return Status.OK_STATUS;

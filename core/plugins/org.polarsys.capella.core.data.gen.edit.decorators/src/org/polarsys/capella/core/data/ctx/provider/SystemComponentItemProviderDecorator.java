@@ -41,13 +41,13 @@ public class SystemComponentItemProviderDecorator extends ItemProviderAdapterDec
   @Override
   public Object getImage(Object object) {
     SystemComponent component = (SystemComponent) object;
-    String imagePath = "full/obj16/SystemComponent";
+    String imagePath = "full/obj16/SystemComponent"; //$NON-NLS-1$
 
     if (component.isActor()) {
       if (component.isHuman()) {
-        imagePath = "full/obj16/SystemActorHuman";
+        imagePath = "full/obj16/SystemActorHuman"; //$NON-NLS-1$
       } else {
-        imagePath = "full/obj16/SystemActor";
+        imagePath = "full/obj16/SystemActor"; //$NON-NLS-1$
       }
     }
 

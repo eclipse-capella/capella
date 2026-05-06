@@ -46,7 +46,7 @@ public class CapellaModelSkeleton extends AdapterImpl {
    */
   public static class Builder {
 
-    public static final String DEFAULT_URI_BASE = "skeleton." + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION; // $NON-NLS-1$
+    public static final String DEFAULT_URI_BASE = "skeleton." + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION; // $NON-NLS-1$ //$NON-NLS-1$
     public static final URI DEFAULT_URI = URI.createURI(DEFAULT_URI_BASE); // $NON-NLS-1$
     public static final String DEFAULT_NAME = "Skeleton"; //$NON-NLS-1$
     public static final EngineeringDomain DEFAULT_ENGINEERING_DOMAIN = EngineeringDomain.System;

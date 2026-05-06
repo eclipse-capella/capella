@@ -107,7 +107,7 @@ public class AbstractShowHide implements IShowHide {
     @Override
     public String toString() {
       String result = _value instanceof AbstractNamedElement ? ((AbstractNamedElement) _value).getName() : _value.toString();
-      return "Var(" + _key + "=" + result + ")";
+      return "Var(" + _key + "=" + result + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
   }
 
@@ -170,7 +170,7 @@ public class AbstractShowHide implements IShowHide {
     @Override
     public String toString() {
       String result = _value instanceof AbstractNamedElement ? ((AbstractNamedElement) _value).getName() : _value.toString();
-      return "Element(" + _key + "=" + result + ")";
+      return "Element(" + _key + "=" + result + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     public ArrayList<ContextItemView> getViews() {
@@ -218,7 +218,7 @@ public class AbstractShowHide implements IShowHide {
 
     @Override
     public String toString() {
-      return "View(" + _element.toString() + ")";
+      return "View(" + _element.toString() + ")"; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
   }
@@ -311,11 +311,11 @@ public class AbstractShowHide implements IShowHide {
 
     @Override
     public String toString() {
-      String result = "";
+      String result = ""; //$NON-NLS-1$
       Iterator<ContextItem> items = iterator();
       while (items.hasNext()) {
         ContextItem item = items.next();
-        result += item.toString() + ";";
+        result += item.toString() + ";"; //$NON-NLS-1$
       }
       return result;
     }

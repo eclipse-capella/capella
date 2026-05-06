@@ -398,7 +398,7 @@ public class RepresentationHelper {
       try {
         descriptorFragment = representationDescriptor.getRepPath().getResourceURI().fragment();
       } catch (NullPointerException e) {
-        descriptorFragment = "";
+        descriptorFragment = ""; //$NON-NLS-1$
       }
 
       String descriptorUid = representationDescriptor.getUid();
@@ -466,16 +466,16 @@ public class RepresentationHelper {
     String result = ICommonConstants.EMPTY_STRING;
 
     if (!new DRepresentationDescriptorQuery(element).isRepresentationValid()) {
-      return "(Invalid)";
+      return Messages.RepresentationHelper_InvalidRepresentation;
     } else if (!element.isLoadedRepresentation()) {
-      result = "(Not Loaded)";
+      result = Messages.RepresentationHelper_NotLoadedRepresentation;
     } else {
       DRepresentation representation = element.getRepresentation();
       if (representation instanceof DDiagram) {
         if (((DDiagram) representation).isSynchronized()) {
-          result = "(Synchronized)";
+          result = Messages.RepresentationHelper_SynchronizedRepresentation;
         } else {
-          result = "(Unsynchronized)";
+          result = Messages.RepresentationHelper_UnsynchronizedRepresentation;
         }
       }
     }
@@ -483,14 +483,14 @@ public class RepresentationHelper {
   }
 
   public static String getRepresentationFullPathText(DRepresentationDescriptor descriptor) {
-    String fullPathText = "";
+    String fullPathText = ""; //$NON-NLS-1$
     EObject semanticElement = descriptor.getTarget();
 
     if (semanticElement != null) {
       fullPathText += EObjectLabelProviderHelper.getFullPathText(semanticElement);
     }
 
-    fullPathText += EObjectLabelProviderHelper.FULL_PATH_SEPARATOR + descriptor.getName() + " "
+    fullPathText += EObjectLabelProviderHelper.FULL_PATH_SEPARATOR + descriptor.getName() + " " //$NON-NLS-1$
         + RepresentationHelper.getRepresentationStatusText(descriptor);
     return fullPathText;
   }

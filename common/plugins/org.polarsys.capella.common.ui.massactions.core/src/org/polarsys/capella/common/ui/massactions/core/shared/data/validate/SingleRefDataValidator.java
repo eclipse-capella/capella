@@ -14,6 +14,7 @@ package org.polarsys.capella.common.ui.massactions.core.shared.data.validate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.nebula.widgets.nattable.data.validate.ValidationFailedException;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.kitalpha.massactions.core.data.validate.MADataValidator;
 
 /**
@@ -30,7 +31,7 @@ public class SingleRefDataValidator extends MADataValidator {
     boolean isValid = (newValue instanceof EObject);
 
     if (!isValid) {
-      throw new ValidationFailedException("The new value " + newValue + " is invalid!");
+      throw new ValidationFailedException(NLS.bind(Messages.DataValidator_InvalidValue, newValue));
     }
     return isValid;
   }

@@ -32,6 +32,6 @@ public class ValidOPMenuTargetTester extends ValidFCMenuTargetTester {
   }
 
   protected String getPropertyId() {
-    return "isValidOPMenuTarget";
+    return "isValidOPMenuTarget"; //$NON-NLS-1$
   }
 }

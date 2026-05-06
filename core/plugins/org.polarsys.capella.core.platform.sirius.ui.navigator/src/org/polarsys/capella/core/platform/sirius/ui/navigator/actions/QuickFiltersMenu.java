@@ -33,7 +33,7 @@ public class QuickFiltersMenu extends MenuManager {
 
   public QuickFiltersMenu(CapellaCommonNavigator navigator) {
     super(Messages.QuickFiltersMenu_Title);
-    setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("QuickFiltersMenu.png"));
+    setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("QuickFiltersMenu.png")); //$NON-NLS-1$
 
     this.navigator = navigator;
     INavigatorContentService capellaNavigatorContentService = navigator.getNavigatorContentService();

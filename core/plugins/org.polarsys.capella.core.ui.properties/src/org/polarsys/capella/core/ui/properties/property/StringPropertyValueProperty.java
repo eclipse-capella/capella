@@ -97,8 +97,8 @@ public abstract class StringPropertyValueProperty extends PropertyValueProperty 
         String value = String.valueOf(newValue);
 
         String validOnEmpty = getParameter(PropertiesSchemaConstants.PropertiesSchema_STRING_PROPERTY__EMPTY_IS_VALID);
-        if ((validOnEmpty != null) && "false".equals(validOnEmpty) && (value.length() == 0)) {
-          return new Status(IStatus.ERROR, getId(), "Empty value isn't valid");
+        if ((validOnEmpty != null) && "false".equals(validOnEmpty) && (value.length() == 0)) { //$NON-NLS-1$
+          return new Status(IStatus.ERROR, getId(), Messages.StringPropertyValueProperty_EmptyInvalid);
         }
       }
 

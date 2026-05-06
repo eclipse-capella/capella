@@ -39,7 +39,7 @@ public class AllSourceElementProperty extends AbstractProperty implements IEdita
   @Override
   public Object getValue(IPropertyContext context) {
     IContext ctx = (IContext) context.getSource();
-    Collection result = (Collection) ctx.get("ALL_SCOPE_ELEMENTS_PROPERTY");
+    Collection result = (Collection) ctx.get("ALL_SCOPE_ELEMENTS_PROPERTY"); //$NON-NLS-1$
 
     if (result == null) {
       result = new ArrayList<EObject>();
@@ -56,7 +56,7 @@ public class AllSourceElementProperty extends AbstractProperty implements IEdita
             result.add(item);
           }
         }
-        ctx.put("ALL_SCOPE_ELEMENTS_PROPERTY", toType(result, context));
+        ctx.put("ALL_SCOPE_ELEMENTS_PROPERTY", toType(result, context)); //$NON-NLS-1$
       }
 
     }
@@ -93,7 +93,7 @@ public class AllSourceElementProperty extends AbstractProperty implements IEdita
   @Override
   public IStatus validate(Object newValue, IPropertyContext context) {
     if ((newValue instanceof Collection) && ((Collection) newValue).isEmpty()) {
-      return new Status(IStatus.ERROR, getId(), "Scope should not be empty");
+      return new Status(IStatus.ERROR, getId(), Messages.empty_scope);
     }
     return Status.OK_STATUS;
   }
@@ -116,7 +116,7 @@ public class AllSourceElementProperty extends AbstractProperty implements IEdita
     if (IReConstants.PROPERTY__SCOPE.equals(property.getId())
      || IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET.equals(property.getId()))
     {
-      ctx.put("ALL_SCOPE_ELEMENTS_PROPERTY", null);
+      ctx.put("ALL_SCOPE_ELEMENTS_PROPERTY", null); //$NON-NLS-1$
     }
   }
 

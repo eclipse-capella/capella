@@ -428,10 +428,10 @@ public class PartItemProvider
 	public String getText(Object object) {
 		String label = ((Part) object).getName();
 		if (label == null || label.length() == 0)
-			label = "[" + getString("_UI_Part_type") + "]";
+			label = "[" + getString("_UI_Part_type") + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		Type type = ((Part)object).getType();
 		if (type != null)
-			label += " : " + type.getName();		
+			label += " : " + type.getName(); //$NON-NLS-1$
 		return label;
 	}
 	

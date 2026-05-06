@@ -19,7 +19,7 @@
             class="org.polarsys.capella.core.ui.search.CapellaSearchPage"
             icon="icons/search.gif"
             id="org.polarsys.capella.core.ui.search.page"
-            label="Capella Search"
+            label="%page.label"
             tabPosition="0"
 			extensions="*:1"
 			canSearchEnclosingProjects="false"
@@ -135,17 +135,17 @@
       <command
             defaultHandler="org.polarsys.capella.core.ui.search.result.handlers.CapellaSearchResultPageHandlerReplaceSelected"
             id="org.polarsys.capella.core.ui.search.commands.replaceSelected"
-            name="Replace Selected...">
+            name="%command.name">
       </command>
       <command
             defaultHandler="org.polarsys.capella.core.ui.search.result.handlers.CapellaSearchResultPageHandlerReplaceAll"
             id="org.polarsys.capella.core.ui.search.commands.replaceAll"
-            name="Replace All...">
+            name="%command.name.0">
       </command>
       <command
             defaultHandler="org.polarsys.capella.core.ui.search.result.handlers.CapellaSearchResultPageHandlerSelect"
             id="org.polarsys.capella.core.ui.search.commands.select"
-            name="Show In Search">
+            name="%command.name.1">
       </command>
    </extension>
 </plugin>

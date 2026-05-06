@@ -71,19 +71,19 @@ public class ComponentExchangeRule extends org.polarsys.capella.core.transition.
       ComponentExchange element = (ComponentExchange) element_p;
 
       if (!ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, element_p, context_p)) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transition, "not in scope");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, org.polarsys.capella.core.transition.system.topdown.constants.Messages.TransitionRule_Error_Scope);
       }
       if (element.getSource() == null) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transition, "source null");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, org.polarsys.capella.core.transition.system.topdown.constants.Messages.TransitionRule_Error_NullSource);
       }
       if (element.getTarget() == null) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transition, "target null");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, org.polarsys.capella.core.transition.system.topdown.constants.Messages.TransitionRule_Error_NullTarget);
       }
       if (!TransformationHandlerHelper.getInstance(context_p).isOrWillBeTransformed(element.getSource(), context_p).isOK()) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transition, "source");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, org.polarsys.capella.core.transition.system.topdown.constants.Messages.TransitionRule_Error_InvalidSource);
       }
       if (!TransformationHandlerHelper.getInstance(context_p).isOrWillBeTransformed(element.getTarget(), context_p).isOK()) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transition, "target");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, org.polarsys.capella.core.transition.system.topdown.constants.Messages.TransitionRule_Error_InvalidTarget);
       }
       java.util.Collection<EObject> transfoSources = (java.util.Collection<EObject>) context_p.get(ITransitionConstants.TRANSITION_SOURCES);
       if (transfoSources.contains(element_p)) {

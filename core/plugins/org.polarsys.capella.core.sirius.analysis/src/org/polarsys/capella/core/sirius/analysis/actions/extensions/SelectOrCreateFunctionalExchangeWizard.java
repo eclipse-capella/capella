@@ -54,19 +54,19 @@ public class SelectOrCreateFunctionalExchangeWizard extends AbstractExternalJava
     this.seqLinkEdge = (DEdge) context;
 
     currentShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-    String messageDialogTitle = "Accelerator Information";
+    String messageDialogTitle = Messages.SelectOrCreateFunctionalExchangeWizard_0;
 
     this.availableSourceFCIFViews = fcsInstance.findFlatClosestFCIFunctionViewsAsSource(seqLinkEdge, true);
     if (availableSourceFCIFViews.isEmpty()) {
       MessageDialog.openInformation(currentShell, messageDialogTitle,
-          "There is not any Functional Chain Involvement Function as source for the selected sequence link or they are all in collapsed container.");
+          Messages.SelectOrCreateFunctionalExchangeWizard_1);
       return;
     }
 
     this.availableTargetFCIFViews = fcsInstance.findFlatClosestFCIFunctionViewsAsTarget(seqLinkEdge, true);
     if (availableTargetFCIFViews.isEmpty()) {
       MessageDialog.openInformation(currentShell, messageDialogTitle,
-          "There is not any Functional Chain Involvement Function as target for the selected sequence link or they are all in collapsed container.");
+          Messages.SelectOrCreateFunctionalExchangeWizard_2);
       return;
     }
 
@@ -115,7 +115,7 @@ public class SelectOrCreateFunctionalExchangeWizard extends AbstractExternalJava
   protected void createFunctionalExchange(NewFEData newFEData, AbstractFunction feSource, AbstractFunction feTarget,
       FunctionalExchange involvedFE) {
 
-    String messageDialogTitle = "Accelerator Information";
+    String messageDialogTitle = Messages.SelectOrCreateFunctionalExchangeWizard_3;
 
     List<DNode> possibleSourceFCIFNodes = fcsInstance.getFCIFViewsInvolvingFunction(availableSourceFCIFViews, feSource);
     List<DNode> possibleTargetFCIFNodes = fcsInstance.getFCIFViewsInvolvingFunction(availableTargetFCIFViews, feTarget);
@@ -124,7 +124,7 @@ public class SelectOrCreateFunctionalExchangeWizard extends AbstractExternalJava
     int targetSize = possibleTargetFCIFNodes.size();
     if (sourceSize > 1 || targetSize > 1) {
       MessageDialog.openInformation(currentShell, messageDialogTitle,
-          "Impossible to create Functional Chain Involvement Link due to ambiguity of source and target");
+          Messages.SelectOrCreateFunctionalExchangeWizard_4);
     }
 
     if (sourceSize == 1 && targetSize == 1) {

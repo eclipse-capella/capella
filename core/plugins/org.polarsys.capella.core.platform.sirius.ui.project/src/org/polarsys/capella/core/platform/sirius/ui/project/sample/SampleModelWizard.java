@@ -120,7 +120,7 @@ public class SampleModelWizard extends AbstractExampleInstallerWizard {
     Location location = Platform.getInstallLocation();
     URL url = location.getURL();
     URI uri = URI.createURI(url.toString());
-    URI sampleLocation = uri.trimSegments(2).appendSegment("samples");
+    URI sampleLocation = uri.trimSegments(2).appendSegment("samples"); //$NON-NLS-1$
     result.add(sampleLocation);
     return result;
   }
@@ -175,7 +175,7 @@ public class SampleModelWizard extends AbstractExampleInstallerWizard {
 
   @Override
   public void addPages() {
-    projectPage = new ProjectPage("projectPage", CommonUIPlugin.INSTANCE.getString("_UI_ProjectPage_title"), null) {
+    projectPage = new ProjectPage("projectPage", CommonUIPlugin.INSTANCE.getString("_UI_ProjectPage_title"), null) { //$NON-NLS-1$ //$NON-NLS-2$
 
       @Override
       protected void itemSelected() {
@@ -186,7 +186,7 @@ public class SampleModelWizard extends AbstractExampleInstallerWizard {
         super.itemSelected();
       }
     };
-    projectPage.setDescription("Select a sample project to import");
+    projectPage.setDescription(Messages.SampleModelWizard_3);
     addPage(projectPage);
   }
 
@@ -255,7 +255,7 @@ public class SampleModelWizard extends AbstractExampleInstallerWizard {
         installProject(projectDescriptor, importOperation, progressMonitor);
       } else {
         throw new Exception(
-            CommonUIPlugin.INSTANCE.getString("_UI_FileError_message", new String[] { contentURI.toString() }));
+            CommonUIPlugin.INSTANCE.getString("_UI_FileError_message", new String[] { contentURI.toString() })); //$NON-NLS-1$
       }
 
     } finally {

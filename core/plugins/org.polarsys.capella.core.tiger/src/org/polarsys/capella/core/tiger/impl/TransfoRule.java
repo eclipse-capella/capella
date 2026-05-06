@@ -76,7 +76,7 @@ public abstract class TransfoRule implements ITransfoRule, Comparable<TransfoRul
     _eTargetType = targetType;
 
     setShortName(getClass().getSimpleName());
-    setLongName(" (" + _eSourceType.getName() + " -> " + _eTargetType.getName() + ")");
+    setLongName(" (" + _eSourceType.getName() + " -> " + _eTargetType.getName() + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
     if (ModellingcorePackage.eINSTANCE.getAbstractNamedElement().isSuperTypeOf(targetType)) {
       _updatedAttributes.add(ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME.getName());

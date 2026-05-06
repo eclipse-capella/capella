@@ -49,7 +49,7 @@ public class ExtendedCadenceLauncher {
   public IStatus cadence(final String workflow_id, final String workflowElement_id, final WorkflowActivityParameter workflowActivityParameters,
       final IProgressMonitor monitor) throws Exception {
 
-    MultiStatus result = new MultiStatus("org.polarsys.kitalpha.cadence.core", 0, getStatusMessage(workflow_id, workflowElement_id), null) {
+    MultiStatus result = new MultiStatus("org.polarsys.kitalpha.cadence.core", 0, getStatusMessage(workflow_id, workflowElement_id), null) { //$NON-NLS-1$
 
       /**
        * Retrieve a compound message with all sub child statuses
@@ -133,11 +133,11 @@ public class ExtendedCadenceLauncher {
    * @return
    */
   protected String getTaskName(String workflowName, String workflowElementName) {
-    return "Cadence " + workflowName + " : " + workflowElementName;
+    return Messages.ExtendedCadenceLauncher_1 + workflowName + " : " + workflowElementName; //$NON-NLS-2$
   }
 
   protected String getStatusMessage(String workflowName, String workflowElementName) {
-    return "Cadence activities";
+    return Messages.ExtendedCadenceLauncher_3;
   }
 
   public IStatus cadence(final String workflow_id, final String workflowElement_id, final String activityElement_id, final ActivityParameters activityParameters) {
@@ -152,7 +152,7 @@ public class ExtendedCadenceLauncher {
     IConfigurationElement activityElement = CadenceExtensions.getActivityConfigElement(activityElement_id);// get activity candidate
 
     if (activityElement == null) {
-      throw new RuntimeException(NLS.bind("Activity ''{0}'' is not registered.", activityElement_id));
+      throw new RuntimeException(NLS.bind(Messages.ExtendedCadenceLauncher_4, activityElement_id));
     }
 
     if (monitor != null) {

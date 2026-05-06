@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
@@ -57,25 +58,23 @@ public class FunctionalExchange_Delegation extends AbstractValidationRule {
   private String getMessageNameFor(FunctionalExchange fe) {
     AbstractFunction srcFunc = FunctionalExchangeExt.getSourceFunction(fe);
     if (srcFunc instanceof OperationalActivity) {
-      return "Interaction";
+      return Messages.FunctionalExchange_Delegation_0;
     }
     return EObjectLabelProviderHelper.getMetaclassLabel(fe, false);
   }
 
   private String getSourceTargetMessage(FunctionalExchange fe) {
-    String msg = "";
+    String msg = ""; //$NON-NLS-1$
     AbstractFunction srcFunc = FunctionalExchangeExt.getSourceFunction(fe);
     AbstractFunction tarFunc = FunctionalExchangeExt.getTargetFunction(fe);
 
+    Object[] msgArgs = new Object[] {EObjectLabelProviderHelper.getText(fe), getMessageNameFor(fe), getMessageNameFor(srcFunc)};
     if (srcFunc.getOwnedFunctions().size() > 0 && tarFunc.getOwnedFunctions().size() > 0) {
-      msg = ("Both source and target of \"" + EObjectLabelProviderHelper.getText(fe) + "\" (" + getMessageNameFor(fe)
-          + ") are not delegated to leaf " + getMessageNameFor(srcFunc));
+      msg = NLS.bind(Messages.FunctionalExchange_Delegation_1, msgArgs);
     } else if (srcFunc.getOwnedFunctions().size() > 0) {
-      msg = ("The source of \"" + EObjectLabelProviderHelper.getText(fe) + "\" (" + getMessageNameFor(fe)
-          + ") is not delegated to a leaf " + getMessageNameFor(srcFunc));
+      msg = NLS.bind(Messages.FunctionalExchange_Delegation_2, msgArgs);
     } else {
-      msg = ("The target of \"" + EObjectLabelProviderHelper.getText(fe) + "\" (" + getMessageNameFor(fe)
-          + ") is not delegated to a leaf " + getMessageNameFor(srcFunc));
+      msg = NLS.bind(Messages.FunctionalExchange_Delegation_3, msgArgs);
     }
     return msg;
   }

@@ -31,6 +31,7 @@ import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.transition.common.commands.LauncherCommand;
 import org.polarsys.capella.core.transition.common.launcher.DefaultLauncher;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
+import org.polarsys.capella.core.transition.system.topdown.constants.Messages;
 import org.polarsys.capella.core.transition.system.topdown.launcher.HeadlessIntramodelLauncher;
 
 public class IntramodelTransitionCommand extends LauncherCommand {
@@ -41,7 +42,7 @@ public class IntramodelTransitionCommand extends LauncherCommand {
 
   @Override
   public String getName() {
-    return "Capella Transition";
+    return Messages.IntramodelTransitionCommand_Name;
   }
 
   @Override
@@ -72,10 +73,10 @@ public class IntramodelTransitionCommand extends LauncherCommand {
     case ITopDownConstants.TRANSITION_TOPDOWN_OA2SC:
     case ITopDownConstants.TRANSITION_TOPDOWN_OA2SM:
     case ITopDownConstants.TRANSITION_TOPDOWN_CAPABILITY:
-      return "org.polarsys." + kind;
+      return "org.polarsys." + kind; //$NON-NLS-1$
 
     default:
-      return "org.polarsys.capella.core.transition.system.topdown";
+      return "org.polarsys.capella.core.transition.system.topdown"; //$NON-NLS-1$
     }
   }
 

@@ -38,7 +38,7 @@ public class ReplicaProperty extends AbstractProperty implements IEditableProper
   @Override
   public Object getValue(IPropertyContext context) {
     IContext ctx = (IContext) context.getSource();
-    return ctx.get("RPL");
+    return ctx.get("RPL"); //$NON-NLS-1$
   }
 
   /**
@@ -90,11 +90,11 @@ public class ReplicaProperty extends AbstractProperty implements IEditableProper
       EObject location = (EObject) context.getCurrentValue(property);
       if (!ReplicableElementHandlerHelper.getInstance(ctx).isDefaultLocation(location, ctx)) {
         CatalogElement element = ReplicableElementHandlerHelper.getInstance(ctx).createReplica();
-        ctx.put("RPL", element);
+        ctx.put("RPL", element); //$NON-NLS-1$
       } else {
-        Object r = ctx.get("RPL");
+        Object r = ctx.get("RPL"); //$NON-NLS-1$
         if (r != null) {
-          ctx.put("RPL", null);
+          ctx.put("RPL", null); //$NON-NLS-1$
         }
       }
     }

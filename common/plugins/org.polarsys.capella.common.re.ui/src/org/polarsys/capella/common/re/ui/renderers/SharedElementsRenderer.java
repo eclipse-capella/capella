@@ -44,7 +44,7 @@ public class SharedElementsRenderer extends BrowseRenderer {
 
   @Override
   protected String getBrowseText() {
-    return "Browse external elements";
+    return Messages.SharedElementsRenderer_0;
   }
 
   @Override
@@ -142,7 +142,7 @@ public class SharedElementsRenderer extends BrowseRenderer {
             return valid.getMessage();
           }
 
-          return "";
+          return ""; //$NON-NLS-1$
         }
 
       };

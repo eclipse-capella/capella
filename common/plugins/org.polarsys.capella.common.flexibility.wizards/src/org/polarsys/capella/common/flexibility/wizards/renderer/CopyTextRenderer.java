@@ -47,8 +47,8 @@ public class CopyTextRenderer extends TextRenderer {
 
     if (isCopyButton()) {
       copyButton = new Label(rootTextControl, SWT.NONE);
-      copyButton.setToolTipText("Copy to clipboard");
-      copyButton.setImage(Activator.getDefault().getImage("full/etool16/copy.gif"));
+      copyButton.setToolTipText(Messages.CopyTextRenderer_0);
+      copyButton.setImage(Activator.getDefault().getImage("full/etool16/copy.gif")); //$NON-NLS-1$
       copyButton.addMouseListener(new MouseListener() {
 
         @Override

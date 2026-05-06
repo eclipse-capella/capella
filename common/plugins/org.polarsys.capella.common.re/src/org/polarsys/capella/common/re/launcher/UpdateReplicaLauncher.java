@@ -33,12 +33,12 @@ public class UpdateReplicaLauncher extends ReLauncher {
 
   @Override
   protected String getMapping() {
-    return "org.polarsys.capella.common.re.updateReplica";
+    return "org.polarsys.capella.common.re.updateReplica"; //$NON-NLS-1$
   }
 
   @Override
   protected String getScope() {
-    return "org.polarsys.capella.common.re.updateReplica";
+    return "org.polarsys.capella.common.re.updateReplica"; //$NON-NLS-1$
   }
 
   @Override

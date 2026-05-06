@@ -162,7 +162,7 @@ public class CStringFieldEditor extends MdeFieldEditor {
       result = false;
     }
 
-    String txt = _textField != null ? _textField.getText() : "";
+    String txt = _textField != null ? _textField.getText() : ""; //$NON-NLS-1$
     result = (txt.trim().length() > 0) || _emptyStringAllowed;
 
     // Call hook for subclasses

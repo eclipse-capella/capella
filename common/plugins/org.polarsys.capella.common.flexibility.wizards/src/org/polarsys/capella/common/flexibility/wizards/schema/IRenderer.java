@@ -19,8 +19,8 @@ import org.eclipse.swt.widgets.Composite;
  */
 public interface IRenderer {
 
-  public static final String EXECUTION_EVENT__RENDERER_CONTEXT = "rendererContext";
-  public static final String EXECUTION_EVENT__RENDERER = "renderer";
+  public static final String EXECUTION_EVENT__RENDERER_CONTEXT = "rendererContext"; //$NON-NLS-1$
+  public static final String EXECUTION_EVENT__RENDERER = "renderer"; //$NON-NLS-1$
 
   public void render(Composite parent, IRendererContext context);
 

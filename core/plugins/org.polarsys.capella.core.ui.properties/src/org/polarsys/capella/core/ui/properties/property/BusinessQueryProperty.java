@@ -36,7 +36,7 @@ import org.polarsys.capella.common.flexibility.properties.schema.PropertiesSchem
  */
 public class BusinessQueryProperty extends EStructuralFeatureProperty implements IRestraintProperty {
 
-  Pattern _split = Pattern.compile("\\.");
+  Pattern _split = Pattern.compile("\\."); //$NON-NLS-1$
 
   /**
    * @param eClass

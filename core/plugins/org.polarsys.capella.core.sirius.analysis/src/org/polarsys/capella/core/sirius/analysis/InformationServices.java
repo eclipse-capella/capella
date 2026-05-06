@@ -2445,10 +2445,10 @@ public class InformationServices {
         // Show Modifiers suffix
         if (isShowModifiersEnable(context, view)) {
           if (pro.isOrdered()) {
-            beginLabel.append(" {ordered}");
+            beginLabel.append(' ' + Messages.InformationServices_Suffix_Ordered);
           }
           if (!pro.isUnique()) {
-            beginLabel.append(" {nonUnique}");
+            beginLabel.append(' ' + Messages.InformationServices_Suffix_NonUnique);
           }
         }
       }
@@ -2519,10 +2519,10 @@ public class InformationServices {
         // Show Modifiers
         if (isShowModifiersEnable(context, view)) {
           if (pro.isOrdered()) {
-            endLabel.append(" {ordered}");
+            endLabel.append(' ' + Messages.InformationServices_Suffix_Ordered);
           }
           if (!pro.isUnique()) {
-            endLabel.append(" {nonUnique}");
+            endLabel.append(' ' + Messages.InformationServices_Suffix_NonUnique);
           }
         }
       }
@@ -3060,7 +3060,7 @@ public class InformationServices {
     while (itResultList.hasNext()) {
       result.append(itResultList.next());
       if (itResultList.hasNext()) {
-        result.append("::");
+        result.append("::"); //$NON-NLS-1$
       }
     }
     return result.toString();
@@ -3527,27 +3527,27 @@ public class InformationServices {
    * @return
    */
   public String modifiersSuffix(EObject context, EObject view) {
-    String str = "";
+    String str = ""; //$NON-NLS-1$
     if (isShowModifiersEnable(context, view)) {
       if (context instanceof Property) {
         Property prop = (Property) context;
         if (prop.isOrdered()) {
-          str += " {ordered}";
+          str += ' ' + Messages.InformationServices_Suffix_Ordered;
         }
         if (!prop.isUnique()) {
-          str += " {nonUnique}";
+          str += ' ' + Messages.InformationServices_Suffix_NonUnique;
         }
       }
       if (context instanceof ExchangeItemElement) {
         ExchangeItemElement eie = (ExchangeItemElement) context;
         if (eie.isOrdered()) {
-          str += " {ordered}";
+          str += ' ' + Messages.InformationServices_Suffix_Ordered;
         }
         if (!eie.isUnique()) {
-          str += " {nonUnique}";
+          str += ' ' + Messages.InformationServices_Suffix_NonUnique;
         }
         if (!eie.isComposite()) {
-          str += " {nonComposite}";
+          str += ' ' + Messages.InformationServices_Suffix_NonComposite;
         }
       }
     }

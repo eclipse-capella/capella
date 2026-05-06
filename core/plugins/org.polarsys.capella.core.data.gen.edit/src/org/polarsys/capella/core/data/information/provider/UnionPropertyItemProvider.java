@@ -161,7 +161,7 @@ public class UnionPropertyItemProvider extends PropertyItemProvider implements I
           if (unit != null) {
             String unitName = unit.getName();
             if (unitName != null && !unitName.isEmpty()) {
-              typeName += " (" + unitName + ")";
+              typeName += " (" + unitName + ")"; //$NON-NLS-1$ //$NON-NLS-2$
             }
           }
         }

@@ -41,7 +41,7 @@ public class DiagramTraceabilityHelper {
   public IDiagramTraceability getTraceabilityHandler(DRepresentation representation, String idTraceability) {
     IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
 
-    IConfigurationElement configurationElements[] = extensionRegistry.getConfigurationElementsFor("org.polarsys.capella.core.diagram.traceability");
+    IConfigurationElement configurationElements[] = extensionRegistry.getConfigurationElementsFor("org.polarsys.capella.core.diagram.traceability"); //$NON-NLS-1$
 
     // Loop over contributed DiagramTraceability providers, must be only one.
     if ((configurationElements != null) && (configurationElements.length > 0)) {

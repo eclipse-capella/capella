@@ -27,17 +27,17 @@
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="TC_SM_01 - StateTransition Realization"
+                  name="%constraint.name"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (StateTransition) realizes a StateTransition from a previous level. It should be consistent with the realized StateTransition.
+                  %constraint.message
                </message>
                <target
                      class="StateTransition">
                </target>
                <description>
-                  This rule checks that a StateTransition realizing a StateTransition from a previous level is consistent with the realized StateTransition and the Bounds of the StateTransition realize both bounds of the realized StateTransition.
+                  %constraint.description
                </description>
             </constraint>
             <constraint
@@ -46,17 +46,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="TC_SM_02 -  A Region shall have only one Shallow/Deep History State"
+                  name="%constraint.name.0"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  Region {0} has two history states of the same type.
+                  %constraint.message.0
                </message>
                <target
                      class="Region">
                </target>
                <description>
-                  This rule check that region have unique history state.
+                  %constraint.description.0
                </description>
             </constraint>               
          </constraints>
@@ -68,17 +68,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_04 - A decision or a fork must have only one entering transition"
+                  name="%constraint.name.1"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} ({1}) must only have one incoming transition.
+                  %constraint.message.1
                </message>
                <target
                      class="Pseudostate">
                </target>
                <description>
-                  This rule checks that a decision or a fork have only one entering transition.
+                  %constraint.description.1
                </description>
             </constraint>
             <constraint
@@ -87,17 +87,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_05 - A join connector must have only one outgoing transition"
+                  name="%constraint.name.2"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  the {0} ({1}) must have only one outgoing transition
+                  %constraint.message.2
                </message>
                <target
                      class="JoinPseudoState">
                </target>
                <description>
-                  This rule checks that a join connector have only one outgoing transition.
+                  %constraint.description.2
                </description>
             </constraint>
             
@@ -107,17 +107,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_01 - A state machine must have only one initial state"
+                  name="%constraint.name.3"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} (StateMachine) have more than one initial state.
+                  %constraint.message.3
                </message>
                <target
                      class="StateMachine">
                </target>
                <description>
-                  This rule checks that a state machine have only one initial state
+                  %constraint.description.3
                </description>
             </constraint>
             <constraint
@@ -126,17 +126,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_02 - An initial state must have only one outgoing transition"
+                  name="%constraint.name.4"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} ({1}) have more than one outgoing transition
+                  %constraint.message.4
                </message>
                <target
                      class="InitialPseudoState">
                </target>
                <description>
-                  This rule checks that an initial state have only one outgoing transition.
+                  %constraint.description.4
                </description>
             </constraint>
             <constraint
@@ -145,17 +145,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_03 - Referenced states of a state must be all involved states in its subregions"
+                  name="%constraint.name.5"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The State/Mode {0} have an incoherent involvedStates list.
+                  %constraint.message.5
                </message>
                <target
                      class="State">
                </target>
                <description>
-                  This rule checks that referenced  States in a State are the sum of all involved States of sub regions.
+                  %constraint.description.5
                </description>
 			</constraint>
             <constraint
@@ -164,17 +164,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_06 - Mode and State should&apos;nt be in same hierarchy"
+                  name="%constraint.name.6"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {1} ({0}) has at least a {2} in his hierarchy.
+                  %constraint.message.6
                </message>
                <target
                      class="State">
                </target>
                <description>
-                  This rule depends on the Preference option &quot;Mode/State mixed hierarchy allowed&quot;. If this option is set to false, the rule checks that  a state is not in a mode hierarchy or a mode is not in a state hierarchy. In this case, hierarchy includes siblings.
+                  %constraint.description.6
                </description>
             </constraint>
             <constraint
@@ -183,17 +183,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_16 - Mode and State can not be mixed in the same State Machine"
+                  name="%constraint.name.7"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} (StateMachine) has mixed Modes and States.
+                  %constraint.message.7
                </message>
                <target
                      class="StateMachine">
                </target>
                <description>
-                  This rule depends on the Preference option &quot;Mode/State mixed hierarchy allowed&quot;. If this option is set to false, the rule checks that a State Machine has no mixed States and Modes.
+                  %constraint.description.7
                </description>
             </constraint>
             <constraint
@@ -202,17 +202,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_07 - Fork and Join State must be used in the context of concurrent Region"
+                  name="%constraint.name.8"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} {1} {2} transitions must be in different region of the same state/mode.
+                  %constraint.message.8
                </message>
                <target
                      class="Pseudostate">
                </target>
                <description>
-                  This rule ensure that Join/Fork states are used in concurrent region context.
+                  %constraint.description.8
                </description>
             </constraint>
            <constraint
@@ -221,17 +221,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_08 - State must reference a function with doActivity/entry/exit related with its owning component"
+                  name="%constraint.name.9"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} of {2} shall not reference functions ({1}) which are not allocated on the component owning the state Machine ({3}) or one of its subcomponents.
+                  %constraint.message.9
                </message>
                <target
                      class="State">
                </target>
                <description>
-                  This rule check if doActivity/Entry/Exit reference only functions associated to the component owning the state Machine or allocated to one of its subcomponents.
+                  %constraint.description.9
                </description>
             </constraint>
             <constraint
@@ -240,17 +240,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_09 - StateTransitions trigger shall not reference unallocated Functions or Functional Exchanges  and be consistent with business query."
+                  name="%constraint.name.10"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  StateTransiton to {0} is triggered by an element which is not referencable ({1}).
+                  %constraint.message.10
                   </message>
                <target
                      class="StateTransition">
                </target>
                <description>
-                  This rule check that Functions or Functional Exchanges which triggers the StateTransition are allocated on the Component or one of its subcomponents.
+                  %constraint.description.10
                </description>
             </constraint>
             <constraint
@@ -259,17 +259,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_10 - StateTransition source and target shouldn&apos;t be stored in concurrent region"
+                  name="%constraint.name.11"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  [StateTransiton] to {0} has its source and target stored in concurrent region.
+                  %constraint.message.11
                </message>
                <target
                      class="StateTransition">
                </target>
                <description>
-                  This rule check that source and target of StateTransition are not stored in concurrent region.
+                  %constraint.description.11
                </description>
             </constraint>
             <constraint
@@ -278,17 +278,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_11 -  EntryPoint must have only one outgoing transition and one or more incoming transition"
+                  name="%constraint.name.12"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  EntryPoint {0} has not a single outgoing transition or has no incoming transition.
+                  %constraint.message.12
                </message>
                <target
                      class="EntryPointPseudoState">
                </target>
                <description>
-                  This rule check that EntryPoint have only one outgoing transition and one or more incoming transition.
+                  %constraint.description.12
                </description>
             </constraint>
             <constraint
@@ -297,17 +297,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_12 - ExitPoint must have only one incoming transition and one or more outgoing transition"
+                  name="%constraint.name.13"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  ExitPoint {0} has not a single incoming transition or has no outgoing transition.
+                  %constraint.message.13
                </message>
                <target
                      class="ExitPointPseudoState">
                </target>
                <description>
-                  This rule check that ExitPoint have only one incoming transition and one or more outgoing transition.
+                  %constraint.description.13
                </description>
             </constraint>
             <constraint
@@ -316,17 +316,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_13 - Shallow/Deep History shall have only incoming transitions"
+                  name="%constraint.name.14"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} {1} has outgoing transitions.
+                  %constraint.message.14
                </message>
                <target
                      class="Pseudostate">
                </target>
                <description>
-                  This rule check that Shallow/Deep History state has only incoming transitions.
+                  %constraint.description.14
                </description>
             </constraint>
             <constraint
@@ -335,17 +335,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_14 - Functions referenced in a State must be referened as available in this State."
+                  name="%constraint.name.15"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} reference ({1}) that must be referenced as Operational Activities/Functions in {2}.
+                  %constraint.message.15
                </message>
                <target
                      class="State">
                </target>
                <description>
-                  This rule check that Functions referenced as DoActivity, Entry or Exit of a Mode/State are available via the Operational Activities/Functions reference of this State.
+                  %constraint.description.15
                </description>
             </constraint>
             <constraint
@@ -354,17 +354,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_15 - Mode and State shouldn&apos;t reuse each other"
+                  name="%constraint.name.16"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {1} ({0}) reuses at least a {2}.
+                  %constraint.message.16
                </message>
                <target
                      class="State">
                </target>
                <description>
-                  This rule depends on the Preference option&quot;Mode/State mixed hierarchy allowed&quot;. If this option is set to false, the rule checks that a state does not reuse a mode or a mode does not reuse a state.
+                  %constraint.description.16
                </description>
             </constraint>
          </constraints>
@@ -381,14 +381,14 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_03 - Check existence of referenced libraries"
+                  name="%constraint.name.17"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  Referenced library {0} does not exist.
+                  %constraint.message.17
                </message>
                <description>
-                  This rule checks that referenced libraries exist for a given Project.
+                  %constraint.description.17
                </description>
                <target
                      class="SystemEngineering">
@@ -400,16 +400,14 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_44 - Check existence of unknown model features"
+                  name="%constraint.name.18"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} [{1}] has an unknown feature [{2}] of value [{3}].
+                  %constraint.message.18
                </message>
                <description>
-                  This rule checks the existence of unkown model features. 
-An unkown model feature is a feature that is persisted in your textual model representation, but is not recognised by the metamodel and therefore is not loaded during model opening.
-Its existence does not add any corruption risk to your model, but it does represent an anomaly so it should be removed.
+                  %constraint.description.18
                </description>
                <target
                      class="SystemEngineering">

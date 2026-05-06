@@ -56,7 +56,7 @@ public class CommandLineValidationTest extends BasicTestCase {
     validationCommandLine.execute(mockApplicationContext);
     
     // Check we have a result file with the expected validation results    
-    IPath validationResultFile = workspaceLocation.append(projectName).append("ValidationResult").append(projectName).append(projectName + ".aird").append(Messages.resultsFileName);
+    IPath validationResultFile = workspaceLocation.append(projectName).append("ValidationResult").append(projectName).append(projectName + ".aird").append("validation-results.html");
     byte[] fileContentInBytes = Files.readAllBytes(Paths.get(validationResultFile.toOSString()));
     String fileContentInString = new String(fileContentInBytes);
     assertTrue(fileContentInString.contains("DCOM_03") && fileContentInString.contains("TJ_SA_01"));

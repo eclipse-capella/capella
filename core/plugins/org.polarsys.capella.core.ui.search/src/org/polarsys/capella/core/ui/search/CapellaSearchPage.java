@@ -355,7 +355,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
    */
   protected void applyDefaultSearchSettings() {
     checkboxCaseSensitive.setSelection(false);
-    comboSearchPattern.setText("");
+    comboSearchPattern.setText(""); //$NON-NLS-1$
     checkboxWholeWord.setSelection(false);
     checkboxRegex.setSelection(false);
 

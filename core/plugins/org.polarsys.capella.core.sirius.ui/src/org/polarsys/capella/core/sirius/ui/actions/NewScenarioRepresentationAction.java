@@ -16,6 +16,7 @@ package org.polarsys.capella.core.sirius.ui.actions;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.window.Window;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -72,8 +73,8 @@ public class NewScenarioRepresentationAction extends NewRepresentationAction {
         label = description.getName();
       }
 
-      String dialogTitle = "New "+label; //$NON-NLS-1$
-      String dialogMessage = "Name:"; //$NON-NLS-1$
+      String dialogTitle = NLS.bind(Messages.NewRepresentationAction_Dialog_Title, label);
+      String dialogMessage = Messages.NewRepresentationAction_Dialog_NameLabel;
       Shell activeShell = Display.getDefault().getActiveShell();
       InputDialog representationNameDlg = new InputDialog(activeShell, dialogTitle, dialogMessage, defaultName, null);
       if (Window.OK == representationNameDlg.open()) {

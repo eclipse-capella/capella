@@ -17,7 +17,7 @@
          point="org.eclipse.emf.validation.constraintProviders">
       <category
             id="capella.category/design/consistency/compliance"
-            name="RPL Compliance">
+            name="%category.name">
       </category>
       <constraintProvider>
          <package
@@ -31,17 +31,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DCON_02 - RPL to REC conformance"
+                  name="%constraint.name"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (RPL) is not up to date compared to its origin {1} (REC)
+                  %constraint.message
                </message>
                <target
                      class="CatalogElement">
                </target>
                <description>
-                  This rule checks if a RPL is up to date compared to its origin REC.
+                  %constraint.description
                </description>
             </constraint>
             <constraint
@@ -50,17 +50,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DCON_04 - RPL/REC_RPL without REC"
+                  name="%constraint.name.0"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} ({1}) without REC
+                  %constraint.message.0
                </message>
                <target
                      class="CatalogElement">
                </target>
                <description>
-                  This rule checks if a RPL or REC_RPL has no REC.
+                  %constraint.description.0
                </description>
             </constraint>
             <constraint
@@ -69,17 +69,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DCON_05 - REC might not have any RPL instance"
+                  name="%constraint.name.1"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} ({1}) might not have any RPL instance
+                  %constraint.message.1
                </message>
                <target
                      class="CatalogElement">
                </target>
                <description>
-                  This rule checks if a REC might not be utilised in a RPL.
+                  %constraint.description.1
                </description>
             </constraint>
             <constraint
@@ -88,17 +88,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DCON_06 - REC_RPL might not have any RPL instance"
+                  name="%constraint.name.2"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} ({1}) might not have any RPL instance
+                  %constraint.message.2
                </message>
                <target
                      class="CatalogElement">
                </target>
                <description>
-                  This rule checks if a REC_RPL might not be utilised in a RPL.
+                  %constraint.description.2
                </description>
             </constraint>
             <constraint
@@ -107,17 +107,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DCON_07 - RPL shall not reference an element of its REC"
+                  name="%constraint.name.3"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} RPL shall not reference an element which is also referenced by its REC ({1})
+                  %constraint.message.3
                </message>
                <target
                      class="CatalogElementLink">
                </target>
                <description>
-                  This rule checks if a RPL references an element which is also referenced by its REC
+                  %constraint.description.3
                </description>
             </constraint>
             <constraint
@@ -126,17 +126,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DCON_08 - REC/RPL detect no source no target"
+                  name="%constraint.name.4"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} {1}has {2}.
+                  %constraint.message.4
                </message>
                <target
                      class="CatalogElementLink">
                </target>
                <description>
-                  This rule checks if a Catalog Element Link has target and source
+                  %constraint.description.4
                </description>
             </constraint>
          </constraints>
@@ -154,14 +154,14 @@
                   isEnabledByDefault="false"
                   lang="Java"
                   mode="Live"
-                  name="[Live] - Blackbox"
+                  name="%constraint.name.5"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  Modification of feature &apos;&apos;{0}&apos;&apos; of element &apos;&apos;{1}&apos;&apos; violates BLACK_BOX RPL compliancy
+                  %constraint.message.5
                </message>
                <description>
-                  In live validation mode, the rule prevents all non REC conformant modifications on a RPL, with the exception that it is allowed to add realization links to RPL elements. In batch mode the rule verifies Blackbox compliance partially by checking that no external content was added to any of the validated RPLs elements (with the above mentioned exception for realization links).
+                  %constraint.description.5
                </description>
             </constraint>
          </constraints>
@@ -179,16 +179,16 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_43 - Model Element shall not reference to aird element"
+                  name="%constraint.name.6"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} {1}references {2}.
+                  %constraint.message.6
                </message>
                <target
                      class="Element"></target>
                <description>
-                  This rule checks if a model Element references aird element (e.g. gmf)
+                  %constraint.description.6
                </description>
             </constraint>
          </constraints>

@@ -53,7 +53,7 @@ public class ExportRepresentationsCommandLine extends AbstractWorkbenchCommandLi
 
       Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
       if (session == null) {
-        return new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), "No aird model found!");
+        return new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), "No aird model found!"); //$NON-NLS-1$
       }
       if (!session.isOpen()) {
         session.open(new NullProgressMonitor());
@@ -97,7 +97,7 @@ public class ExportRepresentationsCommandLine extends AbstractWorkbenchCommandLi
   
   @Override
   public void printHelp() {
-    super.printHelp(Arrays.asList("outputfolder"));
-    printArgumentsFromTable("exportRepresentationsParameters", false, Collections.emptyList());
+    super.printHelp(Arrays.asList("outputfolder")); //$NON-NLS-1$
+    printArgumentsFromTable("exportRepresentationsParameters", false, Collections.emptyList()); //$NON-NLS-1$
   }
 }

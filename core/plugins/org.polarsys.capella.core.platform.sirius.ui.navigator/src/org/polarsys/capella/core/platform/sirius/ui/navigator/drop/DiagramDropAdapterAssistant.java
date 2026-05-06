@@ -39,7 +39,7 @@ import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
  */
 public class DiagramDropAdapterAssistant extends AbstractCapellaDropAdapterAssistant {
 
-  public static final String CAPELLA_CORE_SIRIUS = "org.polarsys.capella.core.sirius.analysis";
+  public static final String CAPELLA_CORE_SIRIUS = "org.polarsys.capella.core.sirius.analysis"; //$NON-NLS-1$
   /**
    * {@inheritDoc}
    */

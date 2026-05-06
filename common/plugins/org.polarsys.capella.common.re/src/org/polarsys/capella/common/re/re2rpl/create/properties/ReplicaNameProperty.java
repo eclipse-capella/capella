@@ -67,8 +67,8 @@ public class ReplicaNameProperty extends AbstractProperty implements ICompoundPr
           String name = element.getName();
 
           //Workaround, we rename a REC to RPL to avoid user confusion 
-          if (name.startsWith("REC")) {
-            name = "RPL" + name.substring(3);
+          if (name.startsWith("REC")) { //$NON-NLS-1$
+            name = "RPL" + name.substring(3); //$NON-NLS-1$
           }
           _lastSourceName = name;
           _currentName = name + suffix;
@@ -90,7 +90,7 @@ public class ReplicaNameProperty extends AbstractProperty implements ICompoundPr
       isValid = false;
     }
     if (!isValid) {
-      return new Status(IStatus.WARNING, IReConstants.PLUGIN_ID, "Name should not be empty");
+      return new Status(IStatus.WARNING, IReConstants.PLUGIN_ID, Messages.ReplicaNameProperty_2);
     }
     return Status.OK_STATUS;
   }

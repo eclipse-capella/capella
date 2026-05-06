@@ -67,19 +67,19 @@ public class CapellaFormatDataManager extends AbstractSiriusFormatDataManager im
 
       try {
         for (IConfigurationElement element : Platform.getExtensionRegistry().getConfigurationElementsFor(
-            "org.polarsys.capella.core.sirius.ui.copyformatProvider")) {
+            "org.polarsys.capella.core.sirius.ui.copyformatProvider")) { //$NON-NLS-1$
           try {
-            IKeyProvider provider = (IKeyProvider) element.createExecutableExtension("class");
+            IKeyProvider provider = (IKeyProvider) element.createExecutableExtension("class"); //$NON-NLS-1$
             keyProviders.add(provider);
 
           } catch (Exception e) {
-            System.out.println("Cannot load a copy format provider");
+            System.out.println("Cannot load a copy format provider"); //$NON-NLS-1$
             e.printStackTrace();
           }
         }
 
       } catch (Exception e) {
-        System.out.println("Cannot load copy format providers");
+        System.out.println("Cannot load copy format providers"); //$NON-NLS-1$
         e.printStackTrace();
       }
 

@@ -29,7 +29,7 @@ public class ProjectReferencedLibrariesRule extends AbstractValidationRule {
   /**
    * The constraint ID
    */
-  public static final String ID = "org.polarsys.capella.core.data.common.validation.I_03";
+  public static final String ID = "org.polarsys.capella.core.data.common.validation.I_03"; //$NON-NLS-1$
   
   @Override
   public IStatus validate(IValidationContext validationContext) {

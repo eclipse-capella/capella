@@ -90,7 +90,7 @@ public class CapellalEditingDomainListenerForPropertySections extends ResourceSe
     if (null == delegatedListener) {
       IDelegatedListener listener = null;
       IConfigurationElement[] configurationElements = ExtensionPointHelper
-          .getConfigurationElements("org.polarsys.capella.common.model", "DelegatedListener");
+          .getConfigurationElements("org.polarsys.capella.common.model", "DelegatedListener"); //$NON-NLS-1$ //$NON-NLS-2$
 
       if (configurationElements.length > 0) {
         IConfigurationElement configurationElement = configurationElements[0];

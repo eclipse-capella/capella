@@ -30,7 +30,7 @@ public class CapellaCommonNavigatorPatternFilter extends CapellaPatternFilter {
   @Override
   protected String getText(Viewer viewer, Object element) {
     if (isSearchInDescriptionEnabled) {
-      return super.getText(viewer, element) + " " + getDescription(element);
+      return super.getText(viewer, element) + " " + getDescription(element); //$NON-NLS-1$
     }
     return super.getText(viewer, element);
   }
@@ -48,6 +48,6 @@ public class CapellaCommonNavigatorPatternFilter extends CapellaPatternFilter {
     } else if (element instanceof ItemWrapper) {
       return getDescription(((ItemWrapper) element).getWrappedObject());
     }
-    return "";
+    return ""; //$NON-NLS-1$
   }
 }

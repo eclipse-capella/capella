@@ -27,7 +27,7 @@
             colorPreferenceValue="10,10,200"
             highlightPreferenceKey="capellaLinkedTextHyperlinkHighlight"
             includeOnPreferencePage="true"
-            label="Capella LinkedText Hyperlink"
+            label="%specification.label"
             overviewRulerPreferenceKey="capellaLinkedTextHyperlinkOverviewRuler"
             textPreferenceKey="capellaLinkedTextHyperlinkText"
             textPreferenceValue="true"
@@ -40,26 +40,26 @@
          point="org.eclipse.ui.themes">
       <themeElementCategory
             id="org.polarsys.capella.common.linkedtext.ui.themeCategory"
-            label="Capella Linked Text">
+            label="%themeElementCategory.label">
          <description>
-            Allows to customize style and appearance of
+            %themeElementCategory.description
          </description>
       </themeElementCategory>
       <colorDefinition
             categoryId="org.polarsys.capella.common.linkedtext.ui.themeCategory"
             defaultsTo="ACTIVE_HYPERLINK_COLOR"
             id="org.polarsys.capella.common.linkedtext.ui.linkedTextHyperlinkColor"
-            label="Hyperlink Color">
+            label="%colorDefinition.label">
          <description>
-            The color for hyperlinks
+            %colorDefinition.description
          </description>
       </colorDefinition>
       <fontDefinition
             categoryId="org.polarsys.capella.common.linkedtext.ui.themeCategory"
             id="org.polarsys.capella.common.linkedtext.ui.font"
-            label="Linked Text Font">
+            label="%fontDefinition.label">
          <description>
-            The font for normal linked text
+            %fontDefinition.description
          </description>
       </fontDefinition>
    </extension>

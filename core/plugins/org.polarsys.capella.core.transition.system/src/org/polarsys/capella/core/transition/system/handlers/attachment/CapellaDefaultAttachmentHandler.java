@@ -35,7 +35,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class CapellaDefaultAttachmentHandler extends DefaultAttachmentHandler {
 
-  private static final String HOLDING_RESOURCE = "HOLDING_RESOURCE";
+  private static final String HOLDING_RESOURCE = "HOLDING_RESOURCE"; //$NON-NLS-1$
 
   @Override
   protected boolean shouldUpdateAttribute(EObject sourceElement, EObject targetElement, EAttribute feature,

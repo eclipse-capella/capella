@@ -16,6 +16,7 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.model.helpers.move.messages"; //$NON-NLS-1$
+  public static String MoveHelper_0;
   public static String Stage_element_has_no_editing_domain;
   public static String Stage_executeCannotMove;
   public static String Stage_executeMoved;

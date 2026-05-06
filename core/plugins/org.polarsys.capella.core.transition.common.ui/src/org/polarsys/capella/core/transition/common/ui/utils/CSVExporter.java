@@ -33,9 +33,9 @@ public class CSVExporter
 
    private static final Logger logger = Logger.getLogger(CSVExporter.class.getName());
    
-   private static final String[] FILTER_NAMES = { "Comma Separated Values Files (*.csv)", "All Files (*.*)" };
+   private static final String[] FILTER_NAMES = { Messages.CSVExporter_0, Messages.CSVExporter_1 };
 
-   private static final String[] FILTER_EXTS = { "*.csv", "*.*" };
+   private static final String[] FILTER_EXTS = { "*.csv", "*.*" }; //$NON-NLS-1$ //$NON-NLS-2$
 
    private PrintWriter resultFile;
 
@@ -46,9 +46,9 @@ public class CSVExporter
       FileDialog fileDialog = new FileDialog(shell, SWT.SAVE);
       fileDialog.setFilterNames(FILTER_NAMES);
       fileDialog.setFilterExtensions(FILTER_EXTS);
-      fileDialog.setText("Choose file to save the differences");
+      fileDialog.setText(Messages.CSVExporter_4);
 
-      fileDialog.setFileName("DifferencesLog");
+      fileDialog.setFileName("DifferencesLog"); //$NON-NLS-1$
 
       String myResultFile = fileDialog.open();
 
@@ -115,8 +115,8 @@ public class CSVExporter
       resultFile = new PrintWriter(new BufferedWriter(csvFileWriter));
     } catch (FileNotFoundException e) {
       MessageBox lMessageBox = new MessageBox(new Shell(), SWT.OK);
-      lMessageBox.setText("Write EXCEL file");
-      lMessageBox.setMessage("Write operation failed \n" + e.getMessage());
+      lMessageBox.setText(Messages.CSVExporter_6);
+      lMessageBox.setMessage(Messages.CSVExporter_7 + e.getMessage());
       lMessageBox.open();
     } catch (IOException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -130,11 +130,11 @@ public class CSVExporter
     */
    public void writeField(String pField)
    {
-      String dotComma = ";";
+      String dotComma = ";"; //$NON-NLS-1$
 
       if (pField == null)
       {
-         resultFile.print("");
+         resultFile.print(""); //$NON-NLS-1$
       }
       else
       {

@@ -48,14 +48,14 @@ public class LineSearchMatchChild extends SearchMatchChild {
       Object fullValue = eObject.eGet(eAttribute);
       if (fullValue instanceof String) {
         String fullText = (String) fullValue;
-        String[] fullTextLines = fullText.split("\n");
+        String[] fullTextLines = fullText.split("\n"); //$NON-NLS-1$
 
         if (lineNumber < fullTextLines.length) {
           String lineToModify = fullTextLines[lineNumber];
           String modifiedLine = searchPattern.matcher(lineToModify).replaceAll(replacement);
           fullTextLines[lineNumber] = modifiedLine;
 
-          String modifiedFullText = Arrays.stream(fullTextLines).collect(Collectors.joining("\n"));
+          String modifiedFullText = Arrays.stream(fullTextLines).collect(Collectors.joining("\n")); //$NON-NLS-1$
 
           TransactionalEditingDomain domain = TransactionHelper.getEditingDomain(eObject);
           Command setCommand = SetCommand.create(domain, eObject, eAttribute, modifiedFullText);
@@ -73,7 +73,7 @@ public class LineSearchMatchChild extends SearchMatchChild {
 
   @Override
   protected String computeDisplayedText(String originalText) {
-    return lineNumber + ": " + super.computeDisplayedText(originalText);
+    return lineNumber + ": " + super.computeDisplayedText(originalText); //$NON-NLS-1$
   }
 
   @Override

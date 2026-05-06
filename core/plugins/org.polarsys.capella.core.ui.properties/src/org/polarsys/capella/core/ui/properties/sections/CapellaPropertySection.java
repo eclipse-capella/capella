@@ -67,7 +67,7 @@ public class CapellaPropertySection extends PropertiesSection implements IAbstra
 
             @Override
             protected String getGroupName(IPropertyGroup group) {
-              return "";
+              return ""; //$NON-NLS-1$
             }
           };
         }

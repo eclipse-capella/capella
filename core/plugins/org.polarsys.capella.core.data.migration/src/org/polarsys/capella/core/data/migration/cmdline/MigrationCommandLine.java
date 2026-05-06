@@ -85,7 +85,7 @@ public class MigrationCommandLine extends DefaultCommandLine {
               MigrationConstants.DEFAULT_KIND_ORDER);
         }
       } catch (Exception e) {
-        logError("Error during migration of " + project.getName());
+        logError("Error during migration of " + project.getName()); //$NON-NLS-1$
       }
     }
   }
@@ -102,7 +102,7 @@ public class MigrationCommandLine extends DefaultCommandLine {
   @Override
   public void printHelp() {
     super.printHelp();
-    printArgumentsFromTable("migrationParameters", false, Collections.emptyList());
+    printArgumentsFromTable("migrationParameters", false, Collections.emptyList()); //$NON-NLS-1$
   }
   
   @Override

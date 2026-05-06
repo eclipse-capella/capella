@@ -39,7 +39,7 @@ public class SharedWorkflowActivityParameter extends WorkflowActivityParameter {
       _sharedParameters.addParameter(parameter);
     } else if (!Objects.equals(currentParameter.getValue(), parameter.getValue())) {
       if (Platform.inDevelopmentMode()) {
-        System.out.println(NLS.bind("Attempt to override shared parameter {0} by another value.", parameter.getName()));
+        System.out.println(NLS.bind("Attempt to override shared parameter {0} by another value.", parameter.getName())); //$NON-NLS-1$
       }
     }
   }

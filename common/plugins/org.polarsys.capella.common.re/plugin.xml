@@ -15,7 +15,7 @@
 <plugin>
 
    <extension
-         name="Property view"
+         name="%extension.name"
          point="org.polarsys.capella.common.flexibility.properties">
       <properties
             id="org.polarsys.capella.common.re.ReAbstractElement">
@@ -857,14 +857,14 @@
 
     <category
           id="org.polarsys.capella.common.re"
-          name="Replicable Elements"
-          description="Replicable Elements manipulation commands">
+          name="%category.name"
+          description="%category.description">
     </category>
     
     <command id="org.polarsys.capella.common.re.createRec"
           categoryId="org.polarsys.capella.common.re"
-          description="Create REC from selection"
-          name="Create REC from selection">
+          description="%command.description"
+          name="%command.name">
     </command>
     
     <command id="org.polarsys.capella.common.re.updateCur"
@@ -881,8 +881,8 @@
     
     <command id="org.polarsys.capella.common.re.createReplica"
           categoryId="org.polarsys.capella.common.re"
-          description="Instantiate RPL from REC"
-          name="Instantiate RPL from REC">
+          description="%command.description.0"
+          name="%command.name.0">
     </command>
     
     <command id="org.polarsys.capella.common.re.updateReplica"
@@ -893,14 +893,14 @@
     
     <command id="org.polarsys.capella.common.re.deleteReplicaPreserveRelatedElements"
           categoryId="org.polarsys.capella.common.re"
-          description="Delete RPL but preserve related elements"
-          name="Delete RPL but preserve related elements">
+          description="%command.description.1"
+          name="%command.name.1">
     </command>
     
     <command id="org.polarsys.capella.common.re.deleteReplicaAndRelatedElements"
           categoryId="org.polarsys.capella.common.re"
-          description="Delete RPL and related elements"
-          name="Delete RPL and related elements">
+          description="%command.description.2"
+          name="%command.name.2">
     </command>
     
    </extension>

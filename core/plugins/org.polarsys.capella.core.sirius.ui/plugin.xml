@@ -185,23 +185,23 @@
       </command>
        <command
             defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.CreateFunctionalChainActionHandler"
-            description="Create Functional Chain"
+            description="%command.description"
             id="org.polarsys.capella.core.sirius.ui.actions.CreateFunctionalChainAction"
-            name="Create a Functional Chain">
+            name="%command.name">
       </command>
       
       <command
             defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.CreateFunctionalChainActionHandler"
-            description="Create Operational Process"
+            description="%command.description.0"
             id="org.polarsys.capella.core.sirius.ui.actions.CreateOperationalProcessAction"
-            name="Create an Operational Process">
+            name="%command.name.0">
       </command>
       
       <command
             defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.CreatePhysicalPathActionHandler"
-            description="Create Physical Path"
+            description="%command.description.1"
             id="org.polarsys.capella.core.sirius.ui.actions.CreatePhysicalPathAction"
-            name="Create a Physical Path">
+            name="%command.name.1">
       </command>
    </extension>
    
@@ -414,7 +414,7 @@
         locationURI="popup:BusinessSelectMenuSirius">
        <command
           commandId="org.polarsys.capella.core.sirius.ui.select.elements.of.same.type"
-          label="Elements of same type"
+          label="%command.label"
           style="push">
        <visibleWhen
              checkEnabled="true">
@@ -425,7 +425,7 @@
   	  </command>
   	   <command
           commandId="org.polarsys.capella.core.sirius.ui.select.op.related.elements"
-          label="Related Operational Process Elements"
+          label="%command.label.0"
           style="push">
        <visibleWhen
              checkEnabled="true">
@@ -436,7 +436,7 @@
   	  </command>   
   	  <command
           commandId="org.polarsys.capella.core.sirius.ui.select.fc.related.elements"
-          label="Related Functional Chain Elements"
+          label="%command.label.1"
           style="push">
        <visibleWhen
              checkEnabled="true">
@@ -447,7 +447,7 @@
   	  </command>   
   	  <command
           commandId="org.polarsys.capella.core.sirius.ui.select.pp.related.elements"
-          label="Related Physical Path Elements"
+          label="%command.label.2"
           style="push">
        <visibleWhen
              checkEnabled="true">
@@ -458,7 +458,7 @@
   	  </command>   
   	  <command
           commandId="org.polarsys.capella.core.sirius.ui.select.resembling.elements"
-          label="Resembling Elements"
+          label="%command.label.3"
           style="push">
        <visibleWhen
              checkEnabled="true">
@@ -469,7 +469,7 @@
   	  </command> 
   	   <command
           commandId="org.polarsys.capella.core.sirius.ui.select.owned.ports"
-          label="Owned Ports"
+          label="%command.label.4"
           style="push">
        <visibleWhen
              checkEnabled="true">
@@ -480,7 +480,7 @@
   	  </command>    
   	  <command
           commandId="org.polarsys.capella.core.sirius.ui.select.owned.elements"
-          label="Owned Elements"
+          label="%command.label.5"
           style="push">
        <visibleWhen
              checkEnabled="true">
@@ -491,7 +491,7 @@
   	  </command>  
   	  <command
           commandId="org.polarsys.capella.core.sirius.ui.select.related.connections"
-          label="Related Connections"
+          label="%command.label.6"
           style="push">
        <visibleWhen
              checkEnabled="true">
@@ -508,42 +508,42 @@
       <command
             defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.SelectElementsOfSameTypeCommandHandler"
             id="org.polarsys.capella.core.sirius.ui.select.elements.of.same.type"
-            name="Select Elements of same type">
+            name="%command.name.2">
       </command>
       <command
             defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.SelectRelatedFCElementsCommandHandler"
             id="org.polarsys.capella.core.sirius.ui.select.op.related.elements"
-            name="Select Related Operational Process Elements">
+            name="%command.name.3">
       </command>
       <command
             defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.SelectRelatedFCElementsCommandHandler"
             id="org.polarsys.capella.core.sirius.ui.select.fc.related.elements"
-            name="Select Related Functional Chain Elements">
+            name="%command.name.4">
       </command>
       <command
             defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.SelectRelatedPPElementsCommandHandler"
             id="org.polarsys.capella.core.sirius.ui.select.pp.related.elements"
-            name="Select Related Physical Path Elements">
+            name="%command.name.5">
       </command>
       <command
             defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.SelectResemblingElementsCommandHandler"
             id="org.polarsys.capella.core.sirius.ui.select.resembling.elements"
-            name="Select Resembling Elements">
+            name="%command.name.6">
       </command>
       <command
             defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.SelectOwnedPortsCommandHandler"
             id="org.polarsys.capella.core.sirius.ui.select.owned.ports"
-            name="Select Owned Ports">
+            name="%command.name.7">
       </command>
        <command
             defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.SelectOwnedElementsCommandHandler"
             id="org.polarsys.capella.core.sirius.ui.select.owned.elements"
-            name="Select Owned Elements">
+            name="%command.name.8">
       </command>
       <command
             defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.SelectRelatedConnectionsCommandHandler"
             id="org.polarsys.capella.core.sirius.ui.select.related.connections"
-            name="Select Related Connections">
+            name="%command.name.9">
       </command>
    </extension>
    <extension

@@ -25,8 +25,8 @@ import org.polarsys.capella.core.data.information.datavalue.NumericValue;
 public class PropertyNamingHelper {
 	
   private static final String UNDEFINED = "undefined"; //$NON-NLS-1$
-  private static final String SQUARE_BRACKETS_FORMAT = "[%s]";
-  private static final String SQUARE_BRACKETS_WITH_DOTS_FORMAT = "[%s..%s]";
+  private static final String SQUARE_BRACKETS_FORMAT = "[%s]"; //$NON-NLS-1$
+  private static final String SQUARE_BRACKETS_WITH_DOTS_FORMAT = "[%s..%s]"; //$NON-NLS-1$
 
   public static String getSymbolIfPropertyIsDerived(Property property) {
     if (null != property) {
