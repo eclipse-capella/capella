@@ -21,11 +21,14 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.ui.provider.PropertySource;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ITreeSelection;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.navigator.CommonViewer;
 import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.IPropertySourceProvider;
 import org.eclipse.ui.views.properties.tabbed.AdvancedPropertySection;
+import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 
 /**
@@ -118,4 +121,13 @@ public class CapellaAdvancedPropertySection extends AdvancedPropertySection impl
       page.setPropertySourceProvider(this);
     }
   }
+
+  @Override
+  public void createControls(Composite parent, TabbedPropertySheetPage atabbedPropertySheetPage) {
+    super.createControls(parent, atabbedPropertySheetPage);
+    FormData data = (FormData) page.getControl().getLayoutData();
+    data.height = 100;
+    data.width = 100;
+  }
+
 }
