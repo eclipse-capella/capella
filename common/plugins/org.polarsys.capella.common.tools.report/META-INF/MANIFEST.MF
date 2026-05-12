@@ -4,7 +4,8 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.tools.report;singleton:=true
 Bundle-Version: 7.0.1.qualifier
 Bundle-Vendor: %providerName
-Require-Bundle: org.polarsys.capella.common.helpers;visibility:=reexport
+Require-Bundle: org.polarsys.capella.common.helpers;visibility:=reexport,
+ org.apache.log4j;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.tools.report,
  org.polarsys.capella.common.tools.report.appenders,
@@ -12,9 +13,6 @@ Export-Package: org.polarsys.capella.common.tools.report,
  org.polarsys.capella.common.tools.report.config.persistence,
  org.polarsys.capella.common.tools.report.config.registry,
  org.polarsys.capella.common.tools.report.util
-Import-Package: org.apache.log4j;version="1.2.24",
- org.apache.log4j.or;version="1.2.24",
- org.apache.log4j.spi;version="1.2.24"
 Bundle-Activator: org.polarsys.capella.common.tools.report.ReportManagerActivator
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin
