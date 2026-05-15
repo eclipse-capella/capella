@@ -101,7 +101,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
   private IStatus checkAFM(IResource fileToMigrate, MigrationContext context, boolean checkVersion) {
 
     MultiStatus status = new MultiStatus(AFIntegrationPlugin.getSymbolicName(), IStatus.OK,
-        "Some viewpoints are missing", null);
+        Messages.ViewpointMigrationContribution_0, null);
 
     try {
       if (Version.emptyVersion.equals(context.getFileVersion((IFile) fileToMigrate))) {
@@ -124,7 +124,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
         for (String id : viewpointUsages.keySet()) {
           if (ViewpointManager.getViewpoint(id) == null) {
             status.add(new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),
-                "The viewpoint '" + id + "' is missing"));
+                NLS.bind(Messages.ViewpointMigrationContribution_1, id)));
           }
         }
 

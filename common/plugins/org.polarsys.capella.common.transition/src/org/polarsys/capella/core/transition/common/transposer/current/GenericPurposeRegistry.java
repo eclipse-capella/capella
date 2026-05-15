@@ -86,7 +86,7 @@ public class GenericPurposeRegistry extends PurposeRegistryImpl {
   @Override
   public IStatus validateRegisteredPurposes() {
     int severity = 1;
-    String message = "Registered purpose are valid, check the error log for information.";
+    String message = Messages.GenericPurposeRegistry_0;
     for (Object element : getRegisteredPurposes()) {
       RuntimePurpose runtimePurpose = (RuntimePurpose) element;
       IStatus result = runtimePurpose.validate();
@@ -96,18 +96,18 @@ public class GenericPurposeRegistry extends PurposeRegistryImpl {
     }
 
     if (severity == 2) {
-      message = "WARNING ! Registered purpose validate with warnings, check the error log for information.";
+      message = Messages.GenericPurposeRegistry_1;
     }
     if (severity == 2) {
-      message = "ERROR ! Some registered purpose are invalid, check the error log for information.";
+      message = Messages.GenericPurposeRegistry_2;
     }
-    return new Status(severity, "org.polarsys.kitalpha.transposer.rules.handler", message);
+    return new Status(severity, "org.polarsys.kitalpha.transposer.rules.handler", message); //$NON-NLS-1$
   }
 
   @Override
   public IStatus validateContributedPurposes() {
     int severity = 1;
-    String message = "Contributed purpose are valid, check the error log for information.";
+    String message = Messages.GenericPurposeRegistry_4;
     for (Object element : getContributedPurposes()) {
       ContributedPurpose contributedPurpose = (ContributedPurpose) element;
       IStatus result = contributedPurpose.validate();
@@ -117,12 +117,12 @@ public class GenericPurposeRegistry extends PurposeRegistryImpl {
     }
 
     if (severity == 2) {
-      message = "WARNING ! Contributed purpose validate with warnings, check the error log for information.";
+      message = Messages.GenericPurposeRegistry_5;
     }
     if (severity == 2) {
-      message = "ERROR ! Some contributed purpose are invalid, check the error log for information.";
+      message = Messages.GenericPurposeRegistry_6;
     }
-    return new Status(severity, "org.polarsys.kitalpha.transposer.rules.handler", message);
+    return new Status(severity, "org.polarsys.kitalpha.transposer.rules.handler", message); //$NON-NLS-1$
   }
 
   @Override
@@ -148,7 +148,7 @@ public class GenericPurposeRegistry extends PurposeRegistryImpl {
     }
 
     if (selectedPurpose == null) {
-      throw new NullPointerException((new StringBuilder("The purpose to register is not in contributed ones : ")).append(purpose).toString());
+      throw new NullPointerException((new StringBuilder(Messages.GenericPurposeRegistry_8)).append(purpose).toString());
     }
     for (Object element : selectedPurpose.getMappings()) {
       Mapping contributedMapping = (Mapping) element;
@@ -158,7 +158,7 @@ public class GenericPurposeRegistry extends PurposeRegistryImpl {
     }
 
     if (selectedMapping == null) {
-      throw new NullPointerException((new StringBuilder("The mapping to register is not in contributed ones : ")).append(purpose).append("::")
+      throw new NullPointerException((new StringBuilder(Messages.GenericPurposeRegistry_9)).append(purpose).append("::") //$NON-NLS-1$
           .append(mappingId).toString());
     }
     RuntimePurpose runtimePurpose = RuntimeFactory.eINSTANCE.createRuntimePurpose();
@@ -178,7 +178,7 @@ public class GenericPurposeRegistry extends PurposeRegistryImpl {
 
   private String getDescription(String purpose, Mapping mapping) {
     StringBuilder runtimeDescription = new StringBuilder();
-    runtimeDescription.append("Purpose ").append(purpose).append("\n").append("\n").append(mapping.getCompleteDescription());
+    runtimeDescription.append(Messages.GenericPurposeRegistry_11).append(purpose).append("\n").append("\n").append(mapping.getCompleteDescription()); //$NON-NLS-1$ //$NON-NLS-2$
     return runtimeDescription.toString();
   }
 

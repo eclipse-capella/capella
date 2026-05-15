@@ -30,12 +30,12 @@ public class CreateRecLauncher extends org.polarsys.capella.common.re.launcher.C
 
   @Override
   protected String getMapping() {
-    return "org.polarsys.capella.core.re.createRec";
+    return "org.polarsys.capella.core.re.createRec"; //$NON-NLS-1$
   }
 
   @Override
   protected String getScope() {
-    return "org.polarsys.capella.core.re.createRec";
+    return "org.polarsys.capella.core.re.createRec"; //$NON-NLS-1$
   }
 
   @Override

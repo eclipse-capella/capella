@@ -62,8 +62,8 @@ public class ModalContextMenuExtender {
       IServiceLocator locator) {
     this.contributionManager = contributionManager;
     this.location = locationUri;
-    if (this.location.startsWith("popup:")) {
-      this.location = this.location.replaceFirst("popup:", "");
+    if (this.location.startsWith("popup:")) { //$NON-NLS-1$
+      this.location = this.location.replaceFirst("popup:", ""); //$NON-NLS-1$ //$NON-NLS-2$
     }
     this.provider = provider;
     this.locator = locator;
@@ -80,7 +80,7 @@ public class ModalContextMenuExtender {
       @Override
       public void menuAboutToShow(IMenuManager manager) {
         IEclipseContext currentContext = context.getActiveLeaf();
-        if (popupContext == null && currentContext.toString().equals("popup:"+location)) {
+        if (popupContext == null && currentContext.toString().equals("popup:"+location)) { //$NON-NLS-1$
           popupContext = currentContext;
         }
 
@@ -95,7 +95,7 @@ public class ModalContextMenuExtender {
           // We also override the activePartId attribute. For some menu that are enabled/disabled according to the
           // partId,
           // they shall not react to it since the menu is from a modal view, not the workbench active part.
-          popupContext.set(ISources.ACTIVE_PART_ID_NAME, "modal");
+          popupContext.set(ISources.ACTIVE_PART_ID_NAME, "modal"); //$NON-NLS-1$
           popupContext.processWaiting();
         }
       }

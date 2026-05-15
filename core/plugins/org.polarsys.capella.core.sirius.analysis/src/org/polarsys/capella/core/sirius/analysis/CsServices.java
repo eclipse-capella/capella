@@ -299,12 +299,12 @@ public class CsServices {
     IHandlerService handlerService = PlatformUI.getWorkbench().getService(IHandlerService.class);
     ICommandService commandService = PlatformUI.getWorkbench().getService(ICommandService.class);
     if (handlerService == null || commandService == null) {
-      logger.error("Cannot access to diagram initialization tool");
+      logger.error("Cannot access to diagram initialization tool"); //$NON-NLS-1$
       return diagram;
     }
 
     if (sourceDiagram == null) {
-      logger.error("Cannot retrieve source diagram for diagram initialization");
+      logger.error("Cannot retrieve source diagram for diagram initialization"); //$NON-NLS-1$
       return diagram;
     }
 
@@ -313,12 +313,12 @@ public class CsServices {
     ParameterizedCommand parameterizedCommand = new ParameterizedCommand(command, null);
 
     EvaluationContext context = new EvaluationContext(null, Collections.singleton(sourceDiagram));
-    context.addVariable("TARGET_DIAGRAM", diagram);
+    context.addVariable("TARGET_DIAGRAM", diagram); //$NON-NLS-1$
 
     try {
       handlerService.executeCommandInContext(parameterizedCommand, null, context);
     } catch (ExecutionException | NotDefinedException | NotEnabledException | NotHandledException exception) {
-      logger.error("Errors occured while diagram initialization", exception);
+      logger.error("Errors occured while diagram initialization", exception); //$NON-NLS-1$
 
     }
     return diagram;
@@ -5541,7 +5541,7 @@ public class CsServices {
       boolean firstTriggerToDisplay = true;
       for (AbstractEvent trigger : triggers) {
         if (trigger != null) {
-          String name = "";
+          String name = ""; //$NON-NLS-1$
           if (trigger instanceof FunctionalExchange && isShowTriggerSourceFunctionEnable(context, view)) {
             name = ModeStateMachineServices.getService()
                 .getIncomingFunctionalExchangeLabel((FunctionalExchange) trigger);
@@ -5582,7 +5582,7 @@ public class CsServices {
       if (transition.getGuard() != null) {
         String constraintLabel = CapellaServices.getService().getConstraintLabel(transition.getGuard());
         if ((constraintLabel != null) && !constraintLabel.isEmpty()) {
-          result.append(" [" + constraintLabel + "] ");
+          result.append(" [" + constraintLabel + "] "); //$NON-NLS-1$ //$NON-NLS-2$
         }
       }
 

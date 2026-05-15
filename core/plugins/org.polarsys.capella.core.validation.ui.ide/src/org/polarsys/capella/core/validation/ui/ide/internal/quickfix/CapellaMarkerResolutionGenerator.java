@@ -42,7 +42,7 @@ final public class CapellaMarkerResolutionGenerator implements IMarkerResolution
       /* Ecore markers don't have rule id's attached. We use the diagnostic source + code as a 'virtual' rule id to find the resolution */
       if (MarkerViewHelper.isEcore(marker)){      
         Diagnostic diagnostic = MarkerViewHelper.getDiagnostic(marker);
-        result = MarkerResolutionCache.INSTANCE.getResolutionsFor(diagnostic.getSource() + "." + diagnostic.getCode());
+        result = MarkerResolutionCache.INSTANCE.getResolutionsFor(diagnostic.getSource() + "." + diagnostic.getCode()); //$NON-NLS-1$
       } else {
         result = MarkerResolutionCache.NO_RESOLUTIONS;
       }

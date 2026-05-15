@@ -51,7 +51,7 @@ public class SwitchPhysicalComponentNature extends AbstractPhysicalComponentNatu
           try {
             marker.delete();
           } catch (CoreException e) {
-            PaQuickFixActivator.getDefault().log(IStatus.ERROR, "Error while deleting marker", e);
+            PaQuickFixActivator.getDefault().log(IStatus.ERROR, "Error while deleting marker", e); //$NON-NLS-1$
           }
         }
       };

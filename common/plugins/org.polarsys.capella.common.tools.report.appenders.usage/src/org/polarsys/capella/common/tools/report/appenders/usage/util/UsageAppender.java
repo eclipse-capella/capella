@@ -24,7 +24,7 @@ public class UsageAppender extends RollingFileAppender {
 
   public UsageAppender() throws IOException {
     super(new UsageLayout(), getFileName());
-    setMaxFileSize("20MB");
+    setMaxFileSize("20MB"); //$NON-NLS-1$
     setMaxBackupIndex(30);
 
     addFilter(new Filter() {
@@ -36,6 +36,6 @@ public class UsageAppender extends RollingFileAppender {
   }
 
   private static String getFileName() {
-    return System.getProperty(UsageMonitoringLogger.USAGE_PATH) + File.separator + "Usage.log";
+    return System.getProperty(UsageMonitoringLogger.USAGE_PATH) + File.separator + "Usage.log"; //$NON-NLS-1$
   }
 }

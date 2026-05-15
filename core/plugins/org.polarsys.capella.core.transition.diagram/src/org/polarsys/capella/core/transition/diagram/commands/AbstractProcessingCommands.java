@@ -73,7 +73,7 @@ public class AbstractProcessingCommands<T> extends AbstractProcessingRunnable<T>
           } catch (Exception exception_p) {
             String message = getName();
             if (exception_p.getMessage() != null) {
-              message += ": " + exception_p.getMessage();
+              message += ": " + exception_p.getMessage(); //$NON-NLS-1$
             }
             result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, message, exception_p);
           }
@@ -83,7 +83,7 @@ public class AbstractProcessingCommands<T> extends AbstractProcessingRunnable<T>
     } catch (Exception exception_p) {
       String message = name_p;
       if (exception_p.getMessage() != null) {
-        message += ": " + exception_p.getMessage();
+        message += ": " + exception_p.getMessage(); //$NON-NLS-1$
       }
       result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, message, exception_p);
     }

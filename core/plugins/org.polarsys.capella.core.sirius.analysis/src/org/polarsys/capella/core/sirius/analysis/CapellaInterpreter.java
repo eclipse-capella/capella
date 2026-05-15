@@ -58,7 +58,7 @@ public class CapellaInterpreter implements IInterpreterProvider, IInterpreter, T
 
   @Override
   public String getVariablePrefix() {
-    return "";
+    return ""; //$NON-NLS-1$
   }
 
   @Override
@@ -82,7 +82,7 @@ public class CapellaInterpreter implements IInterpreterProvider, IInterpreter, T
       // get all the categories for target and match the command name from category with the command in TitleBlock
       Set<ICategory> categories = CategoryRegistry.getInstance().gatherCategories(resolvedTarget).stream()
           .filter(category -> CaseFormat.UPPER_UNDERSCORE
-              .to(CaseFormat.LOWER_CAMEL, category.getName().trim().replaceAll(" ", "_")).equals(command))
+              .to(CaseFormat.LOWER_CAMEL, category.getName().trim().replaceAll(" ", "_")).equals(command)) //$NON-NLS-1$ //$NON-NLS-2$
           .collect(Collectors.toSet());
 
       if (!categories.isEmpty()) {

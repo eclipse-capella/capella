@@ -55,13 +55,13 @@ public class QueryDebugger {
 			result = QueryInterpretor.executeQuery(queryIdentifier, semanticsObject, context, filter);
 			storeTestData(queryIdentifier, semanticsObject, (List) result);
 			if (!assertSetIncludedInSet(oldResult, result)) {
-				Logger.getLogger(IReportManagerDefaultComponents.MODEL).debug("assertSetIncludedInSet failed for query " + queryIdentifier, null);
-				System.out.println("!! ORACLE COMPARISON FAILED !!");
-				System.out.println("assertSetIncludedInSet failed for query " + queryIdentifier);
+				Logger.getLogger(IReportManagerDefaultComponents.MODEL).debug("assertSetIncludedInSet failed for query " + queryIdentifier, null); //$NON-NLS-1$
+				System.out.println("!! ORACLE COMPARISON FAILED !!"); //$NON-NLS-1$
+				System.out.println("assertSetIncludedInSet failed for query " + queryIdentifier); //$NON-NLS-1$
 			}
 		} catch (Exception exception) {
-			Logger.getLogger(IReportManagerDefaultComponents.MODEL).debug("BUG DURING QUERY CALL !!" + queryIdentifier, exception);
-			System.out.println("!! BUG DURING QUERY CALL !!");
+			Logger.getLogger(IReportManagerDefaultComponents.MODEL).debug("BUG DURING QUERY CALL !!" + queryIdentifier, exception); //$NON-NLS-1$
+			System.out.println("!! BUG DURING QUERY CALL !!"); //$NON-NLS-1$
 			exception.printStackTrace();
 		}
 		return result;
@@ -74,21 +74,21 @@ public class QueryDebugger {
 			result = QueryInterpretor.executeQuery(queryIdentifier, semanticsObject, context);
 			storeTestData(queryIdentifier, semanticsObject, (List) result);
 			if (!assertSetEqualToSet(oldResult, result)) {
-				Logger.getLogger(IReportManagerDefaultComponents.MODEL).debug("assertSetEqualToSet failed for query " + queryIdentifier, null);
-				System.out.println("!! ORACLE COMPARISON FAILED !!");
-				System.out.println("assertSetEqualToSet failed for query " + queryIdentifier);
-				System.out.println("old result :");
+				Logger.getLogger(IReportManagerDefaultComponents.MODEL).debug("assertSetEqualToSet failed for query " + queryIdentifier, null); //$NON-NLS-1$
+				System.out.println("!! ORACLE COMPARISON FAILED !!"); //$NON-NLS-1$
+				System.out.println("assertSetEqualToSet failed for query " + queryIdentifier); //$NON-NLS-1$
+				System.out.println("old result :"); //$NON-NLS-1$
 				for (Object element : oldResult) {
-					System.out.println("  " + element);
+					System.out.println("  " + element); //$NON-NLS-1$
 				}
-				System.out.println("new result :");
+				System.out.println("new result :"); //$NON-NLS-1$
 				for (Object element : result) {
-					System.out.println("  " + element);
+					System.out.println("  " + element); //$NON-NLS-1$
 				}
 			}
 		} catch (Exception exception) {
-			Logger.getLogger(IReportManagerDefaultComponents.MODEL).debug("BUG DURING QUERY CALL !!" + queryIdentifier, exception);
-			System.out.println("!! BUG DURING QUERY CALL !!");
+			Logger.getLogger(IReportManagerDefaultComponents.MODEL).debug("BUG DURING QUERY CALL !!" + queryIdentifier, exception); //$NON-NLS-1$
+			System.out.println("!! BUG DURING QUERY CALL !!"); //$NON-NLS-1$
 			exception.printStackTrace();
 		}
 		return result;

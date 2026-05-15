@@ -71,7 +71,7 @@ public class CapellaAdapterFactoryProvider implements IAdapterFactoryProvider {
     ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
     // add decorators first
-    IConfigurationElement[] contributors = ExtensionPointHelper.getConfigurationElements("org.polarsys.capella.core.model.handler", "decoratorAdapterFactory");
+    IConfigurationElement[] contributors = ExtensionPointHelper.getConfigurationElements("org.polarsys.capella.core.model.handler", "decoratorAdapterFactory"); //$NON-NLS-1$ //$NON-NLS-2$
     for (IConfigurationElement contributorElement : contributors) {
       DecoratorAdapterFactory decorator =
         (DecoratorAdapterFactory) ExtensionPointHelper.createInstance(contributorElement, ExtensionPointHelper.ATT_CLASS);

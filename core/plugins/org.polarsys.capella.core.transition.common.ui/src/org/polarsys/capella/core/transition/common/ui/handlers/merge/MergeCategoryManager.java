@@ -158,11 +158,11 @@ public class MergeCategoryManager extends CategoryManager {
   }
   
   public String getIsActiveKey(String purpose, IDifferenceCategory category) {
-    return purpose + "_" + category.getID() + ITransitionConstants.IS_ACTIVE;
+    return purpose + "_" + category.getID() + ITransitionConstants.IS_ACTIVE; //$NON-NLS-1$
   }
   
   public String getIsInFocusModeKey(String purpose, IDifferenceCategory category) {
-    return purpose + "_" + category.getID() + ITransitionConstants.IS_IN_FOCUS_MODE;
+    return purpose + "_" + category.getID() + ITransitionConstants.IS_IN_FOCUS_MODE; //$NON-NLS-1$
   }
 
 }

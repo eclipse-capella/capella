@@ -21,7 +21,6 @@ import org.polarsys.capella.common.flexibility.properties.schema.IEditableProper
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.constants.IReConstants;
-import org.polarsys.capella.common.re.constants.Messages;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -38,7 +37,7 @@ public class ReplicaProperty extends AbstractProperty implements IEditableProper
     try {
 
       IContext context = (IContext) propertyContext.getSource();
-      CatalogElement replica = (CatalogElement) context.get("RPL");
+      CatalogElement replica = (CatalogElement) context.get("RPL"); //$NON-NLS-1$
 
       if (replica == null) {
 
@@ -67,7 +66,7 @@ public class ReplicaProperty extends AbstractProperty implements IEditableProper
           }
         }
 
-        context.put("RPL", replica);
+        context.put("RPL", replica); //$NON-NLS-1$
       }
 
       return replica;
@@ -91,7 +90,7 @@ public class ReplicaProperty extends AbstractProperty implements IEditableProper
   @Override
   public Object toType(Object value, IPropertyContext propertyContext) {
     IContext context = (IContext) propertyContext.getSource();
-    CatalogElement element = (CatalogElement) context.get("RPL");
+    CatalogElement element = (CatalogElement) context.get("RPL"); //$NON-NLS-1$
     if (value instanceof String) {
       element.setName((String) value);
       return element;
@@ -113,7 +112,7 @@ public class ReplicaProperty extends AbstractProperty implements IEditableProper
   public IStatus validate(Object newValue, IPropertyContext context) {
     
     if (newValue == null) {
-      return new Status(Status.ERROR, "unknown", Status.ERROR, Messages.Update_REC_from_RPL_only_one, null);
+      return new Status(Status.ERROR, Messages.ReplicaProperty_3, Status.ERROR, org.polarsys.capella.common.re.constants.Messages.Update_REC_from_RPL_only_one, null);
     }
     
     return Status.OK_STATUS;

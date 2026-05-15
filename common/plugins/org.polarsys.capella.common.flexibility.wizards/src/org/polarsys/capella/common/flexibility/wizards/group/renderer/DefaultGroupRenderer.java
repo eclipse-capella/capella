@@ -37,7 +37,7 @@ import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
  */
 public class DefaultGroupRenderer implements IGroupRenderer {
 
-  public static final String PARAMETER_GROUP_INDEX = "PARAMETER_GROUP_INDEX";
+  public static final String PARAMETER_GROUP_INDEX = "PARAMETER_GROUP_INDEX"; //$NON-NLS-1$
 
   /**
    * {@inheritDoc}
@@ -102,7 +102,7 @@ public class DefaultGroupRenderer implements IGroupRenderer {
     }
 
     if ((item.getName() != null) && !item.getName().isEmpty()) {
-      label.setText(item.getName() + " :   ");
+      label.setText(item.getName() + " :   "); //$NON-NLS-1$
     }
     if (required) {
       label.setFont(JFaceResources.getFontRegistry().getBold("org.eclipse.jface.defaultfont")); //$NON-NLS-1$
@@ -161,7 +161,7 @@ public class DefaultGroupRenderer implements IGroupRenderer {
             label.setLayoutData(data);
           }
 
-          rendererContext.putParameter("PARAMETER_RENDER_LABEL", Boolean.valueOf(!displayLabels));
+          rendererContext.putParameter("PARAMETER_RENDER_LABEL", Boolean.valueOf(!displayLabels)); //$NON-NLS-1$
           renderer.render(parentComposite, rendererContext);
         }
       } catch (Exception e) {

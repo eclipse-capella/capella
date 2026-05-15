@@ -46,7 +46,7 @@ public abstract class AbstractTransitionAction extends AbstractTigAction {
         if (command != null) {
           progressMonitor_p.beginTask(command.getName() + " processing...", 1); //$NON-NLS-1$
           
-          String eventName = "Transition";
+          String eventName = "Transition"; //$NON-NLS-1$
           String eventContext = command.getName();
           
           try {

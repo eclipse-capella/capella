@@ -23,8 +23,8 @@ import org.polarsys.capella.core.data.fa.ui.quickfix.resolver.DWF_DF_18_Resolver
  * DWF_DF_18 - SequenceLink with no associated FunctionalChainInvolvementLinks
  */
 public class DWF_DF_18_Resolutions extends SequenceLink_Resolutions {
-  public static final String RULE_ID = "org.polarsys.capella.core.data.fa.validation.DWF_DF_18";
-  public static final String labelQF = "Create associated link";
+  public static final String RULE_ID = "org.polarsys.capella.core.data.fa.validation.DWF_DF_18"; //$NON-NLS-1$
+  public static final String labelQF = Messages.DWF_DF_18_Resolutions_1;
 
   @Override
   protected IMarkerResolution[] doGetResolutions(IMarker marker) {
@@ -48,6 +48,6 @@ public class DWF_DF_18_Resolutions extends SequenceLink_Resolutions {
 
   @Override
   protected String getLabelQF_ALL() {
-    return "";
+    return ""; //$NON-NLS-1$
   }
 }

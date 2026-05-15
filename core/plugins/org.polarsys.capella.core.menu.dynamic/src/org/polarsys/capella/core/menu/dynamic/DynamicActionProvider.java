@@ -31,7 +31,7 @@ import org.polarsys.capella.common.ui.menu.dynamic.AbstractActionProvider;
 /**
  */
 public class DynamicActionProvider extends AbstractActionProvider {
-  private static final String ADD_NEW_ELEMENT_MENU_ID = "capella.project.element.menu";
+  private static final String ADD_NEW_ELEMENT_MENU_ID = "capella.project.element.menu"; //$NON-NLS-1$
   /**
    * Dynamic creation action.
    */

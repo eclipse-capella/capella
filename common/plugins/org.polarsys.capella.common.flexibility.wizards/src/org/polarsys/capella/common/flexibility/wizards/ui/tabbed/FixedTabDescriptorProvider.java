@@ -122,8 +122,8 @@ public abstract class FixedTabDescriptorProvider extends TabbedPropertyRegistry 
       if (!extension.getName().equals(extensionPointId)) {
         continue;
       }
-      String contributor = extension.getAttribute("contributorId");
-      if (extension.getAttribute("tabDescriptorProvider") != null) {
+      String contributor = extension.getAttribute("contributorId"); //$NON-NLS-1$
+      if (extension.getAttribute("tabDescriptorProvider") != null) { //$NON-NLS-1$
         continue;
       }
       if (!contributorId.equals(contributor)) {

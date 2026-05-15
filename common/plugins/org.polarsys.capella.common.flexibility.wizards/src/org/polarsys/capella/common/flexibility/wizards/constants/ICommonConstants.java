@@ -17,7 +17,7 @@ package org.polarsys.capella.common.flexibility.wizards.constants;
  */
 public class ICommonConstants {
 
-  public static final java.lang.String EMPTY_STRING = "";
+  public static final java.lang.String EMPTY_STRING = ""; //$NON-NLS-1$
 
   public static final char TAB_CHARACTER = '\t';
 
@@ -33,6 +33,6 @@ public class ICommonConstants {
 
   public static final char WHITE_SPACE_CHARACTER = ' ';
 
-  public static final String PARAMETER_RENDER_LABEL = "PARAMETER_RENDER_LABEL";
+  public static final String PARAMETER_RENDER_LABEL = "PARAMETER_RENDER_LABEL"; //$NON-NLS-1$
   
 }

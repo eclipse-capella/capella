@@ -31,6 +31,6 @@ public class SequenceLinkProviderDecorator extends ItemProviderAdapterDecorator 
 
   @Override
   public String getText(Object object) {
-    return SEQUENCE_LINK_TEXT;
+    return "[" + Messages.SequenceLink_Label + "]"; //$NON-NLS-1$ //$NON-NLS-2$
   }
 }

@@ -30,10 +30,10 @@ public class PreferencesFilter extends ViewerFilter {
 
   public void setSearchValue(String searchValue) {
     if (!searchValue.isEmpty() && !PreferencesUIMessages.CommandSelectionContainer_Filtering.equals(searchValue)) {
-      if (searchValue.contains("*")) {
-        searchValue = searchValue.replaceAll("\\*", "");// ="";
+      if (searchValue.contains("*")) { //$NON-NLS-1$
+        searchValue = searchValue.replaceAll("\\*", "");// =""; //$NON-NLS-1$ //$NON-NLS-2$
       }
-      this.searchValue = ".*" + searchValue + ".*";
+      this.searchValue = ".*" + searchValue + ".*"; //$NON-NLS-1$ //$NON-NLS-2$
     } else {
       this.searchValue = null;
     }

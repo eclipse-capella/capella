@@ -54,30 +54,30 @@ public class DWF_DS_04_Resolutions extends AbstractMarkerResolutionGenerator {
 
     List<IMarkerResolution> resolutions = new ArrayList<IMarkerResolution>();
     // ExchangeItemAllocation.
-    resolutions.add(new CapellaElementGoToResolver("Invoked Operation", invokedOperation));
+    resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_InvokedOperation, invokedOperation));
 
     NamedElement sequenceMessageSourceComponent = SequenceMessageExt.getSender(sequenceMessage);
     if (null != sequenceMessageSourceComponent) {
       // Source component can be null for found messages.
-      resolutions.add(new CapellaElementGoToResolver("SequenceMessage source component", sequenceMessageSourceComponent));
+      resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_SeqMsgSource, sequenceMessageSourceComponent));
     }
 
     NamedElement sequenceMessageTargetComponent = SequenceMessageExt.getReceiver(sequenceMessage);
     if (null != sequenceMessageTargetComponent) {
       // Target component can be null for lost messages.
-      resolutions.add(new CapellaElementGoToResolver("SequenceMessage target component", sequenceMessageTargetComponent));
+      resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_SeqMsgTarget, sequenceMessageTargetComponent));
     }
 
     if (invokedOperation instanceof ExchangeItemAllocation) {
       // ExchangeItem
       ExchangeItem exchangeItem = ((ExchangeItemAllocation) invokedOperation).getAllocatedItem();
       if (null != exchangeItem) {
-        resolutions.add(new CapellaElementGoToResolver("Allocated Exchange Item", exchangeItem));
+        resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_AllocatedEI, exchangeItem));
       }
       // Interface
       Interface allocatingInterface = ((ExchangeItemAllocation) invokedOperation).getAllocatingInterface();
       if (null != allocatingInterface) {
-        resolutions.add(new CapellaElementGoToResolver("Allocating Interface", allocatingInterface));
+        resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_AllocatingInterface, allocatingInterface));
       }
     }
     // Containing SequenceDiagram.
@@ -85,13 +85,13 @@ public class DWF_DS_04_Resolutions extends AbstractMarkerResolutionGenerator {
     resolutions.add(new OpenAndShowInDiagramResolver(scenario, sequenceMessage));
 
     // Delete.
-    resolutions.add(new DeleteCommandResolver("Delete associated execution", SequenceMessageExt.getStartedExecution(sequenceMessage)));
+    resolutions.add(new DeleteCommandResolver(Messages.DWF_DS_04_Resolutions_Delete, SequenceMessageExt.getStartedExecution(sequenceMessage)));
 
     return resolutions.toArray(new IMarkerResolution[0]);
   }
 
   @Override
   protected String getRuleId() {
-    return "org.polarsys.capella.core.data.interaction.validation.DWF_DS_04";
+    return "org.polarsys.capella.core.data.interaction.validation.DWF_DS_04"; //$NON-NLS-1$
   }
 }

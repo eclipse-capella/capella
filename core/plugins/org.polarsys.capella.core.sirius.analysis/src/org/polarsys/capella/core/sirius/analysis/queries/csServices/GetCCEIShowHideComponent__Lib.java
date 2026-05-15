@@ -45,7 +45,7 @@ public class GetCCEIShowHideComponent__Lib extends AbstractQuery {
       // !! TODO !!
       // CALL BY QueryIdentifierConstants
       // The refactoring of QueryIdentifierConstants is necessary
-      List<Object> components = QueryInterpretor.executeQuery("GetCCIIInsertComponent", correspondingInput, context);
+      List<Object> components = QueryInterpretor.executeQuery("GetCCIIInsertComponent", correspondingInput, context); //$NON-NLS-1$
       components = filter(components);
       result.addAll(components);//$NON-NLS-1$
     }

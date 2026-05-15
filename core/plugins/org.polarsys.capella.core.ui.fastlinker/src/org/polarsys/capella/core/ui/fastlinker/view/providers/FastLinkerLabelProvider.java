@@ -68,17 +68,17 @@ public class FastLinkerLabelProvider extends CapellaNavigatorLabelProvider {
       EClass eClass = FastLinkerManager.getCommonType((Collection<? extends EObject>) collection);
       if (eClass != null) {
         Iterator<?> it = collection.iterator();
-        String array = "";
+        String array = ""; //$NON-NLS-1$
         while (it.hasNext()) {
           Object current = it.next();
           if (current instanceof EObject) {
 
-            array += ", " + super.getText(current);
+            array += ", " + super.getText(current); //$NON-NLS-1$
           } else {
             return null;
           }
         }
-        return eClass.getName() + " [ " + array.substring(2) + " ]";
+        return eClass.getName() + " [ " + array.substring(2) + " ]"; //$NON-NLS-1$ //$NON-NLS-2$
       }
     }
     return super.getText(object);

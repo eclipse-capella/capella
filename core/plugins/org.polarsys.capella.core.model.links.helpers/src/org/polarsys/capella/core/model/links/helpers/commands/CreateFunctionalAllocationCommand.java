@@ -20,6 +20,6 @@ import org.polarsys.capella.core.model.links.helpers.LinkInfo.LinkStyle;
 
 public class CreateFunctionalAllocationCommand extends CreateTraceCommand {
   public CreateFunctionalAllocationCommand(EClass linkType, EReference linkRefInSource) {
-    super("Allocation", LinkStyle.LINE_DASHED, linkType, linkRefInSource);
+    super(Messages.CreateFunctionalAllocationCommand_Label, LinkStyle.LINE_DASHED, linkType, linkRefInSource);
   }
 }

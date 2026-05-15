@@ -20,138 +20,128 @@
             name="Capella">
          <category
                id="quality"
-               name="Quality">
-                   <![CDATA[Quality-related rules check for example that most important elements have descriptions.]]>
+               name="%validation.category.name.quality">
+                   <![CDATA[%validation.category.description.quality]]>
          </category>
          <category
                id="integrity"
-               name="Integrity">
-                   <![CDATA[This category contains Capella additional rules about the model integrity. For example,
-• Verification that two distinct elements have distinct IDs
-• Verification of naming conflicts]]>
+               name="%validation.category.name.integrity">
+                   <![CDATA[%validation.category.description.integrity]]>
          </category>
          <category
                id="design"
-               name="Design">
-                   <![CDATA[Design-related rules gather all business rules within an engineering phase (System Analysis, Logical Architecture, etc.). This set of rules does take into account what is modeled in the previous or following engineering phase.
-
-This category is divided in four sub categories:
-• Well-formedness. For example, a Join Function has only one outgoing Functional Exchange, a Class Property is typed, etc.
-• Consistency. For example, the Interface usage/implementation by a sub component requires the same Interface usage/implementation by/from the parent component
-• Completeness. For example, a leaf Function has to be allocated to one Component, an Interface references at least one Exchange Item, etc.
-• Coverage. For example, an Actor is involved in at least one Capability, a Component appears on at least one Scenario, etc.
-
-The difference between Completeness and Coverage can appear subtle. Completeness is close to being inconsistent (a leaf Function really HAS to be allocated to a Component). But according to the current objectives of the system engineer, this “almost inconsistence” might not be important for the moment. Coverage is more about the risk of forgetting things is the system design, or not to be precise enough.]]>
+               name="%validation.category.name.design">
+                   <![CDATA[%validation.category.description.design]]>
             <category
                   id="coverage"
-                  name="Coverage">
+                  name="%validation.category.name.coverage">
             </category>
             <category
                   id="well-formedness"
-                  name="Well-Formedness">
+                  name="%validation.category.name.wellformed">
                <category
                      id="state_machines"
-                     name="State Machines">
+                     name="%validation.category.name.statemachines">
                </category>
                <category
                      id="dataflows"
-                     name="Dataflows">
+                     name="%validation.category.name.dataflow">
                </category>
                <category
                      id="components"
-                     name="Components">
+                     name="%validation.category.name.component">
                </category>
                <category
                      id="data"
-                     name="Data">
+                     name="%validation.category.name.data">
                </category>
                <category
                      id="interfaces"
-                     name="Interfaces">
+                     name="%validation.category.name.interface">
                </category>
                <category
                      id="scenarios"
-                     name="Scenarios">
+                     name="%validation.category.name.scenario">
                </category>
                <category
                      id="capabilities"
-                     name="Capabilities">
+                     name="%validation.category.name.capability">
                </category>
                <category
                      id="use_cases"
-                     name="Use Cases">
+                     name="%validation.category.name.usecase">
                </category>
             </category>
             <category
                   id="consistency"
-                  name="Consistency">
+                  name="%validation.category.name.consistency">
             </category>
             <category
                   id="completeness"
-                  name="Completeness">
+                  name="%validation.category.name.completeness">
             </category>
          </category>
          <category
                id="structural_conformance_to_m2"
-               name="Structural Conformance to M2">
+               name="%validation.category.name.conformancetom2">
          </category>
          <category
                id="transition"
-               name="Transition">
+               name="%validation.category.name.transition">
             <category
                   id="consistency"
-                  name="Consistency">
+                  name="%validation.category.name.consistency">
                <category
                      id="data"
-                     name="Data">
+                     name="%validation.category.name.data">
                </category>
                <category
                      id="state_machines"
-                     name="State Machines">
+                     name="%validation.category.name.statemachines">
                </category>
                <category
                      id="interfaces"
-                     name="Interfaces">
+                     name="%validation.category.name.interface">
                </category>
                <category
                      id="dataflows"
-                     name="Dataflows">
+                     name="%validation.category.name.dataflow">
                </category>
                <category
                      id="components"
-                     name="Components">
+                     name="%validation.category.name.component">
                </category>
                <category
                      id="scenarios"
-                     name="Scenarios">
+                     name="%validation.category.name.scenario">
                </category>
                <category
                      id="capabilities"
-                     name="Capabilities">
+                     name="%validation.category.name.capability">
                </category>
             </category>
             <category
                   id="justification"
-                  name="Justification">
+                  name="%validation.category.name.justification">
                <category
                      id="physical_architecture"
-                     name="Physical Architecture">
+                     name="%validation.category.name.pa">
                </category>
                <category
                      id="logical_architecture"
-                     name="Logical Architecture">
+                     name="%validation.category.name.la">
                </category>
                <category
                      id="epbs"
-                     name="EPBS">
+                     name="%validation.category.name.epbs">
                </category>
                <category
                      id="generic"
-                     name="Generic">
+                     name="%validation.category.name.generic">
                </category>
                <category
                      id="system_analysis"
-                     name="System Analysis">
+                     name="%validation.category.name.sa">
                </category>
             </category>
          </category>

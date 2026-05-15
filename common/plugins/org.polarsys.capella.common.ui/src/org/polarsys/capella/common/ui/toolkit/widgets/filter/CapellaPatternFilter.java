@@ -50,9 +50,9 @@ public class CapellaPatternFilter extends PatternFilter {
 
       // As the matcher of PatternFilter use by default "true" for "ignoreCase" and "false" for "ignoreWildCard"
       // We create a another matcher here so that we can provide search options for user.
-      if (!patternString.endsWith(" ")) {
+      if (!patternString.endsWith(" ")) { //$NON-NLS-1$
         // So that if search for "Air", the results will include texts containing "Aircraft" or "Airplane"
-        patternString += "*";
+        patternString += "*"; //$NON-NLS-1$
       }
       if(caseSensitiveEnabled)
         matcher = new SearchPattern(SearchPattern.RULE_PATTERN_MATCH & SearchPattern.RULE_CASE_SENSITIVE);
@@ -122,7 +122,7 @@ public class CapellaPatternFilter extends PatternFilter {
    */
   public void doClearCaches() {
     try {
-      Method clearCachesMethod = PatternFilter.class.getDeclaredMethod("clearCaches");
+      Method clearCachesMethod = PatternFilter.class.getDeclaredMethod("clearCaches"); //$NON-NLS-1$
       clearCachesMethod.setAccessible(true);
       clearCachesMethod.invoke(this);
     } catch (NoSuchMethodException e) {

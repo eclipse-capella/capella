@@ -17,9 +17,9 @@ package org.polarsys.capella.core.data.fa.ui.quickfix.generator;
  * them
  */
 public class DWF_DF_20_Resolutions extends SequenceLink_Resolutions {
-  public static final String RULE_ID = "org.polarsys.capella.core.data.fa.validation.DWF_DF_20";
-  public static final String labelQF = "Remove association in opposite direction of ({0}) to {1} ({2})";
-  public static final String labelQF_ALL = "Remove all associations in opposite direction of ({0})";
+  public static final String RULE_ID = "org.polarsys.capella.core.data.fa.validation.DWF_DF_20"; //$NON-NLS-1$
+  public static final String labelQF = Messages.DWF_DF_20_Resolutions_1;
+  public static final String labelQF_ALL = Messages.DWF_DF_20_Resolutions_2;
 
   @Override
   protected String getRuleId() {

@@ -375,9 +375,9 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
         private List<IEditingDomainListener> getEditingDomainListeners() {
             if (null == editingDomainListeners) {
                 editingDomainListeners = new ArrayList<IEditingDomainListener>();
-                IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements("org.polarsys.capella.common.ef", "editingDomainListener");
+                IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements("org.polarsys.capella.common.ef", "editingDomainListener"); //$NON-NLS-1$ //$NON-NLS-2$
                 for (IConfigurationElement configurationElement : configurationElements) {
-                    IEditingDomainListener instance = (IEditingDomainListener) ExtensionPointHelper.createInstance(configurationElement, "class");
+                    IEditingDomainListener instance = (IEditingDomainListener) ExtensionPointHelper.createInstance(configurationElement, "class"); //$NON-NLS-1$
                     if (instance != null) {
                         editingDomainListeners.add(instance);
                     }

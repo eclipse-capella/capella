@@ -50,7 +50,7 @@ public class RemoveHiddenElementsCommandLine extends AbstractWorkbenchCommandLin
 
       Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
       if (session == null) {
-        return new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), "No aird model found!");
+        return new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), "No aird model found!"); //$NON-NLS-1$
       }
       if (!session.isOpen()) {
         session.open(new NullProgressMonitor());
@@ -83,6 +83,6 @@ public class RemoveHiddenElementsCommandLine extends AbstractWorkbenchCommandLin
   @Override
   public void printHelp() {
     super.printHelp();
-    printArgumentsFromTable("removeHiddenElementsParameters", false, Collections.emptyList());
+    printArgumentsFromTable("removeHiddenElementsParameters", false, Collections.emptyList()); //$NON-NLS-1$
   }
 }

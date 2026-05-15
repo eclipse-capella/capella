@@ -35,9 +35,9 @@ public class ConstraintLocationRule_Generator extends AbstractMarkerResolutionGe
       Constraint constraint = (Constraint) modelElements.get(0);
       String label;
       if (CsServices.getService().isMultipartMode((ModelElement) constraint)) {
-        label = "Move constraint under the first value of ConstrainedElements";
+        label = Messages.ConstraintLocationRule_Generator_0;
       } else {
-        label = "Move constraint under Component";
+        label = Messages.ConstraintLocationRule_Generator_1;
       }
       resolutions.add(new ConstraintLocationRule_Resolver(label));
     }
@@ -46,6 +46,6 @@ public class ConstraintLocationRule_Generator extends AbstractMarkerResolutionGe
 
   @Override
   protected String getRuleId() {
-    return "org.polarsys.capella.core.data.core.validation.DWF_D_59";
+    return "org.polarsys.capella.core.data.core.validation.DWF_D_59"; //$NON-NLS-1$
   }
 }

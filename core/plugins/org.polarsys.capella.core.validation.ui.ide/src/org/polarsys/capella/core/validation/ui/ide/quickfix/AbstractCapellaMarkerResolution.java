@@ -136,7 +136,7 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
       if (isEMFRule(ruleId)) {
         return true;
       }
-      String fqnRule[] = ruleId.split("\\.");
+      String fqnRule[] = ruleId.split("\\."); //$NON-NLS-1$
       String shortRuleId = fqnRule.length > 0 ? fqnRule[fqnRule.length - 1] : null;
       if (shortRuleId != null) {
         for (String id : getResolvableRuleIds()) {
@@ -150,7 +150,7 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
   }
 
   private boolean isEMFRule(String ruleId) {
-    return ruleId.startsWith("org.eclipse.emf.ecore.");
+    return ruleId.startsWith("org.eclipse.emf.ecore."); //$NON-NLS-1$
   }
 
   /**

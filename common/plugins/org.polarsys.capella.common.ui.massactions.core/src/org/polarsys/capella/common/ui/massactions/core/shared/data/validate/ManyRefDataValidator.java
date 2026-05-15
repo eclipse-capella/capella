@@ -13,6 +13,7 @@
 package org.polarsys.capella.common.ui.massactions.core.shared.data.validate;
 
 import org.eclipse.nebula.widgets.nattable.data.validate.ValidationFailedException;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.ui.massactions.core.edit.editor.many.ManyRefTransitionalValue;
 import org.polarsys.kitalpha.massactions.core.data.validate.MADataValidator;
 
@@ -30,7 +31,7 @@ public class ManyRefDataValidator extends MADataValidator {
     boolean isValid = (newValue instanceof ManyRefTransitionalValue);
 
     if (!isValid) {
-      throw new ValidationFailedException("The new value " + newValue + " is invalid!");
+      throw new ValidationFailedException(NLS.bind(Messages.DataValidator_InvalidValue, newValue));
     }
     return isValid;
   }

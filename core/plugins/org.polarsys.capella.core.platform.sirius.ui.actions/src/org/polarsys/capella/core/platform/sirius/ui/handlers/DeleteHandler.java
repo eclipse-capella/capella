@@ -33,7 +33,7 @@ public class DeleteHandler extends AbstractHandler {
   public Object execute(ExecutionEvent event) throws ExecutionException {
 
     IEvaluationContext context = (IEvaluationContext) event.getApplicationContext();
-    ISelection selection = (ISelection) context.getVariable("selection");
+    ISelection selection = (ISelection) context.getVariable("selection"); //$NON-NLS-1$
 
     if (selection instanceof IStructuredSelection) {
       List<?> elementsToRemove = ((IStructuredSelection) selection).toList();

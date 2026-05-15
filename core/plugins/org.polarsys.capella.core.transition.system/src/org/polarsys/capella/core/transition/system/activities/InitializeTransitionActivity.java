@@ -105,7 +105,7 @@ public abstract class InitializeTransitionActivity
     if (!selection.isEmpty()) {
       EObject source = (EObject) selection.toArray()[0];
       if (!(source instanceof CapellaElement)) {
-        return new Status(IStatus.ERROR, Messages.Activity_Transition, "Input selection is not a CapellaElement");
+        return new Status(IStatus.ERROR, Messages.Activity_Transition, org.polarsys.capella.core.transition.system.constants.Messages.InitializeTransitionActivity_NotCapellaElt);
       }
       ensureOpening(source);
     }
@@ -131,7 +131,7 @@ public abstract class InitializeTransitionActivity
           context.get(ITransitionConstants.TRANSITION_SOURCE_ROOT));
 
     } else {
-      return new Status(IStatus.ERROR, Messages.Activity_Transition, "Output model is invalid");
+      return new Status(IStatus.ERROR, Messages.Activity_Transition, org.polarsys.capella.core.transition.system.constants.Messages.InitializeTransitionActivity_InvalidOutput);
     }
 
     return Status.OK_STATUS;

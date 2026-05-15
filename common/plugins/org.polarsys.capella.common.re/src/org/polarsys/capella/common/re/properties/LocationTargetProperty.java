@@ -70,7 +70,7 @@ public class LocationTargetProperty extends AbstractProperty implements IEditabl
   @Override
   public IStatus validate(Object newValue, IPropertyContext context) {
     if ((newValue == null) || !(newValue instanceof CatalogElementPkg)) {
-      return new Status(IStatus.ERROR, getGroupId(), "A target location should be set");
+      return new Status(IStatus.ERROR, getGroupId(), Messages.LocationTargetProperty_0);
     }
     return Status.OK_STATUS;
   }

@@ -26,7 +26,7 @@ public class MigrationPropertyTester extends PropertyTester {
   @Override
   public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
     
-    if ("isValidMigrationCommand".equals(property) && args.length == 1) {
+    if ("isValidMigrationCommand".equals(property) && args.length == 1) { //$NON-NLS-1$
       ICommandService service = PlatformUI.getWorkbench().getService(ICommandService.class);
       Command command = service.getCommand((String) args[0]);
       if (command != null) {

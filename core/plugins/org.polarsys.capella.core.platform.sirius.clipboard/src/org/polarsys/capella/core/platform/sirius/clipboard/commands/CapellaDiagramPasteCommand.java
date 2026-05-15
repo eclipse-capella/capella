@@ -238,7 +238,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
     AbstractNodeMappingApplicabilityTester abstractNodeMappingApplicabilityTester = new AbstractNodeMappingApplicabilityTester(
         Arrays.asList(pastedElementMapping));
 
-    String elementTargetType = pastedElement.getTarget() != null ? pastedElement.getTarget().eClass().getName() : "";
+    String elementTargetType = pastedElement.getTarget() != null ? pastedElement.getTarget().eClass().getName() : ""; //$NON-NLS-1$
 
     String elementName = pastedElement.getName();
 

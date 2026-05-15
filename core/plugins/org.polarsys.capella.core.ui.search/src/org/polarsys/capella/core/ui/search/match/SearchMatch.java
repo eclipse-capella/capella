@@ -38,8 +38,8 @@ public class SearchMatch extends Match {
 
   static {
     ATTRIBUTE_NAMES_TO_FORMAT = new HashSet<>();
-    ATTRIBUTE_NAMES_TO_FORMAT.add("description");
-    ATTRIBUTE_NAMES_TO_FORMAT.add("documentation");
+    ATTRIBUTE_NAMES_TO_FORMAT.add("description"); //$NON-NLS-1$
+    ATTRIBUTE_NAMES_TO_FORMAT.add("documentation"); //$NON-NLS-1$
   }
 
   /**
@@ -154,7 +154,7 @@ public class SearchMatch extends Match {
    */
   protected String computeDisplayedText(String originalText) {
     if (originalText != null && shouldSanitizeHTML()) {
-      return StringEscapeUtils.unescapeHtml(originalText).replaceAll("\\<[^>]*>", "").trim();
+      return StringEscapeUtils.unescapeHtml(originalText).replaceAll("\\<[^>]*>", "").trim(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     return originalText;

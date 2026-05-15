@@ -777,7 +777,7 @@ public class ABServices {
     ActivityNode targetTarget = FaServices.getFaServices().getRelatedActivityNode(targetView);
     FunctionalExchange exchange = FunctionalExchangeExt.createFunctionalExchange(sourceTarget, targetTarget);
     FaServices.getFaServices().createViewFunctionalExchange(exchange, sourceView, targetView, diagram);
-    CsServices.getService().setInterpreterVariable(context, "result", exchange);
+    CsServices.getService().setInterpreterVariable(context, "result", exchange); //$NON-NLS-1$
     return exchange;
   }
 

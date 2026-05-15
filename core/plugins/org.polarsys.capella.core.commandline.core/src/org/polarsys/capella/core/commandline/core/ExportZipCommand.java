@@ -36,9 +36,9 @@ public class ExportZipCommand extends DefaultCommandLine {
 
     String name = argHelper.getExportProject();
 
-    DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmm");
+    DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmm"); //$NON-NLS-1$
     String zipName = argHelper.getZipNameProject();
-    zipName = zipName.replace("qualifier", dateFormat.format(new Date()));
+    zipName = zipName.replace("qualifier", dateFormat.format(new Date())); //$NON-NLS-1$
 
     for (IProject project : ResourcesPlugin.getWorkspace().getRoot().getProjects()) {
       if ((name == null) || name.equals(project.getName())) {

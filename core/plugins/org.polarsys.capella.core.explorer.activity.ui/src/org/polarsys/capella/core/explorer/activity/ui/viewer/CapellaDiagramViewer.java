@@ -92,7 +92,7 @@ public class CapellaDiagramViewer extends DiagramViewer {
 
   @Override
   protected MenuManager initMenuToViewer(final TreeViewer treeViewer) {
-    menuManager = new MenuManager("viewerPopup");
+    menuManager = new MenuManager("viewerPopup"); //$NON-NLS-1$
 
     Control control = treeViewer.getControl();
     // Add here some actions.
@@ -151,7 +151,7 @@ public class CapellaDiagramViewer extends DiagramViewer {
     contextMenuManager.add(new Separator(GROUP_MOVE));
     moveRepresentation = new MoveRepresentationsAction();
     moveRepresentation.setImageDescriptor(
-        AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/forward.gif"));
+        AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/forward.gif")); //$NON-NLS-1$
     SelectionHelper.registerToSelectionChanges(moveRepresentation, selectionProvider);
     contextMenuManager.appendToGroup(GROUP_MOVE, moveRepresentation);
 
@@ -180,7 +180,7 @@ public class CapellaDiagramViewer extends DiagramViewer {
       Collection<DRepresentationDescriptor> selectedDescriptors = RepresentationHelper
           .getSelectedDescriptors(selection.toList());
       IAction locatingAction = LocateInCapellaExplorerAction
-          .createLocateTowards((EObject) selectedDescriptors.toArray()[0], "", false);
+          .createLocateTowards((EObject) selectedDescriptors.toArray()[0], "", false); //$NON-NLS-1$
       locatingAction.run();
     }
 

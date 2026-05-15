@@ -21,12 +21,12 @@ public class UpdateDefLauncher extends UpdateCurLauncher {
 
   @Override
   protected String getMapping() {
-    return "org.polarsys.capella.common.re.updateDef";
+    return "org.polarsys.capella.common.re.updateDef"; //$NON-NLS-1$
   }
 
   @Override
   protected String getScope() {
-    return "org.polarsys.capella.common.re.updateDef";
+    return "org.polarsys.capella.common.re.updateDef"; //$NON-NLS-1$
   }
   
   @Override

@@ -22,7 +22,7 @@ public class AbstractApplication implements IApplication {
   @Override
   public Object start(IApplicationContext context) throws Exception {
     for (IConfigurationElement configElement : ExtensionPointHelper.getConfigurationElements(
-        "org.polarsys.capella.core.application", "AppStart")) {
+        "org.polarsys.capella.core.application", "AppStart")) { //$NON-NLS-1$ //$NON-NLS-2$
       AbstractApplication appStart = (AbstractApplication) ExtensionPointHelper.createInstance(configElement,
           ExtensionPointHelper.ATT_CLASS);
       appStart.start(context);

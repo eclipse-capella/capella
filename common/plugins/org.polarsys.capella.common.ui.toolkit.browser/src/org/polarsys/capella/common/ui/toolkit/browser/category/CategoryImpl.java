@@ -178,6 +178,6 @@ public class CategoryImpl implements ICategory {
 
   @Override
   public String getSymbolicName() {
-    return StringUtils.uncapitalize(WordUtils.capitalizeFully(this.name.toLowerCase()).replaceAll("\\s+", ""));
+    return StringUtils.uncapitalize(WordUtils.capitalizeFully(this.name.toLowerCase()).replaceAll("\\s+", "")); //$NON-NLS-1$ //$NON-NLS-2$
   }
 }

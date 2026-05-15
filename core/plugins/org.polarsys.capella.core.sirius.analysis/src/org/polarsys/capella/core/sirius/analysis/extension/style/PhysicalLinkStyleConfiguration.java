@@ -69,7 +69,7 @@ public class PhysicalLinkStyleConfiguration extends SimpleStyleConfiguration imp
   public boolean provides(DiagramElementMapping mapping, Style style) {
     if (mapping instanceof EdgeMapping) {
       String domainClass = ((EdgeMapping) mapping).getDomainClass();
-      return "PhysicalLink".equals(domainClass);
+      return "PhysicalLink".equals(domainClass); //$NON-NLS-1$
     }
     return false;
   }

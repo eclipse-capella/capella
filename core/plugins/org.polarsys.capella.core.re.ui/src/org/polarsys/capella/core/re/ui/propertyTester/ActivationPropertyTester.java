@@ -27,7 +27,7 @@ public class ActivationPropertyTester extends PropertyTester {
    */
   @Override
   public boolean test(Object receiver_p, String property_p, Object[] args_p, Object expectedValue_p) {
-    return "activation".equals(property_p);
+    return "activation".equals(property_p); //$NON-NLS-1$
   }
 
 }

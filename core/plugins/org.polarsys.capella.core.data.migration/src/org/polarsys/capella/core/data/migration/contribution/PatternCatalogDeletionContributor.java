@@ -35,7 +35,7 @@ public class PatternCatalogDeletionContributor extends AbstractMigrationContribu
 
   @Override
   public boolean isValidResource(IResource member) {
-    return "patterns".equals(member.getFileExtension());
+    return "patterns".equals(member.getFileExtension()); //$NON-NLS-1$
   }
 
   @Override

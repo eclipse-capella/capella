@@ -38,7 +38,7 @@ public class ReplicableElementProperty extends AbstractProperty implements IEdit
     try {
 
       IContext ctx = (IContext) context.getSource();
-      CatalogElement replica = (CatalogElement) ctx.get("RE");
+      CatalogElement replica = (CatalogElement) ctx.get("RE"); //$NON-NLS-1$
 
       if (replica == null) {
 
@@ -53,7 +53,7 @@ public class ReplicableElementProperty extends AbstractProperty implements IEdit
           }
         }
 
-        ctx.put("RE", replica);
+        ctx.put("RE", replica); //$NON-NLS-1$
       }
 
       return replica;
@@ -78,7 +78,7 @@ public class ReplicableElementProperty extends AbstractProperty implements IEdit
   @Override
   public Object toType(Object value, IPropertyContext context) {
     IContext ctx = (IContext) context.getSource();
-    CatalogElement element = (CatalogElement) ctx.get("RE");
+    CatalogElement element = (CatalogElement) ctx.get("RE"); //$NON-NLS-1$
     if (value instanceof String) {
       element.setName((String) value);
       return element;
@@ -93,7 +93,7 @@ public class ReplicableElementProperty extends AbstractProperty implements IEdit
   public IStatus validate(Object newValue, IPropertyContext context) {
     if (newValue instanceof String) {
       if (((String) newValue).length() == 0) {
-        return new Status(IStatus.WARNING, getId(), "Should be not empty");
+        return new Status(IStatus.WARNING, getId(), Messages.ReplicableElementProperty_3);
       }
     }
     return Status.OK_STATUS;

@@ -149,7 +149,7 @@ public class CapellaSavingEMFResource extends SavingEMFResource {
   boolean reflectIsInSavingResource(EObject eObject) {
     boolean result = false;
     try {
-      result = (Boolean) ReflectUtil.invokeInvisibleMethod(this, "isInSavingResource", eObject);
+      result = (Boolean) ReflectUtil.invokeInvisibleMethod(this, "isInSavingResource", eObject); //$NON-NLS-1$
     } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
       logger.fatal(e.getMessage(), e);
     }

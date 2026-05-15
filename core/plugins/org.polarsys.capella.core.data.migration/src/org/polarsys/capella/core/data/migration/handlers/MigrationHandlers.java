@@ -36,16 +36,16 @@ public class MigrationHandlers {
 
   public static Command getProjectCommand(IServiceLocator workbench) {
     ICommandService service = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
-    return service.getCommand("org.polarsys.capella.core.data.migration.project");
+    return service.getCommand("org.polarsys.capella.core.data.migration.project"); //$NON-NLS-1$
   }
 
   public static Command getAirdCommand(IServiceLocator workbench) {
     ICommandService service = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
-    return service.getCommand("org.polarsys.capella.core.data.migration.aird");
+    return service.getCommand("org.polarsys.capella.core.data.migration.aird"); //$NON-NLS-1$
   }
 
   public static Command getSemanticCommand(IServiceLocator workbench) {
     ICommandService service = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
-    return service.getCommand("org.polarsys.capella.core.data.migration.model");
+    return service.getCommand("org.polarsys.capella.core.data.migration.model"); //$NON-NLS-1$
   }
 }

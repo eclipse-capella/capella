@@ -193,7 +193,7 @@ public class ViewEditPage extends WizardPage {
       }
     });
     ModalContextMenuExtender.registerContextMenu(m,
-        "org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.leftPane",
+        "org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.leftPane", //$NON-NLS-1$
         _leftTraceViewer.getClientViewer());
     c.setMenu(m.createContextMenu(c));
 
@@ -212,7 +212,7 @@ public class ViewEditPage extends WizardPage {
       }
     });
     ModalContextMenuExtender.registerContextMenu(m2,
-        "org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.rightPane",
+        "org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.rightPane", //$NON-NLS-1$
         _rightTraceViewer.getClientViewer());
 
     // Adding Status Text

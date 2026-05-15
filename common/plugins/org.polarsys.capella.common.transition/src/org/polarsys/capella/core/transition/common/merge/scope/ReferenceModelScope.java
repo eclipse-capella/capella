@@ -54,7 +54,7 @@ public class ReferenceModelScope extends ContextModelScope {
 
     @Override
     protected Object getDefaultOriginator() {
-        return "Candidate model";
+        return Messages.ReferenceModelScope_0;
     }
 
     /**

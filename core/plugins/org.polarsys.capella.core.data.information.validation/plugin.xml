@@ -18,110 +18,94 @@
          <package namespaceUri="http://www.polarsys.org/capella/core/information/7.0.0">
          </package>
          <constraints categories="capella.category/transition/consistency/components">
-            <constraint class="org.polarsys.capella.core.data.information.validation.port.PR01_PortRealization_Realization" id="TC_DC_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_DC_01 - Port Allocation" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.port.PR01_PortRealization_Realization" id="TC_DC_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name" severity="WARNING" statusCode="1">
                <message>
-                  A PortAllocation between a ComponentPort and a FunctionPort realizing a PortAllocation from a previous phase should be consistent with the realized PortAllocation.
+                  %constraint.message
                </message>
                <target class="PortAllocation">
                </target>
                <description>
-                  This rule ensures consistency for a port allocation between a ComponentPort and a Functional Port realizing a port allocation from a previous level.
-The ComponentPort should realize the ComponentPort of the realized PortAllocation or should be a delegated port of the realizing port.
-The FunctionPort should be defined in a function or a sub-function realizing the function containing the port which has been realized.
+                  %constraint.description
                </description>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.port.MDCHK_Port_PortRealization" id="TC_DC_02" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_DC_02 - Port Realization" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.port.MDCHK_Port_PortRealization" id="TC_DC_02" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.0" severity="ERROR" statusCode="1">
                <message>
-                  Allocation consistency error for {0} (Role).
+                  %constraint.message.0
                </message>
                <target class="Port">
                </target>
                <description>
-                  This rule checks the port realizations consistency.
+                  %constraint.description.0
                </description>
             </constraint>
          </constraints>
          <constraints categories="capella.category/transition/consistency/interfaces">
-            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.EI01_ExchangeItemMechanism" id="TC_I_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_I_01 - ExchangeItem mechanism realization check" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.EI01_ExchangeItemMechanism" id="TC_I_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.1" severity="WARNING" statusCode="1">
                <message>
-                  {0} (ExchangeItem) realizes a ExchangeItem from a previous level. It should have same mechanism than realized ExchangeItem.
+                  %constraint.message.1
                </message>
                <description>
-                  This rule checks that an ExchangeItem realizing an ExchangeItem has the same mechanism than the realized ExchangeItem.
+                  %constraint.description.1
                </description>
                <target class="ExchangeItem">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.ME01G_ExchangeItemElement" id="TC_I_02" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_I_02 - Exchange item element Type realization check" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.ME01G_ExchangeItemElement" id="TC_I_02" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.2" severity="WARNING" statusCode="1">
                <message>
-                  The {1} (Type) is defined into {2} level and realized into the {3} level. {0} ExchangeItemElement is typed by {1} Type instead of be typed by realized Type.
+                  %constraint.message.2
                </message>
                <description>
-                  This rule checks that an ExchangeItemElement isn&apos;t linked to a Type from a previous level whereas it is realized in the same level than the ExchangeItemElement. ExchangeItemElement should be linked to the realized Type.
-A warning can be raised if you have performed a transition of the ExchangeItemElement before performing a transition of the linked Type.
-You should perform another transition of the ExchangeItemElement from the lower level to use the realized Type
+                  %constraint.description.2
                </description>
                <target class="ExchangeItemElement">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.ExchangeItemMechanismRestriction" id="TC_I_06" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_I_06 - PA ExchangeItem restriction on UNSET exchangeMechanism" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.ExchangeItemMechanismRestriction" id="TC_I_06" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.3" severity="WARNING" statusCode="1">
                <message>
-                  The {0} (ExchangeItem) must not have an UNSET Exchange Mechanism.
+                  %constraint.message.3
                </message>
                <description>
-                  This rule checks that an ExchangeItem&apos;s ExchangeMechanism is not UNSET.
-
-Rule is only applicable for ExchangeItem&apos;s of PA Layer and ExchangeItem&apos;s of other layers if referred by any elements of PA Layer
-
-*PA=Physical Architecture
+                  %constraint.description.3
                </description>
                <target class="ExchangeItem">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.OALayerExchangeItemMechanismRestriction" id="TC_I_07" isEnabledByDefault="false" lang="Java" mode="Batch" name="TC_I_07 - OA ExchangeItem restriction on UNSET exchangeMechanism" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.OALayerExchangeItemMechanismRestriction" id="TC_I_07" isEnabledByDefault="false" lang="Java" mode="Batch" name="%constraint.name.4" severity="ERROR" statusCode="1">
                <message>
-                  The {0} (ExchangeItem) must not have an UNSET Exchange Mechanism.
+                  %constraint.message.4
                </message>
                <description>
-                  This rule checks that an ExchangeItem&apos;s ExchangeMechanism is not UNSET.
-
-Rule is only applicable for all ExchangeItem of Operational Analysis Layer.
+                  %constraint.description.4
                </description>
                <target class="ExchangeItem">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.SALayerExchangeItemMechanismRestriction" id="TC_I_08" isEnabledByDefault="false" lang="Java" mode="Batch" name="TC_I_08 - SA ExchangeItem restriction on UNSET exchangeMechanism" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.SALayerExchangeItemMechanismRestriction" id="TC_I_08" isEnabledByDefault="false" lang="Java" mode="Batch" name="%constraint.name.5" severity="ERROR" statusCode="1">
                <message>
-                  The {0} (ExchangeItem) must not have an UNSET Exchange Mechanism.
+                  %constraint.message.5
                </message>
                <description>
-                  This rule checks that an ExchangeItem&apos;s ExchangeMechanism is not UNSET.
-
-Rule is only applicable for all ExchangeItem of System Analysis Layer.
+                  %constraint.description.5
                </description>
                <target class="ExchangeItem">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.LALayerExchangeItemMechanismRestriction" id="TC_I_09" isEnabledByDefault="false" lang="Java" mode="Batch" name="TC_I_09 - LA ExchangeItem restriction on UNSET exchangeMechanism" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.LALayerExchangeItemMechanismRestriction" id="TC_I_09" isEnabledByDefault="false" lang="Java" mode="Batch" name="%constraint.name.6" severity="ERROR" statusCode="1">
                <message>
-                  The {0} (ExchangeItem) must not have an UNSET Exchange Mechanism.
+                  %constraint.message.6
                </message>
                <description>
-                  This rule checks that an ExchangeItem&apos;s ExchangeMechanism is not UNSET.
-
-Rule is only applicable for all ExchangeItem of Logical Architecture Layer.
+                  %constraint.description.6
                </description>
                <target class="ExchangeItem">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.EPBSLayerExchangeItemMechanismRestriction" id="TC_I_10" isEnabledByDefault="false" lang="Java" mode="Batch" name="TC_I_10 - EPBS ExchangeItem restriction on UNSET exchangeMechanism" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.EPBSLayerExchangeItemMechanismRestriction" id="TC_I_10" isEnabledByDefault="false" lang="Java" mode="Batch" name="%constraint.name.7" severity="ERROR" statusCode="1">
                <message>
-                  The {0} (ExchangeItem) must not have an UNSET Exchange Mechanism.
+                  %constraint.message.7
                </message>
                <description>
-                  This rule checks that an ExchangeItem&apos;s ExchangeMechanism is not UNSET.
-
-Rule is only applicable for all ExchangeItem of EPBS Architecture Layer.
+                  %constraint.description.7
                </description>
                <target class="ExchangeItem">
                </target>
@@ -132,14 +116,14 @@ Rule is only applicable for all ExchangeItem of EPBS Architecture Layer.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="TC_I_11 - Exchange Items with an inheritance relationship have the same exchange mechanism"
+                  name="%constraint.name.8"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (ExchangeItem) must have the same Exchange Mechanism of {1} (ExchangeItem) since it inherits from it.
+                  %constraint.message.8
                </message>
                <description>
-                  This rule checks that Exchange Items with an inheritance relationship have the same exchange mechanism.
+                  %constraint.description.8
                </description>
                <target
                      class="ExchangeItem">
@@ -151,14 +135,14 @@ Rule is only applicable for all ExchangeItem of EPBS Architecture Layer.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="TC_I_12 - Inheritance Constraint for Exchange Item Element"
+                  name="%constraint.name.9"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  Inheritance rule between Exchange Item Elements of Exchange Item hierarchy is violated for {0} ({1}).
+                  %constraint.message.9
                </message>
                <description>
-                  This rule checks that an Exchange Item (EI 2) with Exchange Item Element (EIE 2) of Type T2, which inherits from an Exchange Item EI (EI 1) with an Exchange Item Element (EIE 1) of Type T1,verifies that T2 inherits from T1.
+                  %constraint.description.9
                </description>
                <target
                      class="ExchangeItem">
@@ -170,14 +154,14 @@ Rule is only applicable for all ExchangeItem of EPBS Architecture Layer.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="TC_I_13 - Inheritance Constraint for Exchange Item Element"
+                  name="%constraint.name.10"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  Inheritance rule between Exchange Item Elements of Exchange Item hierarchy is violated for {0} ({1}).
+                  %constraint.message.10
                </message>
                <description>
-                  This rule checks that two exchange items involved in an inheritance relationship must define an exchange item element.
+                  %constraint.description.10
                </description>
                <target
                      class="ExchangeItem">
@@ -185,264 +169,253 @@ Rule is only applicable for all ExchangeItem of EPBS Architecture Layer.
             </constraint>
          </constraints>
          <constraints categories="capella.category/integrity">
-            <constraint class="org.polarsys.capella.core.data.information.validation.association.MDCHK_Association_Unnaming" id="I_01" isEnabledByDefault="false" lang="Java" mode="Batch" name="I_01 - Unnamed Association" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.association.MDCHK_Association_Unnaming" id="I_01" isEnabledByDefault="false" lang="Java" mode="Batch" name="%constraint.name.11" severity="WARNING" statusCode="1">
                <message>
-                  {0} does not have a name.
+                  %constraint.message.11
                </message>
                <target class="Association">
                </target>
                <description>
-                  This rule ensures that an association has a name.
+                  %constraint.description.11
                </description>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.classpkg.MDCHK_DataPkg_Naming_1" id="I_02" isEnabledByDefault="false" lang="Java" mode="Batch" name="I_02 - Naming conflicts check 2" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.classpkg.MDCHK_DataPkg_Naming_1" id="I_02" isEnabledByDefault="false" lang="Java" mode="Batch" name="%constraint.name.12" severity="WARNING" statusCode="1">
                <message>
-                  {0}"{1}" content has a naming conflict for: {2}.
+                  %constraint.message.12
                </message>
                <target class="DataPkg">
                </target>
                <description>
-                  NOTE: This constraint is replaced by &quot;I_19 - Name conflict&quot; and thus disabled by default.
-
-This rule checks that an element doesn&apos;t contain a naming conflict between different types of elements in the same package.
+                  %constraint.description.12
                </description>
             </constraint>
          </constraints>
          <constraints categories="capella.category/design/well-formedness/data">
-            <constraint class="org.polarsys.capella.core.data.information.validation.union.MDCHK_Union_qualifierIntegrity" id="DWF_D_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_01 - Union qualifier integrity " severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.union.MDCHK_Union_qualifierIntegrity" id="DWF_D_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.13" severity="ERROR" statusCode="1">
                <message>
-                  {0}(UnionProperty) of {1} (Union) should have at least one qualifier.
+                  %constraint.message.13
                </message>
                <description>
-                  This rule ensures that every union property of an union (except discriminant and default property) has at least one qualifier.
+                  %constraint.description.13
                </description>
                <target class="Union">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.union.MDCHK_Union_QualifierCardinality" id="DWF_D_02" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_02 - Union qualifier cardinality" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.union.MDCHK_Union_QualifierCardinality" id="DWF_D_02" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.14" severity="ERROR" statusCode="1">
                <message>
-                  {0} (UnionProperty) has a qualifier {2} (DataValue) which is also used as a qualifier by another union property of {1} (Union) .
+                  %constraint.message.14
                </message>
                <description>
-                  This rule checks that a data value used as a qualifier for a union property cannot be used as a qualifier of another union property of the same union.
+                  %constraint.description.14
                </description>
                <target class="Union">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.union.MDCHK_Union_DiscriminantUnionPropertyQualifier" id="DWF_D_03" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_03 - Discriminant Union Property Qualifier" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.union.MDCHK_Union_DiscriminantUnionPropertyQualifier" id="DWF_D_03" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.15" severity="WARNING" statusCode="1">
                <message>
-                  {0}(Union Property) is the discriminant of {1}(Union), it should not be associated with a qualifier.
+                  %constraint.message.15
                </message>
                <description>
-                  This rule ensures that the discriminant of an union do not have any qualifier.
+                  %constraint.description.15
                </description>
                <target class="Union">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.association.AssociationCompositionProperty" id="DWF_D_04" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_04 - Composition Cardinality Rule" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.association.AssociationCompositionProperty" id="DWF_D_04" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.16" severity="ERROR" statusCode="1">
                <message>
-                  An {0}(Association) of Kind Composition  source {1}(Property) has {2}(Cardinality) instead of {3}(Cardinality) value.
+                  %constraint.message.16
                </message>
                <description>
-                  This rule checks that the cardinality of a source Class is  0..1 or 1..1 for an Association of Composition kind.
+                  %constraint.description.16
                </description>
                <target class="Association">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.association.AssociationEndsPrimitive" id="DWF_D_05" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_05 - Association Ends IsPrimitive check" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.association.AssociationEndsPrimitive" id="DWF_D_05" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.17" severity="WARNING" statusCode="1">
                <message>
-                  {0} (Association) members {1}(Classifier) should not be of type primitive
+                  %constraint.message.17
                </message>
                <description>
-                  This rule checks that the Association Ends are not primitive
+                  %constraint.description.17
                </description>
                <target class="Association">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.property.PropertyTypeRule" id="DWF_D_06" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_06 - Property isPrimitive type check" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.property.PropertyTypeRule" id="DWF_D_06" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.18" severity="WARNING" statusCode="1">
                <message>
-                  {0}(Property) should not be typed by a non primitive type {1}({2})
+                  %constraint.message.18
                </message>
                <description>
-                  This rule checks that the properties are of primitive type  if there is no bound to an Association. This rule does nothing  if a parent of a property is primitive.
+                  %constraint.description.18
                </description>
                <target class="Property">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.union.UnionDiscriminant" id="DWF_D_08" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_08 - Union Discriminant" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.union.UnionDiscriminant" id="DWF_D_08" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.19" severity="ERROR" statusCode="1">
                <message>
-                  {0}(Union) should have a discriminant value.
+                  %constraint.message.19
                </message>
                <description>
-                  This rule ensures that Union has a discriminant.
+                  %constraint.description.19
                </description>
                <target class="Union">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.association.MDCHK_Association_NavigableAgggregationComposition" id="DWF_D_10" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_10 - Aggregation/Composition navigability check" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.association.MDCHK_Association_NavigableAgggregationComposition" id="DWF_D_10" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.20" severity="WARNING" statusCode="1">
                <message>
-                  {0} (Property) should be a navigable member of {1} (Association).
+                  %constraint.message.20
                </message>
                <description>
-                  This rule checks that an Aggregation/Composition is navigable.
+                  %constraint.description.20
                </description>
                <target class="Association">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.association.MDCHK_Association_PropertyAggregationKind" id="DWF_D_11" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_11 - Association member AggregationKind check" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.association.MDCHK_Association_PropertyAggregationKind" id="DWF_D_11" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.21" severity="WARNING" statusCode="1">
                <message>
-                  {0} (Association) should contain at least one member with AggregationKind=ASSOCIATION.
+                  %constraint.message.21
                </message>
                <description>
-                  This rule checks that an Association contains at least one member with AggregationKind=ASSOCIATION.
+                  %constraint.description.21
                </description>
                <target class="Association">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.class_.MDCHK_PropertyWithOutType_1" id="DWF_D_12" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_12 - Property type check" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.class_.MDCHK_PropertyWithOutType_1" id="DWF_D_12" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.22" severity="WARNING" statusCode="1">
                <message>
-                  {0} (Property) is not typed.
+                  %constraint.message.22
                </message>
                <description>
-                  This rule checks that the property is typed.
+                  %constraint.description.22
                </description>
                <target class="Property">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.union.UnionPropertyQualifierConsistency" id="DWF_D_13" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_13 - Consistency of Qualifier values" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.union.UnionPropertyQualifierConsistency" id="DWF_D_13" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.23" severity="ERROR" statusCode="1">
                <message>
-                  Qualifier nature  {0}({1}) of  {2}(UnionProperty) is not compatible with the nature of the Discriminant Type ({3}).
+                  %constraint.message.23
                </message>
                <target class="UnionProperty">
                </target>
                <description>
-                  This rule ensures that the values used as qualifiers of Union Properties are consistent with the Discriminant of the Union.
+                  %constraint.description.23
                </description>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.association.MDCHK_Association_OwnedMembers" id="DWF_D_14" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_14 - Association members check" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.association.MDCHK_Association_OwnedMembers" id="DWF_D_14" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.24" severity="WARNING" statusCode="1">
                <message>
-                  {0} (Association) should have at least two members.
+                  %constraint.message.24
                </message>
                <description>
-                  This test checks that an Association has at least two members.
+                  %constraint.description.24
                </description>
                <target class="Association">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.class_.MDCHK_Class_Generalization_1" id="DWF_D_15" isEnabledByDefault="true" lang="java" mode="Batch" name="DWF_D_15 - Class self generalization" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.class_.MDCHK_Class_Generalization_1" id="DWF_D_15" isEnabledByDefault="true" lang="java" mode="Batch" name="%constraint.name.25" severity="ERROR" statusCode="1">
                <message>
-                  {0} (Class) generalizes itself.
+                  %constraint.message.25
                </message>
                <description>
-                  This rule checks that a Class cannot generalize itself.
+                  %constraint.description.25
                </description>
                <target class="Class">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.class_.MDCHK_DWF_D16" id="DWF_D_16" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_16 - Class cycles check (inner package)" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.class_.MDCHK_DWF_D16" id="DWF_D_16" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.26" severity="ERROR" statusCode="1">
                <message>
-                  Package {0} contains {1} class dependency cycle(s).
+                  %constraint.message.26
                </message>
                <description>
-                  This rule checks whether some cycles between classes (through association or generalization) exist.
+                  %constraint.description.26
                </description>
                <target class="DataPkg">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.union.UnionDiscriminantDataValue" id="DWF_D_17" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_17 - Union Discriminant Data Value" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.union.UnionDiscriminantDataValue" id="DWF_D_17" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.27" severity="ERROR" statusCode="1">
                <message>
-                  {0}(Union) should have an Union Discriminant Data Value.
+                  %constraint.message.27
                </message>
                <target class="Union">
                </target>
                <description>
-                  This rule ensures that a data value of the discriminant type shall be used at least once as a qualifier for the union property(which is not the discriminant).
+                  %constraint.description.27
                </description>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.collection.CollectionType" id="DWF_D_18" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_18 - Collection type check" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.collection.CollectionType" id="DWF_D_18" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.28" severity="WARNING" statusCode="1">
                <message>
-                  {0} (Collection) is not typed.
+                  %constraint.message.28
                </message>
                <description>
-                  This rule checks that a collection is typed.
+                  %constraint.description.28
                </description>
                <target class="Collection">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.association.AssociationPropertyAggregationKindUnSet" id="DWF_D_29" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_29 - Association members AggregationKind check 2" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.association.AssociationPropertyAggregationKindUnSet" id="DWF_D_29" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.29" severity="WARNING" statusCode="1">
                <message>
-                  {0} (Association) members {1} should not contain AggregationKind=UNSET.
+                  %constraint.message.29
                </message>
                <description>
-                  This rule ensures that an Association should not contains member with AggregationKind=UNSET.
+                  %constraint.description.29
                </description>
                <target class="Association">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.CollectionValueFamilyTypeCheck" id="DWF_D_32" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_D_32 - Collection Value Family Type check" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.CollectionValueFamilyTypeCheck" id="DWF_D_32" isEnabledByDefault="false" lang="Java" mode="Batch" name="%constraint.name.30" severity="WARNING" statusCode="1">
                <message>
-                  "{0}" (DataValue) referenced as {1} should be typed.
+                  %constraint.message.30
                </message>
                <description>
-                  This rule ensures that CollectionValueReference is Typed.
+                  %constraint.description.30
                </description>
                <target class="AbstractCollectionValue">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.association.AssociationTargetClassPropertyIsKey" id="DWF_D_38" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_D_38 - Association Target Class Property key value check" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.association.AssociationTargetClassPropertyIsKey" id="DWF_D_38" isEnabledByDefault="false" lang="Java" mode="Batch" name="%constraint.name.31" severity="ERROR" statusCode="1">
                <message>
-                  {0} (Association Property) of kind ASSOCIATION can only exist, if and only if the target class has or inherits at least one property being a part of key.
+                  %constraint.message.31
                </message>
                <description>
-                  This rule checks that an Association Property of kind ASSOCIATION can only exist, if and only if the target class has or inherits at least one property being a part of key.
+                  %constraint.description.31
                </description>
                <target class="Property">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.association.AssociationConsistencyBetweenLayers" id="DWF_D_40" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_40 - Association Consistency between layers" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.association.AssociationConsistencyBetweenLayers" id="DWF_D_40" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.32" severity="WARNING" statusCode="1">
                <message>
-                  {0} (Association) should not associate {1} ({2}) of lower Architecture layer.
+                  %constraint.message.32
                </message>
                <description>
-                  This rule ensures that an Association from given layer should not associate with elements of lower Architecture layer.
-
-Example:
-If an Association is on SystemArchitecture layer. It should not associate with any elements from Logical or Physical Layer.</description>
+                  %constraint.description.32</description>
                <target class="Association">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.CheckExchangeItemElementDirection" id="DWF_D_43" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_43 - Exchange Item Element Parameter Direction consistency" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.CheckExchangeItemElementDirection" id="DWF_D_43" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.33" severity="ERROR" statusCode="1">
                <message>
-                {0} of {1} with [{2}] Exchange Mechanism {3} have a Parameter Direction set
+                %constraint.message.33
                </message>
                <description>
-                  <a>Checks whether the ExchangeItemElements of an ExchangeItem are consistent with applied exchange mechanism:</a>
- - for an Exchange Item with anything but an Operation Exchange Mechanism, the inner Exchange Item Element shall NOT have a parameter direction set
-  and 
- - in case of an Exchange Item Operation Exchange Mechanism, all inner Exchanges Items Elements shall have a parameter direction set
- 
+                  %constraint.description.33
                </description>
                <target class="ExchangeItemElement">
                </target>
             </constraint>
             
-            <constraint class="org.polarsys.capella.core.data.information.validation.association.ClassAssociationConsistency" id="DWF_D_45" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_45 - Class Association End Constraints" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.association.ClassAssociationConsistency" id="DWF_D_45" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.34" severity="ERROR" statusCode="1">
                <message>
-                  Association Role {0} (Property) of {1} (Association) is not typed
+                  %constraint.message.34
                </message>
                <description>
-                  This rule checks that class relationships (e.g. association) between classes has valid source and target
+                  %constraint.description.34
                </description>
                <target class="Association">
                </target>
-            </constraint><constraint class="org.polarsys.capella.core.data.information.validation.association.AssociationContainerCheck" id="DWF_D_46" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_46 - Association Container Check" severity="WARNING" statusCode="1">
+            </constraint><constraint class="org.polarsys.capella.core.data.information.validation.association.AssociationContainerCheck" id="DWF_D_46" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.35" severity="WARNING" statusCode="1">
                <message>
-                  {0} (Association) should be in the package {1} (AssociationPkg)
+                  %constraint.message.35
                </message>
                <description>
-                  This rule ensures that an Association is in its correct container:
-- Unidirectional associations are stored in their source class containers
-- Bidirectional and nondirectional association are stored in common ancestor of their source and target classes.</description>
+                  %constraint.description.35</description>
                <target class="Association">
                </target>
             </constraint>
@@ -452,15 +425,15 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                                isEnabledByDefault="true"
                                lang="Java"
                                mode="Batch"
-                               name="DWF_D_49 - Key Parts Cardinality Rule"
+                               name="%constraint.name.36"
                                severity="ERROR"
                                statusCode="1">
                             <message>
-                               Value of maximum cardinality must be set to 1 in {0} for property/role {1} (property/role is part of key)
+                               %constraint.message.36
                                
                             </message>
                             <description>
-                               In a class, when a property or an association role is part of key, value of maximum cardinality must be equal to one.
+                               %constraint.description.36
                             </description>
                             <target
                                   class="Property">
@@ -472,14 +445,14 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                                isEnabledByDefault="false"
                                lang="Java"
                                mode="Batch"
-                               name="DWF_D_50 - Max Cardinality Is A Natural"
+                               name="%constraint.name.37"
                                severity="ERROR"
                                statusCode="1">
                             <message>
-                               Value of maximum cardinality, unless abstract, must eval to a natural number in {0} for property/role/element {1}
+                               %constraint.message.37
                             </message>
                             <description>
-                               In class property, association role and exchange item element, maximum cardinality value is defined and, unless abstract, evals to a value in [1, *[
+                               %constraint.description.37
                             </description>
                             <target
                                   class="Property">
@@ -494,14 +467,14 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                                isEnabledByDefault="true"
                                lang="Java"
                                mode="Batch"
-                               name="DWF_D_51 - Min Cardinality Is A Natural Or Zero"
+                               name="%constraint.name.38"
                                severity="ERROR"
                                statusCode="1">
                             <message>
-                               Value of minimum cardinality, unless abstract, must be eval 0 or a natural number in {0} for property/role/element {1}
+                               %constraint.message.38
                             </message>
                             <description>
-                               In class property, association role and exchange item element minimum cardinality value is defined and, unless abstract, evals to a natural or zero (i.e. integer belonging to [0, *[)
+                               %constraint.description.38
                             </description>
                             <target
                                   class="Property">
@@ -516,14 +489,14 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                                isEnabledByDefault="true"
                                lang="Java"
                                mode="Batch"
-                               name="DWF_D_52 - Type Of Default And Null Value For Property"
+                               name="%constraint.name.39"
                                severity="ERROR"
                                statusCode="1">
                             <message>
-                               Type of {0} value of property ({1}) in class {2} is inconsistent with its type.
+                               %constraint.message.39
                             </message>
                             <description>
-                               For a property, type of the default (resp. null) value shall be Undefined (implicit typing) or the property’s datatype or a super type of the property’s datatype
+                               %constraint.description.39
                             </description>
                             <target
                                   class="Property">
@@ -535,14 +508,14 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                                isEnabledByDefault="true"
                                lang="Java"
                                mode="Batch"
-                               name="DWF_D_53 - Property Or Role Overriding Is Not Allowed"
+                               name="%constraint.name.40"
                                severity="ERROR"
                                statusCode="1">
                             <message>
-                               In class {0} property {1} has a same name as a property of super class {2}.
+                               %constraint.message.40
                             </message>
                             <description>
-                               A property/role in a class shall not have the same name as a property/role of a super-class
+                               %constraint.description.40
                             </description>
                             <target
                                   class="Property">
@@ -554,14 +527,14 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                                isEnabledByDefault="false"
                                lang="Java"
                                mode="Batch"
-                               name="DWF_D_54 - Property Or Role Respects Covariance"
+                               name="%constraint.name.41"
                                severity="ERROR"
                                statusCode="1">
                             <message>
-                               In class {0} property {1} overrides that of super class {2} with a wrong type.
+                               %constraint.message.41
                             </message>
                             <description>
-                               If class K inherits class C, if property or association role is owned by C with type/class A and redefined in K with type/class B, then B inherits (or is equal to) A.
+                               %constraint.description.41
                             </description>
                             <target
                                   class="Property">
@@ -569,14 +542,12 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                          </constraint>
          </constraints>
          <constraints categories="capella.category/design/well-formedness/interfaces">
-            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.ExchangeItemKind" id="DWF_I_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_I_01 - ExchangeItemParameter kind consistency" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.ExchangeItemKind" id="DWF_I_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.42" severity="ERROR" statusCode="1">
                <message>
-                  {0}(ExchangeItem) of kind [{1}] can only have {2}(ExchangeItemElement) of kind [{3}].
+                  %constraint.message.42
                </message>
                <description>
-                  This rule checks whether the ExchangeItemElements of an ExchangeItem are consistent with applied exchange mechanism:
-- Elements of an ExchangeItem with exchange mechanism OPERATION must be of kind PARAMETER
-- For all other exchange mechanisms, elements must be of kind TYPE
+                  %constraint.description.42
                </description>
                <target class="ExchangeItem">
                </target>
@@ -589,92 +560,92 @@ If an Association is on SystemArchitecture layer. It should not associate with a
         <package namespaceUri="http://www.polarsys.org/capella/core/information/datatype/7.0.0">
         </package>
         <constraints categories="capella.category/design/well-formedness/data">
-           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.LiteralBooleanValueType" id="DWF_D_26" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_26 - LiteralBooleanValuel Type" severity="WARNING" statusCode="1">
+           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.LiteralBooleanValueType" id="DWF_D_26" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.43" severity="WARNING" statusCode="1">
               <message>
-                 {0}(EnumerationLiteral) must be typed by its parent {1}(BooleanType).
+                 %constraint.message.43
               </message>
               <description>
-                 This rule ensures that LiteralBooleanValue is typed by its parent BooleanType.
+                 %constraint.description.43
               </description>
               <target class="LiteralBooleanValue">
               </target>
            </constraint>
-           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.DataValueReferenceReferencedValue" id="DWF_D_28" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_28 - DataValue Reference check" severity="WARNING" statusCode="1">
+           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.DataValueReferenceReferencedValue" id="DWF_D_28" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.44" severity="WARNING" statusCode="1">
               <message>
-                 {0}({1}) referenced value is not named.
+                 %constraint.message.44
               </message>
               <description>
-                 This rule ensures that DataValue Reference referenced value is named.
+                 %constraint.description.44
               </description>
               <target class="DataValue">
               </target>
            </constraint>
-           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.BooleanValueFamilyTypeCheck" id="DWF_D_30" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_D_30 - Boolean Value Family Type check" severity="WARNING" statusCode="1">
+           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.BooleanValueFamilyTypeCheck" id="DWF_D_30" isEnabledByDefault="false" lang="Java" mode="Batch" name="%constraint.name.45" severity="WARNING" statusCode="1">
               <message>
-                 &quot;{0}&quot; (DataValue) referenced as {1} should be typed.
+                 %constraint.message.45
               </message>
               <description>
-                 This rule ensures that LiteralBooleanValue and BooleanReference are Typed.
+                 %constraint.description.45
               </description>
               <target class="AbstractBooleanValue">
               </target>
            </constraint>
-           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.EnumerationReferenceTypeCheck" id="DWF_D_35" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_D_35 - Enumeration Value Family Type check" severity="WARNING" statusCode="1">
+           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.EnumerationReferenceTypeCheck" id="DWF_D_35" isEnabledByDefault="false" lang="Java" mode="Batch" name="%constraint.name.46" severity="WARNING" statusCode="1">
               <message>
-                 &quot;{0}&quot; (DataValue) referenced as {1} should be typed.
+                 %constraint.message.46
               </message>
               <description>
-                 This rule enforces that EnumerationReference elements are Typed.
+                 %constraint.description.46
               </description>
               <target class="EnumerationReference">
               </target>
            </constraint>
-           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.StringValueFamilyTypeCheck" id="DWF_D_33" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_D_33 - String Value Family Type check" severity="WARNING" statusCode="1">
+           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.StringValueFamilyTypeCheck" id="DWF_D_33" isEnabledByDefault="false" lang="Java" mode="Batch" name="%constraint.name.47" severity="WARNING" statusCode="1">
               <message>
-                 &quot;{0}&quot; (DataValue) referenced as {1} should be typed.
+                 %constraint.message.47
               </message>
               <description>
-                 This rule ensures that LiteralStringValue and StringReference are Typed.
+                 %constraint.description.47
               </description>
               <target class="AbstractStringValue">
               </target>
            </constraint>
-           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.ComplexValueFamilyTypeCheck" id="DWF_D_34" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_D_34 - Complex Value Family Type check" severity="WARNING" statusCode="1">
+           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.ComplexValueFamilyTypeCheck" id="DWF_D_34" isEnabledByDefault="false" lang="Java" mode="Batch" name="%constraint.name.48" severity="WARNING" statusCode="1">
               <message>
-                 &quot;{0}&quot; (DataValue) referenced as {1} should be typed.
+                 %constraint.message.48
               </message>
               <description>
-                 This rule ensures that ComplexValue and ComplexValueReference are Typed.
+                 %constraint.description.48
               </description>
               <target class="AbstractComplexValue">
               </target>
            </constraint>
-           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.NumericValueFamilyTypeCheck" id="DWF_D_36" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_D_36 - Numeric Value Family Type check" severity="WARNING" statusCode="1">
+           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.NumericValueFamilyTypeCheck" id="DWF_D_36" isEnabledByDefault="false" lang="Java" mode="Batch" name="%constraint.name.49" severity="WARNING" statusCode="1">
               <message>
-                 &quot;{0}&quot; (DataValue) referenced as {1} should be typed.
+                 %constraint.message.49
               </message>
               <description>
-                 This rule ensures that LiteralNumericValue and NumericReference are Typed.
+                 %constraint.description.49
               </description>
               <target class="NumericValue">
               </target>
            </constraint>
-           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.ExpressionValueFamilyTypeCheck" id="DWF_D_37" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_D_37 - Expression Value Family Type check" severity="WARNING" statusCode="1">
+           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.ExpressionValueFamilyTypeCheck" id="DWF_D_37" isEnabledByDefault="false" lang="Java" mode="Batch" name="%constraint.name.50" severity="WARNING" statusCode="1">
               <message>
-                 "{0}" (DataValue) referenced as {1} should be typed.
+                 %constraint.message.50
               </message>
               <description>
-                 This rule ensures that BinaryExpression and UnaryExpression are Typed.
+                 %constraint.description.50
               </description>
               <target class="AbstractExpressionValue">
               </target>
            </constraint>
-           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.DirectDataValueNameCheck" id="DWF_D_39" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_39 - Data Value Name Check" severity="ERROR" statusCode="1">
+           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.DirectDataValueNameCheck" id="DWF_D_39" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.51" severity="ERROR" statusCode="1">
               <message>
-                 {0}
+                 %constraint.message.51
               </message>
               <description>
-                 This rule ensures that a data value defined directly in its name space (class, datatype, package) have a name.
+                 %constraint.description.51
               </description>
               <target class="DataValue">
               </target>
@@ -685,24 +656,24 @@ If an Association is on SystemArchitecture layer. It should not associate with a
             	isEnabledByDefault="true" 
             	lang="Java" 
             	mode="Batch" 
-            	name="DWF_D_56 - EnumerationLiteral Type check" 
+            	name="%constraint.name.52" 
             	severity="WARNING" 
             	statusCode="1">
               <message>
-                 "{0}" (EnumerationLiteral) with current type {1} should be typed by its parent {2}.
+                 %constraint.message.52
               </message>
               <description>
-                 This rule enforces that EnumerationLiteral elements are typed by their parent.
+                 %constraint.description.52
               </description>
               <target class="EnumerationLiteral">
               </target>
            </constraint>
-           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.EnumerationLiteralDomainValueCheck" id="DWF_D_44" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_44 - Enumeration Literals Domain Values Constraints" severity="WARNING" statusCode="1">
+           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.EnumerationLiteralDomainValueCheck" id="DWF_D_44" isEnabledByDefault="true" lang="Java" mode="Batch" name="%constraint.name.53" severity="WARNING" statusCode="1">
               <message>
-                 Enumeration literals  of {0}(Enumeration) must have a domain value in concordance with the domain type of the parent enumeration {0}(Enumeration): {0}(Enumeration) is {1}, {2}
+                 %constraint.message.53
               </message>
               <description>
-                 This rule ensures that enumeration literals domain values are typed according to the type of their container enumeration domain type.
+                 %constraint.description.53
               </description>
               <target class="Enumeration">
               </target>
@@ -713,14 +684,14 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                  isEnabledByDefault="true"
                  lang="Java"
                  mode="Batch"
-                 name="DWF_D_57 - DataValue Containing Feature"
+                 name="%constraint.name.54"
                  severity="ERROR"
                  statusCode="1">
               <message>
-                 {0} ({1}) is aggregated in ownedDataValues feature of {2} ({3}) instead of ownedLiterals feature.
+                 %constraint.message.54
               </message>
               <description>
-                 This rule checks that the EnumerationLiteral and the LiteralBooleanValue are aggregated in the ownedLiterals feature of the Enumeration or the BooleanType and not in the ownedDataValues feature.
+                 %constraint.description.54
               </description>
               <target
                     class="EnumerationLiteral">
@@ -743,14 +714,14 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                  isEnabledByDefault="true"
                  lang="Java"
                  mode="Batch"
-                 name="DC_CL_01  Communication Link is delegated by one subcomponent at least"
+                 name="%constraint.name.55"
                  severity="WARNING"
                  statusCode="1">
               <message>
-                 Communication Link {0} from {1} (Component) to {2} (ExchangeItem) is not delegated by one of its sub-components.
+                 %constraint.message.55
               </message>
               <description>
-                 Model Validation shall check that Exchange Items referenced by a Communication Link is delegated to one or many subcomponents of the source Component.
+                 %constraint.description.55
               </description>
               <target
                     class="CommunicationLink">
@@ -762,14 +733,14 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                  isEnabledByDefault="true"
                  lang="Java"
                  mode="Batch"
-                 name="DC_CL_02 Communication Link for a component is defined in its parent"
+                 name="%constraint.name.56"
                  severity="WARNING"
                  statusCode="1">
               <message>
-                 Communication Link {0} from {1} (Component) to {2} (ExchangeItem) must be also defined in the following parents of this component : {3}.
+                 %constraint.message.56
               </message>
               <description>
-                 Model Validation shall check that an Exchange Item referenced by a Communication Link from a SubComponent is also referenced by a Communication Link from owning Components.
+                 %constraint.description.56
               </description>
               <target
                     class="CommunicationLink">

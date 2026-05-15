@@ -146,7 +146,7 @@ public class SiriusSessionFactory extends SessionFactoryImpl implements SessionF
 
       if (loaded == Boolean.FALSE) {
         for (IConfigurationElement configurationElement : ExtensionPointHelper
-            .getConfigurationElements(PlatformSiriusTedActivator.getDefault().getPluginId(), "metadataProvider")) {
+            .getConfigurationElements(PlatformSiriusTedActivator.getDefault().getPluginId(), "metadataProvider")) { //$NON-NLS-1$
           IMetadataProvider contrib = (IMetadataProvider) ExtensionPointHelper.createInstance(configurationElement,
               ExtensionPointHelper.ATT_CLASS);
           if (contrib != null) {
@@ -204,8 +204,8 @@ public class SiriusSessionFactory extends SessionFactoryImpl implements SessionF
         if (uri.isPlatformResource()) {
           IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(uri.toPlatformString(true)));
           IProject project = file.getProject();
-          return project.hasNature("org.polarsys.capella.project.nature")
-              || project.hasNature("org.polarsys.capella.library.nature");
+          return project.hasNature("org.polarsys.capella.project.nature") //$NON-NLS-1$
+              || project.hasNature("org.polarsys.capella.library.nature"); //$NON-NLS-1$
         }
 
       } catch (Exception ex) {

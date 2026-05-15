@@ -144,7 +144,7 @@ public class TargetModelScope extends ContextModelScope implements ITargetModelS
 
     @Override
     public Object getOriginator() {
-        return "Resulting model";
+        return Messages.TargetModelScope_0;
     }
 
     public Collection<EObject> retrieveTransformedElementsFromTarget(EObject targetElement) {

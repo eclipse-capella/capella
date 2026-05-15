@@ -15,6 +15,9 @@ package org.polarsys.capella.detachment.version.precondition.impl;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.ParserConfigurationException;
@@ -25,6 +28,7 @@ import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.bundle.FeatureHelper;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -49,8 +53,8 @@ public class VersionChecker implements IPrecondition<IFile> {
 			String projectName = param.getProject().getName();
 			SAXModelsElementsParser modelsEltParser = SAXModelsElementsParser.newInstance(projectName);
 			SAXParser saxParser = parserFactory.newSAXParser();
-			saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-			saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+			saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, ""); //$NON-NLS-1$
+			saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, ""); //$NON-NLS-1$
 			XMLReader xmlReader = saxParser.getXMLReader();
 			xmlReader.setContentHandler(modelsEltParser);
 			is = new InputSource();
@@ -62,20 +66,12 @@ public class VersionChecker implements IPrecondition<IFile> {
 			
 			String capellaVersion = FeatureHelper.getCapellaVersion(false);
 			
-			Collection<StringBuffer> result = new HashSet<StringBuffer>();
+			Set<String> result = new LinkedHashSet<>();
 			for (IFile iFile : capellaModellers) {
 				String modelVersion = CapellaFeatureHelper.getDetectedVersion(iFile);
 				if (modelVersion != null && !modelVersion.isEmpty()){
 					if (!modelVersion.startsWith(capellaVersion.substring(0, 3))){
-						StringBuffer _msg = new StringBuffer();
-						_msg.append(iFile.getName()).
-							append(": model version is: ").
-							append(modelVersion).
-							append(". It needs to be migrated to ").
-							append("Capella ").
-							append(capellaVersion).
-							append(".\n");
-						result.add(_msg);
+						result.add(NLS.bind(Messages.versionCkeckerString, new Object[] {iFile.getName(), modelVersion, capellaVersion}));
 					}
 				}
 			}
@@ -95,11 +91,7 @@ public class VersionChecker implements IPrecondition<IFile> {
 		}
 	}
 
-	private String assembleMessage(Collection<StringBuffer> result) {
-		String _msg = "";
-		for (StringBuffer m : result) {
-			_msg += m.toString();
-		}
-		return _msg;
+	private String assembleMessage(Set<String> result) {
+		return result.stream().collect(Collectors.joining("\n"));
 	}
 }

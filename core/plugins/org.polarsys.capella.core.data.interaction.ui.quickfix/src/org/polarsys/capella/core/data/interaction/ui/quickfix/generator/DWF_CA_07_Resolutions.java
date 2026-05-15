@@ -43,13 +43,13 @@ public class DWF_CA_07_Resolutions extends AbstractMarkerResolutionGenerator {
     
     AbstractCapability capability = (AbstractCapability) modelElements.get(0);
     if(capability != null) {
-      resolutions.add(new CapellaElementGoToResolver("Capability", capability));
+      resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_Capability, capability));
     }
     
     
     Component element = (Component) modelElements.get(1);
     if(element != null) {
-      resolutions.add(new CapellaElementGoToResolver("Component", element, NamingHelper.getTitleLabel(element)));
+      resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_Component, element, NamingHelper.getTitleLabel(element)));
     }
     
     return resolutions.toArray(new IMarkerResolution[0]);
@@ -57,6 +57,6 @@ public class DWF_CA_07_Resolutions extends AbstractMarkerResolutionGenerator {
 
   @Override
   protected String getRuleId() {
-    return "org.polarsys.capella.core.data.interaction.validation.DWF_CA_07";
+    return "org.polarsys.capella.core.data.interaction.validation.DWF_CA_07"; //$NON-NLS-1$
   }
 }

@@ -19,7 +19,7 @@
          <menuContribution
                locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu?after=group.semantic">
                
-               <menu id="BusinessCopyPasteMenuSirius" label="Capella Copy/Paste">
+               <menu id="BusinessCopyPasteMenuSirius" label="%menu.label">
 	               <command
 	                     commandId="org.polarsys.capella.core.platform.sirius.clipboard.copy">
 	               </command>
@@ -45,7 +45,7 @@
 	               </separator>
 	               <command
 	                     commandId="org.polarsys.capella.core.platform.sirius.clipboard.quickPaste"
-	                     label="Quick Paste">
+	                     label="%command.label">
 	               </command>
 	               <separator
 	                     name="groupQuickPaste">
@@ -86,50 +86,50 @@
          point="org.eclipse.ui.commands">
       <category
             id="org.polarsys.capella.core.platform.sirius.clipboard.category"
-            name="Capella Diagram Copy/Paste">
+            name="%category.name">
       </category>
       <command
             categoryId="org.polarsys.capella.core.platform.sirius.clipboard.category"
             defaultHandler="org.polarsys.capella.core.platform.sirius.clipboard.actions.QuickPasteCommandHandler"
-            description="Capella Diagram Paste without refresh"
+            description="%command.description"
             id="org.polarsys.capella.core.platform.sirius.clipboard.quickPaste"
-            name="Quick paste (no refresh)">
+            name="%command.name">
       </command>
       <command
             categoryId="org.polarsys.capella.core.platform.sirius.clipboard.category"
             defaultHandler="org.polarsys.capella.core.platform.sirius.clipboard.actions.PasteCommandHandler"
-            description="Capella Diagram Paste"
+            description="%command.description.0"
             id="org.polarsys.capella.core.platform.sirius.clipboard.paste"
-            name="Paste">
+            name="%command.name.0">
       </command>
       <command
             categoryId="org.polarsys.capella.core.platform.sirius.clipboard.category"
             defaultHandler="org.polarsys.capella.core.platform.sirius.clipboard.actions.CopyCommandHandler"
-            description="Capella Diagram Copy"
+            description="%command.description.1"
             id="org.polarsys.capella.core.platform.sirius.clipboard.copy"
-            name="Copy">
+            name="%command.name.1">
       </command>
       
       
       <command
             categoryId="org.polarsys.capella.core.platform.sirius.clipboard.category"
             defaultHandler="org.polarsys.capella.core.platform.sirius.clipboard.actions.PasteStyleOnlyCommandHandler"
-            description="Capella Diagram Paste"
+            description="%command.description.2"
             id="org.polarsys.capella.core.platform.sirius.clipboard.pasteStyleOnly"
-            name="Paste with style only">
+            name="%command.name.2">
       </command>
       <command
             categoryId="org.polarsys.capella.core.platform.sirius.clipboard.category"
             defaultHandler="org.polarsys.capella.core.platform.sirius.clipboard.actions.PasteLayoutOnlyCommandHandler"
-            description="Capella Diagram Paste"
+            description="%command.description.3"
             id="org.polarsys.capella.core.platform.sirius.clipboard.pasteLayoutOnly"
-            name="Paste with layout only">
+            name="%command.name.3">
       </command>
       <command
             categoryId="org.polarsys.capella.core.platform.sirius.clipboard.category"
-            description="Capella Diagram Cut"
+            description="%command.description.4"
             id="org.polarsys.capella.core.platform.sirius.clipboard.cut"
-            name="Cut">
+            name="%command.name.4">
       </command>
       
       

@@ -47,7 +47,7 @@ public class GitReloadingPolicy extends ReloadingPolicyImpl {
         display.syncExec(() -> {
           if (MessageDialog.openConfirm(display.getActiveShell(), Messages.GitConflictSessionListener_DialogTitle,
               NLS.bind(Messages.GitConflictSessionListener_ResourcesInConflictState,
-                  filesInConflict.stream().map(IFile::getName).collect(Collectors.joining(", "))))) {
+                  filesInConflict.stream().map(IFile::getName).collect(Collectors.joining(", "))))) { //$NON-NLS-1$
             result.add(Action.CLOSE_SESSION);
           }
         });

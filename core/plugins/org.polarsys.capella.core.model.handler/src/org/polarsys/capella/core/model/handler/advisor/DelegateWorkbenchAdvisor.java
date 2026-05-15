@@ -34,7 +34,7 @@ public interface DelegateWorkbenchAdvisor {
 
 	void postShutdown();
 
-	String EXTENSION_POINT_ID = "org.polarsys.capella.core.model.handler.delegateWorkbenchAdvisor";
+	String EXTENSION_POINT_ID = "org.polarsys.capella.core.model.handler.delegateWorkbenchAdvisor"; //$NON-NLS-1$
 
 	Helper INSTANCE = new Helper();
 
@@ -43,7 +43,7 @@ public interface DelegateWorkbenchAdvisor {
 			try {
 				IConfigurationElement[] configurationElements = Platform.getExtensionRegistry().getConfigurationElementsFor(EXTENSION_POINT_ID);
 				for (IConfigurationElement elt : configurationElements) {
-					DelegateWorkbenchAdvisor delegate = (DelegateWorkbenchAdvisor) elt.createExecutableExtension("class");
+					DelegateWorkbenchAdvisor delegate = (DelegateWorkbenchAdvisor) elt.createExecutableExtension("class"); //$NON-NLS-1$
 					delegate.preStartup();
 				}
 			} catch (CoreException e) {
@@ -55,7 +55,7 @@ public interface DelegateWorkbenchAdvisor {
 			try {
 				IConfigurationElement[] configurationElements = Platform.getExtensionRegistry().getConfigurationElementsFor(EXTENSION_POINT_ID);
 				for (IConfigurationElement elt : configurationElements) {
-					DelegateWorkbenchAdvisor delegate = (DelegateWorkbenchAdvisor) elt.createExecutableExtension("class");
+					DelegateWorkbenchAdvisor delegate = (DelegateWorkbenchAdvisor) elt.createExecutableExtension("class"); //$NON-NLS-1$
 					delegate.postStartup();
 				}
 			} catch (CoreException e) {
@@ -67,7 +67,7 @@ public interface DelegateWorkbenchAdvisor {
 			try {
 				IConfigurationElement[] configurationElements = Platform.getExtensionRegistry().getConfigurationElementsFor(EXTENSION_POINT_ID);
 				for (IConfigurationElement elt : configurationElements) {
-					DelegateWorkbenchAdvisor delegate = (DelegateWorkbenchAdvisor) elt.createExecutableExtension("class");
+					DelegateWorkbenchAdvisor delegate = (DelegateWorkbenchAdvisor) elt.createExecutableExtension("class"); //$NON-NLS-1$
 					delegate.preShutdown();
 				}
 			} catch (CoreException e) {
@@ -79,7 +79,7 @@ public interface DelegateWorkbenchAdvisor {
 			try {
 				IConfigurationElement[] configurationElements = Platform.getExtensionRegistry().getConfigurationElementsFor(EXTENSION_POINT_ID);
 				for (IConfigurationElement elt : configurationElements) {
-					DelegateWorkbenchAdvisor delegate = (DelegateWorkbenchAdvisor) elt.createExecutableExtension("class");
+					DelegateWorkbenchAdvisor delegate = (DelegateWorkbenchAdvisor) elt.createExecutableExtension("class"); //$NON-NLS-1$
 					delegate.postShutdown();
 				}
 			} catch (CoreException e) {
@@ -88,7 +88,7 @@ public interface DelegateWorkbenchAdvisor {
 		}
 
 		private void logError(CoreException e) {
-			ModelHandlerPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, "org.polarsys.capella.core.model.handler", e.getMessage(), e));
+			ModelHandlerPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, "org.polarsys.capella.core.model.handler", e.getMessage(), e)); //$NON-NLS-1$
 		}
 	}
 

@@ -85,7 +85,7 @@ public class PreferenceIntegerFieldEditor extends IntegerFieldEditor {
     IProject selectedProject =
         PreferencesHelper.getSelectedEclipseProject() != null ? PreferencesHelper.getSelectedEclipseProject() : PreferencesHelper.getSelectedCapellaProject();
     if (selectedProject != null) {
-      return selectedProject.getName() + "." + super.getPreferenceName();
+      return selectedProject.getName() + "." + super.getPreferenceName(); //$NON-NLS-1$
     }
     return super.getPreferenceName();
   }

@@ -20,6 +20,6 @@ public class IJobConstants {
    * If a job has this given property, its status will be logged even if it is not an Error or a Warning
    * @see org.eclipse.core.runtime.jobs.Job#setProperty
    */
-  public static final QualifiedName ALWAYS_LOG_STATUS = new QualifiedName("org.polarsys.capella.common.tools.report", "INFO"); //$NON-NLS-1$
+  public static final QualifiedName ALWAYS_LOG_STATUS = new QualifiedName("org.polarsys.capella.common.tools.report", "INFO"); //$NON-NLS-1$ //$NON-NLS-2$
 
 }

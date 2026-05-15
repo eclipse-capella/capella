@@ -308,7 +308,7 @@ public class TextRenderer extends AbstractRenderer {
       }
 
       if (text == null) {
-        text = "";
+        text = ""; //$NON-NLS-1$
       }
       if ((label != null) && !label.isDisposed()) {
         label.setEnabled(property.isEnabled(rendererContext.getPropertyContext()));

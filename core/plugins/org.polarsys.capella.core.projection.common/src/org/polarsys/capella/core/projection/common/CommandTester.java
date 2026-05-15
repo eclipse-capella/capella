@@ -64,19 +64,19 @@ public class CommandTester extends PropertyTester {
           } else if (value.equals("FS2FS-LAPA")) { //$NON-NLS-1$
             return TransitionHelper.getService().isFS2FSForLAPATransitionAvailable(element);
 
-          } else if (value.equals("FC2FS")) {
+          } else if (value.equals("FC2FS")) { //$NON-NLS-1$
             return element instanceof FunctionalChain && !(element instanceof OperationalProcess);
           
-          } else if (value.equals("OP2OAS")) {
+          } else if (value.equals("OP2OAS")) { //$NON-NLS-1$
             return element instanceof OperationalProcess;
             
-          } else if(value.equals("IS2IS-SALA")) {
+          } else if(value.equals("IS2IS-SALA")) { //$NON-NLS-1$
             return TransitionHelper.getService().isIS2ISSALATransitionAvailable(element);
           
-          } else if(value.equals("IS2IS-LAPA")) {
+          } else if(value.equals("IS2IS-LAPA")) { //$NON-NLS-1$
             return TransitionHelper.getService().isIS2ISLAPATransitionAvailable(element);
           
-          } else if(value.equals("IS2IS-PAEPBS")) {
+          } else if(value.equals("IS2IS-PAEPBS")) { //$NON-NLS-1$
             return TransitionHelper.getService().isIS2ISPAEPBSTransitionAvailable(element);
           }
 

@@ -422,7 +422,7 @@
    <extension   point="org.eclipse.ui.commands">
           <category
                 id="org.polarsys.capella.core.transitions.ui.category"
-                name="Transitions">
+                name="%category.name">
           </category>
          <command
                defaultHandler="org.polarsys.capella.core.projection.scenario.commands.ESToESHandler"

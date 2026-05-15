@@ -40,7 +40,7 @@ public class FunctionCapabilityInvolvementRule extends InvolvementRule {
   public IStatus transformRequired(EObject element_p, IContext context_p) {
     AbstractFunctionAbstractCapabilityInvolvement involvement = (AbstractFunctionAbstractCapabilityInvolvement) element_p;
     if (involvement.getInvolved() instanceof PhysicalFunction) {
-      return new Status(IStatus.WARNING, Messages.Activity_Transformation, "involvement not transitioned");
+      return new Status(IStatus.WARNING, Messages.Activity_Transformation, org.polarsys.capella.core.transition.system.topdown.constants.Messages.FunctionCapabilityInvolvementRule_InvolvedNotTransitioned);
     }
     return super.transformRequired(element_p, context_p);
   }

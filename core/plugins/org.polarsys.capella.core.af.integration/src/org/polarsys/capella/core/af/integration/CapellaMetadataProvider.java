@@ -249,12 +249,12 @@ public class CapellaMetadataProvider implements IMetadataProvider {
 
       URI uri = resourceURI.trimFileExtension().appendFileExtension(ViewpointMetadata.STORAGE_EXTENSION);
 
-      progress.beginTask("Create an empty metadata resource", 1);
+      progress.beginTask(Messages.CapellaMetadataProvider_0, 1);
       Resource resource = MetadataHelper.getViewpointMetadata(domain.getResourceSet()).initMetadataStorage(uri);
       progress.worked(1);
 
       try {
-        progress.beginTask("Save metadata model", 1);
+        progress.beginTask(Messages.CapellaMetadataProvider_1, 1);
         resource.save(Collections.emptyMap());
       } catch (Exception e) {
         // we couldn't do this

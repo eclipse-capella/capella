@@ -17,6 +17,8 @@ import org.eclipse.osgi.util.NLS;
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.polarsys.capella.core.explorer.activity.ui.pages.messages"; //$NON-NLS-1$
 	
+	public static String AbstractCapellaPage_0;
+
 	public static String CapellaActivityExplorerWorkflowPageTitle;
 	static {
 		// initialize resource bundle

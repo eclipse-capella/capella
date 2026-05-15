@@ -103,7 +103,7 @@ public class LCDecompositionController {
         CommunicationLink link = (CommunicationLink) element;
         CommunicationLinkKind kind = link.getKind();
         ExchangeItem exchangeItem = link.getExchangeItem();
-        name = "[" + kind.getName() + "] " + exchangeItem.getName() + " (" + exchangeItem.getExchangeMechanism() + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        name = "[" + kind.getName() + "] " + exchangeItem.getName() + " (" + exchangeItem.getExchangeMechanism() + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
         CommunicationLinkProtocol protocol = link.getProtocol();
         if (protocol != CommunicationLinkProtocol.UNSET) {
           name += " [" + protocol + "]"; //$NON-NLS-1$ //$NON-NLS-2$

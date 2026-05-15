@@ -31,7 +31,7 @@ import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
 public class ConstraintLocationRule_Resolver extends AbstractCapellaMarkerResolution {
-  private final String PROCESS_ICON = "icons/full/obj16/capella_process.gif";
+  private final String PROCESS_ICON = "icons/full/obj16/capella_process.gif"; //$NON-NLS-1$
 
   public ConstraintLocationRule_Resolver (String label) {
     this.setLabel(label);
@@ -102,7 +102,7 @@ public class ConstraintLocationRule_Resolver extends AbstractCapellaMarkerResolu
   
   @Override
   protected String[] getResolvableRuleIds() {
-    return new String[] {"DWF_D_59"};
+    return new String[] {"DWF_D_59"}; //$NON-NLS-1$
   }
 
   @Override

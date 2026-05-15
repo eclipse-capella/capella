@@ -71,7 +71,7 @@ public class PreferenceProjectSelectionDialog extends CheckedTreeSelectionDialog
     if (parentWizard != null) {
       StringBuffer location = new StringBuffer();
       location.append(project.getLocation().toOSString());
-      location.append("/" + project.getName() + SUFFIX_EPF_FILE_NAME);
+      location.append("/" + project.getName() + SUFFIX_EPF_FILE_NAME); //$NON-NLS-1$
       this.parentWizard.addDestinationItem(location.toString());
 
     }

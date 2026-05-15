@@ -72,7 +72,7 @@
                afterTab="SimpleDescriptionCapella">
          </propertyTab>
          <propertyTab
-               label="Expert"
+               label="%propertyTab.label"
                category="advanced"
                id="AdvancedCapella"
                afterTab="ExtensionsCapella">
@@ -308,7 +308,7 @@
          <command
                commandId="org.polarsys.capella.core.ui.properties.showInPropertiesDialog"
                icon="icons/property_page.gif"
-               label="Show In Properties dialog"
+               label="%command.label"
                style="push">
             <visibleWhen
                checkEnabled="true">
@@ -344,7 +344,7 @@
          <command
                defaultHandler="org.polarsys.capella.core.ui.properties.property.ShowInPropertiesDialogHandler"
                id="org.polarsys.capella.core.ui.properties.showInPropertiesDialog"
-               name="Show In Properties dialog">
+               name="%command.name">
          </command>
       </extension>
 </plugin>

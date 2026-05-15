@@ -139,7 +139,7 @@ public class EObjectLabelProviderHelper {
    */
   public static String getMetaclassLabel(EClass eClass, AdapterFactoryEditingDomain editingDomain) {
     Bundle bundle = getGenBundle(eClass, editingDomain);
-    String label = "";
+    String label = ""; //$NON-NLS-1$
     if (bundle != null) {
       ResourceBundle resourceBundle = Platform.getResourceBundle(bundle);
       if (resourceBundle != null) {

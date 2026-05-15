@@ -37,7 +37,7 @@ public class ExtendedMappingHelper {
     if ((currentMapping != null) && (extendedMapping != null)) {
       maps.put(currentMapping, extendedMapping);
       currentMapping.setExtendedMapping(extendedMapping);
-      System.out.println(currentMapping.getId() + " extends " + extendedMapping.getId());
+      System.out.println(currentMapping.getId() + " extends " + extendedMapping.getId()); //$NON-NLS-1$
     }
   }
 

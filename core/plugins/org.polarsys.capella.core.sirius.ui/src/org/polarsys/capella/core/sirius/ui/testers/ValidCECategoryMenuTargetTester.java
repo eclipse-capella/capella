@@ -39,6 +39,6 @@ public class ValidCECategoryMenuTargetTester extends AbstractValidCategoryMenuTa
 
   @Override
   protected String getPropertyId() {
-    return "isValidCECategoryMenuTarget";
+    return "isValidCECategoryMenuTarget"; //$NON-NLS-1$
   }
 }

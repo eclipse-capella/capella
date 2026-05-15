@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
@@ -45,10 +46,10 @@ public class MDCHK_PhysicalArchitecture_PaToLaRealization extends AbstractValida
               project);
           LogicalArchitecture la = (LogicalArchitecture) architecture;
           String targetArchitecture = CapellaElementExt.getValidationRuleMessagePrefix(la);
-          targetArchitecture = targetArchitecture.isEmpty() ? "Logical Architecture"
+          targetArchitecture = targetArchitecture.isEmpty() ? Messages.MDCHK_PhysicalArchitecture_PaToLaRealization_DefaultLAName
               : targetArchitecture.substring(0, targetArchitecture.length() - 1);
           return createFailureStatus(ctx, new Object[] {
-              CapellaElementExt.getValidationRuleMessagePrefix(pa) + "does not realize " + targetArchitecture });
+              NLS.bind(Messages.MDCHK_PhysicalArchitecture_PaToLaRealization_1, CapellaElementExt.getValidationRuleMessagePrefix(pa), targetArchitecture)});
         }
       }
     }

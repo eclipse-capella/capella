@@ -86,7 +86,7 @@ public class ItemNode implements IItemNode {
    * (non-Javadoc) Implements the inherited method.
    */
   public String getDescription() {
-    return itemDescriptor.getDescription() != null ? itemDescriptor.getDescription() : "";
+    return itemDescriptor.getDescription() != null ? itemDescriptor.getDescription() : ""; //$NON-NLS-1$
   }
 
   /*

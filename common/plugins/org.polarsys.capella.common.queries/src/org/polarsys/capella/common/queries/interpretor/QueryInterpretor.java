@@ -244,7 +244,7 @@ public class QueryInterpretor {
         .getConfigurationElementsFor("org.polarsys.capella.common.queries.query"); //$NON-NLS-1$
 
     for (IConfigurationElement querySpecification : querySpecifications) {
-      if ("querySpecification".equals(querySpecification.getName())) {
+      if ("querySpecification".equals(querySpecification.getName())) { //$NON-NLS-1$
         String queryIdentifier = querySpecification.getAttribute(QuerySchema.QUERY_IDENTIFIER); //$NON-NLS-1$
         String extendedQueryIdentifier = querySpecification.getAttribute(QuerySchema.QUERY_EXTENDED_IDENTIFIER); //$NON-NLS-1$
 
@@ -262,7 +262,7 @@ public class QueryInterpretor {
           }
         }
         
-      } else if ("queryFilter".equals(querySpecification.getName())) {
+      } else if ("queryFilter".equals(querySpecification.getName())) { //$NON-NLS-1$
         String queryIdentifier = querySpecification.getAttribute(QuerySchema.QUERY_IDENTIFIER); //$NON-NLS-1$
         try {
           IQueryFilter filter = (IQueryFilter) querySpecification.createExecutableExtension(QuerySchema.FILTER); //$NON-NLS-1$

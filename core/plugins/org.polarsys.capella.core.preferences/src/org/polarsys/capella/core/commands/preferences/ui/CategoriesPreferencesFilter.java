@@ -31,7 +31,7 @@ public class CategoriesPreferencesFilter extends ViewerFilter {
 	private ICategoryTreeNode parentCategory;
 	
 	public void setSearchValue(String searchValue_p) {
-		searchValue = ".*" + searchValue_p + ".*"; 
+		searchValue = ".*" + searchValue_p + ".*";  //$NON-NLS-1$ //$NON-NLS-2$
 	}
 	
 	

@@ -69,7 +69,7 @@ public class DWF_I_22_Resolver extends DWF_I_21_Resolver {
   
   @Override
   protected String[] getResolvableRuleIds() {
-    return new String[] {"DWF_I_22"};
+    return new String[] {"DWF_I_22"}; //$NON-NLS-1$
   }
   
   @Override

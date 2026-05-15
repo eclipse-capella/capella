@@ -617,7 +617,7 @@ public class SequenceDiagramServices {
     List<String> result = new ArrayList<String>(10);
     for (InteractionOperatorKind kind : InteractionOperatorKind.values()) {
       String str = kind.toString();
-      if (!str.equals("") && !str.equals("ALT") && !str.equals("LOOP") && !str.equals("PAR")) {
+      if (!str.equals("") && !str.equals("ALT") && !str.equals("LOOP") && !str.equals("PAR")) { //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
         result.add(str);
       }
     }

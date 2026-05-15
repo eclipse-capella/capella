@@ -32,9 +32,14 @@ public class MissingElementHandler implements ILinkParser {
 
   @Override
   public void handleParsedLink(LinkDescription parsedLink) {
-    if (parsedLink.getTargetElement() == null && parsedLink.getHref().startsWith("hlink://")) {
+    if (parsedLink.getTargetElement() == null && parsedLink.getHref().startsWith("hlink://")) { //$NON-NLS-1$
       String elementName = DescriptionParserHelper.getElementName(element);
-      String elementId = parsedLink.getHref().replace("hlink://", "");
+      String elementId = parsedLink.getHref().replace("hlink://", ""); //$NON-NLS-1$ //$NON-NLS-2$
+      // Translation note
+      // The failure messages for this validation error cannot be externalized.
+      // DescriptionLinkParserHandler depends on the "with label" verbatim String to find
+      // the links and thus this text should not be translated until the DescriptionLinkParserHandler
+      // has been revised.
       if (!parsedLinks.contains(parsedLink)) {
         parsedLinks.add(parsedLink);
         String failureMessage = "(Hyperlink) The model/diagram element with label \"" + parsedLink.getName()

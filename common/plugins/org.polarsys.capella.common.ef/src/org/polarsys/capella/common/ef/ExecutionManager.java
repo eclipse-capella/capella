@@ -163,9 +163,9 @@ public class ExecutionManager {
   }
 
   public TransactionalEditingDomain.Factory getEditingDomainFactory() {
-    IConfigurationElement configurationElement = ExtensionPointHelper.getConfigurationElement("org.eclipse.emf.transaction", "editingDomains", EDITING_DOMAIN_ID);
+    IConfigurationElement configurationElement = ExtensionPointHelper.getConfigurationElement("org.eclipse.emf.transaction", "editingDomains", EDITING_DOMAIN_ID); //$NON-NLS-1$ //$NON-NLS-2$
     if (null != configurationElement) {
-      return (TransactionalEditingDomain.Factory) ExtensionPointHelper.createInstance(configurationElement, "factory");
+      return (TransactionalEditingDomain.Factory) ExtensionPointHelper.createInstance(configurationElement, "factory"); //$NON-NLS-1$
     }
     return null;
   }

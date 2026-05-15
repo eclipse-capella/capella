@@ -56,25 +56,25 @@ public class DWF_DS_18_Resolutions extends AbstractMarkerResolutionGenerator {
     }
 
     List<IMarkerResolution> resolutions = new ArrayList<IMarkerResolution>();
-    resolutions.add(new CapellaElementGoToResolver("Invoked Operation", invokedOperation));
+    resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_InvokedOperation, invokedOperation));
 
     NamedElement sequenceMessageSourceComponent = SequenceMessageExt.getSender(sequenceMessage);
     if (null != sequenceMessageSourceComponent) {
       // Source component can be null for found messages.
-      resolutions.add(new CapellaElementGoToResolver("SequenceMessage source component", sequenceMessageSourceComponent));
+      resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_SeqMsgSource, sequenceMessageSourceComponent));
     }
 
     NamedElement sequenceMessageTargetComponent = SequenceMessageExt.getReceiver(sequenceMessage);
     if (null != sequenceMessageTargetComponent) {
       // Target component can be null for lost messages.
-      resolutions.add(new CapellaElementGoToResolver("SequenceMessage target component", sequenceMessageTargetComponent));
+      resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_SeqMsgTarget, sequenceMessageTargetComponent));
     }
 
     EObject exchangeSourceComponent = null;
     EObject exchangeTargetComponent = null;
     if (invokedOperation instanceof FunctionalExchange) {
       AbstractFunction sourceFunction = FunctionalExchangeExt.getSourceFunction((FunctionalExchange) invokedOperation);
-      resolutions.add(new CapellaElementGoToResolver("Exchange source function", sourceFunction));
+      resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_ExchangeSourceFunc, sourceFunction));
 
       // Get component allocating source function.
       List<AbstractFunctionalBlock> sourceFunctionAllocatingComponents = sourceFunction.getAllocationBlocks();
@@ -84,7 +84,7 @@ public class DWF_DS_18_Resolutions extends AbstractMarkerResolutionGenerator {
       }
 
       AbstractFunction targetFunction = FunctionalExchangeExt.getTargetFunction((FunctionalExchange) invokedOperation);
-      resolutions.add(new CapellaElementGoToResolver("Exchange target function", targetFunction));
+      resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_ExchangeTargetFunc, targetFunction));
 
       // Get component allocating target function.
       List<AbstractFunctionalBlock> targetFunctionAllocatingComponents = targetFunction.getAllocationBlocks();
@@ -98,10 +98,10 @@ public class DWF_DS_18_Resolutions extends AbstractMarkerResolutionGenerator {
       exchangeTargetComponent = ComponentExchangeExt.getTargetComponent((ComponentExchange) invokedOperation);
     }
     if (null != exchangeSourceComponent) {
-      resolutions.add(new CapellaElementGoToResolver("Exchange source component", exchangeSourceComponent));
+      resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_ExchangeSourceComp, exchangeSourceComponent));
     }
     if (null != exchangeTargetComponent) {
-      resolutions.add(new CapellaElementGoToResolver("Exchange target component", exchangeTargetComponent));
+      resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_ExchangeTargetComp, exchangeTargetComponent));
     }
 
     // Containing SequenceDiagram.
@@ -115,13 +115,13 @@ public class DWF_DS_18_Resolutions extends AbstractMarkerResolutionGenerator {
     } else {
       elementToDelete = SequenceMessageExt.getStartedExecution(sequenceMessage);
     }
-    resolutions.add(new DeleteCommandResolver("Delete Sequence Message", elementToDelete));
+    resolutions.add(new DeleteCommandResolver(Messages.DWF_DS_18_19_Resolutions_Delete, elementToDelete));
 
     return resolutions.toArray(new IMarkerResolution[0]);
   }
 
   @Override
   protected String getRuleId() {
-    return "org.polarsys.capella.core.data.interaction.validation.DWF_DS_18";
+    return "org.polarsys.capella.core.data.interaction.validation.DWF_DS_18"; //$NON-NLS-1$
   }
 }

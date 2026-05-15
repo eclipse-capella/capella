@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
-
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.ExchangeItemElement;
 import org.polarsys.capella.core.data.information.ExchangeMechanism;
@@ -75,7 +75,7 @@ public class CheckExchangeItemElementDirection extends AbstractValidationRule {
     if (!direction.equals(ParameterDirection.UNSET)) {
       String EIE_PARAMETER = "\"" + exchangeItemElement.getName() + "\" ( " + exchangeItemElement.eClass().getName() + " ) ";
       String EI_PARAMETER = "\"" + exchangeItemParent.getName() + "\" ( " + exchangeItemParent.eClass().getName() + " ) ";
-      IStatus status = ctx.createFailureStatus(new Object[] { EIE_PARAMETER, EI_PARAMETER, exchangeMechanism.getName(), " shall not " });
+      IStatus status = ctx.createFailureStatus(NLS.bind(Messages.CheckExchangeItemElementDirection_OtherExchange, new Object[] { EIE_PARAMETER, EI_PARAMETER, exchangeMechanism.getName()}));
       statuses.add(status);
 
     }
@@ -94,7 +94,7 @@ public class CheckExchangeItemElementDirection extends AbstractValidationRule {
     if ((direction == null) || direction.equals(ParameterDirection.UNSET)) {
       String EIE_PARAMETER = "\"" + exchangeItemElement.getName() + "\" ( " + exchangeItemElement.eClass().getName() + " ) ";
       String EI_PARAMETER = "\"" + exchangeItemParent.getName() + "\" ( " + exchangeItemParent.eClass().getName() + " ) ";
-      IStatus status = ctx.createFailureStatus(new Object[] { EIE_PARAMETER, EI_PARAMETER, exchangeMechanism.getName(), " shall " });
+      IStatus status = ctx.createFailureStatus(NLS.bind(Messages.CheckExchangeItemElementDirection_OperationExchange, new Object[] { EIE_PARAMETER, EI_PARAMETER, exchangeMechanism.getName()}));
       statuses.add(status);
     }
 

@@ -165,7 +165,7 @@ public class CapellaSearchQuery implements ISearchQuery {
 
       if (searchData instanceof String) {
         String searchText = (String) searchData;
-        String[] searchTextLines = searchText.split("\n");
+        String[] searchTextLines = searchText.split("\n"); //$NON-NLS-1$
 
         if (searchTextLines.length == 1) {
           if (isMatchOccurrences(pattern, searchText)) {

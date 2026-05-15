@@ -220,7 +220,7 @@ public class OpaqueExpressionSection extends NamedElementSection {
 
   private void syncToModel() {
     TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(opaqueExpression);
-    RecordingCommand c = new RecordingCommand(domain, "Edit OpaqueExpression") {
+    RecordingCommand c = new RecordingCommand(domain, Messages.OpaqueExpressionSection_0) {
       
       final OpaqueExpression _affected = getOpaqueExpression();
 
@@ -372,7 +372,7 @@ public class OpaqueExpressionSection extends NamedElementSection {
       @Override
       public void widgetSelected(SelectionEvent e) {
         
-        InputDialog i = new InputDialog(e.widget.getDisplay().getActiveShell(), "Add OpaqueExpression element", "Enter language name", null, new IInputValidator() {
+        InputDialog i = new InputDialog(e.widget.getDisplay().getActiveShell(), Messages.OpaqueExpressionSection_1, Messages.OpaqueExpressionSection_2, null, new IInputValidator() {
           @Override
           public String isValid(String newText) {
             if (newText != null && newText.trim().isEmpty()){
@@ -380,7 +380,7 @@ public class OpaqueExpressionSection extends NamedElementSection {
             }
             for (Object o : getElements()){
               if (newText != null && ((OpaqueExpressionElement) o).getDisplayLanguage().trim().equals(newText.trim())){
-                return "Language is already used";
+                return Messages.OpaqueExpressionSection_3;
               }
             }
             return null;
@@ -389,12 +389,12 @@ public class OpaqueExpressionSection extends NamedElementSection {
 
         if (i.open() == Window.OK){
           String language = i.getValue().trim();
-          if (language.equals("LinkedText")){
+          if (language.equals("LinkedText")){ //$NON-NLS-1$
             language = CapellaLinkedTextConstants.OPAQUE_EXPRESSION_LINKED_TEXT;
           }
           
           OpaqueExpressionElement oe = new OpaqueExpressionElement(getOpaqueExpression(), language, ""); //$NON-NLS-1$
-          oe.addPropertyChangeListener("body", bodyListener);
+          oe.addPropertyChangeListener("body", bodyListener); //$NON-NLS-1$
           getElements().add(oe);
           
           languagesViewer.setSelection(new StructuredSelection(oe));
@@ -410,7 +410,7 @@ public class OpaqueExpressionSection extends NamedElementSection {
 
     });
 
-    ViewerSupport.bind(languagesViewer, elements, BeanProperties.value("displayLanguage"));
+    ViewerSupport.bind(languagesViewer, elements, BeanProperties.value("displayLanguage")); //$NON-NLS-1$
 
   }
 

@@ -52,7 +52,7 @@ public class SearchForAttributeItem implements SearchForItem {
 
   @Override
   public Image getImage() {
-    return ExtendedImageRegistry.INSTANCE.getImage(EcoreEditPlugin.INSTANCE.getImage("full/obj16/EAttribute"));
+    return ExtendedImageRegistry.INSTANCE.getImage(EcoreEditPlugin.INSTANCE.getImage("full/obj16/EAttribute")); //$NON-NLS-1$
   }
 
   @Override

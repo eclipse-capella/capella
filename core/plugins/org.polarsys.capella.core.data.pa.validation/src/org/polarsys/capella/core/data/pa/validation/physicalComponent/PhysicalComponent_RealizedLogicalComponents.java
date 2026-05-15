@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
@@ -41,7 +42,7 @@ public class PhysicalComponent_RealizedLogicalComponents extends AbstractValidat
             return ctx.createSuccessStatus();
           }
           return ctx.createFailureStatus(
-              CapellaElementExt.getValidationRuleMessagePrefix(component) + " does not realize any Logical Component.");
+              NLS.bind(Messages.PhysicalComponent_RealizedLogicalComponents_0, CapellaElementExt.getValidationRuleMessagePrefix(component)));
         }
       }
     }

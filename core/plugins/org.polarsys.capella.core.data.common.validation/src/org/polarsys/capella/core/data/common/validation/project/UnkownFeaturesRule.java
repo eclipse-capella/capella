@@ -43,7 +43,7 @@ import org.polarsys.capella.shared.id.handler.IdManager;
 
 public class UnkownFeaturesRule extends AbstractValidationRule {
 
-  public static final String ID = "org.polarsys.capella.core.data.common.validation.I_44";
+  public static final String ID = "org.polarsys.capella.core.data.common.validation.I_44"; //$NON-NLS-1$
 
   /**
    * A container class that encloses all the elements required to efficiently perform the quickfix for the unknown
@@ -137,7 +137,7 @@ public class UnkownFeaturesRule extends AbstractValidationRule {
    */
   private Object formatFeatureValue(Object featureValue, SemanticResourcesScope resourceSetScope) {
     if (featureValue instanceof String) {
-      String value = ((String) featureValue).replaceAll("#", "");
+      String value = ((String) featureValue).replaceAll("#", ""); //$NON-NLS-1$ //$NON-NLS-2$
       EObject object = IdManager.getInstance().getEObject(value, resourceSetScope);
 
       if (object != null) {

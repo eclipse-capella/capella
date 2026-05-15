@@ -125,6 +125,6 @@ public abstract class GeneralizableElementSection extends NamedElementSection {
   }
 
   protected String getSuperLabel() {
-    return Messages.getString("GeneralizableElementSection_SuperType_Label");
+    return Messages.getString("GeneralizableElementSection_SuperType_Label"); //$NON-NLS-1$
   }
 }

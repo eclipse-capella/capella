@@ -60,29 +60,29 @@ import org.polarsys.kitalpha.emde.model.Element;
  * Various helpers for {@link DAnnotation} annotations on {@link Title Blocks} elements.
  */
 public class TitleBlockHelper {
-  public static final String TITLE_BLOCK_LINE = "TitleBlockLine";
+  public static final String TITLE_BLOCK_LINE = "TitleBlockLine"; //$NON-NLS-1$
 
-  public static final String TITLE_BLOCK_CELL = "TitleBlockCell";
+  public static final String TITLE_BLOCK_CELL = "TitleBlockCell"; //$NON-NLS-1$
 
-  public static final String ELEMENT_TITLE_BLOCK = "ElementTitleBlock";
+  public static final String ELEMENT_TITLE_BLOCK = "ElementTitleBlock"; //$NON-NLS-1$
 
-  public static final String TITLE_BLOCK_CONTENT = "TitleBlockContent";
+  public static final String TITLE_BLOCK_CONTENT = "TitleBlockContent"; //$NON-NLS-1$
 
-  public static final String TRUE = "True";
+  public static final String TRUE = "True"; //$NON-NLS-1$
 
-  public static final String NAME = "Name:";
+  public static final String NAME = "Name:"; //$NON-NLS-1$
 
-  public static final String CONTENT = "Content:";
+  public static final String CONTENT = "Content:"; //$NON-NLS-1$
 
-  public static final String DIAGRAM_TITLE_BLOCK = "DiagramTitleBlock";
+  public static final String DIAGRAM_TITLE_BLOCK = "DiagramTitleBlock"; //$NON-NLS-1$
 
-  public static final String CAPELLA_PREFIX = "capella:";
+  public static final String CAPELLA_PREFIX = "capella:"; //$NON-NLS-1$
 
-  public static final String AQL_PREFIX = "aql:";
+  public static final String AQL_PREFIX = "aql:"; //$NON-NLS-1$
 
-  public static final String FEATURE_PREFIX = "feature:";
+  public static final String FEATURE_PREFIX = "feature:"; //$NON-NLS-1$
 
-  public static final String TITLE_BLOCK_MAPPING_PREFIX = "DT_TitleBlock";
+  public static final String TITLE_BLOCK_MAPPING_PREFIX = "DT_TitleBlock"; //$NON-NLS-1$
 
   /**
    * @param titleBlock
@@ -378,7 +378,7 @@ public class TitleBlockHelper {
   public static DAnnotation addTitleBlockLine(DDiagram diagram, DAnnotation titleBlock, int position, int numCols) {
     DAnnotation line = addTitleBlockLine(diagram, titleBlock, position);
     for (int i = 0; i < numCols; i++) {
-      addTitleBlockCell(diagram, line, "", "");
+      addTitleBlockCell(diagram, line, "", ""); //$NON-NLS-1$ //$NON-NLS-2$
     }
     return line;
   }
@@ -428,7 +428,7 @@ public class TitleBlockHelper {
     KeyStroke keyStroke;
     EObject resolvedTarget = CapellaAdapterHelper.resolveDescriptorOrBusinessObject(target);
     try {
-      keyStroke = KeyStroke.getInstance("Ctrl+Space");
+      keyStroke = KeyStroke.getInstance("Ctrl+Space"); //$NON-NLS-1$
       IContentProposalProvider provider = new IContentProposalProvider() {
 
         @Override
@@ -444,7 +444,7 @@ public class TitleBlockHelper {
 
             for (ICategory category : categories) {
               String proposalContent = category.getSymbolicName();
-              if (proposalContent.toLowerCase().startsWith(contents.replaceFirst(CAPELLA_PREFIX, "").toLowerCase())) {
+              if (proposalContent.toLowerCase().startsWith(contents.replaceFirst(CAPELLA_PREFIX, "").toLowerCase())) { //$NON-NLS-1$
                 proposalsList
                     .add(new org.eclipse.jface.fieldassist.ContentProposal(proposalContent, proposalContent, null));
               }
@@ -452,7 +452,7 @@ public class TitleBlockHelper {
           } else {
             List<ContentProposal> computedProposals;
 
-            if (contents == null || contents.length() == 0 || !contents.contains(":")) {
+            if (contents == null || contents.length() == 0 || !contents.contains(":")) { //$NON-NLS-1$
               computedProposals = CompoundInterpreter.INSTANCE.getAllNewEmtpyExpressions();
               computedProposals.removeIf((ContentProposal p) -> !p.getProposal().equals(AQL_PREFIX)
                   && !p.getProposal().equals(FEATURE_PREFIX));
@@ -496,7 +496,7 @@ public class TitleBlockHelper {
 
           StringBuffer patternToMatch = new StringBuffer();
           int currentIndex = textBeforeProposal.length() - 1;
-          String matchedString = "";
+          String matchedString = ""; //$NON-NLS-1$
 
           while (currentIndex >= 0 && patternToMatch.length() <= textBeforeProposal.length()) {
             patternToMatch.reverse();
@@ -590,10 +590,10 @@ public class TitleBlockHelper {
   public static String getTitleBlockAnnotationLabel(EObject object) {
     if (object instanceof DAnnotation) {
       String label = ((DAnnotation) object).getSource();
-      label = label.replaceAll("([^_])([A-Z])", "$1 $2");
+      label = label.replaceAll("([^_])([A-Z])", "$1 $2"); //$NON-NLS-1$ //$NON-NLS-2$
       return label;
     }
-    return "";
+    return ""; //$NON-NLS-1$
   }
 
   /**
@@ -628,19 +628,19 @@ public class TitleBlockHelper {
   }
 
   public static String getServiceName(String service) {
-    String text = service.replaceAll(TitleBlockHelper.CAPELLA_PREFIX, "").replaceAll("([^_])([A-Z])", "$1 $2");
+    String text = service.replaceAll(TitleBlockHelper.CAPELLA_PREFIX, "").replaceAll("([^_])([A-Z])", "$1 $2"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     text = text.length() > 1 ? text.substring(0, 1).toUpperCase() + text.substring(1) : text;
     return text;
   }
 
   public static String getTitleBlockName(String type) {
     if (type.equals(TitleBlockHelper.DIAGRAM_TITLE_BLOCK)) {
-      return "Diagram Title Block";
+      return Messages.TitleBlockHelper_24;
     }
     if (type.equals(TitleBlockHelper.ELEMENT_TITLE_BLOCK)) {
-      return "Element Title Block";
+      return Messages.TitleBlockHelper_25;
     }
-    return "";
+    return ""; //$NON-NLS-1$
   }
 
   /**
@@ -718,7 +718,7 @@ public class TitleBlockHelper {
       return sanitizedText;
     }
 
-    return resultItem != null ? resultItem.toString() : "";
+    return resultItem != null ? resultItem.toString() : ""; //$NON-NLS-1$
   }
 
   private static Object sanitizeResultItems(Collection<?> originalResult) {

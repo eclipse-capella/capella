@@ -52,7 +52,7 @@ public class PhysicalPathInvolvementRule extends org.polarsys.capella.core.trans
   public IStatus transformRequired(EObject element_p, IContext context_p) {
     PhysicalPathInvolvement transfoSource = (PhysicalPathInvolvement) element_p;
     if (!TransformationHandlerHelper.getInstance(context_p).isOrWillBeTransformed(transfoSource.getInvolved(), context_p).isOK()) {
-      return new Status(IStatus.WARNING, Messages.Activity_Transformation, "Involved Element not transitioned");
+      return new Status(IStatus.WARNING, Messages.Activity_Transformation, org.polarsys.capella.core.transition.system.topdown.constants.Messages.TransitionRule_Error_InvolvedElementNotTransitioned);
     }
     return Status.OK_STATUS;
   }

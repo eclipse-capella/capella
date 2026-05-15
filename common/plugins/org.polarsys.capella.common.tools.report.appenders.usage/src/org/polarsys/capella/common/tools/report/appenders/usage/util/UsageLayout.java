@@ -23,7 +23,7 @@ public class UsageLayout extends PatternLayout {
   }
 
   public UsageLayout() {
-    super("%d{ISO8601};");
+    super("%d{ISO8601};"); //$NON-NLS-1$
   }
 
   @Override

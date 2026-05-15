@@ -55,7 +55,6 @@ import org.polarsys.capella.common.tools.report.config.registry.ReportManagerReg
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.platform.sirius.ui.project.CapellaNature;
-import org.polarsys.capella.core.platform.sirius.ui.project.Messages;
 import org.polarsys.capella.core.platform.sirius.ui.session.CapellaSessionHelper;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.kitalpha.ad.integration.sirius.SiriusViewpointManager;
@@ -202,18 +201,18 @@ public class SessionCreationHelper {
 
     try {
 
-      progress.beginTask("Create an empty resource", 1);
+      progress.beginTask(Messages.SessionCreationHelper_task_NewResource, 1);
       Resource semanticResource = CapellaResourceHelper.createCapellaResource(eclipseProject, eclipseProject.getName(), domain);
       progress.worked(1);
 
-      progress.beginTask("Create semantic root element", 1);
+      progress.beginTask(Messages.SessionCreationHelper_task_SemanticElement, 1);
       command = createInitialElementsCommand(semanticResource, eclipseProject.getName(), monitor);
       if (command != null) {
         manager.execute(command);
       }
       progress.worked(1);
 
-      progress.beginTask("Create initial skeletton", 1);
+      progress.beginTask(Messages.SessionCreationHelper_task_Skeleton, 1);
       command = updateInitialElementsCommand(semanticResource, eclipseProject.getName(), monitor);
       if (command != null) {
         manager.execute(command);
@@ -221,7 +220,7 @@ public class SessionCreationHelper {
       progress.worked(1);
 
       try {
-        progress.beginTask("Save semantic model", 1);
+        progress.beginTask(Messages.SessionCreationHelper_task_SaveModel, 1);
         semanticResource.save(Collections.emptyMap());
       } catch (Exception e) {
         // we couldn't do this
@@ -263,7 +262,7 @@ public class SessionCreationHelper {
     try {
 
       int stepCount = 7;
-      SubMonitor progress = SubMonitor.convert(monitor, Messages.getString("NewProjectWizard.CreateProject_Title") + projectName, stepCount); //$NON-NLS-1$
+      SubMonitor progress = SubMonitor.convert(monitor, org.polarsys.capella.core.platform.sirius.ui.project.Messages.getString("NewProjectWizard.CreateProject_Title") + projectName, stepCount); //$NON-NLS-1$
 
       // 1 - Creates the Eclipse Project
       IProject eclipseProject = null;
@@ -281,7 +280,7 @@ public class SessionCreationHelper {
       // Disable Activity Explorer before open session, because a refresh will occurs on each viewpoint activation
       boolean backup = disableActivityExplorerOnOpenSession();
 
-      String eventName = "Open Session";
+      String eventName = "Open Session"; //$NON-NLS-1$
       String eventContext = buildAirdFileName(eclipseProject, projectName).lastSegment();
       UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE);
       

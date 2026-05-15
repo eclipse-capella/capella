@@ -93,8 +93,8 @@ final public class MarkerResolutionCache {
     allConstraintsIds.add("org.eclipse.emf.ecore.1"); //$NON-NLS-1$
 
     // Workaround to support a quickfix for Class Dangling Reference
-    allConstraintsIds.add("org.eclipse.emf.ecore.4");
-    allConstraintsIds.add("org.eclipse.emf.ecore.16");
+    allConstraintsIds.add("org.eclipse.emf.ecore.4"); //$NON-NLS-1$
+    allConstraintsIds.add("org.eclipse.emf.ecore.16"); //$NON-NLS-1$
 
     Set<String> ids = null; // the constraint ids obtained from the contribution to the extension point
     for (AbstractCapellaMarkerResolution key : map.keySet()) {

@@ -28,7 +28,7 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
 public class SequenceMessageItemProviderDecorator extends ItemProviderAdapterDecorator
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 
-    private static final String FULL_OBJ16_SEQUENCE_MESSAGE = "full/obj16/SequenceMessage";
+    private static final String FULL_OBJ16_SEQUENCE_MESSAGE = "full/obj16/SequenceMessage"; //$NON-NLS-1$
 
     public SequenceMessageItemProviderDecorator(AdapterFactory adapterFactory) {
         super(adapterFactory);

@@ -55,9 +55,9 @@ import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
  */
 public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
 
-  public static final String DELETE_ANALYSIS_DIALOG_ELEMENTS = "org.polarsys.capella.core.ui.toolkit.dialogs.confirmDelete.elements";
+  public static final String DELETE_ANALYSIS_DIALOG_ELEMENTS = "org.polarsys.capella.core.ui.toolkit.dialogs.confirmDelete.elements"; //$NON-NLS-1$
 
-  public static final String DELETE_ANALYSIS_DIALOG_REFERENCING_ELEMENTS = "org.polarsys.capella.core.ui.toolkit.dialogs.confirmDelete.referencingElements";
+  public static final String DELETE_ANALYSIS_DIALOG_REFERENCING_ELEMENTS = "org.polarsys.capella.core.ui.toolkit.dialogs.confirmDelete.referencingElements"; //$NON-NLS-1$
 
   /*
    * Referencing elements viewer to deleted elements.

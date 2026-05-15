@@ -16,9 +16,9 @@ package org.polarsys.capella.core.data.fa.ui.quickfix.generator;
  * DWF_DF_19 - SequenceLink with inconsistent associated FunctionalChainInvolvementLink
  */
 public class DWF_DF_19_Resolutions extends SequenceLink_Resolutions {
-  public static final String RULE_ID = "org.polarsys.capella.core.data.fa.validation.DWF_DF_19";
-  public static final String labelQF = "Remove invalid association of ({0}) to {1} ({2})";
-  public static final String labelQF_ALL = "Remove all invalid associations of ({0})";
+  public static final String RULE_ID = "org.polarsys.capella.core.data.fa.validation.DWF_DF_19"; //$NON-NLS-1$
+  public static final String labelQF = Messages.DWF_DF_19_Resolutions_1;
+  public static final String labelQF_ALL = Messages.DWF_DF_19_Resolutions_2;
 
   @Override
   protected String getRuleId() {

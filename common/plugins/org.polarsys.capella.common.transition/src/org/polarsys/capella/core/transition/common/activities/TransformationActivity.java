@@ -35,7 +35,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class TransformationActivity extends AbstractActivity implements ITransposerWorkflow {
 
-  public static final String ID = "org.polarsys.capella.core.transition.common.activities.TransformationActivity";
+  public static final String ID = "org.polarsys.capella.core.transition.common.activities.TransformationActivity"; //$NON-NLS-1$
 
   /**
    * {@inheritDoc}

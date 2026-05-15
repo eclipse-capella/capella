@@ -29,6 +29,6 @@ public class SearchForDiagramItem extends SearchForClassItem {
 
   @Override
   public Image getImage() {
-    return ExtendedImageRegistry.INSTANCE.getImage(DiagramUIPlugin.INSTANCE.getImage("full/obj16/DDiagram"));
+    return ExtendedImageRegistry.INSTANCE.getImage(DiagramUIPlugin.INSTANCE.getImage("full/obj16/DDiagram")); //$NON-NLS-1$
   }
 }

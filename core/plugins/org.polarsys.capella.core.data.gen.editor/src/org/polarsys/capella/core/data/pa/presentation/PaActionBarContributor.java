@@ -84,8 +84,8 @@ public class PaActionBarContributor
 	private final class SchemeLoadResourceAction extends Action {
 
 		public SchemeLoadResourceAction() {
-			super("Load Reusable Resource...");
-			URI uri = URI.createURI("platform:/plugin/org.polarsys.kitalpha.resourcereuse.emfscheme.ui/icons/searchView.gif");
+			super(org.polarsys.capella.core.data.Messages.ActionBarContributor_LoadResourceAction_Label);
+			URI uri = URI.createURI("platform:/plugin/org.polarsys.kitalpha.resourcereuse.emfscheme.ui/icons/searchView.gif"); //$NON-NLS-1$
 			setImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(uri));
 		}
 		

@@ -42,7 +42,7 @@ public class FunctionalChainInvolvementLinkItemProviderDecorator extends ItemPro
   public Object getImage(Object object) {
     FunctionalChainInvolvementLink link = (FunctionalChainInvolvementLink) object;
     InvolvedElement involvedElement = link.getInvolved();
-    String imagePath = "";
+    String imagePath = ""; //$NON-NLS-1$
 
     if (link.eContainer() instanceof OperationalProcess) {
       if (involvedElement instanceof AbstractFunction) {

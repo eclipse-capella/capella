@@ -378,7 +378,7 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
       deleteCommandHooks = new ArrayList<AbstractCapellaDeleteHook>();
       // Load IDeleteCommandDelegation contributor if any.
       IConfigurationElement[] configurationElements = ExtensionPointHelper
-          .getConfigurationElements("org.polarsys.capella.core.platform.sirius.ui.actions", "deleteCommandDelegation"); //$NON-NLS-1$
+          .getConfigurationElements("org.polarsys.capella.core.platform.sirius.ui.actions", "deleteCommandDelegation"); //$NON-NLS-1$ //$NON-NLS-2$
       // Loop over contributed IDeleteCommandDelegation contributor, must be only one.
       for (IConfigurationElement elem : configurationElements) {
         deleteCommandHooks

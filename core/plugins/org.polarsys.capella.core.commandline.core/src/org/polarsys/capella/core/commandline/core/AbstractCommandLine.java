@@ -387,8 +387,8 @@ public class AbstractCommandLine implements ICommandLine {
     for (String projectPath : projectsToImport) {
       IProject project = null;
 
-      if (projectPath.endsWith(".zip")) {
-        List<IFileImporter> importers = ImporterRegistry.getInstance().getImporters("zip");
+      if (projectPath.endsWith(".zip")) { //$NON-NLS-1$
+        List<IFileImporter> importers = ImporterRegistry.getInstance().getImporters("zip"); //$NON-NLS-1$
         if (!importers.isEmpty()) {
           IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(projectPath));
           Collection<IProject> projects = importers.get(0).importFile(file, argHelper.isForceImport());
@@ -404,7 +404,7 @@ public class AbstractCommandLine implements ICommandLine {
           if (project.exists()) {
             // Log an error if a project exists already and -forceImport is not given
             IStatus status = new Status(IStatus.ERROR, CommandLineApp.PLUGIN_ID,
-                "Problem while importing project into the workspace: A project with the same name is referenced from the workspace. This should be removed from the workspace.");
+                Messages.AbstractCommandLine_2);
             LogExt.log(IReportManagerDefaultComponents.MODEL, status);
           } else {
             project.create(description, null);
@@ -494,7 +494,7 @@ public class AbstractCommandLine implements ICommandLine {
     List<String> segments = new ArrayList<String>(Arrays.asList(fileURI.segments()));
     segments.remove(0);
     if (segments.isEmpty())
-      return "";
+      return ""; //$NON-NLS-1$
     // We should avoid creating a file URI from an empty string because it will make an absolute path
     URI uri = URI.createFileURI(segments.get(0));
     for (int i = 1; i < segments.size(); i++)

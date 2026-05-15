@@ -33,7 +33,7 @@ public class ManyRefDisplayConverter extends MADisplayConverter {
 
     if (canonicalValue instanceof Collection<?>) {
       Collection<EObject> valueList = (Collection<EObject>) canonicalValue;
-      return valueList.stream().map(EObjectLabelProviderHelper::getText).collect(Collectors.joining(", "));
+      return valueList.stream().map(EObjectLabelProviderHelper::getText).collect(Collectors.joining(", ")); //$NON-NLS-1$
     }
 
     // default behavior

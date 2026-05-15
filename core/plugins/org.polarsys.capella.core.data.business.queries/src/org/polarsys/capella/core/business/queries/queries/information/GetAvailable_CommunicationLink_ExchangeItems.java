@@ -18,6 +18,7 @@ import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 
 public class GetAvailable_CommunicationLink_ExchangeItems extends AbstractQuery {
@@ -31,7 +32,7 @@ public class GetAvailable_CommunicationLink_ExchangeItems extends AbstractQuery 
 	}
 
 	public List<CapellaElement> getAvailableElements(CapellaElement element) {
-		return QueryInterpretor.executeQuery("GetAvailable_CommunicationLink_ExchangeItem__Lib", element, new QueryContext());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__COMMUNICATION_LINK__EXCHANGE_ITEM___LIB, element, new QueryContext());
 	}
 
 }

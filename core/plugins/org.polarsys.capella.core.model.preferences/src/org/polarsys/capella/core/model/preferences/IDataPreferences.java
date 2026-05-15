@@ -28,7 +28,7 @@ public class IDataPreferences {
   /**
    * Is allowed to change the Physical Component nature
    */
-  public static final String PREFS_ALLOW_PHYSICAL_COMPONENT_NATURE_CHANGE = "data.physical.component.nature.change";
+  public static final String PREFS_ALLOW_PHYSICAL_COMPONENT_NATURE_CHANGE = "data.physical.component.nature.change"; //$NON-NLS-1$
   
   /**
    * Default value form change Physical Component nature preference

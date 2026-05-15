@@ -84,7 +84,7 @@ public class MDCHK_Scenario_InvolvementComponents_1 extends AbstractValidationRu
                     }
                   }
                   if (!isOk) {
-                    addCtxStatus(statuses, ctx_p, eObj, usecase, cpnt, cpnt.getName(), "Component");
+                    addCtxStatus(statuses, ctx_p, eObj, usecase, cpnt, cpnt.getName(), Messages.MDCHK_Scenario_InvolvementComponents_1_0);
                   }
                 }
               } else {
@@ -100,7 +100,7 @@ public class MDCHK_Scenario_InvolvementComponents_1 extends AbstractValidationRu
                       }
                     }
                     if (!isOk) {
-                      addCtxStatus(statuses, ctx_p, eObj, usecase, cpntInst, cpntInst.getName(), "Function");
+                      addCtxStatus(statuses, ctx_p, eObj, usecase, cpntInst, cpntInst.getName(), Messages.MDCHK_Scenario_InvolvementComponents_1_1);
                     }
                   }
                 }

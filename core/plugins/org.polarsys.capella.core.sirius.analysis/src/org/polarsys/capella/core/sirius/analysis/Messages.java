@@ -35,8 +35,20 @@ public class Messages extends NLS {
   public static String SequenceDiagramServices_1;
   public static String SequenceDiagramServices_2;
   public static String SequenceDiagramServices_3;
+  public static String OpenRelatedDiagram_CreateNew;
   public static String OpenRelatedDiagram_Message;
+  public static String OpenRelatedDiagram_NewName;
   public static String CreateRepresentationLabel;
+  public static String FunctionalChainServices_12;
+  public static String FunctionalChainServices_13;
+  public static String FunctionalChainServices_14;
+  public static String FunctionalChainServices_15;
+  public static String InformationServices_Suffix_Ordered;
+  public static String InformationServices_Suffix_NonUnique;
+  public static String InformationServices_Suffix_NonComposite;
+  public static String TitleBlockServices_DefaultCellName;
+  public static String TitleBlockServices_DisableFiltersDialog_Title;
+  public static String TitleBlockServices_DisableFiltersDialog_Message;
 
   static {
     // initialize resource bundle

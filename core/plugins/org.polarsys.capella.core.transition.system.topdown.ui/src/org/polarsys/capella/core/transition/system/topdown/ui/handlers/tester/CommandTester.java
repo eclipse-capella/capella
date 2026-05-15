@@ -28,37 +28,37 @@ public class CommandTester extends PropertyTester {
         String value = (String) testedValue;
 
         switch (value) {
-        case "transitionFunctional":
+        case "transitionFunctional": //$NON-NLS-1$
           return TransitionCommandHelper.getInstance().isFunctionalTransitionAvailable(element);
-        case "transitionInterface":
+        case "transitionInterface": //$NON-NLS-1$
           return TransitionCommandHelper.getInstance().isInterfaceTransitionAvailable(element);
-        case "transitionStateMachine":
+        case "transitionStateMachine": //$NON-NLS-1$
           return TransitionCommandHelper.getInstance().isStateMachineTransitionAvailable(element);
-        case "transitionData":
+        case "transitionData": //$NON-NLS-1$
           return TransitionCommandHelper.getInstance().isDataTransitionAvailable(element);
-        case "transitionPropertyValue":
+        case "transitionPropertyValue": //$NON-NLS-1$
           return TransitionCommandHelper.getInstance().isPropertyValueTransitionAvailable(element);
-        case "transitionExchangeItem":
+        case "transitionExchangeItem": //$NON-NLS-1$
           return TransitionCommandHelper.getInstance().isExchangeItemTransitionAvailable(element);
-        case "transitionActor":
+        case "transitionActor": //$NON-NLS-1$
           return TransitionCommandHelper.getInstance().isActorTransitionAvailable(element);
-        case "transitionSystem":
+        case "transitionSystem": //$NON-NLS-1$
           return TransitionCommandHelper.getInstance().isSystemTransitionAvailable(element);
-        case "transitionLC2PC":
+        case "transitionLC2PC": //$NON-NLS-1$
           return TransitionCommandHelper.getInstance().isLC2PCTransitionAvailable(element);
-        case "transitionOE2Actor":
+        case "transitionOE2Actor": //$NON-NLS-1$
           return TransitionCommandHelper.getInstance().isOE2ActorTransitionAvailable(element);
-        case "transitionOE2System":
+        case "transitionOE2System": //$NON-NLS-1$
           return TransitionCommandHelper.getInstance().isOE2SystemTransitionAvailable(element);
-        case "transitionCapability":
+        case "transitionCapability": //$NON-NLS-1$
           return TransitionCommandHelper.getInstance().isCapabilityTransitionAvailable(element);
-        case "transitionOC2SM":
+        case "transitionOC2SM": //$NON-NLS-1$
           return TransitionCommandHelper.getInstance().isOC2SMTransitionAvailable(element);
-        case "transitionOA2SC":
+        case "transitionOA2SC": //$NON-NLS-1$
           return TransitionCommandHelper.getInstance().isOA2SCTransitionAvailable(element);
-        case "transitionOA2SM":
+        case "transitionOA2SM": //$NON-NLS-1$
           return TransitionCommandHelper.getInstance().isOA2SMTransitionAvailable(element);
-        case "transitionPC2CI":
+        case "transitionPC2CI": //$NON-NLS-1$
           return TransitionCommandHelper.getInstance().isPC2CITransitionAvailable(element);
         default:
           break;

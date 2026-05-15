@@ -47,9 +47,8 @@ public class FunctionalChainInvolvementLink_ExchangeItems extends AbstractValida
       if (invalidItemsSize > 0) {
         String invalidExchageItemsLabel = invalidExchangeItems.stream().map(AbstractExchangeItem::getName)
             .collect(Collectors.joining(EXCHANGE_ITEMS_NAMES_LIST_SEPARATOR));
-        String suffix = invalidItemsSize > 1 ? "are" : "is";
 
-        return ctx.createFailureStatus(EObjectLabelProviderHelper.getText(link), invalidExchageItemsLabel, suffix);
+        return ctx.createFailureStatus(EObjectLabelProviderHelper.getText(link), invalidExchageItemsLabel);
       }
     }
 

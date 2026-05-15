@@ -23,7 +23,7 @@ import org.polarsys.capella.core.model.utils.NamingHelper;
 public class DescriptionParserHelper {
 
   public static String getLinkIdFromStatus(String statusMessage) {
-    Pattern pattern = Pattern.compile("\\(id: (.+?)\\)");
+    Pattern pattern = Pattern.compile("\\(id: (.+?)\\)"); //$NON-NLS-1$
 
     Matcher matcher = pattern.matcher(statusMessage);
     if (matcher.find()) {
@@ -34,7 +34,7 @@ public class DescriptionParserHelper {
   }
 
   public static List<String> getLinksWithId(String description, String linkId) {
-    Pattern pattern = Pattern.compile("(<a href=\"hlink://" + linkId + ".*?</a>)");
+    Pattern pattern = Pattern.compile("(<a href=\"hlink://" + linkId + ".*?</a>)"); //$NON-NLS-1$ //$NON-NLS-2$
 
     Matcher matcher = pattern.matcher(description);
     List<String> links = matcher.results().map(res -> res.group()).collect(Collectors.toList());
