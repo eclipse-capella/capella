@@ -27,9 +27,7 @@
 		<sonar.skip>true</sonar.skip>
 	</properties>
 	
-	<groupId>org.polarsys</groupId>
 	<artifactId>org.polarsys.capella.samples</artifactId>
-	<version>7.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<build>
