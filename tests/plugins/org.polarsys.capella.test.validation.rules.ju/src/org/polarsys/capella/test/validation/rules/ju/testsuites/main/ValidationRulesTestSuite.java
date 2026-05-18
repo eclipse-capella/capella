@@ -18,7 +18,10 @@ import java.util.List;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.dc_cl.DCCLRulesTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testcases.functional.FunctionalTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.naming.NameConflictTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testcases.namingConventions.NamingConventionsTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testcases.summaryAndDescription.SummaryAndDescriptionTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testsuites.partial.MiscTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testsuites.partial.RulesOnDesignTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testsuites.partial.RulesOnIntegrityTestSuite;
@@ -46,6 +49,9 @@ public class ValidationRulesTestSuite extends BasicTestSuite {
     tests.add(new RulesOnIntegrityTestSuite());
     tests.add(new RulesOnQualityTestSuite());
     tests.add(new RulesOnTransitionTestSuite());
+    tests.add(new NamingConventionsTestSuite());
+    tests.add(new SummaryAndDescriptionTestSuite());
+    tests.add(new FunctionalTestSuite());
 		return tests;
 	}
 
