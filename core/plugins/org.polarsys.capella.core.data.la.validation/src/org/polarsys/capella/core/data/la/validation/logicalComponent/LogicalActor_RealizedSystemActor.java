@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
@@ -42,7 +43,7 @@ public class LogicalActor_RealizedSystemActor extends AbstractValidationRule {
           return ctx.createSuccessStatus();
         }
         return ctx.createFailureStatus(
-            CapellaElementExt.getValidationRuleMessagePrefix(actor) + " does not realize any System Actor");
+            NLS.bind(CapellaElementExt.getValidationRuleMessagePrefix(actor), Messages.LogicalActor_RealizedSystemActor_0));
       }
     }
     return ctx.createSuccessStatus();

@@ -21,6 +21,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.polarsys.capella.common.flexibility.properties.property.PropertyPreference;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
+import org.polarsys.capella.core.transition.system.constants.Messages;
 
 /**
  */
@@ -40,7 +41,7 @@ public class OutputModelPreference extends PropertyPreference {
     IPath path = new Path(pathValue);
     IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
     if (!file.isAccessible() || !file.exists() || file.isPhantom()) {
-      return new Status(IStatus.ERROR, getId(), "Please select a valid output Capella model");
+      return new Status(IStatus.ERROR, getId(), Messages.OutputModelPreference_InvalidSelection);
     }
 
     return Status.OK_STATUS;

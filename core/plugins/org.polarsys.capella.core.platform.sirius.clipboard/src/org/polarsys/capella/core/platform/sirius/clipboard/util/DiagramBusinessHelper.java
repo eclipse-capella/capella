@@ -48,19 +48,19 @@ public class DiagramBusinessHelper {
   /** Lowercase names of dummy mappings which should not be used **/
   private static final Collection<String> DUMMY_MAPPING_NAMES =
     Collections.unmodifiableCollection(Arrays.asList(
-        "lab sub components"
+        "lab sub components" //$NON-NLS-1$
     ));
   
   /** Lowercase name of component mapping in PAB **/
-  private static final String PHYSICAL_COMPONENT_MAPPING_NAME = "pab_pc";
+  private static final String PHYSICAL_COMPONENT_MAPPING_NAME = "pab_pc"; //$NON-NLS-1$
 
   /** Lowercase name of deployed component mapping in PAB **/
-  private static final String DEPLOYMENT_MAPPING_NAME = "pab_deployment";
+  private static final String DEPLOYMENT_MAPPING_NAME = "pab_deployment"; //$NON-NLS-1$
 
   /** Lowercase names of subcomponent mappings in architecture diagrams **/
   private static final Collection<String> SUBCOMPONENT_MAPPING_NAMES =
     Collections.unmodifiableCollection(Arrays.asList(
-        "lab logical component",
+        "lab logical component", //$NON-NLS-1$
         PHYSICAL_COMPONENT_MAPPING_NAME
     ));
   

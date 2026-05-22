@@ -51,15 +51,15 @@ public class ExchangeItemAllocationProtocolSequence extends AbstractValidationRu
             
             List<CommunicationLinkProtocol> expectedSendProtocols = LinkCompatibilityDefinition.INSTANCE.getCompatibleProtocols(true, mechanism, message.getKind(), hasReply);
             if (!expectedSendProtocols.isEmpty() && !expectedSendProtocols.contains(allocation.getSendProtocol())) {
-              String expected = ListExt.toString(expectedSendProtocols, " || ");
-              IStatus status =  ctx.createFailureStatus(eObj, mechanism, expected, Messages.ExchangeItemAllocationProtocol_CommunicationLinkProtocol_Sender, message, message.getKind(), hasReply ? "with" : "without", scenario);
+              String expected = ListExt.toString(expectedSendProtocols, " || "); //$NON-NLS-1$
+              IStatus status =  ctx.createFailureStatus(eObj, mechanism, expected, Messages.ExchangeItemAllocationProtocol_CommunicationLinkProtocol_Sender, message, message.getKind(), hasReply ? Messages.ExchangeItemAllocationProtocolSequence_WithReply : Messages.ExchangeItemAllocationProtocolSequence_WithoutReply, scenario);
               statuses.add(status);
             }
             
             List<CommunicationLinkProtocol> expectedReceiveProtocols = LinkCompatibilityDefinition.INSTANCE.getCompatibleProtocols(false, mechanism, message.getKind(), hasReply);
             if (!expectedReceiveProtocols.isEmpty() && !expectedReceiveProtocols.contains(allocation.getReceiveProtocol())) {
-              String expected = ListExt.toString(expectedReceiveProtocols, " || ");
-              IStatus status =  ctx.createFailureStatus(eObj, mechanism, expected, Messages.ExchangeItemAllocationProtocol_CommunicationLinkProtocol_Receiver, message, message.getKind(), hasReply ? "with" : "without", scenario);
+              String expected = ListExt.toString(expectedReceiveProtocols, " || "); //$NON-NLS-1$
+              IStatus status =  ctx.createFailureStatus(eObj, mechanism, expected, Messages.ExchangeItemAllocationProtocol_CommunicationLinkProtocol_Receiver, message, message.getKind(), hasReply ? Messages.ExchangeItemAllocationProtocolSequence_WithReply : Messages.ExchangeItemAllocationProtocolSequence_WithoutReply, scenario);
               statuses.add(status);
             }
           }

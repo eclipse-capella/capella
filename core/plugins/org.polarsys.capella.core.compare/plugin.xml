@@ -28,7 +28,7 @@
             base-type="org.eclipse.emf.ecore.xmi"
             file-extensions="capella,capellafragment"
             id="org.polarsys.capella.core.compare.capella.content-type"
-            name="Capella model files"
+            name="%content-type.name"
             priority="normal">
       </content-type>
    </extension>

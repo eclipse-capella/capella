@@ -52,7 +52,7 @@ public class ExtendedAnalyzer implements IAnalyzer {
 
   public Graph analyze(Collection analysisSource, Collection selection, IProgressMonitor monitor) throws AnalysisException {
     if (monitor != null) {
-      monitor.beginTask("Transposer Analysis", analysisSource.size());
+      monitor.beginTask(Messages.ExtendedAnalyzer_0, analysisSource.size());
     }
     for (Iterator iterator = analysisSource.iterator(); iterator.hasNext();) {
       Object source = iterator.next();
@@ -72,7 +72,7 @@ public class ExtendedAnalyzer implements IAnalyzer {
     }
 
     if (monitor != null) {
-      monitor.subTask("");
+      monitor.subTask(""); //$NON-NLS-1$
     }
     return modelGraph;
   }
@@ -82,11 +82,11 @@ public class ExtendedAnalyzer implements IAnalyzer {
       return;
     }
     if (monitor != null) {
-      monitor.subTask((new StringBuilder("Creating vertex for ")).append(currentType.getClass().getSimpleName()).toString());
+      monitor.subTask((new StringBuilder(Messages.ExtendedAnalyzer_2)).append(currentType.getClass().getSimpleName()).toString());
       monitor.worked(1);
     }
     String name = rulesHandler.getDomainHelper().getName(currentType);
-    if ((name == null) || "".equals(name)) {
+    if ((name == null) || "".equals(name)) { //$NON-NLS-1$
       name = currentType.getClass().getName();
     }
     boolean isHotSpot = rulesHandler.getDomainHelper().isHotSpot(currentType);
@@ -118,7 +118,7 @@ public class ExtendedAnalyzer implements IAnalyzer {
         return;
       }
       if (iProgressMonitor1 != null) {
-        iProgressMonitor1.subTask((new StringBuilder("Creating subgraph for ")).append(currentType.getClass().getSimpleName()).toString());
+        iProgressMonitor1.subTask((new StringBuilder(Messages.ExtendedAnalyzer_4)).append(currentType.getClass().getSimpleName()).toString());
       }
 
       for (Iterator iterator = needed.iterator(); iterator.hasNext();) {

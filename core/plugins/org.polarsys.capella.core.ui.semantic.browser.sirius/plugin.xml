@@ -21,7 +21,7 @@
             class="org.polarsys.capella.core.ui.semantic.browser.sirius.view.SiriusSemanticBrowserView"
             icon="platform:/plugin/org.polarsys.capella.core.ui.semantic.browser/icons/full/eview16/sembrowser.png"
             id="org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID"
-            name="Semantic Browser">
+            name="%view.name">
       </view>
    </extension>
    <extension

@@ -33,7 +33,7 @@ public class AddFunctionalExchangeToComponentExchangeCommand extends AbstractQue
 	   * @param linkRefInSource
 	   */
 	  public AddFunctionalExchangeToComponentExchangeCommand(EClass linkType, EReference linkRefInSource) {
-	    super("Add Functional Exchange to Component Exchange", LinkStyle.LINE_DASHED, linkType, linkRefInSource);
+	    super(Messages.AddFunctionalExchangeToComponentExchangeCommand_Label, LinkStyle.LINE_DASHED, linkType, linkRefInSource);
 	  }
 
 	  /**

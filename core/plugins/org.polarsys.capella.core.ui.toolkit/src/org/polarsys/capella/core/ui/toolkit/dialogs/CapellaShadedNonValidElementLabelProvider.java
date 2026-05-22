@@ -35,7 +35,7 @@ import org.polarsys.capella.core.data.information.Parameter;
 
 public class CapellaShadedNonValidElementLabelProvider extends MDEAdapterFactoryLabelProvider implements IColorProvider, IFontProvider {
 
-  protected Font font = new Font(Display.getDefault(), "Arial", 9, SWT.NORMAL | SWT.ITALIC);
+  protected Font font = new Font(Display.getDefault(), "Arial", 9, SWT.NORMAL | SWT.ITALIC); //$NON-NLS-1$
   protected Color invalidColor = Display.getDefault().getSystemColor(SWT.COLOR_DARK_GRAY);
   protected Color validColor = Display.getDefault().getSystemColor(SWT.COLOR_BLACK);
   protected boolean isValidElementsSet = false;

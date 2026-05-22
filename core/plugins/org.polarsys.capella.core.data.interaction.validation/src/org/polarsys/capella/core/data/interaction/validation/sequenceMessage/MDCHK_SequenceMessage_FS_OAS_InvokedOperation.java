@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
@@ -68,15 +69,14 @@ public class MDCHK_SequenceMessage_FS_OAS_InvokedOperation extends AbstractModel
       // null value for invokedOperarion is tested in another validation rule.
       return ctx_p.createSuccessStatus();
     } else if (!(invokedOperation instanceof FunctionalExchange)) {
-      return createFailureStatus(ctx_p, sequenceMessage, "Sequence Message invoked operation is not a Functional Exchange");
+      return createFailureStatus(ctx_p, sequenceMessage, Messages.MDCHK_SequenceMessage_FS_OAS_InvokedOperation_0);
     }
     // Get available FunctionalExchanges between source and target InstanceRoles and check previously found FunctionalExchange is amongst them.
     Collection<FunctionalExchange> availableFunctionalExchanges = DataFlowHelper.getAvailableFonctionalExchangesFromFunctions(sequenceMessage);
     if (!availableFunctionalExchanges.contains(invokedOperation)) {
       String exchangeSourceFunctionName = EObjectLabelProviderHelper.getText(FunctionalExchangeExt.getSourceFunction((FunctionalExchange) invokedOperation));
       String exchangeTargetFunctionName = EObjectLabelProviderHelper.getText(FunctionalExchangeExt.getTargetFunction((FunctionalExchange) invokedOperation));
-      return createFailureStatus(ctx_p, sequenceMessage, "Invoked Functional Exchange (source: " + exchangeSourceFunctionName + ", target: "
-                                                         + exchangeTargetFunctionName + ") is no more available for this Sequence Message");
+      return createFailureStatus(ctx_p, sequenceMessage, NLS.bind(Messages.MDCHK_SequenceMessage_FS_OAS_InvokedOperation_1, exchangeSourceFunctionName, exchangeTargetFunctionName));
     }
     return ctx_p.createSuccessStatus();
   }

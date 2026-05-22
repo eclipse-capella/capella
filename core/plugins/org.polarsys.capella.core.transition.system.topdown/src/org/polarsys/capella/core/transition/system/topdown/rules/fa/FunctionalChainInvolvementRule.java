@@ -30,7 +30,7 @@ public class FunctionalChainInvolvementRule
     FunctionalChainInvolvement transfoSource = (FunctionalChainInvolvement) element;
     if (!TransformationHandlerHelper.getInstance(context)
         .isOrWillBeTransformed(transfoSource.getInvolved(), context).isOK()) {
-      return new Status(IStatus.WARNING, Messages.Activity_Transformation, "InvolvedElement not transitioned");
+      return new Status(IStatus.WARNING, Messages.Activity_Transformation, org.polarsys.capella.core.transition.system.topdown.constants.Messages.TransitionRule_Error_InvolvedElementNotTransitioned);
     }
     return Status.OK_STATUS;
   }

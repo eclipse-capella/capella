@@ -51,8 +51,8 @@ import org.polarsys.capella.core.ui.metric.utils.ProgressMonitoringPropagator;
 public class ProgressMonitoringSetAction extends BaseSelectionListenerAction {
 
   private static final Logger logger = ReportManagerRegistry.getInstance().subscribe("Progress Monitoring"); //$NON-NLS-1$
-  private static final String strStatus = "Status";
-  private static final String strReview = "Review";
+  private static final String strStatus = "Status"; //$NON-NLS-1$
+  private static final String strReview = "Review"; //$NON-NLS-1$
   
   /**
    * Constructor.

@@ -28,9 +28,9 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class LibraryTraceabilityHandler implements ITraceabilityHandler2 {
 
-  public static final String TRANSITION_SOURCE_ROOT_MODEL = "TRANSITION_SOURCE_ROOT_MODEL";
-  public static final String TRANSITION_TARGET_ROOT_MODEL = "TRANSITION_TARGET_ROOT_MODEL";
-  public static final String TRANSITION_TRANSFORMATION_ROOT_MODEL = "TRANSITION_TRANSFORMATION_ROOT_MODEL";
+  public static final String TRANSITION_SOURCE_ROOT_MODEL = "TRANSITION_SOURCE_ROOT_MODEL"; //$NON-NLS-1$
+  public static final String TRANSITION_TARGET_ROOT_MODEL = "TRANSITION_TARGET_ROOT_MODEL"; //$NON-NLS-1$
+  public static final String TRANSITION_TRANSFORMATION_ROOT_MODEL = "TRANSITION_TRANSFORMATION_ROOT_MODEL"; //$NON-NLS-1$
 
   /**
    * {@inheritDoc}

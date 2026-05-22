@@ -18,6 +18,10 @@ public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.data.cs.validation.interface_.messages"; //$NON-NLS-1$
   public static String ExchangeItemAllocationProtocol_CommunicationLinkProtocol_Receiver;
   public static String ExchangeItemAllocationProtocol_CommunicationLinkProtocol_Sender;
+  public static String ExchangeItemAllocationProtocolSequence_WithReply;
+  public static String ExchangeItemAllocationProtocolSequence_WithoutReply;
+  public static String MDCHKComponentInterfaceFunctionPortExchangeItemAllocationConsistency_3;
+  public static String MDCHKComponentInterfaceFunctionPortExchangeItemAllocationConsistency_4;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

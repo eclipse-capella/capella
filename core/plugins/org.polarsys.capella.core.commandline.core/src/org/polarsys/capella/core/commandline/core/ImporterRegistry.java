@@ -62,7 +62,7 @@ public class ImporterRegistry {
     // Load contributions.
     IConfigurationElement[] contributors = ExtensionPointHelper.getConfigurationElements(PLUGIN_ID, CONTRIBUTION_EXTENSION_ID);
     for (IConfigurationElement contributorElement : contributors) {
-      String extension = (String) contributorElement.getAttribute("extension");
+      String extension = (String) contributorElement.getAttribute("extension"); //$NON-NLS-1$
       // Instantiate current contribution.
       IFileImporter importer = (IFileImporter) ExtensionPointHelper.createInstance(contributorElement, ExtensionPointHelper.ATT_CLASS);
       // Get existing contributions for related extension

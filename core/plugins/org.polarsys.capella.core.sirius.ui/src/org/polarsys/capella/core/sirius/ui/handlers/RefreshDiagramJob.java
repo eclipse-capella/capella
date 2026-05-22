@@ -31,7 +31,7 @@ public class RefreshDiagramJob extends Job {
   IFile file;
 
   public RefreshDiagramJob(IFile file) {
-    super(NLS.bind("Refresh diagrams on {0}", file.getName()));
+    super(NLS.bind(Messages.RefreshDiagramJob_Name, file.getName()));
     this.file = file;
     this.setUser(false);
   }

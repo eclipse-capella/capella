@@ -25,6 +25,8 @@ public class Messages extends NLS {
 
   // Help on wizard
   
+  public static String EditCapellaCustomPropertyWizard_Title;
+  
   public static String editCapellaCustomPropertyWizardPage_Description;
   public static String editCapellaCustomPropertyWizardPage_MainDescription;
   public static String editCapellaCustomPropertyWizardPage_MainDescriptionKO;

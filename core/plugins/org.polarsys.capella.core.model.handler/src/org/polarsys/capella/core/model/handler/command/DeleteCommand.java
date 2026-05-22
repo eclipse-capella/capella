@@ -55,7 +55,7 @@ public class DeleteCommand extends CompoundCommand {
 	 * @param elementToDelete must be not null
 	 */
 	public DeleteCommand(EditingDomain editingDomain, Collection<?> elementToDelete){
-	  Assert.isTrue(editingDomain instanceof TransactionalEditingDomain, "The Editing Domain must be not null and must be a Transactional one");
+	  Assert.isTrue(editingDomain instanceof TransactionalEditingDomain, "The Editing Domain must be not null and must be a Transactional one"); //$NON-NLS-1$
 		Assert.isNotNull(elementToDelete, "The Element set to delete must be not null"); //$NON-NLS-1$
 		this.editingDomain = editingDomain;
 		this.elementsToDelete = elementToDelete;

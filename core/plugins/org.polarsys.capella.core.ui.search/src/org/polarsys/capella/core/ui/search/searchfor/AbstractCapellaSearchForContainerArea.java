@@ -75,7 +75,7 @@ public abstract class AbstractCapellaSearchForContainerArea {
 
     filteredTree.getViewer().setLabelProvider(new SearchForLabelProvider());
 
-    filteredTree.getViewer().setInput("");
+    filteredTree.getViewer().setInput(""); //$NON-NLS-1$
 
     filteredTree.getViewer().expandAll();
     filteredTree.getViewer().getTree().setLayout(new GridLayout());
@@ -199,7 +199,7 @@ public abstract class AbstractCapellaSearchForContainerArea {
   protected abstract SelectionListener getRestoreDefaultsSelectionListener();
 
   public void checkAll(CheckboxTreeViewer viewer, boolean state) {
-    Object[] viewerElements = getSearchForContentProvider().getElements("");
+    Object[] viewerElements = getSearchForContentProvider().getElements(""); //$NON-NLS-1$
     for (Object obj : viewerElements) {
       setCheckedState(obj, state);
     }

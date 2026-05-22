@@ -64,7 +64,7 @@ public class CleanReferenceElementResolver extends AbstractCapellaMarkerResoluti
               if (o == null) {
                 try {
                   // Delete the text corresponding at the link to delete
-                  doc.replace(hl.offset, hl.length, "");
+                  doc.replace(hl.offset, hl.length, ""); //$NON-NLS-1$
                   // Delete the physical link with model
                   hl.delete();
                 } catch (BadLocationException e) {

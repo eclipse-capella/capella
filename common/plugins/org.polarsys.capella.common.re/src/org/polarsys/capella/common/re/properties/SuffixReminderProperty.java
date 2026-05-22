@@ -18,7 +18,7 @@ import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContex
 
 public class SuffixReminderProperty extends StringProperty {
 
-  public static final String SUFFIX_REMINDER_MSG = "Please specify if your REC elements are suffixed";
+  public static final String SUFFIX_REMINDER_MSG = Messages.SuffixReminderProperty_0;
   private IStatus suffixReminderStatus;
 
   @Override

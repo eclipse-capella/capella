@@ -31,34 +31,34 @@ public class PhysicalComponentItemProviderDecorator extends AbstractPhysicalComp
   @Override
   public Object getImage(Object object) {
     PhysicalComponent component = (PhysicalComponent) object;
-    String imagePath = "full/obj16/PhysicalComponent";
+    String imagePath = "full/obj16/PhysicalComponent"; //$NON-NLS-1$
 
     if (component.isActor()) {
       if (component.isHuman()) {
-        imagePath = "full/obj16/PhysicalActorHuman";
+        imagePath = "full/obj16/PhysicalActorHuman"; //$NON-NLS-1$
       } else {
         if (component.getNature() == PhysicalComponentNature.BEHAVIOR) {
-          imagePath = "full/obj16/PhysicalActorBehavior";
+          imagePath = "full/obj16/PhysicalActorBehavior"; //$NON-NLS-1$
         } else {
-          imagePath = "full/obj16/PhysicalActorNode";
+          imagePath = "full/obj16/PhysicalActorNode"; //$NON-NLS-1$
         }
       }
     } else {
       if (component.getNature() == PhysicalComponentNature.NODE) {
         if (component.isHuman()) {
-          imagePath = "full/obj16/PhysicalComponentHumanNode";
+          imagePath = "full/obj16/PhysicalComponentHumanNode"; //$NON-NLS-1$
         } else {
-          imagePath = "full/obj16/PhysicalComponentNode";
+          imagePath = "full/obj16/PhysicalComponentNode"; //$NON-NLS-1$
         }
       } else if (component.getNature() == PhysicalComponentNature.BEHAVIOR) {
         if (component.isHuman()) {
-          imagePath = "full/obj16/PhysicalComponentHumanBehavior";
+          imagePath = "full/obj16/PhysicalComponentHumanBehavior"; //$NON-NLS-1$
         } else {
-          imagePath = "full/obj16/PhysicalComponentBehavior";
+          imagePath = "full/obj16/PhysicalComponentBehavior"; //$NON-NLS-1$
         }
       } else {
         if (component.isHuman()) {
-          imagePath = "full/obj16/PhysicalComponentHumanUnset";
+          imagePath = "full/obj16/PhysicalComponentHumanUnset"; //$NON-NLS-1$
         }
       }
     }

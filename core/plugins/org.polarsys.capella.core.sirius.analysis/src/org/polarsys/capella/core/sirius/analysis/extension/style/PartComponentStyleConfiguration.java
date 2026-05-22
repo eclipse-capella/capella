@@ -64,7 +64,7 @@ public class PartComponentStyleConfiguration extends SimpleStyleConfiguration im
   public boolean provides(DiagramElementMapping mapping, Style style) {
     if (mapping instanceof ContainerMapping) {
       String domainClass = ((ContainerMapping) mapping).getDomainClass();
-      return "cs.Part".equals(domainClass) || "cs.DeployableElement".equals(domainClass);
+      return "cs.Part".equals(domainClass) || "cs.DeployableElement".equals(domainClass); //$NON-NLS-1$ //$NON-NLS-2$
     }
     return false;
   }

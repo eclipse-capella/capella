@@ -248,15 +248,15 @@ public class LibraryReferenceItemProvider extends LibraryAbstractElementItemProv
   @Override
   public String getText(Object object) {
     LibraryReference element = (LibraryReference) object;
-    String label = "";
-    String library = "Unknown";
-    String policy = "";
+    String label = ""; //$NON-NLS-1$
+    String library = Messages.LibraryReferenceItemProvider_0;
+    String policy = ""; //$NON-NLS-1$
     if (element == null) {
 
     }
     AccessPolicy labelValue = ((LibraryReference) object).getAccessPolicy();
     if (labelValue != null) {
-      policy = " [" + labelValue.toString() + "]";
+      policy = " [" + labelValue.toString() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     ModelInformation info = element.getLibrary();
@@ -274,7 +274,7 @@ public class LibraryReferenceItemProvider extends LibraryAbstractElementItemProv
       }
     }
 
-    label += NLS.bind("{0}{1}", library, policy);
+    label += NLS.bind("{0}{1}", library, policy); //$NON-NLS-1$
 
     // begin-extension-code
     return (label == null) || (label.length() == 0) ? "[" + getString("_UI_LibraryReference_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$

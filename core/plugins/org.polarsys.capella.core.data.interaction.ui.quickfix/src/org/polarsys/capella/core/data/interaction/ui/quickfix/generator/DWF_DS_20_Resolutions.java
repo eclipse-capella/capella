@@ -44,23 +44,23 @@ public class DWF_DS_20_Resolutions extends AbstractMarkerResolutionGenerator {
     final StateFragment stateFragment = (StateFragment) modelElements.get(0);
 
     List<IMarkerResolution> resolutions = new ArrayList<IMarkerResolution>();
-    resolutions.add(new CapellaElementGoToResolver("Related Function", stateFragment.getRelatedAbstractFunction()));
+    resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_RelatedFunc, stateFragment.getRelatedAbstractFunction()));
 
     InstanceRole instanceRole = StateFragmentExt.getCoveredInstanceRole(stateFragment);
     Component component = InstanceRoleExt.getComponent(instanceRole);
-    resolutions.add(new CapellaElementGoToResolver("Instance role's Component", component));
+    resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_RoleComponent, component));
 
     // Containing SequenceDiagram.
     EObject scenario = stateFragment.eContainer();
     resolutions.add(new OpenAndShowInDiagramResolver(scenario, stateFragment));
     // Delete.
-    resolutions.add(new DeleteCommandResolver("Delete state fragment", stateFragment));
+    resolutions.add(new DeleteCommandResolver(Messages.DWF_DS_20_21_22_Resolutions_Delete, stateFragment));
 
     return resolutions.toArray(new IMarkerResolution[0]);
   }
 
   @Override
   protected String getRuleId() {
-    return "org.polarsys.capella.core.data.interaction.validation.DWF_DS_20";
+    return "org.polarsys.capella.core.data.interaction.validation.DWF_DS_20"; //$NON-NLS-1$
   }
 }

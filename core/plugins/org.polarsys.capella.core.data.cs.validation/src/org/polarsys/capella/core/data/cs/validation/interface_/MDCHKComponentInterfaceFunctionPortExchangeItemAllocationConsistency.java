@@ -21,6 +21,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Interface;
@@ -61,19 +62,19 @@ public class MDCHKComponentInterfaceFunctionPortExchangeItemAllocationConsistenc
     if (!component.getAllocatedFunctions().isEmpty()) {
       Set<AbstractExchangeItem> componentFunctionExchangeItems = ComponentExt.getAllocatedFunctionExchangeItems(component);
       Set<AbstractExchangeItem> exchangeItemsForInterfaces = getComponentInterfaceExchangeItems(component);
-      String prefix = "\"" + component.getName() + "\" ( " + component.eClass().getName() + " ) ";
+      String prefix = "\"" + component.getName() + "\" ( " + component.eClass().getName() + " ) "; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
       
       boolean isOkForComponent = exchangeItemsForInterfaces.containsAll(componentFunctionExchangeItems);
       if (!isOkForComponent) {
         // (Component) has exchange items allocated to functions ports of its allocated functions not allocated to one of its Interfaces
         resultStatuses.add(context.createFailureStatus(context,
-            prefix + "has exchange items allocated to functions ports of its allocated functions not allocated to one of its Interfaces"));
+            NLS.bind(Messages.MDCHKComponentInterfaceFunctionPortExchangeItemAllocationConsistency_3, prefix)));
       }
 
       boolean isOkForRelatedInterface = componentFunctionExchangeItems.containsAll(exchangeItemsForInterfaces);
       if (!isOkForRelatedInterface) {
         resultStatuses.add(context.createFailureStatus(context,
-            prefix + "has exchange items allocated by its Interfaces not allocated to one of functions ports of its allocated functions"));
+            NLS.bind(Messages.MDCHKComponentInterfaceFunctionPortExchangeItemAllocationConsistency_4, prefix)));
       }
 
     }

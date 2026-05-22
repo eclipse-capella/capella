@@ -132,7 +132,7 @@ public class ExportUtils {
 
 
 	private static IConfigurationElement[] getAllContributions() {
-		String point = "org.polarsys.capella.core.validation.ui.ide.capellaQuickFix";
+		String point = "org.polarsys.capella.core.validation.ui.ide.capellaQuickFix"; //$NON-NLS-1$
 		return Platform
 				.getExtensionRegistry().getConfigurationElementsFor(point);
 	}

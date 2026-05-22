@@ -2161,6 +2161,6 @@ public class DiagramServices {
 
   public String getOverlappedLabels(List<String> names) {
     return names.stream().sorted().map(name -> StringUtils.abbreviate(name, OVERLLAPING_LABEL_MAX_LENGTH))
-        .map(name -> StringUtils.rightPad(name, OVERLLAPING_LABEL_MAX_LENGTH)).collect(Collectors.joining("\n"));
+        .map(name -> StringUtils.rightPad(name, OVERLLAPING_LABEL_MAX_LENGTH)).collect(Collectors.joining("\n")); //$NON-NLS-1$
   }
 }

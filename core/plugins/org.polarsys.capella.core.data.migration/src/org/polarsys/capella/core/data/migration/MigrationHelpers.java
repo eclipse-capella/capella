@@ -68,7 +68,7 @@ public class MigrationHelpers implements IMigrationContribution {
   public MigrationHelpers() {
     migrations = new ArrayList<IMigrationContribution>();
     for (IConfigurationElement configElement : ExtensionPointHelper
-        .getConfigurationElements("org.polarsys.capella.core.data.migration", "migrationContributions")) {
+        .getConfigurationElements("org.polarsys.capella.core.data.migration", "migrationContributions")) { //$NON-NLS-1$ //$NON-NLS-2$
       IMigrationContribution contribution = (IMigrationContribution) ExtensionPointHelper.createInstance(configElement,
           ExtensionPointHelper.ATT_CLASS);
       migrations.add(contribution);
@@ -76,7 +76,7 @@ public class MigrationHelpers implements IMigrationContribution {
 
     contributors = new ArrayList<AbstractMigrationContributor>();
     for (IConfigurationElement configElement : ExtensionPointHelper
-        .getConfigurationElements("org.polarsys.capella.core.data.migration", "migrationContributors")) {
+        .getConfigurationElements("org.polarsys.capella.core.data.migration", "migrationContributors")) { //$NON-NLS-1$ //$NON-NLS-2$
       AbstractMigrationContributor contributor = (AbstractMigrationContributor) ExtensionPointHelper
           .createInstance(configElement, ExtensionPointHelper.ATT_CLASS);
       contributors.add(contributor);

@@ -69,6 +69,6 @@ public class ValidPPMenuTargetTester extends PropertyTester {
   }
 
   protected String getPropertyId() {
-    return "isValidPPMenuTarget";
+    return "isValidPPMenuTarget"; //$NON-NLS-1$
   }
 }

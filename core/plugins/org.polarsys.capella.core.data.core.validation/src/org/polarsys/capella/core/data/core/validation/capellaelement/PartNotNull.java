@@ -49,6 +49,6 @@ public class PartNotNull extends AbstractValidationRule {
 	}
 
 	public String insertSpaceBetweenWord(String input) {
-        return input.replaceAll("([a-z])([A-Z])", "$1 $2");
+        return input.replaceAll("([a-z])([A-Z])", "$1 $2"); //$NON-NLS-1$ //$NON-NLS-2$
 }
 }

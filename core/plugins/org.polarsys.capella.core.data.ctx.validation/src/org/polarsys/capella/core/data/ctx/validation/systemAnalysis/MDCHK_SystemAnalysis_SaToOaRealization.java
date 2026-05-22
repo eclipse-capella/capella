@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
@@ -47,11 +48,11 @@ public class MDCHK_SystemAnalysis_SaToOaRealization extends AbstractValidationRu
           OperationalAnalysis operationalAnalysis = (OperationalAnalysis) architecture;
           if (operationalAnalysis != null) {
             String targetArchitecture = CapellaElementExt.getValidationRuleMessagePrefix(operationalAnalysis);
-            return createFailureStatus(ctx, new Object[] { CapellaElementExt.getValidationRuleMessagePrefix(sa)
-                + "does not realize " + targetArchitecture.substring(0, targetArchitecture.length() - 1) });
+            return createFailureStatus(ctx, new Object[] { NLS.bind(Messages.MDCHK_SystemAnalysis_SaToOaRealization_0, CapellaElementExt.getValidationRuleMessagePrefix(sa),
+                targetArchitecture.substring(0, targetArchitecture.length() - 1))});
           } else {
-            return createFailureStatus(ctx, new Object[] { CapellaElementExt.getValidationRuleMessagePrefix(sa)
-                + "does not realize Operational Analysis (Operational Analysis does not exist)" });
+            return createFailureStatus(ctx, new Object[] {
+                NLS.bind(Messages.MDCHK_SystemAnalysis_SaToOaRealization_1, CapellaElementExt.getValidationRuleMessagePrefix(sa))});
           }
         }
       }

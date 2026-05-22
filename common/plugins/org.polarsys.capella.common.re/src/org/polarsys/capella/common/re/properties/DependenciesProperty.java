@@ -61,7 +61,7 @@ public class DependenciesProperty extends AbstractProperty implements ICompoundP
   public IStatus validate(Object newValue, IPropertyContext context) {
     if (newValue instanceof Collection) {
       if (!((Collection) newValue).isEmpty()) {
-        return new Status(IStatus.WARNING, getId(), "Some elements have missing dependencies. They reference elements which shall be included into REC in most common cases.");
+        return new Status(IStatus.WARNING, getId(), Messages.DependenciesProperty_0);
       }
     }
     return Status.OK_STATUS;

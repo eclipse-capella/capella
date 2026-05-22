@@ -20,6 +20,6 @@ public class AllElementsScopeHandler extends SelectionCommandHandler {
 
   @Override
   protected String getScope() {
-    return "org.polarsys.capella.common.re.retrieve.allElements";
+    return "org.polarsys.capella.common.re.retrieve.allElements"; //$NON-NLS-1$
   }
 }

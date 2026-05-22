@@ -26,6 +26,12 @@ public class Messages extends NLS {
 	public static String Collapse_CollapsedAll;
 	public static String Checkbox_CheckAll;
 	public static String Checkbox_UncheckAll;
+	
+	public static String PropertyValuesFormPage_2;
+	public static String PropertyValuesFormPage_3;
+	public static String PropertyValuesFormPage_4;
+	public static String PropertyValuesFormPage_5;
+
 	public static String Pv;
 	public static String PvPath;
 	public static String Title_GroupFiltering;

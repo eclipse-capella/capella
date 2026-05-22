@@ -16,7 +16,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
@@ -40,8 +40,7 @@ public class AbstractFunction_ConditionField extends AbstractValidationRule {
         String condition = function.getCondition();
         if ((null != condition) && !condition.equalsIgnoreCase(ICommonConstants.EMPTY_STRING)) {
           if (!FunctionExt.isRouteFunction(function) && !FunctionExt.isSelectFunction(function)) {
-            return ctx.createFailureStatus(function.getName() + " (" + function.eClass().getName() + ") of kind " + function.getKind()
-                                             + " should not have Condition set");
+            return ctx.createFailureStatus(NLS.bind(Messages.AbstractFunction_ConditionField_0, new Object[] {function.getName(), function.eClass().getName(), function.getKind()}));
           }
         }
       }

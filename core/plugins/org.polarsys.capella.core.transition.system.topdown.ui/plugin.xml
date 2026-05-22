@@ -27,7 +27,7 @@
             category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
             class="org.polarsys.capella.core.transition.system.topdown.ui.preferences.TopDownPreferencePage"
             id="org.polarsys.capella.core.transition.preferences.ProjectionPreferencePage"
-            name="Transitions/Generation">
+            name="%transition.preference.page.name">
       </page>
    </extension>
    
@@ -38,7 +38,7 @@
             class="org.polarsys.capella.core.transition.system.topdown.ui.preferences.TopDownPreferencePage"
             id="org.polarsys.capella.core.transition.preferences.ProjectionPreferencePage"
             objectClass="org.eclipse.core.resources.IProject"
-            name="Transitions/Generation">
+            name="%transition.property.page.name">
             <enabledWhen>
                  <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
             </enabledWhen>

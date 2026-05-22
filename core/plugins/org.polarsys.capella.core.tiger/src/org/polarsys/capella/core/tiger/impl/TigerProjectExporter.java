@@ -36,7 +36,7 @@ public class TigerProjectExporter {
     URI uri = sibbling.eResource().getURI();
     String[] segments = uri.segments();
     String name = ((NamedElement) root).getName();
-    String fullName = name + "." + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION;
+    String fullName = name + "." + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION; //$NON-NLS-1$
 
     segments[segments.length - 1] = fullName;
     StringBuilder sb = new StringBuilder();

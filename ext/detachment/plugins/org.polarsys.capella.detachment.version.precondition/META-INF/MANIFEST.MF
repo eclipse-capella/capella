@@ -17,3 +17,4 @@ Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.detachment.version.precondition,
  org.polarsys.capella.detachment.version.precondition.impl,
  org.polarsys.capella.detachment.version.precondition.util
+Import-Package: org.apache.log4j;version="1.2.24"

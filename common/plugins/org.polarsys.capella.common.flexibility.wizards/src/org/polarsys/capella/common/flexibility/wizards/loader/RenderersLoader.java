@@ -72,7 +72,7 @@ public class RenderersLoader {
       if (extension.getName().equals(WizardsSchemaConstants.PropertiesSchema_RENDERER)) {
         String idRenderer = extension.getAttribute(WizardsSchemaConstants.PropertiesSchema_RENDERER_ID);
         renderersMap.put(idRenderer, extension);
-        System.out.println("flexibility.wizards: migration is required for " + idRenderer);
+        System.out.println("flexibility.wizards: migration is required for " + idRenderer); //$NON-NLS-1$
       }
       if (extension.getName().equals(WizardsSchemaConstants.PropertiesSchema_PROPERTY_RENDERER)) {
         String idRenderer = extension.getAttribute(WizardsSchemaConstants.PropertiesSchema_PROPERTY_RENDERER__ID);
@@ -94,7 +94,7 @@ public class RenderersLoader {
           renderersBindingMapByProperties.put(propertiesId, elements);
         }
         elements.add(extension);
-        System.out.println("flexibility.wizards: migration is required for binding to " + propertiesId);
+        System.out.println("flexibility.wizards: migration is required for binding to " + propertiesId); //$NON-NLS-1$
       }
 
       if (extension.getName().equals(WizardsSchemaConstants.PropertiesSchema_BINDINGS)) {
@@ -141,7 +141,7 @@ public class RenderersLoader {
           if (extension.getName().equals(WizardsSchemaConstants.PropertiesSchema_RENDERERBINDING)) {
             propertyId = extension.getAttribute(WizardsSchemaConstants.PropertiesSchema_RENDERERBINDING_PROPERTYID);
             rendererId = extension.getAttribute(WizardsSchemaConstants.PropertiesSchema_RENDERERBINDING_RENDERERID);
-            System.out.println("flexibility.wizards: migration is required for renderer binding " + rendererId);
+            System.out.println("flexibility.wizards: migration is required for renderer binding " + rendererId); //$NON-NLS-1$
 
           } else if (extension.getName().equals(WizardsSchemaConstants.PropertiesSchema_PROPERTY_BINDING)) {
             propertyId = extension.getAttribute(WizardsSchemaConstants.PropertiesSchema_PROPERTY_BINDING__PROPERTY);
@@ -155,10 +155,10 @@ public class RenderersLoader {
           try {
             IConfigurationElement rendererExtention = renderersMap.get(rendererId);
             if (rendererExtention != null) {
-              String nameClass = "";
+              String nameClass = ""; //$NON-NLS-1$
               if (rendererExtention.getName().equals(WizardsSchemaConstants.PropertiesSchema_RENDERER)) {
                 nameClass = WizardsSchemaConstants.PropertiesSchema_RENDERER_CLASS;
-                System.out.println("flexibility.wizards: migration is required for renderer definition " + extension.getAttribute(nameClass));
+                System.out.println("flexibility.wizards: migration is required for renderer definition " + extension.getAttribute(nameClass)); //$NON-NLS-1$
 
               } else if (rendererExtention.getName().equals(WizardsSchemaConstants.PropertiesSchema_PROPERTY_RENDERER)) {
                 nameClass = WizardsSchemaConstants.PropertiesSchema_PROPERTY_RENDERER__CLASS;
@@ -195,7 +195,7 @@ public class RenderersLoader {
           try {
             IConfigurationElement rendererExtention = renderersMap.get(rendererId);
             if (rendererExtention != null) {
-              String nameClass = "";
+              String nameClass = ""; //$NON-NLS-1$
               if (rendererExtention.getName().equals(WizardsSchemaConstants.PropertiesSchema_GROUP_RENDERER)) {
                 nameClass = WizardsSchemaConstants.PropertiesSchema_GROUP_RENDERER__CLASS;
               }

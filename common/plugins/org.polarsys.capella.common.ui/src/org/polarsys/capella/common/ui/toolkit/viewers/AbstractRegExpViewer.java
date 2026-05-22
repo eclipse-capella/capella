@@ -226,7 +226,7 @@ public abstract class AbstractRegExpViewer extends FieldsViewer {
    * Provide the ability to extends the location of the context menu
    */
   public String getContextMenuLocation() {
-    return "#PopupMenu";
+    return "#PopupMenu"; //$NON-NLS-1$
   }
 
   /**
@@ -274,7 +274,7 @@ public abstract class AbstractRegExpViewer extends FieldsViewer {
   protected void installContextMenu() {
     Control control = _clientViewer.getControl();
     String location = getContextMenuLocation();
-    String menuName = location.replaceFirst("popup:", "");
+    String menuName = location.replaceFirst("popup:", ""); //$NON-NLS-1$ //$NON-NLS-2$
     _contextMenuManager = new MenuManager(menuName); //$NON-NLS-1$
     _contextMenuManager.setRemoveAllWhenShown(true);
     _contextMenuManager.addMenuListener(new IMenuListener() {

@@ -49,7 +49,7 @@ public class InstanceRoleHasDifferentNameThanRepresentedInstance extends Abstrac
     }
   }
 
-  public static final String ID = "org.polarsys.capella.core.data.interaction.validation.DWF_DS_24"; // $NON-NLS-N$
+  public static final String ID = "org.polarsys.capella.core.data.interaction.validation.DWF_DS_24"; // $NON-NLS-N$ //$NON-NLS-1$
 
   @Override
   public IStatus validate(IValidationContext validationContext) {

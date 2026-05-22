@@ -18,6 +18,6 @@ package org.polarsys.capella.core.commandline.core;
 public class CommandLineExtensionConstants {
 
   public final static String EXT_POINT_ID = "commandline"; //$NON-NLS-1$
-  public static final String ATT_ID = "id";
-  public static final String ATT_CLASS = "class";
+  public static final String ATT_ID = "id"; //$NON-NLS-1$
+  public static final String ATT_CLASS = "class"; //$NON-NLS-1$
 }

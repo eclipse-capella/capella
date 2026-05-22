@@ -89,7 +89,7 @@ public class MetricLabelProvider extends LabelProvider implements ITableLabelPro
     MetricTree<EObject> metricTreeNode = (MetricTree<EObject>) element;
     EObject eObject = metricTreeNode.getElement();
 
-    String text = "";
+    String text = ""; //$NON-NLS-1$
 
     IItemLabelProvider itemProvider = (IItemLabelProvider) capellaAdapterFactory.adapt(eObject,
         IItemLabelProvider.class);
@@ -97,10 +97,10 @@ public class MetricLabelProvider extends LabelProvider implements ITableLabelPro
       text = itemProvider.getText(eObject);
     }
 
-    if (text == null || text.isEmpty() || "[]".equals(text.trim()) || "[null]".equals(text.trim()) || "null".equals(text.trim())) {
+    if (text == null || text.isEmpty() || "[]".equals(text.trim()) || "[null]".equals(text.trim()) || "null".equals(text.trim())) { //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
       text = EObjectLabelProviderHelper.getMetaclassLabel(eObject, true);
     }
 
-    return text.replaceAll(REGEX, "");
+    return text.replaceAll(REGEX, ""); //$NON-NLS-1$
   }
 }

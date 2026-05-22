@@ -33,14 +33,14 @@ public class SuffixProperty extends AbstractProperty implements IEditablePropert
     if (element != null) {
       String suffix = element.getSuffix();
       if (suffix == null) {
-        suffix = "";
+        suffix = ""; //$NON-NLS-1$
       }
 
       IContext context = (IContext) context1.getSource();
       context.put(IReConstants.ORIGINAL_SUFFIX, suffix);
       return suffix;
     }
-    return "";
+    return ""; //$NON-NLS-1$
   }
 
   @Override

@@ -119,7 +119,7 @@ public class CapellaDiagramPreferencePage extends AbstractDefaultPreferencePage 
 
     private void addHelpIcon(Composite parent, String tooltip) {
       Label image = new Label(parent, SWT.NONE);
-      image.setImage(Activator.getImageDescriptor("prefshelp.gif").createImage());
+      image.setImage(Activator.getImageDescriptor("prefshelp.gif").createImage()); //$NON-NLS-1$
       image.setToolTipText(tooltip);
       GridData gd = new GridData();
       gd.horizontalSpan = 1;

@@ -25,7 +25,7 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
  * Check Property untyped
  */
 public class PropertyKeyPartsCardinality extends AbstractValidationRule {
-  private static final String MAX_CARD_KEYPART = "1";
+  private static final String MAX_CARD_KEYPART = "1"; //$NON-NLS-1$
 
   /**
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)

@@ -38,9 +38,9 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.helpers.LockHelper;
 
 public class TitleBlockBasicElementGroup extends AbstractSemanticField {
-  private static final String NAME = "Name:";
-  private static final String CONTENT = "Content:";
-  private static final String INTERPRETER_ERROR = "The expression is not valid";
+  private static final String NAME = "Name:"; //$NON-NLS-1$
+  private static final String CONTENT = "Content:"; //$NON-NLS-1$
+  private static final String INTERPRETER_ERROR = Messages.getString("TitleBlockBasicElementGroup.2"); //$NON-NLS-1$
   protected Text nameTextField;
   protected Text contentTextField;
   protected CLabel errorLabel;
@@ -61,8 +61,8 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
     gd.horizontalSpan = 2;
     textGroup.setLayoutData(gd);
 
-    nameTextField = createTextField(textGroup, Messages.getString("NamedElement.NameLabel"));
-    contentTextField = createTextField(textGroup, Messages.getString("NamedElement.ContentLabel"));
+    nameTextField = createTextField(textGroup, Messages.getString("NamedElement.NameLabel")); //$NON-NLS-1$
+    contentTextField = createTextField(textGroup, Messages.getString("NamedElement.ContentLabel")); //$NON-NLS-1$
     errorLabel = widgetFactory.createCLabel(parent, ICommonConstants.EMPTY_STRING);
     errorLabel.setRightMargin(300);
     errorLabel.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_RED));

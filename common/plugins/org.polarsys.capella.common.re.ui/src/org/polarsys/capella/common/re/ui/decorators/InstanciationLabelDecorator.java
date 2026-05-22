@@ -68,7 +68,7 @@ public class InstanciationLabelDecorator implements ILabelDecorator {
     }
     for (CatalogElement replicableElement : elts) {
       if (replicableElement != null) {
-        res.append(" [" + replicableElement.getKind() + "]");
+        res.append(" [" + replicableElement.getKind() + "]"); //$NON-NLS-1$ //$NON-NLS-2$
       }
     }
     return res.toString();

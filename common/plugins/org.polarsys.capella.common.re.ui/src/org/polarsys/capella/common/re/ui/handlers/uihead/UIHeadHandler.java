@@ -28,12 +28,12 @@ public class UIHeadHandler extends SharedWorkflowActivityParameter {
   public UIHeadHandler(boolean showOptionsUI, boolean showDiffMergeUI) {
     if (showOptionsUI) {
       addSharedParameter(
-          new GenericParameter<IHandler>(ITransitionConstants.SCOPE_HANDLER, new ScopeUIHandler(), "Options handler"));
+          new GenericParameter<IHandler>(ITransitionConstants.SCOPE_HANDLER, new ScopeUIHandler(), Messages.UIHeadHandler_0));
     }
 
     if (showDiffMergeUI) {
       addSharedParameter(new GenericParameter<IHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER,
-          new ReMergeUIDifferencesHandler(), "Filtering differences UI handler"));
+          new ReMergeUIDifferencesHandler(), Messages.UIHeadHandler_1));
     }
   }
 

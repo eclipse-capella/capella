@@ -87,7 +87,7 @@ public class ProjectSessionCreationHelper extends SessionCreationHelper {
    */
   public void createNewSystemEngineering(Resource semanticResource, String name_p, IProgressMonitor monitor_p) {
 
-    monitor_p.beginTask("Create initial skeletton", 1);
+    monitor_p.beginTask(Messages.SessionCreationHelper_task_Skeleton, 1);
     ICommand command = updateInitialElementsCommand(semanticResource, name_p, monitor_p);
     if (command != null) {
       TransactionHelper.getExecutionManager(semanticResource).execute(command);

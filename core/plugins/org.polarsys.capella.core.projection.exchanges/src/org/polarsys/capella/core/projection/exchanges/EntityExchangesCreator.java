@@ -80,7 +80,7 @@ public class EntityExchangesCreator extends DefaultExchangesCreator {
       comMeanCreated |= computeRoles(entity);
     }
     if (!comMeanCreated) {
-      String message = "No Communication mean has been created.";
+      String message = "No Communication mean has been created."; //$NON-NLS-1$
       EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName());
       logger.info(eMessage);
     }
@@ -237,8 +237,8 @@ public class EntityExchangesCreator extends DefaultExchangesCreator {
     allocation.setTargetElement(functionalExchange_p);
     allocation.setSourceElement(ce);
     CapellaElementExt.creationService(allocation);
-    String message = "the Communication mean " + ce.getName()
-        + " has been succefully created between the entity source " + source_p.getLabel() + " and the entity target "
+    String message = "the Communication mean " + ce.getName() //$NON-NLS-1$
+        + " has been succefully created between the entity source " + source_p.getLabel() + " and the entity target " //$NON-NLS-1$ //$NON-NLS-2$
         + target_p.getLabel();
     EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName(), Arrays.asList(ce, source_p, target_p));
     logger.info(eMessage);

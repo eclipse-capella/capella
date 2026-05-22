@@ -40,13 +40,13 @@ public class EntityItemProviderDecorator extends ItemProviderAdapterDecorator im
   @Override
   public Object getImage(Object object) {
     Entity entity = (Entity) object;
-    String imagePath = "full/obj16/Entity";
+    String imagePath = "full/obj16/Entity"; //$NON-NLS-1$
 
     if (entity.isActor()) {
       if (entity.isHuman()) {
-        imagePath = "full/obj16/Actor";
+        imagePath = "full/obj16/Actor"; //$NON-NLS-1$
       } else {
-        imagePath = "full/obj16/OperationalActor";
+        imagePath = "full/obj16/OperationalActor"; //$NON-NLS-1$
       }
     }
 

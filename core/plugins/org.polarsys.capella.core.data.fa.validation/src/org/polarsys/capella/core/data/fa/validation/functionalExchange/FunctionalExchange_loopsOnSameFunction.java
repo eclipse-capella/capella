@@ -46,10 +46,10 @@ public class FunctionalExchange_loopsOnSameFunction extends AbstractValidationRu
         target = target.eContainer();
       }
 
-      String elementType = "(Functional Exchange)";
+      String elementType = Messages.FunctionalExchange_loopsOnSameFunction_0;
 
       if (BlockArchitectureExt.getRootBlockArchitecture(target) instanceof OperationalAnalysis) {
-        elementType = "(Interaction)";
+        elementType = Messages.FunctionalExchange_loopsOnSameFunction_1;
       }
 
       if (source.equals(target)) {

@@ -41,14 +41,14 @@ public class SourceElementProperty extends AbstractProperty implements IEditable
   @Override
   public Object getValue(IPropertyContext context) {
     IContext ctx = (IContext) context.getSource();
-    Collection result = (Collection) ctx.get("SCOPE_ELEMENTS_PROPERTY");
+    Collection result = (Collection) ctx.get("SCOPE_ELEMENTS_PROPERTY"); //$NON-NLS-1$
 
     if (result == null) {
       result = new HashSet<EObject>();
       Collection<Object> selection = (Collection<Object>) ctx.get(ITransitionConstants.TRANSITION_SOURCES);
       if ((selection != null) && (selection.size() > 0)) {
         result = DependenciesHandlerHelper.getInstance(ctx).getScopeElements((Collection) selection, (Collection) selection, ctx);
-        ctx.put("SCOPE_ELEMENTS_PROPERTY", toType(result, context));
+        ctx.put("SCOPE_ELEMENTS_PROPERTY", toType(result, context)); //$NON-NLS-1$
       }
 
     }
@@ -106,7 +106,7 @@ public class SourceElementProperty extends AbstractProperty implements IEditable
   @Override
   public IStatus validate(Object newValue, IPropertyContext context) {
     if ((newValue instanceof Collection) && ((Collection) newValue).isEmpty()) {
-      return new Status(IStatus.ERROR, getId(), "Scope should not be empty");
+      return new Status(IStatus.ERROR, getId(), Messages.empty_scope);
     }
     return Status.OK_STATUS;
   }
@@ -127,7 +127,7 @@ public class SourceElementProperty extends AbstractProperty implements IEditable
     IContext ctx = (IContext) context.getSource();
 
     if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET.equals(property.getId())) {
-      ctx.put("SCOPE_ELEMENTS_PROPERTY", null);
+      ctx.put("SCOPE_ELEMENTS_PROPERTY", null); //$NON-NLS-1$
     }
   }
 

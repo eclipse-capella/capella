@@ -18,6 +18,8 @@ import org.eclipse.osgi.util.NLS;
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.data.interaction.validation.scenario.messages"; //$NON-NLS-1$
   public static String DCOM_05_Validator_Message;
+  public static String MDCHK_Scenario_InvolvementComponents_1_0;
+  public static String MDCHK_Scenario_InvolvementComponents_1_1;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

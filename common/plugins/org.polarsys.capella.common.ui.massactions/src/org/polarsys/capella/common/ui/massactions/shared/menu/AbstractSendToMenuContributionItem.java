@@ -25,6 +25,7 @@ import java.util.stream.Stream;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.Separator;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IViewReference;
@@ -142,7 +143,7 @@ public abstract class AbstractSendToMenuContributionItem extends CompoundContrib
     parameters.put(getCommandParameterSecondaryId(), secondaryViewId);
     parameters.put(getCommandParameterShouldCreateViewId(), String.valueOf(shouldCreateViewId));
 
-    CommandContributionItemParameter parameter = new CommandContributionItemParameter(serviceLocator, "",
+    CommandContributionItemParameter parameter = new CommandContributionItemParameter(serviceLocator, "", //$NON-NLS-1$
         getCommandID(), CommandContributionItem.STYLE_PULLDOWN);
     parameter.label = itemLabel;
     parameter.tooltip = itemLabel;
@@ -153,7 +154,7 @@ public abstract class AbstractSendToMenuContributionItem extends CompoundContrib
   }
 
   protected String getNewViewText() {
-    return "New " + getViewName() + " View";
+    return NLS.bind(Messages.AbstractSendToMenuContributionItem_NewView, getViewName());
   }
 
   /**

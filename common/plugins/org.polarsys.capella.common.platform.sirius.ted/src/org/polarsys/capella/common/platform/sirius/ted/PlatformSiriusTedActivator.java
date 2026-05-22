@@ -28,7 +28,7 @@ public class PlatformSiriusTedActivator extends AbstractActivator {
 
   @Deprecated
   //Use org.polarsys.capella.core.af.integration.AFIntegrationPlugin.CAPELLA_VIEWPOINT_ID instead
-  public static final String CAPELLA_VIEWPOINT_ID = "org.polarsys.capella.core.viewpoint";
+  public static final String CAPELLA_VIEWPOINT_ID = "org.polarsys.capella.core.viewpoint"; //$NON-NLS-1$
 	
   /**
    * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)

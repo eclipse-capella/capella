@@ -35,8 +35,8 @@ public class HoldingResourceRemovalContribution extends AbstractMigrationContrib
 
   Collection<EObject> proxies = new ArrayList<EObject>();
 
-  private final String schemeResource = "capella";
-  private final String holdingResource = "holdingResource." + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION;
+  private final String schemeResource = "capella"; //$NON-NLS-1$
+  private final String holdingResource = "holdingResource." + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION; //$NON-NLS-1$
 
   @Override
   public void unaryStartMigrationExecute(ExecutionManager executionManager, Resource resource, MigrationContext context) {

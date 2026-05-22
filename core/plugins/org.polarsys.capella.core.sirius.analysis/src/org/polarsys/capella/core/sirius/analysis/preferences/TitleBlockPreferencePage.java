@@ -33,9 +33,9 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
   public static final String SEPARATOR = "SEPARATOR"; //$NON-NLS-1$
 
-  public static final String DEFAULT_TABLE = "Name" + SEPARATOR + "feature:name" + SEPARATOR + "Last change date"
-      + SEPARATOR + "aql:self.getLastModificationDate()" + SEPARATOR + "Summary" + SEPARATOR + "aql:self.target.summary"
-      + SEPARATOR + "Description" + SEPARATOR + "feature:documentation";
+  public static final String DEFAULT_TABLE = "Name" + SEPARATOR + "feature:name" + SEPARATOR + "Last change date" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      + SEPARATOR + "aql:self.getLastModificationDate()" + SEPARATOR + "Summary" + SEPARATOR + "aql:self.target.summary" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      + SEPARATOR + "Description" + SEPARATOR + "feature:documentation"; //$NON-NLS-1$ //$NON-NLS-2$
 
   private PreferenceField defaultTitleBlockFieldEditor;
 

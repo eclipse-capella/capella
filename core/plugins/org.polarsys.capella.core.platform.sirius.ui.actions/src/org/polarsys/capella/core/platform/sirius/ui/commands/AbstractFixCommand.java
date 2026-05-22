@@ -84,8 +84,8 @@ public abstract class AbstractFixCommand extends AbstractReadWriteCommand {
           progressMonitor.worked(1);
         }
         if (!elementProcessed) {
-          String message = getName() + " command has faild to process the elements "
-              + (elements.isEmpty() ? "" : elements.toString());
+          String message = getName() + " command has faild to process the elements " //$NON-NLS-1$
+              + (elements.isEmpty() ? "" : elements.toString()); //$NON-NLS-1$
           EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName(), elements.toString());
           logger.info(eMessage);
         }

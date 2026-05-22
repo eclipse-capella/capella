@@ -103,12 +103,12 @@ public class AcceleratorOnSequenceLinkHandler extends AbstractHandler implements
       SequenceLink seqLink = (SequenceLink) diagramElement.getTarget();
       EObject fc = seqLink.eContainer();
       if (fc instanceof OperationalProcess) {
-        element.setText("Create new Interaction");
+        element.setText(Messages.AcceleratorOnSequenceLinkHandler_0);
         URL url = (URL) CapellaModellerEditPlugin.INSTANCE
             .getImage(FunctionalChainInvolvementLinkItemProviderDecorator.ICON_PATH_FCIL_EXCHANGE_OA);
         element.setIcon(ImageDescriptor.createFromURL(url));
       } else if (fc instanceof FunctionalChain) {
-        element.setText("Create new Exchange");
+        element.setText(Messages.AcceleratorOnSequenceLinkHandler_1);
         URL url = (URL) CapellaModellerEditPlugin.INSTANCE
             .getImage(FunctionalChainInvolvementLinkItemProviderDecorator.ICON_PATH_FCIL_EXCHANGE);
         element.setIcon(ImageDescriptor.createFromURL(url));

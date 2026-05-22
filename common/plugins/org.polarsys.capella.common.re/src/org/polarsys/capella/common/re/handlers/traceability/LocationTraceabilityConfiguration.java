@@ -40,7 +40,7 @@ public class LocationTraceabilityConfiguration extends ExtendedTraceabilityConfi
 
   @Override
   protected String getExtensionIdentifier(IContext context) {
-    return "MATCH";
+    return "MATCH"; //$NON-NLS-1$
   }
 
 }

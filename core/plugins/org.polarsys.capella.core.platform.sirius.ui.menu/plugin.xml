@@ -30,7 +30,7 @@
        <menuContribution
                 locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu?after=BusinessCopyPasteMenuSirius">
                 
-              <menu id="BusinessSelectMenuSirius" label="Capella Select">              	                
+              <menu id="BusinessSelectMenuSirius" label="%capella.select.menu.label">              	                
               </menu>
        </menuContribution>
     
@@ -73,7 +73,7 @@
       <menuContribution
                 locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu?after=additions">
        
-              <menu id="CapellaDiagramCommands" label="Legacy Capella Commands">
+              <menu id="CapellaDiagramCommands" label="%legacy.commands.menu.label">
 	               <separator name="groupValidation">
     	           </separator>
     	           <separator name="separator1">
@@ -289,7 +289,7 @@
          <menu 
              id="org.polarsys.capella.core.transitions" label="%transitionGroup_label" icon ="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"> 
              
-             <menu id="capella.project.explorer.menu.transitions.diagram.preferences" label="Legacy Transitions Commands">
+             <menu id="capella.project.explorer.menu.transitions.diagram.preferences" label="%legacy.transition.commands.menu.label">
              </menu>
               
          </menu>
@@ -302,10 +302,10 @@
          <menu
                id="org.polarsys.capella.core.wizards"  label="%wizardGroup_label" icon ="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif">
                
-              <menu id="org.polarsys.capella.core.semantic.browser.wizards" label="Legacy Wizards Commands">
+              <menu id="org.polarsys.capella.core.semantic.browser.wizards" label="%legacy.semantic.wizards.menu.label">
               </menu>
               
-              <menu id="org.polarsys.capella.core.sirius.diagram.editor.wizards" label="Legacy Wizards Commands">
+              <menu id="org.polarsys.capella.core.sirius.diagram.editor.wizards" label="%legacy.diagram.wizards.menu.label">
 		      </menu>
 		      
          </menu>
@@ -323,12 +323,12 @@
                <separator name="groupAccelerator">
 		       </separator>
 		       
-              <menu id="AcceleratorDiagramCommands" label="Legacy Accelerators Commands">
+              <menu id="AcceleratorDiagramCommands" label="%legacy.accelerator.menu.label">
 	               <separator name="groupAccelerator">
     	           </separator>
               </menu>
               
-              <menu id="capella.project.explorer.menu.accelerator" label="Legacy Accelerators Commands">
+              <menu id="capella.project.explorer.menu.accelerator" label="%legacy.explorer.accelerator.menu.label">
 		            <separator name="groupAccelerator">
 		            </separator>
 		      </menu>

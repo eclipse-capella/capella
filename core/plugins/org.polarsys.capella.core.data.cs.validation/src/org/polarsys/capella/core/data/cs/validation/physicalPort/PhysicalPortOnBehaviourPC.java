@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
@@ -43,8 +44,7 @@ public class PhysicalPortOnBehaviourPC extends AbstractValidationRule {
         if (PhysicalComponentExt.isBehaviour(physicalComponent)) {
 
           return ctx.createFailureStatus(
-              CapellaElementExt.getValidationRuleMessagePrefix(currentElement) + "can't be contained in " //$NON-NLS-1$
-                  + CapellaElementExt.getValidationRuleMessagePrefix(physicalComponent) + " due to its nature");
+              NLS.bind(Messages.PhysicalPortOnBehaviourPC_0, CapellaElementExt.getValidationRuleMessagePrefix(currentElement),CapellaElementExt.getValidationRuleMessagePrefix(physicalComponent)));
         }
       }
     }

@@ -695,7 +695,7 @@ public class FunctionalChainServices {
   }
 
   public String getFCInvolvmentLinkLabel(FunctionalChainInvolvementLink involvementLink, DDiagram diagram) {
-    String label = "";
+    String label = ""; //$NON-NLS-1$
     InvolvedElement involved = involvementLink.getInvolved();
 
     if (involved instanceof FunctionalExchange) {
@@ -723,7 +723,7 @@ public class FunctionalChainServices {
 
         String exchangedItemsLabel = exchangedItemsForLabel.stream()
             .map(ei -> ExchangeItemExt.getEILabel(ei, showExchangeItemsParameters).toString())
-            .collect(Collectors.joining(", "));
+            .collect(Collectors.joining(", ")); //$NON-NLS-1$
 
         sb.append(exchangedItemsLabel);
 
@@ -771,8 +771,8 @@ public class FunctionalChainServices {
     }
 
     String chainLabel = EObjectExt.getText(chain);
-    String chainStatusLabel = chainStatusLabels.isEmpty() ? ""
-        : chainStatusLabels.stream().collect(Collectors.joining(", ", " (", ")"));
+    String chainStatusLabel = chainStatusLabels.isEmpty() ? "" //$NON-NLS-1$
+        : chainStatusLabels.stream().collect(Collectors.joining(", ", " (", ")")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
     return chainLabel + chainStatusLabel;
   }
@@ -1383,11 +1383,11 @@ public class FunctionalChainServices {
    * @return its label
    */
   public String getSequenceLinkLabel(SequenceLink sequenceLink, DDiagram diagram) {
-    String label = "";
+    String label = ""; //$NON-NLS-1$
     // Does the sequence link have a condition?
     if (sequenceLink.getCondition() != null) {
       String constraint = CapellaServices.getService().getConstraintLabel(sequenceLink.getCondition());
-      label = constraint.isEmpty() ? "" : "[" + constraint + "]";
+      label = constraint.isEmpty() ? "" : "[" + constraint + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     // Show the Functional Exchanges linked by this Sequence Link
@@ -1396,8 +1396,8 @@ public class FunctionalChainServices {
     boolean mergeFESL = filterNames.contains(IMappingNameConstants.MERGE_ASSOCIATED_FE_AND_SL);
     if (mergeFESL) {
       String labelFe = sequenceLink.getLinks().stream().filter(x -> x.getInvolved() instanceof FunctionalExchange)
-          .map(x -> ((FunctionalExchange) x.getInvolved()).getName()).collect(Collectors.joining(", "));
-      label = labelFe.isEmpty() ? label : label + " " + labelFe;
+          .map(x -> ((FunctionalExchange) x.getInvolved()).getName()).collect(Collectors.joining(", ")); //$NON-NLS-1$
+      label = labelFe.isEmpty() ? label : label + " " + labelFe; //$NON-NLS-1$
     }
 
     return label;
@@ -1732,19 +1732,19 @@ public class FunctionalChainServices {
 
   public EObject accelerateOnSequenceLinkEdge(DEdge seqLinkEdge) {
     Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-    String messageDialogTitle = "Accelerator Information";
+    String messageDialogTitle = Messages.FunctionalChainServices_12;
 
     List<DNode> availableSourceFCIFViews = findFlatClosestFCIFunctionViewsAsSource(seqLinkEdge, true);
     if (availableSourceFCIFViews.isEmpty()) {
       MessageDialog.openInformation(shell, messageDialogTitle,
-          "There is not any Functional Chain Involvement Function as source for the selected sequence link or they are all in collapsed container.");
+          Messages.FunctionalChainServices_13);
       return null;
     }
 
     List<DNode> availableTargetFCIFViews = findFlatClosestFCIFunctionViewsAsTarget(seqLinkEdge, true);
     if (availableTargetFCIFViews.isEmpty()) {
       MessageDialog.openInformation(shell, messageDialogTitle,
-          "There is not any Functional Chain Involvement Function as target for the selected sequence link or they are all in collapsed container.");
+          Messages.FunctionalChainServices_14);
       return null;
     }
 
@@ -1790,7 +1790,7 @@ public class FunctionalChainServices {
     int targetSize = possibleTargetFCIFNodes.size();
     if (sourceSize > 1 || targetSize > 1) {
       MessageDialog.openInformation(shell, messageDialogTitle,
-          "Impossible to create Functional Chain Involvement Link due to ambiguity of source and target");
+          Messages.FunctionalChainServices_15);
     }
 
     if (sourceSize == 1 && targetSize == 1) {

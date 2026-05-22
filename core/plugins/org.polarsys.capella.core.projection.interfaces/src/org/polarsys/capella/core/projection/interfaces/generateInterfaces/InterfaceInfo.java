@@ -180,9 +180,9 @@ private Collection<FunctionalExchange> computeFunctionalExchanges(){
     String name = null;
     Collection<ComponentExchange> commonExchanges = getComponentExchanges();
     if (provider == null) {
-      name = EObjectLabelProviderHelper.getText(requirer.getEObject()) + "( REQUIRER )";
+      name = EObjectLabelProviderHelper.getText(requirer.getEObject()) + "( REQUIRER )"; //$NON-NLS-1$
     } else if (requirer == null) {
-      name = EObjectLabelProviderHelper.getText(provider.getEObject()) + "( PROVIDER )";
+      name = EObjectLabelProviderHelper.getText(provider.getEObject()) + "( PROVIDER )"; //$NON-NLS-1$
     } else if (commonExchanges.size() > 1) {
       name = getProviderRequirerName();
     } else if (commonExchanges.size() == 1) {
@@ -263,21 +263,21 @@ private Collection<FunctionalExchange> computeFunctionalExchanges(){
       elems.add(requirer.getEObject());      
     }
     
-    String providerTxt = provider == null ? null : "provider " + provider.getText();
-    String requirerTxt = requirer == null ? null : "requirer " + requirer.getText();
+    String providerTxt = provider == null ? null : "provider " + provider.getText(); //$NON-NLS-1$
+    String requirerTxt = requirer == null ? null : "requirer " + requirer.getText(); //$NON-NLS-1$
     
-    StringBuilder builder = new StringBuilder("Skipping generation for ");
+    StringBuilder builder = new StringBuilder("Skipping generation for "); //$NON-NLS-1$
     if (providerTxt != null) {
       builder.append(providerTxt);
       if (requirerTxt != null) {
-        builder.append(" / ");
+        builder.append(" / "); //$NON-NLS-1$
         builder.append(requirerTxt);
       }
     } else {
       builder.append(requirerTxt);
     }
 
-    builder.append(" : Multiple candidate interfaces found");
+    builder.append(" : Multiple candidate interfaces found"); //$NON-NLS-1$
     logger.error(new EmbeddedMessage(builder.toString(), logger.getName(), elems));
   }
 

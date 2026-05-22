@@ -113,12 +113,12 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
         }
 
         if (!notMigratedAndNotFoundRelativeFiles.isEmpty()) {
-          String notFoundFilesPath = notMigratedAndNotFoundRelativeFiles.stream().collect(Collectors.joining(", "));
+          String notFoundFilesPath = notMigratedAndNotFoundRelativeFiles.stream().collect(Collectors.joining(", ")); //$NON-NLS-1$
           Activator.getDefault().getLog()
               .warn(MessageFormat.format(Messages.MigrationAction_Image_RelativePathImageNotFound, notFoundFilesPath));
         }
         if (!migratedButNonFoundRelativeFiles.isEmpty()) {
-          String notFoundFilesPath = migratedButNonFoundRelativeFiles.stream().collect(Collectors.joining(", "));
+          String notFoundFilesPath = migratedButNonFoundRelativeFiles.stream().collect(Collectors.joining(", ")); //$NON-NLS-1$
           Activator.getDefault().getLog().warn(MessageFormat
               .format(Messages.MigrationAction_Image_RelativePathImageMigratedButNotFound, notFoundFilesPath));
         }
@@ -133,7 +133,7 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
     Map<String, String> createdFiles = new Base64ImageHelper().createFileAndUpdateAttribute(eObject, (EAttribute) attr);
     // Log what have been done
     if (!createdFiles.isEmpty()) {
-      String createdFilesPath = createdFiles.keySet().stream().collect(Collectors.joining(", "));
+      String createdFilesPath = createdFiles.keySet().stream().collect(Collectors.joining(", ")); //$NON-NLS-1$
       Activator.getDefault().getLog().info(MessageFormat.format(Messages.MigrationAction_Image_Base64ImageMigrated,
           new EditingDomainServices().getLabelProviderText(eObject), attr.getName(), createdFilesPath));
     }
@@ -157,17 +157,17 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
           String path = matcher.group(1);
           String newPath = path;
           // Excluded cases
-          if (path.startsWith("file:/") || path.startsWith("http://") || path.startsWith("https://")
-              || path.startsWith("//") || path.startsWith("\\\\")) {
+          if (path.startsWith("file:/") || path.startsWith("http://") || path.startsWith("https://") //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+              || path.startsWith("//") || path.startsWith("\\\\")) { //$NON-NLS-1$ //$NON-NLS-2$
             continue;
           }
 
-          String[] splitPath = newPath.split("/");
+          String[] splitPath = newPath.split("/"); //$NON-NLS-1$
           // check if the path is just an image name
           // In this case it should be expected in the current project
           if (splitPath.length == 1) {
-            newPath = project.getName() + "/" + path;
-            newValue = newValue.replace("\"" + path + "\"", "\"" + newPath + "\"");
+            newPath = project.getName() + "/" + path; //$NON-NLS-1$
+            newValue = newValue.replace("\"" + path + "\"", "\"" + newPath + "\""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 
             if (!project.getWorkspace().getRoot().getFile(new Path(newPath)).exists()) {
               migratedButNonFoundRelativeFiles.add(newPath);
@@ -178,9 +178,9 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
             // We check the potential existence of the former. If it succeeds we add the current project name to the
             // path, otherwise we consider that it is the latter case and we do nothing.
             IFile iFileInCurrentProject = ResourcesPlugin.getWorkspace().getRoot()
-                .getFile(new Path(project.getName() + "/" + path));
+                .getFile(new Path(project.getName() + "/" + path)); //$NON-NLS-1$
             if (iFileInCurrentProject.exists()) {
-              newPath = project.getName() + "/" + path;
+              newPath = project.getName() + "/" + path; //$NON-NLS-1$
               newValue = newValue.replace(path, newPath);
             } else {
               IFile iFileInOtherProject = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(path));
@@ -226,8 +226,8 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
     String newStringValue = strValue;
     // change the attribute value to replace with a path to the created file.
     for (String absolutePathFile : createdFiles.keySet()) {
-      String replacementString = createdFiles.get(absolutePathFile).getFullPath().toString().replaceFirst("^/", "");
-      String quote = "\"";
+      String replacementString = createdFiles.get(absolutePathFile).getFullPath().toString().replaceFirst("^/", ""); //$NON-NLS-1$ //$NON-NLS-2$
+      String quote = "\""; //$NON-NLS-1$
       newStringValue = newStringValue.replace(quote + absolutePathFile + quote, quote + replacementString + quote);
     }
     if (!Objects.equals(newStringValue, strValue)) {
@@ -259,12 +259,12 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
 
     // Log what have been done
     if (!createdFiles.isEmpty()) {
-      String createdFilesPath = createdFiles.keySet().stream().collect(Collectors.joining(", "));
+      String createdFilesPath = createdFiles.keySet().stream().collect(Collectors.joining(", ")); //$NON-NLS-1$
       Activator.getDefault().getLog().info(MessageFormat.format(Messages.MigrationAction_Image_AsolutePathImageMigrated,
           new EditingDomainServices().getLabelProviderText(notifier), attribute.getName(), createdFilesPath));
     }
     if (!nonCreatedFiles.isEmpty()) {
-      String nonCreatedFilesPath = nonCreatedFiles.stream().collect(Collectors.joining(", "));
+      String nonCreatedFilesPath = nonCreatedFiles.stream().collect(Collectors.joining(", ")); //$NON-NLS-1$
       String message = MessageFormat.format(Messages.MigrationAction_Image_AsolutePathImageNotMigrated,
           new EditingDomainServices().getLabelProviderText(notifier), attribute.getName(), nonCreatedFilesPath);
       Activator.getDefault().getLog().warn(message);
@@ -340,7 +340,7 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
         imageFolder.create(true, true, null);
       } catch (CoreException e) {
         String nonCreatedFilesPath = filesToCopy.values().stream().map(iFile -> iFile.getFullPath().toString())
-            .collect(Collectors.joining(", "));
+            .collect(Collectors.joining(", ")); //$NON-NLS-1$
         Activator.getDefault().getLog()
             .error(MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImageFolder,
                 imageFolder.getFullPath(), new EditingDomainServices().getLabelProviderText(contextObject),
@@ -355,7 +355,7 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(IMAGE_NAME_FORMAT).withZone(ZoneId.systemDefault());
         String strDate = formatter.format(now);
         String newName = targetFileToCreate.getFullPath().lastSegment().replace(
-            "." + targetFileToCreate.getFileExtension(), strDate + "." + targetFileToCreate.getFileExtension());
+            "." + targetFileToCreate.getFileExtension(), strDate + "." + targetFileToCreate.getFileExtension()); //$NON-NLS-1$ //$NON-NLS-2$
         targetFileToCreate = targetFileToCreate.getParent().getFile(new org.eclipse.core.runtime.Path(newName));
         filesToCopy.put(fileToCopy, targetFileToCreate);
       }
@@ -376,7 +376,7 @@ public class ImagePathInRichTextAttributeContribution extends AbstractMigrationC
     }
 
     if (nonCreatedFiles.size() > 0) {
-      String nonCreatedFilesPath = nonCreatedFiles.stream().collect(Collectors.joining(", "));
+      String nonCreatedFilesPath = nonCreatedFiles.stream().collect(Collectors.joining(", ")); //$NON-NLS-1$
       String message = MessageFormat.format(Messages.MigrationAction_Image_ImpossibleToCreateImages,
           new EditingDomainServices().getLabelProviderText(contextObject), attribute.getName(), nonCreatedFilesPath);
       Activator.getDefault().getLog().error(message);

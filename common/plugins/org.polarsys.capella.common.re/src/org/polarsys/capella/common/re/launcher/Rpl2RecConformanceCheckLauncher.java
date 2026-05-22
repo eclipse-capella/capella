@@ -35,12 +35,12 @@ public class Rpl2RecConformanceCheckLauncher extends ReLauncher {
 
   @Override
   protected String getMapping() {
-    return "org.polarsys.capella.common.re.rpl2rec.conformance.check";
+    return "org.polarsys.capella.common.re.rpl2rec.conformance.check"; //$NON-NLS-1$
   }
 
   @Override
   protected String getScope() {
-    return "org.polarsys.capella.common.re.rpl2rec.conformance.check";
+    return "org.polarsys.capella.common.re.rpl2rec.conformance.check"; //$NON-NLS-1$
   }
 
   @Override

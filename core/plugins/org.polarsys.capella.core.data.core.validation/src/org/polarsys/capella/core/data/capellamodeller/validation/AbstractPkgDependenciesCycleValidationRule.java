@@ -95,7 +95,7 @@ public abstract class AbstractPkgDependenciesCycleValidationRule extends Abstrac
       // Create a status to get the message from it
       IStatus status = ctx.createFailureStatus(toString(cycle));
       // Create a status with the cycle to use it in the resolver
-      statuses.add(ConstraintStatus.createStatus(ctx, cycle, status.getMessage(), ""));
+      statuses.add(ConstraintStatus.createStatus(ctx, cycle, status.getMessage(), "")); //$NON-NLS-1$
     }
     return ConstraintStatus.createMultiStatus(ctx, statuses);
   }
@@ -215,10 +215,10 @@ public abstract class AbstractPkgDependenciesCycleValidationRule extends Abstrac
       count++;
       builder.append(iterator.next().getName());
       if (iterator.hasNext() && count < 3) {
-        builder.append(", ");
+        builder.append(", "); //$NON-NLS-1$
       } else {
         if (iterator.hasNext()) {
-          builder.append(" ...");
+          builder.append(" ..."); //$NON-NLS-1$
         }
         break;
       }

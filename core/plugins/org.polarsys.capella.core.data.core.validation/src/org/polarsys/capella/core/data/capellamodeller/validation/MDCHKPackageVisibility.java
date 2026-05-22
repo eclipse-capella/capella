@@ -152,8 +152,8 @@ public class MDCHKPackageVisibility extends AbstractValidationRule{
 		
 		 boolean isAncestorNavigablePackage = targetPackage!=null && sourcePackage!=null && DataPkgExt.isAncestorPackage(targetPackage,sourcePackage);
 			if (isAncestorNavigablePackage) {
-				String SOURCE_PREFIXE = "\"" + sourceElement.getName()  +"\" ( "+ sourceElement.eClass().getName() + " ) ";
-				String TARGET_PREFIXE = "\"" + targetElement.getName()  +"\" ( "+ targetElement.eClass().getName() + " ) ";
+				String SOURCE_PREFIXE = "\"" + sourceElement.getName()  +"\" ( "+ sourceElement.eClass().getName() + " ) "; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				String TARGET_PREFIXE = "\"" + targetElement.getName()  +"\" ( "+ targetElement.eClass().getName() + " ) "; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				this.statuses.add(createFailureStatus(context, new Object[] { SOURCE_PREFIXE,TARGET_PREFIXE })) ;
 				
 			}

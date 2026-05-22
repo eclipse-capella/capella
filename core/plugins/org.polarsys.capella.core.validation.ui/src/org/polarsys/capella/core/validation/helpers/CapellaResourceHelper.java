@@ -53,7 +53,7 @@ public class CapellaResourceHelper {
         switch (resource.getType()) {
           case IResource.FILE:
             String fileExtension = resource.getFileExtension().toLowerCase();
-            if (fileExtension.equals(extension) || fileExtension.equals("*")) {
+            if (fileExtension.equals(extension) || fileExtension.equals("*")) { //$NON-NLS-1$
               result.add((IFile) resource);
             }
           break;
@@ -94,7 +94,7 @@ public class CapellaResourceHelper {
         switch (resource.getType()) {
           case IResource.FILE:
             String fileExtension = resource.getFileExtension().toLowerCase();
-            if (fileExtension.equals(extension) || fileExtension.equals("*")) {
+            if (fileExtension.equals(extension) || fileExtension.equals("*")) { //$NON-NLS-1$
               result.add((IFile) resource);
             }
           break;

@@ -36,7 +36,7 @@ import org.polarsys.kitalpha.richtext.widget.tools.manager.LinkManagerImpl;
 public class I_23_AbstractReplaceElementResolver extends AbstractCapellaMarkerResolution {
   protected Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.VALIDATION);
   protected LinkManager linkManager = null;
-  String defaultLabel = "";
+  String defaultLabel = ""; //$NON-NLS-1$
 
   /**
    * {@inheritDoc}

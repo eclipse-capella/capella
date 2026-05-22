@@ -24,7 +24,7 @@ public class BrowseScopeHandler extends SelectionCommandHandler {
 
   @Override
   protected String getScope() {
-    return "org.polarsys.capella.common.re.retrieve.scopeElements";
+    return "org.polarsys.capella.common.re.retrieve.scopeElements"; //$NON-NLS-1$
   }
 
   /**

@@ -33,14 +33,14 @@ public class DCON_08_detectNoSourceNoTarget extends AbstractModelConstraint {
     if (ctx.getTarget() instanceof CatalogElementLink) {
       CatalogElementLink catalogElementLink = (CatalogElementLink) ctx.getTarget();
       boolean isFailure = false;
-      String message = "";
+      String message = ""; //$NON-NLS-1$
       if (catalogElementLink != null) {
         if (catalogElementLink.getSource() == null) {
-          message += "no source";
+          message += Messages.DCON_08_detectNoSourceNoTarget_1;
           isFailure = true;
         }
         if (catalogElementLink.getTarget() == null) {
-          message = isFailure ? "neither source nor target" : "no target";
+          message = isFailure ? Messages.DCON_08_detectNoSourceNoTarget_2 : Messages.DCON_08_detectNoSourceNoTarget_3;
           isFailure = true;
         }
 

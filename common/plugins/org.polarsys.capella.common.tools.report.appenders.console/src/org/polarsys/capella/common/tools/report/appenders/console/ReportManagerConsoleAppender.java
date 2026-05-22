@@ -39,7 +39,7 @@ import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
  */
 public class ReportManagerConsoleAppender extends AppenderSkeleton {
 
-  private static final String CONSOLE_APPENDER_JOB_FAMILY = "ConsoleAppenderJob";
+  private static final String CONSOLE_APPENDER_JOB_FAMILY = "ConsoleAppenderJob"; //$NON-NLS-1$
 
   protected IReportConsole console;
   private volatile boolean running;
@@ -101,7 +101,7 @@ public class ReportManagerConsoleAppender extends AppenderSkeleton {
     LinkedList<LoggingEvent> fifo = new LinkedList<>();
 
     public ConsoleAppenderJob() {
-      super("Capella Console Appender");
+      super("Capella Console Appender"); //$NON-NLS-1$
     }
 
     @Override

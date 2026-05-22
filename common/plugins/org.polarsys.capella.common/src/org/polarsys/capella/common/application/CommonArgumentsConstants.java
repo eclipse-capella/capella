@@ -12,20 +12,13 @@
  *******************************************************************************/
 package org.polarsys.capella.common.application;
 
-import org.eclipse.osgi.util.NLS;
+import java.text.MessageFormat;
 
-public class CommonArgumentsConstants extends NLS {
-  private static final String BUNDLE_NAME = "org.polarsys.capella.common.application.messages"; //$NON-NLS-1$
+public class CommonArgumentsConstants {
+	public static String LOG_FILE_PATH = "-logfile";
+	public static String LOG_FILE_PATH__DESCRIPTION = MessageFormat.format(Messages.LOG_FILE_PATH__DESCRIPTION,
+			LOG_FILE_PATH);
 
-  public static String LOG_FILE_PATH;
-  public static String LOG_FILE_PATH__DESCRIPTION;
-  
-  
-  static {
-    // initialize resource bundle
-    NLS.initializeMessages(BUNDLE_NAME, CommonArgumentsConstants.class);
-  }
-
-  private CommonArgumentsConstants() {
-  }
+	private CommonArgumentsConstants() {
+	}
 }

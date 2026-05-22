@@ -15,6 +15,7 @@ pipeline {
 	environment {
 		BUILD_KEY = (github.isPullRequest() ? CHANGE_TARGET : BRANCH_NAME).replaceFirst(/^v/, '')
 		CAPELLA_PRODUCT_PATH = "${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/capella"
+		PACKAGE_JDK_VERSION = '21'
   	}
   
   	stages {
@@ -43,23 +44,23 @@ pipeline {
 	        		def os = 'win'
 	        		def jre = 'JRE'
 		            def jdkWinFolder = os + jre
-		            downloader.downloadTemurinJDK17(jdkWinFolder, os)
+		            downloader.retrieveTemurinJDK(jdkWinFolder, env.PACKAGE_JDK_VERSION, os)
 		            
 	        		os = 'linux'
 		            def jdkLinuxFolder = os + jre
-		            downloader.downloadTemurinJDK17(jdkLinuxFolder, os)
+		            downloader.retrieveTemurinJDK(jdkLinuxFolder, env.PACKAGE_JDK_VERSION, os)
 		            
 	        		os = 'mac'
 		            def jdkMacFolder = os + jre
-		            downloader.downloadTemurinJDK17(jdkMacFolder, os)
+		            downloader.retrieveTemurinJDK(jdkMacFolder, env.PACKAGE_JDK_VERSION, os)
 		            
 		            os = 'mac-aarch64'
 		            def jdkMacSiliconFolder = os + jre
-		            downloader.downloadTemurinJDK17(jdkMacSiliconFolder, os)
+		            downloader.retrieveTemurinJDK(jdkMacSiliconFolder, env.PACKAGE_JDK_VERSION, os)
 		            
 		            os = 'linux-aarch64'
 		            def jdkLinuxSiliconFolder = os + jre
-		            downloader.downloadTemurinJDK17(jdkLinuxSiliconFolder, os)
+		            downloader.retrieveTemurinJDK(jdkLinuxSiliconFolder, env.PACKAGE_JDK_VERSION, os)
 	       		}
 	     	}
 	    }
@@ -206,7 +207,7 @@ pipeline {
 		stage('Sonar') {
 			steps {
 				script {
-					sonar.runSonar("eclipse-capella_capella", "eclipse/capella", "sonar-token-capella")
+					sonar.runSonar("eclipse-capella_capella", "eclipse/capella", "sonarcloud-token-capella")
 				}
 			}
 		}

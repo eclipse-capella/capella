@@ -73,7 +73,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
       action.setImageDescriptor(
           ExtendedImageRegistry.getInstance().getImageDescriptor(EObjectLabelProviderHelper.getImage(referenced)));
     } else {
-      action.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("capella_16.png"));
+      action.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("capella_16.png")); //$NON-NLS-1$
     }
     action.setText(NLS.bind(message, NamingHelper.getDefaultTitle(referenced)));
     return action;

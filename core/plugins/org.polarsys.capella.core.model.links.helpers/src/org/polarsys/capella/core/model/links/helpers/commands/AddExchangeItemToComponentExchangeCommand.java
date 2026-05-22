@@ -33,7 +33,7 @@ public class AddExchangeItemToComponentExchangeCommand extends AbstractQueryBase
 	   * @param linkRefInSource
 	   */
 	  public AddExchangeItemToComponentExchangeCommand(EClass linkType, EReference linkRefInSource) {
-	    super("Add Exchange Item to Component Exchange", LinkStyle.LINE_DASHED, linkType, linkRefInSource);
+	    super(Messages.AddExchangeItemToComponentExchangeCommand_Label, LinkStyle.LINE_DASHED, linkType, linkRefInSource);
 	  }
 
 	  /**

@@ -20,4 +20,5 @@ Require-Bundle: org.eclipse.ui,
  com.google.guava,
  org.apache.commons.lang
 Export-Package: org.polarsys.capella.common.linkedtext.ui
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-Localization: plugin

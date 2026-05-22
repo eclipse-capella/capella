@@ -109,20 +109,20 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagram> {
 
-  public static final String TRANSITION_TRACEABILITY = "org.polarsys.capella.core.transition.diagram";
+  public static final String TRANSITION_TRACEABILITY = "org.polarsys.capella.core.transition.diagram"; //$NON-NLS-1$
 
-  public static final String SOURCE_DIAGRAM = "SOURCE_DIAGRAM";
-  public static final String TARGET_DIAGRAM = "TARGET_DIAGRAM";
-  public static final String SOURCE_DESCRIPTION = "SOURCE_DESCRIPTION";
-  public static final String TARGET_DESCRIPTION = "TARGET_DESCRIPTION";
+  public static final String SOURCE_DIAGRAM = "SOURCE_DIAGRAM"; //$NON-NLS-1$
+  public static final String TARGET_DIAGRAM = "TARGET_DIAGRAM"; //$NON-NLS-1$
+  public static final String SOURCE_DESCRIPTION = "SOURCE_DESCRIPTION"; //$NON-NLS-1$
+  public static final String TARGET_DESCRIPTION = "TARGET_DESCRIPTION"; //$NON-NLS-1$
 
-  public static final String TARGET_VIEWS = "TARGET__VIEWS";
-  public static final String SOURCE_HIDDEN_VIEWS = "SOURCE__HIDDEN_VIEWS";
-  public static final String SOURCE_HIDDEN_LABEL_VIEWS = "SOURCE__HIDDEN_LABEL_VIEWS";
+  public static final String TARGET_VIEWS = "TARGET__VIEWS"; //$NON-NLS-1$
+  public static final String SOURCE_HIDDEN_VIEWS = "SOURCE__HIDDEN_VIEWS"; //$NON-NLS-1$
+  public static final String SOURCE_HIDDEN_LABEL_VIEWS = "SOURCE__HIDDEN_LABEL_VIEWS"; //$NON-NLS-1$
 
-  public static final String TARGET_DOUBLE_VIEWS = "SOURCE__HIDDEN_LABEL_VIEWS";
+  public static final String TARGET_DOUBLE_VIEWS = "SOURCE__HIDDEN_LABEL_VIEWS"; //$NON-NLS-1$
 
-  public static final String DIAGRAM_CREATION = "DIAGRAM_CREATION";
+  public static final String DIAGRAM_CREATION = "DIAGRAM_CREATION"; //$NON-NLS-1$
 
   /**
    * @param diagrams
@@ -132,7 +132,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
   }
 
   public String getName() {
-    return "Diagram Initialization";
+    return Messages.DiagramTransitionRunnable_Name;
   }
 
   @Override
@@ -225,26 +225,26 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
   protected IStatus proceedDiagram(final DRepresentation diagram, final IProgressMonitor monitor) {
     String diagramName = EObjectExt.getText(diagram);
 
-    monitor.beginTask(NLS.bind("Diagram Initialization - {0}", diagramName), 3);
-    monitor.setTaskName(NLS.bind("Diagram Initialization - {0}", diagramName));
+    monitor.beginTask(NLS.bind(Messages.DiagramTransitionRunnable_Task_Init, diagramName), 3);
+    monitor.setTaskName(NLS.bind(Messages.DiagramTransitionRunnable_Task_Init, diagramName));
 
     final IContext context = getContext();
 
     if (!(diagram instanceof DSemanticDecorator)) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Invalid source diagram");
+      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, Messages.DiagramTransitionRunnable_Error_Source);
     }
     context.put(SOURCE_DIAGRAM, diagram);
 
     // Retrieve semantic target of diagram
     final EObject sourceSemantic = ((DSemanticDecorator) diagram).getTarget();
     if ((sourceSemantic == null) || sourceSemantic.eIsProxy()) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Diagram with invalid semantic target");
+      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, Messages.DiagramTransitionRunnable_Error_Target);
     }
 
     // Retrieve the current session
     final Session session = DiagramHelper.getService().getSession(diagram);
     if (session == null) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Cannot retrieve session from the given diagram");
+      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, Messages.DiagramTransitionRunnable_Error_Session);
     }
 
     context.put(ITransitionConstants.TRANSITION_SOURCE_EDITING_DOMAIN, session.getTransactionalEditingDomain());
@@ -253,7 +253,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     // Retrieve the current description
     final RepresentationDescription description = DiagramHelper.getService().getDescription(diagram);
     if ((description == null) || description.eIsProxy()) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Invalid source diagram (maybe a missing viewpoint)");
+      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, Messages.DiagramTransitionRunnable_Error_Diagram);
     }
     context.put(SOURCE_DESCRIPTION, description);
 
@@ -262,7 +262,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     IStatus status = Status.OK_STATUS;
 
     // Copy layout cannot copy layout of hidden elements, we need to run two commands !
-    status = runCommand(session, NLS.bind("{0} - {1} (1/3)", getName(), diagramName), new RunnableWithBooleanResult() {
+    status = runCommand(session, NLS.bind("{0} - {1} (1/3)", getName(), diagramName), new RunnableWithBooleanResult() { //$NON-NLS-1$
       @Override
       public void run() {
 
@@ -305,7 +305,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
       return status;
     }
 
-    status = runCommand(session, NLS.bind("{0} - {1} (2/3)", getName(), diagramName), new RunnableWithBooleanResult() {
+    status = runCommand(session, NLS.bind("{0} - {1} (2/3)", getName(), diagramName), new RunnableWithBooleanResult() { //$NON-NLS-1$
       @Override
       public void run() {
         DRepresentation targetDiagram = (DRepresentation) getContext().get(TARGET_DIAGRAM);
@@ -317,7 +317,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
       }
     });
 
-    status = runCommand(session, NLS.bind("{0} - {1} (3/3)", getName(), diagramName), new RunnableWithBooleanResult() {
+    status = runCommand(session, NLS.bind("{0} - {1} (3/3)", getName(), diagramName), new RunnableWithBooleanResult() { //$NON-NLS-1$
       @Override
       public void run() {
         DRepresentation targetDiagram = (DRepresentation) getContext().get(TARGET_DIAGRAM);
@@ -348,9 +348,9 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
 
     DRepresentation targetDiagram = (DRepresentation) getContext().get(TARGET_DIAGRAM);
     if (targetDiagram == null) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Invalid target diagram");
+      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, Messages.DiagramTransitionRunnable_Error_NoDiagram);
     }
-    return new Status(IStatus.OK, Activator.PLUGIN_ID, NLS.bind("Diagram initialized - {0}", diagramName));
+    return new Status(IStatus.OK, Activator.PLUGIN_ID, NLS.bind(Messages.DiagramTransitionRunnable_Success, diagramName));
   }
 
   /**
@@ -387,7 +387,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     }
     if ((allocatingDescription == null) || allocatingDescription.eIsProxy()) {
       return (new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-          NLS.bind("Diagram ''{0}'' is not yet supported by diagram initialization", EObjectExt.getText(diagram))));
+          NLS.bind(Messages.DiagramTransitionRunnable_Error_Unsupported, EObjectExt.getText(diagram))));
     }
     context.put(TARGET_DESCRIPTION, allocatingDescription);
 
@@ -397,7 +397,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     }
     if (targetSemantic == null) {
       return (new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-          "No semantic element has been found to put the created diagram"));
+          Messages.DiagramTransitionRunnable_Error_NoSemanticElt));
     }
 
     // Create a target diagram
@@ -409,7 +409,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     }
 
     if (targetDiagram == null) {
-      return (new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Cannot create the target diagram"));
+      return (new Status(IStatus.ERROR, Activator.PLUGIN_ID, Messages.DiagramTransitionRunnable_Error_CannotCreate));
     }
     return Status.OK_STATUS;
   }
@@ -452,10 +452,10 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     // Retrieve the current session
     final Session session = DiagramHelper.getService().getSession(diagram);
     if (session == null) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Cannot retrieve session from the given diagram");
+      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, Messages.DiagramTransitionRunnable_Error_Session);
     }
 
-    IStatus status = runCommand(session, NLS.bind("{0} - {1} (2/2)", getName(), EObjectExt.getText(diagram)),
+    IStatus status = runCommand(session, NLS.bind("{0} - {1} (2/2)", getName(), EObjectExt.getText(diagram)), //$NON-NLS-1$
         new RunnableWithBooleanResult() {
           @Override
           public void run() {

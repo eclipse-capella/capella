@@ -66,7 +66,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <edgeMappings name="containedIn Mapping" label="OEB_Link" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20containment']" semanticCandidatesExpression="aql:self.eAllContents()" semanticElements="aql:self.eContainerOrSelf(oa::OperationalAnalysis).eAllContents()->filter(cs::Part)->select(x | x.abstractType = self)" sourceMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" targetMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" targetFinderExpression="service:getLogicalParent()" sourceFinderExpression="feature:type" domainClass="cs.Part" reconnections="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='changeContainer']">
+        <edgeMappings name="containedIn Mapping" label="%OEB_Link" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20containment']" semanticCandidatesExpression="aql:self.eAllContents()" semanticElements="aql:self.eContainerOrSelf(oa::OperationalAnalysis).eAllContents()->filter(cs::Part)->select(x | x.abstractType = self)" sourceMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" targetMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" targetFinderExpression="service:getLogicalParent()" sourceFinderExpression="feature:type" domainClass="cs.Part" reconnections="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='changeContainer']">
           <style routingStyle="tree" foldingStyle="TARGET">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -82,7 +82,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']"/>
-        <toolSections name="Entities">
+        <toolSections name="Entities" label="%oa.toolsection.entities">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Entity in the target Entity" name="operational.entity" label="%oa.oebd.operational.entity" precondition="aql:containerView.isValidCreationCBComponent()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Entity.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -165,7 +165,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common">
+        <toolSections name="Common" label="%oa.toolsection.Common">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%oa.oebd.constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
             <variable name="container"/>
@@ -360,7 +360,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']"/>
-        <toolSections name="Activities">
+        <toolSections name="Activities" label="%oa.toolsection.Activities">
           <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Operational Activity " name="function" label="%oa.oaib.function" precondition="aql:containerView.isValidCreationDFFunction()" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@containerMappings[name='OAIB%20Operational%20Activity']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -539,7 +539,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Accelerators">
+        <toolSections name="Accelerators" label="%oa.toolsection.Accelerators">
           <ownedTools xsi:type="tool:ToolDescription" documentation="Insert all the Activities available in a given Mode / State. This tool does not modify the semantic model." name="activities.from.mode.state" label="%oa.oaib.activities.from.mode.state" precondition="aql:elementView.isValidDFInsertStateModes()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Mode.gif">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -612,7 +612,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common">
+        <toolSections name="Common" label="%oa.toolsection.Common">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%oa.oaib.constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
             <variable name="container"/>
@@ -918,7 +918,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']"/>
-        <toolSections name="Entities">
+        <toolSections name="Entities" label="%oa.toolsection.entities">
           <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Operational Entity" name="operational.entity" label="%oa.oab.operational.entity" precondition="aql:containerView.getABTarget().isValidCreationABComponent()" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Entity.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -1180,7 +1180,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Roles">
+        <toolSections name="Roles" label="%oa.toolsection.Roles">
           <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new Role and allocate it to the selected Operational Entity" name="role" label="%oa.oab.role" precondition="aql:container->filter(oa::Entity)->size() > 0" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subContainerMappings[name='OAB_subRoles']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -1306,7 +1306,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Activities">
+        <toolSections name="Activities" label="%oa.toolsection.Activities">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Operational Activity and allocate it to the selected Operational Entity or the selected Role." name="function" label="%oa.oab.function" precondition="aql:container->select(x | x->filter(oa::Entity)->size() > 0 or x->filter(oa::Role)->size() > 0)->size() > 0" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -1657,7 +1657,7 @@
             <edgeView name="edgeView"/>
           </ownedTools>
         </toolSections>
-        <toolSections name="Accelerators">
+        <toolSections name="Accelerators" label="%oa.toolsection.Accelerators">
           <ownedTools xsi:type="tool:ToolDescription" documentation="Insert all the Activities available in a given Mode / State. This tool does not modify the semantic model." name="activities.from.mode.state" label="%oa.oab.activities.from.mode.state" precondition="aql:elementView.isValidABInsertStateModes()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Mode.gif">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -1695,7 +1695,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common">
+        <toolSections name="Common" label="%oa.toolsection.Common">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%oa.oab.constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
             <variable name="container"/>
@@ -1848,7 +1848,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']"/>
-        <toolSections name="Activities">
+        <toolSections name="Activities" label="%oa.toolsection.Activities">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Activity in the target Operational Activity" name="operational.activity" label="%oa.oabd.operational.activity" precondition="aql:containerView.isValidCreationDFFunction()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']">
             <variable name="container">
               <subVariables xsi:type="tool:AcceleoVariable" name="tool" computationExpression="Operational Activity"/>
@@ -1922,7 +1922,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common">
+        <toolSections name="Common" label="%oa.toolsection.Common">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%oa.oabd.constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
             <variable name="container"/>
@@ -2068,7 +2068,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']"/>
-        <toolSections name="Roles">
+        <toolSections name="Roles" label="%oa.toolsection.Roles">
           <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Operational Role" name="operational.role" label="%oa.orb.operational.role" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@containerMappings[name='ORB_Role1']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -2170,7 +2170,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Activities">
+        <toolSections name="Activities" label="%oa.toolsection.Activities">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Activity allocated to the target Operational Role" name="operational.activity" label="%oa.orb.operational.activity" precondition="aql:container->select(x | x->filter(oa::Role)->size() > 0)->size() > 0" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@containerMappings[name='ORB_Role1']/@subNodeMappings[name='ORB_OAAllocation']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -2375,7 +2375,7 @@
             <edgeView name="edgeView"/>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common">
+        <toolSections name="Common" label="%oa.toolsection.Common">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%oa.orb.constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
             <variable name="container"/>
@@ -2733,7 +2733,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']"/>
-        <toolSections name="tools section" label="Scenarios Elements">
+        <toolSections name="tools section" label="%OES.tools.section">
           <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Entity Scenario " precondition="aql:self.isInLib()" titleExpression="aql:self.name.addScenarioPrefix('[OES]') + ' - Operational Entity Scenario'" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']">
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self">
@@ -4051,7 +4051,7 @@
           </ownedTools>
           <reusedTools xsi:type="tool:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='exchange.context']"/>
         </toolSections>
-        <toolSections name="Common">
+        <toolSections name="Common" label="%oa.toolsection.Common">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%oa.oes.constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Scenario_Constraint']"/>
             <variable name="container"/>
@@ -4360,7 +4360,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']"/>
-        <toolSections name="tools section" label="Scenario Elements">
+        <toolSections name="tools section" label="%OAS.tools.section">
           <ownedTools xsi:type="tool_2:InstanceRoleCreationTool" name="activity" label="%oa.oas.activity" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='InstanceRoleMaping%20AIS']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OperationalActivity.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -5022,7 +5022,7 @@
           </ownedTools>
           <reusedTools xsi:type="tool:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='exchange.context']"/>
         </toolSections>
-        <toolSections name="Common">
+        <toolSections name="Common" label="%oa.toolsection.Common">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%oa.oas.constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Scenario_Constraint']"/>
             <variable name="container"/>
@@ -5193,7 +5193,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink_InvolvementLink']"/>
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_TitleBlockEdge']"/>
-        <toolSections name="Involvements" label="Involvements">
+        <toolSections name="Involvements" label="%Involvements.label.0">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Involvement referencing the selected Operational Activity." name="involve.function" label="%oa.opd.involve.function" precondition="aql:containerView.isValidFCInvolveFunction()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementFunction_OA.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']"/>
             <variable name="container"/>
@@ -5354,8 +5354,8 @@
           </ownedTools>
           <reusedTools xsi:type="tool_1:DeleteElementDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20FE%20Involvement']"/>
         </toolSections>
-        <toolSections name="Sequencing">
-          <ownedTools xsi:type="tool_1:ToolGroup" documentation="Create a new Control Node." name="Create_ControlNode" label="Control Node">
+        <toolSections name="Sequencing" label="%oa.toolsection.Sequencing">
+          <ownedTools xsi:type="tool_1:ToolGroup" documentation="Create a new Control Node." name="Create_ControlNode" label="%Create_ControlNode.label.0">
             <tools xsi:type="tool:ToolDescription" documentation="Create a new AND Control Node." name="and" label="%oa.opd.and" precondition="aql:container.oclIsKindOf(fa::FunctionalChain) or container.oclIsKindOf(fa::FunctionalChainReference) or container.oclIsKindOf(fa::SequenceLink) or container.oclIsKindOf(fa::SequenceLinkEnd)" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ControlNode_And.gif">
               <element name="element"/>
               <elementView name="elementView"/>
@@ -5513,7 +5513,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolGroup" documentation="Create a new Control Node." name="Create_ControlNodeConstruct" label="Control Node Construct">
+          <ownedTools xsi:type="tool_1:ToolGroup" documentation="Create a new Control Node." name="Create_ControlNodeConstruct" label="%Create_ControlNodeConstruct.label.0">
             <tools xsi:type="tool:ToolDescription" documentation="Create a new AND Control Node." name="and.construct" label="%oa.opd.and.construct" precondition="aql:container.oclIsKindOf(fa::FunctionalChain) or container.oclIsKindOf(fa::FunctionalChainReference) or container.oclIsKindOf(fa::SequenceLink) or container.oclIsKindOf(fa::SequenceLinkEnd)" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ControlNode_And.gif">
               <element name="element"/>
               <elementView name="elementView"/>
@@ -5928,7 +5928,7 @@
             </tools>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common">
+        <toolSections name="Common" label="%oa.toolsection.Common">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%oa.opd.constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
             <variable name="container"/>
@@ -6367,7 +6367,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common">
+        <toolSections name="Common" label="%oa.toolsection.Common">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%oa.ocb.constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
             <variable name="container"/>
@@ -6757,7 +6757,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common">
+        <toolSections name="Common" label="%oa.toolsection.Common">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%oa.coc.constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
             <variable name="container"/>

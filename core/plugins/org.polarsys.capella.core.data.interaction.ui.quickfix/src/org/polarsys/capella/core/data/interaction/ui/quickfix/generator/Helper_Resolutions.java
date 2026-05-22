@@ -25,14 +25,14 @@ import org.polarsys.capella.core.data.interaction.ui.quickfix.resolver.AddInvolv
 public class Helper_Resolutions {
   public static void addResolution(AbstractCapability capability, EObject element, List<IMarkerResolution> resolutions,
       String ruleId) {
-    String labelCommand = NLS.bind("Create involvment {0} ({1}) to {2} ({3})",
+    String labelCommand = NLS.bind(Messages.Helper_Resolutions_0,
         new Object[] { capability.getName(), EObjectLabelProviderHelper.getMetaclassLabel(capability, false),
             EObjectLabelProviderHelper.getText(element),
             EObjectLabelProviderHelper.getMetaclassLabel(element, false) });
     AddInvolvedElementsResolver command = new AddInvolvedElementsResolver(labelCommand, false, ruleId);
     resolutions.add(command);
 
-    String labelCommandAll = "Fix all missing involvments";
+    String labelCommandAll = Messages.Helper_Resolutions_1;
     AddInvolvedElementsResolver commandAll = new AddInvolvedElementsResolver(labelCommandAll, true, ruleId);
     resolutions.add(commandAll);
   }

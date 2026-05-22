@@ -105,8 +105,8 @@ public class SiriusMigrationContribution extends AbstractMigrationContribution {
   @Override
   public String getQName(EObject peekObject, String typeQName, EStructuralFeature feature, Resource resource,
       XMLHelper helper, MigrationContext context) {
-    if ("viewpoint:DRepresentationContainer".equals(typeQName)) {
-      return "viewpoint:DView";
+    if ("viewpoint:DRepresentationContainer".equals(typeQName)) { //$NON-NLS-1$
+      return "viewpoint:DView"; //$NON-NLS-1$
     }
     return super.getQName(peekObject, typeQName, feature, resource, helper, context);
   }

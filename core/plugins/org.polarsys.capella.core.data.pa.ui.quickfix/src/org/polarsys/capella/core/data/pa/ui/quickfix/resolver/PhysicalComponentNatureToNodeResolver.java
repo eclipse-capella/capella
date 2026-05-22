@@ -26,6 +26,6 @@ public class PhysicalComponentNatureToNodeResolver extends AbstractPhysicalCompo
 
   @Override
   public String getLabel() {
-    return "Switch to NODE";
+    return Messages.PhysicalComponentNatureToNodeResolver_0;
   }
 }

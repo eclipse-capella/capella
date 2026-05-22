@@ -57,7 +57,6 @@
         <module>org.polarsys.capella.core.ui.transfo.feature</module>
         <module>org.polarsys.capella.core.ui.wizards.feature</module>
         <module>org.polarsys.capella.core.validation.feature</module>
-        <module>org.polarsys.capella.core.mylyn.feature</module>
       </modules>
     </profile>
   </profiles>

@@ -82,13 +82,13 @@ public class ZipFileImporter implements IFileImporter {
       Enumeration<? extends ZipEntry> entries = zipFile.entries();
       while (entries.hasMoreElements()) {
         ZipEntry entry = entries.nextElement();
-        if (entry.getName().endsWith(".project")) {
+        if (entry.getName().endsWith(".project")) { //$NON-NLS-1$
           IProjectDescription description = ResourcesPlugin.getWorkspace().loadProjectDescription(zipFile.getInputStream(entry));
           IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(description.getName());
           if (!forceImport) {
             if (project.exists()) {
               // Log an error if a project exists already and -forceImport is not given
-              IStatus status = new Status(IStatus.ERROR, CommandLineApp.PLUGIN_ID, "Problem while importing project into the workspace: A project with the same name is referenced from the workspace. This should be removed from the workspace.");
+              IStatus status = new Status(IStatus.ERROR, CommandLineApp.PLUGIN_ID, Messages.ZipFileImporter_1);
               LogExt.log(IReportManagerDefaultComponents.MODEL, status);
             } else {
               project.create(description, null);

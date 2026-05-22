@@ -35,7 +35,7 @@ public class SourceElementProperty extends org.polarsys.capella.common.re.rpl2re
   @Override
   public Object getValue(IPropertyContext context) {
     IContext ctx = (IContext) context.getSource();
-    Collection result = (Collection) ctx.get("SCOPE_ELEMENTS_PROPERTY");
+    Collection result = (Collection) ctx.get("SCOPE_ELEMENTS_PROPERTY"); //$NON-NLS-1$
 
     CatalogElement element =
         (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
@@ -48,7 +48,7 @@ public class SourceElementProperty extends org.polarsys.capella.common.re.rpl2re
         result = DependenciesHandlerHelper.getInstance(ctx).getScopeElements((Collection) selection, result, ctx);
         result.addAll(ReplicableElementHandlerHelper.getInstance(ctx).getElements(element));
         // TODO Add replica elements to scope
-        ctx.put("SCOPE_ELEMENTS_PROPERTY", toType(result, context));
+        ctx.put("SCOPE_ELEMENTS_PROPERTY", toType(result, context)); //$NON-NLS-1$
       }
     }
 

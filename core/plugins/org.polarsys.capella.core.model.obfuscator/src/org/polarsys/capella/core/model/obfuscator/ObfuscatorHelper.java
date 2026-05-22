@@ -50,8 +50,8 @@ public class ObfuscatorHelper {
     if (uncrypted == null) {
       return null;
     }
-    if ("".equals(uncrypted)) {
-      return "";
+    if ("".equals(uncrypted)) { //$NON-NLS-1$
+      return ""; //$NON-NLS-1$
     }
 
     StringBuilder builder = new StringBuilder();

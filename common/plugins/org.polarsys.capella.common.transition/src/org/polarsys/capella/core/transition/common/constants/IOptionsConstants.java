@@ -17,16 +17,16 @@ package org.polarsys.capella.core.transition.common.constants;
  */
 public class IOptionsConstants {
 
-  public static final String TRANSITION_PREFERENCES = "capella.core.transition";
+  public static final String TRANSITION_PREFERENCES = "capella.core.transition"; //$NON-NLS-1$
 
-  public static final String OUTPUT_PROJECT = "outputModel";
+  public static final String OUTPUT_PROJECT = "outputModel"; //$NON-NLS-1$
 
   public static final String OUTPUT_PROJECT_DEFAULT_VALUE = null;
 
-  public static final String OPTIONS_LOG = "log.enabled";
+  public static final String OPTIONS_LOG = "log.enabled"; //$NON-NLS-1$
 
   public static final Boolean OPTIONS_LOG__DEFAULT = Boolean.TRUE;
   
-  public static final String IS_DRY_RUN = "isDryRun";
+  public static final String IS_DRY_RUN = "isDryRun"; //$NON-NLS-1$
 
 }

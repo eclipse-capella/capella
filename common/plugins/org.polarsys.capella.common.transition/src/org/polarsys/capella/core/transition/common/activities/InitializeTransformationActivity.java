@@ -59,7 +59,7 @@ public abstract class InitializeTransformationActivity extends AbstractActivity 
     initializeTransformation(context, activityParams);
 
     // Workarounded log. It not truly exact but make a log before the transition :)
-    LogHelper.getInstance().debug(NLS.bind("Start activity ''{0}''", "Transformation"), Messages.Activity_Transition); //$NON-NLS-1$
+    LogHelper.getInstance().debug(NLS.bind("Start activity ''{0}''", "Transformation"), Messages.Activity_Transition); //$NON-NLS-1$ //$NON-NLS-2$
 
     //Notify listeners that transformation begins
     NotifyHandlerHelper.getInstance(context).notify(ITransitionConstants.NOTIFY__BEGIN_TRANSFORMATION, INotifyChangeEvent.DEFAULT, context);

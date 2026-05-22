@@ -49,7 +49,7 @@ import org.polarsys.capella.core.validation.ui.ide.messages.QuickfixMessages;
 
 public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
 
-  public static final String EOBJECT_NAVIGATOR_DIALOG = "org.polarsys.capella.core.validation.ui.ide.quickfix.objectNavigator";
+  public static final String EOBJECT_NAVIGATOR_DIALOG = "org.polarsys.capella.core.validation.ui.ide.quickfix.objectNavigator"; //$NON-NLS-1$
   
   /**
    * Label for our combo box

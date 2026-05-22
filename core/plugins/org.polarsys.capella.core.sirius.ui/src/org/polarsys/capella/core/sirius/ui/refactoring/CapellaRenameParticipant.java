@@ -42,7 +42,7 @@ public class CapellaRenameParticipant extends RenameParticipant {
 
   @Override
   public String getName() {
-    return "Capella Rename Participant";
+    return Messages.CapellaRenameParticipant_0;
 
   }
 
@@ -52,7 +52,7 @@ public class CapellaRenameParticipant extends RenameParticipant {
       return new RefactoringStatus();
     }
     return RefactoringStatus
-        .createErrorStatus("Unable to update Workspace Image paths because container is not accessible !");
+        .createErrorStatus(Messages.CapellaRenameParticipant_1);
   }
 
   // Do it in the createPreChange instead of the createChange so that Sirius session is still open and the container is

@@ -198,7 +198,7 @@ public class ExtendedTopologicalSorter {
     while (!toSort.isEmpty()) {
       independants = findIndependantsInTypeSet(toSort, monitor);
       if (independants.isEmpty()) {
-        throw new TransitionException(new Status(IStatus.ERROR, "Transposer cycle exception", "Transposer cycle exception"));
+        throw new TransitionException(new Status(IStatus.ERROR, Messages.ExtendedTopologicalSorter_message, Messages.ExtendedTopologicalSorter_message));
       }
 
       toSort.removeAll(independants);

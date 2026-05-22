@@ -106,7 +106,7 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
     }
 
     if (properties == null) {
-      properties = new Properties("");
+      properties = new Properties(""); //$NON-NLS-1$
     }
     return properties;
   }
@@ -166,7 +166,7 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
            */
           @Override
           public String getName() {
-            return "Modify " + event.getProperty().getName();
+            return "Modify " + event.getProperty().getName(); //$NON-NLS-1$
           }
 
           public void run() {

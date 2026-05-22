@@ -24,4 +24,5 @@ Export-Package: org.polarsys.capella.detachment.propertyvalue.command,
  org.polarsys.capella.detachment.propertyvalue.messages,
  org.polarsys.capella.detachment.propertyvalues.scrutinizers,
  org.polarsys.capella.detachment.propertyvalues.ui.page
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-Localization: plugin

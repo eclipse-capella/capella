@@ -102,12 +102,12 @@ public class TopDownMatchPolicy
   private String getTraceIdentifier(EObject element, IContext context, ITreeDataScope<EObject> scope,
       ITraceabilityTraceHandler handler) {
     IContext icontext = getContext();
-    String ID = "";
+    String ID = ""; //$NON-NLS-1$
     EObject target = handler.getTargetElement(element, icontext);
     EObject source = handler.getSourceElement(element, icontext);
 
     if ((target != null) && (source != null)) {
-      ID = "TRACE_BETWEEN_" + getMatchID(target, scope) + " " + getMatchID(source, scope) + " "
+      ID = "TRACE_BETWEEN_" + getMatchID(target, scope) + " " + getMatchID(source, scope) + " " //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
           + element.eClass().getName();
 
     }
@@ -124,7 +124,7 @@ public class TopDownMatchPolicy
    */
   private String getIdentifier(EObject element, IContext context, ITreeDataScope<EObject> scope, ITraceabilityHandler handler) {
 
-    String ID = "";
+    String ID = ""; //$NON-NLS-1$
 
     if (element == null) {
       return ID;
@@ -134,18 +134,18 @@ public class TopDownMatchPolicy
     }
 
     if (!isMatchable(element, scope, context)) {
-      ID += "UNMATCHABLE-ELEMENT-";
+      ID += "UNMATCHABLE-ELEMENT-"; //$NON-NLS-1$
     }
 
     SystemEngineering engineering = (SystemEngineering) EcoreUtil2.getFirstContainer(element, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
     if (engineering != null) {
-      ID += engineering.getId() + "_";
+      ID += engineering.getId() + "_"; //$NON-NLS-1$
     }
 
     // If into an architecture, we add ArchitectureIdentifier
     BlockArchitecture elementArch = BlockArchitectureExt.getRootBlockArchitecture(element);
     if (elementArch != null) {
-      ID += elementArch.eClass().getName() + "_";
+      ID += elementArch.eClass().getName() + "_"; //$NON-NLS-1$
     }
 
     EObject sourceElement = element;
@@ -178,9 +178,9 @@ public class TopDownMatchPolicy
         sources = new HashSet<EObject>();
         for (ComponentExchange exchange : port.getComponentExchanges()) {
           if (port.equals(ComponentExchangeExt.getSourcePort(exchange))) {
-            relationBetweenElements = "sourceOf";
+            relationBetweenElements = "sourceOf"; //$NON-NLS-1$
           } else {
-            relationBetweenElements = "targetOf";
+            relationBetweenElements = "targetOf"; //$NON-NLS-1$
           }
           sources.addAll(handler.retrieveSourceElements(exchange, context));
         }

@@ -51,11 +51,11 @@ import org.polarsys.capella.core.transition.common.ui.Activator;
 public class DiffComparisonViewer extends ComparisonViewer {
 
   /** The name of the "merge all" image */
-  private static final String CHECKIN_ACTION_ALL = "checkin_action_all.gif";
+  private static final String CHECKIN_ACTION_ALL = "checkin_action_all.gif"; //$NON-NLS-1$
 
-  private static final String CHECKOUT_ACTION_ALL = "checkout_action_all.gif";
+  private static final String CHECKOUT_ACTION_ALL = "checkout_action_all.gif"; //$NON-NLS-1$
 
-  private static final String DIFFMERGE_VIEWER_MENU = "org.polarsys.capella.core.transition.common.ui.diffmerge";
+  private static final String DIFFMERGE_VIEWER_MENU = "org.polarsys.capella.core.transition.common.ui.diffmerge"; //$NON-NLS-1$
 
   private static boolean mergeAllInProgress = false;
 
@@ -147,7 +147,7 @@ public class DiffComparisonViewer extends ComparisonViewer {
   }
 
   protected ImageDescriptor getImageDescriptor(String key) {
-    ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/ctool16/" + key);
+    ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/ctool16/" + key); //$NON-NLS-1$
     return desc;
   }
 

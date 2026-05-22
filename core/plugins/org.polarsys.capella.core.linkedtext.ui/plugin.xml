@@ -16,14 +16,14 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_D_48 - Dangling LinkedText hyperlinks in OpaqueExpressions"
+                  name="%constraint.name"
                   severity="ERROR"
                   statusCode="1">
               <message>
-                 OpaqueExpression {0} contains one or more dangling element references
+                 %constraint.message
               </message>
               <description>
-              	Verifies that all LinkedText hyperlinks in an OpaqueExpression can be resolved
+              	%constraint.description
               </description>
               <target
                     class="OpaqueExpression">

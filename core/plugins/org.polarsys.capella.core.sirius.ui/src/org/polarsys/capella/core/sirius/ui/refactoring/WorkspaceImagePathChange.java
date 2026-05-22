@@ -59,7 +59,7 @@ import org.polarsys.capella.core.sirius.ui.helper.ResourceHelper;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
 public class WorkspaceImagePathChange extends Change {
-  private static final String QUOTE = "\"";
+  private static final String QUOTE = "\""; //$NON-NLS-1$
 
   /**
    * The hierarchical position of the renamed container relative to the workspace root. <br>
@@ -200,7 +200,7 @@ public class WorkspaceImagePathChange extends Change {
               boolean stringUpdate = false;
               while (matcher.find()) {
                 String originalPath = matcher.group(1);
-                if (!originalPath.startsWith("/")) {
+                if (!originalPath.startsWith("/")) { //$NON-NLS-1$
                   String newPath = getNewPath(originalPath);
                   if (!newPath.equals(originalPath)) {
                     stringUpdate = true;
@@ -273,7 +273,7 @@ public class WorkspaceImagePathChange extends Change {
     String newPath = oldPath;
     Path path = new Path(oldPath);
     String segment = path.segment(position);
-    String oldName = (overridenProjectName != null && !overridenProjectName.equals("")) ? overridenProjectName : container.getName();
+    String oldName = (overridenProjectName != null && !overridenProjectName.equals("")) ? overridenProjectName : container.getName(); //$NON-NLS-1$
     if (oldName.equals(segment)) {
       newPath = oldPath.replace(oldName, renameArguments.getNewName());
     }

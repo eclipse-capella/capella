@@ -133,7 +133,7 @@ public class CapellaLocationTraceabilityConfiguration extends LocationTraceabili
    */
   @Override
   protected String getExtensionIdentifier(IContext context_p) {
-    return "MATCH";
+    return "MATCH"; //$NON-NLS-1$
   }
 
 }

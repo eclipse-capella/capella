@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
@@ -72,7 +73,7 @@ public class MDCHK_SequenceMessage_ES_OES_InvokedOperation extends AbstractModel
       // null value for invokedOperarion is tested in another validation rule.
       return ctx_p.createSuccessStatus();
     } else if (!(invokedOperation instanceof FunctionalExchange) && !(invokedOperation instanceof ComponentExchange)) {
-      return createFailureStatus(ctx_p, sequenceMessage, "Sequence Message invoked operation is not a Functional Exchange or a Component Exchange");
+      return createFailureStatus(ctx_p, sequenceMessage, Messages.MDCHK_SequenceMessage_ES_OES_InvokedOperation_0);
     }
     // Get available exchanges between source and target InstanceRoles and check previously found exchange is amongst them.
     if (invokedOperation instanceof ComponentExchange) {
@@ -80,16 +81,14 @@ public class MDCHK_SequenceMessage_ES_OES_InvokedOperation extends AbstractModel
       if (!availableComponentExchanges.contains(invokedOperation)) {
         String exchangeSourceComponentName = EObjectLabelProviderHelper.getText(ComponentExchangeExt.getSourceComponent((ComponentExchange) invokedOperation));
         String exchangeTargetComponentName = EObjectLabelProviderHelper.getText(ComponentExchangeExt.getTargetComponent((ComponentExchange) invokedOperation));
-        return createFailureStatus(ctx_p, sequenceMessage, "Invoked Component Exchange (source: " + exchangeSourceComponentName + ", target: "
-                                                           + exchangeTargetComponentName + ") is no more available for this Sequence Message");
+        return createFailureStatus(ctx_p, sequenceMessage, NLS.bind(Messages.MDCHK_SequenceMessage_ES_OES_InvokedOperation_1, exchangeSourceComponentName, exchangeTargetComponentName));
       }
     } else if (invokedOperation instanceof FunctionalExchange) {
       Collection<FunctionalExchange> availableFunctionalExchanges = DataFlowHelper.getAvailableFonctionalExchanges(sequenceMessage);
       if (!availableFunctionalExchanges.contains(invokedOperation)) {
         String exchangeSourceFunctionName = EObjectLabelProviderHelper.getText(FunctionalExchangeExt.getSourceFunction((FunctionalExchange) invokedOperation));
         String exchangeTargetFunctionName = EObjectLabelProviderHelper.getText(FunctionalExchangeExt.getTargetFunction((FunctionalExchange) invokedOperation));
-        return createFailureStatus(ctx_p, sequenceMessage, "Invoked Functional Exchange (source: " + exchangeSourceFunctionName + ", target: "
-                                                           + exchangeTargetFunctionName + ") is no more available for this Sequence Message");
+        return createFailureStatus(ctx_p, sequenceMessage, NLS.bind(Messages.MDCHK_SequenceMessage_ES_OES_InvokedOperation_4, exchangeSourceFunctionName, exchangeTargetFunctionName));
       }
     }
     return ctx_p.createSuccessStatus();

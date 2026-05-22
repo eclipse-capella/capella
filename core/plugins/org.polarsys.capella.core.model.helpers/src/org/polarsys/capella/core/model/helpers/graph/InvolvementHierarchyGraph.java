@@ -74,7 +74,7 @@ public class InvolvementHierarchyGraph {
       boolean created = createVertex(function, currentReferenceHierarchy);
 
       if (!created) {
-        LOGGER.warn("Vertex already exists: [" + function + " " + currentReferenceHierarchy + "]");
+        LOGGER.warn("Vertex already exists: [" + function + " " + currentReferenceHierarchy + "]"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
       }
 
     } else if (current instanceof FunctionalChainReference) {
@@ -107,7 +107,7 @@ public class InvolvementHierarchyGraph {
         createEdge(link, sourceVertex, targetVertex);
       } else {
         LOGGER.warn(
-            "Either source or target vertices are null: [" + link + " " + sourceVertex + " " + targetVertex + "]");
+            "Either source or target vertices are null: [" + link + " " + sourceVertex + " " + targetVertex + "]"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
       }
     } else if (current instanceof FunctionalChainReference) {
       FunctionalChainReference reference = (FunctionalChainReference) current;
@@ -258,7 +258,7 @@ public class InvolvementHierarchyGraph {
 
     @Override
     public String toString() {
-      return "VertexKey [function=" + function + ", referenceHierarchy=" + referenceHierarchy + "]";
+      return "VertexKey [function=" + function + ", referenceHierarchy=" + referenceHierarchy + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
   }
 
@@ -308,7 +308,7 @@ public class InvolvementHierarchyGraph {
 
     @Override
     public String toString() {
-      return "Vertex [function=" + function + ", referenceHierarchy=" + referenceHierarchy + "]";
+      return "Vertex [function=" + function + ", referenceHierarchy=" + referenceHierarchy + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
   }
@@ -338,7 +338,7 @@ public class InvolvementHierarchyGraph {
 
     @Override
     public String toString() {
-      return "Edge [link=" + link + ", source=" + source + ", target=" + target + "]";
+      return "Edge [link=" + link + ", source=" + source + ", target=" + target + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
     }
   }
 

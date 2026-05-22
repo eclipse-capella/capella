@@ -80,7 +80,7 @@ public class CapellaResourceHelper {
 
   public static final String AIRD_FILE_EXTENSION = SiriusUtil.SESSION_RESOURCE_EXTENSION;
 
-  public static final String AFM_FILE_EXTENSION = "afm";
+  public static final String AFM_FILE_EXTENSION = "afm"; //$NON-NLS-1$
 
   public static final String FRAGMENTS_DEFAULT_FOLDER = "fragments"; //$NON-NLS-1$
 

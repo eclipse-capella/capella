@@ -62,14 +62,14 @@ public class PhysicalPathRule extends org.polarsys.capella.core.transition.syste
         return result;
       }
       if (!ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, element_p, context_p)) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transition, "not in scope");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, org.polarsys.capella.core.transition.system.topdown.constants.Messages.TransitionRule_Error_Scope);
       }
       if (PhysicalPathExt.getInvolvedElements(element).isEmpty()) {
-        return new Status(IStatus.WARNING, Messages.Activity_Transition, "no involved elements");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, org.polarsys.capella.core.transition.system.topdown.constants.Messages.PhysicalPathRule_Error_NoInvolvement);
       }
       for (AbstractPathInvolvedElement involvedElt : PhysicalPathExt.getInvolvedElements(element)) {
         if (!TransformationHandlerHelper.getInstance(context_p).isOrWillBeTransformed(involvedElt, context_p).isOK()) {
-          return new Status(IStatus.WARNING, Messages.Activity_Transition, "involved element");
+          return new Status(IStatus.WARNING, Messages.Activity_Transition, org.polarsys.capella.core.transition.system.topdown.constants.Messages.TransitionRule_Error_InvolvedElementNotTransitioned);
 
         }
       }

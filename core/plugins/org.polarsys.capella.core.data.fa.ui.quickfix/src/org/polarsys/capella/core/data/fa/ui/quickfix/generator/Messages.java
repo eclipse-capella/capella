@@ -16,6 +16,13 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.data.fa.ui.quickfix.generator.messages"; //$NON-NLS-1$
+  public static String DWF_DC_43_Resolutions_0;
+  public static String DWF_DF_16_Resolutions_1;
+  public static String DWF_DF_18_Resolutions_1;
+  public static String DWF_DF_19_Resolutions_1;
+  public static String DWF_DF_19_Resolutions_2;
+  public static String DWF_DF_20_Resolutions_1;
+  public static String DWF_DF_20_Resolutions_2;
   public static String GenerateInterfacesResolutionGenerator_allocateEIOnInterface;
   public static String GenerateInterfacesResolutionGenerator_allocateOnSelectedFECE;
   public static String GenerateInterfacesResolutionGenerator_deallocateEIFromInterface;

@@ -69,9 +69,9 @@ public class IntegerValueGroup extends TextValueGroup implements VerifyListener 
     /* Notice how we combine the old and new below */
     String currentText = ((Text) e.widget).getText();
     String newText = currentText.substring(0, e.start) + e.text + currentText.substring(e.end);
-    if ("".equals(newText)) {
+    if ("".equals(newText)) { //$NON-NLS-1$
       e.doit = true;
-      ((Text) e.widget).setText("0");
+      ((Text) e.widget).setText("0"); //$NON-NLS-1$
       return;
     }
     try {
@@ -88,7 +88,7 @@ public class IntegerValueGroup extends TextValueGroup implements VerifyListener 
    * @param button
    */
   protected void handleResetButtonClicked(Button button) {
-    setDataValue(semanticElement, semanticFeature, "0");
+    setDataValue(semanticElement, semanticFeature, "0"); //$NON-NLS-1$
     setTextValue(valueField, semanticElement, semanticFeature);
   }
 
@@ -98,7 +98,7 @@ public class IntegerValueGroup extends TextValueGroup implements VerifyListener 
   protected void updateResetBtnStatus() {
     if (null != valueResetBtn) {
       valueResetBtn.setEnabled(semanticElement.eGet(semanticFeature) != null
-          && !semanticElement.eGet(semanticFeature).equals("0"));
+          && !semanticElement.eGet(semanticFeature).equals("0")); //$NON-NLS-1$
     }
   }
 

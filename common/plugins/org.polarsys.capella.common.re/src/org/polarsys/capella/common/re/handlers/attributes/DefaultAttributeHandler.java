@@ -79,7 +79,7 @@ public class DefaultAttributeHandler implements IAttributeHandler {
   }
 
   public String getCurrentName(EObject object, IContext context, IPropertyContext pContext) {
-    String value = "";
+    String value = ""; //$NON-NLS-1$
     if (mNames.containsKey(object)) {
       return mNames.get(object);
     }
@@ -101,7 +101,7 @@ public class DefaultAttributeHandler implements IAttributeHandler {
 
         // If its name is updated, we display its current name and the new name
         if (!value.equals(newValue)) {
-          value += " -> ";
+          value += " -> "; //$NON-NLS-1$
           value += newValue;
         }
       }
@@ -192,7 +192,7 @@ public class DefaultAttributeHandler implements IAttributeHandler {
    */
   @Override
   public EStructuralFeature getSuffixableFeature(EObject object, IContext context) {
-    return object.eClass().getEStructuralFeature("name");
+    return object.eClass().getEStructuralFeature("name"); //$NON-NLS-1$
   }
 
 }

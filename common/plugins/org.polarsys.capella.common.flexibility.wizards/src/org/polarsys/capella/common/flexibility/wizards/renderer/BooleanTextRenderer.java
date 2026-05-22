@@ -63,7 +63,7 @@ public class BooleanTextRenderer extends AbstractRenderer {
       dataExport.setEnabled(prop.isEnabled(propertyContext));
       IStatus diag = property.validate(property.toType(newValue, propertyContext), propertyContext);
 
-      dataExport.setText(prop.getName() + " : " + rendererContext.getLabelProvider().getText(diag.getMessage()));
+      dataExport.setText(prop.getName() + " : " + rendererContext.getLabelProvider().getText(diag.getMessage())); //$NON-NLS-1$
 
       if (IStatus.INFO == diag.getSeverity()) {
         dataExport.setForeground(dataExport.getShell().getDisplay().getSystemColor(SWT.COLOR_DARK_BLUE));

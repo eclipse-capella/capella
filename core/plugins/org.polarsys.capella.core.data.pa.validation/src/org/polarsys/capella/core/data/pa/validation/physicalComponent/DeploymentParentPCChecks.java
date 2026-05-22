@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
@@ -52,8 +53,7 @@ public class DeploymentParentPCChecks extends AbstractValidationRule {
               PhysicalComponentNature.BEHAVIOR);
           if (!containedComponents.isEmpty()) {
             IStatus createFailureStatus = ctx
-                .createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(currentElement)
-                    + "can't contain BEHAVIOR components.");
+                .createFailureStatus(NLS.bind(Messages.DeploymentParentPCChecks_0, CapellaElementExt.getValidationRuleMessagePrefix(currentElement)));
             statuses.add(createFailureStatus);
           }
 
@@ -63,8 +63,7 @@ public class DeploymentParentPCChecks extends AbstractValidationRule {
               PhysicalComponentNature.NODE);
           if (!containedComponents.isEmpty()) {
             IStatus createFailureStatus = ctx
-                .createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(currentElement)
-                    + "can't contain NODE components.");
+                    .createFailureStatus(NLS.bind(Messages.DeploymentParentPCChecks_1, CapellaElementExt.getValidationRuleMessagePrefix(currentElement)));
             statuses.add(createFailureStatus);
           }
 
@@ -72,8 +71,7 @@ public class DeploymentParentPCChecks extends AbstractValidationRule {
               PhysicalComponentNature.NODE);
           if (!deployedComponents.isEmpty()) {
             IStatus createFailureStatus = ctx
-                .createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(currentElement)
-                    + "can't deploy NODE components.");
+                    .createFailureStatus(NLS.bind(Messages.DeploymentParentPCChecks_2, CapellaElementExt.getValidationRuleMessagePrefix(currentElement)));
             statuses.add(createFailureStatus);
           }
         }

@@ -40,7 +40,7 @@ public class PhysicalArtifactAllocated extends AbstractValidationRule {
         return ctx.createSuccessStatus();
       }
       String name = null;
-      String className = "(" + artifact.eClass().getName() + ")";
+      String className = "(" + artifact.eClass().getName() + ")"; //$NON-NLS-1$ //$NON-NLS-2$
       if (artifact instanceof PhysicalLink) {
         name = ((PhysicalLink) artifact).getName();
       } else if (artifact instanceof PhysicalComponent) {

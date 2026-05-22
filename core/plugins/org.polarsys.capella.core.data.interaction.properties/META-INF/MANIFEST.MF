@@ -17,5 +17,6 @@ Export-Package: org.polarsys.capella.core.data.interaction.properties,
  org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.viewAndController,
  org.polarsys.capella.core.data.interaction.properties.fields,
  org.polarsys.capella.core.data.interaction.properties.sections
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin

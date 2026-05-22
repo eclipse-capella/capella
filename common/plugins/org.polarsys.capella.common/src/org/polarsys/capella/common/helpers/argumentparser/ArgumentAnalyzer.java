@@ -325,7 +325,7 @@ public class ArgumentAnalyzer {
       throw new ArgumentAnalyzerException(
         NLS.bind(
           Messages.mandatoryFlagNotFound,
-          new Object[] {flag != null ? flag.getName() : "", currentFlagId}
+          new Object[] {flag != null ? flag.getName() : "", currentFlagId} //$NON-NLS-1$
         )
       );
     }

@@ -42,103 +42,103 @@ public class SVGMigrationContribution extends AbstractMigrationContribution {
 
   static {
     Map<String, String> changedImagesTemp = new HashMap<>();
-    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png",
-        "/org.polarsys.capella.core.ui.resources/icons/full/svg/SystemActor.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionDuplicateDiagram.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Gather.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionGatherDiagram.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Route.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionRouteDiagram.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Select.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionSelectDiagram.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Split.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionSplitDiagram.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/initialState.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/initialState.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/finalState.png.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/finalState.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/terminateState.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/terminateState.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/Actor.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/LogicalActor.png",
-        "/org.polarsys.capella.core.ui.resources/icons/full/svg/LogicalActor.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/LogicalComponent.png",
-        "/org.polarsys.capella.core.ui.resources/icons/full/svg/LogicalComponent.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/LogicalComponentHuman.png",
-        "/org.polarsys.capella.core.ui.resources/icons/full/svg/LogicalComponentHuman.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/PhysicalActor.png",
-        "/org.polarsys.capella.core.ui.resources/icons/full/svg/PhysicalActor.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/PhysicalComponentNode.png",
-        "/org.polarsys.capella.core.ui.resources/icons/full/svg/PhysicalComponentNode.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/PhysicalComponentHumanNode.png",
-        "/org.polarsys.capella.core.ui.resources/icons/full/svg/PhysicalComponentHumanNode.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/PhysicalComponentBehavior.png",
-        "/org.polarsys.capella.core.ui.resources/icons/full/svg/PhysicalComponentBehavior.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/PhysicalComponent.png",
-        "/org.polarsys.capella.core.ui.resources/icons/full/svg/PhysicalComponent.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/PhysicalComponentHumanUnset.png",
-        "/org.polarsys.capella.core.ui.resources/icons/full/svg/PhysicalComponentHumanUnset.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/CSCI.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/CSCI.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/CapabilityRealization.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/CapabilityRealization.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/eol.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/eol.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/CategoryInput.png", 
-        "/org.polarsys.capella.core.sirius.analysis/description/images/CategoryInput.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/CategoryOutput.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/CategoryOutput.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.png", 
-        "/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/FunctionInputPort.png", 
-        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionInputPort.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/FunctionOutputPort.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionOutputPort.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.png", 
-        "/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.png", 
-        "/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort.png", 
-        "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.png", 
-        "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalPort.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalPort.svg");
-    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalLink.png",
-        "/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalLink.svg");
+    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.ui.resources/icons/full/svg/SystemActor.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionDuplicateDiagram.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Gather.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionGatherDiagram.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Route.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionRouteDiagram.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Select.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionSelectDiagram.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Split.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionSplitDiagram.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/initialState.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/initialState.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/finalState.png.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/finalState.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/terminateState.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/terminateState.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/Actor.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/LogicalActor.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.ui.resources/icons/full/svg/LogicalActor.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/LogicalComponent.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.ui.resources/icons/full/svg/LogicalComponent.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/LogicalComponentHuman.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.ui.resources/icons/full/svg/LogicalComponentHuman.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/PhysicalActor.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.ui.resources/icons/full/svg/PhysicalActor.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/PhysicalComponentNode.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.ui.resources/icons/full/svg/PhysicalComponentNode.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/PhysicalComponentHumanNode.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.ui.resources/icons/full/svg/PhysicalComponentHumanNode.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/PhysicalComponentBehavior.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.ui.resources/icons/full/svg/PhysicalComponentBehavior.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/PhysicalComponent.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.ui.resources/icons/full/svg/PhysicalComponent.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.ui.resources/icons/full/png/PhysicalComponentHumanUnset.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.ui.resources/icons/full/svg/PhysicalComponentHumanUnset.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/CSCI.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/CSCI.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/CapabilityRealization.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/CapabilityRealization.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/eol.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/eol.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/CategoryInput.png",  //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/CategoryInput.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/CategoryOutput.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/CategoryOutput.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.png",  //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/FunctionInputPort.png",  //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionInputPort.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/FunctionOutputPort.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionOutputPort.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.png",  //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.png",  //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort.png",  //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.png",  //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalPort.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalPort.svg"); //$NON-NLS-1$
+    changedImagesTemp.put("/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalLink.png", //$NON-NLS-1$
+        "/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalLink.svg"); //$NON-NLS-1$
     CHANGED_IMAGES = Collections.unmodifiableMap(changedImagesTemp);
 
     Map<String, Map<String, Dimension>> differentSizePerDiagram = new HashMap<>();
     Map<String, Dimension> differentSizeTemp = new HashMap<>();
-    differentSizeTemp.put("Data Flow Blank", new Dimension(56, 55));
-    differentSizeTemp.put("Architecture Blank", new Dimension(50, 50));
-    differentSizeTemp.put("Functional Chain Description", new Dimension(50, 49));
+    differentSizeTemp.put("Data Flow Blank", new Dimension(56, 55)); //$NON-NLS-1$
+    differentSizeTemp.put("Architecture Blank", new Dimension(50, 50)); //$NON-NLS-1$
+    differentSizeTemp.put("Functional Chain Description", new Dimension(50, 49)); //$NON-NLS-1$
     differentSizePerDiagram.put(
-        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionDuplicateDiagram.svg",
+        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionDuplicateDiagram.svg", //$NON-NLS-1$
         differentSizeTemp);
     differentSizePerDiagram.put(
-        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionRouteDiagram.svg", differentSizeTemp);
+        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionRouteDiagram.svg", differentSizeTemp); //$NON-NLS-1$
     differentSizeTemp = new HashMap<>();
 
-    differentSizeTemp.put("Data Flow Blank", new Dimension(56, 56));
-    differentSizeTemp.put("Architecture Blank", new Dimension(50, 50));
-    differentSizeTemp.put("Functional Chain Description", new Dimension(50, 50));
+    differentSizeTemp.put("Data Flow Blank", new Dimension(56, 56)); //$NON-NLS-1$
+    differentSizeTemp.put("Architecture Blank", new Dimension(50, 50)); //$NON-NLS-1$
+    differentSizeTemp.put("Functional Chain Description", new Dimension(50, 50)); //$NON-NLS-1$
     differentSizePerDiagram.put(
-        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionGatherDiagram.svg", differentSizeTemp);
+        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionGatherDiagram.svg", differentSizeTemp); //$NON-NLS-1$
     differentSizePerDiagram.put(
-        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionSelectDiagram.svg", differentSizeTemp);
+        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionSelectDiagram.svg", differentSizeTemp); //$NON-NLS-1$
     differentSizePerDiagram.put(
-        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionSplitDiagram.svg", differentSizeTemp);
+        "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionSplitDiagram.svg", differentSizeTemp); //$NON-NLS-1$
     differentSizeTemp = new HashMap<>();
 
     DIFFERENT_IMAGE_SIZE_PER_DIAGRAM = Collections.unmodifiableMap(differentSizePerDiagram);

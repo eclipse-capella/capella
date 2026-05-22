@@ -62,7 +62,7 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
    * @param executionManager
    */
   public CapellaDeleteAction() {
-    super(EMFEditUIPlugin.INSTANCE.getString("_UI_Delete_menu_item"));
+    super(EMFEditUIPlugin.INSTANCE.getString("_UI_Delete_menu_item")); //$NON-NLS-1$
     // Add a listener to be notified when protected elements preferences change.
     CapellaActionsActivator.getDefault().getPreferenceStore().addPropertyChangeListener(this);
   }

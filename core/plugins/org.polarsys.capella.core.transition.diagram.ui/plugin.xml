@@ -73,7 +73,7 @@
       <menuContribution locationURI="popup:capella.project.explorer#PopupMenu?after=group.transition">
          <menu
                id="org.eclipse.ui.examples.contributions.editor.menu"
-               label="Transitions">
+               label="%menu.label">
                
               <visibleWhen checkEnabled="false">
                    <reference

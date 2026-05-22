@@ -20,6 +20,11 @@ public class Messages extends NLS {
   public static String ExportCSVPreferencePage_Description;
   public static String ExportCSVPreferencePage_ErrorMessage;
   public static String ExportCSVPreferencePage_Title;
+  public static String IExportCSVPreferences_delimiter_tab;
+  public static String IExportCSVPreferences_delimiter_semicolon;
+  public static String IExportCSVPreferences_delimiter_comma;
+  public static String IExportCSVPreferences_delimiter_space;
+  public static String IExportCSVPreferences_delimiter_other;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

@@ -90,7 +90,7 @@ public class LinkedTextDocument extends Document implements ILabelProviderListen
     public String getHref(Object base, Object target);
   }
 
-  private static final Pattern pattern = Pattern.compile("<a href=\"([^\"]*)\"/>");
+  private static final Pattern pattern = Pattern.compile("<a href=\"([^\"]*)\"/>"); //$NON-NLS-1$
   
   /* The base object. All hrefs are resolved against this object */
   private final Object documentBase;

@@ -27,6 +27,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.window.Window;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.widgets.Display;
@@ -118,9 +119,9 @@ public class ManageReferencedLibrariesHandler extends AbstractHandler {
       @Override
       public void addPages() {
         PropertyWizardPage page = new PropertyWizardPage("propertiesEditor", getContext(), getRendererContext()); //$NON-NLS-1$
-        page.setTitle(modelName + " management");
+        page.setTitle(NLS.bind(Messages.ManageReferencedLibrariesHandler_0, modelName));
         page.setDescription(
-            "This wizard helps you to define the libraries that are referenced by the current project (first tab).\nYou can also specify among these libraries which ones must be considered in capella query scopes (second tab).");
+            Messages.ManageReferencedLibrariesHandler_1);
         addPage(page);
       }
     };
@@ -138,8 +139,8 @@ public class ManageReferencedLibrariesHandler extends AbstractHandler {
 
     if (result == Window.OK) {
       if (!removedLibraries.isEmpty()) {
-        if (MessageDialog.openQuestion(Display.getDefault().getActiveShell(), "Read the documentation", //$NON-NLS-1$
-            "Unreferencing libraries may corrupt your model if not done in the proper way.\nMake sure to follow the procedure\nWould you like to open the documentation?")) {//$NON-NLS-1$
+        if (MessageDialog.openQuestion(Display.getDefault().getActiveShell(), Messages.ManageReferencedLibrariesHandler_UnreferenceDocDialogTitle,
+            Messages.ManageReferencedLibrariesHandler_UnreferenceDocDialogMessage)) {
           String localHRef = PlatformUI.getWorkbench().getHelpSystem().resolve(LIBRARY_DETACHMENT_DOC_URI, true)
               .toExternalForm();
           PlatformUI.getWorkbench().getHelpSystem().displayHelpResource(localHRef);

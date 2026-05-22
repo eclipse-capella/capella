@@ -169,7 +169,7 @@ public class GitConflictHelper {
             // org.eclipse.emf.diffmerge.connector.git.ext.GitHelper.isConflicting(Repository, String) with NPE checks
             DirCache readDirCache = repo.readDirCache();
             if (readDirCache != null) {
-              DirCacheEntry entry = readDirCache.getEntry(relativizedPath.toString().replace("\\", "/"));
+              DirCacheEntry entry = readDirCache.getEntry(relativizedPath.toString().replace("\\", "/")); //$NON-NLS-1$ //$NON-NLS-2$
               if (entry != null) {
                 return entry.getStage() > 0;
               }
@@ -211,7 +211,7 @@ public class GitConflictHelper {
     if (!inConflictFiles.isEmpty()) {
       return new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(),
           NLS.bind(Messages.GitConflictHelper_ResourcesInConflictState,
-              inConflictFiles.stream().map(IFile::getName).collect(Collectors.joining(", "))));
+              inConflictFiles.stream().map(IFile::getName).collect(Collectors.joining(", ")))); //$NON-NLS-1$
     }
     return Status.OK_STATUS;
   }
@@ -256,7 +256,7 @@ public class GitConflictHelper {
     if (!inConflictFiles.isEmpty()) {
       return new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(),
           NLS.bind(Messages.GitConflictHelper_ResourcesInConflictState,
-              inConflictFiles.stream().map(IFile::getName).collect(Collectors.joining(", "))));
+              inConflictFiles.stream().map(IFile::getName).collect(Collectors.joining(", ")))); //$NON-NLS-1$
     }
     return Status.OK_STATUS;
   }

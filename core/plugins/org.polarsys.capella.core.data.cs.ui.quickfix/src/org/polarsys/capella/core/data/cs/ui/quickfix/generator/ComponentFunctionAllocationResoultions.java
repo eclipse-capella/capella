@@ -42,6 +42,6 @@ public class ComponentFunctionAllocationResoultions extends AbstractMarkerResolu
   
   @Override
   protected String getRuleId() {
-    return "org.polarsys.capella.core.data.cs.validation.DWF_DC_09";
+    return "org.polarsys.capella.core.data.cs.validation.DWF_DC_09"; //$NON-NLS-1$
   }
 }

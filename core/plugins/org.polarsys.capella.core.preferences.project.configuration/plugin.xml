@@ -41,11 +41,11 @@
             hasPages="true"
             icon="icons/config_16x16.gif"
             id="capella.project.configuration.wizard"
-            name="Capella Configuration Project"
+            name="%wizard.name"
             preferredPerspectives="capella.sirius.perspective"
             project="true">
          <description>
-            Create a Capella Configuration project
+            %wizard.description
          </description>
       </wizard>
    </extension>

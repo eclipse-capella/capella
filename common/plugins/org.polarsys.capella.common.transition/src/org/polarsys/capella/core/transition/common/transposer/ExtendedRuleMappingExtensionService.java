@@ -37,7 +37,7 @@ public class ExtendedRuleMappingExtensionService extends RuleMappingExtensionSer
     _contributedPurposes.clear();
     _mappingsHashMap.clear();
     if (EMFPlugin.IS_ECLIPSE_RUNNING) {
-      IExtension extensions[] = Platform.getExtensionRegistry().getExtensionPoint("org.polarsys.kitalpha.transposer.rules.handler.mapping").getExtensions();
+      IExtension extensions[] = Platform.getExtensionRegistry().getExtensionPoint("org.polarsys.kitalpha.transposer.rules.handler.mapping").getExtensions(); //$NON-NLS-1$
       IExtension aiextension[];
       int l = (aiextension = extensions).length;
       for (int i = 0; i < l; i++) {
@@ -49,7 +49,7 @@ public class ExtendedRuleMappingExtensionService extends RuleMappingExtensionSer
           IConfigurationElement mappingConfigurationElement = aiconfigurationelement[i1];
 
           //We retrieve existing mapping if already defined.
-          if (mappingConfigurationElement.getName().equals("mapping")) {
+          if (mappingConfigurationElement.getName().equals("mapping")) { //$NON-NLS-1$
             if (!_mappingsHashMap.containsKey(currentMappingID)) {
               Mapping currentMapping = createMapping(mappingConfigurationElement);
               currentMapping.setId(currentMappingID);
@@ -57,7 +57,7 @@ public class ExtendedRuleMappingExtensionService extends RuleMappingExtensionSer
             }
 
             Mapping currentMapping = (Mapping) _mappingsHashMap.get(currentMappingID);
-            String purpose = mappingConfigurationElement.getAttribute("mappingPurpose");
+            String purpose = mappingConfigurationElement.getAttribute("mappingPurpose"); //$NON-NLS-1$
             ContributedPurpose currentPurpose = getCurrentPurpose(purpose);
             currentPurpose.getMappings().add(currentMapping);
           }
@@ -73,7 +73,7 @@ public class ExtendedRuleMappingExtensionService extends RuleMappingExtensionSer
         String extendedMappingIDs = getExtendedMappingID(extension);
         //We patch it to allow many extendedMappingIds !
         if (extendedMappingIDs != null) {
-          for (String extendedMappingID : extendedMappingIDs.split(";")) {
+          for (String extendedMappingID : extendedMappingIDs.split(";")) { //$NON-NLS-1$
             if (extendedMappingID != null) {
               Mapping extendedMapping = (Mapping) _mappingsHashMap.get(extendedMappingID);
               ExtendedMappingHelper.addExtendedMapping(currentMapping, extendedMapping);
@@ -90,7 +90,7 @@ public class ExtendedRuleMappingExtensionService extends RuleMappingExtensionSer
         int l1 = (aiconfigurationelement1 = extension.getConfigurationElements()).length;
         for (int j1 = 0; j1 < l1; j1++) {
           IConfigurationElement mappingConfigurationElement = aiconfigurationelement1[j1];
-          if (mappingConfigurationElement.getName().equals("mapping") && _mappingsHashMap.containsKey(currentMappingID)) {
+          if (mappingConfigurationElement.getName().equals("mapping") && _mappingsHashMap.containsKey(currentMappingID)) { //$NON-NLS-1$
             Mapping currentMapping = (Mapping) _mappingsHashMap.get(currentMappingID);
             try {
               loadMapping(currentMapping, mappingConfigurationElement);

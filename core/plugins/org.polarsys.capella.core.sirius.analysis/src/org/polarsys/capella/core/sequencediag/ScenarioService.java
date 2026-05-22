@@ -247,7 +247,7 @@ public class ScenarioService {
     
     AbstractInstance representedInstance = ir.getRepresentedInstance();
     if (representedInstance == null) {
-      return "[" + EObjectLabelProviderHelper.getMetaclassLabel(ir, false) + "]";
+      return "[" + EObjectLabelProviderHelper.getMetaclassLabel(ir, false) + "]"; //$NON-NLS-1$ //$NON-NLS-2$
     }
     AbstractType type = representedInstance.getAbstractType();
     if (type == null || TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(type))) {
@@ -963,10 +963,10 @@ public class ScenarioService {
   public String getOperandLabel(InteractionOperand operand) {
     StringBuilder builder = null;
     if (operand.getGuard() != null) {
-      builder = new StringBuilder("[ ");
-      builder.append(CapellaServices.getService().getConstraintLabel(operand.getGuard())).append(" ]");
+      builder = new StringBuilder("[ "); //$NON-NLS-1$
+      builder.append(CapellaServices.getService().getConstraintLabel(operand.getGuard())).append(" ]"); //$NON-NLS-1$
     }
-    return builder == null ? "" : builder.toString();
+    return builder == null ? "" : builder.toString(); //$NON-NLS-1$
   }
 
   public boolean isValidScenarioDrop(EObject context, Scenario scenario, EObject element) {
