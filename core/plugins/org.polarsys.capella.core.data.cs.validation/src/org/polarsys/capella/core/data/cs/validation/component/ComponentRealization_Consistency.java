@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.cs.Component;
@@ -77,25 +78,23 @@ public class ComponentRealization_Consistency extends AbstractValidationRule {
               // if target is not actor create failure status message
               String actorInfo = CapellaElementExt.getValidationRuleMessagePrefix(actor);
               if (null == source) {
-                statuses.add(ctx.createFailureStatus(actorInfo // $NON-NLS-1$
-                    + " contain realization with inconsistent Source (it should be not empty)")); //$NON-NLS-1$
+                statuses.add(ctx.createFailureStatus(NLS.bind(Messages.getString("ComponentRealization_Consistency_EmptySource"), actorInfo))); //$NON-NLS-1$
                 continue;
               }
               if (null == target) {
-                statuses.add(ctx.createFailureStatus(actorInfo // $NON-NLS-1$
-                    + " contain realization with inconsistent Target (it should be not empty)")); //$NON-NLS-1$
+                statuses.add(ctx.createFailureStatus(NLS.bind(Messages.getString("ComponentRealization_Consistency_EmptyTarget"), actorInfo))); //$NON-NLS-1$
                 continue;
               }
               if (validTarget.containsKey(source.eClass()) && !validTarget.get(source.eClass()).isInstance(target)) {
-                statuses.add(ctx.createFailureStatus(actorInfo // $NON-NLS-1$
-                    + " contain realization with inconsistent Target (it should be instance of " //$NON-NLS-1$
-                    + validTarget.get(source.eClass()).getName() + ")"));
+                statuses.add(ctx.createFailureStatus(NLS.bind(
+                    Messages.getString("ComponentRealization_Consistency_InconsistentTarget"), //$NON-NLS-1$
+                    actorInfo, validTarget.get(source.eClass()).getName())));
               }
 
               if (validSource.containsKey(target.eClass()) && !validSource.get(target.eClass()).isInstance(source)) {
-                statuses.add(ctx.createFailureStatus(actorInfo // $NON-NLS-1$
-                    + " contain realization with inconsistent Source (it should be instance of " //$NON-NLS-1$
-                    + validSource.get(target.eClass()).getName() + ")"));
+                statuses.add(ctx.createFailureStatus(NLS.bind(
+                    Messages.getString("ComponentRealization_Consistency_InconsistentSource"), //$NON-NLS-1$
+                    actorInfo, validSource.get(target.eClass()).getName())));
               }
             }
           }

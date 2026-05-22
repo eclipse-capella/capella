@@ -188,14 +188,14 @@ public class PreferencesExpression extends Expression {
 		
 		IWorkbenchActivitySupport activitySupport = PlatformUI.getWorkbench().getActivitySupport();
 		IActivityManager activityManager = activitySupport.getActivityManager();
-		IActivity a = activityManager.getActivity("org.eclipse.ui.actions");
+		IActivity a = activityManager.getActivity("org.eclipse.ui.actions"); //$NON-NLS-1$
 		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow() ;
 		
 		IMenuService mSvc = window.getService(IMenuService.class);
 		
 		
 		
-		ISelection selection = window.getSelectionService().getSelection("capella.project.explorer");
+		ISelection selection = window.getSelectionService().getSelection("capella.project.explorer"); //$NON-NLS-1$
 
 		((TreeSelection) selection).getFirstElement() ;
 

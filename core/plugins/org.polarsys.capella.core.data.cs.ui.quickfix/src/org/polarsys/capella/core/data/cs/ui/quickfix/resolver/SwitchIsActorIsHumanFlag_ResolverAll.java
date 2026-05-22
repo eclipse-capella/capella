@@ -32,7 +32,7 @@ public class SwitchIsActorIsHumanFlag_ResolverAll extends SwitchIsActorIsHumanFl
 
   @Override
   protected boolean canResolve(IMarker marker) {
-    String ruleId = "org.polarsys.capella.core.data.cs.validation.DWF_DC_36";
+    String ruleId = "org.polarsys.capella.core.data.cs.validation.DWF_DC_36"; //$NON-NLS-1$
     String markerRuleId = MarkerViewHelper.getRuleID(marker, true);
     return ruleId.equals(markerRuleId);
   }

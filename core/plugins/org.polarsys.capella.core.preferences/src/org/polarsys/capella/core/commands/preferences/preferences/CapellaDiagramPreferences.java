@@ -24,7 +24,7 @@ public class CapellaDiagramPreferences {
 
   public static final String PREF_DATE_TIMEZONE = "dateTimeZonePreference"; //$NON-NLS-1$
 
-  public static final String PREF_DATE_TIMEZONE_SYSTEM = "SYSTEM";
+  public static final String PREF_DATE_TIMEZONE_SYSTEM = "SYSTEM"; //$NON-NLS-1$
 
   public static final String PREF_DISPLAY_NAVIGATE_ON_DOUBLE_CLICK = "org.polarsys.capella.core.commands.preferences.ui.sirius.diagrams.navigate.doubleclick"; //$NON-NLS-1$
 }

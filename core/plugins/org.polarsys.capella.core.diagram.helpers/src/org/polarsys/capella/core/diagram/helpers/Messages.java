@@ -18,6 +18,8 @@ public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.diagram.helpers.messages"; //$NON-NLS-1$
   public static String DiagramHelper_0;
   public static String DiagramHelper_1;
+  public static String TitleBlockHelper_24;
+  public static String TitleBlockHelper_25;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

@@ -58,7 +58,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class DefaultCommandLine extends AbstractCommandLine {
-  public static String ALL_ARGUMENT = "/all";
+  public static String ALL_ARGUMENT = "/all"; //$NON-NLS-1$
 
   public DefaultCommandLine() {
     argHelper = CommandLineArgumentHelper.getInstance();
@@ -119,7 +119,7 @@ public class DefaultCommandLine extends AbstractCommandLine {
           logger.error(Messages.export_zip_not_found + project);
         } else {
           IWorkspace workspace = ResourcesPlugin.getWorkspace();
-          IFile file = outputFolder.getFile(project + ".zip");
+          IFile file = outputFolder.getFile(project + ".zip"); //$NON-NLS-1$
           IProject newProject = workspace.getRoot().getProject(project);
           WorkbenchHelper.exportZipFile(newProject, file);
         }
@@ -229,12 +229,12 @@ public class DefaultCommandLine extends AbstractCommandLine {
 
   protected void printHelp(List<String> hiddenArguments) {
     System.out.println("*** Applicable arguments for command line***"); //$NON-NLS-1$
-    printArgumentsFromTable("commonParameters", true, hiddenArguments);
+    printArgumentsFromTable("commonParameters", true, hiddenArguments); //$NON-NLS-1$
   }
 
   protected void printArgumentsFromTable(String tableId, boolean printTitle, List<String> hiddenArguments) {
     Bundle bundle = FrameworkUtil.getBundle(org.polarsys.capella.commandline.doc.Activator.class);
-    URL fileURL = bundle.getEntry("html/19. Command Line Support/19.1. Core Mechanism and Applications.html");
+    URL fileURL = bundle.getEntry("html/19. Command Line Support/19.1. Core Mechanism and Applications.html"); //$NON-NLS-1$
     try {
       URL resolvedUrl = FileLocator.toFileURL(fileURL);
       // We need to use the 3-arg constructor of URI in order to properly escape file system chars.
@@ -243,7 +243,7 @@ public class DefaultCommandLine extends AbstractCommandLine {
       DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
       // Do not resolve external data
       dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
-      dbf.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+      dbf.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false); //$NON-NLS-1$
 
       DocumentBuilder docBuilder = dbf.newDocumentBuilder();
       FileInputStream fis = new FileInputStream(docFile);
@@ -252,18 +252,18 @@ public class DefaultCommandLine extends AbstractCommandLine {
       XPathFactory xPathFactory = XPathFactory.newInstance();
       XPath xpath = xPathFactory.newXPath();
 
-      XPathExpression commonParametersTableExpr = xpath.compile("/html/body/table[@id='" + tableId + "']");
+      XPathExpression commonParametersTableExpr = xpath.compile("/html/body/table[@id='" + tableId + "']"); //$NON-NLS-1$ //$NON-NLS-2$
       Node tableNode = (Node) commonParametersTableExpr.evaluate(doc, XPathConstants.NODE);
 
-      XPathExpression rowExpr = xpath.compile("tr");
+      XPathExpression rowExpr = xpath.compile("tr"); //$NON-NLS-1$
       NodeList rowNodeList = (NodeList) rowExpr.evaluate(tableNode, XPathConstants.NODESET);
 
       // Print titles
       if (printTitle) {
         Node titleNode = rowNodeList.item(0);
-        XPathExpression thExpr = xpath.compile("th");
+        XPathExpression thExpr = xpath.compile("th"); //$NON-NLS-1$
         NodeList thNodeList = (NodeList) thExpr.evaluate(titleNode, XPathConstants.NODESET);
-        System.out.printf("%-30s%-15s%s", thNodeList.item(0).getTextContent(), thNodeList.item(1).getTextContent(),
+        System.out.printf("%-30s%-15s%s", thNodeList.item(0).getTextContent(), thNodeList.item(1).getTextContent(), //$NON-NLS-1$
             thNodeList.item(2).getTextContent());
         System.out.println();
       }
@@ -271,7 +271,7 @@ public class DefaultCommandLine extends AbstractCommandLine {
       // Print parameters
       for (int i = 1; i < rowNodeList.getLength(); i++) {
         Node trNode = rowNodeList.item(i);
-        XPathExpression tdExpr = xpath.compile("td");
+        XPathExpression tdExpr = xpath.compile("td"); //$NON-NLS-1$
         NodeList tdNodeList = (NodeList) tdExpr.evaluate(trNode, XPathConstants.NODESET);
         List<String> tds = new ArrayList<>();
         for (int j = 0; j < tdNodeList.getLength(); j++) {
@@ -279,7 +279,7 @@ public class DefaultCommandLine extends AbstractCommandLine {
           tds.add(tdNode.getTextContent());
         }
         if (!tds.isEmpty() && !hiddenArguments.contains(tds.get(0))) {
-          System.out.printf("%-30s%-15s%s", tds.get(0), tds.get(1), tds.get(2));
+          System.out.printf("%-30s%-15s%s", tds.get(0), tds.get(1), tds.get(2)); //$NON-NLS-1$
           System.out.println();
         }
       }

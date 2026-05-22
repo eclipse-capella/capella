@@ -40,7 +40,7 @@ public class PropertiesTabDescriptor extends AbstractTabDescriptor {
 
   @Override
   public String getCategory() {
-    return "category";
+    return "category"; //$NON-NLS-1$
   }
 
   @Override

@@ -20,5 +20,6 @@ Require-Bundle: org.polarsys.capella.core.validation,
  org.eclipse.emf.common
 Export-Package: org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram,
  org.polarsys.capella.core.platform.sirius.sirius.validation.parser.helper
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

@@ -20,12 +20,12 @@ public class CreateReplicaLauncher extends UpdateReplicaLauncher {
 
   @Override
   protected String getMapping() {
-    return "org.polarsys.capella.common.re.createReplica";
+    return "org.polarsys.capella.common.re.createReplica"; //$NON-NLS-1$
   }
 
   @Override
   protected String getScope() {
-    return "org.polarsys.capella.common.re.createReplica";
+    return "org.polarsys.capella.common.re.createReplica"; //$NON-NLS-1$
   }
 
   @Override

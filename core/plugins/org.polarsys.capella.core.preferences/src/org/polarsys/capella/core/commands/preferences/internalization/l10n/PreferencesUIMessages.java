@@ -35,6 +35,10 @@ public class PreferencesUIMessages extends NLS {
   public static String prefs_description_constraint;
   public static String prefs_description_constraint_error;
   public static String prefs_constraints_also;
+  public static String PreferencesHandler_Disabled_Element;
+  public static String UserProfilePreferencePage_Expert;
+  public static String UserProfilePreferencePage_Standard;
+  public static String UserProfileDescriptor_Expert;
   public static String Validation_liveValidationGroupLabel;
   public static String Validation_liveValidationDestinationPrompt;
   public static String Validation_liveValidationDestination_dialogComboItem;
@@ -49,6 +53,10 @@ public class PreferencesUIMessages extends NLS {
   public static String Validation_liveDialogTitle;
   public static String Validation_dontShowCheck;
   public static String Validation_outputProviderCategory;
+  public static String WizardPreferencesTransfererExportPage_BrowseWS_Label;
+  public static String WizardPreferencesTransfererExportPage_BrowseWS_Description;
+  public static String WizardPreferencesTransfererExportPage_BrowseFS_Label;
+  public static String WizardPreferencesTransfererExportPage_BrowseFS_Description;
 
   static {
     NLS.initializeMessages(BUNDLE_NAME, PreferencesUIMessages.class);

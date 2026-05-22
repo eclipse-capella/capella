@@ -20,6 +20,8 @@ import org.eclipse.osgi.util.NLS;
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.ui.properties.fields.messages"; //$NON-NLS-1$
 
+  public static String AbstractStructuredRepresentationField_0;
+
   public static String UndefinedValue;
   public static String BrowseSemanticField_DelBtn;
   public static String BrowseSemanticField_EditBtn;

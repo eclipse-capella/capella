@@ -34,7 +34,7 @@ public class AddModeStateToFunctionCommand  extends AbstractQueryBasedCommand {
 	   * @param linkRefInSource
 	   */
 	  public AddModeStateToFunctionCommand(EClass linkType, EReference linkRefInSource) {
-	    super("Add Mode or State to Abstract Function", LinkStyle.LINE_SOLID, linkType, linkRefInSource);
+	    super(Messages.AddModeStateToFunctionCommand_Label, LinkStyle.LINE_SOLID, linkType, linkRefInSource);
 	  }
 
 	  /**

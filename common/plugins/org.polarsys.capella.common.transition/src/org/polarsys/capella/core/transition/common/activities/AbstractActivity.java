@@ -23,7 +23,6 @@ import org.polarsys.capella.core.transition.common.ExtensionHelper;
 import org.polarsys.capella.core.transition.common.constants.ISchemaConstants;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.ITransitionSteps;
-import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.handlers.activity.IActivityExtender;
 import org.polarsys.kitalpha.cadence.core.api.IActivity;
@@ -205,8 +204,8 @@ public abstract class AbstractActivity implements IActivity {
     if (strings != null) {
       for (String string : strings) {
         if (!context.exists(string) || (context.get(string) == null)) {
-          return new Status(IStatus.ERROR, Messages.Activity_Transition,
-              NLS.bind("Parameter ''{0}'' must be defined", string));
+          return new Status(IStatus.ERROR, org.polarsys.capella.core.transition.common.constants.Messages.Activity_Transition,
+              NLS.bind(Messages.AbstractActivity_0, string));
         }
       }
     }

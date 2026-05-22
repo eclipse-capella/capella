@@ -29,4 +29,5 @@ Export-Package: org.polarsys.capella.core.libraries.ui,
  org.polarsys.capella.core.libraries.ui.views.libraryManager.activeStateManager,
  org.polarsys.capella.core.libraries.ui.views.libraryManager.referencesManager,
  org.polarsys.capella.core.libraries.ui.wizard.newLibrary
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-Localization: plugin

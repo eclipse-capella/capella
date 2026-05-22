@@ -162,7 +162,7 @@ public class CapellaPreferencesService {
      
       String key = decoded[1];
       if ((key != null) && (path != null) && isEMFValidationNode(path)) {
-        key = key.replaceFirst("con.disabled/", ICommonConstants.EMPTY_STRING);
+        key = key.replaceFirst("con.disabled/", ICommonConstants.EMPTY_STRING); //$NON-NLS-1$
         boolean bool = Boolean.parseBoolean(value);
         EMFModelValidationPreferences.setConstraintDisabled(key, Boolean.parseBoolean(value));
 

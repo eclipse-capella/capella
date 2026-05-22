@@ -39,8 +39,8 @@ public class MDCHK_LogicalComponent_Realization_2 extends AbstractValidationRule
         LogicalComponent lc = (LogicalComponent) eObj;
         if (lc.getRealizingPhysicalComponents().size() > 1) {
           return ctx.createFailureStatus(lc.getName(),
-              lc.getRealizingPhysicalComponents().stream().map(x -> x.getName()).collect(Collectors.joining(", ")),
-              NamingHelper.getTitleLabel(lc), "Physical Component");
+              lc.getRealizingPhysicalComponents().stream().map(x -> x.getName()).collect(Collectors.joining(", ")), //$NON-NLS-1$
+              NamingHelper.getTitleLabel(lc), Messages.MDCHK_LogicalComponent_Realization_RealizedComponentType);
         }
       }
     }

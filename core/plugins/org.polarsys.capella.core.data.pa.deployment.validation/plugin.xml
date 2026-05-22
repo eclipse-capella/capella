@@ -32,14 +32,14 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_DC_26 - Root Physical Component Ports Check"
+                  name="%constraint.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The Root Physical Component &quot;{0}&quot; should not have physical ports.
+                  %constraint.message
                </message>
                <description>
-                  This rule ensures that the Root Physical Component has no physical ports.
+                  %constraint.description
                </description>
                <target
                      class="PhysicalComponent">

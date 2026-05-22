@@ -33,7 +33,7 @@ public class SelectionDependenciesScopeHandler extends SelectionCommandHandler {
 
   @Override
   protected String getScope() {
-    return "org.polarsys.capella.common.re.retrieve.dependenciesElements";
+    return "org.polarsys.capella.common.re.retrieve.dependenciesElements"; //$NON-NLS-1$
   }
 
   /**

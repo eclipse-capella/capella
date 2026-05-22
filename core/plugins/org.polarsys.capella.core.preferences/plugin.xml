@@ -20,7 +20,7 @@
 	  		category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
             class="org.polarsys.capella.core.commands.preferences.ui.AbstractCapellaCommandsPreferencePage"
             id="org.polarsys.capella.core.commands.preferences.capella.contextual.commands.preferences.page"
-            name="Commands Configurability">
+            name="%Configure.commands.page.name">
       </page>
       
       <page
@@ -28,7 +28,7 @@
             class="org.polarsys.capella.core.commands.preferences.ui.UserProfilePreferencePage"
             id="org.polarsys.capella.core.commands.preferences.ui.validationPreferencePage"
             objectClass="org.eclipse.core.resources.IProject"
-            name="User Profile">
+            name="%user.profile.page.name">
       </page>
       
        <page
@@ -36,7 +36,7 @@
             class="org.polarsys.capella.core.commands.preferences.ui.ItemsPreferencePage"
             id="org.polarsys.capella.core.commands.preferences.ui.constraintsPreferencePage"
             objectClass="org.eclipse.core.resources.IProject"
-            name="Commands">
+            name="%commands.page.name">
       </page>
       <page
 	        category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
@@ -182,7 +182,7 @@
             class="org.polarsys.capella.core.commands.preferences.ui.AbstractCapellaCommandsPreferencePage"
             id="org.polarsys.capella.core.commands.preferences.capella.contextual.commands.preferences.page"
             objectClass="org.eclipse.core.resources.IProject"
-            name="Commands Configurability">
+            name="%Configure.commands.page.name">
             <enabledWhen>
                  <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
             </enabledWhen>
@@ -195,7 +195,7 @@
             class="org.polarsys.capella.core.commands.preferences.ui.UserProfilePreferencePage"
             id="org.polarsys.capella.core.commands.preferences.ui.validationPreferencePage"
             objectClass="org.eclipse.core.resources.IProject"
-            name="User Profile">
+            name="%user.profile.page.name">
             <enabledWhen>
                  <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
             </enabledWhen>
@@ -208,7 +208,7 @@
             class="org.polarsys.capella.core.commands.preferences.ui.ItemsPreferencePage"
             id="org.polarsys.capella.core.commands.preferences.ui.constraintsPreferencePage"
             objectClass="org.eclipse.core.resources.IProject"
-            name="Commands">
+            name="%commands.page.name">
             <enabledWhen>
                  <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
             </enabledWhen>
@@ -219,7 +219,7 @@
             class="org.polarsys.capella.core.commands.preferences.ui.ProjectReferencesPreferencePage"
             id="org.eclipse.ui.propertypages.project.reference"
             objectClass="org.eclipse.core.resources.IProject"
-            name="Capella Project References">
+            name="%page.name.5">
          <filter
                name="nature"
                value="org.polarsys.capella.project.nature">
@@ -307,11 +307,11 @@
 
       <transfer icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella.png"
        id="org.polarsys.capella.core.preferences.preferenceTransfer"
-            name="Capella Preferences">
+            name="%transfer.name">
          <!--mapping scope="project"></mapping-->
          <mapping scope="instance"></mapping>
        <description>
-             Export all Capella Preferences, exports all nodes for project scope
+             %transfer.description
       </description>
            
       </transfer>
@@ -321,9 +321,9 @@
     <transfer
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella.png"
             id="org.polarsys.capella.core.model.preferences.transfer2"
-            name="Model Validation Preferences">
+            name="%transfer.name.0">
          <description>
-            Model Validation Preferences
+            %transfer.description.0
          </description>
          <mapping scope="instance">
             <entry node="org.eclipse.emf.validation"/>
@@ -336,9 +336,9 @@
          <transfer
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella.png"
             id="org.polarsys.capella.core.model.preferences.transfer3"
-            name="Viewpoints Preferences">
+            name="%transfer.name.1">
          <description>
-            Viewpoints Preferences
+            %transfer.description.1
          </description>
          <mapping scope="instance">
             <entry node="org.eclipse.sirius.ui"/>

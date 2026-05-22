@@ -29,5 +29,6 @@ Export-Package: org.polarsys.capella.core.platform.sirius.ui.project,
  org.polarsys.capella.core.platform.sirius.ui.project.internal.preferences,
  org.polarsys.capella.core.platform.sirius.ui.project.operations,
  org.polarsys.capella.core.platform.sirius.ui.project.provider
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy

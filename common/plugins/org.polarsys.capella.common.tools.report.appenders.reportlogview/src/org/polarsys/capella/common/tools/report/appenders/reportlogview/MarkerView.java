@@ -81,7 +81,7 @@ public class MarkerView extends ViewPart {
   /* FIXME this is only used by log view appender */
   public static final String MARKER_ID = VIEW_ID;
 
-  private static final String CAPELLA_PROJECT_EXPLORER_ID = "capella.project.explorer";
+  private static final String CAPELLA_PROJECT_EXPLORER_ID = "capella.project.explorer"; //$NON-NLS-1$
   
   private MarkerViewHelper helper;
   private MarkerViewColumns columns;

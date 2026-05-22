@@ -37,7 +37,7 @@ public class ControlNodeKindGroup extends AbstractSemanticKindGroup {
    * @param enabled
    */
   public ControlNodeKindGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean enabled) {
-    super(parent, widgetFactory, Messages.getString("ControlNodeKind.Label"), 6);
+    super(parent, widgetFactory, Messages.getString("ControlNodeKind.Label"), 6); //$NON-NLS-1$
 
     controlNodeKindBtnOR = createButton(ControlNodeKind.OR, enabled);
     controlNodeKindBtnAND = createButton(ControlNodeKind.AND, enabled);

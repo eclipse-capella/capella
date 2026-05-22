@@ -59,10 +59,10 @@ public class ScopeUIHandler extends ScopeHandler {
        */
       @Override
       public IGroupRenderer createDefaultRenderer(IPropertyGroup propertyGroup) {
-        if ("org.polarsys.capella.common.re.description.location".equals(propertyGroup.getId())) {
+        if ("org.polarsys.capella.common.re.description.location".equals(propertyGroup.getId())) { //$NON-NLS-1$
           return new FlatSectionGroupRenderer();
         }
-        if ("org.polarsys.capella.common.re.description.replicableElementGroup.child".equals(propertyGroup.getId())) {
+        if ("org.polarsys.capella.common.re.description.replicableElementGroup.child".equals(propertyGroup.getId())) { //$NON-NLS-1$
           return new FlatGroupRenderer() {
 
             @Override
@@ -83,7 +83,7 @@ public class ScopeUIHandler extends ScopeHandler {
 
           };
         }
-        if ("org.polarsys.capella.common.re.description.replicableElementGroup".equals(propertyGroup.getId())) {
+        if ("org.polarsys.capella.common.re.description.replicableElementGroup".equals(propertyGroup.getId())) { //$NON-NLS-1$
           return new FlatGroupRenderer() {
 
             @Override

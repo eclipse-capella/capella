@@ -18,6 +18,7 @@ import org.eclipse.osgi.util.NLS;
  */
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.commandline.core.messages"; //$NON-NLS-1$
+  public static String AbstractCommandLine_2;
   public static String cannot_create_folder;
   public static String Error_versionCompliancy;
   public static String Error_needMigrationMessage;
@@ -33,7 +34,6 @@ public class Messages extends NLS {
   public static String filepath_point_to_aird;
   public static String generation_done;
   public static String representation_mandatory;
-  public static String resource_prefix;
   public static String displayIsNull;
   public static String already_exist;
   public static String could_not_create_exec;

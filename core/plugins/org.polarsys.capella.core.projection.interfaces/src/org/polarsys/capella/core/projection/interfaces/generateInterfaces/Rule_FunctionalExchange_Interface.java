@@ -158,8 +158,8 @@ public class Rule_FunctionalExchange_Interface extends InterfaceGenerationRule {
   private void logMultipleInfosFound(EObject exchange, ITransfo transfo) {
     // Do not log error in the Information view when this rule is executed during a model validation
     if (!transfo.isDryRun()) {
-      _logger.error(new EmbeddedMessage("Skipping generation for functional exchange "
-          + EObjectLabelProviderHelper.getText(exchange) + " which has inconsistent or multiple port/ce allocations",
+      _logger.error(new EmbeddedMessage("Skipping generation for functional exchange " //$NON-NLS-1$
+          + EObjectLabelProviderHelper.getText(exchange) + " which has inconsistent or multiple port/ce allocations", //$NON-NLS-1$
           _logger.getName(), exchange));
     }
   }
@@ -167,7 +167,7 @@ public class Rule_FunctionalExchange_Interface extends InterfaceGenerationRule {
   private void logNoInfosFound(EObject element) {
     if (_logger.isDebugEnabled()) {
       _logger.debug(new EmbeddedMessage(
-          "Skipping generation for internal functional exchange " + EObjectLabelProviderHelper.getText(element),
+          "Skipping generation for internal functional exchange " + EObjectLabelProviderHelper.getText(element), //$NON-NLS-1$
           _logger.getName(), element));
     }
   }

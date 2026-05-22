@@ -60,7 +60,7 @@ public class RemoveHiddenElementsCommand extends AbstractReadWriteCommand implem
 
   @Override
   public String getName() {
-    return "Remove hidden elements";
+    return Messages.RemoveHiddenElementsCommand_Name;
   }
 
   /**
@@ -134,17 +134,17 @@ public class RemoveHiddenElementsCommand extends AbstractReadWriteCommand implem
       // report information message to Information View
       if (count > 0) {
         childs.add(new Status(IStatus.OK, SiriusUIPlugin.getDefault().getPluginId(),
-            NLS.bind("Removing {0} element(s) from diagram: {2}",
+            NLS.bind(Messages.RemoveHiddenElementsCommand_Report,
                 new String[] { Integer.toString(count), descriptor.getName(), })));
       }
     }
     
     if (childs.isEmpty()) {
-      return new Status(IStatus.INFO, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind("{0}: Nothing to do", getName()));
+      return new Status(IStatus.INFO, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind(Messages.RemoveHiddenElementsCommand_NoOp, getName()));
     }
 
     MultiStatus status = new MultiStatus(SiriusUIPlugin.getDefault().getPluginId(), IStatus.OK,
-        NLS.bind("{0}: {1} diagram(s) updated", getName(), childs.size()), null);
+        NLS.bind(Messages.RemoveHiddenElementsCommand_DiagramUpdated, getName(), childs.size()), null);
     return status;
   }
 

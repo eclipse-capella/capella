@@ -312,7 +312,7 @@ public class CapellaElementExt {
     StringBuilder builder = new StringBuilder();
     for(EObject element : elements){
       builder.append(getName(element));
-      builder.append(" ");
+      builder.append(" "); //$NON-NLS-1$
     }
     return builder.toString();
   }
@@ -451,7 +451,7 @@ public class CapellaElementExt {
   public static String getValidationRuleMessagePrefix(AbstractNamedElement ele) {
     if (null != ele) {
       if (ele instanceof Component) {
-        return ele.getName() + " " + NamingHelper.getTitleLabel(ele);
+        return ele.getName() + " " + NamingHelper.getTitleLabel(ele); //$NON-NLS-1$
       }
       return ele.getName() + " (" + ele.eClass().getName() + ") "; //$NON-NLS-1$//$NON-NLS-2$
     }

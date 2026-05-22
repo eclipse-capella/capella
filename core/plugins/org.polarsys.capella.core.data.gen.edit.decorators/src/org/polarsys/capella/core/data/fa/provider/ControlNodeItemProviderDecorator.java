@@ -26,8 +26,6 @@ public class ControlNodeItemProviderDecorator extends ItemProviderAdapterDecorat
     implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
     IItemPropertySource {
 
-  protected static final String CONTROL_NODE_TEXT = "[Control Node]";
-
   public ControlNodeItemProviderDecorator(AdapterFactory adapterFactory) {
     super(adapterFactory);
   }
@@ -54,6 +52,6 @@ public class ControlNodeItemProviderDecorator extends ItemProviderAdapterDecorat
 
   @Override
   public String getText(Object object) {
-    return CONTROL_NODE_TEXT;
+    return "[" + Messages.ControlNode_Label + "]"; //$NON-NLS-1$ //$NON-NLS-2$
   }
 }

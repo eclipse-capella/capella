@@ -29,9 +29,9 @@ public class SubPropertiesTabDescriptorProvider extends ObjectPropertiesTabDescr
   @Override
   protected String adapt(String canonicalName) {
     String result = canonicalName;
-    result = result.replace("org.polarsys.capella.common.data", "org.polarsys.capella.core.properties");
-    result = result.replace("org.polarsys.capella.core.data", "org.polarsys.capella.core.properties");
-    result = result.replace("org.eclipse.sirius", "org.polarsys.capella.core.properties");
+    result = result.replace("org.polarsys.capella.common.data", "org.polarsys.capella.core.properties"); //$NON-NLS-1$ //$NON-NLS-2$
+    result = result.replace("org.polarsys.capella.core.data", "org.polarsys.capella.core.properties"); //$NON-NLS-1$ //$NON-NLS-2$
+    result = result.replace("org.eclipse.sirius", "org.polarsys.capella.core.properties"); //$NON-NLS-1$ //$NON-NLS-2$
 
     return result;
   }

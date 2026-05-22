@@ -145,7 +145,7 @@ public class ManyRefCellControl extends AbstractMAPrimitiveCellControl {
       if (!stringValue.isEmpty()) {
 
         if (stringValue.length() > DISPLAY_VALUE_MAX_LENGTH) {
-          stringValue = stringValue.substring(0, DISPLAY_VALUE_MAX_LENGTH - 3) + "...";
+          stringValue = stringValue.substring(0, DISPLAY_VALUE_MAX_LENGTH - 3) + "..."; //$NON-NLS-1$
         }
         this.editorValueText.setText(stringValue);
       }

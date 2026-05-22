@@ -25,7 +25,7 @@ import org.polarsys.capella.common.ui.massactions.shared.menu.AbstractSendToMenu
  */
 public class SendToMEMenuContributionItem extends AbstractSendToMenuContributionItem {
 
-  private static final String MASS_EDITING_VIEW_NAME = "Mass Editing";
+  private static final String MASS_EDITING_VIEW_NAME = Messages.SendToMEMenuContributionItem_MassEditingViewName;
 
   @Override
   protected String getViewID() {

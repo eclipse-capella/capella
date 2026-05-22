@@ -68,7 +68,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
   /**
    * carriage return
    */
-  public final static String __cr = System.getProperty("line.separator");
+  public final static String __cr = System.getProperty("line.separator"); //$NON-NLS-1$
 
   /**
    * Extension name
@@ -155,14 +155,14 @@ public abstract class TransfoEngine extends ITransfoEngine {
   private void attach() throws TransfoException {
     if (_logger.isDebugEnabled()) {
       _logger.debug("===================================="); //$NON-NLS-1$
-      _logger.debug("Attach");
+      _logger.debug("Attach"); //$NON-NLS-1$
       _logger.debug("===================================="); //$NON-NLS-1$
     }
     int step = 0;
     for (EObject sourceElement : _agenda) {
       if (_logger.isDebugEnabled()) {
-        _logger.debug(" + Step " + step);
-        _logger.debug("   - Current element is : " + EObjectExt.getText(sourceElement));
+        _logger.debug(" + Step " + step); //$NON-NLS-1$
+        _logger.debug("   - Current element is : " + EObjectExt.getText(sourceElement)); //$NON-NLS-1$
       }
       ITransfoRule rule = _transfo.findCachedMatchingRule(sourceElement);
       if (rule != null) {
@@ -193,7 +193,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
       StringBuilder builder = new StringBuilder("No containment for :"); //$NON-NLS-1$
       builder.append(System.getProperty("line.separator")); //$NON-NLS-1$
       for (EObject troubleObject : troubleList) {
-        builder.append(" - ");
+        builder.append(" - "); //$NON-NLS-1$
         builder.append(EObjectExt.getText(troubleObject));
         builder.append(System.getProperty("line.separator")); //$NON-NLS-1$
 
@@ -227,9 +227,9 @@ public abstract class TransfoEngine extends ITransfoEngine {
       _state = State.RUNNING;
 
       if (_logger.isDebugEnabled()) {
-        _logger.debug("====================================");
-        _logger.debug("Starting transformation '" + transfo.getUid() + "'");
-        _logger.debug("====================================");
+        _logger.debug("===================================="); //$NON-NLS-1$
+        _logger.debug("Starting transformation '" + transfo.getUid() + "'"); //$NON-NLS-1$ //$NON-NLS-2$
+        _logger.debug("===================================="); //$NON-NLS-1$
       }
 
       // 1- Find depending models (shared packages for instance)
@@ -277,7 +277,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
       String msg = NLS.bind(Messages.TransfoEngine_ErrorWhileTransformationDetailled + exception.getMessage(), exception.getClass().getSimpleName());
       _logger.error(msg, exception);
 
-      throw new TransfoException(exception.getMessage() + "(" + exception.getClass().getSimpleName() + ")",
+      throw new TransfoException(exception.getMessage() + "(" + exception.getClass().getSimpleName() + ")", //$NON-NLS-1$ //$NON-NLS-2$
           _transfo != null ? (EObject) _transfo.get(TRANSFO_SOURCE) : null, exception);
     } finally {
       postExecute(transfo);
@@ -370,7 +370,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
    */
   @Override
   public String getName() {
-    return "Tiger";
+    return "Tiger"; //$NON-NLS-1$
   }
 
   /**
@@ -414,7 +414,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
 
     if (_logger.isDebugEnabled()) {
       _logger.debug("===================================="); //$NON-NLS-1$
-      _logger.debug("Initializing transformation '" + transfo.getUid() + "'"); //$NON-NLS-1$
+      _logger.debug("Initializing transformation '" + transfo.getUid() + "'"); //$NON-NLS-1$ //$NON-NLS-2$
       _logger.debug("===================================="); //$NON-NLS-1$
     }
 
@@ -635,7 +635,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
   private void transformUpdate() throws TransfoException {
     if (_logger.isDebugEnabled()) {
       _logger.debug("===================================="); //$NON-NLS-1$
-      _logger.debug("Transform/Update");
+      _logger.debug("Transform/Update"); //$NON-NLS-1$
       _logger.debug("===================================="); //$NON-NLS-1$
       _logger.debug("Nb of element to be transformed: " + _agenda.size()); //$NON-NLS-1$
     }

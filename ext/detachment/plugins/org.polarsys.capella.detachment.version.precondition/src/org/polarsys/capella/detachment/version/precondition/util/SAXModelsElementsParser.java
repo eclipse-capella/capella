@@ -37,8 +37,8 @@ public class SAXModelsElementsParser extends DefaultHandler {
 	
 	private static final Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.MODEL);
 	
-	private static final String HREF_ATTR = "href"; //$NON-NLS-1
-	private static final String MODELS_TAG = "models"; //$NON-NLS-1
+	private static final String HREF_ATTR = "href"; //$NON-NLS-1$
+	private static final String MODELS_TAG = "models"; //$NON-NLS-1$
 	
 	Collection<IFile> capellaModellers;
 	public final IWorkspaceRoot wsRoot = ResourcesPlugin.getWorkspace().getRoot();
@@ -80,7 +80,7 @@ public class SAXModelsElementsParser extends DefaultHandler {
 	private IResource findResource(String path){
 		try {
 			if (path != null){
-				path = URLDecoder.decode(path, "UTF-8");
+				path = URLDecoder.decode(path, "UTF-8"); //$NON-NLS-1$
 				URI uri = URI.createURI(path).trimFragment();
 
 				if (uri.isPlatformResource()){
@@ -104,7 +104,7 @@ public class SAXModelsElementsParser extends DefaultHandler {
 
 	private String computeResourcePath(URI uri) {
 		String[] segments = uri.segments();
-		String path = "";
+		String path = ""; //$NON-NLS-1$
 		int i = 0;
 		
 		if (uri.isPlatformResource()){
@@ -114,7 +114,7 @@ public class SAXModelsElementsParser extends DefaultHandler {
 		}
 		
 		for (; i < segments.length - 1 ; i++) {
-			path += segments[i] + "/";
+			path += segments[i] + "/"; //$NON-NLS-1$
 		}
 		return path + uri.lastSegment();
 	}

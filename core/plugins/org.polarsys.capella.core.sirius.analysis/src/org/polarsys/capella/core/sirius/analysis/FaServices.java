@@ -2739,7 +2739,7 @@ public class FaServices {
           nodeSource, nodeTarget, exchange);
     }
 
-    CsServices.getService().setInterpreterVariable(context, "result", exchange);
+    CsServices.getService().setInterpreterVariable(context, "result", exchange); //$NON-NLS-1$
     return context;
   }
 
@@ -2886,7 +2886,7 @@ public class FaServices {
     CapellaServices.getService().creationService(exchange);
     DiagramServices.getDiagramServices().createEdge(FaServices.getFaServices().getMappingABConnection(diagram),
         nodeSource, nodeTarget, exchange);
-    CsServices.getService().setInterpreterVariable(context, "result", exchange);
+    CsServices.getService().setInterpreterVariable(context, "result", exchange); //$NON-NLS-1$
     return context;
   }
 
@@ -2919,7 +2919,7 @@ public class FaServices {
           sourcePort, (Part) targetPart, targetPort);
       DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
       CsServices.getService().showABComponentExchange(createdElements, (DSemanticDecorator) diagram);
-      CsServices.getService().setInterpreterVariable(context, "result", createdElements);
+      CsServices.getService().setInterpreterVariable(context, "result", createdElements); //$NON-NLS-1$
     }
     return context;
   }

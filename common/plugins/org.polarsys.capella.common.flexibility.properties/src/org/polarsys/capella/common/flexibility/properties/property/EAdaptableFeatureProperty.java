@@ -87,7 +87,7 @@ public class EAdaptableFeatureProperty extends EStructuralFeatureProperty {
   private Object adaptValue(Object currentValue, int i) {
     if (currentValue instanceof String) {
       String result = (String) currentValue;
-      result = result.replace("$i", "" + i);
+      result = result.replace("$i", "" + i); //$NON-NLS-1$ //$NON-NLS-2$
       return result;
     }
     return currentValue;

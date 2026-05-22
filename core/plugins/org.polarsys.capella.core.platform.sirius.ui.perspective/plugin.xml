@@ -21,7 +21,7 @@
             id="capella.sirius.perspective"
             name="%perspective.name">
          <description>
-            This is the Capella Perspective.
+            %perspective.description
          </description>
       </perspective>
    </extension>
@@ -42,11 +42,11 @@
        point="org.eclipse.ui.views">
       <category
             id="org.polarsys.capella.views.category"
-            name="Capella">
+            name="%category.name">
       </category>
       <category
             id="org.polarsys.capella.views.category.incubation"
-            name="Capella (Incubation)">
+            name="%category.name.0">
       </category>
     </extension>
     <extension
@@ -65,8 +65,8 @@
          point="org.eclipse.ui.activities">
          
      <activity id="org.polarsys.capella.core.hidden.activity" 
-     			description="Cover some features from Eclipse, Sirius or Kitalpha such as Sirius Specifier Project, Sirius Modeling Project, unused Kitalpha Views" 
-     			name= "Platform Features"/>
+     			description="%activity.description" 
+     			name= "%activity.name"/>
      
      <categoryActivityBinding
           activityId="org.polarsys.capella.core.hidden.activity"
@@ -92,9 +92,9 @@
    
      <!-- Declare a specific activity for elements only hidden in Capella perspective -->
 	 <activity
-		description="Hide elements on Capella Perspective"
+		description="%activity.description.0"
 		id="org.polarsys.capella.core.perspective.hidden.activity"
-		name="Capella Hidden Activities Perspective">
+		name="%activity.name.0">
 		<enabledWhen>
 			<with
 				variable="activeWorkbenchWindow.activePerspective">
@@ -119,37 +119,37 @@
    <extension
          point="org.eclipse.ui.activities">
       <category
-            description="Capella System Engineering Tools"
+            description="%category.description"
             id="org.polarsys.capella.activities.categories.capella"
-            name="Capella Tools">
+            name="%category.name.1">
       </category>
       <category
-            description="Capella System Engineering Phases"
+            description="%category.description.0"
             id="org.polarsys.capella.activities.categories.architectures"
-            name="Capella Phases">
+            name="%category.name.2">
       </category>
       <category
-            description="Capella System Engineering Concepts"
+            description="%category.description.1"
             id="org.polarsys.capella.activities.categories.common"
-            name="Capella Concepts">
+            name="%category.name.3">
       </category>
       <category
-            description="Platforrm"
+            description="%category.description.2"
             id="org.polarsys.capella.activities.categories.platform"
-            name="Platform">
+            name="%category.name.4">
       </category>
       <category
-            description="Modeling Features for Advanced Users"
+            description="%category.description.3"
             id="org.polarsys.capella.activities.categories.advanced"
-            name="Capella Advanced Modeling">
+            name="%category.name.5">
       </category>
       
 	 
 	 
 	   <activity
-             description="Concepts related to Transitions"
+             description="%activity.description.1"
              id="org.polarsys.capella.activities.transitions"
-             name="Transitions">
+             name="%activity.name.1">
        </activity>
        <defaultEnablement
              id="org.polarsys.capella.activities.transitions">
@@ -165,8 +165,8 @@
 
        <activity
              id="org.polarsys.capella.activities.libraries"
-             description="Concepts related to Libraries"
-             name="Libraries">
+             description="%activity.description.2"
+             name="%activity.name.2">
        </activity>
        <defaultEnablement
              id="org.polarsys.capella.activities.libraries">
@@ -182,9 +182,9 @@
        
        
        <activity
-             description="Concepts related to the Replicable Elements"
+             description="%activity.description.3"
              id="org.polarsys.capella.activities.re"
-             name="Replicable Elements">
+             name="%activity.name.3">
        </activity>
        <defaultEnablement id="org.polarsys.capella.activities.re"/>
         <categoryActivityBinding
@@ -204,9 +204,9 @@
       
        
        <activity
-             description="Concepts related to Wizards"
+             description="%activity.description.4"
              id="org.polarsys.capella.activities.wizards"
-             name="Wizards">
+             name="%activity.name.4">
        </activity>
        <defaultEnablement id="org.polarsys.capella.activities.wizards"/>
         <categoryActivityBinding
@@ -217,9 +217,9 @@
       
       
        <activity
-             name="Modeling Accelerators"
+             name="%activity.name.5"
              id="org.polarsys.capella.activities.accelerator"
-             description="Concepts related to Modeling Accelerators">
+             description="%activity.description.5">
        </activity>
        <defaultEnablement id="org.polarsys.capella.activities.accelerator"/>
         <categoryActivityBinding
@@ -237,9 +237,9 @@
       
       
       <activity
-             name="Element Creation in Project Explorer"
+             name="%activity.name.6"
              id="org.polarsys.capella.activities.element.creation"
-             description="Element Creation in Project Explorer">
+             description="%activity.description.6">
        </activity>
        <defaultEnablement id="org.polarsys.capella.activities.element.creation"/>
         <categoryActivityBinding
@@ -254,9 +254,9 @@
       
       
        <activity
-             name="Expert/Semantic Properties"
+             name="%activity.name.7"
              id="org.polarsys.capella.activities.expert.properties"
-             description="Allows the edition of model element properties through Expert Property View and Semantic Property View for diagram elements">
+             description="%activity.description.7">
        </activity>
         <categoryActivityBinding
              activityId="org.polarsys.capella.activities.expert.properties"
@@ -270,9 +270,9 @@
       
       
       <activity
-             name="Diagram Creation in Project Explorer"
+             name="%activity.name.8"
              id="org.polarsys.capella.activities.diagram.creation"
-             description="Diagram Creation in Project Explorer">
+             description="%activity.description.8">
        </activity>
        <defaultEnablement id="org.polarsys.capella.activities.diagram.creation"/>
         <categoryActivityBinding
@@ -293,8 +293,8 @@
 
 
 
-      <activity id="org.polarsys.capella.activities.fastLinker" name="Fast Linker" 
-                description="Concepts related to the Fast Linker Tool" />
+      <activity id="org.polarsys.capella.activities.fastLinker" name="%activity.name.9" 
+                description="%activity.description.9" />
       <categoryActivityBinding
             activityId="org.polarsys.capella.activities.fastLinker"
             categoryId="org.polarsys.capella.activities.categories.capella">
@@ -313,8 +313,8 @@
 
       <activity
             id="org.polarsys.capella.activities.migration"
-            description="Concepts related to Model Migration"
-            name="Migration">
+            description="%activity.description.10"
+            name="%activity.name.10">
       </activity>
       <defaultEnablement
             id="org.polarsys.capella.activities.migration">
@@ -327,8 +327,8 @@
       
       <activity
             id="org.polarsys.capella.activities.oa"
-            description="Concepts related to the Operational Analysis Engineering Phase in Activity Explorer"
-            name="1- Operational Analysis">
+            description="%activity.description.11"
+            name="%activity.name.11">
       </activity>
       <defaultEnablement
             id="org.polarsys.capella.activities.oa">
@@ -343,8 +343,8 @@
       
       <activity
             id="org.polarsys.capella.activities.sa"
-            description="Concepts related to the System Analysis Engineering Phase in Activity Explorer"
-            name="2- System Analysis">
+            description="%activity.description.12"
+            name="%activity.name.12">
       </activity>
       <defaultEnablement
             id="org.polarsys.capella.activities.sa">
@@ -358,8 +358,8 @@
       
       <activity
             id="org.polarsys.capella.activities.la"
-            description="Concepts related to the Logical Architecture Engineering Phase in Activity Explorer"
-            name="3- Logical Architecture">
+            description="%activity.description.13"
+            name="%activity.name.13">
       </activity>
       <defaultEnablement
             id="org.polarsys.capella.activities.la">
@@ -375,8 +375,8 @@
       
       <activity
             id="org.polarsys.capella.activities.pa"
-            description="Concepts related to the Physical Architecture Engineering Phase in Activity Explorer"
-            name="4- Physical Architecture">
+            description="%activity.description.14"
+            name="%activity.name.14">
       </activity>
       <defaultEnablement
             id="org.polarsys.capella.activities.pa">
@@ -389,8 +389,8 @@
       
       <activity
             id="org.polarsys.capella.activities.epbs"
-            description="Concepts related to the EPBS Engineering Phase in Activity Explorer"
-            name="5- EPBS">
+            description="%activity.description.15"
+            name="%activity.name.15">
       </activity>
       <defaultEnablement
             id="org.polarsys.capella.activities.epbs">
@@ -407,8 +407,8 @@
       
       <activity
             id="org.polarsys.capella.activities.pa.node"
-            description="Concepts related to Node Components"
-            name="Node Concepts">
+            description="%activity.description.16"
+            name="%activity.name.16">
       </activity>
       
       <defaultEnablement
@@ -439,8 +439,8 @@
       
       <activity
             id="org.polarsys.capella.activities.pa.behavior"
-            description="Concepts related to Behavior Components"
-            name="Behavior Concepts">
+            description="%activity.description.17"
+            name="%activity.name.17">
       </activity>
       
       <defaultEnablement
@@ -469,8 +469,8 @@
 
       <activity
             id="org.polarsys.capella.activities.fa"
-            description="Concepts related to Functional Analysis"            
-            name="Functional Analysis">
+            description="%activity.description.18"            
+            name="%activity.name.18">
       </activity>
       <defaultEnablement
             id="org.polarsys.capella.activities.fa">
@@ -494,9 +494,9 @@
       <activityPatternBinding pattern=".*allocated.function.*" activityId="org.polarsys.capella.activities.fa"/>
       <activityPatternBinding pattern=".*functional.chains.*" activityId="org.polarsys.capella.activities.fa"/>
       <activity
-            description="Concepts related to Capella Configuration Projects"
+            description="%activity.description.19"
             id="org.polarsys.capella.activities.configurationProjects"
-            name="Configuration Projects">
+            name="%activity.name.19">
       </activity>
       <categoryActivityBinding
             activityId="org.polarsys.capella.activities.configurationProjects"
@@ -512,9 +512,9 @@
       
       
       <activity
-            description="Concepts related to Capella Projects"
+            description="%activity.description.20"
             id="org.polarsys.capella.activities.capellaProjects"
-            name="Capella Projects">
+            name="%activity.name.20">
       </activity>
       <categoryActivityBinding
             activityId="org.polarsys.capella.activities.capellaProjects"
@@ -551,9 +551,9 @@
             pattern="pa.pab.all.deployed.behaviour.pcs">
       </activityPatternBinding>
       <activity
-            description="Concepts related to behavior deployment"
+            description="%activity.description.21"
             id="org.polarsys.capella.activities.behaviorDeployment"
-            name="Behavior Deployment Concepts">
+            name="%activity.name.21">
       </activity>
       <categoryActivityBinding
             activityId="org.polarsys.capella.activities.behaviorDeployment"
@@ -585,9 +585,9 @@
             pattern="pa.pab.all.deployed.node.pcs">
       </activityPatternBinding>
       <activity
-            description="Concepts related to node deployment"
+            description="%activity.description.22"
             id="org.polarsys.capella.activities.nodeDeployment"
-            name="Node Deployment Concepts">
+            name="%activity.name.22">
       </activity>
       <categoryActivityBinding
             activityId="org.polarsys.capella.activities.nodeDeployment"
@@ -626,7 +626,7 @@
          point="org.eclipse.ui.bindings">
       <scheme
             id="org.polarsys.capella.core.defaultAcceleratorConfiguration"
-            name="Capella Accelerator Configuration"
+            name="%scheme.name"
             parentId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </scheme>
    </extension>

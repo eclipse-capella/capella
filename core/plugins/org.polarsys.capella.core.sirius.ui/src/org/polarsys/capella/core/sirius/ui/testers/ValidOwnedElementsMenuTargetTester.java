@@ -18,7 +18,7 @@ import org.polarsys.capella.core.sirius.ui.helper.SelectionHelper;
 
 public class ValidOwnedElementsMenuTargetTester extends PropertyTester{
 
-  protected String PROPERTY_ID = "isValidOwnedElementsMenu";
+  protected String PROPERTY_ID = "isValidOwnedElementsMenu"; //$NON-NLS-1$
   @Override
   public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
     if (property.equals(PROPERTY_ID)) {

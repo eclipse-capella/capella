@@ -20,6 +20,8 @@ import org.eclipse.osgi.util.NLS;
  */
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.af.integration.messages"; //$NON-NLS-1$
+  public static String CapellaMetadataProvider_0;
+  public static String CapellaMetadataProvider_1;
   public static String MetadataUpdateContributor_Name;
   public static String MetadataCreationContributor_Name;
   public static String ViewpointMigrationContributor_Name;

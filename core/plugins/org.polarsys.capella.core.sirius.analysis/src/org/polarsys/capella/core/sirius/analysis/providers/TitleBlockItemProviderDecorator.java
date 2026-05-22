@@ -32,12 +32,12 @@ public class TitleBlockItemProviderDecorator extends ItemProviderAdapterDecorato
 
   @Override
   public String getText(Object object) {
-    String label = "";
+    String label = ""; //$NON-NLS-1$
     if (object instanceof DAnnotation) {
       label = TitleBlockHelper.getTitleBlockAnnotationLabel((EObject) object);
       String referencedElementLabel = TitleBlockHelper.getReferencedElementLabel((EObject) object);
       if (referencedElementLabel != null) {
-        label = label + " : " + referencedElementLabel;
+        label = label + " : " + referencedElementLabel; //$NON-NLS-1$
       }
     }
     return label;
@@ -45,13 +45,13 @@ public class TitleBlockItemProviderDecorator extends ItemProviderAdapterDecorato
 
   @Override
   public Object getImage(Object object) {
-    String imagePath = "/icons/full/obj16/TitleBlock.gif";
+    String imagePath = "/icons/full/obj16/TitleBlock.gif"; //$NON-NLS-1$
     
     if (TitleBlockHelper.isTitleBlockLine((DAnnotation) object)) {
-      imagePath = "/icons/full/obj16/TitleBlockLine.gif";
+      imagePath = "/icons/full/obj16/TitleBlockLine.gif"; //$NON-NLS-1$
       
     } else if (TitleBlockHelper.isTitleBlockCell((DAnnotation) object)) {
-      imagePath = "/icons/full/obj16/TitleBlockCell.gif";
+      imagePath = "/icons/full/obj16/TitleBlockCell.gif"; //$NON-NLS-1$
     }
     return SiriusViewActivator.imageDescriptorFromPlugin(SiriusViewActivator.ID, imagePath).createImage();
   }

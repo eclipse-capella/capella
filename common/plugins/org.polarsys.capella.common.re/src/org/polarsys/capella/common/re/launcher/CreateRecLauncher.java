@@ -20,12 +20,12 @@ public class CreateRecLauncher extends UpdateCurLauncher {
 
   @Override
   protected String getMapping() {
-    return "org.polarsys.capella.common.re.createRec";
+    return "org.polarsys.capella.common.re.createRec"; //$NON-NLS-1$
   }
 
   @Override
   protected String getScope() {
-    return "org.polarsys.capella.common.re.createRec";
+    return "org.polarsys.capella.common.re.createRec"; //$NON-NLS-1$
   }
 
   @Override

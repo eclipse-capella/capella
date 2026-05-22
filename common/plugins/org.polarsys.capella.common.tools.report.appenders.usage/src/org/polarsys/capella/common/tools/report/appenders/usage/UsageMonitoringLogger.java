@@ -29,10 +29,10 @@ public class UsageMonitoringLogger {
 
   private static UsageMonitoringLogger instance;
   private final UsageLogger logger;
-  public static String USAGE_PATH = "UsagePath";
+  public static String USAGE_PATH = "UsagePath"; //$NON-NLS-1$
 
-  private final String pathRegex = ".*\\$\\{[^\\}]+\\}.*";
-  private final String varRegex = "(\\$\\{[^\\}]+\\})";
+  private final String pathRegex = ".*\\$\\{[^\\}]+\\}.*"; //$NON-NLS-1$
+  private final String varRegex = "(\\$\\{[^\\}]+\\})"; //$NON-NLS-1$
 
   /**
    * @return a MonitoringLogger instance
@@ -50,7 +50,7 @@ public class UsageMonitoringLogger {
    */
   private void setUsagePath() {
     String usagePathProperty = System.getProperty(UsageMonitoringLogger.USAGE_PATH);
-    if (null == usagePathProperty || "".equals(usagePathProperty)) {
+    if (null == usagePathProperty || "".equals(usagePathProperty)) { //$NON-NLS-1$
       System.setProperty(UsageMonitoringLogger.USAGE_PATH,
           ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString());
     } else if (usagePathProperty.matches(pathRegex)) {
@@ -62,8 +62,8 @@ public class UsageMonitoringLogger {
         if (varValue == null) {
           // Log warning about undefined environment variable or system property
           UsageAppenderPlugin.getDefault().getLog()
-              .log(new Status(IStatus.WARNING, UsageAppenderPlugin.PLUGIN_ID, "Undefined environment variable: "
-                  + variableName + " found in -DUsagePath configuration. The log file will be put in the workspace."));
+              .log(new Status(IStatus.WARNING, UsageAppenderPlugin.PLUGIN_ID, "Undefined environment variable: " //$NON-NLS-1$
+                  + variableName + " found in -DUsagePath configuration. The log file will be put in the workspace.")); //$NON-NLS-1$
           unresolvableVar = true;
           break;
         }

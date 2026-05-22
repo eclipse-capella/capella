@@ -70,7 +70,7 @@ public class CapellaDescriptionPropertySection extends DescriptionPropertySectio
     }
   }
 
-  DelayedSetDescription job = new DelayedSetDescription("Load Description");
+  DelayedSetDescription job = new DelayedSetDescription(Messages.CapellaDescriptionPropertySection_0);
 
   /**
    * Avoid consecutive loads if the selection is quickly changed

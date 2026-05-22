@@ -35,7 +35,7 @@ import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
 public class AddInvolvedElementsResolver extends AbstractCapellaMarkerResolution {
-  private final String PROCESS_ICON = "icons/full/obj16/capella_process.gif";
+  private final String PROCESS_ICON = "icons/full/obj16/capella_process.gif"; //$NON-NLS-1$
   private final String overridenLabel;
   private final String ruleId;
   private boolean multiMarkerQuickFix;

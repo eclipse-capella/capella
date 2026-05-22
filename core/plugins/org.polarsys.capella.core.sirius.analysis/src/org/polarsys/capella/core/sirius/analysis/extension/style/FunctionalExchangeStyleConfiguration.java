@@ -69,7 +69,7 @@ public class FunctionalExchangeStyleConfiguration extends SimpleStyleConfigurati
   public boolean provides(DiagramElementMapping mapping, Style style) {
     if (mapping instanceof EdgeMapping) {
       String domainClass = ((EdgeMapping) mapping).getDomainClass();
-      return "FunctionalExchange".equals(domainClass);
+      return "FunctionalExchange".equals(domainClass); //$NON-NLS-1$
     }
     return false;
   }

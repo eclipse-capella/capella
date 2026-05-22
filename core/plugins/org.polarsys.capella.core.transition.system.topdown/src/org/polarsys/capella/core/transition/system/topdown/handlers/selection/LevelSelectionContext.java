@@ -48,6 +48,6 @@ public class LevelSelectionContext implements ISelectionContext {
 
   @Override
   public String toString() {
-    return "LevelSelectionContext:" + index.toString();
+    return "LevelSelectionContext:" + index.toString(); //$NON-NLS-1$
   }
 }

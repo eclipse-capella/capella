@@ -26,8 +26,8 @@ import org.polarsys.kitalpha.ad.viewpoint.utils.ModelAccessor;
 public class DisplaySelectionServiceImplementation extends CapellaServiceImplementation {
 
   public void run(Service service, ModelAccessor properties, Object[] selection) {
-    String string = service.getId() + " -> " + Arrays.toString(selection);
-    MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Capella Selection Result", string);
+    String string = service.getId() + " -> " + Arrays.toString(selection); //$NON-NLS-1$
+    MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), Messages.DisplaySelectionServiceImplementation_1, string);
     properties.getProperties();
   }
 

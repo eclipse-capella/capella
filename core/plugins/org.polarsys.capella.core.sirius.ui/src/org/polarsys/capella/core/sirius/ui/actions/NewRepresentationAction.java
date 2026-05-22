@@ -19,6 +19,7 @@ import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.window.Window;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
@@ -32,7 +33,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.common.ui.toolkit.dialogs.Messages;
 import org.polarsys.capella.core.sirius.analysis.commands.NewRepresentationCommand;
 
 /**
@@ -77,13 +77,13 @@ public class NewRepresentationAction extends AbstractNewRepresentationAction {
 
     IInterpreter interpreter = InterpreterUtil.getInterpreter(eObject);
 
-    String newName = "New "; //$NON-NLS-1$
-
+    String label;
     if (!StringUtil.isEmpty(descriptionLabel)) {
-      newName += descriptionLabel;
+      label = descriptionLabel;
     } else {
-      newName += repDescription.getName();
+      label = repDescription.getName();
     }
+    String newName = NLS.bind(Messages.NewRepresentationAction_Dialog_Title, label);
 
     String titleExpression = repDescription.getTitleExpression();
     if (!StringUtil.isEmpty(titleExpression)) {
@@ -104,12 +104,12 @@ public class NewRepresentationAction extends AbstractNewRepresentationAction {
 
     if (!forceDefaultName) {
 
-      String dialogTitle = "New " + descriptionLabel; //$NON-NLS-1$
+      String dialogTitle = NLS.bind(Messages.NewRepresentationAction_Dialog_Title, descriptionLabel);
       String dialogMessage;
       if(message != null) {
-        dialogMessage = message + "\n" + "Name:"; //$NON-NLS-1$
+        dialogMessage = message + "\n" + Messages.NewRepresentationAction_Dialog_NameLabel; //$NON-NLS-1$
       } else {
-        dialogMessage = "Name:"; //$NON-NLS-1$
+        dialogMessage = Messages.NewRepresentationAction_Dialog_NameLabel;
       }
 
       Shell activeShell = Display.getDefault().getActiveShell();
@@ -119,7 +119,7 @@ public class NewRepresentationAction extends AbstractNewRepresentationAction {
         @Override
         public String isValid(String newText) {
           if(newText.isBlank()) {
-            return Messages.blankName;
+            return org.polarsys.capella.common.ui.toolkit.dialogs.Messages.blankName;
           }
           return null;					
         }

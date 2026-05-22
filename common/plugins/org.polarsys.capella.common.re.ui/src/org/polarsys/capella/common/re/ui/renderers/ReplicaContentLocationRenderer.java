@@ -82,7 +82,7 @@ public class ReplicaContentLocationRenderer extends EditListRenderer implements 
     // We allow renaming of elements in this dialog
     final TreeViewer viewer = getViewer().getClientViewer();
 
-    viewer.setColumnProperties(new String[] { "name" });
+    viewer.setColumnProperties(new String[] { "name" }); //$NON-NLS-1$
     viewer.setCellModifier(new NameCellModifier(viewer, context));
     viewer.setCellEditors(new CellEditor[] { new TextCellEditor(viewer.getTree()) });
 
@@ -274,12 +274,12 @@ public class ReplicaContentLocationRenderer extends EditListRenderer implements 
    */
   @Override
   protected String getToolbarLocation() {
-    return "toolbar:org.polarsys.capella.common.re.createReplica.location";
+    return "toolbar:org.polarsys.capella.common.re.createReplica.location"; //$NON-NLS-1$
   }
 
   @Override
   protected String getPopupLocation() {
-    return "popup:org.polarsys.capella.common.re.createReplica.location";
+    return "popup:org.polarsys.capella.common.re.createReplica.location"; //$NON-NLS-1$
   }
 
   protected IRendererContext contextOnDrop = null;
@@ -362,7 +362,7 @@ public class ReplicaContentLocationRenderer extends EditListRenderer implements 
 
     }
     IPropertyContext pContext = contextOnDrop.getPropertyContext();
-    IProperty targetContent = pContext.getProperties().getProperty("targetContent");
+    IProperty targetContent = pContext.getProperties().getProperty("targetContent"); //$NON-NLS-1$
 
     // Since we change location of selection from the backside, we need to change the property.
     // (little workaround since we can't change the property's value for the selection)
@@ -430,15 +430,15 @@ public class ReplicaContentLocationRenderer extends EditListRenderer implements 
 
       EObject location = LocationHandlerHelper.getInstance(context).getCurrentLocation(link, context);
       if (location != null) {
-        return new Status(IStatus.INFO, "  ", "custom location");
+        return new Status(IStatus.INFO, "  ", Messages.Renderer_CustomLocation); //$NON-NLS-1$
       }
       location = LocationHandlerHelper.getInstance(context).getLocation(link, link.getOrigin(), context);
       if (location == null) {
         EObject defaultLocation = LocationHandlerHelper.getInstance(context).getDefaultLocation(link, link.getOrigin(), context);
         if (defaultLocation == null) {
-          return new Status(IStatus.WARNING, "  ", "no location");
+          return new Status(IStatus.WARNING, "  ", Messages.Renderer_NoLocation); //$NON-NLS-1$
         }
-        return new Status(IStatus.INFO, "  ", "default location");
+        return new Status(IStatus.INFO, "  ", Messages.Renderer_DefaultLocation); //$NON-NLS-1$
       }
     }
     return Status.OK_STATUS;

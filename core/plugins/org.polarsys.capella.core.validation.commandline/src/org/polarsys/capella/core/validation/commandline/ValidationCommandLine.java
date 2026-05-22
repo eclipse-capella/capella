@@ -73,8 +73,8 @@ public class ValidationCommandLine extends AbstractWorkbenchCommandLine {
 
   @Override
   public void printHelp() {
-    super.printHelp(Arrays.asList("outputfolder"));
-    printArgumentsFromTable("validationParameters", false, Collections.emptyList());
+    super.printHelp(Arrays.asList("outputfolder")); //$NON-NLS-1$
+    printArgumentsFromTable("validationParameters", false, Collections.emptyList()); //$NON-NLS-1$
   }
 
   @Override
@@ -100,7 +100,7 @@ public class ValidationCommandLine extends AbstractWorkbenchCommandLine {
       // load
       Project semanticRootElement = loadSemanticRootElement(airdURI);
       if (semanticRootElement == null) {
-        return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "No semantic model found!");
+        return new Status(IStatus.ERROR, FrameworkUtil.getBundle(this.getClass()).getSymbolicName(), "No semantic model found!"); //$NON-NLS-1$
       }
       Resource semanticRootResource = semanticRootElement.eResource();
       capellaValidateCLineAction.setResource(semanticRootResource);
@@ -242,7 +242,7 @@ public class ValidationCommandLine extends AbstractWorkbenchCommandLine {
 
       String result = null;
       result = toHTML(validationMarkers);
-      String fileName = Messages.resultsFileName;
+      String fileName = "validation-results.html"; //$NON-NLS-1$
       IFile file = outputFolder.getFile(new Path(fileName));
       ByteArrayInputStream outputContent = new ByteArrayInputStream(result.getBytes());
       if (file.exists()) {

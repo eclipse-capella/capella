@@ -32,7 +32,6 @@ import org.polarsys.capella.common.re.handlers.scope.UnmodifiableElementsScopeRe
 import org.polarsys.capella.common.re.handlers.selection.ReSelectionContext;
 import org.polarsys.capella.common.re.handlers.transformation.ReTransformationHandler;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
-import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.handlers.scope.CompoundScopeRetriever;
 import org.polarsys.capella.core.transition.common.handlers.selection.CompoundSelectionContextHandler;
@@ -259,7 +258,7 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
         context.put(ITransitionConstants.TRANSITION_TARGET_ROOT, root);
       }
     } else {
-      return new Status(IStatus.ERROR, Messages.Activity_Transition, "Output model is invalid");
+      return new Status(IStatus.ERROR, org.polarsys.capella.core.transition.common.constants.Messages.Activity_Transition, Messages.InitializeTransitionActivity_0);
     }
 
     return Status.OK_STATUS;

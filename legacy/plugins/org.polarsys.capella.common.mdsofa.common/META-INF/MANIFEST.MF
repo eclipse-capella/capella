@@ -4,8 +4,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.mdsofa.common;singleton:=true
 Bundle-Version: 7.0.1.qualifier
 Bundle-Vendor: %providerName
-Require-Bundle: org.apache.log4j;visibility:=reexport,
- org.eclipse.core.resources;visibility:=reexport,
+Require-Bundle: org.eclipse.core.resources;visibility:=reexport,
  org.eclipse.core.runtime;visibility:=reexport,
  org.eclipse.emf.common,
  org.eclipse.emf.ecore,
@@ -19,6 +18,7 @@ Export-Package: org.polarsys.capella.common.mdsofa.common.activator,
  org.polarsys.capella.common.mdsofa.common.internal.helper,
  org.polarsys.capella.common.mdsofa.common.listener,
  org.polarsys.capella.common.mdsofa.common.misc
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Activator: org.polarsys.capella.common.mdsofa.common.activator.SolFaCommonActivator
 Bundle-Localization: plugin

@@ -96,9 +96,9 @@ public class EIAllocationTransfertDlg extends AbstractViewerDialog {
   protected List<ModelElement> selectedElements;
   protected List<ModelElement> transitionedElements;
 
-  public static final String EIALLOCATION_SOURCE_VIEWER = "org.polarsys.capella.core.data.fa.ui.wizards.dialogs.eiAllocation.sourcePhase";
+  public static final String EIALLOCATION_SOURCE_VIEWER = "org.polarsys.capella.core.data.fa.ui.wizards.dialogs.eiAllocation.sourcePhase"; //$NON-NLS-1$
   
-  public static final String EIALLOCATION_TARGET_VIEWER = "org.polarsys.capella.core.data.fa.ui.wizards.dialogs.eiAllocation.targetPhase";
+  public static final String EIALLOCATION_TARGET_VIEWER = "org.polarsys.capella.core.data.fa.ui.wizards.dialogs.eiAllocation.targetPhase"; //$NON-NLS-1$
   
   /** message pattern used for formatting the status bar tooltip */
   private static final String MSG_PATTERN = "[%s][%s] %s"; //$NON-NLS-1$

@@ -113,8 +113,4 @@
    <includes
          id="org.polarsys.capella.core.git.feature"
          version="0.0.0"/>
-         
-   <includes
-         id="org.polarsys.capella.core.mylyn.feature"
-         version="0.0.0"/>
 </feature>

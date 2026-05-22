@@ -86,7 +86,7 @@ public class SelectElementFromListWizard extends AbstractExternalJavaAction {
     Assert.isNotNull(context);
     Assert.isNotNull(resultVariable);
     boolean multiple = ("true".equals(sMultiple)) ? true : false; //$NON-NLS-1$
-    boolean displayDialog = sDisplayDialog == null ? true : ("true".equals(sDisplayDialog)) ? true : false;
+    boolean displayDialog = sDisplayDialog == null ? true : ("true".equals(sDisplayDialog)) ? true : false; //$NON-NLS-1$
 
     Object result = execute(context, scope, wizardMessage, multiple, displayDialog);
     InterpreterUtil.getInterpreter(context).setVariable(resultVariable, result);

@@ -25,3 +25,4 @@ Export-Package: org.polarsys.capella.core.ui.semantic.browser.sirius,
  org.polarsys.capella.core.ui.semantic.browser.sirius.helpers,
  org.polarsys.capella.core.ui.semantic.browser.sirius.view,
  org.polarsys.capella.core.ui.semantic.browser.sirius.wrapper
+Import-Package: org.apache.log4j;version="1.2.24"

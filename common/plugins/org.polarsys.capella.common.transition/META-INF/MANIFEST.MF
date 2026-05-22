@@ -50,4 +50,5 @@ Export-Package: org.polarsys.capella.core.transition.common,
  org.polarsys.capella.core.transition.common.rules,
  org.polarsys.capella.core.transition.common.transposer,
  org.polarsys.capella.core.transition.common.transposer.current
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-Localization: plugin

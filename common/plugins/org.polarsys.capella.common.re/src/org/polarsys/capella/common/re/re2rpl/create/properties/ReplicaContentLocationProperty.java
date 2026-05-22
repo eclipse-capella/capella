@@ -37,7 +37,7 @@ public class ReplicaContentLocationProperty extends ReplicaContentProperty {
    */
   @Override
   public String[] getRelatedProperties() {
-    return new String[] { "targetContent" };
+    return new String[] { "targetContent" }; //$NON-NLS-1$
   }
 
   /**

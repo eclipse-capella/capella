@@ -59,7 +59,7 @@ public class DomainHelper extends EmfDomainHelper {
     } catch (ClassNotFoundException e) {
       if (name != null) {
         try {
-          int index = name.lastIndexOf(".");
+          int index = name.lastIndexOf("."); //$NON-NLS-1$
           String pkgName = name.substring(0, index);
           String className = name.substring(index + 1);
 

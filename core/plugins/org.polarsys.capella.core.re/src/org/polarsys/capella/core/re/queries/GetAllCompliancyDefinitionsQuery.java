@@ -48,7 +48,7 @@ public class GetAllCompliancyDefinitionsQuery extends AbstractQuery {
       values.addAll(((CompliancyDefinitionPkg) input_p).getOwnedDefinitions());
 
     } else if (input_p instanceof EObject) {
-      for (CatalogElementPkg pkg : getRootPackages((EObject) input_p)) {
+      for (CatalogElementPkg pkg : getRootRecCatalogs((EObject) input_p)) {
         values.addAll(QueryInterpretor.executeQuery(getIdentifier(), pkg, context_p));
       }
     }
@@ -56,8 +56,8 @@ public class GetAllCompliancyDefinitionsQuery extends AbstractQuery {
     return values;
   }
 
-  public Collection<CatalogElementPkg> getRootPackages(EObject object_p) {
-    List<CatalogElementPkg> values = new ArrayList<CatalogElementPkg>();
+  public Collection<RecCatalog> getRootRecCatalogs(EObject object_p) {
+    List<RecCatalog> values = new ArrayList<>();
     SystemEngineering eng = null;
     if (object_p instanceof SystemEngineering) {
       eng = (SystemEngineering) object_p;
@@ -66,8 +66,8 @@ public class GetAllCompliancyDefinitionsQuery extends AbstractQuery {
     }
     if (eng != null) {
       for (ElementExtension extension : eng.getOwnedExtensions()) {
-        if (extension instanceof CatalogElementPkg) {
-          values.add((CatalogElementPkg) extension);
+        if (extension instanceof RecCatalog) {
+          values.add((RecCatalog) extension);
         }
       }
     }

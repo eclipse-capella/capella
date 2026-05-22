@@ -44,29 +44,27 @@ location eclipse "https://download.eclipse.org/releases/2023-03" {
 	org.eclipse.equinox.executable.feature.group
 	com.ibm.icu
 	org.eclipse.viatra.query.runtime.feature.source.feature.group
+	org.apache.commons.lang
+}
+
+// Build dependency
+// Xtext will not be part of the finished product but we need to make sure the dependency is to an xtext version that depends on Guava 33
+location xtext "https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.34.0/" {
 	org.eclipse.xtext.xbase.lib.feature.group
+}
+
+location egit "https://archive.eclipse.org/egit/updates-6.6.1" {
 	org.eclipse.jgit.source.feature.group
 	org.eclipse.egit.source.feature.group
+}
+
+location orbit "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/milestone/S202604101740" {
+	slf4j.api
+	ch.qos.logback.classic
+	ch.qos.logback.core
+	org.apache.aries.spifly.dynamic.bundle
 	org.apache.log4j
-	org.apache.commons.lang
-	com.google.guava [31, 32) //guava version is also defined in org.polarsys.capella.rcp/feature.xml
-}
-
-location Mylyn-3.26 "https://download.eclipse.org/mylyn/releases/3.26/" {
-	org.eclipse.mylyn_feature.feature.group [3.26.0,3.27.0)
-	org.eclipse.mylyn.commons.feature.group [3.26.0,3.27.0)
-	org.eclipse.mylyn.context_feature.feature.group [3.26.0,3.27.0)
-	org.eclipse.mylyn.monitor.feature.group [3.26.0,3.27.0)
-	org.eclipse.mylyn.team_feature.feature.group [3.26.0,3.27.0)
-	org.eclipse.mylyn.ide_feature.feature.group [3.26.0,3.27.0)
-	org.eclipse.mylyn.help.ui [3.26.0,3.27.0)
-}
-
-location Orbit-2023-03 "https://download.eclipse.org/tools/orbit/downloads/drops/R20230302014618/repository/" {
-	org.slf4j.api
-	ch.qos.logback.slf4j
-    ch.qos.logback.classic
-    ch.qos.logback.core
+	com.google.guava
 }
 
 location sirius "https://download.eclipse.org/sirius/updates/releases/7.4.5/2023-03" {
@@ -78,9 +76,13 @@ location sirius "https://download.eclipse.org/sirius/updates/releases/7.4.5/2023
 	org.eclipse.sirius.interpreter.feature.source.feature.group
 	org.eclipse.acceleo.ui.interpreter.source.feature.group
 	org.eclipse.sirius.aql.source.feature.group
-	org.eclipse.acceleo.query.source.feature.group
 	org.eclipse.sirius.runtime.ide.ui.acceleo.source.feature.group
 	org.eclipse.sirius.diagram.elk.feature.source.feature.group
+}
+
+// Acceleo 3.7.15 is the first version that accepted Guava 33
+location acceleo "https://download.eclipse.org/acceleo/updates/releases/3.7/R202402190857/" {
+	org.eclipse.acceleo.query.source.feature.group
 }
 
 location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/releases/runtime/7.0.1/" {

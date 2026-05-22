@@ -48,7 +48,7 @@ import org.polarsys.capella.core.ui.metric.MetricMessages;
  */
 public class ProgressMonitoringOverviewDialog extends AbstractExportDialog {
 
-  public static final String PROGRESS_MONITORING_DIALOG = "org.polarsys.capella.core.ui.metric.dialog.progressMonitoring";
+  public static final String PROGRESS_MONITORING_DIALOG = "org.polarsys.capella.core.ui.metric.dialog.progressMonitoring"; //$NON-NLS-1$
   
   private CCombo combo;
   private EObject root = null;
@@ -210,7 +210,7 @@ public class ProgressMonitoringOverviewDialog extends AbstractExportDialog {
       if (current instanceof CapellaElement) {
         CapellaElement ce = (CapellaElement) current;
         result.add(new String[] { ce.eClass().getName(), ce.getFullLabel(), ce.getLabel(),
-            null == ce.getStatus() ? "" : ce.getStatus().getLabel(), null == ce.getReview() ? "" : ce.getReview() });
+            null == ce.getStatus() ? "" : ce.getStatus().getLabel(), null == ce.getReview() ? "" : ce.getReview() }); //$NON-NLS-1$ //$NON-NLS-2$
         
       } else if (current instanceof DRepresentationDescriptor) {
         DRepresentationDescriptor representationDesc = (DRepresentationDescriptor) current;
@@ -220,10 +220,10 @@ public class ProgressMonitoringOverviewDialog extends AbstractExportDialog {
 
         EObject target = representationDesc.getTarget();
         if (target != null) {
-          String className = representationDesc.getDescription().getName().replace(" ", "");
+          String className = representationDesc.getDescription().getName().replace(" ", ""); //$NON-NLS-1$ //$NON-NLS-2$
           result.add(
-              new String[] { className, ((CapellaElement) target).getFullLabel() + "/" + representationDesc.getName(),
-                  representationDesc.getName(), null == status ? "" : status.getLabel(), review });
+              new String[] { className, ((CapellaElement) target).getFullLabel() + "/" + representationDesc.getName(), //$NON-NLS-1$
+                  representationDesc.getName(), null == status ? "" : status.getLabel(), review }); //$NON-NLS-1$
         }
       }
     }

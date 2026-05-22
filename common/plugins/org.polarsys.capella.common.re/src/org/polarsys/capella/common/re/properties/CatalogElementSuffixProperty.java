@@ -44,10 +44,10 @@ public class CatalogElementSuffixProperty
       CatalogElement element = (CatalogElement)source;
       
       if (element.getKind() == CatalogElementKind.REC) {
-        return new Status(IStatus.INFO, Activator.PLUGIN_ID, "This attribute should be changed in each RPL");
+        return new Status(IStatus.INFO, Activator.PLUGIN_ID, Messages.CatalogElementSuffixProperty_0);
         
       } else if (element.getKind() == CatalogElementKind.GROUPING) {
-        return new Status(IStatus.INFO, Activator.PLUGIN_ID, "This attribute is not enabled on Grouping element");
+        return new Status(IStatus.INFO, Activator.PLUGIN_ID, Messages.CatalogElementSuffixProperty_1);
         
       }
     }

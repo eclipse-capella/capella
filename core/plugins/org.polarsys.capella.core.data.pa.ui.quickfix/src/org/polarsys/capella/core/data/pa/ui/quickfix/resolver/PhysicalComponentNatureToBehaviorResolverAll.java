@@ -29,7 +29,7 @@ public class PhysicalComponentNatureToBehaviorResolverAll extends PhysicalCompon
 
   @Override
   protected boolean canResolve(IMarker marker) {
-    String ruleId = "org.polarsys.capella.core.data.pa.validation.DWF_DC_22";
+    String ruleId = "org.polarsys.capella.core.data.pa.validation.DWF_DC_22"; //$NON-NLS-1$
     String markerRuleId = MarkerViewHelper.getRuleID(marker, true);
     return ruleId.equals(markerRuleId);
   }

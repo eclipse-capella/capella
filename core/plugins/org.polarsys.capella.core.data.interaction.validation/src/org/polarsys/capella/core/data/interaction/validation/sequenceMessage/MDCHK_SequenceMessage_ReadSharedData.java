@@ -46,7 +46,7 @@ public class MDCHK_SequenceMessage_ReadSharedData extends
         	return ctx.createSuccessStatus();
         }
         
-        if (SequenceMessageExt.getMessageNameForSharedDataAccess(seqMsg).equals("READ")){
+        if (SequenceMessageExt.getMessageNameForSharedDataAccess(seqMsg).equals("READ")){ //$NON-NLS-1$
         	// we must check this message is within an execution
         	Execution exec = SequenceMessageExt.getStartedExecution(seqMsg);
         	
@@ -61,7 +61,7 @@ public class MDCHK_SequenceMessage_ReadSharedData extends
 							MessageEnd me = (MessageEnd) startingEnd;
 							SequenceMessage superSeqMsg = me.getMessage();
 							if (InterfaceHelper.isSharedDataAccess(seqMsg)) {
-								if (SequenceMessageExt.getMessageNameForSharedDataAccess(superSeqMsg).equals("WRITE")) {
+								if (SequenceMessageExt.getMessageNameForSharedDataAccess(superSeqMsg).equals("WRITE")) { //$NON-NLS-1$
 									return ctx.createSuccessStatus();
 								}
 							}

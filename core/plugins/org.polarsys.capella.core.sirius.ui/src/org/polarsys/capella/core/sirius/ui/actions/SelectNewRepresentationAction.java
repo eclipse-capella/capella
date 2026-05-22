@@ -39,7 +39,7 @@ public class SelectNewRepresentationAction extends AbstractNewRepresentationActi
   public SelectNewRepresentationAction(Collection<RepresentationDescription> descriptions, EObject selectedEObject,
       Session session, String message) {
     this(descriptions, selectedEObject, session, true);
-    this.message = message + "\n" + this.message;
+    this.message = message + "\n" + this.message; //$NON-NLS-1$
   }
 
   public SelectNewRepresentationAction(Collection<RepresentationDescription> descriptions, EObject selectedEObject,

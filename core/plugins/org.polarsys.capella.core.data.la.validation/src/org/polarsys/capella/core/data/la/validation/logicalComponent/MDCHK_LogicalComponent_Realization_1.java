@@ -45,7 +45,7 @@ public class MDCHK_LogicalComponent_Realization_1 extends AbstractValidationRule
           }
           return ctx
               .createFailureStatus(
-                  new Object[] { CapellaElementExt.getValidationRuleMessagePrefix(logCpnt), "Physical Component" });
+                  new Object[] { CapellaElementExt.getValidationRuleMessagePrefix(logCpnt), Messages.MDCHK_LogicalComponent_Realization_RealizedComponentType });
         }
       }
     }

@@ -51,31 +51,31 @@ public class DWF_DS_19_Resolutions extends AbstractMarkerResolutionGenerator {
     }
 
     List<IMarkerResolution> resolutions = new ArrayList<IMarkerResolution>();
-    resolutions.add(new CapellaElementGoToResolver("Invoked Operation", invokedOperation));
+    resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_InvokedOperation, invokedOperation));
 
     NamedElement sequenceMessageSourceFunction = sequenceMessage.getSendingFunction();
-    resolutions.add(new CapellaElementGoToResolver("SequenceMessage source function", sequenceMessageSourceFunction));
+    resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_SeqMsgSource, sequenceMessageSourceFunction));
 
     NamedElement sequenceMessageTargetFunction = sequenceMessage.getReceivingFunction();
-    resolutions.add(new CapellaElementGoToResolver("SequenceMessage target function", sequenceMessageTargetFunction));
+    resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_SeqMsgTarget, sequenceMessageTargetFunction));
 
     AbstractFunction sourceFunction = FunctionalExchangeExt.getSourceFunction((FunctionalExchange) invokedOperation);
-    resolutions.add(new CapellaElementGoToResolver("Exchange source function", sourceFunction));
+    resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_ExchangeSourceFunc, sourceFunction));
 
     AbstractFunction targetFunction = FunctionalExchangeExt.getTargetFunction((FunctionalExchange) invokedOperation);
-    resolutions.add(new CapellaElementGoToResolver("Exchange target function", targetFunction));
+    resolutions.add(new CapellaElementGoToResolver(Messages.GOTO_ExchangeTargetFunc, targetFunction));
 
     // Containing SequenceDiagram.
     EObject scenario = sequenceMessage.eContainer();
     resolutions.add(new OpenAndShowInDiagramResolver(scenario, sequenceMessage));
     // Delete.
-    resolutions.add(new DeleteCommandResolver("Delete Sequence Message", SequenceMessageExt.getStartedExecution(sequenceMessage)));
+    resolutions.add(new DeleteCommandResolver(Messages.DWF_DS_18_19_Resolutions_Delete, SequenceMessageExt.getStartedExecution(sequenceMessage)));
 
     return resolutions.toArray(new IMarkerResolution[0]);
   }
 
   @Override
   protected String getRuleId() {
-    return "org.polarsys.capella.core.data.interaction.validation.DWF_DS_19";
+    return "org.polarsys.capella.core.data.interaction.validation.DWF_DS_19"; //$NON-NLS-1$
   }
 }

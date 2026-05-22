@@ -130,7 +130,6 @@
 								<plugin id="org.polarsys.capella.ui.views" />
 								<feature id="org.eclipse.nebula.widgets.richtext.feature" />
 								<feature id="org.polarsys.kitalpha.richtext.widget.feature" />
-								<feature id="org.polarsys.capella.core.mylyn.feature" />
 							</excludes>
 						</configuration>
 					</execution>

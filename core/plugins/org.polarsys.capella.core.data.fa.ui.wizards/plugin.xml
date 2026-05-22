@@ -59,7 +59,7 @@
          point="org.polarsys.capella.core.preferences.capellaPreferences">
           <category
                 description="Capella Wizards"
-                name="Wizards">
+                name="%PreferencesWizardsName">
              <item
                    enableByDefault="true"
                    id="org.polarsys.capella.core.data.fa.ui.wizards.command.EIAllocationManagementWizardAction"

@@ -36,16 +36,16 @@ public class MetadataException extends RuntimeException {
   }
 
   protected static String childMessages(IStatus status) {
-    String result = "";
+    String result = ""; //$NON-NLS-1$
     int i = 0;
     if (status.getChildren().length > 0) {
       for (IStatus child : status.getChildren()) {
         result += child.getMessage();
         if (i < status.getChildren().length - 1) {
-          result += "\n";
+          result += "\n"; //$NON-NLS-1$
         }
         if (i < status.getChildren().length) {
-          result += "\n";
+          result += "\n"; //$NON-NLS-1$
         }
         i++;
       }

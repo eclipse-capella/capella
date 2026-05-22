@@ -55,7 +55,7 @@ public class DefaultContextScopeHandler implements IContextScopeHandler {
   }
 
   protected String getScopeId(String id) {
-    return REFERENCE_COMPONENT_SCOPE + "_" + id;
+    return REFERENCE_COMPONENT_SCOPE + "_" + id; //$NON-NLS-1$
   }
 
   protected Collection<EObject> getScope(String scopeId, IContext context) {

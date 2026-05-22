@@ -35,7 +35,7 @@ public class CapellaCopyAction extends AbstractCommandActionHandler {
    * @param editingDomain
    */
   public CapellaCopyAction(StructuredViewer viewer) {
-    super(EMFEditUIPlugin.INSTANCE.getString("_UI_Copy_menu_item"));
+    super(EMFEditUIPlugin.INSTANCE.getString("_UI_Copy_menu_item")); //$NON-NLS-1$
     _viewer = viewer;
   }
 

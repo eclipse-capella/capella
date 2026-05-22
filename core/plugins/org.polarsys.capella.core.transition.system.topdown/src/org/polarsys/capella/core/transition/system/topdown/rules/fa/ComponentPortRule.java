@@ -57,7 +57,7 @@ public class ComponentPortRule extends org.polarsys.capella.core.transition.syst
         }
       }
       if (!isValid) {
-        result = new Status(IStatus.WARNING, Messages.Activity_Transition, "Container not transitioned");
+        result = new Status(IStatus.WARNING, Messages.Activity_Transition, org.polarsys.capella.core.transition.system.topdown.constants.Messages.TransitionRule_Error_ContainerNotTransitioned);
       } else {
         result = Status.OK_STATUS;
       }

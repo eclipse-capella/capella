@@ -33,7 +33,7 @@ public class SingletonModeWithMultipleParts extends AbstractModelConstraint {
 		if (eObj instanceof Component) {
 			Component current= (Component)eObj;
 			if(TriStateBoolean.True.equals(CapellaProjectHelper.isSingletonComponentsDriven(current)) && current.getAbstractTypedElements()!=null && current.getAbstractTypedElements().size()>1){
-				return ctx.createFailureStatus(new Object[] { current.getName(), current.eClass().getName().replaceAll("([a-z])([A-Z])", "$1 $2")});
+				return ctx.createFailureStatus(new Object[] { current.getName(), current.eClass().getName().replaceAll("([a-z])([A-Z])", "$1 $2")}); //$NON-NLS-1$ //$NON-NLS-2$
 			}
 
 		}

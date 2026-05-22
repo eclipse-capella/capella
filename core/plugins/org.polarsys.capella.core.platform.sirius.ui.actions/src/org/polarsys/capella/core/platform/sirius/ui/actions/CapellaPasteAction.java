@@ -39,7 +39,7 @@ public class CapellaPasteAction extends AbstractCommandActionHandler {
    * @param domain The editing domain.
    */
   public CapellaPasteAction() {
-    super(EMFEditUIPlugin.INSTANCE.getString("_UI_Paste_menu_item"));
+    super(EMFEditUIPlugin.INSTANCE.getString("_UI_Paste_menu_item")); //$NON-NLS-1$
   }
 
   /**

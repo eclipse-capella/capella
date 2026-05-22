@@ -45,7 +45,7 @@ public class DependenciesScopeHandler extends SubCommandHandler {
       Collection<EObject> currentValue = (Collection<EObject>) context.getPropertyContext().getCurrentValue(property);
 
       try {
-        IProperty dependenciesProperty = context.getPropertyContext().getProperties().getProperty("dependencies");
+        IProperty dependenciesProperty = context.getPropertyContext().getProperties().getProperty("dependencies"); //$NON-NLS-1$
         Collection<EObject> dependencies = (Collection) context.getPropertyContext()
             .getCurrentValue(dependenciesProperty);
         currentValue.addAll(dependencies);
@@ -68,7 +68,7 @@ public class DependenciesScopeHandler extends SubCommandHandler {
       if ((rendererContext != null) && (rendererContext.getPropertyContext() != null)
           && (rendererContext.getPropertyContext().getProperties() != null)) {
         IProperty dependenciesProperty = rendererContext.getPropertyContext().getProperties()
-            .getProperty("dependencies");
+            .getProperty("dependencies"); //$NON-NLS-1$
         if (dependenciesProperty != null) {
           Collection<EObject> values = (Collection<EObject>) rendererContext.getPropertyContext()
               .getCurrentValue(dependenciesProperty);

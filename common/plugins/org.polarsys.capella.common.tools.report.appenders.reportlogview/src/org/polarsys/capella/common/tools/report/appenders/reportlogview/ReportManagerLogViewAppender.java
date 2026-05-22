@@ -174,7 +174,7 @@ public final class ReportManagerLogViewAppender extends WriterAppender {
   public void report(final String message, final Level level, final IMarkerModification additions) {
     int severity = log4jToDiagnostics(level);
 
-    LightMarkerRegistry.getInstance().createMarker(workspaceRoot, new BasicDiagnostic(severity, "", 0, message, Collections.emptyList().toArray()), MarkerView.MARKER_ID, new IMarkerModification() {
+    LightMarkerRegistry.getInstance().createMarker(workspaceRoot, new BasicDiagnostic(severity, "", 0, message, Collections.emptyList().toArray()), MarkerView.MARKER_ID, new IMarkerModification() { //$NON-NLS-1$
       @Override
       public void modify(IMarker marker) {
         try {

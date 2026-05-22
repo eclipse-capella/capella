@@ -16,5 +16,6 @@ Require-Bundle: org.polarsys.capella.core.data.gen,
  org.eclipse.sirius.diagram
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.polarsys.capella.core.platform.sirius.ui.services
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

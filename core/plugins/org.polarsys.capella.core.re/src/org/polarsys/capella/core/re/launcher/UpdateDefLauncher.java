@@ -30,12 +30,12 @@ public class UpdateDefLauncher extends org.polarsys.capella.common.re.launcher.U
 
   @Override
   protected String getMapping() {
-    return "org.polarsys.capella.core.re.updateDef";
+    return "org.polarsys.capella.core.re.updateDef"; //$NON-NLS-1$
   }
 
   @Override
   protected String getScope() {
-    return "org.polarsys.capella.core.re.updateDef";
+    return "org.polarsys.capella.core.re.updateDef"; //$NON-NLS-1$
   }
 
   @Override

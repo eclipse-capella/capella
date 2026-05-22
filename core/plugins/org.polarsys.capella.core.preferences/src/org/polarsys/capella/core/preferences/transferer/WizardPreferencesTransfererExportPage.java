@@ -43,6 +43,7 @@ import org.eclipse.ui.model.BaseWorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.core.commands.preferences.internalization.l10n.PreferencesUIMessages;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 
 public class WizardPreferencesTransfererExportPage extends org.eclipse.ui.internal.wizards.preferences.WizardPreferencesExportPage1 {
@@ -114,17 +115,17 @@ public class WizardPreferencesTransfererExportPage extends org.eclipse.ui.intern
 
     // destination browse button
     destinationBrowseButton = new Button(destinationSelectionGroup, SWT.PUSH);
-    destinationBrowseButton.setText("Workspace...");
+    destinationBrowseButton.setText(PreferencesUIMessages.WizardPreferencesTransfererExportPage_BrowseWS_Label);
     setButtonLayoutData(destinationBrowseButton);
-    destinationBrowseButton.setToolTipText("B&rowse Workspace ...");
+    destinationBrowseButton.setToolTipText(PreferencesUIMessages.WizardPreferencesTransfererExportPage_BrowseWS_Description);
     destinationBrowseButton.addListener(SWT.Selection, this);
 
     // destination browse button
     destinationExplorerBrowseButton = new Button(destinationSelectionGroup, SWT.PUSH);
-    destinationExplorerBrowseButton.setText("File System...");
+    destinationExplorerBrowseButton.setText(PreferencesUIMessages.WizardPreferencesTransfererExportPage_BrowseFS_Label);
     setButtonLayoutData(destinationExplorerBrowseButton);
     destinationExplorerBrowseButton.addListener(SWT.Selection, this);
-    destinationExplorerBrowseButton.setToolTipText("B&rowse File System...");
+    destinationExplorerBrowseButton.setToolTipText(PreferencesUIMessages.WizardPreferencesTransfererExportPage_BrowseFS_Description);
     
     new Label(parent, SWT.NONE); // vertical spacer
   }
@@ -140,7 +141,7 @@ public class WizardPreferencesTransfererExportPage extends org.eclipse.ui.intern
       PreferenceTransferElement[] transfers = parents != null ? parents : new PreferenceTransferElement[0];
       List<PreferenceTransferElement> capellaTransfers = new ArrayList<PreferenceTransferElement>();
       for (PreferenceTransferElement currentPreferenceTransferElement : transfers) {
-        if (currentPreferenceTransferElement.getID().contains("capella")) {
+        if (currentPreferenceTransferElement.getID().contains("capella")) { //$NON-NLS-1$
           capellaTransfers.add(currentPreferenceTransferElement);
         }
       }

@@ -93,7 +93,7 @@ public class RichtextManager {
    * @return
    */
   public boolean isRichTextEnabled() {
-    String property = System.getProperty("disable.nebula.richtext");
+    String property = System.getProperty("disable.nebula.richtext"); //$NON-NLS-1$
     if (property != null) {
       return !Boolean.valueOf(property);
     }

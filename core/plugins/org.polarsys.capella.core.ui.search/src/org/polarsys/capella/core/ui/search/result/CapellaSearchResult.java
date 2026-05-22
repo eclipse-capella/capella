@@ -99,7 +99,7 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
 
   @Override
   public ImageDescriptor getImageDescriptor() {
-    return Activator.getDefault().getImageDescriptor("search.gif");
+    return Activator.getDefault().getImageDescriptor("search.gif"); //$NON-NLS-1$
   }
 
   @Override

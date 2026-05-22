@@ -25,7 +25,7 @@ import org.polarsys.capella.common.ui.massactions.visualization.CapellaMVView;
  */
 public class SendToMVMenuContributionItem extends AbstractSendToMenuContributionItem {
 
-  private static final String MASS_VISUALIZATION_VIEW_NAME = "Mass Visualization";
+  private static final String MASS_VISUALIZATION_VIEW_NAME = Messages.SendToMVMenuContributionItem_MassVizViewName;
 
   @Override
   protected String getViewID() {

@@ -23,5 +23,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.polarsys.capella.test.platform.ju,
  org.polarsys.capella.test.platform.ju.testcases,
  org.polarsys.capella.test.platform.ju.testsuites
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin

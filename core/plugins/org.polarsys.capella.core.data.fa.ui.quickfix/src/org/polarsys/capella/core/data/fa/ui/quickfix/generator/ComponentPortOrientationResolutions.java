@@ -101,6 +101,6 @@ public class ComponentPortOrientationResolutions extends AbstractMarkerResolutio
   
   @Override
   protected String getRuleId() {
-    return "org.polarsys.capella.core.data.fa.validation.I_20";
+    return "org.polarsys.capella.core.data.fa.validation.I_20"; //$NON-NLS-1$
   }
 }

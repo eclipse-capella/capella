@@ -39,7 +39,7 @@ import org.polarsys.capella.common.ui.toolkit.viewers.RegExpCheckboxTreeViewer;
  */
 public class CheckboxTreeDialog<T extends EObject, U extends EObject> extends AbstractViewerDialog {
 
-  public static final String CHECKBOX_TREE_DIALOG = "org.polarsys.capella.common.ui.toolkit.dialogs.checkboxTree";
+  public static final String CHECKBOX_TREE_DIALOG = "org.polarsys.capella.common.ui.toolkit.dialogs.checkboxTree"; //$NON-NLS-1$
   
   /**
    * A proxy to a semantic element, that will be displayed in the checkbox tree viewer.<br>

@@ -59,7 +59,7 @@ public class AbstractFunctionRule extends org.polarsys.capella.core.transition.s
         return result;
       }
     }
-    return new Status(IStatus.WARNING, Messages.Activity_Transformation, "Sub Function already transitioned");
+    return new Status(IStatus.WARNING, Messages.Activity_Transformation, org.polarsys.capella.core.transition.system.topdown.constants.Messages.AbstractFunctionRule_SubFuncTransitioned);
   }
 
   @Override

@@ -71,13 +71,13 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler
     implements ITraceabilityTraceHandler, INotifyListener {
 
   // A map to store which eClass to create according to source/target elements
-  public static final String MAPPING_MAP = "_mPp";
+  public static final String MAPPING_MAP = "_mPp"; //$NON-NLS-1$
 
   // All created realization links while transformation
-  public static final String REALISATION_LINKS = "_rL";
-  public static final String REALISATION_LINKS_UNATTACHED = "_rLu";
+  public static final String REALISATION_LINKS = "_rL"; //$NON-NLS-1$
+  public static final String REALISATION_LINKS_UNATTACHED = "_rLu"; //$NON-NLS-1$
 
-  public static final String DEFAULT_OWNER = "DEFAULT_OWNER";
+  public static final String DEFAULT_OWNER = "DEFAULT_OWNER"; //$NON-NLS-1$
 
   protected class RealizationLinkMapping {
 
@@ -105,7 +105,7 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler
 
     @Override
     public String toString() {
-      return source.getName() + " " + target.getName() + " " + realizationLink.getName();
+      return source.getName() + " " + target.getName() + " " + realizationLink.getName(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -641,7 +641,7 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler
     if (element != null) {
       if (element instanceof TransfoLink) {
         return true;
-      } else if (element.eClass().getName().endsWith("Realization")) {
+      } else if (element.eClass().getName().endsWith("Realization")) { //$NON-NLS-1$
         if (!(element instanceof CapabilityRealization)) {
           return true;
         }
@@ -711,7 +711,7 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler
             } catch (Exception e) {
               // Continue to next parent. realizationLink is not valid.
               LogHelper.getInstance().debug(
-                  NLS.bind("Realization link ''{0}'' cannot be attached into ''{1}''",
+                  NLS.bind("Realization link ''{0}'' cannot be attached into ''{1}''", //$NON-NLS-1$
                       realizationLink.eClass().getName(), parent.eClass().getName()),
                   ITransitionConstants.ATTACHMENT_HANDLER);
 

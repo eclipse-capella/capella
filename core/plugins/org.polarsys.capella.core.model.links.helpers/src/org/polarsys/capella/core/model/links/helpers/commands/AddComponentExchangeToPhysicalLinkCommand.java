@@ -33,7 +33,7 @@ public class AddComponentExchangeToPhysicalLinkCommand extends AbstractQueryBase
 	   * @param linkRefInSource
 	   */
 	  public AddComponentExchangeToPhysicalLinkCommand(EClass linkType, EReference linkRefInSource) {
-	    super("Add Component Exchange to Physical Link", LinkStyle.LINE_DASHED, linkType, linkRefInSource);
+	    super(Messages.AddComponentExchangeToPhysicalLinkCommand_Label, LinkStyle.LINE_DASHED, linkType, linkRefInSource);
 	  }
 
 	  /**

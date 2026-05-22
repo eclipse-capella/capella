@@ -30,7 +30,7 @@ public class CapellaTabDescriptorProvider extends FixedTabDescriptorProvider {
    *
    */
   public CapellaTabDescriptorProvider() {
-    super("org.polarsys.capella.core.data.capellamodeller.properties");
+    super("org.polarsys.capella.core.data.capellamodeller.properties"); //$NON-NLS-1$
     addDescriptor(new SubPropertiesTabDescriptorProvider());
   }
 

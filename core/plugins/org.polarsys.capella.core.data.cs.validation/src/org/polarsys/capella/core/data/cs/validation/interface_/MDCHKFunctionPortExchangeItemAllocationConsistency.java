@@ -65,9 +65,9 @@ public class MDCHKFunctionPortExchangeItemAllocationConsistency extends Abstract
 				
 				  boolean isOk = !functionPortExchangeItems.isEmpty() && exchangeItems.isEmpty() ? false : exchangeItems.containsAll(functionPortExchangeItems);
 				if (!isOk && !components.isEmpty()) {
-					String FUNCTION_PREFIXE = "\"" + functionPort.getName()  +"\" ( "+ functionPort.eClass().getName()+ " ) ";
+					String FUNCTION_PREFIXE = "\"" + functionPort.getName()  +"\" ( "+ functionPort.eClass().getName()+ " ) "; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
  				    Component component = (Component)components.toArray()[0];
-					String COMPONENT_PREFIXE = "\"" + component.getName()  +"\" ( "+ component.eClass().getName()+ " ) ";
+					String COMPONENT_PREFIXE = "\"" + component.getName()  +"\" ( "+ component.eClass().getName()+ " ) "; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 					
 					return createFailureStatus(context, new Object[] { FUNCTION_PREFIXE, COMPONENT_PREFIXE});
 					 

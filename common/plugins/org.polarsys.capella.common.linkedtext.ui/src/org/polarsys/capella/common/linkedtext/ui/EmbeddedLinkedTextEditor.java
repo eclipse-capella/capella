@@ -40,7 +40,7 @@ public class EmbeddedLinkedTextEditor {
   private SourceViewer sv;
   private LinkedTextDocument.Input _input;
   private LinkedTextDocument _document;
-  private final String INITIAL_TEXT = "<Press key \"Ctrl+Space\" and type name for Content Assist>";
+  private final String INITIAL_TEXT = Messages.EmbeddedLinkedTextEditor_0;
   private Color defaultTextColor;
 
   public EmbeddedLinkedTextEditor(Composite parent, int style) {

@@ -142,7 +142,7 @@ public class DefaultExchangesCreator implements IExchangesCreator {
       }
     }
     if (!exchangeCreated) {
-      String message = "No component exchange has been created.";
+      String message = "No component exchange has been created."; //$NON-NLS-1$
       EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName());
       logger.info(eMessage);
     }
@@ -217,9 +217,9 @@ public class DefaultExchangesCreator implements IExchangesCreator {
     cfea.setTargetElement(functionalExchange_p);
     ce.getOwnedComponentExchangeFunctionalExchangeAllocations().add(cfea);
 
-    String message = "The Component exchange " + ce.getName()
-        + " has been succefully created between the exchange source component " + exchangeInput_p.getLabel()
-        + " and the exchange target component " + exchangeOutput_p.getLabel();
+    String message = "The Component exchange " + ce.getName() //$NON-NLS-1$
+        + " has been succefully created between the exchange source component " + exchangeInput_p.getLabel() //$NON-NLS-1$
+        + " and the exchange target component " + exchangeOutput_p.getLabel(); //$NON-NLS-1$
     EmbeddedMessage eMessage = new EmbeddedMessage(message, logger.getName(),
         Arrays.asList(ce, exchangeInput_p, exchangeOutput_p));
     logger.info(eMessage);

@@ -46,7 +46,7 @@ public class RichTextLinksHelper {
   }
 
   public String getElementsLinksHtml(Collection<EObject> elements) {
-      return elements.stream().map(this::getElementLink).collect(Collectors.joining(" "));
+      return elements.stream().map(this::getElementLink).collect(Collectors.joining(" ")); //$NON-NLS-1$
   }
 
   /**
@@ -76,7 +76,7 @@ public class RichTextLinksHelper {
       return linkManager.encode(type, id, label);
     }
 
-    return "";
+    return ""; //$NON-NLS-1$
   }
 
 }

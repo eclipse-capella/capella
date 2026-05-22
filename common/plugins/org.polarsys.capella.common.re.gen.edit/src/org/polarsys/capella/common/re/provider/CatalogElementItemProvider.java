@@ -572,11 +572,11 @@ public class CatalogElementItemProvider extends ReDescriptionElementItemProvider
     // begin-extension-code
 
     String label = element.getName();
-    label = (label == null) || (label.length() == 0) ? "[" + getString("_UI_CatalogElement_type") + "]" : label;
+    label = (label == null) || (label.length() == 0) ? "[" + getString("_UI_CatalogElement_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
     if (element.getOrigin() != null) {
       String labelOrigin = element.getOrigin().getName();
-      label += NLS.bind(" [{0}]", labelOrigin);
+      label += NLS.bind(" [{0}]", labelOrigin); //$NON-NLS-1$
     }
 
     return label;

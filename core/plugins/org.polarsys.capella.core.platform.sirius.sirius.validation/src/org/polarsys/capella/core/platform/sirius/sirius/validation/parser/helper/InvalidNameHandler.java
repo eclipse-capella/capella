@@ -39,13 +39,13 @@ public class InvalidNameHandler implements ILinkParser {
 
   @Override
   public void handleParsedLink(LinkDescription parsedLink) {
-    if (parsedLink.getTargetElement() != null && parsedLink.getHref().startsWith("hlink://")) {
+    if (parsedLink.getTargetElement() != null && parsedLink.getHref().startsWith("hlink://")) { //$NON-NLS-1$
       EObject elementFound = parsedLink.getTargetElement();
       boolean isDiagram = elementFound instanceof DRepresentationDescriptor || elementFound instanceof DRepresentation;
       String name = DescriptionParserHelper.getElementName(elementFound);
       String value = MDERichTextToolsHelper.decodeWhiteSpaces(parsedLink.getName());
       value = StringEscapeUtils.unescapeHtml(value);
-      String elementId = parsedLink.getHref().replace("hlink://", "");
+      String elementId = parsedLink.getHref().replace("hlink://", ""); //$NON-NLS-1$ //$NON-NLS-2$
       IConstraintDescriptor desc = ConstraintRegistry.getInstance().getDescriptor(ctx.getCurrentConstraintId());
       if (!name.equals(value)) {
         if (!parsedLinks.contains(parsedLink)) {
@@ -55,7 +55,7 @@ public class InvalidNameHandler implements ILinkParser {
               + DescriptionParserHelper.getElementName(element) + " is not up to date.";
           message = SaxParserHelper.unescapeSpecialCharacter(message);
           result.add(ConstraintStatus.createStatus(ctx, element, ctx.getResultLocus(), IStatus.WARNING,
-              desc.getStatusCode(), "{0}", message));
+              desc.getStatusCode(), "{0}", message)); //$NON-NLS-1$
         } else {
           String elementName = value;
           List<IStatus> updatedResult = result.stream().map(sts -> {

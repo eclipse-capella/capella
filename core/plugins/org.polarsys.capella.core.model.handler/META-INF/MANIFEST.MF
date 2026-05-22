@@ -29,5 +29,6 @@ Export-Package: org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.model.handler.pre.condition,
  org.polarsys.capella.core.model.handler.provider,
  org.polarsys.capella.core.model.handler.validation
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-Activator: org.polarsys.capella.core.model.handler.ModelHandlerPlugin
 Bundle-Localization: plugin

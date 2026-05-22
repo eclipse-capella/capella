@@ -250,7 +250,7 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
         throw e;
       }
     }
-    return "";
+    return ""; //$NON-NLS-1$
   }
 
   @Override

@@ -55,7 +55,7 @@ public abstract class AbstractTigAction extends AbstractHandler implements IObje
    */
   public Object execute(ExecutionEvent event) throws ExecutionException {
     IEvaluationContext c = (IEvaluationContext) event.getApplicationContext();
-    ISelection s = (ISelection) c.getVariable("selection");
+    ISelection s = (ISelection) c.getVariable("selection"); //$NON-NLS-1$
     selectionChanged(null, s);
     setActivePart(null, PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart());
     run(null);

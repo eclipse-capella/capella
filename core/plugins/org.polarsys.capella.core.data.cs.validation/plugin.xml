@@ -30,14 +30,14 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_I_04 - Components must implements/uses accessible interfaces"
+                  name="%constraint.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The component {0} uses or implements the interface {1} defined in the {2} level
+                  %constraint.message
                </message>
                <description>
-                  This rule checks that a component uses and implements only interface from valid architecture.
+                  %constraint.description
                </description>
                <target
                      class="Interface">
@@ -49,17 +49,17 @@
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="DWF_I_05 - No Equivalent Component Communication Links"
+                  name="%constraint.name.0"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0}(Component) has {1} equivalent Communication Links (kind = {2}, protocol = {3}) targeting {4}(ExchangeItem)
+                  %constraint.message.0
                </message>
                <target
                      class="Component">
                </target>
                <description>
-                  This rule checks that the component cannot have the same kind of communication link targeting to the same exchange item with the same protocol.
+                  %constraint.description.0
                </description>
             </constraint>
             <constraint
@@ -68,14 +68,14 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_I_06 - Interface location check"
+                  name="%constraint.name.1"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} (Interface Package) cannot be located under EPBS Architecture.
+                  %constraint.message.1
                </message>
                <description>
-                  This rule checks that no Interface is located in EPBS.
+                  %constraint.description.1
                </description>
                <target
                      class="InterfacePkg">
@@ -87,17 +87,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_I_07 - Interface location level"
+                  name="%constraint.name.2"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0}({1}) uses or implements the interface {2} from {3} level.
+                  %constraint.message.2
                </message>
                <target
                      class="Component">
                </target>
                <description>
-                  This rule checks that a component uses/implements interfaces from the same level or from an upper level.
+                  %constraint.description.2
                </description>
             </constraint>
             
@@ -108,17 +108,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_I_21 - Exchange Item Allocation Protocol consistency"
+                  name="%constraint.name.3"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  Exchange Item Allocation {0} ({1}) should have ({2}) {3}.
+                  %constraint.message.3
                </message>
                <target
                      class="ExchangeItemAllocation">
                </target>
                <description>
-                  This rule checks consistency between the allocated Exchange Item and Acquisition/Transmission protocols of Exchange Item Allocation
+                  %constraint.description.3
                </description>
             </constraint>
             
@@ -128,17 +128,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_I_22 - Exchange Item Allocation Protocol used on Sequence Diagram consistency"
+                  name="%constraint.name.4"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  Exchange Item Allocation {0} ({1}) should have ({2}) {3}, since it is referenced through {4} (Sequence Message) ({5}, {6} return message) in {7} (Scenario)
+                  %constraint.message.4
                </message>
                <target
                      class="ExchangeItemAllocation">
                </target>
                <description>
-                  This rule checks consistency between the Acquisition/Transmission protocols of Exchange Item Allocation and its usage through Sequence Message
+                  %constraint.description.4
                </description>
             </constraint>
             
@@ -149,17 +149,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_I_11 - ExchangeItemAllocation AllocatedItem Check"
+                  name="%constraint.name.5"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0}
+                  %constraint.message.5
                </message>
                <target
                      class="ExchangeItemAllocation">
                </target>
                <description>
-                  This rule checks that a ExchangeItemAllocation AllocatedItem value is not null.
+                  %constraint.description.5
                </description>
             </constraint>
             <constraint
@@ -168,17 +168,14 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_I_12 - Exchange item allocation layer consistency"
+                  name="%constraint.name.6"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (ExchangeItemAllocation) should not allocate {1} ({2}) of lower Architecture layer.
+                  %constraint.message.6
                </message>
                <description>
-                  This rule ensures that an ExchangeItemAllocation from given layer should not allocate element of lower Architecture layer.
-
-Exmaple:
-If an ExchangeItemAllocation is on SystemArchitecture layer. It should not allocate any element from Logical or Physical Layer.
+                  %constraint.description.6
                </description>
                <target
                      class="ExchangeItemAllocation">
@@ -190,14 +187,14 @@ If an ExchangeItemAllocation is on SystemArchitecture layer. It should not alloc
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_I_14 -  Technical interface represent all communication links"
+                  name="%constraint.name.7"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Interface) does not represents all the communication links from {1} (Component) to {2} (Component). Exchange items {3} should be allocated to this interface.
+                  %constraint.message.7
                </message>
                <description>
-                  This rule checks that an existing technical interface between two Components represent all the Communication Links with the same direction between those two components.
+                  %constraint.description.7
                </description>
                <target
                      class="Interface">
@@ -209,14 +206,14 @@ If an ExchangeItemAllocation is on SystemArchitecture layer. It should not alloc
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_I_15 -  Exchange Item Allocation For Technical Interface Has Communication Link"
+                  name="%constraint.name.8"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  There is no corresponding communication link from component {0} to component {1} for the exchange item {2} that is allocated to interface {3}.
+                  %constraint.message.8
                </message>
                <description>
-                  This rule checks that for each Exchange Item Allocation of a technical Interface, there is a Communication Link associated to it.
+                  %constraint.description.8
                </description>
                <target
                      class="ExchangeItemAllocation">
@@ -228,14 +225,14 @@ If an ExchangeItemAllocation is on SystemArchitecture layer. It should not alloc
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_I_16 -  Technical interfaces are not provided or required"
+                  name="%constraint.name.9"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Interface) can not be provided or required by components since it is a technical interface ({1}).
+                  %constraint.message.9
                </message>
                <description>
-                  This rule checks that technical interfaces are not provided or required
+                  %constraint.description.9
                </description>
                <target
                      class="Interface">
@@ -247,14 +244,14 @@ If an ExchangeItemAllocation is on SystemArchitecture layer. It should not alloc
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_I_17 - At most one technical interface between two components"
+                  name="%constraint.name.10"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  Couple of components ({0}, {1}) has more than one technical interfaces ({2}).
+                  %constraint.message.10
                </message>
                <description>
-                  This rule checks that there is at most one technical Interfaces by couple of component (direction is meaningful).
+                  %constraint.description.10
                </description>
                <target
                      class="Interface">
@@ -266,14 +263,14 @@ If an ExchangeItemAllocation is on SystemArchitecture layer. It should not alloc
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_I_18 - Technical interfaces should not be used by more than one component"
+                  name="%constraint.name.11"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  Technical interface {0} is used by more than one component ({1}).
+                  %constraint.message.11
                </message>
                <description>
-                  This rule checks that a technical interfaces should not be used by more than one component.
+                  %constraint.description.11
                </description>
                <target
                      class="Interface">
@@ -285,14 +282,14 @@ If an ExchangeItemAllocation is on SystemArchitecture layer. It should not alloc
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_I_19 - Technical interfaces should not be implemented by more than one component"
+                  name="%constraint.name.12"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  Technical interface {0} is implemented by more than one component ({1}).
+                  %constraint.message.12
                </message>
                <description>
-                  This rule checks that a technical interfaces should not be implemented by more than one component
+                  %constraint.description.12
                </description>
                <target
                      class="Interface">
@@ -304,14 +301,14 @@ If an ExchangeItemAllocation is on SystemArchitecture layer. It should not alloc
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_I_20 - Interface does not contain similar Exchange Item Allocation"
+                  name="%constraint.name.13"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0}(Interface) has {1} equivalent Exchange Item Allocation (protocols = {2}, {3}) targeting {4}(ExchangeItem)
+                  %constraint.message.13
                </message>
                <description>
-                  This rule checks that an interface does not contain similar Exchange Item Allocation (that target the same Exchange Item and have same protocols).
+                  %constraint.description.13
                </description>
                <target
                      class="Interface">
@@ -324,15 +321,14 @@ If an ExchangeItemAllocation is on SystemArchitecture layer. It should not alloc
             	id="DWF_DC_01" 
             	isEnabledByDefault="true" 
             	lang="Java" mode="Batch" 
-            	name="DWF_DC_01 - Partitions cycles check" 
+            	name="%constraint.name.14" 
             	severity="ERROR" 
             	statusCode="1">
                <message>
-                  Part cycle: {0} {3} contains at a certain depth a part typed by {1} {4} and {1} {4}
-contains the part {2} {5} typed by {0} {3}.
+                  %constraint.message.14
                </message>
                <description>
-                  This validation rule ensures that a partition of an element cannot have a partition typed by this element. Thus it avoids"partitions cycles".
+                  %constraint.description.14
                </description>
                <target class="Component">
                </target>
@@ -343,17 +339,17 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="DWF_DC_05 - Part type accessibility check"
+                  name="%constraint.name.15"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Part) is typed by inaccessible {1}.
+                  %constraint.message.15
                </message>
                <target
                      class="Part">
                </target>
                <description>
-                  This rule ensures that a part is typed by an accessible Component.
+                  %constraint.description.15
                </description>
             </constraint>
             <constraint
@@ -362,17 +358,17 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="DWF_DC_06 - Component Parts type level check"
+                  name="%constraint.name.16"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The Part {0} of {1} is typed by {2} which does not belong to the same level.
+                  %constraint.message.16
                </message>
                <target
                      class="Component">
                </target>
                <description>
-                  This rule ensures that each parts of a component have the same level (i.e context, logical, physical,...) that the component itself.
+                  %constraint.description.16
                </description>
             </constraint>
             <constraint
@@ -381,14 +377,14 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_DC_33 - PhysicalPath allocated CE"
+                  name="%constraint.name.17"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0}
+                  %constraint.message.17
                </message>
                <description>
-                  This rule checks that a PhysicalPath should allocated component exchage between its path.
+                  %constraint.description.17
                </description>
                <target
                      class="PhysicalPath">
@@ -400,14 +396,14 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_DC_30 - PhysicalPort on BehaviourPC"
+                  name="%constraint.name.18"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0}
+                  %constraint.message.18
                </message>
                <description>
-                  This rule ensures that a Physical Port is not contained in a Physical Component of nature BEHAVIOUR.
+                  %constraint.description.18
                </description>
                <target
                      class="PhysicalPort">
@@ -419,14 +415,14 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_DC_07 - Part typed by an Abstract Type"
+                  name="%constraint.name.19"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Part) is typed by {1} which is abstract.
+                  %constraint.message.19
                </message>
                <description>
-                  This rule checks that a Part is typed by an abstract type.
+                  %constraint.description.19
                </description>
                <target
                      class="Part">
@@ -438,17 +434,17 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="DWF_DC_08 - Part typed"
+                  name="%constraint.name.20"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} (Part) does not have a type.
+                  %constraint.message.20
                </message>
                <target
                      class="Part">
                </target>
                <description>
-                  This rule ensures that a part has always a type.
+                  %constraint.description.20
                </description>
             </constraint>
             <constraint
@@ -457,14 +453,14 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_DC_09 - Component allocated functions types check"
+                  name="%constraint.name.21"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0}
+                  %constraint.message.21
                </message>
                <description>
-                  This rule checks that a Component allocates only leaf Functions of its own level.
+                  %constraint.description.21
                </description>
                <target
                      class="Component">
@@ -476,14 +472,14 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="DWF_DC_03 - Physical Path Involved Links check"
+                  name="%constraint.name.22"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (PhysicalPath) {1}
+                  %constraint.message.22
                </message>
                <description>
-                  This rule checks that a PhysicalPath is valid.
+                  %constraint.description.22
                </description>
                <target
                      class="PhysicalPath">
@@ -494,86 +490,84 @@ contains the part {2} {5} typed by {0} {3}.
                         isEnabledByDefault="true" 
             			lang="Java" 
                         mode="Batch" 
-            			name="DWF_DC_24 - Physical Path involvement check involved element" 
+            			name="%constraint.name.23" 
                         severity="WARNING" 
             			statusCode="1">
                <message>
-                  ({0}) is not well formed. Involved element shall be set to {1}.
+                  %constraint.message.23
                </message>
                <description>
-                  This rule checks that a Physical Path Involvement only involves an Part, a Physical Link or a Physical Path.
+                  %constraint.description.23
                </description>
                <target class="PhysicalPathInvolvement">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.cs.validation.physicalLink.PhysicalLink_Location" id="DWF_DC_19" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_DC_19 - Physical Link location check" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.cs.validation.physicalLink.PhysicalLink_Location" id="DWF_DC_19" isEnabledByDefault="false" lang="Java" mode="Batch" name="%constraint.name.24" severity="WARNING" statusCode="1">
                <message>
-                  The Physical Link &quot;{0}&quot; is not located in &quot;{1}&quot;, the common ancestor between its source/target elements.
+                  %constraint.message.24
                </message>
                <description>
-                  This rule ensures that Physical Link is located in the common ancestor between its source/target elements.
+                  %constraint.description.24
                </description>
                <target class="PhysicalLink">
                </target>
             </constraint>
             <constraint class="org.polarsys.capella.core.data.cs.validation.component.MDCHK_ComponentHumanCheckNoSubComponents" id="DWF_DC_36" 
             isEnabledByDefault="true" lang="Java" mode="Batch" 
-            name="DWF_DC_36 - Component or Actor compositions checks" severity="ERROR" statusCode="1">
+            name="%constraint.name.25" severity="ERROR" statusCode="1">
                <message>
-                  {0} {1}.
+                  %constraint.message.25
                </message>
                <description>
-                  This rule checks Component or Actor composition following the rules below:
-                  1. Component or Actor with the 'is Human' flag set on true cannot have sub Components, sub Actors, also no contained Parts or managing sub-packages.
-               	  2. An Operational Actor cannot be decomposed.
+                  %constraint.description.25
                </description>
                <target class="Component">
                </target>
             </constraint>
             <constraint class="org.polarsys.capella.core.data.cs.validation.component.MDCHK_SystemAnalysisOneSystem" id="DWF_DC_37" 
             isEnabledByDefault="true" lang="Java" mode="Batch" 
-            name="DWF_DC_37 - This rule checks that only one System Component is allowed at SystemAnalysis level" severity="ERROR" statusCode="1">
+            name="%constraint.name.26" severity="ERROR" statusCode="1">
                <message>
-                  System cannot be decomposed.
+                  %constraint.message.26
                </message>
                <description>
-                  This rule checks that only one System Component is allowed at SystemAnalysis level (cannot have parts inside a System nor component type)
+                  %constraint.description.26
                </description>
                <target class="Component">
                </target>
             </constraint>
             <constraint class="org.polarsys.capella.core.data.cs.validation.component.MDCHK_OneRootComponent" id="DWF_DC_38" 
             isEnabledByDefault="true" lang="Java" mode="Batch" 
-            name="DWF_DC_38 - This rule checks that only a Root Component exists at System/Logical/Physical level" severity="ERROR" statusCode="1">
+            name="%constraint.name.27" severity="ERROR" statusCode="1">
                <message>
-                  {0}
+                  %constraint.message.27
                </message>
                <description>
-                  This rule checks that only a Root Component exists at an Architectural level. Zero or more than one Root Components are not allowed.
+                  %constraint.description.27
                </description>
                <target class="ComponentArchitecture">
                </target>
             </constraint>
             <constraint class="org.polarsys.capella.core.data.cs.validation.component.MDCHK_OperationalEntityCheckNotHuman" id="DWF_DC_40" 
             isEnabledByDefault="true" lang="Java" mode="Batch" 
-            name="DWF_DC_40 - This rule checks that an Operational Entity is not HUMAN" severity="WARNING" statusCode="1">
+            name="%constraint.name.28" severity="WARNING" statusCode="1">
                <message>
-                  {0} cannot be HUMAN.
+                  %constraint.message.28
                </message>
                <description>
-                  This rule checks that an Operational Entity is not HUMAN.
+                  %constraint.description.28
                </description>
                <target class="Component">
                </target>
             </constraint>
             <constraint class="org.polarsys.capella.core.data.cs.validation.component.MDCHK_OperationalActorCheckHuman" id="DWF_DC_41" 
             isEnabledByDefault="true" lang="Java" mode="Batch" 
-            name="DWF_DC_41 - This rule checks that an Operational Actor is HUMAN" severity="WARNING" statusCode="1">
+            name="%constraint.name.29" severity="WARNING" statusCode="1">
                <message>
-                  {0} should be HUMAN.
+                  %constraint.message.29
                </message>
                <description>
-                  This rule checks that an Operational Actor is HUMAN.
+                  %constraint.description.29
                </description>
                <target class="Component">
                </target>
@@ -584,17 +578,17 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="DWF_DC_42 - Component with parts"
+                  name="%constraint.name.30"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} is not referenced by any Part.
+                  %constraint.message.30
                </message>
                <target
                      class="Component">
                </target>
                <description>
-                  This rule ensures that a component is always referenced by at least one part.
+                  %constraint.description.30
                </description>
             </constraint>
             <constraint
@@ -603,17 +597,17 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="DWF_DC_17 - Component self generalization not allowed"
+                  name="%constraint.name.31"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} generalizes itself.
+                  %constraint.message.31
                </message>
                <target
                      class="Component">
                </target>
                <description>
-                  This rule ensures that a Component cannot generalize itself.
+                  %constraint.description.31
                </description>
             </constraint>
          </constraints>
@@ -625,17 +619,17 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_05 - Component Realization consistency"
+                  name="%constraint.name.32"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  Realization consistency error: {0}.
+                  %constraint.message.32
                </message>
                <target
                      class="Component">
                </target>
                <description>
-                  This rule ensures that Component Realization Realizations always have consistent Source and Target.
+                  %constraint.description.32
                </description>
             </constraint>
             <constraint
@@ -644,14 +638,14 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_16 - Several Implementation/Use of the same interface by a component Check"
+                  name="%constraint.name.33"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} cannot {1} {2} (Interface) several times.
+                  %constraint.message.33
                </message>
                <description>
-                  This rule allows to ensure that a component cannot implement the same interface several times or use the same interface several times.
+                  %constraint.description.33
                </description>
                <target
                      class="Component">
@@ -663,14 +657,14 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_17 - Contexts minimal content check"
+                  name="%constraint.name.34"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} ({1}) does not contain any root component part.
+                  %constraint.message.34
                </message>
                <description>
-                  This rule checks that context packages contain at least one component (the root component) of the correct level.
+                  %constraint.description.34
                </description>
                <target
                      class="ComponentPkg">
@@ -682,14 +676,14 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_29 - Physical path involvement check 1"
+                  name="%constraint.name.35"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Physical Path Involvement) has an empty next and/or previous involvement.
+                  %constraint.message.35
                </message>
                <description>
-                  This rule checks that a Physical Path Involvement has a valid next and/or previous involvement (not empty)
+                  %constraint.description.35
                </description>
                <target
                      class="PhysicalPathInvolvement">
@@ -701,14 +695,14 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_30 - Physical path involvement check 2"
+                  name="%constraint.name.36"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Physical Path Involvement) has an invalid next and/or previous involvement.
+                  %constraint.message.36
                </message>
                <description>
-                  This rule checks that a Physical Path Involvement has a valid next and/or previous involvement (contained by the same physical path)
+                  %constraint.description.36
                </description>
                <target
                      class="PhysicalPathInvolvement">
@@ -720,14 +714,14 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_41 - Component generalizes other Components with HUMAN different by its own"
+                  name="%constraint.name.37"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} is {1} but generalizes {2} Components.
+                  %constraint.message.37
                </message>
                <description>
-                  This rule checks if a Component generalizes other Components with HUMAN different by its own.
+                  %constraint.description.37
                </description>
                <target
                      class="Component">
@@ -739,14 +733,14 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_42 - Component realizes other Components with HUMAN different by its own"
+                  name="%constraint.name.38"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} is {1} but realizes {2} Components.
+                  %constraint.message.38
                </message>
                <description>
-                  Checks if a Component realizes other Components with HUMAN different by its own.
+                  %constraint.description.38
                </description>
                <target
                      class="Component">
@@ -761,14 +755,14 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="TJ_PA_11 - Interface realization check 2"
+                  name="%constraint.name.39"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Interface) is not realized by any Physical Interface.
+                  %constraint.message.39
                </message>
                <description>
-                  This rule checks that a Logical Interface is realized by at least one Physical Interface.
+                  %constraint.description.39
                </description>
                <target
                      class="Interface">
@@ -780,17 +774,17 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="TJ_PA_09 - Physical Artifact Allocation"
+                  name="%constraint.name.40"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} {1} is not realized by any Configuration Item.
+                  %constraint.message.40
                </message>
                <target
                      class="AbstractPhysicalArtifact">
                </target>
                <description>
-                  This rule checks that a Physical Artifact is realized by at least one Configuration Item.
+                  %constraint.description.40
                </description>
             </constraint>
          </constraints>
@@ -802,14 +796,14 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DCOM_06 - Interface implementation 1"
+                  name="%constraint.name.41"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Interface) is not implemented by any Component or provided by any Component Port.
+                  %constraint.message.41
                </message>
                <description>
-                  This rule checks that an Interface is implemented by at least one Component.
+                  %constraint.description.41
                </description>
                <target
                      class="Interface">
@@ -821,14 +815,14 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DCOM_07 - Interface used by one sub logical componentat least"
+                  name="%constraint.name.42"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Interface) is not used by one of the sub Logical Component.
+                  %constraint.message.42
                </message>
                <description>
-                  This rule checks that an interface is used by one of the sub Logical Component
+                  %constraint.description.42
                </description>
                <target
                      class="Interface">
@@ -840,14 +834,14 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DCOM_08 - Interface implemented by one logical component"
+                  name="%constraint.name.43"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Interface) is not implemented by one of the sub Logical Component.
+                  %constraint.message.43
                </message>
                <description>
-                  This rule checks that an Interface is implemented by one of the sub Logical Component.
+                  %constraint.description.43
                </description>
                <target
                      class="Interface">
@@ -859,14 +853,14 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DCOM_09 - Interface operations number check"
+                  name="%constraint.name.44"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Interface) doesn't contains any operation.
+                  %constraint.message.44
                </message>
                <description>
-                  This rule checks that an Interface contains at least one operation.
+                  %constraint.description.44
                </description>
                <target
                      class="Interface">
@@ -881,27 +875,27 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DCOV_01 - Interface used one component at least"
+                  name="%constraint.name.45"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Interface) is not used by any Component or required by any Component Port.
+                  %constraint.message.45
                </message>
                <description>
-                  This rule checks that an Interface is used by at least one Component.
+                  %constraint.description.45
                </description>
                <target
                      class="Interface">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.cs.validation.physicalPort.PhysicalPortPhysicalLink" id="DCOV_11" isEnabledByDefault="true" lang="java" mode="Batch" name="DCOV_11 - Physical port Physical Link check" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.cs.validation.physicalPort.PhysicalPortPhysicalLink" id="DCOV_11" isEnabledByDefault="true" lang="java" mode="Batch" name="%constraint.name.46" severity="WARNING" statusCode="1">
                <message>
-                  {0} (Physical Port) is not used by any Physical Link.
+                  %constraint.message.46
                </message>
                <target class="PhysicalPort">
                </target>
                <description>
-                  This rule generates a warning if there is no Physical Links using the target Physical Port.
+                  %constraint.description.46
                </description>
             </constraint>
          </constraints>
@@ -913,20 +907,17 @@ contains the part {2} {5} typed by {0} {3}.
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="TC_I_03 - Exchange item allocation check"
+                  name="%constraint.name.47"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  The {1} (ExchangeItem) is defined into {2} level and realized into the {3} level. {0} Interface allocates {1} ExchangeItem instead of allocating realized ExchangeItem.
+                  %constraint.message.47
                </message>
                <target
                      class="ExchangeItemAllocation">
                </target>
                <description>
-                  This rule checks that an Interface isn't linked to an ExchangeItem from a previous level whereas it is realized in the same level than the Interface.
-A warning can be raised if you have performed a transition of the Interface before performing a transition of the allocated ExchangeItem.
-You should perform another transition of the Interface from the lower level to use the realized ExchangeItem. 
-Interface should be linked to the realized ExchangeItem.
+                  %constraint.description.47
                </description>
             </constraint>
          </constraints>
@@ -946,18 +937,14 @@ Interface should be linked to the realized ExchangeItem.
                   isEnabledByDefault="false"
                   lang="Java"
                   mode="Batch"
-                  name="DCOM_15 - Exchange item allocation consistency"
+                  name="%constraint.name.48"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} 
+                  %constraint.message.48 
                </message>
                <description>
-               This rule is applied to a Component 
- 1) Checks that all Exchange Items allocated by its Interfaces are allocated to one of Function Ports of its allocated Functions.
- 2) Checks that all Exchange Items allocated by Function Ports of its allocated Functions are allocated to one of its Interfaces(used/implemented/provided/required).
-               
-				 
+               %constraint.description.48
                </description>
                <target
                      class="ModelElement">
@@ -971,14 +958,14 @@ Interface should be linked to the realized ExchangeItem.
                   isEnabledByDefault="false"
                   lang="Java"
                   mode="Batch"
-                  name="DCOM_16 - Interface Exchange item allocation consistency"
+                  name="%constraint.name.49"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  All exchange items allocated by {0} of {1} shall be allocated to one of functions ports of its allocated functions 
+                  %constraint.message.49 
                </message>
                <description>
-               This rule is applied to an Interface and checks that all Exchange Items allocated by an Interface of a Component are allocated to one of Function Ports of its allocated Functions.
+               %constraint.description.49
                </description>
                <target
                      class="ModelElement">
@@ -990,16 +977,14 @@ Interface should be linked to the realized ExchangeItem.
                   isEnabledByDefault="false"
                   lang="Java"
                   mode="Batch"
-                  name="DCOM_17 - Function Port Exchange item allocation consistency"
+                  name="%constraint.name.50"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  All exchange items allocated by {0} shall be allocated to one of Interfaces of {1} 
+                  %constraint.message.50 
                </message>
                <description>
-
-This rule is applied to a Function Port and checks that all Exchange Items allocated by a Function Port are allocated to one of Interfaces of its allocating Component
-
+%constraint.description.50
                </description>
                <target
                      class="ModelElement">
@@ -1015,14 +1000,14 @@ This rule is applied to a Function Port and checks that all Exchange Items alloc
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_I_13 - Interface and Exchange item location check"
+                  name="%constraint.name.51"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  The element {0} is linked through {3} [{2}] to {1} which is defined outside its namespace
+                  %constraint.message.51
                </message>
                <description>
-                  This rule checks if a component is linked to interfaces and exchange items which are defined in a unavailable location (for instance a component should not be linked to an inner interface of another component)
+                  %constraint.description.51
                </description>
                <target
                      class="ModelElement">

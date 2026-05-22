@@ -39,7 +39,7 @@ public class DiagramTitleBlockContainerSection extends TitleBlockContainerSectio
   @Override
   public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     super.createContents(parent, aTabbedPropertySheetPage);
-    createTextGroup(parent, Messages.getString("TitleBlock.AssociatedDiagram.Label"));
+    createTextGroup(parent, Messages.getString("TitleBlock.AssociatedDiagram.Label")); //$NON-NLS-1$
   }
   
   @Override

@@ -64,13 +64,10 @@ public class TitleBlockServices {
 
   static Map<String, String> propertiesName = new HashMap<String, String>();
   static Map<String, String> propertiesContent = new HashMap<String, String>();
-  private static final String SEPARATOR = "SEPARATOR";
-  private static final String DEFAULT_CELL_NAME = "Name";
-  private static final String DEFAULT_CELL_CONTENT = "feature:name";
-  private static final String FILTERS_TITLE_BLOCKS_MESSAGE = "{0}s are hidden by filters. Do you want to deactivate the filters for {1}s?";
-  private static final String FILTERS_DIALOG_TITLE = "Filters deactivation";
-  private static final String FILTER_DIAGRAM_TITLE_BLOCK = "hide.diagram.title.blocks.filter";
-  private static final String FILTER_ELEMENT_TITLE_BLOCK = "hide.element.title.blocks.filter";
+  private static final String SEPARATOR = "SEPARATOR"; //$NON-NLS-1$
+  private static final String DEFAULT_CELL_CONTENT = "feature:name"; //$NON-NLS-1$
+  private static final String FILTER_DIAGRAM_TITLE_BLOCK = "hide.diagram.title.blocks.filter"; //$NON-NLS-1$
+  private static final String FILTER_ELEMENT_TITLE_BLOCK = "hide.element.title.blocks.filter"; //$NON-NLS-1$
 
   public static TitleBlockServices getService() {
     if (service == null) {
@@ -250,7 +247,7 @@ public class TitleBlockServices {
   public void createElementTitleBlock(DDiagramElement elementView, DDiagram diagram) {
     DAnnotation titleBlock = TitleBlockHelper.addElementTitleBlock(diagram, elementView);
     DAnnotation line = TitleBlockHelper.addTitleBlockLine(diagram, titleBlock);
-    TitleBlockHelper.addTitleBlockCell(diagram, line, DEFAULT_CELL_NAME, DEFAULT_CELL_CONTENT);
+    TitleBlockHelper.addTitleBlockCell(diagram, line, Messages.TitleBlockServices_DefaultCellName, DEFAULT_CELL_CONTENT);
     createTitleBlockView(titleBlock, diagram, elementView);
     checkTitleBlocksFilters(diagram, TitleBlockHelper.ELEMENT_TITLE_BLOCK);
   }
@@ -303,7 +300,7 @@ public class TitleBlockServices {
     int indexCol = TitleBlockHelper.getColumnIndexOfCell(cell, titleBlock);
     for (DAnnotation line : TitleBlockHelper.getTitleBlockLines(titleBlock)) {
       // Add new empty cell
-      DAnnotation annotationColumn = TitleBlockHelper.addTitleBlockCell(diagram, line, "", "", indexCol + 1);
+      DAnnotation annotationColumn = TitleBlockHelper.addTitleBlockCell(diagram, line, "", "", indexCol + 1); //$NON-NLS-1$ //$NON-NLS-2$
       createTitleBlockColumnView(DiagramServices.getDiagramServices().getDiagramElement(diagram, line),
           annotationColumn, diagram, diagram, indexCol + 1);
     }
@@ -320,7 +317,7 @@ public class TitleBlockServices {
     if (object instanceof DAnnotation) {
       DAnnotation cellAnnotation = (DAnnotation) object;
       if (TitleBlockHelper.isTitleBlockCell(cellAnnotation)) {
-        TitleBlockHelper.setTitleBlockCellContent(cellAnnotation, "", "");
+        TitleBlockHelper.setTitleBlockCellContent(cellAnnotation, "", ""); //$NON-NLS-1$ //$NON-NLS-2$
       }
     }
   }
@@ -768,7 +765,7 @@ public class TitleBlockServices {
 
     DAnnotation wrapperAnnotation = null;
     String serializedResult = primitiveEvaluationResult.stream().map(o -> htmlToPlainText(o.toString()))
-        .collect(Collectors.joining("\n"));
+        .collect(Collectors.joining("\n")); //$NON-NLS-1$
 
     if (cell.getReferences().isEmpty()) {
       DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
@@ -786,7 +783,7 @@ public class TitleBlockServices {
   }
 
   private String htmlToPlainText(String content) {
-    return StringEscapeUtils.unescapeHtml(content).replaceAll("\\<[^>]*>", "").trim();
+    return StringEscapeUtils.unescapeHtml(content).replaceAll("\\<[^>]*>", "").trim(); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   /**
@@ -990,7 +987,7 @@ public class TitleBlockServices {
    * @return the label that will be displayed in each cell (the value of the name of the cell)
    */
   public String getTitleBlockCellLabel(EObject cell) {
-    String name = "";
+    String name = ""; //$NON-NLS-1$
     if (cell instanceof DAnnotation) {
       name = ((DAnnotation) cell).getDetails().get(TitleBlockHelper.NAME);
     }
@@ -1031,8 +1028,8 @@ public class TitleBlockServices {
     List<FilterDescription> activatedFiltersOnNode = getActivatedFilters(diagram, getFilterLable(type));
     if (!activatedFiltersOnNode.isEmpty()) {
       String typeLabel = TitleBlockHelper.getTitleBlockName(type);
-      boolean confirmation = MessageDialog.openQuestion(Display.getDefault().getActiveShell(), FILTERS_DIALOG_TITLE,
-          NLS.bind(FILTERS_TITLE_BLOCKS_MESSAGE, typeLabel, typeLabel));
+      boolean confirmation = MessageDialog.openQuestion(Display.getDefault().getActiveShell(), Messages.TitleBlockServices_DisableFiltersDialog_Title,
+          NLS.bind(Messages.TitleBlockServices_DisableFiltersDialog_Message, typeLabel, typeLabel));
       if (confirmation) {
         // remove the filter
         AbstractCommand cmd = new AbstractReadWriteCommand() {
@@ -1058,6 +1055,6 @@ public class TitleBlockServices {
     if (type.equals(TitleBlockHelper.ELEMENT_TITLE_BLOCK)) {
       return FILTER_ELEMENT_TITLE_BLOCK;
     }
-    return "";
+    return ""; //$NON-NLS-1$
   }
 }
