@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.sirius.ui;singleton:=true
-Bundle-Version: 7.0.1.qualifier
+Bundle-Version: 7.1.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin
@@ -50,6 +50,7 @@ Export-Package: org.polarsys.capella.core.sirius.ui,
  org.polarsys.capella.core.sirius.ui.session,
  org.polarsys.capella.core.sirius.ui.testers,
  org.polarsys.capella.core.sirius.ui.wizard
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.polarsys.capella.core.sirius.ui.SiriusUIPlugin
 

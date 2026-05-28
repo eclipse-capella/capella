@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.fragmentation
-Bundle-Version: 7.0.1.qualifier
+Bundle-Version: 7.1.0.qualifier
 Bundle-Activator: org.polarsys.capella.test.fragmentation.ju.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -18,5 +18,6 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.polarsys.capella.test.fragmentation.ju,
  org.polarsys.capella.test.fragmentation.ju.testsuites
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin

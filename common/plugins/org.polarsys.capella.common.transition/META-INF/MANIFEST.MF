@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.transition;singleton:=true
-Bundle-Version: 7.0.1.qualifier
+Bundle-Version: 7.1.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.transition.common.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
@@ -50,4 +50,5 @@ Export-Package: org.polarsys.capella.core.transition.common,
  org.polarsys.capella.core.transition.common.rules,
  org.polarsys.capella.core.transition.common.transposer,
  org.polarsys.capella.core.transition.common.transposer.current
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-Localization: plugin

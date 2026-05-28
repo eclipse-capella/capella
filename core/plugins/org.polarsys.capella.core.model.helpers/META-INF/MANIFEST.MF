@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.model.helpers;singleton:=true
-Bundle-Version: 7.0.1.qualifier
+Bundle-Version: 7.1.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.apache.commons.lang,
  org.eclipse.emf.codegen.ecore,
@@ -34,6 +34,7 @@ Export-Package: org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.model.helpers.viewpoint,
  org.polarsys.capella.core.model.utils,
  org.polarsys.capella.core.model.utils.saxparser
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

@@ -2,11 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.projection.interfaces;singleton:=true
-Bundle-Version: 7.0.1.qualifier
+Bundle-Version: 7.1.0.qualifier
 Bundle-Vendor: %providerName
 Export-Package: org.polarsys.capella.core.projection.interfaces,
  org.polarsys.capella.core.projection.interfaces.generateInterfaces,
  org.polarsys.capella.core.projection.interfaces.validation
+Import-Package: org.apache.log4j;version="1.2.24"
 Require-Bundle: org.polarsys.capella.core.projection.common,
  org.polarsys.capella.core.platform.sirius.ui.actions,
  org.polarsys.capella.core.transition.system.topdown

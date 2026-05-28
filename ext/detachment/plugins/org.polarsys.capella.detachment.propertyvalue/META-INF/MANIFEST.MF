@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.detachment.propertyvalue;singleton:=true
-Bundle-Version: 7.0.1.qualifier
+Bundle-Version: 7.1.0.qualifier
 Bundle-Activator: org.polarsys.capella.detachment.propertyvalue.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -24,4 +24,5 @@ Export-Package: org.polarsys.capella.detachment.propertyvalue.command,
  org.polarsys.capella.detachment.propertyvalue.messages,
  org.polarsys.capella.detachment.propertyvalues.scrutinizers,
  org.polarsys.capella.detachment.propertyvalues.ui.page
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-Localization: plugin

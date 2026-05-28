@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.queries;singleton:=true
-Bundle-Version: 7.0.1.qualifier
+Bundle-Version: 7.1.0.qualifier
 Bundle-Activator: org.polarsys.capella.common.queries.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.apache.commons.lang,
@@ -19,4 +19,5 @@ Export-Package: org.polarsys.capella.common.queries,
  org.polarsys.capella.common.queries.interpretor,
  org.polarsys.capella.common.queries.queryContext,
  org.polarsys.capella.common.queries.testGeneration
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-Localization: plugin

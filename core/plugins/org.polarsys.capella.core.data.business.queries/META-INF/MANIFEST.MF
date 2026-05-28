@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.business.queries;singleton:=true
-Bundle-Version: 7.0.1.qualifier
+Bundle-Version: 7.1.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.model.helpers;visibility:=reexport,
  org.polarsys.capella.core.model.preferences;visibility:=reexport,
@@ -42,6 +42,7 @@ Export-Package: org.polarsys.capella.core.business.abstractqueries,
  org.polarsys.capella.core.business.queries.queries.la,
  org.polarsys.capella.core.business.queries.queries.oa,
  org.polarsys.capella.core.business.queries.queries.pa
+Import-Package: org.apache.log4j;version="1.2.24"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Activator: org.polarsys.capella.core.business.queries.BusinessQueriesPlugin
 Bundle-Localization: plugin

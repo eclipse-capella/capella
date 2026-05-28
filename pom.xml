@@ -18,7 +18,7 @@
 	<name>Capella</name>
 	<groupId>org.polarsys</groupId>
 	<artifactId>org.polarsys.capella</artifactId>
-	<version>7.0.1-SNAPSHOT</version>
+	<version>7.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -75,7 +75,7 @@
 						<artifact>
 							<groupId>org.polarsys</groupId>
 							<artifactId>org.polarsys.capella</artifactId>
-							<version>7.0.1-SNAPSHOT</version>
+							<version>7.1.0-SNAPSHOT</version>
 							<classifier>releng/plugins/org.polarsys.capella.targets/${target-platform-path}/capella.target-definition</classifier>
 						</artifact>
 					</target>
@@ -131,7 +131,6 @@
 								<plugin id="org.polarsys.capella.ui.views" />
 								<feature id="org.eclipse.nebula.widgets.richtext.feature" />
 								<feature id="org.polarsys.kitalpha.richtext.widget.feature" />
-								<feature id="org.polarsys.capella.core.mylyn.feature" />
 							</excludes>
 						</configuration>
 					</execution>

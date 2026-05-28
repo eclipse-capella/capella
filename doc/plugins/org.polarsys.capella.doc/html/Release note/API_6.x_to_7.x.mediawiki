@@ -447,3 +447,5 @@ Models from previous versions and from 7.0.0 have to be migrated.
 
 ==== Changes in <code>org.polarsys.capella.core.ui.semantic.browser</code>====
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.ui.semantic.browser.label.provider.SemanticBrowserDecoratingLabelProvider.getText(Object)</code>
+
+== Raw API changes from 7.0.1 to 7.1.0 ==
