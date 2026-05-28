@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -22,12 +22,10 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.junit.Assert;
-import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
@@ -109,6 +107,7 @@ public class InitializationFromExistingDiagramTool extends InsertRemoveTool {
     };
   };
 
+  @SuppressWarnings("restriction")
   private Map<String, Point> getNameToLocationMap(DDiagram dDiagram) {
     Map<String, Point> locationMap = new HashMap<String, Point>();
 
@@ -116,7 +115,7 @@ public class InitializationFromExistingDiagramTool extends InsertRemoveTool {
     for (DDiagramElement element : dDiagram.getDiagramElements()) {
       if (element instanceof AbstractDNode) {
         Node node = SiriusGMFHelper.getGmfNode(element, session);
-        Point location = GMFHelper.getAbsoluteLocation(node);
+        Point location = GMFHelper.getAbsoluteLocation(node, true, false);
         String name = element.getName();
         if (DiagramServices.getDiagramServices().isABorderedNode((AbstractDNode)element)) {
           name+=((AbstractDNode)element.eContainer()).getName();
