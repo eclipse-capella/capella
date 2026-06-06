@@ -58,7 +58,7 @@ location egit "https://archive.eclipse.org/egit/updates-6.6.1" {
 	org.eclipse.egit.source.feature.group
 }
 
-location orbit "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/milestone/S202604101740" {
+location orbit "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/release/4.40.0" {
 	slf4j.api
 	ch.qos.logback.classic
 	ch.qos.logback.core
