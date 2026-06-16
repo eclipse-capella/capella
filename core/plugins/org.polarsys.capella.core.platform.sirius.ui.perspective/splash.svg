@@ -50,7 +50,7 @@
       }
 
       .cls-version {
-        font-family: Lato-Light, Lato;
+        font-family: Lato;
         font-size: 16px;
         font-weight: 300;
       }
