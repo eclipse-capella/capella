@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -24,14 +24,22 @@ public class CommandLineArgumentHelper {
 
   private String input;
   private String outputFolder;
+  
   private boolean helpNeeded;
   private String logFilePath;
   private String appid;
   private String importProjects;
+  private String importAllProjects;
   private String exportZips;
   private boolean forceImport;
   private boolean copyOnWorkspace = false;
   private boolean backup;
+
+  private String exportProjects;
+  private boolean singleZip;
+  private boolean exportCopy;
+  private String exportTarget;
+
   /**
    * @deprecated (use -input instead)
    */
@@ -53,6 +61,7 @@ public class CommandLineArgumentHelper {
   @Deprecated
   private String zipNameProject;
 
+
   protected static String[] args;
 
   public static CommandLineArgumentHelper getInstance() {
@@ -68,7 +77,8 @@ public class CommandLineArgumentHelper {
   }
 
   public void parseArgs(String[] args) {
-    ArgumentsHelper helper = ArgumentsHelper.getInstance();
+    // Avoid singleton to be able to chain commands.
+    ArgumentsHelper helper = new ArgumentsHelper();
     helper.loadArguments(args);
     
     helpNeeded = helper.hasParameter(CommandLineConstants.HELP);
@@ -76,6 +86,7 @@ public class CommandLineArgumentHelper {
     copyOnWorkspace = helper.hasParameter(CommandLineConstants.COPY_ON_WORKSPACE);
     appid = helper.getString(CommandLineConstants.ID);
     importProjects = helper.getString(CommandLineConstants.IMPORT);
+    importAllProjects = helper.getString(CommandLineConstants.IMPORT_ALL);
     exportZips = helper.getString(CommandLineConstants.EXPORTZIP);
     forceImport = helper.hasParameter(CommandLineConstants.FORCEIMPORT);
     exportProject = helper.getString(CommandLineConstants.EXPORT);
@@ -85,6 +96,11 @@ public class CommandLineArgumentHelper {
     outputFolder = helper.getString(CommandLineConstants.OUTPUTFOLDER);
     logFilePath = helper.getString(CommonArgumentsConstants.LOG_FILE_PATH);
     backup = helper.hasParameter(CommandLineConstants.BACKUP);
+    
+    singleZip = helper.hasParameter(CommandLineConstants.SINGLE_ZIP);
+    exportProjects = helper.getString(CommandLineConstants.EXPORT_LIST);
+    exportCopy = helper.hasParameter(CommandLineConstants.EXPORT_COPY);
+    exportTarget = helper.getString(CommandLineConstants.EXPORT_TARGET);
   }
 
   /**
@@ -128,6 +144,13 @@ public class CommandLineArgumentHelper {
    */
   public String getImportProjects() {
     return importProjects;
+  }
+
+  /**
+   * @return the importAllProjects
+   */
+  public String getImportAllProjects() {
+    return importAllProjects;
   }
 
   /**
@@ -196,4 +219,42 @@ public class CommandLineArgumentHelper {
   public boolean isBackupNeeded() {
     return backup;
   }
+  
+  /**
+   * Returns true if the export must create a single archive.
+   * 
+   * @return path of a file
+   */
+  public boolean isSingleZip() {
+    return singleZip;
+  }
+  
+  /**
+   * Returns the path of the folder to zip projects in.
+   * 
+   * @return path of a file
+   */
+  public String getExportTarget() {
+    return exportTarget;
+  }
+
+  /**
+   * Returns true if the export must only perform a copy.
+   * 
+   * @return true for copy
+   */
+  public boolean isExportCopy() {
+    return exportCopy;
+  }
+
+  /**
+   * Returns the list of project to export.
+   * 
+   * @return path of a file
+   */
+  public String getExportProjects() {
+    return exportProjects;
+  }
+
+
 }
