@@ -21,12 +21,12 @@ location GMF-Notation-1.13.1 "https://download.eclipse.org/modeling/gmp/gmf-nota
     org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
 }
 
-location GMF-Runtime-1.16 "https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S202401081627" {
+location GMF-Runtime-1.16.7 "https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202508120942" {
     org.eclipse.gmf.runtime.sdk.feature.group lazy
     org.eclipse.gmf.runtime.thirdparty.feature.group lazy
 }
 
-location GEF-Classic  "https://download.eclipse.org/tools/gef/classic/releases/3.17.0" {
+location GEF-Classic  "https://download.eclipse.org/tools/gef/classic/release/3.24.0" {
     org.eclipse.gef.feature.group lazy
 	org.eclipse.gef.source.feature.group
     org.eclipse.gef.sdk.feature.group lazy
@@ -34,28 +34,31 @@ location GEF-Classic  "https://download.eclipse.org/tools/gef/classic/releases/3
 	org.eclipse.draw2d.source.feature.group
 }
 
+location Eclipse-2025-09 "https://download.eclipse.org/releases/2025-09/" {
+	org.eclipse.sdk.feature.group lazy
+	org.eclipse.platform.feature.group lazy
+	org.eclipse.emf.sdk.feature.group lazy
+	org.eclipse.emf.validation.source.feature.group lazy
+	org.eclipse.emf.transaction.source.feature.group lazy
+	org.eclipse.emf.workspace.source.feature.group lazy
+	org.eclipse.equinox.executable.feature.group lazy
+	com.ibm.icu lazy
+	jakarta.inject.jakarta.inject-api
+//	org.eclipse.viatra.query.runtime.feature.source.feature.group
+	org.apache.commons.lang lazy
+	org.eclipse.jgit.source lazy
+	org.eclipse.egit.source.feature.group lazy
+	org.eclipse.xtext.xbase.lib.feature.group lazy
+	org.eclipse.osgi.services lazy
+}
+
 location eclipse "https://download.eclipse.org/releases/2023-03" {
-	org.eclipse.sdk.feature.group
-	org.eclipse.platform.feature.group
-	org.eclipse.emf.sdk.feature.group
-	org.eclipse.emf.validation.source.feature.group
-	org.eclipse.emf.transaction.source.feature.group
-	org.eclipse.emf.workspace.source.feature.group
-	org.eclipse.equinox.executable.feature.group
-	com.ibm.icu
-	org.eclipse.viatra.query.runtime.feature.source.feature.group
-	org.apache.commons.lang
+	org.eclipse.emf.query lazy
 }
 
-// Build dependency
-// Xtext will not be part of the finished product but we need to make sure the dependency is to an xtext version that depends on Guava 33
-location xtext "https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.34.0/" {
-	org.eclipse.xtext.xbase.lib.feature.group
-}
-
-location egit "https://archive.eclipse.org/egit/updates-6.6.1" {
-	org.eclipse.jgit.source.feature.group
-	org.eclipse.egit.source.feature.group
+//location eclipse "https://download.eclipse.org/releases/2023-03" {
+location Viatra "http://download.eclipse.org/viatra/updates/release/2.8.2" {
+	org.eclipse.viatra.query.runtime.feature.source.feature.group	
 }
 
 location orbit "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/release/4.40.0" {
@@ -67,25 +70,22 @@ location orbit "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregatio
 	com.google.guava
 }
 
-location sirius "https://download.eclipse.org/sirius/updates/releases/7.4.14/2023-03" {
+location sirius "https://download.eclipse.org/sirius/updates/releases/7.5.0/2025-09/" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
 	org.eclipse.sirius.runtime.aql.source.feature.group
 	org.eclipse.sirius.runtime.ide.ui.source.feature.group
 	org.eclipse.sirius.interpreter.feature.source.feature.group
-	org.eclipse.acceleo.ui.interpreter.source.feature.group
 	org.eclipse.sirius.aql.source.feature.group
-	org.eclipse.sirius.runtime.ide.ui.acceleo.source.feature.group
 	org.eclipse.sirius.diagram.elk.feature.source.feature.group
 }
 
-// Acceleo 3.7.15 is the first version that accepted Guava 33
-location acceleo "https://download.eclipse.org/acceleo/updates/releases/3.7/R202402190857/" {
+location Acceleo_4.2.1_AQL_8.1.1 "https://download.eclipse.org/acceleo/updates/releases/4.2/R202602100910/" {
 	org.eclipse.acceleo.query.source.feature.group
 }
 
-location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/releases/runtime/7.0.1/" {
+location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/releases/runtime/7.1.0/" {
 	org.polarsys.kitalpha.ad.runtime.feature.source.feature.group
 	org.polarsys.kitalpha.cadence.feature.source.feature.group
 	org.polarsys.kitalpha.common.feature.source.feature.group
@@ -110,9 +110,13 @@ location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/upd
 	org.polarsys.kitalpha.sirius.rotativeimage.feature.source.feature.group
 }
 
-location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/releases/sdk/7.0.1/" {
+location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/releases/sdk/7.1.0/" {
 	org.polarsys.kitalpha.doc.feature.feature.group
 	org.polarsys.kitalpha.emde.sdk.feature.source.feature.group
+}
+
+location kitalpha-sdk-updatesite-master "file:/C:/Git/kitalpha/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository" {
+	org.polarsys.kitalpha.doc.feature.feature.group
 }
 
 location diffmerge-core "https://download.eclipse.org/diffmerge/releases/0.15.0/emf-diffmerge-site/" {
@@ -127,7 +131,7 @@ location amalgam "https://download.eclipse.org/modeling/amalgam/updates/releases
 	org.eclipse.amalgam.explorer.activity.source.feature.group
 }
 
-location egf "https://download.eclipse.org/egf/updates/1.6.4/2023-03/" {
+location egf "https://download.eclipse.org/egf/updates/stable/1.6.5/2025-09/" {
 	org.eclipse.egf.sdk.feature.source.feature.group
 } 
 
