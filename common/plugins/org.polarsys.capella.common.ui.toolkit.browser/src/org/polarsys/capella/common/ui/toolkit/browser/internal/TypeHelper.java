@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,7 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.common.ui.toolkit.browser.internal;
 
+import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang.ClassUtils;
@@ -85,8 +87,10 @@ public class TypeHelper {
   @SuppressWarnings("unchecked")
   public boolean isSubtype(String classFQN1, String classFQN2, EObject current) {
     Class<? extends EObject> clazz = current.getClass();
-    Map<String, Class> name2Interface = (Map<String, Class>) ClassUtils.getAllInterfaces(clazz).stream()
-        .collect(Collectors.toMap(i -> ((Class) i).getName(), i -> i));
+    List<Class<?>> interfaces = (List<Class<?>>) ClassUtils.getAllInterfaces(clazz);
+
+    Map<String, Class<?>> name2Interface = interfaces.stream()
+        .collect(Collectors.toMap(Class::getName, Function.identity()));
     if (name2Interface.containsKey(classFQN1) && name2Interface.containsKey(classFQN2)) {
       return name2Interface.get(classFQN2).isAssignableFrom(name2Interface.get(classFQN1));
     }
