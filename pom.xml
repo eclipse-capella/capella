@@ -22,12 +22,12 @@
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tycho-version>4.0.9</tycho-version>
-		<tycho-extras-version>4.0.9</tycho-extras-version>
+		<tycho-version>4.0.13</tycho-version>
+		<tycho-extras-version>4.0.13</tycho-extras-version>
 		<antrun-version>3.0.0</antrun-version>
 		<rcptt-version>2.5.3</rcptt-version>
 		<rcptt-runner-version>2.5.3</rcptt-runner-version>
-		<sonar-version>3.0.2</sonar-version>
+		<sonar-version>3.3.0.603</sonar-version>
 
 		<!-- for tycho -->
 		<tycho.scmUrl>scm:git:https://github.com/eclipse-capella/capella.git</tycho.scmUrl>
@@ -60,6 +60,17 @@
 				<artifactId>tycho-maven-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<skipPomGeneration>true</skipPomGeneration>
+					<archive>
+						<addMavenDescriptor>false</addMavenDescriptor>
+					</archive>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
