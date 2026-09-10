@@ -78,7 +78,12 @@ public class CapellaSiriusLayoutProvider extends GenericLayoutProvider {
     }
 
     static CustomLayoutConfiguration createMrTreeConfiguration() {
-        return createConfiguration(MrTreeOptions.ALGORITHM_ID);
+        CustomLayoutConfiguration result = createConfiguration(MrTreeOptions.ALGORITHM_ID);
+        // Spacing.node_node: default (20) is cumbersome.
+        addDoubleOption(result, CoreOptions.SPACING_NODE_NODE, TARGET_PARENT, 40);
+        // Half spacing.edgeNode : Horizontal edge will be centered.
+        addDoubleOption(result, CoreOptions.SPACING_EDGE_NODE, TARGET_PARENT, 20);
+        return result;
     }
 
     static CustomLayoutConfiguration createDotConfiguration() {
