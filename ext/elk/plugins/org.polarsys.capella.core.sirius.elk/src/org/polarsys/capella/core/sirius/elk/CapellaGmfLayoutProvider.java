@@ -50,7 +50,7 @@ import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PH
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_PATH_DESCRIPTION_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.SYSTEM_FUNCTION_BREAKDOWN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -117,6 +117,8 @@ public class CapellaGmfLayoutProvider extends DefaultLayoutProvider {
             // 3- Improvement (initial in first)
 
             // Capabilities diagrams
+            CONTEXTUAL_MISSION_DIAGRAM_NAME,
+            CONTEXTUAL_CAPABILITY_DIAGRAM_NAME,
             CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT, // Not tested (no such diagram in IFE sample)
             CAPABILITY_REALIZATION_BLANK, // Not tested (no such diagram in IFE sample)
             MISSIONS_BLANK_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)

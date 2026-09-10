@@ -12,11 +12,17 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.elk;
 
+
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.FUNCTIONAL_CHAIN_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.MODE_STATE_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME;
@@ -68,6 +74,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.elk.ElkDiagramLayoutConnector;
@@ -79,6 +86,8 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.InitialPseudoState;
+import org.polarsys.capella.core.data.ctx.Mission;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.FunctionInputPort;
@@ -86,6 +95,7 @@ import org.polarsys.capella.core.data.fa.FunctionKind;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
+import org.polarsys.capella.core.data.interaction.AbstractCapability;
 
 /**
  * A sample implementation of {@link IELKLayoutExtension} that removes from the layout graph edges between two ports on
@@ -127,6 +137,15 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
             FUNCTIONAL_CHAIN_DIAGRAM_NAME
             );
     
+    private static final List<String> CAPABILITIES_DIAGRAMS = List.of(
+            // Kind is ignored for OA.
+            OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME,
+            CONTEXTUAL_MISSION_DIAGRAM_NAME, // reverse Mission involvement
+            CAPABILITY_REALIZATION_BLANK,
+            MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME,
+            CONTEXTUAL_CAPABILITY_DIAGRAM_NAME
+            );
+
 
     private record EdgeDescription(
             ElkConnectableShape source, 
@@ -172,6 +191,7 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
             beforeStateLayout();
         }
         beforeFunctionLayout(diagramDescription);
+        beforeCapabilitiesLayout(diagramDescription);
     }
     
 
@@ -186,6 +206,21 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
             // inspired from sizeComputationExpression
             node.setProperty(CoreOptions.NODE_SIZE_MINIMUM, new KVector(40, 40));                
         });
+    }
+    
+    private void beforeCapabilitiesLayout(DiagramDescription diagramDescription) {
+        if (!CAPABILITIES_DIAGRAMS.contains(diagramDescription.getName())) {
+            return;
+        }
+
+        streamAllNodes(layoutMapping.getLayoutGraph(), it -> getDiagramElement(it) instanceof DNode)
+        .forEach(node-> {
+            var semanctic = getSemanticElement(node);
+            if (semanctic instanceof AbstractCapability
+                    || semanctic instanceof SystemComponent
+                    || semanctic instanceof Mission)
+                node.setProperty(CoreOptions.NODE_SIZE_MINIMUM, new KVector(70, 50));
+        });        
     }
     
     private void beforePabLayout() {
