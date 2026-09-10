@@ -16,6 +16,7 @@ import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CA
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CAPABILITY_REALIZATION_REFINEMENT;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CLASS_BLANK_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONFIGURATION_ITEMS_BREAKDOWN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME;
@@ -117,6 +118,8 @@ public class CapellaGmfLayoutProvider extends DefaultLayoutProvider {
             // 3- Improvement (initial in first)
 
             // Capabilities diagrams
+            CONTEXTUAL_MISSION_DIAGRAM_NAME,
+            CONTEXTUAL_CAPABILITY_DIAGRAM_NAME,
             CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT, // Not tested (no such diagram in IFE sample)
             CAPABILITY_REALIZATION_BLANK, // Not tested (no such diagram in IFE sample)
             MISSIONS_BLANK_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
