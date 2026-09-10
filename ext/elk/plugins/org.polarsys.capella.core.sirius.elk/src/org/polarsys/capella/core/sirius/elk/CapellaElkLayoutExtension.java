@@ -12,9 +12,15 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.elk;
 
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.FUNCTIONAL_CHAIN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.MODE_STATE_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.MSM_PSEUDOSTATE_MAPPING_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.MS_INNER_PSEUDOSTATE_MAPPING_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.MS_PSEUDOSTATE_MAPPING_NAME;
@@ -73,9 +79,12 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.InitialPseudoState;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.FunctionInputPort;
+import org.polarsys.capella.core.data.fa.FunctionKind;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
 
 /**
@@ -105,6 +114,19 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
             MODES_AND_STATES_DIAGRAM_NAME,
             MODE_STATE_DIAGRAM_NAME
             );
+    
+    private static final List<String> BLANK_DIAGRAMS_CONTAINING_FUNCTIONS = List.of(
+            // Kind is ignored for OA.
+            SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME,
+            SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME,
+            LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME,
+            LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME,
+            PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME,
+            PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME,
+            // 
+            FUNCTIONAL_CHAIN_DIAGRAM_NAME
+            );
+    
 
     private record EdgeDescription(
             ElkConnectableShape source, 
@@ -149,6 +171,21 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
         } else if (STATES_DIAGRAMS.contains(diagramDescription.getName())) {
             beforeStateLayout();
         }
+        beforeFunctionLayout(diagramDescription);
+    }
+    
+
+    private void beforeFunctionLayout(DiagramDescription diagramDescription) {
+        if (!BLANK_DIAGRAMS_CONTAINING_FUNCTIONS.contains(diagramDescription.getName())) {
+            return;
+        }
+        
+        // Set minimum size for special functions.
+        streamAllNodes(layoutMapping.getLayoutGraph(), this::isSpecialKindFunction)
+        .forEach(node-> {
+            // inspired from sizeComputationExpression
+            node.setProperty(CoreOptions.NODE_SIZE_MINIMUM, new KVector(40, 40));                
+        });
     }
     
     private void beforePabLayout() {
@@ -195,6 +232,16 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
             }
         });
     }
+    
+    private boolean isSpecialKindFunction(ElkGraphElement elkElement) {
+        var target = getSemanticElement(elkElement);
+        if (target instanceof FunctionalChainInvolvement involvement
+                && involvement.getInvolvedElement() instanceof AbstractFunction involvedElement) {
+            target = involvedElement;
+        }
+        return target instanceof AbstractFunction function && function.getKind() != FunctionKind.FUNCTION ;
+    }
+
     
     private static void forceSide(ElkPort port, PortSide side) {
         port.setProperty(CoreOptions.PORT_SIDE, side);
