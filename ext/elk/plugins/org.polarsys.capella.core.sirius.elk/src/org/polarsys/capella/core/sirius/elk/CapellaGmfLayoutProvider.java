@@ -133,7 +133,6 @@ public class CapellaGmfLayoutProvider extends DefaultLayoutProvider {
             // 1- Specific size for "Entity", "Capability" and "Actor"
             // 2- Improvement : Same size for all actors
             CONTEXTUAL_OC_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
-
             // Data flow blank diagrams
             OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME, // tested
             SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME, // tested

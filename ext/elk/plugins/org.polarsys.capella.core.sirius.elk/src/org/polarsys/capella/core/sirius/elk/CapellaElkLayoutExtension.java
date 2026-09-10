@@ -14,19 +14,27 @@ package org.polarsys.capella.core.sirius.elk;
 
 
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONFIGURATION_ITEMS_BREAKDOWN_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.FUNCTIONAL_CHAIN_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.LOGICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.LOGICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.MODE_STATE_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_ACTIVITY_BREAKDOWN_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_ENTITY_BREAKDOWN_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.SYSTEM_FUNCTION_BREAKDOWN_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.MSM_PSEUDOSTATE_MAPPING_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.MS_INNER_PSEUDOSTATE_MAPPING_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.MS_PSEUDOSTATE_MAPPING_NAME;
@@ -146,6 +154,18 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
             CONTEXTUAL_CAPABILITY_DIAGRAM_NAME
             );
 
+    private static final Map<String, String> BREAKDOWN_DIAGRAM_FEATURES = Map.of(
+            // All containment relationships.
+            SYSTEM_FUNCTION_BREAKDOWN_DIAGRAM_NAME, "SFB_SystemFunction_subFunctions", //$NON-NLS-1$
+            CONFIGURATION_ITEMS_BREAKDOWN_DIAGRAM_NAME, "CIBD_ConfigurationItem_subComponents", //$NON-NLS-1$
+            LOGICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME, "LCB_LogicalComponent_subComponents", //$NON-NLS-1$
+            LOGICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME, "LFB_LogicalFunction_subFunctions", //$NON-NLS-1$
+            OPERATIONAL_ACTIVITY_BREAKDOWN_DIAGRAM_NAME, "OAB_OperationalActivity_subFunctions", //$NON-NLS-1$
+            OPERATIONAL_ENTITY_BREAKDOWN_DIAGRAM_NAME, "containedIn Mapping", //$NON-NLS-1$
+            PHYSICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME, "PCB_PhysicalComponent_subComponents", //$NON-NLS-1$
+            PHYSICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME, "PFB_PhysicalFunction_subFunctions" //$NON-NLS-1$
+    );
+    
 
     private record EdgeDescription(
             ElkConnectableShape source, 
@@ -192,6 +212,7 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
         }
         beforeFunctionLayout(diagramDescription);
         beforeCapabilitiesLayout(diagramDescription);
+        beforeBreakdown(diagramDescription);
     }
     
 
@@ -221,6 +242,15 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
                     || semanctic instanceof Mission)
                 node.setProperty(CoreOptions.NODE_SIZE_MINIMUM, new KVector(70, 50));
         });        
+    }
+    
+    private void beforeBreakdown(DiagramDescription diagramDescription) {
+        String treeMapping = BREAKDOWN_DIAGRAM_FEATURES.get(diagramDescription.getName());
+        if (treeMapping != null) {
+            streamAllEdges(layoutMapping.getLayoutGraph(), 
+                    edge -> treeMapping.equals(getElementMapping(edge).getName()))
+            .forEach(this::flipEdge);
+        }
     }
     
     private void beforePabLayout() {
