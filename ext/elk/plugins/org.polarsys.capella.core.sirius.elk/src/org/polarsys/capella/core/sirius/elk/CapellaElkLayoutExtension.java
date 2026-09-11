@@ -26,7 +26,9 @@ import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.MI
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.MODE_STATE_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_ACTIVITY_BREAKDOWN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_ENTITY_BREAKDOWN_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME;
@@ -39,11 +41,11 @@ import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.MS
 import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.MS_INNER_PSEUDOSTATE_MAPPING_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.MS_PSEUDOSTATE_MAPPING_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.PAB_COMPONENT_PORT_MAPPING_NAME;
-import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.PAB_FUNCTIONAL_CHAIN_END_MAPPING_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.PAB_FUNCTION_PORT_ALLOCATION_MAPPING_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.PAB_FUNCTION_PORT_MAPPING_NAME;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,6 +64,7 @@ import org.eclipse.elk.alg.layered.options.LayeredOptions;
 import org.eclipse.elk.core.math.ElkMargin;
 import org.eclipse.elk.core.math.KVector;
 import org.eclipse.elk.core.options.CoreOptions;
+import org.eclipse.elk.core.options.NodeLabelPlacement;
 import org.eclipse.elk.core.options.PortConstraints;
 import org.eclipse.elk.core.options.PortSide;
 import org.eclipse.elk.core.options.SizeConstraint;
@@ -88,9 +91,8 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.elk.ElkDiagramLayoutConnector;
 import org.eclipse.sirius.diagram.elk.GmfLayoutCommand;
 import org.eclipse.sirius.diagram.elk.IELKLayoutExtension;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.InitialPseudoState;
@@ -112,6 +114,10 @@ import org.polarsys.capella.core.data.interaction.AbstractCapability;
  * @author Laurent Redor
  */
 public class CapellaElkLayoutExtension implements IELKLayoutExtension {
+    
+    private static final EnumSet<NodeLabelPlacement> OUTSIDE_EAST = EnumSet.of(NodeLabelPlacement.OUTSIDE,
+            NodeLabelPlacement.V_CENTER, NodeLabelPlacement.H_RIGHT);
+
     
     /**
      * The first port on the western and eastern side is already 13 pixels away from the northern border (by the
@@ -135,6 +141,8 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
     
     private static final List<String> BLANK_DIAGRAMS_CONTAINING_FUNCTIONS = List.of(
             // Kind is ignored for OA.
+            OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME,
+            OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME,
             SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME,
             SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME,
             LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME,
@@ -164,7 +172,7 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
             OPERATIONAL_ENTITY_BREAKDOWN_DIAGRAM_NAME, "containedIn Mapping", //$NON-NLS-1$
             PHYSICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME, "PCB_PhysicalComponent_subComponents", //$NON-NLS-1$
             PHYSICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME, "PFB_PhysicalFunction_subFunctions" //$NON-NLS-1$
-    );
+            );
     
 
     private record EdgeDescription(
@@ -221,6 +229,21 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
             return;
         }
         
+        // XXX: To align all FunctionalChainEnd, they could be grouped in virtual node.
+        
+        // Fix the size for FunctionalChainEnd and set the label location to the east side as creation.
+        streamAllNodes(layoutMapping.getLayoutGraph(), node -> {
+            var mapping = getElementMapping(node);
+            return mapping != null && mapping.getName().endsWith("_FunctionalChainEnd"); //$NON-NLS-1$
+        }).forEach(node -> {
+            node.setProperty(CoreOptions.NODE_SIZE_CONSTRAINTS, SizeConstraint.fixed());
+            node.setWidth(20); // As defined in *.odesign
+            node.setHeight(20);
+            if (!node.getLabels().isEmpty()) {
+                node.getLabels().get(0).setProperty(CoreOptions.NODE_LABELS_PLACEMENT, OUTSIDE_EAST);
+            }
+        });
+        
         // Set minimum size for special functions.
         streamAllNodes(layoutMapping.getLayoutGraph(), this::isSpecialKindFunction)
         .forEach(node-> {
@@ -254,16 +277,7 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
     }
     
     private void beforePabLayout() {
-        // Fix the size for PAB_FunctionalChainEnd and set the label location to the east side
-        List<ElkNode> nodes = getNodesWithMappingName(layoutMapping.getLayoutGraph(), 
-                List.of(PAB_FUNCTIONAL_CHAIN_END_MAPPING_NAME));
-        nodes.forEach(node -> {
-            node.setProperty(CoreOptions.NODE_SIZE_CONSTRAINTS, SizeConstraint.fixed());
-            // node.getLabels().forEach(label -> {
-            // label.setProperty(CoreOptions.NODE_LABELS_PLACEMENT, EnumSet.of(NodeLabelPlacement.OUTSIDE,
-            // NodeLabelPlacement.V_CENTER, NodeLabelPlacement.H_RIGHT));
-            // });
-        });
+
         
         /** Edges reversed before layout */        
         // Reverse direction of "Port Allocation" edges
@@ -542,9 +556,8 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
     }
     
     private static boolean isSiriusPart(IGraphicalEditPart editPart) {
-        return editPart instanceof AbstractDiagramNodeEditPart 
-            || editPart instanceof AbstractDiagramBorderNodeEditPart
-            || editPart instanceof AbstractDiagramEdgeEditPart;
+        return editPart instanceof IAbstractDiagramNodeEditPart 
+            || editPart instanceof IDiagramEdgeEditPart;
     }
         
     /**
