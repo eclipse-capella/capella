@@ -52,7 +52,7 @@
 						<repository>
 							<id>targetplatform-tp</id>
 							<layout>p2</layout>
-							<url>https://download.eclipse.org/releases/2022-12</url>
+							<url>https://download.eclipse.org/releases/2024-03</url>
 						</repository>
 						<repository>
 							<id>targetplatform</id>
@@ -72,6 +72,10 @@
 						</dependency>
 					</dependencies>
 					<executionEnvironment>JavaSE-17</executionEnvironment>
+					<jvmArgs>
+						<arg>-Dosgi.requiredJavaVersion=17</arg>
+						<arg>--add-modules=ALL-SYSTEM</arg>
+					</jvmArgs>
 				</configuration>
 				<executions>
 					<execution>
@@ -83,7 +87,6 @@
 								<arg>${converterApplication.name}</arg>
 								<arg>${targetPlatform.id}/${targetPlatform.name}</arg>
 							</applicationArgs>
-							<executionEnvironment>JavaSE-17</executionEnvironment>
 						</configuration>
 						<goals>
 							<goal>eclipse-run</goal>
