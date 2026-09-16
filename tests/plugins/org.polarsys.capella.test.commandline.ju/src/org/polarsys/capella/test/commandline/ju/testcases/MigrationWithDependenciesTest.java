@@ -16,24 +16,28 @@ import java.util.List;
 
 import org.polarsys.capella.core.commandline.core.CommandLineConstants;
 
-
 /**
- * Test the migration command line with some folders as input.
+ * Test the migration command line with project that have dependencies.
  * 
  * @author nicolas.peransin@obeo.fr
  */
-public class CommandLineFolderMigrationTest extends CommandLineMigrationTestBase {
+public class MigrationWithDependenciesTest extends CommandLineMigrationTestBase {
 
-  private static final List<String> TESTS_PROJECT_NAMES = List.of("sysmodelLibrary_Super", "sysmodelLibrary_Sub", "sysmodelProject");
+  private static final String TEST_PROJECT_PATH = "capella6/"; //$NON-NLS-1$
+  private static final String MAIN_PROJECT = "Demo"; //$NON-NLS-1$
+  private static final List<String> TESTS_PROJECT_NAMES = List.of(MAIN_PROJECT,
+      "LibBiz", //$NON-NLS-1$
+      "LibCor"); //$NON-NLS-1$
   
   @Override
   public void test() throws Exception { 
 
     var importList = toListArg(TESTS_PROJECT_NAMES.stream()
-      .map(projectName -> copyToTestPool(getFolderInTestModelRepository(projectName))));
+      .map(projectName -> copyToTestPool(getFolderInTestModelRepository(TEST_PROJECT_PATH + projectName))));
     
     launchMigration(CommandLineConstants.IMPORT, importList,
-        CommandLineConstants.INPUT, toListArg(TESTS_PROJECT_NAMES.stream()));
+        // With only 1 input, migration must retrieve dependencies and order the migration.
+        CommandLineConstants.INPUT, MAIN_PROJECT);
     
     TESTS_PROJECT_NAMES.forEach(this::openSession);
   }
