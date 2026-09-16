@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -13,37 +13,44 @@
 package org.polarsys.capella.test.commandline.ju.testcases;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.util.List;
 
-import org.eclipse.equinox.app.IApplicationContext;
 import org.polarsys.capella.core.commandline.core.CommandLineConstants;
-import org.polarsys.capella.core.data.migration.cmdline.MigrationCommandLine;
-import org.polarsys.capella.test.commandline.ju.utils.MockApplicationContext;
 import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 
-public class CommandLineZipMigrationTest extends CommandLineMigrationTest {
+/**
+ * Test the migration command line with an archive as input.
+ * 
+ * @author nicolas.peransin@obeo.fr
+ */
+public class CommandLineZipMigrationTest extends CommandLineMigrationTestBase {
+  
+  private static final List<String> TESTS_PROJECT_NAMES = List.of("sysmodelLibrary_Super", "sysmodelLibrary_Sub", "sysmodelProject");
+  
   @Override
   public void test() throws Exception {
 
-    File superLibFolder = getFolderInTestModelRepository("sysmodelLibrary_Super");
-    File subLibFolder = getFolderInTestModelRepository("sysmodelLibrary_Sub");
-    File sysmodelFolder = getFolderInTestModelRepository("sysmodelProject");
+    Path sourceArchive = testResourcesPath.resolve("sysmodel_with_libraries.zip");
 
-    File sourceFolder = getFolderInTestModelRepository("sysmodel_with_libraries.zip");
-    IResourceHelpers.createZip(sourceFolder, superLibFolder, subLibFolder, sysmodelFolder);
+    var archiveEntries = TESTS_PROJECT_NAMES.stream()
+        .map(this::getFolderInTestModelRepository)
+        .toArray(File[]::new);
+    IResourceHelpers.createZip(sourceArchive.toFile(), archiveEntries);
 
+//    
+//    // Simulated migration command line with a zip
+//    String[] validationCommandLineArguments = { CommandLineConstants.ID, "org.polarsys.capella.migration",
+//        CommandLineConstants.IMPORT, sourceFolder.getAbsolutePath() };
+//    IApplicationContext mockApplicationContext = new MockApplicationContext(validationCommandLineArguments);
+//
+//    // Simulate launching from command line
+//    MigrationCommandLine migrationCmdLine = new MigrationCommandLine();
+//    launchApplication(mockApplicationContext, migrationCmdLine);
     
-    // Simulated migration command line with a zip
-    String[] validationCommandLineArguments = { CommandLineConstants.ID, "org.polarsys.capella.migration",
-        CommandLineConstants.IMPORT, sourceFolder.getAbsolutePath() };
-    IApplicationContext mockApplicationContext = new MockApplicationContext(validationCommandLineArguments);
+    launchMigration(CommandLineConstants.IMPORT, sourceArchive.toString());
 
-    // Simulate launching from command line
-    MigrationCommandLine migrationCmdLine = new MigrationCommandLine();
-    launchApplication(mockApplicationContext, migrationCmdLine);
-
-    openSession("sysmodelProject");
-    openSession("sysmodelLibrary_Sub");
-    openSession("sysmodelLibrary_Super");
+    TESTS_PROJECT_NAMES.forEach(this::openSession);
   }
 
 

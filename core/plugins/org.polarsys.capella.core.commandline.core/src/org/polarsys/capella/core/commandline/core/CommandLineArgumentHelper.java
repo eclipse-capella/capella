@@ -33,28 +33,34 @@ public class CommandLineArgumentHelper {
   private String exportZips;
   private boolean forceImport;
   private boolean copyOnWorkspace = false;
-  private boolean backup;
 
   private String exportProjects;
   private boolean singleZip;
   private boolean exportCopy;
   private String exportTarget;
 
+  // Reserved for migration command.
+  private boolean backup;
+  private boolean refreshRepresentations;
+
   /**
    * @deprecated (use -input instead)
    */
   @Deprecated
   private String filePath;
+
   /**
    * @deprecated (output folder is always created if it does not exist)
    */
   @Deprecated
   private boolean createFolder;
-  @Deprecated
+
   /**
    * @deprecated (use -exportZip instead)
    */
+  @Deprecated
   private String exportProject;
+
   /**
    * @deprecated (exported zips have the same name as the exported projects)
    */
@@ -95,12 +101,14 @@ public class CommandLineArgumentHelper {
     input = helper.getString(CommandLineConstants.INPUT);
     outputFolder = helper.getString(CommandLineConstants.OUTPUTFOLDER);
     logFilePath = helper.getString(CommonArgumentsConstants.LOG_FILE_PATH);
-    backup = helper.hasParameter(CommandLineConstants.BACKUP);
     
     singleZip = helper.hasParameter(CommandLineConstants.SINGLE_ZIP);
     exportProjects = helper.getString(CommandLineConstants.EXPORT_LIST);
     exportCopy = helper.hasParameter(CommandLineConstants.EXPORT_COPY);
     exportTarget = helper.getString(CommandLineConstants.EXPORT_TARGET);
+
+    backup = helper.hasParameter(CommandLineConstants.BACKUP);
+    refreshRepresentations = helper.hasParameter(CommandLineConstants.REFRESH_REPRESENTATIONS);
   }
 
   /**
@@ -256,5 +264,13 @@ public class CommandLineArgumentHelper {
     return exportProjects;
   }
 
+  /**
+   * Return if we need to refresh the representations.
+   * 
+   * @return if we need to refresh the representations
+   */
+  public boolean isRefreshRepresentations() {
+    return refreshRepresentations;
+  }
 
 }

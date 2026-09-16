@@ -5,57 +5,70 @@ Below a batch script (.bat) to first execute a migration of projects given in pa
 To execute it:
 
 <pre>
-thisScript.bat #absolutePathToProjectA.zip #absolutePathToProjectB.zip #absolutePathToProjectC.zip
+thisScript.bat <FolderabsolutePathToProjectA.zip #absolutePathToProjectB.zip #absolutePathToProjectC.zip
 </pre>
 
-If you migrate a project using libraries, all dependent projects/libraries must be included and the sequence order matters.
+If you migrate a project using libraries, all dependent projects/libraries must be included.
 
 <pre>
-@echo off
-setlocal enabledelayedexpansion
-</pre>
-<span style="color: green">rem Mandatory to set</span>
-<pre>
-set capellaExe=...capella/capellac.exe
-set workspacePath=.../workspace
-set logFilePath=".../log.html"
-</pre>
-<span style="color: green">rem compute importedFiles (".../projectA.zip | .../projectB.zip | ...")</span>
-<pre>
-SET projectsList=
-for %%x in (%*) do (
-  set projectsList=!projectsList! ^| %%x
+@ECHO off
+
+:: Mandatory to set
+SET CAPELLA_HOME=<Capella installation>
+
+IF [%1]==[] (
+ ECHO Missing input
+ EXIT /b
+) ELSE IF EXIST %1\ (
+  ::A folder 
+  SET IMPORT_INPUT=-importAll %1
+) ELSE IF EXIST %1 (
+  ::A file 
+  SET IMPORT_INPUT=-import %1
+) ELSE (
+  ECHO %1 does not exist
+  EXIT /b
 )
-set importedFiles=!projectsList:~3!
-</pre>
-<span style="color: green">rem First, execute the migration on the given projects</span>
-<pre>
-echo Execute migration of all given projects:
-@echo on
-%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.migration -data "%workspacePath%" -import "%importedFiles%" -input /all -outputfolder "A_ok/MigrationResult" -backup -logfile "%logFilePath%"
-@echo off
-echo.
-</pre>
- <span style="color: green">rem execute the refreshRepresentations command line</span>
-<pre>
-  set command1=%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.refreshRepresentations -data "%workspacePath%" -input /all -unsyncDiags -logfile "%logFilePath%"
-  echo !command1!
-  call !command1!
-  echo.
-</pre>
-  <span style="color: green">rem execute the removeHiddenElements command line</span>
-<pre>
-  set command2=%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.removeHiddenElements -data "%workspacePath%" -input /all -unsyncDiags -logfile "%logFilePath%"
-  echo !command2!
-  call !command2!
-echo.
-</pre>
-  <span style="color: green">rem execute the exportRepresentations command lines and at the end of all commands, all the models are exported to output location "/MigratedProject/output"</span>
-<pre>
-  set command3=%capellaExe% -nosplash -application org.polarsys.capella.core.commandline.core -appid org.polarsys.capella.exportRepresentations  -data "%workspacePath%" -input /all -exportToHTML -exportZip /all -outputfolder /MigratedProject/output
-  echo !command3!
-  call !command3!
-  echo.
-)
-@echo on
+
+IF NOT DEFINED CAPELLA_WS SET CAPELLA_WS=%CAPELLA_HOME%\migration.ws
+
+SET CAPELLA_LOGS=%CAPELLA_WS%\log.html
+SET CAPELLA_CMD="%CAPELLA_HOME%\capella\capellac.exe" ^
+  -nosplash -consoleLog ^
+  -application org.polarsys.capella.core.commandline.core ^
+  -data "%CAPELLA_WS%" ^
+  -logfile "%CAPELLA_LOGS%"
+ECHO.
+
+ECHO #
+ECHO # Migrate of projects of %PROJECTS_SET%
+ECHO #
+%CAPELLA_CMD% ^
+  -appid org.polarsys.capella.migration ^
+  %IMPORT_INPUT% ^
+  -input /all ^
+  -forceimport ^
+  -refreshRepresentations
+ECHO.
+
+ECHO #
+ECHO # Remove Hidden Elements
+ECHO #
+%CAPELLA_CMD% ^
+  -appid org.polarsys.capella.removeHiddenElements ^
+  -input /all ^
+  -unsyncDiags
+ECHO.
+
+ECHO #
+ECHO # Export diagrams and zip all projects
+ECHO #
+%CAPELLA_CMD% ^
+  -appid org.polarsys.capella.exportRepresentations ^
+  -input /all ^
+  -exportToHTML ^
+  -exportProjects /all ^
+  -singleZip ^
+  -exportTarget MigratedProject.zip ^
+  -outputfolder export/diagrams
 </pre>

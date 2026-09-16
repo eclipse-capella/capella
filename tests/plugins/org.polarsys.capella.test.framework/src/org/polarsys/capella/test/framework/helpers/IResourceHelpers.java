@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -16,12 +16,12 @@ import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UncheckedIOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -284,54 +284,59 @@ public class IResourceHelpers {
   }
 
   /**
-   * Create a zip file located into sourceFolder with the following files.
+   * Creates a zip file located into sourceFolder with the following files.
+   * <p>
+   * Previously existing file is deleted even if the creation of the archive fails.
+   * </p>
+   * <p>
+   * Containing folder is created if it does not exist. Note that if this operation fails it 
+   * may have succeeded in creating some of the necessary parent directories.
+   * </p>
+   * @throws UncheckedIOException on failure
    */
-  public static void createZip(File sourceFolder, List<File> fileList) {
+  public static void createZip(File sourceFolder, List<File> fileList) throws UncheckedIOException {
 
     try {
       if (sourceFolder.exists()) {
         sourceFolder.delete();
       }
+      sourceFolder.getParentFile().mkdirs();
 
-      FileOutputStream fos = new FileOutputStream(sourceFolder);
-      ZipOutputStream zos = new ZipOutputStream(fos);
-
-      for (File file : fileList) {
-        for (File item : getAllFiles(file)) {
-          if (!item.isDirectory()) {
-            addToZip(sourceFolder.getParentFile(), item, zos);
+      try (FileOutputStream fos = new FileOutputStream(sourceFolder); ZipOutputStream zos = new ZipOutputStream(fos);) {
+        for (File file : fileList) {
+          File referencePath = file.getParentFile();
+          for (File item : getAllFiles(file)) {
+            if (!item.isDirectory()) {
+              addToZip(referencePath, item, zos);
+            }
           }
         }
       }
 
-      zos.close();
-      fos.close();
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
     } catch (IOException e) {
-      e.printStackTrace();
+      throw new UncheckedIOException(e);
     }
   }
 
-  private static void addToZip(File directoryToZip, File file, ZipOutputStream zos)
-      throws FileNotFoundException, IOException {
+  private static void addToZip(File root, File file, ZipOutputStream zos)
+      throws IOException {
 
-    FileInputStream fis = new FileInputStream(file);
-
-    // create a relative path for the zipEntry
-    String zipFilePath = file.getCanonicalPath().substring(directoryToZip.getCanonicalPath().length() + 1,
-        file.getCanonicalPath().length());
-    ZipEntry zipEntry = new ZipEntry(zipFilePath);
-    zos.putNextEntry(zipEntry);
-
-    byte[] bytes = new byte[1024];
-    int length;
-    while ((length = fis.read(bytes)) >= 0) {
-      zos.write(bytes, 0, length);
+    try (FileInputStream fis = new FileInputStream(file)) {
+      // create a relative path for the zipEntry
+      String filePath = file.getPath();
+      String zipFilePath = filePath.substring(root.getPath().length() + 1,
+          filePath.length());
+      ZipEntry zipEntry = new ZipEntry(zipFilePath);
+      zos.putNextEntry(zipEntry);
+  
+      byte[] bytes = new byte[1024];
+      int length;
+      while ((length = fis.read(bytes)) >= 0) {
+        zos.write(bytes, 0, length);
+      }
+  
+      zos.closeEntry();
     }
-
-    zos.closeEntry();
-    fis.close();
   }
 
 }

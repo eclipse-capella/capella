@@ -25,33 +25,32 @@ import org.polarsys.capella.test.commandline.ju.utils.MockApplicationContext;
  * @author nicolas.peransin@obeo.fr
  */
 public class CommandLineExportProjectsAsSingleZipTest extends AbstractCommandLineExportTestCase {
-
-  private static final Path EXTERNAl_EXPORT_TARGET = Path.of("target/test-run/CommandLineExportProjectsAsSingleZipTest/projects.zip");
   
   private static final String RELATIVE_EXPORT_SEGMENT = "CommandLineExportProjectsAsSingleZipTest.zip";
   // Path at the root of Workspace
   private static final Path RELATIVE_EXPORT_TARGET = WS_DATA_PATH.resolve(RELATIVE_EXPORT_SEGMENT);
 
-
   /**
    * Test constructor.
    */
   public CommandLineExportProjectsAsSingleZipTest() {
-    super(EXTERNAl_EXPORT_TARGET.getParent(), RELATIVE_EXPORT_TARGET);
+    super(RELATIVE_EXPORT_TARGET);
   }
   
   @Override
   public void test() throws Exception {
-    // External location
+
+    var externalExportTarget = testResourcesPath.resolve("projects.zip");
+    
     MockApplicationContext.execute(new DefaultCommandLine() , "stub", 
         CommandLineConstants.INPUT, CommandLineConstants.ALL_ARGUMENT,
         CommandLineConstants.IMPORT, listProject(PROJECT_NAMES),
         CommandLineConstants.EXPORT_LIST, CommandLineConstants.ALL_ARGUMENT,
         CommandLineConstants.SINGLE_ZIP,
-        CommandLineConstants.EXPORT_TARGET, EXTERNAl_EXPORT_TARGET.toAbsolutePath().toString()
+        CommandLineConstants.EXPORT_TARGET, externalExportTarget.toAbsolutePath().toString()
         );
     
-    assertTrue(Files.exists(EXTERNAl_EXPORT_TARGET) && Files.size(EXTERNAl_EXPORT_TARGET) > 0);
+    assertTrue(Files.exists(externalExportTarget) && Files.size(externalExportTarget) > 0);
     
     // Relative location
     MockApplicationContext.execute(new DefaultCommandLine() , "stub", 

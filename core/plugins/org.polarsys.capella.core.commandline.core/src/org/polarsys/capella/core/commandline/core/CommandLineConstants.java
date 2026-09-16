@@ -49,4 +49,6 @@ public class CommandLineConstants {
   
   public static final String EXPORT_TARGET = "-exportTarget"; //$NON-NLS-1$
 
+  public static final String REFRESH_REPRESENTATIONS = "-refreshRepresentations"; //$NON-NLS-1$
+
 }

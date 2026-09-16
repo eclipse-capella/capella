@@ -88,7 +88,7 @@ public class DefaultCommandLine extends AbstractCommandLine {
       }
       importProjects(projectList);
     } catch (CoreException | IOException exception) {
-      throw new CommandLineException(exception.getMessage());
+      throw (CommandLineException) new CommandLineException(exception.getMessage()).initCause(exception);
     }
   }
 

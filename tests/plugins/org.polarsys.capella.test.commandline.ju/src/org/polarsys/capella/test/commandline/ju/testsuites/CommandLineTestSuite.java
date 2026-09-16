@@ -24,6 +24,7 @@ import org.polarsys.capella.test.commandline.ju.testcases.CommandLineRefreshAird
 import org.polarsys.capella.test.commandline.ju.testcases.CommandLineRemoveHiddenElementsTest;
 import org.polarsys.capella.test.commandline.ju.testcases.CommandLineValidationTest;
 import org.polarsys.capella.test.commandline.ju.testcases.CommandLineZipMigrationTest;
+import org.polarsys.capella.test.commandline.ju.testcases.MigrationWithDependenciesTest;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -42,7 +43,9 @@ public class CommandLineTestSuite extends BasicTestSuite {
       // Built-in command line tests
       new CommandLineValidationTest(), 
       new CommandLineZipMigrationTest(),
-      new CommandLineFolderMigrationTest(), 
+      new CommandLineFolderMigrationTest(),
+      new MigrationWithDependenciesTest(),
+      
       new CommandLineRemoveHiddenElementsTest(),
       new CommandLineExportRepresentationsTest(), 
       new CommandLineRefreshAirdTest()
