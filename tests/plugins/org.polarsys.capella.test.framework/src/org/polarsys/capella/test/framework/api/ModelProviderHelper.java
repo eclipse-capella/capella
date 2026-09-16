@@ -14,8 +14,10 @@ package org.polarsys.capella.test.framework.api;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -67,18 +69,55 @@ public class ModelProviderHelper {
     return modelProvider;
   }
 
-  public void importCapellaProject(String relativeModelPath, File sourceFolder) {
+  
+  /**
+   * Ill-construct legacy method. Use {@link #importCapellaProject(File)} instead.
+   * 
+   * @param unusedName
+   * @param sourceFolder folder containing the project to import
+   */
+  @Deprecated
+  public void importCapellaProject(String unusedName, File sourceFolder) {
+    importCapellaProject(sourceFolder);
+  }
+  
+  
+  /**
+   * Imports a Capella Project.
+   * <p>
+   * The project name will be the name of the folder.
+   * </p>
+   * <p>
+   * Existing project is removed. If location is the same, files are overridden.
+   * </p>
+   * 
+   * @param sourceFolder folder containing the project to import.
+   * @return imported project
+   */
+  public IProject importCapellaProject(File sourceFolder) {
     String projectName = sourceFolder.getName();
+    
     IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+    IProject oldProject = root.getProject(projectName); 
+    if (oldProject.exists()) {
+      try {
+        oldProject.delete(IResource.NEVER_DELETE_PROJECT_CONTENT, null);
+      } catch (CoreException e) {
+        throw new IllegalStateException("Cannot override old project: " + projectName);
+      }
+    }
+    
     File targetFolder = new File(root.getRawLocation().toString() + "/" + projectName + "/"); //$NON-NLS-1$ //$NON-NLS-2$
     try {
       TestHelper.copy(sourceFolder, targetFolder);
     } catch (IOException e) {
-      e.printStackTrace();
+      throw new UncheckedIOException(e);
     }
     IProject project = TestHelper.createCapellaProject(projectName);
     AbstractProvider.normalizeEclipseProjectForTest(project);
     ProjectHelper.refreshProject(project, new NullProgressMonitor());
+    
+    return project;
   }
 
   public void removeCapellaProject(String relativeModelPath, BasicTestArtefact artefact, boolean eraseProject) {
