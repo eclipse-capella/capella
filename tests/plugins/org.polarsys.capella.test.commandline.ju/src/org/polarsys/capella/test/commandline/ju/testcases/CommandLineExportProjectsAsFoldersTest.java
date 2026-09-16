@@ -27,16 +27,18 @@ public class CommandLineExportProjectsAsFoldersTest extends AbstractCommandLineE
 
   @Override
   public void test() throws Exception {
+    var exportResult = testResourcesPath.resolve("exportResult");
+    
     MockApplicationContext.execute(new DefaultCommandLine() , "stub", 
         CommandLineConstants.INPUT, CommandLineConstants.ALL_ARGUMENT,
         CommandLineConstants.IMPORT, listProject(PROJECT_NAMES),
         CommandLineConstants.EXPORT_LIST, CommandLineConstants.ALL_ARGUMENT,
         CommandLineConstants.EXPORT_COPY,
-        CommandLineConstants.EXPORT_TARGET, testResourcesPath.toAbsolutePath().toString()
+        CommandLineConstants.EXPORT_TARGET, exportResult.toString()
         );
     
     for (String projectName : PROJECT_NAMES) {
-      var exportElement = testResourcesPath.resolve(projectName);
+      var exportElement = exportResult.resolve(projectName);
       assertTrue("Fail to export Project as folder: " + projectName, Files.isDirectory(exportElement));
     }
   }
