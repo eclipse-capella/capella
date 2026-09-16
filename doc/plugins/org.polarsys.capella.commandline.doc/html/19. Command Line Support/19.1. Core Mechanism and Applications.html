@@ -19,17 +19,17 @@
 			<tr>
 				<td>appid</td>
 				<td>mandatory</td>
-				<td>defines the id of the command line application to launch. Command line applications are plugins that extend the core mechanism (e.g. model validation)</td>
+				<td>defines the id of the command line application to launch. Command line applications are plugins that extend the core mechanism (e.g. Model Validation).</td>
 			</tr>
 			<tr>
 				<td>data</td>
 				<td>optional</td>
-				<td>defines the path to the workspace</td>
+				<td>defines the path to the workspace.</td>
 			</tr>
 			<tr>
 				<td>input</td>
 				<td>mandatory</td>
-				<td>defines a list of the relative paths (to the workspace) of the Eclipse projects or aird files to use as input of the command line. The list have to be placed into quotes "" and separated by a 
+				<td>defines a list of the relative paths (to the workspace) of the Eclipse Projects or *.aird files to use as input of the command line. The list has to be placed into quotes "" and separated by a 
 					<b>&#124;</b> character. Use 
 					<b>/all</b> to specify that all projects in the workspace are used as input.
 				</td>
@@ -37,57 +37,58 @@
 			<tr>
 				<td>import</td>
 				<td>optional</td>
-				<td>defines a list of the path of the Eclipse projects to import into the workspace before doing the actual job. The list have to be placed into quotes "" and separated by a 
-					<b>&#124;</b> character
+				<td>defines a list of the path of the Eclipse projects to import into the workspace before doing the actual job. The list has to be placed into quotes "" and separated by a 
+					<b>&#124;</b> character.
 				</td>
 			</tr>
 			<tr>
 				<td>importAll</td>
 				<td>optional</td>
-				<td>defines a folder containing Eclipse Projects. The Eclipse projects can be a folder with a 
+				<td>defines a folder containing Eclipse Projects. The Eclipse Projects can be as folder with a 
 					<i>.project</i> file or in a ZIP file.
 				</td>
 			</tr>
 			<tr>
 				<td>forceimport</td>
 				<td>optional</td>
-				<td>unreference/delete exiting project from the workspace while importing projects using command line. Without this option, an error is logged if a project with the same name than the imported project exists already in the workspace</td>
+				<td>unreference/delete exiting Project from the workspace while importing projects using command line. Without this option, an error is logged if a project with the same name than the imported project exists already in the workspace.</td>
 			</tr>
 			<tr>
 				<td>outputfolder</td>
 				<td>optional</td>
-				<td>defines the relative path (to the workspace) of the output folder</td>
+				<td>defines the relative path (to the workspace) of the output folder.</td>
 			</tr>
 			<tr>
 				<td>exportProjects</td>
 				<td>optional</td>
-				<td>defines a list of Eclipse projects to export by their names. The list have to be placed into quotes "" and separated by a 
+				<td>defines the list of Eclipse projects to export by their names. The list have to be placed into quotes "" and separated by a 
 					<b>&#124;</b> character. Use 
-					<b>/all</b> to specify that all projects in the workspace are exported. The export behavior depends of 
+					<b>/all</b> if all the projects in the workspace must be exported. The export behavior depends of 
 					<b>-exportCopy</b> and 
-					<b>-singleZip</b>. This parameter must be used with 
+					<b>-singleZip</b>. If no export mode is provided, all projects are zipped in the 
+					<b>-exportTarget</b> folder. This parameter must be used with 
 					<b>-exportTarget</b> to specify where projects are exported.
 				</td>
 			</tr>
 			<tr>
 				<td>singleZip</td>
 				<td>optional</td>
-				<td>defines the location export. The location is a file if 
-					<b>-singleZip</b> is defined
+				<td>defines the Export Mode as a single Archive with all projects. 
+					<b>-exportTarget</b> parameter must be a Zip file.
 				</td>
 			</tr>
 			<tr>
 				<td>exportCopy</td>
 				<td>optional</td>
-				<td>defines the location export. The location is a file if 
-					<b>-singleZip</b> is defined
+				<td>defines the Export Mode as a copy of all projects without compression. 
+					<b>-exportTarget</b> parameter must be a folder.
 				</td>
 			</tr>
 			<tr>
 				<td>exportTarget</td>
 				<td>optional</td>
-				<td>defines the location export. The location is a file if 
-					<b>-singleZip</b> is defined. Otherwize 
+				<td>defines the location to export in. The location must be a Zip file if 
+					<b>-singleZip</b> is defined. Otherwise the location must be a folder.
 				</td>
 			</tr>
 			<tr>
@@ -104,22 +105,24 @@
 			<tr>
 				<td>nosplash</td>
 				<td>optional</td>
-				<td>launch Capella without the initial splash screen</td>
+				<td>launch Capella without the initial splash screen.</td>
 			</tr>
 			<tr>
 				<td>consolelog</td>
 				<td>optional</td>
-				<td>allows to send additional log messages (e.g. exceptions) into the console output</td>
+				<td>allows to send additional log messages (e.g. exceptions) into the console output.</td>
 			</tr>
 			<tr>
 				<td>logfile</td>
 				<td>optional</td>
-				<td>defines the path to the log file (if not specified, log file is created in the workspace directory with the name MDEReport.html)</td>
+				<td>defines the path to the log file. If not specified, log file is saved as 
+					<b>MDEReport.html</b> in the workspace directory.
+				</td>
 			</tr>
 			<tr>
 				<td>help</td>
 				<td>optional</td>
-				<td>prints the help message</td>
+				<td>prints the help message.</td>
 			</tr>
 		</table>
 		<p>
@@ -260,35 +263,6 @@
 			</li>
 		</ul>
 		<p>A log file is also specified.</p>
-		<h3 id="Export_as_ZIP_.28Deprecated.2C_use_the_parameter_-exportZip_instead.29">Export as ZIP (Deprecated, use the parameter -exportZip instead)</h3>
-		<p>This command will export selected project to the given zip filename</p>
-		<p>Mandatory parameters:</p>
-		<ul>
-			<li>export: defines the project name to export as zip</li>
-		</ul>
-		<ul>
-			<li>exportZipName: a relative path to the output zip (path must be a relative path into the given 
-				<b>
-					<i>-data </i>
-				</b> parameter)
-			</li>
-		</ul>
-		<p>(usage of &ldquo;qualifier&rdquo; in the output file name will be replaced by current date/time)</p>
-		<p><u>
-			<b>Simple use case:</b></u>
-		</p>
-		<pre>
-&lt;CapellaInstallationPath&gt;/capellac.exe -nosplash
--application org.polarsys.capella.core.commandline.core
--appid org.polarsys.capella.core.commandline.core.exportZip
--data &lt;workspacePath&gt;
--export "EOLE_AF"
--exportZipName "/EOLE_AF/EOLE_qualifier.zip"
--input "/EOLE_AF/EOLE_AF.aird"
--outputfolder "/EOLE_AF/output"
--forceoutputfoldercreation
--logfile D:/CommandLineLog/log.html
-</pre>
 		<h3 id="Migration">Migration</h3>
 		<table id="migrationParameters">
 			<tr>
@@ -301,10 +275,17 @@
 				<td>optional</td>
 				<td>whether the model is backed up during the migration.</td>
 			</tr>
+			<tr>
+				<td>refreshRepresentations</td>
+				<td>optional</td>
+				<td>Force refresh of all representations once the project is migrated. Refresh is performed even if the project was already in the last version.</td>
+			</tr>
 		</table>
 		<p>This command will migrate the project(s) given as input. A workspace folder is created and located where the command is triggered or in a specified path given by the 
 			<i>-data</i> parameter. It creates a log file located in the .metadata folder of the workspace. If the input project is a folder, it will be backed up and migrated inside this folder, otherwise if the input is a zip file it will be unzipped and project(s) inside it will be migrated into the workspace folder.
 		</p>
+		<p>If projects are already migrated to the current version, this command has no effect.</p>
+		<p>If a project depends of library not listed by input argument, the library is automatically migrated. The command will migrate projects in order according their references.</p>
 		<p>For a migration and post-migration script example, please check: 
 			<a href="/wiki/../help/topic/org.polarsys.capella.commandline.doc/html/19.%20Command%20Line%20Support/19.2.%20Migration%20and%20Post-Migration%20script%20example.html" title="../help/topic/org.polarsys.capella.commandline.doc/html/19.%20Command%20Line%20Support/19.2.%20Migration%20and%20Post-Migration%20script%20example.html">Migration and Post-Migration script example</a>
 		</p>
@@ -358,6 +339,7 @@
 		<p>This command will refresh all representations. More information here: 
 			<a href="/wiki/../help/topic/org.polarsys.capella.ui.doc/html/05.%20Diagram%20Management/5.1.%20Diagram%20concepts.html#Diagram_Refreshing_Strategies" title="../help/topic/org.polarsys.capella.ui.doc/html/05.%20Diagram%20Management/5.1.%20Diagram%20concepts.html#Diagram_Refreshing_Strategies">Diagram Refreshing Strategies</a>
 		</p>
+		<p>Note: This action is also an option in migration command.</p>
 		<p><u>
 			<b>Simple use case:</b></u>
 		</p>
@@ -437,6 +419,38 @@
 -data &lt;workspacePath&gt;
 -input "/EOLE_AF/EOLE_AF.aird"
 -outputfolder "/EOLE_AF/output"
+</pre>
+		<h3 id="Export_as_ZIP_.28Deprecated.2C_use_the_parameter_-exportZip_instead.29">Export as ZIP (Deprecated, use the parameter -exportZip instead)</h3>
+		<p>This command will export selected project to the given zip filename.
+
+			<b>Legacy command:</b> All commands contain an export option after execution.
+		</p>
+		<p>Mandatory parameters:</p>
+		<ul>
+			<li>export: defines the project name to export as zip</li>
+		</ul>
+		<ul>
+			<li>exportZipName: a relative path to the output zip (path must be a relative path into the given 
+				<b>
+					<i>-data </i>
+				</b> parameter)
+			</li>
+		</ul>
+		<p>(usage of &ldquo;qualifier&rdquo; in the output file name will be replaced by current date/time)</p>
+		<p><u>
+			<b>Simple use case:</b></u>
+		</p>
+		<pre>
+&lt;CapellaInstallationPath&gt;/capellac.exe -nosplash
+-application org.polarsys.capella.core.commandline.core
+-appid org.polarsys.capella.core.commandline.core.exportZip
+-data &lt;workspacePath&gt;
+-export "EOLE_AF"
+-exportZipName "/EOLE_AF/EOLE_qualifier.zip"
+-input "/EOLE_AF/EOLE_AF.aird"
+-outputfolder "/EOLE_AF/output"
+-forceoutputfoldercreation
+-logfile D:/CommandLineLog/log.html
 </pre>
 	</body>
 </html>

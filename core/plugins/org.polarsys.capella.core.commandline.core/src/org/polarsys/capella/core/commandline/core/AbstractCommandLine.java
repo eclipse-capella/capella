@@ -14,6 +14,7 @@ package org.polarsys.capella.core.commandline.core;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.NotDirectoryException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -392,16 +393,20 @@ public class AbstractCommandLine implements ICommandLine {
   protected List<String> getAllProjectsInFolder(String folder) throws IOException {
     java.nio.file.Path rootFolderPath = Paths.get(folder);
 
-    List<String> allProjects = Files.list(rootFolderPath).filter(path -> {
-      boolean isProjectDirectory = Files.isDirectory(path) && Files.exists(path.resolve(".project"));
-      boolean isProjectZip = path.toString().endsWith(".zip");
-      return isProjectDirectory || isProjectZip;
-    }).map(java.nio.file.Path::toString)
-        .toList();
-    if (allProjects.isEmpty()) {
-      throw new IOException(String.format("The folder '%s' does not contain any project.", folder));
+    try {
+      List<String> allProjects = Files.list(rootFolderPath).filter(path -> {
+        boolean isProjectDirectory = Files.isDirectory(path) && Files.exists(path.resolve(".project")); //$NON-NLS-1$
+        boolean isProjectZip = path.toString().endsWith(".zip"); //$NON-NLS-1$
+        return isProjectDirectory || isProjectZip;
+      }).map(java.nio.file.Path::toString)
+          .toList();
+      if (allProjects.isEmpty()) {
+        throw new IOException(String.format("The folder '%s' does not contain any project.", folder));
+      }
+      return allProjects;
+    } catch (NotDirectoryException e) {
+      throw new IOException(String.format("Input '%s' is not a directory.", folder));
     }
-    return allProjects;
   }
 
   /**
