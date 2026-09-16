@@ -56,5 +56,4 @@ public abstract class CommandLineMigrationTestBase extends AbstractCommandLineTe
     assertTrue("Session of migrated project cannot be opened", session != null);
   }
   
-
 }

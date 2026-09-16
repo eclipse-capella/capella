@@ -14,7 +14,6 @@ package org.polarsys.capella.test.commandline.ju.testcases;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -24,7 +23,6 @@ import java.util.stream.Collectors;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.polarsys.capella.core.commandline.core.CommandLineConstants;
 import org.polarsys.capella.core.sirius.ui.commandline.ExportRepresentationsCommandLine;
@@ -41,43 +39,31 @@ import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 public class CommandLineExportRepresentationsTest extends BasicTestCase {
   
   @Override
-  public void test() {
+  public void test() throws Exception {
     String projectName = "RefreshRemoveExport";
     File sourceFolder = getFolderInTestModelRepository(projectName);
 
+    // Commandline default value is JPG (defined in ExportRepresentationsArgumentHelper and related documentation)
+    ModelProviderHelper.getInstance().importCapellaProject(sourceFolder);
+    exportImages(projectName, null);
+    
     IFolder outputFolder = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName).getFolder("ImagesExported")
         .getFolder(projectName).getFolder(projectName + ".aird");
-
-    // Commandline default value is JPG (defined in ExportRepresentationsArgumentHelper and related documentation)
-    ModelProviderHelper.getInstance().importCapellaProject(projectName, sourceFolder);
-    try {
-      exportImages(projectName);
-      assertTrue(getFiles(outputFolder, ImageFileFormat.JPG).size() == 3);
-
-    } catch (Exception e) {
-      e.printStackTrace();
-      assertFalse(e.getMessage(), true);
-    }
+    
+    assertEquals(3, getFiles(outputFolder, ImageFileFormat.JPG).size());
 
     // Ensure that SVG command line is properly exporting semantic identifiers
-    try {
-      exportImages(projectName, ImageFileFormat.SVG);
-      Collection<IFile> files = getFiles(outputFolder, ImageFileFormat.SVG);
-      assertTrue(files.size() == 3);
+    exportImages(projectName, ImageFileFormat.SVG);
+    Collection<IFile> files = getFiles(outputFolder, ImageFileFormat.SVG);
+    assertEquals(3, files.size());
 
-      String svgContent = IResourceHelpers.readFileAsString(files.iterator().next());
+    String svgContent = IResourceHelpers.readFileAsString(files.iterator().next());
 
-      // Ensure there is at least one semantic id in the svg
-      assertTrue(!notNoneMatches(matches(svgContent, Pattern.compile("diagram:semanticTargetId=\"([^\"]+)\""))).isEmpty());
+    // Ensure there is at least one semantic id in the svg
+    assertTrue(!notNoneMatches(matches(svgContent, Pattern.compile("diagram:semanticTargetId=\"([^\"]+)\""))).isEmpty());
 
-      // Ensure there is at least the semantic id of target of the diagram in the svg
-      assertTrue(!notNoneMatches(matches(svgContent, Pattern.compile("diagram:semanticRoot=\"([^\"]+)\""))).isEmpty());
-
-    } catch (Exception e) {
-      e.printStackTrace();
-      assertFalse(e.getMessage(), true);
-    }
-
+    // Ensure there is at least the semantic id of target of the diagram in the svg
+    assertTrue(!notNoneMatches(matches(svgContent, Pattern.compile("diagram:semanticRoot=\"([^\"]+)\""))).isEmpty());
   }
 
   /**
@@ -97,7 +83,6 @@ public class CommandLineExportRepresentationsTest extends BasicTestCase {
    * none is a keyword for null target in
    * org.eclipse.sirius.diagram.ui.tools.internal.render.SiriusRenderedMapModeGraphics
    */
-  // 
   private Collection<String> notNoneMatches(Collection<String> semanticElementIds) {
     return semanticElementIds.stream().filter(x -> !"none".equals(x)).collect(Collectors.toList());
   }
@@ -106,30 +91,19 @@ public class CommandLineExportRepresentationsTest extends BasicTestCase {
     return IResourceHelpers.getIFilesIn(outputFolder, defaultImageFormat.getName().toLowerCase());
   }
 
-  private void exportImages(String projectName) throws Exception {
-    exportImages(projectName, null);
-  }
-
   private void exportImages(String projectName, ImageFileFormat format) throws Exception {
 
-    List<String> arguments = new ArrayList<>(
-        Arrays.asList(CommandLineConstants.ID, "org.polarsys.capella.exportRepresentations", CommandLineConstants.INPUT,
-            projectName + "/" + projectName + ".aird", CommandLineConstants.OUTPUTFOLDER,
-            projectName + "/ImagesExported", CommandLineConstants.FORCEOUTPUTFOLDERCREATION));
+    List<String> arguments = new ArrayList<>(List.of(
+            CommandLineConstants.INPUT, projectName + "/" + projectName + ".aird", CommandLineConstants.OUTPUTFOLDER,
+            projectName + "/ImagesExported"));
 
     if (format != null) {
       arguments.add(ExportRepresentationsCommandLineConstants.IMAGE_FORMAT);
       arguments.add(format.getName());
     }
 
-    IApplicationContext mockApplicationContext = new MockApplicationContext(arguments.toArray(new String[0]));
-
-    ExportRepresentationsCommandLine commandLine = new ExportRepresentationsCommandLine();
-    commandLine.parseContext(mockApplicationContext);
-
-    commandLine.checkArgs(mockApplicationContext);
-    commandLine.prepare(mockApplicationContext);
-    commandLine.execute(mockApplicationContext);
+    MockApplicationContext.execute(new ExportRepresentationsCommandLine(), "org.polarsys.capella.exportRepresentations", 
+        arguments.toArray(String[]::new));
     GuiActions.flushASyncGuiJobs();
   }
 }

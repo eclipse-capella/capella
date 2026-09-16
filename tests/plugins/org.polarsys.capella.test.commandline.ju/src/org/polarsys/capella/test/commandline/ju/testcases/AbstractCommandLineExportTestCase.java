@@ -12,9 +12,12 @@
  *******************************************************************************/
 package org.polarsys.capella.test.commandline.ju.testcases;
 
-import java.io.File;
 import java.nio.file.Path;
 import java.util.stream.Stream;
+
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 
 /**
  * Abstract class to test Export Projects options in commandline.
@@ -33,10 +36,23 @@ public abstract class AbstractCommandLineExportTestCase extends AbstractCommandL
     super(paths);
   }
   
+
+  @Override
+  protected void setUp() throws Exception {
+    cleanWorkspace();
+    super.setUp();
+  }
+  
+  private static void cleanWorkspace() throws Exception {
+    for (IProject project : ResourcesPlugin.getWorkspace().getRoot().getProjects()) {
+      // Most Tests use reference Test resources directly: Content must not be deleted.
+      project.delete(IResource.NEVER_DELETE_PROJECT_CONTENT, null);
+    }
+  }
+  
   protected String listProject(String... project) {
     return toListArg(Stream.of(PROJECT_NAMES)
-      .map(this::getFolderInTestModelRepository)
-      .map(File::getAbsolutePath));
+      .map(projectName -> copyToTestPool(getFolderInTestModelRepository(projectName))));
   }
   
 }
