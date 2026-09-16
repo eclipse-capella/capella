@@ -37,21 +37,10 @@ public class CommandLineZipMigrationTest extends CommandLineMigrationTestBase {
         .map(this::getFolderInTestModelRepository)
         .toArray(File[]::new);
     IResourceHelpers.createZip(sourceArchive.toFile(), archiveEntries);
-
-//    
-//    // Simulated migration command line with a zip
-//    String[] validationCommandLineArguments = { CommandLineConstants.ID, "org.polarsys.capella.migration",
-//        CommandLineConstants.IMPORT, sourceFolder.getAbsolutePath() };
-//    IApplicationContext mockApplicationContext = new MockApplicationContext(validationCommandLineArguments);
-//
-//    // Simulate launching from command line
-//    MigrationCommandLine migrationCmdLine = new MigrationCommandLine();
-//    launchApplication(mockApplicationContext, migrationCmdLine);
     
     launchMigration(CommandLineConstants.IMPORT, sourceArchive.toString());
 
     TESTS_PROJECT_NAMES.forEach(this::openSession);
   }
-
 
 }
