@@ -19,6 +19,7 @@
 	<groupId>org.polarsys</groupId>
 	<artifactId>org.polarsys.capella</artifactId>
 	<version>7.1.0-SNAPSHOT</version>
+
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -47,6 +48,7 @@
 		
 		<!-- Default target-platform-path -->
 		<target-platform-path>full</target-platform-path>
+		<calversion>2026.9.0</calversion>
 	</properties>
 
 	<modules>
@@ -231,7 +233,7 @@
 								<goal>archive-repository</goal>
 							</goals>
 							<configuration>
-								<finalName>${packagedSiteName}.site-${unqualifiedVersion}.${buildQualifier}</finalName>
+								<finalName>${packagedSiteName}.site-${calversion}.${buildQualifier}</finalName>
 							</configuration>
 						</execution>
 					</executions>
