@@ -12,7 +12,40 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.elk;
 
+
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONFIGURATION_ITEMS_BREAKDOWN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.FUNCTIONAL_CHAIN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.LOGICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.LOGICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.MODE_STATE_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_ACTIVITY_BREAKDOWN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.OPERATIONAL_ENTITY_BREAKDOWN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.SYSTEM_FUNCTION_BREAKDOWN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.MSM_PSEUDOSTATE_MAPPING_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.MS_INNER_PSEUDOSTATE_MAPPING_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.MS_PSEUDOSTATE_MAPPING_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.PAB_COMPONENT_PORT_MAPPING_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.PAB_FUNCTION_PORT_ALLOCATION_MAPPING_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.PAB_FUNCTION_PORT_MAPPING_NAME;
+
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +64,7 @@ import org.eclipse.elk.alg.layered.options.LayeredOptions;
 import org.eclipse.elk.core.math.ElkMargin;
 import org.eclipse.elk.core.math.KVector;
 import org.eclipse.elk.core.options.CoreOptions;
+import org.eclipse.elk.core.options.NodeLabelPlacement;
 import org.eclipse.elk.core.options.PortConstraints;
 import org.eclipse.elk.core.options.PortSide;
 import org.eclipse.elk.core.options.SizeConstraint;
@@ -45,28 +79,33 @@ import org.eclipse.elk.graph.ElkPort;
 import org.eclipse.elk.graph.util.ElkGraphUtil;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.elk.ElkDiagramLayoutConnector;
 import org.eclipse.sirius.diagram.elk.GmfLayoutCommand;
 import org.eclipse.sirius.diagram.elk.IELKLayoutExtension;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.InitialPseudoState;
+import org.polarsys.capella.core.data.ctx.Mission;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.FunctionInputPort;
+import org.polarsys.capella.core.data.fa.FunctionKind;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
-import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
-import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
+import org.polarsys.capella.core.data.interaction.AbstractCapability;
 
 /**
  * A sample implementation of {@link IELKLayoutExtension} that removes from the layout graph edges between two ports on
@@ -75,6 +114,10 @@ import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
  * @author Laurent Redor
  */
 public class CapellaElkLayoutExtension implements IELKLayoutExtension {
+    
+    private static final EnumSet<NodeLabelPlacement> OUTSIDE_EAST = EnumSet.of(NodeLabelPlacement.OUTSIDE,
+            NodeLabelPlacement.V_CENTER, NodeLabelPlacement.H_RIGHT);
+
     
     /**
      * The first port on the western and eastern side is already 13 pixels away from the northern border (by the
@@ -86,16 +129,52 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
 
     // Fix the size for all intermediate states
     private static final List<String> MASM_MAPPINGS = List.of(
-            IMappingNameConstants.MS_PSEUDOSTATE_MAPPING_NAME,
-            IMappingNameConstants.MS_INNER_PSEUDOSTATE_MAPPING_NAME,
-            IMappingNameConstants.MSM_PSEUDOSTATE_MAPPING_NAME
-    );
-    
+            MS_PSEUDOSTATE_MAPPING_NAME,
+            MS_INNER_PSEUDOSTATE_MAPPING_NAME,
+            MSM_PSEUDOSTATE_MAPPING_NAME
+            );
+
     private static final List<String> STATES_DIAGRAMS = List.of(
-        IDiagramNameConstants.MODES_AND_STATES_DIAGRAM_NAME,
-        IDiagramNameConstants.MODE_STATE_DIAGRAM_NAME
+            MODES_AND_STATES_DIAGRAM_NAME,
+            MODE_STATE_DIAGRAM_NAME
+            );
+    
+    private static final List<String> FUNCTIONS_INCLUDED_BLANK_DIAGRAMS = List.of(
+            // Kind is ignored for OA.
+            OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME,
+            OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME,
+            SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME,
+            SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME,
+            LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME,
+            LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME,
+            PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME,
+            PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME,
+            // 
+            FUNCTIONAL_CHAIN_DIAGRAM_NAME
+            );
+    
+    private static final List<String> CAPABILITIES_DIAGRAMS = List.of(
+            // Kind is ignored for OA.
+            OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME,
+            CONTEXTUAL_MISSION_DIAGRAM_NAME, // reverse Mission involvement
+            CAPABILITY_REALIZATION_BLANK,
+            MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME,
+            CONTEXTUAL_CAPABILITY_DIAGRAM_NAME
+            );
+
+    private static final Map<String, String> BREAKDOWN_DIAGRAM_FEATURES = Map.of(
+            // All containment relationships.
+            SYSTEM_FUNCTION_BREAKDOWN_DIAGRAM_NAME, "SFB_SystemFunction_subFunctions", //$NON-NLS-1$
+            CONFIGURATION_ITEMS_BREAKDOWN_DIAGRAM_NAME, "CIBD_ConfigurationItem_subComponents", //$NON-NLS-1$
+            LOGICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME, "LCB_LogicalComponent_subComponents", //$NON-NLS-1$
+            LOGICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME, "LFB_LogicalFunction_subFunctions", //$NON-NLS-1$
+            OPERATIONAL_ACTIVITY_BREAKDOWN_DIAGRAM_NAME, "OAB_OperationalActivity_subFunctions", //$NON-NLS-1$
+            OPERATIONAL_ENTITY_BREAKDOWN_DIAGRAM_NAME, "containedIn Mapping", //$NON-NLS-1$
+            PHYSICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME, "PCB_PhysicalComponent_subComponents", //$NON-NLS-1$
+            PHYSICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME, "PFB_PhysicalFunction_subFunctions" //$NON-NLS-1$
     );
     
+
     private record EdgeDescription(
             ElkConnectableShape source, 
             ElkConnectableShape target, 
@@ -107,7 +186,6 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
                     element.getTargets().get(0),
                     element.getContainingNode(),
                     mappedPart);
-
         }
     }
 
@@ -135,37 +213,83 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
 
         extractCircularEdges();
 
-        if (IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramDescription.getName())) {
+        if (PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramDescription.getName())) {
             beforePabLayout();
         } else if (STATES_DIAGRAMS.contains(diagramDescription.getName())) {
             beforeStateLayout();
         }
+        beforeFunctionLayout(diagramDescription);
+        beforeCapabilitiesLayout(diagramDescription);
+        beforeBreakdown(diagramDescription);
+    }
+    
+
+    private void beforeFunctionLayout(DiagramDescription diagramDescription) {
+        if (!FUNCTIONS_INCLUDED_BLANK_DIAGRAMS.contains(diagramDescription.getName())) {
+            return;
+        }
+        
+        // XXX: To align all FunctionalChainEnd, they could be grouped in virtual node.
+        
+        // Fix the size for FunctionalChainEnd and set the label location to the east side as creation.
+        streamAllNodes(layoutMapping.getLayoutGraph(), node -> {
+            var mapping = getElementMapping(node);
+            return mapping != null && mapping.getName().endsWith("_FunctionalChainEnd"); //$NON-NLS-1$
+        }).forEach(node -> {
+            node.setProperty(CoreOptions.NODE_SIZE_CONSTRAINTS, SizeConstraint.fixed());
+            node.setWidth(20); // As defined in *.odesign
+            node.setHeight(20);
+            if (!node.getLabels().isEmpty()) {
+                node.getLabels().get(0).setProperty(CoreOptions.NODE_LABELS_PLACEMENT, OUTSIDE_EAST);
+            }
+        });
+        
+        // Set minimum size for special functions.
+        streamAllNodes(layoutMapping.getLayoutGraph(), this::isSpecialKindFunction)
+        .forEach(node-> {
+            // inspired from sizeComputationExpression
+            node.setProperty(CoreOptions.NODE_SIZE_MINIMUM, new KVector(40, 40));                
+        });
+    }
+    
+    private void beforeCapabilitiesLayout(DiagramDescription diagramDescription) {
+        if (!CAPABILITIES_DIAGRAMS.contains(diagramDescription.getName())) {
+            return;
+        }
+
+        streamAllNodes(layoutMapping.getLayoutGraph(), it -> getDiagramElement(it) instanceof DNode)
+        .forEach(node-> {
+            var semanctic = getSemanticElement(node);
+            if (semanctic instanceof AbstractCapability
+                    || semanctic instanceof SystemComponent
+                    || semanctic instanceof Mission)
+                node.setProperty(CoreOptions.NODE_SIZE_MINIMUM, new KVector(70, 50));
+        });        
+    }
+    
+    private void beforeBreakdown(DiagramDescription diagramDescription) {
+        String treeMapping = BREAKDOWN_DIAGRAM_FEATURES.get(diagramDescription.getName());
+        if (treeMapping != null) {
+            streamAllEdges(layoutMapping.getLayoutGraph(), 
+                    edge -> treeMapping.equals(getElementMapping(edge).getName()))
+            .forEach(this::flipEdge);
+        }
     }
     
     private void beforePabLayout() {
-        // Fix the size for PAB_FunctionalChainEnd and set the label location to the east side
-        List<ElkNode> nodes = getNodesWithMappingName(layoutMapping.getLayoutGraph(), 
-                List.of(IMappingNameConstants.PAB_FUNCTIONAL_CHAIN_END_MAPPING_NAME));
-        nodes.forEach(node -> {
-            node.setProperty(CoreOptions.NODE_SIZE_CONSTRAINTS, SizeConstraint.fixed());
-            // node.getLabels().forEach(label -> {
-            // label.setProperty(CoreOptions.NODE_LABELS_PLACEMENT, EnumSet.of(NodeLabelPlacement.OUTSIDE,
-            // NodeLabelPlacement.V_CENTER, NodeLabelPlacement.H_RIGHT));
-            // });
-        });
+
         
         /** Edges reversed before layout */        
         // Reverse direction of "Port Allocation" edges
-        List<ElkEdge> edges = getEdgesWithMappingName(layoutMapping.getLayoutGraph(), List.of(IMappingNameConstants.PAB_FUNCTION_PORT_ALLOCATION_MAPPING_NAME));
-        reversedEdges.addAll(edges.stream()
+        List<ElkEdge> edges = getEdgesWithMappingName(layoutMapping.getLayoutGraph(), List.of(PAB_FUNCTION_PORT_ALLOCATION_MAPPING_NAME));
+        edges.stream()
                 // Filter invalid edges
                 .filter(edge -> !edge.getTargets().isEmpty() && !edge.isHyperedge())
                 // TODO : Is a check of Port Allocation kind is necessary ?
-                .peek(this::reverseEdge) //
-                .collect(Collectors.toList()));
+                .forEach(this::flipEdge);
 
         // Set fixed side for Input Port, Output Port and Component Port
-        List<ElkPort> fctPorts = getPortsWithMappingName(layoutMapping.getLayoutGraph(), List.of(IMappingNameConstants.PAB_FUNCTION_PORT_MAPPING_NAME));
+        List<ElkPort> fctPorts = getPortsWithMappingName(layoutMapping.getLayoutGraph(), List.of(PAB_FUNCTION_PORT_MAPPING_NAME));
         fctPorts.forEach(port -> {
             DDiagramElement dde = getDiagramElement(port);
             if (dde.getTarget() instanceof FunctionInputPort) {
@@ -175,7 +299,7 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
             } 
             // else { System.out.println("**** CASE NOT HANDLED ****"); //$NON-NLS-1$ }
         });
-        List<ElkPort> ports = getPortsWithMappingName(layoutMapping.getLayoutGraph(), List.of(IMappingNameConstants.PAB_COMPONENT_PORT_MAPPING_NAME));
+        List<ElkPort> ports = getPortsWithMappingName(layoutMapping.getLayoutGraph(), List.of(PAB_COMPONENT_PORT_MAPPING_NAME));
         ports.forEach(port -> {
             DDiagramElement dde = getDiagramElement(port);
             if (dde.getTarget() instanceof ComponentPort componentPort) {
@@ -187,6 +311,16 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
             }
         });
     }
+    
+    private boolean isSpecialKindFunction(ElkGraphElement elkElement) {
+        var target = getSemanticElement(elkElement);
+        if (target instanceof FunctionalChainInvolvement involvement
+                && involvement.getInvolvedElement() instanceof AbstractFunction involvedElement) {
+            target = involvedElement;
+        }
+        return target instanceof AbstractFunction function && function.getKind() != FunctionKind.FUNCTION ;
+    }
+
     
     private static void forceSide(ElkPort port, PortSide side) {
         port.setProperty(CoreOptions.PORT_SIDE, side);
@@ -217,10 +351,19 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
      * @throws IllegalArgumentException
      *             In case of the <code>elkEdge</code> is an hyperedge.
      */
-    protected void reverseEdge(ElkEdge elkEdge) throws IllegalArgumentException {
+    protected void flipEdge(ElkEdge elkEdge) throws IllegalArgumentException {
         if (elkEdge.isHyperedge()) {
             throw new IllegalArgumentException("The method reverseEdge does not handle \"hyperedge\"."); //$NON-NLS-1$
         }
+        if (!reversedEdges.contains(elkEdge)) {
+            changeEdgeOrientation(elkEdge);
+            reversedEdges.add(elkEdge);
+        }
+    }
+    
+    private void changeEdgeOrientation(ElkEdge elkEdge) {
+        // Do not call directly before layout.
+        // Use flipEdge instead.
         EList<ElkConnectableShape> oldSources = ECollections.newBasicEList(elkEdge.getSources());
         elkEdge.getSources().clear();
         elkEdge.getSources().addAll(elkEdge.getTargets());
@@ -248,19 +391,12 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
             end.get().setProperty(LayeredOptions.LAYERING_LAYER_CONSTRAINT, value);
         }
     }
-
     
     private void extractCircularEdges() {
         // A-Remove edges between two border nodes on the same container.
-        List<ElkEdge> edges = fetchCircularEdges(layoutMapping.getLayoutGraph()).collect(Collectors.toList());
-        edges.forEach(e -> {
-            // We remove it from the map between ELK elements and EditParts (after conserving this data in a
-            // local map).
-            extractedEdges.put(e, new EdgeDescription(e, layoutMapping.getGraphMap().remove(e)));
-
-            // And we also remove the edges from its parent and all references
-            EcoreUtil.delete(e);
-        });
+        fetchCircularEdges(layoutMapping.getLayoutGraph())
+            .collect(Collectors.toList()) // Cannot directly remove from a stream
+            .forEach(this::removeEdge);
     }
     
     @Override
@@ -270,13 +406,23 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
         }
         
         // Restore reverse edge
-        reversedEdges.forEach(it -> reverseEdge(it));
+        reversedEdges.forEach(it -> changeEdgeOrientation(it));
         reversedEdges.clear();
 
-        extractedEdges.forEach((e, n) -> restoreCircularEdge(e, n));
+        extractedEdges.forEach((e, n) -> restoreEdge(e, n));
     }
     
-    private void restoreCircularEdge(ElkEdge edge, EdgeDescription descr) {
+    private void removeEdge(ElkEdge edge) {
+        // We remove it from the map between ELK elements and EditParts (after conserving this data in a
+        // local map).
+        Object mappedPart = layoutMapping.getGraphMap().remove(edge);
+        extractedEdges.put(edge, new EdgeDescription(edge, mappedPart));
+
+        // And we also remove the edges from its parent and all references
+        EcoreUtil.delete(edge);
+    }
+    
+    private void restoreEdge(ElkEdge edge, EdgeDescription descr) {
         // Restore edge
         edge.getSources().add(descr.source);
         edge.getTargets().add(descr.target);
@@ -385,8 +531,8 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
         return streamAllNodes(elkNode, port -> containsMappingName(port, mappingNames)).collect(Collectors.toList());
     }
 
-    private List<ElkPort> getPortsWithMappingName(ElkNode elkNode, List<String> mappingNames) {
-        return streamAllPorts(elkNode, port -> containsMappingName(port, mappingNames)).collect(Collectors.toList());
+    private List<ElkPort> getPortsWithMappingName(ElkNode elkPort, List<String> mappingNames) {
+        return streamAllPorts(elkPort, port -> containsMappingName(port, mappingNames)).collect(Collectors.toList());
     }
 
     private DiagramElementMapping getElementMapping(ElkGraphElement elkElement) {
@@ -404,14 +550,18 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
         return null;
     }
     
+    private EObject getSemanticElement(ElkGraphElement elkElement) {
+        DDiagramElement diagramElement = getDiagramElement(elkElement);
+        return diagramElement != null ? diagramElement.getTarget() : null ;
+    }
+    
     private static boolean isSiriusPart(IGraphicalEditPart editPart) {
-        return editPart instanceof AbstractDiagramNodeEditPart 
-            || editPart instanceof AbstractDiagramBorderNodeEditPart
-            || editPart instanceof AbstractDiagramEdgeEditPart;
+        return editPart instanceof IAbstractDiagramNodeEditPart 
+            || editPart instanceof IDiagramEdgeEditPart;
     }
         
     /**
-     * Evaluates if a node target is a instance of semantic class.
+     * Evaluates if an element target is an instance of semantic class.
      * <p>
      * I.e. corresponding to the EditPart corresponding to the ElkNode is of the
      * expected type.
@@ -421,13 +571,8 @@ public class CapellaElkLayoutExtension implements IELKLayoutExtension {
      * @param expectedType of element
      * @return true if match
      */
-    private boolean isSemanticInstanceOf(ElkNode node, Class<?> expectedType) {
-        Object editPart = layoutMapping.getGraphMap().get(node);
-        if (editPart instanceof AbstractDiagramNodeEditPart nodePart
-                && nodePart.resolveSemanticElement() instanceof DDiagramElement element) {
-            return expectedType.isInstance(element.getTarget());
-        }
-        return false;
+    private boolean isSemanticInstanceOf(ElkGraphElement elkElement, Class<?> expectedType) {
+        return expectedType.isInstance(getSemanticElement(elkElement));
     }
 
     /**

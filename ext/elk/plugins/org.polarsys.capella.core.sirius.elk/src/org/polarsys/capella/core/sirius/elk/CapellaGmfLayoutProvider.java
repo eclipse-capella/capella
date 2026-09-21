@@ -50,7 +50,7 @@ import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PH
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.PHYSICAL_PATH_DESCRIPTION_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME;
-import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.SYSTEM_FUNCTION_BREAKDOWN_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -117,6 +117,8 @@ public class CapellaGmfLayoutProvider extends DefaultLayoutProvider {
             // 3- Improvement (initial in first)
 
             // Capabilities diagrams
+            CONTEXTUAL_MISSION_DIAGRAM_NAME,
+            CONTEXTUAL_CAPABILITY_DIAGRAM_NAME,
             CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT, // Not tested (no such diagram in IFE sample)
             CAPABILITY_REALIZATION_BLANK, // Not tested (no such diagram in IFE sample)
             MISSIONS_BLANK_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
@@ -124,13 +126,14 @@ public class CapellaGmfLayoutProvider extends DefaultLayoutProvider {
                                                                     // Services"
             // 1- Specific size for "Mission", "Capability" and "Actor"
             // 2- Improvement : Top down layout is better
-            MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME, // KO tested on "[MCB] All Missions and Capabilities"
+            MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME, // OK tested on "[MCB] All Missions and Capabilities"
             // 1- Specific size for "Mission", "Capability" and "Actor"
             CAPABILITY_REALIZATION_REFINEMENT, // Not tested (no such diagram in IFE sample)
             OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME, // KO tested on "[OCB] Operational Capabilities"
             // 1- Specific size for "Entity", "Capability" and "Actor"
             // 2- Improvement : Same size for all actors
             CONTEXTUAL_OC_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
+            
 
             // Data flow blank diagrams
             OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME, // tested
@@ -149,32 +152,24 @@ public class CapellaGmfLayoutProvider extends DefaultLayoutProvider {
             LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME, // OK (tested on IFE sample 
                                 // "[LAB] [BUILD] All Components, Functions, CEs, FEs")
             PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME, // tested
-            OPERATIONAL_ROLE_BLANK_DIAGRAM_NAME // Not tested (no such diagram in IFE sample)
-    );
+            OPERATIONAL_ROLE_BLANK_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
+
+            // TODO (sequence flow not a tree)
+            FUNCTIONAL_CHAIN_DIAGRAM_NAME,
+            OPERATIONAL_PROCESS_DESCRIPTION_DIAGRAM_NAME
+            );
 
     /** List of diagrams using Mr Tree algorithm. */
     private static final List<String> MR_TREE_DIAGRAM_DESCRIPTION_NAMES = List.of(
             // Breakdown diagrams
-            SYSTEM_FUNCTION_BREAKDOWN_DIAGRAM_NAME, // KO wrong children order
-            CONTEXTUAL_MISSION_DIAGRAM_NAME, // KO (tested on "[CM] Provide Entertainment Solutions" of IFE sample)
-            // 1- The space between children does not consider label outside of the node
-            FUNCTIONAL_CHAIN_DIAGRAM_NAME, // KO (tested on "[LFCD] Broadcast Audio Announcement" of IFE sample)
-            // 1- wrong location of edge's labels
-            // 2- space for label on edge is too small
-            CONFIGURATION_ITEMS_BREAKDOWN_DIAGRAM_NAME, // Not tested (no such diagram in IFE sample)
-            LOGICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME, // KO (tested on "[LCBD] Architecture Drivers" of IFE sample)
-            // 1 - wrong children order
-            LOGICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME, // KO (tested on "[LFBD] All Functions" of IFE sample)
-                                                                     // wrong children order
-            OPERATIONAL_ENTITY_BREAKDOWN_DIAGRAM_NAME, // KO wrong children order
-            OPERATIONAL_ACTIVITY_BREAKDOWN_DIAGRAM_NAME, // KO wrong children order
-            PHYSICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME, // KO wrong children order and strange result on
-                                                                     // "[PFBD] All Physical Functions"
-            PHYSICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME, // KO (tested on "[PCBD] Behavioural Components")
-            OPERATIONAL_PROCESS_DESCRIPTION_DIAGRAM_NAME // KO
-            // 1- wrong location of edge's labels
-            // 2- space for label on edge is too small
-            // 3- Maybe a layered diagram desc would be better
+            OPERATIONAL_ENTITY_BREAKDOWN_DIAGRAM_NAME,
+            OPERATIONAL_ACTIVITY_BREAKDOWN_DIAGRAM_NAME,
+            SYSTEM_FUNCTION_BREAKDOWN_DIAGRAM_NAME,
+            LOGICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME,
+            LOGICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME,
+            PHYSICAL_FUNCTION_BREAKDOWN_DIAGRAM_NAME,
+            PHYSICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME,
+            CONFIGURATION_ITEMS_BREAKDOWN_DIAGRAM_NAME
     );
 
     /** List of diagrams using Layered algorithm. */

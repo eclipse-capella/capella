@@ -29,6 +29,7 @@ import org.eclipse.elk.core.options.SizeConstraint;
 import org.eclipse.elk.graph.properties.IProperty;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.description.BooleanLayoutOption;
 import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DoubleLayoutOption;
@@ -78,7 +79,12 @@ public class CapellaSiriusLayoutProvider extends GenericLayoutProvider {
     }
 
     static CustomLayoutConfiguration createMrTreeConfiguration() {
-        return createConfiguration(MrTreeOptions.ALGORITHM_ID);
+        CustomLayoutConfiguration result = createConfiguration(MrTreeOptions.ALGORITHM_ID);
+        // Spacing.node_node: default (20) is cumbersome.
+        addDoubleOption(result, CoreOptions.SPACING_NODE_NODE, TARGET_PARENT, 40);
+        // Half spacing.edgeNode : Horizontal edge will be centered.
+        addDoubleOption(result, CoreOptions.SPACING_EDGE_NODE, TARGET_PARENT, 20);
+        return result;
     }
 
     static CustomLayoutConfiguration createDotConfiguration() {
@@ -116,7 +122,8 @@ public class CapellaSiriusLayoutProvider extends GenericLayoutProvider {
         // * and the above space between 2 edges
         addDoubleOption(result, CoreOptions.SPACING_PORT_PORT, TARGET_PARENT, 13);
         // Align firstly the upper element and then the lower (ditto for left and then right)
-        addEnumOption(result, LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, TARGET_PARENT, FixedAlignment.RIGHTDOWN);
+        addEnumOption(result, LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, TARGET_PARENT, FixedAlignment.BALANCED);
+        addBooleanOption(result, LayeredOptions.MERGE_EDGES, TARGET_PARENT, true);
         // Change the direction of the layout
         addEnumOption(result, CoreOptions.DIRECTION, TARGET_PARENT, horizontal ? Direction.RIGHT : Direction.DOWN);
         // Reduce the space between a label and its edge to 0 pixel (default value is 2)
@@ -137,6 +144,7 @@ public class CapellaSiriusLayoutProvider extends GenericLayoutProvider {
     /**
      * Generic method to finalize a {@link LayoutOption} initialization and to add it to the current container.
      * 
+     * @param <O> type of option
      * @param container
      *            The container to set this option on.
      * @param id
@@ -147,13 +155,30 @@ public class CapellaSiriusLayoutProvider extends GenericLayoutProvider {
      *            The concerned option
      * @return the {@code option) for convenience
      */
-    protected static LayoutOption addLayoutOption(CustomLayoutConfiguration container, IProperty<?> id, List<LayoutOptionTarget> targets, LayoutOption option) {
+    protected static <O extends LayoutOption> O addLayoutOption(CustomLayoutConfiguration container, IProperty<?> id, List<LayoutOptionTarget> targets, O option) {
         option.setId(id.getId());
         option.getTargets().addAll(targets);
         container.getLayoutOptions().add(option);
         return option;
     }
 
+    /**
+     * Create a new {@link EnumLayoutOption}.
+     * 
+     * @param id
+     *            The id of the option
+     * @param targets
+     *            The targets of this option (as it is defined in ELK documentation)
+     * @param name
+     *            The name of the Enum value
+     * @return the new option
+     */
+    protected static BooleanLayoutOption addBooleanOption(CustomLayoutConfiguration container, IProperty<Boolean> id, List<LayoutOptionTarget> targets, boolean value) {
+        BooleanLayoutOption result = LFCT.createBooleanLayoutOption();
+        result.setValue(value);
+        return addLayoutOption(container, id, targets, result);
+    }
+    
     /**
      * Create a new {@link DoubleLayoutOption}.
      * 
@@ -165,7 +190,7 @@ public class CapellaSiriusLayoutProvider extends GenericLayoutProvider {
      *            The value of this option
      * @return the new option
      */
-    protected static LayoutOption addDoubleOption(CustomLayoutConfiguration container, IProperty<?> id, List<LayoutOptionTarget> targets, double value) {
+    protected static DoubleLayoutOption addDoubleOption(CustomLayoutConfiguration container, IProperty<?> id, List<LayoutOptionTarget> targets, double value) {
         DoubleLayoutOption result = LFCT.createDoubleLayoutOption();
         result.setValue(value);
         return addLayoutOption(container, id, targets, result);
@@ -182,7 +207,7 @@ public class CapellaSiriusLayoutProvider extends GenericLayoutProvider {
      *            The value of this option
      * @return the new option
      */
-    protected static LayoutOption addIntegerOption(CustomLayoutConfiguration container, IProperty<?> id, List<LayoutOptionTarget> targets, int value) {
+    protected static IntegerLayoutOption addIntegerOption(CustomLayoutConfiguration container, IProperty<?> id, List<LayoutOptionTarget> targets, int value) {
         IntegerLayoutOption result = LFCT.createIntegerLayoutOption();
         result.setValue(value);
         return addLayoutOption(container, id, targets, result);
@@ -199,7 +224,7 @@ public class CapellaSiriusLayoutProvider extends GenericLayoutProvider {
      *            The name of the Enum value
      * @return the new option
      */
-    protected static <T extends Enum<?>> LayoutOption addEnumOption(CustomLayoutConfiguration container, IProperty<T> id, List<LayoutOptionTarget> targets, T value) {
+    protected static <T extends Enum<?>> EnumLayoutOption addEnumOption(CustomLayoutConfiguration container, IProperty<T> id, List<LayoutOptionTarget> targets, T value) {
         EnumLayoutOption result = LFCT.createEnumLayoutOption();
         EnumLayoutValue enumLayoutValue = LFCT.createEnumLayoutValue();
         enumLayoutValue.setName(value.name());
@@ -207,7 +232,7 @@ public class CapellaSiriusLayoutProvider extends GenericLayoutProvider {
         return addLayoutOption(container, id, targets, result);
     }
    
-    /**
+   /**
      * Create a new {@link EnumSetLayoutOption}.
      * 
      * @param id
@@ -218,7 +243,7 @@ public class CapellaSiriusLayoutProvider extends GenericLayoutProvider {
      *            The targets of this option (as it is defined in ELK documentation)
      * @return the new option
      */
-    protected static <T extends Enum<?>> LayoutOption addEnumsOption(CustomLayoutConfiguration container, IProperty<? extends EnumSet<? extends T>> id, List<LayoutOptionTarget> targets, @SuppressWarnings("unchecked") T... values) {
+    protected static <T extends Enum<?>> EnumSetLayoutOption addEnumsOption(CustomLayoutConfiguration container, IProperty<? extends EnumSet<? extends T>> id, List<LayoutOptionTarget> targets, @SuppressWarnings("unchecked") T... values) {
         EnumSetLayoutOption result = LFCT.createEnumSetLayoutOption();
         for (T value : values) {
             EnumLayoutValue enumLayoutValue = LFCT.createEnumLayoutValue();
