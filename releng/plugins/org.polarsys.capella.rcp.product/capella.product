@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Capella" uid="org.polarsys.capella.rcp.product" id="org.polarsys.capella.rcp.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="7.1.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Capella" uid="org.polarsys.capella.rcp.product" id="org.polarsys.capella.rcp.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="2026.9.0.qualifier" type="features" includeLaunchers="true" autoIncludeRequirements="true">
 
    <configIni use="default">
    </configIni>
@@ -12,11 +12,16 @@
       </programArgsMac>
       <vmArgs>-Dosgi.requiredJavaVersion=17
 -Dosgi.dataAreaRequiresExplicitInit=true
+-Declipse.e4.inject.javax.warning=false
+-Declipse.platform.mergeTrust=true
+-Dsun.java.command=Capella
 -Dpde.jreProfile=JavaSE-17
 -Dlogback.configurationFile=configuration/logback.xml
+--add-modules=ALL-SYSTEM
 -Xms1000m
 -Xmx3000m
 -Xss4m
+-Dorg.slf4j.simpleLogger.defaultLogLevel=off
 -XX:+UseG1GC
 -XX:+UseStringDeduplication
       </vmArgs>
@@ -48,6 +53,9 @@
    </vm>
 
    <plugins>
+      <plugin id="org.apache.felix.scr"/>
+      <plugin id="org.apache.aries.spifly.dynamic.bundle"/>
+      <plugin id="slf4j.simple"/>
    </plugins>
 
    <features>

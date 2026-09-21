@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -39,7 +39,7 @@ public class JDTTestRunnerApplication implements IApplication {
   private void run(int port, String title) throws InterruptedException {
 
     ILaunch launch = new Launch(null, ILaunchManager.RUN_MODE, null);
-    final TestRunSession session = new TestRunSession(launch, new JavaProject() {
+    final TestRunSession session = new TestRunSession(launch, new JavaProject(null, null) {
       @Override
       public String getElementName() {
         return title;

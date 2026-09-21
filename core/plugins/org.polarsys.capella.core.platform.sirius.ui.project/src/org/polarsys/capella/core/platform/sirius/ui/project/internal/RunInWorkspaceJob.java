@@ -56,7 +56,6 @@ public abstract class RunInWorkspaceJob extends Job {
         depth = workspace.getWorkManager().beginUnprotected();
         return runInWorkspace(monitor);
       } catch (OperationCanceledException e) {
-        workspace.getWorkManager().operationCanceled();
         return Status.CANCEL_STATUS;
       } finally {
         if (depth >= 0) {
