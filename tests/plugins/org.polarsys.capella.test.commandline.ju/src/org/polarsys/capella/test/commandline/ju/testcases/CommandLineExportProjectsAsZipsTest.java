@@ -26,18 +26,15 @@ import org.polarsys.capella.test.commandline.ju.utils.MockApplicationContext;
  */
 public class CommandLineExportProjectsAsZipsTest extends AbstractCommandLineExportTestCase {
 
-  private static final Path EXTERNAl_EXPORT_PATH = Path.of("target/test-run/CommandLineExportProjectsAsZipsTest");
   private static final String RELATIVE_EXPORT_SEGMENT = "CommandLineExportProjectsAsZipsTest/output";
   private static final Path RELATIVE_EXPORT_PATH = WS_DATA_PATH.resolve(RELATIVE_EXPORT_SEGMENT);
-  
 
   /**
    * Test constructor.
    */
   public CommandLineExportProjectsAsZipsTest() {
-    super(EXTERNAl_EXPORT_PATH, RELATIVE_EXPORT_PATH);
+    super(RELATIVE_EXPORT_PATH);
   }
-  
   
   @Override
   public void test() throws Exception {
@@ -46,11 +43,11 @@ public class CommandLineExportProjectsAsZipsTest extends AbstractCommandLineExpo
         CommandLineConstants.INPUT, CommandLineConstants.ALL_ARGUMENT,
         CommandLineConstants.IMPORT, listProject(PROJECT_NAMES),
         CommandLineConstants.EXPORT_LIST, CommandLineConstants.ALL_ARGUMENT,
-        CommandLineConstants.EXPORT_TARGET, EXTERNAl_EXPORT_PATH.toAbsolutePath().toString()
+        CommandLineConstants.EXPORT_TARGET, testResourcesPath.toAbsolutePath().toString()
         );
     
     for (String projectName : PROJECT_NAMES) {
-      var exportFile = EXTERNAl_EXPORT_PATH.resolve(projectName + ".zip"); //$NON-NLS-1$
+      var exportFile = testResourcesPath.resolve(projectName + ".zip"); //$NON-NLS-1$
       assertTrue("Fail to export Project as zip: " + projectName, Files.exists(exportFile) && Files.size(exportFile) > 0);
     }
     

@@ -15,9 +15,7 @@ package org.polarsys.capella.test.commandline.ju.testcases;
 import java.io.File;
 
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.equinox.app.IApplicationContext;
 import org.polarsys.capella.core.commandline.core.CommandLineConstants;
-import org.polarsys.capella.core.commandline.core.CommandLineMode;
 import org.polarsys.capella.core.sirius.ui.commandline.RemoveHiddenElementsCommandLine;
 import org.polarsys.capella.test.commandline.ju.utils.MockApplicationContext;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
@@ -31,51 +29,33 @@ import org.polarsys.capella.test.framework.helpers.log.StatusValidator;
 public class CommandLineRemoveHiddenElementsTest extends BasicTestCase {
 
   @Override
-  public void test()  {
+  public void test() throws Exception {
     String projectName = "RefreshRemoveExport";
     File sourceFolder = getFolderInTestModelRepository(projectName);
-    ModelProviderHelper.getInstance().importCapellaProject(projectName, sourceFolder);
-    
-    try {
-      StatusValidator removeSomething = new StatusValidator(s -> s.getMessage().contains("diagram(s) updated"));
-      Platform.addLogListener(removeSomething);
-      removeElements(projectName);
-      Platform.removeLogListener(removeSomething);
-      assertTrue("Remove hidden elements shall have removed something", removeSomething.isValid());
-      
-    } catch (Exception e) {
-      assertFalse(e.getMessage(), true);
-    }
+    ModelProviderHelper.getInstance().importCapellaProject(sourceFolder);
 
-    try {
-      StatusValidator removeNothing = new StatusValidator(s -> s.getMessage().contains("Nothing to do"));
-      Platform.addLogListener(removeNothing);
-      removeElements(projectName);
-      Platform.removeLogListener(removeNothing);
-      assertTrue("Remove hidden elements shall have removed nothing", removeNothing.isValid());
-      
-    } catch (Exception e) {
-      e.printStackTrace();
-      assertFalse(e.getMessage(), true);
-    }
+    var removeSomething = removeElements(projectName, 
+        new StatusValidator(s -> s.getMessage().contains("diagram(s) updated")));
+    assertTrue("Remove hidden elements shall have removed something", removeSomething.isValid());
+    
+    var removeNothing = removeElements(projectName, 
+        new StatusValidator(s -> s.getMessage().contains("Nothing to do")));
+    assertTrue("Remove hidden elements shall have removed nothing", removeNothing.isValid());
+    
   }
 
   /**
    * Simulate a call to remove hidden element command line
    */
-  private void removeElements(String project) throws Exception {
-
-    String[] arguments = { CommandLineConstants.ID,
-        "org.polarsys.capella.removeHiddenElements", CommandLineConstants.INPUT, project + "/" + project + ".aird",
-        CommandLineConstants.OUTPUTFOLDER, project + "/output", CommandLineConstants.FORCEOUTPUTFOLDERCREATION };
-    IApplicationContext mockApplicationContext = new MockApplicationContext(arguments);
-
-    RemoveHiddenElementsCommandLine commandLine = new RemoveHiddenElementsCommandLine();
-    commandLine.parseContext(mockApplicationContext);
-
-    commandLine.checkArgs(mockApplicationContext);
-    commandLine.prepare(mockApplicationContext);
-    commandLine.execute(mockApplicationContext);
-    GuiActions.flushASyncGuiJobs();
+  private StatusValidator removeElements(String project, StatusValidator validator) throws Exception {
+    Platform.addLogListener(validator);
+    try {
+      MockApplicationContext.execute(new RemoveHiddenElementsCommandLine(), "org.polarsys.capella.removeHiddenElements", 
+          CommandLineConstants.INPUT, project + "/" + project + ".aird");
+      GuiActions.flushASyncGuiJobs();
+    } finally {
+      Platform.removeLogListener(validator);
+    }
+    return validator;
   }
 }

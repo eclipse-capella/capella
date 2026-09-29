@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -42,10 +42,7 @@ public class MockApplicationContext implements IApplicationContext {
    * @throws CommandLineException if a step fails
    */
   public static void execute(ICommandLine command, String appId, String... arguments) throws CommandLineException {
-    IApplicationContext context = new MockApplicationContext(
-        Stream.concat(Stream.of(CommandLineConstants.ID, appId), Stream.of(arguments))
-          .toArray(String[]::new)
-        );
+    IApplicationContext context = createContext(appId, arguments);
     
     // Sequence must be the same as in:
     //   org.polarsys.capella.core.commandline.core.CommandLineApp
@@ -56,6 +53,20 @@ public class MockApplicationContext implements IApplicationContext {
     command.prepare(context);
     command.execute(context);
     command.postExecute(context);
+  }
+  
+  /**
+   * Creates an application context for command line.
+   * 
+   * @param appId identification of the application
+   * @param arguments parameters of execution
+   * @throws CommandLineException if a step fails
+   */
+  public static IApplicationContext createContext(String appId, String... arguments) throws CommandLineException {
+    return new MockApplicationContext(
+      Stream.concat(Stream.of(CommandLineConstants.ID, appId), Stream.of(arguments))
+        .toArray(String[]::new)
+      );
   }
   
   public MockApplicationContext(String... mockCommandLineArguments) {

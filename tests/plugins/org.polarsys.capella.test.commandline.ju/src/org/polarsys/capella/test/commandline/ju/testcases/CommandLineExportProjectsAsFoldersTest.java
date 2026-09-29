@@ -13,7 +13,6 @@
 package org.polarsys.capella.test.commandline.ju.testcases;
 
 import java.nio.file.Files;
-import java.nio.file.Path;
 
 import org.polarsys.capella.core.commandline.core.CommandLineConstants;
 import org.polarsys.capella.core.commandline.core.DefaultCommandLine;
@@ -26,28 +25,20 @@ import org.polarsys.capella.test.commandline.ju.utils.MockApplicationContext;
  */
 public class CommandLineExportProjectsAsFoldersTest extends AbstractCommandLineExportTestCase {
 
-  private static final Path EXPORT_PATH = Path.of("target/test-run/CommandLineExportProjectsAsFoldersTest");
-
-  /**
-   * Test constructor.
-   */
-  public CommandLineExportProjectsAsFoldersTest() {
-    super(EXPORT_PATH);
-  }
-  
-  
   @Override
   public void test() throws Exception {
+    var exportResult = testResourcesPath.resolve("exportResult");
+    
     MockApplicationContext.execute(new DefaultCommandLine() , "stub", 
         CommandLineConstants.INPUT, CommandLineConstants.ALL_ARGUMENT,
         CommandLineConstants.IMPORT, listProject(PROJECT_NAMES),
         CommandLineConstants.EXPORT_LIST, CommandLineConstants.ALL_ARGUMENT,
         CommandLineConstants.EXPORT_COPY,
-        CommandLineConstants.EXPORT_TARGET, EXPORT_PATH.toAbsolutePath().toString()
+        CommandLineConstants.EXPORT_TARGET, exportResult.toString()
         );
     
     for (String projectName : PROJECT_NAMES) {
-      var exportElement = EXPORT_PATH.resolve(projectName);
+      var exportElement = exportResult.resolve(projectName);
       assertTrue("Fail to export Project as folder: " + projectName, Files.isDirectory(exportElement));
     }
   }
