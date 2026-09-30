@@ -5122,17 +5122,26 @@ public class FaServices {
   }
   
   public String getOverlappedFunctionalChainsLabel(EObject exchange, EObject view, DDiagram diagram) {
-    if (exchange instanceof FunctionalExchange && view instanceof DEdge) {
-      DEdge edge = (DEdge) view;
-      String oldLabel = edge.getBeginLabel();
-      // Label calculation is called when the cache is not ready (outside of the refresh), return the old label
-      if (DEdgeIconCache.getInstance().getLabel(edge) == null) {
-        return oldLabel;
+    if (exchange instanceof FunctionalExchange && view instanceof DEdge edge) {
+      String exchangeLabel = DEdgeIconCache.getInstance().getLabel(edge);
+      
+      // Label calculation is called when the cache is not ready (outside of the refresh)
+      if (exchangeLabel == null) {
+        // Use the old label
+        return edge.getBeginLabel();
       }
-      if (isHideOverlappedFunctionalChainsLabelEnable(exchange, diagram)) {
+      if (!isHideOverlappedFunctionalChainsLabelEnable(exchange, diagram)) {
+        // Must show label.
+        // If label is empty, there is no icon.
+        return exchangeLabel;
+      }
+      
+      if (!isHideOverlappedFunctionalChainsIconEnable(exchange, diagram) // showIcon
+          && !exchangeLabel.isBlank()) { // only if there is something to show.
+        // If we return a blank text, Sirius won't display icon.
+        // The point is used as a placeholder, it is barely visible.
         return Character.toString(ICommonConstants.POINT_CHARACTER);
       }
-      return DEdgeIconCache.getInstance().getLabel(edge);
     }
     return ICommonConstants.EMPTY_STRING;
   }
