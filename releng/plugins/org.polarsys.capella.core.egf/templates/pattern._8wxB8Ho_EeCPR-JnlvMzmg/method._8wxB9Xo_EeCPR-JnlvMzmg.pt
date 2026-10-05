@@ -497,25 +497,25 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
       <%} else {%>
 		return <%=genBaseType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.convertToString(<%=genBaseType.getQualifiedClassifierAccessor()%>, instanceValue);
       <%}%>
-    <%} else if (genDataType.getItemType() != null) { GenDataType genItemType = genDataType.getItemType(); %>
+    <%} else if (genDataType.getItemType() != null) { GenDataType genItemType = genDataType.getItemType(); boolean genItemTypeHasDataConverters = genItemType.getGenPackage().isDataTypeConverters();%>
 		if (instanceValue == null) return null;
 		if (instanceValue.isEmpty()) return "";
 		<%=genModel.getImportedName(genModel.useGenerics() ? "java.lang.StringBuilder" : "java.lang.StringBuffer")%> result = new <%=genModel.getImportedName(genModel.useGenerics() ? "java.lang.StringBuilder" : "java.lang.StringBuffer")%>();
         <%String item; if (!genModel.useGenerics()) { item = "i.next()"; %>
 		for (<%=genModel.getImportedName("java.util.Iterator")%> i = instanceValue.iterator(); i.hasNext(); )
         <%} else { item = "item";%>
-		for (<%=genModel.getImportedName("java.lang.Object")%> item : instanceValue)
+		for (<%=genItemTypeHasDataConverters ? genItemType.getObjectInstanceClassName() : genModel.getImportedName("java.lang.Object")%> item : instanceValue)
         <%}%>
 		{
       <%if (genItemType.getGenPackage() == genPackage) {%>
-        <%if (genPackage.isDataTypeConverters()) { genItemType = genItemType.getObjectType();%>
-			result.append(convert<%=genItemType.getName()%>((<%=genItemType.getObjectInstanceClassName()%>)<%=item%>));
+        <%if (genItemTypeHasDataConverters) { genItemType = genItemType.getObjectType();%>
+			result.append(convert<%=genItemType.getName()%>(<%=item%>));
         <%} else {%>
 			result.append(convert<%=genItemType.getName()%>ToString(<%=genItemType.getQualifiedClassifierAccessor()%>, <%=item%>));
         <%}%>
       <%} else {%>
-        <%if (genItemType.getGenPackage().isDataTypeConverters()) { genItemType = genItemType.getObjectType();%>
-			result.append(<%=genItemType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.convert<%=genItemType.getName()%>((<%=genItemType.getObjectInstanceClassName()%>)<%=item%>));
+        <%if (genItemTypeHasDataConverters) { genItemType = genItemType.getObjectType();%>
+			result.append(<%=genItemType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.convert<%=genItemType.getName()%>(<%=item%>));
         <%} else {%>
 			result.append(<%=genItemType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.convertToString(<%=genItemType.getQualifiedClassifierAccessor()%>, <%=item%>));
         <%}%>
