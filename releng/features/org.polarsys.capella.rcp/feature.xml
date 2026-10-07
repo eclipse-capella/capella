@@ -106,7 +106,6 @@
       <import plugin="ch.qos.logback.classic"/>
       <import plugin="com.google.guava" version="33" match="compatible"/>
       <import feature="org.eclipse.acceleo.query.source"/>
-      <import feature="org.eclipse.acceleo.ui.interpreter.source"/>
       <import feature="org.eclipse.amalgam.explorer.activity.source"/>
       <import feature="org.eclipse.draw2d.source"/>
       <import feature="org.eclipse.emf.diffmerge.gmf.feature.source"/>
@@ -127,7 +126,6 @@
       <import feature="org.eclipse.sirius.doc.feature.source"/>
       <import feature="org.eclipse.sirius.interpreter.feature.source"/>
       <import feature="org.eclipse.sirius.runtime.aql.source"/>
-      <import feature="org.eclipse.sirius.runtime.ide.ui.acceleo.source"/>
       <import feature="org.eclipse.sirius.runtime.ide.ui.source"/>
       <import feature="org.eclipse.sirius.runtime.source"/>
       <import feature="org.polarsys.kitalpha.ad.feature.source"/>
