@@ -73,7 +73,7 @@ public class CapellaMetadataProvider implements IMetadataProvider {
     resourceSet.getLoadOptions().put(GMFResource.OPTION_ABORT_ON_ERROR, Boolean.TRUE);
     resourceSet.getLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
     try {
-      resourceSet.getResource(EcoreUtil2.getURI((IFile) afmFile), true);
+      resourceSet.getResource(EcoreUtil2.getURI(afmFile), true);
       return MetadataHelper.getViewpointMetadata(resourceSet).getViewpointReferences();
 
     } finally {
@@ -101,7 +101,7 @@ public class CapellaMetadataProvider implements IMetadataProvider {
 
     // If there is no afm aside given file, we use the legacy way to check version
     if (!afm.exists()) {
-      Version fileVersion = CapellaFeatureHelper.getFileVersion((IFile) file);
+      Version fileVersion = CapellaFeatureHelper.getFileVersion(file);
       Version currentVersion = CapellaMetadataProvider.getCurrentVersion();
       return isMigrationRequired(fileVersion, currentVersion);
     }
@@ -113,6 +113,7 @@ public class CapellaMetadataProvider implements IMetadataProvider {
    * For a given file, retrieve if the model is fully compatible with the current platform. Checks current platform
    * version and viewpoints.
    */
+  @Override
   public IStatus checkMetadata(IFile file) {
     IFile afm = getAFM(file);
 
@@ -145,6 +146,7 @@ public class CapellaMetadataProvider implements IMetadataProvider {
    * For a given AFM file loaded in a resourceSet, retrieve if the model is fully compatible with the current platform.
    * Checks current platform version and viewpoints.
    */
+  @Override
   public IStatus checkMetadata(URI sessionResourceURI, ResourceSet set) {
     if (!ViewpointManager.getInstance(set).hasMetadata()) {
       // If there is no afm file but the current check is about a capella project, we must raise an exception because
@@ -190,6 +192,14 @@ public class CapellaMetadataProvider implements IMetadataProvider {
    */
   public IStatus isMigrationRequired(Version fileVersion, Version currentVersion) {
 
+    // If model from 7.1.0 towards 7.1.x, we requires a migration.
+    if (fileVersion.getMajor() == 7 && fileVersion.getMinor() == 1  && fileVersion.getMicro() == 0 && 
+        fileVersion.getMajor() == currentVersion.getMajor() && fileVersion.getMinor() == currentVersion.getMinor() && 
+        fileVersion.getMicro() != currentVersion.getMicro()) {
+      return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),
+          NLS.bind(Messages.WrongCapellaVersionException_DetailedMessage, fileVersion));
+    }
+    
     // If model from 7.0.0 towards 7.0.x, we requires a migration.
     if (fileVersion.getMajor() == 7 && fileVersion.getMinor() == 0  && fileVersion.getMicro() == 0 && 
         fileVersion.getMajor() == currentVersion.getMajor() && fileVersion.getMinor() == currentVersion.getMinor() && 
@@ -217,6 +227,7 @@ public class CapellaMetadataProvider implements IMetadataProvider {
   /**
    * Register the given resource to the current session
    */
+  @Override
   public void registerMetadataResource(Resource resource, final Session session, final IProgressMonitor monitor) {
     if (resource != null && session != null) {
       final URI metadataResourceURI = resource.getURI();
@@ -240,6 +251,7 @@ public class CapellaMetadataProvider implements IMetadataProvider {
    * @param monitor
    * @return the created resource (may be null if the resource does not belong to a Capella project)
    */
+  @Override
   public Resource createMetadataResource(TransactionalEditingDomain domain, URI resourceURI, IProgressMonitor monitor) {
     SubMonitor progress = SubMonitor.convert(monitor, 2);
     try {
