@@ -24,13 +24,14 @@ public class MigrationRequiredTest extends BasicTestCase {
 
   @Override
   public void test() throws Exception {
+    assertTrue(requireMigration("7.1.0", "7.1.1"));
+    assertTrue(requireMigration("7.1.0", "7.1.2"));
     assertTrue(requireMigration("7.0.0", "7.0.1"));
     assertTrue(requireMigration("7.0.0", "7.0.2"));
     assertTrue(requireMigration("7.0.2", "7.1.0"));
     assertTrue(requireMigration("7.0.2", "7.1.1"));
 
     assertFalse(requireMigration("7.0.1", "7.0.2"));
-    assertFalse(requireMigration("7.1.0", "7.1.1"));
     
     assertTrue(requireMigration("6.1.0", "7.0.2"));
     assertTrue(requireMigration("5.1.2", "7.0.2"));
