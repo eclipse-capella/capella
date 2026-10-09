@@ -18,6 +18,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
@@ -45,6 +46,9 @@ public abstract class DescriptionPropertySection extends AbstractSection {
   public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     super.createContents(parent, aTabbedPropertySheetPage);
     createDescriptionWidget(getWidgetFactory(), parent);
+    if (parent.getParent().getLayoutData() instanceof GridData parentData) {
+      parentData.widthHint = 200; // Required for extra space in Page of Sections
+    }
   }
 
   @Override
@@ -56,7 +60,13 @@ public abstract class DescriptionPropertySection extends AbstractSection {
   public boolean shouldUseExtraSpace() {
     return true;
   }
-
+  
+  @Override
+  public int getMinimumHeight() {
+    // Required for extra space in Page of Sections
+    return 50;
+  }
+  
   /**
    * Create description widget.
    * 
