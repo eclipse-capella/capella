@@ -14,6 +14,8 @@ target "Capella"
 
 with source, requirements
 
+environment JavaSE-21
+
 // Make sure that GMF, GEF below are consistent with the GMF used by Sirius
 // include "https://download.eclipse.org/sirius/updates/stable/7.2.0-S2023xxxx-xxxxxx/2023-03/targets/modules/gmf-runtime-1.15.tpd"
 
