@@ -65,7 +65,7 @@ location Viatra "http://download.eclipse.org/viatra/updates/release/2.8.2" {
 	org.eclipse.viatra.query.runtime.feature.source.feature.group	
 }
 
-location orbit "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/release/4.40.0" {
+location Orbit-2025-09 "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2025-09" {
 	slf4j.api
 	ch.qos.logback.classic
 	ch.qos.logback.core
