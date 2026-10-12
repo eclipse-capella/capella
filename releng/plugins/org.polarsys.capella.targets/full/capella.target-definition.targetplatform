@@ -52,6 +52,8 @@ location Eclipse-2025-09 "https://download.eclipse.org/releases/2025-09/" {
 	org.eclipse.egit.source.feature.group lazy
 	org.eclipse.xtext.xbase.lib.feature.group lazy
 	org.eclipse.osgi.services lazy
+	org.apache.commons.commons-logging lazy
+	org.apache.commons.logging lazy
 }
 
 location eclipse "https://download.eclipse.org/releases/2023-03" {
