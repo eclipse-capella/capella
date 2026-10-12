@@ -72,6 +72,8 @@ location Orbit-2025-09 "https://download.eclipse.org/tools/orbit/simrel/orbit-ag
 	org.apache.aries.spifly.dynamic.bundle
 	org.apache.log4j
 	com.google.guava
+	org.eclipse.collections.api
+	org.eclipse.collections.impl
 }
 
 location sirius "https://download.eclipse.org/sirius/updates/releases/7.5.0/2025-09/" {
@@ -135,7 +137,7 @@ location egf "https://download.eclipse.org/egf/nightly/master-8/" {
 	org.eclipse.egf.sdk.feature.source.feature.group
 } 
 
-location Nattable "https://download.eclipse.org/nattable/releases/2.1.0/repository/" {
+location Nattable "https://download.eclipse.org/nattable/releases/2.6.0/repository/" {
 	org.eclipse.nebula.widgets.nattable.core.feature.feature.group lazy
 	org.eclipse.nebula.widgets.nattable.extension.glazedlists.feature.feature.group lazy
 }
