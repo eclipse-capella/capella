@@ -131,7 +131,7 @@ location amalgam "https://download.eclipse.org/modeling/amalgam/updates/releases
 	org.eclipse.amalgam.explorer.activity.source.feature.group
 }
 
-location egf "https://download.eclipse.org/egf/updates/stable/1.6.5/2025-09/" {
+location egf "https://download.eclipse.org/egf/nightly/master-8/" {
 	org.eclipse.egf.sdk.feature.source.feature.group
 } 
 
