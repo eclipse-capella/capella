@@ -46,7 +46,6 @@ location Eclipse-2025-09 "https://download.eclipse.org/releases/2025-09/" {
 	org.eclipse.equinox.executable.feature.group lazy
 	com.ibm.icu lazy
 	jakarta.inject.jakarta.inject-api
-//	org.eclipse.viatra.query.runtime.feature.source.feature.group
 	org.apache.commons.lang lazy
 	org.eclipse.jgit.source lazy
 	org.eclipse.egit.source.feature.group lazy
@@ -61,19 +60,24 @@ location EMF-Query-2022-08 "https://download.eclipse.org/modeling/emf/query/upda
 }
 
 //location eclipse "https://download.eclipse.org/releases/2023-03" {
-location Viatra "http://download.eclipse.org/viatra/updates/release/2.8.2" {
-	org.eclipse.viatra.query.runtime.feature.source.feature.group	
+location Viatra "http://download.eclipse.org/viatra/updates/release/2.9.1" {
+	org.eclipse.viatra.query.runtime.feature.source.feature.group lazy
+}
+
+
+location Eclipse-2022-06 "https://download.eclipse.org/releases/2022-06/" {
+		org.eclipse.collections lazy
 }
 
 location Orbit-2025-09 "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2025-09" {
-	slf4j.api
-	ch.qos.logback.classic
-	ch.qos.logback.core
-	org.apache.aries.spifly.dynamic.bundle
-	org.apache.log4j
-	com.google.guava
-	org.eclipse.collections.api
-	org.eclipse.collections.impl
+	slf4j.api lazy
+	ch.qos.logback.classic lazy
+	ch.qos.logback.core lazy
+	org.apache.aries.spifly.dynamic.bundle lazy
+	org.apache.log4j lazy
+	com.google.guava lazy
+	org.eclipse.collections.api  lazy
+	org.eclipse.collections.impl lazy
 }
 
 location sirius "https://download.eclipse.org/sirius/updates/releases/7.5.0/2025-09/" {
