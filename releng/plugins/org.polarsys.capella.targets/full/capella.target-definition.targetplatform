@@ -85,7 +85,7 @@ location Acceleo_4.2.1_AQL_8.1.1 "https://download.eclipse.org/acceleo/updates/r
 	org.eclipse.acceleo.query.source.feature.group
 }
 
-location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/releases/runtime/7.1.0/" {
+location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/nightly/runtime/master/" {
 	org.polarsys.kitalpha.ad.runtime.feature.source.feature.group
 	org.polarsys.kitalpha.cadence.feature.source.feature.group
 	org.polarsys.kitalpha.common.feature.source.feature.group
@@ -110,13 +110,9 @@ location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/upd
 	org.polarsys.kitalpha.sirius.rotativeimage.feature.source.feature.group
 }
 
-location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/releases/sdk/7.1.0/" {
+location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/nightly/sdk/master/" {
 	org.polarsys.kitalpha.doc.feature.feature.group
 	org.polarsys.kitalpha.emde.sdk.feature.source.feature.group
-}
-
-location kitalpha-sdk-updatesite-master "file:/C:/Git/kitalpha/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository" {
-	org.polarsys.kitalpha.doc.feature.feature.group
 }
 
 location diffmerge-core "https://download.eclipse.org/diffmerge/releases/0.15.0/emf-diffmerge-site/" {
