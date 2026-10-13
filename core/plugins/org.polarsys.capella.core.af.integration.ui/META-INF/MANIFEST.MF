@@ -4,6 +4,7 @@ Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-SymbolicName: org.polarsys.capella.core.af.integration.ui;singleton:=true
+Automatic-Module-Name: org.polarsys.capella.core.af.integration.ui
 Bundle-Version: 7.2.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.af.integration.ui.AFIntegrationUIPlugin
 Bundle-RequiredExecutionEnvironment: JavaSE-17

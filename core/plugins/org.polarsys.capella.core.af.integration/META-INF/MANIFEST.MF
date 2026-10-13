@@ -4,6 +4,7 @@ Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-SymbolicName: org.polarsys.capella.core.af.integration;singleton:=true
+Automatic-Module-Name: org.polarsys.capella.core.af.integration
 Bundle-Version: 7.2.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.af.integration.AFIntegrationPlugin
 Require-Bundle: org.polarsys.capella.core.model.handler,
