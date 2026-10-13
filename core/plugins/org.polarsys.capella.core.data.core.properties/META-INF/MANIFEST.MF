@@ -2,6 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.core.properties;singleton:=true
+Automatic-Module-Name: org.polarsys.capella.core.data.core.properties
 Bundle-Version: 7.2.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.data.core.properties.CorePropertiesPlugin
 Bundle-Vendor: %providerName

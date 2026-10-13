@@ -2,6 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.services;singleton:=true
+Automatic-Module-Name: org.polarsys.capella.core.services
 Bundle-Version: 7.2.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
