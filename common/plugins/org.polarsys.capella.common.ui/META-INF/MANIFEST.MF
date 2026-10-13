@@ -18,7 +18,7 @@ Require-Bundle: org.eclipse.help,
  org.eclipse.e4.core.contexts,
  org.polarsys.capella.common.helpers,
  org.polarsys.capella.core.model.handler,
- javax.inject
+ jakarta.inject.jakarta.inject-api
 Export-Package: org.polarsys.capella.common.ui,
  org.polarsys.capella.common.ui.preferences,
  org.polarsys.capella.common.ui.providers,
