@@ -71,9 +71,9 @@
 							<type>eclipse-feature</type>
 						</dependency>
 					</dependencies>
-					<executionEnvironment>JavaSE-17</executionEnvironment>
+					<executionEnvironment>JavaSE-21</executionEnvironment>
 					<jvmArgs>
-						<arg>-Dosgi.requiredJavaVersion=17</arg>
+						<arg>-Dosgi.requiredJavaVersion=21</arg>
 						<arg>--add-modules=ALL-SYSTEM</arg>
 					</jvmArgs>
 				</configuration>
