@@ -2,6 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.git.doc;singleton:=true
+Automatic-Module-Name: org.polarsys.capella.git.doc
 Bundle-Version: 7.2.0.qualifier
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui

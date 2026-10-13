@@ -5,6 +5,7 @@ Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.polarsys.capella.core.data.la.ui.wizards;singleton:=true
+Automatic-Module-Name: org.polarsys.capella.core.data.la.ui.wizards
 Export-Package: org.polarsys.capella.core.common.ui.wizards,
  org.polarsys.capella.core.common.ui.wizards.action
 Require-Bundle: org.polarsys.capella.core.ui.toolkit,
