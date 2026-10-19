@@ -27,7 +27,7 @@ public class MigrationWithDependenciesTest extends CommandLineMigrationTestBase 
   private static final String MAIN_PROJECT = "Demo"; //$NON-NLS-1$
   private static final List<String> TESTS_PROJECT_NAMES = List.of(MAIN_PROJECT,
       "LibBiz", //$NON-NLS-1$
-      "LibCor"); //$NON-NLS-1$
+      "Lib Cor"); //$NON-NLS-1$
   
   @Override
   public void test() throws Exception { 

@@ -20,7 +20,7 @@
     name="LibBiz">
   <ownedExtensions xsi:type="libraries:ModelInformation" id="216ccffa-5884-47b3-8913-762ed47cb248">
     <ownedReferences xsi:type="libraries:LibraryReference" id="50e32f0c-9dec-4849-96c7-1761f2b8fb15"
-        library="libraries:ModelInformation ../LibCor/LibCor.capella#772d0eb4-babc-460f-a984-2a4327add6f7"/>
+        library="libraries:ModelInformation ../Lib%20Cor/Lib%20Cor.capella#772d0eb4-babc-460f-a984-2a4327add6f7"/>
   </ownedExtensions>
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
       id="6011404a-09a4-40eb-855f-2bac961fc05e" name="ProgressStatus">
