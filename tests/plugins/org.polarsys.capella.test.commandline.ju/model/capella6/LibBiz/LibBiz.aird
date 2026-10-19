@@ -3,7 +3,7 @@
   <viewpoint:DAnalysis uid="_M6hE4LAaEfG21d__jGDPYA" selectedViews="_M65fYLAaEfG21d__jGDPYA _M8eMsLAaEfG21d__jGDPYA _NClbwLAaEfG21d__jGDPYA _NDGZILAaEfG21d__jGDPYA _NDOU8LAaEfG21d__jGDPYA _NEQ2wLAaEfG21d__jGDPYA _NEvX4LAaEfG21d__jGDPYA" version="15.1.0.202211301600">
     <semanticResources>LibBiz.afm</semanticResources>
     <semanticResources>LibBiz.capella</semanticResources>
-    <semanticResources>platform:/resource/LibCor/LibCor.capella</semanticResources>
+    <semanticResources>platform:/resource/Lib%20Cor/Lib%20Cor.capella</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_M65fYLAaEfG21d__jGDPYA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
