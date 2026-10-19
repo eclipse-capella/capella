@@ -52,7 +52,7 @@ public class ExportCSVPreferencesTest extends BasicTestCase {
   private void updateExportCSVPreference(String newPref) {
     preferenceStore.putValue(IExportCSVPreferences.DELIMITER_KEY, newPref);
     String pref = preferenceStore.getString(IExportCSVPreferences.DELIMITER_KEY);
-    assertTrue(pref == newPref);
+    assertEquals(pref, newPref);
   }
 
   private void exportWithCSVDelimiter(String newPref, char separatorCode) {
