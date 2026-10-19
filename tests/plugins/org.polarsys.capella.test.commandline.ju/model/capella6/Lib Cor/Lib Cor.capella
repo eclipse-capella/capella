@@ -17,7 +17,7 @@
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/6.0.0"
     xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/6.0.0"
     id="ff6670f0-e531-4c7f-9327-c7ae5435360b"
-    name="LibCor">
+    name="Lib Cor">
   <ownedExtensions xsi:type="libraries:ModelInformation" id="772d0eb4-babc-460f-a984-2a4327add6f7"/>
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
       id="0e9d66d9-4a32-499f-a2a8-f1d6d285ac62" name="ProgressStatus">
@@ -37,7 +37,7 @@
   <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue" id="20bfc326-ecbb-4c6a-92f3-761377a7f515"
       key="projectApproach" value="SingletonComponents"/>
   <ownedModelRoots xsi:type="org.polarsys.capella.core.data.capellamodeller:SystemEngineering"
-      id="ca0961c3-671f-46d5-b029-09025dbdcc89" name="LibCor">
+      id="ca0961c3-671f-46d5-b029-09025dbdcc89" name="Lib Cor">
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.oa:OperationalAnalysis"
         id="200de573-108c-4e69-a7ef-288059fc6235" name="Operational Analysis">
       <ownedFunctionPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalActivityPkg"

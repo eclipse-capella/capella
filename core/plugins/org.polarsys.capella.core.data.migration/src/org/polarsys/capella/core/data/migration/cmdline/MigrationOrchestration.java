@@ -13,6 +13,7 @@
 package org.polarsys.capella.core.data.migration.cmdline;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.text.MessageFormat;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -101,7 +102,7 @@ public class MigrationOrchestration {
 
     var projectName = getLocalProjectName(data.eResource().getURI());
     // Project has to exist otherwise it would not be loaded.
-    return projectName != null  ? ResourcesPlugin.getWorkspace().getRoot().getProject(projectName) : null;
+    return projectName != null ? ResourcesPlugin.getWorkspace().getRoot().getProject(projectName) : null;
   }
   
   private void checkReferenceResolution(String type, EObject value, String caller) throws NoSuchElementException {
@@ -120,7 +121,11 @@ public class MigrationOrchestration {
   }
   
   private String getLocalProjectName(URI location) {
-    return location.isPlatformResource() ? location.segment(1) : null;
+    if (location.isPlatformResource()) {
+      // We must handle special characters.
+      return Path.of(location.toPlatformString(true)).getName(0).toString();
+    }
+    return  null;
   }
   
   /**
