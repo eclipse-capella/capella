@@ -8,7 +8,7 @@
 
    <launcherArgs>
       <programArgsMac>-vm
-../jre/Contents/Home/bin
+../jre/Contents/Home/lib/libjli.dylib
       </programArgsMac>
       <vmArgs>-Dosgi.requiredJavaVersion=17
 -Dosgi.dataAreaRequiresExplicitInit=true
