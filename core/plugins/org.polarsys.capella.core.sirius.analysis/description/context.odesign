@@ -244,7 +244,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="relationships" label="%sa.cm.relationships" precondition="aql:elementView.getDiagramContainer() != elementView and self.isActor() or self.oclIsKindOf(ctx::Mission) or self.oclIsKindOf(interaction::AbstractCapability))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="relationships" label="%sa.cm.relationships" precondition="aql:elementView.getDiagramContainer() != elementView and (self.isActor() or self.oclIsKindOf(ctx::Mission) or self.oclIsKindOf(interaction::AbstractCapability))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
