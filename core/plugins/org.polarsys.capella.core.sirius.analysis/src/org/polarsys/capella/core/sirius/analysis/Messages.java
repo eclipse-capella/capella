@@ -31,6 +31,7 @@ public class Messages extends NLS {
   public static String InformationServices_PackageDependency_Message;
   public static String CapellaServices_NavigateOpen;
   public static String CapellaServices_NavigateUnnamed;
+  public static String CapellaServices_NoMessageKey;
   public static String SequenceDiagramServices_0;
   public static String SequenceDiagramServices_1;
   public static String SequenceDiagramServices_2;
