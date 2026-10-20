@@ -75,9 +75,12 @@ location Orbit-2025-09 "https://download.eclipse.org/tools/orbit/simrel/orbit-ag
 	ch.qos.logback.core lazy
 	org.apache.aries.spifly.dynamic.bundle lazy
 	org.apache.log4j lazy
-	com.google.guava lazy
 	org.eclipse.collections.api  lazy
 	org.eclipse.collections.impl lazy
+}
+
+location Orbit-2026-09 "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2026-09" {
+	com.google.guava [33.7.1,33.7.2)
 }
 
 location sirius "https://download.eclipse.org/sirius/updates/releases/7.5.0/2025-09/" {
