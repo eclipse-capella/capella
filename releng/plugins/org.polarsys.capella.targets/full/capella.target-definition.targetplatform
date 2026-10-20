@@ -153,3 +153,15 @@ location nebula "https://download.eclipse.org/nebula/updates/release/3.2.0/" {
 location eclipse-shared-license "https://download.eclipse.org/cbi/updates/license" {
 	org.eclipse.license.feature.group lazy
 }
+
+location Maven-Jetty-12.1.14 "https://download.eclipse.org/tools/orbit/simrel/maven-jetty/release/12.1.14" {
+	org.eclipse.jetty.ee8.security [12.1.14,12.2.0)
+	org.eclipse.jetty.ee8.server [12.1.14,12.2.0)
+	org.eclipse.jetty.ee8.servlet [12.1.14,12.2.0)
+	org.eclipse.jetty.http [12.1.14,12.2.0)
+	org.eclipse.jetty.io [12.1.14,12.2.0)
+	org.eclipse.jetty.security [12.1.14,12.2.0)
+	org.eclipse.jetty.server [12.1.14,12.2.0)
+	org.eclipse.jetty.session [12.1.14,12.2.0)
+	org.eclipse.jetty.util [12.1.14,12.2.0)
+}
