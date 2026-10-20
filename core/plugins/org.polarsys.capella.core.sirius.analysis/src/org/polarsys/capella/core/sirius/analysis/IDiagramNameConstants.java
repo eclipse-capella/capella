@@ -42,6 +42,8 @@ public interface IDiagramNameConstants extends DiagramDescriptionConstants {
   String CONTEXTUAL_STATE_AND_MODE_MATRIX = "Contextual State And Mode - Matrix"; //$NON-NLS-1$
   String CAPABILITY_REALIZATION_BLANK = "Capability Realization Blank"; //$NON-NLS-1$
   String CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT = "Contextual Capability Realization Involvement"; //$NON-NLS-1$
+  String TRACEABILTY_DIAGRAM = "Traceability Diagram"; //$NON-NLS-1$
+  String HIERARCHICAL_TRACEABILTY_DIAGRAM = "Hierarchical Traceability Diagram"; //$NON-NLS-1$
 
   /**
    * Operational Analysis diagrams

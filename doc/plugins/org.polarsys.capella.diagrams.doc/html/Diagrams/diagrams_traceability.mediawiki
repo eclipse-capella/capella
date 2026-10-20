@@ -1,0 +1,37 @@
+The creation of followings diagrams is possible only if '''Traceability''' Capability is enabled.
+
+To enabled such Capability, perform:
+* From main menu, select '''Window > Preferences / General / Capabilities'''
+* In '''Capabilities''' panel,  activate '''Capella Tools > Traceabilty'''
+* Confirm with ''Apply and Close'' in '''Preferences''' dialog. 
+
+== Traceability Diagram ==
+
+{| border="1"
+|-
+| Trace
+| [[Image:Images/icons/full/obj16/GenericTrace.gif]]
+| Create a Generic Trace from PropertyValueGroup to an element.
+|-
+| Nodes
+| [[Image:Images/icons/full/obj16/ShowHide.gif]]
+| Creates or delete graphical objects on the diagrams corresponding to existing Elements. Removing a Element graphical object from the diagram does not delete the Element from the model. This tool does not modify the semantic model.
+|-
+| Show Related Elements
+| [[Image:Images/icons/full/obj16/ShowHide.gif]]
+| Show elements that are connected through traces.
+|-
+| Show All Related Elements
+| [[Image:Images/icons/full/obj16/ShowHide.gif]]
+| Show all elements that are connected through traces directly or indirectly.
+|}
+
+=== Sample ===
+[[Image:Images/diagrams/EOLE/TD_TraceabilityDiagram_0.png | TraceabilityDiagram Sample ]]
+
+== Traceability Hierarchical Diagram ==
+
+This diagram provides the same tools as '''Traceability Diagram'''.
+
+=== Sample ===
+[[Image:Images/diagrams/EOLE/THD_TraceabilityHierarchicalDiagram_0.png | Sample Traceability Hierarchical Diagram]]   

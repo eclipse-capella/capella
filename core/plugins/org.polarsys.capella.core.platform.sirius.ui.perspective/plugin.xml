@@ -118,6 +118,7 @@
     
    <extension
          point="org.eclipse.ui.activities">
+         <!-- Tools -->
       <category
             description="%category.description"
             id="org.polarsys.capella.activities.categories.capella"
@@ -196,12 +197,15 @@
       <activityPatternBinding pattern="org.polarsys.capella.core.re.project/.*" activityId="org.polarsys.capella.activities.re"/>
       
       
-      
-      
-      
-      
-      
-      
+       <activity
+             description="%activity.description.traceability"
+             id="org.polarsys.capella.activities.traceability"
+             name="%activity.name.traceability">
+       </activity>
+       <categoryActivityBinding
+             activityId="org.polarsys.capella.activities.traceability"
+             categoryId="org.polarsys.capella.activities.categories.capella">
+       </categoryActivityBinding>
        
        <activity
              description="%activity.description.4"

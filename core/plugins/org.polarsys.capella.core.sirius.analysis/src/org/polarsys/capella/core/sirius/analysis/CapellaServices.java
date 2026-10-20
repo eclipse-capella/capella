@@ -27,7 +27,9 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.MissingResourceException;
 import java.util.Objects;
+import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.TimeZone;
 import java.util.stream.Collectors;
@@ -120,6 +122,7 @@ import org.polarsys.capella.core.data.capellacore.Namespace;
 import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
@@ -204,8 +207,10 @@ import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
+import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
 import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
 
 /**
@@ -213,6 +218,31 @@ import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
  */
 public class CapellaServices {
 
+  private static final ResourceBundle PLUGIN_STRINGS =
+      Platform.getResourceBundle(Platform.getBundle(SiriusViewActivator.ID));
+
+  /**
+   * Returns the label from plugin properties defined by provided key.
+   * <p>
+   * If not found, the key is returned. This service enable l10n message from VSM.
+   * </p>
+   * 
+   * @param context calling object (not used, required by Sirius)
+   * @param key identifier of label
+   * @return associated label.
+   */
+  public String getCapellaEditorMessage(EObject context, String key) {
+      if (key == null) {
+          return Messages.CapellaServices_NoMessageKey;
+      }
+      try {
+          return PLUGIN_STRINGS.getString(key);
+      } catch (MissingResourceException e) {
+          return key;
+      }
+  }
+  
+  
   /**
    * A specific prefix to add for message of {@link OperationCanceledException} that must be rethrown to rollback all
    * the corresponding command.
@@ -3152,6 +3182,17 @@ public class CapellaServices {
       return false;
     }
     return !targetModel.equals(srcModel);
+  }
+  
+  /**
+   * Returns {@link SystemEngineering} of Capella model from a element.
+   *
+   * @param element
+   *          Capella element
+   * @return {@link SystemEngineering}
+   */
+  public static SystemEngineering getRootSystemEngineering(Namespace element) {
+    return SystemEngineeringExt.getSystemEngineering(element);
   }
 
   /**

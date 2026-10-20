@@ -4653,7 +4653,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="%common.cdb.pv.apply__ttip" name="common.cdb.pv.apply" label="%common.cdb.pv.apply" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="%common.cdb.pv.apply__ttip" name="common.cdb.pv.apply" label="%common.cdb.pv.apply" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
             <filters precondition="aql:self.activatedFilters->exists(f | f.name = 'hide.property.values.filter' )" elementsToListen="aql:self">
               <listeners domainClass="DDiagram" featureName="activatedFilters"/>
             </filters>
@@ -20555,6 +20555,714 @@
       </ownedColumnMappings>
       <intersection name="involded on" lineMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20and%20States%20Reference%20Matrix']/@ownedLineMappings[name='States%20and%20Modes']" columnMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20and%20States%20Reference%20Matrix']/@ownedColumnMappings.0" labelExpression="aql:lineSemantic.displayCharX(columnSemantic)" columnFinderExpression="aql:self.getStateReferenced()"/>
     </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='TD_DnD_Traceable'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='TD_DnD_PvChild'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='TD_DnD_TraceableOwner']" documentation="The Traceability Diagram provides a free-form diagram space for visualising &#xD;&#xA;non-functional requirement traceability.&#xD;&#xA;&#xD;&#xA;It has a plain white background and does not impose any architectural hierarchy or &#xD;&#xA;layer structure. Users can add Property Values and Property Value Groups to the diagram&#xD;&#xA;and arrange them in whatever layout is most useful for their analysis or communication.&#xD;&#xA;&#xD;&#xA;This diagram is useful where the user wants a flexible view of traceability, for&#xD;&#xA;example to show a mass breakdown, performance decomposition, or a focused set of&#xD;&#xA;related non-functional requirements.&#xD;&#xA;" name="Traceability Diagram" label="%common.td.label" titleExpression="aql:'[TD] ' + self.name" domainClass="capellacore::Namespace" preconditionExpression="aql:self.isTraceabilityInPlatformActivitiesEnabled()">
+      <metamodel href="platform:/plugin/org.eclipse.sirius.model/model/viewpoint.ecore#//description"/>
+      <metamodel href="platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
+      <filters xsi:type="filter:CompositeFilterDescription" documentation="%common.td.hide.elements.targets__ttip" name="hide.elements.targets" label="%common.td.hide.elements.targets">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG']/@subContainerMappings[name='TPVD_Targets'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG']/@subContainerMappings[name='TPVD_Targets']/@subNodeMappings[name='TPVD_Target']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.diagram.title.blocks.filter" label="%common.cdb.hide.diagram.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:not (self.isDiagramTitleBlock())"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.element.title.blocks.filter" label="%common.cdb.hide.element.title.blocks.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" semanticConditionExpression="aql:self.isDiagramTitleBlock()"/>
+      </filters>
+      <diagramInitialisation/>
+      <defaultLayer name="Default" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']">
+        <edgeMappings name="TPVD_Containment" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" targetFinderExpression="aql:self.eContainer()">
+          <style targetArrow="FillDiamond" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="TPVD_trace" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" semanticCandidatesExpression="aql:diagram.getTracedTracesFromTraceables()" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" targetFinderExpression="aql:self.target" sourceFinderExpression="aql:self.source" domainClass="modellingcore::AbstractTrace" useDomainElement="true" reconnections="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='trace.reconnect.source'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='trace.reconnect.target']">
+          <style lineStyle="dash" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="DT_TitleBlockEdge" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG']" targetFinderExpression="service:self.targetFinderExpressionForTitleBlocks()">
+          <deletionDescription href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20element']"/>
+          <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="TPVD_PVG" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete_CapellaElement']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" createElements="false" domainClass="capellacore::PropertyValueGroup" childrenPresentation="VerticalStack">
+          <subContainerMappings name="TPVD_Properties" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='noDelete']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" semanticCandidatesExpression="var:self" synchronizationLock="true" domainClass="capellacore::PropertyValueGroup" childrenPresentation="List">
+            <subNodeMappings name="TPVD_PVinPVG" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete_CapellaElement']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" semanticCandidatesExpression="feature:eContents" synchronizationLock="true" domainClass="capellacore::AbstractPropertyValue">
+              <style xsi:type="style:SquareDescription" labelExpression="service:computePVLabel" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.name" labelAlignment="LEFT" hideLabelByDefault="true" widthComputationExpression="20">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="TPVD_Targets" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='noDelete']" semanticCandidatesExpression="var:self" synchronizationLock="true" domainClass="capellacore::PropertyValueGroup" childrenPresentation="List">
+            <subNodeMappings name="TPVD_Target" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='noDelete']" semanticCandidatesExpression="service:getTracedElementTargets" synchronizationLock="true" domainClass="modellingcore::AbstractNamedElement">
+              <style xsi:type="style:SquareDescription" labelExpression="aql:self.getEObjectLabelProviderHelper()" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.name" hideLabelByDefault="true" widthComputationExpression="20">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="service:computePVLabel" widthComputationExpression="20" backgroundStyle="Liquid">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="TPVD_PV" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete_CapellaElement']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" createElements="false" domainClass="capellacore::AbstractPropertyValue" reusedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG']/@subContainerMappings[name='TPVD_Targets']/@subNodeMappings[name='TPVD_Target']" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="service:computePVLabel" widthComputationExpression="20" backgroundStyle="Liquid">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="TPVD_Constraint" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete_CapellaElement']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Constraint%20Content']" createElements="false" domainClass="capellacore::Constraint" reusedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG']/@subContainerMappings[name='TPVD_Targets']/@subNodeMappings[name='TPVD_Target']" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql:self.getConstraintLabel()" widthComputationExpression="20" backgroundStyle="Liquid">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </containerMappings>
+        <toolSections documentation="%common.td.sections.traces__ttip" name="Traces" label="%common.td.sections.traces">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="%common.td.trace.create__ttip" name="trace.creation" label="%common.td.trace.create" precondition="aql:preSource &lt;> preTarget" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@edgeMappings[name='TPVD_trace']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/GenericTrace.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.eContainerOrSelf(capellacore::Namespace)">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacommon::GenericTrace" referenceName="ownedTraces">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceElement" valueExpression="aql:source"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="targetElement" valueExpression="aql:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="%common.td.trace.nodes__ttip" name="traceableNodes" label="%common.td.trace.nodes" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <variable name="container">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="aql:container.getAllTraceableCandidates()"/>
+            </variable>
+            <viewVariable name="containerView">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:containerView.getDiagramContainer()"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="initialElementViews" computationExpression="aql:diagram.containers ->select(c | c.diagramElementMapping.name = 'TPVD_PVG' or c.diagramElementMapping.name = 'TPVD_PV' or c.diagramElementMapping.name = 'TPVD_Constraint')"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="initialElements" computationExpression="aql:initialElementViews.target"/>
+            </viewVariable>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectElement" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="aql:container"/>
+                  <parameters name="scope" value="aql:scope"/>
+                  <parameters name="resultVariable" value="selection"/>
+                  <parameters name="wizardMessage" value="aql:self.getCapellaEditorMessage('common.td.trace.nodes.selection.message')"/>
+                  <parameters name="initialSelection" value="aql:initialElements"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:selection &lt;> 'WIZARD_CANCELED'">
+                  <subModelOperations xsi:type="tool_1:For" expression="aql:initialElementViews ->reject(it | selection->includes(it.target))">
+                    <subModelOperations xsi:type="tool_1:DeleteView"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:For" expression="aql:selection->reject(it | initialElements->includes(it))">
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG']" containerViewExpression="var:diagram"/>
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV']" containerViewExpression="var:diagram"/>
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" containerViewExpression="var:diagram"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="TD_DnD_Traceable" precondition="aql:self.oclIsKindOf(capellacore::AbstractPropertyValue) or self.oclIsKindOf(capellacore::PropertyValueGroup) or self.oclIsKindOf(capellacore::Constraint)" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:For" expression="aql:element.getTracedElementContent()">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:i">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG']" containerViewExpression="var:newContainerView"/>
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV']" containerViewExpression="var:newContainerView"/>
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" containerViewExpression="var:newContainerView"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="TD_DnD_PvChild" precondition="aql:self.oclIsKindOf(capellacore::AbstractPropertyValue)" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG']/@subContainerMappings[name='TPVD_Properties']/@subNodeMappings[name='TPVD_PVinPVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:For" expression="aql:element.getTracedElementContent()">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:i">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG']" containerViewExpression="var:newContainerView"/>
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV']" containerViewExpression="var:newContainerView"/>
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" containerViewExpression="var:newContainerView"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="TD_DnD_TraceableOwner" precondition="aql:self.oclIsKindOf(capellacore::CapellaElement) and not (self.oclIsKindOf(capellacore::AbstractPropertyValue) or self.oclIsKindOf(capellacore::PropertyValueGroup) or self.oclIsKindOf(capellacore::Constraint))" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:For" expression="aql:element.constraints + element.appliedPropertyValueGroups.getTracedElementContent() + element.appliedPropertyValues">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:i">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG']" containerViewExpression="var:newContainerView"/>
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV']" containerViewExpression="var:newContainerView"/>
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" containerViewExpression="var:newContainerView"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="%common.td.trace.showRelatedElements__ttip" name="showRelatedElements" label="%common.td.trace.showRelatedElements" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:For" expression="aql:element.getTracedRelatedElements(false)">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:i">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG']" containerViewExpression="aql:elementView.getParentDiagram()"/>
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV']" containerViewExpression="aql:elementView.getParentDiagram()"/>
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" containerViewExpression="aql:elementView.getParentDiagram()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="%common.td.trace.showAllRelatedElements__ttip" name="showAllRelatedElements" label="%common.td.trace.showAllRelatedElements" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:For" expression="aql:element.getTracedRelatedElements(true)">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:i">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG']" containerViewExpression="aql:elementView.getParentDiagram()"/>
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV']" containerViewExpression="aql:elementView.getParentDiagram()"/>
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" containerViewExpression="aql:elementView.getParentDiagram()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="trace.reconnect.source" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target.eContainerOrSelf(capellacore::Namespace)">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="ownedTraces" valueExpression="aql:element"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceElement" valueExpression="aql:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="trace.reconnect.target" forceRefresh="true">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="targetElement" valueExpression="aql:target"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+        </toolSections>
+        <toolSections documentation="%common.td.sections.common__ttip" name="Common" label="%common.td.sections.common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="editName" forceRefresh="true" inputLabelExpression="feature:name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete_CapellaElement">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="deleteCapellaElement" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteExternalAction"/>
+              </firstModelOperations>
+            </initialOperation>
+            <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="noDelete" precondition="aql:false" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="%common.td.constraint.create__ttip" name="constraint" label="%common.td.constraint.create" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainerOrSelf(modellingcore::ModelElement)">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="PV creation">
+            <tools xsi:type="tool_1:ToolDescription" documentation="%common.cdb.pv_groups.create__ttip" name="common.cdb.pv_groups.create" label="%common.cdb.pv_groups.create" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/PropertyValueGroup.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:Let" variableName="owner" valueExpression="aql:if elementView.diagramElementMapping.name = 'TPVD_PVinPVG' then element.eContainer() else element.eContainerOrSelf(capellacore::CapellaElement) endif">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:owner">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore::PropertyValueGroup" referenceName="ownedPropertyValueGroups" variableName="pv">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not ( owner.oclIsKindOf(capellacore::PropertyValueGroup) and pv.oclIsKindOf(capellacore::AbstractPropertyValue))">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG']" containerViewExpression="var:diagram"/>
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV']" containerViewExpression="var:diagram"/>
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" containerViewExpression="var:diagram"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" documentation="%common.cdb.pv_string.create__ttip" name="common.cdb.pv_string.create" label="%common.cdb.pv_string.create" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/StringPropertyValue.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:Let" variableName="owner" valueExpression="aql:if elementView.diagramElementMapping.name = 'TPVD_PVinPVG' then element.eContainer() else element.eContainerOrSelf(capellacore::CapellaElement) endif">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:owner">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore::StringPropertyValue" referenceName="ownedPropertyValues" variableName="pv">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not ( owner.oclIsKindOf(capellacore::PropertyValueGroup) and pv.oclIsKindOf(capellacore::AbstractPropertyValue))">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG']" containerViewExpression="var:diagram"/>
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV']" containerViewExpression="var:diagram"/>
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" containerViewExpression="var:diagram"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" documentation="%common.cdb.pv_boolean.create__ttip" name="common.cdb.pv_boolean.create" label="%common.cdb.pv_boolean.create" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/BooleanPropertyValue.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:Let" variableName="owner" valueExpression="aql:if elementView.diagramElementMapping.name = 'TPVD_PVinPVG' then element.eContainer() else element.eContainerOrSelf(capellacore::CapellaElement) endif">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:owner">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore::BooleanPropertyValue" referenceName="ownedPropertyValues" variableName="pv">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not ( owner.oclIsKindOf(capellacore::PropertyValueGroup) and pv.oclIsKindOf(capellacore::AbstractPropertyValue))">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG']" containerViewExpression="var:diagram"/>
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV']" containerViewExpression="var:diagram"/>
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" containerViewExpression="var:diagram"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" documentation="%common.cdb.pv_enumeration.create__ttip" name="common.cdb.pv_enumeration.create" label="%common.cdb.pv_enumeration.create" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/EnumerationPropertyValue.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:Let" variableName="owner" valueExpression="aql:if elementView.diagramElementMapping.name = 'TPVD_PVinPVG' then element.eContainer() else element.eContainerOrSelf(capellacore::CapellaElement) endif">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:owner">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore::EnumerationPropertyValue" referenceName="ownedPropertyValues" variableName="pv">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not ( owner.oclIsKindOf(capellacore::PropertyValueGroup) and pv.oclIsKindOf(capellacore::AbstractPropertyValue))">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG']" containerViewExpression="var:diagram"/>
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV']" containerViewExpression="var:diagram"/>
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" containerViewExpression="var:diagram"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" documentation="%common.cdb.pv_integer.create__ttip" name="common.cdb.pv_integer.create" label="%common.cdb.pv_integer.create" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/IntegerPropertyValue.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:Let" variableName="owner" valueExpression="aql:if elementView.diagramElementMapping.name = 'TPVD_PVinPVG' then element.eContainer() else element.eContainerOrSelf(capellacore::CapellaElement) endif">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:owner">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore::IntegerPropertyValue" referenceName="ownedPropertyValues" variableName="pv">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not ( owner.oclIsKindOf(capellacore::PropertyValueGroup) and pv.oclIsKindOf(capellacore::AbstractPropertyValue))">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG']" containerViewExpression="var:diagram"/>
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV']" containerViewExpression="var:diagram"/>
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" containerViewExpression="var:diagram"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" documentation="%common.cdb.pv_float.create__ttip" name="common.cdb.pv_float.create" label="%common.cdb.pv_float.create" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/FloatPropertyValue.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:Let" variableName="owner" valueExpression="aql:if elementView.diagramElementMapping.name = 'TPVD_PVinPVG' then element.eContainer() else element.eContainerOrSelf(capellacore::CapellaElement) endif">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:owner">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore::FloatPropertyValue" referenceName="ownedPropertyValues" variableName="pv">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not ( owner.oclIsKindOf(capellacore::PropertyValueGroup) and pv.oclIsKindOf(capellacore::AbstractPropertyValue))">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG']" containerViewExpression="var:diagram"/>
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PV']" containerViewExpression="var:diagram"/>
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_Constraint']" containerViewExpression="var:diagram"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+        </toolSections>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:containerView.target.eContainer() = view.target">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_PVG']/@subContainerMappings[name='TPVD_Targets']/@subNodeMappings[name='TPVD_Target']/@style" attributeName="labelFormat" value="aql:viewpoint::FontFormat::bold"/>
+          </vsmElementCustomizations>
+        </customization>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='TD_DnD_Traceable'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='TD_DnD_PvChild'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='TD_DnD_TraceableOwner']" documentation="The Hierarchical Traceability Diagram provides a structured view of non-functional &#xD;&#xA;requirement traceability across the ARCADIA layers.&#xD;&#xA;&#xD;&#xA;The diagram includes sections for:&#xD;&#xA;&#xD;&#xA; * Operational Analysis;&#xD;&#xA; * System Analysis;&#xD;&#xA; * Logical Architecture;&#xD;&#xA; * Physical Architecture;&#xD;&#xA; * EPBS Architecture.&#xD;&#xA;&#xD;&#xA;This makes it easier to see which Property Values and Property Value Groups exist at&#xD;&#xA;each layer of the model. It also helps users understand how non-functional requirements&#xD;&#xA;are traced from one level of architecture to another.&#xD;&#xA;&#xD;&#xA;This diagram is particularly useful when a higher-level constraint is progressively&#xD;&#xA;derived into more detailed constraints across the architecture. For example, a&#xD;&#xA;system-level mass, efficiency, cost, or interface requirement may be traced to logical&#xD;&#xA;and physical architecture constraints that refine or implement the original&#xD;&#xA;requirement.&#xD;&#xA;" name="Hierarchical Traceability Diagram" label="%common.thd.label" titleExpression="aql:'[TDH] ' + self.name" domainClass="capellacore::Namespace" preconditionExpression="aql:self.isTraceabilityInPlatformActivitiesEnabled()">
+      <metamodel href="platform:/plugin/org.eclipse.sirius.model/model/viewpoint.ecore#//description"/>
+      <metamodel href="platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
+      <filters xsi:type="filter:CompositeFilterDescription" documentation="%common.td.hide.elements.targets__ttip" name="hide.elements.targets" label="%common.td.hide.elements.targets">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG']/@subContainerMappings[name='TPVD_Targets'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG']/@subContainerMappings[name='TPVD_Targets']/@subNodeMappings[name='TPVD_Target']"/>
+      </filters>
+      <diagramInitialisation/>
+      <defaultLayer name="Default" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']">
+        <edgeMappings name="TPVD_Containment" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_Constraint']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_Constraint']" targetFinderExpression="aql:self.eContainer()">
+          <style targetArrow="FillDiamond" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="TPVD_trace" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" semanticCandidatesExpression="aql:diagram.getTracedTracesFromTraceables()" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_Constraint']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_Constraint']" targetFinderExpression="aql:self.target" sourceFinderExpression="aql:self.source" domainClass="modellingcore::AbstractTrace" useDomainElement="true" reconnections="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='trace.reconnect.source'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='trace.reconnect.target']">
+          <style lineStyle="dash" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="DT_TitleBlockEdge" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_TitleBlockContainer']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_Constraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG']" targetFinderExpression="service:self.targetFinderExpressionForTitleBlocks()">
+          <deletionDescription href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20element']"/>
+          <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="TPVD_System" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='noDelete']" semanticCandidatesExpression="service:getRootSystemEngineering" synchronizationLock="true" domainClass="capellamodeller::SystemEngineering" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='TD_DnD_Traceable'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='TD_DnD_PvChild'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='TD_DnD_TraceableOwner']" childrenPresentation="VerticalStack">
+          <subContainerMappings name="TPVD_Architecture" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='noDelete']" semanticCandidatesExpression="feature:ownedArchitectures" synchronizationLock="true" domainClass="capellacore::ModellingArchitecture" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='TD_DnD_Traceable'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='TD_DnD_PvChild'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='TD_DnD_TraceableOwner']">
+            <subContainerMappings name="TPVD_PVG" preconditionExpression="aql:self.eContainer(capellacore::ModellingArchitecture) = containerView.target" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete_CapellaElement']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" createElements="false" domainClass="capellacore::PropertyValueGroup" childrenPresentation="VerticalStack">
+              <subContainerMappings name="TPVD_Properties" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='noDelete']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" semanticCandidatesExpression="var:self" synchronizationLock="true" domainClass="capellacore::PropertyValueGroup" childrenPresentation="List">
+                <subNodeMappings name="TPVD_PVinPVG" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete_CapellaElement']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" semanticCandidatesExpression="feature:eContents" synchronizationLock="true" domainClass="capellacore::AbstractPropertyValue">
+                  <style xsi:type="style:SquareDescription" labelExpression="service:computePVLabel" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                  </style>
+                </subNodeMappings>
+                <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.name" labelAlignment="LEFT" hideLabelByDefault="true" widthComputationExpression="20">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+                </style>
+              </subContainerMappings>
+              <subContainerMappings name="TPVD_Targets" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='noDelete']" semanticCandidatesExpression="var:self" synchronizationLock="true" domainClass="capellacore::PropertyValueGroup" childrenPresentation="List">
+                <subNodeMappings name="TPVD_Target" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='noDelete']" semanticCandidatesExpression="service:getTracedElementTargets" synchronizationLock="true" domainClass="modellingcore::AbstractNamedElement">
+                  <style xsi:type="style:SquareDescription" labelExpression="aql:self.getEObjectLabelProviderHelper()" labelPosition="node" resizeKind="NSEW">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                  </style>
+                </subNodeMappings>
+                <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.name" hideLabelByDefault="true" widthComputationExpression="20">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+                </style>
+              </subContainerMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="service:computePVLabel" widthComputationExpression="20" backgroundStyle="Liquid">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              </style>
+            </subContainerMappings>
+            <subContainerMappings name="TPVD_PV" preconditionExpression="aql:self.eContainer(capellacore::ModellingArchitecture) = containerView.target" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete_CapellaElement']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" createElements="false" domainClass="capellacore::AbstractPropertyValue" reusedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG']/@subContainerMappings[name='TPVD_Targets']/@subNodeMappings[name='TPVD_Target']" childrenPresentation="List">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="service:computePVLabel" widthComputationExpression="20" backgroundStyle="Liquid">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              </style>
+            </subContainerMappings>
+            <subContainerMappings name="TPVD_Constraint" preconditionExpression="aql:self.eContainer(capellacore::ModellingArchitecture) = containerView.target" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Traceability%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete_CapellaElement']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Constraint%20Content']" createElements="false" domainClass="capellacore::Constraint" reusedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG']/@subContainerMappings[name='TPVD_Targets']/@subNodeMappings[name='TPVD_Target']" childrenPresentation="List">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql:self.getConstraintLabel()" widthComputationExpression="20" backgroundStyle="Liquid">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" hideLabelByDefault="true" widthComputationExpression="100" heightComputationExpression="30" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" widthComputationExpression="20">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections documentation="%common.td.sections.traces__ttip" name="Traces" label="%common.td.sections.traces">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="%common.td.trace.create__ttip" name="trace.creation" label="%common.td.trace.create" precondition="aql:preSource &lt;> preTarget" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@edgeMappings[name='TPVD_trace']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/GenericTrace.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.eContainerOrSelf(capellacore::Namespace)">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacommon::GenericTrace" referenceName="ownedTraces">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceElement" valueExpression="aql:source"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="targetElement" valueExpression="aql:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="%common.td.trace.nodes__ttip" name="traceableNodes" label="%common.td.trace.nodes" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_Constraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif" extraMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']">
+            <variable name="container">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="aql:container.getAllTraceableCandidates()"/>
+            </variable>
+            <viewVariable name="containerView">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:containerView.getDiagramContainer()"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="initialElementViews" computationExpression="aql:diagram.containers ->select(c | c.diagramElementMapping.name = 'TPVD_PVG' or c.diagramElementMapping.name = 'TPVD_PV' or c.diagramElementMapping.name = 'TPVD_Constraint')"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="initialElements" computationExpression="aql:initialElementViews.target"/>
+            </viewVariable>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectElement" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="aql:container"/>
+                  <parameters name="scope" value="aql:scope"/>
+                  <parameters name="resultVariable" value="selection"/>
+                  <parameters name="wizardMessage" value="aql:self.getCapellaEditorMessage('common.td.trace.nodes.selection.message')"/>
+                  <parameters name="initialSelection" value="aql:initialElements"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:selection &lt;> 'WIZARD_CANCELED'">
+                  <subModelOperations xsi:type="tool_1:For" expression="aql:initialElementViews ->reject(it | selection->includes(it.target))">
+                    <subModelOperations xsi:type="tool_1:DeleteView"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:For" expression="aql:selection->reject(it | initialElements->includes(it))">
+                    <subModelOperations xsi:type="tool_1:Let" variableName="targetView" valueExpression="aql:self.getTracedOwningBlockView(diagram)">
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:targetView &lt;> diagram">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG']" containerViewExpression="var:targetView"/>
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PV']" containerViewExpression="var:targetView"/>
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_Constraint']" containerViewExpression="var:targetView"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="TD_DnD_Traceable" precondition="aql:self.oclIsKindOf(capellacore::AbstractPropertyValue) or self.oclIsKindOf(capellacore::PropertyValueGroup) or self.oclIsKindOf(capellacore::Constraint)" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_Constraint']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:For" expression="aql:element.getTracedElementContent()">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:i">
+                  <subModelOperations xsi:type="tool_1:Let" variableName="targetView" valueExpression="aql:i.getTracedOwningBlockView(newContainerView)">
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG']" containerViewExpression="var:targetView"/>
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PV']" containerViewExpression="var:targetView"/>
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_Constraint']" containerViewExpression="var:targetView"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="TD_DnD_PvChild" precondition="aql:self.oclIsKindOf(capellacore::AbstractPropertyValue)" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG']/@subContainerMappings[name='TPVD_Properties']/@subNodeMappings[name='TPVD_PVinPVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PV']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:For" expression="aql:element.getTracedElementContent()">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:i">
+                  <subModelOperations xsi:type="tool_1:Let" variableName="targetView" valueExpression="aql:i.getTracedOwningBlockView(newContainerView)">
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG']" containerViewExpression="var:targetView"/>
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PV']" containerViewExpression="var:targetView"/>
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_Constraint']" containerViewExpression="var:targetView"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="TD_DnD_TraceableOwner" precondition="aql:self.oclIsKindOf(capellacore::CapellaElement) and not (self.oclIsKindOf(capellacore::AbstractPropertyValue) or self.oclIsKindOf(capellacore::PropertyValueGroup) or self.oclIsKindOf(capellacore::Constraint))" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_Constraint']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:For" expression="aql:element.constraints + element.appliedPropertyValueGroups.getTracedElementContent() + element.appliedPropertyValues">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:i">
+                  <subModelOperations xsi:type="tool_1:Let" variableName="targetView" valueExpression="aql:i.getTracedOwningBlockView(newContainerView)">
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG']" containerViewExpression="var:targetView"/>
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PV']" containerViewExpression="var:targetView"/>
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_Constraint']" containerViewExpression="var:targetView"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="%common.td.trace.showRelatedElements__ttip" name="showRelatedElements" label="%common.td.trace.showRelatedElements" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:For" expression="aql:element.getTracedRelatedElements(false)">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:i">
+                  <subModelOperations xsi:type="tool_1:Let" variableName="targetView" valueExpression="aql:i.getTracedOwningBlockView(elementView.getParentDiagram())">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:targetView &lt;> elementView.getParentDiagram()">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG']" containerViewExpression="var:targetView"/>
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PV']" containerViewExpression="var:targetView"/>
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_Constraint']" containerViewExpression="var:targetView"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="%common.td.trace.showAllRelatedElements__ttip" name="showAllRelatedElements" label="%common.td.trace.showAllRelatedElements" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:For" expression="aql:element.getTracedRelatedElements(true)">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:i">
+                  <subModelOperations xsi:type="tool_1:Let" variableName="targetView" valueExpression="aql:i.getTracedOwningBlockView(elementView.getParentDiagram())">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:targetView &lt;> elementView.getParentDiagram()">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG']" containerViewExpression="var:targetView"/>
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PV']" containerViewExpression="var:targetView"/>
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_Constraint']" containerViewExpression="var:targetView"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="trace.reconnect.source" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target.eContainerOrSelf(capellacore::Namespace)">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="ownedTraces" valueExpression="aql:element"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceElement" valueExpression="aql:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="trace.reconnect.target" forceRefresh="true">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="targetElement" valueExpression="aql:target"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+        </toolSections>
+        <toolSections documentation="%common.td.sections.common__ttip" name="Common" label="%common.td.sections.common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']"/>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:containerView.target.eContainer() = view.target">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@subContainerMappings[name='TPVD_PVG']/@subContainerMappings[name='TPVD_Targets']/@subNodeMappings[name='TPVD_Target']/@style" attributeName="labelFormat" value="aql:viewpoint::FontFormat::bold"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.oclIsKindOf(oa::OperationalAnalysis)">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@style" referenceName="foregroundColor" value="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.oclIsKindOf(ctx::SystemAnalysis)">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@style" referenceName="foregroundColor" value="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.oclIsKindOf(la::LogicalArchitecture)">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@style" referenceName="foregroundColor" value="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.oclIsKindOf(pa::PhysicalArchitecture)">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@style" referenceName="foregroundColor" value="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.oclIsKindOf(epbs::EPBSArchitecture)">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Hierarchical%20Traceability%20Diagram']/@defaultLayer/@containerMappings[name='TPVD_System']/@subContainerMappings[name='TPVD_Architecture']/@style" referenceName="foregroundColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+        </customization>
+      </defaultLayer>
+    </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sequencediag.ScenarioService"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sequencediag.InteractionAspectService"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sequencediag.ScenarioContraintsService"/>
@@ -20576,6 +21284,7 @@
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.common.tools.api.interpreter.StandardServices"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.data.information.util.PropertyNamingHelper"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.TitleBlockServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.TraceabilityServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="Migration Palette">
     <entries xsi:type="description:UserFixedColor" red="150" green="177" blue="218" name="_CAP_Component_Blue"/>
