@@ -66,7 +66,7 @@ location Viatra "http://download.eclipse.org/viatra/updates/release/2.9.1" {
 
 
 location Eclipse-2022-06 "https://download.eclipse.org/releases/2022-06/" {
-		org.eclipse.collections lazy
+		org.eclipse.collections [11.0.0,11.0.1)
 }
 
 location Orbit-2025-09 "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2025-09" {
@@ -76,8 +76,8 @@ location Orbit-2025-09 "https://download.eclipse.org/tools/orbit/simrel/orbit-ag
 	org.apache.aries.spifly.dynamic.bundle lazy
 	org.apache.log4j lazy
 	com.google.guava lazy
-	org.eclipse.collections.api  lazy
-	org.eclipse.collections.impl lazy
+	org.eclipse.collections.api  [13.0.0,13.0.0]
+	org.eclipse.collections.impl [13.0.0,13.0.0]
 }
 
 location sirius "https://download.eclipse.org/sirius/updates/releases/7.5.0/2025-09/" {
