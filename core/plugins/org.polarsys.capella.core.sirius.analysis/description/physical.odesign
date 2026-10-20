@@ -1347,7 +1347,7 @@
         </customization>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Physical Component Breakdown" label="%pa.pcbd" titleExpression="aql:'[PCBD] ' + self.name" domainClass="CapellaElement" preconditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent) or (self.oclIsKindOf(pa::PhysicalComponentPkg)">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Physical Component Breakdown" label="%pa.pcbd" titleExpression="aql:'[PCBD] ' + self.name" domainClass="CapellaElement" preconditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent) or self.oclIsKindOf(pa::PhysicalComponentPkg)">
       <dropDescriptions href="#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>

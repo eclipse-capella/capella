@@ -207,7 +207,7 @@
         </create>
       </intersection>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Logical Component Breakdown" label="%la.lcbd" titleExpression="aql:'[LCBD] ' + self.name" domainClass="CapellaElement" preconditionExpression="aql:self.oclIsKindOf(la::LogicalComponent) or (self.oclIsKindOf(la::LogicalComponentPkg)">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Logical Component Breakdown" label="%la.lcbd" titleExpression="aql:'[LCBD] ' + self.name" domainClass="CapellaElement" preconditionExpression="aql:self.oclIsKindOf(la::LogicalComponent) or self.oclIsKindOf(la::LogicalComponentPkg)">
       <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>

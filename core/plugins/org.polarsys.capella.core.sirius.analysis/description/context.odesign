@@ -936,7 +936,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Contextual Capability" label="%sa.cc" titleExpression="aql:'[CC] ' + self.name " domainClass="Capability">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Contextual Capability" label="%sa.cc" titleExpression="aql:'[CC] ' + self.name" domainClass="Capability">
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Missions%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Capabilities%20From%20Project%20Explorer']"/>
@@ -1297,7 +1297,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Capability" precondition="aql:self.isInLib()" titleExpression="aql:'[CC] ' + self.name " diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Capability" precondition="aql:self.isInLib()" titleExpression="aql:'[CC] ' + self.name" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
