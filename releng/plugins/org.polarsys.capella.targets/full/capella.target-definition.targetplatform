@@ -95,6 +95,13 @@ location Orbit-2026-06 "https://download.eclipse.org/tools/orbit/simrel/orbit-ag
 	org.apache.commons.logging lazy
 }
 
+location Orbit-2026-12 "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2026-12" {
+	bcprov [1.86.0,1.87.0)
+	bcpg [1.86.0,1.87.0)
+	bcpkix [1.86.0,1.87.0)
+	bcutil [1.86.0,1.87.0)
+}
+
 location sirius "https://download.eclipse.org/sirius/updates/milestones/7.5.1rc2/2025-09/" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
