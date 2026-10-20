@@ -74,7 +74,7 @@ location Orbit-2025-09 "https://download.eclipse.org/tools/orbit/simrel/orbit-ag
 	ch.qos.logback.classic lazy
 	ch.qos.logback.core lazy
 	org.apache.aries.spifly.dynamic.bundle lazy
-	org.apache.log4j lazy
+	org.apache.log4j [1.2.26,1.2.26]
 	com.google.guava lazy
 	org.eclipse.collections.api  lazy
 	org.eclipse.collections.impl lazy
