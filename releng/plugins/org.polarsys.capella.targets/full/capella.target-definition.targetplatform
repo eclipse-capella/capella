@@ -91,7 +91,7 @@ location sirius "https://download.eclipse.org/sirius/updates/releases/7.5.0/2025
 	org.eclipse.sirius.diagram.elk.feature.source.feature.group
 }
 
-location Acceleo_4.2.1_AQL_8.1.1 "https://download.eclipse.org/acceleo/updates/releases/4.2/R202602100910/" {
+location Acceleo_4.2.3_AQL_8.1.3 "https://download.eclipse.org/acceleo/updates/releases/4.2/R202610061311/" {
 	org.eclipse.acceleo.query.source.feature.group
 }
 
