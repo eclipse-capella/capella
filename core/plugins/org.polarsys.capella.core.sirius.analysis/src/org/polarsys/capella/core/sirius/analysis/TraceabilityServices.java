@@ -45,7 +45,8 @@ import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
  */
 public class TraceabilityServices {
 
-  private static final String GLOBAL_ACTIVITITY_ID = "org.polarsys.capella.activities.traceability";
+  /** Capacity enabling Traceability tools */
+  public static final String GLOBAL_ACTIVITITY_ID = "org.polarsys.capella.activities.traceability";
 
   /**
    * Returns true if Traceability capability is enabled in Platform Activities.
