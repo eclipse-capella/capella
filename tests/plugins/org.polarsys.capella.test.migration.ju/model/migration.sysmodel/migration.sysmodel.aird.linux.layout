@@ -19736,7 +19736,7 @@
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="279" y="100"/>
+      <bendpoints x="278" y="100"/>
       <bendpoints x="434" y="100"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="b5a01c26-0882-40aa-9c2b-40ceb8516502" name="" actualMapping="CCEI_PinProvidedInterface" source="//@ownedLayouts.73/@ownedLayouts.10/@ownedLayouts.3" target="//@ownedLayouts.73/@ownedLayouts.2">
@@ -21966,7 +21966,7 @@
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="208" y="-98"/>
+      <bendpoints x="209" y="-98"/>
       <bendpoints x="79" y="0"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="71d6b5de-cc05-48b6-8169-71d0ad14cc05" name="" actualMapping="IDB_PinRequiredInterface" source="//@ownedLayouts.89/@ownedLayouts.2/@ownedLayouts.1" target="//@ownedLayouts.89/@ownedLayouts.3">
