@@ -20,21 +20,21 @@ environment JavaSE-21
 // include "https://download.eclipse.org/sirius/updates/stable/7.2.0-S2023xxxx-xxxxxx/2023-03/targets/modules/gmf-runtime-1.15.tpd"
 
 location GMF-Notation-1.13.1 "https://download.eclipse.org/modeling/gmp/gmf-notation/updates/releases/R202211151334" {
-    org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
+	org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
 }
 
 location GMF-Runtime-1.16.8 "https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202512020858/" {
-    org.eclipse.gmf.runtime.sdk.feature.group lazy
-    org.eclipse.gmf.source.feature.group
-    org.eclipse.gmf.runtime.thirdparty.feature.group lazy
-    org.eclipse.gmf.runtime.thirdparty.source.feature.group
+	org.eclipse.gmf.runtime.sdk.feature.group lazy
+	org.eclipse.gmf.source.feature.group
+	org.eclipse.gmf.runtime.thirdparty.feature.group lazy
+	org.eclipse.gmf.runtime.thirdparty.source.feature.group
 }
 
 location GEF-Classic "https://download.eclipse.org/tools/gef/classic/release/3.25.0" {
-    org.eclipse.gef.feature.group lazy
+	org.eclipse.gef.feature.group lazy
 	org.eclipse.gef.source.feature.group
-    org.eclipse.gef.sdk.feature.group lazy
-    org.eclipse.draw2d.sdk.feature.group lazy
+	org.eclipse.gef.sdk.feature.group lazy
+	org.eclipse.draw2d.sdk.feature.group lazy
 	org.eclipse.draw2d.source.feature.group
 }
 
@@ -53,33 +53,53 @@ location Eclipse-2025-09 "https://download.eclipse.org/releases/2025-09/" {
 	org.eclipse.egit.source.feature.group lazy
 	org.eclipse.xtext.xbase.lib.feature.group lazy
 	org.eclipse.osgi.services lazy
-	org.apache.commons.commons-logging lazy
-	org.apache.commons.logging lazy
+	
+	// Keep JUnit aligned with Eclipse 2025-09.
+	junit-jupiter-api [5.13.4,5.13.4]
+	junit-jupiter-engine [5.13.4,5.13.4]
+	junit-jupiter-migrationsupport [5.13.4,5.13.4]
+	junit-jupiter-params [5.13.4,5.13.4]
+	junit-vintage-engine [5.13.4,5.13.4]
+	junit-platform-commons [1.13.4,1.13.4]
+	junit-platform-engine [1.13.4,1.13.4]
+	junit-platform-launcher [1.13.4,1.13.4]
+	junit-platform-runner [1.13.4,1.13.4]
+	junit-platform-suite-api [1.13.4,1.13.4]
+	junit-platform-suite-commons [1.13.4,1.13.4]
+	junit-platform-suite-engine [1.13.4,1.13.4]
 }
 
 location EMF-Query-2022-08 "https://download.eclipse.org/modeling/emf/query/updates/releases/R202208101410/" {
 	org.eclipse.emf.query.feature.group lazy
 }
 
-//location eclipse "https://download.eclipse.org/releases/2023-03" {
+// location eclipse "https://download.eclipse.org/releases/2023-03" {
 location Viatra "http://download.eclipse.org/viatra/updates/release/2.9.1" {
 	org.eclipse.viatra.query.runtime.feature.source.feature.group lazy
 }
 
-
 location Eclipse-2022-06 "https://download.eclipse.org/releases/2022-06/" {
-		org.eclipse.collections [11.0.0,11.0.1)
+	org.eclipse.collections [11.0.0,11.0.1)
 }
 
-location Orbit-2025-09 "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2025-09" {
+location Orbit-2026-06 "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2026-06" {
 	slf4j.api lazy
 	ch.qos.logback.classic lazy
 	ch.qos.logback.core lazy
 	org.apache.aries.spifly.dynamic.bundle [1.3.7,1.3.7]
 	org.apache.log4j lazy
 	com.google.guava lazy
-	org.eclipse.collections.api  [13.0.0,13.0.0]
+	org.eclipse.collections.api [13.0.0,13.0.0]
 	org.eclipse.collections.impl [13.0.0,13.0.0]
+	org.apache.commons.commons-logging lazy
+	org.apache.commons.logging lazy
+}
+
+location Orbit-2026-09 "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2026-09" {
+	bcprov [1.85.2,1.86.0)
+	bcpg [1.85.0,1.86.0)
+	bcpkix [1.85.0,1.86.0)
+	bcutil [1.85.0,1.86.0)
 }
 
 location sirius "https://download.eclipse.org/sirius/updates/milestones/7.5.1rc2/2025-09/" {
@@ -141,7 +161,7 @@ location amalgam "https://download.eclipse.org/modeling/amalgam/updates/releases
 
 location egf "https://download.eclipse.org/egf/nightly/master-8/" {
 	org.eclipse.egf.sdk.feature.source.feature.group
-} 
+}
 
 location Nattable "https://download.eclipse.org/nattable/releases/2.6.0/repository/" {
 	org.eclipse.nebula.widgets.nattable.core.feature.feature.group lazy
