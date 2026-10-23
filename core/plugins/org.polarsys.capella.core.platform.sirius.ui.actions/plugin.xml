@@ -839,7 +839,7 @@
       </key>
       <key
             commandId="org.polarsys.capella.core.platform.sirius.ui.actions.Delete"
-            contextId="org.eclipse.acceleo.ui.interpreter.interpreterview"
+            contextId="org.eclipse.sirius.ui.interpreter.interpreterview"
             schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"
             sequence="DELETE">
       </key>
