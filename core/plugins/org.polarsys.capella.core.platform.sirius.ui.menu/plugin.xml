@@ -18,7 +18,7 @@
     
     	<!-- Interpreter View -->
        <menuContribution
-                locationURI="popup:org.eclipse.acceleo.ui.interpreter.view?after=additions">
+                locationURI="popup:org.eclipse.sirius.ui.interpreter.view?after=additions">
                 
               <separator name="group.semantic" visible="true" />
               <separator name="group.showIn" visible="true" />
