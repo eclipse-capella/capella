@@ -25,8 +25,8 @@
 		<tycho-version>4.0.13</tycho-version>
 		<tycho-extras-version>4.0.13</tycho-extras-version>
 		<antrun-version>3.2.0</antrun-version>
-		<rcptt-version>2.5.5</rcptt-version>
-		<rcptt-runner-version>2.5.5</rcptt-runner-version>
+		<rcptt-version>2.7.4</rcptt-version>
+		<rcptt-runner-version>2.7.4</rcptt-runner-version>
 		<sonar-version>3.3.0.603</sonar-version>
 
 		<!-- for tycho -->
