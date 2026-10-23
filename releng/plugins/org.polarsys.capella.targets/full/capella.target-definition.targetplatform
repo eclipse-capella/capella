@@ -88,6 +88,7 @@ location sirius "https://download.eclipse.org/sirius/updates/milestones/7.5.1rc2
 	org.eclipse.sirius.runtime.source.feature.group
 	org.eclipse.sirius.runtime.aql.source.feature.group
 	org.eclipse.sirius.runtime.ide.ui.source.feature.group
+	org.eclipse.sirius.runtime.ide.ui.interpreter.source.feature.group
 	org.eclipse.sirius.interpreter.feature.source.feature.group
 	org.eclipse.sirius.aql.source.feature.group
 	org.eclipse.sirius.diagram.elk.feature.source.feature.group
