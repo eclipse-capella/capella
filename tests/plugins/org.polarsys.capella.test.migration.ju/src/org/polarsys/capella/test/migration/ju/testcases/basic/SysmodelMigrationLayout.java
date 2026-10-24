@@ -18,6 +18,10 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PlatformUI;
+import org.polarsys.capella.core.platform.sirius.ui.perspective.CapellaPerspective;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.diagram.layout.ju.layout.SessionLayout;
 import org.polarsys.capella.test.diagram.layout.ju.layout.compare.CompareLayoutManager;
@@ -37,6 +41,15 @@ public class SysmodelMigrationLayout extends Sysmodel {
       // Activate DOREMI refresh viewpoints
       DiagramHelper.setPreferenceAutoRefresh(true);
       DiagramHelper.setPrefereneRefreshOnOpening(true);
+      
+		// Close the Properties view, otherwise SWT resources leak cause the test to end up in SWTError.
+		PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+			final IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+			final IViewPart propertiesViewPart = page.findView(CapellaPerspective.PROPERTIES_ID);
+			if (propertiesViewPart != null) {
+				page.hideView(propertiesViewPart);
+			}
+		});
 
       MigrationHelper.migrateProject(project);
       checkLayout();
