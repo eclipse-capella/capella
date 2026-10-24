@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2020, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2024 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -394,6 +394,49 @@
             </description>
             <target
                   class="SystemAnalysis">
+            </target>
+         </constraint>
+      </constraints>
+      <constraints
+               categories="capella.category/description.and.summary/mandatory.description">
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.systemFunction.DSC_SystemFunction"
+               id="DS_1-8"
+               isEnabledByDefault="false"
+               lang="Java"
+               mode="Batch"
+               name="DS_1-8 - SystemFunctions should have a description"
+               severity="WARNING"
+               statusCode="1">
+            <message>
+               {0} "{1}" must have a description.
+            </message>
+            <description>
+               SystemFunction must have a description.
+            </description>
+            <target
+                  class="SystemFunction">
+            </target>
+         </constraint>
+      </constraints>
+      <constraints categories="capella.category/functional/coherence">
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.systemFunction.FunctionNameUnicity"
+                id="FC_10"
+                isEnabledByDefault="false"
+                lang="Java"
+                mode="Batch"
+                name="FC_10 - Function name shall be unique"
+                severity="WARNING"
+                statusCode="1">
+            <message>
+               Function name shall be unique, "{0}" conflicting with "{1}".
+            </message>
+            <description>
+               Function name shall be unique.
+            </description>
+            <target
+                  class="SystemFunction">
             </target>
          </constraint>
       </constraints>
