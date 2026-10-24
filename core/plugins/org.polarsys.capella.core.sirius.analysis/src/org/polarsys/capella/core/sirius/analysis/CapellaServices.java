@@ -20,7 +20,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -28,13 +27,16 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.MissingResourceException;
 import java.util.Objects;
+import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.TimeZone;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -106,6 +108,7 @@ import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesPro
 import org.polarsys.capella.core.commands.preferences.initializers.CapellaDiagramPreferencesInitializer;
 import org.polarsys.capella.core.commands.preferences.preferences.CapellaDiagramPreferences;
 import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
+import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Classifier;
@@ -115,8 +118,11 @@ import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.Generalization;
 import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
+import org.polarsys.capella.core.data.capellacore.Namespace;
+import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
@@ -201,8 +207,10 @@ import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
+import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
 import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
 
 /**
@@ -210,6 +218,31 @@ import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
  */
 public class CapellaServices {
 
+  private static final ResourceBundle PLUGIN_STRINGS =
+      Platform.getResourceBundle(Platform.getBundle(SiriusViewActivator.ID));
+
+  /**
+   * Returns the label from plugin properties defined by provided key.
+   * <p>
+   * If not found, the key is returned. This service enable l10n message from VSM.
+   * </p>
+   * 
+   * @param context calling object (not used, required by Sirius)
+   * @param key identifier of label
+   * @return associated label.
+   */
+  public String getCapellaEditorMessage(EObject context, String key) {
+      if (key == null) {
+          return Messages.CapellaServices_NoMessageKey;
+      }
+      try {
+          return PLUGIN_STRINGS.getString(key);
+      } catch (MissingResourceException e) {
+          return key;
+      }
+  }
+  
+  
   /**
    * A specific prefix to add for message of {@link OperationCanceledException} that must be rethrown to rollback all
    * the corresponding command.
@@ -892,7 +925,7 @@ public class CapellaServices {
    * 
    * @param context
    *          the context.
-   * @param type
+   * @param eclass
    *          the type.
    * @return the first ancestor of the given type.
    */
@@ -902,6 +935,25 @@ public class CapellaServices {
       current = current.eContainer();
     }
     return current;
+  }
+
+  /**
+   * Gets the first ancestor of the given type.
+   * 
+   * @param context
+   *          the context.
+   * @param type
+   *          the type.
+   * @return the first ancestor of the given type.
+   */
+  @SuppressWarnings("unchecked")
+  public static <T extends EObject> T getAncestor(final EObject context, java.lang.Class<T> type) {
+    for(EObject current = context.eContainer(); current != null; current = current.eContainer()) {
+      if (type.isInstance(current)) {
+        return (T) current;
+      }
+    }
+    return null;
   }
 
   public List<BlockArchitecture> getAvailableArchitectures(final EObject context) {
@@ -3131,4 +3183,45 @@ public class CapellaServices {
     }
     return !targetModel.equals(srcModel);
   }
+  
+  /**
+   * Returns {@link SystemEngineering} of Capella model from a element.
+   *
+   * @param element
+   *          Capella element
+   * @return {@link SystemEngineering}
+   */
+  public static SystemEngineering getRootSystemEngineering(Namespace element) {
+    return SystemEngineeringExt.getSystemEngineering(element);
+  }
+
+  /**
+   * Returns possible container for a new {@link AbstractPropertyValue} or {@link PropertyValueGroup}
+   * for selected view.
+   * 
+   * @param targetView
+   *          view to add a PV element in
+   * @return the container candidate
+   */
+  public static EObject getPropertyValueOwnerCandidate(DSemanticDecorator targetView) {
+    EObject parentView = targetView.eContainer();
+
+    // Special case is the view element is in a PV Group.
+    if (parentView instanceof DSemanticDecorator) {
+      EObject ownerView = ((DSemanticDecorator) parentView).getTarget();
+      if (ownerView instanceof PropertyValueGroup) {
+        return ownerView;
+      }
+    }
+    EObject target = targetView.getTarget();
+
+    if (target instanceof Part) {
+      AbstractType type = ((Part) target).getAbstractType();
+      if (type != null) {
+        return type;
+      }
+    }
+    return target;
+  }
+
 }
