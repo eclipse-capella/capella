@@ -19,6 +19,14 @@ tmp/
 target/
 .polyglot.build.properties
 
+# JREs downloaded for local builds
+/linuxJRE
+/linux-aarch64JRE
+/winJRE
+/macJRE
+/macJRE_aarch64
+/mac-aarch64JRE
+
 # Generated stuff
 api-docs/
 api_docs.xml
