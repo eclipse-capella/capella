@@ -175,6 +175,11 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>3.2.0</version>
+				</plugin>
 				<!-- plugins only called if a descendant need them -->
 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>
