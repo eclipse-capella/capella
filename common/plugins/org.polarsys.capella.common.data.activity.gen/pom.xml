@@ -23,8 +23,6 @@
   <properties>
     <sonar.skip>true</sonar.skip>
   </properties>
-  <groupId>org.polarsys</groupId>
   <artifactId>org.polarsys.capella.common.data.activity.gen</artifactId>
-  <version>7.2.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 </project>
