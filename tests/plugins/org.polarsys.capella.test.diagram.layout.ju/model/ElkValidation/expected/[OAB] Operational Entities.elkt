@@ -1,0 +1,173 @@
+graph _OAB__Operational_Entities_graph
+layout [ size: 415, 516 ]
+hierarchyHandling: INCLUDE_CHILDREN
+nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+algorithm: org.eclipse.elk.layered
+elk.direction: DOWN
+spacing.edgeLabel: 0
+spacing.edgeEdge: 5
+edgeRouting: ORTHOGONAL
+edgeLabels.sideSelection: ALWAYS_DOWN
+nodePlacement.bk.fixedAlignment: BALANCED
+spacing.edgeNodeBetweenLayers: 20
+spacing.portPort: 13
+noLayout: true
+node OEntity_1 {
+	layout [
+		position: 265, 142
+		size: 146, 66
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(148.0,68.0)"
+	label L6: "OEntity 1" {
+		layout [
+			position: 43, 5
+			size: 61, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
+	}
+}
+node OActor_2 {
+	layout [
+		position: 265, 20
+		size: 146, 66
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(148.0,68.0)"
+	label L7: "OActor 2" {
+		layout [
+			position: 43, 5
+			size: 61, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
+	}
+}
+node OE_3 {
+	layout [
+		position: 106, 304
+		size: 146, 66
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(148.0,68.0)"
+	label L8: "OE 3" {
+		layout [
+			position: 53, 5
+			size: 41, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
+	}
+}
+node OA_4 {
+	layout [
+		position: 50, 142
+		size: 146, 66
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(148.0,68.0)"
+	label L9: "OA 4" {
+		layout [
+			position: 53, 5
+			size: 42, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
+	}
+}
+node OE_5 {
+	layout [
+		position: 205, 446
+		size: 146, 66
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(148.0,68.0)"
+	label L10: "OE 5" {
+		layout [
+			position: 53, 5
+			size: 41, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
+	}
+}
+edge E1: OActor_2 -> OEntity_1 {
+	layout [
+		section ES1 [
+			start: 342, 88
+			end: 342, 142
+		]
+	]
+	label L1: "CommunicationMean 1" {
+		layout [
+			position: 235, 108
+			size: 107, 14
+		]
+		edgeLabels.placement: CENTER
+	}
+}
+edge E2: OE_5 -> OEntity_1 {
+	layout [
+		section ES2 [
+			start: 306, 446
+			end: 366, 210
+			bends: 306, 426 | 381, 426 | 381, 230 | 366, 230
+		]
+	]
+	label L2: "CommunicationMean 3" {
+		layout [
+			position: 274, 330
+			size: 107, 14
+		]
+		edgeLabels.placement: CENTER
+	}
+}
+edge E3: OEntity_1 -> OE_3 {
+	layout [
+		section ES3 [
+			start: 319, 210
+			end: 207, 304
+			bends: 319, 230 | 255, 230 | 255, 284 | 207, 284
+		]
+	]
+	label L3: "CommunicationMean 2" {
+		layout [
+			position: 148, 250
+			size: 107, 14
+		]
+		edgeLabels.placement: CENTER
+	}
+}
+edge E4: OA_4 -> OE_3 {
+	layout [
+		section ES4 [
+			start: 127, 210
+			end: 160, 304
+			bends: 127, 284 | 160, 284
+		]
+	]
+	label L4: "CommunicationMean 4" {
+		layout [
+			position: 20, 250
+			size: 107, 14
+		]
+		edgeLabels.placement: CENTER
+	}
+}
+edge E5: OE_3 -> OE_5 {
+	layout [
+		section ES5 [
+			start: 183, 372
+			end: 259, 446
+			bends: 183, 426 | 259, 426
+		]
+	]
+	label L5: "CommunicationMean 5" {
+		layout [
+			position: 77, 392
+			size: 107, 14
+		]
+		edgeLabels.placement: CENTER
+	}
+}
