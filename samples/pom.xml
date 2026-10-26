@@ -46,12 +46,10 @@
 						<configuration>
 							<target>
 								<!-- Create a zip from the sample models -->
-								<zip destfile="./IFE_samplemodel.zip">
+								<zip destfile="${project.build.directory}/IFE_samplemodel.zip">
 									<zipfileset dir="./In-Flight Entertainment System"
-										prefix="In-Flight Entertainment System" erroronmissingdir="false"/>
+										prefix="In-Flight Entertainment System"/>
 								</zip>
-								<delete dir="./In-Flight Entertainment System"
-									includeemptydirs="true" />
 							</target>
 						</configuration>
 					</execution>
