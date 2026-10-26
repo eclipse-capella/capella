@@ -112,6 +112,7 @@ location sirius "https://download.eclipse.org/sirius/updates/milestones/7.5.1rc2
 	org.eclipse.sirius.interpreter.feature.source.feature.group
 	org.eclipse.sirius.aql.source.feature.group
 	org.eclipse.sirius.diagram.elk.feature.source.feature.group
+	org.eclipse.elk.sdk.feature.feature.group
 }
 
 location Acceleo_4.2.3_AQL_8.1.3 "https://download.eclipse.org/acceleo/updates/releases/4.2/R202610061311/" {
