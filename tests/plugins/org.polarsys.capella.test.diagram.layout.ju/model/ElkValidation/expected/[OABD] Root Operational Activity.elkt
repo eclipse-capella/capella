@@ -1,0 +1,111 @@
+graph _OABD__Root_Operational_Activity_graph
+layout [ size: 1101, 310 ]
+algorithm: org.eclipse.elk.mrtree
+spacing.edgeNode: 20
+spacing.nodeNode: 40
+edgeRouting: ORTHOGONAL
+noLayout: true
+node OperationalActivity_1 {
+	layout [
+		position: 109, 20
+		size: 137, 70
+	]
+	nodeSize.minimum: "(10.0,10.0)"
+	label L1: "OperationalActivity 1" {
+		layout [
+			position: 1, 1
+			size: 115, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+	}
+}
+node OperationalActivity_2 {
+	layout [
+		position: 197, 130
+		size: 137, 70
+	]
+	nodeSize.minimum: "(10.0,10.0)"
+	label L2: "OperationalActivity 2" {
+		layout [
+			position: 1, 1
+			size: 115, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+	}
+}
+node OperationalActivity_3 {
+	layout [
+		position: 20, 130
+		size: 137, 70
+	]
+	nodeSize.minimum: "(10.0,10.0)"
+	label L3: "OperationalActivity 3" {
+		layout [
+			position: 1, 1
+			size: 115, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+	}
+}
+node OperationalActivity_2_2 {
+	layout [
+		position: 99, 240
+		size: 147, 70
+	]
+	nodeSize.minimum: "(10.0,10.0)"
+	label L4: "OperationalActivity 2_2" {
+		layout [
+			position: 1, 1
+			size: 125, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+	}
+}
+node OperationalActivity_2_3 {
+	layout [
+		position: 286, 240
+		size: 147, 70
+	]
+	nodeSize.minimum: "(10.0,10.0)"
+	label L5: "OperationalActivity 2_3" {
+		layout [
+			position: 1, 1
+			size: 125, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+	}
+}
+edge E1: OperationalActivity_3 -> OperationalActivity_1 {
+	layout [
+		section ES1 [
+			start: 154, 130
+			end: 154, 90
+		]
+	]
+}
+edge E2: OperationalActivity_2 -> OperationalActivity_1 {
+	layout [
+		section ES2 [
+			start: 200, 130
+			end: 200, 90
+		]
+	]
+}
+edge E3: OperationalActivity_2_2 -> OperationalActivity_2 {
+	layout [
+		section ES3 [
+			start: 176, 240
+			end: 242, 200
+			bends: 176, 220 | 242, 220
+		]
+	]
+}
+edge E4: OperationalActivity_2_3 -> OperationalActivity_2 {
+	layout [
+		section ES4 [
+			start: 356, 240
+			end: 288, 200
+			bends: 356, 220 | 288, 220
+		]
+	]
+}
