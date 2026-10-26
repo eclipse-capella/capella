@@ -25,6 +25,5 @@
   </properties>
   <groupId>org.polarsys.capella.rcp.feature</groupId>
   <artifactId>org.polarsys.capella.rcp</artifactId>
-  <version>7.2.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 </project>

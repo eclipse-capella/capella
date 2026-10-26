@@ -20,7 +20,6 @@
     <version>7.2.0-SNAPSHOT</version>
     <relativePath>../../../</relativePath>
   </parent>
-  <groupId>org.polarsys</groupId>
   <artifactId>org.polarsys.capella.cdo.features</artifactId>
   <packaging>pom</packaging>
 
