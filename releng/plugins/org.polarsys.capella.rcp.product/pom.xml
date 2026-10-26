@@ -133,9 +133,8 @@
 											<include name="jre/bin/*"/>
 											<include name="jre/lib/jspawnhelper"/>
 										</tarfileset>
-										<tarfileset dir="../../../samples" prefix="samples">
-											<exclude name="target/**"/>
-											<exclude name="pom.xml"/>
+										<tarfileset dir="../../../samples/target" prefix="samples">
+											<include name="IFE_samplemodel.zip"/>
 										</tarfileset>
 									</tar>
 									
@@ -159,9 +158,8 @@
 											<include name="jre/bin/*"/>
 											<include name="jre/lib/jspawnhelper"/>
 										</tarfileset>
-										<tarfileset dir="../../../samples" prefix="samples">
-											<exclude name="target/**"/>
-											<exclude name="pom.xml"/>
+										<tarfileset dir="../../../samples/target" prefix="samples">
+											<include name="IFE_samplemodel.zip"/>
 										</tarfileset>
 									</tar>
 									
@@ -185,9 +183,8 @@
 											<include name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
 											<include name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
 										</tarfileset>
-										<tarfileset dir="../../../samples" prefix="Capella.app/Contents/samples">
-											<exclude name="target/**"/>
-											<exclude name="pom.xml"/>
+										<tarfileset dir="../../../samples/target" prefix="Capella.app/Contents/samples">
+											<include name="IFE_samplemodel.zip"/>
 										</tarfileset>
 									</tar>
 									
@@ -211,9 +208,8 @@
 											<include name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
 											<include name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
 										</tarfileset>
-										<tarfileset dir="../../../samples" prefix="Capella.app/Contents/samples">
-											<exclude name="target/**"/>
-											<exclude name="pom.xml"/>
+										<tarfileset dir="../../../samples/target" prefix="Capella.app/Contents/samples">
+											<include name="IFE_samplemodel.zip"/>
 										</tarfileset>
 									</tar>
 									
@@ -227,9 +223,8 @@
 									<!-- Zip the Windows product -->
 									<zip destfile="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-win32-win32-x86_64.zip">
 										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64" prefix="capella"/>
-										<zipfileset dir="../../../samples" prefix="samples">
-											<exclude name="target/**"/>
-											<exclude name="pom.xml"/>
+										<zipfileset dir="../../../samples/target" prefix="samples">
+											<include name="IFE_samplemodel.zip"/>
 										</zipfileset>
 									</zip>
 								</target>
