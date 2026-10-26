@@ -1,0 +1,192 @@
+graph _OCB__Operational_Capabilities_graph
+layout [ size: 648, 311 ]
+hierarchyHandling: INCLUDE_CHILDREN
+nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+algorithm: org.eclipse.elk.layered
+spacing.edgeNodeBetweenLayers: 20
+nodePlacement.bk.fixedAlignment: BALANCED
+spacing.edgeEdge: 5
+edgeRouting: ORTHOGONAL
+edgeLabels.sideSelection: ALWAYS_DOWN
+spacing.portPort: 13
+elk.direction: RIGHT
+spacing.edgeLabel: 0
+noLayout: true
+node OActor_2 {
+	layout [
+		position: 180, 149
+		size: 146, 66
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(148.0,68.0)"
+	label L4: "OActor 2" {
+		layout [
+			position: 43, 5
+			size: 61, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
+	}
+}
+node OperationalCapability_1 {
+	layout [
+		position: 20, 198
+		size: 110, 73
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(10.0,10.0)"
+	label L5: "OperationalCapability 1" {
+		layout [
+			size: 110, 14
+			position: 0, 74
+		]
+		nodeLabels.placement: "[H_CENTER, V_BOTTOM, OUTSIDE]"
+	}
+}
+node OEntity_1 {
+	layout [
+		position: 498, 209
+		size: 146, 66
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(148.0,68.0)"
+	label L6: "OEntity 1" {
+		layout [
+			position: 43, 5
+			size: 61, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
+	}
+}
+node Root_Capability {
+	layout [
+		position: 348, 85
+		size: 71, 47
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(10.0,10.0)"
+	label L7: "Root Capability" {
+		layout [
+			size: 71, 14
+			position: 0, 48
+		]
+		nodeLabels.placement: "[H_CENTER, V_BOTTOM, OUTSIDE]"
+	}
+}
+node OperationalCapability_3 {
+	layout [
+		position: 348, 223
+		size: 110, 73
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(10.0,10.0)"
+	label L8: "OperationalCapability 3" {
+		layout [
+			size: 110, 14
+			position: 0, 74
+		]
+		nodeLabels.placement: "[H_CENTER, V_BOTTOM, OUTSIDE]"
+	}
+}
+node OperationalCapability_4 {
+	layout [
+		position: 20, 109
+		size: 110, 73
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(10.0,10.0)"
+	label L9: "OperationalCapability 4" {
+		layout [
+			size: 110, 14
+			position: 0, 74
+		]
+		nodeLabels.placement: "[H_CENTER, V_BOTTOM, OUTSIDE]"
+	}
+}
+node OperationalCapability_5 {
+	layout [
+		position: 20, 20
+		size: 110, 73
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(10.0,10.0)"
+	label L10: "OperationalCapability 5" {
+		layout [
+			size: 110, 14
+			position: 0, 74
+		]
+		nodeLabels.placement: "[H_CENTER, V_BOTTOM, OUTSIDE]"
+	}
+}
+edge E1: OperationalCapability_1 -> OActor_2 {
+	layout [
+		section ES1 [
+			start: 117, 231
+			end: 180, 186
+			bends: 160, 231 | 160, 186
+		]
+	]
+}
+edge E2: OperationalCapability_1 -> OEntity_1 {
+	layout [
+		section ES2 [
+			start: 95, 257
+			end: 498, 257
+			bends: 150, 257 | 150, 301 | 478, 301 | 478, 257
+		]
+	]
+}
+edge E3: OActor_2 -> OEntity_1 {
+	layout [
+		section ES3 [
+			start: 328, 186
+			end: 498, 236
+			bends: 478, 186 | 478, 236
+		]
+	]
+	label L1: "CommunicationMean 1" {
+		layout [
+			position: 349, 187
+			size: 107, 14
+		]
+		edgeLabels.placement: CENTER
+	}
+}
+edge E4: OperationalCapability_1 -> Root_Capability {
+	layout [
+		section ES4 [
+			start: 114, 217
+			end: 352, 112
+			bends: 150, 217 | 150, 112
+		]
+	]
+	label L2: "« e »" {
+		layout [
+			position: 236, 113
+			size: 23, 14
+		]
+		edgeLabels.placement: CENTER
+	}
+}
+edge E5: OperationalCapability_1 -> OperationalCapability_3 {
+	layout [
+		section ES5 [
+			start: 108, 249
+			end: 353, 260
+			bends: 150, 249 | 150, 260
+		]
+	]
+	label L3: "« i »" {
+		layout [
+			position: 234, 261
+			size: 20, 14
+		]
+		edgeLabels.placement: CENTER
+	}
+}
