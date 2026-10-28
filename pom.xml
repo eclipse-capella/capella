@@ -47,7 +47,7 @@
 		
 		<!-- Default target-platform-path -->
 		<target-platform-path>full</target-platform-path>
-		<calversion>2026.9.0</calversion>
+		<calversion>2026.11.0</calversion>
 	</properties>
 
 	<modules>
