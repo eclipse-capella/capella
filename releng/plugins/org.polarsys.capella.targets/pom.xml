@@ -64,6 +64,11 @@
 							<layout>p2</layout>
 							<url>https://download.eclipse.org/cbi/updates/tpd/nightly/latest</url>
 						</repository>
+						<repository>
+							<id>justj-jre-21</id>
+							<layout>p2</layout>
+							<url>https://download.eclipse.org/justj/jres/21/updates/release/latest/</url>
+						</repository>
 					</repositories>
 					<!-- Set dependencies to launch the application -->
 					<dependencies>
