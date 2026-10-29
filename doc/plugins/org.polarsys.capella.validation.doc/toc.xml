@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
 <!--
-  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2024 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -86,5 +86,17 @@
                <anchor id="transition-j-epbs"/>
             </topic>
          </topic>
+      </topic>
+      <topic label="DescriptionAndSummary">
+         <topic href="html/Validation Rules/descriptionAndSummary/ValidationRules.html" label="Description and Summary"/>
+         <anchor id="description_and_summary"/>
+      </topic>
+      <topic label="Naming Conflicts">
+         <topic href="html/Validation Rules/namingConflicts/targetTypeConflict/ValidationRules.html" label="Target Type Conflict"/>
+         <anchor id="naming_conflicts"/>
+      </topic>
+      <topic label="Functional">
+         <topic href="html/Validation Rules/functional/ValidationRules.html" label="Functional"/>
+         <anchor id="functional"/>
       </topic>
 </toc>
