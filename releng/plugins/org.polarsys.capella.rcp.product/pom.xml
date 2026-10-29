@@ -24,10 +24,32 @@
     	<sonar.skip>true</sonar.skip>
       </properties>
 
+      <repositories>
+        <repository>
+          <id>justj-jre-21</id>
+          <layout>p2</layout>
+          <url>https://download.eclipse.org/justj/jres/21/updates/release/latest/</url>
+        </repository>
+      </repositories>
+
   <artifactId>org.polarsys.capella.rcp.product</artifactId>
   <packaging>eclipse-repository</packaging>
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<!-- JustJ's JRE replaces the synthetic a.jre.javase unit. -->
+					<resolveWithExecutionEnvironmentConstraints>false</resolveWithExecutionEnvironmentConstraints>
+					<dependency-resolution>
+						<profileProperties>
+							<org.eclipse.justj.buildtime>true</org.eclipse.justj.buildtime>
+						</profileProperties>
+					</dependency-resolution>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-p2-director-plugin</artifactId>
@@ -113,50 +135,54 @@
 									<copy file="logback.xml" tofile="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/aarch64/Capella.app/Contents/Eclipse/configuration/logback.xml" ></copy>
 									<copy file="logback.xml" tofile="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/configuration/logback.xml" ></copy>
 									
-									<!--  Copy the Linux JRE into the product -->
-									<copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/jre" includeEmptyDirs="yes">
-										<fileset dir="../../../linuxJRE/jre">
-											<include name="**/*" />
-										</fileset>
-									</copy>
+									<!-- <!-\-  Copy the Linux JRE into the product -\-> -->
+									<!-- <copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/jre" includeEmptyDirs="yes"> -->
+									<!-- 	<fileset dir="../../../linuxJRE/jre"> -->
+									<!-- 		<include name="**/*" /> -->
+									<!-- 	</fileset> -->
+									<!-- </copy> -->
 									
 									<!-- Tar.gz the Linux product -->
 									<tar destfile="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-linux-gtk-x86_64.tar.gz" compression="gzip" longfile="gnu">
 										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64" prefix="capella">
 											<include name="**/*" />
 											<exclude name="capella"/>
-											<exclude name="jre/bin/*"/>
-											<exclude name="jre/lib/jspawnhelper"/>
+											<exclude name="plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/bin/*"/>
+											<exclude name="plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/lib/jexec"/>
+											<exclude name="plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/lib/jspawnhelper"/>
 										</tarfileset>
 										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64" prefix="capella" filemode="755">
 											<include name="capella"/>
-											<include name="jre/bin/*"/>
-											<include name="jre/lib/jspawnhelper"/>
+											<include name="plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/bin/*"/>
+											<include name="plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/lib/jexec"/>
+											<include name="plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/lib/jspawnhelper"/>
 										</tarfileset>
 										<tarfileset dir="../../../samples/target" prefix="samples">
 											<include name="IFE_samplemodel.zip"/>
 										</tarfileset>
 									</tar>
 									
-									<!--  Copy the Linux aarch64 JRE into the product -->
-									<copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/aarch64/jre" includeEmptyDirs="yes">
-										<fileset dir="../../../linux-aarch64JRE/jre">
-											<include name="**/*" />
-										</fileset>
-									</copy>
+									<!-- <!-\-  Copy the Linux aarch64 JRE into the product -\-> -->
+									<!-- <copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/aarch64/jre" includeEmptyDirs="yes"> -->
+									<!-- 	<fileset dir="../../../linux-aarch64JRE/jre"> -->
+									<!-- 		<include name="**/*" /> -->
+									<!-- 	</fileset> -->
+									<!-- </copy> -->
 									
 									<!-- Tar.gz the Linux product -->
 									<tar destfile="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-linux-gtk-aarch64.tar.gz" compression="gzip" longfile="gnu">
 										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/aarch64" prefix="capella">
 											<include name="**/*" />
 											<exclude name="capella"/>
-											<exclude name="jre/bin/*"/>
-											<exclude name="jre/lib/jspawnhelper"/>
+											<exclude name="plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/bin/*"/>
+											<exclude name="plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/lib/jexec"/>
+											<exclude name="plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/lib/jspawnhelper"/>
 										</tarfileset>
 										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/aarch64" prefix="capella" filemode="755">
 											<include name="capella"/>
-											<include name="jre/bin/*"/>
-											<include name="jre/lib/jspawnhelper"/>
+											<include name="plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/bin/*"/>
+											<include name="plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/lib/jexec"/>
+											<include name="plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/lib/jspawnhelper"/>
 										</tarfileset>
 										<tarfileset dir="../../../samples/target" prefix="samples">
 											<include name="IFE_samplemodel.zip"/>
@@ -164,24 +190,24 @@
 									</tar>
 									
 									<!--  Copy the Mac x86_64 JRE into the product -->
-									<copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/Capella.app/Contents/jre" includeEmptyDirs="yes">
-										<fileset dir="../../../macJRE/jre">
-											<include name="**/*" />
-										</fileset>
-									</copy>
+									<!-- <copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/Capella.app/Contents/jre" includeEmptyDirs="yes"> -->
+									<!-- 	<fileset dir="../../../macJRE/jre"> -->
+									<!-- 		<include name="**/*" /> -->
+									<!-- 	</fileset> -->
+									<!-- </copy> -->
 									
 									<!-- Tar.gz the Mac product -->
 									<tar destfile="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-macosx-cocoa-x86_64.tar.gz" compression="gzip" longfile="gnu">
 										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64">
 											<include name="**/*" />
 											<exclude name="Capella.app/Contents/MacOS/capella"/>
-											<exclude name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
-											<exclude name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
+											<exclude name="Capella.app/Contents/Eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/bin/*"/>
+											<exclude name="Capella.app/Contents/Eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/lib/jspawnhelper"/>
 										</tarfileset>
 										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64" filemode="755">
 											<include name="Capella.app/Contents/MacOS/capella"/>
-											<include name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
-											<include name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
+											<include name="Capella.app/Contents/Eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/bin/*"/>
+											<include name="Capella.app/Contents/Eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/lib/jspawnhelper"/>
 										</tarfileset>
 										<tarfileset dir="../../../samples/target" prefix="Capella.app/Contents/samples">
 											<include name="IFE_samplemodel.zip"/>
@@ -189,24 +215,24 @@
 									</tar>
 									
 									<!--  Copy the Mac arch64 JRE into the product -->
-									<copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/aarch64/Capella.app/Contents/jre" includeEmptyDirs="yes">
-										<fileset dir="../../../mac-aarch64JRE/jre">
-											<include name="**/*" />
-										</fileset>
-									</copy>
+									<!-- <copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/aarch64/Capella.app/Contents/jre" includeEmptyDirs="yes"> -->
+									<!-- 	<fileset dir="../../../mac-aarch64JRE/jre"> -->
+									<!-- 		<include name="**/*" /> -->
+									<!-- 	</fileset> -->
+									<!-- </copy> -->
 									
 									<!-- Tar.gz the Mac product -->
 									<tar destfile="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-macosx-cocoa-aarch64.tar.gz" compression="gzip" longfile="gnu">
 										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/aarch64">
 											<include name="**/*" />
 											<exclude name="Capella.app/Contents/MacOS/capella"/>
-											<exclude name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
-											<exclude name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
+											<exclude name="Capella.app/Contents/Eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/bin/*"/>
+											<exclude name="Capella.app/Contents/Eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/lib/jspawnhelper"/>
 										</tarfileset>
 										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/aarch64" filemode="755">
 											<include name="Capella.app/Contents/MacOS/capella"/>
-											<include name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
-											<include name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
+											<include name="Capella.app/Contents/Eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/bin/*"/>
+											<include name="Capella.app/Contents/Eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.*/jre/lib/jspawnhelper"/>
 										</tarfileset>
 										<tarfileset dir="../../../samples/target" prefix="Capella.app/Contents/samples">
 											<include name="IFE_samplemodel.zip"/>
@@ -214,15 +240,15 @@
 									</tar>
 									
 									<!--  Copy the Windows JRE into the product -->
-									<copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/jre" includeEmptyDirs="yes">
-										<fileset dir="../../../winJRE/jre">
-											<include name="**/*" />
-										</fileset>
-									</copy>
+									<!-- <copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/jre" includeEmptyDirs="yes"> -->
+									<!-- 	<fileset dir="../../../winJRE/jre"> -->
+									<!-- 		<include name="**/*" /> -->
+									<!-- 	</fileset> -->
+									<!-- </copy> -->
 									
 									<!-- Ant copy does not preserve executable permissions. -->
-									<chmod dir="${project.build.directory}/products/org.polarsys.capella.rcp.product" perm="a+x" osfamily="unix"
-										includes="linux/**/jre/bin/*,linux/**/jre/lib/jspawnhelper,macosx/**/jre/Contents/Home/bin/*,macosx/**/jre/Contents/Home/lib/jspawnhelper"/>
+									<!-- <chmod dir="${project.build.directory}/products/org.polarsys.capella.rcp.product" perm="a+x" osfamily="unix" -->
+									<!-- 	includes="linux/**/jre/bin/*,linux/**/jre/lib/jspawnhelper,macosx/**/jre/Contents/Home/bin/*,macosx/**/jre/Contents/Home/lib/jspawnhelper"/> -->
 
 									<!-- Zip the Windows product -->
 									<zip destfile="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-win32-win32-x86_64.zip">
