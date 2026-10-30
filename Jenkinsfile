@@ -1,6 +1,18 @@
 pipeline {
 	agent {
-		label 'migration'
+		kubernetes {
+			inheritFrom 'ubuntu-2404'
+			yaml """
+spec:
+  containers:
+  - name: jnlp
+    resources:
+      requests:
+        memory: "6Gi"
+      limits:
+        memory: "6Gi"
+"""
+		}
 	}
 
 	options {
@@ -68,7 +80,7 @@ pipeline {
 		stage('Build and Package') {
 			steps {
 				script {
-					withEnv(['MAVEN_OPTS=-Xmx2g']) {
+					withEnv(['MAVEN_OPTS=-Xmx3g']) {
 						def sign = github.isPullRequest() ? '' : '-Psign'
 						sh "mvn verify -Pfull ${sign}"
 					}
