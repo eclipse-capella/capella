@@ -81,11 +81,19 @@ spec:
 			steps {
 				script {
 					withEnv(['MAVEN_OPTS=-Xmx3g']) {
-						def sign = github.isPullRequest() ? '' : '-Psign'
-						sh "mvn verify -Pfull ${sign}"
+						sh 'mvn verify -Pfull -Psign'
 					}
 				}
 		 	}
+		}
+
+		stage('Notarize macOS products') {
+			options {
+				timeout(time: 90, unit: 'MINUTES')
+			}
+			steps {
+				sh 'bash releng/macos/notarize.sh releng/plugins/org.polarsys.capella.rcp.product/target/products'
+			}
 		}
 
 		stage('Deploy to Nightly') {
@@ -97,6 +105,7 @@ spec:
 		
 				    deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.zip", deploymentDirName)
 				    deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.gz", deploymentDirName)
+				    deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.dmg", deploymentDirName)
 			      	deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/bom.json", deploymentDirName)
 					
 				    deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.test.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.test.site")
@@ -124,6 +133,7 @@ spec:
 			
 					deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.zip", deploymentDirName)
 					deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.gz", deploymentDirName)
+					deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.dmg", deploymentDirName)
 			      	deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/bom.json", deploymentDirName)
 					
 					deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.test.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.test.site")
