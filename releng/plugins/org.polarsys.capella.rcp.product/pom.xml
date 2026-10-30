@@ -40,12 +40,27 @@
 							<goal>materialize-products</goal>
 						</goals>
 					</execution>
+					<execution>
+						<id>archive-products</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>archive-products</goal>
+						</goals>
+					</execution>
 				</executions>
 				<configuration>
+					<formats>
+						<linux>tar.gz</linux>
+						<macosx>tar.gz</macosx>
+						<win32>zip</win32>
+					</formats>
 					<products>
 						<product>
 							<id>org.polarsys.capella.rcp.product</id>
+							<archiveFileName>capella-${calversion}.${buildQualifier}</archiveFileName>
 							<rootFolders>
+								<linux>capella</linux>
+								<win32>capella</win32>
 								<macosx>Capella.app</macosx>
 							</rootFolders>
 						</product>
@@ -66,11 +81,11 @@
 							<configuration>
 								<target>
 									<!-- Create the dropins folder -->
-									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/dropins"/>
-									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/aarch64/dropins"/>
+									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/capella/dropins"/>
+									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/aarch64/capella/dropins"/>
 									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/Capella.app/Contents/Eclipse/dropins"/>
 									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/aarch64/Capella.app/Contents/Eclipse/dropins"/>
-									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/dropins"/>
+									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/capella/dropins"/>
 								</target>
 							</configuration>
 						</execution>
@@ -81,66 +96,30 @@
 								<goal>run</goal>
 							</goals>
 							<configuration>
-								<!-- Create the Capella .zip with 2 folders (capella + samples) -->
+								<!-- Complete the installations before Tycho archives them. -->
 								<target>								
 									
 									
 									<!-- Copy logback.xml into configuration folder -->
-									<copy file="logback.xml" tofile="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/configuration/logback.xml" ></copy>
-									<copy file="logback.xml" tofile="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/aarch64/configuration/logback.xml" ></copy>
+									<copy file="logback.xml" tofile="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/capella/configuration/logback.xml" ></copy>
+									<copy file="logback.xml" tofile="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/aarch64/capella/configuration/logback.xml" ></copy>
 									<copy file="logback.xml" tofile="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/Capella.app/Contents/Eclipse/configuration/logback.xml" ></copy>
 									<copy file="logback.xml" tofile="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/aarch64/Capella.app/Contents/Eclipse/configuration/logback.xml" ></copy>
-									<copy file="logback.xml" tofile="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/configuration/logback.xml" ></copy>
+									<copy file="logback.xml" tofile="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/capella/configuration/logback.xml" ></copy>
 									
 									<!--  Copy the Linux JRE into the product -->
-									<copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/jre" includeEmptyDirs="yes">
+									<copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/capella/jre" includeEmptyDirs="yes">
 										<fileset dir="../../../linuxJRE/jre">
 											<include name="**/*" />
 										</fileset>
 									</copy>
 									
-									<!-- Tar.gz the Linux product -->
-									<tar destfile="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-linux-gtk-x86_64.tar.gz" compression="gzip" longfile="gnu">
-										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64" prefix="capella">
-											<include name="**/*" />
-											<exclude name="capella"/>
-											<exclude name="jre/bin/*"/>
-											<exclude name="jre/lib/jspawnhelper"/>
-										</tarfileset>
-										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64" prefix="capella" filemode="755">
-											<include name="capella"/>
-											<include name="jre/bin/*"/>
-											<include name="jre/lib/jspawnhelper"/>
-										</tarfileset>
-										<tarfileset dir="../../../samples/target" prefix="samples">
-											<include name="IFE_samplemodel.zip"/>
-										</tarfileset>
-									</tar>
-									
 									<!--  Copy the Linux aarch64 JRE into the product -->
-									<copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/aarch64/jre" includeEmptyDirs="yes">
+									<copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/aarch64/capella/jre" includeEmptyDirs="yes">
 										<fileset dir="../../../linux-aarch64JRE/jre">
 											<include name="**/*" />
 										</fileset>
 									</copy>
-									
-									<!-- Tar.gz the Linux product -->
-									<tar destfile="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-linux-gtk-aarch64.tar.gz" compression="gzip" longfile="gnu">
-										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/aarch64" prefix="capella">
-											<include name="**/*" />
-											<exclude name="capella"/>
-											<exclude name="jre/bin/*"/>
-											<exclude name="jre/lib/jspawnhelper"/>
-										</tarfileset>
-										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/aarch64" prefix="capella" filemode="755">
-											<include name="capella"/>
-											<include name="jre/bin/*"/>
-											<include name="jre/lib/jspawnhelper"/>
-										</tarfileset>
-										<tarfileset dir="../../../samples/target" prefix="samples">
-											<include name="IFE_samplemodel.zip"/>
-										</tarfileset>
-									</tar>
 									
 									<!--  Copy the Mac x86_64 JRE into the product -->
 									<copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/Capella.app/Contents/jre" includeEmptyDirs="yes">
@@ -149,24 +128,6 @@
 										</fileset>
 									</copy>
 									
-									<!-- Tar.gz the Mac product -->
-									<tar destfile="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-macosx-cocoa-x86_64.tar.gz" compression="gzip" longfile="gnu">
-										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64">
-											<include name="**/*" />
-											<exclude name="Capella.app/Contents/MacOS/capella"/>
-											<exclude name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
-											<exclude name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
-										</tarfileset>
-										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64" filemode="755">
-											<include name="Capella.app/Contents/MacOS/capella"/>
-											<include name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
-											<include name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
-										</tarfileset>
-										<tarfileset dir="../../../samples/target" prefix="Capella.app/Contents/samples">
-											<include name="IFE_samplemodel.zip"/>
-										</tarfileset>
-									</tar>
-									
 									<!--  Copy the Mac arch64 JRE into the product -->
 									<copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/aarch64/Capella.app/Contents/jre" includeEmptyDirs="yes">
 										<fileset dir="../../../mac-aarch64JRE/jre">
@@ -174,42 +135,23 @@
 										</fileset>
 									</copy>
 									
-									<!-- Tar.gz the Mac product -->
-									<tar destfile="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-macosx-cocoa-aarch64.tar.gz" compression="gzip" longfile="gnu">
-										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/aarch64">
-											<include name="**/*" />
-											<exclude name="Capella.app/Contents/MacOS/capella"/>
-											<exclude name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
-											<exclude name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
-										</tarfileset>
-										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/aarch64" filemode="755">
-											<include name="Capella.app/Contents/MacOS/capella"/>
-											<include name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
-											<include name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
-										</tarfileset>
-										<tarfileset dir="../../../samples/target" prefix="Capella.app/Contents/samples">
-											<include name="IFE_samplemodel.zip"/>
-										</tarfileset>
-									</tar>
-									
 									<!--  Copy the Windows JRE into the product -->
-									<copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/jre" includeEmptyDirs="yes">
+									<copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/capella/jre" includeEmptyDirs="yes">
 										<fileset dir="../../../winJRE/jre">
 											<include name="**/*" />
 										</fileset>
 									</copy>
-									
-									<!-- Ant copy does not preserve executable permissions. -->
-									<chmod dir="${project.build.directory}/products/org.polarsys.capella.rcp.product" perm="a+x" osfamily="unix"
-										includes="linux/**/jre/bin/*,linux/**/jre/lib/jspawnhelper,macosx/**/jre/Contents/Home/bin/*,macosx/**/jre/Contents/Home/lib/jspawnhelper"/>
 
-									<!-- Zip the Windows product -->
-									<zip destfile="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-win32-win32-x86_64.zip">
-										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64" prefix="capella"/>
-										<zipfileset dir="../../../samples/target" prefix="samples">
-											<include name="IFE_samplemodel.zip"/>
-										</zipfileset>
-									</zip>
+									<!-- Samples are part of the final distribution before archiving/signing. -->
+									<copy file="../../../samples/target/IFE_samplemodel.zip" tofile="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/samples/IFE_samplemodel.zip"/>
+									<copy file="../../../samples/target/IFE_samplemodel.zip" tofile="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/aarch64/samples/IFE_samplemodel.zip"/>
+									<copy file="../../../samples/target/IFE_samplemodel.zip" tofile="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/samples/IFE_samplemodel.zip"/>
+									<copy file="../../../samples/target/IFE_samplemodel.zip" tofile="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/Capella.app/Contents/samples/IFE_samplemodel.zip"/>
+									<copy file="../../../samples/target/IFE_samplemodel.zip" tofile="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/aarch64/Capella.app/Contents/samples/IFE_samplemodel.zip"/>
+
+									<!-- Tycho preserves permissions; restore execute bits lost by Ant copy first. -->
+									<chmod dir="${project.build.directory}/products/org.polarsys.capella.rcp.product" perm="755" osfamily="unix"
+										includes="linux/gtk/*/capella/capella,linux/gtk/*/capella/jre/bin/*,linux/gtk/*/capella/jre/lib/jspawnhelper,macosx/cocoa/*/Capella.app/Contents/MacOS/capella,macosx/cocoa/*/Capella.app/Contents/jre/Contents/Home/bin/*,macosx/cocoa/*/Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
 								</target>
 							</configuration>
 						</execution>
