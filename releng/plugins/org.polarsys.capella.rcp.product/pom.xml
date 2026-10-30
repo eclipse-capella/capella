@@ -169,7 +169,48 @@
 											<include name="**/*" />
 										</fileset>
 									</copy>
+
+									<!--  Copy the Mac arch64 JRE into the product -->
+									<copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/aarch64/Capella.app/Contents/jre" includeEmptyDirs="yes">
+										<fileset dir="../../../mac-aarch64JRE/jre">
+											<include name="**/*" />
+										</fileset>
+									</copy>
+
+									<!-- Samples must be present before the app is signed. -->
+									<copy file="../../../samples/target/IFE_samplemodel.zip" tofile="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/Capella.app/Contents/samples/IFE_samplemodel.zip"/>
+
+									<copy file="../../../samples/target/IFE_samplemodel.zip" tofile="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/aarch64/Capella.app/Contents/samples/IFE_samplemodel.zip"/>
+
+									<!--  Copy the Windows JRE into the product -->
+									<copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/jre" includeEmptyDirs="yes">
+										<fileset dir="../../../winJRE/jre">
+											<include name="**/*" />
+										</fileset>
+									</copy>
 									
+									<!-- Ant copy does not preserve executable permissions. -->
+									<chmod dir="${project.build.directory}/products/org.polarsys.capella.rcp.product" perm="a+x" osfamily="unix"
+										includes="linux/**/jre/bin/*,linux/**/jre/lib/jspawnhelper,macosx/**/Contents/MacOS/capella,macosx/**/jre/Contents/Home/bin/*,macosx/**/jre/Contents/Home/lib/jspawnhelper"/>
+
+									<!-- Zip the Windows product -->
+									<zip destfile="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-win32-win32-x86_64.zip">
+										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64" prefix="capella"/>
+										<zipfileset dir="../../../samples/target" prefix="samples">
+											<include name="IFE_samplemodel.zip"/>
+										</zipfileset>
+									</zip>
+								</target>
+							</configuration>
+						</execution>
+						<execution>
+							<id>archive-macos-products</id>
+							<phase>integration-test</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<target>
 									<!-- Tar.gz the Mac product -->
 									<tar destfile="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-macosx-cocoa-x86_64.tar.gz" compression="gzip" longfile="gnu">
 										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64">
@@ -183,18 +224,7 @@
 											<include name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
 											<include name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
 										</tarfileset>
-										<tarfileset dir="../../../samples/target" prefix="Capella.app/Contents/samples">
-											<include name="IFE_samplemodel.zip"/>
-										</tarfileset>
 									</tar>
-									
-									<!--  Copy the Mac arch64 JRE into the product -->
-									<copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/aarch64/Capella.app/Contents/jre" includeEmptyDirs="yes">
-										<fileset dir="../../../mac-aarch64JRE/jre">
-											<include name="**/*" />
-										</fileset>
-									</copy>
-									
 									<!-- Tar.gz the Mac product -->
 									<tar destfile="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-macosx-cocoa-aarch64.tar.gz" compression="gzip" longfile="gnu">
 										<tarfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/aarch64">
@@ -208,29 +238,79 @@
 											<include name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
 											<include name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
 										</tarfileset>
-										<tarfileset dir="../../../samples/target" prefix="Capella.app/Contents/samples">
-											<include name="IFE_samplemodel.zip"/>
-										</tarfileset>
 									</tar>
-									
-									<!--  Copy the Windows JRE into the product -->
-									<copy todir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/jre" includeEmptyDirs="yes">
-										<fileset dir="../../../winJRE/jre">
-											<include name="**/*" />
-										</fileset>
-									</copy>
-									
-									<!-- Ant copy does not preserve executable permissions. -->
-									<chmod dir="${project.build.directory}/products/org.polarsys.capella.rcp.product" perm="a+x" osfamily="unix"
-										includes="linux/**/jre/bin/*,linux/**/jre/lib/jspawnhelper,macosx/**/jre/Contents/Home/bin/*,macosx/**/jre/Contents/Home/lib/jspawnhelper"/>
-
-									<!-- Zip the Windows product -->
-									<zip destfile="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-win32-win32-x86_64.zip">
-										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64" prefix="capella"/>
-										<zipfileset dir="../../../samples/target" prefix="samples">
-											<include name="IFE_samplemodel.zip"/>
+								</target>
+							</configuration>
+						</execution>
+						<execution>
+							<id>prepare-macos-dmg</id>
+							<phase>integration-test</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<target>
+									<!-- CBI's tar reader rejects Ant's file-type bits in permission modes. -->
+									<delete file="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-macosx-cocoa-x86_64.dmg"/>
+									<zip destfile="${project.build.directory}/macos-dmg/capella-${calversion}.${buildQualifier}-macosx-cocoa-x86_64.zip">
+										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64">
+											<include name="**/*"/>
+											<exclude name="Capella.app/Contents/MacOS/capella"/>
+											<exclude name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
+											<exclude name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
+										</zipfileset>
+										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64" filemode="755">
+											<include name="Capella.app/Contents/MacOS/capella"/>
+											<include name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
+											<include name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
 										</zipfileset>
 									</zip>
+									<delete file="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-macosx-cocoa-aarch64.dmg"/>
+									<zip destfile="${project.build.directory}/macos-dmg/capella-${calversion}.${buildQualifier}-macosx-cocoa-aarch64.zip">
+										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/aarch64">
+											<include name="**/*"/>
+											<exclude name="Capella.app/Contents/MacOS/capella"/>
+											<exclude name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
+											<exclude name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
+										</zipfileset>
+										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/aarch64" filemode="755">
+											<include name="Capella.app/Contents/MacOS/capella"/>
+											<include name="Capella.app/Contents/jre/Contents/Home/bin/*"/>
+											<include name="Capella.app/Contents/jre/Contents/Home/lib/jspawnhelper"/>
+										</zipfileset>
+									</zip>
+								</target>
+							</configuration>
+						</execution>
+						<execution>
+							<id>verify-macos-dmgs</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<target>
+									<!-- The CBI DMG plugin can return normally after an HTTP failure. -->
+									<fail message="Missing or empty x86_64 DMG. Check the eclipse-dmg-packager output and target/macos-dmg/*-CreateDMGMojo.log.">
+										<condition>
+											<not>
+												<and>
+													<available file="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-macosx-cocoa-x86_64.dmg" type="file"/>
+													<length file="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-macosx-cocoa-x86_64.dmg" length="0" when="greater"/>
+												</and>
+											</not>
+										</condition>
+									</fail>
+									<fail message="Missing or empty aarch64 DMG. Check the eclipse-dmg-packager output and target/macos-dmg/*-CreateDMGMojo.log.">
+										<condition>
+											<not>
+												<and>
+													<available file="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-macosx-cocoa-aarch64.dmg" type="file"/>
+													<length file="${project.build.directory}/products/capella-${calversion}.${buildQualifier}-macosx-cocoa-aarch64.dmg" length="0" when="greater"/>
+												</and>
+											</not>
+										</condition>
+									</fail>
 								</target>
 							</configuration>
 						</execution>
@@ -244,6 +324,64 @@
 						<id>create-bom</id>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.cbi.maven.plugins</groupId>
+				<artifactId>eclipse-macsigner-plugin</artifactId>
+				<version>${cbi-version}</version>
+				<executions>
+					<execution>
+						<id>sign-macos-products</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<signFiles>
+						<signFile>${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/Capella.app</signFile>
+						<signFile>${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/aarch64/Capella.app</signFile>
+					</signFiles>
+					<entitlements>${project.basedir}/application.entitlements</entitlements>
+					<timeoutMillis>900000</timeoutMillis>
+					<continueOnFail>false</continueOnFail>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.cbi.maven.plugins</groupId>
+				<artifactId>eclipse-dmg-packager</artifactId>
+				<version>${cbi-version}</version>
+				<executions>
+					<execution>
+						<id>package-macos-x86_64-dmg</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>package-dmg</goal>
+						</goals>
+						<configuration>
+							<source>${project.build.directory}/macos-dmg/capella-${calversion}.${buildQualifier}-macosx-cocoa-x86_64.zip</source>
+							<target>${project.build.directory}/products/capella-${calversion}.${buildQualifier}-macosx-cocoa-x86_64.dmg</target>
+						</configuration>
+					</execution>
+					<execution>
+						<id>package-macos-aarch64-dmg</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>package-dmg</goal>
+						</goals>
+						<configuration>
+							<source>${project.build.directory}/macos-dmg/capella-${calversion}.${buildQualifier}-macosx-cocoa-aarch64.zip</source>
+							<target>${project.build.directory}/products/capella-${calversion}.${buildQualifier}-macosx-cocoa-aarch64.dmg</target>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<sign>true</sign>
+					<volumeName>Capella</volumeName>
+					<timeoutMillis>900000</timeoutMillis>
+					<continueOnFail>false</continueOnFail>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

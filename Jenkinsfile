@@ -1,6 +1,18 @@
 pipeline {
 	agent {
-		label 'migration'
+		kubernetes {
+			inheritFrom 'ubuntu-2404'
+			yaml """
+spec:
+  containers:
+  - name: jnlp
+    resources:
+      requests:
+        memory: "6Gi"
+      limits:
+        memory: "6Gi"
+"""
+		}
 	}
 
 	options {
@@ -68,12 +80,20 @@ pipeline {
 		stage('Build and Package') {
 			steps {
 				script {
-					withEnv(['MAVEN_OPTS=-Xmx2g']) {
-						def sign = github.isPullRequest() ? '' : '-Psign'
-						sh "mvn verify -Pfull ${sign}"
+					withEnv(['MAVEN_OPTS=-Xmx3g']) {
+						sh 'mvn verify -Pfull -Psign'
 					}
 				}
 		 	}
+		}
+
+		stage('Notarize macOS products') {
+			options {
+				timeout(time: 90, unit: 'MINUTES')
+			}
+			steps {
+				sh 'bash releng/macos/notarize.sh releng/plugins/org.polarsys.capella.rcp.product/target/products'
+			}
 		}
 
 		stage('Deploy to Nightly') {
@@ -85,6 +105,7 @@ pipeline {
 		
 				    deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.zip", deploymentDirName)
 				    deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.gz", deploymentDirName)
+				    deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.dmg", deploymentDirName)
 			      	deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/bom.json", deploymentDirName)
 					
 				    deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.test.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.test.site")
@@ -112,6 +133,7 @@ pipeline {
 			
 					deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.zip", deploymentDirName)
 					deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.gz", deploymentDirName)
+					deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.dmg", deploymentDirName)
 			      	deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/bom.json", deploymentDirName)
 					
 					deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.test.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.test.site")
