@@ -25,6 +25,7 @@
 		<tycho-version>5.0.4</tycho-version>
 		<tycho-extras-version>5.0.4</tycho-extras-version>
 		<antrun-version>3.2.0</antrun-version>
+		<cbi-version>1.5.4</cbi-version>
 		<rcptt-version>2.8.2</rcptt-version>
 		<rcptt-runner-version>2.8.2</rcptt-runner-version>
 		<sonar-version>3.3.0.603</sonar-version>
@@ -368,7 +369,7 @@
 					<plugin>
 						<groupId>org.eclipse.cbi.maven.plugins</groupId>
 						<artifactId>eclipse-jarsigner-plugin</artifactId>
-						<version>1.5.4</version>
+							<version>${cbi-version}</version>
 						<executions>
 							<execution>
 								<id>sign</id>
