@@ -81,17 +81,13 @@ spec:
 			steps {
 				script {
 					withEnv(['MAVEN_OPTS=-Xmx3g']) {
-						def sign = github.isPullRequest() ? '' : '-Psign'
-						sh "mvn clean verify -Pfull ${sign}"
+						sh 'mvn clean verify -Pfull -Psign'
 					}
 				}
 		 	}
 		}
 
 		stage('Notarize macOS products') {
-			when {
-				expression { !github.isPullRequest() }
-			}
 			options {
 				timeout(time: 90, unit: 'MINUTES')
 			}
@@ -152,10 +148,8 @@ done
 		
 				    deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.zip", deploymentDirName)
 				    deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.gz", deploymentDirName)
-				    if (!github.isPullRequest()) {
-				        ['dmg', 'dmg.md5', 'dmg.sha1', 'dmg.sha512'].each { extension ->
-				            deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.${extension}", deploymentDirName)
-				        }
+				    ['dmg', 'dmg.md5', 'dmg.sha1', 'dmg.sha512'].each { extension ->
+				        deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.${extension}", deploymentDirName)
 				    }
 			      	deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/bom.json", deploymentDirName)
 					
