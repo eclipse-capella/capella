@@ -76,6 +76,61 @@ pipeline {
 		 	}
 		}
 
+		stage('Notarize macOS products') {
+			when {
+				expression { !github.isPullRequest() }
+			}
+			options {
+				timeout(time: 90, unit: 'MINUTES')
+			}
+			steps {
+				sh '''#!/usr/bin/env bash
+set -euo pipefail
+products="$WORKSPACE/releng/plugins/org.polarsys.capella.rcp.product/target/products"
+notarizer="$WORKSPACE/releng/macos/macosx-notarization-single.sh"
+for tool in curl jq md5sum sha1sum sha512sum; do
+    command -v "$tool" >/dev/null || { echo "$tool is required" >&2; exit 1; }
+done
+shopt -s nullglob
+dmgs=()
+for arch in x86_64 aarch64; do
+    matches=("$products"/capella-*-macosx-cocoa-"$arch".dmg)
+    if [[ ${#matches[@]} != 1 || ! -s ${matches[0]} ]]; then
+        echo "Expected exactly one nonempty $arch DMG in $products" >&2
+        exit 1
+    fi
+    dmgs+=("${matches[0]}")
+done
+for index in "${!dmgs[@]}"; do
+    dmg=${dmgs[$index]}
+    cp -- "$dmg" "$dmg-tonotarize"
+    work=$(mktemp -d "$products/notarization.XXXXXX")
+    (
+        # Keep recovery data outside the files removed by the unmodified EPP script.
+        cp -- "$dmg" "$work/original.dmg"
+        notarized=false
+        trap 'if [[ $notarized != true ]]; then cp -- "$work/original.dmg" "$dmg"; cp -- "$work/original.dmg" "$dmg-tonotarize"; rm -f -- "$dmg.md5" "$dmg.sha1" "$dmg.sha512"; fi; rm -rf -- "$work"' EXIT
+        cd "$work"
+        bash "$notarizer" "$dmg"
+        result="$work/$(basename "$dmg")"
+        [[ -s $result ]] || { echo "No downloaded DMG: $dmg" >&2; exit 1; }
+        # UDIF disk images end with a 512-byte trailer beginning with "koly".
+        [[ $(wc -c < "$result") -ge 512 && $(tail -c 512 "$result" | head -c 4) == koly ]] || { echo "Invalid downloaded DMG: $dmg" >&2; exit 1; }
+        cmp -- "$result" "$dmg"
+        cd "$products"
+        for checksum in md5 sha1 sha512; do
+            "${checksum}sum" --check "$(basename "$dmg").$checksum"
+        done
+        notarized=true
+    ) 2>&1 | tee "$dmg.notarization.log"
+    if [[ $index == 0 ]]; then
+        sleep 18
+    fi
+done
+'''
+			}
+		}
+
 		stage('Deploy to Nightly') {
       		steps {
 				script {		
@@ -85,6 +140,11 @@ pipeline {
 		
 				    deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.zip", deploymentDirName)
 				    deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.gz", deploymentDirName)
+				    if (!github.isPullRequest()) {
+				        ['dmg', 'dmg.md5', 'dmg.sha1', 'dmg.sha512'].each { extension ->
+				            deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.${extension}", deploymentDirName)
+				        }
+				    }
 			      	deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/bom.json", deploymentDirName)
 					
 				    deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.test.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.test.site")
@@ -112,6 +172,9 @@ pipeline {
 			
 					deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.zip", deploymentDirName)
 					deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.gz", deploymentDirName)
+					['dmg', 'dmg.md5', 'dmg.sha1', 'dmg.sha512'].each { extension ->
+						deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.${extension}", deploymentDirName)
+					}
 			      	deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/bom.json", deploymentDirName)
 					
 					deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.test.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.test.site")
