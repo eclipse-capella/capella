@@ -42,22 +42,19 @@ Before starting the installation, the target location of Capella must be cleaned
 
 = Mac =
 
-For a signed and notarized distribution, download the <code>.dmg</code> matching your Mac: Intel (<code>x86_64</code>) or Apple Silicon (<code>aarch64</code>).
+Capella for macOS is distributed as a signed and notarized <code>.dmg</code> disk image. Download the disk image matching your Mac: Intel (<code>x86_64</code>) or Apple Silicon (<code>aarch64</code>).
 
 # Open the downloaded disk image in Finder.
 # Drag <code>Capella.app</code> to the Applications folder.
 # Eject the disk image, then launch Capella from Applications. macOS may ask you to confirm the first launch.
 
-The <code>.tar.gz</code> archives remain available. Extract the archive before copying <code>Capella.app</code> to Applications.
+== Older macOS releases ==
 
-== Older or non-notarized distributions ==
+'''Note:''' The following instructions apply only to older releases distributed as <code>.tar.gz</code> archives.
 
-For older or non-notarized distributions downloaded from a trusted source, the following quarantine workaround may still be needed.
-
-# Depending on you Mac configuration you may need to double click on the downloaded archive to extract or it will have extracted automatically when the download completes.
-# Using Finder drag the Capella to your applications folder.
-# Launch Terminal from your Applications > Utilities or using a spotlight search (CMD + Space)
-# In Terminal window, type: <code>xattr -d com.apple.quarantine /Applications/Capella.app</code>
+# Extract the downloaded archive, then use Finder to drag <code>Capella.app</code> to the Applications folder.
+# If macOS blocks the application because it is quarantined, and you trust the source of the archive, open Terminal from Applications > Utilities and run: <code>xattr -d com.apple.quarantine /Applications/Capella.app</code>
+# Launch Capella from Applications.
 
 <span id="Addons-Installation"/><!-- Useful for old markdown links -->
 <span id="Addons_Installation"/><!-- Useful for old mediawiki links -->
