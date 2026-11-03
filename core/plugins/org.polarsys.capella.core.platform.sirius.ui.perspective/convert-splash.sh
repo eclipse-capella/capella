@@ -29,6 +29,7 @@ Options:
 
 The output format is derived from the existing splash.bmp so the generated
 bitmap stays aligned with the BMP variant currently shipped by the plugin.
+Both the BMP and optional PNG are written at 72 DPI for macOS splash sizing.
 The script also fails if fontconfig cannot resolve the required Lato
 styles without substitution.
 EOF
@@ -90,8 +91,8 @@ done
   exit 2
 }
 
-IFS='|' read -r REFERENCE_FORMAT TARGET_WIDTH TARGET_HEIGHT TARGET_DENSITY_X TARGET_DENSITY_Y TARGET_UNITS < <(
-  identify -format '%m|%w|%h|%x|%y|%U\n' "${REFERENCE_BMP}"
+IFS='|' read -r REFERENCE_FORMAT TARGET_WIDTH TARGET_HEIGHT TARGET_UNITS < <(
+  identify -format '%m|%w|%h|%U\n' "${REFERENCE_BMP}"
 )
 REFERENCE_FILE_DESCRIPTION="$(file "${REFERENCE_BMP}")"
 
@@ -172,6 +173,9 @@ inkscape "${TMP_VECTOR_SVG}" \
   --export-height="${TARGET_HEIGHT}" \
   >/dev/null
 
+# Normalize density without resampling the rendered image.
+magick "${TMP_PNG}" -units PixelsPerInch -density 72 "${TMP_PNG}"
+
 # Step 4: export the .png output
 if [[ -n "${PNG_EXPORT_PATH}" ]]; then
   mkdir -p "$(dirname "${PNG_EXPORT_PATH}")"
@@ -189,8 +193,8 @@ magick "${TMP_PNG}" \
   -type TrueColor \
   -depth 8 \
   -compress none \
-  -units PixelsPerCentimeter \
-  -density "${TARGET_DENSITY_X}x${TARGET_DENSITY_Y}" \
+  -units PixelsPerInch \
+  -density 72 \
   "BMP3:${BMP_PATH}"
 
 OUTPUT_FILE_DESCRIPTION="$(file "${BMP_PATH}")"
