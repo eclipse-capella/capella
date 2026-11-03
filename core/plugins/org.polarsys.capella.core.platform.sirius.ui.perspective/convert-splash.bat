@@ -40,6 +40,7 @@ echo   -h, --help                Show this help
 echo.
 echo The output format is derived from the existing splash.bmp so the generated
 echo bitmap stays aligned with the BMP variant currently shipped by the plugin.
+echo Both the BMP and optional PNG are written at 72 DPI for macOS splash sizing.
 echo This script also fails if fontconfig cannot resolve the required Lato
 echo styles without substitution.
 exit /b 2
@@ -68,13 +69,11 @@ if not exist "%REFERENCE_BMP%" (
   exit /b 2
 )
 
-for /f "tokens=1-6 delims=|" %%A in ('magick identify -format "%%m|%%w|%%h|%%x|%%y|%%U" "%REFERENCE_BMP%"') do (
+for /f "tokens=1-4 delims=|" %%A in ('magick identify -format "%%m|%%w|%%h|%%U" "%REFERENCE_BMP%"') do (
   set "REFERENCE_FORMAT=%%A"
   set "TARGET_WIDTH=%%B"
   set "TARGET_HEIGHT=%%C"
-  set "TARGET_DENSITY_X=%%D"
-  set "TARGET_DENSITY_Y=%%E"
-  set "TARGET_UNITS=%%F"
+  set "TARGET_UNITS=%%D"
 )
 
 if "%REFERENCE_FORMAT%" NEQ "BMP3" (
@@ -132,6 +131,9 @@ inkscape "%TMP_VECTOR_SVG%" ^
   --export-height="%TARGET_HEIGHT%" ^
   >nul 2>&1
 
+:: Normalize density without resampling the rendered image.
+magick "%TMP_PNG%" -units PixelsPerInch -density 72 "%TMP_PNG%"
+
 :: Step 4: export the .png output
 if "%PNG_EXPORT_PATH%" NEQ "" (
   if not exist "%PNG_EXPORT_PATH%\.." mkdir "%PNG_EXPORT_PATH%\.." 2>nul
@@ -149,8 +151,8 @@ magick "%TMP_PNG%" ^
   -type TrueColor ^
   -depth 8 ^
   -compress none ^
-  -units PixelsPerCentimeter ^
-  -density "%TARGET_DENSITY_X%x%TARGET_DENSITY_Y%" ^
+  -units PixelsPerInch ^
+  -density 72 ^
   "BMP3:%BMP_PATH%"
 
 for /f "tokens=1-6 delims=|" %%A in ('magick identify -format "%%m|%%w|%%h|%%x|%%y|%%U" "%BMP_PATH%"') do (
