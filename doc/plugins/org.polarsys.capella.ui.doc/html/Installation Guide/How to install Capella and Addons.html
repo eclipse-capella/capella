@@ -63,12 +63,20 @@
 			</li>
 		</ul>
 		<h1 id="Mac">Mac</h1>
-		<p>Since Capella hasn't been installed from Apple Store, it might not be runnable directly once downloaded and you will have to follow some additional instructions to make it runnable.</p>
+		<p>Capella for macOS is distributed as a signed and notarized <code>.dmg</code> disk image. Download the disk image matching your Mac: Intel (<code>x86_64</code>) or Apple Silicon (<code>aarch64</code>).</p>
 		<ol>
-			<li>Depending on you Mac configuration you may need to double click on the downloaded archive to extract or it will have extracted automatically when the download completes.</li>
-			<li>Using Finder drag the Capella to your applications folder.</li>
-			<li>Launch Terminal from your Applications &gt; Utilities or using a spotlight search (CMD + Space)</li>
-			<li>In Terminal window, type: <code>xattr -d com.apple.quarantine /Applications/Capella.app</code></li>
+			<li>Open the downloaded disk image in Finder.</li>
+			<li>Drag <code>Capella.app</code> to the Applications folder.</li>
+			<li>Eject the disk image, then launch Capella from Applications. macOS may ask you to confirm the first launch.</li>
+		</ol>
+		<h2 id="Older_macOS_releases">Older macOS releases</h2>
+		<p>
+			<b>Note:</b> The following instructions apply only to older releases distributed as <code>.tar.gz</code> archives.
+		</p>
+		<ol>
+			<li>Extract the downloaded archive, then use Finder to drag <code>Capella.app</code> to the Applications folder.</li>
+			<li>If macOS blocks the application because it is quarantined, and you trust the source of the archive, open Terminal from Applications &gt; Utilities and run: <code>xattr -d com.apple.quarantine /Applications/Capella.app</code></li>
+			<li>Launch Capella from Applications.</li>
 		</ol>
 		<p><span id="Addons-Installation"/><span id="Addons_Installation"/><span id="Addons Installation"/></p>
 		<h1 id="Configuration_and_Extensibility">Configuration and Extensibility</h1>
