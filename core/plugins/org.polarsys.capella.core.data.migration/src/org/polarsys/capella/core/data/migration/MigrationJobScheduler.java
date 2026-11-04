@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -19,9 +19,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
-import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.osgi.util.NLS;
@@ -64,7 +62,7 @@ public class MigrationJobScheduler {
         context.setProgressMonitor(_monitor);
 
         if (runInJob) {
-          executeNextJob(Status.OK_STATUS, context, checkVersion);
+          executeMigrationRunnablesInSequentialJobs(context, checkVersion);
         } else {
           IStatus status = Status.OK_STATUS;
           try {
@@ -108,47 +106,46 @@ public class MigrationJobScheduler {
     return ((status == null) || status.isOK()) && !(context.getProgressMonitor().isCanceled());
   }
 
-  protected void executeNextJob(IStatus status, final MigrationContext context, final boolean checkVersion) {
+	protected void executeMigrationRunnablesInSequentialJobs(final MigrationContext context, final boolean checkVersion)
+			throws InterruptedException {
+		Job currentJob = null;
+		IStatus currentJobResultStatus = null;
+		
+		try {
+			while (checkStatusOK(currentJobResultStatus, context) && !_runnables.isEmpty()) {
+				final AbstractMigrationRunnable currentRunnable = _runnables.removeFirst();
 
-    // Avoid to run next jobs if last is not OK :)
-    if (checkStatusOK(status, context)) {
-      if (!_runnables.isEmpty()) {
-        AbstractMigrationRunnable firstJob = _runnables.removeFirst();
+				context.setProgressMonitor(SubMonitor.convert(_monitor, 1));
+				currentJob = new MigrationJob(currentRunnable, context, checkVersion);
+				currentJob.schedule();
+				currentJob.join();
 
-        Job job = new MigrationJob(firstJob, context, checkVersion);
-        job.addJobChangeListener(new JobChangeAdapter() {
-          @Override
-          public void done(IJobChangeEvent event) {
-            IStatus jobStatus = event.getResult();
-            IStatus internalStatus = (IStatus) event.getJob().getProperty(MigrationJob.RESULT_PROPERTY);
-            if ((internalStatus != null) && !internalStatus.isOK()) {
-              jobStatus = internalStatus;
-            }
-            executeNextJob(jobStatus, context, checkVersion);
-          }
-        });
-        context.setProgressMonitor(SubMonitor.convert(_monitor, 1));
-        job.schedule();
+				currentJobResultStatus = currentJob.getResult();
+				final IStatus currentJobInternalStatus = (IStatus) currentJob.getProperty(MigrationJob.RESULT_PROPERTY);
+				if (currentJobInternalStatus != null && !currentJobInternalStatus.isOK()) {
+					currentJobResultStatus = currentJobInternalStatus;
+				}
+				currentJob = null;
+			}
 
-        // for the automated tests, join the job to be sure that the scheduled jobs are runned in the right order
-        try {
-          job.join();
-        } catch (InterruptedException exception) {
-          exception.printStackTrace();
-        }
-
-      } else {
-        logStatus(context, status);
-        MigrationHelpers.getInstance().dispose(context);
-      }
-
-    } else {
-      logStatus(context, status);
-      MigrationHelpers.getInstance().dispose(context);
-      _runnables.clear();
-    }
-
-  }
+			if (context.getProgressMonitor().isCanceled()) {
+				currentJobResultStatus = Status.CANCEL_STATUS;
+			}
+		} catch (InterruptedException exception) {
+			currentJobResultStatus = Status.CANCEL_STATUS;
+			if (currentJob != null) {
+				currentJob.cancel();
+			}
+			throw exception;
+		} finally {
+			try {
+				logStatus(context, currentJobResultStatus);
+			} finally {
+				MigrationHelpers.getInstance().dispose(context);
+				_runnables.clear();
+			}
+		}
+	}
 
   protected void logStatus(MigrationContext context, IStatus status) {
     if (status.isOK()) {
