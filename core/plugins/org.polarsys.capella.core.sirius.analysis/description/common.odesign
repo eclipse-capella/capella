@@ -814,7 +814,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV%20Creation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='common.cdb.pv.apply'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.mns.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -1659,7 +1659,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV%20Creation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='common.cdb.pv.apply'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.msm.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -1826,7 +1826,7 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="DT_PV" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" createElements="false" domainClass="AbstractPropertyValue">
+        <nodeMappings name="DT_PV" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" createElements="false" domainClass="AbstractPropertyValue">
           <style xsi:type="style:SquareDescription" labelExpression="service:computePVLabel" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="-1" height="-1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -3436,15 +3436,15 @@
           </conditionnalStyles>
         </containerMappings>
         <containerMappings name="DT_Dummy" semanticCandidatesExpression="ocl:Set {}" domainClass="EObject" childrenPresentation="List"/>
-        <containerMappings name="DT_PVG" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" createElements="false" domainClass="PropertyValueGroup" childrenPresentation="List">
-          <subNodeMappings name="DT_PVinPVG" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" semanticCandidatesExpression="feature:eContents" synchronizationLock="true" domainClass="AbstractPropertyValue">
+        <containerMappings name="DT_PVG" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" createElements="false" domainClass="PropertyValueGroup" childrenPresentation="List">
+          <subNodeMappings name="DT_PVinPVG" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:eContents" synchronizationLock="true" domainClass="AbstractPropertyValue">
             <style xsi:type="style:SquareDescription" labelExpression="service:computePVLabel" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="DT_PVGinPVG" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" semanticCandidatesExpression="feature:eContents" synchronizationLock="true" domainClass="PropertyValueGroup">
+          <subNodeMappings name="DT_PVGinPVG" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:eContents" synchronizationLock="true" domainClass="PropertyValueGroup">
             <style xsi:type="style:SquareDescription" labelExpression="service:computePVLabel" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -4418,7 +4418,7 @@
             <representationNameVariable name="diagramName"/>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" label="%common.toolsection.Common">
+        <toolSections name="Common" label="%common.toolsection.Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV%20Creation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='common.cdb.pv.apply']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Constraint." name="constraint" label="%common.cdb.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -4519,8 +4519,167 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="PV Creation">
+            <tools xsi:type="tool_1:ToolDescription" documentation="%common.cdb.pv_groups.create__ttip" name="common.cdb.pv_groups.create" label="%common.cdb.pv_groups.create" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/PropertyValueGroup.gif">
+              <filters precondition="aql:self.activatedFilters->exists(f | f.name = 'hide.property.values.filter' )" elementsToListen="aql:self">
+                <listeners domainClass="DDiagram" featureName="activatedFilters"/>
+              </filters>
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:Let" variableName="owner" valueExpression="aql:elementView.getPropertyValueOwnerCandidate()">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:owner">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore::PropertyValueGroup" referenceName="ownedPropertyValueGroups" variableName="pv">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:owner">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="appliedPropertyValueGroups" valueExpression="var:pv"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not owner.oclIsKindOf(capellacore::PropertyValueGroup)">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']" containerViewExpression="var:diagram"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" documentation="%common.cdb.pv_string.create__ttip" name="common.cdb.pv_string.create" label="%common.cdb.pv_string.create" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/StringPropertyValue.gif">
+              <filters precondition="aql:self.activatedFilters->exists(f | f.name = 'hide.property.values.filter' )" elementsToListen="aql:self">
+                <listeners domainClass="DDiagram" featureName="activatedFilters"/>
+              </filters>
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:Let" variableName="owner" valueExpression="aql:elementView.getPropertyValueOwnerCandidate()">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:owner">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore::StringPropertyValue" referenceName="ownedPropertyValues" variableName="pv">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:owner">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="appliedPropertyValues" valueExpression="var:pv"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not owner.oclIsKindOf(capellacore::PropertyValueGroup)">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']" containerViewExpression="var:diagram"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" documentation="%common.cdb.pv_boolean.create__ttip" name="common.cdb.pv_boolean.create" label="%common.cdb.pv_boolean.create" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/BooleanPropertyValue.gif">
+              <filters precondition="aql:self.activatedFilters->exists(f | f.name = 'hide.property.values.filter' )" elementsToListen="aql:self">
+                <listeners domainClass="DDiagram" featureName="activatedFilters"/>
+              </filters>
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:Let" variableName="owner" valueExpression="aql:elementView.getPropertyValueOwnerCandidate()">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:owner">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore::BooleanPropertyValue" referenceName="ownedPropertyValues" variableName="pv">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:owner">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="appliedPropertyValues" valueExpression="var:pv"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not owner.oclIsKindOf(capellacore::PropertyValueGroup)">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']" containerViewExpression="var:diagram"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" documentation="%common.cdb.pv_enumeration.create__ttip" name="common.cdb.pv_enumeration.create" label="%common.cdb.pv_enumeration.create" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/EnumerationPropertyValue.gif">
+              <filters precondition="aql:self.activatedFilters->exists(f | f.name = 'hide.property.values.filter' )" elementsToListen="aql:self">
+                <listeners domainClass="DDiagram" featureName="activatedFilters"/>
+              </filters>
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:Let" variableName="owner" valueExpression="aql:elementView.getPropertyValueOwnerCandidate()">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:owner">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore::EnumerationPropertyValue" referenceName="ownedPropertyValues" variableName="pv">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:owner">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="appliedPropertyValues" valueExpression="var:pv"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not owner.oclIsKindOf(capellacore::PropertyValueGroup)">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']" containerViewExpression="var:diagram"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" documentation="%common.cdb.pv_integer.create__ttip" name="common.cdb.pv_integer.create" label="%common.cdb.pv_integer.create" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/IntegerPropertyValue.gif">
+              <filters precondition="aql:self.activatedFilters->exists(f | f.name = 'hide.property.values.filter' )" elementsToListen="aql:self">
+                <listeners domainClass="DDiagram" featureName="activatedFilters"/>
+              </filters>
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:Let" variableName="owner" valueExpression="aql:elementView.getPropertyValueOwnerCandidate()">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:owner">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore::IntegerPropertyValue" referenceName="ownedPropertyValues" variableName="pv">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:owner">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="appliedPropertyValues" valueExpression="var:pv"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not owner.oclIsKindOf(capellacore::PropertyValueGroup)">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']" containerViewExpression="var:diagram"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" documentation="%common.cdb.pv_float.create__ttip" name="common.cdb.pv_float.create" label="%common.cdb.pv_float.create" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/FloatPropertyValue.gif">
+              <filters precondition="aql:self.activatedFilters->exists(f | f.name = 'hide.property.values.filter' )" elementsToListen="aql:self">
+                <listeners domainClass="DDiagram" featureName="activatedFilters"/>
+              </filters>
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:Let" variableName="owner" valueExpression="aql:elementView.getPropertyValueOwnerCandidate()">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:owner">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore::FloatPropertyValue" referenceName="ownedPropertyValues" variableName="pv">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:owner">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="appliedPropertyValues" valueExpression="var:pv"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not owner.oclIsKindOf(capellacore::PropertyValueGroup)">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']" containerViewExpression="var:diagram"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="%common.cdb.pv.apply__ttip" name="common.cdb.pv.apply" label="%common.cdb.pv.apply" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector']">
+            <filters precondition="aql:self.activatedFilters->exists(f | f.name = 'hide.property.values.filter' )" elementsToListen="aql:self">
+              <listeners domainClass="DDiagram" featureName="activatedFilters"/>
+            </filters>
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:if target.oclIsKindOf(cs::Part) then target.abstractType else target endif">
+                <subModelOperations xsi:type="tool_1:Switch">
+                  <cases conditionExpression="aql:source.oclIsKindOf(capellacore::PropertyValueGroup)">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="appliedPropertyValueGroups" valueExpression="var:source"/>
+                  </cases>
+                  <cases conditionExpression="aql:source.oclIsKindOf(capellacore::AbstractPropertyValue)">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="appliedPropertyValues" valueExpression="var:source"/>
+                  </cases>
+                  <default/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="PV">
             <tools xsi:type="tool_1:ToolDescription" documentation="Creates or deletes graphical objects on the diagrams corresponding to existing Property Value Groups applied to one model element. Removing a Property Value Group graphical object from the diagram does not delete the Property Value Group from the model. This tool does not modify the semantic model." name="applied.property.value.groups" label="%common.cdb.applied.property.value.groups" precondition="aql:elementView.isValidInsertAppliedPV()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+              <filters precondition="aql:self.activatedFilters->exists(f | f.name = 'hide.property.values.filter' )" elementsToListen="aql:self">
+                <listeners domainClass="DDiagram" featureName="activatedFilters"/>
+              </filters>
               <element name="element">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="aql:element.computeAppliedPV()->filter(capellacore::PropertyValueGroup)"/>
               </element>
@@ -4561,6 +4720,9 @@
               </initialOperation>
             </tools>
             <tools xsi:type="tool_1:ToolDescription" documentation="Creates or deletes graphical objects on the diagrams corresponding to existing Property Values applied to one model element. Removing a Property Value graphical object from the diagram does not delete the Property Value from the model. This tool does not modify the semantic model." name="applied.property.values" label="%common.cdb.applied.property.values" precondition="aql:elementView.isValidInsertAppliedPV()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+              <filters precondition="aql:self.activatedFilters->exists(f | f.name = 'hide.property.values.filter' )" elementsToListen="aql:self">
+                <listeners domainClass="DDiagram" featureName="activatedFilters"/>
+              </filters>
               <element name="element">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="aql:element.computeAppliedPV()->filter(capellacore::AbstractPropertyValue)"/>
               </element>
@@ -7085,7 +7247,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV%20Creation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='common.cdb.pv.apply'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.cdi.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -8627,7 +8789,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV%20Creation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='common.cdb.pv.apply'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.cei.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -10226,7 +10388,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV%20Creation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='common.cdb.pv.apply'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.cii.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -12065,7 +12227,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Accelerators" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.1/@ownedTools[name='initialization.from.existing.diagram']"/>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV%20Creation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='common.cdb.pv.apply'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.idb.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -12472,7 +12634,7 @@
             <diagramDescription href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']"/>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV%20Creation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='common.cdb.pv.apply'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.cri.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -13168,7 +13330,7 @@
             <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV%20Creation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='common.cdb.pv.apply'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.crb.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -13353,7 +13515,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV%20Creation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='common.cdb.pv.apply'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.pd.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -13867,7 +14029,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV%20Creation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='common.cdb.pv.apply'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.id.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -16037,7 +16199,7 @@
             </instanceRoleMoved>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV%20Creation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='common.cdb.pv.apply'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.is.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Scenario_Constraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -17946,7 +18108,7 @@
             </instanceRoleMoved>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV%20Creation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='common.cdb.pv.apply'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.es.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Scenario_Constraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -19039,7 +19201,7 @@
             </instanceRoleMoved>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV%20Creation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='common.cdb.pv.apply'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.fs.constraint" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Scenario_Constraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -20027,7 +20189,7 @@
             </tools>
           </ownedTools>
         </toolSections>
-        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
+        <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV%20Creation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='common.cdb.pv.apply'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='TitleBlock'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='title.blocks']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%common.fcd.constraint" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
