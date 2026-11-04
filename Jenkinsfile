@@ -17,6 +17,7 @@ spec:
 
 	options {
 		timeout(time: 8, unit: 'HOURS')
+		buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
 	}
 	
 	tools {
