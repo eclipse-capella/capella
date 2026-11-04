@@ -106,6 +106,41 @@ spec:
 			}
 		}
 
+		stage('Generate product checksums') {
+			when {
+				expression { !github.isPullRequest() }
+			}
+			steps {
+				sh '''#!/usr/bin/env bash
+set -euo pipefail
+products="$WORKSPACE/releng/plugins/org.polarsys.capella.rcp.product/target/products"
+shopt -s nullglob
+# Reused workspaces and the EPP notarizer may leave obsolete checksum files.
+rm -f -- "$products"/capella-*.{md5,sha1,sha256,sha512} "$products/SHA256SUMS" "$products/SHA512SUMS"
+for pattern in 'capella-*-win32-win32-x86_64.zip' \
+               'capella-*-linux-gtk-x86_64.tar.gz' 'capella-*-linux-gtk-aarch64.tar.gz' \
+               'capella-*-macosx-cocoa-x86_64.dmg' 'capella-*-macosx-cocoa-aarch64.dmg'; do
+    matches=("$products"/$pattern)
+    if [[ ${#matches[@]} != 1 || ! -f ${matches[0]} || ! -s ${matches[0]} ]]; then
+        echo "Expected exactly one nonempty product matching $pattern in $products" >&2
+        exit 1
+    fi
+done
+# The standalone descriptor avoids Tycho resolution and runs only checksum goals.
+mvn -B -N -f releng/plugins/org.polarsys.capella.rcp.product/checksums-pom.xml \
+    net.nicoulaj.maven.plugins:checksum-maven-plugin:1.11:files@product-sha256 \
+    net.nicoulaj.maven.plugins:checksum-maven-plugin:1.11:files@product-sha512
+cd "$products"
+sha256sum --check SHA256SUMS
+sha512sum --check SHA512SUMS
+'''
+				archiveArtifacts artifacts: 'releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.sha256,' +
+					'releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.sha512,' +
+					'releng/plugins/org.polarsys.capella.rcp.product/target/products/SHA256SUMS,' +
+					'releng/plugins/org.polarsys.capella.rcp.product/target/products/SHA512SUMS'
+			}
+		}
+
 		stage('Deploy to Nightly') {
       		steps {
 				script {		
@@ -113,21 +148,32 @@ spec:
 		    			(github.isPullRequest() ? "${BUILD_KEY}-${BRANCH_NAME}-${BUILD_ID}" : "${BRANCH_NAME}-${BUILD_ID}")
 		    			.replaceAll('/','-')		
 		
-				    deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.zip", deploymentDirName)
-				    deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.gz", deploymentDirName)
-				    if (!github.isPullRequest()) {
-				        ['dmg', 'dmg.md5', 'dmg.sha1', 'dmg.sha512'].each { extension ->
-				            deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.${extension}", deploymentDirName)
-				        }
-				    }
-			      	deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/bom.json", deploymentDirName)
-					
-				    deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.test.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.test.site")
-				    deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.egf.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.egf.site")
-				    deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.rcp.site")
-				    deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.targets/full/*", "${deploymentDirName}/targets")
-				    
-				    currentBuild.description = "${deploymentDirName} - <a href=\"https://ci-staging.eclipse.org/capella/view/Capella/job/capella-product/\">build</a> - <a href=\"https://download.eclipse.org/capella/core/products/nightly/${deploymentDirName}\">product</a>" 				
+					// Products
+					def productsDirectory = "${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products"
+					deployer.capellaNightlyProduct("${productsDirectory}/capella-*-win32-*.zip", deploymentDirName)
+					deployer.capellaNightlyProduct("${productsDirectory}/capella-*-linux-*.tar.gz", deploymentDirName)
+					if (github.isPullRequest()) {
+						deployer.capellaNightlyProduct("${productsDirectory}/capella-*-macosx-*.tar.gz", deploymentDirName)
+					} else {
+						deployer.capellaNightlyProduct("${productsDirectory}/capella-*-macosx-*.dmg", deploymentDirName)
+					}
+
+					// Update sites and associated files
+					deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.test.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.test.site")
+					deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.egf.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.egf.site")
+					deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.rcp.site")
+					deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.targets/full/*", "${deploymentDirName}/targets")
+					deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/bom.json", deploymentDirName)
+
+					// Checksums
+					if (!github.isPullRequest()) {
+						deployer.capellaNightlyProduct("${productsDirectory}/*.sha256", deploymentDirName)
+						deployer.capellaNightlyProduct("${productsDirectory}/*.sha512", deploymentDirName)
+						deployer.capellaNightlyProduct("${productsDirectory}/SHA256SUMS", deploymentDirName)
+						deployer.capellaNightlyProduct("${productsDirectory}/SHA512SUMS", deploymentDirName)
+					}
+
+					currentBuild.description = "${deploymentDirName} - <a href=\"https://ci-staging.eclipse.org/capella/view/Capella/job/capella-product/\">build</a> - <a href=\"https://download.eclipse.org/capella/core/products/nightly/${deploymentDirName}\">product</a>"
 	       		}         
 	     	}
 	    }
@@ -145,19 +191,26 @@ spec:
 			
 					deployer.cleanCapellaNightlyArtefacts(deploymentDirName)
 			
-					deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.zip", deploymentDirName)
-					deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.gz", deploymentDirName)
-					['dmg', 'dmg.md5', 'dmg.sha1', 'dmg.sha512'].each { extension ->
-						deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.${extension}", deploymentDirName)
-					}
-			      	deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/bom.json", deploymentDirName)
-					
+					// Products
+					def productsDirectory = "${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products"
+					deployer.capellaNightlyProduct("${productsDirectory}/capella-*-win32-*.zip", deploymentDirName)
+					deployer.capellaNightlyProduct("${productsDirectory}/capella-*-linux-*.tar.gz", deploymentDirName)
+					deployer.capellaNightlyProduct("${productsDirectory}/capella-*-macosx-*.dmg", deploymentDirName)
+
+					// Update sites and associated files
 					deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.test.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.test.site")
 					deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.egf.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.egf.site")
 					deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.rcp.site")
 					deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.targets/full/*", "${deploymentDirName}/targets")
-			      	
-			      	currentBuild.description = "${BUILD_KEY} - <a href=\"https://ci-staging.eclipse.org/capella/view/Capella/job/capella-product/\">build</a> - <a href=\"https://download.eclipse.org/capella/core/products/nightly/${env.BUILD_KEY}\">product</a>" } 
+					deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/bom.json", deploymentDirName)
+
+					// Checksums
+					deployer.capellaNightlyProduct("${productsDirectory}/*.sha256", deploymentDirName)
+					deployer.capellaNightlyProduct("${productsDirectory}/*.sha512", deploymentDirName)
+					deployer.capellaNightlyProduct("${productsDirectory}/SHA256SUMS", deploymentDirName)
+					deployer.capellaNightlyProduct("${productsDirectory}/SHA512SUMS", deploymentDirName)
+
+					currentBuild.description = "${BUILD_KEY} - <a href=\"https://ci-staging.eclipse.org/capella/view/Capella/job/capella-product/\">build</a> - <a href=\"https://download.eclipse.org/capella/core/products/nightly/${env.BUILD_KEY}\">product</a>" }
 			}
 		}
 
