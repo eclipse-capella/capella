@@ -111,33 +111,9 @@ spec:
 				expression { !github.isPullRequest() }
 			}
 			steps {
-				sh '''#!/usr/bin/env bash
-set -euo pipefail
-products="$WORKSPACE/releng/plugins/org.polarsys.capella.rcp.product/target/products"
-shopt -s nullglob
-# Reused workspaces and the EPP notarizer may leave obsolete checksum files.
-rm -f -- "$products"/capella-*.{md5,sha1,sha256,sha512} "$products/SHA256SUMS" "$products/SHA512SUMS"
-for pattern in 'capella-*-win32-win32-x86_64.zip' \
-               'capella-*-linux-gtk-x86_64.tar.gz' 'capella-*-linux-gtk-aarch64.tar.gz' \
-               'capella-*-macosx-cocoa-x86_64.dmg' 'capella-*-macosx-cocoa-aarch64.dmg'; do
-    matches=("$products"/$pattern)
-    if [[ ${#matches[@]} != 1 || ! -f ${matches[0]} || ! -s ${matches[0]} ]]; then
-        echo "Expected exactly one nonempty product matching $pattern in $products" >&2
-        exit 1
-    fi
-done
-# The standalone descriptor avoids Tycho resolution and runs only checksum goals.
-mvn -B -N -f releng/plugins/org.polarsys.capella.rcp.product/checksums-pom.xml \
-    net.nicoulaj.maven.plugins:checksum-maven-plugin:1.11:files@product-sha256 \
-    net.nicoulaj.maven.plugins:checksum-maven-plugin:1.11:files@product-sha512
-cd "$products"
-sha256sum --check SHA256SUMS
-sha512sum --check SHA512SUMS
-'''
-				archiveArtifacts artifacts: 'releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.sha256,' +
-					'releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.sha512,' +
-					'releng/plugins/org.polarsys.capella.rcp.product/target/products/SHA256SUMS,' +
-					'releng/plugins/org.polarsys.capella.rcp.product/target/products/SHA512SUMS'
+				generateProductChecksums(
+					"${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products"
+				)
 			}
 		}
 
