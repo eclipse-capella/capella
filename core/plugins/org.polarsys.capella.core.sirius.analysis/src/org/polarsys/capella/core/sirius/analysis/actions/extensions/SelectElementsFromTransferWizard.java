@@ -88,8 +88,6 @@ public class SelectElementsFromTransferWizard extends AbstractExternalJavaAction
     List<EObject> initialTransferDialogSelection = new ArrayList<>(initialSelection);
     handleTransferDialogInputs(initialTransferDialogSelection, dialog, availableElements, handleContext(context));
 
-    // I can't think of a better way to handle the cancel case since Acceleo does not
-    // distinguish the null value from an empty collection
     Object result = (Window.OK == dialog.open()) ? Arrays.asList(dialog.getResult()) : WIZARD_CANCELED;
     InterpreterUtil.getInterpreter(context).setVariable(resultVariable, result);
   }
