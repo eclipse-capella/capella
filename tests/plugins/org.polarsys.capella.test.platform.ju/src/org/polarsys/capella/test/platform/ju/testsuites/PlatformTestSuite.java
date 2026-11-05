@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -20,7 +20,7 @@ import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.platform.ju.testcases.AboutInfoTest;
 import org.polarsys.capella.test.platform.ju.testcases.CacheTest;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaCDOGenerationOfDerivedFeature;
-import org.polarsys.capella.test.platform.ju.testcases.CapellaCheckAcceleo2NotUsed;
+import org.polarsys.capella.test.platform.ju.testcases.CapellaCheckAcceleo2Or3NotUsed;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaDefaultEditorEnabled;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaLoggerConfigTestCase;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaNavigateOnDoubleClickTestCase;
@@ -69,7 +69,7 @@ public class PlatformTestSuite extends BasicTestSuite {
     tests.add(new InvalidRepresentationDescriptorAdapterFactory());
     tests.add(new CapellaCDOGenerationOfDerivedFeature());
     tests.add(new ViatraSurrogateAllDerivedFeaturesImplemented());
-    tests.add(new CapellaCheckAcceleo2NotUsed());
+    tests.add(new CapellaCheckAcceleo2Or3NotUsed());
     tests.add(new PropertiesWizardIconTest());
     tests.add(new ExportCSVPreferencesTest());
     tests.add(new DiffmergeExternalReferences());
