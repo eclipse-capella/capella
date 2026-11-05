@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -88,7 +88,8 @@ public class SelectElementsFromTransferWizard extends AbstractExternalJavaAction
     List<EObject> initialTransferDialogSelection = new ArrayList<>(initialSelection);
     handleTransferDialogInputs(initialTransferDialogSelection, dialog, availableElements, handleContext(context));
 
-    Object result = (Window.OK == dialog.open()) ? Arrays.asList(dialog.getResult()) : WIZARD_CANCELED;
+    // A null result means cancellation; an empty list is a confirmed empty selection.
+    Object result = (Window.OK == dialog.open()) ? Arrays.asList(dialog.getResult()) : null;
     InterpreterUtil.getInterpreter(context).setVariable(resultVariable, result);
   }
 
