@@ -498,7 +498,7 @@
                   <parameters name="resultVariable" value="selectedConstraints"/>
                   <parameters name="wizardMessage" value="Select Constraints to show."/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != null)">
                   <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
                   </subModelOperations>
@@ -910,7 +910,7 @@
                   <parameters name="wizardMessage" value="aql:'Select Functions and ControlNodes to show in ' + element.name + '.'"/>
                   <parameters name="initialSelection" value="aql:visibleFunctions"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedFunctions = 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedFunctions = null)">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="ShowHideFunctions" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideFunctions">
                     <parameters name="view" value="aql:elementView"/>
                     <parameters name="selected functions" value="aql:self.void2Null(selectedFunctions)"/>
@@ -938,7 +938,7 @@
                     <parameters name="resultVariable" value="selectedExchanges"/>
                     <parameters name="wizardMessage" value="aql:'Select Functional Exchanges to show in ' + element.name + '.'"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedExchanges != 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedExchanges != null)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.showDFFunctionalExchange(scope,selectedExchanges)"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -961,7 +961,7 @@
                     <parameters name="wizardMessage" value="aql:'Select Ports to show in ' + element.name + '.'"/>
                     <parameters name="initialSelection" value="aql:displayedPorts"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = null)">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selection)">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (displayedPorts->includes(i))">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i">
@@ -995,7 +995,7 @@
                     <parameters name="resultVariable" value="selectedExchangeCategories"/>
                     <parameters name="wizardMessage" value="aql:'Select Exchange Categories and targeted Functions to show in ' + element.name + '.'"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedExchangeCategories = 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedExchangeCategories = null)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -1018,7 +1018,7 @@
                   <parameters name="resultVariable" value="selectedFunctionalChains"/>
                   <parameters name="wizardMessage" value="aql:'Select Functional Chains to show in ' + container.name + '.'"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedFunctionalChains = 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedFunctionalChains = null)">
                   <subModelOperations xsi:type="tool:For" expression="aql:initialSelection">
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedFunctionalChains->includes(i))">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:diagram.target.oclIsKindOf(interaction::AbstractCapability)">
@@ -1064,7 +1064,7 @@
                   <parameters name="resultVariable" value="selectedElements"/>
                   <parameters name="wizardMessage" value="Select Categories to reveal"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedElements != 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedElements != null)">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.switchFECategories(scope,initialSelection,selectedElements)"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
@@ -1191,7 +1191,7 @@
                   <parameters name="resultVariable" value="elements"/>
                   <parameters name="wizardMessage" value="Select States/Modes to display all its available functions."/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (elements = 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (elements = null)">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.showDFStateModes(elements)"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -1209,7 +1209,7 @@
                   <parameters name="resultVariable" value="elements"/>
                   <parameters name="wizardMessage" value="Select Scenarios to display all involved elements."/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (elements = 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (elements = null)">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.showDFScenarios(elements)"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -1230,7 +1230,7 @@
                   <parameters name="resultVariable" value="selectedFunctionalChains"/>
                   <parameters name="wizardMessage" value="aql:'Select FunctionChains to display all involved elements in ' + container.name + '.'"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedFunctionalChains = 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedFunctionalChains = null)">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="showHideRelatedElements" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideRelatedElements">
                     <parameters name="view" value="aql:containerView"/>
                     <parameters name="chains" value="aql:selectedFunctionalChains"/>
@@ -1304,7 +1304,7 @@
                   <parameters name="resultVariable" value="selectedConstraints"/>
                   <parameters name="wizardMessage" value="Select Constraints to show."/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != null)">
                   <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
                   </subModelOperations>
@@ -1778,7 +1778,7 @@
                   <parameters name="resultVariable" value="selectedConstraints"/>
                   <parameters name="wizardMessage" value="Select Constraints to show."/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != null)">
                   <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
                   </subModelOperations>
@@ -2531,7 +2531,7 @@
                     <parameters name="resultVariable" value="components"/>
                     <parameters name="wizardMessage" value="Select Components."/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:components != 'WIZARD_CANCELED'">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:components != null">
                     <subModelOperations xsi:type="tool:For" expression="aql:components">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
@@ -2639,7 +2639,7 @@
                     <parameters name="resultVariable" value="components"/>
                     <parameters name="wizardMessage" value="Select Actors."/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:components != 'WIZARD_CANCELED'">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:components != null">
                     <subModelOperations xsi:type="tool:For" expression="aql:components">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
@@ -2707,7 +2707,7 @@
                   <parameters name="wizardMessage" value="aql:'Select the Physical Components to deploy in ' + element.name + '.'"/>
                   <parameters name="initialSelection" value="aql:element.getDeployedComponents(false)"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedElements = 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedElements = null)">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.manageComponentDeployments(selectedElements,false)"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:diagram.forceRefresh()"/>
                 </subModelOperations>
@@ -2733,7 +2733,7 @@
                   <parameters name="wizardMessage" value="aql:'Select Sub Components to show in ' + container.name + '.'"/>
                   <parameters name="initialSelection" value="aql:self.void2Null(self.getIntersection(ownedNodeContainer->select(x | x.visible and x.actualMapping.name = 'PAB_PC').target,scope)->select(x | x.getComponentType().nature = pa::PhysicalComponentNature::NODE))"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = null)">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(self.makeDiff(self.getIntersection((self.makeUnion(ownedNodeContainer->select(x | x.visible).target, diagram.target)),scope), selection))">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:ownedNodeContainer->select(x | x.target = i)->size() > 0">
@@ -2782,7 +2782,7 @@
                   <parameters name="wizardMessage" value="aql:'Select Components to show in ' + container.name + '.'"/>
                   <parameters name="initialSelection" value="aql:componentsInDiagram"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = null)">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(self.makeDiff(componentsInDiagram, containerView.target.getComponentType()))">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection->includes(i))">
@@ -2826,7 +2826,7 @@
                   <parameters name="wizardMessage" value="aql:'Select Sub Actors to show in ' + container.name + '.'"/>
                   <parameters name="initialSelection" value="aql:actorsInDiagram"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = null)">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(self.makeDiff(actorsInDiagram, containerView.target.getComponentType()))">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection->includes(i))">
@@ -2866,7 +2866,7 @@
                   <parameters name="wizardMessage" value="aql:'Select Sub Actors to show in ' + container.name + '.'"/>
                   <parameters name="initialSelection" value="aql:actorsInDiagram"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = null)">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(self.makeDiff(actorsInDiagram, containerView.target.getComponentType()))">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection->includes(i))">
@@ -2903,7 +2903,7 @@
                     <parameters name="wizardMessage" value="aql:'Select deployed Components to show in ' + container.name + '.'"/>
                     <parameters name="initialSelection" value="aql:self.getIntersection(containerView.eAllContents()->filter(diagram::DNodeContainer)->select(x | x.visible and x.actualMapping.name = 'PAB_Deployment').target,self.deploymentLinks.deployedElement)"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = null)">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.makeDiff(containerView.eContents()->filter(diagram::DNodeContainer)->select(x | x.visible).target->filter(cs::Part)->select(x | x.deployingLinks->size() > 0), selection)">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView.eAllContents()->filter(diagram::DNodeContainer)->select(x | x.target = i and x.actualMapping.name = 'PAB_Deployment')->size() > 0">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.eAllContents()->filter(diagram::DNodeContainer)->select(x | x.target = i and x.actualMapping.name = 'PAB_Deployment')->first()">
@@ -2966,7 +2966,7 @@
                     <parameters name="resultVariable" value="selectedExchanges"/>
                     <parameters name="wizardMessage" value="aql:'Select Physical Links to show in ' + element.name + '.'"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedExchanges != 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedExchanges != null)">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedExchanges)">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (displayedLinks->includes(i))">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.showABPhysicalLink(elementView)"/>
@@ -3027,7 +3027,7 @@
                     <parameters name="resultVariable" value="selectedPaths"/>
                     <parameters name="wizardMessage" value="aql:'Select Physical Paths to show in ' + element.name + '.'"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedPaths != 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedPaths != null)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.showHidePhysicalPaths(selectedPaths,elementView)"/>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                   </subModelOperations>
@@ -3073,7 +3073,7 @@
                     <parameters name="resultVariable" value="selectedElements"/>
                     <parameters name="wizardMessage" value="Select Categories to reveal"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedElements != 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedElements != null)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.switchABPhysicalCategories(scope,initialSelection,selectedElements)"/>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                   </subModelOperations>
@@ -3098,7 +3098,7 @@
                   <parameters name="wizardMessage" value="aql:'Select Ports to show in ' + element.name + '.'"/>
                   <parameters name="initialSelection" value="aql:displayedPorts"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = null)">
                   <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selection)">
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (displayedPorts->includes(i))">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i">
@@ -3336,7 +3336,7 @@
                   <parameters name="resultVariable" value="selectedComponentPortAllocations"/>
                   <parameters name="wizardMessage" value="aql:'Select Component Port Allocations to show in ' + element.name + '.'"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedComponentPortAllocations != 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedComponentPortAllocations != null)">
                   <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedComponentPortAllocations)">
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (displayedComponentPortAllocations->includes(i))">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.showABComponentPortAllocations(elementView)"/>
@@ -3444,7 +3444,7 @@
                     <parameters name="resultVariable" value="components"/>
                     <parameters name="wizardMessage" value="Select Components."/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:components != 'WIZARD_CANCELED'">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:components != null">
                     <subModelOperations xsi:type="tool:For" expression="aql:components">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
@@ -3613,7 +3613,7 @@
                   <parameters name="wizardMessage" value="aql:'Select the Physical Components to deploy in ' + element.name + '.'"/>
                   <parameters name="initialSelection" value="aql:element.getDeployedComponents(true)"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedElements = 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedElements = null)">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.manageComponentDeployments(selectedElements,true)"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:diagram.forceRefresh()"/>
                 </subModelOperations>
@@ -3640,7 +3640,7 @@
                     <parameters name="wizardMessage" value="aql:'Select Sub Components to show in ' + container.name + '.'"/>
                     <parameters name="initialSelection" value="aql:self.getIntersection(ownedNodeContainer->select(x | x.visible and x.actualMapping.name = 'PAB_PC').target,scope)->select(x | x.getComponentType().nature = pa::PhysicalComponentNature::BEHAVIOR)"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = null)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                       <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(self.makeDiff(self.getIntersection((self.makeUnion(ownedNodeContainer->select(x | x.visible).target, diagram.target)),scope), selection))">
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:ownedNodeContainer->select(x | x.target = i)->size() > 0">
@@ -3689,7 +3689,7 @@
                     <parameters name="wizardMessage" value="aql:'Select Components to show in ' + container.name + '.'"/>
                     <parameters name="initialSelection" value="aql:componentsInDiagram"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = null)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                       <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(self.makeDiff(componentsInDiagram, containerView.target.getComponentType()))">
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection->includes(i))">
@@ -3727,7 +3727,7 @@
                     <parameters name="wizardMessage" value="aql:'Select deployed Components to show in ' + container.name + '.'"/>
                     <parameters name="initialSelection" value="aql:self.getIntersection(containerView.eAllContents()->filter(diagram::DNodeContainer)->select(x | x.visible and x.actualMapping.name = 'PAB_Deployment').target,self.deploymentLinks.deployedElement)"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = null)">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.makeDiff(containerView.eContents()->filter(diagram::DNodeContainer)->select(x | x.visible).target->filter(cs::Part)->select(x | x.deployingLinks->size() > 0), selection)">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView.eAllContents()->filter(diagram::DNodeContainer)->select(x | x.target = i and x.actualMapping.name = 'PAB_Deployment')->size() > 0">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.eAllContents()->filter(diagram::DNodeContainer)->select(x | x.target = i and x.actualMapping.name = 'PAB_Deployment')->first()">
@@ -3790,7 +3790,7 @@
                     <parameters name="resultVariable" value="selectedExchanges"/>
                     <parameters name="wizardMessage" value="aql:'Select Component Exchanges to show in ' + element.name + '.'"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedExchanges != 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedExchanges != null)">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedExchanges)">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (displayedExchanges->includes(i))">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.showABComponentExchange(elementView)"/>
@@ -3878,7 +3878,7 @@
                     <parameters name="resultVariable" value="selectedElements"/>
                     <parameters name="wizardMessage" value="Select Categories to reveal"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedElements != 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedElements != null)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.switchABComponentCategories(scope,initialSelection,selectedElements)"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -3902,7 +3902,7 @@
                   <parameters name="wizardMessage" value="aql:'Select Ports to show in ' + element.name + '.'"/>
                   <parameters name="initialSelection" value="aql:displayedPorts"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = null)">
                   <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selection)">
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (displayedPorts->includes(i))">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i">
@@ -4072,7 +4072,7 @@
                   <parameters name="wizardMessage" value="aql:'Select Functions to allocate to ' + container.type.name + '.'"/>
                   <parameters name="initialSelection" value="aql:self.void2Null(containerType.ownedFunctionalAllocation.targetElement)"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (element = 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (element = null)">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(containerType.ownedFunctionalAllocation.targetElement)">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (element->includes(i))">
@@ -4122,7 +4122,7 @@
                     <parameters name="resultVariable" value="selectedFunctions"/>
                     <parameters name="wizardMessage" value="aql:'Select allocated Functions to show in ' + container.name + '.'"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedFunctions = 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedFunctions = null)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.insertRemoveAllocatedFunctions(selectedFunctions)"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4166,7 +4166,7 @@
                   <parameters name="resultVariable" value="selectedFunctionalChains"/>
                   <parameters name="wizardMessage" value="aql:'Select Functional Chains to show in ' + container.name + '.'"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedFunctionalChains = 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedFunctionalChains = null)">
                   <subModelOperations xsi:type="tool:For" expression="aql:initialSelection">
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedFunctionalChains->includes(i))">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getNodesAndNodeListElements()->select(getNodesAndNodeListElement | getNodesAndNodeListElement.target = i)->first()">
@@ -4199,7 +4199,7 @@
                     <parameters name="resultVariable" value="selectedExchanges"/>
                     <parameters name="wizardMessage" value="aql:'Select Functional Exchanges to show in ' + element.name + '.'"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedExchanges != 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedExchanges != null)">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedExchanges)">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (displayedExchanges->includes(i))">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.showFunctionalExchangeInArchitectureBlank2(elementView)"/>
@@ -4263,7 +4263,7 @@
                     <parameters name="wizardMessage" value="aql:'Select Ports to show in ' + element.name + '.'"/>
                     <parameters name="initialSelection" value="aql:displayedPorts"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = null)">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selection)">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (displayedPorts->includes(i))">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i">
@@ -4304,7 +4304,7 @@
                     <parameters name="resultVariable" value="selectedElements"/>
                     <parameters name="wizardMessage" value="Select Categories to reveal"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedElements != 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedElements != null)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.switchFECategories(scope,initialSelection,selectedElements)"/>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                   </subModelOperations>
@@ -4381,7 +4381,7 @@
                   <parameters name="resultVariable" value="selectedPortAllocations"/>
                   <parameters name="wizardMessage" value="aql:'Select Port Allocations to show in ' + element.name + '.'"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedPortAllocations != 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedPortAllocations != null)">
                   <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedPortAllocations)">
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (displayedPortAllocations->includes(i))">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.showABPortAllocations(elementView)"/>
@@ -4411,7 +4411,7 @@
                   <parameters name="resultVariable" value="elements"/>
                   <parameters name="wizardMessage" value="Select States/Modes to display all its available functions."/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (elements = 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (elements = null)">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.showABStateModes(elements)"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -4429,7 +4429,7 @@
                   <parameters name="resultVariable" value="elements"/>
                   <parameters name="wizardMessage" value="Select Scenarios to display all involved elements."/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (elements = 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (elements = null)">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.showABScenarios(elements)"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -4489,7 +4489,7 @@
                   <parameters name="resultVariable" value="selectedConstraints"/>
                   <parameters name="wizardMessage" value="Select Constraints to show."/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != null)">
                   <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
                   </subModelOperations>
@@ -4678,7 +4678,7 @@
                   <parameters name="resultVariable" value="selectedParts"/>
                   <parameters name="wizardMessage" value="aql:'Select a Part to involve in ' + container.name + '.'"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:selectedParts != 'WIZARD_CANCELED'">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:selectedParts != null">
                   <subModelOperations xsi:type="tool:For" expression="aql:selectedParts->filter(cs::Part)" iteratorName="selectedPart">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="PhysicalPathInvolvement" referenceName="ownedPhysicalPathInvolvements">
@@ -4703,7 +4703,7 @@
                   <parameters name="resultVariable" value="selectedComponents"/>
                   <parameters name="wizardMessage" value="aql:'Select a Component to involve in ' + container.name + '.'"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:selectedComponents != 'WIZARD_CANCELED'">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:selectedComponents != null">
                   <subModelOperations xsi:type="tool:For" expression="aql:selectedComponents->filter(cs::Component).representingParts" iteratorName="selectedPart">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="PhysicalPathInvolvement" referenceName="ownedPhysicalPathInvolvements">
@@ -4727,7 +4727,7 @@
                   <parameters name="resultVariable" value="selectedFunctions"/>
                   <parameters name="wizardMessage" value="aql:'Select a Physical Path to involve in ' + container.name + '.'"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:selectedFunctions != 'WIZARD_CANCELED'">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:selectedFunctions != null">
                   <subModelOperations xsi:type="tool:For" expression="aql:selectedFunctions->filter(cs::PhysicalPath)" iteratorName="selectedFunction">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="PhysicalPathReference" referenceName="ownedPhysicalPathInvolvements">
@@ -4753,7 +4753,7 @@
                   <parameters name="resultVariable" value="selectedExchange"/>
                   <parameters name="wizardMessage" value="Select an Physical Link to Involve."/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:selectedExchange != 'WIZARD_CANCELED'">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:selectedExchange != null">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="PhysicalPathInvolvement" referenceName="ownedPhysicalPathInvolvements" variableName="newInv">
                     <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="aql:selectedExchange"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="nextInvolvements" valueExpression="aql:target"/>
@@ -4777,7 +4777,7 @@
                   <parameters name="resultVariable" value="selectedExchanges"/>
                   <parameters name="wizardMessage" value="aql:'Select Physical Links and target Parts to involve in ' + element.eContainer().name + '.'"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedExchanges != 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedExchanges != null)">
                   <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedExchanges)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.eContainer()">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="PhysicalPathInvolvement" referenceName="ownedPhysicalPathInvolvements" variableName="invTargetPart">
@@ -4809,7 +4809,7 @@
                   <parameters name="resultVariable" value="selectedExchanges"/>
                   <parameters name="wizardMessage" value="aql:'Select Physical Links and target Components to involve in ' + element.eContainer().name + '.'"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedExchanges != 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedExchanges != null)">
                   <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedExchanges)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.eContainer()">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="PhysicalPathInvolvement" referenceName="ownedPhysicalPathInvolvements" variableName="invTargetPart">
@@ -4925,7 +4925,7 @@
                   <parameters name="resultVariable" value="selectedConstraints"/>
                   <parameters name="wizardMessage" value="Select Constraints to show."/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != null)">
                   <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
                   </subModelOperations>
