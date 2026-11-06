@@ -19,24 +19,15 @@ import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.equinox.app.IApplicationContext;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.polarsys.capella.core.commandline.core.CommandLineException;
-import org.polarsys.capella.core.commandline.core.DefaultCommandLine;
 import org.polarsys.capella.core.data.migration.MigrationConstants;
 import org.polarsys.capella.core.data.migration.MigrationHelpers;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.sirius.ui.handlers.RefreshDiagramsCommandHandler;
-import org.polarsys.capella.core.sirius.ui.helper.ResourceHelper;
+import org.polarsys.capella.core.sirius.ui.commandline.RefreshAirdCommandLine;
 
 /**
  * Bash Command to migrate one or many Capella models.
@@ -46,47 +37,27 @@ import org.polarsys.capella.core.sirius.ui.helper.ResourceHelper;
  * &lt;Capella Installation Path&gt;/capellac.exe -nosplash
  *   -application org.polarsys.capella.core.commandline.core
  *   -appid org.polarsys.capella.migration
- *   -import D:/model/sysmodel
+ *   -importAll D:/model/sysmodel
  *   -input /all
- *   -exportTarget D:/tmp
  * </pre>
  */
-public class MigrationCommandLine extends DefaultCommandLine {
+public class MigrationCommandLine extends RefreshAirdCommandLine {
 
-  private Display display;
-  private CommandLineException failure = null;
-  
-    @Override
-  public boolean execute(IApplicationContext context) throws CommandLineException {
-    display = PlatformUI.createDisplay();
-
-    PlatformUI.createAndRunWorkbench(display, new WorkbenchAdvisor() {
-      @Override
-      public String getInitialWindowPerspectiveId() {
-        return null;
-      }
-
-      @Override
-      public void postStartup() {
-        try {
-          migrateInputProjects(display.getActiveShell());
-        } catch (CommandLineException cle) {
-          failure = cle;
-        } finally {
-          PlatformUI.getWorkbench().close();
-        }
-      }
-    });
-
-    return true;
+  public MigrationCommandLine() {
+    super();
   }
 
   @Override
-  public void postExecute(IApplicationContext context) throws CommandLineException {
-    if (failure != null) {
-      throw failure;
+  protected IStatus executeWithinWorkbench() {
+    try {
+      migrateInputProjects(Display.getCurrent().getActiveShell());
+    } catch (CommandLineException e) {
+      logger.error(e.getMessage(), e);
     }
-    super.postExecute(context);
+    if (argHelper.isRefreshRepresentations()) {
+      super.executeWithinWorkbench();
+    }
+    return Status.OK_STATUS;
   }
   
   /**
@@ -119,35 +90,7 @@ public class MigrationCommandLine extends DefaultCommandLine {
     for (IProject project : new MigrationOrchestration(capellaProjects).getSequence()) {
        MigrationHelpers.getInstance().trigger(project, shell, true/*in job*/, true/*no confirmation*/, 
            backup, false, MigrationConstants.DEFAULT_KIND_ORDER);
-     
-      if (refreshViews) {
-        refreshRepresentations(project);
-      }
     }
-  }
-
-  private void refreshRepresentations(IProject project) {
-    var airds = ResourceHelper.getAirdFilesToOpen(project);
-    if (airds.isEmpty()) {
-      logError("No representation file for " + project.getName()); //$NON-NLS-1$
-      return;
-    }
-    // Note: Capella SessionHelper only provides opened session.
-    // After migration, session is closed.
-    // OpenSessionAction is not used because there is no need to open editors.
-    var airdUri = URI.createPlatformResourceURI(airds.iterator().next().getFullPath().toString(), true);
-    Session session = SessionManager.INSTANCE.getSession(airdUri, new NullProgressMonitor());
-    var representations = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
-    
-    Job job = new RefreshDiagramsCommandHandler().new RefreshDiagramsJob(representations, session, Display.getDefault());
-    job.setUser(false);
-    job.schedule();
-    try {
-      job.join();
-    } catch (InterruptedException e) {
-      logError("Error while refreshing " + project.getName()); //$NON-NLS-1$
-    }
-    session.save(new NullProgressMonitor());
   }
   
   @Override
