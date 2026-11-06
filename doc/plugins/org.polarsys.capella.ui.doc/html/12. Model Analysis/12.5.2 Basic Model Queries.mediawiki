@@ -1,4 +1,4 @@
-= Aql queries =
+= AQL queries =
 
 == Basic Model Queries ==
 
@@ -88,7 +88,7 @@
 | aql: self.getAllDAnalysis().'''ownedViews.ownedRepresentationDescriptors.representation.diagramElements->size()'''
 
 |-
-| Number of graphical elements in all diagrams (including technical elements like style, color…)
+| Number of graphical elements in all diagrams (including technical elements like style, colorâ€¦)
 | A diagram
 | aql: self.getAllDAnalysis().'''ownedViews.ownedRepresentationDescriptors.representation.eAllContents()->size()'''
 |}
