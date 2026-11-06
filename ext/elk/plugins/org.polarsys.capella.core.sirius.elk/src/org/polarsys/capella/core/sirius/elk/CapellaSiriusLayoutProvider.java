@@ -114,7 +114,7 @@ public class CapellaSiriusLayoutProvider extends GenericLayoutProvider {
                 // * and the above space between 2 edges
                 .addDoubleOption(CoreOptions.SPACING_PORT_PORT, TARGET_PARENT, 13)
                 // Balance the distribution of nodes provide centered regular distribution.
-                .addEnumOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, TARGET_PARENT, FixedAlignment.RIGHTDOWN)
+                .addEnumOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, TARGET_PARENT, FixedAlignment.BALANCED)
                 // Change the direction of the layout
                 .addEnumOption(CoreOptions.DIRECTION, TARGET_PARENT, horizontal ? Direction.RIGHT : Direction.DOWN)
                 // Reduce the space between a label and its edge to 0 pixel (default value is 2)
@@ -129,6 +129,9 @@ public class CapellaSiriusLayoutProvider extends GenericLayoutProvider {
                 .addEnumOption(CoreOptions.EDGE_ROUTING, TARGET_PARENT, EdgeRouting.ORTHOGONAL)
                 // Force the labels of the edge to be below their edge.
                 .addEnumOption(LayeredOptions.EDGE_LABELS_SIDE_SELECTION, TARGET_PARENT, EdgeLabelSideSelection.ALWAYS_DOWN)
+                // Disabled: LayeredOptions.MERGE_EDGES groups ends of edges:
+                // On diagram with limited number of edges, it is cleaner;
+                // but when edge have different styles or end styles, it is confusing.
                 .getConfiguration();
     }
 
