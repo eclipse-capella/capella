@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -17,7 +17,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Field;
 import java.time.Year;
 import java.util.Properties;
 
@@ -25,9 +24,6 @@ import org.eclipse.core.commands.operations.IUndoContext;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.internal.jobs.JobManager;
 import org.eclipse.core.internal.jobs.JobMessages;
-import org.eclipse.core.internal.registry.ExtensionRegistry;
-import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProduct;
 import org.eclipse.core.runtime.IStatus;
@@ -142,9 +138,6 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
 
     DelegateWorkbenchAdvisor.INSTANCE.callPreStartup();
 
-    // Remove all acceleo UI elements from capella( remove all extensions from extensionRegistry).
-    removeAllAcceleoIntroExtensionPoints();
-
     // Call UsageMonitoringLogger.getInstance() to trigger the activation of plug-in
     // org.polarsys.capella.common.tools.report.appenders.usage so that default preferences will be initialized by the
     // org.polarsys.capella.common.tools.report.appenders.usage.preferences.PreferencesInitializer
@@ -220,41 +213,6 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
   public boolean preShutdown() {
     DelegateWorkbenchAdvisor.INSTANCE.callPreShutdown();
     return super.preShutdown();
-  }
-
-  /**
-   * remove all acceleo UI elements from capella <br>
-   * remove all acceleo extensions from Capella extensionRegistry</br>
-   * .
-   */
-  private void removeAllAcceleoIntroExtensionPoints() {
-    Field privateStringField;
-    try {
-      privateStringField = ExtensionRegistry.class.getDeclaredField("masterToken"); //$NON-NLS-1$
-      privateStringField.setAccessible(true);
-      Object masterToken = privateStringField.get(Platform.getExtensionRegistry());
-      // Reads the External Datatype Providers
-      IExtensionPoint extensionPoint = Platform.getExtensionRegistry()
-          .getExtensionPoint("org.eclipse.ui.intro.configExtension"); //$NON-NLS-1$
-      IConfigurationElement[] extensionPointArray = extensionPoint.getConfigurationElements();
-      for (IConfigurationElement element : extensionPointArray) {
-        if ((element.getNamespaceIdentifier() != null)
-            && element.getNamespaceIdentifier().equals("org.eclipse.acceleo.ide.ui")) { //$NON-NLS-1$
-          if (element.getAttribute("configId").equals("org.eclipse.ui.intro.universalConfig")) { //$NON-NLS-1$ //$NON-NLS-2$
-            Platform.getExtensionRegistry().removeExtension(element.getDeclaringExtension(), masterToken);
-            break;
-          }
-        }
-      }
-    } catch (SecurityException e) {
-      e.printStackTrace();
-    } catch (NoSuchFieldException e) {
-      e.printStackTrace();
-    } catch (IllegalArgumentException e) {
-      e.printStackTrace();
-    } catch (IllegalAccessException e) {
-      e.printStackTrace();
-    }
   }
 
   /**
