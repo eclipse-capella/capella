@@ -30,7 +30,7 @@ The core mechanism provides the following parameters:
 |-
 |importAll
 |optional
-|defines a folder containing Eclipse Projects. The Eclipse Projects can be as folder with a ''.project'' file or in a ZIP file.
+|specifies an absolute path to a folder containing Eclipse projects, either as directories with a .project file or as ZIP archives containing multiple project directories, each with its own .project file. Projects stored as directories are migrated in place. ZIP archives are extracted into the workspace, where the extracted projects are then migrated..
 |-
 |forceimport
 |optional
