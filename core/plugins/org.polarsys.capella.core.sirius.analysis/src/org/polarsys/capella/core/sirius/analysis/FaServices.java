@@ -16,7 +16,6 @@ import static org.polarsys.capella.common.helpers.cache.ModelCache.getCache;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -26,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.function.BooleanSupplier;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
@@ -85,6 +85,7 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalLinkEnd;
+import org.polarsys.capella.core.data.cs.PhysicalPath;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
@@ -171,6 +172,7 @@ import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
  */
 public class FaServices {
 
+  private static final String FAKE_EMPTY_LABEL = Character.toString(ICommonConstants.POINT_CHARACTER);
   private static FaServices singleton = null;
 
   public static FaServices getFaServices() {
@@ -5105,34 +5107,53 @@ public class FaServices {
     return centerLabel;
   }
 
+  /**
+   * Returns the label for {@link PhysicalLink} when {@link PhysicalPath} are shown.
+   * 
+   * @param exchange displayed element
+   * @param view displayed edge
+   * @param diagram computed diagram
+   * @return labels of chains for this exchange
+   */
   public String getOverlappedPhysicalPathsLabel(EObject exchange, EObject view, DDiagram diagram) {
-    if (exchange instanceof PhysicalLink && view instanceof DEdge) {
-      DEdge edge = (DEdge) view;
-      String oldLabel = edge.getBeginLabel();
-      // Label calculation is called when the cache is not ready (outside of the refresh), return the old label
-      if (DEdgeIconCache.getInstance().getLabel(edge) == null) {
-        return oldLabel;
-      }
-      if (isHideOverlappedPhysicalPathsLabelEnable(exchange, diagram)) {
-        return Character.toString(ICommonConstants.POINT_CHARACTER);
-      }
-      return DEdgeIconCache.getInstance().getLabel(edge);
-    }
-    return ICommonConstants.EMPTY_STRING;
+    return getOverlappedLabel(view, PhysicalLink.class,
+        () -> isHideOverlappedPhysicalPathsLabelEnable(exchange, diagram),
+        () -> isHideOverlappedPhysicalPathsIconEnable(exchange, diagram));
   }
   
+  /**
+   * Returns the label for {@link FunctionalExchange} when {@link FunctionalChain} are shown.
+   * 
+   * @param exchange displayed element
+   * @param view displayed edge
+   * @param diagram computed diagram
+   * @return labels of chains for this exchange
+   */
   public String getOverlappedFunctionalChainsLabel(EObject exchange, EObject view, DDiagram diagram) {
-    if (exchange instanceof FunctionalExchange && view instanceof DEdge) {
-      DEdge edge = (DEdge) view;
-      String oldLabel = edge.getBeginLabel();
-      // Label calculation is called when the cache is not ready (outside of the refresh), return the old label
-      if (DEdgeIconCache.getInstance().getLabel(edge) == null) {
-        return oldLabel;
+    return getOverlappedLabel(view, FunctionalExchange.class,
+        () -> isHideOverlappedFunctionalChainsLabelEnable(exchange, diagram),
+        () -> isHideOverlappedFunctionalChainsIconEnable(exchange, diagram));
+  }
+  
+  private String getOverlappedLabel(EObject view, Class<?> targetType, BooleanSupplier hideLabels, BooleanSupplier hideIcons) {
+    if (view instanceof DEdge edge && targetType.isInstance(edge.getTarget())) {
+      String edgeEndLabel = DEdgeIconCache.getInstance().getLabel(edge);
+      
+      // Label calculation is called when the cache is not ready (outside of the refresh)
+      if (edgeEndLabel == null) { // Use the old label
+        return edge.getBeginLabel();
       }
-      if (isHideOverlappedFunctionalChainsLabelEnable(exchange, diagram)) {
-        return Character.toString(ICommonConstants.POINT_CHARACTER);
+      if (!hideLabels.getAsBoolean()) { // Must show label
+        // If label is empty, there is no icon.
+        return edgeEndLabel;
       }
-      return DEdgeIconCache.getInstance().getLabel(edge);
+      
+      if (!edgeEndLabel.isBlank()  // only if there is something to show
+          && !hideIcons.getAsBoolean()) {
+        // If we return a blank text, Sirius won't display icon.
+        // The point is used as a placeholder, it is barely visible.
+        return FAKE_EMPTY_LABEL;
+      }
     }
     return ICommonConstants.EMPTY_STRING;
   }
