@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -58,19 +58,16 @@ public class SelectElementFromListWizard extends AbstractExternalJavaAction {
             multiple,
             null, viewerExpandLevel);
 
-    Object result = WIZARD_CANCELED;
-    if (Window.OK == selectionDialog.open()) {
-      List<? extends EObject> selectedElements = selectionDialog.getResult();
-      result = selectedElements;
-      if (!multiple && !selectedElements.isEmpty()) {
-        // Mono selection case.
-        result = selectedElements.get(0);
-      }
-    }
-    if (result.equals(WIZARD_CANCELED)) {
-      throw  new OperationCanceledException();
-    }
-    return result;
+	if (Window.OK != selectionDialog.open()) {
+		throw new OperationCanceledException();
+	}
+	List<? extends EObject> selectedElements = selectionDialog.getResult();
+	Object result = selectedElements;
+	if (!multiple && !selectedElements.isEmpty()) {
+		// Mono selection case.
+		result = selectedElements.get(0);
+	}
+	return result;
   }
 
   @SuppressWarnings("rawtypes")

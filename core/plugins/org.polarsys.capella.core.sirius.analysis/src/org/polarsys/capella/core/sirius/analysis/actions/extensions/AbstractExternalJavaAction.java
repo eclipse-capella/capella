@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -52,10 +52,6 @@ public abstract class AbstractExternalJavaAction implements IExternalJavaAction 
    * Initial Selection tag.
    */
   protected static final String INITIAL_SELECTION = "initialSelection"; //$NON-NLS-1$
-  /**
-   * Wizard Canceled tag.
-   */
-  protected static final String WIZARD_CANCELED = "WIZARD_CANCELED"; //$NON-NLS-1$
   /**
    * Graphical Context tag.
    */

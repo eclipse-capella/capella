@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -45,15 +45,12 @@ public class RemoveInstanceRoles implements IExternalJavaAction {
    */
   @SuppressWarnings("unchecked")
   public void execute(Collection<? extends EObject> selections_p, Map<String, Object> parameters_p) {
-    if (parameters_p.get(RESULT) instanceof String) {
+    if (parameters_p.get(RESULT) == null) {
       return; // canceled
     }
     List<EObject> result = (List<EObject>) parameters_p.get(RESULT);
     List<EObject> current = (List<EObject>) parameters_p.get(CURRENT);
 
-    if (result == null) {
-      result = new ArrayList<EObject>();
-    }
     if (current == null) {
       current = new ArrayList<EObject>();
     }
