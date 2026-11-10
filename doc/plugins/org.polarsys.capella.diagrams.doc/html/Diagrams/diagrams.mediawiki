@@ -13,8 +13,36 @@ This section lists tools that are available on all Capella diagrams. These tools
 | 		Allocate a Source Constraint to an available Target Capella Element.
 |-
 | 	Constraints
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| [[Image:Images/icons/full/obj16/ShowHide.gif]]
 | 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|-
+| 	Property Value Group
+| [[Image:Images/icons/full/obj16/PropertyValueGroup.gif]]
+| 		Creates a Property Value Group in targeted element.
+|-
+| 	String Property Value
+| [[Image:Images/icons/full/obj16/StringPropertyValue.gif]]
+| 		Creates a String Property Value in targeted element.
+|-
+| 	Boolean Property Value
+| [[Image:Images/icons/full/obj16/BooleanPropertyValue.gif]]
+| 		Creates a Boolean Property Value in targeted element.
+|-
+| 	Enumeration Property Value
+| [[Image:Images/icons/full/obj16/EnumerationPropertyValue.gif]]
+| 		Creates a Enumeration Property Value in targeted element.
+|-
+| 	Integer Property Value
+| [[Image:Images/icons/full/obj16/IntegerPropertyValue.gif]]
+| 		Creates an Integer Property Value in targeted element.
+|-
+| 	Float Property Value
+| [[Image:Images/icons/full/obj16/FloatPropertyValue.gif]]
+| 		Creates a Float Property Value in selected element.
+|-
+| 	Apply Property Value/Group
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]]
+| 		Apply a Source Property Value/Group to a displayed Capella Element.
 |-
 | 	Applied Property Values
 | [[Image:Images/icons/full/obj16/ShowHide.gif]]

@@ -20,7 +20,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -35,6 +34,7 @@ import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -106,6 +106,7 @@ import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesPro
 import org.polarsys.capella.core.commands.preferences.initializers.CapellaDiagramPreferencesInitializer;
 import org.polarsys.capella.core.commands.preferences.preferences.CapellaDiagramPreferences;
 import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
+import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Classifier;
@@ -115,6 +116,8 @@ import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.Generalization;
 import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
+import org.polarsys.capella.core.data.capellacore.Namespace;
+import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
@@ -892,7 +895,7 @@ public class CapellaServices {
    * 
    * @param context
    *          the context.
-   * @param type
+   * @param eclass
    *          the type.
    * @return the first ancestor of the given type.
    */
@@ -902,6 +905,25 @@ public class CapellaServices {
       current = current.eContainer();
     }
     return current;
+  }
+
+  /**
+   * Gets the first ancestor of the given type.
+   * 
+   * @param context
+   *          the context.
+   * @param type
+   *          the type.
+   * @return the first ancestor of the given type.
+   */
+  @SuppressWarnings("unchecked")
+  public static <T extends EObject> T getAncestor(final EObject context, java.lang.Class<T> type) {
+    for(EObject current = context.eContainer(); current != null; current = current.eContainer()) {
+      if (type.isInstance(current)) {
+        return (T) current;
+      }
+    }
+    return null;
   }
 
   public List<BlockArchitecture> getAvailableArchitectures(final EObject context) {
@@ -3131,4 +3153,34 @@ public class CapellaServices {
     }
     return !targetModel.equals(srcModel);
   }
+
+  /**
+   * Returns possible container for a new {@link AbstractPropertyValue} or {@link PropertyValueGroup}
+   * for selected view.
+   * 
+   * @param targetView
+   *          view to add a PV element in
+   * @return the container candidate
+   */
+  public static EObject getPropertyValueOwnerCandidate(DSemanticDecorator targetView) {
+    EObject parentView = targetView.eContainer();
+
+    // Special case is the view element is in a PV Group.
+    if (parentView instanceof DSemanticDecorator) {
+      EObject ownerView = ((DSemanticDecorator) parentView).getTarget();
+      if (ownerView instanceof PropertyValueGroup) {
+        return ownerView;
+      }
+    }
+    EObject target = targetView.getTarget();
+
+    if (target instanceof Part) {
+      AbstractType type = ((Part) target).getAbstractType();
+      if (type != null) {
+        return type;
+      }
+    }
+    return target;
+  }
+
 }
