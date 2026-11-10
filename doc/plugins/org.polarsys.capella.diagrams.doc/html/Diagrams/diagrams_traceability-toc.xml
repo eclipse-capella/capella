@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<toc label="diagrams traceability" link_to="PLUGINS_ROOT/org.polarsys.capella.diagrams.doc/toc.xml#contribution" topic="html/Diagrams/diagrams.html">
+	<topic label="Tracability" href="html/Diagrams/diagrams_traceability.html#" >
+		<topic label="Tracability" href="html/Diagrams/diagrams_traceability.html#Traceability_Diagram" >
+			<topic href="html/Diagrams/diagrams.html#Sample" label="Sample"/>
+		</topic>
+		<topic label="Tracability" href="html/Diagrams/diagrams_traceability.html#Traceability_Hierarchical_Diagram" >
+			<topic href="html/Diagrams/diagrams.html#Sample_2" label="Sample" />
+		</topic>
+	</topic>
+<toc/>
