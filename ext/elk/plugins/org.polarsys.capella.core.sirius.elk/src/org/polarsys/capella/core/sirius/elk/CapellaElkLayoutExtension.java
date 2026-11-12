@@ -40,24 +40,22 @@ import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.SY
 import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.MSM_PSEUDOSTATE_MAPPING_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.MS_INNER_PSEUDOSTATE_MAPPING_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.MS_PSEUDOSTATE_MAPPING_NAME;
-import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.PAB_COMPONENT_PORT_MAPPING_NAME;
-import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.PAB_FUNCTION_PORT_ALLOCATION_MAPPING_NAME;
-import static org.polarsys.capella.core.sirius.analysis.IMappingNameConstants.PAB_FUNCTION_PORT_MAPPING_NAME;
 
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 import org.eclipse.elk.alg.layered.options.LayerConstraint;
 import org.eclipse.elk.alg.layered.options.LayeredOptions;
 import org.eclipse.elk.core.math.ElkMargin;
 import org.eclipse.elk.core.options.CoreOptions;
+import org.eclipse.elk.core.options.Direction;
 import org.eclipse.elk.core.options.NodeLabelPlacement;
 import org.eclipse.elk.core.options.PortSide;
 import org.eclipse.elk.core.options.SizeConstraint;
 import org.eclipse.elk.graph.ElkNode;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.InitialPseudoState;
@@ -70,6 +68,7 @@ import org.polarsys.capella.core.data.fa.FunctionKind;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
+import org.polarsys.capella.core.data.information.PortAllocation;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 
 /**
@@ -115,6 +114,13 @@ public class CapellaElkLayoutExtension extends AbstractElkLayoutExtension {
             FUNCTIONAL_CHAIN_DIAGRAM_NAME
             );
 
+    private static final List<String> DIAGRAMS_CONTAINING_PORTALLOCATIONS = List.of(
+            // Match diagrams using createABPortAllocation to create edge.
+            SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME,
+            LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME,
+            PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME
+            );
+
     private static final List<String> CAPABILITIES_DIAGRAMS = List.of(
             // Kind is ignored for OA.
             OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME,
@@ -154,7 +160,6 @@ public class CapellaElkLayoutExtension extends AbstractElkLayoutExtension {
         CAPELLA_RULES.addNodeRule(applyOn(BLANK_DIAGRAMS_CONTAINING_FUNCTIONS), (node, ext) -> {
             // Hint for improvement:
             // To align all FunctionalChainEnd, they could be grouped in virtual node.
-          
             var mapping = ext.getElementMapping(node);
             if (mapping != null && mapping.getName().endsWith("_FunctionalChainEnd")) { //$NON-NLS-1$
                 node.setProperty(CoreOptions.NODE_SIZE_CONSTRAINTS, SizeConstraint.fixed());
@@ -164,14 +169,14 @@ public class CapellaElkLayoutExtension extends AbstractElkLayoutExtension {
                     node.getLabels().get(0).setProperty(CoreOptions.NODE_LABELS_PLACEMENT, OUTSIDE_EAST);
                 }
             }
-
+            
             EObject target = ext.getSemanticElement(node);
             if (isSpecialKindFunction(target)) {
                 // inspired from sizeComputationExpression
                 setMinimumSize(node, 40, 40);
             }
         });
-        
+                
         CAPELLA_RULES.addNodeRule(applyOn(CAPABILITIES_DIAGRAMS), (node, ext) -> {
             if (ext.getDiagramElement(node) instanceof DNode) {
                 var semantic = ext.getSemanticElement(node);
@@ -191,37 +196,32 @@ public class CapellaElkLayoutExtension extends AbstractElkLayoutExtension {
             });
         });
         
-        CAPELLA_RULES.addEdgeRule(applyOn(List.of(PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)), (edge, ext) -> {
-            // Reverse direction of "Port Allocation" edges
-            if (ext.getElementMapping(edge).getName().equals(PAB_FUNCTION_PORT_ALLOCATION_MAPPING_NAME)) {
+        CAPELLA_RULES.addEdgeRule(applyOn(DIAGRAMS_CONTAINING_PORTALLOCATIONS), (edge, ext) -> {
+            // Improvement:
+            // rule may not matter as sides are forced on ports that connect the ends.
+            if (ext.getSemanticElement(edge) instanceof PortAllocation allocation // allocation is not a flow
+                    && shouldReverseAllocationEdge(allocation)) {
                 ext.flipEdge(edge);
             }
-        });
-        
-        CAPELLA_RULES.addPortRule(applyOn(List.of(PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)), (port, ext) -> {
-            // Set fixed side for Input Port, Output Port and Component Port
-            if (ext.getElementMapping(port).getName().equals(PAB_FUNCTION_PORT_MAPPING_NAME)) {
-                DDiagramElement dde = ext.getDiagramElement(port);
-                if (dde.getTarget() instanceof FunctionInputPort) {
-                    forceSide(port, PortSide.WEST);
-                } else if (dde.getTarget() instanceof FunctionOutputPort) {
-                    forceSide(port, PortSide.EAST);
+          });
+          
+        // Force Side of Ports in layered Diagram.
+        Map.<Predicate<Direction>, List<PortSide>> of( // Rules: Axis, incoming, outgoing
+                Direction::isHorizontal, List.of(PortSide.WEST, PortSide.EAST), // For X layout
+                Direction::isVertical, List.of(PortSide.NORTH, PortSide.SOUTH) // For Y layout
+        ).forEach((axis, sides) -> {
+            Predicate<AbstractElkLayoutExtension> diagramAxis = ext -> {
+                var dir = ext.getLayoutMapping().getLayoutGraph().getProperty(CoreOptions.DIRECTION);
+                return axis.test(dir);
+            };
+
+            CAPELLA_RULES.addPortRule(applyOn(BLANK_DIAGRAMS_CONTAINING_FUNCTIONS).and(diagramAxis), (port, ext) -> {
+                int side = getPortSide(ext.getSemanticElement(port));
+                if (side != 0) {
+                    // Sides depends of direction
+                    forceSide(port, sides.get(side < 0 ? 0 : 1));
                 }
-            }
-        });
-        
-        CAPELLA_RULES.addPortRule(applyOn(List.of(PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)), (port, ext) -> {
-            // Set fixed side for Input Port, Output Port and Component Port
-            if (ext.getElementMapping(port).getName().equals(PAB_COMPONENT_PORT_MAPPING_NAME)) {
-                DDiagramElement dde = ext.getDiagramElement(port);
-                if (dde.getTarget() instanceof ComponentPort componentPort) {
-                    if (componentPort.getOrientation() == OrientationPortKind.IN) {
-                        forceSide(port, PortSide.WEST);
-                    } else if (componentPort.getOrientation() == OrientationPortKind.OUT) {
-                        forceSide(port, PortSide.EAST);
-                    }
-                }
-            }
+            });
         });
     }
 
@@ -251,6 +251,35 @@ public class CapellaElkLayoutExtension extends AbstractElkLayoutExtension {
             target = involvedElement;
         }
         return target instanceof AbstractFunction function && function.getKind() != FunctionKind.FUNCTION;
+    }
+
+    static boolean shouldReverseAllocationEdge(PortAllocation allocation) {
+        int sourceSide = getPortSide(allocation.getSourceElement()); // Component Port
+        int targetSide = getPortSide(allocation.getTargetElement()); // Function Port
+        // CP FP Should Reverse
+        // -------------
+        // -1 -1 no
+        // +1 -1 (unaligned) no
+        // -1 +1 (unaligned) no
+        // +1 +1 yes
+        return  0 < targetSide // inner port => should be before
+                && 0 < sourceSide; // outer port => should be after
+    }
+
+    static int getPortSide(EObject target) {
+        int side = 0; // no special side
+        if (target instanceof FunctionInputPort) {
+            side = -1;
+        } else if (target instanceof FunctionOutputPort) {
+            side = 1;
+        } else if (target instanceof ComponentPort componentPort) {
+            if (componentPort.getOrientation() == OrientationPortKind.IN) {
+                side = -1;
+            } else if (componentPort.getOrientation() == OrientationPortKind.OUT) {
+                side = 1;
+            }
+        }
+        return side;
     }
 
 }
