@@ -1,0 +1,152 @@
+graph _OAIB__Root_Operational_Activity_graph
+layout [ size: 748, 128 ]
+hierarchyHandling: INCLUDE_CHILDREN
+nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+algorithm: org.eclipse.elk.layered
+spacing.edgeNodeBetweenLayers: 20
+nodePlacement.bk.fixedAlignment: BALANCED
+spacing.edgeEdge: 5
+edgeRouting: ORTHOGONAL
+edgeLabels.sideSelection: ALWAYS_DOWN
+spacing.portPort: 13
+elk.direction: RIGHT
+spacing.edgeLabel: 0
+noLayout: true
+node OperationalActivity_2_2 {
+	layout [
+		position: 20, 45
+		size: 146, 66
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(148.0,68.0)"
+	label L10: "OperationalActivity 2_2" {
+		layout [
+			position: 11, 5
+			size: 125, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
+	}
+}
+node OperationalActivity_2_3 {
+	layout [
+		position: 598, 45
+		size: 146, 66
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(148.0,68.0)"
+	label L11: "OperationalActivity 2_3" {
+		layout [
+			position: 11, 5
+			size: 125, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
+	}
+}
+node OperationalActivity_3 {
+	layout [
+		position: 309, 20
+		size: 146, 66
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(148.0,68.0)"
+	label L12: "OperationalActivity 3" {
+		layout [
+			position: 16, 5
+			size: 115, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
+	}
+}
+edge E1: OperationalActivity_2_3 -> OperationalActivity_2_2 {
+	layout [
+		section ES1 [
+			start: 598, 92
+			end: 168, 92
+			bends: 576, 92 | 576, 108 | 190, 108 | 190, 92
+		]
+	]
+	label L1: "O Interaction 1" {
+		layout [
+			position: 343, 109
+			size: 77, 16
+		]
+		edgeLabels.placement: CENTER
+	}
+	label L2: "." {
+		layout [
+			position: 596, 93
+			size: 2, 14
+		]
+		edgeLabels.placement: TAIL
+	}
+	label L3: "." {
+		layout [
+			position: 167, 93
+			size: 2, 14
+		]
+		edgeLabels.placement: HEAD
+	}
+}
+edge E2: OperationalActivity_3 -> OperationalActivity_2_3 {
+	layout [
+		section ES2 [
+			start: 457, 57
+			end: 598, 72
+			bends: 576, 57 | 576, 72
+		]
+	]
+	label L4: "O Interaction 2" {
+		layout [
+			position: 479, 58
+			size: 77, 16
+		]
+		edgeLabels.placement: CENTER
+	}
+	label L5: "." {
+		layout [
+			position: 457, 58
+			size: 2, 14
+		]
+		edgeLabels.placement: TAIL
+	}
+	label L6: "." {
+		layout [
+			position: 596, 73
+			size: 2, 14
+		]
+		edgeLabels.placement: HEAD
+	}
+}
+edge E3: OperationalActivity_2_2 -> OperationalActivity_3 {
+	layout [
+		section ES3 [
+			start: 168, 72
+			end: 309, 57
+			bends: 190, 72 | 190, 57
+		]
+	]
+	label L7: "O Interaction 1" {
+		layout [
+			position: 211, 58
+			size: 77, 16
+		]
+		edgeLabels.placement: CENTER
+	}
+	label L8: "." {
+		layout [
+			position: 168, 73
+			size: 2, 14
+		]
+		edgeLabels.placement: TAIL
+	}
+	label L9: "." {
+		layout [
+			position: 307, 58
+			size: 2, 14
+		]
+		edgeLabels.placement: HEAD
+	}
+}
