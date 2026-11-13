@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -18,10 +18,6 @@ environment JavaSE-21
 
 // Make sure that GMF, GEF below are consistent with the GMF used by Sirius
 // include "https://download.eclipse.org/sirius/updates/stable/7.2.0-S2023xxxx-xxxxxx/2023-03/targets/modules/gmf-runtime-1.15.tpd"
-
-location GMF-Notation-1.13.1 "https://download.eclipse.org/modeling/gmp/gmf-notation/updates/releases/R202211151334" {
-	org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
-}
 
 location GMF-Runtime-1.16.8 "https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202512020858/" {
 	org.eclipse.gmf.runtime.sdk.feature.group lazy
@@ -53,6 +49,9 @@ location Eclipse-2025-09 "https://download.eclipse.org/releases/2025-09/" {
 	org.eclipse.egit.source.feature.group lazy
 	org.eclipse.xtext.xbase.lib.feature.group lazy
 	org.eclipse.osgi.services lazy
+	
+	// Keep the same version as in Sirius.
+	org.eclipse.gmf.runtime.notation.sdk.feature.group [1.13.1.202211151334,1.13.1.202211151334]
 	
 	// Keep JUnit aligned with Eclipse 2025-09.
 	junit-jupiter-api [5.13.4,5.13.4]
