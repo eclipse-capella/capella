@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -27,6 +27,7 @@ import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MSDiagramTo
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MSMDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.OEBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.SFDBDiagramToolsTestSuite;
+import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.TraceDiagramToolsTestSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -59,6 +60,7 @@ public class DiagramToolsStep1TestSuite extends BasicTestSuite {
     tests.add(new CCRIDiagramToolsTestSuite());
     tests.add(new OEBDiagramToolsTestSuite());
     tests.add(new IDDiagramToolsTestSuite());
+    tests.add(new TraceDiagramToolsTestSuite());
     return tests;
   }
 

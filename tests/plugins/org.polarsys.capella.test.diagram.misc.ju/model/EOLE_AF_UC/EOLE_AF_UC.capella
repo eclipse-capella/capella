@@ -91,7 +91,25 @@
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
               id="45add720-7d3d-45ce-8259-c7b6f94d1103" name="Make Meteorological Data Evolve"/>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
-              id="2e282671-3d1e-4082-ab8f-dd9d645f1f49" name="Capture Meteorological Data"/>
+              id="2e282671-3d1e-4082-ab8f-dd9d645f1f49" name="Capture Meteorological Data"
+              appliedPropertyValues="#7ac99ba1-8536-4071-8a47-d64898b9f207" appliedPropertyValueGroups="#c536dd0e-4a37-4ebf-8740-c9ac1b24f57c">
+            <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
+                id="d5abd7ca-d316-44c7-8ed6-c5fc408f4b52" name="capture_performance"
+                constrainedElements="#2e282671-3d1e-4082-ab8f-dd9d645f1f49">
+              <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:OpaqueExpression"
+                  id="a2026275-4891-4dfd-b3fa-abe824d440b6">
+                <bodies></bodies>
+                <languages>capella:linkedText</languages>
+              </ownedSpecification>
+            </ownedConstraints>
+            <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:StringPropertyValue"
+                id="7ac99ba1-8536-4071-8a47-d64898b9f207" name="ao_rule" value="Some detail"/>
+            <ownedPropertyValueGroups xsi:type="org.polarsys.capella.core.data.capellacore:PropertyValueGroup"
+                id="c536dd0e-4a37-4ebf-8740-c9ac1b24f57c" name="ao_parameters">
+              <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:IntegerPropertyValue"
+                  id="079d39ea-65aa-494d-af88-9210dd909e2a" name="ao_size"/>
+            </ownedPropertyValueGroups>
+          </ownedFunctions>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="f5c08ed3-cf4f-473f-bbc3-989256298d35" name="Raw Meteorological Data"
               summary="" description="" target="#2e282671-3d1e-4082-ab8f-dd9d645f1f49"
@@ -511,7 +529,24 @@
                 id="a1d40273-bbf8-44f7-983a-54e2b0e1859e" involved="#a3de9871-ba71-456c-b851-b0aa556712d1"/>
           </ownedFunctionalChains>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-              id="1241141f-0321-402c-b3a4-49557b59ef75" name="Capture Meteorological Data">
+              id="1241141f-0321-402c-b3a4-49557b59ef75" name="Capture Meteorological Data"
+              appliedPropertyValues="#dec063f2-46ca-4d6f-bc2a-8db6a293a5ee" appliedPropertyValueGroups="#a389583f-6c7d-4d5f-950e-fa8131eac652">
+            <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:StringPropertyValue"
+                id="dec063f2-46ca-4d6f-bc2a-8db6a293a5ee" name="sa_rule" value="Some detail"/>
+            <ownedPropertyValueGroups xsi:type="org.polarsys.capella.core.data.capellacore:PropertyValueGroup"
+                id="a389583f-6c7d-4d5f-950e-fa8131eac652" name="sa_parameters">
+              <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:IntegerPropertyValue"
+                  id="00cc7d3c-e52e-49af-a843-f3b58903737e" name="sa_size"/>
+              <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:GenericTrace"
+                  id="c85a6f39-0f16-478c-b02d-2c2fcf997685" targetElement="#d5abd7ca-d316-44c7-8ed6-c5fc408f4b52"
+                  sourceElement="#a389583f-6c7d-4d5f-950e-fa8131eac652"/>
+              <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:GenericTrace"
+                  id="1d71b655-94e0-48fc-97ce-0bb82db2aa97" targetElement="#7ac99ba1-8536-4071-8a47-d64898b9f207"
+                  sourceElement="#a389583f-6c7d-4d5f-950e-fa8131eac652"/>
+              <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:GenericTrace"
+                  id="cdd30458-d997-4a9f-a246-a9e0877d8093" targetElement="#c536dd0e-4a37-4ebf-8740-c9ac1b24f57c"
+                  sourceElement="#a389583f-6c7d-4d5f-950e-fa8131eac652"/>
+            </ownedPropertyValueGroups>
             <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
                 id="45024adb-baf5-493c-adac-96964d95b770" name="Capture Image">
               <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
@@ -1122,7 +1157,21 @@
                 id="c0bd2015-4633-4a74-9529-2ea3ed940de0" involved="#2dd201a8-d001-4abc-a608-c4db0e685f12"/>
           </ownedFunctionalChains>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
-              id="2596dd4c-49b1-4ed1-96e7-a883d088e9ee" name="Subscribe to Capture Campaigns">
+              id="2596dd4c-49b1-4ed1-96e7-a883d088e9ee" name="Subscribe to Capture Campaigns"
+              appliedPropertyValueGroups="#3a8d1cd5-9c74-40cb-bbf0-637a30e142d6">
+            <ownedPropertyValueGroups xsi:type="org.polarsys.capella.core.data.capellacore:PropertyValueGroup"
+                id="3a8d1cd5-9c74-40cb-bbf0-637a30e142d6" name="la_parameters">
+              <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyValue"
+                  id="ab9710e8-da89-40fb-a2e3-ce85403d7aca" name="la_type" type="#0d3be8bc-9456-4f58-bb97-fc2e9334a35a"
+                  value="#457c44df-7ffb-4052-a51c-4d7d7e13792f"/>
+              <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
+                  id="0d3be8bc-9456-4f58-bb97-fc2e9334a35a" name="EnumerationPropertyType 1">
+                <ownedLiterals xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyLiteral"
+                    id="28b9a231-8e65-4fb2-82b0-17090ac022c5" name="EnumerationPropertyLiteral 1"/>
+                <ownedLiterals xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyLiteral"
+                    id="457c44df-7ffb-4052-a51c-4d7d7e13792f" name="EnumerationPropertyLiteral 2"/>
+              </ownedEnumerationPropertyTypes>
+            </ownedPropertyValueGroups>
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="7cfb8835-1bc3-42e9-8e74-a19f6d3684c4" name="FIP1">
               <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
@@ -2044,7 +2093,33 @@
                 id="f34adcdd-faef-41a8-806c-bbb70c828295" involved="#fe23cb9d-6681-4b62-9d51-9c3a2905ff1c"/>
           </ownedFunctionalChains>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
-              id="fe23cb9d-6681-4b62-9d51-9c3a2905ff1c" name="Subscribe to Capture Campaigns">
+              id="fe23cb9d-6681-4b62-9d51-9c3a2905ff1c" name="Subscribe to Capture Campaigns"
+              appliedPropertyValues="#52816bb9-2a5d-454e-be01-94c888e62987" appliedPropertyValueGroups="#7a5c9b25-31aa-412a-a3ef-df5cb3a05959">
+            <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
+                id="416287f2-feec-45a7-bab2-1137a9c88c7e" name="pa_capture_performance"
+                constrainedElements="#fe23cb9d-6681-4b62-9d51-9c3a2905ff1c">
+              <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:OpaqueExpression"
+                  id="27ef5ed0-3e03-4b85-8001-be866ebda807">
+                <bodies></bodies>
+                <languages>capella:linkedText</languages>
+              </ownedSpecification>
+            </ownedConstraints>
+            <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:BooleanPropertyValue"
+                id="52816bb9-2a5d-454e-be01-94c888e62987" name="pa_active"/>
+            <ownedPropertyValueGroups xsi:type="org.polarsys.capella.core.data.capellacore:PropertyValueGroup"
+                id="7a5c9b25-31aa-412a-a3ef-df5cb3a05959" name="pa_parameters" appliedPropertyValueGroups="#53d290b6-1eb0-4037-97b2-61949ffe317d">
+              <ownedPropertyValueGroups xsi:type="org.polarsys.capella.core.data.capellacore:PropertyValueGroup"
+                  id="53d290b6-1eb0-4037-97b2-61949ffe317d" name="pa_size"/>
+              <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:GenericTrace"
+                  id="a31b7dc1-6dbe-46ad-a3ba-289af5552334" targetElement="#3a8d1cd5-9c74-40cb-bbf0-637a30e142d6"
+                  sourceElement="#7a5c9b25-31aa-412a-a3ef-df5cb3a05959"/>
+            </ownedPropertyValueGroups>
+            <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:GenericTrace"
+                id="698c18a0-6cf8-4b84-beab-628f2f2475e9" targetElement="#3a8d1cd5-9c74-40cb-bbf0-637a30e142d6"
+                sourceElement="#416287f2-feec-45a7-bab2-1137a9c88c7e"/>
+            <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:GenericTrace"
+                id="93a8cf75-361e-438f-b2a6-5511c6ebc7d7" targetElement="#dec063f2-46ca-4d6f-bc2a-8db6a293a5ee"
+                sourceElement="#52816bb9-2a5d-454e-be01-94c888e62987"/>
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="a6433006-1ae7-4678-a9f9-5b3df16e7381" name="FIP1">
               <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
