@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -56,7 +56,7 @@ public class ToolAndLabelCoherenceTest extends BasicTestCase {
             String toolIdentifier = elementIdentifier.getIdentifier(diagramDescription, element);
             String toolLabel = element.getLabel();
             if (toolLabel == null) {
-              errors.add(NLS.bind("Element {0} doesn't have a label.", element.getName()));
+              errors.add(NLS.bind("Element {0} doesn''t have a label.", element.getName()));
 
             } else {
               String[] tokens = toolLabel.split("%");
@@ -65,12 +65,12 @@ public class ToolAndLabelCoherenceTest extends BasicTestCase {
               } else {
                 String label = tokens[1];
                 if (!isCommonTool(element) && !label.equals(toolIdentifier)) {
-                  errors.add(NLS.bind("Element {0} doesn't use the correct label identifier. {1} instead of {2}",
+                  errors.add(NLS.bind("Element {0} doesn''t use the correct label identifier. {1} instead of {2}",
                       new String[] { viewpoint.getName() + "::" + element.getLabel(), label, toolIdentifier }));
                 }
                 if (!pluginProperties.containsKey(label)) {
-                  errors.add(NLS.bind("Element {0} doesn't use a label identifier defined in the properties file {1}.",
-                      new String[] { viewpoint.getName() + "::" + element.getLabel(), PLUGIN_PROPERTIES }));
+                  errors.add(NLS.bind("Element {0} doesn''t use a label identifier defined in the properties file {1}.",
+                      viewpoint.getName() + "::" + element.getLabel(), PLUGIN_PROPERTIES));
                 }
               }
             }
@@ -107,7 +107,7 @@ public class ToolAndLabelCoherenceTest extends BasicTestCase {
       propertyBundle = new PropertyResourceBundle(
           FileLocator.openStream(SiriusViewActivator.getInstance().getBundle(), new Path(PLUGIN_PROPERTIES), false));
     } catch (IOException e) {
-      fail(NLS.bind("Property file {0} doesn't exist.", new String[] { PLUGIN_PROPERTIES }));
+      fail(NLS.bind("Property file {0} doesn''t exist.", PLUGIN_PROPERTIES));
     }
     return propertyBundle;
   }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -27,7 +27,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.junit.Assert;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ODesignHelper;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.SiriusElementHelper;
@@ -37,12 +36,18 @@ import org.polarsys.capella.test.framework.helpers.SessionHelper;
 
 /**
  * Test suite about dirty state of diagram on opening.
+ * <p>
  * Open a diagram i.e its editor.
+ * </p>
  * choice about refresh included, could be really useful default behavior of this test kept via the default constructor.
  */
 public class CheckDiagramDirtyStateOnOpeningTestCase extends BasicTestCase {
 
-  private static final String projectTestName = "EOLE_AF_UC";
+  private static final String projectTestName = "EOLE_AF_UC"; //$NON-NLS-1$
+
+  private static final List<String> IGNORED_DIAGRAM_TYPES = List.of( // DiagramDescription names
+      "Capella Architecture", //$NON-NLS-1$
+      "AD diagram"); //$NON-NLS-1$
 
   /**
    * {@inheritDoc}
@@ -64,8 +69,7 @@ public class CheckDiagramDirtyStateOnOpeningTestCase extends BasicTestCase {
     List<DiagramDescription> ddescs = ODesignHelper.getAllDiagramDescription(odesigns);
 
     for (DiagramDescription current : ddescs) {
-      // no AF diagram, remove this case
-      if (isDiagramSupported(current.getName()) && !(current.getName().equals("AD diagram"))) { //$NON-NLS-1$
+      if (!IGNORED_DIAGRAM_TYPES.contains(current.getName())) {
         checkDiagram(session, current.getName(), false);
       }
     }
@@ -83,26 +87,6 @@ public class CheckDiagramDirtyStateOnOpeningTestCase extends BasicTestCase {
     DiagramHelper.setPrefereneRefreshOnOpening(true);
   }
 
-  public static final String unsupportedDiagrams[] = { "Capella Architecture" }; //$NON-NLS-1$
-
-  /**
-   * Check whether an existing {@link DiagramDescription} is used...
-   * 
-   * @param id_p
-   *          the {@link DiagramDescription} id.
-   * @return
-   */
-  protected boolean isDiagramSupported(String id) {
-    boolean result = true;
-    for (String unsupportedDiagram : unsupportedDiagrams) {
-      if (id.equals(unsupportedDiagram)) {
-        result = false;
-        break;
-      }
-    }
-    return result;
-  }
-
   /**
    * Implement a diagram open operation.
    */
@@ -113,11 +97,12 @@ public class CheckDiagramDirtyStateOnOpeningTestCase extends BasicTestCase {
     DiagramHelper.opendiagramEditor(session, dRepresentation);
     if (mustBeRefreshed || dRepresentation.getOwnedRepresentationElements().isEmpty()) {
       boolean ret = DiagramHelper.refreshDiagram((DDiagram) dRepresentation);
-      Assert.assertTrue(NLS.bind(Messages.failToRefreshDiagram, new Object[] { getName(), EObjectExt.getText(dRepresentation) }), ret);
+      Assert.assertTrue(NLS.bind(Messages.failToRefreshDiagram, getName(), EObjectExt.getText(dRepresentation)), ret);
     }
 
-    // Let's check the state of the diagram
-    Assert.assertTrue(NLS.bind(Messages.sessionDirtyAfterDiagramOpening, diagramType), SessionStatus.SYNC.equals(session.getStatus()));
+    // Let's check the state of the diagram: if it changed then session is dirty.
+    Assert.assertEquals(NLS.bind(Messages.sessionDirtyAfterDiagramOpening, diagramType),
+        SessionStatus.SYNC, session.getStatus());
     SessionHelper.saveSession(getSession(projectTestName));
   }
 
@@ -130,7 +115,7 @@ public class CheckDiagramDirtyStateOnOpeningTestCase extends BasicTestCase {
       }
     }
 
-    Assert.fail("No diagram found in model with type " + diagramType);
+    Assert.fail("No diagram found in model with type " + diagramType); //$NON-NLS-1$
     return null;
   }
 }

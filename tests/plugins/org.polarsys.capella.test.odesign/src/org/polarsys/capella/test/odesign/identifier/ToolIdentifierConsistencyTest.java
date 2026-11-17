@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -46,11 +46,11 @@ public class ToolIdentifierConsistencyTest extends BasicTestCase {
             String toolIdentifier = elementIdentifier.getIdentifier(diagramDescription, element);
 
             if (element instanceof PopupMenu && !(toolIdentifier.endsWith(".menu"))) {
-              errors.add(NLS.bind("Menu {0} doens't ends with '.menu'.", element.getName()));
+              errors.add(NLS.bind("Menu {0} doesn''t end with ''.menu''.", element.getName()));
 
             } else if (element instanceof CompositeFilterDescription && !(toolIdentifier.endsWith(".filter"))) {
               if (!"ModelExtensionFilter".equals(element.getName())) {
-                errors.add(NLS.bind("Filter {0} doens't ends with '.filter'.", element.getName()));
+                errors.add(NLS.bind("Filter {0} doesn''t end with ''.filter''.", element.getName()));
               }
             }
 
