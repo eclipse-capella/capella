@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -654,6 +654,10 @@ public class InformationServices {
     return EObjectExt.getText(port);
   }
 
+  public String computeLabel(Property property) {
+    return EObjectExt.getText(property);
+  }
+
   /**
    * compute the ExchangeItemAllocation label.
    * 
@@ -668,18 +672,6 @@ public class InformationServices {
     String result = getAllocatedElementName(item);
     result = result + parametersToString(item);
     return result;
-  }
-
-  public String computeLabel(Property property) {
-    if (property instanceof Port) {
-      // Acceleo bug: it doesn't retrieve the best method according inheritance, it
-      // return the first method
-      // compatible with the parameter. (so if the method computeLabel(Port) was
-      // defined before this method,
-      // it will return it !!
-      return computeLabel((Port) property);
-    }
-    return EObjectExt.getText(property);
   }
 
   /**
