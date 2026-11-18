@@ -223,6 +223,16 @@ public class CapellaElkLayoutExtension extends AbstractElkLayoutExtension {
                 }
             });
         });
+        
+        // When the label is outside, node size should not be related.
+        CAPELLA_RULES.addNodeRule(ext -> true, (node, ext) -> {
+            var noInsideLabel = !node.getLabels().stream() // all labels
+                    .map(l -> l.getProperty(CoreOptions.NODE_LABELS_PLACEMENT)) // place
+                    .anyMatch(p -> p.contains(NodeLabelPlacement.INSIDE)); // is inside
+            if (noInsideLabel) {
+                removeEnumValue(node, CoreOptions.NODE_SIZE_CONSTRAINTS, SizeConstraint.NODE_LABELS);
+            }
+        });
     }
 
     public CapellaElkLayoutExtension() {
