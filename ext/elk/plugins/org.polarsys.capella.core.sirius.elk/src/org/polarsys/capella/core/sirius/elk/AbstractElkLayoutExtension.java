@@ -44,6 +44,7 @@ import org.eclipse.elk.graph.ElkEdgeSection;
 import org.eclipse.elk.graph.ElkGraphElement;
 import org.eclipse.elk.graph.ElkNode;
 import org.eclipse.elk.graph.ElkPort;
+import org.eclipse.elk.graph.properties.IProperty;
 import org.eclipse.elk.graph.util.ElkGraphUtil;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
@@ -254,14 +255,27 @@ public class AbstractElkLayoutExtension implements IELKLayoutExtension {
         KVector min = new KVector(Math.max(width, oldMin.x), Math.max(heigth, oldMin.y));
         node.setProperty(CoreOptions.NODE_SIZE_MINIMUM, min);
         
-        EnumSet<SizeConstraint> contraints = node.getProperty(CoreOptions.NODE_SIZE_CONSTRAINTS);
-        if (!contraints.contains(SizeConstraint.MINIMUM_SIZE)) {
-            contraints = contraints.clone();
-            contraints.clone().add(SizeConstraint.MINIMUM_SIZE);
-            node.setProperty(CoreOptions.NODE_SIZE_CONSTRAINTS,  contraints);
-        }
+        addEnumValue(node, CoreOptions.NODE_SIZE_CONSTRAINTS, SizeConstraint.MINIMUM_SIZE);
     }
 
+    static <T extends Enum<T>> void addEnumValue(ElkGraphElement element, IProperty<EnumSet<T>> property, T value) {
+        EnumSet<T> valueSet = element.getProperty(property);
+        if (!valueSet.contains(value)) {
+            valueSet = valueSet.clone();
+            valueSet.add(value);
+            element.setProperty(property, valueSet);
+        }
+    }
+    
+    static <T extends Enum<T>> void removeEnumValue(ElkGraphElement element, IProperty<EnumSet<T>> property, T value) {
+        EnumSet<T> valueSet = element.getProperty(property);
+        if (valueSet.contains(value)) {
+            valueSet = valueSet.clone();
+            valueSet.remove(value);
+            element.setProperty(property, valueSet);
+        }
+    }
+    
     protected static void forceSide(ElkPort port, PortSide side) {
         port.setProperty(CoreOptions.PORT_SIDE, side);
         ElkNode parent = port.getParent();
