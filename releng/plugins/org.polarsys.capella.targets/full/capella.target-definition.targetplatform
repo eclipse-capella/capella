@@ -100,6 +100,9 @@ location Orbit-2026-12 "https://download.eclipse.org/tools/orbit/simrel/orbit-ag
 	bcpg [1.87.0,2.0.0)
 	bcpkix [1.87.0,2.0.0)
 	bcutil [1.87.0,2.0.0)
+	ca.odell.glazedlists [1.12.0,2.0.0)
+	org.mortbay.jasper.mortbay-apache-el [9.0.119,10.0.0)
+	org.mortbay.jasper.mortbay-apache-jsp [9.0.119,10.0.0)
 }
 
 location sirius "https://download.eclipse.org/sirius/updates/milestones/7.5.1rc2/2025-09/" {
