@@ -44,6 +44,7 @@ import org.eclipse.elk.graph.ElkEdgeSection;
 import org.eclipse.elk.graph.ElkGraphElement;
 import org.eclipse.elk.graph.ElkNode;
 import org.eclipse.elk.graph.ElkPort;
+import org.eclipse.elk.graph.properties.IProperty;
 import org.eclipse.elk.graph.util.ElkGraphUtil;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
@@ -249,19 +250,70 @@ public class AbstractElkLayoutExtension implements IELKLayoutExtension {
         // Nothing to do
     }
 
-    static void setMinimumSize(ElkNode node, double width, double heigth) {
+    /**
+     * Ensures minimum size to a node.
+     * <p>
+     * If the node already has a minimum, the highest dimensions are kept.
+     * </p>
+     * 
+     * @param node element to parameter
+     * @param width minimum width
+     * @param heigth minimum heigth
+     */
+    protected static void setMinimumSize(ElkNode node, double width, double heigth) {
         KVector oldMin = node.getProperty(CoreOptions.NODE_SIZE_MINIMUM);
         KVector min = new KVector(Math.max(width, oldMin.x), Math.max(heigth, oldMin.y));
         node.setProperty(CoreOptions.NODE_SIZE_MINIMUM, min);
         
-        EnumSet<SizeConstraint> contraints = node.getProperty(CoreOptions.NODE_SIZE_CONSTRAINTS);
-        if (!contraints.contains(SizeConstraint.MINIMUM_SIZE)) {
-            contraints = contraints.clone();
-            contraints.add(SizeConstraint.MINIMUM_SIZE);
-            node.setProperty(CoreOptions.NODE_SIZE_CONSTRAINTS,  contraints);
-        }
+        addEnumValue(node, CoreOptions.NODE_SIZE_CONSTRAINTS, SizeConstraint.MINIMUM_SIZE);
     }
 
+    /**
+     * Adds a value to property typed by an enum set.
+     * <p>
+     * Previous values are kept.
+     * </p>
+     * 
+     * @param <T> type of enum
+     * @param element object to update
+     * @param property property to change
+     * @param value literal to add 
+     */
+    protected static <T extends Enum<T>> void addEnumValue(ElkGraphElement element, IProperty<EnumSet<T>> property, T value) {
+        EnumSet<T> valueSet = element.getProperty(property);
+        if (!valueSet.contains(value)) {
+            valueSet = valueSet.clone();
+            valueSet.add(value);
+            element.setProperty(property, valueSet);
+        }
+    }
+    
+    /**
+     * Removes a value to property typed by an enum set.
+     * <p>
+     * Other values are kept.
+     * </p>
+     * 
+     * @param <T> type of enum
+     * @param element object to update
+     * @param property property to change
+     * @param value literal to add 
+     */
+   protected static <T extends Enum<T>> void removeEnumValue(ElkGraphElement element, IProperty<EnumSet<T>> property, T value) {
+        EnumSet<T> valueSet = element.getProperty(property);
+        if (valueSet.contains(value)) {
+            valueSet = valueSet.clone();
+            valueSet.remove(value);
+            element.setProperty(property, valueSet);
+        }
+    }
+    
+    /**
+     * Forces the side of a port.
+     * 
+     * @param port the element to constrain
+     * @param side the side of the port
+     */
     protected static void forceSide(ElkPort port, PortSide side) {
         port.setProperty(CoreOptions.PORT_SIDE, side);
         ElkNode parent = port.getParent();
