@@ -19,22 +19,12 @@
       %license
    </license>
 
-   <includes
-         id="org.eclipse.sirius.diagram.elk.feature"
+   <plugin
+         id="org.polarsys.capella.core.sirius.elk"
          version="0.0.0"/>
 
    <plugin
-         id="org.polarsys.capella.core.sirius.elk"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.polarsys.capella.core.sirius.elk.doc"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+         version="0.0.0"/>
 
 </feature>
