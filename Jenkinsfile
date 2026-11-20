@@ -196,8 +196,10 @@ spec:
         	steps {
         		script {
 	        		sh "chmod 755 ${CAPELLA_PRODUCT_PATH}"
-	        			        		       		
-	        		eclipse.installFeature("${CAPELLA_PRODUCT_PATH}", "file:/${WORKSPACE}/releng/plugins/org.polarsys.capella.test.site/target/repository".replace("\\", "/"), 'org.polarsys.capella.test.feature.feature.group')
+	        		def repositories = ['org.polarsys.capella.test.site', 'org.polarsys.capella.rcp.site']
+	        			.collect { "file:/${WORKSPACE}/releng/plugins/${it}/target/repository".replace("\\", "/") }
+	        			.join(',')
+	        		eclipse.installFeature("${CAPELLA_PRODUCT_PATH}", repositories, 'org.polarsys.capella.test.feature.feature.group')
 	       		}         
 	     	}
 	    }

@@ -30,8 +30,40 @@
    <feature id="org.polarsys.capella.viatra.core.feature" version="7.2.0.qualifier">
       <category name="org.polarsys.capella.rcp"/>
    </feature>
-   <feature id="org.polarsys.capella.core.sirius.elk.feature">
+   <feature id="org.polarsys.capella.core.sirius.elk.feature" version="7.2.0.qualifier">
       <category name="org.polarsys.capella.rcp"/>
    </feature>
+     <feature id="org.eclipse.sirius.diagram.elk.feature">
+      <category name="org.polarsys.capella.ext"/>
+   </feature>
+   <feature id="org.eclipse.elk.feature">
+      <category name="org.polarsys.capella.ext"/>
+   </feature>
+   <feature id="org.eclipse.elk.algorithms.feature">
+      <category name="org.polarsys.capella.ext"/>
+   </feature>
+   <feature id="org.eclipse.elk.graphviz.feature">
+      <category name="org.polarsys.capella.ext"/>
+   </feature>
+   <bundle id="org.eclipse.xtext.xbase.lib">
+      <category name="org.polarsys.capella.ext"/>
+   </bundle>
+   <bundle id="org.eclipse.xtend.lib">
+      <category name="org.polarsys.capella.ext"/>
+   </bundle>
+   <bundle id="org.eclipse.xtend.lib.macro">
+      <category name="org.polarsys.capella.ext"/>
+   </bundle>
+   <bundle id="com.google.inject">
+      <category name="org.polarsys.capella.ext"/>
+   </bundle>
+   <bundle id="org.aopalliance">
+      <category name="org.polarsys.capella.ext"/>
+   </bundle>
    <category-def name="org.polarsys.capella.rcp" label="Capella"/>
+   <category-def name="org.polarsys.capella.ext" label="Extra-Features dependencies">
+      <description>
+         This category contains the additional features required for Capella optional features.
+      </description>
+   </category-def>
 </site>
