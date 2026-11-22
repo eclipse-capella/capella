@@ -39,6 +39,6 @@ public class ValidFECategoryMenuTargetTester extends AbstractValidCategoryMenuTa
 
   @Override
   protected String getPropertyId() {
-    return ""; //$NON-NLS-1$
+    return "isValidFECategoryMenuTarget"; //$NON-NLS-1$
   }
 }
