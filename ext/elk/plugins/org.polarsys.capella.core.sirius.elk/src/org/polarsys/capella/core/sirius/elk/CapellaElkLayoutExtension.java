@@ -260,6 +260,16 @@ public class CapellaElkLayoutExtension extends AbstractElkLayoutExtension {
         // elkEdge.getProperties().put(LayeredOptions.PRIORITY_DIRECTION, 1);
     }
 
+    @Override
+    protected void postLayout() {
+        String mapping = BREAKDOWN_DIAGRAM_FEATURES.get(getDiagramDescrName());
+        if (mapping != null) {
+            getLayoutMapping().getLayoutGraph().getContainedEdges().stream()
+                .filter(edge -> mapping.equals(getElementMapping(edge).getName()))
+                .forEach(CapellaElkLayoutExtension::centerEdgeOnXEnd);
+        }
+    }
+
     static boolean isSpecialKindFunction(EObject target) {
         if (target instanceof FunctionalChainInvolvement involvement
                 && involvement.getInvolvedElement() instanceof AbstractFunction involvedElement) {
