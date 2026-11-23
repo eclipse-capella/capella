@@ -38,12 +38,14 @@ import org.eclipse.elk.core.options.PortSide;
 import org.eclipse.elk.core.options.SizeConstraint;
 import org.eclipse.elk.core.service.LayoutMapping;
 import org.eclipse.elk.core.util.ElkUtil;
+import org.eclipse.elk.graph.ElkBendPoint;
 import org.eclipse.elk.graph.ElkConnectableShape;
 import org.eclipse.elk.graph.ElkEdge;
 import org.eclipse.elk.graph.ElkEdgeSection;
 import org.eclipse.elk.graph.ElkGraphElement;
 import org.eclipse.elk.graph.ElkNode;
 import org.eclipse.elk.graph.ElkPort;
+import org.eclipse.elk.graph.ElkShape;
 import org.eclipse.elk.graph.properties.IProperty;
 import org.eclipse.elk.graph.util.ElkGraphUtil;
 import org.eclipse.emf.common.util.ECollections;
@@ -242,8 +244,13 @@ public class AbstractElkLayoutExtension implements IELKLayoutExtension {
 
         // Restore edges
         extractedEdges.forEach((e, n) -> restoreEdge(e, n));
+        postLayout();
     }
 
+    protected void postLayout() {
+        // No default behavior
+    }
+    
     @Override
     public void afterGMFCommandApplied(GmfLayoutCommand gmfLayoutCommand, LayoutMapping aLayoutMapping) {
         this.layoutMapping = null;
@@ -445,6 +452,27 @@ public class AbstractElkLayoutExtension implements IELKLayoutExtension {
         return streamAllEdges(elkNode, AbstractElkLayoutExtension::isLinkBorderWithSameParent);
     }
 
+    /**
+     * Centers the end of an edge on the horizontal side of a shape.
+     * <p>
+     * As result, all edges of node will be merged. Only applicable after layout.
+     * <p/>
+     * 
+     * @param edge element to center
+     */
+    protected static void centerEdgeOnXEnd(ElkEdge edge) {
+        ElkEdgeSection section = edge.getSections().get(0);
+        
+        ElkShape node = edge.getTargets().get(0);
+        double middle = node.getWidth()/2 + node.getX();
+        section.setEndX(middle);
+        
+        if (!section.getBendPoints().isEmpty()) {
+            ElkBendPoint point = section.getBendPoints().get(section.getBendPoints().size() - 1);
+            point.setX(middle);
+        }
+    }
+        
     protected static KVector getParentRelativePoint(ElkConnectableShape it, ElkNode container) {
         KVector point = new KVector(it.getX(), it.getY());
         return ElkUtil.toRelative(
