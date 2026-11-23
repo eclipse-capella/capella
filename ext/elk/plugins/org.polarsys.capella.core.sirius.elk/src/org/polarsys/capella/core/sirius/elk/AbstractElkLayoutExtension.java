@@ -257,7 +257,7 @@ public class AbstractElkLayoutExtension implements IELKLayoutExtension {
         EnumSet<SizeConstraint> contraints = node.getProperty(CoreOptions.NODE_SIZE_CONSTRAINTS);
         if (!contraints.contains(SizeConstraint.MINIMUM_SIZE)) {
             contraints = contraints.clone();
-            contraints.clone().add(SizeConstraint.MINIMUM_SIZE);
+            contraints.add(SizeConstraint.MINIMUM_SIZE);
             node.setProperty(CoreOptions.NODE_SIZE_CONSTRAINTS,  contraints);
         }
     }
