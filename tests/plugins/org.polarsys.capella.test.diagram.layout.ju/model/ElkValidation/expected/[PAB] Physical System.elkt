@@ -1,33 +1,33 @@
 graph _PAB__Physical_System_graph
-layout [ size: 1074, 332 ]
-hierarchyHandling: INCLUDE_CHILDREN
+layout [ size: 1052, 332 ]
 nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+hierarchyHandling: INCLUDE_CHILDREN
 algorithm: org.eclipse.elk.layered
 spacing.edgeLabel: 0
-spacing.edgeNodeBetweenLayers: 20
-edgeRouting: ORTHOGONAL
-spacing.portPort: 13
-elk.direction: RIGHT
-nodePlacement.bk.fixedAlignment: BALANCED
 edgeLabels.sideSelection: ALWAYS_DOWN
+spacing.portPort: 13
+edgeRouting: ORTHOGONAL
+nodePlacement.bk.fixedAlignment: BALANCED
+spacing.edgeNodeBetweenLayers: 20
 spacing.edgeEdge: 5
+elk.direction: RIGHT
 noLayout: true
 node PC_1 {
 	layout [
 		position: 20, 20
 		size: 209, 308
 	]
-	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(30.0,24.0)"
 	spacing.edgeLabel: 0
-	spacing.edgeNodeBetweenLayers: 20
-	edgeRouting: ORTHOGONAL
-	spacing.portPort: 13
-	elk.direction: RIGHT
-	nodePlacement.bk.fixedAlignment: BALANCED
 	edgeLabels.sideSelection: ALWAYS_DOWN
+	spacing.portPort: 13
+	edgeRouting: ORTHOGONAL
+	nodePlacement.bk.fixedAlignment: BALANCED
+	spacing.edgeNodeBetweenLayers: 20
 	spacing.edgeEdge: 5
+	elk.direction: RIGHT
 	label L5: "PC 1" {
 		layout [
 			position: 85, 5
@@ -37,31 +37,31 @@ node PC_1 {
 	}
 	node PC_1_1 {
 		layout [
-			position: 58, 168
-			size: 136, 128
+			position: 22, 168
+			size: 172, 128
 		]
-		hierarchyHandling: INCLUDE_CHILDREN
 		nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+		hierarchyHandling: INCLUDE_CHILDREN
 		nodeSize.minimum: "(30.0,24.0)"
 		spacing.edgeLabel: 0
-		spacing.edgeNodeBetweenLayers: 20
-		edgeRouting: ORTHOGONAL
-		spacing.portPort: 13
-		elk.direction: RIGHT
-		nodePlacement.bk.fixedAlignment: BALANCED
 		edgeLabels.sideSelection: ALWAYS_DOWN
+		spacing.portPort: 13
+		edgeRouting: ORTHOGONAL
+		nodePlacement.bk.fixedAlignment: BALANCED
+		spacing.edgeNodeBetweenLayers: 20
 		spacing.edgeEdge: 5
+		elk.direction: RIGHT
 		portLabels.placement: "[]"
 		label L6: "PC 1_1" {
 			layout [
-				position: 44, 5
+				position: 62, 5
 				size: 49, 16
 			]
 			nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
 		}
 		port P1 {
 			layout [
-				position: 130, 80
+				position: 166, 80
 				size: 10, 10
 			]
 			org.eclipse.elk.^port.borderOffset: -8
@@ -69,30 +69,30 @@ node PC_1 {
 		node PB_4 {
 			layout [
 				position: 12, 33
-				size: 62, 83
+				size: 98, 83
 			]
-			hierarchyHandling: INCLUDE_CHILDREN
 			nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+			hierarchyHandling: INCLUDE_CHILDREN
 			nodeSize.minimum: "(30.0,24.0)"
 			spacing.edgeLabel: 0
-			spacing.edgeNodeBetweenLayers: 20
-			edgeRouting: ORTHOGONAL
-			spacing.portPort: 13
-			elk.direction: RIGHT
-			nodePlacement.bk.fixedAlignment: BALANCED
 			edgeLabels.sideSelection: ALWAYS_DOWN
+			spacing.portPort: 13
+			edgeRouting: ORTHOGONAL
+			nodePlacement.bk.fixedAlignment: BALANCED
+			spacing.edgeNodeBetweenLayers: 20
 			spacing.edgeEdge: 5
+			elk.direction: RIGHT
 			portLabels.placement: "[]"
 			label L7: "PB 4" {
 				layout [
-					position: 12, 5
+					position: 30, 5
 					size: 39, 16
 				]
 				nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
 			}
 			port P2 {
 				layout [
-					position: 56, 38
+					position: 92, 38
 					size: 10, 10
 				]
 				org.eclipse.elk.^port.borderOffset: -8
@@ -102,8 +102,8 @@ node PC_1 {
 					position: 12, 33
 					size: 40, 40
 				]
-				hierarchyHandling: INCLUDE_CHILDREN
 				nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+				hierarchyHandling: INCLUDE_CHILDREN
 				nodeSize.minimum: "(10.0,10.0)"
 				label L8: " " {
 					layout [ position: 1, 1 ]
@@ -114,9 +114,9 @@ node PC_1 {
 		edge E5: P1 -> PB_4.P2 {
 			layout [
 				section ES5 [
-					start: 130, 85
-					end: 77, 76
-					bends: 98, 85 | 98, 76
+					start: 166, 85
+					end: 113, 76
+					bends: 134, 85 | 134, 76
 				]
 			]
 		}
@@ -126,17 +126,17 @@ node PC_1 {
 			position: 12, 33
 			size: 182, 113
 		]
-		hierarchyHandling: INCLUDE_CHILDREN
 		nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+		hierarchyHandling: INCLUDE_CHILDREN
 		nodeSize.minimum: "(30.0,24.0)"
 		spacing.edgeLabel: 0
-		spacing.edgeNodeBetweenLayers: 20
-		edgeRouting: ORTHOGONAL
-		spacing.portPort: 13
-		elk.direction: RIGHT
-		nodePlacement.bk.fixedAlignment: BALANCED
 		edgeLabels.sideSelection: ALWAYS_DOWN
+		spacing.portPort: 13
+		edgeRouting: ORTHOGONAL
+		nodePlacement.bk.fixedAlignment: BALANCED
+		spacing.edgeNodeBetweenLayers: 20
 		spacing.edgeEdge: 5
+		elk.direction: RIGHT
 		portLabels.placement: "[]"
 		label L9: "PC 1_2" {
 			layout [
@@ -157,8 +157,8 @@ node PC_1 {
 				position: 12, 33
 				size: 148, 68
 			]
-			hierarchyHandling: INCLUDE_CHILDREN
 			nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+			hierarchyHandling: INCLUDE_CHILDREN
 			nodeSize.minimum: "(150.0,70.0)"
 			portLabels.placement: "[]"
 			label L10: "PB 3" {
@@ -181,23 +181,23 @@ node PC_1 {
 node PC_2 {
 	layout [
 		position: 364, 84
-		size: 706, 169
+		size: 684, 175
 	]
-	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(30.0,24.0)"
 	spacing.edgeLabel: 0
-	spacing.edgeNodeBetweenLayers: 20
-	edgeRouting: ORTHOGONAL
-	spacing.portPort: 13
-	elk.direction: RIGHT
-	nodePlacement.bk.fixedAlignment: BALANCED
 	edgeLabels.sideSelection: ALWAYS_DOWN
+	spacing.portPort: 13
+	edgeRouting: ORTHOGONAL
+	nodePlacement.bk.fixedAlignment: BALANCED
+	spacing.edgeNodeBetweenLayers: 20
 	spacing.edgeEdge: 5
+	elk.direction: RIGHT
 	portLabels.placement: "[]"
 	label L11: "PC 2" {
 		layout [
-			position: 334, 5
+			position: 323, 5
 			size: 40, 16
 		]
 		nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
@@ -219,23 +219,23 @@ node PC_2 {
 	node PB_5 {
 		layout [
 			position: 62, 33
-			size: 631, 124
+			size: 609, 130
 		]
-		hierarchyHandling: INCLUDE_CHILDREN
 		nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+		hierarchyHandling: INCLUDE_CHILDREN
 		nodeSize.minimum: "(30.0,24.0)"
 		spacing.edgeLabel: 0
-		spacing.edgeNodeBetweenLayers: 20
-		edgeRouting: ORTHOGONAL
-		spacing.portPort: 13
-		elk.direction: RIGHT
-		nodePlacement.bk.fixedAlignment: BALANCED
 		edgeLabels.sideSelection: ALWAYS_DOWN
+		spacing.portPort: 13
+		edgeRouting: ORTHOGONAL
+		nodePlacement.bk.fixedAlignment: BALANCED
+		spacing.edgeNodeBetweenLayers: 20
 		spacing.edgeEdge: 5
+		elk.direction: RIGHT
 		portLabels.placement: "[]"
 		label L12: "PB 5" {
 			layout [
-				position: 297, 5
+				position: 286, 5
 				size: 39, 16
 			]
 			nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
@@ -249,31 +249,31 @@ node PC_2 {
 		}
 		node PB_1 {
 			layout [
-				position: 427, 33
-				size: 192, 79
+				position: 416, 33
+				size: 181, 85
 			]
-			hierarchyHandling: INCLUDE_CHILDREN
 			nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+			hierarchyHandling: INCLUDE_CHILDREN
 			nodeSize.minimum: "(30.0,24.0)"
 			spacing.edgeLabel: 0
-			spacing.edgeNodeBetweenLayers: 20
-			edgeRouting: ORTHOGONAL
-			spacing.portPort: 13
-			elk.direction: RIGHT
-			nodePlacement.bk.fixedAlignment: BALANCED
 			edgeLabels.sideSelection: ALWAYS_DOWN
+			spacing.portPort: 13
+			edgeRouting: ORTHOGONAL
+			nodePlacement.bk.fixedAlignment: BALANCED
+			spacing.edgeNodeBetweenLayers: 20
 			spacing.edgeEdge: 5
+			elk.direction: RIGHT
 			portLabels.placement: "[]"
 			label L15: "PB 1" {
 				layout [
-					position: 77, 5
+					position: 72, 5
 					size: 39, 16
 				]
 				nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
 			}
 			port P8 {
 				layout [
-					position: -2, 55
+					position: -2, 58
 					size: 10, 10
 				]
 				org.eclipse.elk.^port.borderOffset: -8
@@ -281,10 +281,10 @@ node PC_2 {
 			node PhysicalFunction_2 {
 				layout [
 					position: 62, 33
-					size: 120, 36
+					size: 109, 42
 				]
-				hierarchyHandling: INCLUDE_CHILDREN
 				nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+				hierarchyHandling: INCLUDE_CHILDREN
 				nodeSize.minimum: "(10.0,10.0)"
 				portLabels.placement: "[]"
 				label L16: "PhysicalFunction 2" {
@@ -296,7 +296,7 @@ node PC_2 {
 				}
 				port P9 {
 					layout [
-						position: -2, 13
+						position: -2, 16
 						size: 10, 10
 					]
 					org.eclipse.elk.^port.borderOffset: -8
@@ -305,9 +305,9 @@ node PC_2 {
 			edge E9: P8 -> PhysicalFunction_2.P9 {
 				layout [
 					section ES9 [
-						start: 7, 60
-						end: 60, 51
-						bends: 41, 60 | 41, 51
+						start: 7, 63
+						end: 60, 54
+						bends: 41, 63 | 41, 54
 					]
 				]
 				org.eclipse.elk.^edge.thickness: 2
@@ -316,23 +316,23 @@ node PC_2 {
 		node PB_2 {
 			layout [
 				position: 22, 33
-				size: 200, 79
+				size: 189, 85
 			]
-			hierarchyHandling: INCLUDE_CHILDREN
 			nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+			hierarchyHandling: INCLUDE_CHILDREN
 			nodeSize.minimum: "(30.0,24.0)"
 			spacing.edgeLabel: 0
-			spacing.edgeNodeBetweenLayers: 20
-			edgeRouting: ORTHOGONAL
-			spacing.portPort: 13
-			elk.direction: RIGHT
-			nodePlacement.bk.fixedAlignment: BALANCED
 			edgeLabels.sideSelection: ALWAYS_DOWN
+			spacing.portPort: 13
+			edgeRouting: ORTHOGONAL
+			nodePlacement.bk.fixedAlignment: BALANCED
+			spacing.edgeNodeBetweenLayers: 20
 			spacing.edgeEdge: 5
+			elk.direction: RIGHT
 			portLabels.placement: "[]"
 			label L17: "PB 2" {
 				layout [
-					position: 81, 5
+					position: 76, 5
 					size: 39, 16
 				]
 				nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
@@ -346,7 +346,7 @@ node PC_2 {
 			}
 			port P11 {
 				layout [
-					position: 194, 55
+					position: 183, 58
 					size: 10, 10
 				]
 				org.eclipse.elk.^port.borderOffset: -8
@@ -354,10 +354,10 @@ node PC_2 {
 			node PhysicalFunction_1 {
 				layout [
 					position: 20, 33
-					size: 120, 36
+					size: 109, 42
 				]
-				hierarchyHandling: INCLUDE_CHILDREN
 				nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+				hierarchyHandling: INCLUDE_CHILDREN
 				nodeSize.minimum: "(10.0,10.0)"
 				portLabels.placement: "[]"
 				label L18: "PhysicalFunction 1" {
@@ -369,7 +369,7 @@ node PC_2 {
 				}
 				port P12 {
 					layout [
-						position: 112, 13
+						position: 101, 16
 						size: 10, 10
 					]
 					org.eclipse.elk.^port.borderOffset: -8
@@ -378,9 +378,9 @@ node PC_2 {
 			edge E10: P11 -> PhysicalFunction_1.P12 {
 				layout [
 					section ES10 [
-						start: 194, 60
-						end: 141, 51
-						bends: 162, 60 | 162, 51
+						start: 183, 63
+						end: 130, 54
+						bends: 151, 63 | 151, 54
 					]
 				]
 				org.eclipse.elk.^edge.thickness: 2
@@ -389,14 +389,14 @@ node PC_2 {
 		edge E7: PB_2.PhysicalFunction_1.P12 -> PB_1.PhysicalFunction_2.P9 {
 			layout [
 				section ES7 [
-					start: 163, 84
-					end: 487, 84
-					bends: 184, 84 | 184, 75 | 467, 75 | 467, 84
+					start: 152, 87
+					end: 476, 87
+					bends: 173, 87 | 173, 78 | 456, 78 | 456, 87
 				]
 			]
 			label L13: "O FunctionalExchange 1" {
 				layout [
-					position: 267, 76
+					position: 256, 79
 					size: 118, 16
 				]
 				edgeLabels.placement: CENTER
@@ -405,13 +405,13 @@ node PC_2 {
 		edge E8: PB_2.P11 -> PB_1.P8 {
 			layout [
 				section ES8 [
-					start: 225, 93
-					end: 425, 93
+					start: 214, 96
+					end: 414, 96
 				]
 			]
 			label L14: "O C 5_1" {
 				layout [
-					position: 304, 94
+					position: 293, 97
 					size: 44, 16
 				]
 				edgeLabels.placement: CENTER
