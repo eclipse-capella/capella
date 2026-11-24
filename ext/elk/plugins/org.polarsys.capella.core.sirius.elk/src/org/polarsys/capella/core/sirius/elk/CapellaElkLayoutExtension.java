@@ -16,7 +16,9 @@ package org.polarsys.capella.core.sirius.elk;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONFIGURATION_ITEMS_BREAKDOWN_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME;
+import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.FUNCTIONAL_CHAIN_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME;
 import static org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants.LOGICAL_COMPONENT_BREAKDOWN_DIAGRAM_NAME;
@@ -59,8 +61,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DNode;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.InitialPseudoState;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.ctx.Mission;
-import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.FunctionInputPort;
@@ -127,7 +129,10 @@ public class CapellaElkLayoutExtension extends AbstractElkLayoutExtension {
             CONTEXTUAL_MISSION_DIAGRAM_NAME, // reverse Mission involvement
             CAPABILITY_REALIZATION_BLANK,
             MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME,
-            CONTEXTUAL_CAPABILITY_DIAGRAM_NAME
+            CONTEXTUAL_CAPABILITY_DIAGRAM_NAME,
+            CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME,
+            CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT
+            // CAPABILITY_REALIZATION_REFINEMENT // Deprecated (no sample)
             );
 
     private static final Map<String, String> BREAKDOWN_DIAGRAM_FEATURES = Map.of(
@@ -178,10 +183,10 @@ public class CapellaElkLayoutExtension extends AbstractElkLayoutExtension {
         });
                 
         CAPELLA_RULES.addNodeRule(applyOn(CAPABILITIES_DIAGRAMS), (node, ext) -> {
-            if (ext.getDiagramElement(node) instanceof DNode) {
-                var semantic = ext.getSemanticElement(node);
+            if (ext.getDiagramElement(node) instanceof DNode view) {
+                var semantic = view.getTarget();
                 if (semantic instanceof AbstractCapability
-                        || semantic instanceof SystemComponent
+                        || semantic instanceof Component
                         || semantic instanceof Mission)
                     setMinimumSize(node, 70, 50);
             }
