@@ -1,0 +1,96 @@
+graph _CRI__CapabilityRealization_1_graph
+layout [ size: 243, 185 ]
+hierarchyHandling: INCLUDE_CHILDREN
+nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+algorithm: org.eclipse.elk.layered
+nodePlacement.bk.fixedAlignment: BALANCED
+elk.direction: RIGHT
+edgeLabels.sideSelection: ALWAYS_DOWN
+spacing.edgeNodeBetweenLayers: 20
+edgeRouting: ORTHOGONAL
+spacing.edgeLabel: 0
+spacing.edgeEdge: 5
+spacing.portPort: 13
+noLayout: true
+node CapabilityRealization_1 {
+	layout [
+		position: 41, 64
+		size: 60, 40
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(10.0,10.0)"
+	label L1: "CapabilityRealization 1" {
+		layout [
+			position: -26, 41
+			size: 113, 14
+		]
+		nodeLabels.placement: "[H_CENTER, V_BOTTOM, OUTSIDE]"
+	}
+}
+node LA_2 {
+	layout [
+		position: 173, 20
+		size: 70, 61
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(10.0,10.0)"
+	label L2: "LA 2" {
+		layout [
+			position: 25, 62
+			size: 20, 14
+		]
+		nodeLabels.placement: "[H_CENTER, V_BOTTOM, OUTSIDE]"
+	}
+}
+node LC_3 {
+	layout [
+		position: 173, 109
+		size: 70, 61
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(10.0,10.0)"
+	label L3: "LC 3" {
+		layout [
+			position: 25, 62
+			size: 20, 14
+		]
+		nodeLabels.placement: "[H_CENTER, V_BOTTOM, OUTSIDE]"
+	}
+}
+node req {
+	layout [
+		position: 54, 154
+		size: 45, 26
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(10.0,10.0)"
+	label L4: "req" {
+		layout [
+			position: 1, 1
+			size: 35, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+	}
+}
+edge E1: CapabilityRealization_1 -> LA_2 {
+	layout [
+		section ES1 [
+			start: 94, 84
+			end: 180, 51
+			bends: 149, 84 | 149, 51
+		]
+	]
+}
+edge E2: CapabilityRealization_1 -> LC_3 {
+	layout [
+		section ES2 [
+			start: 79, 97
+			end: 179, 139
+			bends: 149, 97 | 149, 139
+		]
+	]
+}

@@ -1,0 +1,144 @@
+graph _COC__OperationalCapability_1_graph
+layout [ size: 465, 318 ]
+hierarchyHandling: INCLUDE_CHILDREN
+nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+algorithm: org.eclipse.elk.layered
+nodePlacement.bk.fixedAlignment: BALANCED
+elk.direction: RIGHT
+edgeLabels.sideSelection: ALWAYS_DOWN
+spacing.edgeNodeBetweenLayers: 20
+edgeRouting: ORTHOGONAL
+spacing.edgeLabel: 0
+spacing.edgeEdge: 5
+spacing.portPort: 13
+noLayout: true
+node OActor_2 {
+	layout [
+		position: 187, 108
+		size: 146, 66
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(148.0,68.0)"
+	label L3: "OActor 2" {
+		layout [
+			position: 43, 5
+			size: 61, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
+	}
+}
+node OEntity_1 {
+	layout [
+		position: 187, 20
+		size: 146, 66
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(148.0,68.0)"
+	label L4: "OEntity 1" {
+		layout [
+			position: 43, 5
+			size: 61, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
+	}
+}
+node Root_Capability {
+	layout [
+		position: 375, 168
+		size: 70, 46
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(10.0,10.0)"
+	label L5: "Root Capability" {
+		layout [
+			size: 71, 14
+			position: 0, 47
+		]
+		nodeLabels.placement: "[H_CENTER, V_BOTTOM, OUTSIDE]"
+	}
+}
+node OperationalCapability_3 {
+	layout [
+		position: 375, 257
+		size: 70, 46
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(10.0,10.0)"
+	label L6: "OperationalCapability 3" {
+		layout [
+			position: -20, 47
+			size: 110, 14
+		]
+		nodeLabels.placement: "[H_CENTER, V_BOTTOM, OUTSIDE]"
+	}
+}
+node OperationalCapability_1 {
+	layout [
+		position: 43, 131
+		size: 70, 46
+	]
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	nodeSize.minimum: "(10.0,10.0)"
+	label L7: "OperationalCapability 1" {
+		layout [
+			position: -23, 47
+			size: 117, 14
+		]
+		nodeLabels.placement: "[H_CENTER, V_BOTTOM, OUTSIDE]"
+	}
+}
+edge E1: OperationalCapability_1 -> OActor_2 {
+	layout [
+		section ES1 [
+			start: 105, 156
+			end: 187, 141
+			bends: 166, 156 | 166, 141
+		]
+	]
+}
+edge E2: OperationalCapability_1 -> OEntity_1 {
+	layout [
+		section ES2 [
+			start: 104, 146
+			end: 187, 54
+			bends: 156, 146 | 156, 54
+		]
+	]
+}
+edge E3: OperationalCapability_1 -> Root_Capability {
+	layout [
+		section ES3 [
+			start: 96, 165
+			end: 378, 189
+			bends: 166, 165 | 166, 189
+		]
+	]
+	label L1: "« e »" {
+		layout [
+			position: 241, 190
+			size: 23, 14
+		]
+		edgeLabels.placement: CENTER
+	}
+}
+edge E4: OperationalCapability_1 -> OperationalCapability_3 {
+	layout [
+		section ES4 [
+			start: 85, 175
+			end: 377, 277
+			bends: 156, 175 | 156, 277
+		]
+	]
+	label L2: "« i »" {
+		layout [
+			position: 235, 278
+			size: 20, 14
+		]
+		edgeLabels.placement: CENTER
+	}
+}
