@@ -1,5 +1,5 @@
 graph _SFBD__SF_Container_graph
-layout [ size: 325, 310 ]
+layout [ size: 552, 351 ]
 algorithm: org.eclipse.elk.mrtree
 spacing.edgeNode: 20
 spacing.nodeNode: 40
@@ -7,7 +7,7 @@ edgeRouting: ORTHOGONAL
 noLayout: true
 node SF_Container {
 	layout [
-		position: 123, 20
+		position: 235, 20
 		size: 100, 70
 	]
 	nodeSize.minimum: "(10.0,10.0)"
@@ -19,24 +19,24 @@ node SF_Container {
 		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
 	}
 }
-node subsf_1 {
+node sb_1 {
 	layout [
-		position: 20, 130
-		size: 75, 70
+		position: 30, 151
+		size: 56, 70
 	]
 	nodeSize.minimum: "(10.0,10.0)"
-	label L2: "subsf 1" {
+	label L2: "sb 1" {
 		layout [
 			position: 1, 1
-			size: 53, 16
+			size: 39, 16
 		]
 		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
 	}
 }
 node subsf_2 {
 	layout [
-		position: 135, 130
-		size: 75, 70
+		position: 126, 131
+		size: 75, 111
 	]
 	nodeSize.minimum: "(10.0,10.0)"
 	label L3: "subsf 2" {
@@ -49,7 +49,7 @@ node subsf_2 {
 }
 node subsf_3 {
 	layout [
-		position: 250, 130
+		position: 241, 151
 		size: 75, 70
 	]
 	nodeSize.minimum: "(10.0,10.0)"
@@ -63,7 +63,7 @@ node subsf_3 {
 }
 node subsf_4 {
 	layout [
-		position: 250, 240
+		position: 241, 281
 		size: 75, 70
 	]
 	nodeSize.minimum: "(10.0,10.0)"
@@ -77,7 +77,7 @@ node subsf_4 {
 }
 node subsf_5 {
 	layout [
-		position: 20, 240
+		position: 20, 281
 		size: 75, 70
 	]
 	nodeSize.minimum: "(10.0,10.0)"
@@ -89,45 +89,92 @@ node subsf_5 {
 		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
 	}
 }
-edge E1: subsf_1 -> SF_Container {
+node subsf_6_very_long_name {
+	layout [
+		position: 356, 167
+		size: 75, 39
+	]
+	nodeSize.minimum: "(10.0,10.0)"
+	label L7: "subsf 6 very long name" {
+		layout [
+			position: 1, 1
+			size: 128, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+	}
+}
+node Gather_5 {
+	layout [
+		position: 471, 151
+		size: 81, 70
+	]
+	nodeSize.minimum: "(10.0,10.0)"
+	label L8: "Gather 5" {
+		layout [
+			position: 1, 1
+			size: 59, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+	}
+}
+edge E1: sb_1 -> SF_Container {
 	layout [
 		section ES1 [
-			start: 61, 130
-			end: 148, 90
-			bends: 61, 110 | 148, 110
+			start: 58, 151
+			end: 252, 90
+			bends: 58, 110 | 252, 110
 		]
 	]
 }
 edge E2: subsf_2 -> SF_Container {
 	layout [
 		section ES2 [
-			start: 173, 130
-			end: 173, 90
+			start: 167, 131
+			end: 268, 90
+			bends: 167, 110 | 268, 110
 		]
 	]
 }
 edge E3: subsf_3 -> SF_Container {
 	layout [
 		section ES3 [
-			start: 284, 130
-			end: 198, 90
-			bends: 284, 110 | 198, 110
+			start: 278, 151
+			end: 285, 90
+			bends: 278, 110 | 285, 110
 		]
 	]
 }
-edge E4: subsf_5 -> subsf_1 {
+edge E4: subsf_6_very_long_name -> SF_Container {
 	layout [
 		section ES4 [
-			start: 57, 240
-			end: 57, 200
+			start: 393, 167
+			end: 301, 90
+			bends: 393, 110 | 301, 110
 		]
 	]
 }
-edge E5: subsf_4 -> subsf_3 {
+edge E5: Gather_5 -> SF_Container {
 	layout [
 		section ES5 [
-			start: 287, 240
-			end: 287, 200
+			start: 511, 151
+			end: 318, 90
+			bends: 511, 110 | 318, 110
+		]
+	]
+}
+edge E6: subsf_5 -> sb_1 {
+	layout [
+		section ES6 [
+			start: 58, 281
+			end: 58, 221
+		]
+	]
+}
+edge E7: subsf_4 -> subsf_3 {
+	layout [
+		section ES7 [
+			start: 278, 281
+			end: 278, 221
 		]
 	]
 }
