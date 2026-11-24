@@ -1,24 +1,24 @@
 graph _OAIB__Root_Operational_Activity_graph
-layout [ size: 740, 128 ]
-hierarchyHandling: INCLUDE_CHILDREN
+layout [ size: 740, 135 ]
 nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+hierarchyHandling: INCLUDE_CHILDREN
 algorithm: org.eclipse.elk.layered
 spacing.edgeLabel: 0
-spacing.edgeNodeBetweenLayers: 20
-edgeRouting: ORTHOGONAL
-spacing.portPort: 13
-elk.direction: RIGHT
-nodePlacement.bk.fixedAlignment: BALANCED
 edgeLabels.sideSelection: ALWAYS_DOWN
+spacing.portPort: 13
+edgeRouting: ORTHOGONAL
+nodePlacement.bk.fixedAlignment: BALANCED
+spacing.edgeNodeBetweenLayers: 20
 spacing.edgeEdge: 5
+elk.direction: RIGHT
 noLayout: true
 node OperationalActivity_2_2 {
 	layout [
-		position: 20, 45
-		size: 146, 66
+		position: 20, 47
+		size: 146, 72
 	]
-	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(148.0,68.0)"
 	label L4: "OperationalActivity 2_2" {
 		layout [
@@ -30,11 +30,11 @@ node OperationalActivity_2_2 {
 }
 node OperationalActivity_2_3 {
 	layout [
-		position: 590, 45
-		size: 146, 66
+		position: 590, 47
+		size: 146, 72
 	]
-	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(148.0,68.0)"
 	label L5: "OperationalActivity 2_3" {
 		layout [
@@ -47,10 +47,10 @@ node OperationalActivity_2_3 {
 node OperationalActivity_3 {
 	layout [
 		position: 305, 20
-		size: 146, 66
+		size: 146, 72
 	]
-	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(148.0,68.0)"
 	label L6: "OperationalActivity 3" {
 		layout [
@@ -63,14 +63,14 @@ node OperationalActivity_3 {
 edge E1: OperationalActivity_2_3 -> OperationalActivity_2_2 {
 	layout [
 		section ES1 [
-			start: 590, 92
-			end: 168, 92
-			bends: 570, 92 | 570, 108 | 188, 108 | 188, 92
+			start: 590, 99
+			end: 168, 99
+			bends: 570, 99 | 570, 115 | 188, 115 | 188, 99
 		]
 	]
 	label L1: "O Interaction 1" {
 		layout [
-			position: 339, 109
+			position: 339, 116
 			size: 77, 16
 		]
 		edgeLabels.placement: CENTER
@@ -79,14 +79,14 @@ edge E1: OperationalActivity_2_3 -> OperationalActivity_2_2 {
 edge E2: OperationalActivity_3 -> OperationalActivity_2_3 {
 	layout [
 		section ES2 [
-			start: 453, 57
-			end: 590, 72
-			bends: 570, 57 | 570, 72
+			start: 453, 60
+			end: 590, 76
+			bends: 570, 60 | 570, 76
 		]
 	]
 	label L2: "O Interaction 2" {
 		layout [
-			position: 473, 58
+			position: 473, 61
 			size: 77, 16
 		]
 		edgeLabels.placement: CENTER
@@ -95,14 +95,14 @@ edge E2: OperationalActivity_3 -> OperationalActivity_2_3 {
 edge E3: OperationalActivity_2_2 -> OperationalActivity_3 {
 	layout [
 		section ES3 [
-			start: 168, 72
-			end: 305, 57
-			bends: 188, 72 | 188, 57
+			start: 168, 76
+			end: 305, 60
+			bends: 188, 76 | 188, 60
 		]
 	]
 	label L3: "O Interaction 1" {
 		layout [
-			position: 209, 58
+			position: 208, 61
 			size: 77, 16
 		]
 		edgeLabels.placement: CENTER
