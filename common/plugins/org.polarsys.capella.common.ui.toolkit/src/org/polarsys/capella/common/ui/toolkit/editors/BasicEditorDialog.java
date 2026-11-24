@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -16,7 +16,6 @@ package org.polarsys.capella.common.ui.toolkit.editors;
 import org.apache.log4j.Logger;
 import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Shell;
 import org.polarsys.capella.common.ui.services.UIUtil;
 
@@ -37,11 +36,7 @@ public class BasicEditorDialog extends WizardDialog {
   public BasicEditorDialog(Shell shell, IWizard editor) {
     super(shell, editor);
 
-    // Applies the parent shell style without SWT.APPLICATION_MODAL.
-    if (0 != (getShellStyle() & SWT.APPLICATION_MODAL)) {
-      int newShellStyle = getShellStyle() - SWT.APPLICATION_MODAL;
-      setShellStyle(newShellStyle);
-    }
+    setModal(false);
     setBlockOnOpen(true);
   }
 

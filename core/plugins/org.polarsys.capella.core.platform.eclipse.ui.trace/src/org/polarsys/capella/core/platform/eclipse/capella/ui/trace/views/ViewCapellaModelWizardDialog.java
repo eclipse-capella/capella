@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -14,7 +14,6 @@ package org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views;
 
 import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Shell;
 
 /**
@@ -34,11 +33,7 @@ public class ViewCapellaModelWizardDialog extends WizardDialog {
   public ViewCapellaModelWizardDialog(Shell parentShell_p, IWizard newWizard_p) {
     super(parentShell_p, newWizard_p);
 
-    // Applies the parent shell style without SWT.APPLICATION_MODAL.
-    if (0 != (getShellStyle() & SWT.APPLICATION_MODAL)) {
-      int newShellStyle = getShellStyle() - SWT.APPLICATION_MODAL;
-      setShellStyle(newShellStyle);
-    }
+    setModal(false);
     setBlockOnOpen(true);
   }
 
