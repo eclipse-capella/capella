@@ -166,8 +166,9 @@ public class CapellaElkLayoutExtension extends AbstractElkLayoutExtension {
         CAPELLA_RULES.addNodeRule(applyOn(BLANK_DIAGRAMS_CONTAINING_FUNCTIONS), (node, ext) -> {
             // Hint for improvement:
             // To align all FunctionalChainEnd, they could be grouped in virtual node.
-            var mapping = ext.getElementMapping(node);
-            if (mapping != null && mapping.getName().endsWith("_FunctionalChainEnd")) { //$NON-NLS-1$
+            var mapping = ext.getElementMapping(node).getName();
+            if (mapping.endsWith("_FunctionalChainEnd") //$NON-NLS-1$
+                    || mapping.endsWith("_PhysicalPathEnd")) { //$NON-NLS-1$
                 node.setProperty(CoreOptions.NODE_SIZE_CONSTRAINTS, SizeConstraint.fixed());
                 node.setWidth(20); // As defined in *.odesign
                 node.setHeight(20);
