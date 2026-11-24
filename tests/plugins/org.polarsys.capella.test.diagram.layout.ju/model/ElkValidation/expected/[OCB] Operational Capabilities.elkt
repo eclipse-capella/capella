@@ -3,14 +3,14 @@ layout [ size: 648, 311 ]
 hierarchyHandling: INCLUDE_CHILDREN
 nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 algorithm: org.eclipse.elk.layered
+spacing.edgeLabel: 0
 spacing.edgeNodeBetweenLayers: 20
-nodePlacement.bk.fixedAlignment: BALANCED
-spacing.edgeEdge: 5
 edgeRouting: ORTHOGONAL
-edgeLabels.sideSelection: ALWAYS_DOWN
 spacing.portPort: 13
 elk.direction: RIGHT
-spacing.edgeLabel: 0
+nodePlacement.bk.fixedAlignment: BALANCED
+edgeLabels.sideSelection: ALWAYS_DOWN
+spacing.edgeEdge: 5
 noLayout: true
 node OActor_2 {
 	layout [
