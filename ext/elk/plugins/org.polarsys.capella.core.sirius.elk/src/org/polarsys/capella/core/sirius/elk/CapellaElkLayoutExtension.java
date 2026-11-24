@@ -59,6 +59,7 @@ import org.eclipse.elk.core.options.SizeConstraint;
 import org.eclipse.elk.graph.ElkNode;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeList;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.InitialPseudoState;
 import org.polarsys.capella.core.data.cs.Component;
@@ -231,13 +232,25 @@ public class CapellaElkLayoutExtension extends AbstractElkLayoutExtension {
         
         // When the label is outside, node size should not be related.
         CAPELLA_RULES.addNodeRule(ext -> true, (node, ext) -> {
-            var noInsideLabel = !node.getLabels().stream() // all labels
-                    .map(l -> l.getProperty(CoreOptions.NODE_LABELS_PLACEMENT)) // place
-                    .anyMatch(p -> p.contains(NodeLabelPlacement.INSIDE)); // is inside
+            var noInsideLabel = !hasInsideLabel(node);
             if (noInsideLabel) {
                 removeEnumValue(node, CoreOptions.NODE_SIZE_CONSTRAINTS, SizeConstraint.NODE_LABELS);
+            } else {
+                // User model usually does not have short name.
+                // With the minimum size, user can change the name with little impact on the layout.
+                setMinimumSize(node, 100, 40);
+                // Prevent long node with long lines
+                if (!node.getLabels().isEmpty() // skip Nodes with horizontal separator
+                        && !(ext.getDiagramElement(node) instanceof DNodeList)) {
+                    brealkLine(node.getLabels().get(0));
+                    // Detail on changing label bounds:
+                    // This is a best effort strategy.
+                    // If the node is wide for other reasons, 
+                    // line may not be broken but it is better.
+                }
             }
         });
+
     }
 
     public CapellaElkLayoutExtension() {

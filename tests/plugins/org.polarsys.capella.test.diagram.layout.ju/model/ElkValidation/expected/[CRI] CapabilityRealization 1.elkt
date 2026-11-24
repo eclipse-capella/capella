@@ -1,24 +1,24 @@
 graph _CRI__CapabilityRealization_1_graph
-layout [ size: 243, 185 ]
-hierarchyHandling: INCLUDE_CHILDREN
+layout [ size: 243, 194 ]
 nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+hierarchyHandling: INCLUDE_CHILDREN
 algorithm: org.eclipse.elk.layered
-nodePlacement.bk.fixedAlignment: BALANCED
-elk.direction: RIGHT
-edgeLabels.sideSelection: ALWAYS_DOWN
-spacing.edgeNodeBetweenLayers: 20
-edgeRouting: ORTHOGONAL
 spacing.edgeLabel: 0
-spacing.edgeEdge: 5
+edgeLabels.sideSelection: ALWAYS_DOWN
 spacing.portPort: 13
+edgeRouting: ORTHOGONAL
+nodePlacement.bk.fixedAlignment: BALANCED
+spacing.edgeNodeBetweenLayers: 20
+spacing.edgeEdge: 5
+elk.direction: RIGHT
 noLayout: true
 node CapabilityRealization_1 {
 	layout [
 		position: 41, 64
 		size: 60, 40
 	]
-	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(10.0,10.0)"
 	label L1: "CapabilityRealization 1" {
 		layout [
@@ -33,8 +33,8 @@ node LA_2 {
 		position: 173, 20
 		size: 70, 61
 	]
-	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(10.0,10.0)"
 	label L2: "LA 2" {
 		layout [
@@ -49,8 +49,8 @@ node LC_3 {
 		position: 173, 109
 		size: 70, 61
 	]
-	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(10.0,10.0)"
 	label L3: "LC 3" {
 		layout [
@@ -62,11 +62,11 @@ node LC_3 {
 }
 node req {
 	layout [
-		position: 54, 154
-		size: 45, 26
+		position: 26, 154
+		size: 100, 40
 	]
-	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(10.0,10.0)"
 	label L4: "req" {
 		layout [

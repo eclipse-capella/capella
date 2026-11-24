@@ -66,6 +66,8 @@ public class CapellaSiriusLayoutProvider extends GenericLayoutProvider {
                 .addDoubleOption(CoreOptions.SPACING_NODE_NODE, TARGET_PARENT, 40)
                 // Half spacing.edgeNode : Horizontal edge will be centered.
                 .addDoubleOption(CoreOptions.SPACING_EDGE_NODE, TARGET_PARENT, 20)
+                .addEnumsOption(CoreOptions.NODE_SIZE_CONSTRAINTS, TARGET_NODE, SizeConstraint.NODE_LABELS,
+                    SizeConstraint.MINIMUM_SIZE)
                 .getConfiguration();
     }
 
