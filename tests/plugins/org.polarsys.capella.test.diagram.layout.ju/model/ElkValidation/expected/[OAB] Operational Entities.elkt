@@ -1,24 +1,24 @@
 graph _OAB__Operational_Entities_graph
 layout [ size: 415, 516 ]
-hierarchyHandling: INCLUDE_CHILDREN
 nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+hierarchyHandling: INCLUDE_CHILDREN
 algorithm: org.eclipse.elk.layered
-elk.direction: DOWN
-spacing.edgeLabel: 0
 spacing.edgeEdge: 5
-edgeRouting: ORTHOGONAL
+spacing.portPort: 13
 edgeLabels.sideSelection: ALWAYS_DOWN
 nodePlacement.bk.fixedAlignment: BALANCED
+spacing.edgeLabel: 0
 spacing.edgeNodeBetweenLayers: 20
-spacing.portPort: 13
+edgeRouting: ORTHOGONAL
+elk.direction: DOWN
 noLayout: true
 node OEntity_1 {
 	layout [
 		position: 265, 142
 		size: 146, 66
 	]
-	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(148.0,68.0)"
 	label L6: "OEntity 1" {
 		layout [
@@ -33,8 +33,8 @@ node OActor_2 {
 		position: 265, 20
 		size: 146, 66
 	]
-	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(148.0,68.0)"
 	label L7: "OActor 2" {
 		layout [
@@ -49,8 +49,8 @@ node OE_3 {
 		position: 106, 304
 		size: 146, 66
 	]
-	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(148.0,68.0)"
 	label L8: "OE 3" {
 		layout [
@@ -65,8 +65,8 @@ node OA_4 {
 		position: 50, 142
 		size: 146, 66
 	]
-	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(148.0,68.0)"
 	label L9: "OA 4" {
 		layout [
@@ -81,8 +81,8 @@ node OE_5 {
 		position: 205, 446
 		size: 146, 66
 	]
-	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(148.0,68.0)"
 	label L10: "OE 5" {
 		layout [
