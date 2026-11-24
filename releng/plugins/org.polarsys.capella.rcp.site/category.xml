@@ -66,6 +66,9 @@
    <bundle id="org.eclipse.xtext.util">
       <category name="org.polarsys.capella.ext"/>
    </bundle>
+   <bundle id="org.antlr.runtime" version="3.2.0.v20230929-1400">
+      <category name="org.polarsys.capella.ext"/>
+   </bundle>
    <category-def name="org.polarsys.capella.rcp" label="Capella"/>
    <category-def name="org.polarsys.capella.ext" label="Extra-Features dependencies">
       <description>
