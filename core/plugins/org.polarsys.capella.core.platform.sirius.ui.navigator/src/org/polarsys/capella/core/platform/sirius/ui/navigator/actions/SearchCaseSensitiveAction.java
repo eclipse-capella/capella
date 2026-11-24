@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -22,7 +22,7 @@ public class SearchCaseSensitiveAction extends Action implements IPropertyListen
   CapellaCommonNavigator navigator;
 
   public SearchCaseSensitiveAction(CapellaCommonNavigator navigator) {
-    super(Messages.SearchOptions_Case_Titlte);
+    super(Messages.SearchOptions_Case_Titlte, AS_CHECK_BOX);
     setToolTipText(Messages.SearchOptions_Case_Tooltip);
     setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("SearchCaseSensitive.png")); //$NON-NLS-1$
 
