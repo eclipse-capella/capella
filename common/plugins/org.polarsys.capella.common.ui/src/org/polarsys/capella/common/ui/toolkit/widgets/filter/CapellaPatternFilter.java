@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -15,17 +15,17 @@ package org.polarsys.capella.common.ui.toolkit.widgets.filter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import org.eclipse.core.text.StringMatcher;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.dialogs.PatternFilter;
-import org.eclipse.ui.dialogs.SearchPattern;
 
 public class CapellaPatternFilter extends PatternFilter {
   private String pattern;
 
-  SearchPattern matcher;
+  protected StringMatcher matcher;
 
   private boolean caseSensitiveEnabled = false;
 
@@ -54,12 +54,8 @@ public class CapellaPatternFilter extends PatternFilter {
         // So that if search for "Air", the results will include texts containing "Aircraft" or "Airplane"
         patternString += "*"; //$NON-NLS-1$
       }
-      if(caseSensitiveEnabled)
-        matcher = new SearchPattern(SearchPattern.RULE_PATTERN_MATCH & SearchPattern.RULE_CASE_SENSITIVE);
-      else
-        matcher = new SearchPattern(SearchPattern.RULE_PATTERN_MATCH);
       
-      matcher.setPattern(patternString);
+      matcher = new StringMatcher(patternString.trim(), !caseSensitiveEnabled, false);
     }
   }
 
@@ -77,7 +73,7 @@ public class CapellaPatternFilter extends PatternFilter {
       return false;
     }
 
-    return matcher.matches(text);
+    return matcher.matchWords(text);
   }
 
   public void setCaseSensitiveEnabled(boolean caseSensitiveEnabled) {
