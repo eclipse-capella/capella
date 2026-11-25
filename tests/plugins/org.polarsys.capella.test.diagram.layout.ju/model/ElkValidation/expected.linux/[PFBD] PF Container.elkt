@@ -1,15 +1,17 @@
 graph _PFBD__PF_Container_graph
-layout [ size: 376, 310 ]
+layout [ size: 400, 220 ]
+nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 algorithm: org.eclipse.elk.mrtree
-spacing.nodeNode: 40
 spacing.edgeNode: 20
+spacing.nodeNode: 40
 edgeRouting: POLYLINE
 noLayout: true
 node PF_Container {
 	layout [
-		position: 216, 20
-		size: 104, 70
+		position: 227, 20
+		size: 107, 40
 	]
+	nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 	nodeSize.minimum: "(10.0,10.0)"
 	label L1: "PF Container" {
 		layout [
@@ -21,9 +23,10 @@ node PF_Container {
 }
 node subpf_1 {
 	layout [
-		position: 172, 130
-		size: 76, 70
+		position: 160, 100
+		size: 100, 40
 	]
+	nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 	nodeSize.minimum: "(10.0,10.0)"
 	label L2: "subpf 1" {
 		layout [
@@ -35,9 +38,10 @@ node subpf_1 {
 }
 node subpf_2 {
 	layout [
-		position: 288, 130
-		size: 76, 70
+		position: 300, 100
+		size: 100, 40
 	]
+	nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 	nodeSize.minimum: "(10.0,10.0)"
 	label L3: "subpf 2" {
 		layout [
@@ -49,9 +53,10 @@ node subpf_2 {
 }
 node subpf_3 {
 	layout [
-		position: 20, 240
-		size: 124, 70
+		position: 20, 180
+		size: 100, 40
 	]
+	nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 	nodeSize.minimum: "(10.0,10.0)"
 	label L4: "subpf 3" {
 		layout [
@@ -63,9 +68,10 @@ node subpf_3 {
 }
 node subpf_5 {
 	layout [
-		position: 184, 240
-		size: 76, 70
+		position: 160, 180
+		size: 100, 40
 	]
+	nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 	nodeSize.minimum: "(10.0,10.0)"
 	label L5: "subpf 5" {
 		layout [
@@ -77,9 +83,10 @@ node subpf_5 {
 }
 node subpf_4 {
 	layout [
-		position: 300, 240
-		size: 76, 70
+		position: 300, 180
+		size: 100, 40
 	]
+	nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 	nodeSize.minimum: "(10.0,10.0)"
 	label L6: "subpf 4" {
 		layout [
@@ -92,45 +99,45 @@ node subpf_4 {
 edge E1: subpf_1 -> PF_Container {
 	layout [
 		section ES1 [
-			start: 210, 130
-			end: 250, 90
-			bends: 250, 110
+			start: 213, 100
+			end: 280, 60
+			bends: 213, 98 | 280, 80
 		]
 	]
 }
 edge E2: subpf_2 -> PF_Container {
 	layout [
 		section ES2 [
-			start: 326, 130
-			end: 285, 90
-			bends: 285, 110
+			start: 346, 100
+			end: 280, 60
+			bends: 346, 98 | 280, 80
 		]
 	]
 }
 edge E3: subpf_3 -> subpf_1 {
 	layout [
 		section ES3 [
-			start: 85, 240
-			end: 191, 200
-			bends: 85, 238 | 191, 220
+			start: 73, 180
+			end: 210, 140
+			bends: 73, 178 | 210, 160
 		]
 	]
 }
 edge E4: subpf_5 -> subpf_1 {
 	layout [
 		section ES4 [
-			start: 222, 240
-			end: 210, 200
-			bends: 210, 220
+			start: 210, 180
+			end: 210, 140
+			bends: 210, 160
 		]
 	]
 }
 edge E5: subpf_4 -> subpf_1 {
 	layout [
 		section ES5 [
-			start: 334, 240
-			end: 229, 200
-			bends: 334, 238 | 229, 220
+			start: 346, 180
+			end: 210, 140
+			bends: 346, 178 | 210, 160
 		]
 	]
 }

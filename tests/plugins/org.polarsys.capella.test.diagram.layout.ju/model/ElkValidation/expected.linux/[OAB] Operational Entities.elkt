@@ -3,14 +3,14 @@ layout [ size: 451, 513 ]
 nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 hierarchyHandling: INCLUDE_CHILDREN
 algorithm: org.eclipse.elk.layered
+elk.direction: DOWN
+edgeRouting: ORTHOGONAL
 spacing.edgeNodeBetweenLayers: 20
-spacing.portPort: 13
+nodePlacement.bk.fixedAlignment: BALANCED
+edgeLabels.sideSelection: ALWAYS_DOWN
 spacing.edgeEdge: 5
 spacing.edgeLabel: 0
-elk.direction: DOWN
-nodePlacement.bk.fixedAlignment: BALANCED
-edgeRouting: ORTHOGONAL
-edgeLabels.sideSelection: ALWAYS_DOWN
+spacing.portPort: 13
 noLayout: true
 node OEntity_1 {
 	layout [

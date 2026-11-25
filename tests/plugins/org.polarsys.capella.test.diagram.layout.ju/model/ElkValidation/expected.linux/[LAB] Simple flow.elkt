@@ -1,44 +1,44 @@
 graph _LAB__Simple_flow_graph
-layout [ size: 983, 428 ]
+layout [ size: 904, 428 ]
 nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 hierarchyHandling: INCLUDE_CHILDREN
 algorithm: org.eclipse.elk.layered
-edgeRouting: ORTHOGONAL
-spacing.edgeNodeBetweenLayers: 20
-elk.direction: RIGHT
-spacing.portPort: 13
-spacing.edgeEdge: 5
 nodePlacement.bk.fixedAlignment: BALANCED
-spacing.edgeLabel: 0
+spacing.portPort: 13
+spacing.edgeNodeBetweenLayers: 20
+spacing.edgeEdge: 5
 edgeLabels.sideSelection: ALWAYS_DOWN
+spacing.edgeLabel: 0
+elk.direction: RIGHT
+edgeRouting: ORTHOGONAL
 noLayout: true
 node LC_1 {
 	layout [
-		position: 20, 106
-		size: 205, 105
+		position: 20, 115
+		size: 188, 105
 	]
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(32.0,24.0)"
-	edgeRouting: ORTHOGONAL
-	spacing.edgeNodeBetweenLayers: 20
-	elk.direction: RIGHT
-	spacing.portPort: 13
-	spacing.edgeEdge: 5
 	nodePlacement.bk.fixedAlignment: BALANCED
-	spacing.edgeLabel: 0
+	spacing.portPort: 13
+	spacing.edgeNodeBetweenLayers: 20
+	spacing.edgeEdge: 5
 	edgeLabels.sideSelection: ALWAYS_DOWN
+	spacing.edgeLabel: 0
+	elk.direction: RIGHT
+	edgeRouting: ORTHOGONAL
 	portLabels.placement: "[]"
 	label L4: "LC 1" {
 		layout [
-			position: 82, 5
+			position: 74, 5
 			size: 42, 16
 		]
 		nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
 	}
 	port P1 {
 		layout [
-			position: 199, 84
+			position: 182, 84
 			size: 10, 10
 		]
 		org.eclipse.elk.^port.borderOffset: -8
@@ -46,7 +46,7 @@ node LC_1 {
 	node LogicalFunction_1 {
 		layout [
 			position: 12, 33
-			size: 133, 59
+			size: 116, 59
 		]
 		nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 		hierarchyHandling: INCLUDE_CHILDREN
@@ -61,14 +61,14 @@ node LC_1 {
 		}
 		port P2 {
 			layout [
-				position: 125, 36
+				position: 108, 36
 				size: 10, 10
 			]
 			org.eclipse.elk.^port.borderOffset: -8
 		}
 		port P3 {
 			layout [
-				position: 125, 13
+				position: 108, 13
 				size: 10, 10
 			]
 			org.eclipse.elk.^port.borderOffset: -8
@@ -77,9 +77,9 @@ node LC_1 {
 	edge E4: P1 -> LogicalFunction_1.P2 {
 		layout [
 			section ES4 [
-				start: 199, 89
-				end: 146, 74
-				bends: 167, 89 | 167, 74
+				start: 182, 89
+				end: 129, 74
+				bends: 150, 89 | 150, 74
 			]
 		]
 		org.eclipse.elk.^edge.thickness: 2
@@ -87,39 +87,39 @@ node LC_1 {
 }
 node LC_2 {
 	layout [
-		position: 452, 20
-		size: 527, 197
+		position: 435, 20
+		size: 465, 207
 	]
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(32.0,24.0)"
-	edgeRouting: ORTHOGONAL
-	spacing.edgeNodeBetweenLayers: 20
-	elk.direction: RIGHT
-	spacing.portPort: 13
-	spacing.edgeEdge: 5
 	nodePlacement.bk.fixedAlignment: BALANCED
-	spacing.edgeLabel: 0
+	spacing.portPort: 13
+	spacing.edgeNodeBetweenLayers: 20
+	spacing.edgeEdge: 5
 	edgeLabels.sideSelection: ALWAYS_DOWN
+	spacing.edgeLabel: 0
+	elk.direction: RIGHT
+	edgeRouting: ORTHOGONAL
 	portLabels.placement: "[]"
 	label L6: "LC 2" {
 		layout [
-			position: 243, 5
+			position: 212, 5
 			size: 42, 16
 		]
 		nodeLabels.placement: "[H_CENTER, V_TOP, INSIDE]"
 	}
 	port P4 {
 		layout [
-			position: -2, 171
+			position: -2, 180
 			size: 10, 10
 		]
 		org.eclipse.elk.^port.borderOffset: -8
 	}
 	node Logical_Function_2_with_long_name {
 		layout [
-			position: 62, 149
-			size: 231, 36
+			position: 62, 155
+			size: 169, 42
 		]
 		nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 		hierarchyHandling: INCLUDE_CHILDREN
@@ -134,14 +134,14 @@ node LC_2 {
 		}
 		port P5 {
 			layout [
-				position: -2, 13
+				position: -2, 16
 				size: 10, 10
 			]
 			org.eclipse.elk.^port.borderOffset: -8
 		}
 		port P6 {
 			layout [
-				position: 223, 13
+				position: 161, 16
 				size: 10, 10
 			]
 			org.eclipse.elk.^port.borderOffset: -8
@@ -150,7 +150,7 @@ node LC_2 {
 	node LogicalFunction_3 {
 		layout [
 			position: 62, 93
-			size: 133, 36
+			size: 116, 42
 		]
 		nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 		hierarchyHandling: INCLUDE_CHILDREN
@@ -165,7 +165,7 @@ node LC_2 {
 		}
 		port P7 {
 			layout [
-				position: -2, 13
+				position: -2, 16
 				size: 10, 10
 			]
 			org.eclipse.elk.^port.borderOffset: -8
@@ -173,7 +173,7 @@ node LC_2 {
 	}
 	node N1 {
 		layout [
-			position: 477, 147
+			position: 414, 156
 			size: 40, 40
 		]
 		nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
@@ -194,7 +194,7 @@ node LC_2 {
 	}
 	node N2 {
 		layout [
-			position: 158, 33
+			position: 126, 33
 			size: 40, 40
 		]
 		nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
@@ -208,9 +208,9 @@ node LC_2 {
 	edge E5: P4 -> Logical_Function_2_with_long_name.P5 {
 		layout [
 			section ES5 [
-				start: 7, 176
-				end: 60, 167
-				bends: 40, 176 | 40, 167
+				start: 7, 185
+				end: 60, 176
+				bends: 40, 185 | 40, 176
 			]
 		]
 		org.eclipse.elk.^edge.thickness: 2
@@ -218,13 +218,13 @@ node LC_2 {
 	edge E6: Logical_Function_2_with_long_name.P6 -> N1.P8 {
 		layout [
 			section ES6 [
-				start: 294, 167
-				end: 475, 167
+				start: 232, 176
+				end: 412, 176
 			]
 		]
 		label L7: "O FunctionalExchange 3" {
 			layout [
-				position: 314, 168
+				position: 252, 177
 				size: 140, 16
 			]
 			edgeLabels.placement: CENTER
@@ -233,7 +233,7 @@ node LC_2 {
 }
 node FunctionalChain_1 {
 	layout [
-		position: 88, 66
+		position: 70, 75
 		size: 20, 20
 	]
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
@@ -250,15 +250,15 @@ node FunctionalChain_1 {
 edge E1: LC_1.LogicalFunction_1.P2 -> LC_2.Logical_Function_2_with_long_name.P5 {
 	layout [
 		section ES1 [
-			start: 166, 180
-			end: 512, 187
-			bends: 492, 180 | 492, 187
+			start: 149, 189
+			end: 495, 196
+			bends: 475, 189 | 475, 196
 		]
 	]
 	org.eclipse.elk.^edge.thickness: 4
 	label L1: "O FunctionalExchange 1" {
 		layout [
-			position: 269, 182
+			position: 253, 191
 			size: 140, 16
 		]
 		edgeLabels.placement: CENTER
@@ -267,14 +267,14 @@ edge E1: LC_1.LogicalFunction_1.P2 -> LC_2.Logical_Function_2_with_long_name.P5 
 edge E2: LC_1.LogicalFunction_1.P3 -> LC_2.LogicalFunction_3.P7 {
 	layout [
 		section ES2 [
-			start: 166, 157
-			end: 512, 131
-			bends: 249, 157 | 249, 140 | 429, 140 | 429, 131
+			start: 149, 166
+			end: 495, 134
+			bends: 233, 166 | 233, 146 | 413, 146 | 413, 134
 		]
 	]
 	label L2: "O FunctionalExchange 2" {
 		layout [
-			position: 270, 141
+			position: 253, 147
 			size: 140, 16
 		]
 		edgeLabels.placement: CENTER
@@ -283,14 +283,14 @@ edge E2: LC_1.LogicalFunction_1.P3 -> LC_2.LogicalFunction_3.P7 {
 edge E3: LC_1.P1 -> LC_2.P4 {
 	layout [
 		section ES3 [
-			start: 228, 195
-			end: 450, 196
-			bends: 249, 195 | 249, 203 | 429, 203 | 429, 196
+			start: 211, 204
+			end: 433, 205
+			bends: 233, 204 | 233, 212 | 413, 212 | 413, 205
 		]
 	]
 	label L3: "O C 1" {
 		layout [
-			position: 321, 204
+			position: 305, 213
 			size: 36, 16
 		]
 		edgeLabels.placement: CENTER
