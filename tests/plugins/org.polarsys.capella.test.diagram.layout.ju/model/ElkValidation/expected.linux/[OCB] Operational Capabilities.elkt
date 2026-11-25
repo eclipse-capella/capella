@@ -1,16 +1,16 @@
 graph _OCB__Operational_Capabilities_graph
-layout [ size: 684, 320 ]
+layout [ size: 684, 294 ]
 nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 hierarchyHandling: INCLUDE_CHILDREN
 algorithm: org.eclipse.elk.layered
-edgeRouting: ORTHOGONAL
-spacing.edgeNodeBetweenLayers: 20
-elk.direction: RIGHT
-spacing.portPort: 13
-spacing.edgeEdge: 5
 nodePlacement.bk.fixedAlignment: BALANCED
-spacing.edgeLabel: 0
+spacing.portPort: 13
+spacing.edgeNodeBetweenLayers: 20
+spacing.edgeEdge: 5
 edgeLabels.sideSelection: ALWAYS_DOWN
+spacing.edgeLabel: 0
+elk.direction: RIGHT
+edgeRouting: ORTHOGONAL
 noLayout: true
 node OActor_2 {
 	layout [
@@ -30,16 +30,16 @@ node OActor_2 {
 }
 node OperationalCapability_1 {
 	layout [
-		position: 20, 196
-		size: 128, 85
+		position: 49, 196
+		size: 70, 46
 	]
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(10.0,10.0)"
 	label L5: "OperationalCapability 1" {
 		layout [
+			position: -29, 47
 			size: 128, 13
-			position: 0, 86
 		]
 		nodeLabels.placement: "[H_CENTER, V_BOTTOM, OUTSIDE]"
 	}
@@ -62,64 +62,64 @@ node OEntity_1 {
 }
 node Root_Capability {
 	layout [
-		position: 366, 85
-		size: 82, 55
+		position: 395, 85
+		size: 70, 46
 	]
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(10.0,10.0)"
 	label L7: "Root Capability" {
 		layout [
+			position: -6, 47
 			size: 82, 13
-			position: 0, 56
 		]
 		nodeLabels.placement: "[H_CENTER, V_BOTTOM, OUTSIDE]"
 	}
 }
 node OperationalCapability_3 {
 	layout [
-		position: 366, 221
-		size: 128, 85
+		position: 395, 221
+		size: 70, 46
 	]
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(10.0,10.0)"
 	label L8: "OperationalCapability 3" {
 		layout [
+			position: -29, 47
 			size: 128, 13
-			position: 0, 86
 		]
 		nodeLabels.placement: "[H_CENTER, V_BOTTOM, OUTSIDE]"
 	}
 }
 node OperationalCapability_4 {
 	layout [
-		position: 20, 108
-		size: 128, 85
+		position: 49, 108
+		size: 70, 46
 	]
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(10.0,10.0)"
 	label L9: "OperationalCapability 4" {
 		layout [
+			position: -29, 47
 			size: 128, 13
-			position: 0, 86
 		]
 		nodeLabels.placement: "[H_CENTER, V_BOTTOM, OUTSIDE]"
 	}
 }
 node OperationalCapability_5 {
 	layout [
-		position: 20, 20
-		size: 128, 85
+		position: 49, 20
+		size: 70, 46
 	]
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 	hierarchyHandling: INCLUDE_CHILDREN
 	nodeSize.minimum: "(10.0,10.0)"
 	label L10: "OperationalCapability 5" {
 		layout [
+			position: -29, 47
 			size: 128, 13
-			position: 0, 86
 		]
 		nodeLabels.placement: "[H_CENTER, V_BOTTOM, OUTSIDE]"
 	}
@@ -127,18 +127,18 @@ node OperationalCapability_5 {
 edge E1: OperationalCapability_1 -> OActor_2 {
 	layout [
 		section ES1 [
-			start: 135, 233
-			end: 198, 187
-			bends: 178, 233 | 178, 187
+			start: 111, 221
+			end: 198, 181
+			bends: 178, 221 | 178, 181
 		]
 	]
 }
 edge E2: OperationalCapability_1 -> OEntity_1 {
 	layout [
 		section ES2 [
-			start: 112, 263
-			end: 534, 257
-			bends: 168, 263 | 168, 302 | 514, 302 | 514, 257
+			start: 91, 237
+			end: 534, 250
+			bends: 168, 237 | 168, 289 | 514, 289 | 514, 250
 		]
 	]
 }
@@ -161,14 +161,14 @@ edge E3: OActor_2 -> OEntity_1 {
 edge E4: OperationalCapability_1 -> Root_Capability {
 	layout [
 		section ES4 [
-			start: 130, 219
-			end: 371, 116
-			bends: 168, 219 | 168, 116
+			start: 110, 210
+			end: 398, 109
+			bends: 168, 210 | 168, 109
 		]
 	]
 	label L2: "« e »" {
 		layout [
-			position: 252, 117
+			position: 256, 110
 			size: 27, 13
 		]
 		edgeLabels.placement: CENTER
@@ -177,14 +177,14 @@ edge E4: OperationalCapability_1 -> Root_Capability {
 edge E5: OperationalCapability_1 -> OperationalCapability_3 {
 	layout [
 		section ES5 [
-			start: 125, 254
-			end: 372, 265
-			bends: 168, 254 | 168, 265
+			start: 102, 230
+			end: 398, 242
+			bends: 168, 230 | 168, 242
 		]
 	]
 	label L3: "« i »" {
 		layout [
-			position: 250, 266
+			position: 251, 243
 			size: 23, 13
 		]
 		edgeLabels.placement: CENTER

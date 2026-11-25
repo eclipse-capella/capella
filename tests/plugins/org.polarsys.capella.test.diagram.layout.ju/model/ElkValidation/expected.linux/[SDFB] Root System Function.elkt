@@ -1,21 +1,21 @@
 graph _SDFB__Root_System_Function_graph
-layout [ size: 938, 271 ]
+layout [ size: 938, 283 ]
 nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 hierarchyHandling: INCLUDE_CHILDREN
 algorithm: org.eclipse.elk.layered
-edgeRouting: ORTHOGONAL
-spacing.edgeNodeBetweenLayers: 20
-elk.direction: RIGHT
-spacing.portPort: 13
-spacing.edgeEdge: 5
 nodePlacement.bk.fixedAlignment: BALANCED
-spacing.edgeLabel: 0
+spacing.portPort: 13
+spacing.edgeNodeBetweenLayers: 20
+spacing.edgeEdge: 5
 edgeLabels.sideSelection: ALWAYS_DOWN
+spacing.edgeLabel: 0
+elk.direction: RIGHT
+edgeRouting: ORTHOGONAL
 noLayout: true
 node SystemFunction_1 {
 	layout [
-		position: 20, 201
-		size: 146, 66
+		position: 20, 207
+		size: 146, 72
 	]
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 	hierarchyHandling: INCLUDE_CHILDREN
@@ -30,7 +30,7 @@ node SystemFunction_1 {
 	}
 	port P1 {
 		layout [
-			position: 140, 32
+			position: 140, 35
 			size: 10, 10
 		]
 		org.eclipse.elk.^port.borderOffset: -8
@@ -38,8 +38,8 @@ node SystemFunction_1 {
 }
 node SystemFunction_2 {
 	layout [
-		position: 392, 149
-		size: 146, 66
+		position: 392, 154
+		size: 146, 72
 	]
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 	hierarchyHandling: INCLUDE_CHILDREN
@@ -55,21 +55,21 @@ node SystemFunction_2 {
 	}
 	port P2 {
 		layout [
-			position: -2, 44
+			position: -2, 48
 			size: 10, 10
 		]
 		org.eclipse.elk.^port.borderOffset: -8
 	}
 	port P3 {
 		layout [
-			position: 140, 33
+			position: 140, 36
 			size: 10, 10
 		]
 		org.eclipse.elk.^port.borderOffset: -8
 	}
 	port P4 {
 		layout [
-			position: -2, 21
+			position: -2, 23
 			size: 10, 10
 		]
 		org.eclipse.elk.^port.borderOffset: -8
@@ -77,8 +77,8 @@ node SystemFunction_2 {
 	edge E6: P2 -> P3 {
 		layout [
 			section ES6 [
-				start: 7, 48
-				end: 140, 38
+				start: 7, 52
+				end: 140, 41
 			]
 		]
 		org.eclipse.elk.^edge.thickness: 4
@@ -86,8 +86,8 @@ node SystemFunction_2 {
 	edge E7: P4 -> P3 {
 		layout [
 			section ES7 [
-				start: 7, 26
-				end: 140, 37
+				start: 7, 28
+				end: 140, 40
 			]
 		]
 		org.eclipse.elk.^edge.thickness: 4
@@ -96,7 +96,7 @@ node SystemFunction_2 {
 node SystemFunction_3 {
 	layout [
 		position: 20, 33
-		size: 146, 66
+		size: 146, 72
 	]
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 	hierarchyHandling: INCLUDE_CHILDREN
@@ -111,14 +111,14 @@ node SystemFunction_3 {
 	}
 	port P5 {
 		layout [
-			position: 140, 21
+			position: 140, 23
 			size: 10, 10
 		]
 		org.eclipse.elk.^port.borderOffset: -8
 	}
 	port P6 {
 		layout [
-			position: 140, 44
+			position: 140, 48
 			size: 10, 10
 		]
 		org.eclipse.elk.^port.borderOffset: -8
@@ -127,7 +127,7 @@ node SystemFunction_3 {
 node SystemFunction_4 {
 	layout [
 		position: 403, 20
-		size: 146, 66
+		size: 146, 72
 	]
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 	hierarchyHandling: INCLUDE_CHILDREN
@@ -142,14 +142,14 @@ node SystemFunction_4 {
 	}
 	port P7 {
 		layout [
-			position: -2, 33
+			position: -2, 36
 			size: 10, 10
 		]
 		org.eclipse.elk.^port.borderOffset: -8
 	}
 	port P8 {
 		layout [
-			position: 140, 33
+			position: 140, 36
 			size: 10, 10
 		]
 		org.eclipse.elk.^port.borderOffset: -8
@@ -157,8 +157,8 @@ node SystemFunction_4 {
 }
 node SystemFunction_5 {
 	layout [
-		position: 788, 105
-		size: 146, 66
+		position: 788, 107
+		size: 146, 72
 	]
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
 	hierarchyHandling: INCLUDE_CHILDREN
@@ -173,14 +173,14 @@ node SystemFunction_5 {
 	}
 	port P9 {
 		layout [
-			position: -2, 44
+			position: -2, 48
 			size: 10, 10
 		]
 		org.eclipse.elk.^port.borderOffset: -8
 	}
 	port P10 {
 		layout [
-			position: -2, 21
+			position: -2, 23
 			size: 10, 10
 		]
 		org.eclipse.elk.^port.borderOffset: -8
@@ -188,7 +188,7 @@ node SystemFunction_5 {
 }
 node FunctionalChain_1 {
 	layout [
-		position: 28, 161
+		position: 28, 167
 		size: 20, 20
 	]
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
@@ -204,7 +204,7 @@ node FunctionalChain_1 {
 }
 node FunctionalChain_2 {
 	layout [
-		position: 28, 121
+		position: 28, 127
 		size: 20, 20
 	]
 	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
@@ -221,15 +221,15 @@ node FunctionalChain_2 {
 edge E1: SystemFunction_1.P1 -> SystemFunction_2.P2 {
 	layout [
 		section ES1 [
-			start: 169, 238
-			end: 390, 198
-			bends: 370, 238 | 370, 198
+			start: 169, 247
+			end: 390, 207
+			bends: 370, 247 | 370, 207
 		]
 	]
 	org.eclipse.elk.^edge.thickness: 4
 	label L1: "O FunctionalExchange 1" {
 		layout [
-			position: 209, 240
+			position: 209, 249
 			size: 140, 16
 		]
 		edgeLabels.placement: CENTER
@@ -238,15 +238,15 @@ edge E1: SystemFunction_1.P1 -> SystemFunction_2.P2 {
 edge E2: SystemFunction_3.P6 -> SystemFunction_2.P4 {
 	layout [
 		section ES2 [
-			start: 169, 82
-			end: 390, 175
-			bends: 190, 82 | 190, 109 | 370, 109 | 370, 175
+			start: 169, 86
+			end: 390, 182
+			bends: 190, 86 | 190, 114 | 370, 114 | 370, 182
 		]
 	]
 	org.eclipse.elk.^edge.thickness: 4
 	label L2: "O FunctionalExchange 5" {
 		layout [
-			position: 209, 111
+			position: 210, 116
 			size: 140, 16
 		]
 		edgeLabels.placement: CENTER
@@ -255,14 +255,13 @@ edge E2: SystemFunction_3.P6 -> SystemFunction_2.P4 {
 edge E3: SystemFunction_3.P5 -> SystemFunction_4.P7 {
 	layout [
 		section ES3 [
-			start: 169, 59
-			end: 401, 58
-			bends: 285, 59 | 285, 58
+			start: 169, 61
+			end: 401, 61
 		]
 	]
 	label L3: "O FunctionalExchange 3" {
 		layout [
-			position: 211, 60
+			position: 210, 62
 			size: 140, 16
 		]
 		edgeLabels.placement: CENTER
@@ -271,29 +270,29 @@ edge E3: SystemFunction_3.P5 -> SystemFunction_4.P7 {
 edge E4: SystemFunction_2.P3 -> SystemFunction_5.P9 {
 	layout [
 		section ES4 [
-			start: 541, 187
-			end: 786, 154
-			bends: 744, 187 | 744, 154
+			start: 541, 195
+			end: 786, 160
+			bends: 744, 195 | 744, 160
 		]
 	]
 	org.eclipse.elk.^edge.thickness: 4
 	label L4: "O FunctionalExchange 2" {
 		layout [
-			position: 584, 189
+			position: 584, 197
 			size: 140, 16
 		]
 		edgeLabels.placement: CENTER
 	}
 	label L5: "O ." {
 		layout [
-			position: 541, 191
+			position: 542, 199
 			size: 22, 16
 		]
 		edgeLabels.placement: TAIL
 	}
 	label L6: "O ." {
 		layout [
-			position: 764, 158
+			position: 764, 164
 			size: 22, 16
 		]
 		edgeLabels.placement: HEAD
@@ -302,14 +301,14 @@ edge E4: SystemFunction_2.P3 -> SystemFunction_5.P9 {
 edge E5: SystemFunction_4.P8 -> SystemFunction_5.P10 {
 	layout [
 		section ES5 [
-			start: 552, 58
-			end: 786, 131
-			bends: 744, 58 | 744, 131
+			start: 552, 61
+			end: 786, 135
+			bends: 744, 61 | 744, 135
 		]
 	]
 	label L7: "O FunctionalExchange 4" {
 		layout [
-			position: 584, 59
+			position: 584, 62
 			size: 140, 16
 		]
 		edgeLabels.placement: CENTER

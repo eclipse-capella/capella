@@ -1,15 +1,17 @@
 graph _SFBD__SF_Container_graph
-layout [ size: 559, 351 ]
+layout [ size: 703, 222 ]
+nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 algorithm: org.eclipse.elk.mrtree
-spacing.nodeNode: 40
 spacing.edgeNode: 20
+spacing.nodeNode: 40
 edgeRouting: ORTHOGONAL
 noLayout: true
 node SF_Container {
 	layout [
-		position: 237, 20
-		size: 100, 70
+		position: 309, 20
+		size: 107, 40
 	]
+	nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 	nodeSize.minimum: "(10.0,10.0)"
 	label L1: "SF Container" {
 		layout [
@@ -21,9 +23,10 @@ node SF_Container {
 }
 node sb_1 {
 	layout [
-		position: 30, 151
-		size: 56, 70
+		position: 20, 101
+		size: 100, 40
 	]
+	nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 	nodeSize.minimum: "(10.0,10.0)"
 	label L2: "sb 1" {
 		layout [
@@ -35,9 +38,10 @@ node sb_1 {
 }
 node subsf_2 {
 	layout [
-		position: 126, 131
-		size: 75, 111
+		position: 160, 101
+		size: 100, 40
 	]
+	nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 	nodeSize.minimum: "(10.0,10.0)"
 	label L3: "subsf 2" {
 		layout [
@@ -49,9 +53,10 @@ node subsf_2 {
 }
 node subsf_3 {
 	layout [
-		position: 241, 151
-		size: 75, 70
+		position: 300, 101
+		size: 100, 40
 	]
+	nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 	nodeSize.minimum: "(10.0,10.0)"
 	label L4: "subsf 3" {
 		layout [
@@ -63,9 +68,10 @@ node subsf_3 {
 }
 node subsf_4 {
 	layout [
-		position: 241, 281
-		size: 75, 70
+		position: 300, 182
+		size: 100, 40
 	]
+	nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 	nodeSize.minimum: "(10.0,10.0)"
 	label L5: "subsf 4" {
 		layout [
@@ -77,9 +83,10 @@ node subsf_4 {
 }
 node subsf_5 {
 	layout [
-		position: 20, 281
-		size: 75, 70
+		position: 20, 182
+		size: 100, 40
 	]
+	nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 	nodeSize.minimum: "(10.0,10.0)"
 	label L6: "subsf 5" {
 		layout [
@@ -91,9 +98,10 @@ node subsf_5 {
 }
 node subsf_6_very_long_name {
 	layout [
-		position: 356, 167
-		size: 75, 39
+		position: 441, 100
+		size: 123, 42
 	]
+	nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 	nodeSize.minimum: "(10.0,10.0)"
 	label L7: "subsf 6 very long name" {
 		layout [
@@ -105,9 +113,10 @@ node subsf_6_very_long_name {
 }
 node Gather_5 {
 	layout [
-		position: 471, 151
-		size: 88, 70
+		position: 603, 101
+		size: 100, 40
 	]
+	nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 	nodeSize.minimum: "(10.0,10.0)"
 	label L8: "Gather 5" {
 		layout [
@@ -120,61 +129,60 @@ node Gather_5 {
 edge E1: sb_1 -> SF_Container {
 	layout [
 		section ES1 [
-			start: 58, 151
-			end: 254, 90
-			bends: 58, 110 | 254, 110
+			start: 73, 101
+			end: 362, 60
+			bends: 73, 80 | 362, 80
 		]
 	]
 }
 edge E2: subsf_2 -> SF_Container {
 	layout [
 		section ES2 [
-			start: 167, 131
-			end: 270, 90
-			bends: 167, 110 | 270, 110
+			start: 213, 101
+			end: 362, 60
+			bends: 213, 80 | 362, 80
 		]
 	]
 }
 edge E3: subsf_3 -> SF_Container {
 	layout [
 		section ES3 [
-			start: 278, 151
-			end: 287, 90
-			bends: 278, 110 | 287, 110
+			start: 362, 101
+			end: 362, 60
 		]
 	]
 }
 edge E4: subsf_6_very_long_name -> SF_Container {
 	layout [
 		section ES4 [
-			start: 393, 167
-			end: 303, 90
-			bends: 393, 110 | 303, 110
+			start: 499, 100
+			end: 363, 60
+			bends: 499, 80 | 363, 80
 		]
 	]
 }
 edge E5: Gather_5 -> SF_Container {
 	layout [
 		section ES5 [
-			start: 515, 151
-			end: 320, 90
-			bends: 515, 110 | 320, 110
+			start: 649, 101
+			end: 362, 60
+			bends: 649, 80 | 362, 80
 		]
 	]
 }
 edge E6: subsf_5 -> sb_1 {
 	layout [
 		section ES6 [
-			start: 58, 281
-			end: 58, 221
+			start: 70, 182
+			end: 70, 141
 		]
 	]
 }
 edge E7: subsf_4 -> subsf_3 {
 	layout [
 		section ES7 [
-			start: 278, 281
-			end: 278, 221
+			start: 350, 182
+			end: 350, 141
 		]
 	]
 }

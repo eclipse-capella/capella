@@ -1,0 +1,96 @@
+graph _CRI__CapabilityRealization_1_graph
+layout [ size: 270, 192 ]
+nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+hierarchyHandling: INCLUDE_CHILDREN
+algorithm: org.eclipse.elk.layered
+nodePlacement.bk.fixedAlignment: BALANCED
+spacing.portPort: 13
+spacing.edgeNodeBetweenLayers: 20
+spacing.edgeEdge: 5
+edgeLabels.sideSelection: ALWAYS_DOWN
+spacing.edgeLabel: 0
+elk.direction: RIGHT
+edgeRouting: ORTHOGONAL
+noLayout: true
+node CapabilityRealization_1 {
+	layout [
+		position: 55, 64
+		size: 60, 40
+	]
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.minimum: "(10.0,10.0)"
+	label L1: "CapabilityRealization 1" {
+		layout [
+			position: -40, 41
+			size: 140, 13
+		]
+		nodeLabels.placement: "[H_CENTER, V_BOTTOM, OUTSIDE]"
+	}
+}
+node LA_2 {
+	layout [
+		position: 200, 20
+		size: 70, 61
+	]
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.minimum: "(10.0,10.0)"
+	label L2: "LA 2" {
+		layout [
+			position: 23, 62
+			size: 23, 13
+		]
+		nodeLabels.placement: "[H_CENTER, V_BOTTOM, OUTSIDE]"
+	}
+}
+node LC_3 {
+	layout [
+		position: 200, 108
+		size: 70, 61
+	]
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.minimum: "(10.0,10.0)"
+	label L3: "LC 3" {
+		layout [
+			position: 23, 62
+			size: 23, 13
+		]
+		nodeLabels.placement: "[H_CENTER, V_BOTTOM, OUTSIDE]"
+	}
+}
+node req {
+	layout [
+		position: 40, 152
+		size: 100, 40
+	]
+	nodeSize.constraints: "[PORTS, NODE_LABELS, MINIMUM_SIZE]"
+	hierarchyHandling: INCLUDE_CHILDREN
+	nodeSize.minimum: "(10.0,10.0)"
+	label L4: "req" {
+		layout [
+			position: 1, 1
+			size: 37, 16
+		]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+	}
+}
+edge E1: CapabilityRealization_1 -> LA_2 {
+	layout [
+		section ES1 [
+			start: 108, 84
+			end: 207, 51
+			bends: 176, 84 | 176, 51
+		]
+	]
+}
+edge E2: CapabilityRealization_1 -> LC_3 {
+	layout [
+		section ES2 [
+			start: 96, 96
+			end: 206, 138
+			bends: 176, 96 | 176, 138
+		]
+	]
+}

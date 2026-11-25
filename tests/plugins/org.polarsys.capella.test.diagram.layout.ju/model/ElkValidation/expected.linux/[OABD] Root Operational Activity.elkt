@@ -1,15 +1,17 @@
 graph _OABD__Root_Operational_Activity_graph
-layout [ size: 1115, 310 ]
+layout [ size: 1131, 261 ]
+nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 algorithm: org.eclipse.elk.mrtree
-spacing.nodeNode: 40
 spacing.edgeNode: 20
+spacing.nodeNode: 40
 edgeRouting: ORTHOGONAL
 noLayout: true
 node OperationalActivity_1 {
 	layout [
-		position: 117, 20
-		size: 154, 70
+		position: 98, 20
+		size: 116, 42
 	]
+	nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 	nodeSize.minimum: "(10.0,10.0)"
 	label L1: "OperationalActivity 1" {
 		layout [
@@ -21,9 +23,10 @@ node OperationalActivity_1 {
 }
 node OperationalActivity_2 {
 	layout [
-		position: 214, 130
-		size: 154, 70
+		position: 176, 102
+		size: 116, 42
 	]
+	nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 	nodeSize.minimum: "(10.0,10.0)"
 	label L2: "OperationalActivity 2" {
 		layout [
@@ -35,9 +38,10 @@ node OperationalActivity_2 {
 }
 node OperationalActivity_3 {
 	layout [
-		position: 20, 130
-		size: 154, 70
+		position: 20, 102
+		size: 116, 42
 	]
+	nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 	nodeSize.minimum: "(10.0,10.0)"
 	label L3: "OperationalActivity 3" {
 		layout [
@@ -49,9 +53,10 @@ node OperationalActivity_3 {
 }
 node OperationalActivity_2_2 {
 	layout [
-		position: 105, 240
-		size: 166, 70
+		position: 92, 184
+		size: 122, 42
 	]
+	nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 	nodeSize.minimum: "(10.0,10.0)"
 	label L4: "OperationalActivity 2_2" {
 		layout [
@@ -63,9 +68,10 @@ node OperationalActivity_2_2 {
 }
 node OperationalActivity_2_3 {
 	layout [
-		position: 311, 240
-		size: 166, 70
+		position: 254, 184
+		size: 122, 42
 	]
+	nodeSize.constraints: "[NODE_LABELS, MINIMUM_SIZE]"
 	nodeSize.minimum: "(10.0,10.0)"
 	label L5: "OperationalActivity 2_3" {
 		layout [
@@ -78,36 +84,36 @@ node OperationalActivity_2_3 {
 edge E1: OperationalActivity_3 -> OperationalActivity_1 {
 	layout [
 		section ES1 [
-			start: 100, 130
-			end: 168, 90
-			bends: 100, 110 | 168, 110
+			start: 81, 102
+			end: 156, 62
+			bends: 81, 82 | 156, 82
 		]
 	]
 }
 edge E2: OperationalActivity_2 -> OperationalActivity_1 {
 	layout [
 		section ES2 [
-			start: 287, 130
-			end: 219, 90
-			bends: 287, 110 | 219, 110
+			start: 230, 102
+			end: 156, 62
+			bends: 230, 82 | 156, 82
 		]
 	]
 }
 edge E3: OperationalActivity_2_2 -> OperationalActivity_2 {
 	layout [
 		section ES3 [
-			start: 191, 240
-			end: 265, 200
-			bends: 191, 220 | 265, 220
+			start: 156, 184
+			end: 234, 144
+			bends: 156, 164 | 234, 164
 		]
 	]
 }
 edge E4: OperationalActivity_2_3 -> OperationalActivity_2 {
 	layout [
 		section ES4 [
-			start: 390, 240
-			end: 316, 200
-			bends: 390, 220 | 316, 220
+			start: 311, 184
+			end: 234, 144
+			bends: 311, 164 | 234, 164
 		]
 	]
 }
