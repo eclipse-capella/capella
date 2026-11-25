@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.elk.graph.ElkNode;
 import org.eclipse.elk.graph.text.ElkGraphStandaloneSetup;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.ArrangeAction;
@@ -43,6 +44,11 @@ import org.polarsys.capella.test.framework.api.ModelProviderHelper;
  * To verify a new rule, create a diagram that exercises it and run the test with tracing enabled.
  * To add or update a reference, inspect the exported layout before copying its {@code actual/*.elkt} file
  * to {@code model/ElkValidation/expected}. Element names must be unique to avoid generated random identifiers.
+ * </p>
+ * <p>
+ * ELK results are slightly different between Windows and Linux: Computed positions are different. Probably 
+ * because of the fonts, the sizes of labels are different.<br/>
+ * This means 2 sets of graphs are needed.
  * </p>
  *
  * <table border="1">
@@ -75,7 +81,9 @@ public class ElkDiagramLayoutTest extends BasicTestCase {
 
   private static final String MODEL_NAME = "ElkValidation"; //$NON-NLS-1$
 
-  private static final String REF_PATH = "expected"; //$NON-NLS-1$
+  private static final String DEFAULT_REF_PATH = "expected"; //$NON-NLS-1$
+  private static final String LINUX_REF_PATH = "expected.linux"; //$NON-NLS-1$
+  private static final String REF_PATH = Platform.OS.isLinux() ? LINUX_REF_PATH : DEFAULT_REF_PATH;
   private static final String RESULT_PATH = "actual"; //$NON-NLS-1$
 
   private Path projectPath;
@@ -86,12 +94,15 @@ public class ElkDiagramLayoutTest extends BasicTestCase {
     return List.of(MODEL_NAME);
   }
 
-  private void prepareTest() {
+  private void prepareTest() throws Exception {
     // The test runtime does not install the ELK graph editor, which normally registers .elkt resources.
     ElkGraphStandaloneSetup.doSetup();
     session = getSessionForTestModel(MODEL_NAME);
     projectPath = ModelProviderHelper.getInstance().getModelProvider().getAirdFileForLoadedModel(MODEL_NAME)
         .getProject().getLocation().toPath();
+    
+    // Check Platform consistency
+    assertEquals("Linux does not contain same cases", getExpectedCases(DEFAULT_REF_PATH), getExpectedCases(LINUX_REF_PATH));
   }
 
   private Path getGraphFile(DDiagram diagram, String prefix) {
@@ -119,19 +130,18 @@ public class ElkDiagramLayoutTest extends BasicTestCase {
     Collections.sort(failures);
     assertTrue("Layout of Diagrams are unexpected: " + failures, failures.isEmpty()); //$NON-NLS-1$
     Collections.sort(dones);
-    assertEquals("Some cases are missing",  getExpectedCases(), dones); //$NON-NLS-1$
+    assertEquals("Some cases are missing", getExpectedCases(REF_PATH), dones); //$NON-NLS-1$
   }
 
-  private List<String> getExpectedCases() throws IOException {
-    // Cases are sorted by name.
-    return Files.list(projectPath.resolve(REF_PATH)) // In Project
-        .map(it -> it.getFileName().toString()) // all files
-        .filter(it -> it.endsWith(ElkGraphUtils.GRAPH_EXTENSION)) // of type graph
-        .map(it -> it.substring(0, it.length() - ElkGraphUtils.GRAPH_EXTENSION.length())) // basename
-        .sorted()
-        .collect(Collectors.toList());
-  }
-  
+  private List<String> getExpectedCases(String group) throws IOException {
+      // Cases are sorted by name.
+      return Files.list(projectPath.resolve(group)) // In Project
+          .map(it -> it.getFileName().toString()) // all files
+          .filter(it -> it.endsWith(ElkGraphUtils.GRAPH_EXTENSION)) // of type graph
+          .map(it -> it.substring(0, it.length() - ElkGraphUtils.GRAPH_EXTENSION.length())) // basename
+          .sorted()
+          .collect(Collectors.toList());
+    }
 
   private ElkNode getArrangedGraph(DDiagram diagram) throws Exception {
     Path reference = getGraphFile(diagram, REF_PATH);
@@ -153,9 +163,13 @@ public class ElkDiagramLayoutTest extends BasicTestCase {
     var editor = (IDiagramWorkbenchPart) DiagramHelper.opendiagramEditor(session, representation);
 
     try {
-      traceDiagramImage(representation, ".1before"); //$NON-NLS-1$
+      if (ANALYSIS_MODE) {
+        traceDiagramImage(representation, ".before"); //$NON-NLS-1$
+      }
       arrangeAll(editor);
-      traceDiagramImage(representation, ".2after"); //$NON-NLS-1$
+      // Warning: Without export, some elements are not in the right place.
+      // This needs investigation.
+      traceDiagramImage(representation, ""); //$NON-NLS-1$
       return ElkGraphUtils.createElkMapping(editor.getDiagramEditPart());
 
     } finally {
@@ -177,13 +191,11 @@ public class ElkDiagramLayoutTest extends BasicTestCase {
   }
 
   private void traceDiagramImage(DDiagram representation, String qualifier) {
-    if (ANALYSIS_MODE) {
-      try {
-        String filename = representation.getName() + qualifier + ".png"; //$NON-NLS-1$
-        ElkGraphUtils.exportPngImage(representation, session, projectPath.resolve(filename));
-      } catch (IOException e) {
-        // Not the test purpose
-      }
+    try {
+      String filename = representation.getName() + qualifier + ".png"; //$NON-NLS-1$
+      ElkGraphUtils.exportPngImage(representation, session, projectPath.resolve(filename));
+    } catch (IOException e) {
+      // Not the test purpose
     }
   }
 
