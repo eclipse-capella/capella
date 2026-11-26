@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.context;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -146,12 +148,12 @@ public class SequenceDiagram extends CommonDiagram {
     return ((CombinedFragment) container.getTarget()).getId();
   }
 
-  public void ceateReference(String selectedScenarioid, String containerId) {
+  public void createReference(String selectedScenarioId, String containerId) {
     new ReferenceCreationTool(this, IToolNameConstants.TOOL_CREATE_REFERENCE, getDiagramId(), containerId,
-        selectedScenarioid).run();
+        selectedScenarioId).run();
   }
 
-  public void ceateDuration(String sourceId, String targetId) {
+  public void createDuration(String sourceId, String targetId) {
     new CreateDEdgeTool(this, IToolNameConstants.TOOL_DURATION, sourceId, targetId);
   }
 
@@ -206,6 +208,18 @@ public class SequenceDiagram extends CommonDiagram {
     protected DSemanticDecorator getContainerView() {
       return getDiagramContext().getView(containerViewTarget);
     }
+    
+	@Override
+	protected void postRunTest() {
+		super.postRunTest();
+
+		final Scenario referencedScenario = getExecutionContext().getSemanticElement(selectedId);
+		assertNotNull("The referenced scenario must exist", referencedScenario);
+
+		final InteractionUse createdInteractionUse = (InteractionUse) newElements.iterator().next().getTarget();
+		assertSame("The created reference must target the selected scenario", referencedScenario,
+				createdInteractionUse.getReferencedScenario());
+	}
   }
 
   protected class OperandCreationTool extends CreateAbstractDNodeTool<DNodeContainer> {
