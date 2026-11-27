@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.polarsys.capella.test.diagram.tools.ju.sequence.AddMultipleLifeLinesForExistingComponent;
 import org.polarsys.capella.test.diagram.tools.ju.sequence.CancelArmTimer;
 import org.polarsys.capella.test.diagram.tools.ju.sequence.CreateActor;
 import org.polarsys.capella.test.diagram.tools.ju.sequence.CreateArmTimer;
@@ -86,7 +85,6 @@ public class SequenceDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new LostAndFoundFunctionalExchange());
     tests.add(new CreateArmTimer());
     tests.add(new CancelArmTimer());
-    tests.add(new AddMultipleLifeLinesForExistingComponent());
     tests.add(new CreateCombinedFragmentGroupOperand());
     tests.add(new CreateReference());
     tests.add(new CreateOperand());

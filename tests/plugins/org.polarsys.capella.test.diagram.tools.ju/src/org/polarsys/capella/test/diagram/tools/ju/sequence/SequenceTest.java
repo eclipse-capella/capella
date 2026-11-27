@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2026 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -13,6 +13,8 @@
 package org.polarsys.capella.test.diagram.tools.ju.sequence;
 
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
@@ -27,13 +29,10 @@ import org.polarsys.capella.test.diagram.common.ju.context.SequenceDiagram;
 import org.polarsys.capella.test.diagram.tools.ju.model.SequenceDiagramProject;
 import org.polarsys.capella.test.framework.context.SessionContext;
 import org.polarsys.capella.test.framework.helpers.SkeletonHelper;
-import org.polarsys.capella.test.framework.model.GenericModel;
 
 public abstract class SequenceTest extends SequenceDiagramProject {
   protected SessionContext context = null;
 
-  protected String scenario = GenericModel.SCENARIO_1;
-  protected String capability = GenericModel.CAPABILITY_1;
   protected String actor1 = "";
   protected String actor2 = "";
   protected String component1 = "";
@@ -45,8 +44,7 @@ public abstract class SequenceTest extends SequenceDiagramProject {
   
   public void testOnAllLevels(BlockArchitectureExt.Type[] types, SequenceType seqType) {
     for (BlockArchitectureExt.Type type : types) {
-      doTest(type, seqType, getCapabilitiesId(type),
-          capability, scenario);
+      doTest(type, seqType);
     }
   }
 
@@ -97,8 +95,7 @@ public abstract class SequenceTest extends SequenceDiagramProject {
     return diagram;
   }
   
-  protected void doTest(BlockArchitectureExt.Type type, SequenceType seqType, String containerId, String capabilityId,
-      String scenarioId) {
+  protected void doTest(BlockArchitectureExt.Type type, SequenceType seqType) {
     Session session = getSession(getRequiredTestModel());
     context = new SessionContext(session);
     SequenceDiagram diagram = openDiagram(type, seqType);
@@ -185,6 +182,10 @@ public abstract class SequenceTest extends SequenceDiagramProject {
     return scenarioId;
   }
   
+	protected Scenario getScenario(final SequenceDiagram diagram) {
+		return (Scenario) ((DSemanticDiagram) diagram.getDiagram()).getTarget();
+	}
+
   // helper
   protected String getCapabilityDiagramName(BlockArchitectureExt.Type type) {
     String capabilityDiagramName = "";
